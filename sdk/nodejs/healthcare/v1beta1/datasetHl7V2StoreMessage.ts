@@ -87,31 +87,31 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.hl7V2StoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'hl7V2StoresId'");
+            if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hl7V2StoreId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.messagesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'messagesId'");
+            if ((!args || args.messageId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'messageId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["data"] = args ? args.data : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
-            inputs["hl7V2StoresId"] = args ? args.hl7V2StoresId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
+            inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["messageId"] = args ? args.messageId : undefined;
             inputs["messageType"] = args ? args.messageType : undefined;
-            inputs["messagesId"] = args ? args.messagesId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["patientIds"] = args ? args.patientIds : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["schematizedData"] = args ? args.schematizedData : undefined;
             inputs["sendFacility"] = args ? args.sendFacility : undefined;
             inputs["sendTime"] = args ? args.sendTime : undefined;
@@ -144,18 +144,18 @@ export interface DatasetHl7V2StoreMessageArgs {
      * Raw message bytes.
      */
     readonly data?: pulumi.Input<string>;
-    readonly datasetsId: pulumi.Input<string>;
-    readonly hl7V2StoresId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
+    readonly hl7V2StoreId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly messageId: pulumi.Input<string>;
     /**
      * The message type for this message. MSH-9.1.
      */
     readonly messageType?: pulumi.Input<string>;
-    readonly messagesId: pulumi.Input<string>;
     /**
      * Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
      */
@@ -164,7 +164,7 @@ export interface DatasetHl7V2StoreMessageArgs {
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */
     readonly patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.PatientIdArgs>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
      */

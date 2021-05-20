@@ -592,8 +592,6 @@ class GooglePrivacyDlpV2BigQueryTableResponse(dict):
         suggest = None
         if key == "datasetId":
             suggest = "dataset_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "tableId":
             suggest = "table_id"
 
@@ -610,16 +608,16 @@ class GooglePrivacyDlpV2BigQueryTableResponse(dict):
 
     def __init__(__self__, *,
                  dataset_id: str,
-                 project_id: str,
+                 project: str,
                  table_id: str):
         """
         Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
         :param str dataset_id: Dataset ID of the table.
-        :param str project_id: The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
+        :param str project: The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
         :param str table_id: Name of the table.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_id", table_id)
 
     @property
@@ -631,12 +629,12 @@ class GooglePrivacyDlpV2BigQueryTableResponse(dict):
         return pulumi.get(self, "dataset_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tableId")
@@ -4707,8 +4705,6 @@ class GooglePrivacyDlpV2PartitionIdResponse(dict):
         suggest = None
         if key == "namespaceId":
             suggest = "namespace_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PartitionIdResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4723,14 +4719,14 @@ class GooglePrivacyDlpV2PartitionIdResponse(dict):
 
     def __init__(__self__, *,
                  namespace_id: str,
-                 project_id: str):
+                 project: str):
         """
         Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
         :param str namespace_id: If not empty, the ID of the namespace to which the entities belong.
-        :param str project_id: The ID of the project to which the entities belong.
+        :param str project: The ID of the project to which the entities belong.
         """
         pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="namespaceId")
@@ -4741,12 +4737,12 @@ class GooglePrivacyDlpV2PartitionIdResponse(dict):
         return pulumi.get(self, "namespace_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         The ID of the project to which the entities belong.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type

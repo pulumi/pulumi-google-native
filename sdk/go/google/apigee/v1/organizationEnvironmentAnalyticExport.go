@@ -42,14 +42,14 @@ func NewOrganizationEnvironmentAnalyticExport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.ExportsId == nil {
-		return nil, errors.New("invalid value for required argument 'ExportsId'")
+	if args.ExportId == nil {
+		return nil, errors.New("invalid value for required argument 'ExportId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationEnvironmentAnalyticExport
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentAnalyticExport", name, args, &resource, opts...)
@@ -126,12 +126,12 @@ type organizationEnvironmentAnalyticExportArgs struct {
 	// Required. Date range of the data to export.
 	DateRange *GoogleCloudApigeeV1DateRange `pulumi:"dateRange"`
 	// Optional. Description of the export job.
-	Description    *string `pulumi:"description"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
-	ExportsId      string  `pulumi:"exportsId"`
+	Description   *string `pulumi:"description"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	ExportId      string  `pulumi:"exportId"`
 	// Required. Display name of the export job.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
 	OutputFormat *string `pulumi:"outputFormat"`
 }
@@ -145,12 +145,12 @@ type OrganizationEnvironmentAnalyticExportArgs struct {
 	// Required. Date range of the data to export.
 	DateRange GoogleCloudApigeeV1DateRangePtrInput
 	// Optional. Description of the export job.
-	Description    pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
-	ExportsId      pulumi.StringInput
+	Description   pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
+	ExportId      pulumi.StringInput
 	// Required. Display name of the export job.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
 	OutputFormat pulumi.StringPtrInput
 }

@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("parameters")]
         private InputList<Inputs.TemplateParameterArgs>? _parameters;
@@ -168,8 +168,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("placement")]
         public Input<Inputs.WorkflowTemplatePlacementArgs>? Placement { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("version")]
         public Input<int>? Version { get; set; }
 
-        [Input("workflowTemplatesId", required: true)]
-        public Input<string> WorkflowTemplatesId { get; set; } = null!;
+        [Input("workflowTemplateId", required: true)]
+        public Input<string> WorkflowTemplateId { get; set; } = null!;
 
         public WorkflowTemplateArgs()
         {

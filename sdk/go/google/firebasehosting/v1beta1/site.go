@@ -34,14 +34,11 @@ func NewSite(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
-	}
-	if args.SitesId == nil {
-		return nil, errors.New("invalid value for required argument 'SitesId'")
 	}
 	var resource Site
 	err := ctx.RegisterResource("google-native:firebasehosting/v1beta1:Site", name, args, &resource, opts...)
@@ -98,10 +95,9 @@ type siteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
 	AppId *string `pulumi:"appId"`
 	// Optional. User-specified labels for the Hosting site.
-	Labels     map[string]string `pulumi:"labels"`
-	ProjectsId string            `pulumi:"projectsId"`
-	SiteId     string            `pulumi:"siteId"`
-	SitesId    string            `pulumi:"sitesId"`
+	Labels  map[string]string `pulumi:"labels"`
+	Project string            `pulumi:"project"`
+	SiteId  string            `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a Site resource.
@@ -109,10 +105,9 @@ type SiteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
 	AppId pulumi.StringPtrInput
 	// Optional. User-specified labels for the Hosting site.
-	Labels     pulumi.StringMapInput
-	ProjectsId pulumi.StringInput
-	SiteId     pulumi.StringInput
-	SitesId    pulumi.StringInput
+	Labels  pulumi.StringMapInput
+	Project pulumi.StringInput
+	SiteId  pulumi.StringInput
 }
 
 func (SiteArgs) ElementType() reflect.Type {

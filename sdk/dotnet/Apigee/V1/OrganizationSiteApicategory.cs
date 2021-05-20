@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationSiteApicategoryArgs : Pulumi.ResourceArgs
     {
-        [Input("apicategoriesId", required: true)]
-        public Input<string> ApicategoriesId { get; set; } = null!;
+        [Input("apicategoryId", required: true)]
+        public Input<string> ApicategoryId { get; set; } = null!;
 
         /// <summary>
         /// ID of the category (a UUID).
@@ -105,17 +105,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Name of the portal.
         /// </summary>
-        [Input("siteId")]
-        public Input<string>? SiteId { get; set; }
-
-        [Input("sitesId", required: true)]
-        public Input<string> SitesId { get; set; } = null!;
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Time the category was last modified in milliseconds since epoch.

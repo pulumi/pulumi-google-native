@@ -270,8 +270,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         [Input("eventTrigger")]
         public Input<Inputs.EventTriggerArgs>? EventTrigger { get; set; }
 
-        [Input("functionsId", required: true)]
-        public Input<string> FunctionsId { get; set; } = null!;
+        [Input("functionId", required: true)]
+        public Input<string> FunctionId { get; set; } = null!;
 
         /// <summary>
         /// An HTTPS endpoint type of source that can be triggered via URL.
@@ -297,8 +297,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
@@ -318,8 +318,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).

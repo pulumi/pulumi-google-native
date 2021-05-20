@@ -171,8 +171,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
@@ -180,8 +180,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
@@ -201,8 +201,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             set => _resourceSettings = value;
         }
 
-        [Input("workloadsId", required: true)]
-        public Input<string> WorkloadsId { get; set; } = null!;
+        [Input("workloadId", required: true)]
+        public Input<string> WorkloadId { get; set; } = null!;
 
         public OrganizationWorkloadArgs()
         {

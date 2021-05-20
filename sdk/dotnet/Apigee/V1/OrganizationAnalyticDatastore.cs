@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("datastoreConfig")]
         public Input<Inputs.GoogleCloudApigeeV1DatastoreConfigArgs>? DatastoreConfig { get; set; }
 
-        [Input("datastoresId", required: true)]
-        public Input<string> DatastoresId { get; set; } = null!;
+        [Input("datastoreId", required: true)]
+        public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
         /// Required. Display name in UI
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Destination storage type. Supported types `gcs` or `bigquery`.

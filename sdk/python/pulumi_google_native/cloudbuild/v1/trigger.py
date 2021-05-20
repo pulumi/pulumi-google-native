@@ -15,7 +15,7 @@ __all__ = ['TriggerArgs', 'Trigger']
 @pulumi.input_type
 class TriggerArgs:
     def __init__(__self__, *,
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
                  build: Optional[pulumi.Input['BuildArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,7 @@ class TriggerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `BuildTrigger`
         :param pulumi.Input['RepoSourceArgs'] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "trigger_id", trigger_id)
         if build is not None:
             pulumi.set(__self__, "build", build)
@@ -76,13 +76,13 @@ class TriggerArgs:
             pulumi.set(__self__, "trigger_template", trigger_template)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="triggerId")
@@ -264,7 +264,7 @@ class Trigger(pulumi.CustomResource):
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -323,7 +323,7 @@ class Trigger(pulumi.CustomResource):
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -350,9 +350,9 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["ignored_files"] = ignored_files
             __props__.__dict__["included_files"] = included_files
             __props__.__dict__["name"] = name
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_config"] = pubsub_config
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags

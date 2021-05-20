@@ -15,8 +15,8 @@ __all__ = ['RepoArgs', 'Repo']
 @pulumi.input_type
 class RepoArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 repos_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 repo_id: pulumi.Input[str],
                  mirror_config: Optional[pulumi.Input['MirrorConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,8 +30,8 @@ class RepoArgs:
         :param pulumi.Input[str] size: The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories. Read-only field.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "repos_id", repos_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "repo_id", repo_id)
         if mirror_config is not None:
             pulumi.set(__self__, "mirror_config", mirror_config)
         if name is not None:
@@ -44,22 +44,22 @@ class RepoArgs:
             pulumi.set(__self__, "url", url)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="reposId")
-    def repos_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "repos_id")
+    @pulumi.getter(name="repoId")
+    def repo_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "repo_id")
 
-    @repos_id.setter
-    def repos_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "repos_id", value)
+    @repo_id.setter
+    def repo_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_id", value)
 
     @property
     @pulumi.getter(name="mirrorConfig")
@@ -129,9 +129,9 @@ class Repo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  mirror_config: Optional[pulumi.Input[pulumi.InputType['MirrorConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 repos_id: Optional[pulumi.Input[str]] = None,
+                 repo_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -172,9 +172,9 @@ class Repo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  mirror_config: Optional[pulumi.Input[pulumi.InputType['MirrorConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 repos_id: Optional[pulumi.Input[str]] = None,
+                 repo_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -191,13 +191,13 @@ class Repo(pulumi.CustomResource):
 
             __props__.__dict__["mirror_config"] = mirror_config
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_configs"] = pubsub_configs
-            if repos_id is None and not opts.urn:
-                raise TypeError("Missing required property 'repos_id'")
-            __props__.__dict__["repos_id"] = repos_id
+            if repo_id is None and not opts.urn:
+                raise TypeError("Missing required property 'repo_id'")
+            __props__.__dict__["repo_id"] = repo_id
             __props__.__dict__["size"] = size
             __props__.__dict__["url"] = url
         super(Repo, __self__).__init__(

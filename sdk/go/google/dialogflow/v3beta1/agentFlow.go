@@ -38,17 +38,17 @@ func NewAgentFlow(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.FlowsId == nil {
-		return nil, errors.New("invalid value for required argument 'FlowsId'")
+	if args.FlowId == nil {
+		return nil, errors.New("invalid value for required argument 'FlowId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentFlow
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:AgentFlow", name, args, &resource, opts...)
@@ -110,21 +110,21 @@ func (AgentFlowState) ElementType() reflect.Type {
 }
 
 type agentFlowArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// Required. The human-readable name of the flow.
 	DisplayName *string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3beta1EventHandler `pulumi:"eventHandlers"`
-	FlowsId       string                                       `pulumi:"flowsId"`
+	FlowId        string                                       `pulumi:"flowId"`
 	LanguageCode  *string                                      `pulumi:"languageCode"`
-	LocationsId   string                                       `pulumi:"locationsId"`
+	Location      string                                       `pulumi:"location"`
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name *string `pulumi:"name"`
 	// NLU related settings of the flow.
 	NluSettings *GoogleCloudDialogflowCxV3beta1NluSettings `pulumi:"nluSettings"`
-	ProjectsId  string                                     `pulumi:"projectsId"`
+	Project     string                                     `pulumi:"project"`
 	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
@@ -133,21 +133,21 @@ type agentFlowArgs struct {
 
 // The set of arguments for constructing a AgentFlow resource.
 type AgentFlowArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// Required. The human-readable name of the flow.
 	DisplayName pulumi.StringPtrInput
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerArrayInput
-	FlowsId       pulumi.StringInput
+	FlowId        pulumi.StringInput
 	LanguageCode  pulumi.StringPtrInput
-	LocationsId   pulumi.StringInput
+	Location      pulumi.StringInput
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name pulumi.StringPtrInput
 	// NLU related settings of the flow.
 	NluSettings GoogleCloudDialogflowCxV3beta1NluSettingsPtrInput
-	ProjectsId  pulumi.StringInput
+	Project     pulumi.StringInput
 	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups pulumi.StringArrayInput
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.

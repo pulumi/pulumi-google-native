@@ -86,27 +86,23 @@ export class Workflow extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
-            if ((!args || args.workflowsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workflowsId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["sourceContents"] = args ? args.sourceContents : undefined;
             inputs["workflowId"] = args ? args.workflowId : undefined;
-            inputs["workflowsId"] = args ? args.workflowsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["revisionCreateTime"] = undefined /*out*/;
             inputs["revisionId"] = undefined /*out*/;
@@ -143,12 +139,12 @@ export interface WorkflowArgs {
      * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
      */
@@ -158,5 +154,4 @@ export interface WorkflowArgs {
      */
     readonly sourceContents?: pulumi.Input<string>;
     readonly workflowId: pulumi.Input<string>;
-    readonly workflowsId: pulumi.Input<string>;
 }

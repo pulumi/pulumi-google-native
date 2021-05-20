@@ -163,11 +163,11 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobsId'");
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["addresses"] = args ? args.addresses : undefined;
             inputs["applicationInfo"] = args ? args.applicationInfo : undefined;
@@ -183,9 +183,9 @@ export class Job extends pulumi.CustomResource {
             inputs["incentives"] = args ? args.incentives : undefined;
             inputs["jobBenefits"] = args ? args.jobBenefits : undefined;
             inputs["jobEndTime"] = args ? args.jobEndTime : undefined;
+            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["jobLevel"] = args ? args.jobLevel : undefined;
             inputs["jobStartTime"] = args ? args.jobStartTime : undefined;
-            inputs["jobsId"] = args ? args.jobsId : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["postingCreateTime"] = args ? args.postingCreateTime : undefined;
@@ -194,7 +194,7 @@ export class Job extends pulumi.CustomResource {
             inputs["postingRegion"] = args ? args.postingRegion : undefined;
             inputs["postingUpdateTime"] = args ? args.postingUpdateTime : undefined;
             inputs["processingOptions"] = args ? args.processingOptions : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["promotionValue"] = args ? args.promotionValue : undefined;
             inputs["qualifications"] = args ? args.qualifications : undefined;
             inputs["requisitionId"] = args ? args.requisitionId : undefined;
@@ -298,6 +298,7 @@ export interface JobArgs {
      * Optional. The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
      */
     readonly jobEndTime?: pulumi.Input<string>;
+    readonly jobId: pulumi.Input<string>;
     /**
      * Optional. The experience level associated with the job, such as "Entry Level".
      */
@@ -306,7 +307,6 @@ export interface JobArgs {
      * Optional. The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
      */
     readonly jobStartTime?: pulumi.Input<string>;
-    readonly jobsId: pulumi.Input<string>;
     /**
      * Optional. The language of the posting. This field is distinct from any requirements for fluency that are associated with the job. Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }. If this field is unspecified and Job.description is present, detected language code based on Job.description is assigned, otherwise defaults to 'en_US'.
      */
@@ -339,7 +339,7 @@ export interface JobArgs {
      * Optional. Options for job processing.
      */
     readonly processingOptions?: pulumi.Input<inputs.jobs.v3.ProcessingOptionsArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
      */

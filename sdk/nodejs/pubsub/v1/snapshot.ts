@@ -62,15 +62,15 @@ export class Snapshot extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.snapshotsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'snapshotsId'");
+            if ((!args || args.snapshotId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'snapshotId'");
             }
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["snapshotsId"] = args ? args.snapshotsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["snapshotId"] = args ? args.snapshotId : undefined;
             inputs["subscription"] = args ? args.subscription : undefined;
             inputs["expireTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -96,8 +96,8 @@ export interface SnapshotArgs {
      * See Creating and managing labels.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly snapshotsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly snapshotId: pulumi.Input<string>;
     /**
      * Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
      */

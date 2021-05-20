@@ -79,21 +79,17 @@ export class WorkerPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
-            if ((!args || args.workerPoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerPoolsId'");
-            }
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
-            inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -124,7 +120,7 @@ export interface WorkerPoolArgs {
      * Network configuration for the `WorkerPool`.
      */
     readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
@@ -134,5 +130,4 @@ export interface WorkerPoolArgs {
      */
     readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.WorkerConfigArgs>;
     readonly workerPoolId: pulumi.Input<string>;
-    readonly workerPoolsId: pulumi.Input<string>;
 }

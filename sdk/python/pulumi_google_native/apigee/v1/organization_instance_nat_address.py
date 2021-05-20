@@ -13,46 +13,46 @@ __all__ = ['OrganizationInstanceNatAddressArgs', 'OrganizationInstanceNatAddress
 @pulumi.input_type
 class OrganizationInstanceNatAddressArgs:
     def __init__(__self__, *,
-                 instances_id: pulumi.Input[str],
-                 nat_addresses_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 nat_address_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationInstanceNatAddress resource.
         :param pulumi.Input[str] name: Required. Resource ID of the NAT address.
         """
-        pulumi.set(__self__, "instances_id", instances_id)
-        pulumi.set(__self__, "nat_addresses_id", nat_addresses_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "nat_address_id", nat_address_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="instancesId")
-    def instances_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instances_id")
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
 
-    @instances_id.setter
-    def instances_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instances_id", value)
-
-    @property
-    @pulumi.getter(name="natAddressesId")
-    def nat_addresses_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "nat_addresses_id")
-
-    @nat_addresses_id.setter
-    def nat_addresses_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "nat_addresses_id", value)
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="natAddressId")
+    def nat_address_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "nat_address_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @nat_address_id.setter
+    def nat_address_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nat_address_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -72,10 +72,10 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nat_addresses_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 nat_address_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
@@ -108,10 +108,10 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nat_addresses_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 nat_address_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -124,16 +124,16 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationInstanceNatAddressArgs.__new__(OrganizationInstanceNatAddressArgs)
 
-            if instances_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instances_id'")
-            __props__.__dict__["instances_id"] = instances_id
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if nat_addresses_id is None and not opts.urn:
-                raise TypeError("Missing required property 'nat_addresses_id'")
-            __props__.__dict__["nat_addresses_id"] = nat_addresses_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if nat_address_id is None and not opts.urn:
+                raise TypeError("Missing required property 'nat_address_id'")
+            __props__.__dict__["nat_address_id"] = nat_address_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["state"] = None
         super(OrganizationInstanceNatAddress, __self__).__init__(

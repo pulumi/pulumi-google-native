@@ -15,48 +15,37 @@ __all__ = ['StudyArgs', 'Study']
 @pulumi.input_type
 class StudyArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 studies_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  study_id: pulumi.Input[str],
                  study_config: Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']] = None):
         """
         The set of arguments for constructing a Study resource.
         :param pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'] study_config: Required. Configuration of the study.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "studies_id", studies_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "study_id", study_id)
         if study_config is not None:
             pulumi.set(__self__, "study_config", study_config)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="studiesId")
-    def studies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "studies_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @studies_id.setter
-    def studies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "studies_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="studyId")
@@ -85,9 +74,8 @@ class Study(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 studies_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -122,9 +110,8 @@ class Study(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 studies_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -139,15 +126,12 @@ class Study(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StudyArgs.__new__(StudyArgs)
 
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if studies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'studies_id'")
-            __props__.__dict__["studies_id"] = studies_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["study_config"] = study_config
             if study_id is None and not opts.urn:
                 raise TypeError("Missing required property 'study_id'")

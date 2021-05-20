@@ -15,8 +15,8 @@ __all__ = ['OccurrenceArgs', 'Occurrence']
 @pulumi.input_type
 class OccurrenceArgs:
     def __init__(__self__, *,
-                 occurrences_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 occurrence_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  attestation: Optional[pulumi.Input['AttestationArgs']] = None,
                  build_details: Optional[pulumi.Input['BuildDetailsArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -52,8 +52,8 @@ class OccurrenceArgs:
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an upgrade.
         :param pulumi.Input['VulnerabilityDetailsArgs'] vulnerability_details: Details of a security vulnerability note.
         """
-        pulumi.set(__self__, "occurrences_id", occurrences_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "occurrence_id", occurrence_id)
+        pulumi.set(__self__, "project", project)
         if attestation is not None:
             pulumi.set(__self__, "attestation", attestation)
         if build_details is not None:
@@ -88,22 +88,22 @@ class OccurrenceArgs:
             pulumi.set(__self__, "vulnerability_details", vulnerability_details)
 
     @property
-    @pulumi.getter(name="occurrencesId")
-    def occurrences_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "occurrences_id")
+    @pulumi.getter(name="occurrenceId")
+    def occurrence_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "occurrence_id")
 
-    @occurrences_id.setter
-    def occurrences_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "occurrences_id", value)
+    @occurrence_id.setter
+    def occurrence_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "occurrence_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -313,8 +313,8 @@ class Occurrence(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
-                 occurrences_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 occurrence_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
@@ -378,8 +378,8 @@ class Occurrence(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
-                 occurrences_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 occurrence_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
@@ -408,12 +408,12 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["note_name"] = note_name
-            if occurrences_id is None and not opts.urn:
-                raise TypeError("Missing required property 'occurrences_id'")
-            __props__.__dict__["occurrences_id"] = occurrences_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if occurrence_id is None and not opts.urn:
+                raise TypeError("Missing required property 'occurrence_id'")
+            __props__.__dict__["occurrence_id"] = occurrence_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["remediation"] = remediation
             __props__.__dict__["resource"] = resource
             __props__.__dict__["resource_url"] = resource_url

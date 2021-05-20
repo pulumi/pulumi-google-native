@@ -62,7 +62,7 @@ export class TestMatrix extends pulumi.CustomResource {
     /**
      * The cloud project that owns the test matrix.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Required. Where the results for the matrix are written.
      */
@@ -99,8 +99,8 @@ export class TestMatrix extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.testMatrixId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testMatrixId'");
@@ -111,7 +111,7 @@ export class TestMatrix extends pulumi.CustomResource {
             inputs["flakyTestAttempts"] = args ? args.flakyTestAttempts : undefined;
             inputs["invalidMatrixDetails"] = args ? args.invalidMatrixDetails : undefined;
             inputs["outcomeSummary"] = args ? args.outcomeSummary : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resultStorage"] = args ? args.resultStorage : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -126,7 +126,7 @@ export class TestMatrix extends pulumi.CustomResource {
             inputs["flakyTestAttempts"] = undefined /*out*/;
             inputs["invalidMatrixDetails"] = undefined /*out*/;
             inputs["outcomeSummary"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["resultStorage"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["testExecutions"] = undefined /*out*/;
@@ -172,7 +172,7 @@ export interface TestMatrixArgs {
     /**
      * The cloud project that owns the test matrix.
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * Required. Where the results for the matrix are written.

@@ -162,11 +162,11 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
-
-        [Input("domainsId", required: true)]
-        public Input<string> DomainsId { get; set; } = null!;
 
         /// <summary>
         /// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].

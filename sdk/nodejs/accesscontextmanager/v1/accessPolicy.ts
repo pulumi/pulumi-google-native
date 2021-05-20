@@ -62,10 +62,10 @@ export class AccessPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accessPoliciesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessPoliciesId'");
+            if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accessPolicyId'");
             }
-            inputs["accessPoliciesId"] = args ? args.accessPoliciesId : undefined;
+            inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -87,7 +87,7 @@ export class AccessPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AccessPolicy resource.
  */
 export interface AccessPolicyArgs {
-    readonly accessPoliciesId: pulumi.Input<string>;
+    readonly accessPolicyId: pulumi.Input<string>;
     /**
      * An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
      */

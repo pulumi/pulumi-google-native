@@ -31,14 +31,11 @@ func NewJobTemplate(ctx *pulumi.Context,
 	if args.JobTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'JobTemplateId'")
 	}
-	if args.JobTemplatesId == nil {
-		return nil, errors.New("invalid value for required argument 'JobTemplatesId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource JobTemplate
 	err := ctx.RegisterResource("google-native:transcoder/v1beta1:JobTemplate", name, args, &resource, opts...)
@@ -81,25 +78,23 @@ func (JobTemplateState) ElementType() reflect.Type {
 
 type jobTemplateArgs struct {
 	// The configuration for this template.
-	Config         *JobConfig `pulumi:"config"`
-	JobTemplateId  string     `pulumi:"jobTemplateId"`
-	JobTemplatesId string     `pulumi:"jobTemplatesId"`
-	LocationsId    string     `pulumi:"locationsId"`
+	Config        *JobConfig `pulumi:"config"`
+	JobTemplateId string     `pulumi:"jobTemplateId"`
+	Location      string     `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a JobTemplate resource.
 type JobTemplateArgs struct {
 	// The configuration for this template.
-	Config         JobConfigPtrInput
-	JobTemplateId  pulumi.StringInput
-	JobTemplatesId pulumi.StringInput
-	LocationsId    pulumi.StringInput
+	Config        JobConfigPtrInput
+	JobTemplateId pulumi.StringInput
+	Location      pulumi.StringInput
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (JobTemplateArgs) ElementType() reflect.Type {

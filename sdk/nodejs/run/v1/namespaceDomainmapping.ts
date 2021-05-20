@@ -67,18 +67,18 @@ export class NamespaceDomainmapping extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainmappingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainmappingsId'");
+            if ((!args || args.domainmappingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainmappingId'");
             }
-            if ((!args || args.namespacesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespacesId'");
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["domainmappingsId"] = args ? args.domainmappingsId : undefined;
+            inputs["domainmappingId"] = args ? args.domainmappingId : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["namespacesId"] = args ? args.namespacesId : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -103,7 +103,7 @@ export interface NamespaceDomainmappingArgs {
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
     readonly apiVersion?: pulumi.Input<string>;
-    readonly domainmappingsId: pulumi.Input<string>;
+    readonly domainmappingId: pulumi.Input<string>;
     readonly dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".
@@ -113,7 +113,7 @@ export interface NamespaceDomainmappingArgs {
      * Metadata associated with this BuildTemplate.
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
-    readonly namespacesId: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */

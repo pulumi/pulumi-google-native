@@ -59,14 +59,14 @@ export class AppDomainMapping extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appsId'");
+            if ((!args || args.appId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.domainMappingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainMappingsId'");
+            if ((!args || args.domainMappingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainMappingId'");
             }
-            inputs["appsId"] = args ? args.appsId : undefined;
-            inputs["domainMappingsId"] = args ? args.domainMappingsId : undefined;
+            inputs["appId"] = args ? args.appId : undefined;
+            inputs["domainMappingId"] = args ? args.domainMappingId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noManagedCertificate"] = args ? args.noManagedCertificate : undefined;
@@ -89,8 +89,8 @@ export class AppDomainMapping extends pulumi.CustomResource {
  * The set of arguments for constructing a AppDomainMapping resource.
  */
 export interface AppDomainMappingArgs {
-    readonly appsId: pulumi.Input<string>;
-    readonly domainMappingsId: pulumi.Input<string>;
+    readonly appId: pulumi.Input<string>;
+    readonly domainMappingId: pulumi.Input<string>;
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */

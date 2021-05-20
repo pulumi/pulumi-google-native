@@ -14,11 +14,10 @@ __all__ = ['DatasetConsentStoreAttributeDefinitionArgs', 'DatasetConsentStoreAtt
 class DatasetConsentStoreAttributeDefinitionArgs:
     def __init__(__self__, *,
                  attribute_definition_id: pulumi.Input[str],
-                 attribute_definitions_id: pulumi.Input[str],
-                 consent_stores_id: pulumi.Input[str],
-                 datasets_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 consent_store_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -35,11 +34,10 @@ class DatasetConsentStoreAttributeDefinitionArgs:
         :param pulumi.Input[str] name: Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
         pulumi.set(__self__, "attribute_definition_id", attribute_definition_id)
-        pulumi.set(__self__, "attribute_definitions_id", attribute_definitions_id)
-        pulumi.set(__self__, "consent_stores_id", consent_stores_id)
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "consent_store_id", consent_store_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if allowed_values is not None:
             pulumi.set(__self__, "allowed_values", allowed_values)
         if category is not None:
@@ -63,49 +61,40 @@ class DatasetConsentStoreAttributeDefinitionArgs:
         pulumi.set(self, "attribute_definition_id", value)
 
     @property
-    @pulumi.getter(name="attributeDefinitionsId")
-    def attribute_definitions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attribute_definitions_id")
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_store_id")
 
-    @attribute_definitions_id.setter
-    def attribute_definitions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attribute_definitions_id", value)
-
-    @property
-    @pulumi.getter(name="consentStoresId")
-    def consent_stores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consent_stores_id")
-
-    @consent_stores_id.setter
-    def consent_stores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consent_stores_id", value)
+    @consent_store_id.setter
+    def consent_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_store_id", value)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="allowedValues")
@@ -187,16 +176,15 @@ class DatasetConsentStoreAttributeDefinition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  attribute_definition_id: Optional[pulumi.Input[str]] = None,
-                 attribute_definitions_id: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 consent_stores_id: Optional[pulumi.Input[str]] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Attribute definition in the parent consent store.
@@ -236,16 +224,15 @@ class DatasetConsentStoreAttributeDefinition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  attribute_definition_id: Optional[pulumi.Input[str]] = None,
-                 attribute_definitions_id: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 consent_stores_id: Optional[pulumi.Input[str]] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -262,26 +249,23 @@ class DatasetConsentStoreAttributeDefinition(pulumi.CustomResource):
             if attribute_definition_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attribute_definition_id'")
             __props__.__dict__["attribute_definition_id"] = attribute_definition_id
-            if attribute_definitions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attribute_definitions_id'")
-            __props__.__dict__["attribute_definitions_id"] = attribute_definitions_id
             __props__.__dict__["category"] = category
             __props__.__dict__["consent_default_values"] = consent_default_values
-            if consent_stores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consent_stores_id'")
-            __props__.__dict__["consent_stores_id"] = consent_stores_id
+            if consent_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_store_id'")
+            __props__.__dict__["consent_store_id"] = consent_store_id
             __props__.__dict__["data_mapping_default_value"] = data_mapping_default_value
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["description"] = description
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
         super(DatasetConsentStoreAttributeDefinition, __self__).__init__(
             'google-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition',
             resource_name,

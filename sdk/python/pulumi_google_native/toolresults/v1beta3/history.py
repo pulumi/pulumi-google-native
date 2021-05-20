@@ -14,7 +14,7 @@ __all__ = ['HistoryArgs', 'History']
 class HistoryArgs:
     def __init__(__self__, *,
                  history_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class HistoryArgs:
         :param pulumi.Input[str] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -50,13 +50,13 @@ class HistoryArgs:
         pulumi.set(self, "history_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -112,7 +112,7 @@ class History(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  test_platform: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -153,7 +153,7 @@ class History(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  test_platform: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -173,9 +173,9 @@ class History(pulumi.CustomResource):
                 raise TypeError("Missing required property 'history_id'")
             __props__.__dict__["history_id"] = history_id
             __props__.__dict__["name"] = name
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["test_platform"] = test_platform
         super(History, __self__).__init__(

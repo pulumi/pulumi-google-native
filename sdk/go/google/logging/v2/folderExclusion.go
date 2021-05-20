@@ -36,11 +36,11 @@ func NewFolderExclusion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExclusionsId == nil {
-		return nil, errors.New("invalid value for required argument 'ExclusionsId'")
+	if args.ExclusionId == nil {
+		return nil, errors.New("invalid value for required argument 'ExclusionId'")
 	}
-	if args.FoldersId == nil {
-		return nil, errors.New("invalid value for required argument 'FoldersId'")
+	if args.FolderId == nil {
+		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
 	var resource FolderExclusion
 	err := ctx.RegisterResource("google-native:logging/v2:FolderExclusion", name, args, &resource, opts...)
@@ -101,11 +101,11 @@ type folderExclusionArgs struct {
 	// Optional. A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled     *bool  `pulumi:"disabled"`
-	ExclusionsId string `pulumi:"exclusionsId"`
+	Disabled    *bool  `pulumi:"disabled"`
+	ExclusionId string `pulumi:"exclusionId"`
 	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-	Filter    *string `pulumi:"filter"`
-	FoldersId string  `pulumi:"foldersId"`
+	Filter   *string `pulumi:"filter"`
+	FolderId string  `pulumi:"folderId"`
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 }
@@ -115,11 +115,11 @@ type FolderExclusionArgs struct {
 	// Optional. A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled     pulumi.BoolPtrInput
-	ExclusionsId pulumi.StringInput
+	Disabled    pulumi.BoolPtrInput
+	ExclusionId pulumi.StringInput
 	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-	Filter    pulumi.StringPtrInput
-	FoldersId pulumi.StringInput
+	Filter   pulumi.StringPtrInput
+	FolderId pulumi.StringInput
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 }

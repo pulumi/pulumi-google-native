@@ -50,7 +50,7 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
     /**
      * The cloud project @OutputOnly
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A sample series id @OutputOnly
      */
@@ -77,8 +77,8 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.sampleSeriesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sampleSeriesId'");
@@ -89,14 +89,14 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
             inputs["basicPerfSampleSeries"] = args ? args.basicPerfSampleSeries : undefined;
             inputs["executionId"] = args ? args.executionId : undefined;
             inputs["historyId"] = args ? args.historyId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["sampleSeriesId"] = args ? args.sampleSeriesId : undefined;
             inputs["stepId"] = args ? args.stepId : undefined;
         } else {
             inputs["basicPerfSampleSeries"] = undefined /*out*/;
             inputs["executionId"] = undefined /*out*/;
             inputs["historyId"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["sampleSeriesId"] = undefined /*out*/;
             inputs["stepId"] = undefined /*out*/;
         }
@@ -126,7 +126,7 @@ export interface HistoryExecutionStepPerfSampleSeriesArgs {
     /**
      * The cloud project @OutputOnly
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * A sample series id @OutputOnly
      */

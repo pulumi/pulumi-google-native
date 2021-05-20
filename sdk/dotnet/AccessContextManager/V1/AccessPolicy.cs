@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("accessPoliciesId", required: true)]
-        public Input<string> AccessPoliciesId { get; set; } = null!;
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
 
         /// <summary>
         /// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.

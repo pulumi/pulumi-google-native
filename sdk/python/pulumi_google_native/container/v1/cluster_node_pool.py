@@ -15,10 +15,10 @@ __all__ = ['ClusterNodePoolArgs', 'ClusterNodePool']
 @pulumi.input_type
 class ClusterNodePoolArgs:
     def __init__(__self__, *,
-                 clusters_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 node_pools_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 cluster_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 node_pool_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
@@ -52,10 +52,10 @@ class ClusterNodePoolArgs:
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
-        pulumi.set(__self__, "clusters_id", clusters_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "node_pools_id", node_pools_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "node_pool_id", node_pool_id)
+        pulumi.set(__self__, "project", project)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if conditions is not None:
@@ -88,40 +88,40 @@ class ClusterNodePoolArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="clustersId")
-    def clusters_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "clusters_id")
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cluster_id")
 
-    @clusters_id.setter
-    def clusters_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "clusters_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
-    @pulumi.getter(name="nodePoolsId")
-    def node_pools_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "node_pools_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @node_pools_id.setter
-    def node_pools_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "node_pools_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="nodePoolId")
+    def node_pool_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "node_pool_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @node_pool_id.setter
+    def node_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_pool_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -310,20 +310,20 @@ class ClusterNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pools_id: Optional[pulumi.Input[str]] = None,
+                 node_pool_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
@@ -375,20 +375,20 @@ class ClusterNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pools_id: Optional[pulumi.Input[str]] = None,
+                 node_pool_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
@@ -406,28 +406,28 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__ = ClusterNodePoolArgs.__new__(ClusterNodePoolArgs)
 
             __props__.__dict__["autoscaling"] = autoscaling
-            if clusters_id is None and not opts.urn:
-                raise TypeError("Missing required property 'clusters_id'")
-            __props__.__dict__["clusters_id"] = clusters_id
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
+            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["instance_group_urls"] = instance_group_urls
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["management"] = management
             __props__.__dict__["max_pods_constraint"] = max_pods_constraint
             __props__.__dict__["name"] = name
-            if node_pools_id is None and not opts.urn:
-                raise TypeError("Missing required property 'node_pools_id'")
-            __props__.__dict__["node_pools_id"] = node_pools_id
+            if node_pool_id is None and not opts.urn:
+                raise TypeError("Missing required property 'node_pool_id'")
+            __props__.__dict__["node_pool_id"] = node_pool_id
             __props__.__dict__["parent"] = parent
             __props__.__dict__["pod_ipv4_cidr_size"] = pod_ipv4_cidr_size
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["status"] = status
             __props__.__dict__["upgrade_settings"] = upgrade_settings

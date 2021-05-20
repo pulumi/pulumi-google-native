@@ -156,8 +156,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("instructionsId", required: true)]
-        public Input<string> InstructionsId { get; set; } = null!;
+        [Input("instructionId", required: true)]
+        public Input<string> InstructionId { get; set; } = null!;
 
         /// <summary>
         /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
@@ -171,8 +171,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("pdfInstruction")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>? PdfInstruction { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Last update time of instruction.

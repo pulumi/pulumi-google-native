@@ -95,34 +95,34 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.experimentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'experimentsId'");
+            if ((!args || args.experimentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'experimentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["definition"] = args ? args.definition : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
+            inputs["experimentId"] = args ? args.experimentId : undefined;
             inputs["experimentLength"] = args ? args.experimentLength : undefined;
-            inputs["experimentsId"] = args ? args.experimentsId : undefined;
             inputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["result"] = args ? args.result : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -152,7 +152,7 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentEnvironmentExperiment resource.
  */
 export interface AgentEnvironmentExperimentArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Creation time of this experiment.
      */
@@ -173,22 +173,22 @@ export interface AgentEnvironmentExperimentArgs {
      * End time of this experiment.
      */
     readonly endTime?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
+    readonly experimentId: pulumi.Input<string>;
     /**
      * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
      */
     readonly experimentLength?: pulumi.Input<string>;
-    readonly experimentsId: pulumi.Input<string>;
     /**
      * Last update time of this experiment.
      */
     readonly lastUpdateTime?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The name of the experiment. Format: projects//locations//agents//environments//experiments/..
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Inference result of the experiment.
      */

@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// <summary>
         /// ID of the project that owns the repo.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Name of the repo.

@@ -14,8 +14,8 @@ __all__ = ['AccountChannelPartnerLinkArgs', 'AccountChannelPartnerLink']
 @pulumi.input_type
 class AccountChannelPartnerLinkArgs:
     def __init__(__self__, *,
-                 accounts_id: pulumi.Input[str],
-                 channel_partner_links_id: pulumi.Input[str],
+                 account_id: pulumi.Input[str],
+                 channel_partner_link_id: pulumi.Input[str],
                  link_state: Optional[pulumi.Input[str]] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None):
         """
@@ -23,30 +23,30 @@ class AccountChannelPartnerLinkArgs:
         :param pulumi.Input[str] link_state: Required. State of the channel partner link.
         :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
         """
-        pulumi.set(__self__, "accounts_id", accounts_id)
-        pulumi.set(__self__, "channel_partner_links_id", channel_partner_links_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "channel_partner_link_id", channel_partner_link_id)
         if link_state is not None:
             pulumi.set(__self__, "link_state", link_state)
         if reseller_cloud_identity_id is not None:
             pulumi.set(__self__, "reseller_cloud_identity_id", reseller_cloud_identity_id)
 
     @property
-    @pulumi.getter(name="accountsId")
-    def accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "accounts_id")
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "account_id")
 
-    @accounts_id.setter
-    def accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "accounts_id", value)
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="channelPartnerLinksId")
-    def channel_partner_links_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "channel_partner_links_id")
+    @pulumi.getter(name="channelPartnerLinkId")
+    def channel_partner_link_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "channel_partner_link_id")
 
-    @channel_partner_links_id.setter
-    def channel_partner_links_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "channel_partner_links_id", value)
+    @channel_partner_link_id.setter
+    def channel_partner_link_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "channel_partner_link_id", value)
 
     @property
     @pulumi.getter(name="linkState")
@@ -78,8 +78,8 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts_id: Optional[pulumi.Input[str]] = None,
-                 channel_partner_links_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 channel_partner_link_id: Optional[pulumi.Input[str]] = None,
                  link_state: Optional[pulumi.Input[str]] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -115,8 +115,8 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts_id: Optional[pulumi.Input[str]] = None,
-                 channel_partner_links_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 channel_partner_link_id: Optional[pulumi.Input[str]] = None,
                  link_state: Optional[pulumi.Input[str]] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -131,12 +131,12 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountChannelPartnerLinkArgs.__new__(AccountChannelPartnerLinkArgs)
 
-            if accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'accounts_id'")
-            __props__.__dict__["accounts_id"] = accounts_id
-            if channel_partner_links_id is None and not opts.urn:
-                raise TypeError("Missing required property 'channel_partner_links_id'")
-            __props__.__dict__["channel_partner_links_id"] = channel_partner_links_id
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
+            __props__.__dict__["account_id"] = account_id
+            if channel_partner_link_id is None and not opts.urn:
+                raise TypeError("Missing required property 'channel_partner_link_id'")
+            __props__.__dict__["channel_partner_link_id"] = channel_partner_link_id
             __props__.__dict__["link_state"] = link_state
             __props__.__dict__["reseller_cloud_identity_id"] = reseller_cloud_identity_id
             __props__.__dict__["channel_partner_cloud_identity_info"] = None

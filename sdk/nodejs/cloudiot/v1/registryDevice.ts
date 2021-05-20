@@ -111,22 +111,22 @@ export class RegistryDevice extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.devicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'devicesId'");
+            if ((!args || args.deviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'deviceId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.registriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'registriesId'");
+            if ((!args || args.registryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'registryId'");
             }
             inputs["blocked"] = args ? args.blocked : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["devicesId"] = args ? args.devicesId : undefined;
+            inputs["deviceId"] = args ? args.deviceId : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["lastConfigAckTime"] = args ? args.lastConfigAckTime : undefined;
@@ -136,13 +136,13 @@ export class RegistryDevice extends pulumi.CustomResource {
             inputs["lastEventTime"] = args ? args.lastEventTime : undefined;
             inputs["lastHeartbeatTime"] = args ? args.lastHeartbeatTime : undefined;
             inputs["lastStateTime"] = args ? args.lastStateTime : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["logLevel"] = args ? args.logLevel : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["numId"] = args ? args.numId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["registriesId"] = args ? args.registriesId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["registryId"] = args ? args.registryId : undefined;
             inputs["state"] = args ? args.state : undefined;
         } else {
             inputs["blocked"] = undefined /*out*/;
@@ -185,7 +185,7 @@ export interface RegistryDeviceArgs {
      * The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.cloudiot.v1.DeviceCredentialArgs>[]>;
-    readonly devicesId: pulumi.Input<string>;
+    readonly deviceId: pulumi.Input<string>;
     /**
      * Gateway-related configuration and state.
      */
@@ -222,7 +222,7 @@ export interface RegistryDeviceArgs {
      * [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
      */
     readonly lastStateTime?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
      */
@@ -239,8 +239,8 @@ export interface RegistryDeviceArgs {
      * [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
      */
     readonly numId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly registriesId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly registryId: pulumi.Input<string>;
     /**
      * [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
      */

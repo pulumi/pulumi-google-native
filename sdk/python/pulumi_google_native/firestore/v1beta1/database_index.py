@@ -15,9 +15,9 @@ __all__ = ['DatabaseIndexArgs', 'DatabaseIndex']
 @pulumi.input_type
 class DatabaseIndexArgs:
     def __init__(__self__, *,
-                 databases_id: pulumi.Input[str],
-                 indexes_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 database_id: pulumi.Input[str],
+                 index_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  collection_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,9 +29,9 @@ class DatabaseIndexArgs:
         :param pulumi.Input[str] name: The resource name of the index. Output only.
         :param pulumi.Input[str] state: The state of the index. Output only.
         """
-        pulumi.set(__self__, "databases_id", databases_id)
-        pulumi.set(__self__, "indexes_id", indexes_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "index_id", index_id)
+        pulumi.set(__self__, "project", project)
         if collection_id is not None:
             pulumi.set(__self__, "collection_id", collection_id)
         if fields is not None:
@@ -42,31 +42,31 @@ class DatabaseIndexArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="databasesId")
-    def databases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "databases_id")
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "database_id")
 
-    @databases_id.setter
-    def databases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "databases_id", value)
-
-    @property
-    @pulumi.getter(name="indexesId")
-    def indexes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "indexes_id")
-
-    @indexes_id.setter
-    def indexes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "indexes_id", value)
+    @database_id.setter
+    def database_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "index_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @index_id.setter
+    def index_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "index_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="collectionId")
@@ -123,11 +123,11 @@ class DatabaseIndex(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 databases_id: Optional[pulumi.Input[str]] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
-                 indexes_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -165,11 +165,11 @@ class DatabaseIndex(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 databases_id: Optional[pulumi.Input[str]] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
-                 indexes_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -184,17 +184,17 @@ class DatabaseIndex(pulumi.CustomResource):
             __props__ = DatabaseIndexArgs.__new__(DatabaseIndexArgs)
 
             __props__.__dict__["collection_id"] = collection_id
-            if databases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'databases_id'")
-            __props__.__dict__["databases_id"] = databases_id
+            if database_id is None and not opts.urn:
+                raise TypeError("Missing required property 'database_id'")
+            __props__.__dict__["database_id"] = database_id
             __props__.__dict__["fields"] = fields
-            if indexes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'indexes_id'")
-            __props__.__dict__["indexes_id"] = indexes_id
+            if index_id is None and not opts.urn:
+                raise TypeError("Missing required property 'index_id'")
+            __props__.__dict__["index_id"] = index_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
         super(DatabaseIndex, __self__).__init__(
             'google-native:firestore/v1beta1:DatabaseIndex',

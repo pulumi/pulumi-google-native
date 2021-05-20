@@ -15,12 +15,11 @@ __all__ = ['CatalogBranchProductArgs', 'CatalogBranchProduct']
 @pulumi.input_type
 class CatalogBranchProductArgs:
     def __init__(__self__, *,
-                 branches_id: pulumi.Input[str],
-                 catalogs_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
+                 branch_id: pulumi.Input[str],
+                 catalog_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  product_id: pulumi.Input[str],
-                 products_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  availability: Optional[pulumi.Input[str]] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
@@ -54,12 +53,11 @@ class CatalogBranchProductArgs:
         :param pulumi.Input[str] type: Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
         :param pulumi.Input[str] uri: Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
         """
-        pulumi.set(__self__, "branches_id", branches_id)
-        pulumi.set(__self__, "catalogs_id", catalogs_id)
-        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "branch_id", branch_id)
+        pulumi.set(__self__, "catalog_id", catalog_id)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "products_id", products_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
         if availability is not None:
@@ -92,31 +90,31 @@ class CatalogBranchProductArgs:
             pulumi.set(__self__, "uri", uri)
 
     @property
-    @pulumi.getter(name="branchesId")
-    def branches_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "branches_id")
+    @pulumi.getter(name="branchId")
+    def branch_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "branch_id")
 
-    @branches_id.setter
-    def branches_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "branches_id", value)
-
-    @property
-    @pulumi.getter(name="catalogsId")
-    def catalogs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "catalogs_id")
-
-    @catalogs_id.setter
-    def catalogs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "catalogs_id", value)
+    @branch_id.setter
+    def branch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "branch_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "catalog_id")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @catalog_id.setter
+    def catalog_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "catalog_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="productId")
@@ -128,22 +126,13 @@ class CatalogBranchProductArgs:
         pulumi.set(self, "product_id", value)
 
     @property
-    @pulumi.getter(name="productsId")
-    def products_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "products_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @products_id.setter
-    def products_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "products_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -335,19 +324,18 @@ class CatalogBranchProduct(pulumi.CustomResource):
                  availability: Optional[pulumi.Input[str]] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
                  available_time: Optional[pulumi.Input[str]] = None,
-                 branches_id: Optional[pulumi.Input[str]] = None,
-                 catalogs_id: Optional[pulumi.Input[str]] = None,
+                 branch_id: Optional[pulumi.Input[str]] = None,
+                 catalog_id: Optional[pulumi.Input[str]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaImageArgs']]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  price_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaPriceInfoArgs']]] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
-                 products_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -402,19 +390,18 @@ class CatalogBranchProduct(pulumi.CustomResource):
                  availability: Optional[pulumi.Input[str]] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
                  available_time: Optional[pulumi.Input[str]] = None,
-                 branches_id: Optional[pulumi.Input[str]] = None,
-                 catalogs_id: Optional[pulumi.Input[str]] = None,
+                 branch_id: Optional[pulumi.Input[str]] = None,
+                 catalog_id: Optional[pulumi.Input[str]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaImageArgs']]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  price_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaPriceInfoArgs']]] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
-                 products_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -435,31 +422,28 @@ class CatalogBranchProduct(pulumi.CustomResource):
             __props__.__dict__["availability"] = availability
             __props__.__dict__["available_quantity"] = available_quantity
             __props__.__dict__["available_time"] = available_time
-            if branches_id is None and not opts.urn:
-                raise TypeError("Missing required property 'branches_id'")
-            __props__.__dict__["branches_id"] = branches_id
-            if catalogs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'catalogs_id'")
-            __props__.__dict__["catalogs_id"] = catalogs_id
+            if branch_id is None and not opts.urn:
+                raise TypeError("Missing required property 'branch_id'")
+            __props__.__dict__["branch_id"] = branch_id
+            if catalog_id is None and not opts.urn:
+                raise TypeError("Missing required property 'catalog_id'")
+            __props__.__dict__["catalog_id"] = catalog_id
             __props__.__dict__["categories"] = categories
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
             __props__.__dict__["images"] = images
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["price_info"] = price_info
             __props__.__dict__["primary_product_id"] = primary_product_id
             if product_id is None and not opts.urn:
                 raise TypeError("Missing required property 'product_id'")
             __props__.__dict__["product_id"] = product_id
-            if products_id is None and not opts.urn:
-                raise TypeError("Missing required property 'products_id'")
-            __props__.__dict__["products_id"] = products_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["title"] = title
             __props__.__dict__["type"] = type

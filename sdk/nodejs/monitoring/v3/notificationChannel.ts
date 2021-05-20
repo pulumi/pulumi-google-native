@@ -87,11 +87,11 @@ export class NotificationChannel extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.notificationChannelsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notificationChannelsId'");
+            if ((!args || args.notificationChannelId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'notificationChannelId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["creationRecord"] = args ? args.creationRecord : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -100,8 +100,8 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["mutationRecords"] = args ? args.mutationRecords : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["notificationChannelsId"] = args ? args.notificationChannelsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["notificationChannelId"] = args ? args.notificationChannelId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["verificationStatus"] = args ? args.verificationStatus : undefined;
@@ -156,8 +156,8 @@ export interface NotificationChannelArgs {
      * The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
      */
     readonly name?: pulumi.Input<string>;
-    readonly notificationChannelsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly notificationChannelId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
      */

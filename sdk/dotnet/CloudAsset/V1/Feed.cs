@@ -135,17 +135,14 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// <summary>
         /// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
         /// </summary>
-        [Input("feedId")]
-        public Input<string>? FeedId { get; set; }
+        [Input("feedId", required: true)]
+        public Input<string> FeedId { get; set; } = null!;
 
         /// <summary>
         /// Required. Feed output configuration defining where the asset updates are published to.
         /// </summary>
         [Input("feedOutputConfig")]
         public Input<Inputs.FeedOutputConfigArgs>? FeedOutputConfig { get; set; }
-
-        [Input("feedsId", required: true)]
-        public Input<string> FeedsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.

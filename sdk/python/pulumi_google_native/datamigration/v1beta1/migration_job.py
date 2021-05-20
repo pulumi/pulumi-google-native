@@ -15,10 +15,9 @@ __all__ = ['MigrationJobArgs', 'MigrationJob']
 @pulumi.input_type
 class MigrationJobArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  migration_job_id: pulumi.Input[str],
-                 migration_jobs_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -49,10 +48,9 @@ class MigrationJobArgs:
         :param pulumi.Input[str] type: Required. The migration job type.
         :param pulumi.Input['VpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "migration_job_id", migration_job_id)
-        pulumi.set(__self__, "migration_jobs_id", migration_jobs_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
         if destination_database is not None:
@@ -83,13 +81,13 @@ class MigrationJobArgs:
             pulumi.set(__self__, "vpc_peering_connectivity", vpc_peering_connectivity)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="migrationJobId")
@@ -101,22 +99,13 @@ class MigrationJobArgs:
         pulumi.set(self, "migration_job_id", value)
 
     @property
-    @pulumi.getter(name="migrationJobsId")
-    def migration_jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "migration_jobs_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @migration_jobs_id.setter
-    def migration_jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "migration_jobs_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -294,11 +283,10 @@ class MigrationJob(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
-                 migration_jobs_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -356,11 +344,10 @@ class MigrationJob(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
-                 migration_jobs_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -386,19 +373,16 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["dump_path"] = dump_path
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             if migration_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'migration_job_id'")
             __props__.__dict__["migration_job_id"] = migration_job_id
-            if migration_jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'migration_jobs_id'")
-            __props__.__dict__["migration_jobs_id"] = migration_jobs_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity
             __props__.__dict__["source"] = source

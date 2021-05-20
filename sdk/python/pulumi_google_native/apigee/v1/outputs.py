@@ -696,8 +696,6 @@ class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
             suggest = "bucket_name"
         elif key == "datasetName":
             suggest = "dataset_name"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "tablePrefix":
             suggest = "table_prefix"
 
@@ -716,20 +714,20 @@ class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
                  bucket_name: str,
                  dataset_name: str,
                  path: str,
-                 project_id: str,
+                 project: str,
                  table_prefix: str):
         """
         Configuration detail for datastore
         :param str bucket_name: Name of the Cloud Storage bucket. Required for `gcs` target_type.
         :param str dataset_name: BigQuery dataset name Required for `bigquery` target_type.
         :param str path: Path of Cloud Storage bucket Required for `gcs` target_type.
-        :param str project_id: Required. GCP project in which the datastore exists
+        :param str project: Required. GCP project in which the datastore exists
         :param str table_prefix: Prefix of BigQuery table Required for `bigquery` target_type.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "dataset_name", dataset_name)
         pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_prefix", table_prefix)
 
     @property
@@ -757,12 +755,12 @@ class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
         return pulumi.get(self, "path")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Required. GCP project in which the datastore exists
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tablePrefix")

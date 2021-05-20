@@ -16,10 +16,10 @@ __all__ = ['ApiConfigArgs', 'ApiConfig']
 class ApiConfigArgs:
     def __init__(__self__, *,
                  api_config_id: pulumi.Input[str],
-                 apis_id: pulumi.Input[str],
-                 configs_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 api_id: pulumi.Input[str],
+                 config_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
                  grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]] = None,
@@ -36,10 +36,10 @@ class ApiConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigOpenApiDocumentArgs']]] openapi_documents: Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
         """
         pulumi.set(__self__, "api_config_id", api_config_id)
-        pulumi.set(__self__, "apis_id", apis_id)
-        pulumi.set(__self__, "configs_id", configs_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "api_id", api_id)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gateway_service_account is not None:
@@ -63,40 +63,40 @@ class ApiConfigArgs:
         pulumi.set(self, "api_config_id", value)
 
     @property
-    @pulumi.getter(name="apisId")
-    def apis_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apis_id")
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_id")
 
-    @apis_id.setter
-    def apis_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apis_id", value)
-
-    @property
-    @pulumi.getter(name="configsId")
-    def configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "configs_id")
-
-    @configs_id.setter
-    def configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "configs_id", value)
+    @api_id.setter
+    def api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "config_id")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -177,16 +177,16 @@ class ApiConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config_id: Optional[pulumi.Input[str]] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
                  grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigFileArgs']]]]] = None,
                  openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigOpenApiDocumentArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new ApiConfig in a given project and location.
@@ -225,16 +225,16 @@ class ApiConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config_id: Optional[pulumi.Input[str]] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
                  grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigFileArgs']]]]] = None,
                  openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigOpenApiDocumentArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -250,24 +250,24 @@ class ApiConfig(pulumi.CustomResource):
             if api_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_config_id'")
             __props__.__dict__["api_config_id"] = api_config_id
-            if apis_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apis_id'")
-            __props__.__dict__["apis_id"] = apis_id
-            if configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'configs_id'")
-            __props__.__dict__["configs_id"] = configs_id
+            if api_id is None and not opts.urn:
+                raise TypeError("Missing required property 'api_id'")
+            __props__.__dict__["api_id"] = api_id
+            if config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'config_id'")
+            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["gateway_service_account"] = gateway_service_account
             __props__.__dict__["grpc_services"] = grpc_services
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["managed_service_configs"] = managed_service_configs
             __props__.__dict__["openapi_documents"] = openapi_documents
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["service_config_id"] = None

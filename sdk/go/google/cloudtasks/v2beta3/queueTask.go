@@ -48,17 +48,17 @@ func NewQueueTask(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.QueuesId == nil {
-		return nil, errors.New("invalid value for required argument 'QueuesId'")
+	if args.QueueId == nil {
+		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
-	if args.TasksId == nil {
-		return nil, errors.New("invalid value for required argument 'TasksId'")
+	if args.TaskId == nil {
+		return nil, errors.New("invalid value for required argument 'TaskId'")
 	}
 	var resource QueueTask
 	err := ctx.RegisterResource("google-native:cloudtasks/v2beta3:QueueTask", name, args, &resource, opts...)
@@ -154,20 +154,20 @@ type queueTaskArgs struct {
 	HttpRequest *HttpRequest `pulumi:"httpRequest"`
 	// The status of the task's last attempt.
 	LastAttempt *Attempt `pulumi:"lastAttempt"`
-	LocationsId string   `pulumi:"locationsId"`
+	Location    string   `pulumi:"location"`
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
 	PullMessage *PullMessage `pulumi:"pullMessage"`
-	QueuesId    string       `pulumi:"queuesId"`
+	QueueId     string       `pulumi:"queueId"`
 	// The number of attempts which have received a response.
 	ResponseCount *int `pulumi:"responseCount"`
 	// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
 	ResponseView *string `pulumi:"responseView"`
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime *string `pulumi:"scheduleTime"`
-	TasksId      string  `pulumi:"tasksId"`
+	TaskId       string  `pulumi:"taskId"`
 	// The view specifies which subset of the Task has been returned.
 	View *string `pulumi:"view"`
 }
@@ -188,20 +188,20 @@ type QueueTaskArgs struct {
 	HttpRequest HttpRequestPtrInput
 	// The status of the task's last attempt.
 	LastAttempt AttemptPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
 	PullMessage PullMessagePtrInput
-	QueuesId    pulumi.StringInput
+	QueueId     pulumi.StringInput
 	// The number of attempts which have received a response.
 	ResponseCount pulumi.IntPtrInput
 	// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
 	ResponseView pulumi.StringPtrInput
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime pulumi.StringPtrInput
-	TasksId      pulumi.StringInput
+	TaskId       pulumi.StringInput
 	// The view specifies which subset of the Task has been returned.
 	View pulumi.StringPtrInput
 }

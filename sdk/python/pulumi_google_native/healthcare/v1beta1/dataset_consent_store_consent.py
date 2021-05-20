@@ -15,11 +15,11 @@ __all__ = ['DatasetConsentStoreConsentArgs', 'DatasetConsentStoreConsent']
 @pulumi.input_type
 class DatasetConsentStoreConsentArgs:
     def __init__(__self__, *,
-                 consent_stores_id: pulumi.Input[str],
-                 consents_id: pulumi.Input[str],
-                 datasets_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 consent_id: pulumi.Input[str],
+                 consent_store_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  consent_artifact: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -39,11 +39,11 @@ class DatasetConsentStoreConsentArgs:
         :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
-        pulumi.set(__self__, "consent_stores_id", consent_stores_id)
-        pulumi.set(__self__, "consents_id", consents_id)
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "consent_id", consent_id)
+        pulumi.set(__self__, "consent_store_id", consent_store_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if consent_artifact is not None:
             pulumi.set(__self__, "consent_artifact", consent_artifact)
         if expire_time is not None:
@@ -62,49 +62,49 @@ class DatasetConsentStoreConsentArgs:
             pulumi.set(__self__, "user_id", user_id)
 
     @property
-    @pulumi.getter(name="consentStoresId")
-    def consent_stores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consent_stores_id")
+    @pulumi.getter(name="consentId")
+    def consent_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_id")
 
-    @consent_stores_id.setter
-    def consent_stores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consent_stores_id", value)
-
-    @property
-    @pulumi.getter(name="consentsId")
-    def consents_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consents_id")
-
-    @consents_id.setter
-    def consents_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consents_id", value)
+    @consent_id.setter
+    def consent_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_id", value)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_store_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @consent_store_id.setter
+    def consent_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_store_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="consentArtifact")
@@ -209,15 +209,15 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consent_artifact: Optional[pulumi.Input[str]] = None,
-                 consent_stores_id: Optional[pulumi.Input[str]] = None,
-                 consents_id: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 consent_id: Optional[pulumi.Input[str]] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -261,15 +261,15 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consent_artifact: Optional[pulumi.Input[str]] = None,
-                 consent_stores_id: Optional[pulumi.Input[str]] = None,
-                 consents_id: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 consent_id: Optional[pulumi.Input[str]] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -286,25 +286,25 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
             __props__ = DatasetConsentStoreConsentArgs.__new__(DatasetConsentStoreConsentArgs)
 
             __props__.__dict__["consent_artifact"] = consent_artifact
-            if consent_stores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consent_stores_id'")
-            __props__.__dict__["consent_stores_id"] = consent_stores_id
-            if consents_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consents_id'")
-            __props__.__dict__["consents_id"] = consents_id
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if consent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_id'")
+            __props__.__dict__["consent_id"] = consent_id
+            if consent_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_store_id'")
+            __props__.__dict__["consent_store_id"] = consent_store_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["expire_time"] = expire_time
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["policies"] = policies
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["user_id"] = user_id

@@ -162,8 +162,8 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
@@ -188,7 +188,7 @@ export class Table extends pulumi.CustomResource {
             inputs["numLongTermBytes"] = args ? args.numLongTermBytes : undefined;
             inputs["numPhysicalBytes"] = args ? args.numPhysicalBytes : undefined;
             inputs["numRows"] = args ? args.numRows : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             inputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
             inputs["schema"] = args ? args.schema : undefined;
@@ -318,7 +318,7 @@ export interface TableArgs {
      * [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
      */
     readonly numRows?: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */

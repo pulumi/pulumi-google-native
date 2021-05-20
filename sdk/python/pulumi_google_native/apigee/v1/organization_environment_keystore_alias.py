@@ -14,11 +14,11 @@ __all__ = ['OrganizationEnvironmentKeystoreAliasArgs', 'OrganizationEnvironmentK
 @pulumi.input_type
 class OrganizationEnvironmentKeystoreAliasArgs:
     def __init__(__self__, *,
-                 aliases_id: pulumi.Input[str],
-                 environments_id: pulumi.Input[str],
+                 alias_id: pulumi.Input[str],
+                 environment_id: pulumi.Input[str],
                  format: pulumi.Input[str],
-                 keystores_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 keystore_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  alias: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
@@ -32,11 +32,11 @@ class OrganizationEnvironmentKeystoreAliasArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        pulumi.set(__self__, "aliases_id", aliases_id)
-        pulumi.set(__self__, "environments_id", environments_id)
+        pulumi.set(__self__, "alias_id", alias_id)
+        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "format", format)
-        pulumi.set(__self__, "keystores_id", keystores_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "keystore_id", keystore_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if content_type is not None:
@@ -53,22 +53,22 @@ class OrganizationEnvironmentKeystoreAliasArgs:
             pulumi.set(__self__, "password", password)
 
     @property
-    @pulumi.getter(name="aliasesId")
-    def aliases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "aliases_id")
+    @pulumi.getter(name="aliasId")
+    def alias_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "alias_id")
 
-    @aliases_id.setter
-    def aliases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "aliases_id", value)
+    @alias_id.setter
+    def alias_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alias_id", value)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter
@@ -80,22 +80,22 @@ class OrganizationEnvironmentKeystoreAliasArgs:
         pulumi.set(self, "format", value)
 
     @property
-    @pulumi.getter(name="keystoresId")
-    def keystores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "keystores_id")
+    @pulumi.getter(name="keystoreId")
+    def keystore_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "keystore_id")
 
-    @keystores_id.setter
-    def keystores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "keystores_id", value)
+    @keystore_id.setter
+    def keystore_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keystore_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -176,16 +176,16 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
-                 aliases_id: Optional[pulumi.Input[str]] = None,
+                 alias_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
-                 keystores_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 keystore_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -222,16 +222,16 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
-                 aliases_id: Optional[pulumi.Input[str]] = None,
+                 alias_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
-                 keystores_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 keystore_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -246,26 +246,26 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
             __props__ = OrganizationEnvironmentKeystoreAliasArgs.__new__(OrganizationEnvironmentKeystoreAliasArgs)
 
             __props__.__dict__["alias"] = alias
-            if aliases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'aliases_id'")
-            __props__.__dict__["aliases_id"] = aliases_id
+            if alias_id is None and not opts.urn:
+                raise TypeError("Missing required property 'alias_id'")
+            __props__.__dict__["alias_id"] = alias_id
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["extensions"] = extensions
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
             __props__.__dict__["format"] = format
             __props__.__dict__["ignore_expiry_validation"] = ignore_expiry_validation
             __props__.__dict__["ignore_newline_validation"] = ignore_newline_validation
-            if keystores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'keystores_id'")
-            __props__.__dict__["keystores_id"] = keystores_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if keystore_id is None and not opts.urn:
+                raise TypeError("Missing required property 'keystore_id'")
+            __props__.__dict__["keystore_id"] = keystore_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["password"] = password
             __props__.__dict__["certs_info"] = None
             __props__.__dict__["type"] = None

@@ -43,7 +43,7 @@ type Organization struct {
 	// Name of the Apigee organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Project ID associated with the Apigee organization.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Properties defined in the Apigee organization profile.
 	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -65,8 +65,8 @@ func NewOrganization(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
@@ -121,7 +121,7 @@ type organizationState struct {
 	// Name of the Apigee organization.
 	Name *string `pulumi:"name"`
 	// Project ID associated with the Apigee organization.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Properties defined in the Apigee organization profile.
 	Properties *GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -165,7 +165,7 @@ type OrganizationState struct {
 	// Name of the Apigee organization.
 	Name pulumi.StringPtrInput
 	// Project ID associated with the Apigee organization.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// Properties defined in the Apigee organization profile.
 	Properties GoogleCloudApigeeV1PropertiesResponsePtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -198,10 +198,10 @@ type organizationArgs struct {
 	// Not used by Apigee.
 	CustomerName *string `pulumi:"customerName"`
 	// Description of the Apigee organization.
-	Description     *string `pulumi:"description"`
-	DisplayName     *string `pulumi:"displayName"`
-	OrganizationsId string  `pulumi:"organizationsId"`
-	Parent          string  `pulumi:"parent"`
+	Description    *string `pulumi:"description"`
+	DisplayName    *string `pulumi:"displayName"`
+	OrganizationId string  `pulumi:"organizationId"`
+	Parent         string  `pulumi:"parent"`
 	// Properties defined in the Apigee organization profile.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -227,10 +227,10 @@ type OrganizationArgs struct {
 	// Not used by Apigee.
 	CustomerName pulumi.StringPtrInput
 	// Description of the Apigee organization.
-	Description     pulumi.StringPtrInput
-	DisplayName     pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
-	Parent          pulumi.StringInput
+	Description    pulumi.StringPtrInput
+	DisplayName    pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
+	Parent         pulumi.StringInput
 	// Properties defined in the Apigee organization profile.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.

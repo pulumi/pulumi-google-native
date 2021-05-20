@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Vision.V1
             set => _boundingPolys = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
@@ -99,17 +99,14 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("productsId", required: true)]
-        public Input<string> ProductsId { get; set; } = null!;
+        [Input("productId", required: true)]
+        public Input<string> ProductId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("referenceImageId")]
         public Input<string>? ReferenceImageId { get; set; }
-
-        [Input("referenceImagesId", required: true)]
-        public Input<string> ReferenceImagesId { get; set; } = null!;
 
         /// <summary>
         /// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.

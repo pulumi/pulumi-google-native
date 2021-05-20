@@ -13,8 +13,8 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 @pulumi.input_type
 class SnapshotArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 snapshots_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 snapshot_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  subscription: Optional[pulumi.Input[str]] = None):
         """
@@ -22,30 +22,30 @@ class SnapshotArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
         :param pulumi.Input[str] subscription: Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "snapshots_id", snapshots_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if subscription is not None:
             pulumi.set(__self__, "subscription", subscription)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="snapshotsId")
-    def snapshots_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "snapshots_id")
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "snapshot_id")
 
-    @snapshots_id.setter
-    def snapshots_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "snapshots_id", value)
+    @snapshot_id.setter
+    def snapshot_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "snapshot_id", value)
 
     @property
     @pulumi.getter
@@ -78,8 +78,8 @@ class Snapshot(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 snapshots_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
                  subscription: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -115,8 +115,8 @@ class Snapshot(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 snapshots_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
                  subscription: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -131,12 +131,12 @@ class Snapshot(pulumi.CustomResource):
             __props__ = SnapshotArgs.__new__(SnapshotArgs)
 
             __props__.__dict__["labels"] = labels
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if snapshots_id is None and not opts.urn:
-                raise TypeError("Missing required property 'snapshots_id'")
-            __props__.__dict__["snapshots_id"] = snapshots_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if snapshot_id is None and not opts.urn:
+                raise TypeError("Missing required property 'snapshot_id'")
+            __props__.__dict__["snapshot_id"] = snapshot_id
             __props__.__dict__["subscription"] = subscription
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None

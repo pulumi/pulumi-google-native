@@ -15,9 +15,9 @@ __all__ = ['OrganizationDeidentifyTemplateArgs', 'OrganizationDeidentifyTemplate
 @pulumi.input_type
 class OrganizationDeidentifyTemplateArgs:
     def __init__(__self__, *,
-                 deidentify_templates_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 deidentify_template_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  deidentify_config: Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -29,9 +29,9 @@ class OrganizationDeidentifyTemplateArgs:
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
-        pulumi.set(__self__, "deidentify_templates_id", deidentify_templates_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "deidentify_template_id", deidentify_template_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "organization_id", organization_id)
         if deidentify_config is not None:
             pulumi.set(__self__, "deidentify_config", deidentify_config)
         if description is not None:
@@ -42,31 +42,31 @@ class OrganizationDeidentifyTemplateArgs:
             pulumi.set(__self__, "template_id", template_id)
 
     @property
-    @pulumi.getter(name="deidentifyTemplatesId")
-    def deidentify_templates_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "deidentify_templates_id")
+    @pulumi.getter(name="deidentifyTemplateId")
+    def deidentify_template_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "deidentify_template_id")
 
-    @deidentify_templates_id.setter
-    def deidentify_templates_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "deidentify_templates_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @deidentify_template_id.setter
+    def deidentify_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deidentify_template_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="deidentifyConfig")
@@ -123,11 +123,11 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deidentify_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']]] = None,
-                 deidentify_templates_id: Optional[pulumi.Input[str]] = None,
+                 deidentify_template_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -165,11 +165,11 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deidentify_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']]] = None,
-                 deidentify_templates_id: Optional[pulumi.Input[str]] = None,
+                 deidentify_template_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -184,17 +184,17 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
             __props__ = OrganizationDeidentifyTemplateArgs.__new__(OrganizationDeidentifyTemplateArgs)
 
             __props__.__dict__["deidentify_config"] = deidentify_config
-            if deidentify_templates_id is None and not opts.urn:
-                raise TypeError("Missing required property 'deidentify_templates_id'")
-            __props__.__dict__["deidentify_templates_id"] = deidentify_templates_id
+            if deidentify_template_id is None and not opts.urn:
+                raise TypeError("Missing required property 'deidentify_template_id'")
+            __props__.__dict__["deidentify_template_id"] = deidentify_template_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

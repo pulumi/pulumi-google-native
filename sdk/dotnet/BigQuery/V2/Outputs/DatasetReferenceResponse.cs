@@ -20,16 +20,16 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Optional] The ID of the project containing this dataset.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private DatasetReferenceResponse(
             string datasetId,
 
-            string projectId)
+            string project)
         {
             DatasetId = datasetId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

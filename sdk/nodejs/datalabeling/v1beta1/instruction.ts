@@ -83,11 +83,11 @@ export class Instruction extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instructionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instructionsId'");
+            if ((!args || args.instructionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instructionId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["blockingResources"] = args ? args.blockingResources : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -95,10 +95,10 @@ export class Instruction extends pulumi.CustomResource {
             inputs["dataType"] = args ? args.dataType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["instructionsId"] = args ? args.instructionsId : undefined;
+            inputs["instructionId"] = args ? args.instructionId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pdfInstruction"] = args ? args.pdfInstruction : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
             inputs["blockingResources"] = undefined /*out*/;
@@ -146,7 +146,7 @@ export interface InstructionArgs {
      * Required. The display name of the instruction. Maximum of 64 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly instructionsId: pulumi.Input<string>;
+    readonly instructionId: pulumi.Input<string>;
     /**
      * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
      */
@@ -155,7 +155,7 @@ export interface InstructionArgs {
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
     readonly pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Last update time of instruction.
      */

@@ -34,14 +34,14 @@ func NewAgentVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.VersionsId == nil {
-		return nil, errors.New("invalid value for required argument 'VersionsId'")
+	if args.VersionId == nil {
+		return nil, errors.New("invalid value for required argument 'VersionId'")
 	}
 	var resource AgentVersion
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:AgentVersion", name, args, &resource, opts...)
@@ -97,18 +97,18 @@ func (AgentVersionState) ElementType() reflect.Type {
 type agentVersionArgs struct {
 	// Optional. The developer-provided description of this version.
 	Description *string `pulumi:"description"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
-	VersionsId  string  `pulumi:"versionsId"`
+	Location    string  `pulumi:"location"`
+	Project     string  `pulumi:"project"`
+	VersionId   string  `pulumi:"versionId"`
 }
 
 // The set of arguments for constructing a AgentVersion resource.
 type AgentVersionArgs struct {
 	// Optional. The developer-provided description of this version.
 	Description pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
-	VersionsId  pulumi.StringInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
+	VersionId   pulumi.StringInput
 }
 
 func (AgentVersionArgs) ElementType() reflect.Type {

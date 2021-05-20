@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
@@ -96,11 +96,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
 
-        [Input("namespacesId", required: true)]
-        public Input<string> NamespacesId { get; set; } = null!;
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public NamespaceArgs()
         {

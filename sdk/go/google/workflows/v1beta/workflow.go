@@ -44,17 +44,14 @@ func NewWorkflow(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.WorkflowId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowId'")
-	}
-	if args.WorkflowsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkflowsId'")
 	}
 	var resource Workflow
 	err := ctx.RegisterResource("google-native:workflows/v1beta:Workflow", name, args, &resource, opts...)
@@ -131,17 +128,16 @@ type workflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
 	WorkflowId     string  `pulumi:"workflowId"`
-	WorkflowsId    string  `pulumi:"workflowsId"`
 }
 
 // The set of arguments for constructing a Workflow resource.
@@ -149,17 +145,16 @@ type WorkflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
 	WorkflowId     pulumi.StringInput
-	WorkflowsId    pulumi.StringInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {

@@ -14,14 +14,14 @@ __all__ = ['HmacKeyArgs', 'HmacKey']
 class HmacKeyArgs:
     def __init__(__self__, *,
                  access_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  service_account_email: pulumi.Input[str],
                  user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HmacKey resource.
         """
         pulumi.set(__self__, "access_id", access_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account_email", service_account_email)
         if user_project is not None:
             pulumi.set(__self__, "user_project", user_project)
@@ -36,13 +36,13 @@ class HmacKeyArgs:
         pulumi.set(self, "access_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
@@ -69,7 +69,7 @@ class HmacKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -104,7 +104,7 @@ class HmacKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -122,9 +122,9 @@ class HmacKey(pulumi.CustomResource):
             if access_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_id'")
             __props__.__dict__["access_id"] = access_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if service_account_email is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_email'")
             __props__.__dict__["service_account_email"] = service_account_email
@@ -160,7 +160,7 @@ class HmacKey(pulumi.CustomResource):
         __props__.__dict__["access_id"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["kind"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service_account_email"] = None
         __props__.__dict__["state"] = None
@@ -193,12 +193,12 @@ class HmacKey(pulumi.CustomResource):
         return pulumi.get(self, "kind")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         Project ID owning the service account to which the key authenticates.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

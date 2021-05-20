@@ -72,8 +72,8 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// <summary>
         /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
         /// </summary>
-        [Output("locationId")]
-        public Output<string> LocationId { get; private set; } = null!;
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Required. Redis memory size in GiB.
@@ -225,9 +225,6 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -243,11 +240,8 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// <summary>
         /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
         /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
-
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. Redis memory size in GiB.
@@ -261,8 +255,8 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("redisConfigs")]
         private InputMap<string>? _redisConfigs;

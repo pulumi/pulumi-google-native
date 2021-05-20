@@ -65,13 +65,13 @@ export class History extends pulumi.CustomResource {
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["testPlatform"] = args ? args.testPlatform : undefined;
         } else {
@@ -103,7 +103,7 @@ export interface HistoryArgs {
      * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.

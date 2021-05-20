@@ -14,11 +14,10 @@ __all__ = ['NamespaceServiceEndpointArgs', 'NamespaceServiceEndpoint']
 class NamespaceServiceEndpointArgs:
     def __init__(__self__, *,
                  endpoint_id: pulumi.Input[str],
-                 endpoints_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 namespaces_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 services_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 namespace_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
                  address: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,11 +30,10 @@ class NamespaceServiceEndpointArgs:
         :param pulumi.Input[int] port: Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "endpoints_id", endpoints_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "namespaces_id", namespaces_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "services_id", services_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_id", service_id)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if metadata is not None:
@@ -55,49 +53,40 @@ class NamespaceServiceEndpointArgs:
         pulumi.set(self, "endpoint_id", value)
 
     @property
-    @pulumi.getter(name="endpointsId")
-    def endpoints_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "endpoints_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @endpoints_id.setter
-    def endpoints_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoints_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="namespacesId")
-    def namespaces_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "namespaces_id")
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_id")
 
-    @namespaces_id.setter
-    def namespaces_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "namespaces_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @namespace_id.setter
+    def namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_id", value)
 
     @property
-    @pulumi.getter(name="servicesId")
-    def services_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "services_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @services_id.setter
-    def services_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "services_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter
@@ -155,14 +144,13 @@ class NamespaceServiceEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
-                 endpoints_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an endpoint, and returns the new endpoint.
@@ -200,14 +188,13 @@ class NamespaceServiceEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
-                 endpoints_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -224,24 +211,21 @@ class NamespaceServiceEndpoint(pulumi.CustomResource):
             if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__.__dict__["endpoint_id"] = endpoint_id
-            if endpoints_id is None and not opts.urn:
-                raise TypeError("Missing required property 'endpoints_id'")
-            __props__.__dict__["endpoints_id"] = endpoints_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
-            if namespaces_id is None and not opts.urn:
-                raise TypeError("Missing required property 'namespaces_id'")
-            __props__.__dict__["namespaces_id"] = namespaces_id
+            if namespace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'namespace_id'")
+            __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["port"] = port
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if services_id is None and not opts.urn:
-                raise TypeError("Missing required property 'services_id'")
-            __props__.__dict__["services_id"] = services_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if service_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_id'")
+            __props__.__dict__["service_id"] = service_id
         super(NamespaceServiceEndpoint, __self__).__init__(
             'google-native:servicedirectory/v1beta1:NamespaceServiceEndpoint',
             resource_name,

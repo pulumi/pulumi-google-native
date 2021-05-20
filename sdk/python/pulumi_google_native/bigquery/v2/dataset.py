@@ -16,7 +16,7 @@ __all__ = ['DatasetArgs', 'Dataset']
 class DatasetArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  access: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
@@ -52,7 +52,7 @@ class DatasetArgs:
         :param pulumi.Input[str] self_link: [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         if access is not None:
             pulumi.set(__self__, "access", access)
         if creation_time is not None:
@@ -96,13 +96,13 @@ class DatasetArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -314,7 +314,7 @@ class Dataset(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -378,7 +378,7 @@ class Dataset(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -410,9 +410,9 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["last_modified_time"] = last_modified_time
             __props__.__dict__["location"] = location
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
         super(Dataset, __self__).__init__(

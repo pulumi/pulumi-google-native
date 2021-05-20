@@ -98,14 +98,14 @@ func NewAppServiceVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppsId == nil {
-		return nil, errors.New("invalid value for required argument 'AppsId'")
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	if args.ServicesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicesId'")
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
-	if args.VersionsId == nil {
-		return nil, errors.New("invalid value for required argument 'VersionsId'")
+	if args.VersionId == nil {
+		return nil, errors.New("invalid value for required argument 'VersionId'")
 	}
 	var resource AppServiceVersion
 	err := ctx.RegisterResource("google-native:appengine/v1:AppServiceVersion", name, args, &resource, opts...)
@@ -289,7 +289,7 @@ func (AppServiceVersionState) ElementType() reflect.Type {
 type appServiceVersionArgs struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig *ApiConfigHandler `pulumi:"apiConfig"`
-	AppsId    string            `pulumi:"appsId"`
+	AppId     string            `pulumi:"appId"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling *AutomaticScaling `pulumi:"automaticScaling"`
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -354,14 +354,14 @@ type appServiceVersionArgs struct {
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
 	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	ServicesId     string  `pulumi:"servicesId"`
+	ServiceId      string  `pulumi:"serviceId"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
-	Threadsafe *bool `pulumi:"threadsafe"`
+	Threadsafe *bool  `pulumi:"threadsafe"`
+	VersionId  string `pulumi:"versionId"`
 	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
 	VersionUrl *string `pulumi:"versionUrl"`
-	VersionsId string  `pulumi:"versionsId"`
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm *bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
@@ -372,7 +372,7 @@ type appServiceVersionArgs struct {
 type AppServiceVersionArgs struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerPtrInput
-	AppsId    pulumi.StringInput
+	AppId     pulumi.StringInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingPtrInput
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -437,14 +437,14 @@ type AppServiceVersionArgs struct {
 	RuntimeMainExecutablePath pulumi.StringPtrInput
 	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount pulumi.StringPtrInput
-	ServicesId     pulumi.StringInput
+	ServiceId      pulumi.StringInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
 	ServingStatus pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
+	VersionId  pulumi.StringInput
 	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
 	VersionUrl pulumi.StringPtrInput
-	VersionsId pulumi.StringInput
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm pulumi.BoolPtrInput
 	// Enables VPC connectivity for standard apps.

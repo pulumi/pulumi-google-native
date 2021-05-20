@@ -87,31 +87,31 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.consentStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentStoresId'");
+            if ((!args || args.consentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentId'");
             }
-            if ((!args || args.consentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentsId'");
+            if ((!args || args.consentStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentStoreId'");
             }
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["consentArtifact"] = args ? args.consentArtifact : undefined;
-            inputs["consentStoresId"] = args ? args.consentStoresId : undefined;
-            inputs["consentsId"] = args ? args.consentsId : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["consentId"] = args ? args.consentId : undefined;
+            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["policies"] = args ? args.policies : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["userId"] = args ? args.userId : undefined;
@@ -144,14 +144,14 @@ export interface DatasetConsentStoreConsentArgs {
      * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
     readonly consentArtifact?: pulumi.Input<string>;
-    readonly consentStoresId: pulumi.Input<string>;
-    readonly consentsId: pulumi.Input<string>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly consentId: pulumi.Input<string>;
+    readonly consentStoreId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * Timestamp in UTC of when this Consent is considered expired.
      */
     readonly expireTime?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
      */
@@ -164,7 +164,7 @@ export interface DatasetConsentStoreConsentArgs {
      * Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
      */
     readonly policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicyArgs>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Indicates the current state of this Consent.
      */

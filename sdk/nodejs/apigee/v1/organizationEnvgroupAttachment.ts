@@ -58,20 +58,20 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.attachmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'attachmentsId'");
+            if ((!args || args.attachmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'attachmentId'");
             }
-            if ((!args || args.envgroupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'envgroupsId'");
+            if ((!args || args.envgroupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'envgroupId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["attachmentsId"] = args ? args.attachmentsId : undefined;
-            inputs["envgroupsId"] = args ? args.envgroupsId : undefined;
+            inputs["attachmentId"] = args ? args.attachmentId : undefined;
+            inputs["envgroupId"] = args ? args.envgroupId : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["createdAt"] = undefined /*out*/;
         } else {
             inputs["createdAt"] = undefined /*out*/;
@@ -89,8 +89,8 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvgroupAttachment resource.
  */
 export interface OrganizationEnvgroupAttachmentArgs {
-    readonly attachmentsId: pulumi.Input<string>;
-    readonly envgroupsId: pulumi.Input<string>;
+    readonly attachmentId: pulumi.Input<string>;
+    readonly envgroupId: pulumi.Input<string>;
     /**
      * Required. ID of the attached environment.
      */
@@ -99,5 +99,5 @@ export interface OrganizationEnvgroupAttachmentArgs {
      * ID of the environment group attachment.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
 }

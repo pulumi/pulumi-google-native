@@ -162,11 +162,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("entriesId", required: true)]
-        public Input<string> EntriesId { get; set; } = null!;
-
-        [Input("entryGroupsId", required: true)]
-        public Input<string> EntryGroupsId { get; set; } = null!;
+        [Input("entryGroupId", required: true)]
+        public Input<string> EntryGroupId { get; set; } = null!;
 
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
@@ -183,11 +180,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("linkedResource")]
         public Input<string>? LinkedResource { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Schema of the entry. An entry might not have any schema attached to it.

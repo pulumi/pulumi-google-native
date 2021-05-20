@@ -16,9 +16,8 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
-                 environments_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  container_image: Optional[pulumi.Input['ContainerImageArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -33,9 +32,8 @@ class EnvironmentArgs:
         :param pulumi.Input['VmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "environments_id", environments_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if description is not None:
@@ -57,31 +55,22 @@ class EnvironmentArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="containerImage")
@@ -153,10 +142,9 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['VmImageArgs']]] = None,
                  __props__=None):
         """
@@ -198,10 +186,9 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['VmImageArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -221,16 +208,13 @@ class Environment(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["post_startup_script"] = post_startup_script
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["vm_image"] = vm_image
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

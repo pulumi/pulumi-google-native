@@ -282,8 +282,8 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
@@ -334,7 +334,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             inputs["privateCluster"] = args ? args.privateCluster : undefined;
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             inputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
@@ -601,7 +601,7 @@ export interface ClusterArgs {
      * Configuration for private cluster.
      */
     readonly privateClusterConfig?: pulumi.Input<inputs.container.v1beta1.PrivateClusterConfigArgs>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Release channel configuration.
      */

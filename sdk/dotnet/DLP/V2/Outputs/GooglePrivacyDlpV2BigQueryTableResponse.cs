@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// <summary>
         /// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Name of the table.
         /// </summary>
@@ -30,12 +30,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         private GooglePrivacyDlpV2BigQueryTableResponse(
             string datasetId,
 
-            string projectId,
+            string project,
 
             string tableId)
         {
             DatasetId = datasetId;
-            ProjectId = projectId;
+            Project = project;
             TableId = tableId;
         }
     }

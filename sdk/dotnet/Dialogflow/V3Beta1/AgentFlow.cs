@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class AgentFlowArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -129,14 +129,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             set => _eventHandlers = value;
         }
 
-        [Input("flowsId", required: true)]
-        public Input<string> FlowsId { get; set; } = null!;
+        [Input("flowId", required: true)]
+        public Input<string> FlowId { get; set; } = null!;
 
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("nluSettings")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1NluSettingsArgs>? NluSettings { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("transitionRouteGroups")]
         private InputList<string>? _transitionRouteGroups;

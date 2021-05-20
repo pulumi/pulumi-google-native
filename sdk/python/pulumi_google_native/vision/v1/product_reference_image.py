@@ -15,10 +15,9 @@ __all__ = ['ProductReferenceImageArgs', 'ProductReferenceImage']
 @pulumi.input_type
 class ProductReferenceImageArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 products_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 reference_images_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 product_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reference_image_id: Optional[pulumi.Input[str]] = None,
@@ -29,10 +28,9 @@ class ProductReferenceImageArgs:
         :param pulumi.Input[str] name: The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
         :param pulumi.Input[str] uri: Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "products_id", products_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "reference_images_id", reference_images_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "project", project)
         if bounding_polys is not None:
             pulumi.set(__self__, "bounding_polys", bounding_polys)
         if name is not None:
@@ -43,40 +41,31 @@ class ProductReferenceImageArgs:
             pulumi.set(__self__, "uri", uri)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="productsId")
-    def products_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "products_id")
-
-    @products_id.setter
-    def products_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "products_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="productId")
+    def product_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "product_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @product_id.setter
+    def product_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product_id", value)
 
     @property
-    @pulumi.getter(name="referenceImagesId")
-    def reference_images_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "reference_images_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @reference_images_id.setter
-    def reference_images_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "reference_images_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="boundingPolys")
@@ -130,12 +119,11 @@ class ProductReferenceImage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BoundingPolyArgs']]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 products_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reference_image_id: Optional[pulumi.Input[str]] = None,
-                 reference_images_id: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -172,12 +160,11 @@ class ProductReferenceImage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BoundingPolyArgs']]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 products_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reference_image_id: Optional[pulumi.Input[str]] = None,
-                 reference_images_id: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -192,20 +179,17 @@ class ProductReferenceImage(pulumi.CustomResource):
             __props__ = ProductReferenceImageArgs.__new__(ProductReferenceImageArgs)
 
             __props__.__dict__["bounding_polys"] = bounding_polys
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if products_id is None and not opts.urn:
-                raise TypeError("Missing required property 'products_id'")
-            __props__.__dict__["products_id"] = products_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if product_id is None and not opts.urn:
+                raise TypeError("Missing required property 'product_id'")
+            __props__.__dict__["product_id"] = product_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["reference_image_id"] = reference_image_id
-            if reference_images_id is None and not opts.urn:
-                raise TypeError("Missing required property 'reference_images_id'")
-            __props__.__dict__["reference_images_id"] = reference_images_id
             __props__.__dict__["uri"] = uri
         super(ProductReferenceImage, __self__).__init__(
             'google-native:vision/v1:ProductReferenceImage',

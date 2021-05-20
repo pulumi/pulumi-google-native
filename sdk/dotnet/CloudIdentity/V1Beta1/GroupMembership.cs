@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
     public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
     {
-        [Input("groupsId", required: true)]
-        public Input<string> GroupsId { get; set; } = null!;
+        [Input("groupId", required: true)]
+        public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Input("memberKey")]
         public Input<Inputs.EntityKeyArgs>? MemberKey { get; set; }
 
-        [Input("membershipsId", required: true)]
-        public Input<string> MembershipsId { get; set; } = null!;
+        [Input("membershipId", required: true)]
+        public Input<string> MembershipId { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.

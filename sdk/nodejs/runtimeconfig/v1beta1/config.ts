@@ -54,16 +54,16 @@ export class Config extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.configsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configsId'");
+            if ((!args || args.configId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["configsId"] = args ? args.configsId : undefined;
+            inputs["configId"] = args ? args.configId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -80,7 +80,7 @@ export class Config extends pulumi.CustomResource {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
-    readonly configsId: pulumi.Input<string>;
+    readonly configId: pulumi.Input<string>;
     /**
      * An optional description of the RuntimeConfig object.
      */
@@ -89,6 +89,6 @@ export interface ConfigArgs {
      * The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
 }

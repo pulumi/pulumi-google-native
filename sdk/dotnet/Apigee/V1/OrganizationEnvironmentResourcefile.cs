@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("data")]
         public Input<string>? Data { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         [Input("extensions")]
         private InputList<ImmutableDictionary<string, string>>? _extensions;
@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

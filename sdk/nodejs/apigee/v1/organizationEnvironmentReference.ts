@@ -62,20 +62,20 @@ export class OrganizationEnvironmentReference extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.referencesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'referencesId'");
+            if ((!args || args.referenceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'referenceId'");
             }
             inputs["description"] = args ? args.description : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["referencesId"] = args ? args.referencesId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
+            inputs["referenceId"] = args ? args.referenceId : undefined;
             inputs["refers"] = args ? args.refers : undefined;
             inputs["resourceType"] = args ? args.resourceType : undefined;
         } else {
@@ -99,13 +99,13 @@ export interface OrganizationEnvironmentReferenceArgs {
      * Optional. A human-readable description of this reference.
      */
     readonly description?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     /**
      * Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
-    readonly referencesId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
+    readonly referenceId: pulumi.Input<string>;
     /**
      * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
      */

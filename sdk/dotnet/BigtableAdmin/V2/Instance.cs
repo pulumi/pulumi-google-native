@@ -111,11 +111,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// <summary>
         /// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -141,8 +138,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. The type of the instance. Defaults to `PRODUCTION`.

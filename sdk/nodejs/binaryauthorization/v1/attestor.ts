@@ -66,17 +66,13 @@ export class Attestor extends pulumi.CustomResource {
             if ((!args || args.attestorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestorId'");
             }
-            if ((!args || args.attestorsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'attestorsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["attestorId"] = args ? args.attestorId : undefined;
-            inputs["attestorsId"] = args ? args.attestorsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["userOwnedGrafeasNote"] = args ? args.userOwnedGrafeasNote : undefined;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -97,7 +93,6 @@ export class Attestor extends pulumi.CustomResource {
  */
 export interface AttestorArgs {
     readonly attestorId: pulumi.Input<string>;
-    readonly attestorsId: pulumi.Input<string>;
     /**
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
@@ -106,7 +101,7 @@ export interface AttestorArgs {
      * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * This specifies how an attestation will be read, and how it will be used during policy enforcement.
      */

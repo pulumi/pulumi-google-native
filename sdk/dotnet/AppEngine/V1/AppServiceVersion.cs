@@ -288,8 +288,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("apiConfig")]
         public Input<Inputs.ApiConfigHandlerArgs>? ApiConfig { get; set; }
 
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
@@ -525,8 +525,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
@@ -540,14 +540,14 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("threadsafe")]
         public Input<bool>? Threadsafe { get; set; }
 
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
+
         /// <summary>
         /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         /// </summary>
         [Input("versionUrl")]
         public Input<string>? VersionUrl { get; set; }
-
-        [Input("versionsId", required: true)]
-        public Input<string> VersionsId { get; set; } = null!;
 
         /// <summary>
         /// Whether to deploy this version in a container on a virtual machine.

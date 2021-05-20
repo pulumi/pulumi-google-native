@@ -52,8 +52,8 @@ func NewTrigger(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.TriggerId == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
@@ -163,8 +163,8 @@ type triggerArgs struct {
 	// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
-	Name      *string `pulumi:"name"`
-	ProjectId string  `pulumi:"projectId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 	PubsubConfig *PubsubConfig `pulumi:"pubsubConfig"`
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
@@ -195,8 +195,8 @@ type TriggerArgs struct {
 	// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
 	IncludedFiles pulumi.StringArrayInput
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
-	Name      pulumi.StringPtrInput
-	ProjectId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 	PubsubConfig PubsubConfigPtrInput
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.

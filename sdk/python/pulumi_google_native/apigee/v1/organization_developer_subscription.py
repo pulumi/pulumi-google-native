@@ -13,9 +13,9 @@ __all__ = ['OrganizationDeveloperSubscriptionArgs', 'OrganizationDeveloperSubscr
 @pulumi.input_type
 class OrganizationDeveloperSubscriptionArgs:
     def __init__(__self__, *,
-                 developers_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
-                 subscriptions_id: pulumi.Input[str],
+                 developer_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 subscription_id: pulumi.Input[str],
                  apiproduct: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
@@ -25,9 +25,9 @@ class OrganizationDeveloperSubscriptionArgs:
         :param pulumi.Input[str] end_time: Time when the API product subscription ends in milliseconds since epoch.
         :param pulumi.Input[str] start_time: Time when the API product subscription starts in milliseconds since epoch.
         """
-        pulumi.set(__self__, "developers_id", developers_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "subscriptions_id", subscriptions_id)
+        pulumi.set(__self__, "developer_id", developer_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "subscription_id", subscription_id)
         if apiproduct is not None:
             pulumi.set(__self__, "apiproduct", apiproduct)
         if end_time is not None:
@@ -36,31 +36,31 @@ class OrganizationDeveloperSubscriptionArgs:
             pulumi.set(__self__, "start_time", start_time)
 
     @property
-    @pulumi.getter(name="developersId")
-    def developers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "developers_id")
+    @pulumi.getter(name="developerId")
+    def developer_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "developer_id")
 
-    @developers_id.setter
-    def developers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "developers_id", value)
-
-    @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
-
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @developer_id.setter
+    def developer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "developer_id", value)
 
     @property
-    @pulumi.getter(name="subscriptionsId")
-    def subscriptions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "subscriptions_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @subscriptions_id.setter
-    def subscriptions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "subscriptions_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subscription_id", value)
 
     @property
     @pulumi.getter
@@ -105,11 +105,11 @@ class OrganizationDeveloperSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apiproduct: Optional[pulumi.Input[str]] = None,
-                 developers_id: Optional[pulumi.Input[str]] = None,
+                 developer_id: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 subscriptions_id: Optional[pulumi.Input[str]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a subscription to an API product.
@@ -145,11 +145,11 @@ class OrganizationDeveloperSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apiproduct: Optional[pulumi.Input[str]] = None,
-                 developers_id: Optional[pulumi.Input[str]] = None,
+                 developer_id: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 subscriptions_id: Optional[pulumi.Input[str]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -163,17 +163,17 @@ class OrganizationDeveloperSubscription(pulumi.CustomResource):
             __props__ = OrganizationDeveloperSubscriptionArgs.__new__(OrganizationDeveloperSubscriptionArgs)
 
             __props__.__dict__["apiproduct"] = apiproduct
-            if developers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'developers_id'")
-            __props__.__dict__["developers_id"] = developers_id
+            if developer_id is None and not opts.urn:
+                raise TypeError("Missing required property 'developer_id'")
+            __props__.__dict__["developer_id"] = developer_id
             __props__.__dict__["end_time"] = end_time
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["start_time"] = start_time
-            if subscriptions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'subscriptions_id'")
-            __props__.__dict__["subscriptions_id"] = subscriptions_id
+            if subscription_id is None and not opts.urn:
+                raise TypeError("Missing required property 'subscription_id'")
+            __props__.__dict__["subscription_id"] = subscription_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["name"] = None

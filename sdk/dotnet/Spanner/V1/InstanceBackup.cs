@@ -117,9 +117,6 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 
-        [Input("backupsId", required: true)]
-        public Input<string> BackupsId { get; set; } = null!;
-
         /// <summary>
         /// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
         /// </summary>
@@ -138,8 +135,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
@@ -147,8 +144,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.

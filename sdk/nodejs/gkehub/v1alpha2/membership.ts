@@ -99,27 +99,23 @@ export class Membership extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             if ((!args || args.membershipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            if ((!args || args.membershipsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'membershipsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["authority"] = args ? args.authority : undefined;
             inputs["endpoint"] = args ? args.endpoint : undefined;
             inputs["externalId"] = args ? args.externalId : undefined;
             inputs["infrastructureType"] = args ? args.infrastructureType : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["membershipId"] = args ? args.membershipId : undefined;
-            inputs["membershipsId"] = args ? args.membershipsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -174,8 +170,7 @@ export interface MembershipArgs {
      * Optional. GCP labels for this membership.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     readonly membershipId: pulumi.Input<string>;
-    readonly membershipsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

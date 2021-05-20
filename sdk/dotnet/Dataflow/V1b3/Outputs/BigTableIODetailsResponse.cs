@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// ProjectId accessed in the connection.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// TableId accessed in the connection.
         /// </summary>
@@ -30,12 +30,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         private BigTableIODetailsResponse(
             string instanceId,
 
-            string projectId,
+            string project,
 
             string tableId)
         {
             InstanceId = instanceId;
-            ProjectId = projectId;
+            Project = project;
             TableId = tableId;
         }
     }

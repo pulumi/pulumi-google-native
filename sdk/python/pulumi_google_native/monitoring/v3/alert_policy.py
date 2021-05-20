@@ -15,8 +15,8 @@ __all__ = ['AlertPolicyArgs', 'AlertPolicy']
 @pulumi.input_type
 class AlertPolicyArgs:
     def __init__(__self__, *,
-                 alert_policies_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 alert_policy_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  combiner: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
                  creation_record: Optional[pulumi.Input['MutationRecordArgs']] = None,
@@ -42,8 +42,8 @@ class AlertPolicyArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input['StatusArgs'] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
         """
-        pulumi.set(__self__, "alert_policies_id", alert_policies_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "alert_policy_id", alert_policy_id)
+        pulumi.set(__self__, "project", project)
         if combiner is not None:
             pulumi.set(__self__, "combiner", combiner)
         if conditions is not None:
@@ -68,22 +68,22 @@ class AlertPolicyArgs:
             pulumi.set(__self__, "validity", validity)
 
     @property
-    @pulumi.getter(name="alertPoliciesId")
-    def alert_policies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "alert_policies_id")
+    @pulumi.getter(name="alertPolicyId")
+    def alert_policy_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "alert_policy_id")
 
-    @alert_policies_id.setter
-    def alert_policies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "alert_policies_id", value)
+    @alert_policy_id.setter
+    def alert_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alert_policy_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -223,7 +223,7 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_policies_id: Optional[pulumi.Input[str]] = None,
+                 alert_policy_id: Optional[pulumi.Input[str]] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
@@ -233,7 +233,7 @@ class AlertPolicy(pulumi.CustomResource):
                  mutation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
@@ -278,7 +278,7 @@ class AlertPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_policies_id: Optional[pulumi.Input[str]] = None,
+                 alert_policy_id: Optional[pulumi.Input[str]] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
@@ -288,7 +288,7 @@ class AlertPolicy(pulumi.CustomResource):
                  mutation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
@@ -303,9 +303,9 @@ class AlertPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AlertPolicyArgs.__new__(AlertPolicyArgs)
 
-            if alert_policies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'alert_policies_id'")
-            __props__.__dict__["alert_policies_id"] = alert_policies_id
+            if alert_policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'alert_policy_id'")
+            __props__.__dict__["alert_policy_id"] = alert_policy_id
             __props__.__dict__["combiner"] = combiner
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["creation_record"] = creation_record
@@ -315,9 +315,9 @@ class AlertPolicy(pulumi.CustomResource):
             __props__.__dict__["mutation_record"] = mutation_record
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_channels"] = notification_channels
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["validity"] = validity
         super(AlertPolicy, __self__).__init__(

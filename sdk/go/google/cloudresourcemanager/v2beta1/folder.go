@@ -34,8 +34,8 @@ func NewFolder(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FoldersId == nil {
-		return nil, errors.New("invalid value for required argument 'FoldersId'")
+	if args.FolderId == nil {
+		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
@@ -94,7 +94,7 @@ func (FolderState) ElementType() reflect.Type {
 type folderArgs struct {
 	// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName *string `pulumi:"displayName"`
-	FoldersId   string  `pulumi:"foldersId"`
+	FolderId    string  `pulumi:"folderId"`
 	// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 	Parent string `pulumi:"parent"`
 }
@@ -103,7 +103,7 @@ type folderArgs struct {
 type FolderArgs struct {
 	// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName pulumi.StringPtrInput
-	FoldersId   pulumi.StringInput
+	FolderId    pulumi.StringInput
 	// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 	Parent pulumi.StringInput
 }

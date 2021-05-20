@@ -13,11 +13,10 @@ __all__ = ['RepositoryPackageTagArgs', 'RepositoryPackageTag']
 @pulumi.input_type
 class RepositoryPackageTagArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 packages_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 repositories_id: pulumi.Input[str],
-                 tags_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 package_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 repository_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  tag_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -26,11 +25,10 @@ class RepositoryPackageTagArgs:
         :param pulumi.Input[str] name: The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
         :param pulumi.Input[str] version: The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "packages_id", packages_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "repositories_id", repositories_id)
-        pulumi.set(__self__, "tags_id", tags_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "package_id", package_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "repository_id", repository_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tag_id is not None:
@@ -39,49 +37,40 @@ class RepositoryPackageTagArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="packagesId")
-    def packages_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "packages_id")
-
-    @packages_id.setter
-    def packages_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "packages_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "package_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
-
-    @property
-    @pulumi.getter(name="repositoriesId")
-    def repositories_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "repositories_id")
-
-    @repositories_id.setter
-    def repositories_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "repositories_id", value)
+    @package_id.setter
+    def package_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_id", value)
 
     @property
-    @pulumi.getter(name="tagsId")
-    def tags_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "tags_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @tags_id.setter
-    def tags_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "tags_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "repository_id")
+
+    @repository_id.setter
+    def repository_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_id", value)
 
     @property
     @pulumi.getter
@@ -122,13 +111,12 @@ class RepositoryPackageTag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 packages_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 repositories_id: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 repository_id: Optional[pulumi.Input[str]] = None,
                  tag_id: Optional[pulumi.Input[str]] = None,
-                 tags_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -163,13 +151,12 @@ class RepositoryPackageTag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 packages_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 repositories_id: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 repository_id: Optional[pulumi.Input[str]] = None,
                  tag_id: Optional[pulumi.Input[str]] = None,
-                 tags_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -183,23 +170,20 @@ class RepositoryPackageTag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryPackageTagArgs.__new__(RepositoryPackageTagArgs)
 
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if packages_id is None and not opts.urn:
-                raise TypeError("Missing required property 'packages_id'")
-            __props__.__dict__["packages_id"] = packages_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if repositories_id is None and not opts.urn:
-                raise TypeError("Missing required property 'repositories_id'")
-            __props__.__dict__["repositories_id"] = repositories_id
+            if package_id is None and not opts.urn:
+                raise TypeError("Missing required property 'package_id'")
+            __props__.__dict__["package_id"] = package_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if repository_id is None and not opts.urn:
+                raise TypeError("Missing required property 'repository_id'")
+            __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["tag_id"] = tag_id
-            if tags_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tags_id'")
-            __props__.__dict__["tags_id"] = tags_id
             __props__.__dict__["version"] = version
         super(RepositoryPackageTag, __self__).__init__(
             'google-native:artifactregistry/v1beta2:RepositoryPackageTag',

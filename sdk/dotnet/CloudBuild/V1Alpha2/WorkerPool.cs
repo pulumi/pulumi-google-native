@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         [Input("networkConfig")]
         public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
@@ -131,9 +131,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
 
         [Input("workerPoolId", required: true)]
         public Input<string> WorkerPoolId { get; set; } = null!;
-
-        [Input("workerPoolsId", required: true)]
-        public Input<string> WorkerPoolsId { get; set; } = null!;
 
         public WorkerPoolArgs()
         {

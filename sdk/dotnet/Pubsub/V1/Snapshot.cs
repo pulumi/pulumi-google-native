@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.Pubsub.V1
             set => _labels = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("snapshotsId", required: true)]
-        public Input<string> SnapshotsId { get; set; } = null!;
+        [Input("snapshotId", required: true)]
+        public Input<string> SnapshotId { get; set; } = null!;
 
         /// <summary>
         /// Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.

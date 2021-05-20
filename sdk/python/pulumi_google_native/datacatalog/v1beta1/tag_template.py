@@ -13,10 +13,9 @@ __all__ = ['TagTemplateArgs', 'TagTemplate']
 @pulumi.input_type
 class TagTemplateArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  tag_template_id: pulumi.Input[str],
-                 tag_templates_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -26,10 +25,9 @@ class TagTemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tag_template_id", tag_template_id)
-        pulumi.set(__self__, "tag_templates_id", tag_templates_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if fields is not None:
@@ -38,22 +36,22 @@ class TagTemplateArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tagTemplateId")
@@ -63,15 +61,6 @@ class TagTemplateArgs:
     @tag_template_id.setter
     def tag_template_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tag_template_id", value)
-
-    @property
-    @pulumi.getter(name="tagTemplatesId")
-    def tag_templates_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "tag_templates_id")
-
-    @tag_templates_id.setter
-    def tag_templates_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "tag_templates_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -117,11 +106,10 @@ class TagTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tag_template_id: Optional[pulumi.Input[str]] = None,
-                 tag_templates_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
@@ -158,11 +146,10 @@ class TagTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tag_template_id: Optional[pulumi.Input[str]] = None,
-                 tag_templates_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -177,19 +164,16 @@ class TagTemplate(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["fields"] = fields
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if tag_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_template_id'")
             __props__.__dict__["tag_template_id"] = tag_template_id
-            if tag_templates_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tag_templates_id'")
-            __props__.__dict__["tag_templates_id"] = tag_templates_id
         super(TagTemplate, __self__).__init__(
             'google-native:datacatalog/v1beta1:TagTemplate',
             resource_name,

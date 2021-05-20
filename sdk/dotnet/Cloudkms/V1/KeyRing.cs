@@ -75,14 +75,11 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("keyRingId", required: true)]
         public Input<string> KeyRingId { get; set; } = null!;
 
-        [Input("keyRingsId", required: true)]
-        public Input<string> KeyRingsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public KeyRingArgs()
         {

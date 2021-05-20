@@ -14,9 +14,9 @@ __all__ = ['AgentKnowledgeBaseDocumentArgs', 'AgentKnowledgeBaseDocument']
 @pulumi.input_type
 class AgentKnowledgeBaseDocumentArgs:
     def __init__(__self__, *,
-                 documents_id: pulumi.Input[str],
-                 knowledge_bases_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 document_id: pulumi.Input[str],
+                 knowledge_base_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -39,9 +39,9 @@ class AgentKnowledgeBaseDocumentArgs:
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] raw_content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         """
-        pulumi.set(__self__, "documents_id", documents_id)
-        pulumi.set(__self__, "knowledge_bases_id", knowledge_bases_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "document_id", document_id)
+        pulumi.set(__self__, "knowledge_base_id", knowledge_base_id)
+        pulumi.set(__self__, "project", project)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if content_uri is not None:
@@ -64,31 +64,31 @@ class AgentKnowledgeBaseDocumentArgs:
             pulumi.set(__self__, "raw_content", raw_content)
 
     @property
-    @pulumi.getter(name="documentsId")
-    def documents_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "documents_id")
+    @pulumi.getter(name="documentId")
+    def document_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "document_id")
 
-    @documents_id.setter
-    def documents_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "documents_id", value)
-
-    @property
-    @pulumi.getter(name="knowledgeBasesId")
-    def knowledge_bases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "knowledge_bases_id")
-
-    @knowledge_bases_id.setter
-    def knowledge_bases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "knowledge_bases_id", value)
+    @document_id.setter
+    def document_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "document_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="knowledgeBaseId")
+    def knowledge_base_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "knowledge_base_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @knowledge_base_id.setter
+    def knowledge_base_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "knowledge_base_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -216,15 +216,15 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 documents_id: Optional[pulumi.Input[str]] = None,
+                 document_id: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
-                 knowledge_bases_id: Optional[pulumi.Input[str]] = None,
+                 knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  raw_content: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -269,15 +269,15 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 documents_id: Optional[pulumi.Input[str]] = None,
+                 document_id: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
-                 knowledge_bases_id: Optional[pulumi.Input[str]] = None,
+                 knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  raw_content: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -294,21 +294,21 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
             __props__.__dict__["content"] = content
             __props__.__dict__["content_uri"] = content_uri
             __props__.__dict__["display_name"] = display_name
-            if documents_id is None and not opts.urn:
-                raise TypeError("Missing required property 'documents_id'")
-            __props__.__dict__["documents_id"] = documents_id
+            if document_id is None and not opts.urn:
+                raise TypeError("Missing required property 'document_id'")
+            __props__.__dict__["document_id"] = document_id
             __props__.__dict__["enable_auto_reload"] = enable_auto_reload
             __props__.__dict__["import_gcs_custom_metadata"] = import_gcs_custom_metadata
-            if knowledge_bases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'knowledge_bases_id'")
-            __props__.__dict__["knowledge_bases_id"] = knowledge_bases_id
+            if knowledge_base_id is None and not opts.urn:
+                raise TypeError("Missing required property 'knowledge_base_id'")
+            __props__.__dict__["knowledge_base_id"] = knowledge_base_id
             __props__.__dict__["knowledge_types"] = knowledge_types
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["mime_type"] = mime_type
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["raw_content"] = raw_content
             __props__.__dict__["latest_reload_status"] = None
         super(AgentKnowledgeBaseDocument, __self__).__init__(

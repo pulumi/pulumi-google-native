@@ -73,33 +73,29 @@ export class DatasetConsentStoreAttributeDefinition extends pulumi.CustomResourc
             if ((!args || args.attributeDefinitionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attributeDefinitionId'");
             }
-            if ((!args || args.attributeDefinitionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'attributeDefinitionsId'");
+            if ((!args || args.consentStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentStoreId'");
             }
-            if ((!args || args.consentStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentStoresId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["allowedValues"] = args ? args.allowedValues : undefined;
             inputs["attributeDefinitionId"] = args ? args.attributeDefinitionId : undefined;
-            inputs["attributeDefinitionsId"] = args ? args.attributeDefinitionsId : undefined;
             inputs["category"] = args ? args.category : undefined;
             inputs["consentDefaultValues"] = args ? args.consentDefaultValues : undefined;
-            inputs["consentStoresId"] = args ? args.consentStoresId : undefined;
+            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
             inputs["dataMappingDefaultValue"] = args ? args.dataMappingDefaultValue : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["allowedValues"] = undefined /*out*/;
             inputs["category"] = undefined /*out*/;
@@ -124,7 +120,6 @@ export interface DatasetConsentStoreAttributeDefinitionArgs {
      */
     readonly allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
     readonly attributeDefinitionId: pulumi.Input<string>;
-    readonly attributeDefinitionsId: pulumi.Input<string>;
     /**
      * Required. The category of the attribute. The value of this field cannot be changed after creation.
      */
@@ -133,20 +128,20 @@ export interface DatasetConsentStoreAttributeDefinitionArgs {
      * Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
      */
     readonly consentDefaultValues?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly consentStoresId: pulumi.Input<string>;
+    readonly consentStoreId: pulumi.Input<string>;
     /**
      * Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
      */
     readonly dataMappingDefaultValue?: pulumi.Input<string>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * Optional. A description of the attribute.
      */
     readonly description?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

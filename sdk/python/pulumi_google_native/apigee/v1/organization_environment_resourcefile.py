@@ -13,9 +13,9 @@ __all__ = ['OrganizationEnvironmentResourcefileArgs', 'OrganizationEnvironmentRe
 @pulumi.input_type
 class OrganizationEnvironmentResourcefileArgs:
     def __init__(__self__, *,
-                 environments_id: pulumi.Input[str],
+                 environment_id: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
@@ -26,9 +26,9 @@ class OrganizationEnvironmentResourcefileArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        pulumi.set(__self__, "environments_id", environments_id)
+        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "type", type)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -38,13 +38,13 @@ class OrganizationEnvironmentResourcefileArgs:
             pulumi.set(__self__, "extensions", extensions)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter
@@ -56,13 +56,13 @@ class OrganizationEnvironmentResourcefileArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -117,10 +117,10 @@ class OrganizationEnvironmentResourcefile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -158,10 +158,10 @@ class OrganizationEnvironmentResourcefile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -177,16 +177,16 @@ class OrganizationEnvironmentResourcefile(pulumi.CustomResource):
 
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["extensions"] = extensions
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type

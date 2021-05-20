@@ -30,17 +30,14 @@ func NewTagTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.TagTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'TagTemplateId'")
-	}
-	if args.TagTemplatesId == nil {
-		return nil, errors.New("invalid value for required argument 'TagTemplatesId'")
 	}
 	var resource TagTemplate
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:TagTemplate", name, args, &resource, opts...)
@@ -89,13 +86,12 @@ type tagTemplateArgs struct {
 	// The display name for this template. Defaults to an empty string.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields      map[string]string `pulumi:"fields"`
-	LocationsId string            `pulumi:"locationsId"`
+	Fields   map[string]string `pulumi:"fields"`
+	Location string            `pulumi:"location"`
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name           *string `pulumi:"name"`
-	ProjectsId     string  `pulumi:"projectsId"`
-	TagTemplateId  string  `pulumi:"tagTemplateId"`
-	TagTemplatesId string  `pulumi:"tagTemplatesId"`
+	Name          *string `pulumi:"name"`
+	Project       string  `pulumi:"project"`
+	TagTemplateId string  `pulumi:"tagTemplateId"`
 }
 
 // The set of arguments for constructing a TagTemplate resource.
@@ -103,13 +99,12 @@ type TagTemplateArgs struct {
 	// The display name for this template. Defaults to an empty string.
 	DisplayName pulumi.StringPtrInput
 	// Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Fields   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name           pulumi.StringPtrInput
-	ProjectsId     pulumi.StringInput
-	TagTemplateId  pulumi.StringInput
-	TagTemplatesId pulumi.StringInput
+	Name          pulumi.StringPtrInput
+	Project       pulumi.StringInput
+	TagTemplateId pulumi.StringInput
 }
 
 func (TagTemplateArgs) ElementType() reflect.Type {

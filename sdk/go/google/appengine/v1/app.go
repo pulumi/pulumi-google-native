@@ -35,7 +35,7 @@ type App struct {
 	GcrDomain pulumi.StringOutput              `pulumi:"gcrDomain"`
 	Iap       IdentityAwareProxyResponseOutput `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	LocationId pulumi.StringOutput `pulumi:"locationId"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Serving status of this application.
@@ -49,8 +49,8 @@ func NewApp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppsId == nil {
-		return nil, errors.New("invalid value for required argument 'AppsId'")
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
 	var resource App
 	err := ctx.RegisterResource("google-native:appengine/v1:App", name, args, &resource, opts...)
@@ -94,7 +94,7 @@ type appState struct {
 	GcrDomain *string                     `pulumi:"gcrDomain"`
 	Iap       *IdentityAwareProxyResponse `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	LocationId *string `pulumi:"locationId"`
+	Location *string `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
 	Name *string `pulumi:"name"`
 	// Serving status of this application.
@@ -122,7 +122,7 @@ type AppState struct {
 	GcrDomain pulumi.StringPtrInput
 	Iap       IdentityAwareProxyResponsePtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	LocationId pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
 	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
 	Name pulumi.StringPtrInput
 	// Serving status of this application.
@@ -134,7 +134,7 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
-	AppsId string `pulumi:"appsId"`
+	AppId string `pulumi:"appId"`
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain *string `pulumi:"authDomain"`
 	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
@@ -157,7 +157,7 @@ type appArgs struct {
 	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
 	Id *string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	LocationId *string `pulumi:"locationId"`
+	Location *string `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
 	Name *string `pulumi:"name"`
 	// Serving status of this application.
@@ -166,7 +166,7 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
-	AppsId pulumi.StringInput
+	AppId pulumi.StringInput
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringPtrInput
 	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
@@ -189,7 +189,7 @@ type AppArgs struct {
 	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
 	Id pulumi.StringPtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
-	LocationId pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
 	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
 	Name pulumi.StringPtrInput
 	// Serving status of this application.

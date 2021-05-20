@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }
 
-        [Input("tagValuesId", required: true)]
-        public Input<string> TagValuesId { get; set; } = null!;
+        [Input("tagValueId", required: true)]
+        public Input<string> TagValueId { get; set; } = null!;
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

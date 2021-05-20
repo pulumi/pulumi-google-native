@@ -15,8 +15,8 @@ __all__ = ['OrganizationHostQueryArgs', 'OrganizationHostQuery']
 @pulumi.input_type
 class OrganizationHostQueryArgs:
     def __init__(__self__, *,
-                 host_queries_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 host_query_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envgroup_hostname: Optional[pulumi.Input[str]] = None,
@@ -42,8 +42,8 @@ class OrganizationHostQueryArgs:
         :param pulumi.Input[str] report_definition_id: Asynchronous Report ID.
         :param Any time_range: Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
         """
-        pulumi.set(__self__, "host_queries_id", host_queries_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "host_query_id", host_query_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
         if dimensions is not None:
@@ -68,22 +68,22 @@ class OrganizationHostQueryArgs:
             pulumi.set(__self__, "time_range", time_range)
 
     @property
-    @pulumi.getter(name="hostQueriesId")
-    def host_queries_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "host_queries_id")
+    @pulumi.getter(name="hostQueryId")
+    def host_query_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "host_query_id")
 
-    @host_queries_id.setter
-    def host_queries_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "host_queries_id", value)
+    @host_query_id.setter
+    def host_query_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_query_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="csvDelimiter")
@@ -228,11 +228,11 @@ class OrganizationHostQuery(pulumi.CustomResource):
                  envgroup_hostname: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  group_by_time_unit: Optional[pulumi.Input[str]] = None,
-                 host_queries_id: Optional[pulumi.Input[str]] = None,
+                 host_query_id: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[int]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1QueryMetricArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,
                  time_range: Optional[Any] = None,
@@ -283,11 +283,11 @@ class OrganizationHostQuery(pulumi.CustomResource):
                  envgroup_hostname: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  group_by_time_unit: Optional[pulumi.Input[str]] = None,
-                 host_queries_id: Optional[pulumi.Input[str]] = None,
+                 host_query_id: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[int]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1QueryMetricArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,
                  time_range: Optional[Any] = None,
@@ -308,15 +308,15 @@ class OrganizationHostQuery(pulumi.CustomResource):
             __props__.__dict__["envgroup_hostname"] = envgroup_hostname
             __props__.__dict__["filter"] = filter
             __props__.__dict__["group_by_time_unit"] = group_by_time_unit
-            if host_queries_id is None and not opts.urn:
-                raise TypeError("Missing required property 'host_queries_id'")
-            __props__.__dict__["host_queries_id"] = host_queries_id
+            if host_query_id is None and not opts.urn:
+                raise TypeError("Missing required property 'host_query_id'")
+            __props__.__dict__["host_query_id"] = host_query_id
             __props__.__dict__["limit"] = limit
             __props__.__dict__["metrics"] = metrics
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["output_format"] = output_format
             __props__.__dict__["report_definition_id"] = report_definition_id
             __props__.__dict__["time_range"] = time_range

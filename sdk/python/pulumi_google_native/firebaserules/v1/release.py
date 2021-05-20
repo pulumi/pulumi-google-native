@@ -13,8 +13,8 @@ __all__ = ['ReleaseArgs', 'Release']
 @pulumi.input_type
 class ReleaseArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 releases_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 release_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ruleset_name: Optional[pulumi.Input[str]] = None,
@@ -26,8 +26,8 @@ class ReleaseArgs:
         :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
         :param pulumi.Input[str] update_time: Time the release was updated. Output only.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "releases_id", releases_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "release_id", release_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if name is not None:
@@ -38,22 +38,22 @@ class ReleaseArgs:
             pulumi.set(__self__, "update_time", update_time)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="releasesId")
-    def releases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "releases_id")
+    @pulumi.getter(name="releaseId")
+    def release_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "release_id")
 
-    @releases_id.setter
-    def releases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "releases_id", value)
+    @release_id.setter
+    def release_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "release_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -111,8 +111,8 @@ class Release(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 releases_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 release_id: Optional[pulumi.Input[str]] = None,
                  ruleset_name: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -152,8 +152,8 @@ class Release(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 releases_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 release_id: Optional[pulumi.Input[str]] = None,
                  ruleset_name: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -170,12 +170,12 @@ class Release(pulumi.CustomResource):
 
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if releases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'releases_id'")
-            __props__.__dict__["releases_id"] = releases_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if release_id is None and not opts.urn:
+                raise TypeError("Missing required property 'release_id'")
+            __props__.__dict__["release_id"] = release_id
             __props__.__dict__["ruleset_name"] = ruleset_name
             __props__.__dict__["update_time"] = update_time
         super(Release, __self__).__init__(

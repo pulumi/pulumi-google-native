@@ -57,7 +57,7 @@ export class IosApp extends pulumi.CustomResource {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a IosApp resource with the given unique name, arguments, and options.
@@ -70,27 +70,26 @@ export class IosApp extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.iosAppsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'iosAppsId'");
+            if ((!args || args.iosAppId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'iosAppId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["appStoreId"] = args ? args.appStoreId : undefined;
             inputs["bundleId"] = args ? args.bundleId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["iosAppsId"] = args ? args.iosAppsId : undefined;
+            inputs["iosAppId"] = args ? args.iosAppId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["appId"] = undefined /*out*/;
             inputs["appStoreId"] = undefined /*out*/;
             inputs["bundleId"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -119,7 +118,7 @@ export interface IosAppArgs {
      * The user-assigned display name for the `IosApp`.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly iosAppsId: pulumi.Input<string>;
+    readonly iosAppId: pulumi.Input<string>;
     /**
      * The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
      */
@@ -127,6 +126,5 @@ export interface IosAppArgs {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

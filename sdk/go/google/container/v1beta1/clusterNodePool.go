@@ -60,8 +60,8 @@ func NewClusterNodePool(ctx *pulumi.Context,
 	if args.NodePoolId == nil {
 		return nil, errors.New("invalid value for required argument 'NodePoolId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
@@ -184,7 +184,7 @@ type clusterNodePoolArgs struct {
 	Parent *string `pulumi:"parent"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize *int   `pulumi:"podIpv4CidrSize"`
-	ProjectId       string `pulumi:"projectId"`
+	Project         string `pulumi:"project"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
@@ -224,7 +224,7 @@ type ClusterNodePoolArgs struct {
 	Parent pulumi.StringPtrInput
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntPtrInput
-	ProjectId       pulumi.StringInput
+	Project         pulumi.StringInput
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output only] The status of the nodes in this pool instance.

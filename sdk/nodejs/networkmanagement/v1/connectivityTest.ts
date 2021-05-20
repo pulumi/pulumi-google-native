@@ -91,21 +91,21 @@ export class ConnectivityTest extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.connectivityTestsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectivityTestsId'");
+            if ((!args || args.connectivityTestId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectivityTestId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.testId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testId'");
             }
-            inputs["connectivityTestsId"] = args ? args.connectivityTestsId : undefined;
+            inputs["connectivityTestId"] = args ? args.connectivityTestId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             inputs["source"] = args ? args.source : undefined;
@@ -138,7 +138,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
  * The set of arguments for constructing a ConnectivityTest resource.
  */
 export interface ConnectivityTestArgs {
-    readonly connectivityTestsId: pulumi.Input<string>;
+    readonly connectivityTestId: pulumi.Input<string>;
     /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
@@ -155,7 +155,7 @@ export interface ConnectivityTestArgs {
      * Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */

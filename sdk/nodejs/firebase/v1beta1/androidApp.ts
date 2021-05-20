@@ -53,7 +53,7 @@ export class AndroidApp extends pulumi.CustomResource {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a AndroidApp resource with the given unique name, arguments, and options.
@@ -66,25 +66,24 @@ export class AndroidApp extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.androidAppsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'androidAppsId'");
+            if ((!args || args.androidAppId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'androidAppId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["androidAppsId"] = args ? args.androidAppsId : undefined;
+            inputs["androidAppId"] = args ? args.androidAppId : undefined;
             inputs["appId"] = args ? args.appId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["packageName"] = args ? args.packageName : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["appId"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["packageName"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -97,7 +96,7 @@ export class AndroidApp extends pulumi.CustomResource {
  * The set of arguments for constructing a AndroidApp resource.
  */
 export interface AndroidAppArgs {
-    readonly androidAppsId: pulumi.Input<string>;
+    readonly androidAppId: pulumi.Input<string>;
     /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */
@@ -117,6 +116,5 @@ export interface AndroidAppArgs {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

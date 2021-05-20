@@ -47,14 +47,11 @@ func NewConnectionProfile(ctx *pulumi.Context,
 	if args.ConnectionProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionProfileId'")
 	}
-	if args.ConnectionProfilesId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectionProfilesId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-native:datamigration/v1beta1:ConnectionProfile", name, args, &resource, opts...)
@@ -129,19 +126,18 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 
 type connectionProfileArgs struct {
 	// A CloudSQL database connection profile.
-	Cloudsql             *CloudSqlConnectionProfile `pulumi:"cloudsql"`
-	ConnectionProfileId  string                     `pulumi:"connectionProfileId"`
-	ConnectionProfilesId string                     `pulumi:"connectionProfilesId"`
+	Cloudsql            *CloudSqlConnectionProfile `pulumi:"cloudsql"`
+	ConnectionProfileId string                     `pulumi:"connectionProfileId"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// A MySQL database connection profile.
 	Mysql *MySqlConnectionProfile `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// The database provider.
 	Provider  *string `pulumi:"provider"`
 	RequestId *string `pulumi:"requestId"`
@@ -152,19 +148,18 @@ type connectionProfileArgs struct {
 // The set of arguments for constructing a ConnectionProfile resource.
 type ConnectionProfileArgs struct {
 	// A CloudSQL database connection profile.
-	Cloudsql             CloudSqlConnectionProfilePtrInput
-	ConnectionProfileId  pulumi.StringInput
-	ConnectionProfilesId pulumi.StringInput
+	Cloudsql            CloudSqlConnectionProfilePtrInput
+	ConnectionProfileId pulumi.StringInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfilePtrInput
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The database provider.
 	Provider  pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput

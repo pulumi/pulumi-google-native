@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Logging.V2
 
     public sealed class OrganizationBucketViewArgs : Pulumi.ResourceArgs
     {
-        [Input("bucketsId", required: true)]
-        public Input<string> BucketsId { get; set; } = null!;
+        [Input("bucketId", required: true)]
+        public Input<string> BucketId { get; set; } = null!;
 
         /// <summary>
         /// Describes this view.
@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
@@ -114,14 +114,11 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("viewId", required: true)]
         public Input<string> ViewId { get; set; } = null!;
-
-        [Input("viewsId", required: true)]
-        public Input<string> ViewsId { get; set; } = null!;
 
         public OrganizationBucketViewArgs()
         {

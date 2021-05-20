@@ -46,11 +46,11 @@ func NewOrganizationInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationInstance
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationInstance", name, args, &resource, opts...)
@@ -135,12 +135,12 @@ type organizationInstanceArgs struct {
 	// Optional. Display name for the instance.
 	DisplayName  *string `pulumi:"displayName"`
 	Environments *string `pulumi:"environments"`
-	InstancesId  string  `pulumi:"instancesId"`
+	InstanceId   string  `pulumi:"instanceId"`
 	// Required. Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
 }
@@ -154,12 +154,12 @@ type OrganizationInstanceArgs struct {
 	// Optional. Display name for the instance.
 	DisplayName  pulumi.StringPtrInput
 	Environments pulumi.StringPtrInput
-	InstancesId  pulumi.StringInput
+	InstanceId   pulumi.StringInput
 	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange pulumi.StringPtrInput
 }

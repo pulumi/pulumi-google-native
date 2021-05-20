@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("envgroupHostname")]
         public Input<string>? EnvgroupHostname { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
         /// Boolean expression that can be used to filter data. Filter expressions can be combined using AND/OR terms and should be fully parenthesized to avoid ambiguity. See Analytics metrics, dimensions, and filters reference https://docs.apigee.com/api-platform/analytics/analytics-reference for more information on the fields available to filter on. For more information on the tokens that you use to build filter expressions, see Filter expression syntax. https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax
@@ -201,8 +201,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("outputFormat")]
         public Input<string>? OutputFormat { get; set; }
 
-        [Input("queriesId", required: true)]
-        public Input<string> QueriesId { get; set; } = null!;
+        [Input("queryId", required: true)]
+        public Input<string> QueryId { get; set; } = null!;
 
         /// <summary>
         /// Asynchronous Report ID.

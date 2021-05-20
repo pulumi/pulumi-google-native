@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// <summary>
         /// ID of the project.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
         /// </summary>
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             Outputs.BuildOptionsResponse options,
 
-            string projectId,
+            string project,
 
             string queueTtl,
 
@@ -176,7 +176,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             LogsBucket = logsBucket;
             Name = name;
             Options = options;
-            ProjectId = projectId;
+            Project = project;
             QueueTtl = queueTtl;
             Results = results;
             Secrets = secrets;

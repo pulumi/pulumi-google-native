@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         /// <summary>
         /// Required. GCP project in which the datastore exists
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Prefix of BigQuery table Required for `bigquery` target_type.

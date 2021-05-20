@@ -87,9 +87,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         [Input("attestorId", required: true)]
         public Input<string> AttestorId { get; set; } = null!;
 
-        [Input("attestorsId", required: true)]
-        public Input<string> AttestorsId { get; set; } = null!;
-
         /// <summary>
         /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         /// </summary>
@@ -102,8 +99,8 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// A Drydock ATTESTATION_AUTHORITY Note, created by the user.

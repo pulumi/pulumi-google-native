@@ -90,11 +90,11 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Input("applicationTitle")]
         public Input<string>? ApplicationTitle { get; set; }
 
-        [Input("brandsId", required: true)]
-        public Input<string> BrandsId { get; set; } = null!;
+        [Input("brandId", required: true)]
+        public Input<string> BrandId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Support email displayed on the OAuth consent screen.

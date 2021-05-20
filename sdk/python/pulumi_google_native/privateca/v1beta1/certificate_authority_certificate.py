@@ -15,10 +15,9 @@ __all__ = ['CertificateAuthorityCertificateArgs', 'CertificateAuthorityCertifica
 @pulumi.input_type
 class CertificateAuthorityCertificateArgs:
     def __init__(__self__, *,
-                 certificate_authorities_id: pulumi.Input[str],
-                 certificates_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 certificate_authority_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -32,10 +31,9 @@ class CertificateAuthorityCertificateArgs:
         :param pulumi.Input[str] lifetime: Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         """
-        pulumi.set(__self__, "certificate_authorities_id", certificate_authorities_id)
-        pulumi.set(__self__, "certificates_id", certificates_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
         if config is not None:
@@ -50,40 +48,31 @@ class CertificateAuthorityCertificateArgs:
             pulumi.set(__self__, "request_id", request_id)
 
     @property
-    @pulumi.getter(name="certificateAuthoritiesId")
-    def certificate_authorities_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "certificate_authorities_id")
+    @pulumi.getter(name="certificateAuthorityId")
+    def certificate_authority_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "certificate_authority_id")
 
-    @certificate_authorities_id.setter
-    def certificate_authorities_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "certificate_authorities_id", value)
-
-    @property
-    @pulumi.getter(name="certificatesId")
-    def certificates_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "certificates_id")
-
-    @certificates_id.setter
-    def certificates_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "certificates_id", value)
+    @certificate_authority_id.setter
+    def certificate_authority_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_authority_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -157,15 +146,14 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
-                 certificates_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -202,15 +190,14 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
-                 certificates_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -224,23 +211,20 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CertificateAuthorityCertificateArgs.__new__(CertificateAuthorityCertificateArgs)
 
-            if certificate_authorities_id is None and not opts.urn:
-                raise TypeError("Missing required property 'certificate_authorities_id'")
-            __props__.__dict__["certificate_authorities_id"] = certificate_authorities_id
+            if certificate_authority_id is None and not opts.urn:
+                raise TypeError("Missing required property 'certificate_authority_id'")
+            __props__.__dict__["certificate_authority_id"] = certificate_authority_id
             __props__.__dict__["certificate_id"] = certificate_id
-            if certificates_id is None and not opts.urn:
-                raise TypeError("Missing required property 'certificates_id'")
-            __props__.__dict__["certificates_id"] = certificates_id
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifetime"] = lifetime
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["pem_csr"] = pem_csr
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["certificate_description"] = None
             __props__.__dict__["create_time"] = None

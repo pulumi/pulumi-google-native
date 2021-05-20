@@ -1712,7 +1712,7 @@ type BuildResponse struct {
 	// Special options for this build.
 	Options BuildOptionsResponse `pulumi:"options"`
 	// ID of the project.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl string `pulumi:"queueTtl"`
 	// Results of the build.
@@ -1777,7 +1777,7 @@ type BuildResponseArgs struct {
 	// Special options for this build.
 	Options BuildOptionsResponseInput `pulumi:"options"`
 	// ID of the project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringInput `pulumi:"queueTtl"`
 	// Results of the build.
@@ -1937,8 +1937,8 @@ func (o BuildResponseOutput) Options() BuildOptionsResponseOutput {
 }
 
 // ID of the project.
-func (o BuildResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o BuildResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
@@ -2130,12 +2130,12 @@ func (o BuildResponsePtrOutput) Options() BuildOptionsResponsePtrOutput {
 }
 
 // ID of the project.
-func (o BuildResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o BuildResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4477,7 +4477,7 @@ type RepoSource struct {
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Name of the Cloud Source Repository.
 	RepoName *string `pulumi:"repoName"`
 	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
@@ -4508,7 +4508,7 @@ type RepoSourceArgs struct {
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Name of the Cloud Source Repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
 	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
@@ -4616,8 +4616,8 @@ func (o RepoSourceOutput) InvertRegex() pulumi.BoolPtrOutput {
 }
 
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-func (o RepoSourceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepoSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o RepoSourceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepoSource) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Name of the Cloud Source Repository.
@@ -4694,12 +4694,12 @@ func (o RepoSourcePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 }
 
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-func (o RepoSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o RepoSourcePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepoSource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4744,7 +4744,7 @@ type RepoSourceResponse struct {
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex bool `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Name of the Cloud Source Repository.
 	RepoName string `pulumi:"repoName"`
 	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
@@ -4775,7 +4775,7 @@ type RepoSourceResponseArgs struct {
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Name of the Cloud Source Repository.
 	RepoName pulumi.StringInput `pulumi:"repoName"`
 	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
@@ -4883,8 +4883,8 @@ func (o RepoSourceResponseOutput) InvertRegex() pulumi.BoolOutput {
 }
 
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-func (o RepoSourceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v RepoSourceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o RepoSourceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Name of the Cloud Source Repository.
@@ -4961,12 +4961,12 @@ func (o RepoSourceResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 }
 
 // ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-func (o RepoSourceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o RepoSourceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepoSourceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

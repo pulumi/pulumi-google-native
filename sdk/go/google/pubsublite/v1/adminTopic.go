@@ -30,17 +30,14 @@ func NewAdminTopic(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.TopicId == nil {
 		return nil, errors.New("invalid value for required argument 'TopicId'")
-	}
-	if args.TopicsId == nil {
-		return nil, errors.New("invalid value for required argument 'TopicsId'")
 	}
 	var resource AdminTopic
 	err := ctx.RegisterResource("google-native:pubsublite/v1:AdminTopic", name, args, &resource, opts...)
@@ -86,30 +83,28 @@ func (AdminTopicState) ElementType() reflect.Type {
 }
 
 type adminTopicArgs struct {
-	LocationsId string `pulumi:"locationsId"`
+	Location string `pulumi:"location"`
 	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
 	PartitionConfig *PartitionConfig `pulumi:"partitionConfig"`
-	ProjectsId      string           `pulumi:"projectsId"`
+	Project         string           `pulumi:"project"`
 	// The settings for this topic's message retention.
 	RetentionConfig *RetentionConfig `pulumi:"retentionConfig"`
 	TopicId         string           `pulumi:"topicId"`
-	TopicsId        string           `pulumi:"topicsId"`
 }
 
 // The set of arguments for constructing a AdminTopic resource.
 type AdminTopicArgs struct {
-	LocationsId pulumi.StringInput
+	Location pulumi.StringInput
 	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.
 	PartitionConfig PartitionConfigPtrInput
-	ProjectsId      pulumi.StringInput
+	Project         pulumi.StringInput
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigPtrInput
 	TopicId         pulumi.StringInput
-	TopicsId        pulumi.StringInput
 }
 
 func (AdminTopicArgs) ElementType() reflect.Type {

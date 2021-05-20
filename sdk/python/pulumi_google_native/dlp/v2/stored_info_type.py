@@ -15,39 +15,39 @@ __all__ = ['StoredInfoTypeArgs', 'StoredInfoType']
 @pulumi.input_type
 class StoredInfoTypeArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 stored_info_types_id: pulumi.Input[str],
-                 config: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] = None,
-                 stored_info_type_id: Optional[pulumi.Input[str]] = None):
+                 project: pulumi.Input[str],
+                 stored_info_type_id: pulumi.Input[str],
+                 config: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] = None):
         """
         The set of arguments for constructing a StoredInfoType resource.
-        :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Required. Configuration of the storedInfoType to create.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Required. Configuration of the storedInfoType to create.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "stored_info_types_id", stored_info_types_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
-        if stored_info_type_id is not None:
-            pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="storedInfoTypesId")
-    def stored_info_types_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "stored_info_types_id")
+    @pulumi.getter(name="storedInfoTypeId")
+    def stored_info_type_id(self) -> pulumi.Input[str]:
+        """
+        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "stored_info_type_id")
 
-    @stored_info_types_id.setter
-    def stored_info_types_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "stored_info_types_id", value)
+    @stored_info_type_id.setter
+    def stored_info_type_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "stored_info_type_id", value)
 
     @property
     @pulumi.getter
@@ -61,18 +61,6 @@ class StoredInfoTypeArgs:
     def config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]):
         pulumi.set(self, "config", value)
 
-    @property
-    @pulumi.getter(name="storedInfoTypeId")
-    def stored_info_type_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-        """
-        return pulumi.get(self, "stored_info_type_id")
-
-    @stored_info_type_id.setter
-    def stored_info_type_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "stored_info_type_id", value)
-
 
 class StoredInfoType(pulumi.CustomResource):
     @overload
@@ -80,9 +68,8 @@ class StoredInfoType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
-                 stored_info_types_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
@@ -117,9 +104,8 @@ class StoredInfoType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
-                 stored_info_types_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -133,13 +119,12 @@ class StoredInfoType(pulumi.CustomResource):
             __props__ = StoredInfoTypeArgs.__new__(StoredInfoTypeArgs)
 
             __props__.__dict__["config"] = config
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if stored_info_type_id is None and not opts.urn:
+                raise TypeError("Missing required property 'stored_info_type_id'")
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id
-            if stored_info_types_id is None and not opts.urn:
-                raise TypeError("Missing required property 'stored_info_types_id'")
-            __props__.__dict__["stored_info_types_id"] = stored_info_types_id
             __props__.__dict__["current_version"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pending_versions"] = None

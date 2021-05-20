@@ -151,14 +151,14 @@ export class Function extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.functionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'functionsId'");
+            if ((!args || args.functionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'functionId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             inputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
@@ -167,15 +167,15 @@ export class Function extends pulumi.CustomResource {
             inputs["entryPoint"] = args ? args.entryPoint : undefined;
             inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["eventTrigger"] = args ? args.eventTrigger : undefined;
-            inputs["functionsId"] = args ? args.functionsId : undefined;
+            inputs["functionId"] = args ? args.functionId : undefined;
             inputs["httpsTrigger"] = args ? args.httpsTrigger : undefined;
             inputs["ingressSettings"] = args ? args.ingressSettings : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["maxInstances"] = args ? args.maxInstances : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["runtime"] = args ? args.runtime : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             inputs["sourceArchiveUrl"] = args ? args.sourceArchiveUrl : undefined;
@@ -256,7 +256,7 @@ export interface FunctionArgs {
      * A source that fires events in response to a condition in another service.
      */
     readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.v1.EventTriggerArgs>;
-    readonly functionsId: pulumi.Input<string>;
+    readonly functionId: pulumi.Input<string>;
     /**
      * An HTTPS endpoint type of source that can be triggered via URL.
      */
@@ -269,7 +269,7 @@ export interface FunctionArgs {
      * Labels associated with this Cloud Function.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
      */
@@ -282,7 +282,7 @@ export interface FunctionArgs {
      * The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
      */
     readonly network?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
      */

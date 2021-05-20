@@ -1084,15 +1084,15 @@ class DatasetAccessItemArgs:
 class DatasetReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dataset_id: [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        :param pulumi.Input[str] project_id: [Optional] The ID of the project containing this dataset.
+        :param pulumi.Input[str] project: [Optional] The ID of the project containing this dataset.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1107,16 +1107,16 @@ class DatasetReferenceArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         [Optional] The ID of the project containing this dataset.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -3605,18 +3605,18 @@ class JobReferenceArgs:
     def __init__(__self__, *,
                  job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] job_id: [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] location: The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-        :param pulumi.Input[str] project_id: [Required] The ID of the project containing this job.
+        :param pulumi.Input[str] project: [Required] The ID of the project containing this job.
         """
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="jobId")
@@ -3643,16 +3643,16 @@ class JobReferenceArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         [Required] The ID of the project containing this job.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -4763,18 +4763,18 @@ class ModelReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  model_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dataset_id: [Required] The ID of the dataset containing this model.
         :param pulumi.Input[str] model_id: [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        :param pulumi.Input[str] project_id: [Required] The ID of the project containing this model.
+        :param pulumi.Input[str] project: [Required] The ID of the project containing this model.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if model_id is not None:
             pulumi.set(__self__, "model_id", model_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -4801,16 +4801,16 @@ class ModelReferenceArgs:
         pulumi.set(self, "model_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         [Required] The ID of the project containing this model.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -5147,17 +5147,17 @@ class RangePartitioningArgs:
 class RoutineReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dataset_id: [Required] The ID of the dataset containing this routine.
-        :param pulumi.Input[str] project_id: [Required] The ID of the project containing this routine.
+        :param pulumi.Input[str] project: [Required] The ID of the project containing this routine.
         :param pulumi.Input[str] routine_id: [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if routine_id is not None:
             pulumi.set(__self__, "routine_id", routine_id)
 
@@ -5174,16 +5174,16 @@ class RoutineReferenceArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         [Required] The ID of the project containing this routine.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="routineId")
@@ -5203,20 +5203,20 @@ class RowAccessPolicyReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dataset_id: [Required] The ID of the dataset containing this row access policy.
         :param pulumi.Input[str] policy_id: [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-        :param pulumi.Input[str] project_id: [Required] The ID of the project containing this row access policy.
+        :param pulumi.Input[str] project: [Required] The ID of the project containing this row access policy.
         :param pulumi.Input[str] table_id: [Required] The ID of the table containing this row access policy.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
 
@@ -5245,16 +5245,16 @@ class RowAccessPolicyReferenceArgs:
         pulumi.set(self, "policy_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         [Required] The ID of the project containing this row access policy.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")
@@ -5899,17 +5899,17 @@ class TableModelOptionsArgs:
 class TableReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dataset_id: [Required] The ID of the dataset containing this table.
-        :param pulumi.Input[str] project_id: [Required] The ID of the project containing this table.
+        :param pulumi.Input[str] project: [Required] The ID of the project containing this table.
         :param pulumi.Input[str] table_id: [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
 
@@ -5926,16 +5926,16 @@ class TableReferenceArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         [Required] The ID of the project containing this table.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")

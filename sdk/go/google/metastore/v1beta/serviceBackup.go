@@ -39,17 +39,14 @@ func NewServiceBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
-	if args.BackupsId == nil {
-		return nil, errors.New("invalid value for required argument 'BackupsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.ServicesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicesId'")
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
 	var resource ServiceBackup
 	err := ctx.RegisterResource("google-native:metastore/v1beta:ServiceBackup", name, args, &resource, opts...)
@@ -107,30 +104,28 @@ func (ServiceBackupState) ElementType() reflect.Type {
 }
 
 type serviceBackupArgs struct {
-	BackupId  string `pulumi:"backupId"`
-	BackupsId string `pulumi:"backupsId"`
+	BackupId string `pulumi:"backupId"`
 	// The description of the backup.
 	Description *string `pulumi:"description"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
-	ServicesId string  `pulumi:"servicesId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
+	ServiceId string  `pulumi:"serviceId"`
 }
 
 // The set of arguments for constructing a ServiceBackup resource.
 type ServiceBackupArgs struct {
-	BackupId  pulumi.StringInput
-	BackupsId pulumi.StringInput
+	BackupId pulumi.StringInput
 	// The description of the backup.
 	Description pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
-	ServicesId pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
+	ServiceId pulumi.StringInput
 }
 
 func (ServiceBackupArgs) ElementType() reflect.Type {

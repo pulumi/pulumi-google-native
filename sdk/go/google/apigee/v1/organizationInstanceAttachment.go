@@ -30,14 +30,14 @@ func NewOrganizationInstanceAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AttachmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AttachmentsId'")
+	if args.AttachmentId == nil {
+		return nil, errors.New("invalid value for required argument 'AttachmentId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationInstanceAttachment
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationInstanceAttachment", name, args, &resource, opts...)
@@ -83,20 +83,20 @@ func (OrganizationInstanceAttachmentState) ElementType() reflect.Type {
 }
 
 type organizationInstanceAttachmentArgs struct {
-	AttachmentsId string `pulumi:"attachmentsId"`
+	AttachmentId string `pulumi:"attachmentId"`
 	// ID of the attached environment.
-	Environment     *string `pulumi:"environment"`
-	InstancesId     string  `pulumi:"instancesId"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Environment    *string `pulumi:"environment"`
+	InstanceId     string  `pulumi:"instanceId"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a OrganizationInstanceAttachment resource.
 type OrganizationInstanceAttachmentArgs struct {
-	AttachmentsId pulumi.StringInput
+	AttachmentId pulumi.StringInput
 	// ID of the attached environment.
-	Environment     pulumi.StringPtrInput
-	InstancesId     pulumi.StringInput
-	OrganizationsId pulumi.StringInput
+	Environment    pulumi.StringPtrInput
+	InstanceId     pulumi.StringInput
+	OrganizationId pulumi.StringInput
 }
 
 func (OrganizationInstanceAttachmentArgs) ElementType() reflect.Type {

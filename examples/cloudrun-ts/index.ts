@@ -17,9 +17,9 @@ const randomString = new random.RandomString("service-name", {
 const serviceName = pulumi.interpolate`run-${randomString.result}`;
 
 const service = new google.run.v1.Service("service", {
-    projectsId: project,
-    locationsId: region,
-    servicesId: serviceName,
+    project,
+    location: region,
+    serviceId: serviceName,
     apiVersion: "serving.knative.dev/v1",
     kind: "Service",
     metadata: {
@@ -35,9 +35,9 @@ const service = new google.run.v1.Service("service", {
 });
 
 const iamHello = new google.run.v1.ServiceIamPolicy("allow-all", {
-    projectsId: project,
-    locationsId: region,
-    servicesId: service.metadata.name,
+    project,
+    location: region,
+    serviceId: service.metadata.name,
     bindings: [{
         members: ["allUsers"],
         role: "roles/run.invoker",

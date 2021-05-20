@@ -36,14 +36,14 @@ func NewOrganizationDeveloperSubscription(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DevelopersId == nil {
-		return nil, errors.New("invalid value for required argument 'DevelopersId'")
+	if args.DeveloperId == nil {
+		return nil, errors.New("invalid value for required argument 'DeveloperId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SubscriptionsId == nil {
-		return nil, errors.New("invalid value for required argument 'SubscriptionsId'")
+	if args.SubscriptionId == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
 	}
 	var resource OrganizationDeveloperSubscription
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationDeveloperSubscription", name, args, &resource, opts...)
@@ -102,27 +102,27 @@ func (OrganizationDeveloperSubscriptionState) ElementType() reflect.Type {
 
 type organizationDeveloperSubscriptionArgs struct {
 	// Name of the API product for which the developer is purchasing a subscription.
-	Apiproduct   *string `pulumi:"apiproduct"`
-	DevelopersId string  `pulumi:"developersId"`
+	Apiproduct  *string `pulumi:"apiproduct"`
+	DeveloperId string  `pulumi:"developerId"`
 	// Time when the API product subscription ends in milliseconds since epoch.
-	EndTime         *string `pulumi:"endTime"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	EndTime        *string `pulumi:"endTime"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Time when the API product subscription starts in milliseconds since epoch.
-	StartTime       *string `pulumi:"startTime"`
-	SubscriptionsId string  `pulumi:"subscriptionsId"`
+	StartTime      *string `pulumi:"startTime"`
+	SubscriptionId string  `pulumi:"subscriptionId"`
 }
 
 // The set of arguments for constructing a OrganizationDeveloperSubscription resource.
 type OrganizationDeveloperSubscriptionArgs struct {
 	// Name of the API product for which the developer is purchasing a subscription.
-	Apiproduct   pulumi.StringPtrInput
-	DevelopersId pulumi.StringInput
+	Apiproduct  pulumi.StringPtrInput
+	DeveloperId pulumi.StringInput
 	// Time when the API product subscription ends in milliseconds since epoch.
-	EndTime         pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	EndTime        pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Time when the API product subscription starts in milliseconds since epoch.
-	StartTime       pulumi.StringPtrInput
-	SubscriptionsId pulumi.StringInput
+	StartTime      pulumi.StringPtrInput
+	SubscriptionId pulumi.StringInput
 }
 
 func (OrganizationDeveloperSubscriptionArgs) ElementType() reflect.Type {

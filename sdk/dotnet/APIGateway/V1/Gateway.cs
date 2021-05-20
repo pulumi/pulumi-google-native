@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
 
-        [Input("gatewaysId", required: true)]
-        public Input<string> GatewaysId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -138,11 +135,11 @@ namespace Pulumi.GoogleNative.APIGateway.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public GatewayArgs()
         {

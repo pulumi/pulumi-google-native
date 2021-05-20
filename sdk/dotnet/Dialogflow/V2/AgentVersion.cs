@@ -96,14 +96,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("versionsId", required: true)]
-        public Input<string> VersionsId { get; set; } = null!;
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
 
         public AgentVersionArgs()
         {

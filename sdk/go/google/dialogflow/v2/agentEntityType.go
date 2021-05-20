@@ -36,14 +36,14 @@ func NewAgentEntityType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EntityTypesId == nil {
-		return nil, errors.New("invalid value for required argument 'EntityTypesId'")
+	if args.EntityTypeId == nil {
+		return nil, errors.New("invalid value for required argument 'EntityTypeId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentEntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v2:AgentEntityType", name, args, &resource, opts...)
@@ -108,15 +108,15 @@ type agentEntityTypeArgs struct {
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
 	// Optional. The collection of entity entries associated with the entity type.
-	Entities      []GoogleCloudDialogflowV2EntityTypeEntity `pulumi:"entities"`
-	EntityTypesId string                                    `pulumi:"entityTypesId"`
+	Entities     []GoogleCloudDialogflowV2EntityTypeEntity `pulumi:"entities"`
+	EntityTypeId string                                    `pulumi:"entityTypeId"`
 	// Required. Indicates the kind of entity type.
 	Kind         *string `pulumi:"kind"`
 	LanguageCode *string `pulumi:"languageCode"`
-	LocationsId  string  `pulumi:"locationsId"`
+	Location     string  `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AgentEntityType resource.
@@ -128,15 +128,15 @@ type AgentEntityTypeArgs struct {
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
 	// Optional. The collection of entity entries associated with the entity type.
-	Entities      GoogleCloudDialogflowV2EntityTypeEntityArrayInput
-	EntityTypesId pulumi.StringInput
+	Entities     GoogleCloudDialogflowV2EntityTypeEntityArrayInput
+	EntityTypeId pulumi.StringInput
 	// Required. Indicates the kind of entity type.
 	Kind         pulumi.StringPtrInput
 	LanguageCode pulumi.StringPtrInput
-	LocationsId  pulumi.StringInput
+	Location     pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (AgentEntityTypeArgs) ElementType() reflect.Type {

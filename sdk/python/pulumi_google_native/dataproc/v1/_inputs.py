@@ -1518,16 +1518,16 @@ class JobPlacementArgs:
 class JobReferenceArgs:
     def __init__(__self__, *,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Encapsulates the full scoping used to reference a job.
         :param pulumi.Input[str] job_id: Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
-        :param pulumi.Input[str] project_id: Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+        :param pulumi.Input[str] project: Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
         """
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="jobId")
@@ -1542,16 +1542,16 @@ class JobReferenceArgs:
         pulumi.set(self, "job_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

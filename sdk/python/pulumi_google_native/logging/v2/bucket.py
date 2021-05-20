@@ -14,9 +14,8 @@ __all__ = ['BucketArgs', 'Bucket']
 class BucketArgs:
     def __init__(__self__, *,
                  bucket_id: pulumi.Input[str],
-                 buckets_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29,9 +28,8 @@ class BucketArgs:
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
-        pulumi.set(__self__, "buckets_id", buckets_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if locked is not None:
@@ -51,31 +49,22 @@ class BucketArgs:
         pulumi.set(self, "bucket_id", value)
 
     @property
-    @pulumi.getter(name="bucketsId")
-    def buckets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "buckets_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @buckets_id.setter
-    def buckets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "buckets_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -132,11 +121,10 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 buckets_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -175,11 +163,10 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 buckets_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -197,17 +184,14 @@ class Bucket(pulumi.CustomResource):
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
-            if buckets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'buckets_id'")
-            __props__.__dict__["buckets_id"] = buckets_id
             __props__.__dict__["description"] = description
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["locked"] = locked
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["restricted_fields"] = restricted_fields
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["create_time"] = None

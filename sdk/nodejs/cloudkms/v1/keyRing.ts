@@ -57,19 +57,15 @@ export class KeyRing extends pulumi.CustomResource {
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.keyRingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyRingsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
-            inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         } else {
@@ -88,7 +84,6 @@ export class KeyRing extends pulumi.CustomResource {
  */
 export interface KeyRingArgs {
     readonly keyRingId: pulumi.Input<string>;
-    readonly keyRingsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

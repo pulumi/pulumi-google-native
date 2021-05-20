@@ -30,17 +30,17 @@ func NewConversationParticipant(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConversationsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConversationsId'")
+	if args.ConversationId == nil {
+		return nil, errors.New("invalid value for required argument 'ConversationId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ParticipantsId == nil {
-		return nil, errors.New("invalid value for required argument 'ParticipantsId'")
+	if args.ParticipantId == nil {
+		return nil, errors.New("invalid value for required argument 'ParticipantId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ConversationParticipant
 	err := ctx.RegisterResource("google-native:dialogflow/v2:ConversationParticipant", name, args, &resource, opts...)
@@ -86,12 +86,12 @@ func (ConversationParticipantState) ElementType() reflect.Type {
 }
 
 type conversationParticipantArgs struct {
-	ConversationsId string `pulumi:"conversationsId"`
-	LocationsId     string `pulumi:"locationsId"`
+	ConversationId string `pulumi:"conversationId"`
+	Location       string `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name           *string `pulumi:"name"`
-	ParticipantsId string  `pulumi:"participantsId"`
-	ProjectsId     string  `pulumi:"projectsId"`
+	Name          *string `pulumi:"name"`
+	ParticipantId string  `pulumi:"participantId"`
+	Project       string  `pulumi:"project"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role *string `pulumi:"role"`
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
@@ -100,12 +100,12 @@ type conversationParticipantArgs struct {
 
 // The set of arguments for constructing a ConversationParticipant resource.
 type ConversationParticipantArgs struct {
-	ConversationsId pulumi.StringInput
-	LocationsId     pulumi.StringInput
+	ConversationId pulumi.StringInput
+	Location       pulumi.StringInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name           pulumi.StringPtrInput
-	ParticipantsId pulumi.StringInput
-	ProjectsId     pulumi.StringInput
+	Name          pulumi.StringPtrInput
+	ParticipantId pulumi.StringInput
+	Project       pulumi.StringInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role pulumi.StringPtrInput
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.

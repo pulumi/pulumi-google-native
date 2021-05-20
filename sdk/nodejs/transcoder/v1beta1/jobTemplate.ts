@@ -58,21 +58,17 @@ export class JobTemplate extends pulumi.CustomResource {
             if ((!args || args.jobTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobTemplateId'");
             }
-            if ((!args || args.jobTemplatesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobTemplatesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["jobTemplateId"] = args ? args.jobTemplateId : undefined;
-            inputs["jobTemplatesId"] = args ? args.jobTemplatesId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["config"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -93,11 +89,10 @@ export interface JobTemplateArgs {
      */
     readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
     readonly jobTemplateId: pulumi.Input<string>;
-    readonly jobTemplatesId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

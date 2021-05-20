@@ -66,25 +66,25 @@ export class TaxonomyPolicyTag extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.policyTagsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'policyTagsId'");
+            if ((!args || args.policyTagId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'policyTagId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.taxonomiesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'taxonomiesId'");
+            if ((!args || args.taxonomyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'taxonomyId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["parentPolicyTag"] = args ? args.parentPolicyTag : undefined;
-            inputs["policyTagsId"] = args ? args.policyTagsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["taxonomiesId"] = args ? args.taxonomiesId : undefined;
+            inputs["policyTagId"] = args ? args.policyTagId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["taxonomyId"] = args ? args.taxonomyId : undefined;
             inputs["childPolicyTags"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         } else {
@@ -113,12 +113,12 @@ export interface TaxonomyPolicyTagArgs {
      * Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */
     readonly parentPolicyTag?: pulumi.Input<string>;
-    readonly policyTagsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly taxonomiesId: pulumi.Input<string>;
+    readonly policyTagId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly taxonomyId: pulumi.Input<string>;
 }

@@ -50,14 +50,14 @@ func NewOrganizationDeveloperApp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppsId == nil {
-		return nil, errors.New("invalid value for required argument 'AppsId'")
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	if args.DevelopersId == nil {
-		return nil, errors.New("invalid value for required argument 'DevelopersId'")
+	if args.DeveloperId == nil {
+		return nil, errors.New("invalid value for required argument 'DeveloperId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationDeveloperApp
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationDeveloperApp", name, args, &resource, opts...)
@@ -148,20 +148,18 @@ type organizationDeveloperAppArgs struct {
 	// Developer app family.
 	AppFamily *string `pulumi:"appFamily"`
 	// ID of the developer app.
-	AppId  *string `pulumi:"appId"`
-	AppsId string  `pulumi:"appsId"`
+	AppId string `pulumi:"appId"`
 	// List of attributes for the developer app.
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
 	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
 	CallbackUrl *string `pulumi:"callbackUrl"`
 	// ID of the developer.
-	DeveloperId  *string `pulumi:"developerId"`
-	DevelopersId string  `pulumi:"developersId"`
+	DeveloperId string `pulumi:"developerId"`
 	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	KeyExpiresIn *string `pulumi:"keyExpiresIn"`
 	// Name of the developer app.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
 	Scopes []string `pulumi:"scopes"`
 	// Status of the credential. Valid values include `approved` or `revoked`.
@@ -175,20 +173,18 @@ type OrganizationDeveloperAppArgs struct {
 	// Developer app family.
 	AppFamily pulumi.StringPtrInput
 	// ID of the developer app.
-	AppId  pulumi.StringPtrInput
-	AppsId pulumi.StringInput
+	AppId pulumi.StringInput
 	// List of attributes for the developer app.
 	Attributes GoogleCloudApigeeV1AttributeArrayInput
 	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
 	CallbackUrl pulumi.StringPtrInput
 	// ID of the developer.
-	DeveloperId  pulumi.StringPtrInput
-	DevelopersId pulumi.StringInput
+	DeveloperId pulumi.StringInput
 	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	KeyExpiresIn pulumi.StringPtrInput
 	// Name of the developer app.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
 	Scopes pulumi.StringArrayInput
 	// Status of the credential. Valid values include `approved` or `revoked`.

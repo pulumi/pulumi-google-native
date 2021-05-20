@@ -67,17 +67,17 @@ export class Repo extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.reposId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reposId'");
+            if ((!args || args.repoId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'repoId'");
             }
             inputs["mirrorConfig"] = args ? args.mirrorConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
-            inputs["reposId"] = args ? args.reposId : undefined;
+            inputs["repoId"] = args ? args.repoId : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["url"] = args ? args.url : undefined;
         } else {
@@ -106,12 +106,12 @@ export interface RepoArgs {
      * Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
     readonly pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly reposId: pulumi.Input<string>;
+    readonly repoId: pulumi.Input<string>;
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */

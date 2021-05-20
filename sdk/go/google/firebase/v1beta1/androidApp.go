@@ -24,7 +24,7 @@ type AndroidApp struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringOutput `pulumi:"packageName"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewAndroidApp registers a new resource with the given unique name, arguments, and options.
@@ -34,11 +34,11 @@ func NewAndroidApp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AndroidAppsId == nil {
-		return nil, errors.New("invalid value for required argument 'AndroidAppsId'")
+	if args.AndroidAppId == nil {
+		return nil, errors.New("invalid value for required argument 'AndroidAppId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AndroidApp
 	err := ctx.RegisterResource("google-native:firebase/v1beta1:AndroidApp", name, args, &resource, opts...)
@@ -71,7 +71,7 @@ type androidAppState struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName *string `pulumi:"packageName"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 type AndroidAppState struct {
@@ -84,7 +84,7 @@ type AndroidAppState struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringPtrInput
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 }
 
 func (AndroidAppState) ElementType() reflect.Type {
@@ -92,7 +92,7 @@ func (AndroidAppState) ElementType() reflect.Type {
 }
 
 type androidAppArgs struct {
-	AndroidAppsId string `pulumi:"androidAppsId"`
+	AndroidAppId string `pulumi:"androidAppId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// The user-assigned display name for the `AndroidApp`.
@@ -102,13 +102,12 @@ type androidAppArgs struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName *string `pulumi:"packageName"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	ProjectId  *string `pulumi:"projectId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AndroidApp resource.
 type AndroidAppArgs struct {
-	AndroidAppsId pulumi.StringInput
+	AndroidAppId pulumi.StringInput
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// The user-assigned display name for the `AndroidApp`.
@@ -118,8 +117,7 @@ type AndroidAppArgs struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringPtrInput
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	ProjectId  pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Project pulumi.StringInput
 }
 
 func (AndroidAppArgs) ElementType() reflect.Type {

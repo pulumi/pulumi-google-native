@@ -87,30 +87,26 @@ export class DatasetFhirStore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.fhirStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'fhirStoresId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
             inputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
             inputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
             inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
-            inputs["fhirStoresId"] = args ? args.fhirStoresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             inputs["validationConfig"] = args ? args.validationConfig : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -137,7 +133,7 @@ export class DatasetFhirStore extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetFhirStore resource.
  */
 export interface DatasetFhirStoreArgs {
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
      */
@@ -155,12 +151,11 @@ export interface DatasetFhirStoreArgs {
      */
     readonly enableUpdateCreate?: pulumi.Input<boolean>;
     readonly fhirStoreId?: pulumi.Input<string>;
-    readonly fhirStoresId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
      */
@@ -169,7 +164,7 @@ export interface DatasetFhirStoreArgs {
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */

@@ -43,17 +43,14 @@ func NewInstanceClusterBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
-	if args.BackupsId == nil {
-		return nil, errors.New("invalid value for required argument 'BackupsId'")
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	if args.ClustersId == nil {
-		return nil, errors.New("invalid value for required argument 'ClustersId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource InstanceClusterBackup
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:InstanceClusterBackup", name, args, &resource, opts...)
@@ -119,30 +116,28 @@ func (InstanceClusterBackupState) ElementType() reflect.Type {
 }
 
 type instanceClusterBackupArgs struct {
-	BackupId   string `pulumi:"backupId"`
-	BackupsId  string `pulumi:"backupsId"`
-	ClustersId string `pulumi:"clustersId"`
+	BackupId  string `pulumi:"backupId"`
+	ClusterId string `pulumi:"clusterId"`
 	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
-	ExpireTime  *string `pulumi:"expireTime"`
-	InstancesId string  `pulumi:"instancesId"`
+	ExpireTime *string `pulumi:"expireTime"`
+	InstanceId string  `pulumi:"instanceId"`
 	// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
 	SourceTable *string `pulumi:"sourceTable"`
 }
 
 // The set of arguments for constructing a InstanceClusterBackup resource.
 type InstanceClusterBackupArgs struct {
-	BackupId   pulumi.StringInput
-	BackupsId  pulumi.StringInput
-	ClustersId pulumi.StringInput
+	BackupId  pulumi.StringInput
+	ClusterId pulumi.StringInput
 	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
-	ExpireTime  pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
+	ExpireTime pulumi.StringPtrInput
+	InstanceId pulumi.StringInput
 	// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
 	SourceTable pulumi.StringPtrInput
 }

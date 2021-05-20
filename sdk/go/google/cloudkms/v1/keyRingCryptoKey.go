@@ -43,17 +43,14 @@ func NewKeyRingCryptoKey(ctx *pulumi.Context,
 	if args.CryptoKeyId == nil {
 		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
 	}
-	if args.CryptoKeysId == nil {
-		return nil, errors.New("invalid value for required argument 'CryptoKeysId'")
+	if args.KeyRingId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.KeyRingsId == nil {
-		return nil, errors.New("invalid value for required argument 'KeyRingsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource KeyRingCryptoKey
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRingCryptoKey", name, args, &resource, opts...)
@@ -119,15 +116,14 @@ func (KeyRingCryptoKeyState) ElementType() reflect.Type {
 }
 
 type keyRingCryptoKeyArgs struct {
-	CryptoKeyId  string `pulumi:"cryptoKeyId"`
-	CryptoKeysId string `pulumi:"cryptoKeysId"`
-	KeyRingsId   string `pulumi:"keyRingsId"`
+	CryptoKeyId string `pulumi:"cryptoKeyId"`
+	KeyRingId   string `pulumi:"keyRingId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime *string `pulumi:"nextRotationTime"`
-	ProjectsId       string  `pulumi:"projectsId"`
+	Project          string  `pulumi:"project"`
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose *string `pulumi:"purpose"`
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
@@ -139,15 +135,14 @@ type keyRingCryptoKeyArgs struct {
 
 // The set of arguments for constructing a KeyRingCryptoKey resource.
 type KeyRingCryptoKeyArgs struct {
-	CryptoKeyId  pulumi.StringInput
-	CryptoKeysId pulumi.StringInput
-	KeyRingsId   pulumi.StringInput
+	CryptoKeyId pulumi.StringInput
+	KeyRingId   pulumi.StringInput
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime pulumi.StringPtrInput
-	ProjectsId       pulumi.StringInput
+	Project          pulumi.StringInput
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose pulumi.StringPtrInput
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.

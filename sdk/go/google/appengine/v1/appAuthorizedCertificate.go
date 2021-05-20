@@ -40,11 +40,11 @@ func NewAppAuthorizedCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppsId == nil {
-		return nil, errors.New("invalid value for required argument 'AppsId'")
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	if args.AuthorizedCertificatesId == nil {
-		return nil, errors.New("invalid value for required argument 'AuthorizedCertificatesId'")
+	if args.AuthorizedCertificateId == nil {
+		return nil, errors.New("invalid value for required argument 'AuthorizedCertificateId'")
 	}
 	var resource AppAuthorizedCertificate
 	err := ctx.RegisterResource("google-native:appengine/v1:AppAuthorizedCertificate", name, args, &resource, opts...)
@@ -110,8 +110,8 @@ func (AppAuthorizedCertificateState) ElementType() reflect.Type {
 }
 
 type appAuthorizedCertificateArgs struct {
-	AppsId                   string `pulumi:"appsId"`
-	AuthorizedCertificatesId string `pulumi:"authorizedCertificatesId"`
+	AppId                   string `pulumi:"appId"`
+	AuthorizedCertificateId string `pulumi:"authorizedCertificateId"`
 	// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
 	CertificateRawData *CertificateRawData `pulumi:"certificateRawData"`
 	// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
@@ -134,8 +134,8 @@ type appAuthorizedCertificateArgs struct {
 
 // The set of arguments for constructing a AppAuthorizedCertificate resource.
 type AppAuthorizedCertificateArgs struct {
-	AppsId                   pulumi.StringInput
-	AuthorizedCertificatesId pulumi.StringInput
+	AppId                   pulumi.StringInput
+	AuthorizedCertificateId pulumi.StringInput
 	// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
 	CertificateRawData CertificateRawDataPtrInput
 	// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.

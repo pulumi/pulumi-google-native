@@ -34,14 +34,14 @@ func NewDomainmapping(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainmappingsId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainmappingsId'")
+	if args.DomainmappingId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainmappingId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Domainmapping
 	err := ctx.RegisterResource("google-native:run/v1:Domainmapping", name, args, &resource, opts...)
@@ -96,15 +96,15 @@ func (DomainmappingState) ElementType() reflect.Type {
 
 type domainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion       *string `pulumi:"apiVersion"`
-	DomainmappingsId string  `pulumi:"domainmappingsId"`
-	DryRun           *string `pulumi:"dryRun"`
+	ApiVersion      *string `pulumi:"apiVersion"`
+	DomainmappingId string  `pulumi:"domainmappingId"`
+	DryRun          *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
-	Kind        *string `pulumi:"kind"`
-	LocationsId string  `pulumi:"locationsId"`
+	Kind     *string `pulumi:"kind"`
+	Location string  `pulumi:"location"`
 	// Metadata associated with this BuildTemplate.
-	Metadata   *ObjectMeta `pulumi:"metadata"`
-	ProjectsId string      `pulumi:"projectsId"`
+	Metadata *ObjectMeta `pulumi:"metadata"`
+	Project  string      `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
 	// The current status of the DomainMapping.
@@ -114,15 +114,15 @@ type domainmappingArgs struct {
 // The set of arguments for constructing a Domainmapping resource.
 type DomainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion       pulumi.StringPtrInput
-	DomainmappingsId pulumi.StringInput
-	DryRun           pulumi.StringPtrInput
+	ApiVersion      pulumi.StringPtrInput
+	DomainmappingId pulumi.StringInput
+	DryRun          pulumi.StringPtrInput
 	// The kind of resource, in this case "DomainMapping".
-	Kind        pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Kind     pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// Metadata associated with this BuildTemplate.
-	Metadata   ObjectMetaPtrInput
-	ProjectsId pulumi.StringInput
+	Metadata ObjectMetaPtrInput
+	Project  pulumi.StringInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
 	// The current status of the DomainMapping.

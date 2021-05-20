@@ -1902,7 +1902,7 @@ class TestExecutionArgs:
                  environment: Optional[pulumi.Input['EnvironmentArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  matrix_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  shard: Optional[pulumi.Input['ShardArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  test_details: Optional[pulumi.Input['TestDetailsArgs']] = None,
@@ -1914,7 +1914,7 @@ class TestExecutionArgs:
         :param pulumi.Input['EnvironmentArgs'] environment: How the host machine(s) are configured.
         :param pulumi.Input[str] id: Unique id set by the service.
         :param pulumi.Input[str] matrix_id: Id of the containing TestMatrix.
-        :param pulumi.Input[str] project_id: The cloud project that owns the test execution.
+        :param pulumi.Input[str] project: The cloud project that owns the test execution.
         :param pulumi.Input['ShardArgs'] shard: Details about the shard.
         :param pulumi.Input[str] state: Indicates the current progress of the test execution (e.g., FINISHED).
         :param pulumi.Input['TestDetailsArgs'] test_details: Additional details about the running test.
@@ -1928,8 +1928,8 @@ class TestExecutionArgs:
             pulumi.set(__self__, "id", id)
         if matrix_id is not None:
             pulumi.set(__self__, "matrix_id", matrix_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if shard is not None:
             pulumi.set(__self__, "shard", shard)
         if state is not None:
@@ -1980,16 +1980,16 @@ class TestExecutionArgs:
         pulumi.set(self, "matrix_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The cloud project that owns the test execution.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -2397,19 +2397,19 @@ class ToolResultsExecutionArgs:
     def __init__(__self__, *,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Represents a tool results execution resource. This has the results of a TestMatrix.
         :param pulumi.Input[str] execution_id: A tool results execution ID.
         :param pulumi.Input[str] history_id: A tool results history ID.
-        :param pulumi.Input[str] project_id: The cloud project that owns the tool results execution.
+        :param pulumi.Input[str] project: The cloud project that owns the tool results execution.
         """
         if execution_id is not None:
             pulumi.set(__self__, "execution_id", execution_id)
         if history_id is not None:
             pulumi.set(__self__, "history_id", history_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="executionId")
@@ -2436,32 +2436,32 @@ class ToolResultsExecutionArgs:
         pulumi.set(self, "history_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The cloud project that owns the tool results execution.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class ToolResultsHistoryArgs:
     def __init__(__self__, *,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Represents a tool results history resource.
         :param pulumi.Input[str] history_id: Required. A tool results history ID.
-        :param pulumi.Input[str] project_id: Required. The cloud project that owns the tool results history.
+        :param pulumi.Input[str] project: Required. The cloud project that owns the tool results history.
         """
         if history_id is not None:
             pulumi.set(__self__, "history_id", history_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="historyId")
@@ -2476,16 +2476,16 @@ class ToolResultsHistoryArgs:
         pulumi.set(self, "history_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The cloud project that owns the tool results history.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -2493,21 +2493,21 @@ class ToolResultsStepArgs:
     def __init__(__self__, *,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  step_id: Optional[pulumi.Input[str]] = None):
         """
         Represents a tool results step resource. This has the results of a TestExecution.
         :param pulumi.Input[str] execution_id: A tool results execution ID.
         :param pulumi.Input[str] history_id: A tool results history ID.
-        :param pulumi.Input[str] project_id: The cloud project that owns the tool results step.
+        :param pulumi.Input[str] project: The cloud project that owns the tool results step.
         :param pulumi.Input[str] step_id: A tool results step ID.
         """
         if execution_id is not None:
             pulumi.set(__self__, "execution_id", execution_id)
         if history_id is not None:
             pulumi.set(__self__, "history_id", history_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if step_id is not None:
             pulumi.set(__self__, "step_id", step_id)
 
@@ -2536,16 +2536,16 @@ class ToolResultsStepArgs:
         pulumi.set(self, "history_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The cloud project that owns the tool results step.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="stepId")

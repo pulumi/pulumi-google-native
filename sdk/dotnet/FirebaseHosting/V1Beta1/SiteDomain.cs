@@ -96,6 +96,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
     public sealed class SiteDomainArgs : Pulumi.ResourceArgs
     {
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
         /// <summary>
         /// Required. The domain name of the association.
         /// </summary>
@@ -107,9 +110,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         [Input("domainRedirect")]
         public Input<Inputs.DomainRedirectArgs>? DomainRedirect { get; set; }
-
-        [Input("domainsId", required: true)]
-        public Input<string> DomainsId { get; set; } = null!;
 
         /// <summary>
         /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Input("site")]
         public Input<string>? Site { get; set; }
 
-        [Input("sitesId", required: true)]
-        public Input<string> SitesId { get; set; } = null!;
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Additional status of the domain association.

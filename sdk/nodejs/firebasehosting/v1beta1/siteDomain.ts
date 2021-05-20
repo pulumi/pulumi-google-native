@@ -71,18 +71,18 @@ export class SiteDomain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainsId'");
+            if ((!args || args.domainId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainId'");
             }
-            if ((!args || args.sitesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sitesId'");
+            if ((!args || args.siteId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'siteId'");
             }
+            inputs["domainId"] = args ? args.domainId : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["domainRedirect"] = args ? args.domainRedirect : undefined;
-            inputs["domainsId"] = args ? args.domainsId : undefined;
             inputs["provisioning"] = args ? args.provisioning : undefined;
             inputs["site"] = args ? args.site : undefined;
-            inputs["sitesId"] = args ? args.sitesId : undefined;
+            inputs["siteId"] = args ? args.siteId : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -104,6 +104,7 @@ export class SiteDomain extends pulumi.CustomResource {
  * The set of arguments for constructing a SiteDomain resource.
  */
 export interface SiteDomainArgs {
+    readonly domainId: pulumi.Input<string>;
     /**
      * Required. The domain name of the association.
      */
@@ -112,7 +113,6 @@ export interface SiteDomainArgs {
      * If set, the domain should redirect with the provided parameters.
      */
     readonly domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
-    readonly domainsId: pulumi.Input<string>;
     /**
      * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
      */
@@ -121,7 +121,7 @@ export interface SiteDomainArgs {
      * Required. The site name of the association.
      */
     readonly site?: pulumi.Input<string>;
-    readonly sitesId: pulumi.Input<string>;
+    readonly siteId: pulumi.Input<string>;
     /**
      * Additional status of the domain association.
      */

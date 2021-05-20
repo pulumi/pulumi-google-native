@@ -36,11 +36,11 @@ func NewFolderContact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ContactsId == nil {
-		return nil, errors.New("invalid value for required argument 'ContactsId'")
+	if args.ContactId == nil {
+		return nil, errors.New("invalid value for required argument 'ContactId'")
 	}
-	if args.FoldersId == nil {
-		return nil, errors.New("invalid value for required argument 'FoldersId'")
+	if args.FolderId == nil {
+		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
 	var resource FolderContact
 	err := ctx.RegisterResource("google-native:essentialcontacts/v1:FolderContact", name, args, &resource, opts...)
@@ -98,10 +98,10 @@ func (FolderContactState) ElementType() reflect.Type {
 }
 
 type folderContactArgs struct {
-	ContactsId string `pulumi:"contactsId"`
+	ContactId string `pulumi:"contactId"`
 	// Required. The email address to send notifications to. This does not need to be a Google account.
-	Email     *string `pulumi:"email"`
-	FoldersId string  `pulumi:"foldersId"`
+	Email    *string `pulumi:"email"`
+	FolderId string  `pulumi:"folderId"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag *string `pulumi:"languageTag"`
 	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
@@ -116,10 +116,10 @@ type folderContactArgs struct {
 
 // The set of arguments for constructing a FolderContact resource.
 type FolderContactArgs struct {
-	ContactsId pulumi.StringInput
+	ContactId pulumi.StringInput
 	// Required. The email address to send notifications to. This does not need to be a Google account.
-	Email     pulumi.StringPtrInput
-	FoldersId pulumi.StringInput
+	Email    pulumi.StringPtrInput
+	FolderId pulumi.StringInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag pulumi.StringPtrInput
 	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}

@@ -2198,7 +2198,7 @@ type BuildProvenance struct {
 	// URI where any logs for this provenance were written.
 	LogsUri *string `pulumi:"logsUri"`
 	// ID of the project.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Details of the Source input to the build.
 	SourceProvenance *Source `pulumi:"sourceProvenance"`
 	// Time at which execution of the build was started.
@@ -2239,7 +2239,7 @@ type BuildProvenanceArgs struct {
 	// URI where any logs for this provenance were written.
 	LogsUri pulumi.StringPtrInput `pulumi:"logsUri"`
 	// ID of the project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Details of the Source input to the build.
 	SourceProvenance SourcePtrInput `pulumi:"sourceProvenance"`
 	// Time at which execution of the build was started.
@@ -2372,8 +2372,8 @@ func (o BuildProvenanceOutput) LogsUri() pulumi.StringPtrOutput {
 }
 
 // ID of the project.
-func (o BuildProvenanceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildProvenance) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o BuildProvenanceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildProvenance) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Details of the Source input to the build.
@@ -2500,12 +2500,12 @@ func (o BuildProvenancePtrOutput) LogsUri() pulumi.StringPtrOutput {
 }
 
 // ID of the project.
-func (o BuildProvenancePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o BuildProvenancePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildProvenance) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2558,7 +2558,7 @@ type BuildProvenanceResponse struct {
 	// URI where any logs for this provenance were written.
 	LogsUri string `pulumi:"logsUri"`
 	// ID of the project.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Details of the Source input to the build.
 	SourceProvenance SourceResponse `pulumi:"sourceProvenance"`
 	// Time at which execution of the build was started.
@@ -2597,7 +2597,7 @@ type BuildProvenanceResponseArgs struct {
 	// URI where any logs for this provenance were written.
 	LogsUri pulumi.StringInput `pulumi:"logsUri"`
 	// ID of the project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Details of the Source input to the build.
 	SourceProvenance SourceResponseInput `pulumi:"sourceProvenance"`
 	// Time at which execution of the build was started.
@@ -2725,8 +2725,8 @@ func (o BuildProvenanceResponseOutput) LogsUri() pulumi.StringOutput {
 }
 
 // ID of the project.
-func (o BuildProvenanceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o BuildProvenanceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Details of the Source input to the build.
@@ -2843,12 +2843,12 @@ func (o BuildProvenanceResponsePtrOutput) LogsUri() pulumi.StringPtrOutput {
 }
 
 // ID of the project.
-func (o BuildProvenanceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o BuildProvenanceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15448,7 +15448,7 @@ func (o PgpSignedAttestationResponsePtrOutput) Signature() pulumi.StringPtrOutpu
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 type ProjectRepoId struct {
 	// The ID of the project.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// The name of the repo. Leave empty for the default repo.
 	RepoName *string `pulumi:"repoName"`
 }
@@ -15467,7 +15467,7 @@ type ProjectRepoIdInput interface {
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 type ProjectRepoIdArgs struct {
 	// The ID of the project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The name of the repo. Leave empty for the default repo.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
 }
@@ -15551,8 +15551,8 @@ func (o ProjectRepoIdOutput) ToProjectRepoIdPtrOutputWithContext(ctx context.Con
 }
 
 // The ID of the project.
-func (o ProjectRepoIdOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectRepoId) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o ProjectRepoIdOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectRepoId) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // The name of the repo. Leave empty for the default repo.
@@ -15579,12 +15579,12 @@ func (o ProjectRepoIdPtrOutput) Elem() ProjectRepoIdOutput {
 }
 
 // The ID of the project.
-func (o ProjectRepoIdPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ProjectRepoIdPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectRepoId) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15601,7 +15601,7 @@ func (o ProjectRepoIdPtrOutput) RepoName() pulumi.StringPtrOutput {
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 type ProjectRepoIdResponse struct {
 	// The ID of the project.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// The name of the repo. Leave empty for the default repo.
 	RepoName string `pulumi:"repoName"`
 }
@@ -15620,7 +15620,7 @@ type ProjectRepoIdResponseInput interface {
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 type ProjectRepoIdResponseArgs struct {
 	// The ID of the project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// The name of the repo. Leave empty for the default repo.
 	RepoName pulumi.StringInput `pulumi:"repoName"`
 }
@@ -15704,8 +15704,8 @@ func (o ProjectRepoIdResponseOutput) ToProjectRepoIdResponsePtrOutputWithContext
 }
 
 // The ID of the project.
-func (o ProjectRepoIdResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v ProjectRepoIdResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o ProjectRepoIdResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectRepoIdResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // The name of the repo. Leave empty for the default repo.
@@ -15732,12 +15732,12 @@ func (o ProjectRepoIdResponsePtrOutput) Elem() ProjectRepoIdResponseOutput {
 }
 
 // The ID of the project.
-func (o ProjectRepoIdResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ProjectRepoIdResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectRepoIdResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

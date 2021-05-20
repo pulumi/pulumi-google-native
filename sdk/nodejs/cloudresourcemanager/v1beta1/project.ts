@@ -58,7 +58,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
@@ -75,15 +75,15 @@ export class Project extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["projectNumber"] = args ? args.projectNumber : undefined;
             inputs["useLegacyStack"] = args ? args.useLegacyStack : undefined;
         } else {
@@ -92,7 +92,7 @@ export class Project extends pulumi.CustomResource {
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["parent"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["projectNumber"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -129,7 +129,7 @@ export interface ProjectArgs {
     /**
      * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */

@@ -15,9 +15,9 @@ __all__ = ['AgentArgs', 'Agent']
 @pulumi.input_type
 class AgentArgs:
     def __init__(__self__, *,
-                 agents_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 agent_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -43,9 +43,9 @@ class AgentArgs:
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[str] time_zone: Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
-        pulumi.set(__self__, "agents_id", agents_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
         if default_language_code is not None:
@@ -70,31 +70,31 @@ class AgentArgs:
             pulumi.set(__self__, "time_zone", time_zone)
 
     @property
-    @pulumi.getter(name="agentsId")
-    def agents_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "agents_id")
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "agent_id")
 
-    @agents_id.setter
-    def agents_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "agents_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "agent_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="avatarUri")
@@ -234,16 +234,16 @@ class Agent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
@@ -290,16 +290,16 @@ class Agent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
@@ -316,22 +316,22 @@ class Agent(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentArgs.__new__(AgentArgs)
 
-            if agents_id is None and not opts.urn:
-                raise TypeError("Missing required property 'agents_id'")
-            __props__.__dict__["agents_id"] = agents_id
+            if agent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'agent_id'")
+            __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["avatar_uri"] = avatar_uri
             __props__.__dict__["default_language_code"] = default_language_code
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
             __props__.__dict__["start_flow"] = start_flow

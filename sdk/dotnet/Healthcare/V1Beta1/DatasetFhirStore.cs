@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetFhirStoreArgs : Pulumi.ResourceArgs
     {
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
         /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
@@ -150,9 +150,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("fhirStoreId")]
         public Input<string>? FhirStoreId { get; set; }
 
-        [Input("fhirStoresId", required: true)]
-        public Input<string> FhirStoresId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -165,8 +162,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
@@ -180,8 +177,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("streamConfigs")]
         private InputList<Inputs.StreamConfigArgs>? _streamConfigs;

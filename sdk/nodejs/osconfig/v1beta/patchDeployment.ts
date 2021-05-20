@@ -94,11 +94,8 @@ export class PatchDeployment extends pulumi.CustomResource {
             if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
-            if ((!args || args.patchDeploymentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'patchDeploymentsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["duration"] = args ? args.duration : undefined;
@@ -107,8 +104,7 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
             inputs["patchConfig"] = args ? args.patchConfig : undefined;
             inputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
-            inputs["patchDeploymentsId"] = args ? args.patchDeploymentsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
             inputs["rollout"] = args ? args.rollout : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -163,8 +159,7 @@ export interface PatchDeploymentArgs {
      */
     readonly patchConfig?: pulumi.Input<inputs.osconfig.v1beta.PatchConfigArgs>;
     readonly patchDeploymentId: pulumi.Input<string>;
-    readonly patchDeploymentsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Schedule recurring executions.
      */

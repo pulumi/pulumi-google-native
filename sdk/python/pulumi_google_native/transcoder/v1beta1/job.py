@@ -15,9 +15,9 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 jobs_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 job_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,9 +35,9 @@ class JobArgs:
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
-        pulumi.set(__self__, "jobs_id", jobs_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if input_uri is not None:
@@ -54,31 +54,31 @@ class JobArgs:
             pulumi.set(__self__, "ttl_after_completion_days", ttl_after_completion_days)
 
     @property
-    @pulumi.getter(name="jobsId")
-    def jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "jobs_id")
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "job_id")
 
-    @jobs_id.setter
-    def jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "jobs_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -172,12 +172,12 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
-                 jobs_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  ttl_after_completion_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -220,12 +220,12 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
-                 jobs_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  ttl_after_completion_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -242,18 +242,18 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["config"] = config
             __props__.__dict__["input_uri"] = input_uri
-            if jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'jobs_id'")
-            __props__.__dict__["jobs_id"] = jobs_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_id'")
+            __props__.__dict__["job_id"] = job_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["output_uri"] = output_uri
             __props__.__dict__["priority"] = priority
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["ttl_after_completion_days"] = ttl_after_completion_days
             __props__.__dict__["create_time"] = None

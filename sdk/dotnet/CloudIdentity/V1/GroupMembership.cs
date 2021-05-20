@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
 
     public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
     {
-        [Input("groupsId", required: true)]
-        public Input<string> GroupsId { get; set; } = null!;
+        [Input("groupId", required: true)]
+        public Input<string> GroupId { get; set; } = null!;
 
-        [Input("membershipsId", required: true)]
-        public Input<string> MembershipsId { get; set; } = null!;
+        [Input("membershipId", required: true)]
+        public Input<string> MembershipId { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the member.

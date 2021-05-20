@@ -195,17 +195,17 @@ export class AppServiceVersion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appsId'");
+            if ((!args || args.appId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.versionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionsId'");
+            if ((!args || args.versionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'versionId'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
-            inputs["appsId"] = args ? args.appsId : undefined;
+            inputs["appId"] = args ? args.appId : undefined;
             inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
             inputs["basicScaling"] = args ? args.basicScaling : undefined;
             inputs["betaSettings"] = args ? args.betaSettings : undefined;
@@ -238,11 +238,11 @@ export class AppServiceVersion extends pulumi.CustomResource {
             inputs["runtimeChannel"] = args ? args.runtimeChannel : undefined;
             inputs["runtimeMainExecutablePath"] = args ? args.runtimeMainExecutablePath : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
             inputs["threadsafe"] = args ? args.threadsafe : undefined;
+            inputs["versionId"] = args ? args.versionId : undefined;
             inputs["versionUrl"] = args ? args.versionUrl : undefined;
-            inputs["versionsId"] = args ? args.versionsId : undefined;
             inputs["vm"] = args ? args.vm : undefined;
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
         } else {
@@ -299,7 +299,7 @@ export interface AppServiceVersionArgs {
      * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
      */
     readonly apiConfig?: pulumi.Input<inputs.appengine.v1.ApiConfigHandlerArgs>;
-    readonly appsId: pulumi.Input<string>;
+    readonly appId: pulumi.Input<string>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
      */
@@ -428,7 +428,7 @@ export interface AppServiceVersionArgs {
      * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
      */
     readonly serviceAccount?: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
      */
@@ -437,11 +437,11 @@ export interface AppServiceVersionArgs {
      * Whether multiple requests can be dispatched to this version at once.
      */
     readonly threadsafe?: pulumi.Input<boolean>;
+    readonly versionId: pulumi.Input<string>;
     /**
      * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
      */
     readonly versionUrl?: pulumi.Input<string>;
-    readonly versionsId: pulumi.Input<string>;
     /**
      * Whether to deploy this version in a container on a virtual machine.
      */

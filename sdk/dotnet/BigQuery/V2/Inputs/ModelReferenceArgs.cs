@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// <summary>
         /// [Required] The ID of the project containing this model.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ModelReferenceArgs()
         {

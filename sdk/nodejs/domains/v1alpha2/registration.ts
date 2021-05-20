@@ -95,14 +95,14 @@ export class Registration extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.registrationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'registrationsId'");
+            if ((!args || args.registrationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'registrationId'");
             }
             inputs["contactNotices"] = args ? args.contactNotices : undefined;
             inputs["contactSettings"] = args ? args.contactSettings : undefined;
@@ -110,10 +110,10 @@ export class Registration extends pulumi.CustomResource {
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["domainNotices"] = args ? args.domainNotices : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["managementSettings"] = args ? args.managementSettings : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["registrationsId"] = args ? args.registrationsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["registrationId"] = args ? args.registrationId : undefined;
             inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["yearlyPrice"] = args ? args.yearlyPrice : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -172,13 +172,13 @@ export interface RegistrationArgs {
      * Set of labels associated with the `Registration`.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
      */
     readonly managementSettings?: pulumi.Input<inputs.domains.v1alpha2.ManagementSettingsArgs>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly registrationsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly registrationId: pulumi.Input<string>;
     /**
      * When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
      */

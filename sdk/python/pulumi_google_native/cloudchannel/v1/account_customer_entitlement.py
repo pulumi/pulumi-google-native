@@ -15,9 +15,9 @@ __all__ = ['AccountCustomerEntitlementArgs', 'AccountCustomerEntitlement']
 @pulumi.input_type
 class AccountCustomerEntitlementArgs:
     def __init__(__self__, *,
-                 accounts_id: pulumi.Input[str],
-                 customers_id: pulumi.Input[str],
-                 entitlements_id: pulumi.Input[str],
+                 account_id: pulumi.Input[str],
+                 customer_id: pulumi.Input[str],
+                 entitlement_id: pulumi.Input[str],
                  association_info: Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']] = None,
                  commitment_settings: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']] = None,
                  offer: Optional[pulumi.Input[str]] = None,
@@ -33,9 +33,9 @@ class AccountCustomerEntitlementArgs:
         :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
         :param pulumi.Input[str] request_id: Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
         """
-        pulumi.set(__self__, "accounts_id", accounts_id)
-        pulumi.set(__self__, "customers_id", customers_id)
-        pulumi.set(__self__, "entitlements_id", entitlements_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "customer_id", customer_id)
+        pulumi.set(__self__, "entitlement_id", entitlement_id)
         if association_info is not None:
             pulumi.set(__self__, "association_info", association_info)
         if commitment_settings is not None:
@@ -50,31 +50,31 @@ class AccountCustomerEntitlementArgs:
             pulumi.set(__self__, "request_id", request_id)
 
     @property
-    @pulumi.getter(name="accountsId")
-    def accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "accounts_id")
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "account_id")
 
-    @accounts_id.setter
-    def accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "accounts_id", value)
-
-    @property
-    @pulumi.getter(name="customersId")
-    def customers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "customers_id")
-
-    @customers_id.setter
-    def customers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "customers_id", value)
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="entitlementsId")
-    def entitlements_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entitlements_id")
+    @pulumi.getter(name="customerId")
+    def customer_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "customer_id")
 
-    @entitlements_id.setter
-    def entitlements_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entitlements_id", value)
+    @customer_id.setter
+    def customer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "customer_id", value)
+
+    @property
+    @pulumi.getter(name="entitlementId")
+    def entitlement_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entitlement_id")
+
+    @entitlement_id.setter
+    def entitlement_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entitlement_id", value)
 
     @property
     @pulumi.getter(name="associationInfo")
@@ -154,11 +154,11 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
                  commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
-                 customers_id: Optional[pulumi.Input[str]] = None,
-                 entitlements_id: Optional[pulumi.Input[str]] = None,
+                 customer_id: Optional[pulumi.Input[str]] = None,
+                 entitlement_id: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
@@ -200,11 +200,11 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
                  commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
-                 customers_id: Optional[pulumi.Input[str]] = None,
-                 entitlements_id: Optional[pulumi.Input[str]] = None,
+                 customer_id: Optional[pulumi.Input[str]] = None,
+                 entitlement_id: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
@@ -221,17 +221,17 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountCustomerEntitlementArgs.__new__(AccountCustomerEntitlementArgs)
 
-            if accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'accounts_id'")
-            __props__.__dict__["accounts_id"] = accounts_id
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["association_info"] = association_info
             __props__.__dict__["commitment_settings"] = commitment_settings
-            if customers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'customers_id'")
-            __props__.__dict__["customers_id"] = customers_id
-            if entitlements_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entitlements_id'")
-            __props__.__dict__["entitlements_id"] = entitlements_id
+            if customer_id is None and not opts.urn:
+                raise TypeError("Missing required property 'customer_id'")
+            __props__.__dict__["customer_id"] = customer_id
+            if entitlement_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entitlement_id'")
+            __props__.__dict__["entitlement_id"] = entitlement_id
             __props__.__dict__["offer"] = offer
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["purchase_order_id"] = purchase_order_id

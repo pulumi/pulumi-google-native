@@ -82,25 +82,21 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKeyId'");
             }
-            if ((!args || args.cryptoKeysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cryptoKeysId'");
+            if ((!args || args.keyRingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.keyRingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyRingsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
-            inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
-            inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
+            inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["nextRotationTime"] = args ? args.nextRotationTime : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
             inputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
@@ -130,18 +126,17 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
  */
 export interface KeyRingCryptoKeyArgs {
     readonly cryptoKeyId: pulumi.Input<string>;
-    readonly cryptoKeysId: pulumi.Input<string>;
-    readonly keyRingsId: pulumi.Input<string>;
+    readonly keyRingId: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
     readonly nextRotationTime?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Immutable. The immutable purpose of this CryptoKey.
      */

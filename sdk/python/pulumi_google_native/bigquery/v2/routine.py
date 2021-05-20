@@ -15,9 +15,9 @@ __all__ = ['RoutineArgs', 'Routine']
 @pulumi.input_type
 class RoutineArgs:
     def __init__(__self__, *,
-                 datasets_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 routines_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 routine_id: pulumi.Input[str],
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -41,9 +41,9 @@ class RoutineArgs:
         :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Required. Reference describing the ID of this routine.
         :param pulumi.Input[str] routine_type: Required. The type of routine.
         """
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "routines_id", routines_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "routine_id", routine_id)
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
         if definition_body is not None:
@@ -66,31 +66,31 @@ class RoutineArgs:
             pulumi.set(__self__, "routine_type", routine_type)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="routinesId")
-    def routines_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "routines_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @routines_id.setter
-    def routines_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "routines_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="routineId")
+    def routine_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "routine_id")
+
+    @routine_id.setter
+    def routine_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "routine_id", value)
 
     @property
     @pulumi.getter
@@ -219,18 +219,18 @@ class Routine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input[str]] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
+                 routine_id: Optional[pulumi.Input[str]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
-                 routines_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new routine in the dataset.
@@ -273,18 +273,18 @@ class Routine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input[str]] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
+                 routine_id: Optional[pulumi.Input[str]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
-                 routines_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -298,24 +298,24 @@ class Routine(pulumi.CustomResource):
             __props__ = RoutineArgs.__new__(RoutineArgs)
 
             __props__.__dict__["arguments"] = arguments
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["definition_body"] = definition_body
             __props__.__dict__["description"] = description
             __props__.__dict__["determinism_level"] = determinism_level
             __props__.__dict__["imported_libraries"] = imported_libraries
             __props__.__dict__["language"] = language
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type
+            if routine_id is None and not opts.urn:
+                raise TypeError("Missing required property 'routine_id'")
+            __props__.__dict__["routine_id"] = routine_id
             __props__.__dict__["routine_reference"] = routine_reference
             __props__.__dict__["routine_type"] = routine_type
-            if routines_id is None and not opts.urn:
-                raise TypeError("Missing required property 'routines_id'")
-            __props__.__dict__["routines_id"] = routines_id
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None

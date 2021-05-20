@@ -174,11 +174,11 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("notificationChannelsId", required: true)]
-        public Input<string> NotificationChannelsId { get; set; } = null!;
+        [Input("notificationChannelId", required: true)]
+        public Input<string> NotificationChannelId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.

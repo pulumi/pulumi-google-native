@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 
     public sealed class AgentSessionContextArgs : Pulumi.ResourceArgs
     {
-        [Input("contextsId", required: true)]
-        public Input<string> ContextsId { get; set; } = null!;
+        [Input("contextId", required: true)]
+        public Input<string> ContextId { get; set; } = null!;
 
         /// <summary>
         /// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
@@ -87,8 +87,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("lifespanCount")]
         public Input<int>? LifespanCount { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
@@ -108,11 +108,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             set => _parameters = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("sessionsId", required: true)]
-        public Input<string> SessionsId { get; set; } = null!;
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
 
         public AgentSessionContextArgs()
         {

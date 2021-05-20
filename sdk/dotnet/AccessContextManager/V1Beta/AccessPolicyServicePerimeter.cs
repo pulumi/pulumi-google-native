@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 
     public sealed class AccessPolicyServicePerimeterArgs : Pulumi.ResourceArgs
     {
-        [Input("accessPoliciesId", required: true)]
-        public Input<string> AccessPoliciesId { get; set; } = null!;
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
 
         /// <summary>
         /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
 
-        [Input("servicePerimetersId", required: true)]
-        public Input<string> ServicePerimetersId { get; set; } = null!;
+        [Input("servicePerimeterId", required: true)]
+        public Input<string> ServicePerimeterId { get; set; } = null!;
 
         /// <summary>
         /// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.

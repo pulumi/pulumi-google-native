@@ -48,17 +48,14 @@ func NewMembership(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
-	if args.MembershipsId == nil {
-		return nil, errors.New("invalid value for required argument 'MembershipsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Membership
 	err := ctx.RegisterResource("google-native:gkehub/v1:Membership", name, args, &resource, opts...)
@@ -147,12 +144,11 @@ type membershipArgs struct {
 	// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
 	ExternalId *string `pulumi:"externalId"`
 	// Optional. GCP labels for this membership.
-	Labels        map[string]string `pulumi:"labels"`
-	LocationsId   string            `pulumi:"locationsId"`
-	MembershipId  string            `pulumi:"membershipId"`
-	MembershipsId string            `pulumi:"membershipsId"`
-	ProjectsId    string            `pulumi:"projectsId"`
-	RequestId     *string           `pulumi:"requestId"`
+	Labels       map[string]string `pulumi:"labels"`
+	Location     string            `pulumi:"location"`
+	MembershipId string            `pulumi:"membershipId"`
+	Project      string            `pulumi:"project"`
+	RequestId    *string           `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a Membership resource.
@@ -164,12 +160,11 @@ type MembershipArgs struct {
 	// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
 	ExternalId pulumi.StringPtrInput
 	// Optional. GCP labels for this membership.
-	Labels        pulumi.StringMapInput
-	LocationsId   pulumi.StringInput
-	MembershipId  pulumi.StringInput
-	MembershipsId pulumi.StringInput
-	ProjectsId    pulumi.StringInput
-	RequestId     pulumi.StringPtrInput
+	Labels       pulumi.StringMapInput
+	Location     pulumi.StringInput
+	MembershipId pulumi.StringInput
+	Project      pulumi.StringInput
+	RequestId    pulumi.StringPtrInput
 }
 
 func (MembershipArgs) ElementType() reflect.Type {

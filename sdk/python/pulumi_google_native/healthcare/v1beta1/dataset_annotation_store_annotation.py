@@ -15,11 +15,11 @@ __all__ = ['DatasetAnnotationStoreAnnotationArgs', 'DatasetAnnotationStoreAnnota
 @pulumi.input_type
 class DatasetAnnotationStoreAnnotationArgs:
     def __init__(__self__, *,
-                 annotation_stores_id: pulumi.Input[str],
-                 annotations_id: pulumi.Input[str],
-                 datasets_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 annotation_id: pulumi.Input[str],
+                 annotation_store_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  annotation_source: Optional[pulumi.Input['AnnotationSourceArgs']] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  image_annotation: Optional[pulumi.Input['ImageAnnotationArgs']] = None,
@@ -35,11 +35,11 @@ class DatasetAnnotationStoreAnnotationArgs:
         :param pulumi.Input['ResourceAnnotationArgs'] resource_annotation: Annotations for resource. For example, classification tags.
         :param pulumi.Input['SensitiveTextAnnotationArgs'] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
-        pulumi.set(__self__, "annotation_stores_id", annotation_stores_id)
-        pulumi.set(__self__, "annotations_id", annotations_id)
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "annotation_id", annotation_id)
+        pulumi.set(__self__, "annotation_store_id", annotation_store_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if annotation_source is not None:
             pulumi.set(__self__, "annotation_source", annotation_source)
         if custom_data is not None:
@@ -54,49 +54,49 @@ class DatasetAnnotationStoreAnnotationArgs:
             pulumi.set(__self__, "text_annotation", text_annotation)
 
     @property
-    @pulumi.getter(name="annotationStoresId")
-    def annotation_stores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "annotation_stores_id")
+    @pulumi.getter(name="annotationId")
+    def annotation_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "annotation_id")
 
-    @annotation_stores_id.setter
-    def annotation_stores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "annotation_stores_id", value)
-
-    @property
-    @pulumi.getter(name="annotationsId")
-    def annotations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "annotations_id")
-
-    @annotations_id.setter
-    def annotations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "annotations_id", value)
+    @annotation_id.setter
+    def annotation_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "annotation_id", value)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="annotationStoreId")
+    def annotation_store_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "annotation_store_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @annotation_store_id.setter
+    def annotation_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "annotation_store_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="annotationSource")
@@ -176,15 +176,15 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotation_id: Optional[pulumi.Input[str]] = None,
                  annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
-                 annotation_stores_id: Optional[pulumi.Input[str]] = None,
-                 annotations_id: Optional[pulumi.Input[str]] = None,
+                 annotation_store_id: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_annotation: Optional[pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']]] = None,
                  text_annotation: Optional[pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']]] = None,
                  __props__=None):
@@ -224,15 +224,15 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotation_id: Optional[pulumi.Input[str]] = None,
                  annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
-                 annotation_stores_id: Optional[pulumi.Input[str]] = None,
-                 annotations_id: Optional[pulumi.Input[str]] = None,
+                 annotation_store_id: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_annotation: Optional[pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']]] = None,
                  text_annotation: Optional[pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']]] = None,
                  __props__=None):
@@ -247,25 +247,25 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAnnotationStoreAnnotationArgs.__new__(DatasetAnnotationStoreAnnotationArgs)
 
+            if annotation_id is None and not opts.urn:
+                raise TypeError("Missing required property 'annotation_id'")
+            __props__.__dict__["annotation_id"] = annotation_id
             __props__.__dict__["annotation_source"] = annotation_source
-            if annotation_stores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'annotation_stores_id'")
-            __props__.__dict__["annotation_stores_id"] = annotation_stores_id
-            if annotations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'annotations_id'")
-            __props__.__dict__["annotations_id"] = annotations_id
+            if annotation_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'annotation_store_id'")
+            __props__.__dict__["annotation_store_id"] = annotation_store_id
             __props__.__dict__["custom_data"] = custom_data
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["image_annotation"] = image_annotation
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["resource_annotation"] = resource_annotation
             __props__.__dict__["text_annotation"] = text_annotation
         super(DatasetAnnotationStoreAnnotation, __self__).__init__(

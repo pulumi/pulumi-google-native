@@ -34,11 +34,11 @@ func NewNamespaceDomainmapping(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainmappingsId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainmappingsId'")
+	if args.DomainmappingId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainmappingId'")
 	}
-	if args.NamespacesId == nil {
-		return nil, errors.New("invalid value for required argument 'NamespacesId'")
+	if args.NamespaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
 	var resource NamespaceDomainmapping
 	err := ctx.RegisterResource("google-native:run/v1:NamespaceDomainmapping", name, args, &resource, opts...)
@@ -93,14 +93,14 @@ func (NamespaceDomainmappingState) ElementType() reflect.Type {
 
 type namespaceDomainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion       *string `pulumi:"apiVersion"`
-	DomainmappingsId string  `pulumi:"domainmappingsId"`
-	DryRun           *string `pulumi:"dryRun"`
+	ApiVersion      *string `pulumi:"apiVersion"`
+	DomainmappingId string  `pulumi:"domainmappingId"`
+	DryRun          *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
 	Kind *string `pulumi:"kind"`
 	// Metadata associated with this BuildTemplate.
-	Metadata     *ObjectMeta `pulumi:"metadata"`
-	NamespacesId string      `pulumi:"namespacesId"`
+	Metadata    *ObjectMeta `pulumi:"metadata"`
+	NamespaceId string      `pulumi:"namespaceId"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
 	// The current status of the DomainMapping.
@@ -110,14 +110,14 @@ type namespaceDomainmappingArgs struct {
 // The set of arguments for constructing a NamespaceDomainmapping resource.
 type NamespaceDomainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion       pulumi.StringPtrInput
-	DomainmappingsId pulumi.StringInput
-	DryRun           pulumi.StringPtrInput
+	ApiVersion      pulumi.StringPtrInput
+	DomainmappingId pulumi.StringInput
+	DryRun          pulumi.StringPtrInput
 	// The kind of resource, in this case "DomainMapping".
 	Kind pulumi.StringPtrInput
 	// Metadata associated with this BuildTemplate.
-	Metadata     ObjectMetaPtrInput
-	NamespacesId pulumi.StringInput
+	Metadata    ObjectMetaPtrInput
+	NamespaceId pulumi.StringInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
 	// The current status of the DomainMapping.

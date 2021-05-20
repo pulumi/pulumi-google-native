@@ -87,26 +87,26 @@ export class StudyTrial extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.studiesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'studiesId'");
+            if ((!args || args.studyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'studyId'");
             }
-            if ((!args || args.trialsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'trialsId'");
+            if ((!args || args.trialId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'trialId'");
             }
             inputs["finalMeasurement"] = args ? args.finalMeasurement : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["measurements"] = args ? args.measurements : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["studiesId"] = args ? args.studiesId : undefined;
-            inputs["trialsId"] = args ? args.trialsId : undefined;
+            inputs["studyId"] = args ? args.studyId : undefined;
+            inputs["trialId"] = args ? args.trialId : undefined;
             inputs["clientId"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["infeasibleReason"] = undefined /*out*/;
@@ -140,7 +140,7 @@ export interface StudyTrialArgs {
      * The final measurement containing the objective value.
      */
     readonly finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
      */
@@ -149,11 +149,11 @@ export interface StudyTrialArgs {
      * The parameters of the trial.
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_Trial_ParameterArgs>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The detailed state of a trial.
      */
     readonly state?: pulumi.Input<string>;
-    readonly studiesId: pulumi.Input<string>;
-    readonly trialsId: pulumi.Input<string>;
+    readonly studyId: pulumi.Input<string>;
+    readonly trialId: pulumi.Input<string>;
 }

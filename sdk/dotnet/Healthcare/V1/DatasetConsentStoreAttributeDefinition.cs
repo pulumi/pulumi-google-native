@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("attributeDefinitionId", required: true)]
         public Input<string> AttributeDefinitionId { get; set; } = null!;
 
-        [Input("attributeDefinitionsId", required: true)]
-        public Input<string> AttributeDefinitionsId { get; set; } = null!;
-
         /// <summary>
         /// Required. The category of the attribute. The value of this field cannot be changed after creation.
         /// </summary>
@@ -132,8 +129,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
             set => _consentDefaultValues = value;
         }
 
-        [Input("consentStoresId", required: true)]
-        public Input<string> ConsentStoresId { get; set; } = null!;
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
@@ -141,8 +138,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("dataMappingDefaultValue")]
         public Input<string>? DataMappingDefaultValue { get; set; }
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
         /// Optional. A description of the attribute.
@@ -150,8 +147,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
@@ -159,8 +156,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public DatasetConsentStoreAttributeDefinitionArgs()
         {

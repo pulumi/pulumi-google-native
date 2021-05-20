@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Translate.V3
 
     public sealed class GlossaryArgs : Pulumi.ResourceArgs
     {
-        [Input("glossariesId", required: true)]
-        public Input<string> GlossariesId { get; set; } = null!;
+        [Input("glossaryId", required: true)]
+        public Input<string> GlossaryId { get; set; } = null!;
 
         /// <summary>
         /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Translate.V3
         [Input("languagePair")]
         public Input<Inputs.LanguageCodePairArgs>? LanguagePair { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.Translate.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public GlossaryArgs()
         {

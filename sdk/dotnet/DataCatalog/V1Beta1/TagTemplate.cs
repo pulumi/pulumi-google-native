@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
             set => _fields = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
@@ -105,14 +105,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("tagTemplateId", required: true)]
         public Input<string> TagTemplateId { get; set; } = null!;
-
-        [Input("tagTemplatesId", required: true)]
-        public Input<string> TagTemplatesId { get; set; } = null!;
 
         public TagTemplateArgs()
         {

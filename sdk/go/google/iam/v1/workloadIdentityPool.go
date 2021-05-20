@@ -34,17 +34,14 @@ func NewWorkloadIdentityPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.WorkloadIdentityPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
-	}
-	if args.WorkloadIdentityPoolsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolsId'")
 	}
 	var resource WorkloadIdentityPool
 	err := ctx.RegisterResource("google-native:iam/v1:WorkloadIdentityPool", name, args, &resource, opts...)
@@ -103,11 +100,10 @@ type workloadIdentityPoolArgs struct {
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
-	DisplayName             *string `pulumi:"displayName"`
-	LocationsId             string  `pulumi:"locationsId"`
-	ProjectsId              string  `pulumi:"projectsId"`
-	WorkloadIdentityPoolId  string  `pulumi:"workloadIdentityPoolId"`
-	WorkloadIdentityPoolsId string  `pulumi:"workloadIdentityPoolsId"`
+	DisplayName            *string `pulumi:"displayName"`
+	Location               string  `pulumi:"location"`
+	Project                string  `pulumi:"project"`
+	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
 }
 
 // The set of arguments for constructing a WorkloadIdentityPool resource.
@@ -117,11 +113,10 @@ type WorkloadIdentityPoolArgs struct {
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
-	DisplayName             pulumi.StringPtrInput
-	LocationsId             pulumi.StringInput
-	ProjectsId              pulumi.StringInput
-	WorkloadIdentityPoolId  pulumi.StringInput
-	WorkloadIdentityPoolsId pulumi.StringInput
+	DisplayName            pulumi.StringPtrInput
+	Location               pulumi.StringInput
+	Project                pulumi.StringInput
+	WorkloadIdentityPoolId pulumi.StringInput
 }
 
 func (WorkloadIdentityPoolArgs) ElementType() reflect.Type {

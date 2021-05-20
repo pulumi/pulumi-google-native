@@ -186,8 +186,8 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
@@ -195,11 +195,11 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         [Input("managementSettings")]
         public Input<Inputs.ManagementSettingsArgs>? ManagementSettings { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("registrationsId", required: true)]
-        public Input<string> RegistrationsId { get; set; } = null!;
+        [Input("registrationId", required: true)]
+        public Input<string> RegistrationId { get; set; } = null!;
 
         /// <summary>
         /// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation

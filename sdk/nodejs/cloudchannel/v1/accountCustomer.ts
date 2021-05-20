@@ -95,16 +95,16 @@ export class AccountCustomer extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountsId'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.customersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customersId'");
+            if ((!args || args.customerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'customerId'");
             }
-            inputs["accountsId"] = args ? args.accountsId : undefined;
+            inputs["accountId"] = args ? args.accountId : undefined;
             inputs["alternateEmail"] = args ? args.alternateEmail : undefined;
             inputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
-            inputs["customersId"] = args ? args.customersId : undefined;
+            inputs["customerId"] = args ? args.customerId : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
@@ -140,7 +140,7 @@ export class AccountCustomer extends pulumi.CustomResource {
  * The set of arguments for constructing a AccountCustomer resource.
  */
 export interface AccountCustomerArgs {
-    readonly accountsId: pulumi.Input<string>;
+    readonly accountId: pulumi.Input<string>;
     /**
      * Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
      */
@@ -149,7 +149,7 @@ export interface AccountCustomerArgs {
      * Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
      */
     readonly channelPartnerId?: pulumi.Input<string>;
-    readonly customersId: pulumi.Input<string>;
+    readonly customerId: pulumi.Input<string>;
     /**
      * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */

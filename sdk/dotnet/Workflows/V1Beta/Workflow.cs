@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
@@ -164,9 +164,6 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
 
         [Input("workflowId", required: true)]
         public Input<string> WorkflowId { get; set; } = null!;
-
-        [Input("workflowsId", required: true)]
-        public Input<string> WorkflowsId { get; set; } = null!;
 
         public WorkflowArgs()
         {

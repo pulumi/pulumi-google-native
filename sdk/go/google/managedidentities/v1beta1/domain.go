@@ -50,14 +50,14 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DomainId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainId'")
+	}
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
-	if args.DomainsId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Domain
 	err := ctx.RegisterResource("google-native:managedidentities/v1beta1:Domain", name, args, &resource, opts...)
@@ -149,13 +149,13 @@ type domainArgs struct {
 	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
+	DomainId           string   `pulumi:"domainId"`
 	DomainName         string   `pulumi:"domainName"`
-	DomainsId          string   `pulumi:"domainsId"`
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations  []string `pulumi:"locations"`
-	ProjectsId string   `pulumi:"projectsId"`
+	Locations []string `pulumi:"locations"`
+	Project   string   `pulumi:"project"`
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 }
@@ -168,13 +168,13 @@ type DomainArgs struct {
 	AuditLogsEnabled pulumi.BoolPtrInput
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
+	DomainId           pulumi.StringInput
 	DomainName         pulumi.StringInput
-	DomainsId          pulumi.StringInput
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels pulumi.StringMapInput
 	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations  pulumi.StringArrayInput
-	ProjectsId pulumi.StringInput
+	Locations pulumi.StringArrayInput
+	Project   pulumi.StringInput
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringPtrInput
 }

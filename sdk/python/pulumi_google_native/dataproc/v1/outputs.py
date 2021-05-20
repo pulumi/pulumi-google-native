@@ -1853,8 +1853,6 @@ class JobReferenceResponse(dict):
         suggest = None
         if key == "jobId":
             suggest = "job_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobReferenceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1869,14 +1867,14 @@ class JobReferenceResponse(dict):
 
     def __init__(__self__, *,
                  job_id: str,
-                 project_id: str):
+                 project: str):
         """
         Encapsulates the full scoping used to reference a job.
         :param str job_id: Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
-        :param str project_id: Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+        :param str project: Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
         """
         pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="jobId")
@@ -1887,12 +1885,12 @@ class JobReferenceResponse(dict):
         return pulumi.get(self, "job_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type

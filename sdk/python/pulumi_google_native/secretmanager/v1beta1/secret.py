@@ -15,9 +15,8 @@ __all__ = ['SecretArgs', 'Secret']
 @pulumi.input_type
 class SecretArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  secret_id: pulumi.Input[str],
-                 secrets_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replication: Optional[pulumi.Input['ReplicationArgs']] = None):
         """
@@ -25,22 +24,21 @@ class SecretArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
         :param pulumi.Input['ReplicationArgs'] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "secret_id", secret_id)
-        pulumi.set(__self__, "secrets_id", secrets_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if replication is not None:
             pulumi.set(__self__, "replication", replication)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="secretId")
@@ -50,15 +48,6 @@ class SecretArgs:
     @secret_id.setter
     def secret_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_id", value)
-
-    @property
-    @pulumi.getter(name="secretsId")
-    def secrets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "secrets_id")
-
-    @secrets_id.setter
-    def secrets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "secrets_id", value)
 
     @property
     @pulumi.getter
@@ -91,10 +80,9 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 secrets_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Secret containing no SecretVersions.
@@ -129,10 +117,9 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 secrets_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -146,16 +133,13 @@ class Secret(pulumi.CustomResource):
             __props__ = SecretArgs.__new__(SecretArgs)
 
             __props__.__dict__["labels"] = labels
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["replication"] = replication
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")
             __props__.__dict__["secret_id"] = secret_id
-            if secrets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'secrets_id'")
-            __props__.__dict__["secrets_id"] = secrets_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
         super(Secret, __self__).__init__(

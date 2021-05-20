@@ -86,27 +86,23 @@ export class InstanceBackup extends pulumi.CustomResource {
             if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if ((!args || args.backupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backupsId'");
-            }
             if ((!args || args.encryptionConfigEncryptionType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'encryptionConfigEncryptionType'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["database"] = args ? args.database : undefined;
             inputs["encryptionConfigEncryptionType"] = args ? args.encryptionConfigEncryptionType : undefined;
             inputs["encryptionConfigKmsKeyName"] = args ? args.encryptionConfigKmsKeyName : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["versionTime"] = args ? args.versionTime : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["encryptionInfo"] = undefined /*out*/;
@@ -136,7 +132,6 @@ export class InstanceBackup extends pulumi.CustomResource {
  */
 export interface InstanceBackupArgs {
     readonly backupId: pulumi.Input<string>;
-    readonly backupsId: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
      */
@@ -147,12 +142,12 @@ export interface InstanceBackupArgs {
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
      */
     readonly expireTime?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
      */

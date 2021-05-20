@@ -81,21 +81,17 @@ export class OrganizationBucket extends pulumi.CustomResource {
             if ((!args || args.bucketId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.bucketsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'bucketsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["bucketId"] = args ? args.bucketId : undefined;
-            inputs["bucketsId"] = args ? args.bucketsId : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["locked"] = args ? args.locked : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["restrictedFields"] = args ? args.restrictedFields : undefined;
             inputs["retentionDays"] = args ? args.retentionDays : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -124,17 +120,16 @@ export class OrganizationBucket extends pulumi.CustomResource {
  */
 export interface OrganizationBucketArgs {
     readonly bucketId: pulumi.Input<string>;
-    readonly bucketsId: pulumi.Input<string>;
     /**
      * Describes this bucket.
      */
     readonly description?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
      */
     readonly locked?: pulumi.Input<boolean>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
      */

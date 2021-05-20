@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("careerSiteUri")]
         public Input<string>? CareerSiteUri { get; set; }
 
-        [Input("companiesId", required: true)]
-        public Input<string> CompaniesId { get; set; } = null!;
+        [Input("companyId", required: true)]
+        public Input<string> CompanyId { get; set; } = null!;
 
         /// <summary>
         /// Required. The display name of the company, for example, "Google LLC".
@@ -201,8 +201,8 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The employer's company size.
@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("size")]
         public Input<string>? Size { get; set; }
 
-        [Input("tenantsId", required: true)]
-        public Input<string> TenantsId { get; set; } = null!;
+        [Input("tenantId", required: true)]
+        public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
         /// The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.

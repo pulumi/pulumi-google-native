@@ -50,11 +50,11 @@ export class Topic extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.topicsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'topicsId'");
+            if ((!args || args.topicId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'topicId'");
             }
             inputs["name"] = args ? args.name : undefined;
-            inputs["topicsId"] = args ? args.topicsId : undefined;
+            inputs["topicId"] = args ? args.topicId : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
         }
@@ -73,5 +73,5 @@ export interface TopicArgs {
      * Name of the topic.
      */
     readonly name?: pulumi.Input<string>;
-    readonly topicsId: pulumi.Input<string>;
+    readonly topicId: pulumi.Input<string>;
 }

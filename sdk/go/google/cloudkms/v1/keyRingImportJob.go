@@ -47,17 +47,14 @@ func NewKeyRingImportJob(ctx *pulumi.Context,
 	if args.ImportJobId == nil {
 		return nil, errors.New("invalid value for required argument 'ImportJobId'")
 	}
-	if args.ImportJobsId == nil {
-		return nil, errors.New("invalid value for required argument 'ImportJobsId'")
+	if args.KeyRingId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.KeyRingsId == nil {
-		return nil, errors.New("invalid value for required argument 'KeyRingsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource KeyRingImportJob
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRingImportJob", name, args, &resource, opts...)
@@ -131,26 +128,24 @@ func (KeyRingImportJobState) ElementType() reflect.Type {
 }
 
 type keyRingImportJobArgs struct {
-	ImportJobId  string `pulumi:"importJobId"`
-	ImportJobsId string `pulumi:"importJobsId"`
+	ImportJobId string `pulumi:"importJobId"`
 	// Required. Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod *string `pulumi:"importMethod"`
-	KeyRingsId   string  `pulumi:"keyRingsId"`
-	LocationsId  string  `pulumi:"locationsId"`
-	ProjectsId   string  `pulumi:"projectsId"`
+	KeyRingId    string  `pulumi:"keyRingId"`
+	Location     string  `pulumi:"location"`
+	Project      string  `pulumi:"project"`
 	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 }
 
 // The set of arguments for constructing a KeyRingImportJob resource.
 type KeyRingImportJobArgs struct {
-	ImportJobId  pulumi.StringInput
-	ImportJobsId pulumi.StringInput
+	ImportJobId pulumi.StringInput
 	// Required. Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod pulumi.StringPtrInput
-	KeyRingsId   pulumi.StringInput
-	LocationsId  pulumi.StringInput
-	ProjectsId   pulumi.StringInput
+	KeyRingId    pulumi.StringInput
+	Location     pulumi.StringInput
+	Project      pulumi.StringInput
 	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel pulumi.StringPtrInput
 }

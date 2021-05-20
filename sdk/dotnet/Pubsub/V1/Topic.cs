@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Input("schemaSettings")]
         public Input<Inputs.SchemaSettingsArgs>? SchemaSettings { get; set; }
 
-        [Input("topicsId", required: true)]
-        public Input<string> TopicsId { get; set; } = null!;
+        [Input("topicId", required: true)]
+        public Input<string> TopicId { get; set; } = null!;
 
         public TopicArgs()
         {

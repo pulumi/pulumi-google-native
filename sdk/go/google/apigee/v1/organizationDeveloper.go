@@ -52,11 +52,11 @@ func NewOrganizationDeveloper(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DevelopersId == nil {
-		return nil, errors.New("invalid value for required argument 'DevelopersId'")
+	if args.DeveloperId == nil {
+		return nil, errors.New("invalid value for required argument 'DeveloperId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationDeveloper
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationDeveloper", name, args, &resource, opts...)
@@ -157,15 +157,14 @@ type organizationDeveloperArgs struct {
 	// List of companies associated with the developer.
 	Companies []string `pulumi:"companies"`
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-	DeveloperId  *string `pulumi:"developerId"`
-	DevelopersId string  `pulumi:"developersId"`
+	DeveloperId string `pulumi:"developerId"`
 	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
 	Email *string `pulumi:"email"`
 	// Required. First name of the developer.
 	FirstName *string `pulumi:"firstName"`
 	// Required. Last name of the developer.
-	LastName        *string `pulumi:"lastName"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	LastName       *string `pulumi:"lastName"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Required. User name of the developer. Not used by Apigee hybrid.
 	UserName *string `pulumi:"userName"`
 }
@@ -183,15 +182,14 @@ type OrganizationDeveloperArgs struct {
 	// List of companies associated with the developer.
 	Companies pulumi.StringArrayInput
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-	DeveloperId  pulumi.StringPtrInput
-	DevelopersId pulumi.StringInput
+	DeveloperId pulumi.StringInput
 	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
 	Email pulumi.StringPtrInput
 	// Required. First name of the developer.
 	FirstName pulumi.StringPtrInput
 	// Required. Last name of the developer.
-	LastName        pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	LastName       pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Required. User name of the developer. Not used by Apigee hybrid.
 	UserName pulumi.StringPtrInput
 }

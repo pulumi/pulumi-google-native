@@ -15,8 +15,8 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
-                 domains_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 domain_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -47,8 +47,8 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TrustArgs']]] trusts: The current trusts associated with the domain.
         :param pulumi.Input[str] update_time: Last update time. Synthetic field is populated automatically by CCFE.
         """
-        pulumi.set(__self__, "domains_id", domains_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "project", project)
         if audit_logs_enabled is not None:
             pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         if authorized_networks is not None:
@@ -79,22 +79,22 @@ class DomainArgs:
             pulumi.set(__self__, "update_time", update_time)
 
     @property
-    @pulumi.getter(name="domainsId")
-    def domains_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domains_id")
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domain_id")
 
-    @domains_id.setter
-    def domains_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domains_id", value)
+    @domain_id.setter
+    def domain_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="auditLogsEnabled")
@@ -270,14 +270,14 @@ class Domain(pulumi.CustomResource):
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domains_id: Optional[pulumi.Input[str]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  managed_identities_admin_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
@@ -330,14 +330,14 @@ class Domain(pulumi.CustomResource):
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domains_id: Optional[pulumi.Input[str]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  managed_identities_admin_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
@@ -358,18 +358,18 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["audit_logs_enabled"] = audit_logs_enabled
             __props__.__dict__["authorized_networks"] = authorized_networks
             __props__.__dict__["create_time"] = create_time
+            if domain_id is None and not opts.urn:
+                raise TypeError("Missing required property 'domain_id'")
+            __props__.__dict__["domain_id"] = domain_id
             __props__.__dict__["domain_name"] = domain_name
-            if domains_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domains_id'")
-            __props__.__dict__["domains_id"] = domains_id
             __props__.__dict__["fqdn"] = fqdn
             __props__.__dict__["labels"] = labels
             __props__.__dict__["locations"] = locations
             __props__.__dict__["managed_identities_admin_name"] = managed_identities_admin_name
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             __props__.__dict__["state"] = state
             __props__.__dict__["status_message"] = status_message

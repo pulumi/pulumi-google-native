@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
     public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("alertPoliciesId", required: true)]
-        public Input<string> AlertPoliciesId { get; set; } = null!;
+        [Input("alertPolicyId", required: true)]
+        public Input<string> AlertPolicyId { get; set; } = null!;
 
         /// <summary>
         /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
@@ -195,8 +195,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             set => _notificationChannels = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("userLabels")]
         private InputMap<string>? _userLabels;

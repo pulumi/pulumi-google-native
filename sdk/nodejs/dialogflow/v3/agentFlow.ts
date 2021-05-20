@@ -75,28 +75,28 @@ export class AgentFlow extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.flowsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'flowsId'");
+            if ((!args || args.flowId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'flowId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            inputs["flowsId"] = args ? args.flowsId : undefined;
+            inputs["flowId"] = args ? args.flowId : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nluSettings"] = args ? args.nluSettings : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
@@ -119,7 +119,7 @@ export class AgentFlow extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentFlow resource.
  */
 export interface AgentFlowArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -132,9 +132,9 @@ export interface AgentFlowArgs {
      * A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      */
     readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
-    readonly flowsId: pulumi.Input<string>;
+    readonly flowId: pulumi.Input<string>;
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
      */
@@ -143,7 +143,7 @@ export interface AgentFlowArgs {
      * NLU related settings of the flow.
      */
     readonly nluSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3NluSettingsArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
      */

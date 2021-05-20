@@ -15,7 +15,7 @@ __all__ = ['AppArgs', 'App']
 @pulumi.input_type
 class AppArgs:
     def __init__(__self__, *,
-                 apps_id: pulumi.Input[str],
+                 app_id: pulumi.Input[str],
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class AppArgs:
                  gcr_domain: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['IdentityAwareProxyArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None):
         """
@@ -42,11 +42,11 @@ class AppArgs:
         :param pulumi.Input['FeatureSettingsArgs'] feature_settings: The feature specific settings to be used in the application.
         :param pulumi.Input[str] gcr_domain: The Google Container Registry domain used for storing managed build docker images for this application.
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
-        :param pulumi.Input[str] location_id: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+        :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
         :param pulumi.Input[str] serving_status: Serving status of this application.
         """
-        pulumi.set(__self__, "apps_id", apps_id)
+        pulumi.set(__self__, "app_id", app_id)
         if auth_domain is not None:
             pulumi.set(__self__, "auth_domain", auth_domain)
         if code_bucket is not None:
@@ -69,21 +69,21 @@ class AppArgs:
             pulumi.set(__self__, "iap", iap)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if location_id is not None:
-            pulumi.set(__self__, "location_id", location_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
 
     @property
-    @pulumi.getter(name="appsId")
-    def apps_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apps_id")
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "app_id")
 
-    @apps_id.setter
-    def apps_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apps_id", value)
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter(name="authDomain")
@@ -215,16 +215,16 @@ class AppArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="locationId")
-    def location_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         """
-        return pulumi.get(self, "location_id")
+        return pulumi.get(self, "location")
 
-    @location_id.setter
-    def location_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location_id", value)
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -256,7 +256,7 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -268,7 +268,7 @@ class App(pulumi.CustomResource):
                  gcr_domain: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -287,7 +287,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FeatureSettingsArgs']] feature_settings: The feature specific settings to be used in the application.
         :param pulumi.Input[str] gcr_domain: The Google Container Registry domain used for storing managed build docker images for this application.
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
-        :param pulumi.Input[str] location_id: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+        :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
         :param pulumi.Input[str] serving_status: Serving status of this application.
         """
@@ -315,7 +315,7 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -327,7 +327,7 @@ class App(pulumi.CustomResource):
                  gcr_domain: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -342,9 +342,9 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppArgs.__new__(AppArgs)
 
-            if apps_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apps_id'")
-            __props__.__dict__["apps_id"] = apps_id
+            if app_id is None and not opts.urn:
+                raise TypeError("Missing required property 'app_id'")
+            __props__.__dict__["app_id"] = app_id
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["code_bucket"] = code_bucket
             __props__.__dict__["database_type"] = database_type
@@ -356,7 +356,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["gcr_domain"] = gcr_domain
             __props__.__dict__["iap"] = iap
             __props__.__dict__["id"] = id
-            __props__.__dict__["location_id"] = location_id
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["serving_status"] = serving_status
         super(App, __self__).__init__(
@@ -391,7 +391,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["feature_settings"] = None
         __props__.__dict__["gcr_domain"] = None
         __props__.__dict__["iap"] = None
-        __props__.__dict__["location_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["serving_status"] = None
         return App(resource_name, opts=opts, __props__=__props__)
@@ -474,12 +474,12 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "iap")
 
     @property
-    @pulumi.getter(name="locationId")
-    def location_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
         """
         Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         """
-        return pulumi.get(self, "location_id")
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

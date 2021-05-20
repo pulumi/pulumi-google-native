@@ -71,21 +71,21 @@ export class Taxonomy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.taxonomiesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'taxonomiesId'");
+            if ((!args || args.taxonomyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'taxonomyId'");
             }
             inputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["taxonomiesId"] = args ? args.taxonomiesId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["taxonomyId"] = args ? args.taxonomyId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["policyTagCount"] = undefined /*out*/;
             inputs["taxonomyTimestamps"] = undefined /*out*/;
@@ -120,7 +120,7 @@ export interface TaxonomyArgs {
      * Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly taxonomiesId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly taxonomyId: pulumi.Input<string>;
 }

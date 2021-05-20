@@ -70,18 +70,18 @@ export class OrganizationContact extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contactsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'contactsId'");
+            if ((!args || args.contactId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'contactId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["contactsId"] = args ? args.contactsId : undefined;
+            inputs["contactId"] = args ? args.contactId : undefined;
             inputs["email"] = args ? args.email : undefined;
             inputs["languageTag"] = args ? args.languageTag : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["validateTime"] = args ? args.validateTime : undefined;
             inputs["validationState"] = args ? args.validationState : undefined;
         } else {
@@ -103,7 +103,7 @@ export class OrganizationContact extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationContact resource.
  */
 export interface OrganizationContactArgs {
-    readonly contactsId: pulumi.Input<string>;
+    readonly contactId: pulumi.Input<string>;
     /**
      * Required. The email address to send notifications to. This does not need to be a Google account.
      */
@@ -120,7 +120,7 @@ export interface OrganizationContactArgs {
      * The categories of notifications that the contact will receive communications for.
      */
     readonly notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
      */

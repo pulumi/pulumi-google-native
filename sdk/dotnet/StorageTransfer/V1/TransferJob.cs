@@ -60,8 +60,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// <summary>
         /// The ID of the Google Cloud Platform Project that owns the job.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// <summary>
         /// The ID of the Google Cloud Platform Project that owns the job.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
@@ -168,8 +168,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        [Input("transferJobsId", required: true)]
-        public Input<string> TransferJobsId { get; set; } = null!;
+        [Input("transferJobId", required: true)]
+        public Input<string> TransferJobId { get; set; } = null!;
 
         /// <summary>
         /// Transfer specification.

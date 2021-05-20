@@ -156,8 +156,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("evaluationJobConfig")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs>? EvaluationJobConfig { get; set; }
 
-        [Input("evaluationJobsId", required: true)]
-        public Input<string> EvaluationJobsId { get; set; } = null!;
+        [Input("evaluationJobId", required: true)]
+        public Input<string> EvaluationJobId { get; set; } = null!;
 
         /// <summary>
         /// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.

@@ -40,14 +40,11 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
-	}
-	if args.WorkerPoolsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkerPoolsId'")
 	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:cloudbuild/v1alpha2:WorkerPool", name, args, &resource, opts...)
@@ -115,26 +112,24 @@ func (WorkerPoolState) ElementType() reflect.Type {
 type workerPoolArgs struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	ProjectsId    string         `pulumi:"projectsId"`
+	Project       string         `pulumi:"project"`
 	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region *string `pulumi:"region"`
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig  *WorkerConfig `pulumi:"workerConfig"`
-	WorkerPoolId  string        `pulumi:"workerPoolId"`
-	WorkerPoolsId string        `pulumi:"workerPoolsId"`
+	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
+	WorkerPoolId string        `pulumi:"workerPoolId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
-	ProjectsId    pulumi.StringInput
+	Project       pulumi.StringInput
 	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringPtrInput
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig  WorkerConfigPtrInput
-	WorkerPoolId  pulumi.StringInput
-	WorkerPoolsId pulumi.StringInput
+	WorkerConfig WorkerConfigPtrInput
+	WorkerPoolId pulumi.StringInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

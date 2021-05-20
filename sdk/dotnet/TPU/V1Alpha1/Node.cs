@@ -216,8 +216,8 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
@@ -228,17 +228,14 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
-        [Input("nodesId", required: true)]
-        public Input<string> NodesId { get; set; } = null!;
-
         /// <summary>
         /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The scheduling options for this node.

@@ -71,21 +71,21 @@ export class OrganizationDeidentifyTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.deidentifyTemplatesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deidentifyTemplatesId'");
+            if ((!args || args.deidentifyTemplateId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'deidentifyTemplateId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;
-            inputs["deidentifyTemplatesId"] = args ? args.deidentifyTemplatesId : undefined;
+            inputs["deidentifyTemplateId"] = args ? args.deidentifyTemplateId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -113,7 +113,7 @@ export interface OrganizationDeidentifyTemplateArgs {
      * The core content of the template.
      */
     readonly deidentifyConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2DeidentifyConfigArgs>;
-    readonly deidentifyTemplatesId: pulumi.Input<string>;
+    readonly deidentifyTemplateId: pulumi.Input<string>;
     /**
      * Short description (max 256 chars).
      */
@@ -122,8 +122,8 @@ export interface OrganizationDeidentifyTemplateArgs {
      * Display name (max 256 chars).
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */

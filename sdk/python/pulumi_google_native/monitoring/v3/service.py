@@ -15,7 +15,6 @@ __all__ = ['ServiceArgs', 'Service']
 @pulumi.input_type
 class ServiceArgs:
     def __init__(__self__, *,
-                 services_id: pulumi.Input[str],
                  v3_id: pulumi.Input[str],
                  v3_id1: pulumi.Input[str],
                  app_engine: Optional[pulumi.Input['AppEngineArgs']] = None,
@@ -40,7 +39,6 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         :param pulumi.Input['TelemetryArgs'] telemetry: Configuration for how to query telemetry on a Service.
         """
-        pulumi.set(__self__, "services_id", services_id)
         pulumi.set(__self__, "v3_id", v3_id)
         pulumi.set(__self__, "v3_id1", v3_id1)
         if app_engine is not None:
@@ -63,15 +61,6 @@ class ServiceArgs:
             pulumi.set(__self__, "service_id", service_id)
         if telemetry is not None:
             pulumi.set(__self__, "telemetry", telemetry)
-
-    @property
-    @pulumi.getter(name="servicesId")
-    def services_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "services_id")
-
-    @services_id.setter
-    def services_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "services_id", value)
 
     @property
     @pulumi.getter(name="v3Id")
@@ -223,7 +212,6 @@ class Service(pulumi.CustomResource):
                  mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
@@ -276,7 +264,6 @@ class Service(pulumi.CustomResource):
                  mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
@@ -301,9 +288,6 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["mesh_istio"] = mesh_istio
             __props__.__dict__["name"] = name
             __props__.__dict__["service_id"] = service_id
-            if services_id is None and not opts.urn:
-                raise TypeError("Missing required property 'services_id'")
-            __props__.__dict__["services_id"] = services_id
             __props__.__dict__["telemetry"] = telemetry
             if v3_id is None and not opts.urn:
                 raise TypeError("Missing required property 'v3_id'")

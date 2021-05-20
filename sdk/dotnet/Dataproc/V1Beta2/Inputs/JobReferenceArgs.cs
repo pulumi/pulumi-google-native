@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         /// <summary>
         /// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public JobReferenceArgs()
         {

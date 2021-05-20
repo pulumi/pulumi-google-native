@@ -54,14 +54,14 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobsId == nil {
-		return nil, errors.New("invalid value for required argument 'JobsId'")
+	if args.JobId == nil {
+		return nil, errors.New("invalid value for required argument 'JobId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:transcoder/v1beta1:Job", name, args, &resource, opts...)
@@ -158,16 +158,16 @@ type jobArgs struct {
 	// The configuration for this job.
 	Config *JobConfig `pulumi:"config"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
-	InputUri    *string `pulumi:"inputUri"`
-	JobsId      string  `pulumi:"jobsId"`
-	LocationsId string  `pulumi:"locationsId"`
+	InputUri *string `pulumi:"inputUri"`
+	JobId    string  `pulumi:"jobId"`
+	Location string  `pulumi:"location"`
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri *string `pulumi:"outputUri"`
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
-	Priority   *int   `pulumi:"priority"`
-	ProjectsId string `pulumi:"projectsId"`
+	Priority *int   `pulumi:"priority"`
+	Project  string `pulumi:"project"`
 	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
 	TemplateId *string `pulumi:"templateId"`
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
@@ -179,16 +179,16 @@ type JobArgs struct {
 	// The configuration for this job.
 	Config JobConfigPtrInput
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
-	InputUri    pulumi.StringPtrInput
-	JobsId      pulumi.StringInput
-	LocationsId pulumi.StringInput
+	InputUri pulumi.StringPtrInput
+	JobId    pulumi.StringInput
+	Location pulumi.StringInput
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri pulumi.StringPtrInput
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
-	Priority   pulumi.IntPtrInput
-	ProjectsId pulumi.StringInput
+	Priority pulumi.IntPtrInput
+	Project  pulumi.StringInput
 	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
 	TemplateId pulumi.StringPtrInput
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.

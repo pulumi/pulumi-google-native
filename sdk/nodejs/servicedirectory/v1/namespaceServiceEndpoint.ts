@@ -65,31 +65,27 @@ export class NamespaceServiceEndpoint extends pulumi.CustomResource {
             if ((!args || args.endpointId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.endpointsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'endpointsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.namespacesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespacesId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             inputs["address"] = args ? args.address : undefined;
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["endpointId"] = args ? args.endpointId : undefined;
-            inputs["endpointsId"] = args ? args.endpointsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["namespacesId"] = args ? args.namespacesId : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["port"] = args ? args.port : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
         } else {
             inputs["address"] = undefined /*out*/;
             inputs["annotations"] = undefined /*out*/;
@@ -116,17 +112,16 @@ export interface NamespaceServiceEndpointArgs {
      */
     readonly annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly endpointId: pulumi.Input<string>;
-    readonly endpointsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Immutable. The resource name for the endpoint in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly namespacesId: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
     /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     readonly port?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
 }

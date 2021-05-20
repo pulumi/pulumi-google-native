@@ -26,7 +26,7 @@ type RegionCluster struct {
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics ClusterMetricsResponseOutput `pulumi:"metrics"`
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Cluster status.
 	Status ClusterStatusResponseOutput `pulumi:"status"`
 	// The previous cluster status.
@@ -43,8 +43,8 @@ func NewRegionCluster(ctx *pulumi.Context,
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
@@ -82,7 +82,7 @@ type regionClusterState struct {
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics *ClusterMetricsResponse `pulumi:"metrics"`
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Cluster status.
 	Status *ClusterStatusResponse `pulumi:"status"`
 	// The previous cluster status.
@@ -101,7 +101,7 @@ type RegionClusterState struct {
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics ClusterMetricsResponsePtrInput
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// Cluster status.
 	Status ClusterStatusResponsePtrInput
 	// The previous cluster status.
@@ -120,7 +120,7 @@ type regionClusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId string  `pulumi:"projectId"`
+	Project   string  `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 }
@@ -134,7 +134,7 @@ type RegionClusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId pulumi.StringInput
+	Project   pulumi.StringInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 }

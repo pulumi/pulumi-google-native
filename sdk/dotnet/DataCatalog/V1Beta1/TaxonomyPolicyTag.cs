@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
@@ -111,14 +111,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("parentPolicyTag")]
         public Input<string>? ParentPolicyTag { get; set; }
 
-        [Input("policyTagsId", required: true)]
-        public Input<string> PolicyTagsId { get; set; } = null!;
+        [Input("policyTagId", required: true)]
+        public Input<string> PolicyTagId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("taxonomiesId", required: true)]
-        public Input<string> TaxonomiesId { get; set; } = null!;
+        [Input("taxonomyId", required: true)]
+        public Input<string> TaxonomyId { get; set; } = null!;
 
         public TaxonomyPolicyTagArgs()
         {

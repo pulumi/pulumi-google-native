@@ -82,20 +82,20 @@ class AutoscalingSettingsArgs:
 class BigQueryIODetailsArgs:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None):
         """
         Metadata for a BigQuery connector used by the job.
         :param pulumi.Input[str] dataset: Dataset accessed in the connection.
-        :param pulumi.Input[str] project_id: Project accessed in the connection.
+        :param pulumi.Input[str] project: Project accessed in the connection.
         :param pulumi.Input[str] query: Query used to access data in the connection.
         :param pulumi.Input[str] table: Table accessed in the connection.
         """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if query is not None:
             pulumi.set(__self__, "query", query)
         if table is not None:
@@ -114,16 +114,16 @@ class BigQueryIODetailsArgs:
         pulumi.set(self, "dataset", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         Project accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -154,18 +154,18 @@ class BigQueryIODetailsArgs:
 class BigTableIODetailsArgs:
     def __init__(__self__, *,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None):
         """
         Metadata for a Cloud BigTable connector used by the job.
         :param pulumi.Input[str] instance_id: InstanceId accessed in the connection.
-        :param pulumi.Input[str] project_id: ProjectId accessed in the connection.
+        :param pulumi.Input[str] project: ProjectId accessed in the connection.
         :param pulumi.Input[str] table_id: TableId accessed in the connection.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
 
@@ -182,16 +182,16 @@ class BigTableIODetailsArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         ProjectId accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")
@@ -322,16 +322,16 @@ class ComponentTransformArgs:
 class DatastoreIODetailsArgs:
     def __init__(__self__, *,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Metadata for a Datastore connector used by the job.
         :param pulumi.Input[str] namespace: Namespace used in the connection.
-        :param pulumi.Input[str] project_id: ProjectId accessed in the connection.
+        :param pulumi.Input[str] project: ProjectId accessed in the connection.
         """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -346,16 +346,16 @@ class DatastoreIODetailsArgs:
         pulumi.set(self, "namespace", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         ProjectId accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -1755,19 +1755,19 @@ class SpannerIODetailsArgs:
     def __init__(__self__, *,
                  database_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Metadata for a Spanner connector used by the job.
         :param pulumi.Input[str] database_id: DatabaseId accessed in the connection.
         :param pulumi.Input[str] instance_id: InstanceId accessed in the connection.
-        :param pulumi.Input[str] project_id: ProjectId accessed in the connection.
+        :param pulumi.Input[str] project: ProjectId accessed in the connection.
         """
         if database_id is not None:
             pulumi.set(__self__, "database_id", database_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="databaseId")
@@ -1794,16 +1794,16 @@ class SpannerIODetailsArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         ProjectId accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

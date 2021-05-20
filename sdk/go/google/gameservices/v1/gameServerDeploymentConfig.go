@@ -41,17 +41,14 @@ func NewGameServerDeploymentConfig(ctx *pulumi.Context,
 	if args.ConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
-	if args.ConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConfigsId'")
+	if args.GameServerDeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
 	}
-	if args.GameServerDeploymentsId == nil {
-		return nil, errors.New("invalid value for required argument 'GameServerDeploymentsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource GameServerDeploymentConfig
 	err := ctx.RegisterResource("google-native:gameservices/v1:GameServerDeploymentConfig", name, args, &resource, opts...)
@@ -113,38 +110,36 @@ func (GameServerDeploymentConfigState) ElementType() reflect.Type {
 }
 
 type gameServerDeploymentConfigArgs struct {
-	ConfigId  string `pulumi:"configId"`
-	ConfigsId string `pulumi:"configsId"`
+	ConfigId string `pulumi:"configId"`
 	// The description of the game server config.
 	Description *string `pulumi:"description"`
 	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-	FleetConfigs            []FleetConfig `pulumi:"fleetConfigs"`
-	GameServerDeploymentsId string        `pulumi:"gameServerDeploymentsId"`
+	FleetConfigs           []FleetConfig `pulumi:"fleetConfigs"`
+	GameServerDeploymentId string        `pulumi:"gameServerDeploymentId"`
 	// The labels associated with this game server config. Each label is a key-value pair.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// The autoscaling settings.
 	ScalingConfigs []ScalingConfig `pulumi:"scalingConfigs"`
 }
 
 // The set of arguments for constructing a GameServerDeploymentConfig resource.
 type GameServerDeploymentConfigArgs struct {
-	ConfigId  pulumi.StringInput
-	ConfigsId pulumi.StringInput
+	ConfigId pulumi.StringInput
 	// The description of the game server config.
 	Description pulumi.StringPtrInput
 	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-	FleetConfigs            FleetConfigArrayInput
-	GameServerDeploymentsId pulumi.StringInput
+	FleetConfigs           FleetConfigArrayInput
+	GameServerDeploymentId pulumi.StringInput
 	// The labels associated with this game server config. Each label is a key-value pair.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The autoscaling settings.
 	ScalingConfigs ScalingConfigArrayInput
 }

@@ -15,8 +15,8 @@ __all__ = ['SecretIamPolicyArgs', 'SecretIamPolicy']
 @pulumi.input_type
 class SecretIamPolicyArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 secrets_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 secret_id: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -30,8 +30,8 @@ class SecretIamPolicyArgs:
         :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "secrets_id", secrets_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "secret_id", secret_id)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
@@ -44,22 +44,22 @@ class SecretIamPolicyArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="secretsId")
-    def secrets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "secrets_id")
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "secret_id")
 
-    @secrets_id.setter
-    def secrets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "secrets_id", value)
+    @secret_id.setter
+    def secret_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_id", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -130,8 +130,8 @@ class SecretIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 secrets_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 secret_id: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -173,8 +173,8 @@ class SecretIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 secrets_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 secret_id: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -192,12 +192,12 @@ class SecretIamPolicy(pulumi.CustomResource):
             __props__.__dict__["audit_configs"] = audit_configs
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if secrets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'secrets_id'")
-            __props__.__dict__["secrets_id"] = secrets_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if secret_id is None and not opts.urn:
+                raise TypeError("Missing required property 'secret_id'")
+            __props__.__dict__["secret_id"] = secret_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
         super(SecretIamPolicy, __self__).__init__(

@@ -36,8 +36,8 @@ func NewFeed(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FeedsId == nil {
-		return nil, errors.New("invalid value for required argument 'FeedsId'")
+	if args.FeedId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedId'")
 	}
 	if args.V1Id == nil {
 		return nil, errors.New("invalid value for required argument 'V1Id'")
@@ -110,10 +110,9 @@ type feedArgs struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType *string `pulumi:"contentType"`
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId *string `pulumi:"feedId"`
+	FeedId string `pulumi:"feedId"`
 	// Required. Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig *FeedOutputConfig `pulumi:"feedOutputConfig"`
-	FeedsId          string            `pulumi:"feedsId"`
 	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name  *string `pulumi:"name"`
 	V1Id  string  `pulumi:"v1Id"`
@@ -131,10 +130,9 @@ type FeedArgs struct {
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType pulumi.StringPtrInput
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId pulumi.StringPtrInput
+	FeedId pulumi.StringInput
 	// Required. Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig FeedOutputConfigPtrInput
-	FeedsId          pulumi.StringInput
 	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name  pulumi.StringPtrInput
 	V1Id  pulumi.StringInput

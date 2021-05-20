@@ -65,31 +65,27 @@ export class NamespaceServiceEndpoint extends pulumi.CustomResource {
             if ((!args || args.endpointId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.endpointsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'endpointsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.namespacesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespacesId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             inputs["address"] = args ? args.address : undefined;
             inputs["endpointId"] = args ? args.endpointId : undefined;
-            inputs["endpointsId"] = args ? args.endpointsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["namespacesId"] = args ? args.namespacesId : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["port"] = args ? args.port : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
         } else {
             inputs["address"] = undefined /*out*/;
             inputs["metadata"] = undefined /*out*/;
@@ -112,8 +108,7 @@ export interface NamespaceServiceEndpointArgs {
      */
     readonly address?: pulumi.Input<string>;
     readonly endpointId: pulumi.Input<string>;
-    readonly endpointsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
      */
@@ -122,11 +117,11 @@ export interface NamespaceServiceEndpointArgs {
      * Immutable. The resource name for the endpoint in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly namespacesId: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
     /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     readonly port?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
 }

@@ -105,11 +105,11 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("notificationConfigsId", required: true)]
-        public Input<string> NotificationConfigsId { get; set; } = null!;
+        [Input("notificationConfigId", required: true)]
+        public Input<string> NotificationConfigId { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".

@@ -15,10 +15,9 @@ __all__ = ['MembershipArgs', 'Membership']
 @pulumi.input_type
 class MembershipArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  membership_id: pulumi.Input[str],
-                 memberships_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  authority: Optional[pulumi.Input['AuthorityArgs']] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
@@ -31,10 +30,9 @@ class MembershipArgs:
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "membership_id", membership_id)
-        pulumi.set(__self__, "memberships_id", memberships_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
         if endpoint is not None:
@@ -47,13 +45,13 @@ class MembershipArgs:
             pulumi.set(__self__, "request_id", request_id)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="membershipId")
@@ -65,22 +63,13 @@ class MembershipArgs:
         pulumi.set(self, "membership_id", value)
 
     @property
-    @pulumi.getter(name="membershipsId")
-    def memberships_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "memberships_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @memberships_id.setter
-    def memberships_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "memberships_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -149,10 +138,9 @@ class Membership(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
-                 memberships_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -193,10 +181,9 @@ class Membership(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
-                 memberships_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -214,18 +201,15 @@ class Membership(pulumi.CustomResource):
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             if membership_id is None and not opts.urn:
                 raise TypeError("Missing required property 'membership_id'")
             __props__.__dict__["membership_id"] = membership_id
-            if memberships_id is None and not opts.urn:
-                raise TypeError("Missing required property 'memberships_id'")
-            __props__.__dict__["memberships_id"] = memberships_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

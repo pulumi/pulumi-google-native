@@ -38,11 +38,11 @@ func NewGroupMembership(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'GroupsId'")
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
-	if args.MembershipsId == nil {
-		return nil, errors.New("invalid value for required argument 'MembershipsId'")
+	if args.MembershipId == nil {
+		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
 	var resource GroupMembership
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:GroupMembership", name, args, &resource, opts...)
@@ -104,10 +104,10 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	GroupsId string `pulumi:"groupsId"`
+	GroupId string `pulumi:"groupId"`
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	MemberKey     *EntityKey `pulumi:"memberKey"`
-	MembershipsId string     `pulumi:"membershipsId"`
+	MemberKey    *EntityKey `pulumi:"memberKey"`
+	MembershipId string     `pulumi:"membershipId"`
 	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey *EntityKey `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
@@ -116,10 +116,10 @@ type groupMembershipArgs struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	GroupsId pulumi.StringInput
+	GroupId pulumi.StringInput
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	MemberKey     EntityKeyPtrInput
-	MembershipsId pulumi.StringInput
+	MemberKey    EntityKeyPtrInput
+	MembershipId pulumi.StringInput
 	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey EntityKeyPtrInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.

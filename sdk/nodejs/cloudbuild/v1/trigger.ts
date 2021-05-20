@@ -103,8 +103,8 @@ export class Trigger extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.triggerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
@@ -118,7 +118,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             inputs["includedFiles"] = args ? args.includedFiles : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
             inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -188,7 +188,7 @@ export interface TriggerArgs {
      * User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
      */

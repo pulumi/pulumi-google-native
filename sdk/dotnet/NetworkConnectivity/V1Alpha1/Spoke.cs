@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
             set => _linkedVpnTunnels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The name of a Spoke resource.
@@ -201,17 +201,14 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
         [Input("spokeId")]
         public Input<string>? SpokeId { get; set; }
-
-        [Input("spokesId", required: true)]
-        public Input<string> SpokesId { get; set; } = null!;
 
         /// <summary>
         /// The time when the Spoke was updated.

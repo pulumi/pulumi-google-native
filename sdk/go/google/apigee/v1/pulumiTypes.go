@@ -2348,7 +2348,7 @@ type GoogleCloudApigeeV1DatastoreConfig struct {
 	// Path of Cloud Storage bucket Required for `gcs` target_type.
 	Path *string `pulumi:"path"`
 	// Required. GCP project in which the datastore exists
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Prefix of BigQuery table Required for `bigquery` target_type.
 	TablePrefix *string `pulumi:"tablePrefix"`
 }
@@ -2373,7 +2373,7 @@ type GoogleCloudApigeeV1DatastoreConfigArgs struct {
 	// Path of Cloud Storage bucket Required for `gcs` target_type.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Required. GCP project in which the datastore exists
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Prefix of BigQuery table Required for `bigquery` target_type.
 	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
 }
@@ -2472,8 +2472,8 @@ func (o GoogleCloudApigeeV1DatastoreConfigOutput) Path() pulumi.StringPtrOutput 
 }
 
 // Required. GCP project in which the datastore exists
-func (o GoogleCloudApigeeV1DatastoreConfigOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1DatastoreConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Prefix of BigQuery table Required for `bigquery` target_type.
@@ -2530,12 +2530,12 @@ func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) Path() pulumi.StringPtrOutp
 }
 
 // Required. GCP project in which the datastore exists
-func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2558,7 +2558,7 @@ type GoogleCloudApigeeV1DatastoreConfigResponse struct {
 	// Path of Cloud Storage bucket Required for `gcs` target_type.
 	Path string `pulumi:"path"`
 	// Required. GCP project in which the datastore exists
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Prefix of BigQuery table Required for `bigquery` target_type.
 	TablePrefix string `pulumi:"tablePrefix"`
 }
@@ -2583,7 +2583,7 @@ type GoogleCloudApigeeV1DatastoreConfigResponseArgs struct {
 	// Path of Cloud Storage bucket Required for `gcs` target_type.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Required. GCP project in which the datastore exists
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Prefix of BigQuery table Required for `bigquery` target_type.
 	TablePrefix pulumi.StringInput `pulumi:"tablePrefix"`
 }
@@ -2682,8 +2682,8 @@ func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) Path() pulumi.StringOu
 }
 
 // Required. GCP project in which the datastore exists
-func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Prefix of BigQuery table Required for `bigquery` target_type.
@@ -2742,12 +2742,12 @@ func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) Path() pulumi.Strin
 }
 
 // Required. GCP project in which the datastore exists
-func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

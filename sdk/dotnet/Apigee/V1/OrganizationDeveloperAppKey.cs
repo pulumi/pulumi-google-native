@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _apiProducts = value;
         }
 
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<Inputs.GoogleCloudApigeeV1AttributeArgs>? _attributes;
@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("consumerSecret")]
         public Input<string>? ConsumerSecret { get; set; }
 
-        [Input("developersId", required: true)]
-        public Input<string> DevelopersId { get; set; } = null!;
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
 
         /// <summary>
         /// Time the developer app expires in milliseconds since epoch.
@@ -174,11 +174,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("issuedAt")]
         public Input<string>? IssuedAt { get; set; }
 
-        [Input("keysId", required: true)]
-        public Input<string> KeysId { get; set; } = null!;
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("scopes")]
         private InputList<string>? _scopes;

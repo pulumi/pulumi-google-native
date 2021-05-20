@@ -15,10 +15,10 @@ __all__ = ['ApiConfigIamPolicyArgs', 'ApiConfigIamPolicy']
 @pulumi.input_type
 class ApiConfigIamPolicyArgs:
     def __init__(__self__, *,
-                 apis_id: pulumi.Input[str],
-                 configs_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 api_id: pulumi.Input[str],
+                 config_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayAuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayBindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -32,10 +32,10 @@ class ApiConfigIamPolicyArgs:
         :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "apis_id", apis_id)
-        pulumi.set(__self__, "configs_id", configs_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "api_id", api_id)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
@@ -48,40 +48,40 @@ class ApiConfigIamPolicyArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="apisId")
-    def apis_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apis_id")
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_id")
 
-    @apis_id.setter
-    def apis_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apis_id", value)
-
-    @property
-    @pulumi.getter(name="configsId")
-    def configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "configs_id")
-
-    @configs_id.setter
-    def configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "configs_id", value)
+    @api_id.setter
+    def api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "config_id")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -149,13 +149,13 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayAuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayBindingArgs']]]]] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -194,13 +194,13 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayAuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayBindingArgs']]]]] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -215,21 +215,21 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiConfigIamPolicyArgs.__new__(ApiConfigIamPolicyArgs)
 
-            if apis_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apis_id'")
-            __props__.__dict__["apis_id"] = apis_id
+            if api_id is None and not opts.urn:
+                raise TypeError("Missing required property 'api_id'")
+            __props__.__dict__["api_id"] = api_id
             __props__.__dict__["audit_configs"] = audit_configs
             __props__.__dict__["bindings"] = bindings
-            if configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'configs_id'")
-            __props__.__dict__["configs_id"] = configs_id
+            if config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'config_id'")
+            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["etag"] = etag
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
         super(ApiConfigIamPolicy, __self__).__init__(

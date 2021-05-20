@@ -34,11 +34,11 @@ func NewAccessPolicyAccessLevel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessLevelsId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessLevelsId'")
+	if args.AccessLevelId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevelId'")
 	}
-	if args.AccessPoliciesId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessPoliciesId'")
+	if args.AccessPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
 	var resource AccessPolicyAccessLevel
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel", name, args, &resource, opts...)
@@ -92,8 +92,8 @@ func (AccessPolicyAccessLevelState) ElementType() reflect.Type {
 }
 
 type accessPolicyAccessLevelArgs struct {
-	AccessLevelsId   string `pulumi:"accessLevelsId"`
-	AccessPoliciesId string `pulumi:"accessPoliciesId"`
+	AccessLevelId  string `pulumi:"accessLevelId"`
+	AccessPolicyId string `pulumi:"accessPolicyId"`
 	// A `BasicLevel` composed of `Conditions`.
 	Basic *BasicLevel `pulumi:"basic"`
 	// A `CustomLevel` written in the Common Expression Language.
@@ -108,8 +108,8 @@ type accessPolicyAccessLevelArgs struct {
 
 // The set of arguments for constructing a AccessPolicyAccessLevel resource.
 type AccessPolicyAccessLevelArgs struct {
-	AccessLevelsId   pulumi.StringInput
-	AccessPoliciesId pulumi.StringInput
+	AccessLevelId  pulumi.StringInput
+	AccessPolicyId pulumi.StringInput
 	// A `BasicLevel` composed of `Conditions`.
 	Basic BasicLevelPtrInput
 	// A `CustomLevel` written in the Common Expression Language.

@@ -42,8 +42,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// <summary>
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
@@ -129,14 +129,11 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// <summary>
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
-
-        [Input("webAppsId", required: true)]
-        public Input<string> WebAppsId { get; set; } = null!;
+        [Input("webAppId", required: true)]
+        public Input<string> WebAppId { get; set; } = null!;
 
         public WebAppArgs()
         {

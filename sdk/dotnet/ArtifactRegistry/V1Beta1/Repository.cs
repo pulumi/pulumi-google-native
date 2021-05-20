@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
@@ -147,11 +147,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
-
-        [Input("repositoriesId", required: true)]
-        public Input<string> RepositoriesId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }

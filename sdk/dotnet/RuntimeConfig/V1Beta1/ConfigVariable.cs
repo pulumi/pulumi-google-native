@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 
     public sealed class ConfigVariableArgs : Pulumi.ResourceArgs
     {
-        [Input("configsId", required: true)]
-        public Input<string> ConfigsId { get; set; } = null!;
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
 
         /// <summary>
         /// The name of the variable resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME] The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a valid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file system file path naming. The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and dashes. Slashes are used as path element separators and are not part of the `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one non-slash character. Multiple slashes are coalesced into single slash character. Each path segment should match [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The length of a `[VARIABLE_NAME]` must be less than 256 characters. Once you create a variable, you cannot change the variable name.
@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        [Input("variablesId", required: true)]
-        public Input<string> VariablesId { get; set; } = null!;
+        [Input("variableId", required: true)]
+        public Input<string> VariableId { get; set; } = null!;
 
         public ConfigVariableArgs()
         {

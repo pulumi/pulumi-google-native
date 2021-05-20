@@ -699,8 +699,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("privateClusterConfig")]
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Release channel configuration.

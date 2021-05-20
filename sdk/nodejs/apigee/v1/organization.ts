@@ -91,7 +91,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Project ID associated with the Apigee organization.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    public /*out*/ readonly project!: pulumi.Output<string>;
     /**
      * Properties defined in the Apigee organization profile.
      */
@@ -128,8 +128,8 @@ export class Organization extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
@@ -142,7 +142,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["customerName"] = args ? args.customerName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["properties"] = args ? args.properties : undefined;
             inputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
@@ -154,7 +154,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["expiresAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["subscriptionType"] = undefined /*out*/;
         } else {
@@ -172,7 +172,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["expiresAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["properties"] = undefined /*out*/;
             inputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
             inputs["runtimeType"] = undefined /*out*/;
@@ -220,7 +220,7 @@ export interface OrganizationArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly displayName?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     readonly parent: pulumi.Input<string>;
     /**
      * Properties defined in the Apigee organization profile.

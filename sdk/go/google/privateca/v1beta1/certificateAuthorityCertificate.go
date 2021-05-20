@@ -46,17 +46,14 @@ func NewCertificateAuthorityCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CertificateAuthoritiesId == nil {
-		return nil, errors.New("invalid value for required argument 'CertificateAuthoritiesId'")
+	if args.CertificateAuthorityId == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateAuthorityId'")
 	}
-	if args.CertificatesId == nil {
-		return nil, errors.New("invalid value for required argument 'CertificatesId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource CertificateAuthorityCertificate
 	err := ctx.RegisterResource("google-native:privateca/v1beta1:CertificateAuthorityCertificate", name, args, &resource, opts...)
@@ -134,38 +131,36 @@ func (CertificateAuthorityCertificateState) ElementType() reflect.Type {
 }
 
 type certificateAuthorityCertificateArgs struct {
-	CertificateAuthoritiesId string  `pulumi:"certificateAuthoritiesId"`
-	CertificateId            *string `pulumi:"certificateId"`
-	CertificatesId           string  `pulumi:"certificatesId"`
+	CertificateAuthorityId string  `pulumi:"certificateAuthorityId"`
+	CertificateId          *string `pulumi:"certificateId"`
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config *CertificateConfig `pulumi:"config"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime    *string `pulumi:"lifetime"`
-	LocationsId string  `pulumi:"locationsId"`
+	Lifetime *string `pulumi:"lifetime"`
+	Location string  `pulumi:"location"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr     *string `pulumi:"pemCsr"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
+	PemCsr    *string `pulumi:"pemCsr"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a CertificateAuthorityCertificate resource.
 type CertificateAuthorityCertificateArgs struct {
-	CertificateAuthoritiesId pulumi.StringInput
-	CertificateId            pulumi.StringPtrInput
-	CertificatesId           pulumi.StringInput
+	CertificateAuthorityId pulumi.StringInput
+	CertificateId          pulumi.StringPtrInput
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config CertificateConfigPtrInput
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
 	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime    pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Lifetime pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr     pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
+	PemCsr    pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 }
 
 func (CertificateAuthorityCertificateArgs) ElementType() reflect.Type {

@@ -312,8 +312,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("manualScaling")]
         public Input<Inputs.GoogleCloudMlV1__ManualScalingArgs>? ManualScaling { get; set; }
 
-        [Input("modelsId", required: true)]
-        public Input<string> ModelsId { get; set; } = null!;
+        [Input("modelId", required: true)]
+        public Input<string> ModelId { get; set; } = null!;
 
         /// <summary>
         /// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
@@ -339,8 +339,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("predictionClass")]
         public Input<string>? PredictionClass { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
@@ -378,8 +378,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("versionsId", required: true)]
-        public Input<string> VersionsId { get; set; } = null!;
+        [Input("versionId", required: true)]
+        public Input<string> VersionId { get; set; } = null!;
 
         public ModelVersionArgs()
         {

@@ -95,27 +95,27 @@ export class ConversationProfile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.conversationProfilesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'conversationProfilesId'");
+            if ((!args || args.conversationProfileId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'conversationProfileId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
-            inputs["conversationProfilesId"] = args ? args.conversationProfilesId : undefined;
+            inputs["conversationProfileId"] = args ? args.conversationProfileId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
             inputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["newMessageEventNotificationConfig"] = args ? args.newMessageEventNotificationConfig : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["sttConfig"] = args ? args.sttConfig : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -148,7 +148,7 @@ export interface ConversationProfileArgs {
      * Configuration for an automated agent to use with this profile.
      */
     readonly automatedAgentConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2AutomatedAgentConfigArgs>;
-    readonly conversationProfilesId: pulumi.Input<string>;
+    readonly conversationProfileId: pulumi.Input<string>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
@@ -165,7 +165,7 @@ export interface ConversationProfileArgs {
      * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
      */
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Configuration for logging conversation lifecycle events.
      */
@@ -182,7 +182,7 @@ export interface ConversationProfileArgs {
      * Configuration for publishing conversation lifecycle events.
      */
     readonly notificationConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Settings for speech transcription.
      */

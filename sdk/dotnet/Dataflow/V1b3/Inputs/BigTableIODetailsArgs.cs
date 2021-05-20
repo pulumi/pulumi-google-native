@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// <summary>
         /// ProjectId accessed in the connection.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// TableId accessed in the connection.

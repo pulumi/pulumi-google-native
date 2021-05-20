@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("hubId")]
         public Input<string>? HubId { get; set; }
 
-        [Input("hubsId", required: true)]
-        public Input<string> HubsId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -144,8 +141,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

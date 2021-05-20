@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        [Input("liensId", required: true)]
-        public Input<string> LiensId { get; set; } = null!;
+        [Input("lienId", required: true)]
+        public Input<string> LienId { get; set; } = null!;
 
         /// <summary>
         /// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`

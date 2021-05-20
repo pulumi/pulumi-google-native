@@ -16,8 +16,7 @@ __all__ = ['PatchDeploymentArgs', 'PatchDeployment']
 class PatchDeploymentArgs:
     def __init__(__self__, *,
                  patch_deployment_id: pulumi.Input[str],
-                 patch_deployments_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  instance_filter: Optional[pulumi.Input['PatchInstanceFilterArgs']] = None,
@@ -38,8 +37,7 @@ class PatchDeploymentArgs:
         :param pulumi.Input['PatchRolloutArgs'] rollout: Optional. Rollout strategy of the patch job.
         """
         pulumi.set(__self__, "patch_deployment_id", patch_deployment_id)
-        pulumi.set(__self__, "patch_deployments_id", patch_deployments_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
@@ -67,22 +65,13 @@ class PatchDeploymentArgs:
         pulumi.set(self, "patch_deployment_id", value)
 
     @property
-    @pulumi.getter(name="patchDeploymentsId")
-    def patch_deployments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "patch_deployments_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @patch_deployments_id.setter
-    def patch_deployments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "patch_deployments_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -193,8 +182,7 @@ class PatchDeployment(pulumi.CustomResource):
                  one_time_schedule: Optional[pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']]] = None,
                  patch_config: Optional[pulumi.Input[pulumi.InputType['PatchConfigArgs']]] = None,
                  patch_deployment_id: Optional[pulumi.Input[str]] = None,
-                 patch_deployments_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  recurring_schedule: Optional[pulumi.Input[pulumi.InputType['RecurringScheduleArgs']]] = None,
                  rollout: Optional[pulumi.Input[pulumi.InputType['PatchRolloutArgs']]] = None,
                  __props__=None):
@@ -243,8 +231,7 @@ class PatchDeployment(pulumi.CustomResource):
                  one_time_schedule: Optional[pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']]] = None,
                  patch_config: Optional[pulumi.Input[pulumi.InputType['PatchConfigArgs']]] = None,
                  patch_deployment_id: Optional[pulumi.Input[str]] = None,
-                 patch_deployments_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  recurring_schedule: Optional[pulumi.Input[pulumi.InputType['RecurringScheduleArgs']]] = None,
                  rollout: Optional[pulumi.Input[pulumi.InputType['PatchRolloutArgs']]] = None,
                  __props__=None):
@@ -268,12 +255,9 @@ class PatchDeployment(pulumi.CustomResource):
             if patch_deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'patch_deployment_id'")
             __props__.__dict__["patch_deployment_id"] = patch_deployment_id
-            if patch_deployments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'patch_deployments_id'")
-            __props__.__dict__["patch_deployments_id"] = patch_deployments_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["recurring_schedule"] = recurring_schedule
             __props__.__dict__["rollout"] = rollout
             __props__.__dict__["create_time"] = None

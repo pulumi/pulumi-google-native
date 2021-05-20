@@ -32,14 +32,14 @@ func NewReplay(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ReplaysId == nil {
-		return nil, errors.New("invalid value for required argument 'ReplaysId'")
+	if args.ReplayId == nil {
+		return nil, errors.New("invalid value for required argument 'ReplayId'")
 	}
 	var resource Replay
 	err := ctx.RegisterResource("google-native:policysimulator/v1beta1:Replay", name, args, &resource, opts...)
@@ -90,19 +90,19 @@ func (ReplayState) ElementType() reflect.Type {
 
 type replayArgs struct {
 	// Required. The configuration used for the `Replay`.
-	Config      *GoogleCloudPolicysimulatorV1beta1ReplayConfig `pulumi:"config"`
-	LocationsId string                                         `pulumi:"locationsId"`
-	ProjectsId  string                                         `pulumi:"projectsId"`
-	ReplaysId   string                                         `pulumi:"replaysId"`
+	Config   *GoogleCloudPolicysimulatorV1beta1ReplayConfig `pulumi:"config"`
+	Location string                                         `pulumi:"location"`
+	Project  string                                         `pulumi:"project"`
+	ReplayId string                                         `pulumi:"replayId"`
 }
 
 // The set of arguments for constructing a Replay resource.
 type ReplayArgs struct {
 	// Required. The configuration used for the `Replay`.
-	Config      GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
-	ReplaysId   pulumi.StringInput
+	Config   GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrInput
+	Location pulumi.StringInput
+	Project  pulumi.StringInput
+	ReplayId pulumi.StringInput
 }
 
 func (ReplayArgs) ElementType() reflect.Type {

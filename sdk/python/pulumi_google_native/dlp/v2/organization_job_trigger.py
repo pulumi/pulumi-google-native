@@ -15,9 +15,9 @@ __all__ = ['OrganizationJobTriggerArgs', 'OrganizationJobTrigger']
 @pulumi.input_type
 class OrganizationJobTriggerArgs:
     def __init__(__self__, *,
-                 job_triggers_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 job_trigger_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
@@ -35,9 +35,9 @@ class OrganizationJobTriggerArgs:
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
-        pulumi.set(__self__, "job_triggers_id", job_triggers_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "job_trigger_id", job_trigger_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -54,31 +54,31 @@ class OrganizationJobTriggerArgs:
             pulumi.set(__self__, "triggers", triggers)
 
     @property
-    @pulumi.getter(name="jobTriggersId")
-    def job_triggers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_triggers_id")
+    @pulumi.getter(name="jobTriggerId")
+    def job_trigger_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "job_trigger_id")
 
-    @job_triggers_id.setter
-    def job_triggers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_triggers_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @job_trigger_id.setter
+    def job_trigger_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_trigger_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -173,10 +173,10 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
-                 job_triggers_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 job_trigger_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
@@ -221,10 +221,10 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
-                 job_triggers_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 job_trigger_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
@@ -243,16 +243,16 @@ class OrganizationJobTrigger(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_job"] = inspect_job
-            if job_triggers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_triggers_id'")
-            __props__.__dict__["job_triggers_id"] = job_triggers_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if job_trigger_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_trigger_id'")
+            __props__.__dict__["job_trigger_id"] = job_trigger_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["status"] = status
             __props__.__dict__["trigger_id"] = trigger_id
             __props__.__dict__["triggers"] = triggers

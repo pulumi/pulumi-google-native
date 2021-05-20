@@ -413,18 +413,18 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
 class GooglePrivacyDlpV2BigQueryTableArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None):
         """
         Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
         :param pulumi.Input[str] dataset_id: Dataset ID of the table.
-        :param pulumi.Input[str] project_id: The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
+        :param pulumi.Input[str] project: The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
         :param pulumi.Input[str] table_id: Name of the table.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
 
@@ -441,16 +441,16 @@ class GooglePrivacyDlpV2BigQueryTableArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")
@@ -2972,16 +2972,16 @@ class GooglePrivacyDlpV2OutputStorageConfigArgs:
 class GooglePrivacyDlpV2PartitionIdArgs:
     def __init__(__self__, *,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
         :param pulumi.Input[str] namespace_id: If not empty, the ID of the namespace to which the entities belong.
-        :param pulumi.Input[str] project_id: The ID of the project to which the entities belong.
+        :param pulumi.Input[str] project: The ID of the project to which the entities belong.
         """
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="namespaceId")
@@ -2996,16 +2996,16 @@ class GooglePrivacyDlpV2PartitionIdArgs:
         pulumi.set(self, "namespace_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project to which the entities belong.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

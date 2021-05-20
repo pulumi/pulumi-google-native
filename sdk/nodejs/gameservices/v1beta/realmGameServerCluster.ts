@@ -82,29 +82,25 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
             if ((!args || args.gameServerClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gameServerClusterId'");
             }
-            if ((!args || args.gameServerClustersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gameServerClustersId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.realmsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'realmsId'");
+            if ((!args || args.realmId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'realmId'");
             }
             inputs["allocationPriority"] = args ? args.allocationPriority : undefined;
             inputs["connectionInfo"] = args ? args.connectionInfo : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["gameServerClusterId"] = args ? args.gameServerClusterId : undefined;
-            inputs["gameServerClustersId"] = args ? args.gameServerClustersId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["realmsId"] = args ? args.realmsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["realmId"] = args ? args.realmId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -145,16 +141,15 @@ export interface RealmGameServerClusterArgs {
      */
     readonly etag?: pulumi.Input<string>;
     readonly gameServerClusterId: pulumi.Input<string>;
-    readonly gameServerClustersId: pulumi.Input<string>;
     /**
      * The labels associated with this game server cluster. Each label is a key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly realmsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly realmId: pulumi.Input<string>;
 }

@@ -83,21 +83,21 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.canaryevaluationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'canaryevaluationsId'");
+            if ((!args || args.canaryevaluationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'canaryevaluationId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["canaryevaluationsId"] = args ? args.canaryevaluationsId : undefined;
+            inputs["canaryevaluationId"] = args ? args.canaryevaluationId : undefined;
             inputs["control"] = args ? args.control : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["metricLabels"] = args ? args.metricLabels : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["treatment"] = args ? args.treatment : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -126,7 +126,7 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
  * The set of arguments for constructing a OrganizationInstanceCanaryevaluation resource.
  */
 export interface OrganizationInstanceCanaryevaluationArgs {
-    readonly canaryevaluationsId: pulumi.Input<string>;
+    readonly canaryevaluationId: pulumi.Input<string>;
     /**
      * Required. The stable version that is serving requests.
      */
@@ -135,12 +135,12 @@ export interface OrganizationInstanceCanaryevaluationArgs {
      * Required. End time for the evaluation's analysis.
      */
     readonly endTime?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * Required. Labels used to filter the metrics used for a canary evaluation.
      */
     readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Required. Start time for the canary evaluation's analysis.
      */

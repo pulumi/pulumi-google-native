@@ -38,11 +38,11 @@ func NewOrganizationEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationEnvironment
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironment", name, args, &resource, opts...)
@@ -107,11 +107,11 @@ type organizationEnvironmentArgs struct {
 	// Optional. Description of the environment.
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
-	DisplayName    *string `pulumi:"displayName"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	DisplayName   *string `pulumi:"displayName"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 }
@@ -121,11 +121,11 @@ type OrganizationEnvironmentArgs struct {
 	// Optional. Description of the environment.
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.
-	DisplayName    pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	DisplayName   pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
 }

@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// Project accessed in the connection.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Query used to access data in the connection.
         /// </summary>
@@ -34,14 +34,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         private BigQueryIODetailsResponse(
             string dataset,
 
-            string projectId,
+            string project,
 
             string query,
 
             string table)
         {
             Dataset = dataset;
-            ProjectId = projectId;
+            Project = project;
             Query = query;
             Table = table;
         }

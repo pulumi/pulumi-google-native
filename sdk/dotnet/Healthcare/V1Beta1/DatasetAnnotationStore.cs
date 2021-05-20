@@ -75,11 +75,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("annotationStoreId")]
         public Input<string>? AnnotationStoreId { get; set; }
 
-        [Input("annotationStoresId", required: true)]
-        public Input<string> AnnotationStoresId { get; set; } = null!;
-
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -93,8 +90,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
@@ -102,8 +99,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public DatasetAnnotationStoreArgs()
         {

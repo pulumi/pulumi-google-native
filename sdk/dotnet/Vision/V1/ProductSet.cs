@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
@@ -102,11 +102,8 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("productSetId")]
         public Input<string>? ProductSetId { get; set; }
 
-        [Input("productSetsId", required: true)]
-        public Input<string> ProductSetsId { get; set; } = null!;
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public ProductSetArgs()
         {

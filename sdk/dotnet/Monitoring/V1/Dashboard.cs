@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("columnLayout")]
         public Input<Inputs.ColumnLayoutArgs>? ColumnLayout { get; set; }
 
-        [Input("dashboardsId", required: true)]
-        public Input<string> DashboardsId { get; set; } = null!;
+        [Input("dashboardId", required: true)]
+        public Input<string> DashboardId { get; set; } = null!;
 
         /// <summary>
         /// Required. The mutable, human-readable name.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The content is divided into equally spaced rows and the widgets are arranged horizontally.

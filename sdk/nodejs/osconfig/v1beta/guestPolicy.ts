@@ -83,24 +83,20 @@ export class GuestPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.guestPoliciesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'guestPoliciesId'");
-            }
             if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["assignment"] = args ? args.assignment : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["guestPoliciesId"] = args ? args.guestPoliciesId : undefined;
             inputs["guestPolicyId"] = args ? args.guestPolicyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["packageRepositories"] = args ? args.packageRepositories : undefined;
             inputs["packages"] = args ? args.packages : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["recipes"] = args ? args.recipes : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -138,7 +134,6 @@ export interface GuestPolicyArgs {
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
     readonly etag?: pulumi.Input<string>;
-    readonly guestPoliciesId: pulumi.Input<string>;
     readonly guestPolicyId: pulumi.Input<string>;
     /**
      * Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
@@ -152,7 +147,7 @@ export interface GuestPolicyArgs {
      * The software packages to be managed by this policy.
      */
     readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageArgs>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
      */

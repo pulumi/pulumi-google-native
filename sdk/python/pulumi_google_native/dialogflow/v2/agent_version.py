@@ -13,46 +13,46 @@ __all__ = ['AgentVersionArgs', 'AgentVersion']
 @pulumi.input_type
 class AgentVersionArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 versions_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 version_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AgentVersion resource.
         :param pulumi.Input[str] description: Optional. The developer-provided description of this version.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "versions_id", versions_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "version_id", version_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="versionsId")
-    def versions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "versions_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @versions_id.setter
-    def versions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "versions_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version_id", value)
 
     @property
     @pulumi.getter
@@ -73,9 +73,9 @@ class AgentVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 versions_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an agent version. The new version points to the agent instance in the "default" environment.
@@ -109,9 +109,9 @@ class AgentVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 versions_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -125,15 +125,15 @@ class AgentVersion(pulumi.CustomResource):
             __props__ = AgentVersionArgs.__new__(AgentVersionArgs)
 
             __props__.__dict__["description"] = description
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if versions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'versions_id'")
-            __props__.__dict__["versions_id"] = versions_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if version_id is None and not opts.urn:
+                raise TypeError("Missing required property 'version_id'")
+            __props__.__dict__["version_id"] = version_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["status"] = None

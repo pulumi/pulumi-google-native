@@ -360,8 +360,6 @@ class BuildProvenanceResponse(dict):
             suggest = "finish_time"
         elif key == "logsBucket":
             suggest = "logs_bucket"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "sourceProvenance":
             suggest = "source_provenance"
         elif key == "startTime":
@@ -389,7 +387,7 @@ class BuildProvenanceResponse(dict):
                  creator: str,
                  finish_time: str,
                  logs_bucket: str,
-                 project_id: str,
+                 project: str,
                  source_provenance: 'outputs.SourceResponse',
                  start_time: str,
                  trigger_id: str):
@@ -403,7 +401,7 @@ class BuildProvenanceResponse(dict):
         :param str creator: E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
         :param str finish_time: Time at which execution of the build was finished.
         :param str logs_bucket: Google Cloud Storage bucket where logs were written.
-        :param str project_id: ID of the project.
+        :param str project: ID of the project.
         :param 'SourceResponse' source_provenance: Details of the Source input to the build.
         :param str start_time: Time at which execution of the build was started.
         :param str trigger_id: Trigger identifier if the build was triggered automatically; empty if not.
@@ -416,7 +414,7 @@ class BuildProvenanceResponse(dict):
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "finish_time", finish_time)
         pulumi.set(__self__, "logs_bucket", logs_bucket)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_provenance", source_provenance)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "trigger_id", trigger_id)
@@ -486,12 +484,12 @@ class BuildProvenanceResponse(dict):
         return pulumi.get(self, "logs_bucket")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         ID of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sourceProvenance")
@@ -1688,9 +1686,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "projectId":
-            suggest = "project_id"
-        elif key == "repoName":
+        if key == "repoName":
             suggest = "repo_name"
 
         if suggest:
@@ -1705,23 +1701,23 @@ class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 project_id: str,
+                 project: str,
                  repo_name: str):
         """
         Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
-        :param str project_id: The ID of the project.
+        :param str project: The ID of the project.
         :param str repo_name: The name of the repo. Leave empty for the default repo.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "repo_name", repo_name)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         The ID of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="repoName")
@@ -2282,8 +2278,6 @@ class RepoSourceResponse(dict):
             suggest = "branch_name"
         elif key == "commitSha":
             suggest = "commit_sha"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "repoName":
             suggest = "repo_name"
         elif key == "tagName":
@@ -2303,20 +2297,20 @@ class RepoSourceResponse(dict):
     def __init__(__self__, *,
                  branch_name: str,
                  commit_sha: str,
-                 project_id: str,
+                 project: str,
                  repo_name: str,
                  tag_name: str):
         """
         RepoSource describes the location of the source in a Google Cloud Source Repository.
         :param str branch_name: Name of the branch to build.
         :param str commit_sha: Explicit commit SHA to build.
-        :param str project_id: ID of the project that owns the repo.
+        :param str project: ID of the project that owns the repo.
         :param str repo_name: Name of the repo.
         :param str tag_name: Name of the tag to build.
         """
         pulumi.set(__self__, "branch_name", branch_name)
         pulumi.set(__self__, "commit_sha", commit_sha)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "repo_name", repo_name)
         pulumi.set(__self__, "tag_name", tag_name)
 
@@ -2337,12 +2331,12 @@ class RepoSourceResponse(dict):
         return pulumi.get(self, "commit_sha")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         ID of the project that owns the repo.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="repoName")

@@ -40,11 +40,8 @@ func NewHub(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.HubsId == nil {
-		return nil, errors.New("invalid value for required argument 'HubsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Hub
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:Hub", name, args, &resource, opts...)
@@ -115,13 +112,12 @@ type hubArgs struct {
 	// Short description of the hub resource.
 	Description *string `pulumi:"description"`
 	HubId       *string `pulumi:"hubId"`
-	HubsId      string  `pulumi:"hubsId"`
 	// User-defined labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// Time when the Hub was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -133,13 +129,12 @@ type HubArgs struct {
 	// Short description of the hub resource.
 	Description pulumi.StringPtrInput
 	HubId       pulumi.StringPtrInput
-	HubsId      pulumi.StringInput
 	// User-defined labels.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Hub resource.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// Time when the Hub was updated.
 	UpdateTime pulumi.StringPtrInput
 }

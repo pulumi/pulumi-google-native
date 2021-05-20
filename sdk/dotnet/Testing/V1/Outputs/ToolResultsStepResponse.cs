@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// <summary>
         /// The cloud project that owns the tool results step.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// A tool results step ID.
         /// </summary>
@@ -36,13 +36,13 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             string historyId,
 
-            string projectId,
+            string project,
 
             string stepId)
         {
             ExecutionId = executionId;
             HistoryId = historyId;
-            ProjectId = projectId;
+            Project = project;
             StepId = stepId;
         }
     }

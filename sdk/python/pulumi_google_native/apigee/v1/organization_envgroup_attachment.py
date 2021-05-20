@@ -13,9 +13,9 @@ __all__ = ['OrganizationEnvgroupAttachmentArgs', 'OrganizationEnvgroupAttachment
 @pulumi.input_type
 class OrganizationEnvgroupAttachmentArgs:
     def __init__(__self__, *,
-                 attachments_id: pulumi.Input[str],
-                 envgroups_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 attachment_id: pulumi.Input[str],
+                 envgroup_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -23,40 +23,40 @@ class OrganizationEnvgroupAttachmentArgs:
         :param pulumi.Input[str] environment: Required. ID of the attached environment.
         :param pulumi.Input[str] name: ID of the environment group attachment.
         """
-        pulumi.set(__self__, "attachments_id", attachments_id)
-        pulumi.set(__self__, "envgroups_id", envgroups_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "attachment_id", attachment_id)
+        pulumi.set(__self__, "envgroup_id", envgroup_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="attachmentsId")
-    def attachments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attachments_id")
+    @pulumi.getter(name="attachmentId")
+    def attachment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "attachment_id")
 
-    @attachments_id.setter
-    def attachments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attachments_id", value)
-
-    @property
-    @pulumi.getter(name="envgroupsId")
-    def envgroups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "envgroups_id")
-
-    @envgroups_id.setter
-    def envgroups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "envgroups_id", value)
+    @attachment_id.setter
+    def attachment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attachment_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="envgroupId")
+    def envgroup_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "envgroup_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @envgroup_id.setter
+    def envgroup_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "envgroup_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -88,11 +88,11 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments_id: Optional[pulumi.Input[str]] = None,
-                 envgroups_id: Optional[pulumi.Input[str]] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
+                 envgroup_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new attachment of an environment to an environment group.
@@ -126,11 +126,11 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments_id: Optional[pulumi.Input[str]] = None,
-                 envgroups_id: Optional[pulumi.Input[str]] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
+                 envgroup_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -143,17 +143,17 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationEnvgroupAttachmentArgs.__new__(OrganizationEnvgroupAttachmentArgs)
 
-            if attachments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attachments_id'")
-            __props__.__dict__["attachments_id"] = attachments_id
-            if envgroups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'envgroups_id'")
-            __props__.__dict__["envgroups_id"] = envgroups_id
+            if attachment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'attachment_id'")
+            __props__.__dict__["attachment_id"] = attachment_id
+            if envgroup_id is None and not opts.urn:
+                raise TypeError("Missing required property 'envgroup_id'")
+            __props__.__dict__["envgroup_id"] = envgroup_id
             __props__.__dict__["environment"] = environment
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["created_at"] = None
         super(OrganizationEnvgroupAttachment, __self__).__init__(
             'google-native:apigee/v1:OrganizationEnvgroupAttachment',

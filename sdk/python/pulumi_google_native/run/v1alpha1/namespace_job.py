@@ -15,8 +15,8 @@ __all__ = ['NamespaceJobArgs', 'NamespaceJob']
 @pulumi.input_type
 class NamespaceJobArgs:
     def __init__(__self__, *,
-                 jobs_id: pulumi.Input[str],
-                 namespaces_id: pulumi.Input[str],
+                 job_id: pulumi.Input[str],
+                 namespace_id: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['ObjectMetaArgs']] = None,
@@ -30,8 +30,8 @@ class NamespaceJobArgs:
         :param pulumi.Input['JobSpecArgs'] spec: Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         :param pulumi.Input['JobStatusArgs'] status: Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         """
-        pulumi.set(__self__, "jobs_id", jobs_id)
-        pulumi.set(__self__, "namespaces_id", namespaces_id)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "namespace_id", namespace_id)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if kind is not None:
@@ -44,22 +44,22 @@ class NamespaceJobArgs:
             pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="jobsId")
-    def jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "jobs_id")
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "job_id")
 
-    @jobs_id.setter
-    def jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "jobs_id", value)
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_id", value)
 
     @property
-    @pulumi.getter(name="namespacesId")
-    def namespaces_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "namespaces_id")
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_id")
 
-    @namespaces_id.setter
-    def namespaces_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "namespaces_id", value)
+    @namespace_id.setter
+    def namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_id", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -128,10 +128,10 @@ class NamespaceJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 jobs_id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['JobSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None,
                  __props__=None):
@@ -171,10 +171,10 @@ class NamespaceJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 jobs_id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['JobSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None,
                  __props__=None):
@@ -190,14 +190,14 @@ class NamespaceJob(pulumi.CustomResource):
             __props__ = NamespaceJobArgs.__new__(NamespaceJobArgs)
 
             __props__.__dict__["api_version"] = api_version
-            if jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'jobs_id'")
-            __props__.__dict__["jobs_id"] = jobs_id
+            if job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_id'")
+            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["metadata"] = metadata
-            if namespaces_id is None and not opts.urn:
-                raise TypeError("Missing required property 'namespaces_id'")
-            __props__.__dict__["namespaces_id"] = namespaces_id
+            if namespace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'namespace_id'")
+            __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
         super(NamespaceJob, __self__).__init__(

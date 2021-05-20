@@ -67,17 +67,17 @@ export class NamespaceJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobsId'");
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.namespacesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespacesId'");
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["jobsId"] = args ? args.jobsId : undefined;
+            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["namespacesId"] = args ? args.namespacesId : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -102,7 +102,7 @@ export interface NamespaceJobArgs {
      * Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
      */
     readonly apiVersion?: pulumi.Input<string>;
-    readonly jobsId: pulumi.Input<string>;
+    readonly jobId: pulumi.Input<string>;
     /**
      * Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
      */
@@ -111,7 +111,7 @@ export interface NamespaceJobArgs {
      * Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
      */
     readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMetaArgs>;
-    readonly namespacesId: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
     /**
      * Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
      */

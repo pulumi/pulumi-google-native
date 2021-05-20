@@ -28,7 +28,7 @@ type TestMatrix struct {
 	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
 	OutcomeSummary pulumi.StringOutput `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. Where the results for the matrix are written.
 	ResultStorage ResultStorageResponseOutput `pulumi:"resultStorage"`
 	// Indicates the current progress of the test matrix.
@@ -50,8 +50,8 @@ func NewTestMatrix(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.TestMatrixId == nil {
 		return nil, errors.New("invalid value for required argument 'TestMatrixId'")
@@ -91,7 +91,7 @@ type testMatrixState struct {
 	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
 	OutcomeSummary *string `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Required. Where the results for the matrix are written.
 	ResultStorage *ResultStorageResponse `pulumi:"resultStorage"`
 	// Indicates the current progress of the test matrix.
@@ -120,7 +120,7 @@ type TestMatrixState struct {
 	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
 	OutcomeSummary pulumi.StringPtrInput
 	// The cloud project that owns the test matrix.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// Required. Where the results for the matrix are written.
 	ResultStorage ResultStorageResponsePtrInput
 	// Indicates the current progress of the test matrix.
@@ -153,7 +153,7 @@ type testMatrixArgs struct {
 	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
 	OutcomeSummary *string `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
-	ProjectId string  `pulumi:"projectId"`
+	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Required. Where the results for the matrix are written.
 	ResultStorage *ResultStorage `pulumi:"resultStorage"`
@@ -184,7 +184,7 @@ type TestMatrixArgs struct {
 	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
 	OutcomeSummary pulumi.StringPtrInput
 	// The cloud project that owns the test matrix.
-	ProjectId pulumi.StringInput
+	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// Required. Where the results for the matrix are written.
 	ResultStorage ResultStoragePtrInput

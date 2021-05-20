@@ -71,11 +71,8 @@ export class ServiceServiceLevelObjective extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.serviceLevelObjectivesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceLevelObjectivesId'");
-            }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             if ((!args || args.v3Id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v3Id'");
@@ -88,10 +85,9 @@ export class ServiceServiceLevelObjective extends pulumi.CustomResource {
             inputs["goal"] = args ? args.goal : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["rollingPeriod"] = args ? args.rollingPeriod : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["serviceLevelIndicator"] = args ? args.serviceLevelIndicator : undefined;
             inputs["serviceLevelObjectiveId"] = args ? args.serviceLevelObjectiveId : undefined;
-            inputs["serviceLevelObjectivesId"] = args ? args.serviceLevelObjectivesId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["v3Id"] = args ? args.v3Id : undefined;
             inputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
@@ -133,13 +129,12 @@ export interface ServiceServiceLevelObjectiveArgs {
      * A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
      */
     readonly rollingPeriod?: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
     /**
      * The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
      */
     readonly serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicatorArgs>;
     readonly serviceLevelObjectiveId?: pulumi.Input<string>;
-    readonly serviceLevelObjectivesId: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
     readonly v3Id: pulumi.Input<string>;
     readonly v3Id1: pulumi.Input<string>;
 }

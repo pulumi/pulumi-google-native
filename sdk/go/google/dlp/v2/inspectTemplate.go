@@ -36,14 +36,14 @@ func NewInspectTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InspectTemplatesId == nil {
-		return nil, errors.New("invalid value for required argument 'InspectTemplatesId'")
+	if args.InspectTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'InspectTemplateId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource InspectTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:InspectTemplate", name, args, &resource, opts...)
@@ -106,10 +106,10 @@ type inspectTemplateArgs struct {
 	// Display name (max 256 chars).
 	DisplayName *string `pulumi:"displayName"`
 	// The core content of the template. Configuration of the scanning process.
-	InspectConfig      *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
-	InspectTemplatesId string                           `pulumi:"inspectTemplatesId"`
-	LocationsId        string                           `pulumi:"locationsId"`
-	ProjectsId         string                           `pulumi:"projectsId"`
+	InspectConfig     *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
+	InspectTemplateId string                           `pulumi:"inspectTemplateId"`
+	Location          string                           `pulumi:"location"`
+	Project           string                           `pulumi:"project"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -121,10 +121,10 @@ type InspectTemplateArgs struct {
 	// Display name (max 256 chars).
 	DisplayName pulumi.StringPtrInput
 	// The core content of the template. Configuration of the scanning process.
-	InspectConfig      GooglePrivacyDlpV2InspectConfigPtrInput
-	InspectTemplatesId pulumi.StringInput
-	LocationsId        pulumi.StringInput
-	ProjectsId         pulumi.StringInput
+	InspectConfig     GooglePrivacyDlpV2InspectConfigPtrInput
+	InspectTemplateId pulumi.StringInput
+	Location          pulumi.StringInput
+	Project           pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

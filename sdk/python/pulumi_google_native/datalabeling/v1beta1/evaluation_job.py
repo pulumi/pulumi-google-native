@@ -15,8 +15,8 @@ __all__ = ['EvaluationJobArgs', 'EvaluationJob']
 @pulumi.input_type
 class EvaluationJobArgs:
     def __init__(__self__, *,
-                 evaluation_jobs_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 evaluation_job_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  annotation_spec_set: Optional[pulumi.Input[str]] = None,
                  attempts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AttemptArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -40,8 +40,8 @@ class EvaluationJobArgs:
         :param pulumi.Input[str] schedule: Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
         :param pulumi.Input[str] state: Describes the current state of the job.
         """
-        pulumi.set(__self__, "evaluation_jobs_id", evaluation_jobs_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "evaluation_job_id", evaluation_job_id)
+        pulumi.set(__self__, "project", project)
         if annotation_spec_set is not None:
             pulumi.set(__self__, "annotation_spec_set", annotation_spec_set)
         if attempts is not None:
@@ -64,22 +64,22 @@ class EvaluationJobArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="evaluationJobsId")
-    def evaluation_jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "evaluation_jobs_id")
+    @pulumi.getter(name="evaluationJobId")
+    def evaluation_job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "evaluation_job_id")
 
-    @evaluation_jobs_id.setter
-    def evaluation_jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "evaluation_jobs_id", value)
+    @evaluation_job_id.setter
+    def evaluation_job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluation_job_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="annotationSpecSet")
@@ -212,11 +212,11 @@ class EvaluationJob(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  evaluation_job_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs']]] = None,
-                 evaluation_jobs_id: Optional[pulumi.Input[str]] = None,
+                 evaluation_job_id: Optional[pulumi.Input[str]] = None,
                  label_missing_ground_truth: Optional[pulumi.Input[bool]] = None,
                  model_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -265,11 +265,11 @@ class EvaluationJob(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  evaluation_job_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs']]] = None,
-                 evaluation_jobs_id: Optional[pulumi.Input[str]] = None,
+                 evaluation_job_id: Optional[pulumi.Input[str]] = None,
                  label_missing_ground_truth: Optional[pulumi.Input[bool]] = None,
                  model_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -289,15 +289,15 @@ class EvaluationJob(pulumi.CustomResource):
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["description"] = description
             __props__.__dict__["evaluation_job_config"] = evaluation_job_config
-            if evaluation_jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'evaluation_jobs_id'")
-            __props__.__dict__["evaluation_jobs_id"] = evaluation_jobs_id
+            if evaluation_job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'evaluation_job_id'")
+            __props__.__dict__["evaluation_job_id"] = evaluation_job_id
             __props__.__dict__["label_missing_ground_truth"] = label_missing_ground_truth
             __props__.__dict__["model_version"] = model_version
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["state"] = state
         super(EvaluationJob, __self__).__init__(

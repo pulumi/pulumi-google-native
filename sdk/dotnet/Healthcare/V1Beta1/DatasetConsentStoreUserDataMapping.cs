@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetConsentStoreUserDataMappingArgs : Pulumi.ResourceArgs
     {
-        [Input("consentStoresId", required: true)]
-        public Input<string> ConsentStoresId { get; set; } = null!;
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
 
         /// <summary>
         /// Required. A unique identifier for the mapped resource.
@@ -105,11 +105,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("dataId")]
         public Input<string>? DataId { get; set; }
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("resourceAttributes")]
         private InputList<Inputs.AttributeArgs>? _resourceAttributes;
@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _resourceAttributes = value;
         }
 
-        [Input("userDataMappingsId", required: true)]
-        public Input<string> UserDataMappingsId { get; set; } = null!;
+        [Input("userDataMappingId", required: true)]
+        public Input<string> UserDataMappingId { get; set; } = null!;
 
         /// <summary>
         /// Required. User's UUID provided by the client.

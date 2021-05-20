@@ -66,7 +66,7 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * The ID of the Google Cloud Platform Project that owns the job.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
@@ -91,17 +91,17 @@ export class TransferJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.transferJobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transferJobsId'");
+            if ((!args || args.transferJobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'transferJobId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["latestOperationName"] = args ? args.latestOperationName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["transferJobsId"] = args ? args.transferJobsId : undefined;
+            inputs["transferJobId"] = args ? args.transferJobId : undefined;
             inputs["transferSpec"] = args ? args.transferSpec : undefined;
             inputs["creationTime"] = undefined /*out*/;
             inputs["deletionTime"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["latestOperationName"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["schedule"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["transferSpec"] = undefined /*out*/;
@@ -149,7 +149,7 @@ export interface TransferJobArgs {
     /**
      * The ID of the Google Cloud Platform Project that owns the job.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly project?: pulumi.Input<string>;
     /**
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
@@ -158,7 +158,7 @@ export interface TransferJobArgs {
      * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
      */
     readonly status?: pulumi.Input<string>;
-    readonly transferJobsId: pulumi.Input<string>;
+    readonly transferJobId: pulumi.Input<string>;
     /**
      * Transfer specification.
      */

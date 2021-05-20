@@ -14,11 +14,10 @@ __all__ = ['NamespaceServiceArgs', 'NamespaceService']
 @pulumi.input_type
 class NamespaceServiceArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 namespaces_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 namespace_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  service_id: pulumi.Input[str],
-                 services_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -26,42 +25,41 @@ class NamespaceServiceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
         :param pulumi.Input[str] name: Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "namespaces_id", namespaces_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "services_id", services_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="namespacesId")
-    def namespaces_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "namespaces_id")
-
-    @namespaces_id.setter
-    def namespaces_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "namespaces_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @namespace_id.setter
+    def namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -71,15 +69,6 @@ class NamespaceServiceArgs:
     @service_id.setter
     def service_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_id", value)
-
-    @property
-    @pulumi.getter(name="servicesId")
-    def services_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "services_id")
-
-    @services_id.setter
-    def services_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "services_id", value)
 
     @property
     @pulumi.getter
@@ -112,12 +101,11 @@ class NamespaceService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a service, and returns the new service.
@@ -152,12 +140,11 @@ class NamespaceService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -171,22 +158,19 @@ class NamespaceService(pulumi.CustomResource):
             __props__ = NamespaceServiceArgs.__new__(NamespaceServiceArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if namespaces_id is None and not opts.urn:
-                raise TypeError("Missing required property 'namespaces_id'")
-            __props__.__dict__["namespaces_id"] = namespaces_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if namespace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'namespace_id'")
+            __props__.__dict__["namespace_id"] = namespace_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
-            if services_id is None and not opts.urn:
-                raise TypeError("Missing required property 'services_id'")
-            __props__.__dict__["services_id"] = services_id
             __props__.__dict__["endpoints"] = None
         super(NamespaceService, __self__).__init__(
             'google-native:servicedirectory/v1:NamespaceService',

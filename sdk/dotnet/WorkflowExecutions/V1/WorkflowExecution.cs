@@ -114,17 +114,17 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         [Input("argument")]
         public Input<string>? Argument { get; set; }
 
-        [Input("executionsId", required: true)]
-        public Input<string> ExecutionsId { get; set; } = null!;
+        [Input("executionId", required: true)]
+        public Input<string> ExecutionId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("workflowsId", required: true)]
-        public Input<string> WorkflowsId { get; set; } = null!;
+        [Input("workflowId", required: true)]
+        public Input<string> WorkflowId { get; set; } = null!;
 
         public WorkflowExecutionArgs()
         {

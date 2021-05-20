@@ -37,14 +37,11 @@ func NewInstanceAppProfile(ctx *pulumi.Context,
 	if args.AppProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'AppProfileId'")
 	}
-	if args.AppProfilesId == nil {
-		return nil, errors.New("invalid value for required argument 'AppProfilesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource InstanceAppProfile
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:InstanceAppProfile", name, args, &resource, opts...)
@@ -98,38 +95,36 @@ func (InstanceAppProfileState) ElementType() reflect.Type {
 }
 
 type instanceAppProfileArgs struct {
-	AppProfileId  string `pulumi:"appProfileId"`
-	AppProfilesId string `pulumi:"appProfilesId"`
+	AppProfileId string `pulumi:"appProfileId"`
 	// Long form description of the use case for this AppProfile.
 	Description *string `pulumi:"description"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
 	Etag           *string `pulumi:"etag"`
 	IgnoreWarnings *string `pulumi:"ignoreWarnings"`
-	InstancesId    string  `pulumi:"instancesId"`
+	InstanceId     string  `pulumi:"instanceId"`
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny *MultiClusterRoutingUseAny `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting *SingleClusterRouting `pulumi:"singleClusterRouting"`
 }
 
 // The set of arguments for constructing a InstanceAppProfile resource.
 type InstanceAppProfileArgs struct {
-	AppProfileId  pulumi.StringInput
-	AppProfilesId pulumi.StringInput
+	AppProfileId pulumi.StringInput
 	// Long form description of the use case for this AppProfile.
 	Description pulumi.StringPtrInput
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
 	Etag           pulumi.StringPtrInput
 	IgnoreWarnings pulumi.StringPtrInput
-	InstancesId    pulumi.StringInput
+	InstanceId     pulumi.StringInput
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyPtrInput
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingPtrInput
 }

@@ -48,20 +48,20 @@ func NewAgentEnvironmentExperiment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.ExperimentsId == nil {
-		return nil, errors.New("invalid value for required argument 'ExperimentsId'")
+	if args.ExperimentId == nil {
+		return nil, errors.New("invalid value for required argument 'ExperimentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentEnvironmentExperiment
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:AgentEnvironmentExperiment", name, args, &resource, opts...)
@@ -143,7 +143,7 @@ func (AgentEnvironmentExperimentState) ElementType() reflect.Type {
 }
 
 type agentEnvironmentExperimentArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// Creation time of this experiment.
 	CreateTime *string `pulumi:"createTime"`
 	// The definition of the experiment.
@@ -153,17 +153,17 @@ type agentEnvironmentExperimentArgs struct {
 	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// End time of this experiment.
-	EndTime        *string `pulumi:"endTime"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	EndTime       *string `pulumi:"endTime"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	ExperimentId  string  `pulumi:"experimentId"`
 	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength *string `pulumi:"experimentLength"`
-	ExperimentsId    string  `pulumi:"experimentsId"`
 	// Last update time of this experiment.
 	LastUpdateTime *string `pulumi:"lastUpdateTime"`
-	LocationsId    string  `pulumi:"locationsId"`
+	Location       string  `pulumi:"location"`
 	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Inference result of the experiment.
 	Result *GoogleCloudDialogflowCxV3beta1ExperimentResult `pulumi:"result"`
 	// Start time of this experiment.
@@ -176,7 +176,7 @@ type agentEnvironmentExperimentArgs struct {
 
 // The set of arguments for constructing a AgentEnvironmentExperiment resource.
 type AgentEnvironmentExperimentArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// Creation time of this experiment.
 	CreateTime pulumi.StringPtrInput
 	// The definition of the experiment.
@@ -186,17 +186,17 @@ type AgentEnvironmentExperimentArgs struct {
 	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// End time of this experiment.
-	EndTime        pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	EndTime       pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
+	ExperimentId  pulumi.StringInput
 	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength pulumi.StringPtrInput
-	ExperimentsId    pulumi.StringInput
 	// Last update time of this experiment.
 	LastUpdateTime pulumi.StringPtrInput
-	LocationsId    pulumi.StringInput
+	Location       pulumi.StringInput
 	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Inference result of the experiment.
 	Result GoogleCloudDialogflowCxV3beta1ExperimentResultPtrInput
 	// Start time of this experiment.

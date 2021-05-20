@@ -15,9 +15,9 @@ __all__ = ['AgentEntityTypeArgs', 'AgentEntityType']
 @pulumi.input_type
 class AgentEntityTypeArgs:
     def __init__(__self__, *,
-                 entity_types_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 entity_type_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
@@ -34,9 +34,9 @@ class AgentEntityTypeArgs:
         :param pulumi.Input[str] kind: Required. Indicates the kind of entity type.
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         """
-        pulumi.set(__self__, "entity_types_id", entity_types_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "entity_type_id", entity_type_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if auto_expansion_mode is not None:
             pulumi.set(__self__, "auto_expansion_mode", auto_expansion_mode)
         if display_name is not None:
@@ -53,31 +53,31 @@ class AgentEntityTypeArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="entityTypesId")
-    def entity_types_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entity_types_id")
+    @pulumi.getter(name="entityTypeId")
+    def entity_type_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entity_type_id")
 
-    @entity_types_id.setter
-    def entity_types_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entity_types_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @entity_type_id.setter
+    def entity_type_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_type_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="autoExpansionMode")
@@ -170,12 +170,12 @@ class AgentEntityType(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
-                 entity_types_id: Optional[pulumi.Input[str]] = None,
+                 entity_type_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an entity type in the specified agent.
@@ -217,12 +217,12 @@ class AgentEntityType(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
-                 entity_types_id: Optional[pulumi.Input[str]] = None,
+                 entity_type_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -239,18 +239,18 @@ class AgentEntityType(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_fuzzy_extraction"] = enable_fuzzy_extraction
             __props__.__dict__["entities"] = entities
-            if entity_types_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entity_types_id'")
-            __props__.__dict__["entity_types_id"] = entity_types_id
+            if entity_type_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entity_type_id'")
+            __props__.__dict__["entity_type_id"] = entity_type_id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["language_code"] = language_code
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
         super(AgentEntityType, __self__).__init__(
             'google-native:dialogflow/v2beta1:AgentEntityType',
             resource_name,

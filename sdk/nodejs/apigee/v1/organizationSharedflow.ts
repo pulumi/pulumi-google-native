@@ -69,19 +69,19 @@ export class OrganizationSharedflow extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.sharedflowsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sharedflowsId'");
+            if ((!args || args.sharedflowId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sharedflowId'");
             }
             inputs["action"] = args ? args.action : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["sharedflowsId"] = args ? args.sharedflowsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
+            inputs["sharedflowId"] = args ? args.sharedflowId : undefined;
             inputs["latestRevisionId"] = undefined /*out*/;
             inputs["metaData"] = undefined /*out*/;
             inputs["revision"] = undefined /*out*/;
@@ -116,6 +116,6 @@ export interface OrganizationSharedflowArgs {
      */
     readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     readonly name: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
-    readonly sharedflowsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
+    readonly sharedflowId: pulumi.Input<string>;
 }

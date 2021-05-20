@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// <summary>
         /// [Required] The ID of the project containing this routine.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.

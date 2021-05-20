@@ -111,11 +111,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
 
-        [Input("cryptoKeysId", required: true)]
-        public Input<string> CryptoKeysId { get; set; } = null!;
-
-        [Input("keyRingsId", required: true)]
-        public Input<string> KeyRingsId { get; set; } = null!;
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -129,8 +126,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
@@ -138,8 +135,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("nextRotationTime")]
         public Input<string>? NextRotationTime { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The immutable purpose of this CryptoKey.

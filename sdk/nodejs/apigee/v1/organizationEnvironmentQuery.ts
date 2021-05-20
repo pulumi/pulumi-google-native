@@ -99,27 +99,27 @@ export class OrganizationEnvironmentQuery extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.queriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'queriesId'");
+            if ((!args || args.queryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'queryId'");
             }
             inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
             inputs["envgroupHostname"] = args ? args.envgroupHostname : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["groupByTimeUnit"] = args ? args.groupByTimeUnit : undefined;
             inputs["limit"] = args ? args.limit : undefined;
             inputs["metrics"] = args ? args.metrics : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
-            inputs["queriesId"] = args ? args.queriesId : undefined;
+            inputs["queryId"] = args ? args.queryId : undefined;
             inputs["reportDefinitionId"] = args ? args.reportDefinitionId : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
             inputs["created"] = undefined /*out*/;
@@ -170,7 +170,7 @@ export interface OrganizationEnvironmentQueryArgs {
      * Hostname needs to be specified if query intends to run at host level. This field is only allowed when query is submitted by CreateHostAsyncQuery where analytics data will be grouped by organization and hostname.
      */
     readonly envgroupHostname?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     /**
      * Boolean expression that can be used to filter data. Filter expressions can be combined using AND/OR terms and should be fully parenthesized to avoid ambiguity. See Analytics metrics, dimensions, and filters reference https://docs.apigee.com/api-platform/analytics/analytics-reference for more information on the fields available to filter on. For more information on the tokens that you use to build filter expressions, see Filter expression syntax. https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax
      */
@@ -191,12 +191,12 @@ export interface OrganizationEnvironmentQueryArgs {
      * Asynchronous Query Name.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
      */
     readonly outputFormat?: pulumi.Input<string>;
-    readonly queriesId: pulumi.Input<string>;
+    readonly queryId: pulumi.Input<string>;
     /**
      * Asynchronous Report ID.
      */

@@ -63,19 +63,19 @@ export class OrganizationApi extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apisId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apisId'");
+            if ((!args || args.apiId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["action"] = args ? args.action : undefined;
-            inputs["apisId"] = args ? args.apisId : undefined;
+            inputs["apiId"] = args ? args.apiId : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["validate"] = args ? args.validate : undefined;
             inputs["latestRevisionId"] = undefined /*out*/;
             inputs["metaData"] = undefined /*out*/;
@@ -98,7 +98,7 @@ export class OrganizationApi extends pulumi.CustomResource {
  */
 export interface OrganizationApiArgs {
     readonly action?: pulumi.Input<string>;
-    readonly apisId: pulumi.Input<string>;
+    readonly apiId: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */
@@ -112,6 +112,6 @@ export interface OrganizationApiArgs {
      */
     readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     readonly validate?: pulumi.Input<string>;
 }

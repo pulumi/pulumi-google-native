@@ -15,10 +15,10 @@ __all__ = ['StudyTrialArgs', 'StudyTrial']
 @pulumi.input_type
 class StudyTrialArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 studies_id: pulumi.Input[str],
-                 trials_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 study_id: pulumi.Input[str],
+                 trial_id: pulumi.Input[str],
                  final_measurement: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]] = None,
@@ -30,10 +30,10 @@ class StudyTrialArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]] parameters: The parameters of the trial.
         :param pulumi.Input[str] state: The detailed state of a trial.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "studies_id", studies_id)
-        pulumi.set(__self__, "trials_id", trials_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "study_id", study_id)
+        pulumi.set(__self__, "trial_id", trial_id)
         if final_measurement is not None:
             pulumi.set(__self__, "final_measurement", final_measurement)
         if measurements is not None:
@@ -44,40 +44,40 @@ class StudyTrialArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="studiesId")
-    def studies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "studies_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @studies_id.setter
-    def studies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "studies_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="trialsId")
-    def trials_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "trials_id")
+    @pulumi.getter(name="studyId")
+    def study_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "study_id")
 
-    @trials_id.setter
-    def trials_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "trials_id", value)
+    @study_id.setter
+    def study_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "study_id", value)
+
+    @property
+    @pulumi.getter(name="trialId")
+    def trial_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "trial_id")
+
+    @trial_id.setter
+    def trial_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "trial_id", value)
 
     @property
     @pulumi.getter(name="finalMeasurement")
@@ -134,13 +134,13 @@ class StudyTrial(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  final_measurement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 studies_id: Optional[pulumi.Input[str]] = None,
-                 trials_id: Optional[pulumi.Input[str]] = None,
+                 study_id: Optional[pulumi.Input[str]] = None,
+                 trial_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Adds a user provided trial to a study.
@@ -177,13 +177,13 @@ class StudyTrial(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  final_measurement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 studies_id: Optional[pulumi.Input[str]] = None,
-                 trials_id: Optional[pulumi.Input[str]] = None,
+                 study_id: Optional[pulumi.Input[str]] = None,
+                 trial_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -197,21 +197,21 @@ class StudyTrial(pulumi.CustomResource):
             __props__ = StudyTrialArgs.__new__(StudyTrialArgs)
 
             __props__.__dict__["final_measurement"] = final_measurement
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["measurements"] = measurements
             __props__.__dict__["parameters"] = parameters
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
-            if studies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'studies_id'")
-            __props__.__dict__["studies_id"] = studies_id
-            if trials_id is None and not opts.urn:
-                raise TypeError("Missing required property 'trials_id'")
-            __props__.__dict__["trials_id"] = trials_id
+            if study_id is None and not opts.urn:
+                raise TypeError("Missing required property 'study_id'")
+            __props__.__dict__["study_id"] = study_id
+            if trial_id is None and not opts.urn:
+                raise TypeError("Missing required property 'trial_id'")
+            __props__.__dict__["trial_id"] = trial_id
             __props__.__dict__["client_id"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["infeasible_reason"] = None

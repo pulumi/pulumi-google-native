@@ -126,14 +126,14 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClustersId == nil {
-		return nil, errors.New("invalid value for required argument 'ClustersId'")
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:container/v1:Cluster", name, args, &resource, opts...)
@@ -381,9 +381,9 @@ type clusterArgs struct {
 	Autoscaling *ClusterAutoscaling `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
 	BinaryAuthorization *BinaryAuthorization `pulumi:"binaryAuthorization"`
+	ClusterId           string               `pulumi:"clusterId"`
 	// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
-	ClustersId      string  `pulumi:"clustersId"`
 	// Which conditions caused the current cluster state.
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// Configuration of Confidential Nodes
@@ -419,10 +419,9 @@ type clusterArgs struct {
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac *LegacyAbac `pulumi:"legacyAbac"`
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
-	Locations   []string `pulumi:"locations"`
-	LocationsId string   `pulumi:"locationsId"`
+	Locations []string `pulumi:"locations"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	LoggingService *string `pulumi:"loggingService"`
 	// Configure the maintenance policy for this cluster.
@@ -453,7 +452,7 @@ type clusterArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
-	ProjectsId           string                `pulumi:"projectsId"`
+	Project              string                `pulumi:"project"`
 	// Release channel configuration.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -492,9 +491,9 @@ type ClusterArgs struct {
 	Autoscaling ClusterAutoscalingPtrInput
 	// Configuration for Binary Authorization.
 	BinaryAuthorization BinaryAuthorizationPtrInput
+	ClusterId           pulumi.StringInput
 	// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
 	ClusterIpv4Cidr pulumi.StringPtrInput
-	ClustersId      pulumi.StringInput
 	// Which conditions caused the current cluster state.
 	Conditions StatusConditionArrayInput
 	// Configuration of Confidential Nodes
@@ -530,10 +529,9 @@ type ClusterArgs struct {
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac LegacyAbacPtrInput
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
-	Locations   pulumi.StringArrayInput
-	LocationsId pulumi.StringInput
+	Locations pulumi.StringArrayInput
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	LoggingService pulumi.StringPtrInput
 	// Configure the maintenance policy for this cluster.
@@ -564,7 +562,7 @@ type ClusterArgs struct {
 	Parent pulumi.StringPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
-	ProjectsId           pulumi.StringInput
+	Project              pulumi.StringInput
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.

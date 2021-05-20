@@ -67,18 +67,18 @@ export class NamespaceService extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.namespacesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespacesId'");
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["namespacesId"] = args ? args.namespacesId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -112,8 +112,8 @@ export interface NamespaceServiceArgs {
      * Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
-    readonly namespacesId: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
     /**
      * Spec holds the desired state of the Service (from the client).
      */

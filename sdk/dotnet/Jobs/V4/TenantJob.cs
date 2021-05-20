@@ -336,6 +336,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("jobEndTime")]
         public Input<string>? JobEndTime { get; set; }
 
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
         /// <summary>
         /// The experience level associated with the job, such as "Entry Level".
         /// </summary>
@@ -347,9 +350,6 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         [Input("jobStartTime")]
         public Input<string>? JobStartTime { get; set; }
-
-        [Input("jobsId", required: true)]
-        public Input<string> JobsId { get; set; } = null!;
 
         /// <summary>
         /// The language of the posting. This field is distinct from any requirements for fluency that are associated with the job. Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }. If this field is unspecified and Job.description is present, detected language code based on Job.description is assigned, otherwise defaults to 'en_US'.
@@ -387,8 +387,8 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("processingOptions")]
         public Input<Inputs.ProcessingOptionsArgs>? ProcessingOptions { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue &gt;0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
@@ -414,8 +414,8 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("responsibilities")]
         public Input<string>? Responsibilities { get; set; }
 
-        [Input("tenantsId", required: true)]
-        public Input<string> TenantsId { get; set; } = null!;
+        [Input("tenantId", required: true)]
+        public Input<string> TenantId { get; set; } = null!;
 
         /// <summary>
         /// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.

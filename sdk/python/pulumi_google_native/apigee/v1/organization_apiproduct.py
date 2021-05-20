@@ -15,8 +15,8 @@ __all__ = ['OrganizationApiproductArgs', 'OrganizationApiproduct']
 @pulumi.input_type
 class OrganizationApiproductArgs:
     def __init__(__self__, *,
-                 apiproducts_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 apiproduct_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  approval_type: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
@@ -51,8 +51,8 @@ class OrganizationApiproductArgs:
         :param pulumi.Input[str] quota_time_unit: Time unit defined for the `quotaInterval`. Valid values include `minute`, `hour`, `day`, or `month`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
         """
-        pulumi.set(__self__, "apiproducts_id", apiproducts_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "apiproduct_id", apiproduct_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if api_resources is not None:
             pulumi.set(__self__, "api_resources", api_resources)
         if approval_type is not None:
@@ -87,22 +87,22 @@ class OrganizationApiproductArgs:
             pulumi.set(__self__, "scopes", scopes)
 
     @property
-    @pulumi.getter(name="apiproductsId")
-    def apiproducts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apiproducts_id")
+    @pulumi.getter(name="apiproductId")
+    def apiproduct_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "apiproduct_id")
 
-    @apiproducts_id.setter
-    def apiproducts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apiproducts_id", value)
+    @apiproduct_id.setter
+    def apiproduct_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "apiproduct_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="apiResources")
@@ -300,7 +300,7 @@ class OrganizationApiproduct(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 apiproducts_id: Optional[pulumi.Input[str]] = None,
+                 apiproduct_id: Optional[pulumi.Input[str]] = None,
                  approval_type: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -311,7 +311,7 @@ class OrganizationApiproduct(pulumi.CustomResource):
                  last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quota: Optional[pulumi.Input[str]] = None,
                  quota_interval: Optional[pulumi.Input[str]] = None,
@@ -364,7 +364,7 @@ class OrganizationApiproduct(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 apiproducts_id: Optional[pulumi.Input[str]] = None,
+                 apiproduct_id: Optional[pulumi.Input[str]] = None,
                  approval_type: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -375,7 +375,7 @@ class OrganizationApiproduct(pulumi.CustomResource):
                  last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quota: Optional[pulumi.Input[str]] = None,
                  quota_interval: Optional[pulumi.Input[str]] = None,
@@ -394,9 +394,9 @@ class OrganizationApiproduct(pulumi.CustomResource):
             __props__ = OrganizationApiproductArgs.__new__(OrganizationApiproductArgs)
 
             __props__.__dict__["api_resources"] = api_resources
-            if apiproducts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apiproducts_id'")
-            __props__.__dict__["apiproducts_id"] = apiproducts_id
+            if apiproduct_id is None and not opts.urn:
+                raise TypeError("Missing required property 'apiproduct_id'")
+            __props__.__dict__["apiproduct_id"] = apiproduct_id
             __props__.__dict__["approval_type"] = approval_type
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["created_at"] = created_at
@@ -407,9 +407,9 @@ class OrganizationApiproduct(pulumi.CustomResource):
             __props__.__dict__["last_modified_at"] = last_modified_at
             __props__.__dict__["name"] = name
             __props__.__dict__["operation_group"] = operation_group
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["proxies"] = proxies
             __props__.__dict__["quota"] = quota
             __props__.__dict__["quota_interval"] = quota_interval

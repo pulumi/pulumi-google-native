@@ -56,17 +56,17 @@ func NewRegistryDevice(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DevicesId == nil {
-		return nil, errors.New("invalid value for required argument 'DevicesId'")
+	if args.DeviceId == nil {
+		return nil, errors.New("invalid value for required argument 'DeviceId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RegistriesId == nil {
-		return nil, errors.New("invalid value for required argument 'RegistriesId'")
+	if args.RegistryId == nil {
+		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
 	var resource RegistryDevice
 	err := ctx.RegisterResource("google-native:cloudiot/v1:RegistryDevice", name, args, &resource, opts...)
@@ -170,7 +170,7 @@ type registryDeviceArgs struct {
 	Config *DeviceConfig `pulumi:"config"`
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials []DeviceCredential `pulumi:"credentials"`
-	DevicesId   string             `pulumi:"devicesId"`
+	DeviceId    string             `pulumi:"deviceId"`
 	// Gateway-related configuration and state.
 	GatewayConfig *GatewayConfig `pulumi:"gatewayConfig"`
 	// The user-defined device identifier. The device ID must be unique within a device registry.
@@ -189,7 +189,7 @@ type registryDeviceArgs struct {
 	LastHeartbeatTime *string `pulumi:"lastHeartbeatTime"`
 	// [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
 	LastStateTime *string `pulumi:"lastStateTime"`
-	LocationsId   string  `pulumi:"locationsId"`
+	Location      string  `pulumi:"location"`
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel *string `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -197,9 +197,9 @@ type registryDeviceArgs struct {
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
 	Name *string `pulumi:"name"`
 	// [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-	NumId        *string `pulumi:"numId"`
-	ProjectsId   string  `pulumi:"projectsId"`
-	RegistriesId string  `pulumi:"registriesId"`
+	NumId      *string `pulumi:"numId"`
+	Project    string  `pulumi:"project"`
+	RegistryId string  `pulumi:"registryId"`
 	// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
 	State *DeviceState `pulumi:"state"`
 }
@@ -212,7 +212,7 @@ type RegistryDeviceArgs struct {
 	Config DeviceConfigPtrInput
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials DeviceCredentialArrayInput
-	DevicesId   pulumi.StringInput
+	DeviceId    pulumi.StringInput
 	// Gateway-related configuration and state.
 	GatewayConfig GatewayConfigPtrInput
 	// The user-defined device identifier. The device ID must be unique within a device registry.
@@ -231,7 +231,7 @@ type RegistryDeviceArgs struct {
 	LastHeartbeatTime pulumi.StringPtrInput
 	// [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
 	LastStateTime pulumi.StringPtrInput
-	LocationsId   pulumi.StringInput
+	Location      pulumi.StringInput
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel pulumi.StringPtrInput
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -239,9 +239,9 @@ type RegistryDeviceArgs struct {
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
 	Name pulumi.StringPtrInput
 	// [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-	NumId        pulumi.StringPtrInput
-	ProjectsId   pulumi.StringInput
-	RegistriesId pulumi.StringInput
+	NumId      pulumi.StringPtrInput
+	Project    pulumi.StringInput
+	RegistryId pulumi.StringInput
 	// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
 	State DeviceStatePtrInput
 }

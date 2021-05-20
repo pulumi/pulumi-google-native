@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         [Input("featureId")]
         public Input<string>? FeatureId { get; set; }
 
-        [Input("featuresId", required: true)]
-        public Input<string> FeaturesId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -150,8 +147,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
             set => _membershipSpecs = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

@@ -78,11 +78,11 @@ export class Folder extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.foldersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'foldersId'");
+            if ((!args || args.folderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'folderId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["foldersId"] = args ? args.foldersId : undefined;
+            inputs["folderId"] = args ? args.folderId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
@@ -115,7 +115,7 @@ export interface FolderArgs {
      * The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly foldersId: pulumi.Input<string>;
+    readonly folderId: pulumi.Input<string>;
     /**
      * Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
      */

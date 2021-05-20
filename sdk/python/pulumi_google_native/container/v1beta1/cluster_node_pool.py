@@ -17,7 +17,7 @@ class ClusterNodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  node_pool_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
@@ -56,7 +56,7 @@ class ClusterNodePoolArgs:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "node_pool_id", node_pool_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -110,13 +110,13 @@ class ClusterNodePoolArgs:
         pulumi.set(self, "node_pool_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -339,7 +339,7 @@ class ClusterNodePool(pulumi.CustomResource):
                  node_pool_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
@@ -406,7 +406,7 @@ class ClusterNodePool(pulumi.CustomResource):
                  node_pool_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
@@ -442,9 +442,9 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__.__dict__["node_pool_id"] = node_pool_id
             __props__.__dict__["parent"] = parent
             __props__.__dict__["pod_ipv4_cidr_size"] = pod_ipv4_cidr_size
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["status"] = status
             __props__.__dict__["upgrade_settings"] = upgrade_settings

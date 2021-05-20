@@ -15,8 +15,8 @@ __all__ = ['TransferConfigArgs', 'TransferConfig']
 @pulumi.input_type
 class TransferConfigArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 transfer_configs_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 transfer_config_id: pulumi.Input[str],
                  authorization_code: Optional[pulumi.Input[str]] = None,
                  data_refresh_window_days: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
@@ -45,8 +45,8 @@ class TransferConfigArgs:
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "transfer_configs_id", transfer_configs_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "transfer_config_id", transfer_config_id)
         if authorization_code is not None:
             pulumi.set(__self__, "authorization_code", authorization_code)
         if data_refresh_window_days is not None:
@@ -77,22 +77,22 @@ class TransferConfigArgs:
             pulumi.set(__self__, "version_info", version_info)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="transferConfigsId")
-    def transfer_configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "transfer_configs_id")
+    @pulumi.getter(name="transferConfigId")
+    def transfer_config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "transfer_config_id")
 
-    @transfer_configs_id.setter
-    def transfer_configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "transfer_configs_id", value)
+    @transfer_config_id.setter
+    def transfer_config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "transfer_config_id", value)
 
     @property
     @pulumi.getter(name="authorizationCode")
@@ -269,11 +269,11 @@ class TransferConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
-                 transfer_configs_id: Optional[pulumi.Input[str]] = None,
+                 transfer_config_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -327,11 +327,11 @@ class TransferConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
-                 transfer_configs_id: Optional[pulumi.Input[str]] = None,
+                 transfer_config_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -355,15 +355,15 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
             __props__.__dict__["params"] = params
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_options"] = schedule_options
             __props__.__dict__["service_account_name"] = service_account_name
-            if transfer_configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'transfer_configs_id'")
-            __props__.__dict__["transfer_configs_id"] = transfer_configs_id
+            if transfer_config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'transfer_config_id'")
+            __props__.__dict__["transfer_config_id"] = transfer_config_id
             __props__.__dict__["version_info"] = version_info
             __props__.__dict__["dataset_region"] = None
             __props__.__dict__["next_run_time"] = None

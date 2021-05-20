@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.Jobs.V3
         [Input("careerSiteUri")]
         public Input<string>? CareerSiteUri { get; set; }
 
-        [Input("companiesId", required: true)]
-        public Input<string> CompaniesId { get; set; } = null!;
+        [Input("companyId", required: true)]
+        public Input<string> CompanyId { get; set; } = null!;
 
         /// <summary>
         /// Derived details about the company.
@@ -207,8 +207,8 @@ namespace Pulumi.GoogleNative.Jobs.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Optional. The employer's company size.

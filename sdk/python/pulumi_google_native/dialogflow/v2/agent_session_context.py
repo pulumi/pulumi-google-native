@@ -13,10 +13,10 @@ __all__ = ['AgentSessionContextArgs', 'AgentSessionContext']
 @pulumi.input_type
 class AgentSessionContextArgs:
     def __init__(__self__, *,
-                 contexts_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 sessions_id: pulumi.Input[str],
+                 context_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 session_id: pulumi.Input[str],
                  lifespan_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -26,10 +26,10 @@ class AgentSessionContextArgs:
         :param pulumi.Input[str] name: Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
-        pulumi.set(__self__, "contexts_id", contexts_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "sessions_id", sessions_id)
+        pulumi.set(__self__, "context_id", context_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "session_id", session_id)
         if lifespan_count is not None:
             pulumi.set(__self__, "lifespan_count", lifespan_count)
         if name is not None:
@@ -38,40 +38,40 @@ class AgentSessionContextArgs:
             pulumi.set(__self__, "parameters", parameters)
 
     @property
-    @pulumi.getter(name="contextsId")
-    def contexts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "contexts_id")
+    @pulumi.getter(name="contextId")
+    def context_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "context_id")
 
-    @contexts_id.setter
-    def contexts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "contexts_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @context_id.setter
+    def context_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "context_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="sessionsId")
-    def sessions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sessions_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @sessions_id.setter
-    def sessions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sessions_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "session_id")
+
+    @session_id.setter
+    def session_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "session_id", value)
 
     @property
     @pulumi.getter(name="lifespanCount")
@@ -115,13 +115,13 @@ class AgentSessionContext(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contexts_id: Optional[pulumi.Input[str]] = None,
+                 context_id: Optional[pulumi.Input[str]] = None,
                  lifespan_count: Optional[pulumi.Input[int]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 sessions_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 session_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a context. If the specified context already exists, overrides the context.
@@ -156,13 +156,13 @@ class AgentSessionContext(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contexts_id: Optional[pulumi.Input[str]] = None,
+                 context_id: Optional[pulumi.Input[str]] = None,
                  lifespan_count: Optional[pulumi.Input[int]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 sessions_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 session_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -175,21 +175,21 @@ class AgentSessionContext(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentSessionContextArgs.__new__(AgentSessionContextArgs)
 
-            if contexts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'contexts_id'")
-            __props__.__dict__["contexts_id"] = contexts_id
+            if context_id is None and not opts.urn:
+                raise TypeError("Missing required property 'context_id'")
+            __props__.__dict__["context_id"] = context_id
             __props__.__dict__["lifespan_count"] = lifespan_count
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if sessions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sessions_id'")
-            __props__.__dict__["sessions_id"] = sessions_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if session_id is None and not opts.urn:
+                raise TypeError("Missing required property 'session_id'")
+            __props__.__dict__["session_id"] = session_id
         super(AgentSessionContext, __self__).__init__(
             'google-native:dialogflow/v2:AgentSessionContext',
             resource_name,

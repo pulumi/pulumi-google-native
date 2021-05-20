@@ -59,32 +59,32 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.aliasesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'aliasesId'");
+            if ((!args || args.aliasId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'aliasId'");
             }
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
             if ((!args || args.format === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'format'");
             }
-            if ((!args || args.keystoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keystoresId'");
+            if ((!args || args.keystoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keystoreId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["alias"] = args ? args.alias : undefined;
-            inputs["aliasesId"] = args ? args.aliasesId : undefined;
+            inputs["aliasId"] = args ? args.aliasId : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["format"] = args ? args.format : undefined;
             inputs["ignoreExpiryValidation"] = args ? args.ignoreExpiryValidation : undefined;
             inputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
-            inputs["keystoresId"] = args ? args.keystoresId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["keystoreId"] = args ? args.keystoreId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["certsInfo"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
@@ -105,7 +105,7 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
  */
 export interface OrganizationEnvironmentKeystoreAliasArgs {
     readonly alias?: pulumi.Input<string>;
-    readonly aliasesId: pulumi.Input<string>;
+    readonly aliasId: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */
@@ -114,7 +114,7 @@ export interface OrganizationEnvironmentKeystoreAliasArgs {
      * The HTTP request/response body as raw binary.
      */
     readonly data?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
@@ -122,7 +122,7 @@ export interface OrganizationEnvironmentKeystoreAliasArgs {
     readonly format: pulumi.Input<string>;
     readonly ignoreExpiryValidation?: pulumi.Input<string>;
     readonly ignoreNewlineValidation?: pulumi.Input<string>;
-    readonly keystoresId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly keystoreId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     readonly password?: pulumi.Input<string>;
 }

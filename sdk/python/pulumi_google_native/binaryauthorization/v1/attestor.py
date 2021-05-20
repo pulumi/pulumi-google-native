@@ -16,8 +16,7 @@ __all__ = ['AttestorArgs', 'Attestor']
 class AttestorArgs:
     def __init__(__self__, *,
                  attestor_id: pulumi.Input[str],
-                 attestors_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  user_owned_grafeas_note: Optional[pulumi.Input['UserOwnedGrafeasNoteArgs']] = None):
@@ -28,8 +27,7 @@ class AttestorArgs:
         :param pulumi.Input['UserOwnedGrafeasNoteArgs'] user_owned_grafeas_note: This specifies how an attestation will be read, and how it will be used during policy enforcement.
         """
         pulumi.set(__self__, "attestor_id", attestor_id)
-        pulumi.set(__self__, "attestors_id", attestors_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -47,22 +45,13 @@ class AttestorArgs:
         pulumi.set(self, "attestor_id", value)
 
     @property
-    @pulumi.getter(name="attestorsId")
-    def attestors_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attestors_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @attestors_id.setter
-    def attestors_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attestors_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -107,10 +96,9 @@ class Attestor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestor_id: Optional[pulumi.Input[str]] = None,
-                 attestors_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_owned_grafeas_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedGrafeasNoteArgs']]] = None,
                  __props__=None):
         """
@@ -147,10 +135,9 @@ class Attestor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestor_id: Optional[pulumi.Input[str]] = None,
-                 attestors_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_owned_grafeas_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedGrafeasNoteArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -167,14 +154,11 @@ class Attestor(pulumi.CustomResource):
             if attestor_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attestor_id'")
             __props__.__dict__["attestor_id"] = attestor_id
-            if attestors_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attestors_id'")
-            __props__.__dict__["attestors_id"] = attestors_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["user_owned_grafeas_note"] = user_owned_grafeas_note
             __props__.__dict__["update_time"] = None
         super(Attestor, __self__).__init__(

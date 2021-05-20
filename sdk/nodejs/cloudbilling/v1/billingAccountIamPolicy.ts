@@ -63,11 +63,11 @@ export class BillingAccountIamPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.billingAccountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'billingAccountsId'");
+            if ((!args || args.billingAccountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingAccountId'");
             }
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
-            inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
+            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["updateMask"] = args ? args.updateMask : undefined;
@@ -93,7 +93,7 @@ export interface BillingAccountIamPolicyArgs {
      * Specifies cloud audit logging configuration for this policy.
      */
     readonly auditConfigs?: pulumi.Input<pulumi.Input<inputs.cloudbilling.v1.AuditConfigArgs>[]>;
-    readonly billingAccountsId: pulumi.Input<string>;
+    readonly billingAccountId: pulumi.Input<string>;
     /**
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */

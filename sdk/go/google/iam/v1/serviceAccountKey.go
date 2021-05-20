@@ -42,14 +42,14 @@ func NewServiceAccountKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.KeysId == nil {
-		return nil, errors.New("invalid value for required argument 'KeysId'")
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ServiceAccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceAccountsId'")
+	if args.ServiceAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
 	var resource ServiceAccountKey
 	err := ctx.RegisterResource("google-native:iam/v1:ServiceAccountKey", name, args, &resource, opts...)
@@ -121,22 +121,22 @@ func (ServiceAccountKeyState) ElementType() reflect.Type {
 type serviceAccountKeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	KeysId       string  `pulumi:"keysId"`
+	KeyId        string  `pulumi:"keyId"`
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType    *string `pulumi:"privateKeyType"`
-	ProjectsId        string  `pulumi:"projectsId"`
-	ServiceAccountsId string  `pulumi:"serviceAccountsId"`
+	PrivateKeyType   *string `pulumi:"privateKeyType"`
+	Project          string  `pulumi:"project"`
+	ServiceAccountId string  `pulumi:"serviceAccountId"`
 }
 
 // The set of arguments for constructing a ServiceAccountKey resource.
 type ServiceAccountKeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 	KeyAlgorithm pulumi.StringPtrInput
-	KeysId       pulumi.StringInput
+	KeyId        pulumi.StringInput
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType    pulumi.StringPtrInput
-	ProjectsId        pulumi.StringInput
-	ServiceAccountsId pulumi.StringInput
+	PrivateKeyType   pulumi.StringPtrInput
+	Project          pulumi.StringInput
+	ServiceAccountId pulumi.StringInput
 }
 
 func (ServiceAccountKeyArgs) ElementType() reflect.Type {

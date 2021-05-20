@@ -95,22 +95,21 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobsId'");
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["errorMessage"] = args ? args.errorMessage : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
-            inputs["jobsId"] = args ? args.jobsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["predictionInput"] = args ? args.predictionInput : undefined;
             inputs["predictionOutput"] = args ? args.predictionOutput : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["trainingInput"] = args ? args.trainingInput : undefined;
@@ -159,8 +158,7 @@ export interface JobArgs {
     /**
      * Required. The user-specified id of the job.
      */
-    readonly jobId?: pulumi.Input<string>;
-    readonly jobsId: pulumi.Input<string>;
+    readonly jobId: pulumi.Input<string>;
     /**
      * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
@@ -173,7 +171,7 @@ export interface JobArgs {
      * The current prediction job result.
      */
     readonly predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutputArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * When the job processing was started.
      */

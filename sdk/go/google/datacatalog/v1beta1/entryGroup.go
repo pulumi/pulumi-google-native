@@ -35,14 +35,11 @@ func NewEntryGroup(ctx *pulumi.Context,
 	if args.EntryGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryGroupId'")
 	}
-	if args.EntryGroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'EntryGroupsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource EntryGroup
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:EntryGroup", name, args, &resource, opts...)
@@ -95,13 +92,12 @@ type entryGroupArgs struct {
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
 	Description *string `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-	DisplayName   *string `pulumi:"displayName"`
-	EntryGroupId  string  `pulumi:"entryGroupId"`
-	EntryGroupsId string  `pulumi:"entryGroupsId"`
-	LocationsId   string  `pulumi:"locationsId"`
+	DisplayName  *string `pulumi:"displayName"`
+	EntryGroupId string  `pulumi:"entryGroupId"`
+	Location     string  `pulumi:"location"`
 	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a EntryGroup resource.
@@ -109,13 +105,12 @@ type EntryGroupArgs struct {
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
 	Description pulumi.StringPtrInput
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-	DisplayName   pulumi.StringPtrInput
-	EntryGroupId  pulumi.StringInput
-	EntryGroupsId pulumi.StringInput
-	LocationsId   pulumi.StringInput
+	DisplayName  pulumi.StringPtrInput
+	EntryGroupId pulumi.StringInput
+	Location     pulumi.StringInput
 	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (EntryGroupArgs) ElementType() reflect.Type {

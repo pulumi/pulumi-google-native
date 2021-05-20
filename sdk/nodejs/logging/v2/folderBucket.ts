@@ -81,20 +81,16 @@ export class FolderBucket extends pulumi.CustomResource {
             if ((!args || args.bucketId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.bucketsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'bucketsId'");
+            if ((!args || args.folderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'folderId'");
             }
-            if ((!args || args.foldersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'foldersId'");
-            }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             inputs["bucketId"] = args ? args.bucketId : undefined;
-            inputs["bucketsId"] = args ? args.bucketsId : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["foldersId"] = args ? args.foldersId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["folderId"] = args ? args.folderId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["locked"] = args ? args.locked : undefined;
             inputs["restrictedFields"] = args ? args.restrictedFields : undefined;
             inputs["retentionDays"] = args ? args.retentionDays : undefined;
@@ -124,13 +120,12 @@ export class FolderBucket extends pulumi.CustomResource {
  */
 export interface FolderBucketArgs {
     readonly bucketId: pulumi.Input<string>;
-    readonly bucketsId: pulumi.Input<string>;
     /**
      * Describes this bucket.
      */
     readonly description?: pulumi.Input<string>;
-    readonly foldersId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly folderId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
      */

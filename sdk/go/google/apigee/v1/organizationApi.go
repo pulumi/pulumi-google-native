@@ -32,11 +32,11 @@ func NewOrganizationApi(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApisId == nil {
-		return nil, errors.New("invalid value for required argument 'ApisId'")
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationApi
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationApi", name, args, &resource, opts...)
@@ -87,31 +87,31 @@ func (OrganizationApiState) ElementType() reflect.Type {
 
 type organizationApiArgs struct {
 	Action *string `pulumi:"action"`
-	ApisId string  `pulumi:"apisId"`
+	ApiId  string  `pulumi:"apiId"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions      []map[string]string `pulumi:"extensions"`
-	Name            *string             `pulumi:"name"`
-	OrganizationsId string              `pulumi:"organizationsId"`
-	Validate        *string             `pulumi:"validate"`
+	Extensions     []map[string]string `pulumi:"extensions"`
+	Name           *string             `pulumi:"name"`
+	OrganizationId string              `pulumi:"organizationId"`
+	Validate       *string             `pulumi:"validate"`
 }
 
 // The set of arguments for constructing a OrganizationApi resource.
 type OrganizationApiArgs struct {
 	Action pulumi.StringPtrInput
-	ApisId pulumi.StringInput
+	ApiId  pulumi.StringInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions      pulumi.StringMapArrayInput
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
-	Validate        pulumi.StringPtrInput
+	Extensions     pulumi.StringMapArrayInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
+	Validate       pulumi.StringPtrInput
 }
 
 func (OrganizationApiArgs) ElementType() reflect.Type {

@@ -62,16 +62,16 @@ export class AppFirewallIngressRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appsId'");
+            if ((!args || args.appId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.ingressRulesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ingressRulesId'");
+            if ((!args || args.ingressRuleId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ingressRuleId'");
             }
             inputs["action"] = args ? args.action : undefined;
-            inputs["appsId"] = args ? args.appsId : undefined;
+            inputs["appId"] = args ? args.appId : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["ingressRulesId"] = args ? args.ingressRulesId : undefined;
+            inputs["ingressRuleId"] = args ? args.ingressRuleId : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["sourceRange"] = args ? args.sourceRange : undefined;
         } else {
@@ -95,12 +95,12 @@ export interface AppFirewallIngressRuleArgs {
      * The action to take on matched requests.
      */
     readonly action?: pulumi.Input<string>;
-    readonly appsId: pulumi.Input<string>;
+    readonly appId: pulumi.Input<string>;
     /**
      * An optional string description of this rule. This field has a maximum length of 100 characters.
      */
     readonly description?: pulumi.Input<string>;
-    readonly ingressRulesId: pulumi.Input<string>;
+    readonly ingressRuleId: pulumi.Input<string>;
     /**
      * A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.
      */

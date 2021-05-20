@@ -216,11 +216,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Input("noteName")]
         public Input<string>? NoteName { get; set; }
 
-        [Input("occurrencesId", required: true)]
-        public Input<string> OccurrencesId { get; set; } = null!;
+        [Input("occurrenceId", required: true)]
+        public Input<string> OccurrenceId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// A description of actions that can be taken to remedy the note.

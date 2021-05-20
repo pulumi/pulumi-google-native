@@ -135,11 +135,11 @@ export class OrganizationReport extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.reportsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reportsId'");
+            if ((!args || args.reportId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'reportId'");
             }
             inputs["chartType"] = args ? args.chartType : undefined;
             inputs["comments"] = args ? args.comments : undefined;
@@ -151,9 +151,9 @@ export class OrganizationReport extends pulumi.CustomResource {
             inputs["metrics"] = args ? args.metrics : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["offset"] = args ? args.offset : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["properties"] = args ? args.properties : undefined;
-            inputs["reportsId"] = args ? args.reportsId : undefined;
+            inputs["reportId"] = args ? args.reportId : undefined;
             inputs["sortByCols"] = args ? args.sortByCols : undefined;
             inputs["sortOrder"] = args ? args.sortOrder : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -240,12 +240,12 @@ export interface OrganizationReportArgs {
      * Legacy field: not used. This field contains the offset for the data
      */
     readonly offset?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * This field contains report properties such as ui metadata etc.
      */
     readonly properties?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1ReportPropertyArgs>[]>;
-    readonly reportsId: pulumi.Input<string>;
+    readonly reportId: pulumi.Input<string>;
     /**
      * Legacy field: not used much. Contains the list of sort by columns
      */

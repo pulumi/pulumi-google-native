@@ -13,8 +13,8 @@ __all__ = ['ServiceAccountArgs', 'ServiceAccount']
 @pulumi.input_type
 class ServiceAccountArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 service_accounts_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 service_account_id: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -26,8 +26,8 @@ class ServiceAccountArgs:
         :param pulumi.Input[str] display_name: Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
         :param pulumi.Input[str] name: The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "service_accounts_id", service_accounts_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_account_id", service_account_id)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if description is not None:
@@ -38,22 +38,22 @@ class ServiceAccountArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="serviceAccountsId")
-    def service_accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "service_accounts_id")
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_account_id")
 
-    @service_accounts_id.setter
-    def service_accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_accounts_id", value)
+    @service_account_id.setter
+    def service_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_id", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -113,8 +113,8 @@ class ServiceAccount(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 service_accounts_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_account_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a ServiceAccount.
@@ -154,8 +154,8 @@ class ServiceAccount(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 service_accounts_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_account_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -172,16 +172,15 @@ class ServiceAccount(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if service_accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'service_accounts_id'")
-            __props__.__dict__["service_accounts_id"] = service_accounts_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if service_account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_account_id'")
+            __props__.__dict__["service_account_id"] = service_account_id
             __props__.__dict__["disabled"] = None
             __props__.__dict__["email"] = None
             __props__.__dict__["oauth2_client_id"] = None
-            __props__.__dict__["project_id"] = None
             __props__.__dict__["unique_id"] = None
         super(ServiceAccount, __self__).__init__(
             'google-native:iam/v1:ServiceAccount',
@@ -211,7 +210,7 @@ class ServiceAccount(pulumi.CustomResource):
         __props__.__dict__["email"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["oauth2_client_id"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["unique_id"] = None
         return ServiceAccount(resource_name, opts=opts, __props__=__props__)
 
@@ -264,12 +263,12 @@ class ServiceAccount(pulumi.CustomResource):
         return pulumi.get(self, "oauth2_client_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the project that owns the service account.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="uniqueId")

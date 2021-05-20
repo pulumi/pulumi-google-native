@@ -75,8 +75,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// <summary>
         /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         /// </summary>
-        [Output("locationId")]
-        public Output<string> LocationId { get; private set; } = null!;
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 
     public sealed class AppArgs : Pulumi.ResourceArgs
     {
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// <summary>
         /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly

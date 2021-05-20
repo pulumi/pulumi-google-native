@@ -42,14 +42,14 @@ func NewOrganizationInstanceCanaryevaluation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CanaryevaluationsId == nil {
-		return nil, errors.New("invalid value for required argument 'CanaryevaluationsId'")
+	if args.CanaryevaluationId == nil {
+		return nil, errors.New("invalid value for required argument 'CanaryevaluationId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationInstanceCanaryevaluation
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationInstanceCanaryevaluation", name, args, &resource, opts...)
@@ -119,15 +119,15 @@ func (OrganizationInstanceCanaryevaluationState) ElementType() reflect.Type {
 }
 
 type organizationInstanceCanaryevaluationArgs struct {
-	CanaryevaluationsId string `pulumi:"canaryevaluationsId"`
+	CanaryevaluationId string `pulumi:"canaryevaluationId"`
 	// Required. The stable version that is serving requests.
 	Control *string `pulumi:"control"`
 	// Required. End time for the evaluation's analysis.
-	EndTime     *string `pulumi:"endTime"`
-	InstancesId string  `pulumi:"instancesId"`
+	EndTime    *string `pulumi:"endTime"`
+	InstanceId string  `pulumi:"instanceId"`
 	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels    *GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
-	OrganizationsId string                                           `pulumi:"organizationsId"`
+	MetricLabels   *GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
+	OrganizationId string                                           `pulumi:"organizationId"`
 	// Required. Start time for the canary evaluation's analysis.
 	StartTime *string `pulumi:"startTime"`
 	// Required. The newer version that is serving requests.
@@ -136,15 +136,15 @@ type organizationInstanceCanaryevaluationArgs struct {
 
 // The set of arguments for constructing a OrganizationInstanceCanaryevaluation resource.
 type OrganizationInstanceCanaryevaluationArgs struct {
-	CanaryevaluationsId pulumi.StringInput
+	CanaryevaluationId pulumi.StringInput
 	// Required. The stable version that is serving requests.
 	Control pulumi.StringPtrInput
 	// Required. End time for the evaluation's analysis.
-	EndTime     pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
+	EndTime    pulumi.StringPtrInput
+	InstanceId pulumi.StringInput
 	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels    GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput
-	OrganizationsId pulumi.StringInput
+	MetricLabels   GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput
+	OrganizationId pulumi.StringInput
 	// Required. Start time for the canary evaluation's analysis.
 	StartTime pulumi.StringPtrInput
 	// Required. The newer version that is serving requests.

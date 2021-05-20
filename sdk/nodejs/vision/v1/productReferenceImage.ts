@@ -59,25 +59,21 @@ export class ProductReferenceImage extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.productsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'productsId'");
+            if ((!args || args.productId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.referenceImagesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'referenceImagesId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["boundingPolys"] = args ? args.boundingPolys : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["productsId"] = args ? args.productsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["productId"] = args ? args.productId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["referenceImageId"] = args ? args.referenceImageId : undefined;
-            inputs["referenceImagesId"] = args ? args.referenceImagesId : undefined;
             inputs["uri"] = args ? args.uri : undefined;
         } else {
             inputs["boundingPolys"] = undefined /*out*/;
@@ -99,15 +95,14 @@ export interface ProductReferenceImageArgs {
      * Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
      */
     readonly boundingPolys?: pulumi.Input<pulumi.Input<inputs.vision.v1.BoundingPolyArgs>[]>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
      */
     readonly name?: pulumi.Input<string>;
-    readonly productsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly productId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly referenceImageId?: pulumi.Input<string>;
-    readonly referenceImagesId: pulumi.Input<string>;
     /**
      * Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
      */

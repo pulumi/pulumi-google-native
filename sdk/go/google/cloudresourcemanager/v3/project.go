@@ -30,7 +30,7 @@ type Project struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The project lifecycle state.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The most recent time this resource was modified.
@@ -44,8 +44,8 @@ func NewProject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Project
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:Project", name, args, &resource, opts...)
@@ -84,7 +84,7 @@ type projectState struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent *string `pulumi:"parent"`
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// The project lifecycle state.
 	State *string `pulumi:"state"`
 	// The most recent time this resource was modified.
@@ -107,7 +107,7 @@ type ProjectState struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent pulumi.StringPtrInput
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// The project lifecycle state.
 	State pulumi.StringPtrInput
 	// The most recent time this resource was modified.
@@ -126,8 +126,7 @@ type projectArgs struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent *string `pulumi:"parent"`
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId  *string `pulumi:"projectId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -139,8 +138,7 @@ type ProjectArgs struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent pulumi.StringPtrInput
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId  pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Project pulumi.StringInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

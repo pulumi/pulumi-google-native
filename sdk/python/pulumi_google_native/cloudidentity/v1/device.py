@@ -14,7 +14,7 @@ __all__ = ['DeviceArgs', 'Device']
 @pulumi.input_type
 class DeviceArgs:
     def __init__(__self__, *,
-                 devices_id: pulumi.Input[str],
+                 device_id: pulumi.Input[str],
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  customer: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class DeviceArgs:
         :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
         """
-        pulumi.set(__self__, "devices_id", devices_id)
+        pulumi.set(__self__, "device_id", device_id)
         if asset_tag is not None:
             pulumi.set(__self__, "asset_tag", asset_tag)
         if customer is not None:
@@ -40,13 +40,13 @@ class DeviceArgs:
             pulumi.set(__self__, "wifi_mac_addresses", wifi_mac_addresses)
 
     @property
-    @pulumi.getter(name="devicesId")
-    def devices_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "devices_id")
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "device_id")
 
-    @devices_id.setter
-    def devices_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "devices_id", value)
+    @device_id.setter
+    def device_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_id", value)
 
     @property
     @pulumi.getter(name="assetTag")
@@ -113,7 +113,7 @@ class Device(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  customer: Optional[pulumi.Input[str]] = None,
-                 devices_id: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -154,7 +154,7 @@ class Device(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  customer: Optional[pulumi.Input[str]] = None,
-                 devices_id: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -172,9 +172,9 @@ class Device(pulumi.CustomResource):
 
             __props__.__dict__["asset_tag"] = asset_tag
             __props__.__dict__["customer"] = customer
-            if devices_id is None and not opts.urn:
-                raise TypeError("Missing required property 'devices_id'")
-            __props__.__dict__["devices_id"] = devices_id
+            if device_id is None and not opts.urn:
+                raise TypeError("Missing required property 'device_id'")
+            __props__.__dict__["device_id"] = device_id
             __props__.__dict__["last_sync_time"] = last_sync_time
             __props__.__dict__["serial_number"] = serial_number
             __props__.__dict__["wifi_mac_addresses"] = wifi_mac_addresses

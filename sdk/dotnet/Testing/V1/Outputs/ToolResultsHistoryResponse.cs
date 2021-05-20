@@ -20,16 +20,16 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// <summary>
         /// Required. The cloud project that owns the tool results history.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private ToolResultsHistoryResponse(
             string historyId,
 
-            string projectId)
+            string project)
         {
             HistoryId = historyId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

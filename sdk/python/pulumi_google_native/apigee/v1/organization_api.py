@@ -14,8 +14,8 @@ __all__ = ['OrganizationApiArgs', 'OrganizationApi']
 @pulumi.input_type
 class OrganizationApiArgs:
     def __init__(__self__, *,
-                 apis_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 api_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
@@ -28,8 +28,8 @@ class OrganizationApiArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        pulumi.set(__self__, "apis_id", apis_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "api_id", api_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if content_type is not None:
@@ -44,22 +44,22 @@ class OrganizationApiArgs:
             pulumi.set(__self__, "validate", validate)
 
     @property
-    @pulumi.getter(name="apisId")
-    def apis_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apis_id")
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_id")
 
-    @apis_id.setter
-    def apis_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apis_id", value)
+    @api_id.setter
+    def api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -131,12 +131,12 @@ class OrganizationApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  validate: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -173,12 +173,12 @@ class OrganizationApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  validate: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -193,16 +193,16 @@ class OrganizationApi(pulumi.CustomResource):
             __props__ = OrganizationApiArgs.__new__(OrganizationApiArgs)
 
             __props__.__dict__["action"] = action
-            if apis_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apis_id'")
-            __props__.__dict__["apis_id"] = apis_id
+            if api_id is None and not opts.urn:
+                raise TypeError("Missing required property 'api_id'")
+            __props__.__dict__["api_id"] = api_id
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             __props__.__dict__["extensions"] = extensions
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["validate"] = validate
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["meta_data"] = None

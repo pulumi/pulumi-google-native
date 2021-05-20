@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
 
     public sealed class AccessPolicyServicePerimeterArgs : Pulumi.ResourceArgs
     {
-        [Input("accessPoliciesId", required: true)]
-        public Input<string> AccessPoliciesId { get; set; } = null!;
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
 
         /// <summary>
         /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
 
-        [Input("servicePerimetersId", required: true)]
-        public Input<string> ServicePerimetersId { get; set; } = null!;
+        [Input("servicePerimeterId", required: true)]
+        public Input<string> ServicePerimeterId { get; set; } = null!;
 
         /// <summary>
         /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.

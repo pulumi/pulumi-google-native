@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("automatedAgentConfig")]
         public Input<Inputs.GoogleCloudDialogflowV2AutomatedAgentConfigArgs>? AutomatedAgentConfig { get; set; }
 
-        [Input("conversationProfilesId", required: true)]
-        public Input<string> ConversationProfilesId { get; set; } = null!;
+        [Input("conversationProfileId", required: true)]
+        public Input<string> ConversationProfileId { get; set; } = null!;
 
         /// <summary>
         /// Required. Human readable name for this profile. Max length 1024 bytes.
@@ -165,8 +165,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Configuration for logging conversation lifecycle events.
@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("notificationConfig")]
         public Input<Inputs.GoogleCloudDialogflowV2NotificationConfigArgs>? NotificationConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Settings for speech transcription.

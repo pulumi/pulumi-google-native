@@ -81,8 +81,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
-        [Input("aliasesId", required: true)]
-        public Input<string> AliasesId { get; set; } = null!;
+        [Input("aliasId", required: true)]
+        public Input<string> AliasId { get; set; } = null!;
 
         /// <summary>
         /// The HTTP Content-Type header value specifying the content type of the body.
@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("data")]
         public Input<string>? Data { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         [Input("extensions")]
         private InputList<ImmutableDictionary<string, string>>? _extensions;
@@ -120,11 +120,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("ignoreNewlineValidation")]
         public Input<string>? IgnoreNewlineValidation { get; set; }
 
-        [Input("keystoresId", required: true)]
-        public Input<string> KeystoresId { get; set; } = null!;
+        [Input("keystoreId", required: true)]
+        public Input<string> KeystoreId { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("password")]
         public Input<string>? Password { get; set; }

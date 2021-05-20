@@ -15,10 +15,10 @@ __all__ = ['OrganizationDeveloperAppKeyArgs', 'OrganizationDeveloperAppKey']
 @pulumi.input_type
 class OrganizationDeveloperAppKeyArgs:
     def __init__(__self__, *,
-                 apps_id: pulumi.Input[str],
-                 developers_id: pulumi.Input[str],
-                 keys_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 app_id: pulumi.Input[str],
+                 developer_id: pulumi.Input[str],
+                 key_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  api_products: Optional[pulumi.Input[Sequence[Any]]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
                  consumer_key: Optional[pulumi.Input[str]] = None,
@@ -40,10 +40,10 @@ class OrganizationDeveloperAppKeyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
         :param pulumi.Input[str] status: Status of the credential. Valid values include `approved` or `revoked`.
         """
-        pulumi.set(__self__, "apps_id", apps_id)
-        pulumi.set(__self__, "developers_id", developers_id)
-        pulumi.set(__self__, "keys_id", keys_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "developer_id", developer_id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if api_products is not None:
             pulumi.set(__self__, "api_products", api_products)
         if attributes is not None:
@@ -64,40 +64,40 @@ class OrganizationDeveloperAppKeyArgs:
             pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="appsId")
-    def apps_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apps_id")
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "app_id")
 
-    @apps_id.setter
-    def apps_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apps_id", value)
-
-    @property
-    @pulumi.getter(name="developersId")
-    def developers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "developers_id")
-
-    @developers_id.setter
-    def developers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "developers_id", value)
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
 
     @property
-    @pulumi.getter(name="keysId")
-    def keys_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "keys_id")
+    @pulumi.getter(name="developerId")
+    def developer_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "developer_id")
 
-    @keys_id.setter
-    def keys_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "keys_id", value)
+    @developer_id.setter
+    def developer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "developer_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="apiProducts")
@@ -214,16 +214,16 @@ class OrganizationDeveloperAppKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_products: Optional[pulumi.Input[Sequence[Any]]] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
                  consumer_key: Optional[pulumi.Input[str]] = None,
                  consumer_secret: Optional[pulumi.Input[str]] = None,
-                 developers_id: Optional[pulumi.Input[str]] = None,
+                 developer_id: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  expires_in_seconds: Optional[pulumi.Input[str]] = None,
                  issued_at: Optional[pulumi.Input[str]] = None,
-                 keys_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -267,16 +267,16 @@ class OrganizationDeveloperAppKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_products: Optional[pulumi.Input[Sequence[Any]]] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
                  consumer_key: Optional[pulumi.Input[str]] = None,
                  consumer_secret: Optional[pulumi.Input[str]] = None,
-                 developers_id: Optional[pulumi.Input[str]] = None,
+                 developer_id: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  expires_in_seconds: Optional[pulumi.Input[str]] = None,
                  issued_at: Optional[pulumi.Input[str]] = None,
-                 keys_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -292,24 +292,24 @@ class OrganizationDeveloperAppKey(pulumi.CustomResource):
             __props__ = OrganizationDeveloperAppKeyArgs.__new__(OrganizationDeveloperAppKeyArgs)
 
             __props__.__dict__["api_products"] = api_products
-            if apps_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apps_id'")
-            __props__.__dict__["apps_id"] = apps_id
+            if app_id is None and not opts.urn:
+                raise TypeError("Missing required property 'app_id'")
+            __props__.__dict__["app_id"] = app_id
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["consumer_key"] = consumer_key
             __props__.__dict__["consumer_secret"] = consumer_secret
-            if developers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'developers_id'")
-            __props__.__dict__["developers_id"] = developers_id
+            if developer_id is None and not opts.urn:
+                raise TypeError("Missing required property 'developer_id'")
+            __props__.__dict__["developer_id"] = developer_id
             __props__.__dict__["expires_at"] = expires_at
             __props__.__dict__["expires_in_seconds"] = expires_in_seconds
             __props__.__dict__["issued_at"] = issued_at
-            if keys_id is None and not opts.urn:
-                raise TypeError("Missing required property 'keys_id'")
-            __props__.__dict__["keys_id"] = keys_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if key_id is None and not opts.urn:
+                raise TypeError("Missing required property 'key_id'")
+            __props__.__dict__["key_id"] = key_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["status"] = status
         super(OrganizationDeveloperAppKey, __self__).__init__(

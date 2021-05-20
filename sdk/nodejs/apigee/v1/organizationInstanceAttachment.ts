@@ -58,19 +58,19 @@ export class OrganizationInstanceAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.attachmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'attachmentsId'");
+            if ((!args || args.attachmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'attachmentId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["attachmentsId"] = args ? args.attachmentsId : undefined;
+            inputs["attachmentId"] = args ? args.attachmentId : undefined;
             inputs["environment"] = args ? args.environment : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         } else {
@@ -89,11 +89,11 @@ export class OrganizationInstanceAttachment extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationInstanceAttachment resource.
  */
 export interface OrganizationInstanceAttachmentArgs {
-    readonly attachmentsId: pulumi.Input<string>;
+    readonly attachmentId: pulumi.Input<string>;
     /**
      * ID of the attached environment.
      */
     readonly environment?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
 }

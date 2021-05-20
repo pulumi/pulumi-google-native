@@ -99,22 +99,22 @@ export class OrganizationHostQuery extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.hostQueriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'hostQueriesId'");
+            if ((!args || args.hostQueryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hostQueryId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
             inputs["envgroupHostname"] = args ? args.envgroupHostname : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["groupByTimeUnit"] = args ? args.groupByTimeUnit : undefined;
-            inputs["hostQueriesId"] = args ? args.hostQueriesId : undefined;
+            inputs["hostQueryId"] = args ? args.hostQueryId : undefined;
             inputs["limit"] = args ? args.limit : undefined;
             inputs["metrics"] = args ? args.metrics : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
             inputs["reportDefinitionId"] = args ? args.reportDefinitionId : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
@@ -174,7 +174,7 @@ export interface OrganizationHostQueryArgs {
      * Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
      */
     readonly groupByTimeUnit?: pulumi.Input<string>;
-    readonly hostQueriesId: pulumi.Input<string>;
+    readonly hostQueryId: pulumi.Input<string>;
     /**
      * Maximum number of rows that can be returned in the result.
      */
@@ -187,7 +187,7 @@ export interface OrganizationHostQueryArgs {
      * Asynchronous Query Name.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
      */

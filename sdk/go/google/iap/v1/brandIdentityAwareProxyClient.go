@@ -30,14 +30,14 @@ func NewBrandIdentityAwareProxyClient(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BrandsId == nil {
-		return nil, errors.New("invalid value for required argument 'BrandsId'")
+	if args.BrandId == nil {
+		return nil, errors.New("invalid value for required argument 'BrandId'")
 	}
-	if args.IdentityAwareProxyClientsId == nil {
-		return nil, errors.New("invalid value for required argument 'IdentityAwareProxyClientsId'")
+	if args.IdentityAwareProxyClientId == nil {
+		return nil, errors.New("invalid value for required argument 'IdentityAwareProxyClientId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource BrandIdentityAwareProxyClient
 	err := ctx.RegisterResource("google-native:iap/v1:BrandIdentityAwareProxyClient", name, args, &resource, opts...)
@@ -83,20 +83,20 @@ func (BrandIdentityAwareProxyClientState) ElementType() reflect.Type {
 }
 
 type brandIdentityAwareProxyClientArgs struct {
-	BrandsId string `pulumi:"brandsId"`
+	BrandId string `pulumi:"brandId"`
 	// Human-friendly name given to the OAuth client.
-	DisplayName                 *string `pulumi:"displayName"`
-	IdentityAwareProxyClientsId string  `pulumi:"identityAwareProxyClientsId"`
-	ProjectsId                  string  `pulumi:"projectsId"`
+	DisplayName                *string `pulumi:"displayName"`
+	IdentityAwareProxyClientId string  `pulumi:"identityAwareProxyClientId"`
+	Project                    string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a BrandIdentityAwareProxyClient resource.
 type BrandIdentityAwareProxyClientArgs struct {
-	BrandsId pulumi.StringInput
+	BrandId pulumi.StringInput
 	// Human-friendly name given to the OAuth client.
-	DisplayName                 pulumi.StringPtrInput
-	IdentityAwareProxyClientsId pulumi.StringInput
-	ProjectsId                  pulumi.StringInput
+	DisplayName                pulumi.StringPtrInput
+	IdentityAwareProxyClientId pulumi.StringInput
+	Project                    pulumi.StringInput
 }
 
 func (BrandIdentityAwareProxyClientArgs) ElementType() reflect.Type {

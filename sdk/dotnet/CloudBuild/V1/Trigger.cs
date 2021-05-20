@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.

@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("documentsId", required: true)]
-        public Input<string> DocumentsId { get; set; } = null!;
+        [Input("documentId", required: true)]
+        public Input<string> DocumentId { get; set; } = null!;
 
         /// <summary>
         /// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("enableAutoReload")]
         public Input<bool>? EnableAutoReload { get; set; }
 
-        [Input("knowledgeBasesId", required: true)]
-        public Input<string> KnowledgeBasesId { get; set; } = null!;
+        [Input("knowledgeBaseId", required: true)]
+        public Input<string> KnowledgeBaseId { get; set; } = null!;
 
         [Input("knowledgeTypes")]
         private InputList<string>? _knowledgeTypes;
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             set => _knowledgeTypes = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("metadata")]
         private InputMap<string>? _metadata;
@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.

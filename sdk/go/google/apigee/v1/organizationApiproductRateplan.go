@@ -62,14 +62,14 @@ func NewOrganizationApiproductRateplan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApiproductsId == nil {
-		return nil, errors.New("invalid value for required argument 'ApiproductsId'")
+	if args.ApiproductId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiproductId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.RateplansId == nil {
-		return nil, errors.New("invalid value for required argument 'RateplansId'")
+	if args.RateplanId == nil {
+		return nil, errors.New("invalid value for required argument 'RateplanId'")
 	}
 	var resource OrganizationApiproductRateplan
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationApiproductRateplan", name, args, &resource, opts...)
@@ -180,8 +180,8 @@ func (OrganizationApiproductRateplanState) ElementType() reflect.Type {
 
 type organizationApiproductRateplanArgs struct {
 	// Name of the API product that the rate plan is associated with.
-	Apiproduct    *string `pulumi:"apiproduct"`
-	ApiproductsId string  `pulumi:"apiproductsId"`
+	Apiproduct   *string `pulumi:"apiproduct"`
+	ApiproductId string  `pulumi:"apiproductId"`
 	// Frequency at which the customer will be billed.
 	BillingPeriod *string `pulumi:"billingPeriod"`
 	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
@@ -200,10 +200,10 @@ type organizationApiproductRateplanArgs struct {
 	FixedFeeFrequency *int `pulumi:"fixedFeeFrequency"`
 	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
 	FixedRecurringFee *GoogleTypeMoney `pulumi:"fixedRecurringFee"`
-	OrganizationsId   string           `pulumi:"organizationsId"`
+	OrganizationId    string           `pulumi:"organizationId"`
 	// Flag that specifies the billing account type, prepaid or postpaid.
 	PaymentFundingModel *string `pulumi:"paymentFundingModel"`
-	RateplansId         string  `pulumi:"rateplansId"`
+	RateplanId          string  `pulumi:"rateplanId"`
 	// Details of the revenue sharing model.
 	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRange `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -219,8 +219,8 @@ type organizationApiproductRateplanArgs struct {
 // The set of arguments for constructing a OrganizationApiproductRateplan resource.
 type OrganizationApiproductRateplanArgs struct {
 	// Name of the API product that the rate plan is associated with.
-	Apiproduct    pulumi.StringPtrInput
-	ApiproductsId pulumi.StringInput
+	Apiproduct   pulumi.StringPtrInput
+	ApiproductId pulumi.StringInput
 	// Frequency at which the customer will be billed.
 	BillingPeriod pulumi.StringPtrInput
 	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
@@ -239,10 +239,10 @@ type OrganizationApiproductRateplanArgs struct {
 	FixedFeeFrequency pulumi.IntPtrInput
 	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
 	FixedRecurringFee GoogleTypeMoneyPtrInput
-	OrganizationsId   pulumi.StringInput
+	OrganizationId    pulumi.StringInput
 	// Flag that specifies the billing account type, prepaid or postpaid.
 	PaymentFundingModel pulumi.StringPtrInput
-	RateplansId         pulumi.StringInput
+	RateplanId          pulumi.StringInput
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeArrayInput
 	// Method used to calculate the revenue that is shared with developers.

@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// <summary>
         /// The ID of the project.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The name of the repo. Leave empty for the default repo.

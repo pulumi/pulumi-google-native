@@ -13,8 +13,8 @@ __all__ = ['AgentKnowledgeBaseArgs', 'AgentKnowledgeBase']
 @pulumi.input_type
 class AgentKnowledgeBaseArgs:
     def __init__(__self__, *,
-                 knowledge_bases_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 knowledge_base_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -24,8 +24,8 @@ class AgentKnowledgeBaseArgs:
         :param pulumi.Input[str] language_code: Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
         :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
-        pulumi.set(__self__, "knowledge_bases_id", knowledge_bases_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "knowledge_base_id", knowledge_base_id)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if language_code is not None:
@@ -34,22 +34,22 @@ class AgentKnowledgeBaseArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="knowledgeBasesId")
-    def knowledge_bases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "knowledge_bases_id")
+    @pulumi.getter(name="knowledgeBaseId")
+    def knowledge_base_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "knowledge_base_id")
 
-    @knowledge_bases_id.setter
-    def knowledge_bases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "knowledge_bases_id", value)
+    @knowledge_base_id.setter
+    def knowledge_base_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "knowledge_base_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -94,10 +94,10 @@ class AgentKnowledgeBase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 knowledge_bases_id: Optional[pulumi.Input[str]] = None,
+                 knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a knowledge base.
@@ -133,10 +133,10 @@ class AgentKnowledgeBase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 knowledge_bases_id: Optional[pulumi.Input[str]] = None,
+                 knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -150,14 +150,14 @@ class AgentKnowledgeBase(pulumi.CustomResource):
             __props__ = AgentKnowledgeBaseArgs.__new__(AgentKnowledgeBaseArgs)
 
             __props__.__dict__["display_name"] = display_name
-            if knowledge_bases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'knowledge_bases_id'")
-            __props__.__dict__["knowledge_bases_id"] = knowledge_bases_id
+            if knowledge_base_id is None and not opts.urn:
+                raise TypeError("Missing required property 'knowledge_base_id'")
+            __props__.__dict__["knowledge_base_id"] = knowledge_base_id
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
         super(AgentKnowledgeBase, __self__).__init__(
             'google-native:dialogflow/v2:AgentKnowledgeBase',
             resource_name,

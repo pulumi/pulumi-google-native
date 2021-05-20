@@ -49,14 +49,11 @@ func NewBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
-	if args.BackupsId == nil {
-		return nil, errors.New("invalid value for required argument 'BackupsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Backup
 	err := ctx.RegisterResource("google-native:file/v1:Backup", name, args, &resource, opts...)
@@ -134,14 +131,13 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
-	BackupId  string `pulumi:"backupId"`
-	BackupsId string `pulumi:"backupsId"`
+	BackupId string `pulumi:"backupId"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
 	// Resource labels to represent user provided metadata.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
-	ProjectsId  string            `pulumi:"projectsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
+	Project  string            `pulumi:"project"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
@@ -150,14 +146,13 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
-	BackupId  pulumi.StringInput
-	BackupsId pulumi.StringInput
+	BackupId pulumi.StringInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
+	Project  pulumi.StringInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.

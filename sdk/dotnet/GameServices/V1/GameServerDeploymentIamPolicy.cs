@@ -123,17 +123,17 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("gameServerDeploymentsId", required: true)]
-        public Input<string> GameServerDeploymentsId { get; set; } = null!;
+        [Input("gameServerDeploymentId", required: true)]
+        public Input<string> GameServerDeploymentId { get; set; } = null!;
 
         [Input("iamOwned")]
         public Input<bool>? IamOwned { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("rules")]
         private InputList<Inputs.RuleArgs>? _rules;

@@ -15,7 +15,7 @@ __all__ = ['TagValueIamPolicyArgs', 'TagValueIamPolicy']
 @pulumi.input_type
 class TagValueIamPolicyArgs:
     def __init__(__self__, *,
-                 tag_values_id: pulumi.Input[str],
+                 tag_value_id: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -29,7 +29,7 @@ class TagValueIamPolicyArgs:
         :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "tag_values_id", tag_values_id)
+        pulumi.set(__self__, "tag_value_id", tag_value_id)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
@@ -42,13 +42,13 @@ class TagValueIamPolicyArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="tagValuesId")
-    def tag_values_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "tag_values_id")
+    @pulumi.getter(name="tagValueId")
+    def tag_value_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag_value_id")
 
-    @tag_values_id.setter
-    def tag_values_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "tag_values_id", value)
+    @tag_value_id.setter
+    def tag_value_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_value_id", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -119,7 +119,7 @@ class TagValueIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 tag_values_id: Optional[pulumi.Input[str]] = None,
+                 tag_value_id: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -161,7 +161,7 @@ class TagValueIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 tag_values_id: Optional[pulumi.Input[str]] = None,
+                 tag_value_id: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -179,9 +179,9 @@ class TagValueIamPolicy(pulumi.CustomResource):
             __props__.__dict__["audit_configs"] = audit_configs
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
-            if tag_values_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tag_values_id'")
-            __props__.__dict__["tag_values_id"] = tag_values_id
+            if tag_value_id is None and not opts.urn:
+                raise TypeError("Missing required property 'tag_value_id'")
+            __props__.__dict__["tag_value_id"] = tag_value_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
         super(TagValueIamPolicy, __self__).__init__(

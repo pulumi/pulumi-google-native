@@ -30,14 +30,14 @@ func NewOrganizationEnvironmentTraceConfigOverride(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.OverridesId == nil {
-		return nil, errors.New("invalid value for required argument 'OverridesId'")
+	if args.OverrideId == nil {
+		return nil, errors.New("invalid value for required argument 'OverrideId'")
 	}
 	var resource OrganizationEnvironmentTraceConfigOverride
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride", name, args, &resource, opts...)
@@ -84,12 +84,12 @@ func (OrganizationEnvironmentTraceConfigOverrideState) ElementType() reflect.Typ
 
 type organizationEnvironmentTraceConfigOverrideArgs struct {
 	// ID of the API proxy that will have its trace configuration overridden.
-	ApiProxy       *string `pulumi:"apiProxy"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	ApiProxy      *string `pulumi:"apiProxy"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// ID of the trace configuration override specified as a system-generated UUID.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
-	OverridesId     string  `pulumi:"overridesId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
+	OverrideId     string  `pulumi:"overrideId"`
 	// Trace configuration to override.
 	SamplingConfig *GoogleCloudApigeeV1TraceSamplingConfig `pulumi:"samplingConfig"`
 }
@@ -97,12 +97,12 @@ type organizationEnvironmentTraceConfigOverrideArgs struct {
 // The set of arguments for constructing a OrganizationEnvironmentTraceConfigOverride resource.
 type OrganizationEnvironmentTraceConfigOverrideArgs struct {
 	// ID of the API proxy that will have its trace configuration overridden.
-	ApiProxy       pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	ApiProxy      pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// ID of the trace configuration override specified as a system-generated UUID.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
-	OverridesId     pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
+	OverrideId     pulumi.StringInput
 	// Trace configuration to override.
 	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigPtrInput
 }

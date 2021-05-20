@@ -15,9 +15,8 @@ __all__ = ['SecretArgs', 'Secret']
 @pulumi.input_type
 class SecretArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  secret_id: pulumi.Input[str],
-                 secrets_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replication: Optional[pulumi.Input['ReplicationArgs']] = None,
@@ -33,9 +32,8 @@ class SecretArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TopicArgs']]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         :param pulumi.Input[str] ttl: Input only. The TTL for the Secret.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "secret_id", secret_id)
-        pulumi.set(__self__, "secrets_id", secrets_id)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -50,13 +48,13 @@ class SecretArgs:
             pulumi.set(__self__, "ttl", ttl)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="secretId")
@@ -66,15 +64,6 @@ class SecretArgs:
     @secret_id.setter
     def secret_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_id", value)
-
-    @property
-    @pulumi.getter(name="secretsId")
-    def secrets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "secrets_id")
-
-    @secrets_id.setter
-    def secrets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "secrets_id", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -156,11 +145,10 @@ class Secret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
                  rotation: Optional[pulumi.Input[pulumi.InputType['RotationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 secrets_id: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -202,11 +190,10 @@ class Secret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
                  rotation: Optional[pulumi.Input[pulumi.InputType['RotationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 secrets_id: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -223,17 +210,14 @@ class Secret(pulumi.CustomResource):
 
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["replication"] = replication
             __props__.__dict__["rotation"] = rotation
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")
             __props__.__dict__["secret_id"] = secret_id
-            if secrets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'secrets_id'")
-            __props__.__dict__["secrets_id"] = secrets_id
             __props__.__dict__["topics"] = topics
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["create_time"] = None

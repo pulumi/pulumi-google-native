@@ -16,8 +16,8 @@ __all__ = ['OrganizationNotificationConfigArgs', 'OrganizationNotificationConfig
 class OrganizationNotificationConfigArgs:
     def __init__(__self__, *,
                  config_id: pulumi.Input[str],
-                 notification_configs_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 notification_config_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
@@ -30,8 +30,8 @@ class OrganizationNotificationConfigArgs:
         :param pulumi.Input['StreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
         """
         pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "notification_configs_id", notification_configs_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "notification_config_id", notification_config_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -51,22 +51,22 @@ class OrganizationNotificationConfigArgs:
         pulumi.set(self, "config_id", value)
 
     @property
-    @pulumi.getter(name="notificationConfigsId")
-    def notification_configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "notification_configs_id")
+    @pulumi.getter(name="notificationConfigId")
+    def notification_config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "notification_config_id")
 
-    @notification_configs_id.setter
-    def notification_configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "notification_configs_id", value)
+    @notification_config_id.setter
+    def notification_config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notification_config_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -125,8 +125,8 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
                  config_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_configs_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 notification_config_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  streaming_config: Optional[pulumi.Input[pulumi.InputType['StreamingConfigArgs']]] = None,
                  __props__=None):
@@ -167,8 +167,8 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
                  config_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_configs_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 notification_config_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  streaming_config: Optional[pulumi.Input[pulumi.InputType['StreamingConfigArgs']]] = None,
                  __props__=None):
@@ -188,12 +188,12 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
             __props__.__dict__["config_id"] = config_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if notification_configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'notification_configs_id'")
-            __props__.__dict__["notification_configs_id"] = notification_configs_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if notification_config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'notification_config_id'")
+            __props__.__dict__["notification_config_id"] = notification_config_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["pubsub_topic"] = pubsub_topic
             __props__.__dict__["streaming_config"] = streaming_config
             __props__.__dict__["service_account"] = None

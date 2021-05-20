@@ -16,9 +16,8 @@ __all__ = ['ConnectorArgs', 'Connector']
 class ConnectorArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
-                 connectors_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
@@ -41,9 +40,8 @@ class ConnectorArgs:
         :param pulumi.Input['SubnetArgs'] subnet: The subnet in which to house the VPC Access Connector.
         """
         pulumi.set(__self__, "connector_id", connector_id)
-        pulumi.set(__self__, "connectors_id", connectors_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
@@ -73,31 +71,22 @@ class ConnectorArgs:
         pulumi.set(self, "connector_id", value)
 
     @property
-    @pulumi.getter(name="connectorsId")
-    def connectors_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "connectors_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @connectors_id.setter
-    def connectors_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "connectors_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -214,9 +203,8 @@ class Connector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
-                 connectors_id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  max_throughput: Optional[pulumi.Input[int]] = None,
@@ -224,7 +212,7 @@ class Connector(pulumi.CustomResource):
                  min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[pulumi.InputType['SubnetArgs']]] = None,
                  __props__=None):
         """
@@ -267,9 +255,8 @@ class Connector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
-                 connectors_id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  max_throughput: Optional[pulumi.Input[int]] = None,
@@ -277,7 +264,7 @@ class Connector(pulumi.CustomResource):
                  min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[pulumi.InputType['SubnetArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -294,13 +281,10 @@ class Connector(pulumi.CustomResource):
             if connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
-            if connectors_id is None and not opts.urn:
-                raise TypeError("Missing required property 'connectors_id'")
-            __props__.__dict__["connectors_id"] = connectors_id
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["max_throughput"] = max_throughput
@@ -308,9 +292,9 @@ class Connector(pulumi.CustomResource):
             __props__.__dict__["min_throughput"] = min_throughput
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["connected_projects"] = None
             __props__.__dict__["state"] = None

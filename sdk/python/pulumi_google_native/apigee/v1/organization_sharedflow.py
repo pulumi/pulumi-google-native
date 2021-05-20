@@ -16,8 +16,8 @@ class OrganizationSharedflowArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
-                 sharedflows_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 sharedflow_id: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
@@ -29,8 +29,8 @@ class OrganizationSharedflowArgs:
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "sharedflows_id", sharedflows_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "sharedflow_id", sharedflow_id)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if data is not None:
@@ -57,22 +57,22 @@ class OrganizationSharedflowArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
-    @pulumi.getter(name="sharedflowsId")
-    def sharedflows_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sharedflows_id")
+    @pulumi.getter(name="sharedflowId")
+    def sharedflow_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sharedflow_id")
 
-    @sharedflows_id.setter
-    def sharedflows_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sharedflows_id", value)
+    @sharedflow_id.setter
+    def sharedflow_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sharedflow_id", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -121,8 +121,8 @@ class OrganizationSharedflow(pulumi.CustomResource):
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 sharedflows_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 sharedflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
@@ -162,8 +162,8 @@ class OrganizationSharedflow(pulumi.CustomResource):
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 sharedflows_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 sharedflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -185,12 +185,12 @@ class OrganizationSharedflow(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
-            if sharedflows_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sharedflows_id'")
-            __props__.__dict__["sharedflows_id"] = sharedflows_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
+            if sharedflow_id is None and not opts.urn:
+                raise TypeError("Missing required property 'sharedflow_id'")
+            __props__.__dict__["sharedflow_id"] = sharedflow_id
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["meta_data"] = None
             __props__.__dict__["revision"] = None

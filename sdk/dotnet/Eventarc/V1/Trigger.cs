@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
@@ -159,8 +159,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
@@ -176,9 +176,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
 
         [Input("triggerId", required: true)]
         public Input<string> TriggerId { get; set; } = null!;
-
-        [Input("triggersId", required: true)]
-        public Input<string> TriggersId { get; set; } = null!;
 
         [Input("validateOnly", required: true)]
         public Input<string> ValidateOnly { get; set; } = null!;

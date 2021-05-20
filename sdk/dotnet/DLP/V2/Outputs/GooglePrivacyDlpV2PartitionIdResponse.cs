@@ -20,16 +20,16 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// <summary>
         /// The ID of the project to which the entities belong.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private GooglePrivacyDlpV2PartitionIdResponse(
             string namespaceId,
 
-            string projectId)
+            string project)
         {
             NamespaceId = namespaceId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

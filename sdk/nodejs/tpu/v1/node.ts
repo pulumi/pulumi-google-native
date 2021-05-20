@@ -123,14 +123,11 @@ export class Node extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.nodesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nodesId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
@@ -138,12 +135,11 @@ export class Node extends pulumi.CustomResource {
             inputs["health"] = args ? args.health : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["nodeId"] = args ? args.nodeId : undefined;
-            inputs["nodesId"] = args ? args.nodesId : undefined;
             inputs["port"] = args ? args.port : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
             inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
             inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
@@ -211,18 +207,17 @@ export interface NodeArgs {
      * Resource labels to represent user-provided metadata.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
      */
     readonly network?: pulumi.Input<string>;
     readonly nodeId?: pulumi.Input<string>;
-    readonly nodesId: pulumi.Input<string>;
     /**
      * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
      */
     readonly port?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The scheduling options for this node.
      */

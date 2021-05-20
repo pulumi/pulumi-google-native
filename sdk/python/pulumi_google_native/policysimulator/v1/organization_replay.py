@@ -15,46 +15,46 @@ __all__ = ['OrganizationReplayArgs', 'OrganizationReplay']
 @pulumi.input_type
 class OrganizationReplayArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
-                 replays_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 replay_id: pulumi.Input[str],
                  config: Optional[pulumi.Input['GoogleCloudPolicysimulatorV1ReplayConfigArgs']] = None):
         """
         The set of arguments for constructing a OrganizationReplay resource.
         :param pulumi.Input['GoogleCloudPolicysimulatorV1ReplayConfigArgs'] config: Required. The configuration used for the `Replay`.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "replays_id", replays_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "replay_id", replay_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
-
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="replaysId")
-    def replays_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "replays_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @replays_id.setter
-    def replays_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "replays_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="replayId")
+    def replay_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "replay_id")
+
+    @replay_id.setter
+    def replay_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "replay_id", value)
 
     @property
     @pulumi.getter
@@ -75,9 +75,9 @@ class OrganizationReplay(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayConfigArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 replays_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 replay_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates and starts a Replay using the given ReplayConfig.
@@ -111,9 +111,9 @@ class OrganizationReplay(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayConfigArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 replays_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 replay_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -127,15 +127,15 @@ class OrganizationReplay(pulumi.CustomResource):
             __props__ = OrganizationReplayArgs.__new__(OrganizationReplayArgs)
 
             __props__.__dict__["config"] = config
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
-            if replays_id is None and not opts.urn:
-                raise TypeError("Missing required property 'replays_id'")
-            __props__.__dict__["replays_id"] = replays_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
+            if replay_id is None and not opts.urn:
+                raise TypeError("Missing required property 'replay_id'")
+            __props__.__dict__["replay_id"] = replay_id
             __props__.__dict__["name"] = None
             __props__.__dict__["results_summary"] = None
             __props__.__dict__["state"] = None

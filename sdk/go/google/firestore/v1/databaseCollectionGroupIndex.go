@@ -32,17 +32,17 @@ func NewDatabaseCollectionGroupIndex(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CollectionGroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'CollectionGroupsId'")
+	if args.CollectionGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'CollectionGroupId'")
 	}
-	if args.DatabasesId == nil {
-		return nil, errors.New("invalid value for required argument 'DatabasesId'")
+	if args.DatabaseId == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
-	if args.IndexesId == nil {
-		return nil, errors.New("invalid value for required argument 'IndexesId'")
+	if args.IndexId == nil {
+		return nil, errors.New("invalid value for required argument 'IndexId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatabaseCollectionGroupIndex
 	err := ctx.RegisterResource("google-native:firestore/v1:DatabaseCollectionGroupIndex", name, args, &resource, opts...)
@@ -92,14 +92,14 @@ func (DatabaseCollectionGroupIndexState) ElementType() reflect.Type {
 }
 
 type databaseCollectionGroupIndexArgs struct {
-	CollectionGroupsId string `pulumi:"collectionGroupsId"`
-	DatabasesId        string `pulumi:"databasesId"`
+	CollectionGroupId string `pulumi:"collectionGroupId"`
+	DatabaseId        string `pulumi:"databaseId"`
 	// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-	Fields    []GoogleFirestoreAdminV1IndexField `pulumi:"fields"`
-	IndexesId string                             `pulumi:"indexesId"`
+	Fields  []GoogleFirestoreAdminV1IndexField `pulumi:"fields"`
+	IndexId string                             `pulumi:"indexId"`
 	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
 	QueryScope *string `pulumi:"queryScope"`
 	// The serving state of the index.
@@ -108,14 +108,14 @@ type databaseCollectionGroupIndexArgs struct {
 
 // The set of arguments for constructing a DatabaseCollectionGroupIndex resource.
 type DatabaseCollectionGroupIndexArgs struct {
-	CollectionGroupsId pulumi.StringInput
-	DatabasesId        pulumi.StringInput
+	CollectionGroupId pulumi.StringInput
+	DatabaseId        pulumi.StringInput
 	// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-	Fields    GoogleFirestoreAdminV1IndexFieldArrayInput
-	IndexesId pulumi.StringInput
+	Fields  GoogleFirestoreAdminV1IndexFieldArrayInput
+	IndexId pulumi.StringInput
 	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
 	QueryScope pulumi.StringPtrInput
 	// The serving state of the index.

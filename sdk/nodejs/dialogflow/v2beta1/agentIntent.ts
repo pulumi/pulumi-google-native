@@ -131,14 +131,14 @@ export class AgentIntent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.intentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'intentsId'");
+            if ((!args || args.intentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'intentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["action"] = args ? args.action : undefined;
             inputs["defaultResponsePlatforms"] = args ? args.defaultResponsePlatforms : undefined;
@@ -146,12 +146,12 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["endInteraction"] = args ? args.endInteraction : undefined;
             inputs["events"] = args ? args.events : undefined;
             inputs["inputContextNames"] = args ? args.inputContextNames : undefined;
+            inputs["intentId"] = args ? args.intentId : undefined;
             inputs["intentView"] = args ? args.intentView : undefined;
-            inputs["intentsId"] = args ? args.intentsId : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["messages"] = args ? args.messages : undefined;
             inputs["mlDisabled"] = args ? args.mlDisabled : undefined;
             inputs["mlEnabled"] = args ? args.mlEnabled : undefined;
@@ -160,7 +160,7 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["parentFollowupIntentName"] = args ? args.parentFollowupIntentName : undefined;
             inputs["priority"] = args ? args.priority : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["resetContexts"] = args ? args.resetContexts : undefined;
             inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
             inputs["webhookState"] = args ? args.webhookState : undefined;
@@ -224,8 +224,8 @@ export interface AgentIntentArgs {
      * Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
      */
     readonly inputContextNames?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly intentId: pulumi.Input<string>;
     readonly intentView?: pulumi.Input<string>;
-    readonly intentsId: pulumi.Input<string>;
     /**
      * Optional. Indicates whether this is a fallback intent.
      */
@@ -235,7 +235,7 @@ export interface AgentIntentArgs {
      * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
      */
     readonly liveAgentHandoff?: pulumi.Input<boolean>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */
@@ -268,7 +268,7 @@ export interface AgentIntentArgs {
      * Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     readonly priority?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
      */

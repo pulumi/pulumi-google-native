@@ -103,41 +103,37 @@ export class CatalogBranchProduct extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.branchesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'branchesId'");
+            if ((!args || args.branchId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'branchId'");
             }
-            if ((!args || args.catalogsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'catalogsId'");
+            if ((!args || args.catalogId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.productsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'productsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["availability"] = args ? args.availability : undefined;
             inputs["availableQuantity"] = args ? args.availableQuantity : undefined;
             inputs["availableTime"] = args ? args.availableTime : undefined;
-            inputs["branchesId"] = args ? args.branchesId : undefined;
-            inputs["catalogsId"] = args ? args.catalogsId : undefined;
+            inputs["branchId"] = args ? args.branchId : undefined;
+            inputs["catalogId"] = args ? args.catalogId : undefined;
             inputs["categories"] = args ? args.categories : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["images"] = args ? args.images : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["priceInfo"] = args ? args.priceInfo : undefined;
             inputs["primaryProductId"] = args ? args.primaryProductId : undefined;
             inputs["productId"] = args ? args.productId : undefined;
-            inputs["productsId"] = args ? args.productsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["title"] = args ? args.title : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -185,8 +181,8 @@ export interface CatalogBranchProductArgs {
      * The timestamp when this Product becomes available for recommendation.
      */
     readonly availableTime?: pulumi.Input<string>;
-    readonly branchesId: pulumi.Input<string>;
-    readonly catalogsId: pulumi.Input<string>;
+    readonly branchId: pulumi.Input<string>;
+    readonly catalogId: pulumi.Input<string>;
     /**
      * Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
      */
@@ -203,7 +199,7 @@ export interface CatalogBranchProductArgs {
      * Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
      */
     readonly images?: pulumi.Input<pulumi.Input<inputs.retail.v2alpha.GoogleCloudRetailV2alphaImageArgs>[]>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
      */
@@ -217,8 +213,7 @@ export interface CatalogBranchProductArgs {
      */
     readonly primaryProductId?: pulumi.Input<string>;
     readonly productId: pulumi.Input<string>;
-    readonly productsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
      */

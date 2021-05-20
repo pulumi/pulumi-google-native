@@ -13,10 +13,10 @@ __all__ = ['TaxonomyPolicyTagArgs', 'TaxonomyPolicyTag']
 @pulumi.input_type
 class TaxonomyPolicyTagArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 policy_tags_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 taxonomies_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 policy_tag_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 taxonomy_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None):
@@ -26,10 +26,10 @@ class TaxonomyPolicyTagArgs:
         :param pulumi.Input[str] display_name: Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
         :param pulumi.Input[str] parent_policy_tag: Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "policy_tags_id", policy_tags_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "taxonomies_id", taxonomies_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "policy_tag_id", policy_tag_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "taxonomy_id", taxonomy_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -38,40 +38,40 @@ class TaxonomyPolicyTagArgs:
             pulumi.set(__self__, "parent_policy_tag", parent_policy_tag)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="policyTagsId")
-    def policy_tags_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "policy_tags_id")
-
-    @policy_tags_id.setter
-    def policy_tags_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "policy_tags_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="policyTagId")
+    def policy_tag_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_tag_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @policy_tag_id.setter
+    def policy_tag_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_tag_id", value)
 
     @property
-    @pulumi.getter(name="taxonomiesId")
-    def taxonomies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "taxonomies_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @taxonomies_id.setter
-    def taxonomies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "taxonomies_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="taxonomyId")
+    def taxonomy_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "taxonomy_id")
+
+    @taxonomy_id.setter
+    def taxonomy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "taxonomy_id", value)
 
     @property
     @pulumi.getter
@@ -117,11 +117,11 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
-                 policy_tags_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 taxonomies_id: Optional[pulumi.Input[str]] = None,
+                 policy_tag_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 taxonomy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a policy tag in the specified taxonomy.
@@ -158,11 +158,11 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
-                 policy_tags_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 taxonomies_id: Optional[pulumi.Input[str]] = None,
+                 policy_tag_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 taxonomy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -177,19 +177,19 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["parent_policy_tag"] = parent_policy_tag
-            if policy_tags_id is None and not opts.urn:
-                raise TypeError("Missing required property 'policy_tags_id'")
-            __props__.__dict__["policy_tags_id"] = policy_tags_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if taxonomies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'taxonomies_id'")
-            __props__.__dict__["taxonomies_id"] = taxonomies_id
+            if policy_tag_id is None and not opts.urn:
+                raise TypeError("Missing required property 'policy_tag_id'")
+            __props__.__dict__["policy_tag_id"] = policy_tag_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if taxonomy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'taxonomy_id'")
+            __props__.__dict__["taxonomy_id"] = taxonomy_id
             __props__.__dict__["child_policy_tags"] = None
             __props__.__dict__["name"] = None
         super(TaxonomyPolicyTag, __self__).__init__(

@@ -91,14 +91,14 @@ export class BillingAccountSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.billingAccountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'billingAccountsId'");
+            if ((!args || args.billingAccountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.sinksId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sinksId'");
+            if ((!args || args.sinkId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sinkId'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
-            inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
+            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
@@ -106,7 +106,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["sinksId"] = args ? args.sinksId : undefined;
+            inputs["sinkId"] = args ? args.sinkId : undefined;
             inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -139,7 +139,7 @@ export interface BillingAccountSinkArgs {
      * Optional. Options that affect sinks exporting data to BigQuery.
      */
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.v2.BigQueryOptionsArgs>;
-    readonly billingAccountsId: pulumi.Input<string>;
+    readonly billingAccountId: pulumi.Input<string>;
     /**
      * Optional. A description of this sink. The maximum length of the description is 8000 characters.
      */
@@ -168,6 +168,6 @@ export interface BillingAccountSinkArgs {
      * Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     readonly name?: pulumi.Input<string>;
-    readonly sinksId: pulumi.Input<string>;
+    readonly sinkId: pulumi.Input<string>;
     readonly uniqueWriterIdentity?: pulumi.Input<string>;
 }

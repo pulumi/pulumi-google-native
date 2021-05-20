@@ -83,25 +83,25 @@ export class WorkflowTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.workflowTemplatesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workflowTemplatesId'");
+            if ((!args || args.workflowTemplateId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workflowTemplateId'");
             }
             inputs["dagTimeout"] = args ? args.dagTimeout : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["jobs"] = args ? args.jobs : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["placement"] = args ? args.placement : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["version"] = args ? args.version : undefined;
-            inputs["workflowTemplatesId"] = args ? args.workflowTemplatesId : undefined;
+            inputs["workflowTemplateId"] = args ? args.workflowTemplateId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -140,7 +140,7 @@ export interface WorkflowTemplateArgs {
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
@@ -149,10 +149,10 @@ export interface WorkflowTemplateArgs {
      * Required. WorkflowTemplate scheduling information.
      */
     readonly placement?: pulumi.Input<inputs.dataproc.v1.WorkflowTemplatePlacementArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
      */
     readonly version?: pulumi.Input<number>;
-    readonly workflowTemplatesId: pulumi.Input<string>;
+    readonly workflowTemplateId: pulumi.Input<string>;
 }

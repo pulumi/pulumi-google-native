@@ -15,11 +15,11 @@ __all__ = ['DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs', 'DatasetA
 @pulumi.input_type
 class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs:
     def __init__(__self__, *,
-                 annotated_datasets_id: pulumi.Input[str],
-                 datasets_id: pulumi.Input[str],
-                 feedback_messages_id: pulumi.Input[str],
-                 feedback_threads_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 annotated_dataset_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 feedback_message_id: pulumi.Input[str],
+                 feedback_thread_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  body: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -33,11 +33,11 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs:
         :param pulumi.Input[str] image: The image storing this feedback if the feedback is an image representing operator's comments.
         :param pulumi.Input[str] name: Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
         """
-        pulumi.set(__self__, "annotated_datasets_id", annotated_datasets_id)
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "feedback_messages_id", feedback_messages_id)
-        pulumi.set(__self__, "feedback_threads_id", feedback_threads_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "annotated_dataset_id", annotated_dataset_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "feedback_message_id", feedback_message_id)
+        pulumi.set(__self__, "feedback_thread_id", feedback_thread_id)
+        pulumi.set(__self__, "project", project)
         if body is not None:
             pulumi.set(__self__, "body", body)
         if create_time is not None:
@@ -52,49 +52,49 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs:
             pulumi.set(__self__, "requester_feedback_metadata", requester_feedback_metadata)
 
     @property
-    @pulumi.getter(name="annotatedDatasetsId")
-    def annotated_datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "annotated_datasets_id")
+    @pulumi.getter(name="annotatedDatasetId")
+    def annotated_dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "annotated_dataset_id")
 
-    @annotated_datasets_id.setter
-    def annotated_datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "annotated_datasets_id", value)
-
-    @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
-
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
+    @annotated_dataset_id.setter
+    def annotated_dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "annotated_dataset_id", value)
 
     @property
-    @pulumi.getter(name="feedbackMessagesId")
-    def feedback_messages_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "feedback_messages_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @feedback_messages_id.setter
-    def feedback_messages_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "feedback_messages_id", value)
-
-    @property
-    @pulumi.getter(name="feedbackThreadsId")
-    def feedback_threads_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "feedback_threads_id")
-
-    @feedback_threads_id.setter
-    def feedback_threads_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "feedback_threads_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="feedbackMessageId")
+    def feedback_message_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "feedback_message_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @feedback_message_id.setter
+    def feedback_message_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "feedback_message_id", value)
+
+    @property
+    @pulumi.getter(name="feedbackThreadId")
+    def feedback_thread_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "feedback_thread_id")
+
+    @feedback_thread_id.setter
+    def feedback_thread_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "feedback_thread_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -168,16 +168,16 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotated_datasets_id: Optional[pulumi.Input[str]] = None,
+                 annotated_dataset_id: Optional[pulumi.Input[str]] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
-                 feedback_messages_id: Optional[pulumi.Input[str]] = None,
-                 feedback_threads_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 feedback_message_id: Optional[pulumi.Input[str]] = None,
+                 feedback_thread_id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  requester_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs']]] = None,
                  __props__=None):
         """
@@ -214,16 +214,16 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotated_datasets_id: Optional[pulumi.Input[str]] = None,
+                 annotated_dataset_id: Optional[pulumi.Input[str]] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
-                 feedback_messages_id: Optional[pulumi.Input[str]] = None,
-                 feedback_threads_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 feedback_message_id: Optional[pulumi.Input[str]] = None,
+                 feedback_thread_id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  requester_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -237,26 +237,26 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs.__new__(DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs)
 
-            if annotated_datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'annotated_datasets_id'")
-            __props__.__dict__["annotated_datasets_id"] = annotated_datasets_id
+            if annotated_dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'annotated_dataset_id'")
+            __props__.__dict__["annotated_dataset_id"] = annotated_dataset_id
             __props__.__dict__["body"] = body
             __props__.__dict__["create_time"] = create_time
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
-            if feedback_messages_id is None and not opts.urn:
-                raise TypeError("Missing required property 'feedback_messages_id'")
-            __props__.__dict__["feedback_messages_id"] = feedback_messages_id
-            if feedback_threads_id is None and not opts.urn:
-                raise TypeError("Missing required property 'feedback_threads_id'")
-            __props__.__dict__["feedback_threads_id"] = feedback_threads_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
+            if feedback_message_id is None and not opts.urn:
+                raise TypeError("Missing required property 'feedback_message_id'")
+            __props__.__dict__["feedback_message_id"] = feedback_message_id
+            if feedback_thread_id is None and not opts.urn:
+                raise TypeError("Missing required property 'feedback_thread_id'")
+            __props__.__dict__["feedback_thread_id"] = feedback_thread_id
             __props__.__dict__["image"] = image
             __props__.__dict__["name"] = name
             __props__.__dict__["operator_feedback_metadata"] = operator_feedback_metadata
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["requester_feedback_metadata"] = requester_feedback_metadata
         super(DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage, __self__).__init__(
             'google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage',

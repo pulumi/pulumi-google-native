@@ -351,8 +351,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("numRows")]
         public Input<string>? NumRows { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

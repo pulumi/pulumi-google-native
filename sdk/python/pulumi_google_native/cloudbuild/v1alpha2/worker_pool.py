@@ -15,9 +15,8 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 @pulumi.input_type
 class WorkerPoolArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  worker_pool_id: pulumi.Input[str],
-                 worker_pools_id: pulumi.Input[str],
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
@@ -27,9 +26,8 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] region: Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Worker configuration for the `WorkerPool`.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
-        pulumi.set(__self__, "worker_pools_id", worker_pools_id)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if region is not None:
@@ -38,13 +36,13 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "worker_config", worker_config)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -54,15 +52,6 @@ class WorkerPoolArgs:
     @worker_pool_id.setter
     def worker_pool_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "worker_pool_id", value)
-
-    @property
-    @pulumi.getter(name="workerPoolsId")
-    def worker_pools_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "worker_pools_id")
-
-    @worker_pools_id.setter
-    def worker_pools_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "worker_pools_id", value)
 
     @property
     @pulumi.getter(name="networkConfig")
@@ -107,11 +96,10 @@ class WorkerPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
-                 worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a `WorkerPool` to run the builds, and returns the new worker pool.
@@ -147,11 +135,10 @@ class WorkerPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
-                 worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -165,17 +152,14 @@ class WorkerPool(pulumi.CustomResource):
             __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
             __props__.__dict__["network_config"] = network_config
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["worker_config"] = worker_config
             if worker_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_pool_id'")
             __props__.__dict__["worker_pool_id"] = worker_pool_id
-            if worker_pools_id is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_pools_id'")
-            __props__.__dict__["worker_pools_id"] = worker_pools_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["name"] = None

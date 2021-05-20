@@ -107,23 +107,23 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobsId'");
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["inputUri"] = args ? args.inputUri : undefined;
-            inputs["jobsId"] = args ? args.jobsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["jobId"] = args ? args.jobId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["outputUri"] = args ? args.outputUri : undefined;
             inputs["priority"] = args ? args.priority : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
             inputs["ttlAfterCompletionDays"] = args ? args.ttlAfterCompletionDays : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -170,8 +170,8 @@ export interface JobArgs {
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
      */
     readonly inputUri?: pulumi.Input<string>;
-    readonly jobsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly jobId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
      */
@@ -184,7 +184,7 @@ export interface JobArgs {
      * Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
      */
     readonly priority?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
      */

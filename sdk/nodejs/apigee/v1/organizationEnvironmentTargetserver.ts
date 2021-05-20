@@ -71,24 +71,24 @@ export class OrganizationEnvironmentTargetserver extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.targetserversId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetserversId'");
+            if ((!args || args.targetserverId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'targetserverId'");
             }
             inputs["description"] = args ? args.description : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["host"] = args ? args.host : undefined;
             inputs["isEnabled"] = args ? args.isEnabled : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["sSLInfo"] = args ? args.sSLInfo : undefined;
-            inputs["targetserversId"] = args ? args.targetserversId : undefined;
+            inputs["targetserverId"] = args ? args.targetserverId : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
@@ -112,7 +112,7 @@ export interface OrganizationEnvironmentTargetserverArgs {
      * Optional. A human-readable description of this TargetServer.
      */
     readonly description?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     /**
      * Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
@@ -125,7 +125,7 @@ export interface OrganizationEnvironmentTargetserverArgs {
      * Required. The resource id of this target server. Values must match the regular expression 
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
@@ -134,5 +134,5 @@ export interface OrganizationEnvironmentTargetserverArgs {
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */
     readonly sSLInfo?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TlsInfoArgs>;
-    readonly targetserversId: pulumi.Input<string>;
+    readonly targetserverId: pulumi.Input<string>;
 }

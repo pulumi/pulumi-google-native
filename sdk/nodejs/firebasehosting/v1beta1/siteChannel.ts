@@ -86,19 +86,15 @@ export class SiteChannel extends pulumi.CustomResource {
             if ((!args || args.channelId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'channelId'");
             }
-            if ((!args || args.channelsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'channelsId'");
-            }
-            if ((!args || args.sitesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sitesId'");
+            if ((!args || args.siteId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'siteId'");
             }
             inputs["channelId"] = args ? args.channelId : undefined;
-            inputs["channelsId"] = args ? args.channelsId : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["retainedReleaseCount"] = args ? args.retainedReleaseCount : undefined;
-            inputs["sitesId"] = args ? args.sitesId : undefined;
+            inputs["siteId"] = args ? args.siteId : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["release"] = undefined /*out*/;
@@ -127,7 +123,6 @@ export class SiteChannel extends pulumi.CustomResource {
  */
 export interface SiteChannelArgs {
     readonly channelId: pulumi.Input<string>;
-    readonly channelsId: pulumi.Input<string>;
     /**
      * The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
      */
@@ -144,7 +139,7 @@ export interface SiteChannelArgs {
      * The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
     readonly retainedReleaseCount?: pulumi.Input<number>;
-    readonly sitesId: pulumi.Input<string>;
+    readonly siteId: pulumi.Input<string>;
     /**
      * Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
      */

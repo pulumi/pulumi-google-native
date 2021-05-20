@@ -79,30 +79,30 @@ export class AgentIntent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.intentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'intentsId'");
+            if ((!args || args.intentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'intentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["intentsId"] = args ? args.intentsId : undefined;
+            inputs["intentId"] = args ? args.intentId : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["priority"] = args ? args.priority : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -125,7 +125,7 @@ export class AgentIntent extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentIntent resource.
  */
 export interface AgentIntentArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
      */
@@ -134,7 +134,7 @@ export interface AgentIntentArgs {
      * Required. The human-readable name of the intent, unique within the agent.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly intentsId: pulumi.Input<string>;
+    readonly intentId: pulumi.Input<string>;
     /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
      */
@@ -144,7 +144,7 @@ export interface AgentIntentArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
      */
@@ -157,7 +157,7 @@ export interface AgentIntentArgs {
      * The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     readonly priority?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The collection of training phrases the agent is trained on to identify the intent.
      */

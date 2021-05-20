@@ -49,14 +49,11 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:file/v1:Instance", name, args, &resource, opts...)
@@ -139,15 +136,14 @@ type instanceArgs struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
-	FileShares  []FileShareConfig `pulumi:"fileShares"`
-	InstanceId  string            `pulumi:"instanceId"`
-	InstancesId string            `pulumi:"instancesId"`
+	FileShares []FileShareConfig `pulumi:"fileShares"`
+	InstanceId string            `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
-	Networks   []NetworkConfig `pulumi:"networks"`
-	ProjectsId string          `pulumi:"projectsId"`
+	Networks []NetworkConfig `pulumi:"networks"`
+	Project  string          `pulumi:"project"`
 	// The service tier of the instance.
 	Tier *string `pulumi:"tier"`
 }
@@ -159,15 +155,14 @@ type InstanceArgs struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a single file share is supported.
-	FileShares  FileShareConfigArrayInput
-	InstanceId  pulumi.StringInput
-	InstancesId pulumi.StringInput
+	FileShares FileShareConfigArrayInput
+	InstanceId pulumi.StringInput
 	// Resource labels to represent user provided metadata.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
-	Networks   NetworkConfigArrayInput
-	ProjectsId pulumi.StringInput
+	Networks NetworkConfigArrayInput
+	Project  pulumi.StringInput
 	// The service tier of the instance.
 	Tier pulumi.StringPtrInput
 }

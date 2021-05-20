@@ -30,11 +30,11 @@ func NewOrganizationSource(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SourcesId == nil {
-		return nil, errors.New("invalid value for required argument 'SourcesId'")
+	if args.SourceId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceId'")
 	}
 	var resource OrganizationSource
 	err := ctx.RegisterResource("google-native:securitycenter/v1beta1:OrganizationSource", name, args, &resource, opts...)
@@ -85,9 +85,9 @@ type organizationSourceArgs struct {
 	// The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
 	DisplayName *string `pulumi:"displayName"`
 	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
-	SourcesId       string  `pulumi:"sourcesId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
+	SourceId       string  `pulumi:"sourceId"`
 }
 
 // The set of arguments for constructing a OrganizationSource resource.
@@ -97,9 +97,9 @@ type OrganizationSourceArgs struct {
 	// The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
 	DisplayName pulumi.StringPtrInput
 	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
-	SourcesId       pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
+	SourceId       pulumi.StringInput
 }
 
 func (OrganizationSourceArgs) ElementType() reflect.Type {

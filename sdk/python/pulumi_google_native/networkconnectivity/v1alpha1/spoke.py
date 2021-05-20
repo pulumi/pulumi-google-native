@@ -15,9 +15,8 @@ __all__ = ['SpokeArgs', 'Spoke']
 @pulumi.input_type
 class SpokeArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 spokes_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
@@ -41,9 +40,8 @@ class SpokeArgs:
         :param pulumi.Input[str] name: Immutable. The name of a Spoke resource.
         :param pulumi.Input[str] update_time: The time when the Spoke was updated.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "spokes_id", spokes_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -68,31 +66,22 @@ class SpokeArgs:
             pulumi.set(__self__, "update_time", update_time)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="spokesId")
-    def spokes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "spokes_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @spokes_id.setter
-    def spokes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "spokes_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -233,12 +222,11 @@ class Spoke(pulumi.CustomResource):
                  linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  spoke_id: Optional[pulumi.Input[str]] = None,
-                 spokes_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -287,12 +275,11 @@ class Spoke(pulumi.CustomResource):
                  linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  spoke_id: Optional[pulumi.Input[str]] = None,
-                 spokes_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -313,18 +300,15 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
             __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
             __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["spoke_id"] = spoke_id
-            if spokes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'spokes_id'")
-            __props__.__dict__["spokes_id"] = spokes_id
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None

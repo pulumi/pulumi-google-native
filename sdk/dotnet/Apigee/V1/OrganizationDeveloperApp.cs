@@ -159,11 +159,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// ID of the developer app.
         /// </summary>
-        [Input("appId")]
-        public Input<string>? AppId { get; set; }
-
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<Inputs.GoogleCloudApigeeV1AttributeArgs>? _attributes;
@@ -186,11 +183,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// ID of the developer.
         /// </summary>
-        [Input("developerId")]
-        public Input<string>? DeveloperId { get; set; }
-
-        [Input("developersId", required: true)]
-        public Input<string> DevelopersId { get; set; } = null!;
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
 
         /// <summary>
         /// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
@@ -204,8 +198,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("scopes")]
         private InputList<string>? _scopes;

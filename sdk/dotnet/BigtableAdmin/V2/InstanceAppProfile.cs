@@ -93,9 +93,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
 
-        [Input("appProfilesId", required: true)]
-        public Input<string> AppProfilesId { get; set; } = null!;
-
         /// <summary>
         /// Long form description of the use case for this AppProfile.
         /// </summary>
@@ -111,8 +108,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("ignoreWarnings")]
         public Input<string>? IgnoreWarnings { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// Use a multi-cluster routing policy.
@@ -126,8 +123,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Use a single-cluster routing policy.

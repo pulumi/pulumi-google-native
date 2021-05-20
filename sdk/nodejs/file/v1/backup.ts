@@ -93,21 +93,17 @@ export class Backup extends pulumi.CustomResource {
             if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if ((!args || args.backupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backupsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             inputs["capacityGb"] = undefined /*out*/;
@@ -142,7 +138,6 @@ export class Backup extends pulumi.CustomResource {
  */
 export interface BackupArgs {
     readonly backupId: pulumi.Input<string>;
-    readonly backupsId: pulumi.Input<string>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
@@ -151,8 +146,8 @@ export interface BackupArgs {
      * Resource labels to represent user provided metadata.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */

@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// <summary>
         /// The ID of the project to which the entities belong.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GooglePrivacyDlpV2PartitionIdArgs()
         {

@@ -15,8 +15,8 @@ __all__ = ['OrganizationPolicyArgs', 'OrganizationPolicy']
 @pulumi.input_type
 class OrganizationPolicyArgs:
     def __init__(__self__, *,
-                 organizations_id: pulumi.Input[str],
-                 policies_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 policy_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None):
         """
@@ -24,30 +24,30 @@ class OrganizationPolicyArgs:
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "policies_id", policies_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "policy_id", policy_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
-    @pulumi.getter(name="policiesId")
-    def policies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "policies_id")
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_id")
 
-    @policies_id.setter
-    def policies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "policies_id", value)
+    @policy_id.setter
+    def policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_id", value)
 
     @property
     @pulumi.getter
@@ -80,8 +80,8 @@ class OrganizationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 policies_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  __props__=None):
         """
@@ -117,8 +117,8 @@ class OrganizationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 policies_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -133,12 +133,12 @@ class OrganizationPolicy(pulumi.CustomResource):
             __props__ = OrganizationPolicyArgs.__new__(OrganizationPolicyArgs)
 
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
-            if policies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'policies_id'")
-            __props__.__dict__["policies_id"] = policies_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
+            if policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'policy_id'")
+            __props__.__dict__["policy_id"] = policy_id
             __props__.__dict__["spec"] = spec
         super(OrganizationPolicy, __self__).__init__(
             'google-native:orgpolicy/v2:OrganizationPolicy',

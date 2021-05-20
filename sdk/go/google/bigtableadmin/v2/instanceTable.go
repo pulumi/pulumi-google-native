@@ -34,14 +34,14 @@ func NewInstanceTable(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TablesId == nil {
-		return nil, errors.New("invalid value for required argument 'TablesId'")
+	if args.TableId == nil {
+		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
 	var resource InstanceTable
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:InstanceTable", name, args, &resource, opts...)
@@ -101,13 +101,12 @@ type instanceTableArgs struct {
 	Granularity *string `pulumi:"granularity"`
 	// The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
 	InitialSplits []Split `pulumi:"initialSplits"`
-	InstancesId   string  `pulumi:"instancesId"`
+	InstanceId    string  `pulumi:"instanceId"`
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-	TableId  *string `pulumi:"tableId"`
-	TablesId string  `pulumi:"tablesId"`
+	TableId string `pulumi:"tableId"`
 }
 
 // The set of arguments for constructing a InstanceTable resource.
@@ -118,13 +117,12 @@ type InstanceTableArgs struct {
 	Granularity pulumi.StringPtrInput
 	// The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
 	InitialSplits SplitArrayInput
-	InstancesId   pulumi.StringInput
+	InstanceId    pulumi.StringInput
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-	TableId  pulumi.StringPtrInput
-	TablesId pulumi.StringInput
+	TableId pulumi.StringInput
 }
 
 func (InstanceTableArgs) ElementType() reflect.Type {

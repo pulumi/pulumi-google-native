@@ -75,26 +75,26 @@ export class ConfigWaiter extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.configsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configsId'");
+            if ((!args || args.configId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.waitersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'waitersId'");
+            if ((!args || args.waiterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'waiterId'");
             }
-            inputs["configsId"] = args ? args.configsId : undefined;
+            inputs["configId"] = args ? args.configId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["done"] = args ? args.done : undefined;
             inputs["error"] = args ? args.error : undefined;
             inputs["failure"] = args ? args.failure : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["success"] = args ? args.success : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["waitersId"] = args ? args.waitersId : undefined;
+            inputs["waiterId"] = args ? args.waiterId : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["done"] = undefined /*out*/;
@@ -115,7 +115,7 @@ export class ConfigWaiter extends pulumi.CustomResource {
  * The set of arguments for constructing a ConfigWaiter resource.
  */
 export interface ConfigWaiterArgs {
-    readonly configsId: pulumi.Input<string>;
+    readonly configId: pulumi.Input<string>;
     /**
      * The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
      */
@@ -136,7 +136,7 @@ export interface ConfigWaiterArgs {
      * The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
@@ -146,5 +146,5 @@ export interface ConfigWaiterArgs {
      * [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
      */
     readonly timeout?: pulumi.Input<string>;
-    readonly waitersId: pulumi.Input<string>;
+    readonly waiterId: pulumi.Input<string>;
 }

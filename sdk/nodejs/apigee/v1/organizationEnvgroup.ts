@@ -66,16 +66,16 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.envgroupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'envgroupsId'");
+            if ((!args || args.envgroupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'envgroupId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["envgroupsId"] = args ? args.envgroupsId : undefined;
+            inputs["envgroupId"] = args ? args.envgroupId : undefined;
             inputs["hostnames"] = args ? args.hostnames : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -97,7 +97,7 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvgroup resource.
  */
 export interface OrganizationEnvgroupArgs {
-    readonly envgroupsId: pulumi.Input<string>;
+    readonly envgroupId: pulumi.Input<string>;
     /**
      * Required. Host names for this environment group.
      */
@@ -106,5 +106,5 @@ export interface OrganizationEnvgroupArgs {
      * ID of the environment group.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
 }

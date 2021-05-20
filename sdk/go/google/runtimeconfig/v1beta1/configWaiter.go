@@ -38,14 +38,14 @@ func NewConfigWaiter(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConfigsId'")
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WaitersId == nil {
-		return nil, errors.New("invalid value for required argument 'WaitersId'")
+	if args.WaiterId == nil {
+		return nil, errors.New("invalid value for required argument 'WaiterId'")
 	}
 	var resource ConfigWaiter
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:ConfigWaiter", name, args, &resource, opts...)
@@ -107,7 +107,7 @@ func (ConfigWaiterState) ElementType() reflect.Type {
 }
 
 type configWaiterArgs struct {
-	ConfigsId string `pulumi:"configsId"`
+	ConfigId string `pulumi:"configId"`
 	// The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
 	CreateTime *string `pulumi:"createTime"`
 	// If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
@@ -117,19 +117,19 @@ type configWaiterArgs struct {
 	// [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
 	Failure *EndCondition `pulumi:"failure"`
 	// The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
 	Success *EndCondition `pulumi:"success"`
 	// [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
-	Timeout   *string `pulumi:"timeout"`
-	WaitersId string  `pulumi:"waitersId"`
+	Timeout  *string `pulumi:"timeout"`
+	WaiterId string  `pulumi:"waiterId"`
 }
 
 // The set of arguments for constructing a ConfigWaiter resource.
 type ConfigWaiterArgs struct {
-	ConfigsId pulumi.StringInput
+	ConfigId pulumi.StringInput
 	// The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
 	CreateTime pulumi.StringPtrInput
 	// If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
@@ -139,14 +139,14 @@ type ConfigWaiterArgs struct {
 	// [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
 	Failure EndConditionPtrInput
 	// The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
 	Success EndConditionPtrInput
 	// [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
-	Timeout   pulumi.StringPtrInput
-	WaitersId pulumi.StringInput
+	Timeout  pulumi.StringPtrInput
+	WaiterId pulumi.StringInput
 }
 
 func (ConfigWaiterArgs) ElementType() reflect.Type {

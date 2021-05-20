@@ -15,8 +15,8 @@ __all__ = ['BillingAccountSinkArgs', 'BillingAccountSink']
 @pulumi.input_type
 class BillingAccountSinkArgs:
     def __init__(__self__, *,
-                 billing_accounts_id: pulumi.Input[str],
-                 sinks_id: pulumi.Input[str],
+                 billing_account_id: pulumi.Input[str],
+                 sink_id: pulumi.Input[str],
                  bigquery_options: Optional[pulumi.Input['BigQueryOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -37,8 +37,8 @@ class BillingAccountSinkArgs:
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance 
         :param pulumi.Input[str] name: Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
-        pulumi.set(__self__, "billing_accounts_id", billing_accounts_id)
-        pulumi.set(__self__, "sinks_id", sinks_id)
+        pulumi.set(__self__, "billing_account_id", billing_account_id)
+        pulumi.set(__self__, "sink_id", sink_id)
         if bigquery_options is not None:
             pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
@@ -59,22 +59,22 @@ class BillingAccountSinkArgs:
             pulumi.set(__self__, "unique_writer_identity", unique_writer_identity)
 
     @property
-    @pulumi.getter(name="billingAccountsId")
-    def billing_accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "billing_accounts_id")
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "billing_account_id")
 
-    @billing_accounts_id.setter
-    def billing_accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "billing_accounts_id", value)
+    @billing_account_id.setter
+    def billing_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_account_id", value)
 
     @property
-    @pulumi.getter(name="sinksId")
-    def sinks_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sinks_id")
+    @pulumi.getter(name="sinkId")
+    def sink_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sink_id")
 
-    @sinks_id.setter
-    def sinks_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sinks_id", value)
+    @sink_id.setter
+    def sink_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sink_id", value)
 
     @property
     @pulumi.getter(name="bigqueryOptions")
@@ -188,7 +188,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -196,7 +196,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sinks_id: Optional[pulumi.Input[str]] = None,
+                 sink_id: Optional[pulumi.Input[str]] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -238,7 +238,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -246,7 +246,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sinks_id: Optional[pulumi.Input[str]] = None,
+                 sink_id: Optional[pulumi.Input[str]] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -261,9 +261,9 @@ class BillingAccountSink(pulumi.CustomResource):
             __props__ = BillingAccountSinkArgs.__new__(BillingAccountSinkArgs)
 
             __props__.__dict__["bigquery_options"] = bigquery_options
-            if billing_accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'billing_accounts_id'")
-            __props__.__dict__["billing_accounts_id"] = billing_accounts_id
+            if billing_account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_account_id'")
+            __props__.__dict__["billing_account_id"] = billing_account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["destination"] = destination
             __props__.__dict__["disabled"] = disabled
@@ -271,9 +271,9 @@ class BillingAccountSink(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["include_children"] = include_children
             __props__.__dict__["name"] = name
-            if sinks_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sinks_id'")
-            __props__.__dict__["sinks_id"] = sinks_id
+            if sink_id is None and not opts.urn:
+                raise TypeError("Missing required property 'sink_id'")
+            __props__.__dict__["sink_id"] = sink_id
             __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

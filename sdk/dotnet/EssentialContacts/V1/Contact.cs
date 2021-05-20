@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
 
     public sealed class ContactArgs : Pulumi.ResourceArgs
     {
-        [Input("contactsId", required: true)]
-        public Input<string> ContactsId { get; set; } = null!;
+        [Input("contactId", required: true)]
+        public Input<string> ContactId { get; set; } = null!;
 
         /// <summary>
         /// Required. The email address to send notifications to. This does not need to be a Google account.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
             set => _notificationCategorySubscriptions = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.

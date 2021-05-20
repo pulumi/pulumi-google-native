@@ -71,21 +71,21 @@ export class OrganizationInspectTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.inspectTemplatesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'inspectTemplatesId'");
+            if ((!args || args.inspectTemplateId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'inspectTemplateId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectConfig"] = args ? args.inspectConfig : undefined;
-            inputs["inspectTemplatesId"] = args ? args.inspectTemplatesId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["inspectTemplateId"] = args ? args.inspectTemplateId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -121,9 +121,9 @@ export interface OrganizationInspectTemplateArgs {
      * The core content of the template. Configuration of the scanning process.
      */
     readonly inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
-    readonly inspectTemplatesId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly inspectTemplateId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */

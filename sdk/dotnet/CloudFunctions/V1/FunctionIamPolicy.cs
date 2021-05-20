@@ -114,14 +114,14 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("functionsId", required: true)]
-        public Input<string> FunctionsId { get; set; } = null!;
+        [Input("functionId", required: true)]
+        public Input<string> FunctionId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

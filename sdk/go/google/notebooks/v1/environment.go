@@ -41,14 +41,11 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Environment
 	err := ctx.RegisterResource("google-native:notebooks/v1:Environment", name, args, &resource, opts...)
@@ -115,13 +112,12 @@ type environmentArgs struct {
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
-	DisplayName    *string `pulumi:"displayName"`
-	EnvironmentId  string  `pulumi:"environmentId"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
-	LocationsId    string  `pulumi:"locationsId"`
+	DisplayName   *string `pulumi:"displayName"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	Location      string  `pulumi:"location"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	ProjectsId        string  `pulumi:"projectsId"`
+	Project           string  `pulumi:"project"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage *VmImage `pulumi:"vmImage"`
 }
@@ -133,13 +129,12 @@ type EnvironmentArgs struct {
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
-	DisplayName    pulumi.StringPtrInput
-	EnvironmentId  pulumi.StringInput
-	EnvironmentsId pulumi.StringInput
-	LocationsId    pulumi.StringInput
+	DisplayName   pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
+	Location      pulumi.StringInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript pulumi.StringPtrInput
-	ProjectsId        pulumi.StringInput
+	Project           pulumi.StringInput
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage VmImagePtrInput
 }

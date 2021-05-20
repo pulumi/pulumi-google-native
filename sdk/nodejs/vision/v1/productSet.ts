@@ -63,21 +63,17 @@ export class ProductSet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.productSetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'productSetsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["productSetId"] = args ? args.productSetId : undefined;
-            inputs["productSetsId"] = args ? args.productSetsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["indexError"] = undefined /*out*/;
             inputs["indexTime"] = undefined /*out*/;
         } else {
@@ -101,12 +97,11 @@ export interface ProductSetArgs {
      * The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
      */
     readonly name?: pulumi.Input<string>;
     readonly productSetId?: pulumi.Input<string>;
-    readonly productSetsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

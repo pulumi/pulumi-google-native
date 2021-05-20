@@ -81,8 +81,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 
     public sealed class RegionAutoscalingPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("autoscalingPoliciesId", required: true)]
-        public Input<string> AutoscalingPoliciesId { get; set; } = null!;
+        [Input("autoscalingPolicyId", required: true)]
+        public Input<string> AutoscalingPolicyId { get; set; } = null!;
 
         [Input("basicAlgorithm")]
         public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
@@ -93,11 +93,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("regionsId", required: true)]
-        public Input<string> RegionsId { get; set; } = null!;
+        [Input("regionId", required: true)]
+        public Input<string> RegionId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Describes how the autoscaler will operate for secondary workers.

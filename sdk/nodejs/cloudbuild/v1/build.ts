@@ -78,7 +78,7 @@ export class Build extends pulumi.CustomResource {
     /**
      * ID of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */
@@ -147,27 +147,27 @@ export class Build extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.buildsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'buildsId'");
+            if ((!args || args.buildId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'buildId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
-            inputs["buildsId"] = args ? args.buildsId : undefined;
+            inputs["buildId"] = args ? args.buildId : undefined;
             inputs["images"] = args ? args.images : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["logsBucket"] = args ? args.logsBucket : undefined;
             inputs["options"] = args ? args.options : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["queueTtl"] = args ? args.queueTtl : undefined;
             inputs["secrets"] = args ? args.secrets : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -198,7 +198,7 @@ export class Build extends pulumi.CustomResource {
             inputs["logsBucket"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["options"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["queueTtl"] = undefined /*out*/;
             inputs["results"] = undefined /*out*/;
             inputs["secrets"] = undefined /*out*/;
@@ -233,12 +233,12 @@ export interface BuildArgs {
      * Secrets and secret environment variables.
      */
     readonly availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.SecretsArgs>;
-    readonly buildsId: pulumi.Input<string>;
+    readonly buildId: pulumi.Input<string>;
     /**
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
      */
     readonly images?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
      */
@@ -247,8 +247,8 @@ export interface BuildArgs {
      * Special options for this build.
      */
     readonly options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
+    readonly project: pulumi.Input<string>;
     readonly projectId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */

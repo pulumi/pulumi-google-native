@@ -32,14 +32,14 @@ func NewDatabaseIndex(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatabasesId == nil {
-		return nil, errors.New("invalid value for required argument 'DatabasesId'")
+	if args.DatabaseId == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
-	if args.IndexesId == nil {
-		return nil, errors.New("invalid value for required argument 'IndexesId'")
+	if args.IndexId == nil {
+		return nil, errors.New("invalid value for required argument 'IndexId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatabaseIndex
 	err := ctx.RegisterResource("google-native:firestore/v1beta1:DatabaseIndex", name, args, &resource, opts...)
@@ -91,13 +91,13 @@ func (DatabaseIndexState) ElementType() reflect.Type {
 type databaseIndexArgs struct {
 	// The collection ID to which this index applies. Required.
 	CollectionId *string `pulumi:"collectionId"`
-	DatabasesId  string  `pulumi:"databasesId"`
+	DatabaseId   string  `pulumi:"databaseId"`
 	// The fields to index.
-	Fields    []GoogleFirestoreAdminV1beta1IndexField `pulumi:"fields"`
-	IndexesId string                                  `pulumi:"indexesId"`
+	Fields  []GoogleFirestoreAdminV1beta1IndexField `pulumi:"fields"`
+	IndexId string                                  `pulumi:"indexId"`
 	// The resource name of the index. Output only.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// The state of the index. Output only.
 	State *string `pulumi:"state"`
 }
@@ -106,13 +106,13 @@ type databaseIndexArgs struct {
 type DatabaseIndexArgs struct {
 	// The collection ID to which this index applies. Required.
 	CollectionId pulumi.StringPtrInput
-	DatabasesId  pulumi.StringInput
+	DatabaseId   pulumi.StringInput
 	// The fields to index.
-	Fields    GoogleFirestoreAdminV1beta1IndexFieldArrayInput
-	IndexesId pulumi.StringInput
+	Fields  GoogleFirestoreAdminV1beta1IndexFieldArrayInput
+	IndexId pulumi.StringInput
 	// The resource name of the index. Output only.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The state of the index. Output only.
 	State pulumi.StringPtrInput
 }

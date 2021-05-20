@@ -42,8 +42,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// <summary>
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
     public sealed class AndroidAppArgs : Pulumi.ResourceArgs
     {
-        [Input("androidAppsId", required: true)]
-        public Input<string> AndroidAppsId { get; set; } = null!;
+        [Input("androidAppId", required: true)]
+        public Input<string> AndroidAppId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
@@ -120,11 +120,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// <summary>
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public AndroidAppArgs()
         {

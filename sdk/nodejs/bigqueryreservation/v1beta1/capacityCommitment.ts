@@ -79,21 +79,17 @@ export class CapacityCommitment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.capacityCommitmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'capacityCommitmentsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
-            inputs["capacityCommitmentsId"] = args ? args.capacityCommitmentsId : undefined;
             inputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["plan"] = args ? args.plan : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["renewalPlan"] = args ? args.renewalPlan : undefined;
             inputs["slotCount"] = args ? args.slotCount : undefined;
             inputs["commitmentEndTime"] = undefined /*out*/;
@@ -123,14 +119,13 @@ export class CapacityCommitment extends pulumi.CustomResource {
  */
 export interface CapacityCommitmentArgs {
     readonly capacityCommitmentId?: pulumi.Input<string>;
-    readonly capacityCommitmentsId: pulumi.Input<string>;
     readonly enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Capacity commitment commitment plan.
      */
     readonly plan?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
      */

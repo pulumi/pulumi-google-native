@@ -20,16 +20,16 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// <summary>
         /// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private JobReferenceResponse(
             string jobId,
 
-            string projectId)
+            string project)
         {
             JobId = jobId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

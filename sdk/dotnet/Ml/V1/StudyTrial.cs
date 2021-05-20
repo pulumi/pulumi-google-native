@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("finalMeasurement")]
         public Input<Inputs.GoogleCloudMlV1__MeasurementArgs>? FinalMeasurement { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("measurements")]
         private InputList<Inputs.GoogleCloudMlV1__MeasurementArgs>? _measurements;
@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.Ml.V1
             set => _parameters = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The detailed state of a trial.
@@ -162,11 +162,11 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("studiesId", required: true)]
-        public Input<string> StudiesId { get; set; } = null!;
+        [Input("studyId", required: true)]
+        public Input<string> StudyId { get; set; } = null!;
 
-        [Input("trialsId", required: true)]
-        public Input<string> TrialsId { get; set; } = null!;
+        [Input("trialId", required: true)]
+        public Input<string> TrialId { get; set; } = null!;
 
         public StudyTrialArgs()
         {

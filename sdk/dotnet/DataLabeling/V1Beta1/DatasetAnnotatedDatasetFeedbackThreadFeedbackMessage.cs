@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
     public sealed class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs : Pulumi.ResourceArgs
     {
-        [Input("annotatedDatasetsId", required: true)]
-        public Input<string> AnnotatedDatasetsId { get; set; } = null!;
+        [Input("annotatedDatasetId", required: true)]
+        public Input<string> AnnotatedDatasetId { get; set; } = null!;
 
         /// <summary>
         /// String content of the feedback. Maximum of 10000 characters.
@@ -105,14 +105,14 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
-        [Input("feedbackMessagesId", required: true)]
-        public Input<string> FeedbackMessagesId { get; set; } = null!;
+        [Input("feedbackMessageId", required: true)]
+        public Input<string> FeedbackMessageId { get; set; } = null!;
 
-        [Input("feedbackThreadsId", required: true)]
-        public Input<string> FeedbackThreadsId { get; set; } = null!;
+        [Input("feedbackThreadId", required: true)]
+        public Input<string> FeedbackThreadId { get; set; } = null!;
 
         /// <summary>
         /// The image storing this feedback if the feedback is an image representing operator's comments.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("operatorFeedbackMetadata")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>? OperatorFeedbackMetadata { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requesterFeedbackMetadata")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>? RequesterFeedbackMetadata { get; set; }

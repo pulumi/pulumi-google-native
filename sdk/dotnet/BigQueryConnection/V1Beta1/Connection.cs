@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
-        [Input("connectionsId", required: true)]
-        public Input<string> ConnectionsId { get; set; } = null!;
-
         /// <summary>
         /// User provided description.
         /// </summary>
@@ -126,8 +123,8 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
@@ -135,8 +132,8 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public ConnectionArgs()
         {

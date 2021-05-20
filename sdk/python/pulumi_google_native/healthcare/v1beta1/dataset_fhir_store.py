@@ -15,10 +15,9 @@ __all__ = ['DatasetFhirStoreArgs', 'DatasetFhirStore']
 @pulumi.input_type
 class DatasetFhirStoreArgs:
     def __init__(__self__, *,
-                 datasets_id: pulumi.Input[str],
-                 fhir_stores_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
@@ -43,10 +42,9 @@ class DatasetFhirStoreArgs:
         :param pulumi.Input['ValidationConfigArgs'] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
         :param pulumi.Input[str] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         """
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "fhir_stores_id", fhir_stores_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
@@ -71,40 +69,31 @@ class DatasetFhirStoreArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
-
-    @property
-    @pulumi.getter(name="fhirStoresId")
-    def fhir_stores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "fhir_stores_id")
-
-    @fhir_stores_id.setter
-    def fhir_stores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "fhir_stores_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -241,18 +230,17 @@ class DatasetFhirStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
-                 fhir_stores_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StreamConfigArgs']]]]] = None,
                  validation_config: Optional[pulumi.Input[pulumi.InputType['ValidationConfigArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -297,18 +285,17 @@ class DatasetFhirStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
-                 fhir_stores_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StreamConfigArgs']]]]] = None,
                  validation_config: Optional[pulumi.Input[pulumi.InputType['ValidationConfigArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -324,26 +311,23 @@ class DatasetFhirStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetFhirStoreArgs.__new__(DatasetFhirStoreArgs)
 
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
             __props__.__dict__["enable_update_create"] = enable_update_create
             __props__.__dict__["fhir_store_id"] = fhir_store_id
-            if fhir_stores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'fhir_stores_id'")
-            __props__.__dict__["fhir_stores_id"] = fhir_stores_id
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["validation_config"] = validation_config
             __props__.__dict__["version"] = version

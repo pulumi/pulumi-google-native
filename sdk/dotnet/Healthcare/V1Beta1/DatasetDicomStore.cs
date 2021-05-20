@@ -84,14 +84,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetDicomStoreArgs : Pulumi.ResourceArgs
     {
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         [Input("dicomStoreId")]
         public Input<string>? DicomStoreId { get; set; }
-
-        [Input("dicomStoresId", required: true)]
-        public Input<string> DicomStoresId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -105,8 +102,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
@@ -120,8 +117,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("streamConfigs")]
         private InputList<Inputs.GoogleCloudHealthcareV1beta1DicomStreamConfigArgs>? _streamConfigs;

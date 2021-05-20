@@ -15,8 +15,8 @@ __all__ = ['ModelArgs', 'Model']
 @pulumi.input_type
 class ModelArgs:
     def __init__(__self__, *,
-                 models_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 model_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ModelStateArgs']] = None,
@@ -30,8 +30,8 @@ class ModelArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: User defined tags which can be used to group/filter models during listing
         :param pulumi.Input['TfLiteModelArgs'] tflite_model: A TFLite Model
         """
-        pulumi.set(__self__, "models_id", models_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "model_id", model_id)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -44,22 +44,22 @@ class ModelArgs:
             pulumi.set(__self__, "tflite_model", tflite_model)
 
     @property
-    @pulumi.getter(name="modelsId")
-    def models_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "models_id")
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "model_id")
 
-    @models_id.setter
-    def models_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "models_id", value)
+    @model_id.setter
+    def model_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "model_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -128,9 +128,9 @@ class Model(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 models_id: Optional[pulumi.Input[str]] = None,
+                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tflite_model: Optional[pulumi.Input[pulumi.InputType['TfLiteModelArgs']]] = None,
@@ -171,9 +171,9 @@ class Model(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 models_id: Optional[pulumi.Input[str]] = None,
+                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tflite_model: Optional[pulumi.Input[pulumi.InputType['TfLiteModelArgs']]] = None,
@@ -190,13 +190,13 @@ class Model(pulumi.CustomResource):
             __props__ = ModelArgs.__new__(ModelArgs)
 
             __props__.__dict__["display_name"] = display_name
-            if models_id is None and not opts.urn:
-                raise TypeError("Missing required property 'models_id'")
-            __props__.__dict__["models_id"] = models_id
+            if model_id is None and not opts.urn:
+                raise TypeError("Missing required property 'model_id'")
+            __props__.__dict__["model_id"] = model_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tflite_model"] = tflite_model

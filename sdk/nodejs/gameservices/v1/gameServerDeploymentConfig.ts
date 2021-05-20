@@ -78,27 +78,23 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
             if ((!args || args.configId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.configsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configsId'");
+            if ((!args || args.gameServerDeploymentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'gameServerDeploymentId'");
             }
-            if ((!args || args.gameServerDeploymentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gameServerDeploymentsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["configId"] = args ? args.configId : undefined;
-            inputs["configsId"] = args ? args.configsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fleetConfigs"] = args ? args.fleetConfigs : undefined;
-            inputs["gameServerDeploymentsId"] = args ? args.gameServerDeploymentsId : undefined;
+            inputs["gameServerDeploymentId"] = args ? args.gameServerDeploymentId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["scalingConfigs"] = args ? args.scalingConfigs : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -123,7 +119,6 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
  */
 export interface GameServerDeploymentConfigArgs {
     readonly configId: pulumi.Input<string>;
-    readonly configsId: pulumi.Input<string>;
     /**
      * The description of the game server config.
      */
@@ -132,17 +127,17 @@ export interface GameServerDeploymentConfigArgs {
      * FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
      */
     readonly fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1.FleetConfigArgs>[]>;
-    readonly gameServerDeploymentsId: pulumi.Input<string>;
+    readonly gameServerDeploymentId: pulumi.Input<string>;
     /**
      * The labels associated with this game server config. Each label is a key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The autoscaling settings.
      */

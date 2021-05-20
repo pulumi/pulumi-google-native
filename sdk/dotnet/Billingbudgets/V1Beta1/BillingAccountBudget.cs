@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         [Input("amount")]
         public Input<Inputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>? Amount { get; set; }
 
-        [Input("billingAccountsId", required: true)]
-        public Input<string> BillingAccountsId { get; set; } = null!;
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         [Input("budgetFilter")]
         public Input<Inputs.GoogleCloudBillingBudgetsV1beta1FilterArgs>? BudgetFilter { get; set; }
 
-        [Input("budgetsId", required: true)]
-        public Input<string> BudgetsId { get; set; } = null!;
+        [Input("budgetId", required: true)]
+        public Input<string> BudgetId { get; set; } = null!;
 
         /// <summary>
         /// User data for display name in UI. Validation: &lt;= 60 chars.

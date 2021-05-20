@@ -14,58 +14,58 @@ __all__ = ['OrganizationSiteApicategoryArgs', 'OrganizationSiteApicategory']
 @pulumi.input_type
 class OrganizationSiteApicategoryArgs:
     def __init__(__self__, *,
-                 apicategories_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
-                 sites_id: pulumi.Input[str],
+                 apicategory_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 site_id: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 site_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationSiteApicategory resource.
+        :param pulumi.Input[str] site_id: Name of the portal.
         :param pulumi.Input[str] id: ID of the category (a UUID).
         :param pulumi.Input[str] name: Name of the category.
-        :param pulumi.Input[str] site_id: Name of the portal.
         :param pulumi.Input[str] update_time: Time the category was last modified in milliseconds since epoch.
         """
-        pulumi.set(__self__, "apicategories_id", apicategories_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "sites_id", sites_id)
+        pulumi.set(__self__, "apicategory_id", apicategory_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "site_id", site_id)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
     @property
-    @pulumi.getter(name="apicategoriesId")
-    def apicategories_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apicategories_id")
+    @pulumi.getter(name="apicategoryId")
+    def apicategory_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "apicategory_id")
 
-    @apicategories_id.setter
-    def apicategories_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apicategories_id", value)
-
-    @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
-
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @apicategory_id.setter
+    def apicategory_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "apicategory_id", value)
 
     @property
-    @pulumi.getter(name="sitesId")
-    def sites_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sites_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @sites_id.setter
-    def sites_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sites_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Input[str]:
+        """
+        Name of the portal.
+        """
+        return pulumi.get(self, "site_id")
+
+    @site_id.setter
+    def site_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "site_id", value)
 
     @property
     @pulumi.getter
@@ -92,18 +92,6 @@ class OrganizationSiteApicategoryArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the portal.
-        """
-        return pulumi.get(self, "site_id")
-
-    @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "site_id", value)
-
-    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -121,12 +109,11 @@ class OrganizationSiteApicategory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apicategories_id: Optional[pulumi.Input[str]] = None,
+                 apicategory_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 sites_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -163,12 +150,11 @@ class OrganizationSiteApicategory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apicategories_id: Optional[pulumi.Input[str]] = None,
+                 apicategory_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 sites_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -182,18 +168,17 @@ class OrganizationSiteApicategory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationSiteApicategoryArgs.__new__(OrganizationSiteApicategoryArgs)
 
-            if apicategories_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apicategories_id'")
-            __props__.__dict__["apicategories_id"] = apicategories_id
+            if apicategory_id is None and not opts.urn:
+                raise TypeError("Missing required property 'apicategory_id'")
+            __props__.__dict__["apicategory_id"] = apicategory_id
             __props__.__dict__["id"] = id
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
+            if site_id is None and not opts.urn:
+                raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
-            if sites_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sites_id'")
-            __props__.__dict__["sites_id"] = sites_id
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["data"] = None
             __props__.__dict__["error_code"] = None

@@ -91,11 +91,11 @@ export class FolderSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.foldersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'foldersId'");
+            if ((!args || args.folderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'folderId'");
             }
-            if ((!args || args.sinksId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sinksId'");
+            if ((!args || args.sinkId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sinkId'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -103,10 +103,10 @@ export class FolderSink extends pulumi.CustomResource {
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["exclusions"] = args ? args.exclusions : undefined;
             inputs["filter"] = args ? args.filter : undefined;
-            inputs["foldersId"] = args ? args.foldersId : undefined;
+            inputs["folderId"] = args ? args.folderId : undefined;
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["sinksId"] = args ? args.sinksId : undefined;
+            inputs["sinkId"] = args ? args.sinkId : undefined;
             inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -159,7 +159,7 @@ export interface FolderSinkArgs {
      * Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR 
      */
     readonly filter?: pulumi.Input<string>;
-    readonly foldersId: pulumi.Input<string>;
+    readonly folderId: pulumi.Input<string>;
     /**
      * Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance 
      */
@@ -168,6 +168,6 @@ export interface FolderSinkArgs {
      * Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     readonly name?: pulumi.Input<string>;
-    readonly sinksId: pulumi.Input<string>;
+    readonly sinkId: pulumi.Input<string>;
     readonly uniqueWriterIdentity?: pulumi.Input<string>;
 }

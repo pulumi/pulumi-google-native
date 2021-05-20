@@ -15,8 +15,7 @@ __all__ = ['FeatureArgs', 'Feature']
 @pulumi.input_type
 class FeatureArgs:
     def __init__(__self__, *,
-                 features_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -28,8 +27,7 @@ class FeatureArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input['CommonFeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         """
-        pulumi.set(__self__, "features_id", features_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if feature_id is not None:
             pulumi.set(__self__, "feature_id", feature_id)
         if labels is not None:
@@ -42,22 +40,13 @@ class FeatureArgs:
             pulumi.set(__self__, "spec", spec)
 
     @property
-    @pulumi.getter(name="featuresId")
-    def features_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "features_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @features_id.setter
-    def features_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "features_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="featureId")
@@ -120,10 +109,9 @@ class Feature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feature_id: Optional[pulumi.Input[str]] = None,
-                 features_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  __props__=None):
@@ -161,10 +149,9 @@ class Feature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feature_id: Optional[pulumi.Input[str]] = None,
-                 features_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  __props__=None):
@@ -180,14 +167,11 @@ class Feature(pulumi.CustomResource):
             __props__ = FeatureArgs.__new__(FeatureArgs)
 
             __props__.__dict__["feature_id"] = feature_id
-            if features_id is None and not opts.urn:
-                raise TypeError("Missing required property 'features_id'")
-            __props__.__dict__["features_id"] = features_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["membership_specs"] = membership_specs
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None

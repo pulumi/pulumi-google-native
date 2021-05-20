@@ -15,9 +15,9 @@ __all__ = ['QueueArgs', 'Queue']
 @pulumi.input_type
 class QueueArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 queues_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 queue_id: pulumi.Input[str],
                  app_engine_routing_override: Optional[pulumi.Input['AppEngineRoutingArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
@@ -35,9 +35,9 @@ class QueueArgs:
         :param pulumi.Input['StackdriverLoggingConfigArgs'] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
         :param pulumi.Input[str] state: The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "queues_id", queues_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
         if name is not None:
@@ -54,31 +54,31 @@ class QueueArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="queuesId")
-    def queues_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "queues_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @queues_id.setter
-    def queues_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "queues_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "queue_id")
+
+    @queue_id.setter
+    def queue_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "queue_id", value)
 
     @property
     @pulumi.getter(name="appEngineRoutingOverride")
@@ -171,11 +171,11 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
-                 queues_id: Optional[pulumi.Input[str]] = None,
+                 queue_id: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
@@ -219,11 +219,11 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
-                 queues_id: Optional[pulumi.Input[str]] = None,
+                 queue_id: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
@@ -241,17 +241,17 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["purge_time"] = purge_time
-            if queues_id is None and not opts.urn:
-                raise TypeError("Missing required property 'queues_id'")
-            __props__.__dict__["queues_id"] = queues_id
+            if queue_id is None and not opts.urn:
+                raise TypeError("Missing required property 'queue_id'")
+            __props__.__dict__["queue_id"] = queue_id
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["stackdriver_logging_config"] = stackdriver_logging_config

@@ -39,14 +39,11 @@ func NewInstanceCluster(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	if args.ClustersId == nil {
-		return nil, errors.New("invalid value for required argument 'ClustersId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource InstanceCluster
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:InstanceCluster", name, args, &resource, opts...)
@@ -104,36 +101,34 @@ func (InstanceClusterState) ElementType() reflect.Type {
 }
 
 type instanceClusterArgs struct {
-	ClusterId  string `pulumi:"clusterId"`
-	ClustersId string `pulumi:"clustersId"`
+	ClusterId string `pulumi:"clusterId"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType *string `pulumi:"defaultStorageType"`
 	// Immutable. The encryption configuration for CMEK-protected clusters.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
-	InstancesId      string            `pulumi:"instancesId"`
+	InstanceId       string            `pulumi:"instanceId"`
 	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
 	Location *string `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes *int `pulumi:"serveNodes"`
 }
 
 // The set of arguments for constructing a InstanceCluster resource.
 type InstanceClusterArgs struct {
-	ClusterId  pulumi.StringInput
-	ClustersId pulumi.StringInput
+	ClusterId pulumi.StringInput
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType pulumi.StringPtrInput
 	// Immutable. The encryption configuration for CMEK-protected clusters.
 	EncryptionConfig EncryptionConfigPtrInput
-	InstancesId      pulumi.StringInput
+	InstanceId       pulumi.StringInput
 	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
 	Location pulumi.StringPtrInput
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes pulumi.IntPtrInput
 }

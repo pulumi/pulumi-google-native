@@ -13,8 +13,8 @@ __all__ = ['OrganizationContactArgs', 'OrganizationContact']
 @pulumi.input_type
 class OrganizationContactArgs:
     def __init__(__self__, *,
-                 contacts_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 contact_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,8 +30,8 @@ class OrganizationContactArgs:
         :param pulumi.Input[str] validate_time: The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
         :param pulumi.Input[str] validation_state: The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
         """
-        pulumi.set(__self__, "contacts_id", contacts_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "contact_id", contact_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if language_tag is not None:
@@ -46,22 +46,22 @@ class OrganizationContactArgs:
             pulumi.set(__self__, "validation_state", validation_state)
 
     @property
-    @pulumi.getter(name="contactsId")
-    def contacts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "contacts_id")
+    @pulumi.getter(name="contactId")
+    def contact_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "contact_id")
 
-    @contacts_id.setter
-    def contacts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "contacts_id", value)
+    @contact_id.setter
+    def contact_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "contact_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -141,12 +141,12 @@ class OrganizationContact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contacts_id: Optional[pulumi.Input[str]] = None,
+                 contact_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  validate_time: Optional[pulumi.Input[str]] = None,
                  validation_state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -186,12 +186,12 @@ class OrganizationContact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contacts_id: Optional[pulumi.Input[str]] = None,
+                 contact_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  validate_time: Optional[pulumi.Input[str]] = None,
                  validation_state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -206,16 +206,16 @@ class OrganizationContact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationContactArgs.__new__(OrganizationContactArgs)
 
-            if contacts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'contacts_id'")
-            __props__.__dict__["contacts_id"] = contacts_id
+            if contact_id is None and not opts.urn:
+                raise TypeError("Missing required property 'contact_id'")
+            __props__.__dict__["contact_id"] = contact_id
             __props__.__dict__["email"] = email
             __props__.__dict__["language_tag"] = language_tag
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_category_subscriptions"] = notification_category_subscriptions
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["validate_time"] = validate_time
             __props__.__dict__["validation_state"] = validation_state
         super(OrganizationContact, __self__).__init__(

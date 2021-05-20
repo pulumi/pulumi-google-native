@@ -35,8 +35,8 @@ func NewHistory(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource History
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:History", name, args, &resource, opts...)
@@ -92,7 +92,7 @@ type historyArgs struct {
 	HistoryId string `pulumi:"historyId"`
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      *string `pulumi:"name"`
-	ProjectId string  `pulumi:"projectId"`
+	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform *string `pulumi:"testPlatform"`
@@ -106,7 +106,7 @@ type HistoryArgs struct {
 	HistoryId pulumi.StringInput
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      pulumi.StringPtrInput
-	ProjectId pulumi.StringInput
+	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform pulumi.StringPtrInput

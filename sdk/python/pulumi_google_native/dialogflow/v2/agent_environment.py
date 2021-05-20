@@ -16,9 +16,8 @@ __all__ = ['AgentEnvironmentArgs', 'AgentEnvironment']
 class AgentEnvironmentArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
-                 environments_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentArgs']] = None,
@@ -31,9 +30,8 @@ class AgentEnvironmentArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsArgs'] text_to_speech_settings: Optional. Text to speech settings for this environment.
         """
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "environments_id", environments_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if agent_version is not None:
             pulumi.set(__self__, "agent_version", agent_version)
         if description is not None:
@@ -53,31 +51,22 @@ class AgentEnvironmentArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="agentVersion")
@@ -136,10 +125,9 @@ class AgentEnvironment(pulumi.CustomResource):
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
                  fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']]] = None,
                  __props__=None):
         """
@@ -179,10 +167,9 @@ class AgentEnvironment(pulumi.CustomResource):
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
                  fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -201,16 +188,13 @@ class AgentEnvironment(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
             __props__.__dict__["fulfillment"] = fulfillment
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["text_to_speech_settings"] = text_to_speech_settings
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None

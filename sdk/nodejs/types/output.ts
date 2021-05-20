@@ -933,7 +933,7 @@ export namespace apigee {
             /**
              * Required. GCP project in which the datastore exists
              */
-            projectId: string;
+            project: string;
             /**
              * Prefix of BigQuery table Required for `bigquery` target_type.
              */
@@ -3412,7 +3412,7 @@ export namespace bigquery {
             /**
              * [Optional] The ID of the project containing this dataset.
              */
-            projectId: string;
+            project: string;
         }
 
         export interface DatasetTarget_typesItemResponse {
@@ -4074,7 +4074,7 @@ export namespace bigquery {
             /**
              * [Required] The ID of the project containing this job.
              */
-            projectId: string;
+            project: string;
         }
 
         export interface JobReservationUsageItemResponse {
@@ -4376,7 +4376,7 @@ export namespace bigquery {
             /**
              * [Required] The ID of the project containing this model.
              */
-            projectId: string;
+            project: string;
         }
 
         export interface ParquetOptionsResponse {
@@ -4477,7 +4477,7 @@ export namespace bigquery {
             /**
              * [Required] The ID of the project containing this routine.
              */
-            projectId: string;
+            project: string;
             /**
              * [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
              */
@@ -4496,7 +4496,7 @@ export namespace bigquery {
             /**
              * [Required] The ID of the project containing this row access policy.
              */
-            projectId: string;
+            project: string;
             /**
              * [Required] The ID of the table containing this row access policy.
              */
@@ -4684,7 +4684,7 @@ export namespace bigquery {
             /**
              * [Required] The ID of the project containing this table.
              */
-            projectId: string;
+            project: string;
             /**
              * [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
              */
@@ -5856,7 +5856,7 @@ export namespace cloudbuild {
             /**
              * ID of the project.
              */
-            projectId: string;
+            project: string;
             /**
              * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
              */
@@ -6108,7 +6108,7 @@ export namespace cloudbuild {
             /**
              * ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
              */
-            projectId: string;
+            project: string;
             /**
              * Name of the Cloud Source Repository.
              */
@@ -6312,7 +6312,7 @@ export namespace cloudbuild {
             /**
              * Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
              */
-            projectId: string;
+            project: string;
             /**
              * Subnetwork on which the workers are created. "default" subnetwork is used if empty.
              */
@@ -26466,7 +26466,7 @@ export namespace containeranalysis {
             /**
              * ID of the project.
              */
-            projectId: string;
+            project: string;
             /**
              * Details of the Source input to the build.
              */
@@ -26840,7 +26840,7 @@ export namespace containeranalysis {
             /**
              * The ID of the project.
              */
-            projectId: string;
+            project: string;
             /**
              * The name of the repo. Leave empty for the default repo.
              */
@@ -27045,7 +27045,7 @@ export namespace containeranalysis {
             /**
              * ID of the project that owns the repo.
              */
-            projectId: string;
+            project: string;
             /**
              * Name of the repo.
              */
@@ -27422,7 +27422,7 @@ export namespace containeranalysis {
             /**
              * ID of the project.
              */
-            projectId: string;
+            project: string;
             /**
              * Details of the Source input to the build.
              */
@@ -28144,7 +28144,7 @@ export namespace containeranalysis {
             /**
              * The ID of the project.
              */
-            projectId: string;
+            project: string;
             /**
              * The name of the repo. Leave empty for the default repo.
              */
@@ -28603,7 +28603,7 @@ export namespace dataflow {
             /**
              * Project accessed in the connection.
              */
-            projectId: string;
+            project: string;
             /**
              * Query used to access data in the connection.
              */
@@ -28625,7 +28625,7 @@ export namespace dataflow {
             /**
              * ProjectId accessed in the connection.
              */
-            projectId: string;
+            project: string;
             /**
              * TableId accessed in the connection.
              */
@@ -28679,7 +28679,7 @@ export namespace dataflow {
             /**
              * ProjectId accessed in the connection.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -29089,7 +29089,7 @@ export namespace dataflow {
             /**
              * ProjectId accessed in the connection.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -31194,7 +31194,7 @@ export namespace dataproc {
             /**
              * Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -32350,7 +32350,7 @@ export namespace dataproc {
             /**
              * Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -38652,7 +38652,7 @@ export namespace dlp {
             /**
              * The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
              */
-            projectId: string;
+            project: string;
             /**
              * Name of the table.
              */
@@ -39867,7 +39867,7 @@ export namespace dlp {
             /**
              * The ID of the project to which the entities belong.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -49248,7 +49248,7 @@ export namespace networkmanagement {
             /**
              * Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -49642,7 +49642,7 @@ export namespace networkmanagement {
             /**
              * Project ID that contains the configuration this step is validating.
              */
-            projectId: string;
+            project: string;
             /**
              * Display info of a Compute Engine route.
              */
@@ -49936,7 +49936,7 @@ export namespace networkmanagement {
             /**
              * Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -50392,7 +50392,7 @@ export namespace networkmanagement {
             /**
              * Project ID that contains the configuration this step is validating.
              */
-            projectId: string;
+            project: string;
             /**
              * Display info of a Compute Engine route.
              */
@@ -59443,7 +59443,7 @@ export namespace testing {
             /**
              * The cloud project that owns the test execution.
              */
-            projectId: string;
+            project: string;
             /**
              * Details about the shard.
              */
@@ -59579,7 +59579,7 @@ export namespace testing {
             /**
              * The cloud project that owns the tool results execution.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -59593,7 +59593,7 @@ export namespace testing {
             /**
              * Required. The cloud project that owns the tool results history.
              */
-            projectId: string;
+            project: string;
         }
 
         /**
@@ -59611,7 +59611,7 @@ export namespace testing {
             /**
              * The cloud project that owns the tool results step.
              */
-            projectId: string;
+            project: string;
             /**
              * A tool results step ID.
              */
@@ -61346,7 +61346,7 @@ export namespace vpcaccess {
             /**
              * Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
              */
-            projectId: string;
+            project: string;
         }
     }
 }

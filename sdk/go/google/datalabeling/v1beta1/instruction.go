@@ -42,11 +42,11 @@ func NewInstruction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstructionsId == nil {
-		return nil, errors.New("invalid value for required argument 'InstructionsId'")
+	if args.InstructionId == nil {
+		return nil, errors.New("invalid value for required argument 'InstructionId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Instruction
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:Instruction", name, args, &resource, opts...)
@@ -127,13 +127,13 @@ type instructionArgs struct {
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the instruction. Maximum of 64 characters.
-	DisplayName    *string `pulumi:"displayName"`
-	InstructionsId string  `pulumi:"instructionsId"`
+	DisplayName   *string `pulumi:"displayName"`
+	InstructionId string  `pulumi:"instructionId"`
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name *string `pulumi:"name"`
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstruction `pulumi:"pdfInstruction"`
-	ProjectsId     string                                        `pulumi:"projectsId"`
+	Project        string                                        `pulumi:"project"`
 	// Last update time of instruction.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -151,13 +151,13 @@ type InstructionArgs struct {
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the instruction. Maximum of 64 characters.
-	DisplayName    pulumi.StringPtrInput
-	InstructionsId pulumi.StringInput
+	DisplayName   pulumi.StringPtrInput
+	InstructionId pulumi.StringInput
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name pulumi.StringPtrInput
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput
-	ProjectsId     pulumi.StringInput
+	Project        pulumi.StringInput
 	// Last update time of instruction.
 	UpdateTime pulumi.StringPtrInput
 }

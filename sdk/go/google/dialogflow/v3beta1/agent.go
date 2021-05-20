@@ -46,14 +46,14 @@ func NewAgent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Agent
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:Agent", name, args, &resource, opts...)
@@ -131,7 +131,7 @@ func (AgentState) ElementType() reflect.Type {
 }
 
 type agentArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -144,10 +144,10 @@ type agentArgs struct {
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent.
 	EnableStackdriverLogging *bool  `pulumi:"enableStackdriverLogging"`
-	LocationsId              string `pulumi:"locationsId"`
+	Location                 string `pulumi:"location"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings *string `pulumi:"securitySettings"`
 	// Speech recognition related settings.
@@ -160,7 +160,7 @@ type agentArgs struct {
 
 // The set of arguments for constructing a Agent resource.
 type AgentArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -173,10 +173,10 @@ type AgentArgs struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Indicates if stackdriver logging is enabled for the agent.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	LocationsId              pulumi.StringInput
+	Location                 pulumi.StringInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings pulumi.StringPtrInput
 	// Speech recognition related settings.

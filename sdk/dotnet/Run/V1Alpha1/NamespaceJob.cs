@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
-        [Input("jobsId", required: true)]
-        public Input<string> JobsId { get; set; } = null!;
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        [Input("namespacesId", required: true)]
-        public Input<string> NamespacesId { get; set; } = null!;
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional

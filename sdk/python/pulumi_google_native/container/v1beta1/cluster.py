@@ -16,7 +16,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
@@ -139,7 +139,7 @@ class ClusterArgs:
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
@@ -268,13 +268,13 @@ class ClusterArgs:
         pulumi.set(self, "cluster_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -1036,7 +1036,7 @@ class Cluster(pulumi.CustomResource):
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1187,7 +1187,7 @@ class Cluster(pulumi.CustomResource):
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1262,9 +1262,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
             __props__.__dict__["private_cluster"] = private_cluster
             __props__.__dict__["private_cluster_config"] = private_cluster_config
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config

@@ -118,11 +118,8 @@ export class Note extends pulumi.CustomResource {
             if ((!args || args.noteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'noteId'");
             }
-            if ((!args || args.notesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notesId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
@@ -136,9 +133,8 @@ export class Note extends pulumi.CustomResource {
             inputs["longDescription"] = args ? args.longDescription : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noteId"] = args ? args.noteId : undefined;
-            inputs["notesId"] = args ? args.notesId : undefined;
             inputs["package"] = args ? args.package : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
             inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
             inputs["shortDescription"] = args ? args.shortDescription : undefined;
@@ -219,12 +215,11 @@ export interface NoteArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly noteId: pulumi.Input<string>;
-    readonly notesId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.
      */
     readonly package?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Other notes related to this note.
      */

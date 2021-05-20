@@ -79,30 +79,30 @@ export class AgentEntityType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.entityTypesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityTypesId'");
+            if ((!args || args.entityTypeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entityTypeId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
             inputs["entities"] = args ? args.entities : undefined;
-            inputs["entityTypesId"] = args ? args.entityTypesId : undefined;
+            inputs["entityTypeId"] = args ? args.entityTypeId : undefined;
             inputs["excludedPhrases"] = args ? args.excludedPhrases : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["redact"] = args ? args.redact : undefined;
         } else {
             inputs["autoExpansionMode"] = undefined /*out*/;
@@ -125,7 +125,7 @@ export class AgentEntityType extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentEntityType resource.
  */
 export interface AgentEntityTypeArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Indicates whether the entity type can be automatically expanded.
      */
@@ -142,7 +142,7 @@ export interface AgentEntityTypeArgs {
      * The collection of entity entries associated with the entity type.
      */
     readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
-    readonly entityTypesId: pulumi.Input<string>;
+    readonly entityTypeId: pulumi.Input<string>;
     /**
      * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */
@@ -152,12 +152,12 @@ export interface AgentEntityTypeArgs {
      */
     readonly kind?: pulumi.Input<string>;
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      */

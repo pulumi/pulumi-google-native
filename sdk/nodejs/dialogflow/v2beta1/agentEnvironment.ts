@@ -78,22 +78,18 @@ export class AgentEnvironment extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["agentVersion"] = args ? args.agentVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["fulfillment"] = args ? args.fulfillment : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["textToSpeechSettings"] = args ? args.textToSpeechSettings : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -127,13 +123,12 @@ export interface AgentEnvironmentArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly environmentId: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
     /**
      * Optional. The fulfillment settings to use for this environment.
      */
     readonly fulfillment?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentArgs>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Text to speech settings for this environment.
      */

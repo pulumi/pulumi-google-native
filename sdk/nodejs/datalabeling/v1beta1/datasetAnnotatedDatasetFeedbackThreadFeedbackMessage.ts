@@ -65,31 +65,31 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.annotatedDatasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotatedDatasetsId'");
+            if ((!args || args.annotatedDatasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotatedDatasetId'");
             }
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.feedbackMessagesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'feedbackMessagesId'");
+            if ((!args || args.feedbackMessageId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feedbackMessageId'");
             }
-            if ((!args || args.feedbackThreadsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'feedbackThreadsId'");
+            if ((!args || args.feedbackThreadId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feedbackThreadId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["annotatedDatasetsId"] = args ? args.annotatedDatasetsId : undefined;
+            inputs["annotatedDatasetId"] = args ? args.annotatedDatasetId : undefined;
             inputs["body"] = args ? args.body : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
-            inputs["feedbackMessagesId"] = args ? args.feedbackMessagesId : undefined;
-            inputs["feedbackThreadsId"] = args ? args.feedbackThreadsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
+            inputs["feedbackMessageId"] = args ? args.feedbackMessageId : undefined;
+            inputs["feedbackThreadId"] = args ? args.feedbackThreadId : undefined;
             inputs["image"] = args ? args.image : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["operatorFeedbackMetadata"] = args ? args.operatorFeedbackMetadata : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requesterFeedbackMetadata"] = args ? args.requesterFeedbackMetadata : undefined;
         } else {
             inputs["body"] = undefined /*out*/;
@@ -110,7 +110,7 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
  * The set of arguments for constructing a DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage resource.
  */
 export interface DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs {
-    readonly annotatedDatasetsId: pulumi.Input<string>;
+    readonly annotatedDatasetId: pulumi.Input<string>;
     /**
      * String content of the feedback. Maximum of 10000 characters.
      */
@@ -119,9 +119,9 @@ export interface DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs {
      * Create time.
      */
     readonly createTime?: pulumi.Input<string>;
-    readonly datasetsId: pulumi.Input<string>;
-    readonly feedbackMessagesId: pulumi.Input<string>;
-    readonly feedbackThreadsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
+    readonly feedbackMessageId: pulumi.Input<string>;
+    readonly feedbackThreadId: pulumi.Input<string>;
     /**
      * The image storing this feedback if the feedback is an image representing operator's comments.
      */
@@ -131,6 +131,6 @@ export interface DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>;
 }

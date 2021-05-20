@@ -60,20 +60,20 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.autoscalingPoliciesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'autoscalingPoliciesId'");
+            if ((!args || args.autoscalingPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'autoscalingPolicyId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["autoscalingPoliciesId"] = args ? args.autoscalingPoliciesId : undefined;
+            inputs["autoscalingPolicyId"] = args ? args.autoscalingPolicyId : undefined;
             inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["name"] = undefined /*out*/;
@@ -94,14 +94,14 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AutoscalingPolicy resource.
  */
 export interface AutoscalingPolicyArgs {
-    readonly autoscalingPoliciesId: pulumi.Input<string>;
+    readonly autoscalingPolicyId: pulumi.Input<string>;
     readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
     /**
      * Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
      */
     readonly id?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Describes how the autoscaler will operate for secondary workers.
      */

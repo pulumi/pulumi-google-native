@@ -40,17 +40,17 @@ func NewWorkflowExecution(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExecutionsId == nil {
-		return nil, errors.New("invalid value for required argument 'ExecutionsId'")
+	if args.ExecutionId == nil {
+		return nil, errors.New("invalid value for required argument 'ExecutionId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WorkflowsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkflowsId'")
+	if args.WorkflowId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowId'")
 	}
 	var resource WorkflowExecution
 	err := ctx.RegisterResource("google-native:workflowexecutions/v1:WorkflowExecution", name, args, &resource, opts...)
@@ -117,21 +117,21 @@ func (WorkflowExecutionState) ElementType() reflect.Type {
 
 type workflowExecutionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument     *string `pulumi:"argument"`
-	ExecutionsId string  `pulumi:"executionsId"`
-	LocationsId  string  `pulumi:"locationsId"`
-	ProjectsId   string  `pulumi:"projectsId"`
-	WorkflowsId  string  `pulumi:"workflowsId"`
+	Argument    *string `pulumi:"argument"`
+	ExecutionId string  `pulumi:"executionId"`
+	Location    string  `pulumi:"location"`
+	Project     string  `pulumi:"project"`
+	WorkflowId  string  `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a WorkflowExecution resource.
 type WorkflowExecutionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument     pulumi.StringPtrInput
-	ExecutionsId pulumi.StringInput
-	LocationsId  pulumi.StringInput
-	ProjectsId   pulumi.StringInput
-	WorkflowsId  pulumi.StringInput
+	Argument    pulumi.StringPtrInput
+	ExecutionId pulumi.StringInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
+	WorkflowId  pulumi.StringInput
 }
 
 func (WorkflowExecutionArgs) ElementType() reflect.Type {

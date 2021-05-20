@@ -60,17 +60,14 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CertificateAuthoritiesId == nil {
-		return nil, errors.New("invalid value for required argument 'CertificateAuthoritiesId'")
-	}
 	if args.CertificateAuthorityId == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateAuthorityId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource CertificateAuthority
 	err := ctx.RegisterResource("google-native:privateca/v1beta1:CertificateAuthority", name, args, &resource, opts...)
@@ -176,8 +173,7 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 }
 
 type certificateAuthorityArgs struct {
-	CertificateAuthoritiesId string `pulumi:"certificateAuthoritiesId"`
-	CertificateAuthorityId   string `pulumi:"certificateAuthorityId"`
+	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy *CertificateAuthorityPolicy `pulumi:"certificatePolicy"`
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -191,10 +187,10 @@ type certificateAuthorityArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime    *string `pulumi:"lifetime"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
-	RequestId   *string `pulumi:"requestId"`
+	Lifetime  *string `pulumi:"lifetime"`
+	Location  string  `pulumi:"location"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig *SubordinateConfig `pulumi:"subordinateConfig"`
 	// Required. Immutable. The Tier of this CertificateAuthority.
@@ -205,8 +201,7 @@ type certificateAuthorityArgs struct {
 
 // The set of arguments for constructing a CertificateAuthority resource.
 type CertificateAuthorityArgs struct {
-	CertificateAuthoritiesId pulumi.StringInput
-	CertificateAuthorityId   pulumi.StringInput
+	CertificateAuthorityId pulumi.StringInput
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyPtrInput
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -220,10 +215,10 @@ type CertificateAuthorityArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
 	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime    pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
-	RequestId   pulumi.StringPtrInput
+	Lifetime  pulumi.StringPtrInput
+	Location  pulumi.StringInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig SubordinateConfigPtrInput
 	// Required. Immutable. The Tier of this CertificateAuthority.

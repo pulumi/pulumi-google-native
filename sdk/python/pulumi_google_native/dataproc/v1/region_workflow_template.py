@@ -15,9 +15,9 @@ __all__ = ['RegionWorkflowTemplateArgs', 'RegionWorkflowTemplate']
 @pulumi.input_type
 class RegionWorkflowTemplateArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 regions_id: pulumi.Input[str],
-                 workflow_templates_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 region_id: pulumi.Input[str],
+                 workflow_template_id: pulumi.Input[str],
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['OrderedJobArgs']]]] = None,
@@ -34,9 +34,9 @@ class RegionWorkflowTemplateArgs:
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[int] version: Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "regions_id", regions_id)
-        pulumi.set(__self__, "workflow_templates_id", workflow_templates_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "workflow_template_id", workflow_template_id)
         if dag_timeout is not None:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
         if id is not None:
@@ -53,31 +53,31 @@ class RegionWorkflowTemplateArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
-
-    @property
-    @pulumi.getter(name="regionsId")
-    def regions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "regions_id")
-
-    @regions_id.setter
-    def regions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "regions_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="workflowTemplatesId")
-    def workflow_templates_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "workflow_templates_id")
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "region_id")
 
-    @workflow_templates_id.setter
-    def workflow_templates_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workflow_templates_id", value)
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region_id", value)
+
+    @property
+    @pulumi.getter(name="workflowTemplateId")
+    def workflow_template_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workflow_template_id")
+
+    @workflow_template_id.setter
+    def workflow_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workflow_template_id", value)
 
     @property
     @pulumi.getter(name="dagTimeout")
@@ -172,10 +172,10 @@ class RegionWorkflowTemplate(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 regions_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 workflow_templates_id: Optional[pulumi.Input[str]] = None,
+                 workflow_template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates new workflow template.
@@ -219,10 +219,10 @@ class RegionWorkflowTemplate(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 regions_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 workflow_templates_id: Optional[pulumi.Input[str]] = None,
+                 workflow_template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -241,16 +241,16 @@ class RegionWorkflowTemplate(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["placement"] = placement
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if regions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'regions_id'")
-            __props__.__dict__["regions_id"] = regions_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if region_id is None and not opts.urn:
+                raise TypeError("Missing required property 'region_id'")
+            __props__.__dict__["region_id"] = region_id
             __props__.__dict__["version"] = version
-            if workflow_templates_id is None and not opts.urn:
-                raise TypeError("Missing required property 'workflow_templates_id'")
-            __props__.__dict__["workflow_templates_id"] = workflow_templates_id
+            if workflow_template_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workflow_template_id'")
+            __props__.__dict__["workflow_template_id"] = workflow_template_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None

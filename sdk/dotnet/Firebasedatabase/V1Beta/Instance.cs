@@ -99,11 +99,11 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Input("databaseUrl")]
         public Input<string>? DatabaseUrl { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
@@ -114,11 +114,8 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// <summary>
         /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The database's lifecycle state. Read-only.

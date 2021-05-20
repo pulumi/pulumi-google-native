@@ -15,8 +15,8 @@ __all__ = ['AttestorIamPolicyArgs', 'AttestorIamPolicy']
 @pulumi.input_type
 class AttestorIamPolicyArgs:
     def __init__(__self__, *,
-                 attestors_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 attestor_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -26,8 +26,8 @@ class AttestorIamPolicyArgs:
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "attestors_id", attestors_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "attestor_id", attestor_id)
+        pulumi.set(__self__, "project", project)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
@@ -36,22 +36,22 @@ class AttestorIamPolicyArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="attestorsId")
-    def attestors_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attestors_id")
+    @pulumi.getter(name="attestorId")
+    def attestor_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "attestor_id")
 
-    @attestors_id.setter
-    def attestors_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attestors_id", value)
+    @attestor_id.setter
+    def attestor_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attestor_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -95,10 +95,10 @@ class AttestorIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestors_id: Optional[pulumi.Input[str]] = None,
+                 attestor_id: Optional[pulumi.Input[str]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -134,10 +134,10 @@ class AttestorIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestors_id: Optional[pulumi.Input[str]] = None,
+                 attestor_id: Optional[pulumi.Input[str]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -151,14 +151,14 @@ class AttestorIamPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AttestorIamPolicyArgs.__new__(AttestorIamPolicyArgs)
 
-            if attestors_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attestors_id'")
-            __props__.__dict__["attestors_id"] = attestors_id
+            if attestor_id is None and not opts.urn:
+                raise TypeError("Missing required property 'attestor_id'")
+            __props__.__dict__["attestor_id"] = attestor_id
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
         super(AttestorIamPolicy, __self__).__init__(
             'google-native:binaryauthorization/v1beta1:AttestorIamPolicy',

@@ -87,8 +87,8 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.groupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'groupsId'");
+            if ((!args || args.groupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groupId'");
             }
             if ((!args || args.initialGroupConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialGroupConfig'");
@@ -97,8 +97,8 @@ export class Group extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
+            inputs["groupId"] = args ? args.groupId : undefined;
             inputs["groupKey"] = args ? args.groupKey : undefined;
-            inputs["groupsId"] = args ? args.groupsId : undefined;
             inputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -144,11 +144,11 @@ export interface GroupArgs {
      * Optional. Dynamic group metadata like queries and status.
      */
     readonly dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1beta1.DynamicGroupMetadataArgs>;
+    readonly groupId: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the `Group`.
      */
     readonly groupKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
-    readonly groupsId: pulumi.Input<string>;
     readonly initialGroupConfig: pulumi.Input<string>;
     /**
      * Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.

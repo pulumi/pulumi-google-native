@@ -99,11 +99,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
 
-        [Input("entryGroupsId", required: true)]
-        public Input<string> EntryGroupsId { get; set; } = null!;
-
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
@@ -111,8 +108,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public EntryGroupArgs()
         {

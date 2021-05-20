@@ -28,17 +28,14 @@ func NewNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
-	if args.NamespacesId == nil {
-		return nil, errors.New("invalid value for required argument 'NamespacesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Namespace
 	err := ctx.RegisterResource("google-native:servicedirectory/v1beta1:Namespace", name, args, &resource, opts...)
@@ -81,25 +78,23 @@ func (NamespaceState) ElementType() reflect.Type {
 
 type namespaceArgs struct {
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name         *string `pulumi:"name"`
-	NamespaceId  string  `pulumi:"namespaceId"`
-	NamespacesId string  `pulumi:"namespacesId"`
-	ProjectsId   string  `pulumi:"projectsId"`
+	Name        *string `pulumi:"name"`
+	NamespaceId string  `pulumi:"namespaceId"`
+	Project     string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name         pulumi.StringPtrInput
-	NamespaceId  pulumi.StringInput
-	NamespacesId pulumi.StringInput
-	ProjectsId   pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	NamespaceId pulumi.StringInput
+	Project     pulumi.StringInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {

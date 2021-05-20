@@ -168,8 +168,8 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
-        [Input("foldersId", required: true)]
-        public Input<string> FoldersId { get; set; } = null!;
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
 
         /// <summary>
         /// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance 
@@ -183,8 +183,8 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("sinksId", required: true)]
-        public Input<string> SinksId { get; set; } = null!;
+        [Input("sinkId", required: true)]
+        public Input<string> SinkId { get; set; } = null!;
 
         [Input("uniqueWriterIdentity")]
         public Input<string>? UniqueWriterIdentity { get; set; }

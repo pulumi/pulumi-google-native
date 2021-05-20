@@ -114,28 +114,24 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instanceMessages"] = args ? args.instanceMessages : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["zones"] = args ? args.zones : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["discoveryEndpoint"] = undefined /*out*/;
@@ -185,12 +181,11 @@ export interface InstanceArgs {
      * List of messages that describe the current state of the Memcached instance.
      */
     readonly instanceMessages?: pulumi.Input<pulumi.Input<inputs.memcache.v1.InstanceMessageArgs>[]>;
-    readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
      */
@@ -211,7 +206,7 @@ export interface InstanceArgs {
      * Optional: User defined parameters to apply to the memcached process on each node.
      */
     readonly parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParametersArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
      */

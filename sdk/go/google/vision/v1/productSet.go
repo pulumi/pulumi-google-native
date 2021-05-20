@@ -32,14 +32,11 @@ func NewProductSet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProductSetsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProductSetsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProductSet
 	err := ctx.RegisterResource("google-native:vision/v1:ProductSet", name, args, &resource, opts...)
@@ -91,24 +88,22 @@ func (ProductSetState) ElementType() reflect.Type {
 type productSetArgs struct {
 	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
 	DisplayName *string `pulumi:"displayName"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-	Name          *string `pulumi:"name"`
-	ProductSetId  *string `pulumi:"productSetId"`
-	ProductSetsId string  `pulumi:"productSetsId"`
-	ProjectsId    string  `pulumi:"projectsId"`
+	Name         *string `pulumi:"name"`
+	ProductSetId *string `pulumi:"productSetId"`
+	Project      string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProductSet resource.
 type ProductSetArgs struct {
 	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
 	DisplayName pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-	Name          pulumi.StringPtrInput
-	ProductSetId  pulumi.StringPtrInput
-	ProductSetsId pulumi.StringInput
-	ProjectsId    pulumi.StringInput
+	Name         pulumi.StringPtrInput
+	ProductSetId pulumi.StringPtrInput
+	Project      pulumi.StringInput
 }
 
 func (ProductSetArgs) ElementType() reflect.Type {

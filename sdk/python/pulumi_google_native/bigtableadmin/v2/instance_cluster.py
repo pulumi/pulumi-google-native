@@ -16,9 +16,8 @@ __all__ = ['InstanceClusterArgs', 'InstanceCluster']
 class InstanceClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 clusters_id: pulumi.Input[str],
-                 instances_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  default_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -33,9 +32,8 @@ class InstanceClusterArgs:
         :param pulumi.Input[int] serve_nodes: Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "clusters_id", clusters_id)
-        pulumi.set(__self__, "instances_id", instances_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "project", project)
         if default_storage_type is not None:
             pulumi.set(__self__, "default_storage_type", default_storage_type)
         if encryption_config is not None:
@@ -57,31 +55,22 @@ class InstanceClusterArgs:
         pulumi.set(self, "cluster_id", value)
 
     @property
-    @pulumi.getter(name="clustersId")
-    def clusters_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "clusters_id")
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
 
-    @clusters_id.setter
-    def clusters_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "clusters_id", value)
-
-    @property
-    @pulumi.getter(name="instancesId")
-    def instances_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instances_id")
-
-    @instances_id.setter
-    def instances_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instances_id", value)
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="defaultStorageType")
@@ -150,13 +139,12 @@ class InstanceCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
                  default_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  serve_nodes: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -195,13 +183,12 @@ class InstanceCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
                  default_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  serve_nodes: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -218,19 +205,16 @@ class InstanceCluster(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            if clusters_id is None and not opts.urn:
-                raise TypeError("Missing required property 'clusters_id'")
-            __props__.__dict__["clusters_id"] = clusters_id
             __props__.__dict__["default_storage_type"] = default_storage_type
             __props__.__dict__["encryption_config"] = encryption_config
-            if instances_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instances_id'")
-            __props__.__dict__["instances_id"] = instances_id
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["serve_nodes"] = serve_nodes
             __props__.__dict__["state"] = None
         super(InstanceCluster, __self__).__init__(

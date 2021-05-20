@@ -34,11 +34,11 @@ func NewNamespaceJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobsId == nil {
-		return nil, errors.New("invalid value for required argument 'JobsId'")
+	if args.JobId == nil {
+		return nil, errors.New("invalid value for required argument 'JobId'")
 	}
-	if args.NamespacesId == nil {
-		return nil, errors.New("invalid value for required argument 'NamespacesId'")
+	if args.NamespaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
 	var resource NamespaceJob
 	err := ctx.RegisterResource("google-native:run/v1alpha1:NamespaceJob", name, args, &resource, opts...)
@@ -94,12 +94,12 @@ func (NamespaceJobState) ElementType() reflect.Type {
 type namespaceJobArgs struct {
 	// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
 	ApiVersion *string `pulumi:"apiVersion"`
-	JobsId     string  `pulumi:"jobsId"`
+	JobId      string  `pulumi:"jobId"`
 	// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
 	Kind *string `pulumi:"kind"`
 	// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
-	Metadata     *ObjectMeta `pulumi:"metadata"`
-	NamespacesId string      `pulumi:"namespacesId"`
+	Metadata    *ObjectMeta `pulumi:"metadata"`
+	NamespaceId string      `pulumi:"namespaceId"`
 	// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
 	Spec *JobSpec `pulumi:"spec"`
 	// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
@@ -110,12 +110,12 @@ type namespaceJobArgs struct {
 type NamespaceJobArgs struct {
 	// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
 	ApiVersion pulumi.StringPtrInput
-	JobsId     pulumi.StringInput
+	JobId      pulumi.StringInput
 	// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
 	Kind pulumi.StringPtrInput
 	// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
-	Metadata     ObjectMetaPtrInput
-	NamespacesId pulumi.StringInput
+	Metadata    ObjectMetaPtrInput
+	NamespaceId pulumi.StringInput
 	// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
 	Spec JobSpecPtrInput
 	// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional

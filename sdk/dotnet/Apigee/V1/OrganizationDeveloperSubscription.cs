@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("apiproduct")]
         public Input<string>? Apiproduct { get; set; }
 
-        [Input("developersId", required: true)]
-        public Input<string> DevelopersId { get; set; } = null!;
+        [Input("developerId", required: true)]
+        public Input<string> DeveloperId { get; set; } = null!;
 
         /// <summary>
         /// Time when the API product subscription ends in milliseconds since epoch.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Time when the API product subscription starts in milliseconds since epoch.
@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
-        [Input("subscriptionsId", required: true)]
-        public Input<string> SubscriptionsId { get; set; } = null!;
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
 
         public OrganizationDeveloperSubscriptionArgs()
         {

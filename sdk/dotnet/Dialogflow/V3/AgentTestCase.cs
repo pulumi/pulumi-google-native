@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
     public sealed class AgentTestCaseArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("lastTestResult")]
         public Input<Inputs.GoogleCloudDialogflowCxV3TestCaseResultArgs>? LastTestResult { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -165,8 +165,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             set => _testCaseConversationTurns = value;
         }
 
-        [Input("testCasesId", required: true)]
-        public Input<string> TestCasesId { get; set; } = null!;
+        [Input("testCaseId", required: true)]
+        public Input<string> TestCaseId { get; set; } = null!;
 
         /// <summary>
         /// Config for the test case.

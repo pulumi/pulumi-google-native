@@ -263,14 +263,14 @@ class GoogleCloudApigeeV1DatastoreConfigArgs:
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  dataset_name: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  table_prefix: Optional[pulumi.Input[str]] = None):
         """
         Configuration detail for datastore
         :param pulumi.Input[str] bucket_name: Name of the Cloud Storage bucket. Required for `gcs` target_type.
         :param pulumi.Input[str] dataset_name: BigQuery dataset name Required for `bigquery` target_type.
         :param pulumi.Input[str] path: Path of Cloud Storage bucket Required for `gcs` target_type.
-        :param pulumi.Input[str] project_id: Required. GCP project in which the datastore exists
+        :param pulumi.Input[str] project: Required. GCP project in which the datastore exists
         :param pulumi.Input[str] table_prefix: Prefix of BigQuery table Required for `bigquery` target_type.
         """
         if bucket_name is not None:
@@ -279,8 +279,8 @@ class GoogleCloudApigeeV1DatastoreConfigArgs:
             pulumi.set(__self__, "dataset_name", dataset_name)
         if path is not None:
             pulumi.set(__self__, "path", path)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if table_prefix is not None:
             pulumi.set(__self__, "table_prefix", table_prefix)
 
@@ -321,16 +321,16 @@ class GoogleCloudApigeeV1DatastoreConfigArgs:
         pulumi.set(self, "path", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         Required. GCP project in which the datastore exists
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tablePrefix")

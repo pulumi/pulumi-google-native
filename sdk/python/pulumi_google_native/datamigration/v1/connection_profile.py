@@ -16,9 +16,8 @@ __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
 class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
-                 connection_profiles_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  cloudsql: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -40,9 +39,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
-        pulumi.set(__self__, "connection_profiles_id", connection_profiles_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if cloudsql is not None:
             pulumi.set(__self__, "cloudsql", cloudsql)
         if display_name is not None:
@@ -72,31 +70,22 @@ class ConnectionProfileArgs:
         pulumi.set(self, "connection_profile_id", value)
 
     @property
-    @pulumi.getter(name="connectionProfilesId")
-    def connection_profiles_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "connection_profiles_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @connection_profiles_id.setter
-    def connection_profiles_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "connection_profiles_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -211,14 +200,13 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
-                 connection_profiles_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -263,14 +251,13 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
-                 connection_profiles_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -290,20 +277,17 @@ class ConnectionProfile(pulumi.CustomResource):
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
             __props__.__dict__["connection_profile_id"] = connection_profile_id
-            if connection_profiles_id is None and not opts.urn:
-                raise TypeError("Missing required property 'connection_profiles_id'")
-            __props__.__dict__["connection_profiles_id"] = connection_profiles_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name
             __props__.__dict__["postgresql"] = postgresql
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["provider"] = provider
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["state"] = state

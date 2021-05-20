@@ -991,7 +991,7 @@ type Endpoint struct {
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port *int `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // EndpointInput is an input type that accepts EndpointArgs and EndpointOutput values.
@@ -1022,7 +1022,7 @@ type EndpointArgs struct {
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (EndpointArgs) ElementType() reflect.Type {
@@ -1139,8 +1139,8 @@ func (o EndpointOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-func (o EndpointOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Endpoint) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o EndpointOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoint) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type EndpointPtrOutput struct{ *pulumi.OutputState }
@@ -1232,12 +1232,12 @@ func (o EndpointPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-func (o EndpointPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o EndpointPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Endpoint) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1506,7 +1506,7 @@ type EndpointResponse struct {
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port int `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // EndpointResponseInput is an input type that accepts EndpointResponseArgs and EndpointResponseOutput values.
@@ -1537,7 +1537,7 @@ type EndpointResponseArgs struct {
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port pulumi.IntInput `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (EndpointResponseArgs) ElementType() reflect.Type {
@@ -1654,8 +1654,8 @@ func (o EndpointResponseOutput) Port() pulumi.IntOutput {
 }
 
 // Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-func (o EndpointResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v EndpointResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o EndpointResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type EndpointResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1747,12 +1747,12 @@ func (o EndpointResponsePtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-func (o EndpointResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o EndpointResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3869,7 +3869,7 @@ type StepResponse struct {
 	// Display info of a GCP network.
 	Network NetworkInfoResponse `pulumi:"network"`
 	// Project ID that contains the configuration this step is validating.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Display info of a Compute Engine route.
 	Route RouteInfoResponse `pulumi:"route"`
 	// Each step is in one of the pre-defined states.
@@ -3922,7 +3922,7 @@ type StepResponseArgs struct {
 	// Display info of a GCP network.
 	Network NetworkInfoResponseInput `pulumi:"network"`
 	// Project ID that contains the configuration this step is validating.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Display info of a Compute Engine route.
 	Route RouteInfoResponseInput `pulumi:"route"`
 	// Each step is in one of the pre-defined states.
@@ -4056,8 +4056,8 @@ func (o StepResponseOutput) Network() NetworkInfoResponseOutput {
 }
 
 // Project ID that contains the configuration this step is validating.
-func (o StepResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v StepResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o StepResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v StepResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Display info of a Compute Engine route.

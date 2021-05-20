@@ -26,11 +26,11 @@ func NewTopic(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TopicsId == nil {
-		return nil, errors.New("invalid value for required argument 'TopicsId'")
+	if args.TopicId == nil {
+		return nil, errors.New("invalid value for required argument 'TopicId'")
 	}
 	var resource Topic
 	err := ctx.RegisterResource("google-native:pubsub/v1beta2:Topic", name, args, &resource, opts...)
@@ -69,17 +69,17 @@ func (TopicState) ElementType() reflect.Type {
 
 type topicArgs struct {
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	TopicsId   string  `pulumi:"topicsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
+	TopicId string  `pulumi:"topicId"`
 }
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	TopicsId   pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
+	TopicId pulumi.StringInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

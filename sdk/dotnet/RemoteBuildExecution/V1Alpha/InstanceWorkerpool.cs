@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("channel")]
         public Input<string>? Channel { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// State of the worker pool.
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("workerCount")]
         public Input<string>? WorkerCount { get; set; }
 
-        [Input("workerpoolsId", required: true)]
-        public Input<string> WorkerpoolsId { get; set; } = null!;
+        [Input("workerpoolId", required: true)]
+        public Input<string> WorkerpoolId { get; set; } = null!;
 
         public InstanceWorkerpoolArgs()
         {

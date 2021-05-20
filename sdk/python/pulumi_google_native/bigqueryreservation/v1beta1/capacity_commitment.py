@@ -14,9 +14,8 @@ __all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
 @pulumi.input_type
 class CapacityCommitmentArgs:
     def __init__(__self__, *,
-                 capacity_commitments_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -28,9 +27,8 @@ class CapacityCommitmentArgs:
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
         """
-        pulumi.set(__self__, "capacity_commitments_id", capacity_commitments_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if capacity_commitment_id is not None:
             pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
         if enforce_single_admin_project_per_org is not None:
@@ -43,31 +41,22 @@ class CapacityCommitmentArgs:
             pulumi.set(__self__, "slot_count", slot_count)
 
     @property
-    @pulumi.getter(name="capacityCommitmentsId")
-    def capacity_commitments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "capacity_commitments_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @capacity_commitments_id.setter
-    def capacity_commitments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "capacity_commitments_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="capacityCommitmentId")
@@ -130,11 +119,10 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
-                 capacity_commitments_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input[str]] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -172,11 +160,10 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
-                 capacity_commitments_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input[str]] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -192,17 +179,14 @@ class CapacityCommitment(pulumi.CustomResource):
             __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
-            if capacity_commitments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'capacity_commitments_id'")
-            __props__.__dict__["capacity_commitments_id"] = capacity_commitments_id
             __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["plan"] = plan
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["renewal_plan"] = renewal_plan
             __props__.__dict__["slot_count"] = slot_count
             __props__.__dict__["commitment_end_time"] = None

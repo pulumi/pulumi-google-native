@@ -30,11 +30,11 @@ func NewStoredInfoType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.StoredInfoTypesId == nil {
-		return nil, errors.New("invalid value for required argument 'StoredInfoTypesId'")
+	if args.StoredInfoTypeId == nil {
+		return nil, errors.New("invalid value for required argument 'StoredInfoTypeId'")
 	}
 	var resource StoredInfoType
 	err := ctx.RegisterResource("google-native:dlp/v2:StoredInfoType", name, args, &resource, opts...)
@@ -81,21 +81,19 @@ func (StoredInfoTypeState) ElementType() reflect.Type {
 
 type storedInfoTypeArgs struct {
 	// Required. Configuration of the storedInfoType to create.
-	Config     *GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
-	ProjectsId string                                  `pulumi:"projectsId"`
+	Config  *GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
+	Project string                                  `pulumi:"project"`
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	StoredInfoTypeId  *string `pulumi:"storedInfoTypeId"`
-	StoredInfoTypesId string  `pulumi:"storedInfoTypesId"`
+	StoredInfoTypeId string `pulumi:"storedInfoTypeId"`
 }
 
 // The set of arguments for constructing a StoredInfoType resource.
 type StoredInfoTypeArgs struct {
 	// Required. Configuration of the storedInfoType to create.
-	Config     GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput
-	ProjectsId pulumi.StringInput
+	Config  GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput
+	Project pulumi.StringInput
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	StoredInfoTypeId  pulumi.StringPtrInput
-	StoredInfoTypesId pulumi.StringInput
+	StoredInfoTypeId pulumi.StringInput
 }
 
 func (StoredInfoTypeArgs) ElementType() reflect.Type {

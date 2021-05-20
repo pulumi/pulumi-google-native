@@ -117,20 +117,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
-
         /// <summary>
         /// Optional. The fulfillment settings to use for this environment.
         /// </summary>
         [Input("fulfillment")]
         public Input<Inputs.GoogleCloudDialogflowV2FulfillmentArgs>? Fulfillment { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Optional. Text to speech settings for this environment.

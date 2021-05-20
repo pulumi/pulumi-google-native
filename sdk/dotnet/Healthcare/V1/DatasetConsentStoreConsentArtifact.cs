@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
 
     public sealed class DatasetConsentStoreConsentArtifactArgs : Pulumi.ResourceArgs
     {
-        [Input("consentArtifactsId", required: true)]
-        public Input<string> ConsentArtifactsId { get; set; } = null!;
+        [Input("consentArtifactId", required: true)]
+        public Input<string> ConsentArtifactId { get; set; } = null!;
 
         [Input("consentContentScreenshots")]
         private InputList<Inputs.ImageArgs>? _consentContentScreenshots;
@@ -129,11 +129,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("consentContentVersion")]
         public Input<string>? ConsentContentVersion { get; set; }
 
-        [Input("consentStoresId", required: true)]
-        public Input<string> ConsentStoresId { get; set; } = null!;
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
         /// Optional. A signature from a guardian.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("guardianSignature")]
         public Input<Inputs.SignatureArgs>? GuardianSignature { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("metadata")]
         private InputMap<string>? _metadata;
@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. User's UUID provided by the client.

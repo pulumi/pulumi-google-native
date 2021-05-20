@@ -243,8 +243,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// [Output-only] Reserved for future use.

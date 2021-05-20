@@ -15,10 +15,9 @@ __all__ = ['KeyRingImportJobArgs', 'KeyRingImportJob']
 class KeyRingImportJobArgs:
     def __init__(__self__, *,
                  import_job_id: pulumi.Input[str],
-                 import_jobs_id: pulumi.Input[str],
-                 key_rings_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 key_ring_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  import_method: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None):
         """
@@ -27,10 +26,9 @@ class KeyRingImportJobArgs:
         :param pulumi.Input[str] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
         pulumi.set(__self__, "import_job_id", import_job_id)
-        pulumi.set(__self__, "import_jobs_id", import_jobs_id)
-        pulumi.set(__self__, "key_rings_id", key_rings_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if import_method is not None:
             pulumi.set(__self__, "import_method", import_method)
         if protection_level is not None:
@@ -46,40 +44,31 @@ class KeyRingImportJobArgs:
         pulumi.set(self, "import_job_id", value)
 
     @property
-    @pulumi.getter(name="importJobsId")
-    def import_jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "import_jobs_id")
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_ring_id")
 
-    @import_jobs_id.setter
-    def import_jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "import_jobs_id", value)
-
-    @property
-    @pulumi.getter(name="keyRingsId")
-    def key_rings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "key_rings_id")
-
-    @key_rings_id.setter
-    def key_rings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_rings_id", value)
+    @key_ring_id.setter
+    def key_ring_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_ring_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="importMethod")
@@ -112,11 +101,10 @@ class KeyRingImportJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
-                 import_jobs_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -152,11 +140,10 @@ class KeyRingImportJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
-                 import_jobs_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -173,19 +160,16 @@ class KeyRingImportJob(pulumi.CustomResource):
             if import_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_job_id'")
             __props__.__dict__["import_job_id"] = import_job_id
-            if import_jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'import_jobs_id'")
-            __props__.__dict__["import_jobs_id"] = import_jobs_id
             __props__.__dict__["import_method"] = import_method
-            if key_rings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'key_rings_id'")
-            __props__.__dict__["key_rings_id"] = key_rings_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if key_ring_id is None and not opts.urn:
+                raise TypeError("Missing required property 'key_ring_id'")
+            __props__.__dict__["key_ring_id"] = key_ring_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["protection_level"] = protection_level
             __props__.__dict__["attestation"] = None
             __props__.__dict__["create_time"] = None

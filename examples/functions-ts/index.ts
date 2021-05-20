@@ -17,7 +17,7 @@ const randomString = new random.RandomString("name", {
 
 const bucketName = pulumi.interpolate`bucket-${randomString.result}`;
 const bucket = new google.storage.v1.Bucket("bucket", {
-    project: project,
+    project,
     bucket: bucketName,
     name: bucketName,
 });
@@ -34,9 +34,9 @@ const bucketObject = new google.storage.v1.BucketObject(archiveName, {
 
 const functionName = pulumi.interpolate`func-${randomString.result}`;
 const func = new google.cloudfunctions.v1.Function("function-py", {
-    projectsId: project,
-    locationsId: region,
-    functionsId: functionName,
+    project,
+    location: region,
+    functionId: functionName,
     name: pulumi.interpolate`projects/${project}/locations/${region}/functions/${functionName}`,
     sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
     httpsTrigger: {},
@@ -48,9 +48,9 @@ const func = new google.cloudfunctions.v1.Function("function-py", {
 });
 
 const invoker = new google.cloudfunctions.v1.FunctionIamPolicy("function-py-iam", {
-    projectsId: project,
-    locationsId: region,
-    functionsId: functionName, // func.name returns the long `projects/foo/locations/bat/functions/buzz` name which doesn't suit here
+    project,
+    location: region,
+    functionId: functionName, // func.name returns the long `projects/foo/locations/bat/functions/buzz` name which doesn't suit here
     bindings: [
         {
             members: ["allUsers"],

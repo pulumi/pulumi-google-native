@@ -162,7 +162,7 @@ class EndpointArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         Source or destination of the Connectivity Test.
         :param pulumi.Input[str] cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
@@ -172,7 +172,7 @@ class EndpointArgs:
         :param pulumi.Input[str] network: A Compute Engine network URI.
         :param pulumi.Input[str] network_type: Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
         :param pulumi.Input[int] port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
-        :param pulumi.Input[str] project_id: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+        :param pulumi.Input[str] project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
         if cloud_sql_instance is not None:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
@@ -188,8 +188,8 @@ class EndpointArgs:
             pulumi.set(__self__, "network_type", network_type)
         if port is not None:
             pulumi.set(__self__, "port", port)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
@@ -276,16 +276,16 @@ class EndpointArgs:
         pulumi.set(self, "port", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

@@ -16,10 +16,9 @@ __all__ = ['GameServerDeploymentConfigArgs', 'GameServerDeploymentConfig']
 class GameServerDeploymentConfigArgs:
     def __init__(__self__, *,
                  config_id: pulumi.Input[str],
-                 configs_id: pulumi.Input[str],
-                 game_server_deployments_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 game_server_deployment_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FleetConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -34,10 +33,9 @@ class GameServerDeploymentConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]] scaling_configs: The autoscaling settings.
         """
         pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "configs_id", configs_id)
-        pulumi.set(__self__, "game_server_deployments_id", game_server_deployments_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "game_server_deployment_id", game_server_deployment_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fleet_configs is not None:
@@ -59,40 +57,31 @@ class GameServerDeploymentConfigArgs:
         pulumi.set(self, "config_id", value)
 
     @property
-    @pulumi.getter(name="configsId")
-    def configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "configs_id")
+    @pulumi.getter(name="gameServerDeploymentId")
+    def game_server_deployment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "game_server_deployment_id")
 
-    @configs_id.setter
-    def configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "configs_id", value)
-
-    @property
-    @pulumi.getter(name="gameServerDeploymentsId")
-    def game_server_deployments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "game_server_deployments_id")
-
-    @game_server_deployments_id.setter
-    def game_server_deployments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "game_server_deployments_id", value)
+    @game_server_deployment_id.setter
+    def game_server_deployment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "game_server_deployment_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -161,14 +150,13 @@ class GameServerDeploymentConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]]] = None,
-                 game_server_deployments_id: Optional[pulumi.Input[str]] = None,
+                 game_server_deployment_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]]]] = None,
                  __props__=None):
         """
@@ -207,14 +195,13 @@ class GameServerDeploymentConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]]] = None,
-                 game_server_deployments_id: Optional[pulumi.Input[str]] = None,
+                 game_server_deployment_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -231,22 +218,19 @@ class GameServerDeploymentConfig(pulumi.CustomResource):
             if config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'config_id'")
             __props__.__dict__["config_id"] = config_id
-            if configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'configs_id'")
-            __props__.__dict__["configs_id"] = configs_id
             __props__.__dict__["description"] = description
             __props__.__dict__["fleet_configs"] = fleet_configs
-            if game_server_deployments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'game_server_deployments_id'")
-            __props__.__dict__["game_server_deployments_id"] = game_server_deployments_id
+            if game_server_deployment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'game_server_deployment_id'")
+            __props__.__dict__["game_server_deployment_id"] = game_server_deployment_id
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["scaling_configs"] = scaling_configs
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

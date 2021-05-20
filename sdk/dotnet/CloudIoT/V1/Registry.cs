@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
@@ -159,11 +159,11 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("registriesId", required: true)]
-        public Input<string> RegistriesId { get; set; } = null!;
+        [Input("registryId", required: true)]
+        public Input<string> RegistryId { get; set; } = null!;
 
         /// <summary>
         /// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.

@@ -74,23 +74,19 @@ export class InstanceCluster extends pulumi.CustomResource {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.clustersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clustersId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["clustersId"] = args ? args.clustersId : undefined;
             inputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
             inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["serveNodes"] = args ? args.serveNodes : undefined;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -113,7 +109,6 @@ export class InstanceCluster extends pulumi.CustomResource {
  */
 export interface InstanceClusterArgs {
     readonly clusterId: pulumi.Input<string>;
-    readonly clustersId: pulumi.Input<string>;
     /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
@@ -122,7 +117,7 @@ export interface InstanceClusterArgs {
      * Immutable. The encryption configuration for CMEK-protected clusters.
      */
     readonly encryptionConfig?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionConfigArgs>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
      */
@@ -131,7 +126,7 @@ export interface InstanceClusterArgs {
      * The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */

@@ -83,20 +83,20 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.providersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'providersId'");
+            if ((!args || args.providerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'providerId'");
+            }
+            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
             if ((!args || args.workloadIdentityPoolProviderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
-            }
-            if ((!args || args.workloadIdentityPoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workloadIdentityPoolsId'");
             }
             inputs["attributeCondition"] = args ? args.attributeCondition : undefined;
             inputs["attributeMapping"] = args ? args.attributeMapping : undefined;
@@ -104,12 +104,12 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["oidc"] = args ? args.oidc : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["providersId"] = args ? args.providersId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["providerId"] = args ? args.providerId : undefined;
+            inputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
             inputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
-            inputs["workloadIdentityPoolsId"] = args ? args.workloadIdentityPoolsId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -158,13 +158,13 @@ export interface WorkloadIdentityPoolProviderArgs {
      * A display name for the provider. Cannot exceed 32 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * An OpenId Connect 1.0 identity provider.
      */
     readonly oidc?: pulumi.Input<inputs.iam.v1.OidcArgs>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly providersId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly providerId: pulumi.Input<string>;
+    readonly workloadIdentityPoolId: pulumi.Input<string>;
     readonly workloadIdentityPoolProviderId: pulumi.Input<string>;
-    readonly workloadIdentityPoolsId: pulumi.Input<string>;
 }

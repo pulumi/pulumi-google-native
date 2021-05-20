@@ -32,8 +32,8 @@ func NewAccessPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessPoliciesId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessPoliciesId'")
+	if args.AccessPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
 	var resource AccessPolicy
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1:AccessPolicy", name, args, &resource, opts...)
@@ -83,7 +83,7 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	AccessPoliciesId string `pulumi:"accessPoliciesId"`
+	AccessPolicyId string `pulumi:"accessPolicyId"`
 	// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
 	Etag *string `pulumi:"etag"`
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
@@ -96,7 +96,7 @@ type accessPolicyArgs struct {
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	AccessPoliciesId pulumi.StringInput
+	AccessPolicyId pulumi.StringInput
 	// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
 	Etag pulumi.StringPtrInput
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`

@@ -36,20 +36,17 @@ func NewServiceMetadataImport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.MetadataImportId == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataImportId'")
 	}
-	if args.MetadataImportsId == nil {
-		return nil, errors.New("invalid value for required argument 'MetadataImportsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.ServicesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicesId'")
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
 	var resource ServiceMetadataImport
 	err := ctx.RegisterResource("google-native:metastore/v1alpha:ServiceMetadataImport", name, args, &resource, opts...)
@@ -110,15 +107,14 @@ type serviceMetadataImportArgs struct {
 	// Immutable. A database dump from a pre-existing metastore's database.
 	DatabaseDump *DatabaseDump `pulumi:"databaseDump"`
 	// The description of the metadata import.
-	Description       *string `pulumi:"description"`
-	LocationsId       string  `pulumi:"locationsId"`
-	MetadataImportId  string  `pulumi:"metadataImportId"`
-	MetadataImportsId string  `pulumi:"metadataImportsId"`
+	Description      *string `pulumi:"description"`
+	Location         string  `pulumi:"location"`
+	MetadataImportId string  `pulumi:"metadataImportId"`
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
-	ServicesId string  `pulumi:"servicesId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
+	ServiceId string  `pulumi:"serviceId"`
 }
 
 // The set of arguments for constructing a ServiceMetadataImport resource.
@@ -126,15 +122,14 @@ type ServiceMetadataImportArgs struct {
 	// Immutable. A database dump from a pre-existing metastore's database.
 	DatabaseDump DatabaseDumpPtrInput
 	// The description of the metadata import.
-	Description       pulumi.StringPtrInput
-	LocationsId       pulumi.StringInput
-	MetadataImportId  pulumi.StringInput
-	MetadataImportsId pulumi.StringInput
+	Description      pulumi.StringPtrInput
+	Location         pulumi.StringInput
+	MetadataImportId pulumi.StringInput
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
-	ServicesId pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
+	ServiceId pulumi.StringInput
 }
 
 func (ServiceMetadataImportArgs) ElementType() reflect.Type {

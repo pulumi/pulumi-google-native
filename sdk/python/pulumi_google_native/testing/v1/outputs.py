@@ -2142,8 +2142,6 @@ class TestExecutionResponse(dict):
         suggest = None
         if key == "matrixId":
             suggest = "matrix_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "testDetails":
             suggest = "test_details"
         elif key == "testSpecification":
@@ -2165,7 +2163,7 @@ class TestExecutionResponse(dict):
     def __init__(__self__, *,
                  environment: 'outputs.EnvironmentResponse',
                  matrix_id: str,
-                 project_id: str,
+                 project: str,
                  shard: 'outputs.ShardResponse',
                  state: str,
                  test_details: 'outputs.TestDetailsResponse',
@@ -2176,7 +2174,7 @@ class TestExecutionResponse(dict):
         A single test executed in a single environment.
         :param 'EnvironmentResponse' environment: How the host machine(s) are configured.
         :param str matrix_id: Id of the containing TestMatrix.
-        :param str project_id: The cloud project that owns the test execution.
+        :param str project: The cloud project that owns the test execution.
         :param 'ShardResponse' shard: Details about the shard.
         :param str state: Indicates the current progress of the test execution (e.g., FINISHED).
         :param 'TestDetailsResponse' test_details: Additional details about the running test.
@@ -2186,7 +2184,7 @@ class TestExecutionResponse(dict):
         """
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "matrix_id", matrix_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "shard", shard)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "test_details", test_details)
@@ -2211,12 +2209,12 @@ class TestExecutionResponse(dict):
         return pulumi.get(self, "matrix_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         The cloud project that owns the test execution.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -2600,8 +2598,6 @@ class ToolResultsExecutionResponse(dict):
             suggest = "execution_id"
         elif key == "historyId":
             suggest = "history_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ToolResultsExecutionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2617,16 +2613,16 @@ class ToolResultsExecutionResponse(dict):
     def __init__(__self__, *,
                  execution_id: str,
                  history_id: str,
-                 project_id: str):
+                 project: str):
         """
         Represents a tool results execution resource. This has the results of a TestMatrix.
         :param str execution_id: A tool results execution ID.
         :param str history_id: A tool results history ID.
-        :param str project_id: The cloud project that owns the tool results execution.
+        :param str project: The cloud project that owns the tool results execution.
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="executionId")
@@ -2645,12 +2641,12 @@ class ToolResultsExecutionResponse(dict):
         return pulumi.get(self, "history_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         The cloud project that owns the tool results execution.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -2663,8 +2659,6 @@ class ToolResultsHistoryResponse(dict):
         suggest = None
         if key == "historyId":
             suggest = "history_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ToolResultsHistoryResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2679,14 +2673,14 @@ class ToolResultsHistoryResponse(dict):
 
     def __init__(__self__, *,
                  history_id: str,
-                 project_id: str):
+                 project: str):
         """
         Represents a tool results history resource.
         :param str history_id: Required. A tool results history ID.
-        :param str project_id: Required. The cloud project that owns the tool results history.
+        :param str project: Required. The cloud project that owns the tool results history.
         """
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="historyId")
@@ -2697,12 +2691,12 @@ class ToolResultsHistoryResponse(dict):
         return pulumi.get(self, "history_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Required. The cloud project that owns the tool results history.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -2717,8 +2711,6 @@ class ToolResultsStepResponse(dict):
             suggest = "execution_id"
         elif key == "historyId":
             suggest = "history_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "stepId":
             suggest = "step_id"
 
@@ -2736,18 +2728,18 @@ class ToolResultsStepResponse(dict):
     def __init__(__self__, *,
                  execution_id: str,
                  history_id: str,
-                 project_id: str,
+                 project: str,
                  step_id: str):
         """
         Represents a tool results step resource. This has the results of a TestExecution.
         :param str execution_id: A tool results execution ID.
         :param str history_id: A tool results history ID.
-        :param str project_id: The cloud project that owns the tool results step.
+        :param str project: The cloud project that owns the tool results step.
         :param str step_id: A tool results step ID.
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "step_id", step_id)
 
     @property
@@ -2767,12 +2759,12 @@ class ToolResultsStepResponse(dict):
         return pulumi.get(self, "history_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         The cloud project that owns the tool results step.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="stepId")

@@ -180,8 +180,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("apiproduct")]
         public Input<string>? Apiproduct { get; set; }
 
-        [Input("apiproductsId", required: true)]
-        public Input<string> ApiproductsId { get; set; } = null!;
+        [Input("apiproductId", required: true)]
+        public Input<string> ApiproductId { get; set; } = null!;
 
         /// <summary>
         /// Frequency at which the customer will be billed.
@@ -243,8 +243,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("fixedRecurringFee")]
         public Input<Inputs.GoogleTypeMoneyArgs>? FixedRecurringFee { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Flag that specifies the billing account type, prepaid or postpaid.
@@ -252,8 +252,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("paymentFundingModel")]
         public Input<string>? PaymentFundingModel { get; set; }
 
-        [Input("rateplansId", required: true)]
-        public Input<string> RateplansId { get; set; } = null!;
+        [Input("rateplanId", required: true)]
+        public Input<string> RateplanId { get; set; } = null!;
 
         [Input("revenueShareRates")]
         private InputList<Inputs.GoogleCloudApigeeV1RevenueShareRangeArgs>? _revenueShareRates;

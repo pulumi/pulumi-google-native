@@ -46,14 +46,11 @@ func NewSpoke(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.SpokesId == nil {
-		return nil, errors.New("invalid value for required argument 'SpokesId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Spoke
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:Spoke", name, args, &resource, opts...)
@@ -145,13 +142,12 @@ type spokeArgs struct {
 	LinkedRouterApplianceInstances []RouterApplianceInstance `pulumi:"linkedRouterApplianceInstances"`
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels []string `pulumi:"linkedVpnTunnels"`
-	LocationsId      string   `pulumi:"locationsId"`
+	Location         string   `pulumi:"location"`
 	// Immutable. The name of a Spoke resource.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
-	SpokeId    *string `pulumi:"spokeId"`
-	SpokesId   string  `pulumi:"spokesId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
+	SpokeId   *string `pulumi:"spokeId"`
 	// The time when the Spoke was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -172,13 +168,12 @@ type SpokeArgs struct {
 	LinkedRouterApplianceInstances RouterApplianceInstanceArrayInput
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels pulumi.StringArrayInput
-	LocationsId      pulumi.StringInput
+	Location         pulumi.StringInput
 	// Immutable. The name of a Spoke resource.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
-	SpokeId    pulumi.StringPtrInput
-	SpokesId   pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
+	SpokeId   pulumi.StringPtrInput
 	// The time when the Spoke was updated.
 	UpdateTime pulumi.StringPtrInput
 }

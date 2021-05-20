@@ -82,25 +82,21 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
             if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if ((!args || args.backupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backupsId'");
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.clustersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clustersId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["backupsId"] = args ? args.backupsId : undefined;
-            inputs["clustersId"] = args ? args.clustersId : undefined;
+            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["sourceTable"] = args ? args.sourceTable : undefined;
             inputs["encryptionInfo"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
@@ -129,18 +125,17 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
  */
 export interface InstanceClusterBackupArgs {
     readonly backupId: pulumi.Input<string>;
-    readonly backupsId: pulumi.Input<string>;
-    readonly clustersId: pulumi.Input<string>;
+    readonly clusterId: pulumi.Input<string>;
     /**
      * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
     readonly expireTime?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */

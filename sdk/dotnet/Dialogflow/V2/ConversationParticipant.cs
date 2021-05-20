@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 
     public sealed class ConversationParticipantArgs : Pulumi.ResourceArgs
     {
-        [Input("conversationsId", required: true)]
-        public Input<string> ConversationsId { get; set; } = null!;
+        [Input("conversationId", required: true)]
+        public Input<string> ConversationId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
@@ -90,11 +90,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("participantsId", required: true)]
-        public Input<string> ParticipantsId { get; set; } = null!;
+        [Input("participantId", required: true)]
+        public Input<string> ParticipantId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

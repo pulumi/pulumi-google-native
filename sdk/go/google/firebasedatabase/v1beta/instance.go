@@ -34,14 +34,14 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:firebasedatabase/v1beta:Instance", name, args, &resource, opts...)
@@ -98,13 +98,12 @@ type instanceArgs struct {
 	DatabaseId *string `pulumi:"databaseId"`
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
-	InstancesId string  `pulumi:"instancesId"`
-	LocationsId string  `pulumi:"locationsId"`
+	InstanceId  string  `pulumi:"instanceId"`
+	Location    string  `pulumi:"location"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
 	Name *string `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-	Project    *string `pulumi:"project"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Project string `pulumi:"project"`
 	// The database's lifecycle state. Read-only.
 	State *string `pulumi:"state"`
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
@@ -117,13 +116,12 @@ type InstanceArgs struct {
 	DatabaseId pulumi.StringPtrInput
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
-	LocationsId pulumi.StringInput
+	InstanceId  pulumi.StringInput
+	Location    pulumi.StringInput
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
 	Name pulumi.StringPtrInput
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-	Project    pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Project pulumi.StringInput
 	// The database's lifecycle state. Read-only.
 	State pulumi.StringPtrInput
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.

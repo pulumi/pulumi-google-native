@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Required] The ID of the project containing this job.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private JobReferenceResponse(
@@ -32,11 +32,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string location,
 
-            string projectId)
+            string project)
         {
             JobId = jobId;
             Location = location;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

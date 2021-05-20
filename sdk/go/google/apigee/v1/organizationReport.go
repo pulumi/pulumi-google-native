@@ -68,11 +68,11 @@ func NewOrganizationReport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.ReportsId == nil {
-		return nil, errors.New("invalid value for required argument 'ReportsId'")
+	if args.ReportId == nil {
+		return nil, errors.New("invalid value for required argument 'ReportId'")
 	}
 	var resource OrganizationReport
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationReport", name, args, &resource, opts...)
@@ -213,11 +213,11 @@ type organizationReportArgs struct {
 	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name *string `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
-	Offset          *string `pulumi:"offset"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Offset         *string `pulumi:"offset"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// This field contains report properties such as ui metadata etc.
 	Properties []GoogleCloudApigeeV1ReportProperty `pulumi:"properties"`
-	ReportsId  string                              `pulumi:"reportsId"`
+	ReportId   string                              `pulumi:"reportId"`
 	// Legacy field: not used much. Contains the list of sort by columns
 	SortByCols []string `pulumi:"sortByCols"`
 	// Legacy field: not used much. Contains the sort order for the sort columns
@@ -253,11 +253,11 @@ type OrganizationReportArgs struct {
 	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name pulumi.StringPtrInput
 	// Legacy field: not used. This field contains the offset for the data
-	Offset          pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Offset         pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// This field contains report properties such as ui metadata etc.
 	Properties GoogleCloudApigeeV1ReportPropertyArrayInput
-	ReportsId  pulumi.StringInput
+	ReportId   pulumi.StringInput
 	// Legacy field: not used much. Contains the list of sort by columns
 	SortByCols pulumi.StringArrayInput
 	// Legacy field: not used much. Contains the sort order for the sort columns

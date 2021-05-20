@@ -28,14 +28,14 @@ func NewOrganizationEnvironmentKeystore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.KeystoresId == nil {
-		return nil, errors.New("invalid value for required argument 'KeystoresId'")
+	if args.KeystoreId == nil {
+		return nil, errors.New("invalid value for required argument 'KeystoreId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationEnvironmentKeystore
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentKeystore", name, args, &resource, opts...)
@@ -77,20 +77,20 @@ func (OrganizationEnvironmentKeystoreState) ElementType() reflect.Type {
 }
 
 type organizationEnvironmentKeystoreArgs struct {
-	EnvironmentsId string `pulumi:"environmentsId"`
-	KeystoresId    string `pulumi:"keystoresId"`
+	EnvironmentId string `pulumi:"environmentId"`
+	KeystoreId    string `pulumi:"keystoreId"`
 	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentKeystore resource.
 type OrganizationEnvironmentKeystoreArgs struct {
-	EnvironmentsId pulumi.StringInput
-	KeystoresId    pulumi.StringInput
+	EnvironmentId pulumi.StringInput
+	KeystoreId    pulumi.StringInput
 	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 }
 
 func (OrganizationEnvironmentKeystoreArgs) ElementType() reflect.Type {

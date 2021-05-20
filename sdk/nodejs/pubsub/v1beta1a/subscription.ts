@@ -63,13 +63,13 @@ export class Subscription extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.subscriptionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subscriptionsId'");
+            if ((!args || args.subscriptionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'subscriptionId'");
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pushConfig"] = args ? args.pushConfig : undefined;
-            inputs["subscriptionsId"] = args ? args.subscriptionsId : undefined;
+            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
             inputs["ackDeadlineSeconds"] = undefined /*out*/;
@@ -100,7 +100,7 @@ export interface SubscriptionArgs {
      * If push delivery is used with this subscription, this field is used to configure it.
      */
     readonly pushConfig?: pulumi.Input<inputs.pubsub.v1beta1a.PushConfigArgs>;
-    readonly subscriptionsId: pulumi.Input<string>;
+    readonly subscriptionId: pulumi.Input<string>;
     /**
      * The name of the topic from which this subscription is receiving messages.
      */

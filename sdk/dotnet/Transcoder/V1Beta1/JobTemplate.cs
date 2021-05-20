@@ -81,11 +81,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         [Input("jobTemplateId", required: true)]
         public Input<string> JobTemplateId { get; set; } = null!;
 
-        [Input("jobTemplatesId", required: true)]
-        public Input<string> JobTemplatesId { get; set; } = null!;
-
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
@@ -93,8 +90,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public JobTemplateArgs()
         {

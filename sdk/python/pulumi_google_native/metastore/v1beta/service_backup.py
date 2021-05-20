@@ -15,10 +15,9 @@ __all__ = ['ServiceBackupArgs', 'ServiceBackup']
 class ServiceBackupArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
-                 backups_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 services_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
@@ -28,10 +27,9 @@ class ServiceBackupArgs:
         :param pulumi.Input[str] name: Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
         """
         pulumi.set(__self__, "backup_id", backup_id)
-        pulumi.set(__self__, "backups_id", backups_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "services_id", services_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_id", service_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -49,40 +47,31 @@ class ServiceBackupArgs:
         pulumi.set(self, "backup_id", value)
 
     @property
-    @pulumi.getter(name="backupsId")
-    def backups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "backups_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @backups_id.setter
-    def backups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "backups_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="servicesId")
-    def services_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "services_id")
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_id")
 
-    @services_id.setter
-    def services_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "services_id", value)
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter
@@ -124,13 +113,12 @@ class ServiceBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
-                 backups_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new backup in a given project and location.
@@ -165,13 +153,12 @@ class ServiceBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
-                 backups_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -187,21 +174,18 @@ class ServiceBackup(pulumi.CustomResource):
             if backup_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_id'")
             __props__.__dict__["backup_id"] = backup_id
-            if backups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'backups_id'")
-            __props__.__dict__["backups_id"] = backups_id
             __props__.__dict__["description"] = description
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            if services_id is None and not opts.urn:
-                raise TypeError("Missing required property 'services_id'")
-            __props__.__dict__["services_id"] = services_id
+            if service_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_id'")
+            __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["service_revision"] = None

@@ -105,11 +105,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
 
-        [Input("endpointsId", required: true)]
-        public Input<string> EndpointsId { get; set; } = null!;
-
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
@@ -117,8 +114,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("namespacesId", required: true)]
-        public Input<string> NamespacesId { get; set; } = null!;
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.
@@ -126,11 +123,11 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
 
         public NamespaceServiceEndpointArgs()
         {

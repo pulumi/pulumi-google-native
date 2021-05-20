@@ -15,10 +15,9 @@ __all__ = ['AdminTopicArgs', 'AdminTopic']
 @pulumi.input_type
 class AdminTopicArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  topic_id: pulumi.Input[str],
-                 topics_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input['PartitionConfigArgs']] = None,
                  retention_config: Optional[pulumi.Input['RetentionConfigArgs']] = None):
@@ -28,10 +27,9 @@ class AdminTopicArgs:
         :param pulumi.Input['PartitionConfigArgs'] partition_config: The settings for this topic's partitions.
         :param pulumi.Input['RetentionConfigArgs'] retention_config: The settings for this topic's message retention.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "topic_id", topic_id)
-        pulumi.set(__self__, "topics_id", topics_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if partition_config is not None:
@@ -40,22 +38,22 @@ class AdminTopicArgs:
             pulumi.set(__self__, "retention_config", retention_config)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="topicId")
@@ -65,15 +63,6 @@ class AdminTopicArgs:
     @topic_id.setter
     def topic_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic_id", value)
-
-    @property
-    @pulumi.getter(name="topicsId")
-    def topics_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "topics_id")
-
-    @topics_id.setter
-    def topics_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "topics_id", value)
 
     @property
     @pulumi.getter
@@ -117,13 +106,12 @@ class AdminTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input[pulumi.InputType['PartitionConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  retention_config: Optional[pulumi.Input[pulumi.InputType['RetentionConfigArgs']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
-                 topics_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new topic.
@@ -158,13 +146,12 @@ class AdminTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input[pulumi.InputType['PartitionConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  retention_config: Optional[pulumi.Input[pulumi.InputType['RetentionConfigArgs']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
-                 topics_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -177,21 +164,18 @@ class AdminTopic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AdminTopicArgs.__new__(AdminTopicArgs)
 
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["partition_config"] = partition_config
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["retention_config"] = retention_config
             if topic_id is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_id'")
             __props__.__dict__["topic_id"] = topic_id
-            if topics_id is None and not opts.urn:
-                raise TypeError("Missing required property 'topics_id'")
-            __props__.__dict__["topics_id"] = topics_id
         super(AdminTopic, __self__).__init__(
             'google-native:pubsublite/v1:AdminTopic',
             resource_name,

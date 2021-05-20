@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Required] The ID of the project containing this model.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private ModelReferenceResponse(
@@ -32,11 +32,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string modelId,
 
-            string projectId)
+            string project)
         {
             DatasetId = datasetId;
             ModelId = modelId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

@@ -34,14 +34,14 @@ func NewOrganizationSiteApicategory(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApicategoriesId == nil {
-		return nil, errors.New("invalid value for required argument 'ApicategoriesId'")
+	if args.ApicategoryId == nil {
+		return nil, errors.New("invalid value for required argument 'ApicategoryId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SitesId == nil {
-		return nil, errors.New("invalid value for required argument 'SitesId'")
+	if args.SiteId == nil {
+		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
 	var resource OrganizationSiteApicategory
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationSiteApicategory", name, args, &resource, opts...)
@@ -95,30 +95,28 @@ func (OrganizationSiteApicategoryState) ElementType() reflect.Type {
 }
 
 type organizationSiteApicategoryArgs struct {
-	ApicategoriesId string `pulumi:"apicategoriesId"`
+	ApicategoryId string `pulumi:"apicategoryId"`
 	// ID of the category (a UUID).
 	Id *string `pulumi:"id"`
 	// Name of the category.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Name of the portal.
-	SiteId  *string `pulumi:"siteId"`
-	SitesId string  `pulumi:"sitesId"`
+	SiteId string `pulumi:"siteId"`
 	// Time the category was last modified in milliseconds since epoch.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a OrganizationSiteApicategory resource.
 type OrganizationSiteApicategoryArgs struct {
-	ApicategoriesId pulumi.StringInput
+	ApicategoryId pulumi.StringInput
 	// ID of the category (a UUID).
 	Id pulumi.StringPtrInput
 	// Name of the category.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Name of the portal.
-	SiteId  pulumi.StringPtrInput
-	SitesId pulumi.StringInput
+	SiteId pulumi.StringInput
 	// Time the category was last modified in milliseconds since epoch.
 	UpdateTime pulumi.StringPtrInput
 }

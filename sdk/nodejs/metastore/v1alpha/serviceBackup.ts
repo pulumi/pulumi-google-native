@@ -74,26 +74,22 @@ export class ServiceBackup extends pulumi.CustomResource {
             if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if ((!args || args.backupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backupsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["serviceRevision"] = undefined /*out*/;
@@ -118,17 +114,16 @@ export class ServiceBackup extends pulumi.CustomResource {
  */
 export interface ServiceBackupArgs {
     readonly backupId: pulumi.Input<string>;
-    readonly backupsId: pulumi.Input<string>;
     /**
      * The description of the backup.
      */
     readonly description?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
 }

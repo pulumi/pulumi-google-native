@@ -32,7 +32,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// <summary>
         /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Name of the Cloud Source Repository.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             bool invertRegex,
 
-            string projectId,
+            string project,
 
             string repoName,
 
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             CommitSha = commitSha;
             Dir = dir;
             InvertRegex = invertRegex;
-            ProjectId = projectId;
+            Project = project;
             RepoName = repoName;
             Substitutions = substitutions;
             TagName = tagName;

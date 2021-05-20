@@ -61,7 +61,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * The ID of the project that owns the service account.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
      */
@@ -78,22 +78,21 @@ export class ServiceAccount extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceAccountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceAccountsId'");
+            if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["serviceAccountsId"] = args ? args.serviceAccountsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["disabled"] = undefined /*out*/;
             inputs["email"] = undefined /*out*/;
             inputs["oauth2ClientId"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -102,7 +101,7 @@ export class ServiceAccount extends pulumi.CustomResource {
             inputs["email"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["oauth2ClientId"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -132,6 +131,6 @@ export interface ServiceAccountArgs {
      * The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly serviceAccountsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly serviceAccountId: pulumi.Input<string>;
 }

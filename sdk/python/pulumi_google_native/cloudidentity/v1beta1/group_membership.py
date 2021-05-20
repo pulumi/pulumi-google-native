@@ -15,8 +15,8 @@ __all__ = ['GroupMembershipArgs', 'GroupMembership']
 @pulumi.input_type
 class GroupMembershipArgs:
     def __init__(__self__, *,
-                 groups_id: pulumi.Input[str],
-                 memberships_id: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 membership_id: pulumi.Input[str],
                  member_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
                  preferred_member_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]]] = None):
@@ -26,8 +26,8 @@ class GroupMembershipArgs:
         :param pulumi.Input['EntityKeyArgs'] preferred_member_key: Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
         """
-        pulumi.set(__self__, "groups_id", groups_id)
-        pulumi.set(__self__, "memberships_id", memberships_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "membership_id", membership_id)
         if member_key is not None:
             pulumi.set(__self__, "member_key", member_key)
         if preferred_member_key is not None:
@@ -36,22 +36,22 @@ class GroupMembershipArgs:
             pulumi.set(__self__, "roles", roles)
 
     @property
-    @pulumi.getter(name="groupsId")
-    def groups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "groups_id")
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "group_id")
 
-    @groups_id.setter
-    def groups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "groups_id", value)
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="membershipsId")
-    def memberships_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "memberships_id")
+    @pulumi.getter(name="membershipId")
+    def membership_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "membership_id")
 
-    @memberships_id.setter
-    def memberships_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "memberships_id", value)
+    @membership_id.setter
+    def membership_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "membership_id", value)
 
     @property
     @pulumi.getter(name="memberKey")
@@ -95,9 +95,9 @@ class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 groups_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
                  member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 memberships_id: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
                  preferred_member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]]] = None,
                  __props__=None):
@@ -134,9 +134,9 @@ class GroupMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 groups_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
                  member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 memberships_id: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
                  preferred_member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]]] = None,
                  __props__=None):
@@ -151,13 +151,13 @@ class GroupMembership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
 
-            if groups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'groups_id'")
-            __props__.__dict__["groups_id"] = groups_id
+            if group_id is None and not opts.urn:
+                raise TypeError("Missing required property 'group_id'")
+            __props__.__dict__["group_id"] = group_id
             __props__.__dict__["member_key"] = member_key
-            if memberships_id is None and not opts.urn:
-                raise TypeError("Missing required property 'memberships_id'")
-            __props__.__dict__["memberships_id"] = memberships_id
+            if membership_id is None and not opts.urn:
+                raise TypeError("Missing required property 'membership_id'")
+            __props__.__dict__["membership_id"] = membership_id
             __props__.__dict__["preferred_member_key"] = preferred_member_key
             __props__.__dict__["roles"] = roles
             __props__.__dict__["create_time"] = None

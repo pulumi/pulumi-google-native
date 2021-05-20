@@ -6,88 +6,13 @@ import * as google from "@pulumi/google-native";
 const project = "pulumi-development";
 const region = "us-central1";
 
-const runName = "run-native";
-const service = new google.run.v1.Service("service", {
-    projectsId: project,
-    locationsId: region,
-    servicesId: runName,
-    apiVersion: "serving.knative.dev/v1",
-    kind: "Service",
-    metadata: {
-        name: runName,
-    },
-    spec: {
-        template: {
-            spec: {
-                containers: [{image: "gcr.io/cloudrun/hello"}],
-            },
-        },
-    },
-});
-
-const iamHello = new google.run.v1.ServiceIamPolicy("allow-all", {
-    projectsId: project,
-    locationsId: region,
-    servicesId: service.metadata.name,
-    bindings: [{
-        members: ["allUsers"],
-        role: "roles/run.invoker",
-    }],
-});
-
-const bucketName = "bucket-nextgen";
-const bucket = new google.storage.v1.Bucket("bucket", {
-    project: project,
-    bucket: bucketName,
-    name: bucketName,
-});
-
-const archiveName = "zip2";
-const bucketObject = new google.storage.v1.BucketObject(archiveName, {
-    object: archiveName,
-    name: archiveName,
-    bucket: bucket.name,
-    source: new pulumi.asset.AssetArchive({
-        ".": new pulumi.asset.FileArchive("./pythonfunc"),
-    }),
-});
-
-const functionName = "python-func";
-const functionPython = new google.cloudfunctions.v1.Function(functionName, {
-    projectsId: project,
-    locationsId: region,
-    functionsId: functionName,
-    name: `projects/${project}/locations/${region}/functions/${functionName}`,
-    sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
-    httpsTrigger: {},
-    entryPoint: "handler",
-    timeout: "60s",
-    availableMemoryMb: 128,
-    runtime: "python37",
-    ingressSettings: "ALLOW_ALL",
-});
-
-const pyInvoker = new google.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
-    projectsId: project,
-    locationsId: region,
-    functionsId: functionName,
-    bindings: [
-        {
-            members: ["allUsers"],
-            role: "roles/cloudfunctions.invoker",
-        }
-    ],
-}, { dependsOn: [functionPython] });
-
-export const functionUrl = functionPython.httpsTrigger.url;
-
 const clusterName = "gke-native";
 const cluster = new google.container.v1.Cluster("cluster", {
-    projectsId: project,
-    locationsId: region,
-    clustersId: clusterName,
+    project,
+    location: region,
+    clusterId: clusterName,
     parent: `projects/${project}/locations/${region}`,
-    initialClusterVersion: "1.18.16-gke.2100",
+    initialClusterVersion: "1.18.17-gke.1900",
     initialNodeCount: 1,
     masterAuth: {
         password: "hDiqST+U7{t+BkQA+OD*",
@@ -109,10 +34,10 @@ const cluster = new google.container.v1.Cluster("cluster", {
 
 const nodePoolName = "extra-node-pool";
 const pool = new google.container.v1.ClusterNodePool(nodePoolName, {
-    projectsId: project,
-    locationsId: region,
-    clustersId: cluster.name,
-    nodePoolsId: nodePoolName,
+    project,
+    location: region,
+    clusterId: cluster.name,
+    nodePoolId: nodePoolName,
     parent: `projects/${project}/locations/${region}/clusters/${clusterName}`,
     config: {
         machineType: "n1-standard-1",

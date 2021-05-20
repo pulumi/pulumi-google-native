@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
 
     public sealed class AccountCustomerEntitlementArgs : Pulumi.ResourceArgs
     {
-        [Input("accountsId", required: true)]
-        public Input<string> AccountsId { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Association information to other entitlements.
@@ -147,11 +147,11 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         [Input("commitmentSettings")]
         public Input<Inputs.GoogleCloudChannelV1CommitmentSettingsArgs>? CommitmentSettings { get; set; }
 
-        [Input("customersId", required: true)]
-        public Input<string> CustomersId { get; set; } = null!;
+        [Input("customerId", required: true)]
+        public Input<string> CustomerId { get; set; } = null!;
 
-        [Input("entitlementsId", required: true)]
-        public Input<string> EntitlementsId { get; set; } = null!;
+        [Input("entitlementId", required: true)]
+        public Input<string> EntitlementId { get; set; } = null!;
 
         /// <summary>
         /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.

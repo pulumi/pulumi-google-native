@@ -98,37 +98,20 @@ class BigQueryIODetailsResponse(dict):
     """
     Metadata for a BigQuery connector used by the job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "projectId":
-            suggest = "project_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in BigQueryIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        BigQueryIODetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        BigQueryIODetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  dataset: str,
-                 project_id: str,
+                 project: str,
                  query: str,
                  table: str):
         """
         Metadata for a BigQuery connector used by the job.
         :param str dataset: Dataset accessed in the connection.
-        :param str project_id: Project accessed in the connection.
+        :param str project: Project accessed in the connection.
         :param str query: Query used to access data in the connection.
         :param str table: Table accessed in the connection.
         """
         pulumi.set(__self__, "dataset", dataset)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "table", table)
 
@@ -141,12 +124,12 @@ class BigQueryIODetailsResponse(dict):
         return pulumi.get(self, "dataset")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Project accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -175,8 +158,6 @@ class BigTableIODetailsResponse(dict):
         suggest = None
         if key == "instanceId":
             suggest = "instance_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "tableId":
             suggest = "table_id"
 
@@ -193,16 +174,16 @@ class BigTableIODetailsResponse(dict):
 
     def __init__(__self__, *,
                  instance_id: str,
-                 project_id: str,
+                 project: str,
                  table_id: str):
         """
         Metadata for a Cloud BigTable connector used by the job.
         :param str instance_id: InstanceId accessed in the connection.
-        :param str project_id: ProjectId accessed in the connection.
+        :param str project: ProjectId accessed in the connection.
         :param str table_id: TableId accessed in the connection.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_id", table_id)
 
     @property
@@ -214,12 +195,12 @@ class BigTableIODetailsResponse(dict):
         return pulumi.get(self, "instance_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         ProjectId accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tableId")
@@ -361,33 +342,16 @@ class DatastoreIODetailsResponse(dict):
     """
     Metadata for a Datastore connector used by the job.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "projectId":
-            suggest = "project_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatastoreIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatastoreIODetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatastoreIODetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  namespace: str,
-                 project_id: str):
+                 project: str):
         """
         Metadata for a Datastore connector used by the job.
         :param str namespace: Namespace used in the connection.
-        :param str project_id: ProjectId accessed in the connection.
+        :param str project: ProjectId accessed in the connection.
         """
         pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -398,12 +362,12 @@ class DatastoreIODetailsResponse(dict):
         return pulumi.get(self, "namespace")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         ProjectId accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -1711,8 +1675,6 @@ class SpannerIODetailsResponse(dict):
             suggest = "database_id"
         elif key == "instanceId":
             suggest = "instance_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SpannerIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1728,16 +1690,16 @@ class SpannerIODetailsResponse(dict):
     def __init__(__self__, *,
                  database_id: str,
                  instance_id: str,
-                 project_id: str):
+                 project: str):
         """
         Metadata for a Spanner connector used by the job.
         :param str database_id: DatabaseId accessed in the connection.
         :param str instance_id: InstanceId accessed in the connection.
-        :param str project_id: ProjectId accessed in the connection.
+        :param str project: ProjectId accessed in the connection.
         """
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="databaseId")
@@ -1756,12 +1718,12 @@ class SpannerIODetailsResponse(dict):
         return pulumi.get(self, "instance_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         ProjectId accessed in the connection.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type

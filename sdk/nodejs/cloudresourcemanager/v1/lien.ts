@@ -70,11 +70,11 @@ export class Lien extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.liensId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'liensId'");
+            if ((!args || args.lienId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'lienId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["liensId"] = args ? args.liensId : undefined;
+            inputs["lienId"] = args ? args.lienId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["origin"] = args ? args.origin : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -103,7 +103,7 @@ export interface LienArgs {
      * The creation time of this Lien.
      */
     readonly createTime?: pulumi.Input<string>;
-    readonly liensId: pulumi.Input<string>;
+    readonly lienId: pulumi.Input<string>;
     /**
      * A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
      */

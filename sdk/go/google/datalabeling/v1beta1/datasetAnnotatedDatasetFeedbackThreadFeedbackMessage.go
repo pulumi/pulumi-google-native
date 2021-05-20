@@ -34,20 +34,20 @@ func NewDatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(ctx *pulumi.Context
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AnnotatedDatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotatedDatasetsId'")
+	if args.AnnotatedDatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotatedDatasetId'")
 	}
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.FeedbackMessagesId == nil {
-		return nil, errors.New("invalid value for required argument 'FeedbackMessagesId'")
+	if args.FeedbackMessageId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedbackMessageId'")
 	}
-	if args.FeedbackThreadsId == nil {
-		return nil, errors.New("invalid value for required argument 'FeedbackThreadsId'")
+	if args.FeedbackThreadId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedbackThreadId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage", name, args, &resource, opts...)
@@ -101,39 +101,39 @@ func (DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageState) ElementType() r
 }
 
 type datasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs struct {
-	AnnotatedDatasetsId string `pulumi:"annotatedDatasetsId"`
+	AnnotatedDatasetId string `pulumi:"annotatedDatasetId"`
 	// String content of the feedback. Maximum of 10000 characters.
 	Body *string `pulumi:"body"`
 	// Create time.
-	CreateTime         *string `pulumi:"createTime"`
-	DatasetsId         string  `pulumi:"datasetsId"`
-	FeedbackMessagesId string  `pulumi:"feedbackMessagesId"`
-	FeedbackThreadsId  string  `pulumi:"feedbackThreadsId"`
+	CreateTime        *string `pulumi:"createTime"`
+	DatasetId         string  `pulumi:"datasetId"`
+	FeedbackMessageId string  `pulumi:"feedbackMessageId"`
+	FeedbackThreadId  string  `pulumi:"feedbackThreadId"`
 	// The image storing this feedback if the feedback is an image representing operator's comments.
 	Image *string `pulumi:"image"`
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
 	Name                      *string                                                  `pulumi:"name"`
 	OperatorFeedbackMetadata  *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata  `pulumi:"operatorFeedbackMetadata"`
-	ProjectsId                string                                                   `pulumi:"projectsId"`
+	Project                   string                                                   `pulumi:"project"`
 	RequesterFeedbackMetadata *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata `pulumi:"requesterFeedbackMetadata"`
 }
 
 // The set of arguments for constructing a DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage resource.
 type DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs struct {
-	AnnotatedDatasetsId pulumi.StringInput
+	AnnotatedDatasetId pulumi.StringInput
 	// String content of the feedback. Maximum of 10000 characters.
 	Body pulumi.StringPtrInput
 	// Create time.
-	CreateTime         pulumi.StringPtrInput
-	DatasetsId         pulumi.StringInput
-	FeedbackMessagesId pulumi.StringInput
-	FeedbackThreadsId  pulumi.StringInput
+	CreateTime        pulumi.StringPtrInput
+	DatasetId         pulumi.StringInput
+	FeedbackMessageId pulumi.StringInput
+	FeedbackThreadId  pulumi.StringInput
 	// The image storing this feedback if the feedback is an image representing operator's comments.
 	Image pulumi.StringPtrInput
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
 	Name                      pulumi.StringPtrInput
 	OperatorFeedbackMetadata  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput
-	ProjectsId                pulumi.StringInput
+	Project                   pulumi.StringInput
 	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput
 }
 

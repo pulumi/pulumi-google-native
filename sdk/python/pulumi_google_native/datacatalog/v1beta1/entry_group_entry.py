@@ -15,11 +15,10 @@ __all__ = ['EntryGroupEntryArgs', 'EntryGroupEntry']
 @pulumi.input_type
 class EntryGroupEntryArgs:
     def __init__(__self__, *,
-                 entries_id: pulumi.Input[str],
-                 entry_groups_id: pulumi.Input[str],
+                 entry_group_id: pulumi.Input[str],
                  entry_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  bigquery_date_sharded_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']] = None,
                  bigquery_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -43,11 +42,10 @@ class EntryGroupEntryArgs:
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
         """
-        pulumi.set(__self__, "entries_id", entries_id)
-        pulumi.set(__self__, "entry_groups_id", entry_groups_id)
+        pulumi.set(__self__, "entry_group_id", entry_group_id)
         pulumi.set(__self__, "entry_id", entry_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if bigquery_date_sharded_spec is not None:
             pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
         if bigquery_table_spec is not None:
@@ -70,22 +68,13 @@ class EntryGroupEntryArgs:
             pulumi.set(__self__, "user_specified_type", user_specified_type)
 
     @property
-    @pulumi.getter(name="entriesId")
-    def entries_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entries_id")
+    @pulumi.getter(name="entryGroupId")
+    def entry_group_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entry_group_id")
 
-    @entries_id.setter
-    def entries_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entries_id", value)
-
-    @property
-    @pulumi.getter(name="entryGroupsId")
-    def entry_groups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entry_groups_id")
-
-    @entry_groups_id.setter
-    def entry_groups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entry_groups_id", value)
+    @entry_group_id.setter
+    def entry_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_group_id", value)
 
     @property
     @pulumi.getter(name="entryId")
@@ -97,22 +86,22 @@ class EntryGroupEntryArgs:
         pulumi.set(self, "entry_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="bigqueryDateShardedSpec")
@@ -244,13 +233,12 @@ class EntryGroupEntry(pulumi.CustomResource):
                  bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entries_id: Optional[pulumi.Input[str]] = None,
-                 entry_groups_id: Optional[pulumi.Input[str]] = None,
+                 entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
@@ -300,13 +288,12 @@ class EntryGroupEntry(pulumi.CustomResource):
                  bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entries_id: Optional[pulumi.Input[str]] = None,
-                 entry_groups_id: Optional[pulumi.Input[str]] = None,
+                 entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
@@ -327,23 +314,20 @@ class EntryGroupEntry(pulumi.CustomResource):
             __props__.__dict__["bigquery_table_spec"] = bigquery_table_spec
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if entries_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entries_id'")
-            __props__.__dict__["entries_id"] = entries_id
-            if entry_groups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entry_groups_id'")
-            __props__.__dict__["entry_groups_id"] = entry_groups_id
+            if entry_group_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entry_group_id'")
+            __props__.__dict__["entry_group_id"] = entry_group_id
             if entry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_id'")
             __props__.__dict__["entry_id"] = entry_id
             __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
             __props__.__dict__["linked_resource"] = linked_resource
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["schema"] = schema
             __props__.__dict__["type"] = type
             __props__.__dict__["user_specified_system"] = user_specified_system

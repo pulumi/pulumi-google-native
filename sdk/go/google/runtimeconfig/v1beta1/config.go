@@ -28,11 +28,11 @@ func NewConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConfigsId'")
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Config
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:Config", name, args, &resource, opts...)
@@ -74,24 +74,24 @@ func (ConfigState) ElementType() reflect.Type {
 }
 
 type configArgs struct {
-	ConfigsId string `pulumi:"configsId"`
+	ConfigId string `pulumi:"configId"`
 	// An optional description of the RuntimeConfig object.
 	Description *string `pulumi:"description"`
 	// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RequestId  *string `pulumi:"requestId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a Config resource.
 type ConfigArgs struct {
-	ConfigsId pulumi.StringInput
+	ConfigId pulumi.StringInput
 	// An optional description of the RuntimeConfig object.
 	Description pulumi.StringPtrInput
 	// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RequestId  pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 }
 
 func (ConfigArgs) ElementType() reflect.Type {

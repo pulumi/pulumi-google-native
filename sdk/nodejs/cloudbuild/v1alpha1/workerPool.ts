@@ -50,7 +50,7 @@ export class WorkerPool extends pulumi.CustomResource {
     /**
      * The project ID of the GCP project for which the `WorkerPool` is created.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
      */
@@ -87,29 +87,28 @@ export class WorkerPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.workerPoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerPoolsId'");
+            if ((!args || args.workerPoolId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workerPoolId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["regions"] = args ? args.regions : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerCount"] = args ? args.workerCount : undefined;
-            inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
+            inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["regions"] = undefined /*out*/;
             inputs["serviceAccountEmail"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -143,8 +142,7 @@ export interface WorkerPoolArgs {
     /**
      * The project ID of the GCP project for which the `WorkerPool` is created.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
      */
@@ -169,5 +167,5 @@ export interface WorkerPoolArgs {
      * Total number of workers to be created across all requested regions.
      */
     readonly workerCount?: pulumi.Input<string>;
-    readonly workerPoolsId: pulumi.Input<string>;
+    readonly workerPoolId: pulumi.Input<string>;
 }

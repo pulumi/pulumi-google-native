@@ -59,16 +59,16 @@ export class TraceSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.traceSinksId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'traceSinksId'");
+            if ((!args || args.traceSinkId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'traceSinkId'");
             }
             inputs["name"] = args ? args.name : undefined;
             inputs["outputConfig"] = args ? args.outputConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["traceSinksId"] = args ? args.traceSinksId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["traceSinkId"] = args ? args.traceSinkId : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -94,6 +94,6 @@ export interface TraceSinkArgs {
      * Required. The export destination.
      */
     readonly outputConfig?: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly traceSinksId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly traceSinkId: pulumi.Input<string>;
 }

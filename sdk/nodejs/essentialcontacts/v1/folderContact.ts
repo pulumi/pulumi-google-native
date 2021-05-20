@@ -70,15 +70,15 @@ export class FolderContact extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contactsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'contactsId'");
+            if ((!args || args.contactId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'contactId'");
             }
-            if ((!args || args.foldersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'foldersId'");
+            if ((!args || args.folderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'folderId'");
             }
-            inputs["contactsId"] = args ? args.contactsId : undefined;
+            inputs["contactId"] = args ? args.contactId : undefined;
             inputs["email"] = args ? args.email : undefined;
-            inputs["foldersId"] = args ? args.foldersId : undefined;
+            inputs["folderId"] = args ? args.folderId : undefined;
             inputs["languageTag"] = args ? args.languageTag : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
@@ -103,12 +103,12 @@ export class FolderContact extends pulumi.CustomResource {
  * The set of arguments for constructing a FolderContact resource.
  */
 export interface FolderContactArgs {
-    readonly contactsId: pulumi.Input<string>;
+    readonly contactId: pulumi.Input<string>;
     /**
      * Required. The email address to send notifications to. This does not need to be a Google account.
      */
     readonly email?: pulumi.Input<string>;
-    readonly foldersId: pulumi.Input<string>;
+    readonly folderId: pulumi.Input<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
      */

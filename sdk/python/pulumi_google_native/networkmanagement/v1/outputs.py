@@ -560,8 +560,6 @@ class EndpointResponse(dict):
             suggest = "ip_address"
         elif key == "networkType":
             suggest = "network_type"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EndpointResponse. Access the value via the '{suggest}' property getter instead.")
@@ -580,7 +578,7 @@ class EndpointResponse(dict):
                  network: str,
                  network_type: str,
                  port: int,
-                 project_id: str):
+                 project: str):
         """
         Source or destination of the Connectivity Test.
         :param str instance: A Compute Engine instance URI.
@@ -588,14 +586,14 @@ class EndpointResponse(dict):
         :param str network: A Compute Engine network URI.
         :param str network_type: Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
-        :param str project_id: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+        :param str project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -638,12 +636,12 @@ class EndpointResponse(dict):
         return pulumi.get(self, "port")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -1726,8 +1724,6 @@ class StepResponse(dict):
             suggest = "gke_master"
         elif key == "loadBalancer":
             suggest = "load_balancer"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "vpnGateway":
             suggest = "vpn_gateway"
         elif key == "vpnTunnel":
@@ -1759,7 +1755,7 @@ class StepResponse(dict):
                  instance: 'outputs.InstanceInfoResponse',
                  load_balancer: 'outputs.LoadBalancerInfoResponse',
                  network: 'outputs.NetworkInfoResponse',
-                 project_id: str,
+                 project: str,
                  route: 'outputs.RouteInfoResponse',
                  state: str,
                  vpn_gateway: 'outputs.VpnGatewayInfoResponse',
@@ -1780,7 +1776,7 @@ class StepResponse(dict):
         :param 'InstanceInfoResponse' instance: Display info of a Compute Engine instance.
         :param 'LoadBalancerInfoResponse' load_balancer: Display info of the load balancers.
         :param 'NetworkInfoResponse' network: Display info of a GCP network.
-        :param str project_id: Project ID that contains the configuration this step is validating.
+        :param str project: Project ID that contains the configuration this step is validating.
         :param 'RouteInfoResponse' route: Display info of a Compute Engine route.
         :param str state: Each step is in one of the pre-defined states.
         :param 'VpnGatewayInfoResponse' vpn_gateway: Display info of a Compute Engine VPN gateway.
@@ -1800,7 +1796,7 @@ class StepResponse(dict):
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "load_balancer", load_balancer)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "vpn_gateway", vpn_gateway)
@@ -1919,12 +1915,12 @@ class StepResponse(dict):
         return pulumi.get(self, "network")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Project ID that contains the configuration this step is validating.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

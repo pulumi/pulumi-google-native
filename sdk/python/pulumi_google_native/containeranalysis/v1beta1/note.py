@@ -16,8 +16,7 @@ __all__ = ['NoteArgs', 'Note']
 class NoteArgs:
     def __init__(__self__, *,
                  note_id: pulumi.Input[str],
-                 notes_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  attestation_authority: Optional[pulumi.Input['AuthorityArgs']] = None,
                  base_image: Optional[pulumi.Input['BasisArgs']] = None,
                  build: Optional[pulumi.Input['BuildArgs']] = None,
@@ -56,8 +55,7 @@ class NoteArgs:
         :param pulumi.Input['VulnerabilityArgs'] vulnerability: A note describing a package vulnerability.
         """
         pulumi.set(__self__, "note_id", note_id)
-        pulumi.set(__self__, "notes_id", notes_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if attestation_authority is not None:
             pulumi.set(__self__, "attestation_authority", attestation_authority)
         if base_image is not None:
@@ -103,22 +101,13 @@ class NoteArgs:
         pulumi.set(self, "note_id", value)
 
     @property
-    @pulumi.getter(name="notesId")
-    def notes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "notes_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @notes_id.setter
-    def notes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "notes_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="attestationAuthority")
@@ -342,9 +331,8 @@ class Note(pulumi.CustomResource):
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
-                 notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
@@ -410,9 +398,8 @@ class Note(pulumi.CustomResource):
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
-                 notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
@@ -444,13 +431,10 @@ class Note(pulumi.CustomResource):
             if note_id is None and not opts.urn:
                 raise TypeError("Missing required property 'note_id'")
             __props__.__dict__["note_id"] = note_id
-            if notes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'notes_id'")
-            __props__.__dict__["notes_id"] = notes_id
             __props__.__dict__["package"] = package
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["related_note_names"] = related_note_names
             __props__.__dict__["related_url"] = related_url
             __props__.__dict__["short_description"] = short_description

@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class AgentEnvironmentSessionEntityTypeArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         [Input("entities")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs>? _entities;
@@ -99,14 +99,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("entityOverrideMode")]
         public Input<string>? EntityOverrideMode { get; set; }
 
-        [Input("entityTypesId", required: true)]
-        public Input<string> EntityTypesId { get; set; } = null!;
+        [Input("entityTypeId", required: true)]
+        public Input<string> EntityTypeId { get; set; } = null!;
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
@@ -114,11 +114,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("sessionsId", required: true)]
-        public Input<string> SessionsId { get; set; } = null!;
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
 
         public AgentEnvironmentSessionEntityTypeArgs()
         {

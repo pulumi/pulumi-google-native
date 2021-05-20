@@ -54,11 +54,11 @@ func NewTransferConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TransferConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'TransferConfigsId'")
+	if args.TransferConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'TransferConfigId'")
 	}
 	var resource TransferConfig
 	err := ctx.RegisterResource("google-native:bigquerydatatransfer/v1:TransferConfig", name, args, &resource, opts...)
@@ -170,14 +170,14 @@ type transferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
-	Params     map[string]string `pulumi:"params"`
-	ProjectsId string            `pulumi:"projectsId"`
+	Params  map[string]string `pulumi:"params"`
+	Project string            `pulumi:"project"`
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	ScheduleOptions    *ScheduleOptions `pulumi:"scheduleOptions"`
 	ServiceAccountName *string          `pulumi:"serviceAccountName"`
-	TransferConfigsId  string           `pulumi:"transferConfigsId"`
+	TransferConfigId   string           `pulumi:"transferConfigId"`
 	VersionInfo        *string          `pulumi:"versionInfo"`
 }
 
@@ -201,14 +201,14 @@ type TransferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
-	Params     pulumi.StringMapInput
-	ProjectsId pulumi.StringInput
+	Params  pulumi.StringMapInput
+	Project pulumi.StringInput
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
 	// Options customizing the data transfer schedule.
 	ScheduleOptions    ScheduleOptionsPtrInput
 	ServiceAccountName pulumi.StringPtrInput
-	TransferConfigsId  pulumi.StringInput
+	TransferConfigId   pulumi.StringInput
 	VersionInfo        pulumi.StringPtrInput
 }
 

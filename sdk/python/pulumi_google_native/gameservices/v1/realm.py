@@ -13,10 +13,9 @@ __all__ = ['RealmArgs', 'Realm']
 @pulumi.input_type
 class RealmArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  realm_id: pulumi.Input[str],
-                 realms_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,10 +29,9 @@ class RealmArgs:
         :param pulumi.Input[str] name: The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
         :param pulumi.Input[str] time_zone: Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "realm_id", realm_id)
-        pulumi.set(__self__, "realms_id", realms_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -46,22 +44,22 @@ class RealmArgs:
             pulumi.set(__self__, "time_zone", time_zone)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="realmId")
@@ -71,15 +69,6 @@ class RealmArgs:
     @realm_id.setter
     def realm_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "realm_id", value)
-
-    @property
-    @pulumi.getter(name="realmsId")
-    def realms_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "realms_id")
-
-    @realms_id.setter
-    def realms_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "realms_id", value)
 
     @property
     @pulumi.getter
@@ -150,11 +139,10 @@ class Realm(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  realm_id: Optional[pulumi.Input[str]] = None,
-                 realms_id: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -195,11 +183,10 @@ class Realm(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  realm_id: Optional[pulumi.Input[str]] = None,
-                 realms_id: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -216,19 +203,16 @@ class Realm(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if realm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realm_id'")
             __props__.__dict__["realm_id"] = realm_id
-            if realms_id is None and not opts.urn:
-                raise TypeError("Missing required property 'realms_id'")
-            __props__.__dict__["realms_id"] = realms_id
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

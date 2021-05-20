@@ -15,9 +15,9 @@ __all__ = ['RegistryArgs', 'Registry']
 @pulumi.input_type
 class RegistryArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 registries_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 registry_id: pulumi.Input[str],
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]] = None,
                  event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EventNotificationConfigArgs']]]] = None,
                  http_config: Optional[pulumi.Input['HttpConfigArgs']] = None,
@@ -37,9 +37,9 @@ class RegistryArgs:
         :param pulumi.Input[str] name: The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
         :param pulumi.Input['StateNotificationConfigArgs'] state_notification_config: The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "registries_id", registries_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "registry_id", registry_id)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
         if event_notification_configs is not None:
@@ -58,31 +58,31 @@ class RegistryArgs:
             pulumi.set(__self__, "state_notification_config", state_notification_config)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="registriesId")
-    def registries_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "registries_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @registries_id.setter
-    def registries_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registries_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="registryId")
+    def registry_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "registry_id")
+
+    @registry_id.setter
+    def registry_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_id", value)
 
     @property
     @pulumi.getter
@@ -190,12 +190,12 @@ class Registry(pulumi.CustomResource):
                  event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventNotificationConfigArgs']]]]] = None,
                  http_config: Optional[pulumi.Input[pulumi.InputType['HttpConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 registries_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 registry_id: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']]] = None,
                  __props__=None):
         """
@@ -240,12 +240,12 @@ class Registry(pulumi.CustomResource):
                  event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventNotificationConfigArgs']]]]] = None,
                  http_config: Optional[pulumi.Input[pulumi.InputType['HttpConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 registries_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 registry_id: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -263,18 +263,18 @@ class Registry(pulumi.CustomResource):
             __props__.__dict__["event_notification_configs"] = event_notification_configs
             __props__.__dict__["http_config"] = http_config
             __props__.__dict__["id"] = id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["mqtt_config"] = mqtt_config
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if registries_id is None and not opts.urn:
-                raise TypeError("Missing required property 'registries_id'")
-            __props__.__dict__["registries_id"] = registries_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if registry_id is None and not opts.urn:
+                raise TypeError("Missing required property 'registry_id'")
+            __props__.__dict__["registry_id"] = registry_id
             __props__.__dict__["state_notification_config"] = state_notification_config
         super(Registry, __self__).__init__(
             'google-native:cloudiot/v1:Registry',

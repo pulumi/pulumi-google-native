@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.VPCAccess.V1.Inputs
         /// <summary>
         /// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public SubnetArgs()
         {

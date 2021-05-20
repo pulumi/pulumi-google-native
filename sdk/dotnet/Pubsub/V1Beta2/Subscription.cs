@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         [Input("pushConfig")]
         public Input<Inputs.PushConfigArgs>? PushConfig { get; set; }
 
-        [Input("subscriptionsId", required: true)]
-        public Input<string> SubscriptionsId { get; set; } = null!;
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted.

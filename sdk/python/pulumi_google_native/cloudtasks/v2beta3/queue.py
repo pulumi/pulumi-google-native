@@ -15,9 +15,9 @@ __all__ = ['QueueArgs', 'Queue']
 @pulumi.input_type
 class QueueArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 queues_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 queue_id: pulumi.Input[str],
                  app_engine_http_queue: Optional[pulumi.Input['AppEngineHttpQueueArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
@@ -41,9 +41,9 @@ class QueueArgs:
         :param pulumi.Input[str] tombstone_ttl: The task tombstone time to live (TTL). After a task is deleted or executed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
         :param pulumi.Input[str] type: Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "queues_id", queues_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_http_queue is not None:
             pulumi.set(__self__, "app_engine_http_queue", app_engine_http_queue)
         if name is not None:
@@ -66,31 +66,31 @@ class QueueArgs:
             pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="queuesId")
-    def queues_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "queues_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @queues_id.setter
-    def queues_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "queues_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "queue_id")
+
+    @queue_id.setter
+    def queue_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "queue_id", value)
 
     @property
     @pulumi.getter(name="appEngineHttpQueue")
@@ -219,11 +219,11 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_queue: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpQueueArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
-                 queues_id: Optional[pulumi.Input[str]] = None,
+                 queue_id: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
@@ -273,11 +273,11 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_queue: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpQueueArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
-                 queues_id: Optional[pulumi.Input[str]] = None,
+                 queue_id: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
@@ -298,17 +298,17 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_http_queue"] = app_engine_http_queue
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["purge_time"] = purge_time
-            if queues_id is None and not opts.urn:
-                raise TypeError("Missing required property 'queues_id'")
-            __props__.__dict__["queues_id"] = queues_id
+            if queue_id is None and not opts.urn:
+                raise TypeError("Missing required property 'queue_id'")
+            __props__.__dict__["queue_id"] = queue_id
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["stackdriver_logging_config"] = stackdriver_logging_config

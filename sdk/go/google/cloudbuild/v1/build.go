@@ -36,7 +36,7 @@ type Build struct {
 	// Special options for this build.
 	Options BuildOptionsResponseOutput `pulumi:"options"`
 	// ID of the project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringOutput `pulumi:"queueTtl"`
 	// Results of the build.
@@ -74,17 +74,17 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BuildsId == nil {
-		return nil, errors.New("invalid value for required argument 'BuildsId'")
+	if args.BuildId == nil {
+		return nil, errors.New("invalid value for required argument 'BuildId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Build
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:Build", name, args, &resource, opts...)
@@ -129,7 +129,7 @@ type buildState struct {
 	// Special options for this build.
 	Options *BuildOptionsResponse `pulumi:"options"`
 	// ID of the project.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Results of the build.
@@ -182,7 +182,7 @@ type BuildState struct {
 	// Special options for this build.
 	Options BuildOptionsResponsePtrInput
 	// ID of the project.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput
 	// Results of the build.
@@ -222,16 +222,16 @@ type buildArgs struct {
 	Artifacts *Artifacts `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
 	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
-	BuildsId         string   `pulumi:"buildsId"`
+	BuildId          string   `pulumi:"buildId"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-	Images      []string `pulumi:"images"`
-	LocationsId string   `pulumi:"locationsId"`
+	Images   []string `pulumi:"images"`
+	Location string   `pulumi:"location"`
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket *string `pulumi:"logsBucket"`
 	// Special options for this build.
-	Options    *BuildOptions `pulumi:"options"`
-	ProjectId  string        `pulumi:"projectId"`
-	ProjectsId string        `pulumi:"projectsId"`
+	Options   *BuildOptions `pulumi:"options"`
+	Project   string        `pulumi:"project"`
+	ProjectId string        `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
@@ -256,16 +256,16 @@ type BuildArgs struct {
 	Artifacts ArtifactsPtrInput
 	// Secrets and secret environment variables.
 	AvailableSecrets SecretsPtrInput
-	BuildsId         pulumi.StringInput
+	BuildId          pulumi.StringInput
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-	Images      pulumi.StringArrayInput
-	LocationsId pulumi.StringInput
+	Images   pulumi.StringArrayInput
+	Location pulumi.StringInput
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket pulumi.StringPtrInput
 	// Special options for this build.
-	Options    BuildOptionsPtrInput
-	ProjectId  pulumi.StringInput
-	ProjectsId pulumi.StringInput
+	Options   BuildOptionsPtrInput
+	Project   pulumi.StringInput
+	ProjectId pulumi.StringInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets

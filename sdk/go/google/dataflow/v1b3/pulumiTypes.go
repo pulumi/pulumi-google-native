@@ -232,7 +232,7 @@ type BigQueryIODetails struct {
 	// Dataset accessed in the connection.
 	Dataset *string `pulumi:"dataset"`
 	// Project accessed in the connection.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Query used to access data in the connection.
 	Query *string `pulumi:"query"`
 	// Table accessed in the connection.
@@ -255,7 +255,7 @@ type BigQueryIODetailsArgs struct {
 	// Dataset accessed in the connection.
 	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
 	// Project accessed in the connection.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Query used to access data in the connection.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Table accessed in the connection.
@@ -320,8 +320,8 @@ func (o BigQueryIODetailsOutput) Dataset() pulumi.StringPtrOutput {
 }
 
 // Project accessed in the connection.
-func (o BigQueryIODetailsOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BigQueryIODetails) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o BigQueryIODetailsOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryIODetails) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Query used to access data in the connection.
@@ -359,7 +359,7 @@ type BigQueryIODetailsResponse struct {
 	// Dataset accessed in the connection.
 	Dataset string `pulumi:"dataset"`
 	// Project accessed in the connection.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Query used to access data in the connection.
 	Query string `pulumi:"query"`
 	// Table accessed in the connection.
@@ -382,7 +382,7 @@ type BigQueryIODetailsResponseArgs struct {
 	// Dataset accessed in the connection.
 	Dataset pulumi.StringInput `pulumi:"dataset"`
 	// Project accessed in the connection.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Query used to access data in the connection.
 	Query pulumi.StringInput `pulumi:"query"`
 	// Table accessed in the connection.
@@ -447,8 +447,8 @@ func (o BigQueryIODetailsResponseOutput) Dataset() pulumi.StringOutput {
 }
 
 // Project accessed in the connection.
-func (o BigQueryIODetailsResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v BigQueryIODetailsResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o BigQueryIODetailsResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryIODetailsResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Query used to access data in the connection.
@@ -486,7 +486,7 @@ type BigTableIODetails struct {
 	// InstanceId accessed in the connection.
 	InstanceId *string `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// TableId accessed in the connection.
 	TableId *string `pulumi:"tableId"`
 }
@@ -507,7 +507,7 @@ type BigTableIODetailsArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// TableId accessed in the connection.
 	TableId pulumi.StringPtrInput `pulumi:"tableId"`
 }
@@ -570,8 +570,8 @@ func (o BigTableIODetailsOutput) InstanceId() pulumi.StringPtrOutput {
 }
 
 // ProjectId accessed in the connection.
-func (o BigTableIODetailsOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BigTableIODetails) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o BigTableIODetailsOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigTableIODetails) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // TableId accessed in the connection.
@@ -604,7 +604,7 @@ type BigTableIODetailsResponse struct {
 	// InstanceId accessed in the connection.
 	InstanceId string `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// TableId accessed in the connection.
 	TableId string `pulumi:"tableId"`
 }
@@ -625,7 +625,7 @@ type BigTableIODetailsResponseArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// TableId accessed in the connection.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
@@ -688,8 +688,8 @@ func (o BigTableIODetailsResponseOutput) InstanceId() pulumi.StringOutput {
 }
 
 // ProjectId accessed in the connection.
-func (o BigTableIODetailsResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v BigTableIODetailsResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o BigTableIODetailsResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v BigTableIODetailsResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // TableId accessed in the connection.
@@ -1194,7 +1194,7 @@ type DatastoreIODetails struct {
 	// Namespace used in the connection.
 	Namespace *string `pulumi:"namespace"`
 	// ProjectId accessed in the connection.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // DatastoreIODetailsInput is an input type that accepts DatastoreIODetailsArgs and DatastoreIODetailsOutput values.
@@ -1213,7 +1213,7 @@ type DatastoreIODetailsArgs struct {
 	// Namespace used in the connection.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// ProjectId accessed in the connection.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (DatastoreIODetailsArgs) ElementType() reflect.Type {
@@ -1274,8 +1274,8 @@ func (o DatastoreIODetailsOutput) Namespace() pulumi.StringPtrOutput {
 }
 
 // ProjectId accessed in the connection.
-func (o DatastoreIODetailsOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatastoreIODetails) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o DatastoreIODetailsOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreIODetails) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type DatastoreIODetailsArrayOutput struct{ *pulumi.OutputState }
@@ -1303,7 +1303,7 @@ type DatastoreIODetailsResponse struct {
 	// Namespace used in the connection.
 	Namespace string `pulumi:"namespace"`
 	// ProjectId accessed in the connection.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // DatastoreIODetailsResponseInput is an input type that accepts DatastoreIODetailsResponseArgs and DatastoreIODetailsResponseOutput values.
@@ -1322,7 +1322,7 @@ type DatastoreIODetailsResponseArgs struct {
 	// Namespace used in the connection.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// ProjectId accessed in the connection.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (DatastoreIODetailsResponseArgs) ElementType() reflect.Type {
@@ -1383,8 +1383,8 @@ func (o DatastoreIODetailsResponseOutput) Namespace() pulumi.StringOutput {
 }
 
 // ProjectId accessed in the connection.
-func (o DatastoreIODetailsResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v DatastoreIODetailsResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o DatastoreIODetailsResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v DatastoreIODetailsResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type DatastoreIODetailsResponseArrayOutput struct{ *pulumi.OutputState }
@@ -6652,7 +6652,7 @@ type SpannerIODetails struct {
 	// InstanceId accessed in the connection.
 	InstanceId *string `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // SpannerIODetailsInput is an input type that accepts SpannerIODetailsArgs and SpannerIODetailsOutput values.
@@ -6673,7 +6673,7 @@ type SpannerIODetailsArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (SpannerIODetailsArgs) ElementType() reflect.Type {
@@ -6739,8 +6739,8 @@ func (o SpannerIODetailsOutput) InstanceId() pulumi.StringPtrOutput {
 }
 
 // ProjectId accessed in the connection.
-func (o SpannerIODetailsOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpannerIODetails) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o SpannerIODetailsOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpannerIODetails) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type SpannerIODetailsArrayOutput struct{ *pulumi.OutputState }
@@ -6770,7 +6770,7 @@ type SpannerIODetailsResponse struct {
 	// InstanceId accessed in the connection.
 	InstanceId string `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // SpannerIODetailsResponseInput is an input type that accepts SpannerIODetailsResponseArgs and SpannerIODetailsResponseOutput values.
@@ -6791,7 +6791,7 @@ type SpannerIODetailsResponseArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (SpannerIODetailsResponseArgs) ElementType() reflect.Type {
@@ -6857,8 +6857,8 @@ func (o SpannerIODetailsResponseOutput) InstanceId() pulumi.StringOutput {
 }
 
 // ProjectId accessed in the connection.
-func (o SpannerIODetailsResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v SpannerIODetailsResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o SpannerIODetailsResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SpannerIODetailsResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type SpannerIODetailsResponseArrayOutput struct{ *pulumi.OutputState }

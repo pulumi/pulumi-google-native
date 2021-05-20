@@ -162,11 +162,11 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
             set => _authorizedNetworks = value;
         }
 
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
+
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
-
-        [Input("domainsId", required: true)]
-        public Input<string> DomainsId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
             set => _locations = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].

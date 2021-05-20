@@ -43,14 +43,11 @@ func NewOrganizationBucket(ctx *pulumi.Context,
 	if args.BucketId == nil {
 		return nil, errors.New("invalid value for required argument 'BucketId'")
 	}
-	if args.BucketsId == nil {
-		return nil, errors.New("invalid value for required argument 'BucketsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationBucket
 	err := ctx.RegisterResource("google-native:logging/v2:OrganizationBucket", name, args, &resource, opts...)
@@ -116,14 +113,13 @@ func (OrganizationBucketState) ElementType() reflect.Type {
 }
 
 type organizationBucketArgs struct {
-	BucketId  string `pulumi:"bucketId"`
-	BucketsId string `pulumi:"bucketsId"`
+	BucketId string `pulumi:"bucketId"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
-	Locked          *bool  `pulumi:"locked"`
-	OrganizationsId string `pulumi:"organizationsId"`
+	Locked         *bool  `pulumi:"locked"`
+	OrganizationId string `pulumi:"organizationId"`
 	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
 	RestrictedFields []string `pulumi:"restrictedFields"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
@@ -132,14 +128,13 @@ type organizationBucketArgs struct {
 
 // The set of arguments for constructing a OrganizationBucket resource.
 type OrganizationBucketArgs struct {
-	BucketId  pulumi.StringInput
-	BucketsId pulumi.StringInput
+	BucketId pulumi.StringInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
-	Locked          pulumi.BoolPtrInput
-	OrganizationsId pulumi.StringInput
+	Locked         pulumi.BoolPtrInput
+	OrganizationId pulumi.StringInput
 	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
 	RestrictedFields pulumi.StringArrayInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.

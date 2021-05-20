@@ -114,14 +114,14 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("inspectConfig")]
         public Input<Inputs.GooglePrivacyDlpV2InspectConfigArgs>? InspectConfig { get; set; }
 
-        [Input("inspectTemplatesId", required: true)]
-        public Input<string> InspectTemplatesId { get; set; } = null!;
+        [Input("inspectTemplateId", required: true)]
+        public Input<string> InspectTemplateId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

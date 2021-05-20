@@ -59,20 +59,20 @@ export class OrganizationEnvironmentTraceConfigOverride extends pulumi.CustomRes
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.overridesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'overridesId'");
+            if ((!args || args.overrideId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'overrideId'");
             }
             inputs["apiProxy"] = args ? args.apiProxy : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["overridesId"] = args ? args.overridesId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
+            inputs["overrideId"] = args ? args.overrideId : undefined;
             inputs["samplingConfig"] = args ? args.samplingConfig : undefined;
         } else {
             inputs["apiProxy"] = undefined /*out*/;
@@ -94,13 +94,13 @@ export interface OrganizationEnvironmentTraceConfigOverrideArgs {
      * ID of the API proxy that will have its trace configuration overridden.
      */
     readonly apiProxy?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     /**
      * ID of the trace configuration override specified as a system-generated UUID.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
-    readonly overridesId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
+    readonly overrideId: pulumi.Input<string>;
     /**
      * Trace configuration to override.
      */

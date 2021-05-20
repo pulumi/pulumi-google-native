@@ -182,14 +182,11 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             inputs["bootDiskSizeGb"] = args ? args.bootDiskSizeGb : undefined;
@@ -202,10 +199,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["installGpuDriver"] = args ? args.installGpuDriver : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instanceOwners"] = args ? args.instanceOwners : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["kmsKey"] = args ? args.kmsKey : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -214,7 +210,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["noPublicIp"] = args ? args.noPublicIp : undefined;
             inputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
@@ -315,7 +311,6 @@ export interface InstanceArgs {
      * Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
      */
     readonly instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly instancesId: pulumi.Input<string>;
     /**
      * Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
      */
@@ -324,7 +319,7 @@ export interface InstanceArgs {
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
      */
@@ -357,7 +352,7 @@ export interface InstanceArgs {
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
      */
     readonly postStartupScript?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */

@@ -42,14 +42,11 @@ func NewGuestPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GuestPoliciesId == nil {
-		return nil, errors.New("invalid value for required argument 'GuestPoliciesId'")
-	}
 	if args.GuestPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource GuestPolicy
 	err := ctx.RegisterResource("google-native:osconfig/v1beta:GuestPolicy", name, args, &resource, opts...)
@@ -124,16 +121,15 @@ type guestPolicyArgs struct {
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-	Etag            *string `pulumi:"etag"`
-	GuestPoliciesId string  `pulumi:"guestPoliciesId"`
-	GuestPolicyId   string  `pulumi:"guestPolicyId"`
+	Etag          *string `pulumi:"etag"`
+	GuestPolicyId string  `pulumi:"guestPolicyId"`
 	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories []PackageRepository `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
-	Packages   []Package `pulumi:"packages"`
-	ProjectsId string    `pulumi:"projectsId"`
+	Packages []Package `pulumi:"packages"`
+	Project  string    `pulumi:"project"`
 	// A list of Recipes to install on the VM instance.
 	Recipes []SoftwareRecipe `pulumi:"recipes"`
 }
@@ -145,16 +141,15 @@ type GuestPolicyArgs struct {
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-	Etag            pulumi.StringPtrInput
-	GuestPoliciesId pulumi.StringInput
-	GuestPolicyId   pulumi.StringInput
+	Etag          pulumi.StringPtrInput
+	GuestPolicyId pulumi.StringInput
 	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name pulumi.StringPtrInput
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories PackageRepositoryArrayInput
 	// The software packages to be managed by this policy.
-	Packages   PackageArrayInput
-	ProjectsId pulumi.StringInput
+	Packages PackageArrayInput
+	Project  pulumi.StringInput
 	// A list of Recipes to install on the VM instance.
 	Recipes SoftwareRecipeArrayInput
 }

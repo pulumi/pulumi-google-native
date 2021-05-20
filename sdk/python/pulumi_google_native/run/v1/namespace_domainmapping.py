@@ -15,8 +15,8 @@ __all__ = ['NamespaceDomainmappingArgs', 'NamespaceDomainmapping']
 @pulumi.input_type
 class NamespaceDomainmappingArgs:
     def __init__(__self__, *,
-                 domainmappings_id: pulumi.Input[str],
-                 namespaces_id: pulumi.Input[str],
+                 domainmapping_id: pulumi.Input[str],
+                 namespace_id: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -31,8 +31,8 @@ class NamespaceDomainmappingArgs:
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
         :param pulumi.Input['DomainMappingStatusArgs'] status: The current status of the DomainMapping.
         """
-        pulumi.set(__self__, "domainmappings_id", domainmappings_id)
-        pulumi.set(__self__, "namespaces_id", namespaces_id)
+        pulumi.set(__self__, "domainmapping_id", domainmapping_id)
+        pulumi.set(__self__, "namespace_id", namespace_id)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if dry_run is not None:
@@ -47,22 +47,22 @@ class NamespaceDomainmappingArgs:
             pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="domainmappingsId")
-    def domainmappings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domainmappings_id")
+    @pulumi.getter(name="domainmappingId")
+    def domainmapping_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domainmapping_id")
 
-    @domainmappings_id.setter
-    def domainmappings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domainmappings_id", value)
+    @domainmapping_id.setter
+    def domainmapping_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domainmapping_id", value)
 
     @property
-    @pulumi.getter(name="namespacesId")
-    def namespaces_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "namespaces_id")
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_id")
 
-    @namespaces_id.setter
-    def namespaces_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "namespaces_id", value)
+    @namespace_id.setter
+    def namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_id", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -140,11 +140,11 @@ class NamespaceDomainmapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 domainmappings_id: Optional[pulumi.Input[str]] = None,
+                 domainmapping_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None,
                  __props__=None):
@@ -184,11 +184,11 @@ class NamespaceDomainmapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 domainmappings_id: Optional[pulumi.Input[str]] = None,
+                 domainmapping_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None,
                  __props__=None):
@@ -204,15 +204,15 @@ class NamespaceDomainmapping(pulumi.CustomResource):
             __props__ = NamespaceDomainmappingArgs.__new__(NamespaceDomainmappingArgs)
 
             __props__.__dict__["api_version"] = api_version
-            if domainmappings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domainmappings_id'")
-            __props__.__dict__["domainmappings_id"] = domainmappings_id
+            if domainmapping_id is None and not opts.urn:
+                raise TypeError("Missing required property 'domainmapping_id'")
+            __props__.__dict__["domainmapping_id"] = domainmapping_id
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["kind"] = kind
             __props__.__dict__["metadata"] = metadata
-            if namespaces_id is None and not opts.urn:
-                raise TypeError("Missing required property 'namespaces_id'")
-            __props__.__dict__["namespaces_id"] = namespaces_id
+            if namespace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'namespace_id'")
+            __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
         super(NamespaceDomainmapping, __self__).__init__(

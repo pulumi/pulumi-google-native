@@ -219,9 +219,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("noteId")]
         public Input<string>? NoteId { get; set; }
 
-        [Input("notesId", required: true)]
-        public Input<string> NotesId { get; set; } = null!;
-
         /// <summary>
         /// A note describing a package hosted by various package managers.
         /// </summary>
@@ -231,8 +228,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        [Input("providersId", required: true)]
-        public Input<string> ProvidersId { get; set; } = null!;
+        [Input("providerId", required: true)]
+        public Input<string> ProviderId { get; set; } = null!;
 
         [Input("relatedUrl")]
         private InputList<Inputs.RelatedUrlArgs>? _relatedUrl;

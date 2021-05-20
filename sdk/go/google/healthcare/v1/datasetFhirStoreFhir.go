@@ -30,8 +30,8 @@ func NewDatasetFhirStoreFhir(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
 	if args.FhirId == nil {
 		return nil, errors.New("invalid value for required argument 'FhirId'")
@@ -39,14 +39,14 @@ func NewDatasetFhirStoreFhir(ctx *pulumi.Context,
 	if args.FhirId1 == nil {
 		return nil, errors.New("invalid value for required argument 'FhirId1'")
 	}
-	if args.FhirStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'FhirStoresId'")
+	if args.FhirStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'FhirStoreId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetFhirStoreFhir
 	err := ctx.RegisterResource("google-native:healthcare/v1:DatasetFhirStoreFhir", name, args, &resource, opts...)
@@ -95,15 +95,15 @@ type datasetFhirStoreFhirArgs struct {
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
-	Data       *string `pulumi:"data"`
-	DatasetsId string  `pulumi:"datasetsId"`
+	Data      *string `pulumi:"data"`
+	DatasetId string  `pulumi:"datasetId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions   []map[string]string `pulumi:"extensions"`
-	FhirId       string              `pulumi:"fhirId"`
-	FhirId1      string              `pulumi:"fhirId1"`
-	FhirStoresId string              `pulumi:"fhirStoresId"`
-	LocationsId  string              `pulumi:"locationsId"`
-	ProjectsId   string              `pulumi:"projectsId"`
+	Extensions  []map[string]string `pulumi:"extensions"`
+	FhirId      string              `pulumi:"fhirId"`
+	FhirId1     string              `pulumi:"fhirId1"`
+	FhirStoreId string              `pulumi:"fhirStoreId"`
+	Location    string              `pulumi:"location"`
+	Project     string              `pulumi:"project"`
 }
 
 // The set of arguments for constructing a DatasetFhirStoreFhir resource.
@@ -111,15 +111,15 @@ type DatasetFhirStoreFhirArgs struct {
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
-	Data       pulumi.StringPtrInput
-	DatasetsId pulumi.StringInput
+	Data      pulumi.StringPtrInput
+	DatasetId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions   pulumi.StringMapArrayInput
-	FhirId       pulumi.StringInput
-	FhirId1      pulumi.StringInput
-	FhirStoresId pulumi.StringInput
-	LocationsId  pulumi.StringInput
-	ProjectsId   pulumi.StringInput
+	Extensions  pulumi.StringMapArrayInput
+	FhirId      pulumi.StringInput
+	FhirId1     pulumi.StringInput
+	FhirStoreId pulumi.StringInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
 }
 
 func (DatasetFhirStoreFhirArgs) ElementType() reflect.Type {

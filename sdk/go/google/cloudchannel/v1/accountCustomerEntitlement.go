@@ -48,14 +48,14 @@ func NewAccountCustomerEntitlement(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountsId'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.CustomersId == nil {
-		return nil, errors.New("invalid value for required argument 'CustomersId'")
+	if args.CustomerId == nil {
+		return nil, errors.New("invalid value for required argument 'CustomerId'")
 	}
-	if args.EntitlementsId == nil {
-		return nil, errors.New("invalid value for required argument 'EntitlementsId'")
+	if args.EntitlementId == nil {
+		return nil, errors.New("invalid value for required argument 'EntitlementId'")
 	}
 	var resource AccountCustomerEntitlement
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:AccountCustomerEntitlement", name, args, &resource, opts...)
@@ -137,13 +137,13 @@ func (AccountCustomerEntitlementState) ElementType() reflect.Type {
 }
 
 type accountCustomerEntitlementArgs struct {
-	AccountsId string `pulumi:"accountsId"`
+	AccountId string `pulumi:"accountId"`
 	// Association information to other entitlements.
 	AssociationInfo *GoogleCloudChannelV1AssociationInfo `pulumi:"associationInfo"`
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings *GoogleCloudChannelV1CommitmentSettings `pulumi:"commitmentSettings"`
-	CustomersId        string                                  `pulumi:"customersId"`
-	EntitlementsId     string                                  `pulumi:"entitlementsId"`
+	CustomerId         string                                  `pulumi:"customerId"`
+	EntitlementId      string                                  `pulumi:"entitlementId"`
 	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer *string `pulumi:"offer"`
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
@@ -156,13 +156,13 @@ type accountCustomerEntitlementArgs struct {
 
 // The set of arguments for constructing a AccountCustomerEntitlement resource.
 type AccountCustomerEntitlementArgs struct {
-	AccountsId pulumi.StringInput
+	AccountId pulumi.StringInput
 	// Association information to other entitlements.
 	AssociationInfo GoogleCloudChannelV1AssociationInfoPtrInput
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsPtrInput
-	CustomersId        pulumi.StringInput
-	EntitlementsId     pulumi.StringInput
+	CustomerId         pulumi.StringInput
+	EntitlementId      pulumi.StringInput
 	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer pulumi.StringPtrInput
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.

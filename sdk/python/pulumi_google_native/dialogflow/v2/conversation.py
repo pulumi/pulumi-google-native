@@ -14,9 +14,8 @@ __all__ = ['ConversationArgs', 'Conversation']
 @pulumi.input_type
 class ConversationArgs:
     def __init__(__self__, *,
-                 conversations_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None):
@@ -25,9 +24,8 @@ class ConversationArgs:
         :param pulumi.Input[str] conversation_profile: Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         :param pulumi.Input[str] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
-        pulumi.set(__self__, "conversations_id", conversations_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if conversation_id is not None:
             pulumi.set(__self__, "conversation_id", conversation_id)
         if conversation_profile is not None:
@@ -36,31 +34,22 @@ class ConversationArgs:
             pulumi.set(__self__, "conversation_stage", conversation_stage)
 
     @property
-    @pulumi.getter(name="conversationsId")
-    def conversations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "conversations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @conversations_id.setter
-    def conversations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "conversations_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="conversationId")
@@ -104,9 +93,8 @@ class Conversation(pulumi.CustomResource):
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None,
-                 conversations_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new conversation. Conversations are auto-completed after 24 hours. Conversation Lifecycle: There are two stages during a conversation: Automated Agent Stage and Assist Stage. For Automated Agent Stage, there will be a dialogflow agent responding to user queries. For Assist Stage, there's no dialogflow agent responding to user queries. But we will provide suggestions which are generated from conversation. If Conversation.conversation_profile is configured for a dialogflow agent, conversation will start from `Automated Agent Stage`, otherwise, it will start from `Assist Stage`. And during `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is triggered, conversation will transfer to Assist Stage.
@@ -143,9 +131,8 @@ class Conversation(pulumi.CustomResource):
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None,
-                 conversations_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -161,15 +148,12 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["conversation_id"] = conversation_id
             __props__.__dict__["conversation_profile"] = conversation_profile
             __props__.__dict__["conversation_stage"] = conversation_stage
-            if conversations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'conversations_id'")
-            __props__.__dict__["conversations_id"] = conversations_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["end_time"] = None
             __props__.__dict__["lifecycle_state"] = None
             __props__.__dict__["name"] = None
