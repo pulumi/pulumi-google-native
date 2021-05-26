@@ -151,9 +151,6 @@ export class ServiceConfig extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.configId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configId'");
-            }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
@@ -161,7 +158,6 @@ export class ServiceConfig extends pulumi.CustomResource {
             inputs["authentication"] = args ? args.authentication : undefined;
             inputs["backend"] = args ? args.backend : undefined;
             inputs["billing"] = args ? args.billing : undefined;
-            inputs["configId"] = args ? args.configId : undefined;
             inputs["configVersion"] = args ? args.configVersion : undefined;
             inputs["context"] = args ? args.context : undefined;
             inputs["control"] = args ? args.control : undefined;
@@ -241,7 +237,6 @@ export interface ServiceConfigArgs {
      * Billing configuration.
      */
     readonly billing?: pulumi.Input<inputs.servicemanagement.v1.BillingArgs>;
-    readonly configId: pulumi.Input<string>;
     /**
      * Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
      */

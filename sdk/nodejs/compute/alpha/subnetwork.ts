@@ -189,9 +189,6 @@ export class Subnetwork extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.subnetwork === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subnetwork'");
-            }
             inputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
             inputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -225,7 +222,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["stackType"] = args ? args.stackType : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["vlans"] = args ? args.vlans : undefined;
         } else {
             inputs["aggregationInterval"] = undefined /*out*/;
@@ -409,7 +405,6 @@ export interface SubnetworkArgs {
      * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
      */
     readonly state?: pulumi.Input<string>;
-    readonly subnetwork: pulumi.Input<string>;
     /**
      * A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
      */

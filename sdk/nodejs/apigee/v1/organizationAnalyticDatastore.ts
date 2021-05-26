@@ -75,14 +75,10 @@ export class OrganizationAnalyticDatastore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datastoreId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datastoreId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["datastoreConfig"] = args ? args.datastoreConfig : undefined;
-            inputs["datastoreId"] = args ? args.datastoreId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["targetType"] = args ? args.targetType : undefined;
@@ -114,7 +110,6 @@ export interface OrganizationAnalyticDatastoreArgs {
      * Datastore Configurations.
      */
     readonly datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigArgs>;
-    readonly datastoreId: pulumi.Input<string>;
     /**
      * Required. Display name in UI
      */

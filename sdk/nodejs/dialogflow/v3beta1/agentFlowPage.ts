@@ -84,9 +84,6 @@ export class AgentFlowPage extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.pageId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'pageId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -99,7 +96,6 @@ export class AgentFlowPage extends pulumi.CustomResource {
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["pageId"] = args ? args.pageId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
@@ -147,7 +143,6 @@ export interface AgentFlowPageArgs {
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly pageId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.

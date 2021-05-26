@@ -73,16 +73,12 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceId'");
-            }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -118,7 +114,6 @@ export interface ServiceArgs {
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
     readonly project: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
     /**
      * Spec holds the desired state of the Service (from the client).
      */

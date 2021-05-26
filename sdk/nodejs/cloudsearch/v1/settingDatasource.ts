@@ -75,14 +75,10 @@ export class SettingDatasource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SettingDatasourceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SettingDatasourceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasourceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasourceId'");
-            }
-            inputs["datasourceId"] = args ? args.datasourceId : undefined;
             inputs["disableModifications"] = args ? args.disableModifications : undefined;
             inputs["disableServing"] = args ? args.disableServing : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -112,7 +108,6 @@ export class SettingDatasource extends pulumi.CustomResource {
  * The set of arguments for constructing a SettingDatasource resource.
  */
 export interface SettingDatasourceArgs {
-    readonly datasourceId: pulumi.Input<string>;
     /**
      * If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
      */

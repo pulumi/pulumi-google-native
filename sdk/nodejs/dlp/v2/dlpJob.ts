@@ -87,16 +87,12 @@ export class DlpJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.dlpJobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dlpJobId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["dlpJobId"] = args ? args.dlpJobId : undefined;
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -135,7 +131,6 @@ export class DlpJob extends pulumi.CustomResource {
  * The set of arguments for constructing a DlpJob resource.
  */
 export interface DlpJobArgs {
-    readonly dlpJobId: pulumi.Input<string>;
     /**
      * An inspection job scans a storage repository for InfoTypes.
      */

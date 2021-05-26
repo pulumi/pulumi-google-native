@@ -82,9 +82,6 @@ export class AgentEntityType extends pulumi.CustomResource {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.entityTypeId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityTypeId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -96,7 +93,6 @@ export class AgentEntityType extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
             inputs["entities"] = args ? args.entities : undefined;
-            inputs["entityTypeId"] = args ? args.entityTypeId : undefined;
             inputs["excludedPhrases"] = args ? args.excludedPhrases : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
@@ -142,7 +138,6 @@ export interface AgentEntityTypeArgs {
      * The collection of entity entries associated with the entity type.
      */
     readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
-    readonly entityTypeId: pulumi.Input<string>;
     /**
      * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */

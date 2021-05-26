@@ -37,7 +37,7 @@ export class HmacKey extends pulumi.CustomResource {
     /**
      * The ID of the HMAC Key.
      */
-    public readonly accessId!: pulumi.Output<string>;
+    public /*out*/ readonly accessId!: pulumi.Output<string>;
     /**
      * HTTP 1.1 Entity tag for the HMAC key.
      */
@@ -82,19 +82,16 @@ export class HmacKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accessId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            inputs["accessId"] = args ? args.accessId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             inputs["userProject"] = args ? args.userProject : undefined;
+            inputs["accessId"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -123,7 +120,6 @@ export class HmacKey extends pulumi.CustomResource {
  * The set of arguments for constructing a HmacKey resource.
  */
 export interface HmacKeyArgs {
-    readonly accessId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     readonly serviceAccountEmail: pulumi.Input<string>;
     readonly userProject?: pulumi.Input<string>;

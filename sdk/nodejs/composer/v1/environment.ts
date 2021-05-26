@@ -75,9 +75,6 @@ export class Environment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -86,7 +83,6 @@ export class Environment extends pulumi.CustomResource {
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -122,7 +118,6 @@ export interface EnvironmentArgs {
      * The time at which this environment was created.
      */
     readonly createTime?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
     /**
      * Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
      */

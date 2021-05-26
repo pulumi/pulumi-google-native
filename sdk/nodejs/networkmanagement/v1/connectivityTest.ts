@@ -91,16 +91,12 @@ export class ConnectivityTest extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.connectivityTestId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectivityTestId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             if ((!args || args.testId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testId'");
             }
-            inputs["connectivityTestId"] = args ? args.connectivityTestId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -138,7 +134,6 @@ export class ConnectivityTest extends pulumi.CustomResource {
  * The set of arguments for constructing a ConnectivityTest resource.
  */
 export interface ConnectivityTestArgs {
-    readonly connectivityTestId: pulumi.Input<string>;
     /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */

@@ -102,9 +102,6 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKeyId'");
             }
-            if ((!args || args.cryptoKeyVersionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cryptoKeyVersionId'");
-            }
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
@@ -115,7 +112,6 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
-            inputs["cryptoKeyVersionId"] = args ? args.cryptoKeyVersionId : undefined;
             inputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -159,7 +155,6 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
  */
 export interface KeyRingCryptoKeyCryptoKeyVersionArgs {
     readonly cryptoKeyId: pulumi.Input<string>;
-    readonly cryptoKeyVersionId: pulumi.Input<string>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
      */

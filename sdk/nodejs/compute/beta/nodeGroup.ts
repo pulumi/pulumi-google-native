@@ -97,9 +97,6 @@ export class NodeGroup extends pulumi.CustomResource {
             if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
-            if ((!args || args.nodeGroup === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nodeGroup'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -117,7 +114,6 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["nodeGroup"] = args ? args.nodeGroup : undefined;
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
@@ -187,7 +183,6 @@ export interface NodeGroupArgs {
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    readonly nodeGroup: pulumi.Input<string>;
     /**
      * URL of the node template to create the node group from.
      */

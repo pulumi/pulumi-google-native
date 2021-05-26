@@ -79,13 +79,10 @@ export class SettingSearchapplication extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SettingSearchapplicationArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SettingSearchapplicationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.searchapplicationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'searchapplicationId'");
-            }
             inputs["dataSourceRestrictions"] = args ? args.dataSourceRestrictions : undefined;
             inputs["defaultFacetOptions"] = args ? args.defaultFacetOptions : undefined;
             inputs["defaultSortOptions"] = args ? args.defaultSortOptions : undefined;
@@ -93,7 +90,6 @@ export class SettingSearchapplication extends pulumi.CustomResource {
             inputs["enableAuditLog"] = args ? args.enableAuditLog : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["scoringConfig"] = args ? args.scoringConfig : undefined;
-            inputs["searchapplicationId"] = args ? args.searchapplicationId : undefined;
             inputs["sourceConfig"] = args ? args.sourceConfig : undefined;
             inputs["operationIds"] = undefined /*out*/;
         } else {
@@ -146,7 +142,6 @@ export interface SettingSearchapplicationArgs {
      * Configuration for ranking results.
      */
     readonly scoringConfig?: pulumi.Input<inputs.cloudsearch.v1.ScoringConfigArgs>;
-    readonly searchapplicationId: pulumi.Input<string>;
     /**
      * Configuration for a sources specified in data_source_restrictions.
      */

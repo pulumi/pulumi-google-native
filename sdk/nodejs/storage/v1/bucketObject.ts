@@ -174,9 +174,6 @@ export class BucketObject extends pulumi.CustomResource {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.object === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'object'");
-            }
             inputs["acl"] = args ? args.acl : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["cacheControl"] = args ? args.cacheControl : undefined;
@@ -203,7 +200,6 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["metageneration"] = args ? args.metageneration : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["object"] = args ? args.object : undefined;
             inputs["owner"] = args ? args.owner : undefined;
             inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             inputs["projection"] = args ? args.projection : undefined;
@@ -355,7 +351,6 @@ export interface BucketObjectArgs {
      * The name of the object. Required if not specified by URL parameter.
      */
     readonly name?: pulumi.Input<string>;
-    readonly object: pulumi.Input<string>;
     /**
      * The owner of the object. This will always be the uploader of the object.
      */

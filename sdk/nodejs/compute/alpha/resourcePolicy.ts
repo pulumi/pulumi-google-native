@@ -99,9 +99,6 @@ export class ResourcePolicy extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.resourcePolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'resourcePolicy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
@@ -112,7 +109,6 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["resourcePolicy"] = args ? args.resourcePolicy : undefined;
             inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -173,7 +169,6 @@ export interface ResourcePolicyArgs {
     readonly project: pulumi.Input<string>;
     readonly region: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
-    readonly resourcePolicy: pulumi.Input<string>;
     /**
      * [Output Only] The system status of the resource policy.
      */

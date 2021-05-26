@@ -175,9 +175,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instance'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -190,7 +187,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["etag"] = args ? args.etag : undefined;
             inputs["failoverReplica"] = args ? args.failoverReplica : undefined;
             inputs["gceZone"] = args ? args.gceZone : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["ipAddresses"] = args ? args.ipAddresses : undefined;
             inputs["ipv6Address"] = args ? args.ipv6Address : undefined;
@@ -295,7 +291,6 @@ export interface InstanceArgs {
      * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
      */
     readonly gceZone?: pulumi.Input<string>;
-    readonly instance: pulumi.Input<string>;
     /**
      * The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
      */

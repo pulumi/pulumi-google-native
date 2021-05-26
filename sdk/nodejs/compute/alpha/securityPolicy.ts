@@ -116,9 +116,6 @@ export class SecurityPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.securityPolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securityPolicy'");
-            }
             inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
             inputs["associations"] = args ? args.associations : undefined;
             inputs["cloudArmorConfig"] = args ? args.cloudArmorConfig : undefined;
@@ -136,7 +133,6 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
-            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -231,7 +227,6 @@ export interface SecurityPolicyArgs {
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SecurityPolicyRuleArgs>[]>;
-    readonly securityPolicy: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

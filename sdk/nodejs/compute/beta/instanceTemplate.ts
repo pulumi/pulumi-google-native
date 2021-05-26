@@ -81,16 +81,12 @@ export class InstanceTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceTemplate === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceTemplate'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -132,7 +128,6 @@ export interface InstanceTemplateArgs {
      * [Output Only] A unique identifier for this instance template. The server defines this identifier.
      */
     readonly id?: pulumi.Input<string>;
-    readonly instanceTemplate: pulumi.Input<string>;
     /**
      * [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
      */

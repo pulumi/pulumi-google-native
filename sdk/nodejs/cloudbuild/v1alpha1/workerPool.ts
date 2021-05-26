@@ -90,9 +90,6 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.workerPoolId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerPoolId'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -103,7 +100,6 @@ export class WorkerPool extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerCount"] = args ? args.workerCount : undefined;
-            inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
@@ -167,5 +163,4 @@ export interface WorkerPoolArgs {
      * Total number of workers to be created across all requested regions.
      */
     readonly workerCount?: pulumi.Input<string>;
-    readonly workerPoolId: pulumi.Input<string>;
 }

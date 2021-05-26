@@ -82,9 +82,6 @@ export class ServiceAccountKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.keyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -92,7 +89,6 @@ export class ServiceAccountKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["keyId"] = args ? args.keyId : undefined;
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
@@ -129,7 +125,6 @@ export interface ServiceAccountKeyArgs {
      * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
      */
     readonly keyAlgorithm?: pulumi.Input<string>;
-    readonly keyId: pulumi.Input<string>;
     /**
      * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
      */

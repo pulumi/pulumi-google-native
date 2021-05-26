@@ -55,14 +55,10 @@ export class Policy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.policyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'policyId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["name"] = args ? args.name : undefined;
-            inputs["policyId"] = args ? args.policyId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["spec"] = args ? args.spec : undefined;
         } else {
@@ -84,7 +80,6 @@ export interface PolicyArgs {
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
     readonly name?: pulumi.Input<string>;
-    readonly policyId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * Basic information about the Organization Policy.

@@ -101,9 +101,6 @@ export class RegionHealthCheck extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.healthCheck === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'healthCheck'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -114,7 +111,6 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
-            inputs["healthCheck"] = args ? args.healthCheck : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             inputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
@@ -176,7 +172,6 @@ export interface RegionHealthCheckArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly grpcHealthCheck?: pulumi.Input<inputs.compute.beta.GRPCHealthCheckArgs>;
-    readonly healthCheck: pulumi.Input<string>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */

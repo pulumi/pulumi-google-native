@@ -118,9 +118,6 @@ export class ZoneInstantSnapshot extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instantSnapshot === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instantSnapshot'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -132,7 +129,6 @@ export class ZoneInstantSnapshot extends pulumi.CustomResource {
             inputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["instantSnapshot"] = args ? args.instantSnapshot : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -196,7 +192,6 @@ export interface ZoneInstantSnapshotArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
-    readonly instantSnapshot: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
      */

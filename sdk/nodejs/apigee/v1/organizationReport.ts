@@ -138,9 +138,6 @@ export class OrganizationReport extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.reportId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reportId'");
-            }
             inputs["chartType"] = args ? args.chartType : undefined;
             inputs["comments"] = args ? args.comments : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
@@ -153,7 +150,6 @@ export class OrganizationReport extends pulumi.CustomResource {
             inputs["offset"] = args ? args.offset : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["properties"] = args ? args.properties : undefined;
-            inputs["reportId"] = args ? args.reportId : undefined;
             inputs["sortByCols"] = args ? args.sortByCols : undefined;
             inputs["sortOrder"] = args ? args.sortOrder : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -245,7 +241,6 @@ export interface OrganizationReportArgs {
      * This field contains report properties such as ui metadata etc.
      */
     readonly properties?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1ReportPropertyArgs>[]>;
-    readonly reportId: pulumi.Input<string>;
     /**
      * Legacy field: not used much. Contains the list of sort by columns
      */

@@ -124,9 +124,6 @@ export class Firewall extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.firewall === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'firewall'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -137,7 +134,6 @@ export class Firewall extends pulumi.CustomResource {
             inputs["destinationRanges"] = args ? args.destinationRanges : undefined;
             inputs["direction"] = args ? args.direction : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["firewall"] = args ? args.firewall : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
@@ -211,7 +207,6 @@ export interface FirewallArgs {
      * Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
      */
     readonly disabled?: pulumi.Input<boolean>;
-    readonly firewall: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

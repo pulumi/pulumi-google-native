@@ -101,9 +101,6 @@ export class ApiConfig extends pulumi.CustomResource {
             if ((!args || args.apiId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.configId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -112,7 +109,6 @@ export class ApiConfig extends pulumi.CustomResource {
             }
             inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
             inputs["apiId"] = args ? args.apiId : undefined;
-            inputs["configId"] = args ? args.configId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["gatewayServiceAccount"] = args ? args.gatewayServiceAccount : undefined;
@@ -154,7 +150,6 @@ export class ApiConfig extends pulumi.CustomResource {
 export interface ApiConfigArgs {
     readonly apiConfigId: pulumi.Input<string>;
     readonly apiId: pulumi.Input<string>;
-    readonly configId: pulumi.Input<string>;
     /**
      * Optional. Display name.
      */

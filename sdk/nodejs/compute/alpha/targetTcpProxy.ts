@@ -85,9 +85,6 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.targetTcpProxy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetTcpProxy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -99,7 +96,6 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["service"] = args ? args.service : undefined;
-            inputs["targetTcpProxy"] = args ? args.targetTcpProxy : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -163,5 +159,4 @@ export interface TargetTcpProxyArgs {
      * URL to the BackendService resource.
      */
     readonly service?: pulumi.Input<string>;
-    readonly targetTcpProxy: pulumi.Input<string>;
 }

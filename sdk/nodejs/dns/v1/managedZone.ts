@@ -104,9 +104,6 @@ export class ManagedZone extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.managedZone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'managedZone'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -119,7 +116,6 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["managedZone"] = args ? args.managedZone : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nameServerSet"] = args ? args.nameServerSet : undefined;
             inputs["nameServers"] = args ? args.nameServers : undefined;
@@ -187,7 +183,6 @@ export interface ManagedZoneArgs {
      * User labels.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly managedZone: pulumi.Input<string>;
     /**
      * User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
      */

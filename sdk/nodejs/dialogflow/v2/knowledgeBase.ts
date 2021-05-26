@@ -58,9 +58,6 @@ export class KnowledgeBase extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.knowledgeBaseId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'knowledgeBaseId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -68,7 +65,6 @@ export class KnowledgeBase extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["knowledgeBaseId"] = args ? args.knowledgeBaseId : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -93,7 +89,6 @@ export interface KnowledgeBaseArgs {
      * Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly knowledgeBaseId: pulumi.Input<string>;
     /**
      * Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
      */

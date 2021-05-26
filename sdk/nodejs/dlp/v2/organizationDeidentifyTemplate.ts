@@ -71,9 +71,6 @@ export class OrganizationDeidentifyTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.deidentifyTemplateId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deidentifyTemplateId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -81,7 +78,6 @@ export class OrganizationDeidentifyTemplate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;
-            inputs["deidentifyTemplateId"] = args ? args.deidentifyTemplateId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -113,7 +109,6 @@ export interface OrganizationDeidentifyTemplateArgs {
      * The core content of the template.
      */
     readonly deidentifyConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2DeidentifyConfigArgs>;
-    readonly deidentifyTemplateId: pulumi.Input<string>;
     /**
      * Short description (max 256 chars).
      */

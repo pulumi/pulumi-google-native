@@ -70,14 +70,10 @@ export class Repo extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.repoId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'repoId'");
-            }
             inputs["mirrorConfig"] = args ? args.mirrorConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
-            inputs["repoId"] = args ? args.repoId : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["url"] = args ? args.url : undefined;
         } else {
@@ -111,7 +107,6 @@ export interface RepoArgs {
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
     readonly pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly repoId: pulumi.Input<string>;
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */

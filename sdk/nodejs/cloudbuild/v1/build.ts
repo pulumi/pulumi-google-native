@@ -147,9 +147,6 @@ export class Build extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.buildId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'buildId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -161,7 +158,6 @@ export class Build extends pulumi.CustomResource {
             }
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
-            inputs["buildId"] = args ? args.buildId : undefined;
             inputs["images"] = args ? args.images : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["logsBucket"] = args ? args.logsBucket : undefined;
@@ -233,7 +229,6 @@ export interface BuildArgs {
      * Secrets and secret environment variables.
      */
     readonly availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.SecretsArgs>;
-    readonly buildId: pulumi.Input<string>;
     /**
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
      */

@@ -58,16 +58,12 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.attachmentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'attachmentId'");
-            }
             if ((!args || args.envgroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envgroupId'");
             }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["attachmentId"] = args ? args.attachmentId : undefined;
             inputs["envgroupId"] = args ? args.envgroupId : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -89,7 +85,6 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvgroupAttachment resource.
  */
 export interface OrganizationEnvgroupAttachmentArgs {
-    readonly attachmentId: pulumi.Input<string>;
     readonly envgroupId: pulumi.Input<string>;
     /**
      * Required. ID of the attached environment.

@@ -62,9 +62,6 @@ export class OrganizationStoredInfoType extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.storedInfoTypeId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'storedInfoTypeId'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
@@ -95,5 +92,5 @@ export interface OrganizationStoredInfoTypeArgs {
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    readonly storedInfoTypeId: pulumi.Input<string>;
+    readonly storedInfoTypeId?: pulumi.Input<string>;
 }

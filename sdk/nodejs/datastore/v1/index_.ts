@@ -42,7 +42,7 @@ export class Index extends pulumi.CustomResource {
     /**
      * The resource ID of the index.
      */
-    public readonly indexId!: pulumi.Output<string>;
+    public /*out*/ readonly indexId!: pulumi.Output<string>;
     /**
      * Required. The entity kind to which this index applies.
      */
@@ -71,17 +71,14 @@ export class Index extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.indexId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'indexId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["ancestor"] = args ? args.ancestor : undefined;
-            inputs["indexId"] = args ? args.indexId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["properties"] = args ? args.properties : undefined;
+            inputs["indexId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
             inputs["ancestor"] = undefined /*out*/;
@@ -106,7 +103,6 @@ export interface IndexArgs {
      * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
     readonly ancestor?: pulumi.Input<string>;
-    readonly indexId: pulumi.Input<string>;
     /**
      * Required. The entity kind to which this index applies.
      */

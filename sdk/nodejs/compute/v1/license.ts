@@ -76,9 +76,6 @@ export class License extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.license === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'license'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -86,7 +83,6 @@ export class License extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
-            inputs["license"] = args ? args.license : undefined;
             inputs["licenseCode"] = args ? args.licenseCode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -131,7 +127,6 @@ export interface LicenseArgs {
      * [Output Only] Type of resource. Always compute#license for licenses.
      */
     readonly kind?: pulumi.Input<string>;
-    readonly license: pulumi.Input<string>;
     /**
      * [Output Only] The unique code used to attach this license to images, snapshots, and disks.
      */

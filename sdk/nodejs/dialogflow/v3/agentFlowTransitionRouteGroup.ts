@@ -71,9 +71,6 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.transitionRouteGroupId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transitionRouteGroupId'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["flowId"] = args ? args.flowId : undefined;
@@ -81,7 +78,6 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["transitionRouteGroupId"] = args ? args.transitionRouteGroupId : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
@@ -112,7 +108,6 @@ export interface AgentFlowTransitionRouteGroupArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly transitionRouteGroupId: pulumi.Input<string>;
     /**
      * Transition routes associated with the TransitionRouteGroup.
      */

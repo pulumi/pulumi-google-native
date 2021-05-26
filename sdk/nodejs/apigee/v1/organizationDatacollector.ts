@@ -66,14 +66,10 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datacollectorId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datacollectorId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["dataCollectorId"] = args ? args.dataCollectorId : undefined;
-            inputs["datacollectorId"] = args ? args.datacollectorId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
@@ -99,7 +95,6 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
  */
 export interface OrganizationDatacollectorArgs {
     readonly dataCollectorId?: pulumi.Input<string>;
-    readonly datacollectorId: pulumi.Input<string>;
     /**
      * A description of the data collector.
      */

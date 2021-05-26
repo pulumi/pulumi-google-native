@@ -72,13 +72,9 @@ export class AgentVersion extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.versionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -107,5 +103,4 @@ export interface AgentVersionArgs {
     readonly description?: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly versionId: pulumi.Input<string>;
 }

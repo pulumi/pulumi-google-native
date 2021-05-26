@@ -66,9 +66,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -77,7 +74,6 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["databaseUrl"] = args ? args.databaseUrl : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -107,7 +103,6 @@ export interface InstanceArgs {
      * Immutable. The globally unique hostname of the database.
      */
     readonly databaseUrl?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     /**
      * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.

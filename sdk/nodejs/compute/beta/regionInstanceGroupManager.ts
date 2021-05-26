@@ -145,9 +145,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceGroupManager'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -164,7 +161,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
-            inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -259,7 +255,6 @@ export interface RegionInstanceGroupManagerArgs {
      * [Output Only] The URL of the Instance Group resource.
      */
     readonly instanceGroup?: pulumi.Input<string>;
-    readonly instanceGroupManager: pulumi.Input<string>;
     /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */

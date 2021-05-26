@@ -94,9 +94,6 @@ export class HttpHealthCheck extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.httpHealthCheck === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'httpHealthCheck'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -105,7 +102,6 @@ export class HttpHealthCheck extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             inputs["host"] = args ? args.host : undefined;
-            inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -161,7 +157,6 @@ export interface HttpHealthCheckArgs {
      * The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
      */
     readonly host?: pulumi.Input<string>;
-    readonly httpHealthCheck: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

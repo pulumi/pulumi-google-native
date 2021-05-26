@@ -102,9 +102,6 @@ export class ScanConfig extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.scanConfigId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'scanConfigId'");
-            }
             inputs["authentication"] = args ? args.authentication : undefined;
             inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -115,7 +112,6 @@ export class ScanConfig extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["riskLevel"] = args ? args.riskLevel : undefined;
-            inputs["scanConfigId"] = args ? args.scanConfigId : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["startingUrls"] = args ? args.startingUrls : undefined;
             inputs["staticIpScan"] = args ? args.staticIpScan : undefined;
@@ -183,7 +179,6 @@ export interface ScanConfigArgs {
      * The risk level selected for the scan
      */
     readonly riskLevel?: pulumi.Input<string>;
-    readonly scanConfigId: pulumi.Input<string>;
     /**
      * The schedule of the ScanConfig.
      */

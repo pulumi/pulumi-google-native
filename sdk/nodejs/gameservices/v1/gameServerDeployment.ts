@@ -73,9 +73,6 @@ export class GameServerDeployment extends pulumi.CustomResource {
             if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            if ((!args || args.gameServerDeploymentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gameServerDeploymentId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -85,7 +82,6 @@ export class GameServerDeployment extends pulumi.CustomResource {
             inputs["deploymentId"] = args ? args.deploymentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["gameServerDeploymentId"] = args ? args.gameServerDeploymentId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -120,7 +116,6 @@ export interface GameServerDeploymentArgs {
      * ETag of the resource.
      */
     readonly etag?: pulumi.Input<string>;
-    readonly gameServerDeploymentId: pulumi.Input<string>;
     /**
      * The labels associated with this game server deployment. Each label is a key-value pair.
      */

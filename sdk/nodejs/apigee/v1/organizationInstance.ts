@@ -90,9 +90,6 @@ export class OrganizationInstance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -100,7 +97,6 @@ export class OrganizationInstance extends pulumi.CustomResource {
             inputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["environments"] = args ? args.environments : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
@@ -147,7 +143,6 @@ export interface OrganizationInstanceArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly environments?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
     /**
      * Required. Compute Engine location where the instance resides.
      */

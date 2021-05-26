@@ -75,9 +75,6 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.notificationEndpoint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notificationEndpoint'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -90,7 +87,6 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["notificationEndpoint"] = args ? args.notificationEndpoint : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
@@ -139,7 +135,6 @@ export interface RegionNotificationEndpointArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    readonly notificationEndpoint: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

@@ -65,14 +65,10 @@ export class OrganizationEnvironmentTraceConfigOverride extends pulumi.CustomRes
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.overrideId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'overrideId'");
-            }
             inputs["apiProxy"] = args ? args.apiProxy : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["overrideId"] = args ? args.overrideId : undefined;
             inputs["samplingConfig"] = args ? args.samplingConfig : undefined;
         } else {
             inputs["apiProxy"] = undefined /*out*/;
@@ -100,7 +96,6 @@ export interface OrganizationEnvironmentTraceConfigOverrideArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
-    readonly overrideId: pulumi.Input<string>;
     /**
      * Trace configuration to override.
      */

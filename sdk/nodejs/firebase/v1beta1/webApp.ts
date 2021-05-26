@@ -73,15 +73,11 @@ export class WebApp extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.webAppId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'webAppId'");
-            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["appUrls"] = args ? args.appUrls : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["webAppId"] = args ? args.webAppId : undefined;
             inputs["webId"] = undefined /*out*/;
         } else {
             inputs["appId"] = undefined /*out*/;
@@ -122,5 +118,4 @@ export interface WebAppArgs {
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
      */
     readonly project: pulumi.Input<string>;
-    readonly webAppId: pulumi.Input<string>;
 }

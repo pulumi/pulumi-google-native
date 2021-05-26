@@ -116,9 +116,6 @@ export class HistoryExecutionStep extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.stepId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'stepId'");
-            }
             inputs["completionTime"] = args ? args.completionTime : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -221,7 +218,7 @@ export interface HistoryExecutionStepArgs {
     /**
      * A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
      */
-    readonly stepId: pulumi.Input<string>;
+    readonly stepId?: pulumi.Input<string>;
     /**
      * An execution of a test runner.
      */

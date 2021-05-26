@@ -83,9 +83,6 @@ export class AgentKnowledgeBaseDocument extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.documentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'documentId'");
-            }
             if ((!args || args.knowledgeBaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'knowledgeBaseId'");
             }
@@ -94,7 +91,6 @@ export class AgentKnowledgeBaseDocument extends pulumi.CustomResource {
             }
             inputs["contentUri"] = args ? args.contentUri : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["documentId"] = args ? args.documentId : undefined;
             inputs["enableAutoReload"] = args ? args.enableAutoReload : undefined;
             inputs["knowledgeBaseId"] = args ? args.knowledgeBaseId : undefined;
             inputs["knowledgeTypes"] = args ? args.knowledgeTypes : undefined;
@@ -134,7 +130,6 @@ export interface AgentKnowledgeBaseDocumentArgs {
      * Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly documentId: pulumi.Input<string>;
     /**
      * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
      */

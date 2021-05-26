@@ -163,9 +163,6 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -183,7 +180,6 @@ export class Job extends pulumi.CustomResource {
             inputs["incentives"] = args ? args.incentives : undefined;
             inputs["jobBenefits"] = args ? args.jobBenefits : undefined;
             inputs["jobEndTime"] = args ? args.jobEndTime : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["jobLevel"] = args ? args.jobLevel : undefined;
             inputs["jobStartTime"] = args ? args.jobStartTime : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
@@ -298,7 +294,6 @@ export interface JobArgs {
      * Optional. The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
      */
     readonly jobEndTime?: pulumi.Input<string>;
-    readonly jobId: pulumi.Input<string>;
     /**
      * Optional. The experience level associated with the job, such as "Entry Level".
      */

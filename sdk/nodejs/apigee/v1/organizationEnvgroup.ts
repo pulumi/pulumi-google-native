@@ -66,13 +66,9 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.envgroupId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'envgroupId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["envgroupId"] = args ? args.envgroupId : undefined;
             inputs["hostnames"] = args ? args.hostnames : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
@@ -97,7 +93,6 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvgroup resource.
  */
 export interface OrganizationEnvgroupArgs {
-    readonly envgroupId: pulumi.Input<string>;
     /**
      * Required. Host names for this environment group.
      */

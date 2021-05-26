@@ -79,16 +79,12 @@ export class Dataset extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["blockingResources"] = args ? args.blockingResources : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["dataItemCount"] = args ? args.dataItemCount : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inputConfigs"] = args ? args.inputConfigs : undefined;
@@ -128,7 +124,6 @@ export interface DatasetArgs {
      * The number of data items in the dataset.
      */
     readonly dataItemCount?: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
      */

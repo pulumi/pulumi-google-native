@@ -101,14 +101,10 @@ export class AccountChannelPartnerLinkCustomer extends pulumi.CustomResource {
             if ((!args || args.channelPartnerLinkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'channelPartnerLinkId'");
             }
-            if ((!args || args.customerId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customerId'");
-            }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["alternateEmail"] = args ? args.alternateEmail : undefined;
             inputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
             inputs["channelPartnerLinkId"] = args ? args.channelPartnerLinkId : undefined;
-            inputs["customerId"] = args ? args.customerId : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
@@ -154,7 +150,6 @@ export interface AccountChannelPartnerLinkCustomerArgs {
      */
     readonly channelPartnerId?: pulumi.Input<string>;
     readonly channelPartnerLinkId: pulumi.Input<string>;
-    readonly customerId: pulumi.Input<string>;
     /**
      * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */

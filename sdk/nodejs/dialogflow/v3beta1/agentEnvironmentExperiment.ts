@@ -101,9 +101,6 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.experimentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'experimentId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -117,7 +114,6 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["experimentId"] = args ? args.experimentId : undefined;
             inputs["experimentLength"] = args ? args.experimentLength : undefined;
             inputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -174,7 +170,6 @@ export interface AgentEnvironmentExperimentArgs {
      */
     readonly endTime?: pulumi.Input<string>;
     readonly environmentId: pulumi.Input<string>;
-    readonly experimentId: pulumi.Input<string>;
     /**
      * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
      */

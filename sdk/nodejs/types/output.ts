@@ -736,24 +736,6 @@ export namespace apigee {
             enabled: boolean;
         }
 
-        /**
-         * the Api category resource.
-         */
-        export interface GoogleCloudApigeeV1ApiCategoryDataResponse {
-            /**
-             * Name of the category.
-             */
-            name: string;
-            /**
-             * Name of the portal.
-             */
-            siteId: string;
-            /**
-             * Time the category was last modified in milliseconds since epoch.
-             */
-            updateTime: string;
-        }
-
         export interface GoogleCloudApigeeV1ApiProductRefResponse {
             /**
              * Name of the API product.

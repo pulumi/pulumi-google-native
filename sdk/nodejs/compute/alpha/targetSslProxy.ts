@@ -89,9 +89,6 @@ export class TargetSslProxy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.targetSslProxy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetSslProxy'");
-            }
             inputs["certificateMap"] = args ? args.certificateMap : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -105,7 +102,6 @@ export class TargetSslProxy extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            inputs["targetSslProxy"] = args ? args.targetSslProxy : undefined;
         } else {
             inputs["certificateMap"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -175,5 +171,4 @@ export interface TargetSslProxyArgs {
      * URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
      */
     readonly sslPolicy?: pulumi.Input<string>;
-    readonly targetSslProxy: pulumi.Input<string>;
 }

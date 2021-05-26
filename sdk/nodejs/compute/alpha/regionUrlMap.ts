@@ -122,9 +122,6 @@ export class RegionUrlMap extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.urlMap === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'urlMap'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
             inputs["defaultService"] = args ? args.defaultService : undefined;
@@ -142,7 +139,6 @@ export class RegionUrlMap extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["tests"] = args ? args.tests : undefined;
-            inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["defaultRouteAction"] = undefined /*out*/;
@@ -245,5 +241,4 @@ export interface RegionUrlMapArgs {
      * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.alpha.UrlMapTestArgs>[]>;
-    readonly urlMap: pulumi.Input<string>;
 }

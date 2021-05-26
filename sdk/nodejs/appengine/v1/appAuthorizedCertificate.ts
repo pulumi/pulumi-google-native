@@ -82,11 +82,7 @@ export class AppAuthorizedCertificate extends pulumi.CustomResource {
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.authorizedCertificateId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authorizedCertificateId'");
-            }
             inputs["appId"] = args ? args.appId : undefined;
-            inputs["authorizedCertificateId"] = args ? args.authorizedCertificateId : undefined;
             inputs["certificateRawData"] = args ? args.certificateRawData : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["domainMappingsCount"] = args ? args.domainMappingsCount : undefined;
@@ -118,7 +114,6 @@ export class AppAuthorizedCertificate extends pulumi.CustomResource {
  */
 export interface AppAuthorizedCertificateArgs {
     readonly appId: pulumi.Input<string>;
-    readonly authorizedCertificateId: pulumi.Input<string>;
     /**
      * The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
      */

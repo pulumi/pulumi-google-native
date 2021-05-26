@@ -81,9 +81,6 @@ export class ConfigWaiter extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.waiterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'waiterId'");
-            }
             inputs["configId"] = args ? args.configId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["done"] = args ? args.done : undefined;
@@ -94,7 +91,6 @@ export class ConfigWaiter extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["success"] = args ? args.success : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["waiterId"] = args ? args.waiterId : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["done"] = undefined /*out*/;
@@ -146,5 +142,4 @@ export interface ConfigWaiterArgs {
      * [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
      */
     readonly timeout?: pulumi.Input<string>;
-    readonly waiterId: pulumi.Input<string>;
 }

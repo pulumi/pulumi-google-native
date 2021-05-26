@@ -18,7 +18,6 @@ export * from "./datasetConsentStoreUserDataMapping";
 export * from "./datasetDicomStore";
 export * from "./datasetDicomStoreIamPolicy";
 export * from "./datasetFhirStore";
-export * from "./datasetFhirStoreFhir";
 export * from "./datasetFhirStoreIamPolicy";
 export * from "./datasetHl7V2Store";
 export * from "./datasetHl7V2StoreIamPolicy";
@@ -39,7 +38,6 @@ import { DatasetConsentStoreUserDataMapping } from "./datasetConsentStoreUserDat
 import { DatasetDicomStore } from "./datasetDicomStore";
 import { DatasetDicomStoreIamPolicy } from "./datasetDicomStoreIamPolicy";
 import { DatasetFhirStore } from "./datasetFhirStore";
-import { DatasetFhirStoreFhir } from "./datasetFhirStoreFhir";
 import { DatasetFhirStoreIamPolicy } from "./datasetFhirStoreIamPolicy";
 import { DatasetHl7V2Store } from "./datasetHl7V2Store";
 import { DatasetHl7V2StoreIamPolicy } from "./datasetHl7V2StoreIamPolicy";
@@ -76,8 +74,6 @@ const _module = {
                 return new DatasetDicomStoreIamPolicy(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetFhirStore":
                 return new DatasetFhirStore(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1beta1:DatasetFhirStoreFhir":
-                return new DatasetFhirStoreFhir(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
                 return new DatasetFhirStoreIamPolicy(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetHl7V2Store":

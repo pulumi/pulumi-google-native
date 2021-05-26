@@ -66,15 +66,11 @@ export class Lien extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LienArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: LienArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.lienId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'lienId'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["lienId"] = args ? args.lienId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["origin"] = args ? args.origin : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -103,7 +99,6 @@ export interface LienArgs {
      * The creation time of this Lien.
      */
     readonly createTime?: pulumi.Input<string>;
-    readonly lienId: pulumi.Input<string>;
     /**
      * A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
      */

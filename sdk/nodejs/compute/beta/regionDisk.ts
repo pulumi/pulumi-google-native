@@ -242,9 +242,6 @@ export class RegionDisk extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.disk === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'disk'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -253,7 +250,6 @@ export class RegionDisk extends pulumi.CustomResource {
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["disk"] = args ? args.disk : undefined;
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
@@ -354,7 +350,6 @@ export interface RegionDiskArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
-    readonly disk: pulumi.Input<string>;
     /**
      * Encrypts the disk using a customer-supplied encryption key.
      *

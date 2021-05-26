@@ -106,9 +106,6 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.triggerId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'triggerId'");
-            }
             inputs["build"] = args ? args.build : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
@@ -122,7 +119,6 @@ export class Trigger extends pulumi.CustomResource {
             inputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
             inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
-            inputs["triggerId"] = args ? args.triggerId : undefined;
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
             inputs["createTime"] = undefined /*out*/;
         } else {
@@ -201,7 +197,6 @@ export interface TriggerArgs {
      * Tags for annotation of a `BuildTrigger`
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly triggerId: pulumi.Input<string>;
     /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
      */

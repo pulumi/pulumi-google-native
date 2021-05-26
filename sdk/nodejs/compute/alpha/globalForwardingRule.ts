@@ -246,9 +246,6 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.forwardingRule === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'forwardingRule'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -260,7 +257,6 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
-            inputs["forwardingRule"] = args ? args.forwardingRule : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
             inputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
@@ -388,7 +384,6 @@ export interface GlobalForwardingRuleArgs {
      * To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
      */
     readonly fingerprint?: pulumi.Input<string>;
-    readonly forwardingRule: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

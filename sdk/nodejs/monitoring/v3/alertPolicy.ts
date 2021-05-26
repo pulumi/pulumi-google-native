@@ -91,13 +91,9 @@ export class AlertPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.alertPolicyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'alertPolicyId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["alertPolicyId"] = args ? args.alertPolicyId : undefined;
             inputs["combiner"] = args ? args.combiner : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["creationRecord"] = args ? args.creationRecord : undefined;
@@ -134,7 +130,6 @@ export class AlertPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AlertPolicy resource.
  */
 export interface AlertPolicyArgs {
-    readonly alertPolicyId: pulumi.Input<string>;
     /**
      * How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
      */

@@ -251,9 +251,6 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clusterId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -265,7 +262,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["autopilot"] = args ? args.autopilot : undefined;
             inputs["autoscaling"] = args ? args.autoscaling : undefined;
             inputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
@@ -398,7 +394,6 @@ export interface ClusterArgs {
      * Configuration for Binary Authorization.
      */
     readonly binaryAuthorization?: pulumi.Input<inputs.container.v1.BinaryAuthorizationArgs>;
-    readonly clusterId: pulumi.Input<string>;
     /**
      * The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
      */

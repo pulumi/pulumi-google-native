@@ -100,9 +100,6 @@ export class QueueTask extends pulumi.CustomResource {
             if ((!args || args.queueId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
-            if ((!args || args.taskId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'taskId'");
-            }
             inputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["dispatchCount"] = args ? args.dispatchCount : undefined;
@@ -117,7 +114,6 @@ export class QueueTask extends pulumi.CustomResource {
             inputs["responseCount"] = args ? args.responseCount : undefined;
             inputs["responseView"] = args ? args.responseView : undefined;
             inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
-            inputs["taskId"] = args ? args.taskId : undefined;
             inputs["view"] = args ? args.view : undefined;
         } else {
             inputs["appEngineHttpRequest"] = undefined /*out*/;
@@ -190,7 +186,6 @@ export interface QueueTaskArgs {
      * The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
      */
     readonly scheduleTime?: pulumi.Input<string>;
-    readonly taskId: pulumi.Input<string>;
     /**
      * The view specifies which subset of the Task has been returned.
      */

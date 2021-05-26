@@ -87,9 +87,6 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.groupId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'groupId'");
-            }
             if ((!args || args.initialGroupConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialGroupConfig'");
             }
@@ -97,7 +94,6 @@ export class Group extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
             inputs["groupKey"] = args ? args.groupKey : undefined;
             inputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -144,7 +140,6 @@ export interface GroupArgs {
      * Optional. Dynamic group metadata like queries and status.
      */
     readonly dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1beta1.DynamicGroupMetadataArgs>;
-    readonly groupId: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the `Group`.
      */

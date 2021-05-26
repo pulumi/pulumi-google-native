@@ -80,9 +80,6 @@ export class SecuritySetting extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.securitySettingId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securitySettingId'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectTemplate"] = args ? args.inspectTemplate : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -92,7 +89,6 @@ export class SecuritySetting extends pulumi.CustomResource {
             inputs["redactionScope"] = args ? args.redactionScope : undefined;
             inputs["redactionStrategy"] = args ? args.redactionStrategy : undefined;
             inputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
-            inputs["securitySettingId"] = args ? args.securitySettingId : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
             inputs["inspectTemplate"] = undefined /*out*/;
@@ -143,5 +139,4 @@ export interface SecuritySettingArgs {
      * Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
      */
     readonly retentionWindowDays?: pulumi.Input<number>;
-    readonly securitySettingId: pulumi.Input<string>;
 }

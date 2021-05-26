@@ -72,9 +72,6 @@ export class Policy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.policy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'policy'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -87,7 +84,6 @@ export class Policy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
             inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["alternativeNameServerConfig"] = undefined /*out*/;
@@ -139,6 +135,5 @@ export interface PolicyArgs {
      * List of network names specifying networks to which this policy is applied.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.PolicyNetworkArgs>[]>;
-    readonly policy: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
 }

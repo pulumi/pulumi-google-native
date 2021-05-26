@@ -68,9 +68,6 @@ export class Change extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.changeId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'changeId'");
-            }
             if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
@@ -78,7 +75,6 @@ export class Change extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["additions"] = args ? args.additions : undefined;
-            inputs["changeId"] = args ? args.changeId : undefined;
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["deletions"] = args ? args.deletions : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -111,7 +107,6 @@ export interface ChangeArgs {
      * Which ResourceRecordSets to add?
      */
     readonly additions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSetArgs>[]>;
-    readonly changeId: pulumi.Input<string>;
     readonly clientOperationId?: pulumi.Input<string>;
     /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.

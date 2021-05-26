@@ -59,9 +59,6 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.aliasId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'aliasId'");
-            }
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
@@ -75,7 +72,6 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["alias"] = args ? args.alias : undefined;
-            inputs["aliasId"] = args ? args.aliasId : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
@@ -105,7 +101,6 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
  */
 export interface OrganizationEnvironmentKeystoreAliasArgs {
     readonly alias?: pulumi.Input<string>;
-    readonly aliasId: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */

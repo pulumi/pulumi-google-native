@@ -70,9 +70,6 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             if ((!args || args.responsePolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicy'");
             }
-            if ((!args || args.responsePolicyRule === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'responsePolicyRule'");
-            }
             inputs["behavior"] = args ? args.behavior : undefined;
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
@@ -80,7 +77,6 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             inputs["localData"] = args ? args.localData : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["responsePolicy"] = args ? args.responsePolicy : undefined;
-            inputs["responsePolicyRule"] = args ? args.responsePolicyRule : undefined;
             inputs["ruleName"] = args ? args.ruleName : undefined;
         } else {
             inputs["behavior"] = undefined /*out*/;
@@ -116,7 +112,6 @@ export interface ResponsePolicyRuleArgs {
     readonly localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalDataArgs>;
     readonly project: pulumi.Input<string>;
     readonly responsePolicy: pulumi.Input<string>;
-    readonly responsePolicyRule: pulumi.Input<string>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      */

@@ -111,9 +111,6 @@ export class RegistryDevice extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deviceId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -126,7 +123,6 @@ export class RegistryDevice extends pulumi.CustomResource {
             inputs["blocked"] = args ? args.blocked : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["deviceId"] = args ? args.deviceId : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["lastConfigAckTime"] = args ? args.lastConfigAckTime : undefined;
@@ -185,7 +181,6 @@ export interface RegistryDeviceArgs {
      * The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
      */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.cloudiot.v1.DeviceCredentialArgs>[]>;
-    readonly deviceId: pulumi.Input<string>;
     /**
      * Gateway-related configuration and state.
      */

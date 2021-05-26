@@ -66,14 +66,10 @@ export class Ruleset extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.rulesetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rulesetId'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["rulesetId"] = args ? args.rulesetId : undefined;
             inputs["source"] = args ? args.source : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
@@ -105,7 +101,6 @@ export interface RulesetArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly rulesetId: pulumi.Input<string>;
     /**
      * `Source` for the `Ruleset`.
      */

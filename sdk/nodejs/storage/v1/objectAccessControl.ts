@@ -109,9 +109,6 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.entity === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entity'");
-            }
             if ((!args || args.object === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'object'");
             }
@@ -181,7 +178,7 @@ export interface ObjectAccessControlArgs {
      * - The group example@googlegroups.com would be group-example@googlegroups.com. 
      * - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
      */
-    readonly entity: pulumi.Input<string>;
+    readonly entity?: pulumi.Input<string>;
     /**
      * The ID for the entity, if any.
      */

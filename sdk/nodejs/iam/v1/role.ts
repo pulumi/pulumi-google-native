@@ -77,9 +77,6 @@ export class Role extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'roleId'");
-            }
             inputs["deleted"] = args ? args.deleted : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -133,7 +130,7 @@ export interface RoleArgs {
     /**
      * The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
      */
-    readonly roleId: pulumi.Input<string>;
+    readonly roleId?: pulumi.Input<string>;
     /**
      * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
      */

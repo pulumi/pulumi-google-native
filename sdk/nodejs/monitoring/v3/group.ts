@@ -66,15 +66,11 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.groupId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'groupId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["filter"] = args ? args.filter : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
             inputs["isCluster"] = args ? args.isCluster : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parentName"] = args ? args.parentName : undefined;
@@ -106,7 +102,6 @@ export interface GroupArgs {
      * The filter used to determine which monitored resources belong to this group.
      */
     readonly filter?: pulumi.Input<string>;
-    readonly groupId: pulumi.Input<string>;
     /**
      * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
      */

@@ -127,9 +127,6 @@ export class AgentIntent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.intentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'intentId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -143,7 +140,6 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["events"] = args ? args.events : undefined;
             inputs["followupIntentInfo"] = args ? args.followupIntentInfo : undefined;
             inputs["inputContextNames"] = args ? args.inputContextNames : undefined;
-            inputs["intentId"] = args ? args.intentId : undefined;
             inputs["intentView"] = args ? args.intentView : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
@@ -222,7 +218,6 @@ export interface AgentIntentArgs {
      * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
      */
     readonly inputContextNames?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly intentId: pulumi.Input<string>;
     readonly intentView?: pulumi.Input<string>;
     /**
      * Optional. Indicates whether this is a fallback intent.

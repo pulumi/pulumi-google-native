@@ -91,9 +91,6 @@ export class MetricDescriptor extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.metricDescriptorId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metricDescriptorId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -102,7 +99,6 @@ export class MetricDescriptor extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["launchStage"] = args ? args.launchStage : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["metricDescriptorId"] = args ? args.metricDescriptorId : undefined;
             inputs["metricKind"] = args ? args.metricKind : undefined;
             inputs["monitoredResourceTypes"] = args ? args.monitoredResourceTypes : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -154,7 +150,6 @@ export interface MetricDescriptorArgs {
      * Optional. Metadata which can be used to guide usage of the metric.
      */
     readonly metadata?: pulumi.Input<inputs.monitoring.v3.MetricDescriptorMetadataArgs>;
-    readonly metricDescriptorId: pulumi.Input<string>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
      */

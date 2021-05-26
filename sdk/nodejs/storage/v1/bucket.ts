@@ -155,15 +155,11 @@ export class Bucket extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.bucket === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'bucket'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["acl"] = args ? args.acl : undefined;
             inputs["billing"] = args ? args.billing : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
             inputs["cors"] = args ? args.cors : undefined;
             inputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             inputs["defaultObjectAcl"] = args ? args.defaultObjectAcl : undefined;
@@ -244,7 +240,6 @@ export interface BucketArgs {
      * The bucket's billing configuration.
      */
     readonly billing?: pulumi.Input<inputs.storage.v1.BucketBillingArgs>;
-    readonly bucket: pulumi.Input<string>;
     /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */

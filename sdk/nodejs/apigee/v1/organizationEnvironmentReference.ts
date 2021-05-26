@@ -68,14 +68,10 @@ export class OrganizationEnvironmentReference extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.referenceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'referenceId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["referenceId"] = args ? args.referenceId : undefined;
             inputs["refers"] = args ? args.refers : undefined;
             inputs["resourceType"] = args ? args.resourceType : undefined;
         } else {
@@ -105,7 +101,6 @@ export interface OrganizationEnvironmentReferenceArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
-    readonly referenceId: pulumi.Input<string>;
     /**
      * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
      */

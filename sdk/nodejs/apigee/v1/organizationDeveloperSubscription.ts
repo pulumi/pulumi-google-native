@@ -76,15 +76,11 @@ export class OrganizationDeveloperSubscription extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.subscriptionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subscriptionId'");
-            }
             inputs["apiproduct"] = args ? args.apiproduct : undefined;
             inputs["developerId"] = args ? args.developerId : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -121,5 +117,4 @@ export interface OrganizationDeveloperSubscriptionArgs {
      * Time when the API product subscription starts in milliseconds since epoch.
      */
     readonly startTime?: pulumi.Input<string>;
-    readonly subscriptionId: pulumi.Input<string>;
 }

@@ -100,9 +100,6 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.publicAdvertisedPrefix === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'publicAdvertisedPrefix'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
@@ -112,7 +109,6 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["publicAdvertisedPrefix"] = args ? args.publicAdvertisedPrefix : undefined;
             inputs["publicDelegatedPrefixs"] = args ? args.publicDelegatedPrefixs : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -179,7 +175,6 @@ export interface PublicAdvertisedPrefixArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly publicAdvertisedPrefix: pulumi.Input<string>;
     /**
      * [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
      */

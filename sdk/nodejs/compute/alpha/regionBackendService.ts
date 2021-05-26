@@ -242,9 +242,6 @@ export class RegionBackendService extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.backendService === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backendService'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -252,7 +249,6 @@ export class RegionBackendService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
-            inputs["backendService"] = args ? args.backendService : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
@@ -348,7 +344,6 @@ export interface RegionBackendServiceArgs {
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
-    readonly backendService: pulumi.Input<string>;
     /**
      * The list of backends that serve this BackendService.
      */

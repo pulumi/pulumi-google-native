@@ -13,7 +13,6 @@ export * from "./organizationApiproductRateplan";
 export * from "./organizationDatacollector";
 export * from "./organizationDeveloper";
 export * from "./organizationDeveloperApp";
-export * from "./organizationDeveloperAppKey";
 export * from "./organizationDeveloperSubscription";
 export * from "./organizationEnvgroup";
 export * from "./organizationEnvgroupAttachment";
@@ -35,7 +34,6 @@ export * from "./organizationInstanceCanaryevaluation";
 export * from "./organizationInstanceNatAddress";
 export * from "./organizationReport";
 export * from "./organizationSharedflow";
-export * from "./organizationSiteApicategory";
 
 // Import resources to register:
 import { Organization } from "./organization";
@@ -46,7 +44,6 @@ import { OrganizationApiproductRateplan } from "./organizationApiproductRateplan
 import { OrganizationDatacollector } from "./organizationDatacollector";
 import { OrganizationDeveloper } from "./organizationDeveloper";
 import { OrganizationDeveloperApp } from "./organizationDeveloperApp";
-import { OrganizationDeveloperAppKey } from "./organizationDeveloperAppKey";
 import { OrganizationDeveloperSubscription } from "./organizationDeveloperSubscription";
 import { OrganizationEnvgroup } from "./organizationEnvgroup";
 import { OrganizationEnvgroupAttachment } from "./organizationEnvgroupAttachment";
@@ -68,7 +65,6 @@ import { OrganizationInstanceCanaryevaluation } from "./organizationInstanceCana
 import { OrganizationInstanceNatAddress } from "./organizationInstanceNatAddress";
 import { OrganizationReport } from "./organizationReport";
 import { OrganizationSharedflow } from "./organizationSharedflow";
-import { OrganizationSiteApicategory } from "./organizationSiteApicategory";
 
 const _module = {
     version: utilities.getVersion(),
@@ -90,8 +86,6 @@ const _module = {
                 return new OrganizationDeveloper(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationDeveloperApp":
                 return new OrganizationDeveloperApp(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationDeveloperAppKey":
-                return new OrganizationDeveloperAppKey(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationDeveloperSubscription":
                 return new OrganizationDeveloperSubscription(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationEnvgroup":
@@ -134,8 +128,6 @@ const _module = {
                 return new OrganizationReport(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationSharedflow":
                 return new OrganizationSharedflow(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationSiteApicategory":
-                return new OrganizationSiteApicategory(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

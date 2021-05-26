@@ -151,9 +151,6 @@ export class VpnTunnel extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.vpnTunnel === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vpnTunnel'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["detailedStatus"] = args ? args.detailedStatus : undefined;
@@ -178,7 +175,6 @@ export class VpnTunnel extends pulumi.CustomResource {
             inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
             inputs["vpnGateway"] = args ? args.vpnGateway : undefined;
             inputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
-            inputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -318,5 +314,4 @@ export interface VpnTunnelArgs {
      * The interface ID of the VPN gateway with which this VPN tunnel is associated.
      */
     readonly vpnGatewayInterface?: pulumi.Input<number>;
-    readonly vpnTunnel: pulumi.Input<string>;
 }

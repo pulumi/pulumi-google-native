@@ -98,13 +98,9 @@ export class AccountCustomer extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.customerId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customerId'");
-            }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["alternateEmail"] = args ? args.alternateEmail : undefined;
             inputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
-            inputs["customerId"] = args ? args.customerId : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
@@ -149,7 +145,6 @@ export interface AccountCustomerArgs {
      * Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
      */
     readonly channelPartnerId?: pulumi.Input<string>;
-    readonly customerId: pulumi.Input<string>;
     /**
      * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */

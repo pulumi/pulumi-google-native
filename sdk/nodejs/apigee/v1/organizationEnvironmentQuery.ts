@@ -105,9 +105,6 @@ export class OrganizationEnvironmentQuery extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.queryId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'queryId'");
-            }
             inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
             inputs["envgroupHostname"] = args ? args.envgroupHostname : undefined;
@@ -119,7 +116,6 @@ export class OrganizationEnvironmentQuery extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
-            inputs["queryId"] = args ? args.queryId : undefined;
             inputs["reportDefinitionId"] = args ? args.reportDefinitionId : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
             inputs["created"] = undefined /*out*/;
@@ -196,7 +192,6 @@ export interface OrganizationEnvironmentQueryArgs {
      * Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
      */
     readonly outputFormat?: pulumi.Input<string>;
-    readonly queryId: pulumi.Input<string>;
     /**
      * Asynchronous Report ID.
      */

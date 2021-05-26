@@ -58,12 +58,8 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'policyId'");
-            }
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["policyId"] = args ? args.policyId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -85,7 +81,6 @@ export interface OrganizationPolicyArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
-    readonly policyId: pulumi.Input<string>;
     /**
      * Basic information about the Organization Policy.
      */

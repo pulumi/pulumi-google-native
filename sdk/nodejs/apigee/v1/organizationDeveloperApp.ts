@@ -99,9 +99,6 @@ export class OrganizationDeveloperApp extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appId'");
-            }
             if ((!args || args.developerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'developerId'");
             }
@@ -159,7 +156,7 @@ export interface OrganizationDeveloperAppArgs {
     /**
      * ID of the developer app.
      */
-    readonly appId: pulumi.Input<string>;
+    readonly appId?: pulumi.Input<string>;
     /**
      * List of attributes for the developer app.
      */

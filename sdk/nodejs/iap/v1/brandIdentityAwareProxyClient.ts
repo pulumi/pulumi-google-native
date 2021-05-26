@@ -61,15 +61,11 @@ export class BrandIdentityAwareProxyClient extends pulumi.CustomResource {
             if ((!args || args.brandId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'brandId'");
             }
-            if ((!args || args.identityAwareProxyClientId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'identityAwareProxyClientId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["brandId"] = args ? args.brandId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["identityAwareProxyClientId"] = args ? args.identityAwareProxyClientId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["secret"] = undefined /*out*/;
@@ -94,6 +90,5 @@ export interface BrandIdentityAwareProxyClientArgs {
      * Human-friendly name given to the OAuth client.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly identityAwareProxyClientId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
 }

@@ -63,14 +63,10 @@ export class OrganizationApi extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apiId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apiId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["action"] = args ? args.action : undefined;
-            inputs["apiId"] = args ? args.apiId : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
@@ -98,7 +94,6 @@ export class OrganizationApi extends pulumi.CustomResource {
  */
 export interface OrganizationApiArgs {
     readonly action?: pulumi.Input<string>;
-    readonly apiId: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */

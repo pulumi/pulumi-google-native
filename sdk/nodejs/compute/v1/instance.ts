@@ -206,9 +206,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instance'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -228,7 +225,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["hostname"] = args ? args.hostname : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -360,7 +356,6 @@ export interface InstanceArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
-    readonly instance: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#instance for instances.
      */

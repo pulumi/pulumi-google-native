@@ -94,9 +94,6 @@ export class FolderSink extends pulumi.CustomResource {
             if ((!args || args.folderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderId'");
             }
-            if ((!args || args.sinkId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sinkId'");
-            }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
@@ -106,7 +103,6 @@ export class FolderSink extends pulumi.CustomResource {
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["sinkId"] = args ? args.sinkId : undefined;
             inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -168,6 +164,5 @@ export interface FolderSinkArgs {
      * Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     readonly name?: pulumi.Input<string>;
-    readonly sinkId: pulumi.Input<string>;
     readonly uniqueWriterIdentity?: pulumi.Input<string>;
 }

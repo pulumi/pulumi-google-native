@@ -85,9 +85,6 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.targetGrpcProxy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetGrpcProxy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
@@ -98,7 +95,6 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
-            inputs["targetGrpcProxy"] = args ? args.targetGrpcProxy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
             inputs["validateForProxyless"] = args ? args.validateForProxyless : undefined;
         } else {
@@ -157,7 +153,6 @@ export interface TargetGrpcProxyArgs {
      * [Output Only] Server-defined URL with id for the resource.
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
-    readonly targetGrpcProxy: pulumi.Input<string>;
     /**
      * URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
      */

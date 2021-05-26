@@ -77,9 +77,6 @@ export class OrganizationEnvironmentTargetserver extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.targetserverId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetserverId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["host"] = args ? args.host : undefined;
@@ -88,7 +85,6 @@ export class OrganizationEnvironmentTargetserver extends pulumi.CustomResource {
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["sSLInfo"] = args ? args.sSLInfo : undefined;
-            inputs["targetserverId"] = args ? args.targetserverId : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
@@ -134,5 +130,4 @@ export interface OrganizationEnvironmentTargetserverArgs {
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */
     readonly sSLInfo?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TlsInfoArgs>;
-    readonly targetserverId: pulumi.Input<string>;
 }

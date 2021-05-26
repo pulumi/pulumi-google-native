@@ -94,9 +94,6 @@ export class OrganizationSink extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.sinkId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sinkId'");
-            }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
@@ -106,7 +103,6 @@ export class OrganizationSink extends pulumi.CustomResource {
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["sinkId"] = args ? args.sinkId : undefined;
             inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -168,6 +164,5 @@ export interface OrganizationSinkArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
-    readonly sinkId: pulumi.Input<string>;
     readonly uniqueWriterIdentity?: pulumi.Input<string>;
 }

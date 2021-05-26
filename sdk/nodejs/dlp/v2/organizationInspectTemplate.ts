@@ -71,9 +71,6 @@ export class OrganizationInspectTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.inspectTemplateId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'inspectTemplateId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -83,7 +80,6 @@ export class OrganizationInspectTemplate extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectConfig"] = args ? args.inspectConfig : undefined;
-            inputs["inspectTemplateId"] = args ? args.inspectTemplateId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
@@ -121,7 +117,6 @@ export interface OrganizationInspectTemplateArgs {
      * The core content of the template. Configuration of the scanning process.
      */
     readonly inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
-    readonly inspectTemplateId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
     /**

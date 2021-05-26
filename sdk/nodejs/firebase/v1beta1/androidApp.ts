@@ -66,13 +66,9 @@ export class AndroidApp extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.androidAppId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'androidAppId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["androidAppId"] = args ? args.androidAppId : undefined;
             inputs["appId"] = args ? args.appId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -96,7 +92,6 @@ export class AndroidApp extends pulumi.CustomResource {
  * The set of arguments for constructing a AndroidApp resource.
  */
 export interface AndroidAppArgs {
-    readonly androidAppId: pulumi.Input<string>;
     /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */

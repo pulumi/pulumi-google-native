@@ -79,9 +79,6 @@ export class HistoryExecution extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.executionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'executionId'");
-            }
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
@@ -135,7 +132,7 @@ export interface HistoryExecutionArgs {
     /**
      * A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
      */
-    readonly executionId: pulumi.Input<string>;
+    readonly executionId?: pulumi.Input<string>;
     readonly historyId: pulumi.Input<string>;
     /**
      * Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional

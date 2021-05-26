@@ -81,9 +81,6 @@ export class Registry extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.registryId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'registryId'");
-            }
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = args ? args.httpConfig : undefined;
@@ -93,7 +90,6 @@ export class Registry extends pulumi.CustomResource {
             inputs["mqttConfig"] = args ? args.mqttConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["registryId"] = args ? args.registryId : undefined;
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         } else {
             inputs["credentials"] = undefined /*out*/;
@@ -145,7 +141,6 @@ export interface RegistryArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly registryId: pulumi.Input<string>;
     /**
      * The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
      */

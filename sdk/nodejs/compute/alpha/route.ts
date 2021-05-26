@@ -134,9 +134,6 @@ export class Route extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.route === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'route'");
-            }
             inputs["allowConflictingSubnetworks"] = args ? args.allowConflictingSubnetworks : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -156,7 +153,6 @@ export class Route extends pulumi.CustomResource {
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["route"] = args ? args.route : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -268,7 +264,6 @@ export interface RouteArgs {
     readonly priority?: pulumi.Input<number>;
     readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
-    readonly route: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */

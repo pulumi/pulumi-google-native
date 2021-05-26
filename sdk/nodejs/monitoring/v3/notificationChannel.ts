@@ -87,9 +87,6 @@ export class NotificationChannel extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.notificationChannelId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notificationChannelId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -100,7 +97,6 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["mutationRecords"] = args ? args.mutationRecords : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["notificationChannelId"] = args ? args.notificationChannelId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["userLabels"] = args ? args.userLabels : undefined;
@@ -156,7 +152,6 @@ export interface NotificationChannelArgs {
      * The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
      */
     readonly name?: pulumi.Input<string>;
-    readonly notificationChannelId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.

@@ -71,14 +71,10 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sessionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sessionId'");
-            }
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["sessionId"] = args ? args.sessionId : undefined;
             inputs["approximateLastUseTime"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -106,5 +102,4 @@ export interface InstanceDatabaseSessionArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly project: pulumi.Input<string>;
-    readonly sessionId: pulumi.Input<string>;
 }

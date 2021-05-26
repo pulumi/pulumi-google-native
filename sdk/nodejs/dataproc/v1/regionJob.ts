@@ -123,9 +123,6 @@ export class RegionJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -134,7 +131,6 @@ export class RegionJob extends pulumi.CustomResource {
             }
             inputs["hadoopJob"] = args ? args.hadoopJob : undefined;
             inputs["hiveJob"] = args ? args.hiveJob : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["pigJob"] = args ? args.pigJob : undefined;
             inputs["placement"] = args ? args.placement : undefined;
@@ -195,7 +191,6 @@ export interface RegionJobArgs {
      * Optional. Job is a Hive job.
      */
     readonly hiveJob?: pulumi.Input<inputs.dataproc.v1.HiveJobArgs>;
-    readonly jobId: pulumi.Input<string>;
     /**
      * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
      */

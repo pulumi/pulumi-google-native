@@ -117,9 +117,6 @@ export class GlobalAddress extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.address === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'address'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -174,7 +171,7 @@ export interface GlobalAddressArgs {
     /**
      * The static IP address represented by this resource.
      */
-    readonly address: pulumi.Input<string>;
+    readonly address?: pulumi.Input<string>;
     /**
      * The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
      */

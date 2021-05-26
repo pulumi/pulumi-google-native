@@ -71,9 +71,6 @@ export class Feed extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.feedId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'feedId'");
-            }
             if ((!args || args.v1Id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v1Id'");
             }
@@ -127,7 +124,7 @@ export interface FeedArgs {
     /**
      * Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
      */
-    readonly feedId: pulumi.Input<string>;
+    readonly feedId?: pulumi.Input<string>;
     /**
      * Required. Feed output configuration defining where the asset updates are published to.
      */

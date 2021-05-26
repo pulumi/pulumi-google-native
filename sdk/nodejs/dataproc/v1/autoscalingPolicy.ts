@@ -60,16 +60,12 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.autoscalingPolicyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'autoscalingPolicyId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["autoscalingPolicyId"] = args ? args.autoscalingPolicyId : undefined;
             inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -94,7 +90,6 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AutoscalingPolicy resource.
  */
 export interface AutoscalingPolicyArgs {
-    readonly autoscalingPolicyId: pulumi.Input<string>;
     readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
     /**
      * Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.

@@ -83,9 +83,6 @@ export class Instruction extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instructionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instructionId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -95,7 +92,6 @@ export class Instruction extends pulumi.CustomResource {
             inputs["dataType"] = args ? args.dataType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["instructionId"] = args ? args.instructionId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pdfInstruction"] = args ? args.pdfInstruction : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -146,7 +142,6 @@ export interface InstructionArgs {
      * Required. The display name of the instruction. Maximum of 64 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly instructionId: pulumi.Input<string>;
     /**
      * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
      */

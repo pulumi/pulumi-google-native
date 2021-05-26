@@ -157,9 +157,6 @@ export class ModelVersion extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.versionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionId'");
-            }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             inputs["autoScaling"] = args ? args.autoScaling : undefined;
             inputs["container"] = args ? args.container : undefined;
@@ -186,7 +183,6 @@ export class ModelVersion extends pulumi.CustomResource {
             inputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
             inputs["lastMigrationModelId"] = undefined /*out*/;
             inputs["lastMigrationTime"] = undefined /*out*/;
         } else {
@@ -326,5 +322,4 @@ export interface ModelVersionArgs {
      * The state of a version.
      */
     readonly state?: pulumi.Input<string>;
-    readonly versionId: pulumi.Input<string>;
 }

@@ -73,13 +73,9 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.exclusionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'exclusionId'");
-            }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["exclusionId"] = args ? args.exclusionId : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -112,7 +108,6 @@ export interface BillingAccountExclusionArgs {
      * Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
      */
     readonly disabled?: pulumi.Input<boolean>;
-    readonly exclusionId: pulumi.Input<string>;
     /**
      * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
      */

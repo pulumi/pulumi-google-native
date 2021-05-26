@@ -79,9 +79,6 @@ export class Model extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.modelId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'modelId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -89,7 +86,6 @@ export class Model extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["modelId"] = args ? args.modelId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["onlinePredictionConsoleLogging"] = args ? args.onlinePredictionConsoleLogging : undefined;
             inputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
@@ -132,7 +128,6 @@ export interface ModelArgs {
      * Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly modelId: pulumi.Input<string>;
     /**
      * Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
      */

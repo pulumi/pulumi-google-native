@@ -75,16 +75,12 @@ export class Glossary extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.glossaryId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'glossaryId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["glossaryId"] = args ? args.glossaryId : undefined;
             inputs["inputConfig"] = args ? args.inputConfig : undefined;
             inputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
             inputs["languagePair"] = args ? args.languagePair : undefined;
@@ -114,7 +110,6 @@ export class Glossary extends pulumi.CustomResource {
  * The set of arguments for constructing a Glossary resource.
  */
 export interface GlossaryArgs {
-    readonly glossaryId: pulumi.Input<string>;
     /**
      * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */

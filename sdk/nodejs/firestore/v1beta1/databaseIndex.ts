@@ -66,16 +66,12 @@ export class DatabaseIndex extends pulumi.CustomResource {
             if ((!args || args.databaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseId'");
             }
-            if ((!args || args.indexId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'indexId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["collectionId"] = args ? args.collectionId : undefined;
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["fields"] = args ? args.fields : undefined;
-            inputs["indexId"] = args ? args.indexId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -105,7 +101,6 @@ export interface DatabaseIndexArgs {
      * The fields to index.
      */
     readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1beta1.GoogleFirestoreAdminV1beta1IndexFieldArgs>[]>;
-    readonly indexId: pulumi.Input<string>;
     /**
      * The resource name of the index. Output only.
      */

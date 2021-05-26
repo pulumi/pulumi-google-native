@@ -57,13 +57,9 @@ export class Tenant extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tenantId'");
-            }
             inputs["externalId"] = args ? args.externalId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
         } else {
             inputs["externalId"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -88,5 +84,4 @@ export interface TenantArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly tenantId: pulumi.Input<string>;
 }

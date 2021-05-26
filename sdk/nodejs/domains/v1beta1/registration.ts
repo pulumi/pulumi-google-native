@@ -101,9 +101,6 @@ export class Registration extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.registrationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'registrationId'");
-            }
             inputs["contactNotices"] = args ? args.contactNotices : undefined;
             inputs["contactSettings"] = args ? args.contactSettings : undefined;
             inputs["dnsSettings"] = args ? args.dnsSettings : undefined;
@@ -113,7 +110,6 @@ export class Registration extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["managementSettings"] = args ? args.managementSettings : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["registrationId"] = args ? args.registrationId : undefined;
             inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["yearlyPrice"] = args ? args.yearlyPrice : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -178,7 +174,6 @@ export interface RegistrationArgs {
      */
     readonly managementSettings?: pulumi.Input<inputs.domains.v1beta1.ManagementSettingsArgs>;
     readonly project: pulumi.Input<string>;
-    readonly registrationId: pulumi.Input<string>;
     /**
      * When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
      */

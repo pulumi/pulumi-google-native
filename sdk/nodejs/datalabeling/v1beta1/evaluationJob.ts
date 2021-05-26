@@ -87,9 +87,6 @@ export class EvaluationJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.evaluationJobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'evaluationJobId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -98,7 +95,6 @@ export class EvaluationJob extends pulumi.CustomResource {
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["evaluationJobConfig"] = args ? args.evaluationJobConfig : undefined;
-            inputs["evaluationJobId"] = args ? args.evaluationJobId : undefined;
             inputs["labelMissingGroundTruth"] = args ? args.labelMissingGroundTruth : undefined;
             inputs["modelVersion"] = args ? args.modelVersion : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -148,7 +144,6 @@ export interface EvaluationJobArgs {
      * Required. Configuration details for the evaluation job.
      */
     readonly evaluationJobConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs>;
-    readonly evaluationJobId: pulumi.Input<string>;
     /**
      * Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
      */
