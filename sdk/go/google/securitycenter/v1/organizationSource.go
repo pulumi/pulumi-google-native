@@ -35,9 +35,6 @@ func NewOrganizationSource(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SourceId == nil {
-		return nil, errors.New("invalid value for required argument 'SourceId'")
-	}
 	var resource OrganizationSource
 	err := ctx.RegisterResource("google-native:securitycenter/v1:OrganizationSource", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +92,6 @@ type organizationSourceArgs struct {
 	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
-	SourceId       string  `pulumi:"sourceId"`
 }
 
 // The set of arguments for constructing a OrganizationSource resource.
@@ -109,7 +105,6 @@ type OrganizationSourceArgs struct {
 	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
-	SourceId       pulumi.StringInput
 }
 
 func (OrganizationSourceArgs) ElementType() reflect.Type {

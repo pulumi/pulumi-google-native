@@ -56,9 +56,6 @@ func NewRegionCommitment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Commitment == nil {
-		return nil, errors.New("invalid value for required argument 'Commitment'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -162,8 +159,7 @@ func (RegionCommitmentState) ElementType() reflect.Type {
 
 type regionCommitmentArgs struct {
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category   *string `pulumi:"category"`
-	Commitment string  `pulumi:"commitment"`
+	Category *string `pulumi:"category"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -203,8 +199,7 @@ type regionCommitmentArgs struct {
 // The set of arguments for constructing a RegionCommitment resource.
 type RegionCommitmentArgs struct {
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category   pulumi.StringPtrInput
-	Commitment pulumi.StringInput
+	Category pulumi.StringPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.

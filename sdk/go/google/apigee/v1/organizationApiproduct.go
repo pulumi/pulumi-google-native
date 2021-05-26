@@ -55,9 +55,6 @@ func NewOrganizationApiproduct(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApiproductId == nil {
-		return nil, errors.New("invalid value for required argument 'ApiproductId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -156,7 +153,6 @@ func (OrganizationApiproductState) ElementType() reflect.Type {
 
 type organizationApiproductArgs struct {
 	ApiResources []string `pulumi:"apiResources"`
-	ApiproductId string   `pulumi:"apiproductId"`
 	// Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
 	ApprovalType *string `pulumi:"approvalType"`
 	// Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.
@@ -193,7 +189,6 @@ type organizationApiproductArgs struct {
 // The set of arguments for constructing a OrganizationApiproduct resource.
 type OrganizationApiproductArgs struct {
 	ApiResources pulumi.StringArrayInput
-	ApiproductId pulumi.StringInput
 	// Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
 	ApprovalType pulumi.StringPtrInput
 	// Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.

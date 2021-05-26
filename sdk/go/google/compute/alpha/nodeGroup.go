@@ -54,9 +54,6 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args.InitialNodeCount == nil {
 		return nil, errors.New("invalid value for required argument 'InitialNodeCount'")
 	}
-	if args.NodeGroup == nil {
-		return nil, errors.New("invalid value for required argument 'NodeGroup'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -167,8 +164,7 @@ type nodeGroupArgs struct {
 	MaintenancePolicy *string                     `pulumi:"maintenancePolicy"`
 	MaintenanceWindow *NodeGroupMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name      *string `pulumi:"name"`
-	NodeGroup string  `pulumi:"nodeGroup"`
+	Name *string `pulumi:"name"`
 	// URL of the node template to create the node group from.
 	NodeTemplate *string `pulumi:"nodeTemplate"`
 	Project      string  `pulumi:"project"`
@@ -204,8 +200,7 @@ type NodeGroupArgs struct {
 	MaintenancePolicy pulumi.StringPtrInput
 	MaintenanceWindow NodeGroupMaintenanceWindowPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name      pulumi.StringPtrInput
-	NodeGroup pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringPtrInput
 	Project      pulumi.StringInput

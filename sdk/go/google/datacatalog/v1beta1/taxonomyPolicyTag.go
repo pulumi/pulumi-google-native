@@ -37,9 +37,6 @@ func NewTaxonomyPolicyTag(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.PolicyTagId == nil {
-		return nil, errors.New("invalid value for required argument 'PolicyTagId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -105,7 +102,6 @@ type taxonomyPolicyTagArgs struct {
 	Location    string  `pulumi:"location"`
 	// Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
 	ParentPolicyTag *string `pulumi:"parentPolicyTag"`
-	PolicyTagId     string  `pulumi:"policyTagId"`
 	Project         string  `pulumi:"project"`
 	TaxonomyId      string  `pulumi:"taxonomyId"`
 }
@@ -119,7 +115,6 @@ type TaxonomyPolicyTagArgs struct {
 	Location    pulumi.StringInput
 	// Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
 	ParentPolicyTag pulumi.StringPtrInput
-	PolicyTagId     pulumi.StringInput
 	Project         pulumi.StringInput
 	TaxonomyId      pulumi.StringInput
 }

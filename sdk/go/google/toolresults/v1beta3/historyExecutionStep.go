@@ -63,9 +63,6 @@ func NewHistoryExecutionStep(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.StepId == nil {
-		return nil, errors.New("invalid value for required argument 'StepId'")
-	}
 	var resource HistoryExecutionStep
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:HistoryExecutionStep", name, args, &resource, opts...)
 	if err != nil {
@@ -187,7 +184,7 @@ type historyExecutionStepArgs struct {
 	// The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
 	State *string `pulumi:"state"`
 	// A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
-	StepId string `pulumi:"stepId"`
+	StepId *string `pulumi:"stepId"`
 	// An execution of a test runner.
 	TestExecutionStep *TestExecutionStep `pulumi:"testExecutionStep"`
 	// An execution of a tool (used for steps we don't explicitly support).
@@ -225,7 +222,7 @@ type HistoryExecutionStepArgs struct {
 	// The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
 	State pulumi.StringPtrInput
 	// A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
-	StepId pulumi.StringInput
+	StepId pulumi.StringPtrInput
 	// An execution of a test runner.
 	TestExecutionStep TestExecutionStepPtrInput
 	// An execution of a tool (used for steps we don't explicitly support).

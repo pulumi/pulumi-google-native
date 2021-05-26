@@ -44,9 +44,6 @@ func NewEvaluationJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EvaluationJobId == nil {
-		return nil, errors.New("invalid value for required argument 'EvaluationJobId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -132,7 +129,6 @@ type evaluationJobArgs struct {
 	Description *string `pulumi:"description"`
 	// Required. Configuration details for the evaluation job.
 	EvaluationJobConfig *GoogleCloudDatalabelingV1beta1EvaluationJobConfig `pulumi:"evaluationJobConfig"`
-	EvaluationJobId     string                                             `pulumi:"evaluationJobId"`
 	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
 	LabelMissingGroundTruth *bool `pulumi:"labelMissingGroundTruth"`
 	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
@@ -158,7 +154,6 @@ type EvaluationJobArgs struct {
 	Description pulumi.StringPtrInput
 	// Required. Configuration details for the evaluation job.
 	EvaluationJobConfig GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput
-	EvaluationJobId     pulumi.StringInput
 	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
 	LabelMissingGroundTruth pulumi.BoolPtrInput
 	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.

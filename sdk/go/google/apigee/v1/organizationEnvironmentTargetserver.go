@@ -42,9 +42,6 @@ func NewOrganizationEnvironmentTargetserver(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.TargetserverId == nil {
-		return nil, errors.New("invalid value for required argument 'TargetserverId'")
-	}
 	var resource OrganizationEnvironmentTargetserver
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentTargetserver", name, args, &resource, opts...)
 	if err != nil {
@@ -114,8 +111,7 @@ type organizationEnvironmentTargetserverArgs struct {
 	// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port *int `pulumi:"port"`
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo        *GoogleCloudApigeeV1TlsInfo `pulumi:"sSLInfo"`
-	TargetserverId string                      `pulumi:"targetserverId"`
+	SSLInfo *GoogleCloudApigeeV1TlsInfo `pulumi:"sSLInfo"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentTargetserver resource.
@@ -133,8 +129,7 @@ type OrganizationEnvironmentTargetserverArgs struct {
 	// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntPtrInput
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo        GoogleCloudApigeeV1TlsInfoPtrInput
-	TargetserverId pulumi.StringInput
+	SSLInfo GoogleCloudApigeeV1TlsInfoPtrInput
 }
 
 func (OrganizationEnvironmentTargetserverArgs) ElementType() reflect.Type {

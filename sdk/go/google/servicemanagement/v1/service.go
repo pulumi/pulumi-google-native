@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,12 +24,9 @@ type Service struct {
 func NewService(ctx *pulumi.Context,
 	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ServiceArgs{}
 	}
 
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
 	var resource Service
 	err := ctx.RegisterResource("google-native:servicemanagement/v1:Service", name, args, &resource, opts...)
 	if err != nil {
@@ -74,7 +70,7 @@ type serviceArgs struct {
 	// ID of the project that produces and owns this service.
 	ProducerProjectId *string `pulumi:"producerProjectId"`
 	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -82,7 +78,7 @@ type ServiceArgs struct {
 	// ID of the project that produces and owns this service.
 	ProducerProjectId pulumi.StringPtrInput
 	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

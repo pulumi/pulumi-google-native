@@ -55,9 +55,6 @@ func NewRouter(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.Router == nil {
-		return nil, errors.New("invalid value for required argument 'Router'")
-	}
 	var resource Router
 	err := ctx.RegisterResource("google-native:compute/v1:Router", name, args, &resource, opts...)
 	if err != nil {
@@ -167,7 +164,6 @@ type routerArgs struct {
 	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
-	Router    string  `pulumi:"router"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -201,7 +197,6 @@ type RouterArgs struct {
 	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	Router    pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 }

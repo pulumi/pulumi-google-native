@@ -40,9 +40,6 @@ func NewInstanceTable(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TableId == nil {
-		return nil, errors.New("invalid value for required argument 'TableId'")
-	}
 	var resource InstanceTable
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:InstanceTable", name, args, &resource, opts...)
 	if err != nil {
@@ -106,7 +103,7 @@ type instanceTableArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-	TableId string `pulumi:"tableId"`
+	TableId *string `pulumi:"tableId"`
 }
 
 // The set of arguments for constructing a InstanceTable resource.
@@ -122,7 +119,7 @@ type InstanceTableArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-	TableId pulumi.StringInput
+	TableId pulumi.StringPtrInput
 }
 
 func (InstanceTableArgs) ElementType() reflect.Type {

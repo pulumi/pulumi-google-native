@@ -48,9 +48,6 @@ func NewConnectivityTest(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConnectivityTestId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectivityTestId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -137,7 +134,6 @@ func (ConnectivityTestState) ElementType() reflect.Type {
 }
 
 type connectivityTestArgs struct {
-	ConnectivityTestId string `pulumi:"connectivityTestId"`
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
 	// Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
@@ -158,7 +154,6 @@ type connectivityTestArgs struct {
 
 // The set of arguments for constructing a ConnectivityTest resource.
 type ConnectivityTestArgs struct {
-	ConnectivityTestId pulumi.StringInput
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.

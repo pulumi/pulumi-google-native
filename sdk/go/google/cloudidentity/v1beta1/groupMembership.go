@@ -41,9 +41,6 @@ func NewGroupMembership(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
-	if args.MembershipId == nil {
-		return nil, errors.New("invalid value for required argument 'MembershipId'")
-	}
 	var resource GroupMembership
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:GroupMembership", name, args, &resource, opts...)
 	if err != nil {
@@ -106,8 +103,7 @@ func (GroupMembershipState) ElementType() reflect.Type {
 type groupMembershipArgs struct {
 	GroupId string `pulumi:"groupId"`
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	MemberKey    *EntityKey `pulumi:"memberKey"`
-	MembershipId string     `pulumi:"membershipId"`
+	MemberKey *EntityKey `pulumi:"memberKey"`
 	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey *EntityKey `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
@@ -118,8 +114,7 @@ type groupMembershipArgs struct {
 type GroupMembershipArgs struct {
 	GroupId pulumi.StringInput
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	MemberKey    EntityKeyPtrInput
-	MembershipId pulumi.StringInput
+	MemberKey EntityKeyPtrInput
 	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey EntityKeyPtrInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.

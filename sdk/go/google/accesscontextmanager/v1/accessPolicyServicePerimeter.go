@@ -41,9 +41,6 @@ func NewAccessPolicyServicePerimeter(ctx *pulumi.Context,
 	if args.AccessPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
-	if args.ServicePerimeterId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicePerimeterId'")
-	}
 	var resource AccessPolicyServicePerimeter
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1:AccessPolicyServicePerimeter", name, args, &resource, opts...)
 	if err != nil {
@@ -110,8 +107,7 @@ type accessPolicyServicePerimeterArgs struct {
 	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
 	Name *string `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
-	PerimeterType      *string `pulumi:"perimeterType"`
-	ServicePerimeterId string  `pulumi:"servicePerimeterId"`
+	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
 	Spec *ServicePerimeterConfig `pulumi:"spec"`
 	// Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
@@ -130,8 +126,7 @@ type AccessPolicyServicePerimeterArgs struct {
 	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
 	Name pulumi.StringPtrInput
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
-	PerimeterType      pulumi.StringPtrInput
-	ServicePerimeterId pulumi.StringInput
+	PerimeterType pulumi.StringPtrInput
 	// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
 	Spec ServicePerimeterConfigPtrInput
 	// Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.

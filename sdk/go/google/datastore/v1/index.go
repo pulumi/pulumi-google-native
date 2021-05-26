@@ -36,9 +36,6 @@ func NewIndex(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.IndexId == nil {
-		return nil, errors.New("invalid value for required argument 'IndexId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -100,7 +97,6 @@ func (IndexState) ElementType() reflect.Type {
 type indexArgs struct {
 	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor *string `pulumi:"ancestor"`
-	IndexId  string  `pulumi:"indexId"`
 	// Required. The entity kind to which this index applies.
 	Kind    *string `pulumi:"kind"`
 	Project string  `pulumi:"project"`
@@ -112,7 +108,6 @@ type indexArgs struct {
 type IndexArgs struct {
 	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor pulumi.StringPtrInput
-	IndexId  pulumi.StringInput
 	// Required. The entity kind to which this index applies.
 	Kind    pulumi.StringPtrInput
 	Project pulumi.StringInput

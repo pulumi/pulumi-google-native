@@ -41,9 +41,6 @@ func NewAgentFlow(ctx *pulumi.Context,
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.FlowId == nil {
-		return nil, errors.New("invalid value for required argument 'FlowId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -117,7 +114,6 @@ type agentFlowArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3beta1EventHandler `pulumi:"eventHandlers"`
-	FlowId        string                                       `pulumi:"flowId"`
 	LanguageCode  *string                                      `pulumi:"languageCode"`
 	Location      string                                       `pulumi:"location"`
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
@@ -140,7 +136,6 @@ type AgentFlowArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerArrayInput
-	FlowId        pulumi.StringInput
 	LanguageCode  pulumi.StringPtrInput
 	Location      pulumi.StringInput
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.

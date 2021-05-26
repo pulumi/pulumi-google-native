@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,12 +45,9 @@ type App struct {
 func NewApp(ctx *pulumi.Context,
 	name string, args *AppArgs, opts ...pulumi.ResourceOption) (*App, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AppArgs{}
 	}
 
-	if args.AppId == nil {
-		return nil, errors.New("invalid value for required argument 'AppId'")
-	}
 	var resource App
 	err := ctx.RegisterResource("google-native:appengine/v1:App", name, args, &resource, opts...)
 	if err != nil {
@@ -134,7 +130,6 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
-	AppId string `pulumi:"appId"`
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain *string `pulumi:"authDomain"`
 	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
@@ -166,7 +161,6 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
-	AppId pulumi.StringInput
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringPtrInput
 	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly

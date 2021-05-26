@@ -42,9 +42,6 @@ func NewAgentFlowTransitionRouteGroup(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TransitionRouteGroupId == nil {
-		return nil, errors.New("invalid value for required argument 'TransitionRouteGroupId'")
-	}
 	var resource AgentFlowTransitionRouteGroup
 	err := ctx.RegisterResource("google-native:dialogflow/v3:AgentFlowTransitionRouteGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -96,9 +93,8 @@ type agentFlowTransitionRouteGroupArgs struct {
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name                   *string `pulumi:"name"`
-	Project                string  `pulumi:"project"`
-	TransitionRouteGroupId string  `pulumi:"transitionRouteGroupId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRoute `pulumi:"transitionRoutes"`
 }
@@ -112,9 +108,8 @@ type AgentFlowTransitionRouteGroupArgs struct {
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringInput
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name                   pulumi.StringPtrInput
-	Project                pulumi.StringInput
-	TransitionRouteGroupId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes GoogleCloudDialogflowCxV3TransitionRouteArrayInput
 }

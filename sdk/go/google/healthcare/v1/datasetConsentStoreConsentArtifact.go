@@ -40,9 +40,6 @@ func NewDatasetConsentStoreConsentArtifact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConsentArtifactId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentArtifactId'")
-	}
 	if args.ConsentStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
@@ -119,7 +116,6 @@ func (DatasetConsentStoreConsentArtifactState) ElementType() reflect.Type {
 }
 
 type datasetConsentStoreConsentArtifactArgs struct {
-	ConsentArtifactId string `pulumi:"consentArtifactId"`
 	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
 	ConsentContentScreenshots []Image `pulumi:"consentContentScreenshots"`
 	// Optional. An string indicating the version of the consent information shown to the user.
@@ -144,7 +140,6 @@ type datasetConsentStoreConsentArtifactArgs struct {
 
 // The set of arguments for constructing a DatasetConsentStoreConsentArtifact resource.
 type DatasetConsentStoreConsentArtifactArgs struct {
-	ConsentArtifactId pulumi.StringInput
 	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
 	ConsentContentScreenshots ImageArrayInput
 	// Optional. An string indicating the version of the consent information shown to the user.

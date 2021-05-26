@@ -54,9 +54,6 @@ func NewApiConfig(ctx *pulumi.Context,
 	if args.ApiId == nil {
 		return nil, errors.New("invalid value for required argument 'ApiId'")
 	}
-	if args.ConfigId == nil {
-		return nil, errors.New("invalid value for required argument 'ConfigId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -145,7 +142,6 @@ func (ApiConfigState) ElementType() reflect.Type {
 type apiConfigArgs struct {
 	ApiConfigId string `pulumi:"apiConfigId"`
 	ApiId       string `pulumi:"apiId"`
-	ConfigId    string `pulumi:"configId"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -168,7 +164,6 @@ type apiConfigArgs struct {
 type ApiConfigArgs struct {
 	ApiConfigId pulumi.StringInput
 	ApiId       pulumi.StringInput
-	ConfigId    pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. Gateway specific configuration.

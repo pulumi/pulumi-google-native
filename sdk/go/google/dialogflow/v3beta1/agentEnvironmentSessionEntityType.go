@@ -33,9 +33,6 @@ func NewAgentEnvironmentSessionEntityType(ctx *pulumi.Context,
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.EntityTypeId == nil {
-		return nil, errors.New("invalid value for required argument 'EntityTypeId'")
-	}
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
@@ -97,7 +94,6 @@ type agentEnvironmentSessionEntityTypeArgs struct {
 	Entities []GoogleCloudDialogflowCxV3beta1EntityTypeEntity `pulumi:"entities"`
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode *string `pulumi:"entityOverrideMode"`
-	EntityTypeId       string  `pulumi:"entityTypeId"`
 	EnvironmentId      string  `pulumi:"environmentId"`
 	Location           string  `pulumi:"location"`
 	// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
@@ -113,7 +109,6 @@ type AgentEnvironmentSessionEntityTypeArgs struct {
 	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityArrayInput
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode pulumi.StringPtrInput
-	EntityTypeId       pulumi.StringInput
 	EnvironmentId      pulumi.StringInput
 	Location           pulumi.StringInput
 	// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.

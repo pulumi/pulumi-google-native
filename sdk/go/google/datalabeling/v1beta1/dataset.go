@@ -40,9 +40,6 @@ func NewDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatasetId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -116,7 +113,6 @@ type datasetArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The number of data items in the dataset.
 	DataItemCount *string `pulumi:"dataItemCount"`
-	DatasetId     string  `pulumi:"datasetId"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the dataset. Maximum of 64 characters.
@@ -138,7 +134,6 @@ type DatasetArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// The number of data items in the dataset.
 	DataItemCount pulumi.StringPtrInput
-	DatasetId     pulumi.StringInput
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the dataset. Maximum of 64 characters.

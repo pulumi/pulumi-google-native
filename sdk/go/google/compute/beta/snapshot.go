@@ -83,9 +83,6 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Snapshot == nil {
-		return nil, errors.New("invalid value for required argument 'Snapshot'")
-	}
 	var resource Snapshot
 	err := ctx.RegisterResource("google-native:compute/beta:Snapshot", name, args, &resource, opts...)
 	if err != nil {
@@ -268,7 +265,6 @@ type snapshotArgs struct {
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	Snapshot string  `pulumi:"snapshot"`
 	// Encrypts the snapshot using a customer-supplied encryption key.
 	//
 	// After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request.
@@ -333,7 +329,6 @@ type SnapshotArgs struct {
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	Snapshot pulumi.StringInput
 	// Encrypts the snapshot using a customer-supplied encryption key.
 	//
 	// After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request.

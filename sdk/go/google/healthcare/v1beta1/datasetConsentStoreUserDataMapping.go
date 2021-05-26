@@ -48,9 +48,6 @@ func NewDatasetConsentStoreUserDataMapping(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.UserDataMappingId == nil {
-		return nil, errors.New("invalid value for required argument 'UserDataMappingId'")
-	}
 	var resource DatasetConsentStoreUserDataMapping
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetConsentStoreUserDataMapping", name, args, &resource, opts...)
 	if err != nil {
@@ -117,7 +114,6 @@ type datasetConsentStoreUserDataMappingArgs struct {
 	Project string  `pulumi:"project"`
 	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
-	UserDataMappingId  string      `pulumi:"userDataMappingId"`
 	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
 }
@@ -134,7 +130,6 @@ type DatasetConsentStoreUserDataMappingArgs struct {
 	Project pulumi.StringInput
 	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes AttributeArrayInput
-	UserDataMappingId  pulumi.StringInput
 	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput
 }

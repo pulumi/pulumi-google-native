@@ -38,9 +38,6 @@ func NewOrganizationReplay(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.ReplayId == nil {
-		return nil, errors.New("invalid value for required argument 'ReplayId'")
-	}
 	var resource OrganizationReplay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:OrganizationReplay", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +90,6 @@ type organizationReplayArgs struct {
 	Config         *GoogleCloudPolicysimulatorV1ReplayConfig `pulumi:"config"`
 	Location       string                                    `pulumi:"location"`
 	OrganizationId string                                    `pulumi:"organizationId"`
-	ReplayId       string                                    `pulumi:"replayId"`
 }
 
 // The set of arguments for constructing a OrganizationReplay resource.
@@ -102,7 +98,6 @@ type OrganizationReplayArgs struct {
 	Config         GoogleCloudPolicysimulatorV1ReplayConfigPtrInput
 	Location       pulumi.StringInput
 	OrganizationId pulumi.StringInput
-	ReplayId       pulumi.StringInput
 }
 
 func (OrganizationReplayArgs) ElementType() reflect.Type {

@@ -82,9 +82,6 @@ func NewModelVersion(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.VersionId == nil {
-		return nil, errors.New("invalid value for required argument 'VersionId'")
-	}
 	var resource ModelVersion
 	err := ctx.RegisterResource("google-native:ml/v1:ModelVersion", name, args, &resource, opts...)
 	if err != nil {
@@ -270,8 +267,7 @@ type modelVersionArgs struct {
 	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The state of a version.
-	State     *string `pulumi:"state"`
-	VersionId string  `pulumi:"versionId"`
+	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a ModelVersion resource.
@@ -325,8 +321,7 @@ type ModelVersionArgs struct {
 	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
 	ServiceAccount pulumi.StringPtrInput
 	// The state of a version.
-	State     pulumi.StringPtrInput
-	VersionId pulumi.StringInput
+	State pulumi.StringPtrInput
 }
 
 func (ModelVersionArgs) ElementType() reflect.Type {

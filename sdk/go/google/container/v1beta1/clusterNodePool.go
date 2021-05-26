@@ -57,9 +57,6 @@ func NewClusterNodePool(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	if args.NodePoolId == nil {
-		return nil, errors.New("invalid value for required argument 'NodePoolId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -179,7 +176,6 @@ type clusterNodePoolArgs struct {
 	Name *string `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
-	NodePoolId    string             `pulumi:"nodePoolId"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent *string `pulumi:"parent"`
 	// [Output only] The pod CIDR block size per node in this node pool.
@@ -219,7 +215,6 @@ type ClusterNodePoolArgs struct {
 	Name pulumi.StringPtrInput
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigPtrInput
-	NodePoolId    pulumi.StringInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent pulumi.StringPtrInput
 	// [Output only] The pod CIDR block size per node in this node pool.

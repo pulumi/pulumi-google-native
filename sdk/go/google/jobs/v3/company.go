@@ -50,9 +50,6 @@ func NewCompany(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CompanyId == nil {
-		return nil, errors.New("invalid value for required argument 'CompanyId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -142,7 +139,6 @@ func (CompanyState) ElementType() reflect.Type {
 type companyArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri *string `pulumi:"careerSiteUri"`
-	CompanyId     string  `pulumi:"companyId"`
 	// Derived details about the company.
 	DerivedInfo *CompanyDerivedInfo `pulumi:"derivedInfo"`
 	// Required. The display name of the company, for example, "Google LLC".
@@ -174,7 +170,6 @@ type companyArgs struct {
 type CompanyArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri pulumi.StringPtrInput
-	CompanyId     pulumi.StringInput
 	// Derived details about the company.
 	DerivedInfo CompanyDerivedInfoPtrInput
 	// Required. The display name of the company, for example, "Google LLC".

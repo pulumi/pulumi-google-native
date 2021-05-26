@@ -47,9 +47,6 @@ func NewTargetTcpProxy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TargetTcpProxy == nil {
-		return nil, errors.New("invalid value for required argument 'TargetTcpProxy'")
-	}
 	var resource TargetTcpProxy
 	err := ctx.RegisterResource("google-native:compute/v1:TargetTcpProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -145,8 +142,7 @@ type targetTcpProxyArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// URL to the BackendService resource.
-	Service        *string `pulumi:"service"`
-	TargetTcpProxy string  `pulumi:"targetTcpProxy"`
+	Service *string `pulumi:"service"`
 }
 
 // The set of arguments for constructing a TargetTcpProxy resource.
@@ -174,8 +170,7 @@ type TargetTcpProxyArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// URL to the BackendService resource.
-	Service        pulumi.StringPtrInput
-	TargetTcpProxy pulumi.StringInput
+	Service pulumi.StringPtrInput
 }
 
 func (TargetTcpProxyArgs) ElementType() reflect.Type {

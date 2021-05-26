@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,12 +28,9 @@ type BillingAccount struct {
 func NewBillingAccount(ctx *pulumi.Context,
 	name string, args *BillingAccountArgs, opts ...pulumi.ResourceOption) (*BillingAccount, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BillingAccountArgs{}
 	}
 
-	if args.BillingAccountId == nil {
-		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
-	}
 	var resource BillingAccount
 	err := ctx.RegisterResource("google-native:cloudbilling/v1:BillingAccount", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +79,6 @@ func (BillingAccountState) ElementType() reflect.Type {
 }
 
 type billingAccountArgs struct {
-	BillingAccountId string `pulumi:"billingAccountId"`
 	// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
 	DisplayName *string `pulumi:"displayName"`
 	// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
@@ -92,7 +87,6 @@ type billingAccountArgs struct {
 
 // The set of arguments for constructing a BillingAccount resource.
 type BillingAccountArgs struct {
-	BillingAccountId pulumi.StringInput
 	// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
 	DisplayName pulumi.StringPtrInput
 	// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.

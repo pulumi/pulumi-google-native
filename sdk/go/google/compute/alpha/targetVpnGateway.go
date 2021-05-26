@@ -56,9 +56,6 @@ func NewTargetVpnGateway(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.TargetVpnGateway == nil {
-		return nil, errors.New("invalid value for required argument 'TargetVpnGateway'")
-	}
 	var resource TargetVpnGateway
 	err := ctx.RegisterResource("google-native:compute/alpha:TargetVpnGateway", name, args, &resource, opts...)
 	if err != nil {
@@ -170,8 +167,7 @@ type targetVpnGatewayArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
-	Status           *string `pulumi:"status"`
-	TargetVpnGateway string  `pulumi:"targetVpnGateway"`
+	Status *string `pulumi:"status"`
 	// [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
 	Tunnels []string `pulumi:"tunnels"`
 }
@@ -205,8 +201,7 @@ type TargetVpnGatewayArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
-	Status           pulumi.StringPtrInput
-	TargetVpnGateway pulumi.StringInput
+	Status pulumi.StringPtrInput
 	// [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
 	Tunnels pulumi.StringArrayInput
 }

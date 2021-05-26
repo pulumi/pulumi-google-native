@@ -31,9 +31,6 @@ func NewFolderPolicy(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
-	if args.PolicyId == nil {
-		return nil, errors.New("invalid value for required argument 'PolicyId'")
-	}
 	var resource FolderPolicy
 	err := ctx.RegisterResource("google-native:orgpolicy/v2:FolderPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -76,8 +73,7 @@ func (FolderPolicyState) ElementType() reflect.Type {
 type folderPolicyArgs struct {
 	FolderId string `pulumi:"folderId"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-	Name     *string `pulumi:"name"`
-	PolicyId string  `pulumi:"policyId"`
+	Name *string `pulumi:"name"`
 	// Basic information about the Organization Policy.
 	Spec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"spec"`
 }
@@ -86,8 +82,7 @@ type folderPolicyArgs struct {
 type FolderPolicyArgs struct {
 	FolderId pulumi.StringInput
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-	Name     pulumi.StringPtrInput
-	PolicyId pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Basic information about the Organization Policy.
 	Spec GoogleCloudOrgpolicyV2PolicySpecPtrInput
 }

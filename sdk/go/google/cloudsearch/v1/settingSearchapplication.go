@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,12 +38,9 @@ type SettingSearchapplication struct {
 func NewSettingSearchapplication(ctx *pulumi.Context,
 	name string, args *SettingSearchapplicationArgs, opts ...pulumi.ResourceOption) (*SettingSearchapplication, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SettingSearchapplicationArgs{}
 	}
 
-	if args.SearchapplicationId == nil {
-		return nil, errors.New("invalid value for required argument 'SearchapplicationId'")
-	}
 	var resource SettingSearchapplication
 	err := ctx.RegisterResource("google-native:cloudsearch/v1:SettingSearchapplication", name, args, &resource, opts...)
 	if err != nil {
@@ -126,8 +122,7 @@ type settingSearchapplicationArgs struct {
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
 	// Configuration for ranking results.
-	ScoringConfig       *ScoringConfig `pulumi:"scoringConfig"`
-	SearchapplicationId string         `pulumi:"searchapplicationId"`
+	ScoringConfig *ScoringConfig `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
 	SourceConfig []SourceConfig `pulumi:"sourceConfig"`
 }
@@ -147,8 +142,7 @@ type SettingSearchapplicationArgs struct {
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
 	// Configuration for ranking results.
-	ScoringConfig       ScoringConfigPtrInput
-	SearchapplicationId pulumi.StringInput
+	ScoringConfig ScoringConfigPtrInput
 	// Configuration for a sources specified in data_source_restrictions.
 	SourceConfig SourceConfigArrayInput
 }

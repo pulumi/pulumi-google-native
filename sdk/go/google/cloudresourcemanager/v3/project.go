@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,12 +40,9 @@ type Project struct {
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProjectArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Project
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:Project", name, args, &resource, opts...)
 	if err != nil {
@@ -126,7 +122,7 @@ type projectArgs struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent *string `pulumi:"parent"`
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -138,7 +134,7 @@ type ProjectArgs struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent pulumi.StringPtrInput
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

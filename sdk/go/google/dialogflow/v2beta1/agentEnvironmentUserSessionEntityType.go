@@ -30,9 +30,6 @@ func NewAgentEnvironmentUserSessionEntityType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EntityTypeId == nil {
-		return nil, errors.New("invalid value for required argument 'EntityTypeId'")
-	}
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
@@ -96,7 +93,6 @@ type agentEnvironmentUserSessionEntityTypeArgs struct {
 	Entities []GoogleCloudDialogflowV2beta1EntityTypeEntity `pulumi:"entities"`
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode *string `pulumi:"entityOverrideMode"`
-	EntityTypeId       string  `pulumi:"entityTypeId"`
 	EnvironmentId      string  `pulumi:"environmentId"`
 	Location           string  `pulumi:"location"`
 	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
@@ -112,7 +108,6 @@ type AgentEnvironmentUserSessionEntityTypeArgs struct {
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode pulumi.StringPtrInput
-	EntityTypeId       pulumi.StringInput
 	EnvironmentId      pulumi.StringInput
 	Location           pulumi.StringInput
 	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.

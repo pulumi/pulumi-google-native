@@ -57,9 +57,6 @@ func NewQueueTask(ctx *pulumi.Context,
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
-	if args.TaskId == nil {
-		return nil, errors.New("invalid value for required argument 'TaskId'")
-	}
 	var resource QueueTask
 	err := ctx.RegisterResource("google-native:cloudtasks/v2beta3:QueueTask", name, args, &resource, opts...)
 	if err != nil {
@@ -167,7 +164,6 @@ type queueTaskArgs struct {
 	ResponseView *string `pulumi:"responseView"`
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime *string `pulumi:"scheduleTime"`
-	TaskId       string  `pulumi:"taskId"`
 	// The view specifies which subset of the Task has been returned.
 	View *string `pulumi:"view"`
 }
@@ -201,7 +197,6 @@ type QueueTaskArgs struct {
 	ResponseView pulumi.StringPtrInput
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime pulumi.StringPtrInput
-	TaskId       pulumi.StringInput
 	// The view specifies which subset of the Task has been returned.
 	View pulumi.StringPtrInput
 }

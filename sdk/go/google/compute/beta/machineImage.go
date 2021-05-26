@@ -60,9 +60,6 @@ func NewMachineImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.MachineImage == nil {
-		return nil, errors.New("invalid value for required argument 'MachineImage'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -182,8 +179,7 @@ type machineImageArgs struct {
 	// [Output Only] A unique identifier for this machine image. The server defines this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
-	Kind         *string `pulumi:"kind"`
-	MachineImage string  `pulumi:"machineImage"`
+	Kind *string `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
 	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.
@@ -227,8 +223,7 @@ type MachineImageArgs struct {
 	// [Output Only] A unique identifier for this machine image. The server defines this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] The resource type, which is always compute#machineImage for machine image.
-	Kind         pulumi.StringPtrInput
-	MachineImage pulumi.StringInput
+	Kind pulumi.StringPtrInput
 	// Encrypts the machine image using a customer-supplied encryption key.
 	//
 	// After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request.

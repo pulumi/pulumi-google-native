@@ -54,9 +54,6 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobId == nil {
-		return nil, errors.New("invalid value for required argument 'JobId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -163,7 +160,6 @@ type jobArgs struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	HttpTarget *HttpTarget `pulumi:"httpTarget"`
-	JobId      string      `pulumi:"jobId"`
 	// The time the last job attempt started.
 	LastAttemptTime *string `pulumi:"lastAttemptTime"`
 	// Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
@@ -200,7 +196,6 @@ type JobArgs struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	HttpTarget HttpTargetPtrInput
-	JobId      pulumi.StringInput
 	// The time the last job attempt started.
 	LastAttemptTime pulumi.StringPtrInput
 	// Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.

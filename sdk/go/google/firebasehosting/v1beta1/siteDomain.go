@@ -36,9 +36,6 @@ func NewSiteDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainId'")
-	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
@@ -98,7 +95,6 @@ func (SiteDomainState) ElementType() reflect.Type {
 }
 
 type siteDomainArgs struct {
-	DomainId string `pulumi:"domainId"`
 	// Required. The domain name of the association.
 	DomainName *string `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
@@ -116,7 +112,6 @@ type siteDomainArgs struct {
 
 // The set of arguments for constructing a SiteDomain resource.
 type SiteDomainArgs struct {
-	DomainId pulumi.StringInput
 	// Required. The domain name of the association.
 	DomainName pulumi.StringPtrInput
 	// If set, the domain should redirect with the provided parameters.

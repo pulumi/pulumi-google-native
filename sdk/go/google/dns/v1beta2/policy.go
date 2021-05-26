@@ -37,9 +37,6 @@ func NewPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Policy == nil {
-		return nil, errors.New("invalid value for required argument 'Policy'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -117,7 +114,6 @@ type policyArgs struct {
 	Name *string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []PolicyNetwork `pulumi:"networks"`
-	Policy   string          `pulumi:"policy"`
 	Project  string          `pulumi:"project"`
 }
 
@@ -139,7 +135,6 @@ type PolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks PolicyNetworkArrayInput
-	Policy   pulumi.StringInput
 	Project  pulumi.StringInput
 }
 

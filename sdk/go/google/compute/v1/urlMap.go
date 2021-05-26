@@ -68,9 +68,6 @@ func NewUrlMap(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.UrlMap == nil {
-		return nil, errors.New("invalid value for required argument 'UrlMap'")
-	}
 	var resource UrlMap
 	err := ctx.RegisterResource("google-native:compute/v1:UrlMap", name, args, &resource, opts...)
 	if err != nil {
@@ -229,8 +226,7 @@ type urlMapArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-	Tests  []UrlMapTest `pulumi:"tests"`
-	UrlMap string       `pulumi:"urlMap"`
+	Tests []UrlMapTest `pulumi:"tests"`
 }
 
 // The set of arguments for constructing a UrlMap resource.
@@ -279,8 +275,7 @@ type UrlMapArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-	Tests  UrlMapTestArrayInput
-	UrlMap pulumi.StringInput
+	Tests UrlMapTestArrayInput
 }
 
 func (UrlMapArgs) ElementType() reflect.Type {

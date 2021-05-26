@@ -47,9 +47,6 @@ func NewAgentFlowPage(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.PageId == nil {
-		return nil, errors.New("invalid value for required argument 'PageId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -127,7 +124,6 @@ type agentFlowPageArgs struct {
 	Location     string                         `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    *string `pulumi:"name"`
-	PageId  string  `pulumi:"pageId"`
 	Project string  `pulumi:"project"`
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
@@ -151,7 +147,6 @@ type AgentFlowPageArgs struct {
 	Location     pulumi.StringInput
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    pulumi.StringPtrInput
-	PageId  pulumi.StringInput
 	Project pulumi.StringInput
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups pulumi.StringArrayInput

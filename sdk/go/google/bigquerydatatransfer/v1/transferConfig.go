@@ -57,9 +57,6 @@ func NewTransferConfig(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TransferConfigId == nil {
-		return nil, errors.New("invalid value for required argument 'TransferConfigId'")
-	}
 	var resource TransferConfig
 	err := ctx.RegisterResource("google-native:bigquerydatatransfer/v1:TransferConfig", name, args, &resource, opts...)
 	if err != nil {
@@ -177,7 +174,6 @@ type transferConfigArgs struct {
 	// Options customizing the data transfer schedule.
 	ScheduleOptions    *ScheduleOptions `pulumi:"scheduleOptions"`
 	ServiceAccountName *string          `pulumi:"serviceAccountName"`
-	TransferConfigId   string           `pulumi:"transferConfigId"`
 	VersionInfo        *string          `pulumi:"versionInfo"`
 }
 
@@ -208,7 +204,6 @@ type TransferConfigArgs struct {
 	// Options customizing the data transfer schedule.
 	ScheduleOptions    ScheduleOptionsPtrInput
 	ServiceAccountName pulumi.StringPtrInput
-	TransferConfigId   pulumi.StringInput
 	VersionInfo        pulumi.StringPtrInput
 }
 

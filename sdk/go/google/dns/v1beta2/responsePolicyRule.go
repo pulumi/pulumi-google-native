@@ -39,9 +39,6 @@ func NewResponsePolicyRule(ctx *pulumi.Context,
 	if args.ResponsePolicy == nil {
 		return nil, errors.New("invalid value for required argument 'ResponsePolicy'")
 	}
-	if args.ResponsePolicyRule == nil {
-		return nil, errors.New("invalid value for required argument 'ResponsePolicyRule'")
-	}
 	var resource ResponsePolicyRule
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ResponsePolicyRule", name, args, &resource, opts...)
 	if err != nil {
@@ -99,10 +96,9 @@ type responsePolicyRuleArgs struct {
 	DnsName *string `pulumi:"dnsName"`
 	Kind    *string `pulumi:"kind"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData          *ResponsePolicyRuleLocalData `pulumi:"localData"`
-	Project            string                       `pulumi:"project"`
-	ResponsePolicy     string                       `pulumi:"responsePolicy"`
-	ResponsePolicyRule string                       `pulumi:"responsePolicyRule"`
+	LocalData      *ResponsePolicyRuleLocalData `pulumi:"localData"`
+	Project        string                       `pulumi:"project"`
+	ResponsePolicy string                       `pulumi:"responsePolicy"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName *string `pulumi:"ruleName"`
 }
@@ -116,10 +112,9 @@ type ResponsePolicyRuleArgs struct {
 	DnsName pulumi.StringPtrInput
 	Kind    pulumi.StringPtrInput
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData          ResponsePolicyRuleLocalDataPtrInput
-	Project            pulumi.StringInput
-	ResponsePolicy     pulumi.StringInput
-	ResponsePolicyRule pulumi.StringInput
+	LocalData      ResponsePolicyRuleLocalDataPtrInput
+	Project        pulumi.StringInput
+	ResponsePolicy pulumi.StringInput
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringPtrInput
 }

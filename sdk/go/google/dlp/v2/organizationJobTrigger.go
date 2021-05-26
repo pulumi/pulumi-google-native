@@ -44,9 +44,6 @@ func NewOrganizationJobTrigger(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobTriggerId == nil {
-		return nil, errors.New("invalid value for required argument 'JobTriggerId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -130,9 +127,8 @@ type organizationJobTriggerArgs struct {
 	// Display name (max 100 chars)
 	DisplayName *string `pulumi:"displayName"`
 	// For inspect jobs, a snapshot of the configuration.
-	InspectJob   *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
-	JobTriggerId string                              `pulumi:"jobTriggerId"`
-	Location     string                              `pulumi:"location"`
+	InspectJob *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
+	Location   string                              `pulumi:"location"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -151,9 +147,8 @@ type OrganizationJobTriggerArgs struct {
 	// Display name (max 100 chars)
 	DisplayName pulumi.StringPtrInput
 	// For inspect jobs, a snapshot of the configuration.
-	InspectJob   GooglePrivacyDlpV2InspectJobConfigPtrInput
-	JobTriggerId pulumi.StringInput
-	Location     pulumi.StringInput
+	InspectJob GooglePrivacyDlpV2InspectJobConfigPtrInput
+	Location   pulumi.StringInput
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

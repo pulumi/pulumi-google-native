@@ -74,9 +74,6 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BuildId == nil {
-		return nil, errors.New("invalid value for required argument 'BuildId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -222,7 +219,6 @@ type buildArgs struct {
 	Artifacts *Artifacts `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
 	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
-	BuildId          string   `pulumi:"buildId"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images   []string `pulumi:"images"`
 	Location string   `pulumi:"location"`
@@ -256,7 +252,6 @@ type BuildArgs struct {
 	Artifacts ArtifactsPtrInput
 	// Secrets and secret environment variables.
 	AvailableSecrets SecretsPtrInput
-	BuildId          pulumi.StringInput
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images   pulumi.StringArrayInput
 	Location pulumi.StringInput

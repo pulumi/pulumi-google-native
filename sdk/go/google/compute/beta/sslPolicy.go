@@ -52,9 +52,6 @@ func NewSslPolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SslPolicy == nil {
-		return nil, errors.New("invalid value for required argument 'SslPolicy'")
-	}
 	var resource SslPolicy
 	err := ctx.RegisterResource("google-native:compute/beta:SslPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -163,8 +160,7 @@ type sslPolicyArgs struct {
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink  *string `pulumi:"selfLink"`
-	SslPolicy string  `pulumi:"sslPolicy"`
+	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
 	Warnings []SslPolicyWarningsItem `pulumi:"warnings"`
 }
@@ -197,8 +193,7 @@ type SslPolicyArgs struct {
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink  pulumi.StringPtrInput
-	SslPolicy pulumi.StringInput
+	SelfLink pulumi.StringPtrInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
 	Warnings SslPolicyWarningsItemArrayInput
 }

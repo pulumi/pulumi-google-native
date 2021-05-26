@@ -45,9 +45,6 @@ func NewHistoryExecutionStepPerfSampleSeries(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SampleSeriesId == nil {
-		return nil, errors.New("invalid value for required argument 'SampleSeriesId'")
-	}
 	if args.StepId == nil {
 		return nil, errors.New("invalid value for required argument 'StepId'")
 	}
@@ -116,7 +113,7 @@ type historyExecutionStepPerfSampleSeriesArgs struct {
 	// The cloud project @OutputOnly
 	Project string `pulumi:"project"`
 	// A sample series id @OutputOnly
-	SampleSeriesId string `pulumi:"sampleSeriesId"`
+	SampleSeriesId *string `pulumi:"sampleSeriesId"`
 	// A tool results step ID. @OutputOnly
 	StepId string `pulumi:"stepId"`
 }
@@ -132,7 +129,7 @@ type HistoryExecutionStepPerfSampleSeriesArgs struct {
 	// The cloud project @OutputOnly
 	Project pulumi.StringInput
 	// A sample series id @OutputOnly
-	SampleSeriesId pulumi.StringInput
+	SampleSeriesId pulumi.StringPtrInput
 	// A tool results step ID. @OutputOnly
 	StepId pulumi.StringInput
 }

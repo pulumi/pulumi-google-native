@@ -40,9 +40,6 @@ func NewDatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(ctx *pulumi.Context
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.FeedbackMessageId == nil {
-		return nil, errors.New("invalid value for required argument 'FeedbackMessageId'")
-	}
 	if args.FeedbackThreadId == nil {
 		return nil, errors.New("invalid value for required argument 'FeedbackThreadId'")
 	}
@@ -105,10 +102,9 @@ type datasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs struct {
 	// String content of the feedback. Maximum of 10000 characters.
 	Body *string `pulumi:"body"`
 	// Create time.
-	CreateTime        *string `pulumi:"createTime"`
-	DatasetId         string  `pulumi:"datasetId"`
-	FeedbackMessageId string  `pulumi:"feedbackMessageId"`
-	FeedbackThreadId  string  `pulumi:"feedbackThreadId"`
+	CreateTime       *string `pulumi:"createTime"`
+	DatasetId        string  `pulumi:"datasetId"`
+	FeedbackThreadId string  `pulumi:"feedbackThreadId"`
 	// The image storing this feedback if the feedback is an image representing operator's comments.
 	Image *string `pulumi:"image"`
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
@@ -124,10 +120,9 @@ type DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs struct {
 	// String content of the feedback. Maximum of 10000 characters.
 	Body pulumi.StringPtrInput
 	// Create time.
-	CreateTime        pulumi.StringPtrInput
-	DatasetId         pulumi.StringInput
-	FeedbackMessageId pulumi.StringInput
-	FeedbackThreadId  pulumi.StringInput
+	CreateTime       pulumi.StringPtrInput
+	DatasetId        pulumi.StringInput
+	FeedbackThreadId pulumi.StringInput
 	// The image storing this feedback if the feedback is an image representing operator's comments.
 	Image pulumi.StringPtrInput
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'

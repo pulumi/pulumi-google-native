@@ -44,9 +44,6 @@ func NewExternalVpnGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExternalVpnGateway == nil {
-		return nil, errors.New("invalid value for required argument 'ExternalVpnGateway'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -125,8 +122,7 @@ type externalVpnGatewayArgs struct {
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description        *string `pulumi:"description"`
-	ExternalVpnGateway string  `pulumi:"externalVpnGateway"`
+	Description *string `pulumi:"description"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// List of interfaces for this external VPN gateway.
@@ -154,8 +150,7 @@ type ExternalVpnGatewayArgs struct {
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description        pulumi.StringPtrInput
-	ExternalVpnGateway pulumi.StringInput
+	Description pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// List of interfaces for this external VPN gateway.

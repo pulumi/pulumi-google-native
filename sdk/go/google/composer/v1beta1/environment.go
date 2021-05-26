@@ -38,9 +38,6 @@ func NewEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -108,8 +105,7 @@ func (EnvironmentState) ElementType() reflect.Type {
 
 type environmentArgs struct {
 	// Configuration parameters for this environment.
-	Config        *EnvironmentConfig `pulumi:"config"`
-	EnvironmentId string             `pulumi:"environmentId"`
+	Config *EnvironmentConfig `pulumi:"config"`
 	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
@@ -123,8 +119,7 @@ type environmentArgs struct {
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
 	// Configuration parameters for this environment.
-	Config        EnvironmentConfigPtrInput
-	EnvironmentId pulumi.StringInput
+	Config EnvironmentConfigPtrInput
 	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput

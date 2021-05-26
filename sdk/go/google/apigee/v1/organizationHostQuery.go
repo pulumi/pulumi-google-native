@@ -50,9 +50,6 @@ func NewOrganizationHostQuery(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.HostQueryId == nil {
-		return nil, errors.New("invalid value for required argument 'HostQueryId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -150,7 +147,6 @@ type organizationHostQueryArgs struct {
 	Filter *string `pulumi:"filter"`
 	// Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
 	GroupByTimeUnit *string `pulumi:"groupByTimeUnit"`
-	HostQueryId     string  `pulumi:"hostQueryId"`
 	// Maximum number of rows that can be returned in the result.
 	Limit *int `pulumi:"limit"`
 	// A list of Metrics.
@@ -178,7 +174,6 @@ type OrganizationHostQueryArgs struct {
 	Filter pulumi.StringPtrInput
 	// Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
 	GroupByTimeUnit pulumi.StringPtrInput
-	HostQueryId     pulumi.StringInput
 	// Maximum number of rows that can be returned in the result.
 	Limit pulumi.IntPtrInput
 	// A list of Metrics.

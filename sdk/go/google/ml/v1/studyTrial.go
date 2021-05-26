@@ -53,9 +53,6 @@ func NewStudyTrial(ctx *pulumi.Context,
 	if args.StudyId == nil {
 		return nil, errors.New("invalid value for required argument 'StudyId'")
 	}
-	if args.TrialId == nil {
-		return nil, errors.New("invalid value for required argument 'TrialId'")
-	}
 	var resource StudyTrial
 	err := ctx.RegisterResource("google-native:ml/v1:StudyTrial", name, args, &resource, opts...)
 	if err != nil {
@@ -139,7 +136,6 @@ type studyTrialArgs struct {
 	// The detailed state of a trial.
 	State   *string `pulumi:"state"`
 	StudyId string  `pulumi:"studyId"`
-	TrialId string  `pulumi:"trialId"`
 }
 
 // The set of arguments for constructing a StudyTrial resource.
@@ -155,7 +151,6 @@ type StudyTrialArgs struct {
 	// The detailed state of a trial.
 	State   pulumi.StringPtrInput
 	StudyId pulumi.StringInput
-	TrialId pulumi.StringInput
 }
 
 func (StudyTrialArgs) ElementType() reflect.Type {

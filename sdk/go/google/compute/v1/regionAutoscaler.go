@@ -56,9 +56,6 @@ func NewRegionAutoscaler(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Autoscaler == nil {
-		return nil, errors.New("invalid value for required argument 'Autoscaler'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -161,7 +158,6 @@ func (RegionAutoscalerState) ElementType() reflect.Type {
 }
 
 type regionAutoscalerArgs struct {
-	Autoscaler string `pulumi:"autoscaler"`
 	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
 	//
 	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
@@ -202,7 +198,6 @@ type regionAutoscalerArgs struct {
 
 // The set of arguments for constructing a RegionAutoscaler resource.
 type RegionAutoscalerArgs struct {
-	Autoscaler pulumi.StringInput
 	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
 	//
 	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.

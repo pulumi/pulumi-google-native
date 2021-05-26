@@ -43,9 +43,6 @@ func NewAppAuthorizedCertificate(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	if args.AuthorizedCertificateId == nil {
-		return nil, errors.New("invalid value for required argument 'AuthorizedCertificateId'")
-	}
 	var resource AppAuthorizedCertificate
 	err := ctx.RegisterResource("google-native:appengine/v1:AppAuthorizedCertificate", name, args, &resource, opts...)
 	if err != nil {
@@ -110,8 +107,7 @@ func (AppAuthorizedCertificateState) ElementType() reflect.Type {
 }
 
 type appAuthorizedCertificateArgs struct {
-	AppId                   string `pulumi:"appId"`
-	AuthorizedCertificateId string `pulumi:"authorizedCertificateId"`
+	AppId string `pulumi:"appId"`
 	// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
 	CertificateRawData *CertificateRawData `pulumi:"certificateRawData"`
 	// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
@@ -134,8 +130,7 @@ type appAuthorizedCertificateArgs struct {
 
 // The set of arguments for constructing a AppAuthorizedCertificate resource.
 type AppAuthorizedCertificateArgs struct {
-	AppId                   pulumi.StringInput
-	AuthorizedCertificateId pulumi.StringInput
+	AppId pulumi.StringInput
 	// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
 	CertificateRawData CertificateRawDataPtrInput
 	// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.

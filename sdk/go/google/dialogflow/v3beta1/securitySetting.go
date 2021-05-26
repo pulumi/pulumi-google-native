@@ -44,9 +44,6 @@ func NewSecuritySetting(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SecuritySettingId == nil {
-		return nil, errors.New("invalid value for required argument 'SecuritySettingId'")
-	}
 	var resource SecuritySetting
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:SecuritySetting", name, args, &resource, opts...)
 	if err != nil {
@@ -122,8 +119,7 @@ type securitySettingArgs struct {
 	// Strategy that defines how we do redaction.
 	RedactionStrategy *string `pulumi:"redactionStrategy"`
 	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
-	RetentionWindowDays *int   `pulumi:"retentionWindowDays"`
-	SecuritySettingId   string `pulumi:"securitySettingId"`
+	RetentionWindowDays *int `pulumi:"retentionWindowDays"`
 }
 
 // The set of arguments for constructing a SecuritySetting resource.
@@ -144,7 +140,6 @@ type SecuritySettingArgs struct {
 	RedactionStrategy pulumi.StringPtrInput
 	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
 	RetentionWindowDays pulumi.IntPtrInput
-	SecuritySettingId   pulumi.StringInput
 }
 
 func (SecuritySettingArgs) ElementType() reflect.Type {

@@ -54,9 +54,6 @@ func NewBackupRun(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Id == nil {
-		return nil, errors.New("invalid value for required argument 'Id'")
-	}
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
@@ -170,7 +167,7 @@ type backupRunArgs struct {
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error *OperationError `pulumi:"error"`
 	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
 	// This is always *sql#backupRun*.
@@ -207,7 +204,7 @@ type BackupRunArgs struct {
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorPtrInput
 	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-	Id pulumi.StringInput
+	Id pulumi.StringPtrInput
 	// Name of the database instance.
 	Instance pulumi.StringInput
 	// This is always *sql#backupRun*.

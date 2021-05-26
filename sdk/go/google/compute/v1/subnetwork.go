@@ -72,9 +72,6 @@ func NewSubnetwork(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.Subnetwork == nil {
-		return nil, errors.New("invalid value for required argument 'Subnetwork'")
-	}
 	var resource Subnetwork
 	err := ctx.RegisterResource("google-native:compute/v1:Subnetwork", name, args, &resource, opts...)
 	if err != nil {
@@ -236,8 +233,7 @@ type subnetworkArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-	State      *string `pulumi:"state"`
-	Subnetwork string  `pulumi:"subnetwork"`
+	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Subnetwork resource.
@@ -287,8 +283,7 @@ type SubnetworkArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
-	State      pulumi.StringPtrInput
-	Subnetwork pulumi.StringInput
+	State pulumi.StringPtrInput
 }
 
 func (SubnetworkArgs) ElementType() reflect.Type {

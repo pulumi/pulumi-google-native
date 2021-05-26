@@ -53,9 +53,6 @@ func NewKeyRingCryptoKeyCryptoKeyVersion(ctx *pulumi.Context,
 	if args.CryptoKeyId == nil {
 		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
 	}
-	if args.CryptoKeyVersionId == nil {
-		return nil, errors.New("invalid value for required argument 'CryptoKeyVersionId'")
-	}
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
@@ -149,8 +146,7 @@ func (KeyRingCryptoKeyCryptoKeyVersionState) ElementType() reflect.Type {
 }
 
 type keyRingCryptoKeyCryptoKeyVersionArgs struct {
-	CryptoKeyId        string `pulumi:"cryptoKeyId"`
-	CryptoKeyVersionId string `pulumi:"cryptoKeyVersionId"`
+	CryptoKeyId string `pulumi:"cryptoKeyId"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions *ExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	KeyRingId                      string                          `pulumi:"keyRingId"`
@@ -162,8 +158,7 @@ type keyRingCryptoKeyCryptoKeyVersionArgs struct {
 
 // The set of arguments for constructing a KeyRingCryptoKeyCryptoKeyVersion resource.
 type KeyRingCryptoKeyCryptoKeyVersionArgs struct {
-	CryptoKeyId        pulumi.StringInput
-	CryptoKeyVersionId pulumi.StringInput
+	CryptoKeyId pulumi.StringInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsPtrInput
 	KeyRingId                      pulumi.StringInput

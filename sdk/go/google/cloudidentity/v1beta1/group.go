@@ -44,9 +44,6 @@ func NewGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GroupId == nil {
-		return nil, errors.New("invalid value for required argument 'GroupId'")
-	}
 	if args.InitialGroupConfig == nil {
 		return nil, errors.New("invalid value for required argument 'InitialGroupConfig'")
 	}
@@ -130,7 +127,6 @@ type groupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata *DynamicGroupMetadata `pulumi:"dynamicGroupMetadata"`
-	GroupId              string                `pulumi:"groupId"`
 	// Required. Immutable. The `EntityKey` of the `Group`.
 	GroupKey           *EntityKey `pulumi:"groupKey"`
 	InitialGroupConfig string     `pulumi:"initialGroupConfig"`
@@ -150,7 +146,6 @@ type GroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata DynamicGroupMetadataPtrInput
-	GroupId              pulumi.StringInput
 	// Required. Immutable. The `EntityKey` of the `Group`.
 	GroupKey           EntityKeyPtrInput
 	InitialGroupConfig pulumi.StringInput

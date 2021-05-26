@@ -76,9 +76,6 @@ func NewFunction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FunctionId == nil {
-		return nil, errors.New("invalid value for required argument 'FunctionId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -235,7 +232,6 @@ type functionArgs struct {
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service.
 	EventTrigger *EventTrigger `pulumi:"eventTrigger"`
-	FunctionId   string        `pulumi:"functionId"`
 	// An HTTPS endpoint type of source that can be triggered via URL.
 	HttpsTrigger *HttpsTrigger `pulumi:"httpsTrigger"`
 	// The ingress settings for the function, controlling what traffic can reach it.
@@ -286,7 +282,6 @@ type FunctionArgs struct {
 	EnvironmentVariables pulumi.StringMapInput
 	// A source that fires events in response to a condition in another service.
 	EventTrigger EventTriggerPtrInput
-	FunctionId   pulumi.StringInput
 	// An HTTPS endpoint type of source that can be triggered via URL.
 	HttpsTrigger HttpsTriggerPtrInput
 	// The ingress settings for the function, controlling what traffic can reach it.

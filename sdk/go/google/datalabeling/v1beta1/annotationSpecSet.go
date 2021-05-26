@@ -34,9 +34,6 @@ func NewAnnotationSpecSet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AnnotationSpecSetId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotationSpecSetId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -92,7 +89,6 @@ func (AnnotationSpecSetState) ElementType() reflect.Type {
 }
 
 type annotationSpecSetArgs struct {
-	AnnotationSpecSetId string `pulumi:"annotationSpecSetId"`
 	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs []GoogleCloudDatalabelingV1beta1AnnotationSpec `pulumi:"annotationSpecs"`
 	// The names of any related resources that are blocking changes to the annotation spec set.
@@ -108,7 +104,6 @@ type annotationSpecSetArgs struct {
 
 // The set of arguments for constructing a AnnotationSpecSet resource.
 type AnnotationSpecSetArgs struct {
-	AnnotationSpecSetId pulumi.StringInput
 	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput
 	// The names of any related resources that are blocking changes to the annotation spec set.

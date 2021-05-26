@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,12 +36,9 @@ type SettingDatasource struct {
 func NewSettingDatasource(ctx *pulumi.Context,
 	name string, args *SettingDatasourceArgs, opts ...pulumi.ResourceOption) (*SettingDatasource, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SettingDatasourceArgs{}
 	}
 
-	if args.DatasourceId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasourceId'")
-	}
 	var resource SettingDatasource
 	err := ctx.RegisterResource("google-native:cloudsearch/v1:SettingDatasource", name, args, &resource, opts...)
 	if err != nil {
@@ -107,7 +103,6 @@ func (SettingDatasourceState) ElementType() reflect.Type {
 }
 
 type settingDatasourceArgs struct {
-	DatasourceId string `pulumi:"datasourceId"`
 	// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
 	DisableModifications *bool `pulumi:"disableModifications"`
 	// Disable serving any search or assist results.
@@ -128,7 +123,6 @@ type settingDatasourceArgs struct {
 
 // The set of arguments for constructing a SettingDatasource resource.
 type SettingDatasourceArgs struct {
-	DatasourceId pulumi.StringInput
 	// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
 	DisableModifications pulumi.BoolPtrInput
 	// Disable serving any search or assist results.

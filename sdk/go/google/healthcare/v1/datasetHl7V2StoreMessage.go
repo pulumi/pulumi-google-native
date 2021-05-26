@@ -53,9 +53,6 @@ func NewDatasetHl7V2StoreMessage(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.MessageId == nil {
-		return nil, errors.New("invalid value for required argument 'MessageId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -136,9 +133,8 @@ type datasetHl7V2StoreMessageArgs struct {
 	DatasetId    string  `pulumi:"datasetId"`
 	Hl7V2StoreId string  `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels    map[string]string `pulumi:"labels"`
-	Location  string            `pulumi:"location"`
-	MessageId string            `pulumi:"messageId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The message type for this message. MSH-9.1.
 	MessageType *string `pulumi:"messageType"`
 	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
@@ -161,9 +157,8 @@ type DatasetHl7V2StoreMessageArgs struct {
 	DatasetId    pulumi.StringInput
 	Hl7V2StoreId pulumi.StringInput
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels    pulumi.StringMapInput
-	Location  pulumi.StringInput
-	MessageId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The message type for this message. MSH-9.1.
 	MessageType pulumi.StringPtrInput
 	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.

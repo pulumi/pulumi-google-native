@@ -71,9 +71,6 @@ func NewOrganizationReport(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.ReportId == nil {
-		return nil, errors.New("invalid value for required argument 'ReportId'")
-	}
 	var resource OrganizationReport
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationReport", name, args, &resource, opts...)
 	if err != nil {
@@ -217,7 +214,6 @@ type organizationReportArgs struct {
 	OrganizationId string  `pulumi:"organizationId"`
 	// This field contains report properties such as ui metadata etc.
 	Properties []GoogleCloudApigeeV1ReportProperty `pulumi:"properties"`
-	ReportId   string                              `pulumi:"reportId"`
 	// Legacy field: not used much. Contains the list of sort by columns
 	SortByCols []string `pulumi:"sortByCols"`
 	// Legacy field: not used much. Contains the sort order for the sort columns
@@ -257,7 +253,6 @@ type OrganizationReportArgs struct {
 	OrganizationId pulumi.StringInput
 	// This field contains report properties such as ui metadata etc.
 	Properties GoogleCloudApigeeV1ReportPropertyArrayInput
-	ReportId   pulumi.StringInput
 	// Legacy field: not used much. Contains the list of sort by columns
 	SortByCols pulumi.StringArrayInput
 	// Legacy field: not used much. Contains the sort order for the sort columns

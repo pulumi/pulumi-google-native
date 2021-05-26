@@ -48,9 +48,6 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainId'")
-	}
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
@@ -141,7 +138,6 @@ type domainArgs struct {
 	Admin *string `pulumi:"admin"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	DomainId           string   `pulumi:"domainId"`
 	DomainName         string   `pulumi:"domainName"`
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -160,7 +156,6 @@ type DomainArgs struct {
 	Admin pulumi.StringPtrInput
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
-	DomainId           pulumi.StringInput
 	DomainName         pulumi.StringInput
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels pulumi.StringMapInput

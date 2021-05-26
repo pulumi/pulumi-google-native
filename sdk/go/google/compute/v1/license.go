@@ -39,9 +39,6 @@ func NewLicense(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.License == nil {
-		return nil, errors.New("invalid value for required argument 'License'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -114,8 +111,7 @@ type licenseArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of resource. Always compute#license for licenses.
-	Kind    *string `pulumi:"kind"`
-	License string  `pulumi:"license"`
+	Kind *string `pulumi:"kind"`
 	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
 	LicenseCode *string `pulumi:"licenseCode"`
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
@@ -138,8 +134,7 @@ type LicenseArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of resource. Always compute#license for licenses.
-	Kind    pulumi.StringPtrInput
-	License pulumi.StringInput
+	Kind pulumi.StringPtrInput
 	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
 	LicenseCode pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.

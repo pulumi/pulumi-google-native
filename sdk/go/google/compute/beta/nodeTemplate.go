@@ -58,9 +58,6 @@ func NewNodeTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NodeTemplate == nil {
-		return nil, errors.New("invalid value for required argument 'NodeTemplate'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -183,7 +180,6 @@ type nodeTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels map[string]string `pulumi:"nodeAffinityLabels"`
-	NodeTemplate       string            `pulumi:"nodeTemplate"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType *string `pulumi:"nodeType"`
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
@@ -226,7 +222,6 @@ type NodeTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels pulumi.StringMapInput
-	NodeTemplate       pulumi.StringInput
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringPtrInput
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.

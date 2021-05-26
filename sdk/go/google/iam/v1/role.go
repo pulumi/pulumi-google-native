@@ -41,9 +41,6 @@ func NewRole(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RoleId == nil {
-		return nil, errors.New("invalid value for required argument 'RoleId'")
-	}
 	var resource Role
 	err := ctx.RegisterResource("google-native:iam/v1:Role", name, args, &resource, opts...)
 	if err != nil {
@@ -116,7 +113,7 @@ type roleArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-	RoleId string `pulumi:"roleId"`
+	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 	Stage *string `pulumi:"stage"`
 	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
@@ -137,7 +134,7 @@ type RoleArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-	RoleId pulumi.StringInput
+	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 	Stage pulumi.StringPtrInput
 	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.

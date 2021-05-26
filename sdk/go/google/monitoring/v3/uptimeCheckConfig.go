@@ -51,9 +51,6 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.UptimeCheckConfigId == nil {
-		return nil, errors.New("invalid value for required argument 'UptimeCheckConfigId'")
-	}
 	var resource UptimeCheckConfig
 	err := ctx.RegisterResource("google-native:monitoring/v3:UptimeCheckConfig", name, args, &resource, opts...)
 	if err != nil {
@@ -158,8 +155,7 @@ type uptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	TcpCheck *TcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
-	Timeout             *string `pulumi:"timeout"`
-	UptimeCheckConfigId string  `pulumi:"uptimeCheckConfigId"`
+	Timeout *string `pulumi:"timeout"`
 }
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
@@ -188,8 +184,7 @@ type UptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	TcpCheck TcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
-	Timeout             pulumi.StringPtrInput
-	UptimeCheckConfigId pulumi.StringInput
+	Timeout pulumi.StringPtrInput
 }
 
 func (UptimeCheckConfigArgs) ElementType() reflect.Type {

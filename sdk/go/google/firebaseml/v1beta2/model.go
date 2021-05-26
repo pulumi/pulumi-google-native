@@ -44,9 +44,6 @@ func NewModel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ModelId == nil {
-		return nil, errors.New("invalid value for required argument 'ModelId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -124,7 +121,6 @@ func (ModelState) ElementType() reflect.Type {
 type modelArgs struct {
 	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName *string `pulumi:"displayName"`
-	ModelId     string  `pulumi:"modelId"`
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
@@ -140,7 +136,6 @@ type modelArgs struct {
 type ModelArgs struct {
 	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName pulumi.StringPtrInput
-	ModelId     pulumi.StringInput
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput

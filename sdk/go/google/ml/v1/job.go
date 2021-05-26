@@ -48,9 +48,6 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobId == nil {
-		return nil, errors.New("invalid value for required argument 'JobId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -143,7 +140,7 @@ type jobArgs struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
 	Etag *string `pulumi:"etag"`
 	// Required. The user-specified id of the job.
-	JobId string `pulumi:"jobId"`
+	JobId *string `pulumi:"jobId"`
 	// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Input parameters to create a prediction job.
@@ -172,7 +169,7 @@ type JobArgs struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
 	Etag pulumi.StringPtrInput
 	// Required. The user-specified id of the job.
-	JobId pulumi.StringInput
+	JobId pulumi.StringPtrInput
 	// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels pulumi.StringMapInput
 	// Input parameters to create a prediction job.

@@ -40,9 +40,6 @@ func NewService(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ServiceId == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceId'")
-	}
 	var resource Service
 	err := ctx.RegisterResource("google-native:run/v1:Service", name, args, &resource, opts...)
 	if err != nil {
@@ -102,9 +99,8 @@ type serviceArgs struct {
 	Kind     *string `pulumi:"kind"`
 	Location string  `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
-	Metadata  *ObjectMeta `pulumi:"metadata"`
-	Project   string      `pulumi:"project"`
-	ServiceId string      `pulumi:"serviceId"`
+	Metadata *ObjectMeta `pulumi:"metadata"`
+	Project  string      `pulumi:"project"`
 	// Spec holds the desired state of the Service (from the client).
 	Spec *ServiceSpec `pulumi:"spec"`
 	// Status communicates the observed state of the Service (from the controller).
@@ -120,9 +116,8 @@ type ServiceArgs struct {
 	Kind     pulumi.StringPtrInput
 	Location pulumi.StringInput
 	// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
-	Metadata  ObjectMetaPtrInput
-	Project   pulumi.StringInput
-	ServiceId pulumi.StringInput
+	Metadata ObjectMetaPtrInput
+	Project  pulumi.StringInput
 	// Spec holds the desired state of the Service (from the client).
 	Spec ServiceSpecPtrInput
 	// Status communicates the observed state of the Service (from the controller).

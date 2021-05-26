@@ -34,9 +34,6 @@ func NewNamespaceDomainmapping(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainmappingId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainmappingId'")
-	}
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
@@ -93,9 +90,8 @@ func (NamespaceDomainmappingState) ElementType() reflect.Type {
 
 type namespaceDomainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion      *string `pulumi:"apiVersion"`
-	DomainmappingId string  `pulumi:"domainmappingId"`
-	DryRun          *string `pulumi:"dryRun"`
+	ApiVersion *string `pulumi:"apiVersion"`
+	DryRun     *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
 	Kind *string `pulumi:"kind"`
 	// Metadata associated with this BuildTemplate.
@@ -110,9 +106,8 @@ type namespaceDomainmappingArgs struct {
 // The set of arguments for constructing a NamespaceDomainmapping resource.
 type NamespaceDomainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion      pulumi.StringPtrInput
-	DomainmappingId pulumi.StringInput
-	DryRun          pulumi.StringPtrInput
+	ApiVersion pulumi.StringPtrInput
+	DryRun     pulumi.StringPtrInput
 	// The kind of resource, in this case "DomainMapping".
 	Kind pulumi.StringPtrInput
 	// Metadata associated with this BuildTemplate.

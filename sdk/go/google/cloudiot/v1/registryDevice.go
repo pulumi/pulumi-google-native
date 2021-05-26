@@ -56,9 +56,6 @@ func NewRegistryDevice(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DeviceId == nil {
-		return nil, errors.New("invalid value for required argument 'DeviceId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -170,7 +167,6 @@ type registryDeviceArgs struct {
 	Config *DeviceConfig `pulumi:"config"`
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials []DeviceCredential `pulumi:"credentials"`
-	DeviceId    string             `pulumi:"deviceId"`
 	// Gateway-related configuration and state.
 	GatewayConfig *GatewayConfig `pulumi:"gatewayConfig"`
 	// The user-defined device identifier. The device ID must be unique within a device registry.
@@ -212,7 +208,6 @@ type RegistryDeviceArgs struct {
 	Config DeviceConfigPtrInput
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials DeviceCredentialArrayInput
-	DeviceId    pulumi.StringInput
 	// Gateway-related configuration and state.
 	GatewayConfig GatewayConfigPtrInput
 	// The user-defined device identifier. The device ID must be unique within a device registry.

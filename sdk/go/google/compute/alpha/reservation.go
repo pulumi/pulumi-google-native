@@ -53,9 +53,6 @@ func NewReservation(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Reservation == nil {
-		return nil, errors.New("invalid value for required argument 'Reservation'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -154,10 +151,9 @@ type reservationArgs struct {
 	// [Output Only] Type of the resource. Always compute#reservations for reservations.
 	Kind *string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name        *string `pulumi:"name"`
-	Project     string  `pulumi:"project"`
-	RequestId   *string `pulumi:"requestId"`
-	Reservation string  `pulumi:"reservation"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
@@ -189,10 +185,9 @@ type ReservationArgs struct {
 	// [Output Only] Type of the resource. Always compute#reservations for reservations.
 	Kind pulumi.StringPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name        pulumi.StringPtrInput
-	Project     pulumi.StringInput
-	RequestId   pulumi.StringPtrInput
-	Reservation pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined fully-qualified URL for this resource.

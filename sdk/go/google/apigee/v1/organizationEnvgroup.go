@@ -34,9 +34,6 @@ func NewOrganizationEnvgroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvgroupId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvgroupId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -92,7 +89,6 @@ func (OrganizationEnvgroupState) ElementType() reflect.Type {
 }
 
 type organizationEnvgroupArgs struct {
-	EnvgroupId string `pulumi:"envgroupId"`
 	// Required. Host names for this environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// ID of the environment group.
@@ -102,7 +98,6 @@ type organizationEnvgroupArgs struct {
 
 // The set of arguments for constructing a OrganizationEnvgroup resource.
 type OrganizationEnvgroupArgs struct {
-	EnvgroupId pulumi.StringInput
 	// Required. Host names for this environment group.
 	Hostnames pulumi.StringArrayInput
 	// ID of the environment group.

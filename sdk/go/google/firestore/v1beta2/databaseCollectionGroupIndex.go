@@ -38,9 +38,6 @@ func NewDatabaseCollectionGroupIndex(ctx *pulumi.Context,
 	if args.DatabaseId == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
-	if args.IndexId == nil {
-		return nil, errors.New("invalid value for required argument 'IndexId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -95,8 +92,7 @@ type databaseCollectionGroupIndexArgs struct {
 	CollectionGroupId string `pulumi:"collectionGroupId"`
 	DatabaseId        string `pulumi:"databaseId"`
 	// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-	Fields  []GoogleFirestoreAdminV1beta2IndexField `pulumi:"fields"`
-	IndexId string                                  `pulumi:"indexId"`
+	Fields []GoogleFirestoreAdminV1beta2IndexField `pulumi:"fields"`
 	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
@@ -111,8 +107,7 @@ type DatabaseCollectionGroupIndexArgs struct {
 	CollectionGroupId pulumi.StringInput
 	DatabaseId        pulumi.StringInput
 	// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-	Fields  GoogleFirestoreAdminV1beta2IndexFieldArrayInput
-	IndexId pulumi.StringInput
+	Fields GoogleFirestoreAdminV1beta2IndexFieldArrayInput
 	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput

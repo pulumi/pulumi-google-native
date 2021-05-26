@@ -46,9 +46,6 @@ func NewTargetInstance(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TargetInstance == nil {
-		return nil, errors.New("invalid value for required argument 'TargetInstance'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -142,8 +139,7 @@ type targetInstanceArgs struct {
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink       *string `pulumi:"selfLink"`
-	TargetInstance string  `pulumi:"targetInstance"`
+	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone string `pulumi:"zone"`
 }
@@ -170,8 +166,7 @@ type TargetInstanceArgs struct {
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink       pulumi.StringPtrInput
-	TargetInstance pulumi.StringInput
+	SelfLink pulumi.StringPtrInput
 	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone pulumi.StringInput
 }

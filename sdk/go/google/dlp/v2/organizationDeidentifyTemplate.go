@@ -36,9 +36,6 @@ func NewOrganizationDeidentifyTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DeidentifyTemplateId == nil {
-		return nil, errors.New("invalid value for required argument 'DeidentifyTemplateId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -102,8 +99,7 @@ func (OrganizationDeidentifyTemplateState) ElementType() reflect.Type {
 
 type organizationDeidentifyTemplateArgs struct {
 	// The core content of the template.
-	DeidentifyConfig     *GooglePrivacyDlpV2DeidentifyConfig `pulumi:"deidentifyConfig"`
-	DeidentifyTemplateId string                              `pulumi:"deidentifyTemplateId"`
+	DeidentifyConfig *GooglePrivacyDlpV2DeidentifyConfig `pulumi:"deidentifyConfig"`
 	// Short description (max 256 chars).
 	Description *string `pulumi:"description"`
 	// Display name (max 256 chars).
@@ -117,8 +113,7 @@ type organizationDeidentifyTemplateArgs struct {
 // The set of arguments for constructing a OrganizationDeidentifyTemplate resource.
 type OrganizationDeidentifyTemplateArgs struct {
 	// The core content of the template.
-	DeidentifyConfig     GooglePrivacyDlpV2DeidentifyConfigPtrInput
-	DeidentifyTemplateId pulumi.StringInput
+	DeidentifyConfig GooglePrivacyDlpV2DeidentifyConfigPtrInput
 	// Short description (max 256 chars).
 	Description pulumi.StringPtrInput
 	// Display name (max 256 chars).

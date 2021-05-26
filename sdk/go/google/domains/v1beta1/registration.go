@@ -54,9 +54,6 @@ func NewRegistration(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RegistrationId == nil {
-		return nil, errors.New("invalid value for required argument 'RegistrationId'")
-	}
 	var resource Registration
 	err := ctx.RegisterResource("google-native:domains/v1beta1:Registration", name, args, &resource, opts...)
 	if err != nil {
@@ -153,7 +150,6 @@ type registrationArgs struct {
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings *ManagementSettings `pulumi:"managementSettings"`
 	Project            string              `pulumi:"project"`
-	RegistrationId     string              `pulumi:"registrationId"`
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
@@ -178,7 +174,6 @@ type RegistrationArgs struct {
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings ManagementSettingsPtrInput
 	Project            pulumi.StringInput
-	RegistrationId     pulumi.StringInput
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly pulumi.BoolPtrInput
 	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.

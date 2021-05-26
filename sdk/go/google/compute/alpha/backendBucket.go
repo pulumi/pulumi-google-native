@@ -46,9 +46,6 @@ func NewBackendBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BackendBucket == nil {
-		return nil, errors.New("invalid value for required argument 'BackendBucket'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -128,7 +125,6 @@ func (BackendBucketState) ElementType() reflect.Type {
 }
 
 type backendBucketArgs struct {
-	BackendBucket string `pulumi:"backendBucket"`
 	// Cloud Storage bucket name.
 	BucketName *string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
@@ -159,7 +155,6 @@ type backendBucketArgs struct {
 
 // The set of arguments for constructing a BackendBucket resource.
 type BackendBucketArgs struct {
-	BackendBucket pulumi.StringInput
 	// Cloud Storage bucket name.
 	BucketName pulumi.StringPtrInput
 	// Cloud CDN configuration for this BackendBucket.

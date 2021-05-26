@@ -43,9 +43,6 @@ func NewAgentEntityType(ctx *pulumi.Context,
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.EntityTypeId == nil {
-		return nil, errors.New("invalid value for required argument 'EntityTypeId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -124,8 +121,7 @@ type agentEntityTypeArgs struct {
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
 	// The collection of entity entries associated with the entity type.
-	Entities     []GoogleCloudDialogflowCxV3EntityTypeEntity `pulumi:"entities"`
-	EntityTypeId string                                      `pulumi:"entityTypeId"`
+	Entities []GoogleCloudDialogflowCxV3EntityTypeEntity `pulumi:"entities"`
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases []GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase `pulumi:"excludedPhrases"`
 	// Required. Indicates the kind of entity type.
@@ -149,8 +145,7 @@ type AgentEntityTypeArgs struct {
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
 	// The collection of entity entries associated with the entity type.
-	Entities     GoogleCloudDialogflowCxV3EntityTypeEntityArrayInput
-	EntityTypeId pulumi.StringInput
+	Entities GoogleCloudDialogflowCxV3EntityTypeEntityArrayInput
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayInput
 	// Required. Indicates the kind of entity type.

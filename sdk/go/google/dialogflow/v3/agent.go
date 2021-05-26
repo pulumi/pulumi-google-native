@@ -46,9 +46,6 @@ func NewAgent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -131,7 +128,6 @@ func (AgentState) ElementType() reflect.Type {
 }
 
 type agentArgs struct {
-	AgentId string `pulumi:"agentId"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -160,7 +156,6 @@ type agentArgs struct {
 
 // The set of arguments for constructing a Agent resource.
 type AgentArgs struct {
-	AgentId pulumi.StringInput
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.

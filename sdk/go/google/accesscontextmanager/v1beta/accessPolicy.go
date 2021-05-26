@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,12 +26,9 @@ type AccessPolicy struct {
 func NewAccessPolicy(ctx *pulumi.Context,
 	name string, args *AccessPolicyArgs, opts ...pulumi.ResourceOption) (*AccessPolicy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AccessPolicyArgs{}
 	}
 
-	if args.AccessPolicyId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
-	}
 	var resource AccessPolicy
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1beta:AccessPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -77,7 +73,6 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	AccessPolicyId string `pulumi:"accessPolicyId"`
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name *string `pulumi:"name"`
 	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
@@ -88,7 +83,6 @@ type accessPolicyArgs struct {
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	AccessPolicyId pulumi.StringInput
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name pulumi.StringPtrInput
 	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`

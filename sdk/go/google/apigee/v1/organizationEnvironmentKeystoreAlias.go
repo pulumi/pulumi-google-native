@@ -30,9 +30,6 @@ func NewOrganizationEnvironmentKeystoreAlias(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AliasId == nil {
-		return nil, errors.New("invalid value for required argument 'AliasId'")
-	}
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
@@ -89,8 +86,7 @@ func (OrganizationEnvironmentKeystoreAliasState) ElementType() reflect.Type {
 }
 
 type organizationEnvironmentKeystoreAliasArgs struct {
-	Alias   *string `pulumi:"alias"`
-	AliasId string  `pulumi:"aliasId"`
+	Alias *string `pulumi:"alias"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
@@ -108,8 +104,7 @@ type organizationEnvironmentKeystoreAliasArgs struct {
 
 // The set of arguments for constructing a OrganizationEnvironmentKeystoreAlias resource.
 type OrganizationEnvironmentKeystoreAliasArgs struct {
-	Alias   pulumi.StringPtrInput
-	AliasId pulumi.StringInput
+	Alias pulumi.StringPtrInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.

@@ -55,9 +55,6 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TriggerId == nil {
-		return nil, errors.New("invalid value for required argument 'TriggerId'")
-	}
 	var resource Trigger
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:Trigger", name, args, &resource, opts...)
 	if err != nil {
@@ -170,8 +167,7 @@ type triggerArgs struct {
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a `BuildTrigger`
-	Tags      []string `pulumi:"tags"`
-	TriggerId string   `pulumi:"triggerId"`
+	Tags []string `pulumi:"tags"`
 	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
 	TriggerTemplate *RepoSource `pulumi:"triggerTemplate"`
 }
@@ -202,8 +198,7 @@ type TriggerArgs struct {
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions pulumi.StringMapInput
 	// Tags for annotation of a `BuildTrigger`
-	Tags      pulumi.StringArrayInput
-	TriggerId pulumi.StringInput
+	Tags pulumi.StringArrayInput
 	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
 	TriggerTemplate RepoSourcePtrInput
 }

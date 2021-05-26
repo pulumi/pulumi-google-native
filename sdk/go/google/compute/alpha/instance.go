@@ -144,9 +144,6 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Instance == nil {
-		return nil, errors.New("invalid value for required argument 'Instance'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -453,8 +450,7 @@ type instanceArgs struct {
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname *string `pulumi:"hostname"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id       *string `pulumi:"id"`
-	Instance string  `pulumi:"instance"`
+	Id *string `pulumi:"id"`
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key.
 	//
 	// If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
@@ -583,8 +579,7 @@ type InstanceArgs struct {
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id       pulumi.StringPtrInput
-	Instance pulumi.StringInput
+	Id pulumi.StringPtrInput
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key.
 	//
 	// If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.

@@ -86,9 +86,6 @@ func NewTable(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TableId == nil {
-		return nil, errors.New("invalid value for required argument 'TableId'")
-	}
 	var resource Table
 	err := ctx.RegisterResource("google-native:bigquery/v2:Table", name, args, &resource, opts...)
 	if err != nil {
@@ -285,7 +282,6 @@ type tableArgs struct {
 	SnapshotDefinition *SnapshotDefinition `pulumi:"snapshotDefinition"`
 	// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer *Streamingbuffer `pulumi:"streamingBuffer"`
-	TableId         string           `pulumi:"tableId"`
 	// [Required] Reference describing the ID of this table.
 	TableReference *TableReference `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -350,7 +346,6 @@ type TableArgs struct {
 	SnapshotDefinition SnapshotDefinitionPtrInput
 	// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferPtrInput
-	TableId         pulumi.StringInput
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferencePtrInput
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

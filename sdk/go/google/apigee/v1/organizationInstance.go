@@ -46,9 +46,6 @@ func NewOrganizationInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceId == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -135,7 +132,6 @@ type organizationInstanceArgs struct {
 	// Optional. Display name for the instance.
 	DisplayName  *string `pulumi:"displayName"`
 	Environments *string `pulumi:"environments"`
-	InstanceId   string  `pulumi:"instanceId"`
 	// Required. Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
@@ -154,7 +150,6 @@ type OrganizationInstanceArgs struct {
 	// Optional. Display name for the instance.
 	DisplayName  pulumi.StringPtrInput
 	Environments pulumi.StringPtrInput
-	InstanceId   pulumi.StringInput
 	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.

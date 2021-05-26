@@ -30,9 +30,6 @@ func NewOrganizationEnvgroupAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AttachmentId == nil {
-		return nil, errors.New("invalid value for required argument 'AttachmentId'")
-	}
 	if args.EnvgroupId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvgroupId'")
 	}
@@ -83,8 +80,7 @@ func (OrganizationEnvgroupAttachmentState) ElementType() reflect.Type {
 }
 
 type organizationEnvgroupAttachmentArgs struct {
-	AttachmentId string `pulumi:"attachmentId"`
-	EnvgroupId   string `pulumi:"envgroupId"`
+	EnvgroupId string `pulumi:"envgroupId"`
 	// Required. ID of the attached environment.
 	Environment *string `pulumi:"environment"`
 	// ID of the environment group attachment.
@@ -94,8 +90,7 @@ type organizationEnvgroupAttachmentArgs struct {
 
 // The set of arguments for constructing a OrganizationEnvgroupAttachment resource.
 type OrganizationEnvgroupAttachmentArgs struct {
-	AttachmentId pulumi.StringInput
-	EnvgroupId   pulumi.StringInput
+	EnvgroupId pulumi.StringInput
 	// Required. ID of the attached environment.
 	Environment pulumi.StringPtrInput
 	// ID of the environment group attachment.

@@ -36,9 +36,6 @@ func NewFolderContact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ContactId == nil {
-		return nil, errors.New("invalid value for required argument 'ContactId'")
-	}
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
@@ -98,7 +95,6 @@ func (FolderContactState) ElementType() reflect.Type {
 }
 
 type folderContactArgs struct {
-	ContactId string `pulumi:"contactId"`
 	// Required. The email address to send notifications to. This does not need to be a Google account.
 	Email    *string `pulumi:"email"`
 	FolderId string  `pulumi:"folderId"`
@@ -116,7 +112,6 @@ type folderContactArgs struct {
 
 // The set of arguments for constructing a FolderContact resource.
 type FolderContactArgs struct {
-	ContactId pulumi.StringInput
 	// Required. The email address to send notifications to. This does not need to be a Google account.
 	Email    pulumi.StringPtrInput
 	FolderId pulumi.StringInput

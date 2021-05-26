@@ -49,9 +49,6 @@ func NewFolderSink(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
-	if args.SinkId == nil {
-		return nil, errors.New("invalid value for required argument 'SinkId'")
-	}
 	var resource FolderSink
 	err := ctx.RegisterResource("google-native:logging/v2:FolderSink", name, args, &resource, opts...)
 	if err != nil {
@@ -145,7 +142,6 @@ type folderSinkArgs struct {
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 *string `pulumi:"name"`
-	SinkId               string  `pulumi:"sinkId"`
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 }
 
@@ -168,7 +164,6 @@ type FolderSinkArgs struct {
 	IncludeChildren pulumi.BoolPtrInput
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 pulumi.StringPtrInput
-	SinkId               pulumi.StringInput
 	UniqueWriterIdentity pulumi.StringPtrInput
 }
 

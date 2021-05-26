@@ -53,9 +53,6 @@ func NewManagedZone(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ManagedZone == nil {
-		return nil, errors.New("invalid value for required argument 'ManagedZone'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -164,8 +161,7 @@ type managedZoneArgs struct {
 	Id   *string `pulumi:"id"`
 	Kind *string `pulumi:"kind"`
 	// User labels.
-	Labels      map[string]string `pulumi:"labels"`
-	ManagedZone string            `pulumi:"managedZone"`
+	Labels map[string]string `pulumi:"labels"`
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name *string `pulumi:"name"`
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
@@ -202,8 +198,7 @@ type ManagedZoneArgs struct {
 	Id   pulumi.StringPtrInput
 	Kind pulumi.StringPtrInput
 	// User labels.
-	Labels      pulumi.StringMapInput
-	ManagedZone pulumi.StringInput
+	Labels pulumi.StringMapInput
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name pulumi.StringPtrInput
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.

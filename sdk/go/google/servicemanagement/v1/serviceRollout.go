@@ -38,9 +38,6 @@ func NewServiceRollout(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.RolloutId == nil {
-		return nil, errors.New("invalid value for required argument 'RolloutId'")
-	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
@@ -111,7 +108,7 @@ type serviceRolloutArgs struct {
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy *DeleteServiceStrategy `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
-	RolloutId string `pulumi:"rolloutId"`
+	RolloutId *string `pulumi:"rolloutId"`
 	// The name of the service associated with this Rollout.
 	ServiceName string `pulumi:"serviceName"`
 	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
@@ -129,7 +126,7 @@ type ServiceRolloutArgs struct {
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyPtrInput
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
-	RolloutId pulumi.StringInput
+	RolloutId pulumi.StringPtrInput
 	// The name of the service associated with this Rollout.
 	ServiceName pulumi.StringInput
 	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.

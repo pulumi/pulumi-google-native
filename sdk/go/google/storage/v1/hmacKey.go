@@ -42,9 +42,6 @@ func NewHmacKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -119,7 +116,6 @@ func (HmacKeyState) ElementType() reflect.Type {
 }
 
 type hmacKeyArgs struct {
-	AccessId            string  `pulumi:"accessId"`
 	Project             string  `pulumi:"project"`
 	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
 	UserProject         *string `pulumi:"userProject"`
@@ -127,7 +123,6 @@ type hmacKeyArgs struct {
 
 // The set of arguments for constructing a HmacKey resource.
 type HmacKeyArgs struct {
-	AccessId            pulumi.StringInput
 	Project             pulumi.StringInput
 	ServiceAccountEmail pulumi.StringInput
 	UserProject         pulumi.StringPtrInput

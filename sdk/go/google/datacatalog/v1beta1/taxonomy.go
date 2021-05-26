@@ -42,9 +42,6 @@ func NewTaxonomy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TaxonomyId == nil {
-		return nil, errors.New("invalid value for required argument 'TaxonomyId'")
-	}
 	var resource Taxonomy
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:Taxonomy", name, args, &resource, opts...)
 	if err != nil {
@@ -109,7 +106,6 @@ type taxonomyArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	Location    string  `pulumi:"location"`
 	Project     string  `pulumi:"project"`
-	TaxonomyId  string  `pulumi:"taxonomyId"`
 }
 
 // The set of arguments for constructing a Taxonomy resource.
@@ -122,7 +118,6 @@ type TaxonomyArgs struct {
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringInput
 	Project     pulumi.StringInput
-	TaxonomyId  pulumi.StringInput
 }
 
 func (TaxonomyArgs) ElementType() reflect.Type {

@@ -62,9 +62,6 @@ func NewRegionJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobId == nil {
-		return nil, errors.New("invalid value for required argument 'JobId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -183,7 +180,6 @@ type regionJobArgs struct {
 	HadoopJob *HadoopJob `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
 	HiveJob *HiveJob `pulumi:"hiveJob"`
-	JobId   string   `pulumi:"jobId"`
 	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Job is a Pig job.
@@ -216,7 +212,6 @@ type RegionJobArgs struct {
 	HadoopJob HadoopJobPtrInput
 	// Optional. Job is a Hive job.
 	HiveJob HiveJobPtrInput
-	JobId   pulumi.StringInput
 	// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
 	Labels pulumi.StringMapInput
 	// Optional. Job is a Pig job.

@@ -43,9 +43,6 @@ func NewAgentWebhook(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WebhookId == nil {
-		return nil, errors.New("invalid value for required argument 'WebhookId'")
-	}
 	var resource AgentWebhook
 	err := ctx.RegisterResource("google-native:dialogflow/v3:AgentWebhook", name, args, &resource, opts...)
 	if err != nil {
@@ -110,8 +107,7 @@ type agentWebhookArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-	Timeout   *string `pulumi:"timeout"`
-	WebhookId string  `pulumi:"webhookId"`
+	Timeout *string `pulumi:"timeout"`
 }
 
 // The set of arguments for constructing a AgentWebhook resource.
@@ -128,8 +124,7 @@ type AgentWebhookArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-	Timeout   pulumi.StringPtrInput
-	WebhookId pulumi.StringInput
+	Timeout pulumi.StringPtrInput
 }
 
 func (AgentWebhookArgs) ElementType() reflect.Type {

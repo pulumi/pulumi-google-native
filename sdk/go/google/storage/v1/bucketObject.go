@@ -89,9 +89,6 @@ func NewBucketObject(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
-	if args.Object == nil {
-		return nil, errors.New("invalid value for required argument 'Object'")
-	}
 	var resource BucketObject
 	err := ctx.RegisterResource("google-native:storage/v1:BucketObject", name, args, &resource, opts...)
 	if err != nil {
@@ -295,8 +292,7 @@ type bucketObjectArgs struct {
 	// The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
 	Metageneration *string `pulumi:"metageneration"`
 	// The name of the object. Required if not specified by URL parameter.
-	Name   *string `pulumi:"name"`
-	Object string  `pulumi:"object"`
+	Name *string `pulumi:"name"`
 	// The owner of the object. This will always be the uploader of the object.
 	Owner                  *ObjectOwner `pulumi:"owner"`
 	PredefinedAcl          *string      `pulumi:"predefinedAcl"`
@@ -373,8 +369,7 @@ type BucketObjectArgs struct {
 	// The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
 	Metageneration pulumi.StringPtrInput
 	// The name of the object. Required if not specified by URL parameter.
-	Name   pulumi.StringPtrInput
-	Object pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The owner of the object. This will always be the uploader of the object.
 	Owner                  ObjectOwnerPtrInput
 	PredefinedAcl          pulumi.StringPtrInput

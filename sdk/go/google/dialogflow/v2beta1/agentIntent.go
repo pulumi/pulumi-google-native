@@ -66,9 +66,6 @@ func NewAgentIntent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.IntentId == nil {
-		return nil, errors.New("invalid value for required argument 'IntentId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -203,7 +200,6 @@ type agentIntentArgs struct {
 	Events []string `pulumi:"events"`
 	// Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
 	InputContextNames []string `pulumi:"inputContextNames"`
-	IntentId          string   `pulumi:"intentId"`
 	IntentView        *string  `pulumi:"intentView"`
 	// Optional. Indicates whether this is a fallback intent.
 	IsFallback   *bool   `pulumi:"isFallback"`
@@ -250,7 +246,6 @@ type AgentIntentArgs struct {
 	Events pulumi.StringArrayInput
 	// Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
 	InputContextNames pulumi.StringArrayInput
-	IntentId          pulumi.StringInput
 	IntentView        pulumi.StringPtrInput
 	// Optional. Indicates whether this is a fallback intent.
 	IsFallback   pulumi.BoolPtrInput

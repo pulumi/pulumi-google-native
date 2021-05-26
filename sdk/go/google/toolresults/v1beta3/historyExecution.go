@@ -40,9 +40,6 @@ func NewHistoryExecution(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExecutionId == nil {
-		return nil, errors.New("invalid value for required argument 'ExecutionId'")
-	}
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
@@ -120,8 +117,8 @@ type historyExecutionArgs struct {
 	// The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
 	DimensionDefinitions []MatrixDimensionDefinition `pulumi:"dimensionDefinitions"`
 	// A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
-	ExecutionId string `pulumi:"executionId"`
-	HistoryId   string `pulumi:"historyId"`
+	ExecutionId *string `pulumi:"executionId"`
+	HistoryId   string  `pulumi:"historyId"`
 	// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
 	Outcome   *Outcome `pulumi:"outcome"`
 	Project   string   `pulumi:"project"`
@@ -143,7 +140,7 @@ type HistoryExecutionArgs struct {
 	// The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
 	DimensionDefinitions MatrixDimensionDefinitionArrayInput
 	// A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
-	ExecutionId pulumi.StringInput
+	ExecutionId pulumi.StringPtrInput
 	HistoryId   pulumi.StringInput
 	// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
 	Outcome   OutcomePtrInput

@@ -63,9 +63,6 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SecurityPolicy == nil {
-		return nil, errors.New("invalid value for required argument 'SecurityPolicy'")
-	}
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("google-native:compute/alpha:SecurityPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -203,8 +200,7 @@ type securityPolicyArgs struct {
 	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-	Rules          []SecurityPolicyRule `pulumi:"rules"`
-	SecurityPolicy string               `pulumi:"securityPolicy"`
+	Rules []SecurityPolicyRule `pulumi:"rules"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -249,8 +245,7 @@ type SecurityPolicyArgs struct {
 	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-	Rules          SecurityPolicyRuleArrayInput
-	SecurityPolicy pulumi.StringInput
+	Rules SecurityPolicyRuleArrayInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

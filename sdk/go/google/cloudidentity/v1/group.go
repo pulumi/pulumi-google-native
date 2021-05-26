@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,12 +38,9 @@ type Group struct {
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GroupArgs{}
 	}
 
-	if args.GroupId == nil {
-		return nil, errors.New("invalid value for required argument 'GroupId'")
-	}
 	var resource Group
 	err := ctx.RegisterResource("google-native:cloudidentity/v1:Group", name, args, &resource, opts...)
 	if err != nil {
@@ -119,7 +115,6 @@ type groupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata *DynamicGroupMetadata `pulumi:"dynamicGroupMetadata"`
-	GroupId              string                `pulumi:"groupId"`
 	// Required. Immutable. The `EntityKey` of the `Group`.
 	GroupKey           *EntityKey `pulumi:"groupKey"`
 	InitialGroupConfig *string    `pulumi:"initialGroupConfig"`
@@ -137,7 +132,6 @@ type GroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Optional. Dynamic group metadata like queries and status.
 	DynamicGroupMetadata DynamicGroupMetadataPtrInput
-	GroupId              pulumi.StringInput
 	// Required. Immutable. The `EntityKey` of the `Group`.
 	GroupKey           EntityKeyPtrInput
 	InitialGroupConfig pulumi.StringPtrInput

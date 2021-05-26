@@ -47,8 +47,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatasetDicomStoreIamPolicy{}
 	case "google-native:healthcare/v1beta1:DatasetFhirStore":
 		r = &DatasetFhirStore{}
-	case "google-native:healthcare/v1beta1:DatasetFhirStoreFhir":
-		r = &DatasetFhirStoreFhir{}
 	case "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
 		r = &DatasetFhirStoreIamPolicy{}
 	case "google-native:healthcare/v1beta1:DatasetHl7V2Store":

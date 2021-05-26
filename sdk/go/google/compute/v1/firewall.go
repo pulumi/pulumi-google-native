@@ -65,9 +65,6 @@ func NewFirewall(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Firewall == nil {
-		return nil, errors.New("invalid value for required argument 'Firewall'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -198,8 +195,7 @@ type firewallArgs struct {
 	// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
-	Disabled *bool  `pulumi:"disabled"`
-	Firewall string `pulumi:"firewall"`
+	Disabled *bool `pulumi:"disabled"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
@@ -249,7 +245,6 @@ type FirewallArgs struct {
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	Firewall pulumi.StringInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.

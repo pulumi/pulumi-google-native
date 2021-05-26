@@ -42,9 +42,6 @@ func NewServiceAccountKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.KeyId == nil {
-		return nil, errors.New("invalid value for required argument 'KeyId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -121,7 +118,6 @@ func (ServiceAccountKeyState) ElementType() reflect.Type {
 type serviceAccountKeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	KeyId        string  `pulumi:"keyId"`
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
 	PrivateKeyType   *string `pulumi:"privateKeyType"`
 	Project          string  `pulumi:"project"`
@@ -132,7 +128,6 @@ type serviceAccountKeyArgs struct {
 type ServiceAccountKeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 	KeyAlgorithm pulumi.StringPtrInput
-	KeyId        pulumi.StringInput
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
 	PrivateKeyType   pulumi.StringPtrInput
 	Project          pulumi.StringInput

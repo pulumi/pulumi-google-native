@@ -36,9 +36,6 @@ func NewConversationParticipant(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ParticipantId == nil {
-		return nil, errors.New("invalid value for required argument 'ParticipantId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -89,9 +86,8 @@ type conversationParticipantArgs struct {
 	ConversationId string `pulumi:"conversationId"`
 	Location       string `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name          *string `pulumi:"name"`
-	ParticipantId string  `pulumi:"participantId"`
-	Project       string  `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role *string `pulumi:"role"`
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
@@ -103,9 +99,8 @@ type ConversationParticipantArgs struct {
 	ConversationId pulumi.StringInput
 	Location       pulumi.StringInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name          pulumi.StringPtrInput
-	ParticipantId pulumi.StringInput
-	Project       pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role pulumi.StringPtrInput
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.

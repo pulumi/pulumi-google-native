@@ -57,9 +57,6 @@ func NewRegionHealthCheck(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.HealthCheck == nil {
-		return nil, errors.New("invalid value for required argument 'HealthCheck'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -171,7 +168,6 @@ type regionHealthCheckArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     *string          `pulumi:"description"`
 	GrpcHealthCheck *GRPCHealthCheck `pulumi:"grpcHealthCheck"`
-	HealthCheck     string           `pulumi:"healthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold *int              `pulumi:"healthyThreshold"`
 	Http2HealthCheck *HTTP2HealthCheck `pulumi:"http2HealthCheck"`
@@ -213,7 +209,6 @@ type RegionHealthCheckArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     pulumi.StringPtrInput
 	GrpcHealthCheck GRPCHealthCheckPtrInput
-	HealthCheck     pulumi.StringInput
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	Http2HealthCheck HTTP2HealthCheckPtrInput

@@ -41,9 +41,6 @@ func NewOrganizationSharedflow(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SharedflowId == nil {
-		return nil, errors.New("invalid value for required argument 'SharedflowId'")
-	}
 	var resource OrganizationSharedflow
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationSharedflow", name, args, &resource, opts...)
 	if err != nil {
@@ -101,7 +98,6 @@ type organizationSharedflowArgs struct {
 	Extensions     []map[string]string `pulumi:"extensions"`
 	Name           string              `pulumi:"name"`
 	OrganizationId string              `pulumi:"organizationId"`
-	SharedflowId   string              `pulumi:"sharedflowId"`
 }
 
 // The set of arguments for constructing a OrganizationSharedflow resource.
@@ -115,7 +111,6 @@ type OrganizationSharedflowArgs struct {
 	Extensions     pulumi.StringMapArrayInput
 	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
-	SharedflowId   pulumi.StringInput
 }
 
 func (OrganizationSharedflowArgs) ElementType() reflect.Type {

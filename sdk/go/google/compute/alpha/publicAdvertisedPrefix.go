@@ -53,9 +53,6 @@ func NewPublicAdvertisedPrefix(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.PublicAdvertisedPrefix == nil {
-		return nil, errors.New("invalid value for required argument 'PublicAdvertisedPrefix'")
-	}
 	var resource PublicAdvertisedPrefix
 	err := ctx.RegisterResource("google-native:compute/alpha:PublicAdvertisedPrefix", name, args, &resource, opts...)
 	if err != nil {
@@ -157,9 +154,8 @@ type publicAdvertisedPrefixArgs struct {
 	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name                   *string `pulumi:"name"`
-	Project                string  `pulumi:"project"`
-	PublicAdvertisedPrefix string  `pulumi:"publicAdvertisedPrefix"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs []PublicAdvertisedPrefixPublicDelegatedPrefix `pulumi:"publicDelegatedPrefixs"`
 	RequestId              *string                                       `pulumi:"requestId"`
@@ -192,9 +188,8 @@ type PublicAdvertisedPrefixArgs struct {
 	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name                   pulumi.StringPtrInput
-	Project                pulumi.StringInput
-	PublicAdvertisedPrefix pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput
 	RequestId              pulumi.StringPtrInput

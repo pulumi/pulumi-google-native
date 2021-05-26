@@ -50,9 +50,6 @@ func NewOrganizationDeveloperApp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppId == nil {
-		return nil, errors.New("invalid value for required argument 'AppId'")
-	}
 	if args.DeveloperId == nil {
 		return nil, errors.New("invalid value for required argument 'DeveloperId'")
 	}
@@ -148,7 +145,7 @@ type organizationDeveloperAppArgs struct {
 	// Developer app family.
 	AppFamily *string `pulumi:"appFamily"`
 	// ID of the developer app.
-	AppId string `pulumi:"appId"`
+	AppId *string `pulumi:"appId"`
 	// List of attributes for the developer app.
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
 	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
@@ -173,7 +170,7 @@ type OrganizationDeveloperAppArgs struct {
 	// Developer app family.
 	AppFamily pulumi.StringPtrInput
 	// ID of the developer app.
-	AppId pulumi.StringInput
+	AppId pulumi.StringPtrInput
 	// List of attributes for the developer app.
 	Attributes GoogleCloudApigeeV1AttributeArrayInput
 	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.

@@ -88,9 +88,6 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceGroupManager == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -274,8 +271,7 @@ type regionInstanceGroupManagerArgs struct {
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup        *string `pulumi:"instanceGroup"`
-	InstanceGroupManager string  `pulumi:"instanceGroupManager"`
+	InstanceGroup *string `pulumi:"instanceGroup"`
 	// Instance lifecycle policy for this Instance Group Manager.
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -345,8 +341,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup        pulumi.StringPtrInput
-	InstanceGroupManager pulumi.StringInput
+	InstanceGroup pulumi.StringPtrInput
 	// Instance lifecycle policy for this Instance Group Manager.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
