@@ -10,7 +10,6 @@ const clusterName = "gke-native";
 const cluster = new google.container.v1.Cluster("cluster", {
     project,
     location: region,
-    clusterId: clusterName,
     parent: `projects/${project}/locations/${region}`,
     initialClusterVersion: "1.18.17-gke.1900",
     initialNodeCount: 1,
@@ -37,7 +36,6 @@ const pool = new google.container.v1.ClusterNodePool(nodePoolName, {
     project,
     location: region,
     clusterId: cluster.name,
-    nodePoolId: nodePoolName,
     parent: `projects/${project}/locations/${region}/clusters/${clusterName}`,
     config: {
         machineType: "n1-standard-1",

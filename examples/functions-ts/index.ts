@@ -15,17 +15,13 @@ const randomString = new random.RandomString("name", {
     length: 8,
 });
 
-const bucketName = pulumi.interpolate`bucket-${randomString.result}`;
 const bucket = new google.storage.v1.Bucket("bucket", {
     project,
-    bucket: bucketName,
-    name: bucketName,
+    name: pulumi.interpolate`bucket-${randomString.result}`,
 });
 
-const archiveName = "zip";
-const bucketObject = new google.storage.v1.BucketObject(archiveName, {
-    object: archiveName,
-    name: archiveName,
+const bucketObject = new google.storage.v1.BucketObject("bucketObject", {
+    name: "zip",
     bucket: bucket.name,
     source: new pulumi.asset.AssetArchive({
         ".": new pulumi.asset.FileArchive("./pythonfunc"),
@@ -36,7 +32,6 @@ const functionName = pulumi.interpolate`func-${randomString.result}`;
 const func = new google.cloudfunctions.v1.Function("function-py", {
     project,
     location: region,
-    functionId: functionName,
     name: pulumi.interpolate`projects/${project}/locations/${region}/functions/${functionName}`,
     sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
     httpsTrigger: {},

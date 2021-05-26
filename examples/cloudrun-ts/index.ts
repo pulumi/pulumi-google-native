@@ -19,7 +19,6 @@ const serviceName = pulumi.interpolate`run-${randomString.result}`;
 const service = new google.run.v1.Service("service", {
     project,
     location: region,
-    serviceId: serviceName,
     apiVersion: "serving.knative.dev/v1",
     kind: "Service",
     metadata: {

@@ -15,19 +15,15 @@ const config = new pulumi.Config("google-native");
 const project = config.require("project");
 const zone = config.require("zone");
 
-const networkName = pulumi.interpolate`${randomString.result}-net`;
 const computeNetwork = new google.compute.v1.Network("network", {
     autoCreateSubnetworks: true,
     project: project,
-    network: networkName,
-    name: networkName,
+    name: pulumi.interpolate`${randomString.result}-net`,
 });
 
-const firewallName = pulumi.interpolate`${randomString.result}-fw`;
 const computeFirewall = new google.compute.v1.Firewall("firewall", {
     network: computeNetwork.selfLink,
-    firewall: firewallName,
-    name: firewallName,
+    name: pulumi.interpolate`${randomString.result}-fw`,
     project: project,
     allowed: [{
         IPProtocol: "tcp",
@@ -40,10 +36,8 @@ const startupScript = `#!/bin/bash
 echo "Hello, World!" > index.html
 nohup python -m SimpleHTTPServer 80 &`;
 
-const instanceName = pulumi.interpolate`${randomString.result}-instance`;
 const computeInstance = new google.compute.v1.Instance("instance", {
-    name: instanceName,
-    instance: instanceName,
+    name: pulumi.interpolate`${randomString.result}-instance`,
     project: project,
     zone: zone,
     machineType: `projects/${project}/zones/${zone}/machineTypes/f1-micro`,
@@ -70,5 +64,5 @@ const computeInstance = new google.compute.v1.Instance("instance", {
     }],
 }, { dependsOn: [computeFirewall] });
 
-exports.instanceLink = computeInstance.selfLink;
-exports.instanceIP = computeInstance.networkInterfaces[0].accessConfigs[0].natIP;
+export const instanceLink = computeInstance.selfLink;
+export const instanceIP = computeInstance.networkInterfaces[0].accessConfigs[0].natIP;
