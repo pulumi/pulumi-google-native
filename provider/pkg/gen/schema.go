@@ -284,7 +284,6 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		CreatePath: createPath,
 		CreateVerb: createMethod.HttpMethod,
 		NoDelete:   deleteMethod == nil,
-		IdParams:   map[string]string{},
 	}
 
 	for _, name := range codegen.SortedKeys(createMethod.Parameters) {
@@ -334,25 +333,6 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		}
 		resourceMeta.CreateParams = append(resourceMeta.CreateParams, param)
 		requiredInputProperties.Add(sdkName)
-	}
-
-	idPath := getMethod.FlatPath
-	if idPath == "" {
-		idPath = getMethod.Path
-	}
-
-	resourceMeta.IdPath = idPath
-	subMatches = pathRegex.FindAllStringSubmatch(idPath, -1)
-	for _, names := range subMatches {
-		name := names[1]
-		sdkName := apiNameToSdkName(name)
-		if _, has := inputProperties[sdkName]; !has {
-			inputProperties[sdkName] = schema.PropertySpec{
-				TypeSpec: schema.TypeSpec{Type: "string"},
-			}
-			requiredInputProperties.Add(sdkName)
-		}
-		resourceMeta.IdParams[name] = sdkName
 	}
 
 	if createMethod.Request != nil {
@@ -425,6 +405,30 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		properties = responseBag.specs
 		requiredProperties = responseBag.requiredSpecs
 		g.escapeCSharpNames(typeName, properties)
+
+		// Decide how the provider will determine the ID of a created resource.
+		// Option 1: it's directly returned from the API in the "self" property.
+		for _, p := range []string{"selfLink", "self"} {
+			if _, has := response.Properties[p]; has {
+				resourceMeta.IdProperty = p
+			}
+		}
+
+		// Option 2: the provider has to manually build it from the GET method path.
+		if resourceMeta.IdProperty == "" {
+			idPath := getMethod.FlatPath
+			if idPath == "" {
+				idPath = getMethod.Path
+			}
+			resourceMeta.IdPath = idPath
+			v, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
+			if err != nil {
+				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
+				return nil
+			}
+			resourceMeta.IdPath = idPath
+			resourceMeta.IdParams = v
+		}
 	}
 
 	if resourceTok == "google-native:storage/v1:Object" {
@@ -449,6 +453,97 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
+}
+
+// buildIdParams creates a map of parameters that are needed to build resource IDs from an ID path template.
+// Keys are API parameter names, values are SDK property names (that may be equal to keys, or not).
+func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputProperties map[string]schema.PropertySpec, response *discovery.JsonSchema) (map[string]string, error) {
+	result := map[string]string{}
+
+	subMatches := pathRegex.FindAllStringSubmatch(idPath, -1)
+	for idx, names := range subMatches {
+		name := names[1]
+
+		// If the property is already defined in the input args, add its SDK name.
+		sdkName := apiNameToSdkName(name)
+		if _, has := inputProperties[sdkName]; has {
+			result[name] = sdkName
+			continue
+		}
+
+		// If the property is already defined in the response, add its API name.
+		// Note: API name equals to SDK name for all response properties, currently.
+		if _, has := response.Properties[name]; has {
+			result[name] = name
+			continue
+		}
+
+		// The last parameter represents the resource name. It is not a part of the create path,
+		// and isn't always modelled as an explicit property in the SDKs. If it's missing in the SDK,
+		// it's assigned by the API, and the provider needs to infer its value from the response.
+		isLast := idx == len(subMatches)-1
+		if !isLast {
+			return nil, errors.Errorf("property %q not found in %q", name, idPath)
+		}
+
+		// First, check if we have an explicit annotation for which property to use for name resolution.
+		key := fmt.Sprintf("%s:%s.%s", g.mod, typeName, name)
+		if v, has := resourceNamePropertyOverrides[key]; has {
+			if !g.schemaContainsProperty(response, v) {
+				return nil, errors.Errorf("property %q not found in response schema of %q", v, key)
+			}
+			result[name] = v
+			return result, nil
+		}
+
+		// Then, check if there is a property called "name".
+		if _, has := response.Properties["name"]; has {
+			result[name] = "name"
+			return result, nil
+		}
+
+		// Give up if none is present.
+		return nil, errors.Errorf("property %q not found in %q", name, idPath)
+	}
+
+	return result, nil
+}
+
+// resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.
+var resourceNamePropertyOverrides = map[string]string{
+	"apigee/v1:OrganizationEnvironmentKeystoreAlias.aliasesId":       "alias",
+	"appengine/v1:AppFirewallIngressRule.ingressRulesId":             "priority",
+	"appengine/v1beta:AppFirewallIngressRule.ingressRulesId":         "priority",
+	"bigquery/v2:Routine.routinesId":                                 "routineReference.routineId",
+	"dataproc/v1:RegionJob.jobId":                                    "reference.jobId",
+	"dataproc/v1beta2:RegionJob.jobId":                               "reference.jobId",
+	"dns/v1:Change.changeId":                                         "id",
+	"dns/v1beta2:Change.changeId":                                    "id",
+	"dns/v1beta2:ResponsePolicy.responsePolicy":                      "id",
+	"dns/v1beta2:ResponsePolicyRule.responsePolicyRule":              "ruleName",
+	"firebasehosting/v1beta1:SiteDomain.domainsId":                   "domainName",
+	"recommendationengine/v1beta1:CatalogCatalogItem.catalogItemsId": "id",
+	"run/v1alpha1:NamespaceJob.jobsId":                               "metadata.name",
+	"run/v1:Domainmapping.domainmappingsId":                          "metadata.name",
+	"run/v1:NamespaceDomainmapping.domainmappingsId":                 "metadata.name",
+	"run/v1:NamespaceService.servicesId":                             "metadata.name",
+	"run/v1:Service.servicesId":                                      "metadata.name",
+}
+
+func (g *packageGenerator) schemaContainsProperty(schema *discovery.JsonSchema, name string) bool {
+	current := *schema
+	parts := strings.Split(name, ".")
+	for idx, part := range parts {
+		value, ok := current.Properties[part]
+		if !ok {
+			return false
+		}
+		if idx == len(parts)-1 {
+			return true
+		}
+		current = g.rest.Schemas[value.Ref]
+	}
+	return false
 }
 
 func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.JsonSchema, flatten string, isOutput bool) (*propertyBag, error) {

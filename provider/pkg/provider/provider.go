@@ -26,7 +26,6 @@ import (
 	"google.golang.org/grpc/status"
 	"log"
 	"net/http"
-	"net/url"
 	"os"
 	"strings"
 	"time"
@@ -237,18 +236,12 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if err != nil {
 		return nil, err
 	}
+	inputsMap := inputs.Mappable()
 
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
-	}
-
-	id := res.IdPath
-	idParams := res.IdParams
-	for name, sdkName := range idParams {
-		value := inputs[resource.PropertyKey(sdkName)].StringValue()
-		id = strings.Replace(id, fmt.Sprintf("{%s}", name), value, 1)
 	}
 
 	var resp map[string]interface{}
@@ -290,7 +283,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			"selfLink":  obj.SelfLink,
 		}
 	default:
-		uri, err := p.buildCreateUrl(res, inputs)
+		uri, err := buildCreateUrl(res, inputs)
 		if err != nil {
 			return nil, err
 		}
@@ -331,47 +324,15 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 
+	id, err := calculateResourceId(res, inputsMap, resp)
+	if err != nil {
+		return nil, errors.Wrapf(err, "calculating resource ID")
+	}
+
 	return &rpc.CreateResponse{
 		Id:         id,
 		Properties: checkpoint,
 	}, nil
-}
-
-// buildCreateUrl composes the URL to invoke to create a resource with given inputs.
-func (p *googleCloudProvider) buildCreateUrl(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
-	path := res.CreatePath
-	queryMap := map[string]string{}
-	for _, param := range res.CreateParams {
-		sdkName := param.Name
-		if param.SdkName != "" {
-			sdkName = param.SdkName
-		}
-		key := resource.PropertyKey(sdkName)
-		if !inputs[key].HasValue() {
-			continue
-		}
-
-		value := inputs[key].StringValue()
-		switch param.Location {
-		case "path":
-			path = strings.Replace(path, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
-		case "query":
-			queryMap[param.Name] = value
-		default:
-			return "", errors.Errorf("unknown param location %q", param.Location)
-		}
-	}
-	baseUriString := res.RelativePath(path)
-	uri, err := url.Parse(baseUriString)
-	if err != nil {
-		return "", errors.Wrapf(err, "parsing resource URL %q", baseUriString)
-	}
-	query := uri.Query()
-	for key, value := range queryMap {
-		query.Add(key, value)
-	}
-	uri.RawQuery = query.Encode()
-	return uri.String(), nil
 }
 
 func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
@@ -441,7 +402,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	id := req.GetId()
-	uri := res.RelativePath(id)
+	uri := res.ResourceUrl(id)
 
 	// Retrieve the old state.
 	oldState, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
@@ -540,7 +501,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		parent[name] = inputsMap[sdkName]
 	}
 
-	uri := res.RelativePath(req.GetId())
+	uri := res.ResourceUrl(req.GetId())
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 	}
@@ -586,7 +547,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	uri := res.RelativePath(req.GetId())
+	uri := res.ResourceUrl(req.GetId())
 
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
