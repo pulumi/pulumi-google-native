@@ -17,7 +17,6 @@ class ModelVersionArgs:
     def __init__(__self__, *,
                  model_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 version_id: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs']] = None,
                  auto_scaling: Optional[pulumi.Input['GoogleCloudMlV1__AutoScalingArgs']] = None,
                  container: Optional[pulumi.Input['GoogleCloudMlV1__ContainerSpecArgs']] = None,
@@ -71,7 +70,6 @@ class ModelVersionArgs:
         """
         pulumi.set(__self__, "model_id", model_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "version_id", version_id)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if auto_scaling is not None:
@@ -138,15 +136,6 @@ class ModelVersionArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "version_id")
-
-    @version_id.setter
-    def version_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "version_id", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -468,7 +457,6 @@ class ModelVersion(pulumi.CustomResource):
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault.
@@ -550,7 +538,6 @@ class ModelVersion(pulumi.CustomResource):
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -593,9 +580,6 @@ class ModelVersion(pulumi.CustomResource):
             __props__.__dict__["runtime_version"] = runtime_version
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["state"] = state
-            if version_id is None and not opts.urn:
-                raise TypeError("Missing required property 'version_id'")
-            __props__.__dict__["version_id"] = version_id
             __props__.__dict__["last_migration_model_id"] = None
             __props__.__dict__["last_migration_time"] = None
         super(ModelVersion, __self__).__init__(

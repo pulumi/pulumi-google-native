@@ -13,7 +13,6 @@ __all__ = ['AgentSessionContextArgs', 'AgentSessionContext']
 @pulumi.input_type
 class AgentSessionContextArgs:
     def __init__(__self__, *,
-                 context_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  session_id: pulumi.Input[str],
@@ -26,7 +25,6 @@ class AgentSessionContextArgs:
         :param pulumi.Input[str] name: Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
-        pulumi.set(__self__, "context_id", context_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "session_id", session_id)
@@ -36,15 +34,6 @@ class AgentSessionContextArgs:
             pulumi.set(__self__, "name", name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
-
-    @property
-    @pulumi.getter(name="contextId")
-    def context_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "context_id")
-
-    @context_id.setter
-    def context_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "context_id", value)
 
     @property
     @pulumi.getter
@@ -115,7 +104,6 @@ class AgentSessionContext(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_id: Optional[pulumi.Input[str]] = None,
                  lifespan_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -156,7 +144,6 @@ class AgentSessionContext(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_id: Optional[pulumi.Input[str]] = None,
                  lifespan_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -175,9 +162,6 @@ class AgentSessionContext(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentSessionContextArgs.__new__(AgentSessionContextArgs)
 
-            if context_id is None and not opts.urn:
-                raise TypeError("Missing required property 'context_id'")
-            __props__.__dict__["context_id"] = context_id
             __props__.__dict__["lifespan_count"] = lifespan_count
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

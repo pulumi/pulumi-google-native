@@ -15,7 +15,6 @@ __all__ = ['CompositeTypeArgs', 'CompositeType']
 @pulumi.input_type
 class CompositeTypeArgs:
     def __init__(__self__, *,
-                 composite_type: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -36,7 +35,6 @@ class CompositeTypeArgs:
         :param pulumi.Input[str] self_link: Server defined URL for the resource.
         :param pulumi.Input['TemplateContentsArgs'] template_contents: Files for the template type.
         """
-        pulumi.set(__self__, "composite_type", composite_type)
         pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -56,15 +54,6 @@ class CompositeTypeArgs:
             pulumi.set(__self__, "status", status)
         if template_contents is not None:
             pulumi.set(__self__, "template_contents", template_contents)
-
-    @property
-    @pulumi.getter(name="compositeType")
-    def composite_type(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "composite_type")
-
-    @composite_type.setter
-    def composite_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "composite_type", value)
 
     @property
     @pulumi.getter
@@ -183,7 +172,6 @@ class CompositeType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 composite_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  insert_time: Optional[pulumi.Input[str]] = None,
@@ -232,7 +220,6 @@ class CompositeType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 composite_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  insert_time: Optional[pulumi.Input[str]] = None,
@@ -255,9 +242,6 @@ class CompositeType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CompositeTypeArgs.__new__(CompositeTypeArgs)
 
-            if composite_type is None and not opts.urn:
-                raise TypeError("Missing required property 'composite_type'")
-            __props__.__dict__["composite_type"] = composite_type
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
             __props__.__dict__["insert_time"] = insert_time

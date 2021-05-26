@@ -15,7 +15,6 @@ __all__ = ['InstanceGroupArgs', 'InstanceGroup']
 @pulumi.input_type
 class InstanceGroupArgs:
     def __init__(__self__, *,
-                 instance_group: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -51,7 +50,6 @@ class InstanceGroupArgs:
         :param pulumi.Input[int] size: [Output Only] The total number of instances in the instance group.
         :param pulumi.Input[str] subnetwork: [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
         """
-        pulumi.set(__self__, "instance_group", instance_group)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if creation_timestamp is not None:
@@ -80,15 +78,6 @@ class InstanceGroupArgs:
             pulumi.set(__self__, "size", size)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-
-    @property
-    @pulumi.getter(name="instanceGroup")
-    def instance_group(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance_group")
-
-    @instance_group.setter
-    def instance_group(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_group", value)
 
     @property
     @pulumi.getter
@@ -278,7 +267,6 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_group: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
@@ -342,7 +330,6 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_group: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
@@ -370,9 +357,6 @@ class InstanceGroup(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
-            if instance_group is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_group'")
-            __props__.__dict__["instance_group"] = instance_group
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports

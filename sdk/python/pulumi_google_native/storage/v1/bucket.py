@@ -15,7 +15,6 @@ __all__ = ['BucketArgs', 'Bucket']
 @pulumi.input_type
 class BucketArgs:
     def __init__(__self__, *,
-                 bucket: pulumi.Input[str],
                  project: pulumi.Input[str],
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]]] = None,
                  billing: Optional[pulumi.Input['BucketBillingArgs']] = None,
@@ -81,7 +80,6 @@ class BucketArgs:
         :param pulumi.Input['BucketWebsiteArgs'] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_affinity: The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
         """
-        pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "project", project)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -149,15 +147,6 @@ class BucketArgs:
             pulumi.set(__self__, "website", website)
         if zone_affinity is not None:
             pulumi.set(__self__, "zone_affinity", zone_affinity)
-
-    @property
-    @pulumi.getter
-    def bucket(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "bucket")
-
-    @bucket.setter
-    def bucket(self, value: pulumi.Input[str]):
-        pulumi.set(self, "bucket", value)
 
     @property
     @pulumi.getter
@@ -557,7 +546,6 @@ class Bucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
-                 bucket: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
@@ -651,7 +639,6 @@ class Bucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
-                 bucket: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
@@ -698,9 +685,6 @@ class Bucket(pulumi.CustomResource):
 
             __props__.__dict__["acl"] = acl
             __props__.__dict__["billing"] = billing
-            if bucket is None and not opts.urn:
-                raise TypeError("Missing required property 'bucket'")
-            __props__.__dict__["bucket"] = bucket
             __props__.__dict__["cors"] = cors
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
             __props__.__dict__["default_object_acl"] = default_object_acl

@@ -16,7 +16,6 @@ __all__ = ['SslCertificateArgs', 'SslCertificate']
 class SslCertificateArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 ssl_certificate: pulumi.Input[str],
                  certificate: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -50,7 +49,6 @@ class SslCertificateArgs:
         :param pulumi.Input[str] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "ssl_certificate", ssl_certificate)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if creation_timestamp is not None:
@@ -90,15 +88,6 @@ class SslCertificateArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="sslCertificate")
-    def ssl_certificate(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "ssl_certificate")
-
-    @ssl_certificate.setter
-    def ssl_certificate(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ssl_certificate", value)
 
     @property
     @pulumi.getter
@@ -297,7 +286,6 @@ class SslCertificate(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']]] = None,
-                 ssl_certificate: Optional[pulumi.Input[str]] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -359,7 +347,6 @@ class SslCertificate(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']]] = None,
-                 ssl_certificate: Optional[pulumi.Input[str]] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -390,9 +377,6 @@ class SslCertificate(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_managed"] = self_managed
-            if ssl_certificate is None and not opts.urn:
-                raise TypeError("Missing required property 'ssl_certificate'")
-            __props__.__dict__["ssl_certificate"] = ssl_certificate
             __props__.__dict__["subject_alternative_names"] = subject_alternative_names
             __props__.__dict__["type"] = type
         super(SslCertificate, __self__).__init__(

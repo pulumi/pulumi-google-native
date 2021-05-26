@@ -15,7 +15,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 instance: pulumi.Input[str],
                  project: pulumi.Input[str],
                  backend_type: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
@@ -83,7 +82,6 @@ class InstanceArgs:
         :param pulumi.Input[str] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
-        pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "project", project)
         if backend_type is not None:
             pulumi.set(__self__, "backend_type", backend_type)
@@ -147,15 +145,6 @@ class InstanceArgs:
             pulumi.set(__self__, "state", state)
         if suspension_reason is not None:
             pulumi.set(__self__, "suspension_reason", suspension_reason)
-
-    @property
-    @pulumi.getter
-    def instance(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance")
-
-    @instance.setter
-    def instance(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance", value)
 
     @property
     @pulumi.getter
@@ -556,7 +545,6 @@ class Instance(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
-                 instance: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
@@ -652,7 +640,6 @@ class Instance(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
-                 instance: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
@@ -697,9 +684,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["failover_replica"] = failover_replica
             __props__.__dict__["gce_zone"] = gce_zone
-            if instance is None and not opts.urn:
-                raise TypeError("Missing required property 'instance'")
-            __props__.__dict__["instance"] = instance
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ip_addresses"] = ip_addresses
             __props__.__dict__["ipv6_address"] = ipv6_address

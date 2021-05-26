@@ -16,7 +16,6 @@ __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
 class SecurityPolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 security_policy: pulumi.Input[str],
                  adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]]] = None,
                  cloud_armor_config: Optional[pulumi.Input['SecurityPolicyCloudArmorConfigArgs']] = None,
@@ -61,7 +60,6 @@ class SecurityPolicyArgs:
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "security_policy", security_policy)
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if associations is not None:
@@ -111,15 +109,6 @@ class SecurityPolicyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "security_policy")
-
-    @security_policy.setter
-    def security_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "security_policy", value)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -376,7 +365,6 @@ class SecurityPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -449,7 +437,6 @@ class SecurityPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -485,9 +472,6 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rule_tuple_count"] = rule_tuple_count
             __props__.__dict__["rules"] = rules
-            if security_policy is None and not opts.urn:
-                raise TypeError("Missing required property 'security_policy'")
-            __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["type"] = type

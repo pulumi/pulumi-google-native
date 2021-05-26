@@ -13,28 +13,17 @@ __all__ = ['ServiceArgs', 'Service']
 @pulumi.input_type
 class ServiceArgs:
     def __init__(__self__, *,
-                 service_name: pulumi.Input[str],
-                 producer_project_id: Optional[pulumi.Input[str]] = None):
+                 producer_project_id: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
-        :param pulumi.Input[str] service_name: The name of the service. See the [overview](/service-management/overview) for naming requirements.
         :param pulumi.Input[str] producer_project_id: ID of the project that produces and owns this service.
+        :param pulumi.Input[str] service_name: The name of the service. See the [overview](/service-management/overview) for naming requirements.
         """
-        pulumi.set(__self__, "service_name", service_name)
         if producer_project_id is not None:
             pulumi.set(__self__, "producer_project_id", producer_project_id)
-
-    @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[str]:
-        """
-        The name of the service. See the [overview](/service-management/overview) for naming requirements.
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_name", value)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="producerProjectId")
@@ -47,6 +36,18 @@ class ServiceArgs:
     @producer_project_id.setter
     def producer_project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "producer_project_id", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the service. See the [overview](/service-management/overview) for naming requirements.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
 
 
 class Service(pulumi.CustomResource):
@@ -69,7 +70,7 @@ class Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceArgs,
+                 args: Optional[ServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation
@@ -104,8 +105,6 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["producer_project_id"] = producer_project_id
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
         super(Service, __self__).__init__(
             'google-native:servicemanagement/v1:Service',

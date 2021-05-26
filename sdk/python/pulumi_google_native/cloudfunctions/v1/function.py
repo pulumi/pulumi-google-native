@@ -15,7 +15,6 @@ __all__ = ['FunctionArgs', 'Function']
 @pulumi.input_type
 class FunctionArgs:
     def __init__(__self__, *,
-                 function_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
@@ -65,7 +64,6 @@ class FunctionArgs:
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
         """
-        pulumi.set(__self__, "function_id", function_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if available_memory_mb is not None:
@@ -112,15 +110,6 @@ class FunctionArgs:
             pulumi.set(__self__, "vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
             pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
-
-    @property
-    @pulumi.getter(name="functionId")
-    def function_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "function_id")
-
-    @function_id.setter
-    def function_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "function_id", value)
 
     @property
     @pulumi.getter
@@ -417,7 +406,6 @@ class Function(pulumi.CustomResource):
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
-                 function_id: Optional[pulumi.Input[str]] = None,
                  https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -495,7 +483,6 @@ class Function(pulumi.CustomResource):
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
-                 function_id: Optional[pulumi.Input[str]] = None,
                  https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -532,9 +519,6 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
             __props__.__dict__["event_trigger"] = event_trigger
-            if function_id is None and not opts.urn:
-                raise TypeError("Missing required property 'function_id'")
-            __props__.__dict__["function_id"] = function_id
             __props__.__dict__["https_trigger"] = https_trigger
             __props__.__dict__["ingress_settings"] = ingress_settings
             __props__.__dict__["labels"] = labels

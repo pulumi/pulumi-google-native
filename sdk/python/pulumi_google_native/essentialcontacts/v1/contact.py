@@ -13,7 +13,6 @@ __all__ = ['ContactArgs', 'Contact']
 @pulumi.input_type
 class ContactArgs:
     def __init__(__self__, *,
-                 contact_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
@@ -30,7 +29,6 @@ class ContactArgs:
         :param pulumi.Input[str] validate_time: The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
         :param pulumi.Input[str] validation_state: The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
         """
-        pulumi.set(__self__, "contact_id", contact_id)
         pulumi.set(__self__, "project", project)
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -44,15 +42,6 @@ class ContactArgs:
             pulumi.set(__self__, "validate_time", validate_time)
         if validation_state is not None:
             pulumi.set(__self__, "validation_state", validation_state)
-
-    @property
-    @pulumi.getter(name="contactId")
-    def contact_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "contact_id")
-
-    @contact_id.setter
-    def contact_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "contact_id", value)
 
     @property
     @pulumi.getter
@@ -141,7 +130,6 @@ class Contact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -186,7 +174,6 @@ class Contact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -206,9 +193,6 @@ class Contact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContactArgs.__new__(ContactArgs)
 
-            if contact_id is None and not opts.urn:
-                raise TypeError("Missing required property 'contact_id'")
-            __props__.__dict__["contact_id"] = contact_id
             __props__.__dict__["email"] = email
             __props__.__dict__["language_tag"] = language_tag
             __props__.__dict__["name"] = name

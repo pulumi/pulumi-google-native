@@ -17,7 +17,6 @@ class ServiceAttachmentArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 service_attachment: pulumi.Input[str],
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
                  connection_preference: Optional[pulumi.Input[str]] = None,
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]]] = None,
@@ -59,7 +58,6 @@ class ServiceAttachmentArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_attachment", service_attachment)
         if connected_endpoints is not None:
             pulumi.set(__self__, "connected_endpoints", connected_endpoints)
         if connection_preference is not None:
@@ -117,15 +115,6 @@ class ServiceAttachmentArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "service_attachment")
-
-    @service_attachment.setter
-    def service_attachment(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_attachment", value)
 
     @property
     @pulumi.getter(name="connectedEndpoints")
@@ -365,7 +354,6 @@ class ServiceAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 service_attachment: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -435,7 +423,6 @@ class ServiceAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 service_attachment: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -472,9 +459,6 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
-            if service_attachment is None and not opts.urn:
-                raise TypeError("Missing required property 'service_attachment'")
-            __props__.__dict__["service_attachment"] = service_attachment
             __props__.__dict__["target_service"] = target_service
         super(ServiceAttachment, __self__).__init__(
             'google-native:compute/alpha:ServiceAttachment',

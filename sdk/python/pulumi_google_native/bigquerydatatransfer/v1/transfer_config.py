@@ -16,7 +16,6 @@ __all__ = ['TransferConfigArgs', 'TransferConfig']
 class TransferConfigArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 transfer_config_id: pulumi.Input[str],
                  authorization_code: Optional[pulumi.Input[str]] = None,
                  data_refresh_window_days: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
@@ -46,7 +45,6 @@ class TransferConfigArgs:
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "transfer_config_id", transfer_config_id)
         if authorization_code is not None:
             pulumi.set(__self__, "authorization_code", authorization_code)
         if data_refresh_window_days is not None:
@@ -84,15 +82,6 @@ class TransferConfigArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="transferConfigId")
-    def transfer_config_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "transfer_config_id")
-
-    @transfer_config_id.setter
-    def transfer_config_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "transfer_config_id", value)
 
     @property
     @pulumi.getter(name="authorizationCode")
@@ -273,7 +262,6 @@ class TransferConfig(pulumi.CustomResource):
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
-                 transfer_config_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -331,7 +319,6 @@ class TransferConfig(pulumi.CustomResource):
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
-                 transfer_config_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -361,9 +348,6 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_options"] = schedule_options
             __props__.__dict__["service_account_name"] = service_account_name
-            if transfer_config_id is None and not opts.urn:
-                raise TypeError("Missing required property 'transfer_config_id'")
-            __props__.__dict__["transfer_config_id"] = transfer_config_id
             __props__.__dict__["version_info"] = version_info
             __props__.__dict__["dataset_region"] = None
             __props__.__dict__["next_run_time"] = None

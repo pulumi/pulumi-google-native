@@ -15,7 +15,6 @@ __all__ = ['AgentArgs', 'Agent']
 @pulumi.input_type
 class AgentArgs:
     def __init__(__self__, *,
-                 agent_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  avatar_uri: Optional[pulumi.Input[str]] = None,
@@ -43,7 +42,6 @@ class AgentArgs:
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[str] time_zone: Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
-        pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if avatar_uri is not None:
@@ -68,15 +66,6 @@ class AgentArgs:
             pulumi.set(__self__, "start_flow", start_flow)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
-
-    @property
-    @pulumi.getter(name="agentId")
-    def agent_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "agent_id")
-
-    @agent_id.setter
-    def agent_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "agent_id", value)
 
     @property
     @pulumi.getter
@@ -234,7 +223,6 @@ class Agent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_id: Optional[pulumi.Input[str]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -290,7 +278,6 @@ class Agent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_id: Optional[pulumi.Input[str]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -316,9 +303,6 @@ class Agent(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentArgs.__new__(AgentArgs)
 
-            if agent_id is None and not opts.urn:
-                raise TypeError("Missing required property 'agent_id'")
-            __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["avatar_uri"] = avatar_uri
             __props__.__dict__["default_language_code"] = default_language_code
             __props__.__dict__["description"] = description

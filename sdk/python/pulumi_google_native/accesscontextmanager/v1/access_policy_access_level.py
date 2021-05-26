@@ -15,7 +15,6 @@ __all__ = ['AccessPolicyAccessLevelArgs', 'AccessPolicyAccessLevel']
 @pulumi.input_type
 class AccessPolicyAccessLevelArgs:
     def __init__(__self__, *,
-                 access_level_id: pulumi.Input[str],
                  access_policy_id: pulumi.Input[str],
                  basic: Optional[pulumi.Input['BasicLevelArgs']] = None,
                  custom: Optional[pulumi.Input['CustomLevelArgs']] = None,
@@ -30,7 +29,6 @@ class AccessPolicyAccessLevelArgs:
         :param pulumi.Input[str] name: Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
-        pulumi.set(__self__, "access_level_id", access_level_id)
         pulumi.set(__self__, "access_policy_id", access_policy_id)
         if basic is not None:
             pulumi.set(__self__, "basic", basic)
@@ -42,15 +40,6 @@ class AccessPolicyAccessLevelArgs:
             pulumi.set(__self__, "name", name)
         if title is not None:
             pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter(name="accessLevelId")
-    def access_level_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "access_level_id")
-
-    @access_level_id.setter
-    def access_level_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "access_level_id", value)
 
     @property
     @pulumi.getter(name="accessPolicyId")
@@ -127,7 +116,6 @@ class AccessPolicyAccessLevel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level_id: Optional[pulumi.Input[str]] = None,
                  access_policy_id: Optional[pulumi.Input[str]] = None,
                  basic: Optional[pulumi.Input[pulumi.InputType['BasicLevelArgs']]] = None,
                  custom: Optional[pulumi.Input[pulumi.InputType['CustomLevelArgs']]] = None,
@@ -170,7 +158,6 @@ class AccessPolicyAccessLevel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level_id: Optional[pulumi.Input[str]] = None,
                  access_policy_id: Optional[pulumi.Input[str]] = None,
                  basic: Optional[pulumi.Input[pulumi.InputType['BasicLevelArgs']]] = None,
                  custom: Optional[pulumi.Input[pulumi.InputType['CustomLevelArgs']]] = None,
@@ -189,9 +176,6 @@ class AccessPolicyAccessLevel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyAccessLevelArgs.__new__(AccessPolicyAccessLevelArgs)
 
-            if access_level_id is None and not opts.urn:
-                raise TypeError("Missing required property 'access_level_id'")
-            __props__.__dict__["access_level_id"] = access_level_id
             if access_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_policy_id'")
             __props__.__dict__["access_policy_id"] = access_policy_id

@@ -17,7 +17,6 @@ class AgentEnvironmentExperimentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
                  environment_id: pulumi.Input[str],
-                 experiment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -49,7 +48,6 @@ class AgentEnvironmentExperimentArgs:
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "experiment_id", experiment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if create_time is not None:
@@ -94,15 +92,6 @@ class AgentEnvironmentExperimentArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
-
-    @property
-    @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "experiment_id")
-
-    @experiment_id.setter
-    def experiment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "experiment_id", value)
 
     @property
     @pulumi.getter
@@ -279,7 +268,6 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 experiment_id: Optional[pulumi.Input[str]] = None,
                  experiment_length: Optional[pulumi.Input[str]] = None,
                  last_update_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -339,7 +327,6 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 experiment_id: Optional[pulumi.Input[str]] = None,
                  experiment_length: Optional[pulumi.Input[str]] = None,
                  last_update_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -372,9 +359,6 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if experiment_id is None and not opts.urn:
-                raise TypeError("Missing required property 'experiment_id'")
-            __props__.__dict__["experiment_id"] = experiment_id
             __props__.__dict__["experiment_length"] = experiment_length
             __props__.__dict__["last_update_time"] = last_update_time
             if location is None and not opts.urn:

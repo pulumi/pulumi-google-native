@@ -15,24 +15,23 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input['ResourceIdArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[str] project: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] create_time: Creation time. Read-only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: "environment" : "dev" Read-write.
         :param pulumi.Input[str] lifecycle_state: The Project lifecycle state. Read-only.
         :param pulumi.Input[str] name: The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
         :param pulumi.Input['ResourceIdArgs'] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
+        :param pulumi.Input[str] project: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
         """
-        pulumi.set(__self__, "project", project)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if labels is not None:
@@ -43,20 +42,10 @@ class ProjectArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -119,6 +108,18 @@ class ProjectArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> Optional[pulumi.Input[str]]:
         """
@@ -161,7 +162,7 @@ class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectArgs,
+                 args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
@@ -205,8 +206,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["lifecycle_state"] = lifecycle_state
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_number"] = project_number
         super(Project, __self__).__init__(

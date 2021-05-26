@@ -17,7 +17,6 @@ class QueueArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 queue_id: pulumi.Input[str],
                  app_engine_http_target: Optional[pulumi.Input['AppEngineHttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pull_target: Optional[pulumi.Input['PullTargetArgs']] = None,
@@ -41,7 +40,6 @@ class QueueArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_http_target is not None:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if name is not None:
@@ -78,15 +76,6 @@ class QueueArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="queueId")
-    def queue_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "queue_id")
-
-    @queue_id.setter
-    def queue_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "queue_id", value)
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
@@ -208,7 +197,6 @@ class Queue(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  pull_target: Optional[pulumi.Input[pulumi.InputType['PullTargetArgs']]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
-                 queue_id: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -260,7 +248,6 @@ class Queue(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  pull_target: Optional[pulumi.Input[pulumi.InputType['PullTargetArgs']]] = None,
                  purge_time: Optional[pulumi.Input[str]] = None,
-                 queue_id: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -288,9 +275,6 @@ class Queue(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["pull_target"] = pull_target
             __props__.__dict__["purge_time"] = purge_time
-            if queue_id is None and not opts.urn:
-                raise TypeError("Missing required property 'queue_id'")
-            __props__.__dict__["queue_id"] = queue_id
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["state"] = state

@@ -17,7 +17,6 @@ class SubnetworkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 subnetwork: pulumi.Input[str],
                  aggregation_interval: Optional[pulumi.Input[str]] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -99,7 +98,6 @@ class SubnetworkArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnetwork", subnetwork)
         if aggregation_interval is not None:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
         if allow_subnet_cidr_routes_overlap is not None:
@@ -185,15 +183,6 @@ class SubnetworkArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter
-    def subnetwork(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "subnetwork")
-
-    @subnetwork.setter
-    def subnetwork(self, value: pulumi.Input[str]):
-        pulumi.set(self, "subnetwork", value)
 
     @property
     @pulumi.getter(name="aggregationInterval")
@@ -627,7 +616,6 @@ class Subnetwork(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
@@ -737,7 +725,6 @@ class Subnetwork(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         if opts is None:
@@ -788,9 +775,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["state"] = state
-            if subnetwork is None and not opts.urn:
-                raise TypeError("Missing required property 'subnetwork'")
-            __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["vlans"] = vlans
         super(Subnetwork, __self__).__init__(
             'google-native:compute/alpha:Subnetwork',

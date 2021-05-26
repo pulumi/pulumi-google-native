@@ -15,7 +15,6 @@ __all__ = ['NetworkFirewallPolicyArgs', 'NetworkFirewallPolicy']
 @pulumi.input_type
 class NetworkFirewallPolicyArgs:
     def __init__(__self__, *,
-                 firewall_policy: pulumi.Input[str],
                  project: pulumi.Input[str],
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyAssociationArgs']]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -53,7 +52,6 @@ class NetworkFirewallPolicyArgs:
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
-        pulumi.set(__self__, "firewall_policy", firewall_policy)
         pulumi.set(__self__, "project", project)
         if associations is not None:
             pulumi.set(__self__, "associations", associations)
@@ -87,15 +85,6 @@ class NetworkFirewallPolicyArgs:
             pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
-
-    @property
-    @pulumi.getter(name="firewallPolicy")
-    def firewall_policy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "firewall_policy")
-
-    @firewall_policy.setter
-    def firewall_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "firewall_policy", value)
 
     @property
     @pulumi.getter
@@ -308,7 +297,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 firewall_policy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -374,7 +362,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 firewall_policy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -404,9 +391,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["fingerprint"] = fingerprint
-            if firewall_policy is None and not opts.urn:
-                raise TypeError("Missing required property 'firewall_policy'")
-            __props__.__dict__["firewall_policy"] = firewall_policy
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name

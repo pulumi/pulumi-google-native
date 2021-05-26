@@ -17,7 +17,6 @@ class RegionWorkflowTemplateArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region_id: pulumi.Input[str],
-                 workflow_template_id: pulumi.Input[str],
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['OrderedJobArgs']]]] = None,
@@ -36,7 +35,6 @@ class RegionWorkflowTemplateArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "workflow_template_id", workflow_template_id)
         if dag_timeout is not None:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
         if id is not None:
@@ -69,15 +67,6 @@ class RegionWorkflowTemplateArgs:
     @region_id.setter
     def region_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "region_id", value)
-
-    @property
-    @pulumi.getter(name="workflowTemplateId")
-    def workflow_template_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "workflow_template_id")
-
-    @workflow_template_id.setter
-    def workflow_template_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workflow_template_id", value)
 
     @property
     @pulumi.getter(name="dagTimeout")
@@ -175,7 +164,6 @@ class RegionWorkflowTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 workflow_template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates new workflow template.
@@ -222,7 +210,6 @@ class RegionWorkflowTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 workflow_template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -248,9 +235,6 @@ class RegionWorkflowTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region_id'")
             __props__.__dict__["region_id"] = region_id
             __props__.__dict__["version"] = version
-            if workflow_template_id is None and not opts.urn:
-                raise TypeError("Missing required property 'workflow_template_id'")
-            __props__.__dict__["workflow_template_id"] = workflow_template_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None

@@ -15,7 +15,6 @@ __all__ = ['PacketMirroringArgs', 'PacketMirroring']
 @pulumi.input_type
 class PacketMirroringArgs:
     def __init__(__self__, *,
-                 packet_mirroring: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  collector_ilb: Optional[pulumi.Input['PacketMirroringForwardingRuleInfoArgs']] = None,
@@ -53,7 +52,6 @@ class PacketMirroringArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         """
-        pulumi.set(__self__, "packet_mirroring", packet_mirroring)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if collector_ilb is not None:
@@ -84,15 +82,6 @@ class PacketMirroringArgs:
             pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
             pulumi.set(__self__, "self_link_with_id", self_link_with_id)
-
-    @property
-    @pulumi.getter(name="packetMirroring")
-    def packet_mirroring(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "packet_mirroring")
-
-    @packet_mirroring.setter
-    def packet_mirroring(self, value: pulumi.Input[str]):
-        pulumi.set(self, "packet_mirroring", value)
 
     @property
     @pulumi.getter
@@ -300,7 +289,6 @@ class PacketMirroring(pulumi.CustomResource):
                  mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourceInfoArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkInfoArgs']]] = None,
-                 packet_mirroring: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -366,7 +354,6 @@ class PacketMirroring(pulumi.CustomResource):
                  mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourceInfoArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkInfoArgs']]] = None,
-                 packet_mirroring: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -395,9 +382,6 @@ class PacketMirroring(pulumi.CustomResource):
             __props__.__dict__["mirrored_resources"] = mirrored_resources
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if packet_mirroring is None and not opts.urn:
-                raise TypeError("Missing required property 'packet_mirroring'")
-            __props__.__dict__["packet_mirroring"] = packet_mirroring
             __props__.__dict__["priority"] = priority
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

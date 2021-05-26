@@ -16,7 +16,6 @@ from .dataset_consent_store_user_data_mapping import *
 from .dataset_dicom_store import *
 from .dataset_dicom_store_iam_policy import *
 from .dataset_fhir_store import *
-from .dataset_fhir_store_fhir import *
 from .dataset_fhir_store_iam_policy import *
 from .dataset_hl7_v2_store import *
 from .dataset_hl7_v2_store_iam_policy import *
@@ -63,8 +62,6 @@ def _register_module():
                 return DatasetDicomStoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetFhirStore":
                 return DatasetFhirStore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetFhirStoreFhir":
-                return DatasetFhirStoreFhir(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
                 return DatasetFhirStoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetHl7V2Store":

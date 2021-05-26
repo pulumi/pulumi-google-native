@@ -16,7 +16,6 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 class SnapshotArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 snapshot: pulumi.Input[str],
                  auto_created: Optional[pulumi.Input[bool]] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -80,7 +79,6 @@ class SnapshotArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "snapshot", snapshot)
         if auto_created is not None:
             pulumi.set(__self__, "auto_created", auto_created)
         if chain_name is not None:
@@ -142,15 +140,6 @@ class SnapshotArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def snapshot(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "snapshot")
-
-    @snapshot.setter
-    def snapshot(self, value: pulumi.Input[str]):
-        pulumi.set(self, "snapshot", value)
 
     @property
     @pulumi.getter(name="autoCreated")
@@ -494,7 +483,6 @@ class Snapshot(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 snapshot: Optional[pulumi.Input[str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
@@ -586,7 +574,6 @@ class Snapshot(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 snapshot: Optional[pulumi.Input[str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
@@ -628,9 +615,6 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
-            if snapshot is None and not opts.urn:
-                raise TypeError("Missing required property 'snapshot'")
-            __props__.__dict__["snapshot"] = snapshot
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key

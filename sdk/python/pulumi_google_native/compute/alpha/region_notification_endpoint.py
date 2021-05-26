@@ -15,7 +15,6 @@ __all__ = ['RegionNotificationEndpointArgs', 'RegionNotificationEndpoint']
 @pulumi.input_type
 class RegionNotificationEndpointArgs:
     def __init__(__self__, *,
-                 notification_endpoint: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -37,7 +36,6 @@ class RegionNotificationEndpointArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
-        pulumi.set(__self__, "notification_endpoint", notification_endpoint)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if creation_timestamp is not None:
@@ -56,15 +54,6 @@ class RegionNotificationEndpointArgs:
             pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
-
-    @property
-    @pulumi.getter(name="notificationEndpoint")
-    def notification_endpoint(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "notification_endpoint")
-
-    @notification_endpoint.setter
-    def notification_endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "notification_endpoint", value)
 
     @property
     @pulumi.getter
@@ -192,7 +181,6 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -242,7 +230,6 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -265,9 +252,6 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
-            if notification_endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'notification_endpoint'")
-            __props__.__dict__["notification_endpoint"] = notification_endpoint
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

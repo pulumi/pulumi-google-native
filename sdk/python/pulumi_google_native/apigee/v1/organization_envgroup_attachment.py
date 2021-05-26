@@ -13,7 +13,6 @@ __all__ = ['OrganizationEnvgroupAttachmentArgs', 'OrganizationEnvgroupAttachment
 @pulumi.input_type
 class OrganizationEnvgroupAttachmentArgs:
     def __init__(__self__, *,
-                 attachment_id: pulumi.Input[str],
                  envgroup_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  environment: Optional[pulumi.Input[str]] = None,
@@ -23,22 +22,12 @@ class OrganizationEnvgroupAttachmentArgs:
         :param pulumi.Input[str] environment: Required. ID of the attached environment.
         :param pulumi.Input[str] name: ID of the environment group attachment.
         """
-        pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "envgroup_id", envgroup_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="attachmentId")
-    def attachment_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attachment_id")
-
-    @attachment_id.setter
-    def attachment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attachment_id", value)
 
     @property
     @pulumi.getter(name="envgroupId")
@@ -88,7 +77,6 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachment_id: Optional[pulumi.Input[str]] = None,
                  envgroup_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -126,7 +114,6 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachment_id: Optional[pulumi.Input[str]] = None,
                  envgroup_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -143,9 +130,6 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationEnvgroupAttachmentArgs.__new__(OrganizationEnvgroupAttachmentArgs)
 
-            if attachment_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attachment_id'")
-            __props__.__dict__["attachment_id"] = attachment_id
             if envgroup_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroup_id'")
             __props__.__dict__["envgroup_id"] = envgroup_id

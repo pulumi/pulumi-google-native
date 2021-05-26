@@ -13,7 +13,6 @@ __all__ = ['OrganizationExclusionArgs', 'OrganizationExclusion']
 @pulumi.input_type
 class OrganizationExclusionArgs:
     def __init__(__self__, *,
-                 exclusion_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -26,7 +25,6 @@ class OrganizationExclusionArgs:
         :param pulumi.Input[str] filter: Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
         :param pulumi.Input[str] name: Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
-        pulumi.set(__self__, "exclusion_id", exclusion_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -36,15 +34,6 @@ class OrganizationExclusionArgs:
             pulumi.set(__self__, "filter", filter)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="exclusionId")
-    def exclusion_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "exclusion_id")
-
-    @exclusion_id.setter
-    def exclusion_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "exclusion_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -111,7 +100,6 @@ class OrganizationExclusion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusion_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -152,7 +140,6 @@ class OrganizationExclusion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusion_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -170,9 +157,6 @@ class OrganizationExclusion(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
-            if exclusion_id is None and not opts.urn:
-                raise TypeError("Missing required property 'exclusion_id'")
-            __props__.__dict__["exclusion_id"] = exclusion_id
             __props__.__dict__["filter"] = filter
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:

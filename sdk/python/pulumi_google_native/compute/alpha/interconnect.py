@@ -15,7 +15,6 @@ __all__ = ['InterconnectArgs', 'Interconnect']
 @pulumi.input_type
 class InterconnectArgs:
     def __init__(__self__, *,
-                 interconnect: pulumi.Input[str],
                  project: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]] = None,
@@ -83,7 +82,6 @@ class InterconnectArgs:
                - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
                - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         """
-        pulumi.set(__self__, "interconnect", interconnect)
         pulumi.set(__self__, "project", project)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -137,15 +135,6 @@ class InterconnectArgs:
             pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter
-    def interconnect(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "interconnect")
-
-    @interconnect.setter
-    def interconnect(self, value: pulumi.Input[str]):
-        pulumi.set(self, "interconnect", value)
 
     @property
     @pulumi.getter
@@ -492,7 +481,6 @@ class Interconnect(pulumi.CustomResource):
                  google_ip_address: Optional[pulumi.Input[str]] = None,
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 interconnect: Optional[pulumi.Input[str]] = None,
                  interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interconnect_type: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -588,7 +576,6 @@ class Interconnect(pulumi.CustomResource):
                  google_ip_address: Optional[pulumi.Input[str]] = None,
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 interconnect: Optional[pulumi.Input[str]] = None,
                  interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interconnect_type: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -628,9 +615,6 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["google_ip_address"] = google_ip_address
             __props__.__dict__["google_reference_id"] = google_reference_id
             __props__.__dict__["id"] = id
-            if interconnect is None and not opts.urn:
-                raise TypeError("Missing required property 'interconnect'")
-            __props__.__dict__["interconnect"] = interconnect
             __props__.__dict__["interconnect_attachments"] = interconnect_attachments
             __props__.__dict__["interconnect_type"] = interconnect_type
             __props__.__dict__["kind"] = kind

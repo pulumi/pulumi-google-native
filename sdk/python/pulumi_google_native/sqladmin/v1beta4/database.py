@@ -15,7 +15,6 @@ __all__ = ['DatabaseArgs', 'Database']
 @pulumi.input_type
 class DatabaseArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  instance: pulumi.Input[str],
                  project: pulumi.Input[str],
                  charset: Optional[pulumi.Input[str]] = None,
@@ -36,7 +35,6 @@ class DatabaseArgs:
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
         :param pulumi.Input[str] self_link: The URI of this resource.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "project", project)
         if charset is not None:
@@ -53,15 +51,6 @@ class DatabaseArgs:
             pulumi.set(__self__, "self_link", self_link)
         if sqlserver_database_details is not None:
             pulumi.set(__self__, "sqlserver_database_details", sqlserver_database_details)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -176,7 +165,6 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
-                 database: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -225,7 +213,6 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
-                 database: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -247,9 +234,6 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["charset"] = charset
             __props__.__dict__["collation"] = collation
-            if database is None and not opts.urn:
-                raise TypeError("Missing required property 'database'")
-            __props__.__dict__["database"] = database
             __props__.__dict__["etag"] = etag
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

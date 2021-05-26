@@ -18,7 +18,6 @@ class AgentWebhookArgs:
                  agent_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 webhook_id: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']] = None,
@@ -35,7 +34,6 @@ class AgentWebhookArgs:
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "webhook_id", webhook_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
@@ -73,15 +71,6 @@ class AgentWebhookArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="webhookId")
-    def webhook_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "webhook_id")
-
-    @webhook_id.setter
-    def webhook_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "webhook_id", value)
 
     @property
     @pulumi.getter
@@ -157,7 +146,6 @@ class AgentWebhook(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 webhook_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a webhook in the specified agent.
@@ -202,7 +190,6 @@ class AgentWebhook(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 webhook_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -229,9 +216,6 @@ class AgentWebhook(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["timeout"] = timeout
-            if webhook_id is None and not opts.urn:
-                raise TypeError("Missing required property 'webhook_id'")
-            __props__.__dict__["webhook_id"] = webhook_id
         super(AgentWebhook, __self__).__init__(
             'google-native:dialogflow/v3:AgentWebhook',
             resource_name,

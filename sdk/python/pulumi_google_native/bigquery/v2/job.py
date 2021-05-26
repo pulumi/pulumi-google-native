@@ -15,7 +15,6 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  configuration: Optional[pulumi.Input['JobConfigurationArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -38,7 +37,6 @@ class JobArgs:
         :param pulumi.Input['JobStatusArgs'] status: [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         :param pulumi.Input[str] user_email: [Output-only] Email address of the user who ran the job.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project", project)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -58,15 +56,6 @@ class JobArgs:
             pulumi.set(__self__, "status", status)
         if user_email is not None:
             pulumi.set(__self__, "user_email", user_email)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -194,7 +183,6 @@ class Job(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -245,7 +233,6 @@ class Job(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -268,9 +255,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["configuration"] = configuration
             __props__.__dict__["etag"] = etag
             __props__.__dict__["id"] = id
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
-            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_reference"] = job_reference
             __props__.__dict__["kind"] = kind
             if project is None and not opts.urn:

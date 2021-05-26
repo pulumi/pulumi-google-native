@@ -17,22 +17,21 @@ class InstanceTableArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 table_id: pulumi.Input[str],
                  column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  granularity: Optional[pulumi.Input[str]] = None,
                  initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input['SplitArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 table_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceTable resource.
-        :param pulumi.Input[str] table_id: Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
         :param pulumi.Input[str] granularity: Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         :param pulumi.Input[Sequence[pulumi.Input['SplitArgs']]] initial_splits: The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
         :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        :param pulumi.Input[str] table_id: Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "table_id", table_id)
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
         if granularity is not None:
@@ -41,6 +40,8 @@ class InstanceTableArgs:
             pulumi.set(__self__, "initial_splits", initial_splits)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -59,18 +60,6 @@ class InstanceTableArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="tableId")
-    def table_id(self) -> pulumi.Input[str]:
-        """
-        Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-        """
-        return pulumi.get(self, "table_id")
-
-    @table_id.setter
-    def table_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "table_id", value)
 
     @property
     @pulumi.getter(name="columnFamilies")
@@ -119,6 +108,18 @@ class InstanceTableArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
+        """
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_id", value)
 
 
 class InstanceTable(pulumi.CustomResource):
@@ -198,8 +199,6 @@ class InstanceTable(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if table_id is None and not opts.urn:
-                raise TypeError("Missing required property 'table_id'")
             __props__.__dict__["table_id"] = table_id
             __props__.__dict__["cluster_states"] = None
             __props__.__dict__["restore_info"] = None

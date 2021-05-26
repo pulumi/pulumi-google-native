@@ -13,7 +13,6 @@ __all__ = ['BrandArgs', 'Brand']
 @pulumi.input_type
 class BrandArgs:
     def __init__(__self__, *,
-                 brand_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  application_title: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None):
@@ -22,21 +21,11 @@ class BrandArgs:
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen.
         """
-        pulumi.set(__self__, "brand_id", brand_id)
         pulumi.set(__self__, "project", project)
         if application_title is not None:
             pulumi.set(__self__, "application_title", application_title)
         if support_email is not None:
             pulumi.set(__self__, "support_email", support_email)
-
-    @property
-    @pulumi.getter(name="brandId")
-    def brand_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "brand_id")
-
-    @brand_id.setter
-    def brand_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "brand_id", value)
 
     @property
     @pulumi.getter
@@ -78,7 +67,6 @@ class Brand(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_title: Optional[pulumi.Input[str]] = None,
-                 brand_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -115,7 +103,6 @@ class Brand(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_title: Optional[pulumi.Input[str]] = None,
-                 brand_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -131,9 +118,6 @@ class Brand(pulumi.CustomResource):
             __props__ = BrandArgs.__new__(BrandArgs)
 
             __props__.__dict__["application_title"] = application_title
-            if brand_id is None and not opts.urn:
-                raise TypeError("Missing required property 'brand_id'")
-            __props__.__dict__["brand_id"] = brand_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

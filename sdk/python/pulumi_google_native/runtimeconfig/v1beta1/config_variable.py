@@ -15,7 +15,6 @@ class ConfigVariableArgs:
     def __init__(__self__, *,
                  config_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 variable_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -32,7 +31,6 @@ class ConfigVariableArgs:
         """
         pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "variable_id", variable_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if request_id is not None:
@@ -63,15 +61,6 @@ class ConfigVariableArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="variableId")
-    def variable_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "variable_id")
-
-    @variable_id.setter
-    def variable_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "variable_id", value)
 
     @property
     @pulumi.getter
@@ -156,7 +145,6 @@ class ConfigVariable(pulumi.CustomResource):
                  text: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 variable_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation.
@@ -201,7 +189,6 @@ class ConfigVariable(pulumi.CustomResource):
                  text: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 variable_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -226,9 +213,6 @@ class ConfigVariable(pulumi.CustomResource):
             __props__.__dict__["text"] = text
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["value"] = value
-            if variable_id is None and not opts.urn:
-                raise TypeError("Missing required property 'variable_id'")
-            __props__.__dict__["variable_id"] = variable_id
         super(ConfigVariable, __self__).__init__(
             'google-native:runtimeconfig/v1beta1:ConfigVariable',
             resource_name,

@@ -15,7 +15,6 @@ __all__ = ['OrganizationEnvironmentAnalyticExportArgs', 'OrganizationEnvironment
 class OrganizationEnvironmentAnalyticExportArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
-                 export_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  datastore_name: Optional[pulumi.Input[str]] = None,
@@ -33,7 +32,6 @@ class OrganizationEnvironmentAnalyticExportArgs:
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
         """
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "export_id", export_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
@@ -56,15 +54,6 @@ class OrganizationEnvironmentAnalyticExportArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
-
-    @property
-    @pulumi.getter(name="exportId")
-    def export_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "export_id")
-
-    @export_id.setter
-    def export_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "export_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -158,7 +147,6 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
                  date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 export_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
@@ -204,7 +192,6 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
                  date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 export_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
@@ -227,9 +214,6 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if export_id is None and not opts.urn:
-                raise TypeError("Missing required property 'export_id'")
-            __props__.__dict__["export_id"] = export_id
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

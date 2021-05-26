@@ -16,7 +16,6 @@ __all__ = ['ResponsePolicyArgs', 'ResponsePolicy']
 class ResponsePolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 response_policy: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]] = None,
@@ -33,7 +32,6 @@ class ResponsePolicyArgs:
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "response_policy", response_policy)
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
         if description is not None:
@@ -57,15 +55,6 @@ class ResponsePolicyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="responsePolicy")
-    def response_policy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "response_policy")
-
-    @response_policy.setter
-    def response_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "response_policy", value)
 
     @property
     @pulumi.getter(name="clientOperationId")
@@ -158,7 +147,6 @@ class ResponsePolicy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 response_policy: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -203,7 +191,6 @@ class ResponsePolicy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 response_policy: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -226,9 +213,6 @@ class ResponsePolicy(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if response_policy is None and not opts.urn:
-                raise TypeError("Missing required property 'response_policy'")
-            __props__.__dict__["response_policy"] = response_policy
             __props__.__dict__["response_policy_name"] = response_policy_name
         super(ResponsePolicy, __self__).__init__(
             'google-native:dns/v1beta2:ResponsePolicy',

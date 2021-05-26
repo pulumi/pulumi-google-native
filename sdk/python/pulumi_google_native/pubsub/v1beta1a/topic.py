@@ -13,24 +13,13 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
-                 topic_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] name: Name of the topic.
         """
-        pulumi.set(__self__, "topic_id", topic_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="topicId")
-    def topic_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "topic_id")
-
-    @topic_id.setter
-    def topic_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "topic_id", value)
 
     @property
     @pulumi.getter
@@ -51,7 +40,6 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates the given topic with the given name.
@@ -64,7 +52,7 @@ class Topic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TopicArgs,
+                 args: Optional[TopicArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates the given topic with the given name.
@@ -85,7 +73,6 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -99,9 +86,6 @@ class Topic(pulumi.CustomResource):
             __props__ = TopicArgs.__new__(TopicArgs)
 
             __props__.__dict__["name"] = name
-            if topic_id is None and not opts.urn:
-                raise TypeError("Missing required property 'topic_id'")
-            __props__.__dict__["topic_id"] = topic_id
         super(Topic, __self__).__init__(
             'google-native:pubsub/v1beta1a:Topic',
             resource_name,

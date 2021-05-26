@@ -16,7 +16,6 @@ __all__ = ['PublicDelegatedPrefixArgs', 'PublicDelegatedPrefix']
 class PublicDelegatedPrefixArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 public_delegated_prefix: pulumi.Input[str],
                  region: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -50,7 +49,6 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[str] status: [Output Only] The status of the public delegated prefix.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "public_delegated_prefix", public_delegated_prefix)
         pulumi.set(__self__, "region", region)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -87,15 +85,6 @@ class PublicDelegatedPrefixArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="publicDelegatedPrefix")
-    def public_delegated_prefix(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "public_delegated_prefix")
-
-    @public_delegated_prefix.setter
-    def public_delegated_prefix(self, value: pulumi.Input[str]):
-        pulumi.set(self, "public_delegated_prefix", value)
 
     @property
     @pulumi.getter
@@ -280,7 +269,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 public_delegated_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -342,7 +330,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 public_delegated_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -372,9 +359,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if public_delegated_prefix is None and not opts.urn:
-                raise TypeError("Missing required property 'public_delegated_prefix'")
-            __props__.__dict__["public_delegated_prefix"] = public_delegated_prefix
             __props__.__dict__["public_delegated_sub_prefixs"] = public_delegated_sub_prefixs
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

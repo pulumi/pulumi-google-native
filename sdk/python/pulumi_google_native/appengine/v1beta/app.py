@@ -15,7 +15,6 @@ __all__ = ['AppArgs', 'App']
 @pulumi.input_type
 class AppArgs:
     def __init__(__self__, *,
-                 app_id: pulumi.Input[str],
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -46,7 +45,6 @@ class AppArgs:
         :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
         :param pulumi.Input[str] serving_status: Serving status of this application.
         """
-        pulumi.set(__self__, "app_id", app_id)
         if auth_domain is not None:
             pulumi.set(__self__, "auth_domain", auth_domain)
         if code_bucket is not None:
@@ -75,15 +73,6 @@ class AppArgs:
             pulumi.set(__self__, "name", name)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
-
-    @property
-    @pulumi.getter(name="appId")
-    def app_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "app_id")
-
-    @app_id.setter
-    def app_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter(name="authDomain")
@@ -256,7 +245,6 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -295,7 +283,7 @@ class App(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppArgs,
+                 args: Optional[AppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
@@ -315,7 +303,6 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -342,9 +329,6 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppArgs.__new__(AppArgs)
 
-            if app_id is None and not opts.urn:
-                raise TypeError("Missing required property 'app_id'")
-            __props__.__dict__["app_id"] = app_id
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["code_bucket"] = code_bucket
             __props__.__dict__["database_type"] = database_type

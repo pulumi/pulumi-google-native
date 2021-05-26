@@ -15,7 +15,6 @@ __all__ = ['TenantJobArgs', 'TenantJob']
 @pulumi.input_type
 class TenantJobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -71,7 +70,6 @@ class TenantJobArgs:
         :param pulumi.Input[str] responsibilities: A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[str] title: Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tenant_id", tenant_id)
         if addresses is not None:
@@ -124,15 +122,6 @@ class TenantJobArgs:
             pulumi.set(__self__, "responsibilities", responsibilities)
         if title is not None:
             pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -470,7 +459,6 @@ class TenantJob(pulumi.CustomResource):
                  incentives: Optional[pulumi.Input[str]] = None,
                  job_benefits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  job_end_time: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  job_level: Optional[pulumi.Input[str]] = None,
                  job_start_time: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -554,7 +542,6 @@ class TenantJob(pulumi.CustomResource):
                  incentives: Optional[pulumi.Input[str]] = None,
                  job_benefits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  job_end_time: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  job_level: Optional[pulumi.Input[str]] = None,
                  job_start_time: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -594,9 +581,6 @@ class TenantJob(pulumi.CustomResource):
             __props__.__dict__["incentives"] = incentives
             __props__.__dict__["job_benefits"] = job_benefits
             __props__.__dict__["job_end_time"] = job_end_time
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
-            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_level"] = job_level
             __props__.__dict__["job_start_time"] = job_start_time
             __props__.__dict__["language_code"] = language_code

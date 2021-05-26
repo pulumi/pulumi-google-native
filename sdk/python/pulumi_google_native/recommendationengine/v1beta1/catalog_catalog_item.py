@@ -16,7 +16,6 @@ __all__ = ['CatalogCatalogItemArgs', 'CatalogCatalogItem']
 class CatalogCatalogItemArgs:
     def __init__(__self__, *,
                  catalog_id: pulumi.Input[str],
-                 catalog_item_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]] = None,
@@ -39,7 +38,6 @@ class CatalogCatalogItemArgs:
         :param pulumi.Input[str] title: Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
-        pulumi.set(__self__, "catalog_item_id", catalog_item_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if category_hierarchies is not None:
@@ -67,15 +65,6 @@ class CatalogCatalogItemArgs:
     @catalog_id.setter
     def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
-
-    @property
-    @pulumi.getter(name="catalogItemId")
-    def catalog_item_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "catalog_item_id")
-
-    @catalog_item_id.setter
-    def catalog_item_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "catalog_item_id", value)
 
     @property
     @pulumi.getter
@@ -198,7 +187,6 @@ class CatalogCatalogItem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
-                 catalog_item_id: Optional[pulumi.Input[str]] = None,
                  category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -249,7 +237,6 @@ class CatalogCatalogItem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
-                 catalog_item_id: Optional[pulumi.Input[str]] = None,
                  category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -275,9 +262,6 @@ class CatalogCatalogItem(pulumi.CustomResource):
             if catalog_id is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog_id'")
             __props__.__dict__["catalog_id"] = catalog_id
-            if catalog_item_id is None and not opts.urn:
-                raise TypeError("Missing required property 'catalog_item_id'")
-            __props__.__dict__["catalog_item_id"] = catalog_item_id
             __props__.__dict__["category_hierarchies"] = category_hierarchies
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id

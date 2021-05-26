@@ -15,7 +15,6 @@ __all__ = ['DatasetAnnotationStoreAnnotationArgs', 'DatasetAnnotationStoreAnnota
 @pulumi.input_type
 class DatasetAnnotationStoreAnnotationArgs:
     def __init__(__self__, *,
-                 annotation_id: pulumi.Input[str],
                  annotation_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -35,7 +34,6 @@ class DatasetAnnotationStoreAnnotationArgs:
         :param pulumi.Input['ResourceAnnotationArgs'] resource_annotation: Annotations for resource. For example, classification tags.
         :param pulumi.Input['SensitiveTextAnnotationArgs'] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
-        pulumi.set(__self__, "annotation_id", annotation_id)
         pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
@@ -52,15 +50,6 @@ class DatasetAnnotationStoreAnnotationArgs:
             pulumi.set(__self__, "resource_annotation", resource_annotation)
         if text_annotation is not None:
             pulumi.set(__self__, "text_annotation", text_annotation)
-
-    @property
-    @pulumi.getter(name="annotationId")
-    def annotation_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "annotation_id")
-
-    @annotation_id.setter
-    def annotation_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "annotation_id", value)
 
     @property
     @pulumi.getter(name="annotationStoreId")
@@ -176,7 +165,6 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_id: Optional[pulumi.Input[str]] = None,
                  annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -224,7 +212,6 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_id: Optional[pulumi.Input[str]] = None,
                  annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -247,9 +234,6 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAnnotationStoreAnnotationArgs.__new__(DatasetAnnotationStoreAnnotationArgs)
 
-            if annotation_id is None and not opts.urn:
-                raise TypeError("Missing required property 'annotation_id'")
-            __props__.__dict__["annotation_id"] = annotation_id
             __props__.__dict__["annotation_source"] = annotation_source
             if annotation_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'annotation_store_id'")

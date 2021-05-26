@@ -17,7 +17,6 @@ class InstanceWorkerpoolArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 workerpool_id: pulumi.Input[str],
                  autoscale: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -39,7 +38,6 @@ class InstanceWorkerpoolArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "workerpool_id", workerpool_id)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if channel is not None:
@@ -74,15 +72,6 @@ class InstanceWorkerpoolArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="workerpoolId")
-    def workerpool_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "workerpool_id")
-
-    @workerpool_id.setter
-    def workerpool_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workerpool_id", value)
 
     @property
     @pulumi.getter
@@ -196,7 +185,6 @@ class InstanceWorkerpool(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
-                 workerpool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.
@@ -246,7 +234,6 @@ class InstanceWorkerpool(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
-                 workerpool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -273,9 +260,6 @@ class InstanceWorkerpool(pulumi.CustomResource):
             __props__.__dict__["state"] = state
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["worker_count"] = worker_count
-            if workerpool_id is None and not opts.urn:
-                raise TypeError("Missing required property 'workerpool_id'")
-            __props__.__dict__["workerpool_id"] = workerpool_id
         super(InstanceWorkerpool, __self__).__init__(
             'google-native:remotebuildexecution/v1alpha:InstanceWorkerpool',
             resource_name,

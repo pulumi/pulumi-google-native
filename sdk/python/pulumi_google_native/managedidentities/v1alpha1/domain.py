@@ -15,7 +15,6 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
-                 domain_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -47,7 +46,6 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TrustArgs']]] trusts: The current trusts associated with the domain.
         :param pulumi.Input[str] update_time: Last update time. Synthetic field is populated automatically by CCFE.
         """
-        pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "project", project)
         if audit_logs_enabled is not None:
             pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
@@ -77,15 +75,6 @@ class DomainArgs:
             pulumi.set(__self__, "trusts", trusts)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="domainId")
-    def domain_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domain_id")
-
-    @domain_id.setter
-    def domain_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domain_id", value)
 
     @property
     @pulumi.getter
@@ -270,7 +259,6 @@ class Domain(pulumi.CustomResource):
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -330,7 +318,6 @@ class Domain(pulumi.CustomResource):
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -358,9 +345,6 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["audit_logs_enabled"] = audit_logs_enabled
             __props__.__dict__["authorized_networks"] = authorized_networks
             __props__.__dict__["create_time"] = create_time
-            if domain_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domain_id'")
-            __props__.__dict__["domain_id"] = domain_id
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["fqdn"] = fqdn
             __props__.__dict__["labels"] = labels

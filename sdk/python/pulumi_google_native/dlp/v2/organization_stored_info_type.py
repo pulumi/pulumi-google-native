@@ -16,17 +16,18 @@ __all__ = ['OrganizationStoredInfoTypeArgs', 'OrganizationStoredInfoType']
 class OrganizationStoredInfoTypeArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
-                 stored_info_type_id: pulumi.Input[str],
-                 config: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] = None):
+                 config: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] = None,
+                 stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationStoredInfoType resource.
-        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Required. Configuration of the storedInfoType to create.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if stored_info_type_id is not None:
+            pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -36,18 +37,6 @@ class OrganizationStoredInfoTypeArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="storedInfoTypeId")
-    def stored_info_type_id(self) -> pulumi.Input[str]:
-        """
-        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-        """
-        return pulumi.get(self, "stored_info_type_id")
-
-    @stored_info_type_id.setter
-    def stored_info_type_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "stored_info_type_id", value)
 
     @property
     @pulumi.getter
@@ -60,6 +49,18 @@ class OrganizationStoredInfoTypeArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="storedInfoTypeId")
+    def stored_info_type_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "stored_info_type_id")
+
+    @stored_info_type_id.setter
+    def stored_info_type_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stored_info_type_id", value)
 
 
 class OrganizationStoredInfoType(pulumi.CustomResource):
@@ -122,8 +123,6 @@ class OrganizationStoredInfoType(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if stored_info_type_id is None and not opts.urn:
-                raise TypeError("Missing required property 'stored_info_type_id'")
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id
             __props__.__dict__["current_version"] = None
             __props__.__dict__["name"] = None

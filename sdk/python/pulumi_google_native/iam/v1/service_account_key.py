@@ -13,7 +13,6 @@ __all__ = ['ServiceAccountKeyArgs', 'ServiceAccountKey']
 @pulumi.input_type
 class ServiceAccountKeyArgs:
     def __init__(__self__, *,
-                 key_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  service_account_id: pulumi.Input[str],
                  key_algorithm: Optional[pulumi.Input[str]] = None,
@@ -23,22 +22,12 @@ class ServiceAccountKeyArgs:
         :param pulumi.Input[str] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
         :param pulumi.Input[str] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
-        pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account_id", service_account_id)
         if key_algorithm is not None:
             pulumi.set(__self__, "key_algorithm", key_algorithm)
         if private_key_type is not None:
             pulumi.set(__self__, "private_key_type", private_key_type)
-
-    @property
-    @pulumi.getter(name="keyId")
-    def key_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "key_id")
-
-    @key_id.setter
-    def key_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_id", value)
 
     @property
     @pulumi.getter
@@ -89,7 +78,6 @@ class ServiceAccountKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
-                 key_id: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -127,7 +115,6 @@ class ServiceAccountKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
-                 key_id: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -144,9 +131,6 @@ class ServiceAccountKey(pulumi.CustomResource):
             __props__ = ServiceAccountKeyArgs.__new__(ServiceAccountKeyArgs)
 
             __props__.__dict__["key_algorithm"] = key_algorithm
-            if key_id is None and not opts.urn:
-                raise TypeError("Missing required property 'key_id'")
-            __props__.__dict__["key_id"] = key_id
             __props__.__dict__["private_key_type"] = private_key_type
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

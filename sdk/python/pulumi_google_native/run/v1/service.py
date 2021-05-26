@@ -17,7 +17,6 @@ class ServiceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 service_id: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -34,7 +33,6 @@ class ServiceArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_id", service_id)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if dry_run is not None:
@@ -65,15 +63,6 @@ class ServiceArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="serviceId")
-    def service_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "service_id")
-
-    @service_id.setter
-    def service_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -156,7 +145,6 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
                  __props__=None):
@@ -201,7 +189,6 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
                  __props__=None):
@@ -226,9 +213,6 @@ class Service(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if service_id is None and not opts.urn:
-                raise TypeError("Missing required property 'service_id'")
-            __props__.__dict__["service_id"] = service_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
         super(Service, __self__).__init__(

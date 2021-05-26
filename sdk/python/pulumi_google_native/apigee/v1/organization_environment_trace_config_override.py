@@ -17,7 +17,6 @@ class OrganizationEnvironmentTraceConfigOverrideArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 override_id: pulumi.Input[str],
                  api_proxy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sampling_config: Optional[pulumi.Input['GoogleCloudApigeeV1TraceSamplingConfigArgs']] = None):
@@ -29,7 +28,6 @@ class OrganizationEnvironmentTraceConfigOverrideArgs:
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "override_id", override_id)
         if api_proxy is not None:
             pulumi.set(__self__, "api_proxy", api_proxy)
         if name is not None:
@@ -54,15 +52,6 @@ class OrganizationEnvironmentTraceConfigOverrideArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="overrideId")
-    def override_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "override_id")
-
-    @override_id.setter
-    def override_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "override_id", value)
 
     @property
     @pulumi.getter(name="apiProxy")
@@ -110,7 +99,6 @@ class OrganizationEnvironmentTraceConfigOverride(pulumi.CustomResource):
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 override_id: Optional[pulumi.Input[str]] = None,
                  sampling_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TraceSamplingConfigArgs']]] = None,
                  __props__=None):
         """
@@ -150,7 +138,6 @@ class OrganizationEnvironmentTraceConfigOverride(pulumi.CustomResource):
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 override_id: Optional[pulumi.Input[str]] = None,
                  sampling_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TraceSamplingConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -172,9 +159,6 @@ class OrganizationEnvironmentTraceConfigOverride(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if override_id is None and not opts.urn:
-                raise TypeError("Missing required property 'override_id'")
-            __props__.__dict__["override_id"] = override_id
             __props__.__dict__["sampling_config"] = sampling_config
         super(OrganizationEnvironmentTraceConfigOverride, __self__).__init__(
             'google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride',

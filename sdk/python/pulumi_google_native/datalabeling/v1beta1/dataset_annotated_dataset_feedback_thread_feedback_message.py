@@ -17,7 +17,6 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs:
     def __init__(__self__, *,
                  annotated_dataset_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 feedback_message_id: pulumi.Input[str],
                  feedback_thread_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  body: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs:
         """
         pulumi.set(__self__, "annotated_dataset_id", annotated_dataset_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "feedback_message_id", feedback_message_id)
         pulumi.set(__self__, "feedback_thread_id", feedback_thread_id)
         pulumi.set(__self__, "project", project)
         if body is not None:
@@ -68,15 +66,6 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter(name="feedbackMessageId")
-    def feedback_message_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "feedback_message_id")
-
-    @feedback_message_id.setter
-    def feedback_message_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "feedback_message_id", value)
 
     @property
     @pulumi.getter(name="feedbackThreadId")
@@ -172,7 +161,6 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
                  body: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 feedback_message_id: Optional[pulumi.Input[str]] = None,
                  feedback_thread_id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -218,7 +206,6 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
                  body: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 feedback_message_id: Optional[pulumi.Input[str]] = None,
                  feedback_thread_id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -245,9 +232,6 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
-            if feedback_message_id is None and not opts.urn:
-                raise TypeError("Missing required property 'feedback_message_id'")
-            __props__.__dict__["feedback_message_id"] = feedback_message_id
             if feedback_thread_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feedback_thread_id'")
             __props__.__dict__["feedback_thread_id"] = feedback_thread_id

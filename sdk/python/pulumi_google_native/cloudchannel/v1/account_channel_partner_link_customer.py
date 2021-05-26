@@ -17,7 +17,6 @@ class AccountChannelPartnerLinkCustomerArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  channel_partner_link_id: pulumi.Input[str],
-                 customer_id: pulumi.Input[str],
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -37,7 +36,6 @@ class AccountChannelPartnerLinkCustomerArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "channel_partner_link_id", channel_partner_link_id)
-        pulumi.set(__self__, "customer_id", customer_id)
         if alternate_email is not None:
             pulumi.set(__self__, "alternate_email", alternate_email)
         if channel_partner_id is not None:
@@ -70,15 +68,6 @@ class AccountChannelPartnerLinkCustomerArgs:
     @channel_partner_link_id.setter
     def channel_partner_link_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "channel_partner_link_id", value)
-
-    @property
-    @pulumi.getter(name="customerId")
-    def customer_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "customer_id")
-
-    @customer_id.setter
-    def customer_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "customer_id", value)
 
     @property
     @pulumi.getter(name="alternateEmail")
@@ -174,7 +163,6 @@ class AccountChannelPartnerLinkCustomer(pulumi.CustomResource):
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  channel_partner_link_id: Optional[pulumi.Input[str]] = None,
-                 customer_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -222,7 +210,6 @@ class AccountChannelPartnerLinkCustomer(pulumi.CustomResource):
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  channel_partner_link_id: Optional[pulumi.Input[str]] = None,
-                 customer_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -248,9 +235,6 @@ class AccountChannelPartnerLinkCustomer(pulumi.CustomResource):
             if channel_partner_link_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channel_partner_link_id'")
             __props__.__dict__["channel_partner_link_id"] = channel_partner_link_id
-            if customer_id is None and not opts.urn:
-                raise TypeError("Missing required property 'customer_id'")
-            __props__.__dict__["customer_id"] = customer_id
             __props__.__dict__["domain"] = domain
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["org_display_name"] = org_display_name

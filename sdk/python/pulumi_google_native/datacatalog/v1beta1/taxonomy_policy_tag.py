@@ -14,7 +14,6 @@ __all__ = ['TaxonomyPolicyTagArgs', 'TaxonomyPolicyTag']
 class TaxonomyPolicyTagArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 policy_tag_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  taxonomy_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,6 @@ class TaxonomyPolicyTagArgs:
         :param pulumi.Input[str] parent_policy_tag: Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "policy_tag_id", policy_tag_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "taxonomy_id", taxonomy_id)
         if description is not None:
@@ -45,15 +43,6 @@ class TaxonomyPolicyTagArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter(name="policyTagId")
-    def policy_tag_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "policy_tag_id")
-
-    @policy_tag_id.setter
-    def policy_tag_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "policy_tag_id", value)
 
     @property
     @pulumi.getter
@@ -119,7 +108,6 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
-                 policy_tag_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  taxonomy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -160,7 +148,6 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
-                 policy_tag_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  taxonomy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -181,9 +168,6 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["parent_policy_tag"] = parent_policy_tag
-            if policy_tag_id is None and not opts.urn:
-                raise TypeError("Missing required property 'policy_tag_id'")
-            __props__.__dict__["policy_tag_id"] = policy_tag_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

@@ -15,7 +15,6 @@ __all__ = ['DashboardArgs', 'Dashboard']
 @pulumi.input_type
 class DashboardArgs:
     def __init__(__self__, *,
-                 dashboard_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  column_layout: Optional[pulumi.Input['ColumnLayoutArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -34,7 +33,6 @@ class DashboardArgs:
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input['RowLayoutArgs'] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
-        pulumi.set(__self__, "dashboard_id", dashboard_id)
         pulumi.set(__self__, "project", project)
         if column_layout is not None:
             pulumi.set(__self__, "column_layout", column_layout)
@@ -50,15 +48,6 @@ class DashboardArgs:
             pulumi.set(__self__, "name", name)
         if row_layout is not None:
             pulumi.set(__self__, "row_layout", row_layout)
-
-    @property
-    @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dashboard_id")
-
-    @dashboard_id.setter
-    def dashboard_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dashboard_id", value)
 
     @property
     @pulumi.getter
@@ -160,7 +149,6 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
-                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
@@ -207,7 +195,6 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
-                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
@@ -228,9 +215,6 @@ class Dashboard(pulumi.CustomResource):
             __props__ = DashboardArgs.__new__(DashboardArgs)
 
             __props__.__dict__["column_layout"] = column_layout
-            if dashboard_id is None and not opts.urn:
-                raise TypeError("Missing required property 'dashboard_id'")
-            __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["grid_layout"] = grid_layout

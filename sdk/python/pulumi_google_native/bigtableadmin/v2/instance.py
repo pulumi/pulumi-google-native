@@ -13,30 +13,31 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_id: Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
         :param pulumi.Input[str] display_name: Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        :param pulumi.Input[str] instance_id: Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         :param pulumi.Input[str] name: The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
         :param pulumi.Input[str] parent: Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
         :param pulumi.Input[str] type: Required. The type of the instance. Defaults to `PRODUCTION`.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
         if clusters is not None:
             pulumi.set(__self__, "clusters", clusters)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -45,18 +46,6 @@ class InstanceArgs:
             pulumi.set(__self__, "parent", parent)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> pulumi.Input[str]:
-        """
-        Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -90,6 +79,18 @@ class InstanceArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -213,8 +214,6 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["clusters"] = clusters
             __props__.__dict__["display_name"] = display_name
-            if instance_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name

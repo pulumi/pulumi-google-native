@@ -15,7 +15,6 @@ __all__ = ['OrganizationEnvironmentArgs', 'OrganizationEnvironment']
 @pulumi.input_type
 class OrganizationEnvironmentArgs:
     def __init__(__self__, *,
-                 environment_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -28,7 +27,6 @@ class OrganizationEnvironmentArgs:
         :param pulumi.Input[str] name: Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
-        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -38,15 +36,6 @@ class OrganizationEnvironmentArgs:
             pulumi.set(__self__, "name", name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
-
-    @property
-    @pulumi.getter(name="environmentId")
-    def environment_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environment_id")
-
-    @environment_id.setter
-    def environment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -113,7 +102,6 @@ class OrganizationEnvironment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
@@ -154,7 +142,6 @@ class OrganizationEnvironment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
@@ -172,9 +159,6 @@ class OrganizationEnvironment(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if environment_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environment_id'")
-            __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

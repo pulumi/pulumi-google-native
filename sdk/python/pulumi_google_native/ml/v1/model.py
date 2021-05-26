@@ -15,7 +15,6 @@ __all__ = ['ModelArgs', 'Model']
 @pulumi.input_type
 class ModelArgs:
     def __init__(__self__, *,
-                 model_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  default_version: Optional[pulumi.Input['GoogleCloudMlV1__VersionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -36,7 +35,6 @@ class ModelArgs:
         :param pulumi.Input[bool] online_prediction_logging: Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
         """
-        pulumi.set(__self__, "model_id", model_id)
         pulumi.set(__self__, "project", project)
         if default_version is not None:
             pulumi.set(__self__, "default_version", default_version)
@@ -54,15 +52,6 @@ class ModelArgs:
             pulumi.set(__self__, "online_prediction_logging", online_prediction_logging)
         if regions is not None:
             pulumi.set(__self__, "regions", regions)
-
-    @property
-    @pulumi.getter(name="modelId")
-    def model_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "model_id")
-
-    @model_id.setter
-    def model_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "model_id", value)
 
     @property
     @pulumi.getter
@@ -179,7 +168,6 @@ class Model(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
                  online_prediction_logging: Optional[pulumi.Input[bool]] = None,
@@ -228,7 +216,6 @@ class Model(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
                  online_prediction_logging: Optional[pulumi.Input[bool]] = None,
@@ -250,9 +237,6 @@ class Model(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
-            if model_id is None and not opts.urn:
-                raise TypeError("Missing required property 'model_id'")
-            __props__.__dict__["model_id"] = model_id
             __props__.__dict__["name"] = name
             __props__.__dict__["online_prediction_console_logging"] = online_prediction_console_logging
             __props__.__dict__["online_prediction_logging"] = online_prediction_logging

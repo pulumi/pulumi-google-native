@@ -16,7 +16,6 @@ __all__ = ['AgentIntentArgs', 'AgentIntent']
 class AgentIntentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
-                 intent_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -40,7 +39,6 @@ class AgentIntentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs']]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
         """
         pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "intent_id", intent_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if description is not None:
@@ -70,15 +68,6 @@ class AgentIntentArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
-
-    @property
-    @pulumi.getter(name="intentId")
-    def intent_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "intent_id")
-
-    @intent_id.setter
-    def intent_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "intent_id", value)
 
     @property
     @pulumi.getter
@@ -212,7 +201,6 @@ class AgentIntent(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 intent_id: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -264,7 +252,6 @@ class AgentIntent(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 intent_id: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -291,9 +278,6 @@ class AgentIntent(pulumi.CustomResource):
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if intent_id is None and not opts.urn:
-                raise TypeError("Missing required property 'intent_id'")
-            __props__.__dict__["intent_id"] = intent_id
             __props__.__dict__["is_fallback"] = is_fallback
             __props__.__dict__["labels"] = labels
             __props__.__dict__["language_code"] = language_code

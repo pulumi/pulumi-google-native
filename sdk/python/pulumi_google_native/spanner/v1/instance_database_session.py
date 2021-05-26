@@ -16,7 +16,6 @@ class InstanceDatabaseSessionArgs:
                  database_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 session_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a InstanceDatabaseSession resource.
@@ -25,7 +24,6 @@ class InstanceDatabaseSessionArgs:
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "session_id", session_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
@@ -57,15 +55,6 @@ class InstanceDatabaseSessionArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="sessionId")
-    def session_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "session_id")
-
-    @session_id.setter
-    def session_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "session_id", value)
-
-    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -87,7 +76,6 @@ class InstanceDatabaseSession(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 session_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it is a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT 1"`.
@@ -124,7 +112,6 @@ class InstanceDatabaseSession(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 session_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -147,9 +134,6 @@ class InstanceDatabaseSession(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if session_id is None and not opts.urn:
-                raise TypeError("Missing required property 'session_id'")
-            __props__.__dict__["session_id"] = session_id
             __props__.__dict__["approximate_last_use_time"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

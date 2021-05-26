@@ -15,7 +15,6 @@ __all__ = ['SiteDomainArgs', 'SiteDomain']
 @pulumi.input_type
 class SiteDomainArgs:
     def __init__(__self__, *,
-                 domain_id: pulumi.Input[str],
                  site_id: pulumi.Input[str],
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
@@ -32,7 +31,6 @@ class SiteDomainArgs:
         :param pulumi.Input[str] status: Additional status of the domain association.
         :param pulumi.Input[str] update_time: The time at which the domain was last updated.
         """
-        pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "site_id", site_id)
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
@@ -46,15 +44,6 @@ class SiteDomainArgs:
             pulumi.set(__self__, "status", status)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="domainId")
-    def domain_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domain_id")
-
-    @domain_id.setter
-    def domain_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domain_id", value)
 
     @property
     @pulumi.getter(name="siteId")
@@ -143,7 +132,6 @@ class SiteDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
                  provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
@@ -188,7 +176,6 @@ class SiteDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
                  provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
@@ -208,9 +195,6 @@ class SiteDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SiteDomainArgs.__new__(SiteDomainArgs)
 
-            if domain_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domain_id'")
-            __props__.__dict__["domain_id"] = domain_id
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["domain_redirect"] = domain_redirect
             __props__.__dict__["provisioning"] = provisioning

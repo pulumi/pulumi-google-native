@@ -15,7 +15,6 @@ __all__ = ['DlpJobArgs', 'DlpJob']
 @pulumi.input_type
 class DlpJobArgs:
     def __init__(__self__, *,
-                 dlp_job_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
@@ -27,7 +26,6 @@ class DlpJobArgs:
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs'] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
-        pulumi.set(__self__, "dlp_job_id", dlp_job_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if inspect_job is not None:
@@ -36,15 +34,6 @@ class DlpJobArgs:
             pulumi.set(__self__, "job_id", job_id)
         if risk_job is not None:
             pulumi.set(__self__, "risk_job", risk_job)
-
-    @property
-    @pulumi.getter(name="dlpJobId")
-    def dlp_job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dlp_job_id")
-
-    @dlp_job_id.setter
-    def dlp_job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dlp_job_id", value)
 
     @property
     @pulumi.getter
@@ -106,7 +95,6 @@ class DlpJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlp_job_id: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -146,7 +134,6 @@ class DlpJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlp_job_id: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -164,9 +151,6 @@ class DlpJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DlpJobArgs.__new__(DlpJobArgs)
 
-            if dlp_job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'dlp_job_id'")
-            __props__.__dict__["dlp_job_id"] = dlp_job_id
             __props__.__dict__["inspect_job"] = inspect_job
             __props__.__dict__["job_id"] = job_id
             if location is None and not opts.urn:

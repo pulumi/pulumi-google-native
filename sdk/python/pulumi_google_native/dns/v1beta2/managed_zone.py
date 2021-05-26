@@ -15,7 +15,6 @@ __all__ = ['ManagedZoneArgs', 'ManagedZone']
 @pulumi.input_type
 class ManagedZoneArgs:
     def __init__(__self__, *,
-                 managed_zone: pulumi.Input[str],
                  project: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
@@ -52,7 +51,6 @@ class ManagedZoneArgs:
         :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
-        pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "project", project)
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
@@ -88,15 +86,6 @@ class ManagedZoneArgs:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
-
-    @property
-    @pulumi.getter(name="managedZone")
-    def managed_zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "managed_zone")
-
-    @managed_zone.setter
-    def managed_zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "managed_zone", value)
 
     @property
     @pulumi.getter
@@ -320,7 +309,6 @@ class ManagedZone(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -385,7 +373,6 @@ class ManagedZone(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -416,9 +403,6 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
-            if managed_zone is None and not opts.urn:
-                raise TypeError("Missing required property 'managed_zone'")
-            __props__.__dict__["managed_zone"] = managed_zone
             __props__.__dict__["name"] = name
             __props__.__dict__["name_server_set"] = name_server_set
             __props__.__dict__["name_servers"] = name_servers

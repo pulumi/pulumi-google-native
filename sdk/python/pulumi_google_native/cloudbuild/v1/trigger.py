@@ -16,7 +16,6 @@ __all__ = ['TriggerArgs', 'Trigger']
 class TriggerArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 trigger_id: pulumi.Input[str],
                  build: Optional[pulumi.Input['BuildArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -47,7 +46,6 @@ class TriggerArgs:
         :param pulumi.Input['RepoSourceArgs'] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "trigger_id", trigger_id)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if description is not None:
@@ -83,15 +81,6 @@ class TriggerArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="triggerId")
-    def trigger_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "trigger_id")
-
-    @trigger_id.setter
-    def trigger_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "trigger_id", value)
 
     @property
     @pulumi.getter
@@ -268,7 +257,6 @@ class Trigger(pulumi.CustomResource):
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trigger_id: Optional[pulumi.Input[str]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['RepoSourceArgs']]] = None,
                  __props__=None):
         """
@@ -327,7 +315,6 @@ class Trigger(pulumi.CustomResource):
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trigger_id: Optional[pulumi.Input[str]] = None,
                  trigger_template: Optional[pulumi.Input[pulumi.InputType['RepoSourceArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -356,9 +343,6 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["pubsub_config"] = pubsub_config
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags
-            if trigger_id is None and not opts.urn:
-                raise TypeError("Missing required property 'trigger_id'")
-            __props__.__dict__["trigger_id"] = trigger_id
             __props__.__dict__["trigger_template"] = trigger_template
             __props__.__dict__["create_time"] = None
         super(Trigger, __self__).__init__(

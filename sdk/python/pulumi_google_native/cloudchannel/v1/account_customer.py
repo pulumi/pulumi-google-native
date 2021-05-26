@@ -16,7 +16,6 @@ __all__ = ['AccountCustomerArgs', 'AccountCustomer']
 class AccountCustomerArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 customer_id: pulumi.Input[str],
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class AccountCustomerArgs:
         :param pulumi.Input['GoogleCloudChannelV1ContactInfoArgs'] primary_contact_info: Primary contact info.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "customer_id", customer_id)
         if alternate_email is not None:
             pulumi.set(__self__, "alternate_email", alternate_email)
         if channel_partner_id is not None:
@@ -59,15 +57,6 @@ class AccountCustomerArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter(name="customerId")
-    def customer_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "customer_id")
-
-    @customer_id.setter
-    def customer_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "customer_id", value)
 
     @property
     @pulumi.getter(name="alternateEmail")
@@ -162,7 +151,6 @@ class AccountCustomer(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
-                 customer_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -209,7 +197,6 @@ class AccountCustomer(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
-                 customer_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -232,9 +219,6 @@ class AccountCustomer(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["alternate_email"] = alternate_email
             __props__.__dict__["channel_partner_id"] = channel_partner_id
-            if customer_id is None and not opts.urn:
-                raise TypeError("Missing required property 'customer_id'")
-            __props__.__dict__["customer_id"] = customer_id
             __props__.__dict__["domain"] = domain
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["org_display_name"] = org_display_name

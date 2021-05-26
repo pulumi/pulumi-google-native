@@ -15,7 +15,6 @@ __all__ = ['BackendBucketArgs', 'BackendBucket']
 @pulumi.input_type
 class BackendBucketArgs:
     def __init__(__self__, *,
-                 backend_bucket: pulumi.Input[str],
                  project: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
@@ -45,7 +44,6 @@ class BackendBucketArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         """
-        pulumi.set(__self__, "backend_bucket", backend_bucket)
         pulumi.set(__self__, "project", project)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -73,15 +71,6 @@ class BackendBucketArgs:
             pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
             pulumi.set(__self__, "self_link_with_id", self_link_with_id)
-
-    @property
-    @pulumi.getter(name="backendBucket")
-    def backend_bucket(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "backend_bucket")
-
-    @backend_bucket.setter
-    def backend_bucket(self, value: pulumi.Input[str]):
-        pulumi.set(self, "backend_bucket", value)
 
     @property
     @pulumi.getter
@@ -251,7 +240,6 @@ class BackendBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_bucket: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -309,7 +297,6 @@ class BackendBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_bucket: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -336,9 +323,6 @@ class BackendBucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackendBucketArgs.__new__(BackendBucketArgs)
 
-            if backend_bucket is None and not opts.urn:
-                raise TypeError("Missing required property 'backend_bucket'")
-            __props__.__dict__["backend_bucket"] = backend_bucket
             __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["creation_timestamp"] = creation_timestamp

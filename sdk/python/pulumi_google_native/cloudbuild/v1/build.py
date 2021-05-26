@@ -15,7 +15,6 @@ __all__ = ['BuildArgs', 'Build']
 @pulumi.input_type
 class BuildArgs:
     def __init__(__self__, *,
-                 build_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  project_id: pulumi.Input[str],
@@ -48,7 +47,6 @@ class BuildArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
         """
-        pulumi.set(__self__, "build_id", build_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "project_id", project_id)
@@ -78,15 +76,6 @@ class BuildArgs:
             pulumi.set(__self__, "tags", tags)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-
-    @property
-    @pulumi.getter(name="buildId")
-    def build_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "build_id")
-
-    @build_id.setter
-    def build_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "build_id", value)
 
     @property
     @pulumi.getter
@@ -279,7 +268,6 @@ class Build(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
                  available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
-                 build_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
@@ -340,7 +328,6 @@ class Build(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
                  available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
-                 build_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
@@ -369,9 +356,6 @@ class Build(pulumi.CustomResource):
 
             __props__.__dict__["artifacts"] = artifacts
             __props__.__dict__["available_secrets"] = available_secrets
-            if build_id is None and not opts.urn:
-                raise TypeError("Missing required property 'build_id'")
-            __props__.__dict__["build_id"] = build_id
             __props__.__dict__["images"] = images
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

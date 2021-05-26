@@ -17,7 +17,6 @@ class AccountCustomerEntitlementArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  customer_id: pulumi.Input[str],
-                 entitlement_id: pulumi.Input[str],
                  association_info: Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']] = None,
                  commitment_settings: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']] = None,
                  offer: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class AccountCustomerEntitlementArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "customer_id", customer_id)
-        pulumi.set(__self__, "entitlement_id", entitlement_id)
         if association_info is not None:
             pulumi.set(__self__, "association_info", association_info)
         if commitment_settings is not None:
@@ -66,15 +64,6 @@ class AccountCustomerEntitlementArgs:
     @customer_id.setter
     def customer_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "customer_id", value)
-
-    @property
-    @pulumi.getter(name="entitlementId")
-    def entitlement_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entitlement_id")
-
-    @entitlement_id.setter
-    def entitlement_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entitlement_id", value)
 
     @property
     @pulumi.getter(name="associationInfo")
@@ -158,7 +147,6 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                  association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
                  commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
                  customer_id: Optional[pulumi.Input[str]] = None,
-                 entitlement_id: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
@@ -204,7 +192,6 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                  association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
                  commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
                  customer_id: Optional[pulumi.Input[str]] = None,
-                 entitlement_id: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
@@ -229,9 +216,6 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
             if customer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customer_id'")
             __props__.__dict__["customer_id"] = customer_id
-            if entitlement_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entitlement_id'")
-            __props__.__dict__["entitlement_id"] = entitlement_id
             __props__.__dict__["offer"] = offer
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["purchase_order_id"] = purchase_order_id

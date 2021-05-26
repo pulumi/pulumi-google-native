@@ -15,7 +15,6 @@ __all__ = ['RegionCommitmentArgs', 'RegionCommitment']
 @pulumi.input_type
 class RegionCommitmentArgs:
     def __init__(__self__, *,
-                 commitment: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  category: Optional[pulumi.Input[str]] = None,
@@ -55,7 +54,6 @@ class RegionCommitmentArgs:
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
-        pulumi.set(__self__, "commitment", commitment)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if category is not None:
@@ -92,15 +90,6 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "status_message", status_message)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def commitment(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "commitment")
-
-    @commitment.setter
-    def commitment(self, value: pulumi.Input[str]):
-        pulumi.set(self, "commitment", value)
 
     @property
     @pulumi.getter
@@ -331,7 +320,6 @@ class RegionCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 commitment: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_timestamp: Optional[pulumi.Input[str]] = None,
@@ -399,7 +387,6 @@ class RegionCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 commitment: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_timestamp: Optional[pulumi.Input[str]] = None,
@@ -431,9 +418,6 @@ class RegionCommitment(pulumi.CustomResource):
             __props__ = RegionCommitmentArgs.__new__(RegionCommitmentArgs)
 
             __props__.__dict__["category"] = category
-            if commitment is None and not opts.urn:
-                raise TypeError("Missing required property 'commitment'")
-            __props__.__dict__["commitment"] = commitment
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["end_timestamp"] = end_timestamp

@@ -18,7 +18,6 @@ class StudyTrialArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  study_id: pulumi.Input[str],
-                 trial_id: pulumi.Input[str],
                  final_measurement: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]] = None,
@@ -33,7 +32,6 @@ class StudyTrialArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "study_id", study_id)
-        pulumi.set(__self__, "trial_id", trial_id)
         if final_measurement is not None:
             pulumi.set(__self__, "final_measurement", final_measurement)
         if measurements is not None:
@@ -69,15 +67,6 @@ class StudyTrialArgs:
     @study_id.setter
     def study_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "study_id", value)
-
-    @property
-    @pulumi.getter(name="trialId")
-    def trial_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "trial_id")
-
-    @trial_id.setter
-    def trial_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "trial_id", value)
 
     @property
     @pulumi.getter(name="finalMeasurement")
@@ -140,7 +129,6 @@ class StudyTrial(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
-                 trial_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Adds a user provided trial to a study.
@@ -183,7 +171,6 @@ class StudyTrial(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
-                 trial_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -209,9 +196,6 @@ class StudyTrial(pulumi.CustomResource):
             if study_id is None and not opts.urn:
                 raise TypeError("Missing required property 'study_id'")
             __props__.__dict__["study_id"] = study_id
-            if trial_id is None and not opts.urn:
-                raise TypeError("Missing required property 'trial_id'")
-            __props__.__dict__["trial_id"] = trial_id
             __props__.__dict__["client_id"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["infeasible_reason"] = None

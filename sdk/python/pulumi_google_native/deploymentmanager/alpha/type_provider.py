@@ -16,7 +16,6 @@ __all__ = ['TypeProviderArgs', 'TypeProvider']
 class TypeProviderArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 type_provider: pulumi.Input[str],
                  collection_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['CollectionOverrideArgs']]]] = None,
                  credential: Optional[pulumi.Input['CredentialArgs']] = None,
                  custom_certificate_authority_roots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -45,7 +44,6 @@ class TypeProviderArgs:
         :param pulumi.Input[str] self_link: Self link for the type provider.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "type_provider", type_provider)
         if collection_overrides is not None:
             pulumi.set(__self__, "collection_overrides", collection_overrides)
         if credential is not None:
@@ -79,15 +77,6 @@ class TypeProviderArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="typeProvider")
-    def type_provider(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "type_provider")
-
-    @type_provider.setter
-    def type_provider(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type_provider", value)
 
     @property
     @pulumi.getter(name="collectionOverrides")
@@ -252,7 +241,6 @@ class TypeProvider(pulumi.CustomResource):
                  options: Optional[pulumi.Input[pulumi.InputType['OptionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 type_provider: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a type provider.
@@ -309,7 +297,6 @@ class TypeProvider(pulumi.CustomResource):
                  options: Optional[pulumi.Input[pulumi.InputType['OptionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 type_provider: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -337,9 +324,6 @@ class TypeProvider(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
-            if type_provider is None and not opts.urn:
-                raise TypeError("Missing required property 'type_provider'")
-            __props__.__dict__["type_provider"] = type_provider
         super(TypeProvider, __self__).__init__(
             'google-native:deploymentmanager/alpha:TypeProvider',
             resource_name,

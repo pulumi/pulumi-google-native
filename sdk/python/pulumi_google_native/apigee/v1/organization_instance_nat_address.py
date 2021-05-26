@@ -14,7 +14,6 @@ __all__ = ['OrganizationInstanceNatAddressArgs', 'OrganizationInstanceNatAddress
 class OrganizationInstanceNatAddressArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 nat_address_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -22,7 +21,6 @@ class OrganizationInstanceNatAddressArgs:
         :param pulumi.Input[str] name: Required. Resource ID of the NAT address.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "nat_address_id", nat_address_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -35,15 +33,6 @@ class OrganizationInstanceNatAddressArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter(name="natAddressId")
-    def nat_address_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "nat_address_id")
-
-    @nat_address_id.setter
-    def nat_address_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "nat_address_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -74,7 +63,6 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nat_address_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -110,7 +98,6 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nat_address_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -128,9 +115,6 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if nat_address_id is None and not opts.urn:
-                raise TypeError("Missing required property 'nat_address_id'")
-            __props__.__dict__["nat_address_id"] = nat_address_id
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id

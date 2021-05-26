@@ -15,24 +15,23 @@ __all__ = ['ServiceRolloutArgs', 'ServiceRollout']
 @pulumi.input_type
 class ServiceRolloutArgs:
     def __init__(__self__, *,
-                 rollout_id: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  delete_service_strategy: Optional[pulumi.Input['DeleteServiceStrategyArgs']] = None,
+                 rollout_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  traffic_percent_strategy: Optional[pulumi.Input['TrafficPercentStrategyArgs']] = None):
         """
         The set of arguments for constructing a ServiceRollout resource.
-        :param pulumi.Input[str] rollout_id: Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
         :param pulumi.Input[str] service_name: The name of the service associated with this Rollout.
         :param pulumi.Input[str] create_time: Creation time of the rollout. Readonly.
         :param pulumi.Input[str] created_by: This field is deprecated and will be deleted. Please remove usage of this field.
         :param pulumi.Input['DeleteServiceStrategyArgs'] delete_service_strategy: The strategy associated with a rollout to delete a `ManagedService`. Readonly.
+        :param pulumi.Input[str] rollout_id: Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
         :param pulumi.Input[str] status: The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
         :param pulumi.Input['TrafficPercentStrategyArgs'] traffic_percent_strategy: Google Service Control selects service configurations based on traffic percentage.
         """
-        pulumi.set(__self__, "rollout_id", rollout_id)
         pulumi.set(__self__, "service_name", service_name)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -40,22 +39,12 @@ class ServiceRolloutArgs:
             pulumi.set(__self__, "created_by", created_by)
         if delete_service_strategy is not None:
             pulumi.set(__self__, "delete_service_strategy", delete_service_strategy)
+        if rollout_id is not None:
+            pulumi.set(__self__, "rollout_id", rollout_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if traffic_percent_strategy is not None:
             pulumi.set(__self__, "traffic_percent_strategy", traffic_percent_strategy)
-
-    @property
-    @pulumi.getter(name="rolloutId")
-    def rollout_id(self) -> pulumi.Input[str]:
-        """
-        Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
-        """
-        return pulumi.get(self, "rollout_id")
-
-    @rollout_id.setter
-    def rollout_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "rollout_id", value)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -104,6 +93,18 @@ class ServiceRolloutArgs:
     @delete_service_strategy.setter
     def delete_service_strategy(self, value: Optional[pulumi.Input['DeleteServiceStrategyArgs']]):
         pulumi.set(self, "delete_service_strategy", value)
+
+    @property
+    @pulumi.getter(name="rolloutId")
+    def rollout_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
+        """
+        return pulumi.get(self, "rollout_id")
+
+    @rollout_id.setter
+    def rollout_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rollout_id", value)
 
     @property
     @pulumi.getter
@@ -202,8 +203,6 @@ class ServiceRollout(pulumi.CustomResource):
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["delete_service_strategy"] = delete_service_strategy
-            if rollout_id is None and not opts.urn:
-                raise TypeError("Missing required property 'rollout_id'")
             __props__.__dict__["rollout_id"] = rollout_id
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")

@@ -16,7 +16,6 @@ __all__ = ['RouteArgs', 'Route']
 class RouteArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 route: pulumi.Input[str],
                  allow_conflicting_subnetworks: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -68,7 +67,6 @@ class RouteArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemArgs']]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "route", route)
         if allow_conflicting_subnetworks is not None:
             pulumi.set(__self__, "allow_conflicting_subnetworks", allow_conflicting_subnetworks)
         if creation_timestamp is not None:
@@ -122,15 +120,6 @@ class RouteArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def route(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: pulumi.Input[str]):
-        pulumi.set(self, "route", value)
 
     @property
     @pulumi.getter(name="allowConflictingSubnetworks")
@@ -422,7 +411,6 @@ class Route(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 route: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -502,7 +490,6 @@ class Route(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 route: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -540,9 +527,6 @@ class Route(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            if route is None and not opts.urn:
-                raise TypeError("Missing required property 'route'")
-            __props__.__dict__["route"] = route
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["tags"] = tags

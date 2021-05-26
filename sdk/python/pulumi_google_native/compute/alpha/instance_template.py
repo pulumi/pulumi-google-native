@@ -15,7 +15,6 @@ __all__ = ['InstanceTemplateArgs', 'InstanceTemplate']
 @pulumi.input_type
 class InstanceTemplateArgs:
     def __init__(__self__, *,
-                 instance_template: pulumi.Input[str],
                  project: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -43,7 +42,6 @@ class InstanceTemplateArgs:
                - projects/project/zones/zone/instances/instance
         :param pulumi.Input['SourceInstanceParamsArgs'] source_instance_params: The source instance params to use to create this instance template.
         """
-        pulumi.set(__self__, "instance_template", instance_template)
         pulumi.set(__self__, "project", project)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -67,15 +65,6 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "source_instance", source_instance)
         if source_instance_params is not None:
             pulumi.set(__self__, "source_instance_params", source_instance_params)
-
-    @property
-    @pulumi.getter(name="instanceTemplate")
-    def instance_template(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance_template")
-
-    @instance_template.setter
-    def instance_template(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_template", value)
 
     @property
     @pulumi.getter
@@ -226,7 +215,6 @@ class InstanceTemplate(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -282,7 +270,6 @@ class InstanceTemplate(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -307,9 +294,6 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
-            if instance_template is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_template'")
-            __props__.__dict__["instance_template"] = instance_template
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:

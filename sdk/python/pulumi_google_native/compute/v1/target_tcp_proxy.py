@@ -14,7 +14,6 @@ __all__ = ['TargetTcpProxyArgs', 'TargetTcpProxy']
 class TargetTcpProxyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 target_tcp_proxy: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -42,7 +41,6 @@ class TargetTcpProxyArgs:
         :param pulumi.Input[str] service: URL to the BackendService resource.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "target_tcp_proxy", target_tcp_proxy)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -72,15 +70,6 @@ class TargetTcpProxyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="targetTcpProxy")
-    def target_tcp_proxy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "target_tcp_proxy")
-
-    @target_tcp_proxy.setter
-    def target_tcp_proxy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_tcp_proxy", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -220,7 +209,6 @@ class TargetTcpProxy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 target_tcp_proxy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a TargetTcpProxy resource in the specified project using the data included in the request.
@@ -276,7 +264,6 @@ class TargetTcpProxy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 target_tcp_proxy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -302,9 +289,6 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["service"] = service
-            if target_tcp_proxy is None and not opts.urn:
-                raise TypeError("Missing required property 'target_tcp_proxy'")
-            __props__.__dict__["target_tcp_proxy"] = target_tcp_proxy
         super(TargetTcpProxy, __self__).__init__(
             'google-native:compute/v1:TargetTcpProxy',
             resource_name,

@@ -14,7 +14,6 @@ __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
 class TargetHttpsProxyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 target_https_proxy: pulumi.Input[str],
                  authentication: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  authorization_policy: Optional[pulumi.Input[str]] = None,
@@ -74,7 +73,6 @@ class TargetHttpsProxyArgs:
                - global/urlMaps/url-map
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "target_https_proxy", target_https_proxy)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
         if authorization is not None:
@@ -122,15 +120,6 @@ class TargetHttpsProxyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="targetHttpsProxy")
-    def target_https_proxy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "target_https_proxy")
-
-    @target_https_proxy.setter
-    def target_https_proxy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_https_proxy", value)
 
     @property
     @pulumi.getter
@@ -400,7 +389,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
-                 target_https_proxy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -488,7 +476,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
-                 target_https_proxy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -523,9 +510,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["ssl_certificates"] = ssl_certificates
             __props__.__dict__["ssl_policy"] = ssl_policy
-            if target_https_proxy is None and not opts.urn:
-                raise TypeError("Missing required property 'target_https_proxy'")
-            __props__.__dict__["target_https_proxy"] = target_https_proxy
             __props__.__dict__["url_map"] = url_map
         super(TargetHttpsProxy, __self__).__init__(
             'google-native:compute/beta:TargetHttpsProxy',

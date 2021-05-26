@@ -15,7 +15,6 @@ __all__ = ['SubscriptionArgs', 'Subscription']
 @pulumi.input_type
 class SubscriptionArgs:
     def __init__(__self__, *,
-                 subscription_id: pulumi.Input[str],
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input['PushConfigArgs']] = None,
@@ -27,7 +26,6 @@ class SubscriptionArgs:
         :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages.
         """
-        pulumi.set(__self__, "subscription_id", subscription_id)
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if name is not None:
@@ -36,15 +34,6 @@ class SubscriptionArgs:
             pulumi.set(__self__, "push_config", push_config)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
-
-    @property
-    @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "subscription_id")
-
-    @subscription_id.setter
-    def subscription_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "subscription_id", value)
 
     @property
     @pulumi.getter(name="ackDeadlineSeconds")
@@ -103,7 +92,6 @@ class Subscription(pulumi.CustomResource):
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input[pulumi.InputType['PushConfigArgs']]] = None,
-                 subscription_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -120,7 +108,7 @@ class Subscription(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubscriptionArgs,
+                 args: Optional[SubscriptionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.
@@ -143,7 +131,6 @@ class Subscription(pulumi.CustomResource):
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input[pulumi.InputType['PushConfigArgs']]] = None,
-                 subscription_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -160,9 +147,6 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
             __props__.__dict__["name"] = name
             __props__.__dict__["push_config"] = push_config
-            if subscription_id is None and not opts.urn:
-                raise TypeError("Missing required property 'subscription_id'")
-            __props__.__dict__["subscription_id"] = subscription_id
             __props__.__dict__["topic"] = topic
         super(Subscription, __self__).__init__(
             'google-native:pubsub/v1beta1a:Subscription',

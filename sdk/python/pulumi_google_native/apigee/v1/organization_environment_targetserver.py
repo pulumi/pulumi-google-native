@@ -17,7 +17,6 @@ class OrganizationEnvironmentTargetserverArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 targetserver_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
@@ -35,7 +34,6 @@ class OrganizationEnvironmentTargetserverArgs:
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "targetserver_id", targetserver_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if host is not None:
@@ -66,15 +64,6 @@ class OrganizationEnvironmentTargetserverArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="targetserverId")
-    def targetserver_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "targetserver_id")
-
-    @targetserver_id.setter
-    def targetserver_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "targetserver_id", value)
 
     @property
     @pulumi.getter
@@ -162,7 +151,6 @@ class OrganizationEnvironmentTargetserver(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  s_sl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']]] = None,
-                 targetserver_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a TargetServer in the specified environment.
@@ -208,7 +196,6 @@ class OrganizationEnvironmentTargetserver(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  s_sl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']]] = None,
-                 targetserver_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -233,9 +220,6 @@ class OrganizationEnvironmentTargetserver(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["port"] = port
             __props__.__dict__["s_sl_info"] = s_sl_info
-            if targetserver_id is None and not opts.urn:
-                raise TypeError("Missing required property 'targetserver_id'")
-            __props__.__dict__["targetserver_id"] = targetserver_id
         super(OrganizationEnvironmentTargetserver, __self__).__init__(
             'google-native:apigee/v1:OrganizationEnvironmentTargetserver',
             resource_name,

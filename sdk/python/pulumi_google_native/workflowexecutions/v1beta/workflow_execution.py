@@ -14,7 +14,6 @@ __all__ = ['WorkflowExecutionArgs', 'WorkflowExecution']
 @pulumi.input_type
 class WorkflowExecutionArgs:
     def __init__(__self__, *,
-                 execution_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  workflow_id: pulumi.Input[str],
@@ -23,21 +22,11 @@ class WorkflowExecutionArgs:
         The set of arguments for constructing a WorkflowExecution resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         """
-        pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "workflow_id", workflow_id)
         if argument is not None:
             pulumi.set(__self__, "argument", argument)
-
-    @property
-    @pulumi.getter(name="executionId")
-    def execution_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "execution_id")
-
-    @execution_id.setter
-    def execution_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "execution_id", value)
 
     @property
     @pulumi.getter
@@ -85,7 +74,6 @@ class WorkflowExecution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
-                 execution_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
@@ -122,7 +110,6 @@ class WorkflowExecution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
-                 execution_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
@@ -139,9 +126,6 @@ class WorkflowExecution(pulumi.CustomResource):
             __props__ = WorkflowExecutionArgs.__new__(WorkflowExecutionArgs)
 
             __props__.__dict__["argument"] = argument
-            if execution_id is None and not opts.urn:
-                raise TypeError("Missing required property 'execution_id'")
-            __props__.__dict__["execution_id"] = execution_id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location

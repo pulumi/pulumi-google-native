@@ -16,7 +16,6 @@ class TaxonomyArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 taxonomy_id: pulumi.Input[str],
                  activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None):
@@ -28,7 +27,6 @@ class TaxonomyArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "taxonomy_id", taxonomy_id)
         if activated_policy_types is not None:
             pulumi.set(__self__, "activated_policy_types", activated_policy_types)
         if description is not None:
@@ -53,15 +51,6 @@ class TaxonomyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="taxonomyId")
-    def taxonomy_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "taxonomy_id")
-
-    @taxonomy_id.setter
-    def taxonomy_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "taxonomy_id", value)
 
     @property
     @pulumi.getter(name="activatedPolicyTypes")
@@ -110,7 +99,6 @@ class Taxonomy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 taxonomy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a taxonomy in the specified project.
@@ -150,7 +138,6 @@ class Taxonomy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 taxonomy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -172,9 +159,6 @@ class Taxonomy(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if taxonomy_id is None and not opts.urn:
-                raise TypeError("Missing required property 'taxonomy_id'")
-            __props__.__dict__["taxonomy_id"] = taxonomy_id
             __props__.__dict__["name"] = None
             __props__.__dict__["policy_tag_count"] = None
             __props__.__dict__["taxonomy_timestamps"] = None

@@ -16,7 +16,6 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 worker_pool_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -40,7 +39,6 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
@@ -71,15 +69,6 @@ class WorkerPoolArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="workerPoolId")
-    def worker_pool_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "worker_pool_id")
-
-    @worker_pool_id.setter
-    def worker_pool_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "worker_pool_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -205,7 +194,6 @@ class WorkerPool(pulumi.CustomResource):
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
-                 worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a `WorkerPool` to run the builds, and returns the new worker pool.
@@ -257,7 +245,6 @@ class WorkerPool(pulumi.CustomResource):
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
-                 worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -282,9 +269,6 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["worker_count"] = worker_count
-            if worker_pool_id is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_pool_id'")
-            __props__.__dict__["worker_pool_id"] = worker_pool_id
         super(WorkerPool, __self__).__init__(
             'google-native:cloudbuild/v1alpha1:WorkerPool',
             resource_name,

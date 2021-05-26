@@ -14,7 +14,6 @@ __all__ = ['AgentKnowledgeBaseDocumentArgs', 'AgentKnowledgeBaseDocument']
 @pulumi.input_type
 class AgentKnowledgeBaseDocumentArgs:
     def __init__(__self__, *,
-                 document_id: pulumi.Input[str],
                  knowledge_base_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  content: Optional[pulumi.Input[str]] = None,
@@ -39,7 +38,6 @@ class AgentKnowledgeBaseDocumentArgs:
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] raw_content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         """
-        pulumi.set(__self__, "document_id", document_id)
         pulumi.set(__self__, "knowledge_base_id", knowledge_base_id)
         pulumi.set(__self__, "project", project)
         if content is not None:
@@ -62,15 +60,6 @@ class AgentKnowledgeBaseDocumentArgs:
             pulumi.set(__self__, "name", name)
         if raw_content is not None:
             pulumi.set(__self__, "raw_content", raw_content)
-
-    @property
-    @pulumi.getter(name="documentId")
-    def document_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "document_id")
-
-    @document_id.setter
-    def document_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "document_id", value)
 
     @property
     @pulumi.getter(name="knowledgeBaseId")
@@ -216,7 +205,6 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 document_id: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
                  knowledge_base_id: Optional[pulumi.Input[str]] = None,
@@ -269,7 +257,6 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 document_id: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
                  knowledge_base_id: Optional[pulumi.Input[str]] = None,
@@ -294,9 +281,6 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
             __props__.__dict__["content"] = content
             __props__.__dict__["content_uri"] = content_uri
             __props__.__dict__["display_name"] = display_name
-            if document_id is None and not opts.urn:
-                raise TypeError("Missing required property 'document_id'")
-            __props__.__dict__["document_id"] = document_id
             __props__.__dict__["enable_auto_reload"] = enable_auto_reload
             __props__.__dict__["import_gcs_custom_metadata"] = import_gcs_custom_metadata
             if knowledge_base_id is None and not opts.urn:

@@ -15,7 +15,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 instance: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
@@ -124,7 +123,6 @@ class InstanceArgs:
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
-        pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if advanced_machine_features is not None:
@@ -219,15 +217,6 @@ class InstanceArgs:
             pulumi.set(__self__, "status_message", status_message)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def instance(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance")
-
-    @instance.setter
-    def instance(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance", value)
 
     @property
     @pulumi.getter
@@ -820,7 +809,6 @@ class Instance(pulumi.CustomResource):
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -957,7 +945,6 @@ class Instance(pulumi.CustomResource):
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1018,9 +1005,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["id"] = id
-            if instance is None and not opts.urn:
-                raise TypeError("Missing required property 'instance'")
-            __props__.__dict__["instance"] = instance
             __props__.__dict__["kind"] = kind
             __props__.__dict__["label_fingerprint"] = label_fingerprint
             __props__.__dict__["labels"] = labels

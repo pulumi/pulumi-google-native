@@ -13,7 +13,6 @@ __all__ = ['AndroidAppArgs', 'AndroidApp']
 @pulumi.input_type
 class AndroidAppArgs:
     def __init__(__self__, *,
-                 android_app_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,6 @@ class AndroidAppArgs:
         :param pulumi.Input[str] name: The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
         """
-        pulumi.set(__self__, "android_app_id", android_app_id)
         pulumi.set(__self__, "project", project)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -37,15 +35,6 @@ class AndroidAppArgs:
             pulumi.set(__self__, "name", name)
         if package_name is not None:
             pulumi.set(__self__, "package_name", package_name)
-
-    @property
-    @pulumi.getter(name="androidAppId")
-    def android_app_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "android_app_id")
-
-    @android_app_id.setter
-    def android_app_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "android_app_id", value)
 
     @property
     @pulumi.getter
@@ -113,7 +102,6 @@ class AndroidApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_app_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -155,7 +143,6 @@ class AndroidApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_app_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -173,9 +160,6 @@ class AndroidApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AndroidAppArgs.__new__(AndroidAppArgs)
 
-            if android_app_id is None and not opts.urn:
-                raise TypeError("Missing required property 'android_app_id'")
-            __props__.__dict__["android_app_id"] = android_app_id
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name

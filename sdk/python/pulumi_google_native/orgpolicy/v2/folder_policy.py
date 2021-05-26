@@ -16,7 +16,6 @@ __all__ = ['FolderPolicyArgs', 'FolderPolicy']
 class FolderPolicyArgs:
     def __init__(__self__, *,
                  folder_id: pulumi.Input[str],
-                 policy_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None):
         """
@@ -25,7 +24,6 @@ class FolderPolicyArgs:
         :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
         pulumi.set(__self__, "folder_id", folder_id)
-        pulumi.set(__self__, "policy_id", policy_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if spec is not None:
@@ -39,15 +37,6 @@ class FolderPolicyArgs:
     @folder_id.setter
     def folder_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "folder_id", value)
-
-    @property
-    @pulumi.getter(name="policyId")
-    def policy_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "policy_id")
-
-    @policy_id.setter
-    def policy_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "policy_id", value)
 
     @property
     @pulumi.getter
@@ -81,7 +70,6 @@ class FolderPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  __props__=None):
         """
@@ -118,7 +106,6 @@ class FolderPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -136,9 +123,6 @@ class FolderPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'folder_id'")
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["name"] = name
-            if policy_id is None and not opts.urn:
-                raise TypeError("Missing required property 'policy_id'")
-            __props__.__dict__["policy_id"] = policy_id
             __props__.__dict__["spec"] = spec
         super(FolderPolicy, __self__).__init__(
             'google-native:orgpolicy/v2:FolderPolicy',

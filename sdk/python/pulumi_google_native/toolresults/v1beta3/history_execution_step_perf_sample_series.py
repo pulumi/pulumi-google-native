@@ -18,25 +18,26 @@ class HistoryExecutionStepPerfSampleSeriesArgs:
                  execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 sample_series_id: pulumi.Input[str],
                  step_id: pulumi.Input[str],
-                 basic_perf_sample_series: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']] = None):
+                 basic_perf_sample_series: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']] = None,
+                 sample_series_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HistoryExecutionStepPerfSampleSeries resource.
         :param pulumi.Input[str] execution_id: A tool results execution ID. @OutputOnly
         :param pulumi.Input[str] history_id: A tool results history ID. @OutputOnly
         :param pulumi.Input[str] project: The cloud project @OutputOnly
-        :param pulumi.Input[str] sample_series_id: A sample series id @OutputOnly
         :param pulumi.Input[str] step_id: A tool results step ID. @OutputOnly
         :param pulumi.Input['BasicPerfSampleSeriesArgs'] basic_perf_sample_series: Basic series represented by a line chart
+        :param pulumi.Input[str] sample_series_id: A sample series id @OutputOnly
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "sample_series_id", sample_series_id)
         pulumi.set(__self__, "step_id", step_id)
         if basic_perf_sample_series is not None:
             pulumi.set(__self__, "basic_perf_sample_series", basic_perf_sample_series)
+        if sample_series_id is not None:
+            pulumi.set(__self__, "sample_series_id", sample_series_id)
 
     @property
     @pulumi.getter(name="executionId")
@@ -75,18 +76,6 @@ class HistoryExecutionStepPerfSampleSeriesArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="sampleSeriesId")
-    def sample_series_id(self) -> pulumi.Input[str]:
-        """
-        A sample series id @OutputOnly
-        """
-        return pulumi.get(self, "sample_series_id")
-
-    @sample_series_id.setter
-    def sample_series_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sample_series_id", value)
-
-    @property
     @pulumi.getter(name="stepId")
     def step_id(self) -> pulumi.Input[str]:
         """
@@ -109,6 +98,18 @@ class HistoryExecutionStepPerfSampleSeriesArgs:
     @basic_perf_sample_series.setter
     def basic_perf_sample_series(self, value: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']]):
         pulumi.set(self, "basic_perf_sample_series", value)
+
+    @property
+    @pulumi.getter(name="sampleSeriesId")
+    def sample_series_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A sample series id @OutputOnly
+        """
+        return pulumi.get(self, "sample_series_id")
+
+    @sample_series_id.setter
+    def sample_series_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sample_series_id", value)
 
 
 class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
@@ -187,8 +188,6 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if sample_series_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sample_series_id'")
             __props__.__dict__["sample_series_id"] = sample_series_id
             if step_id is None and not opts.urn:
                 raise TypeError("Missing required property 'step_id'")

@@ -14,7 +14,6 @@ __all__ = ['OrganizationApiArgs', 'OrganizationApi']
 @pulumi.input_type
 class OrganizationApiArgs:
     def __init__(__self__, *,
-                 api_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
@@ -28,7 +27,6 @@ class OrganizationApiArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -42,15 +40,6 @@ class OrganizationApiArgs:
             pulumi.set(__self__, "name", name)
         if validate is not None:
             pulumi.set(__self__, "validate", validate)
-
-    @property
-    @pulumi.getter(name="apiId")
-    def api_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "api_id")
-
-    @api_id.setter
-    def api_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "api_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -131,7 +120,6 @@ class OrganizationApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 api_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
@@ -173,7 +161,6 @@ class OrganizationApi(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 api_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
@@ -193,9 +180,6 @@ class OrganizationApi(pulumi.CustomResource):
             __props__ = OrganizationApiArgs.__new__(OrganizationApiArgs)
 
             __props__.__dict__["action"] = action
-            if api_id is None and not opts.urn:
-                raise TypeError("Missing required property 'api_id'")
-            __props__.__dict__["api_id"] = api_id
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             __props__.__dict__["extensions"] = extensions

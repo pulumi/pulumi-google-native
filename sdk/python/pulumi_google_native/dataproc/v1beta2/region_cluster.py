@@ -15,40 +15,29 @@ __all__ = ['RegionClusterArgs', 'RegionCluster']
 @pulumi.input_type
 class RegionClusterArgs:
     def __init__(__self__, *,
-                 cluster_name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 cluster_name: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionCluster resource.
-        :param pulumi.Input[str] cluster_name: Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         :param pulumi.Input[str] project: Required. The Google Cloud Platform project ID that the cluster belongs to.
+        :param pulumi.Input[str] cluster_name: Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         :param pulumi.Input['ClusterConfigArgs'] config: Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         """
-        pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> pulumi.Input[str]:
-        """
-        Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-        """
-        return pulumi.get(self, "cluster_name")
-
-    @cluster_name.setter
-    def cluster_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cluster_name", value)
 
     @property
     @pulumi.getter
@@ -70,6 +59,18 @@ class RegionClusterArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
 
     @property
     @pulumi.getter
@@ -169,8 +170,6 @@ class RegionCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionClusterArgs.__new__(RegionClusterArgs)
 
-            if cluster_name is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels

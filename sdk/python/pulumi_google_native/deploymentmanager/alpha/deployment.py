@@ -15,7 +15,6 @@ __all__ = ['DeploymentArgs', 'Deployment']
 @pulumi.input_type
 class DeploymentArgs:
     def __init__(__self__, *,
-                 deployment: pulumi.Input[str],
                  project: pulumi.Input[str],
                  create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input['CredentialArgs']] = None,
@@ -49,7 +48,6 @@ class DeploymentArgs:
         :param pulumi.Input['DeploymentUpdateArgs'] update: If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
         :param pulumi.Input[str] update_time: Update timestamp in RFC3339 text format.
         """
-        pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "project", project)
         if create_policy is not None:
             pulumi.set(__self__, "create_policy", create_policy)
@@ -83,15 +81,6 @@ class DeploymentArgs:
             pulumi.set(__self__, "update", update)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter
-    def deployment(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "deployment")
-
-    @deployment.setter
-    def deployment(self, value: pulumi.Input[str]):
-        pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter
@@ -293,7 +282,6 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
-                 deployment: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -355,7 +343,6 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
-                 deployment: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -385,9 +372,6 @@ class Deployment(pulumi.CustomResource):
 
             __props__.__dict__["create_policy"] = create_policy
             __props__.__dict__["credential"] = credential
-            if deployment is None and not opts.urn:
-                raise TypeError("Missing required property 'deployment'")
-            __props__.__dict__["deployment"] = deployment
             __props__.__dict__["description"] = description
             __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id

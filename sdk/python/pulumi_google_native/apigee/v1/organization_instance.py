@@ -13,7 +13,6 @@ __all__ = ['OrganizationInstanceArgs', 'OrganizationInstance']
 @pulumi.input_type
 class OrganizationInstanceArgs:
     def __init__(__self__, *,
-                 instance_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class OrganizationInstanceArgs:
         :param pulumi.Input[str] name: Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         :param pulumi.Input[str] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -47,15 +45,6 @@ class OrganizationInstanceArgs:
             pulumi.set(__self__, "name", name)
         if peering_cidr_range is not None:
             pulumi.set(__self__, "peering_cidr_range", peering_cidr_range)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -157,7 +146,6 @@ class OrganizationInstance(pulumi.CustomResource):
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -203,7 +191,6 @@ class OrganizationInstance(pulumi.CustomResource):
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -224,9 +211,6 @@ class OrganizationInstance(pulumi.CustomResource):
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["environments"] = environments
-            if instance_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_id'")
-            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:

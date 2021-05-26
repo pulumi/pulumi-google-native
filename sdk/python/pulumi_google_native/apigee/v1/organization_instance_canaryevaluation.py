@@ -15,7 +15,6 @@ __all__ = ['OrganizationInstanceCanaryevaluationArgs', 'OrganizationInstanceCana
 @pulumi.input_type
 class OrganizationInstanceCanaryevaluationArgs:
     def __init__(__self__, *,
-                 canaryevaluation_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  control: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class OrganizationInstanceCanaryevaluationArgs:
         :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
         :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
         """
-        pulumi.set(__self__, "canaryevaluation_id", canaryevaluation_id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if control is not None:
@@ -44,15 +42,6 @@ class OrganizationInstanceCanaryevaluationArgs:
             pulumi.set(__self__, "start_time", start_time)
         if treatment is not None:
             pulumi.set(__self__, "treatment", treatment)
-
-    @property
-    @pulumi.getter(name="canaryevaluationId")
-    def canaryevaluation_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "canaryevaluation_id")
-
-    @canaryevaluation_id.setter
-    def canaryevaluation_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "canaryevaluation_id", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -138,7 +127,6 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canaryevaluation_id: Optional[pulumi.Input[str]] = None,
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -182,7 +170,6 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canaryevaluation_id: Optional[pulumi.Input[str]] = None,
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -202,9 +189,6 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationInstanceCanaryevaluationArgs.__new__(OrganizationInstanceCanaryevaluationArgs)
 
-            if canaryevaluation_id is None and not opts.urn:
-                raise TypeError("Missing required property 'canaryevaluation_id'")
-            __props__.__dict__["canaryevaluation_id"] = canaryevaluation_id
             __props__.__dict__["control"] = control
             __props__.__dict__["end_time"] = end_time
             if instance_id is None and not opts.urn:

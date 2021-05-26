@@ -14,7 +14,6 @@ __all__ = ['BillingAccountExclusionArgs', 'BillingAccountExclusion']
 class BillingAccountExclusionArgs:
     def __init__(__self__, *,
                  billing_account_id: pulumi.Input[str],
-                 exclusion_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,6 @@ class BillingAccountExclusionArgs:
         :param pulumi.Input[str] name: Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         pulumi.set(__self__, "billing_account_id", billing_account_id)
-        pulumi.set(__self__, "exclusion_id", exclusion_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -45,15 +43,6 @@ class BillingAccountExclusionArgs:
     @billing_account_id.setter
     def billing_account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "billing_account_id", value)
-
-    @property
-    @pulumi.getter(name="exclusionId")
-    def exclusion_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "exclusion_id")
-
-    @exclusion_id.setter
-    def exclusion_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "exclusion_id", value)
 
     @property
     @pulumi.getter
@@ -112,7 +101,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusion_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -153,7 +141,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusion_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -173,9 +160,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
             __props__.__dict__["billing_account_id"] = billing_account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
-            if exclusion_id is None and not opts.urn:
-                raise TypeError("Missing required property 'exclusion_id'")
-            __props__.__dict__["exclusion_id"] = exclusion_id
             __props__.__dict__["filter"] = filter
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None

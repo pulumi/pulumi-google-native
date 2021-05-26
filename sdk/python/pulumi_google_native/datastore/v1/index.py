@@ -15,7 +15,6 @@ __all__ = ['IndexArgs', 'Index']
 @pulumi.input_type
 class IndexArgs:
     def __init__(__self__, *,
-                 index_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  ancestor: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -26,7 +25,6 @@ class IndexArgs:
         :param pulumi.Input[str] kind: Required. The entity kind to which this index applies.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]] properties: Required. An ordered sequence of property names and their index attributes.
         """
-        pulumi.set(__self__, "index_id", index_id)
         pulumi.set(__self__, "project", project)
         if ancestor is not None:
             pulumi.set(__self__, "ancestor", ancestor)
@@ -34,15 +32,6 @@ class IndexArgs:
             pulumi.set(__self__, "kind", kind)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
-
-    @property
-    @pulumi.getter(name="indexId")
-    def index_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "index_id")
-
-    @index_id.setter
-    def index_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "index_id", value)
 
     @property
     @pulumi.getter
@@ -96,7 +85,6 @@ class Index(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ancestor: Optional[pulumi.Input[str]] = None,
-                 index_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
@@ -135,7 +123,6 @@ class Index(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ancestor: Optional[pulumi.Input[str]] = None,
-                 index_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
@@ -152,14 +139,12 @@ class Index(pulumi.CustomResource):
             __props__ = IndexArgs.__new__(IndexArgs)
 
             __props__.__dict__["ancestor"] = ancestor
-            if index_id is None and not opts.urn:
-                raise TypeError("Missing required property 'index_id'")
-            __props__.__dict__["index_id"] = index_id
             __props__.__dict__["kind"] = kind
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["index_id"] = None
             __props__.__dict__["state"] = None
         super(Index, __self__).__init__(
             'google-native:datastore/v1:Index',

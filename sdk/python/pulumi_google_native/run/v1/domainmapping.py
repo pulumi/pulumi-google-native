@@ -15,7 +15,6 @@ __all__ = ['DomainmappingArgs', 'Domainmapping']
 @pulumi.input_type
 class DomainmappingArgs:
     def __init__(__self__, *,
-                 domainmapping_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
@@ -32,7 +31,6 @@ class DomainmappingArgs:
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
         :param pulumi.Input['DomainMappingStatusArgs'] status: The current status of the DomainMapping.
         """
-        pulumi.set(__self__, "domainmapping_id", domainmapping_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if api_version is not None:
@@ -47,15 +45,6 @@ class DomainmappingArgs:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="domainmappingId")
-    def domainmapping_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domainmapping_id")
-
-    @domainmapping_id.setter
-    def domainmapping_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domainmapping_id", value)
 
     @property
     @pulumi.getter
@@ -151,7 +140,6 @@ class Domainmapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 domainmapping_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -196,7 +184,6 @@ class Domainmapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 domainmapping_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -217,9 +204,6 @@ class Domainmapping(pulumi.CustomResource):
             __props__ = DomainmappingArgs.__new__(DomainmappingArgs)
 
             __props__.__dict__["api_version"] = api_version
-            if domainmapping_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domainmapping_id'")
-            __props__.__dict__["domainmapping_id"] = domainmapping_id
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["kind"] = kind
             if location is None and not opts.urn:

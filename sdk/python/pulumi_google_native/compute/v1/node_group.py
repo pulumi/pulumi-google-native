@@ -16,7 +16,6 @@ __all__ = ['NodeGroupArgs', 'NodeGroup']
 class NodeGroupArgs:
     def __init__(__self__, *,
                  initial_node_count: pulumi.Input[str],
-                 node_group: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
@@ -50,7 +49,6 @@ class NodeGroupArgs:
         :param pulumi.Input[int] size: [Output Only] The total number of nodes in the node group.
         """
         pulumi.set(__self__, "initial_node_count", initial_node_count)
-        pulumi.set(__self__, "node_group", node_group)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if autoscaling_policy is not None:
@@ -92,15 +90,6 @@ class NodeGroupArgs:
     @initial_node_count.setter
     def initial_node_count(self, value: pulumi.Input[str]):
         pulumi.set(self, "initial_node_count", value)
-
-    @property
-    @pulumi.getter(name="nodeGroup")
-    def node_group(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "node_group")
-
-    @node_group.setter
-    def node_group(self, value: pulumi.Input[str]):
-        pulumi.set(self, "node_group", value)
 
     @property
     @pulumi.getter
@@ -308,7 +297,6 @@ class NodeGroup(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_group: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -370,7 +358,6 @@ class NodeGroup(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_group: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -403,9 +390,6 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
-            if node_group is None and not opts.urn:
-                raise TypeError("Missing required property 'node_group'")
-            __props__.__dict__["node_group"] = node_group
             __props__.__dict__["node_template"] = node_template
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

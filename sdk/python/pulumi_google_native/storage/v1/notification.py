@@ -14,7 +14,6 @@ __all__ = ['NotificationArgs', 'Notification']
 class NotificationArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 notification: pulumi.Input[str],
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39,7 +38,6 @@ class NotificationArgs:
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
         """
         pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "notification", notification)
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
         if etag is not None:
@@ -71,15 +69,6 @@ class NotificationArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
-
-    @property
-    @pulumi.getter
-    def notification(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "notification")
-
-    @notification.setter
-    def notification(self, value: pulumi.Input[str]):
-        pulumi.set(self, "notification", value)
 
     @property
     @pulumi.getter
@@ -219,7 +208,6 @@ class Notification(pulumi.CustomResource):
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 notification: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
@@ -272,7 +260,6 @@ class Notification(pulumi.CustomResource):
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 notification: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
@@ -299,9 +286,6 @@ class Notification(pulumi.CustomResource):
             __props__.__dict__["event_types"] = event_types
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
-            if notification is None and not opts.urn:
-                raise TypeError("Missing required property 'notification'")
-            __props__.__dict__["notification"] = notification
             __props__.__dict__["object_name_prefix"] = object_name_prefix
             __props__.__dict__["payload_format"] = payload_format
             __props__.__dict__["provisional_user_project"] = provisional_user_project

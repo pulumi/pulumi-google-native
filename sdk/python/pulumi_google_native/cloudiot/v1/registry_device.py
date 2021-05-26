@@ -15,7 +15,6 @@ __all__ = ['RegistryDeviceArgs', 'RegistryDevice']
 @pulumi.input_type
 class RegistryDeviceArgs:
     def __init__(__self__, *,
-                 device_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  registry_id: pulumi.Input[str],
@@ -56,7 +55,6 @@ class RegistryDeviceArgs:
         :param pulumi.Input[str] num_id: [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
         :param pulumi.Input['DeviceStateArgs'] state: [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
         """
-        pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "registry_id", registry_id)
@@ -94,15 +92,6 @@ class RegistryDeviceArgs:
             pulumi.set(__self__, "num_id", num_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter(name="deviceId")
-    def device_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "device_id")
-
-    @device_id.setter
-    def device_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "device_id", value)
 
     @property
     @pulumi.getter
@@ -344,7 +333,6 @@ class RegistryDevice(pulumi.CustomResource):
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  last_config_ack_time: Optional[pulumi.Input[str]] = None,
@@ -413,7 +401,6 @@ class RegistryDevice(pulumi.CustomResource):
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  last_config_ack_time: Optional[pulumi.Input[str]] = None,
@@ -446,9 +433,6 @@ class RegistryDevice(pulumi.CustomResource):
             __props__.__dict__["blocked"] = blocked
             __props__.__dict__["config"] = config
             __props__.__dict__["credentials"] = credentials
-            if device_id is None and not opts.urn:
-                raise TypeError("Missing required property 'device_id'")
-            __props__.__dict__["device_id"] = device_id
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["id"] = id
             __props__.__dict__["last_config_ack_time"] = last_config_ack_time

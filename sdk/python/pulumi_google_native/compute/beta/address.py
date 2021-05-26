@@ -13,9 +13,9 @@ __all__ = ['AddressArgs', 'Address']
 @pulumi.input_type
 class AddressArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -36,8 +36,8 @@ class AddressArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Address resource.
-        :param pulumi.Input[str] address: The static IP address represented by this resource.
         :param pulumi.Input[str] region: [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+        :param pulumi.Input[str] address: The static IP address represented by this resource.
         :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
@@ -65,9 +65,10 @@ class AddressArgs:
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: [Output Only] The URLs of the resources that are using this address.
         """
-        pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
         if creation_timestamp is not None:
@@ -107,18 +108,6 @@ class AddressArgs:
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input[str]:
-        """
-        The static IP address represented by this resource.
-        """
-        return pulumi.get(self, "address")
-
-    @address.setter
-    def address(self, value: pulumi.Input[str]):
-        pulumi.set(self, "address", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
@@ -137,6 +126,18 @@ class AddressArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The static IP address represented by this resource.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter(name="addressType")
@@ -479,8 +480,6 @@ class Address(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AddressArgs.__new__(AddressArgs)
 
-            if address is None and not opts.urn:
-                raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["creation_timestamp"] = creation_timestamp

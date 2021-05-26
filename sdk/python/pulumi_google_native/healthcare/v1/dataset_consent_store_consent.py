@@ -15,7 +15,6 @@ __all__ = ['DatasetConsentStoreConsentArgs', 'DatasetConsentStoreConsent']
 @pulumi.input_type
 class DatasetConsentStoreConsentArgs:
     def __init__(__self__, *,
-                 consent_id: pulumi.Input[str],
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -39,7 +38,6 @@ class DatasetConsentStoreConsentArgs:
         :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
-        pulumi.set(__self__, "consent_id", consent_id)
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
@@ -60,15 +58,6 @@ class DatasetConsentStoreConsentArgs:
             pulumi.set(__self__, "ttl", ttl)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
-
-    @property
-    @pulumi.getter(name="consentId")
-    def consent_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consent_id")
-
-    @consent_id.setter
-    def consent_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consent_id", value)
 
     @property
     @pulumi.getter(name="consentStoreId")
@@ -209,7 +198,6 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consent_artifact: Optional[pulumi.Input[str]] = None,
-                 consent_id: Optional[pulumi.Input[str]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -261,7 +249,6 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consent_artifact: Optional[pulumi.Input[str]] = None,
-                 consent_id: Optional[pulumi.Input[str]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -286,9 +273,6 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
             __props__ = DatasetConsentStoreConsentArgs.__new__(DatasetConsentStoreConsentArgs)
 
             __props__.__dict__["consent_artifact"] = consent_artifact
-            if consent_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consent_id'")
-            __props__.__dict__["consent_id"] = consent_id
             if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")
             __props__.__dict__["consent_store_id"] = consent_store_id

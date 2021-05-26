@@ -15,7 +15,6 @@ class TargetPoolArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 target_pool: pulumi.Input[str],
                  backup_pool: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -56,7 +55,6 @@ class TargetPoolArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "target_pool", target_pool)
         if backup_pool is not None:
             pulumi.set(__self__, "backup_pool", backup_pool)
         if creation_timestamp is not None:
@@ -102,15 +100,6 @@ class TargetPoolArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="targetPool")
-    def target_pool(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "target_pool")
-
-    @target_pool.setter
-    def target_pool(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_pool", value)
 
     @property
     @pulumi.getter(name="backupPool")
@@ -284,7 +273,6 @@ class TargetPool(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
-                 target_pool: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a target pool in the specified project and region using the data included in the request.
@@ -353,7 +341,6 @@ class TargetPool(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
-                 target_pool: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -384,9 +371,6 @@ class TargetPool(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["session_affinity"] = session_affinity
-            if target_pool is None and not opts.urn:
-                raise TypeError("Missing required property 'target_pool'")
-            __props__.__dict__["target_pool"] = target_pool
         super(TargetPool, __self__).__init__(
             'google-native:compute/v1:TargetPool',
             resource_name,

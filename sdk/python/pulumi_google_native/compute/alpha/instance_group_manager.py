@@ -15,7 +15,6 @@ __all__ = ['InstanceGroupManagerArgs', 'InstanceGroupManager']
 @pulumi.input_type
 class InstanceGroupManagerArgs:
     def __init__(__self__, *,
-                 instance_group_manager: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]]] = None,
@@ -85,7 +84,6 @@ class InstanceGroupManagerArgs:
                
                Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
-        pulumi.set(__self__, "instance_group_manager", instance_group_manager)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if auto_healing_policies is not None:
@@ -144,15 +142,6 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "update_policy", update_policy)
         if versions is not None:
             pulumi.set(__self__, "versions", versions)
-
-    @property
-    @pulumi.getter(name="instanceGroupManager")
-    def instance_group_manager(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance_group_manager")
-
-    @instance_group_manager.setter
-    def instance_group_manager(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_group_manager", value)
 
     @property
     @pulumi.getter
@@ -532,7 +521,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
-                 instance_group_manager: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -634,7 +622,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
-                 instance_group_manager: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -677,9 +664,6 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
             __props__.__dict__["instance_group"] = instance_group
-            if instance_group_manager is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_group_manager'")
-            __props__.__dict__["instance_group_manager"] = instance_group_manager
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["instance_template"] = instance_template
             __props__.__dict__["kind"] = kind

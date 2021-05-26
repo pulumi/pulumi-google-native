@@ -15,7 +15,6 @@ __all__ = ['SettingSearchapplicationArgs', 'SettingSearchapplication']
 @pulumi.input_type
 class SettingSearchapplicationArgs:
     def __init__(__self__, *,
-                 searchapplication_id: pulumi.Input[str],
                  data_source_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DataSourceRestrictionArgs']]]] = None,
                  default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input['FacetOptionsArgs']]]] = None,
                  default_sort_options: Optional[pulumi.Input['SortOptionsArgs']] = None,
@@ -35,7 +34,6 @@ class SettingSearchapplicationArgs:
         :param pulumi.Input['ScoringConfigArgs'] scoring_config: Configuration for ranking results.
         :param pulumi.Input[Sequence[pulumi.Input['SourceConfigArgs']]] source_config: Configuration for a sources specified in data_source_restrictions.
         """
-        pulumi.set(__self__, "searchapplication_id", searchapplication_id)
         if data_source_restrictions is not None:
             pulumi.set(__self__, "data_source_restrictions", data_source_restrictions)
         if default_facet_options is not None:
@@ -52,15 +50,6 @@ class SettingSearchapplicationArgs:
             pulumi.set(__self__, "scoring_config", scoring_config)
         if source_config is not None:
             pulumi.set(__self__, "source_config", source_config)
-
-    @property
-    @pulumi.getter(name="searchapplicationId")
-    def searchapplication_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "searchapplication_id")
-
-    @searchapplication_id.setter
-    def searchapplication_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "searchapplication_id", value)
 
     @property
     @pulumi.getter(name="dataSourceRestrictions")
@@ -171,7 +160,6 @@ class SettingSearchapplication(pulumi.CustomResource):
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
-                 searchapplication_id: Optional[pulumi.Input[str]] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
                  __props__=None):
         """
@@ -192,7 +180,7 @@ class SettingSearchapplication(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SettingSearchapplicationArgs,
+                 args: Optional[SettingSearchapplicationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a search application. **Note:** This API requires an admin account to execute.
@@ -219,7 +207,6 @@ class SettingSearchapplication(pulumi.CustomResource):
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
-                 searchapplication_id: Optional[pulumi.Input[str]] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -240,9 +227,6 @@ class SettingSearchapplication(pulumi.CustomResource):
             __props__.__dict__["enable_audit_log"] = enable_audit_log
             __props__.__dict__["name"] = name
             __props__.__dict__["scoring_config"] = scoring_config
-            if searchapplication_id is None and not opts.urn:
-                raise TypeError("Missing required property 'searchapplication_id'")
-            __props__.__dict__["searchapplication_id"] = searchapplication_id
             __props__.__dict__["source_config"] = source_config
             __props__.__dict__["operation_ids"] = None
         super(SettingSearchapplication, __self__).__init__(
