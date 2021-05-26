@@ -7,9 +7,13 @@ CHANGELOG
   resource IDs automatically.
   [#100](https://github.com/pulumi/pulumi-google-native/pull/100),
   [#97](https://github.com/pulumi/pulumi-google-native/issues/97)
+
 - Normalize parameter names to singular names similar to properties
   [#96](https://github.com/pulumi/pulumi-google-native/pull/96),
   [#89](https://github.com/pulumi/pulumi-google-native/issues/89)
+
+- Extend the pattern to catch more deprecation messages for properties and parameters
+  [#99](https://github.com/pulumi/pulumi-google-native/issues/99)
 
 ---
 

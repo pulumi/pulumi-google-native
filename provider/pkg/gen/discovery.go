@@ -122,8 +122,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 
 func addFoundResource(resourceMap map[string]discoveryDocumentResource,typeName string, dd discoveryDocumentResource) {
 	for _, param := range dd.createMethod.Parameters {
-		deprecated := strings.HasPrefix(param.Description, "Deprecated.")
-		if param.Location == "path" && deprecated {
+		if param.Location == "path" && isDeprecated(param.Description) {
 			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
 			return
 		}
