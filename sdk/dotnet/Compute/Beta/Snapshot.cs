@@ -340,9 +340,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("snapshot", required: true)]
-        public Input<string> Snapshot { get; set; } = null!;
-
         /// <summary>
         /// Encrypts the snapshot using a customer-supplied encryption key.
         /// 

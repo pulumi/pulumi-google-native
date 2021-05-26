@@ -201,9 +201,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         [Input("riskLevel")]
         public Input<string>? RiskLevel { get; set; }
 
-        [Input("scanConfigId", required: true)]
-        public Input<string> ScanConfigId { get; set; } = null!;
-
         /// <summary>
         /// The schedule of the ScanConfig.
         /// </summary>

@@ -135,9 +135,6 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("serviceAccountId", required: true)]
-        public Input<string> ServiceAccountId { get; set; } = null!;
-
         public ServiceAccountArgs()
         {
         }

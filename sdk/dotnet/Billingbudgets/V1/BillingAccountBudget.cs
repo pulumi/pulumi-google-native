@@ -117,9 +117,6 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         [Input("budgetFilter")]
         public Input<Inputs.GoogleCloudBillingBudgetsV1FilterArgs>? BudgetFilter { get; set; }
 
-        [Input("budgetId", required: true)]
-        public Input<string> BudgetId { get; set; } = null!;
-
         /// <summary>
         /// User data for display name in UI. The name must be less than or equal to 60 characters.
         /// </summary>

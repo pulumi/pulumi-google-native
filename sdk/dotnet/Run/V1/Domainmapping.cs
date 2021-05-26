@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
-        [Input("domainmappingId", required: true)]
-        public Input<string> DomainmappingId { get; set; } = null!;
-
         [Input("dryRun")]
         public Input<string>? DryRun { get; set; }
 

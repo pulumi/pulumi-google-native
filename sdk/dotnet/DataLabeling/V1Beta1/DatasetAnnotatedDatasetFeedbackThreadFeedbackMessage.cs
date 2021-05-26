@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
-        [Input("feedbackMessageId", required: true)]
-        public Input<string> FeedbackMessageId { get; set; } = null!;
-
         [Input("feedbackThreadId", required: true)]
         public Input<string> FeedbackThreadId { get; set; } = null!;
 

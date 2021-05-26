@@ -300,9 +300,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }
 
-        [Input("instanceGroupManager", required: true)]
-        public Input<string> InstanceGroupManager { get; set; } = null!;
-
         /// <summary>
         /// Instance lifecycle policy for this Instance Group Manager.
         /// </summary>

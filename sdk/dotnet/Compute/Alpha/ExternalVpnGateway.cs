@@ -128,9 +128,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("externalVpnGateway", required: true)]
-        public Input<string> ExternalVpnGateway { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>

@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
+        public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudresourcemanager/v3:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <summary>
         /// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ProjectArgs()
         {

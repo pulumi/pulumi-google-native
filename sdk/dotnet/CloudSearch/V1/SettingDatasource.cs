@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SettingDatasource(string name, SettingDatasourceArgs args, CustomResourceOptions? options = null)
+        public SettingDatasource(string name, SettingDatasourceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudsearch/v1:SettingDatasource", name, args ?? new SettingDatasourceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
 
     public sealed class SettingDatasourceArgs : Pulumi.ResourceArgs
     {
-        [Input("datasourceId", required: true)]
-        public Input<string> DatasourceId { get; set; } = null!;
-
         /// <summary>
         /// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
         /// </summary>

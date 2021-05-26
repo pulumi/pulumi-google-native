@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
 
-        [Input("servicePerimeterId", required: true)]
-        public Input<string> ServicePerimeterId { get; set; } = null!;
-
         /// <summary>
         /// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
         /// </summary>

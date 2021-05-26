@@ -438,9 +438,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("binaryAuthorization")]
         public Input<Inputs.BinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
-
         /// <summary>
         /// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
         /// </summary>

@@ -78,9 +78,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 
     public sealed class AgentEnvironmentUserSessionContextArgs : Pulumi.ResourceArgs
     {
-        [Input("contextId", required: true)]
-        public Input<string> ContextId { get; set; } = null!;
-
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 

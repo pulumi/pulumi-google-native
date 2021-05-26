@@ -156,9 +156,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("retentionWindowDays")]
         public Input<int>? RetentionWindowDays { get; set; }
 
-        [Input("securitySettingId", required: true)]
-        public Input<string> SecuritySettingId { get; set; } = null!;
-
         public SecuritySettingArgs()
         {
         }

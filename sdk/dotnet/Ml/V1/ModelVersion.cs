@@ -378,9 +378,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("versionId", required: true)]
-        public Input<string> VersionId { get; set; } = null!;
-
         public ModelVersionArgs()
         {
         }

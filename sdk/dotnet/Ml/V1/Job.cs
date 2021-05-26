@@ -159,8 +159,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// <summary>
         /// Required. The user-specified id of the job.
         /// </summary>
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
+        [Input("jobId")]
+        public Input<string>? JobId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

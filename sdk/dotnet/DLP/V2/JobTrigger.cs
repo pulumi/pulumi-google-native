@@ -138,9 +138,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("inspectJob")]
         public Input<Inputs.GooglePrivacyDlpV2InspectJobConfigArgs>? InspectJob { get; set; }
 
-        [Input("jobTriggerId", required: true)]
-        public Input<string> JobTriggerId { get; set; } = null!;
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

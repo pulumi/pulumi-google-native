@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        [Input("exclusionId", required: true)]
-        public Input<string> ExclusionId { get; set; } = null!;
-
         /// <summary>
         /// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity&lt;ERROR sample(insertId, 0.99)"
         /// </summary>

@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("modelId", required: true)]
-        public Input<string> ModelId { get; set; } = null!;
-
         /// <summary>
         /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
         /// </summary>

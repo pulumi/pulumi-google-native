@@ -216,9 +216,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("selfManaged")]
         public Input<Inputs.SslCertificateSelfManagedSslCertificateArgs>? SelfManaged { get; set; }
 
-        [Input("sslCertificate", required: true)]
-        public Input<string> SslCertificate { get; set; } = null!;
-
         [Input("subjectAlternativeNames")]
         private InputList<string>? _subjectAlternativeNames;
 

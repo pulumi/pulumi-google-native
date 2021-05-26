@@ -141,9 +141,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
 
-        [Input("cryptoKeyVersionId", required: true)]
-        public Input<string> CryptoKeyVersionId { get; set; } = null!;
-
         /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
         /// </summary>

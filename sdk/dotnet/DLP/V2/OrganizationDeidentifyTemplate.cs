@@ -102,9 +102,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("deidentifyConfig")]
         public Input<Inputs.GooglePrivacyDlpV2DeidentifyConfigArgs>? DeidentifyConfig { get; set; }
 
-        [Input("deidentifyTemplateId", required: true)]
-        public Input<string> DeidentifyTemplateId { get; set; } = null!;
-
         /// <summary>
         /// Short description (max 256 chars).
         /// </summary>

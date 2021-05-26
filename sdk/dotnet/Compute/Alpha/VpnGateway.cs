@@ -196,9 +196,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("vpnGateway", required: true)]
-        public Input<string> VpnGateway { get; set; } = null!;
-
         [Input("vpnInterfaces")]
         private InputList<Inputs.VpnGatewayVpnGatewayInterfaceArgs>? _vpnInterfaces;
 

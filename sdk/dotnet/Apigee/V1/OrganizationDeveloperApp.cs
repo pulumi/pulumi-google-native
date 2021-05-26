@@ -159,8 +159,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// ID of the developer app.
         /// </summary>
-        [Input("appId", required: true)]
-        public Input<string> AppId { get; set; } = null!;
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
 
         [Input("attributes")]
         private InputList<Inputs.GoogleCloudApigeeV1AttributeArgs>? _attributes;

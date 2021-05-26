@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("count")]
         public Input<int>? Count { get; set; }
 
-        [Input("debugsessionId", required: true)]
-        public Input<string> DebugsessionId { get; set; } = null!;
-
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 

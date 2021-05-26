@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
 
-        [Input("servicePerimeterId", required: true)]
-        public Input<string> ServicePerimeterId { get; set; } = null!;
-
         /// <summary>
         /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
         /// </summary>

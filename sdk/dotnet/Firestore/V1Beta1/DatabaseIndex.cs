@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
             set => _fields = value;
         }
 
-        [Input("indexId", required: true)]
-        public Input<string> IndexId { get; set; } = null!;
-
         /// <summary>
         /// The resource name of the index. Output only.
         /// </summary>

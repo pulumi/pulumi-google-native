@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
-
         /// <summary>
         /// [Optional] Reference describing the unique-per-user name of the job.
         /// </summary>

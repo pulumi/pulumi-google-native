@@ -210,9 +210,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("outputFormat")]
         public Input<string>? OutputFormat { get; set; }
 
-        [Input("queryId", required: true)]
-        public Input<string> QueryId { get; set; } = null!;
-
         /// <summary>
         /// Asynchronous Report ID.
         /// </summary>

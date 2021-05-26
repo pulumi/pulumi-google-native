@@ -81,9 +81,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
     public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("autoscalingPolicyId", required: true)]
-        public Input<string> AutoscalingPolicyId { get; set; } = null!;
-
         [Input("basicAlgorithm")]
         public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
 

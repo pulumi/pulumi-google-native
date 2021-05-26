@@ -120,9 +120,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
-        [Input("subscriptionId", required: true)]
-        public Input<string> SubscriptionId { get; set; } = null!;
-
         public OrganizationDeveloperSubscriptionArgs()
         {
         }

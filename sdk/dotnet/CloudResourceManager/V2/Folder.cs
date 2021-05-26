@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("folderId", required: true)]
-        public Input<string> FolderId { get; set; } = null!;
-
         /// <summary>
         /// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         /// </summary>

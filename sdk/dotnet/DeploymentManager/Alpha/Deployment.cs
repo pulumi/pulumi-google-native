@@ -147,9 +147,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("credential")]
         public Input<Inputs.CredentialArgs>? Credential { get; set; }
 
-        [Input("deployment", required: true)]
-        public Input<string> Deployment { get; set; } = null!;
-
         /// <summary>
         /// An optional user-provided description of the deployment.
         /// </summary>

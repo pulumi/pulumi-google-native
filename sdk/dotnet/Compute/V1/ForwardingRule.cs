@@ -385,9 +385,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
-        [Input("forwardingRule", required: true)]
-        public Input<string> ForwardingRule { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>

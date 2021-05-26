@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("notificationConfigId", required: true)]
-        public Input<string> NotificationConfigId { get; set; } = null!;
-
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 

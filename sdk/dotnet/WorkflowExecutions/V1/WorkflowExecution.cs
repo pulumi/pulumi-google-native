@@ -114,9 +114,6 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         [Input("argument")]
         public Input<string>? Argument { get; set; }
 
-        [Input("executionId", required: true)]
-        public Input<string> ExecutionId { get; set; } = null!;
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

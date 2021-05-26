@@ -132,9 +132,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("webAppId", required: true)]
-        public Input<string> WebAppId { get; set; } = null!;
-
         public WebAppArgs()
         {
         }

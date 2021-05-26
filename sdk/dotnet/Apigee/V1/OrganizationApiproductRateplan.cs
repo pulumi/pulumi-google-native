@@ -252,9 +252,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("paymentFundingModel")]
         public Input<string>? PaymentFundingModel { get; set; }
 
-        [Input("rateplanId", required: true)]
-        public Input<string> RateplanId { get; set; } = null!;
-
         [Input("revenueShareRates")]
         private InputList<Inputs.GoogleCloudApigeeV1RevenueShareRangeArgs>? _revenueShareRates;
 

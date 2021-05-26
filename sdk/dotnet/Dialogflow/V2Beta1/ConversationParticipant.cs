@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("obfuscatedExternalUserId")]
         public Input<string>? ObfuscatedExternalUserId { get; set; }
 
-        [Input("participantId", required: true)]
-        public Input<string> ParticipantId { get; set; } = null!;
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

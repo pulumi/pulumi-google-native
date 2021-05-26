@@ -473,9 +473,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
-
         /// <summary>
         /// Encrypts or decrypts data for an instance with a customer-supplied encryption key.
         /// 

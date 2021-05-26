@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// <summary>
         /// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         /// </summary>
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

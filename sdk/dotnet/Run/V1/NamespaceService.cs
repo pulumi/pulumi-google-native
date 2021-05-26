@@ -114,9 +114,6 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
 
-        [Input("serviceId", required: true)]
-        public Input<string> ServiceId { get; set; } = null!;
-
         /// <summary>
         /// Spec holds the desired state of the Service (from the client).
         /// </summary>

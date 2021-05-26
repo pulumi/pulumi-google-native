@@ -250,9 +250,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
-        [Input("targetPool", required: true)]
-        public Input<string> TargetPool { get; set; } = null!;
-
         public TargetPoolArgs()
         {
         }

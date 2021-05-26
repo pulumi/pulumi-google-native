@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("transitionRouteGroupId", required: true)]
-        public Input<string> TransitionRouteGroupId { get; set; } = null!;
-
         [Input("transitionRoutes")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1TransitionRouteArgs>? _transitionRoutes;
 

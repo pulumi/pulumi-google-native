@@ -138,9 +138,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("sSLInfo")]
         public Input<Inputs.GoogleCloudApigeeV1TlsInfoArgs>? SSLInfo { get; set; }
 
-        [Input("targetserverId", required: true)]
-        public Input<string> TargetserverId { get; set; } = null!;
-
         public OrganizationEnvironmentTargetserverArgs()
         {
         }

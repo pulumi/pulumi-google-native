@@ -195,8 +195,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
         /// </summary>
-        [Input("developerId", required: true)]
-        public Input<string> DeveloperId { get; set; } = null!;
+        [Input("developerId")]
+        public Input<string>? DeveloperId { get; set; }
 
         /// <summary>
         /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.

@@ -296,9 +296,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        [Input("route", required: true)]
-        public Input<string> Route { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.
         /// </summary>

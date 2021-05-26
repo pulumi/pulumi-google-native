@@ -192,9 +192,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Input("hiveJob")]
         public Input<Inputs.HiveJobArgs>? HiveJob { get; set; }
 
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 

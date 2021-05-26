@@ -300,9 +300,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("serviceAttachment", required: true)]
-        public Input<string> ServiceAttachment { get; set; } = null!;
-
         /// <summary>
         /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>

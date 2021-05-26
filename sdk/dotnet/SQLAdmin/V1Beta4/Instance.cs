@@ -306,9 +306,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Input("gceZone")]
         public Input<string>? GceZone { get; set; }
 
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
-
         /// <summary>
         /// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         /// </summary>

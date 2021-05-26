@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FirewallPolicy(string name, FirewallPolicyArgs args, CustomResourceOptions? options = null)
+        public FirewallPolicy(string name, FirewallPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/beta:FirewallPolicy", name, args ?? new FirewallPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -177,9 +177,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
-
-        [Input("firewallPolicy", required: true)]
-        public Input<string> FirewallPolicy { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

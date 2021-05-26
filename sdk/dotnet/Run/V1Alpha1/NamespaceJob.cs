@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
-
         /// <summary>
         /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
         /// </summary>

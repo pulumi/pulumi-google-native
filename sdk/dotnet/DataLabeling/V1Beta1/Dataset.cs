@@ -132,9 +132,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("dataItemCount")]
         public Input<string>? DataItemCount { get; set; }
 
-        [Input("datasetId", required: true)]
-        public Input<string> DatasetId { get; set; } = null!;
-
         /// <summary>
         /// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
         /// </summary>

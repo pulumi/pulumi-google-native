@@ -144,9 +144,6 @@ namespace Pulumi.GoogleNative.Compute.V1
 
     public sealed class RegionAutoscalerArgs : Pulumi.ResourceArgs
     {
-        [Input("autoscaler", required: true)]
-        public Input<string> Autoscaler { get; set; } = null!;
-
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
         /// 

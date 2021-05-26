@@ -117,9 +117,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("responsePolicy", required: true)]
         public Input<string> ResponsePolicy { get; set; } = null!;
 
-        [Input("responsePolicyRule", required: true)]
-        public Input<string> ResponsePolicyRule { get; set; } = null!;
-
         /// <summary>
         /// An identifier for this rule. Must be unique with the ResponsePolicy.
         /// </summary>

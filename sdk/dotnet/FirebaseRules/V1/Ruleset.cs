@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("rulesetId", required: true)]
-        public Input<string> RulesetId { get; set; } = null!;
-
         /// <summary>
         /// `Source` for the `Ruleset`.
         /// </summary>

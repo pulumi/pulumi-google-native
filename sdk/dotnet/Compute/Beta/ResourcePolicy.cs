@@ -168,9 +168,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        [Input("resourcePolicy", required: true)]
-        public Input<string> ResourcePolicy { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The system status of the resource policy.
         /// </summary>

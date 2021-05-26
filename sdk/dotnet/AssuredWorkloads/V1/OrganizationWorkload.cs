@@ -201,9 +201,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             set => _resourceSettings = value;
         }
 
-        [Input("workloadId", required: true)]
-        public Input<string> WorkloadId { get; set; } = null!;
-
         public OrganizationWorkloadArgs()
         {
         }

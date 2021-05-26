@@ -474,9 +474,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("subnetwork", required: true)]
-        public Input<string> Subnetwork { get; set; } = null!;
-
         [Input("vlans")]
         private InputList<int>? _vlans;
 

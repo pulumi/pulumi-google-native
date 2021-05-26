@@ -400,9 +400,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("vpnGatewayInterface")]
         public Input<int>? VpnGatewayInterface { get; set; }
 
-        [Input("vpnTunnel", required: true)]
-        public Input<string> VpnTunnel { get; set; } = null!;
-
         public VpnTunnelArgs()
         {
         }

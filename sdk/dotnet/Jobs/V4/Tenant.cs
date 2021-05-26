@@ -87,9 +87,6 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("tenantId", required: true)]
-        public Input<string> TenantId { get; set; } = null!;
-
         public TenantArgs()
         {
         }

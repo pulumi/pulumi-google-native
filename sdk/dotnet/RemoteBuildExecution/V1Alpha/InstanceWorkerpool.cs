@@ -150,9 +150,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("workerCount")]
         public Input<string>? WorkerCount { get; set; }
 
-        [Input("workerpoolId", required: true)]
-        public Input<string> WorkerpoolId { get; set; } = null!;
-
         public InstanceWorkerpoolArgs()
         {
         }

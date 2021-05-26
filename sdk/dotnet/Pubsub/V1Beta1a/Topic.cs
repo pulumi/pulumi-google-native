@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
+        public Topic(string name, TopicArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:pubsub/v1beta1a:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -71,9 +71,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("topicId", required: true)]
-        public Input<string> TopicId { get; set; } = null!;
 
         public TopicArgs()
         {

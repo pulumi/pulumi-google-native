@@ -102,9 +102,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
-
         /// <summary>
         /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         /// </summary>

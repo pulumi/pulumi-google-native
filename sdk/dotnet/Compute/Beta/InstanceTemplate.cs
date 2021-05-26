@@ -128,9 +128,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("instanceTemplate", required: true)]
-        public Input<string> InstanceTemplate { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
         /// </summary>

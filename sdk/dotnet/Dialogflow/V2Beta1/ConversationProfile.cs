@@ -138,9 +138,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("automatedAgentConfig")]
         public Input<Inputs.GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs>? AutomatedAgentConfig { get; set; }
 
-        [Input("conversationProfileId", required: true)]
-        public Input<string> ConversationProfileId { get; set; } = null!;
-
         /// <summary>
         /// Required. Human readable name for this profile. Max length 1024 bytes.
         /// </summary>

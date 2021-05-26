@@ -180,9 +180,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("sinkId", required: true)]
-        public Input<string> SinkId { get; set; } = null!;
-
         [Input("uniqueWriterIdentity")]
         public Input<string>? UniqueWriterIdentity { get; set; }
 

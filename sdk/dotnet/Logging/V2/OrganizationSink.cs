@@ -183,9 +183,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("sinkId", required: true)]
-        public Input<string> SinkId { get; set; } = null!;
-
         [Input("uniqueWriterIdentity")]
         public Input<string>? UniqueWriterIdentity { get; set; }
 

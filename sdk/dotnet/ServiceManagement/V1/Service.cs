@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
+        public Service(string name, ServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:servicemanagement/v1:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -81,8 +81,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// <summary>
         /// The name of the service. See the [overview](/service-management/overview) for naming requirements.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public ServiceArgs()
         {

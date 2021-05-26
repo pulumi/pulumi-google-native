@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
 
     public sealed class ContactArgs : Pulumi.ResourceArgs
     {
-        [Input("contactId", required: true)]
-        public Input<string> ContactId { get; set; } = null!;
-
         /// <summary>
         /// Required. The email address to send notifications to. This does not need to be a Google account.
         /// </summary>

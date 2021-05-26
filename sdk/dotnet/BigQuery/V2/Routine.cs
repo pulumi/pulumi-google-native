@@ -204,9 +204,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("returnType")]
         public Input<Inputs.StandardSqlDataTypeArgs>? ReturnType { get; set; }
 
-        [Input("routineId", required: true)]
-        public Input<string> RoutineId { get; set; } = null!;
-
         /// <summary>
         /// Required. Reference describing the ID of this routine.
         /// </summary>

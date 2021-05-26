@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("documentId", required: true)]
-        public Input<string> DocumentId { get; set; } = null!;
-
         /// <summary>
         /// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
         /// </summary>

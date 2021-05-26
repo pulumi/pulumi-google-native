@@ -87,9 +87,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("natAddressId", required: true)]
-        public Input<string> NatAddressId { get; set; } = null!;
-
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 

@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
+        public Group(string name, GroupArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudidentity/v1:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -131,9 +131,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         [Input("dynamicGroupMetadata")]
         public Input<Inputs.DynamicGroupMetadataArgs>? DynamicGroupMetadata { get; set; }
-
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the `Group`.

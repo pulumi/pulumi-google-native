@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
         [Input("config")]
         public Input<Inputs.EnvironmentConfigArgs>? Config { get; set; }
 
-        [Input("environmentId", required: true)]
-        public Input<string> EnvironmentId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 

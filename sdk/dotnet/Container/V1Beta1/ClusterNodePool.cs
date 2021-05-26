@@ -231,9 +231,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("networkConfig")]
         public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
 
-        [Input("nodePoolId", required: true)]
-        public Input<string> NodePoolId { get; set; } = null!;
-
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         /// </summary>

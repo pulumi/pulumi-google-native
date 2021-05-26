@@ -150,9 +150,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         [Input("customerId", required: true)]
         public Input<string> CustomerId { get; set; } = null!;
 
-        [Input("entitlementId", required: true)]
-        public Input<string> EntitlementId { get; set; } = null!;
-
         /// <summary>
         /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         /// </summary>

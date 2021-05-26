@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("replayId", required: true)]
-        public Input<string> ReplayId { get; set; } = null!;
-
         public OrganizationReplayArgs()
         {
         }

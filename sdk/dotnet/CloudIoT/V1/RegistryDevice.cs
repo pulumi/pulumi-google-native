@@ -180,9 +180,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
             set => _credentials = value;
         }
 
-        [Input("deviceId", required: true)]
-        public Input<string> DeviceId { get; set; } = null!;
-
         /// <summary>
         /// Gateway-related configuration and state.
         /// </summary>

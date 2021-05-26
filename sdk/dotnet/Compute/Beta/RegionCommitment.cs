@@ -162,9 +162,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("category")]
         public Input<string>? Category { get; set; }
 
-        [Input("commitment", required: true)]
-        public Input<string> Commitment { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>

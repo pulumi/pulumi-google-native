@@ -220,9 +220,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             set => _nodeAffinityLabels = value;
         }
 
-        [Input("nodeTemplate", required: true)]
-        public Input<string> NodeTemplate { get; set; } = null!;
-
         /// <summary>
         /// The node type to use for nodes group that are created from this template.
         /// </summary>

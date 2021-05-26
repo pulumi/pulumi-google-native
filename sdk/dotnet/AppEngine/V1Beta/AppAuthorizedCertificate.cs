@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
-        [Input("authorizedCertificateId", required: true)]
-        public Input<string> AuthorizedCertificateId { get; set; } = null!;
-
         /// <summary>
         /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
         /// </summary>

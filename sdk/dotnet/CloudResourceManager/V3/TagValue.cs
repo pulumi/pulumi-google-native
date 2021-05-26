@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TagValue(string name, TagValueArgs args, CustomResourceOptions? options = null)
+        public TagValue(string name, TagValueArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudresourcemanager/v3:TagValue", name, args ?? new TagValueArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -137,9 +137,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }
-
-        [Input("tagValueId", required: true)]
-        public Input<string> TagValueId { get; set; } = null!;
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

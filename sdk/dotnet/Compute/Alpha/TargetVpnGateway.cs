@@ -226,9 +226,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        [Input("targetVpnGateway", required: true)]
-        public Input<string> TargetVpnGateway { get; set; } = null!;
-
         [Input("tunnels")]
         private InputList<string>? _tunnels;
 

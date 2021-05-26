@@ -222,9 +222,6 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("nodePoolId", required: true)]
-        public Input<string> NodePoolId { get; set; } = null!;
-
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         /// </summary>

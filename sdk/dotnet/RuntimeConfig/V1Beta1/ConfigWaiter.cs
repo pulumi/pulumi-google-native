@@ -153,9 +153,6 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
-        [Input("waiterId", required: true)]
-        public Input<string> WaiterId { get; set; } = null!;
-
         public ConfigWaiterArgs()
         {
         }

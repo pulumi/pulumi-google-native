@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("sha1Fingerprint", required: true)]
-        public Input<string> Sha1Fingerprint { get; set; } = null!;
-
         public SslCertArgs()
         {
         }

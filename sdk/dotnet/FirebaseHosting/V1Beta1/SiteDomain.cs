@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
     public sealed class SiteDomainArgs : Pulumi.ResourceArgs
     {
-        [Input("domainId", required: true)]
-        public Input<string> DomainId { get; set; } = null!;
-
         /// <summary>
         /// Required. The domain name of the association.
         /// </summary>

@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("overrideId", required: true)]
-        public Input<string> OverrideId { get; set; } = null!;
-
         /// <summary>
         /// Trace configuration to override.
         /// </summary>

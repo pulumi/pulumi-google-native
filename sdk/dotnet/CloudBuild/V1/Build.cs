@@ -222,9 +222,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("availableSecrets")]
         public Input<Inputs.SecretsArgs>? AvailableSecrets { get; set; }
 
-        [Input("buildId", required: true)]
-        public Input<string> BuildId { get; set; } = null!;
-
         [Input("images")]
         private InputList<string>? _images;
 

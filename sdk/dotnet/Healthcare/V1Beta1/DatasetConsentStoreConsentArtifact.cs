@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetConsentStoreConsentArtifactArgs : Pulumi.ResourceArgs
     {
-        [Input("consentArtifactId", required: true)]
-        public Input<string> ConsentArtifactId { get; set; } = null!;
-
         [Input("consentContentScreenshots")]
         private InputList<Inputs.ImageArgs>? _consentContentScreenshots;
 

@@ -129,9 +129,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             set => _eventHandlers = value;
         }
 
-        [Input("flowId", required: true)]
-        public Input<string> FlowId { get; set; } = null!;
-
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 

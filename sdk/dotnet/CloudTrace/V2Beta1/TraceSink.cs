@@ -93,9 +93,6 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("traceSinkId", required: true)]
-        public Input<string> TraceSinkId { get; set; } = null!;
-
         public TraceSinkArgs()
         {
         }

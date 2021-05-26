@@ -216,9 +216,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("sslPolicy", required: true)]
-        public Input<string> SslPolicy { get; set; } = null!;
-
         [Input("warnings")]
         private InputList<Inputs.SslPolicyWarningsItemArgs>? _warnings;
 

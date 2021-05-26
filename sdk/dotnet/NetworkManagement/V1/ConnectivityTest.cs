@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
 
     public sealed class ConnectivityTestArgs : Pulumi.ResourceArgs
     {
-        [Input("connectivityTestId", required: true)]
-        public Input<string> ConnectivityTestId { get; set; } = null!;
-
         /// <summary>
         /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         /// </summary>

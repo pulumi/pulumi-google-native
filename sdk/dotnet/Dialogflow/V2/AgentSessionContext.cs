@@ -78,9 +78,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 
     public sealed class AgentSessionContextArgs : Pulumi.ResourceArgs
     {
-        [Input("contextId", required: true)]
-        public Input<string> ContextId { get; set; } = null!;
-
         /// <summary>
         /// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
         /// </summary>

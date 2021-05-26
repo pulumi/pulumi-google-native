@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// <summary>
         /// A sample series id @OutputOnly
         /// </summary>
-        [Input("sampleSeriesId", required: true)]
-        public Input<string> SampleSeriesId { get; set; } = null!;
+        [Input("sampleSeriesId")]
+        public Input<string>? SampleSeriesId { get; set; }
 
         /// <summary>
         /// A tool results step ID. @OutputOnly

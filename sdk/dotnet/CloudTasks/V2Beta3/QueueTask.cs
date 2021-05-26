@@ -213,9 +213,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         [Input("scheduleTime")]
         public Input<string>? ScheduleTime { get; set; }
 
-        [Input("taskId", required: true)]
-        public Input<string> TaskId { get; set; } = null!;
-
         /// <summary>
         /// The view specifies which subset of the Task has been returned.
         /// </summary>

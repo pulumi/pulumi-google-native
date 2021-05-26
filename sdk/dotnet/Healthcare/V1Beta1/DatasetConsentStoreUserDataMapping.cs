@@ -132,9 +132,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _resourceAttributes = value;
         }
 
-        [Input("userDataMappingId", required: true)]
-        public Input<string> UserDataMappingId { get; set; } = null!;
-
         /// <summary>
         /// Required. User's UUID provided by the client.
         /// </summary>

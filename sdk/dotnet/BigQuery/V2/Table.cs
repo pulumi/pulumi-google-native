@@ -390,9 +390,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("streamingBuffer")]
         public Input<Inputs.StreamingbufferArgs>? StreamingBuffer { get; set; }
 
-        [Input("tableId", required: true)]
-        public Input<string> TableId { get; set; } = null!;
-
         /// <summary>
         /// [Required] Reference describing the ID of this table.
         /// </summary>

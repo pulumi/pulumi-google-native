@@ -81,9 +81,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
-        [Input("aliasId", required: true)]
-        public Input<string> AliasId { get; set; } = null!;
-
         /// <summary>
         /// The HTTP Content-Type header value specifying the content type of the body.
         /// </summary>

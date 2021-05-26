@@ -180,9 +180,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Input("version")]
         public Input<int>? Version { get; set; }
 
-        [Input("workflowTemplateId", required: true)]
-        public Input<string> WorkflowTemplateId { get; set; } = null!;
-
         public RegionWorkflowTemplateArgs()
         {
         }
