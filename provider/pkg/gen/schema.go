@@ -5,7 +5,6 @@ package gen
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
@@ -90,9 +89,16 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
-		err = gen.findResources("", document.Resources)
+		res, err := findResources(fileName, document.Resources)
 		if err != nil {
 			return nil, nil, err
+		}
+
+		for _, typeName := range codegen.SortedKeys(res) {
+			err := gen.genResource(typeName, res[typeName])
+			if err != nil {
+				return nil, nil, err
+			}
 		}
 	}
 
@@ -180,121 +186,34 @@ type packageGenerator struct {
 	docName      string
 }
 
-func (g *packageGenerator) findResources(parent string, resources map[string]discovery.RestResource) error {
-	var postMethods []discovery.RestMethod
-	for _, resourceName := range codegen.SortedKeys(resources) {
-		res := resources[resourceName]
-		name := ToUpperCamel(inflector.Singularize(resourceName))
-		var createMethod, getMethod, listMethod, updateMethod, deleteMethod *discovery.RestMethod
-		for methodName, value := range res.Methods {
-			restMethod := value
-			if restMethod.HttpMethod == "POST" {
-				postMethods = append(postMethods, restMethod)
-			}
-			switch methodName {
-			case "create", "insert":
-				createMethod = &restMethod
-			case "submit", "register":
-				if createMethod == nil {
-					createMethod = &restMethod
-				}
-			case "update", "replaceService" /*special case for Cloud Run*/ :
-				updateMethod = &restMethod
-			case "patch":
-				if updateMethod == nil {
-					updateMethod = &restMethod
-				}
-			case "get":
-				getMethod = &restMethod
-			case "read":
-				if getMethod == nil {
-					getMethod = &restMethod
-				}
-			case "list":
-				listMethod = &restMethod
-			case "setIamPolicy":
-				typeName := fmt.Sprintf("%s%sIamPolicy", parent, name)
-				if getIamPolicy, has := res.Methods["getIamPolicy"]; has {
-					err := g.genResource(typeName, &restMethod, &getIamPolicy, &restMethod, nil)
-					if err != nil {
-						return err
-					}
-				}
-			case "delete", "dropDatabase" /*special case for Spanner Database*/ :
-				deleteMethod = &restMethod
-			}
-		}
-
-		typeName := fmt.Sprintf("%s%s", parent, name)
-		switch {
-		case createMethod != nil && getMethod != nil && getMethod.HttpMethod != "GET":
-			return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, g.docName)
-		case createMethod != nil && getMethod != nil:
-			err := g.genResource(typeName, createMethod, getMethod, updateMethod, deleteMethod)
-			if err != nil {
-				return err
-			}
-		case strings.Contains(typeName, "Operation"):
-			// Operation variants don't need to be made resources.
-			continue
-		case createMethod != nil && getMethod == nil && listMethod != nil:
-			// List methods return collections, so the shape of response wouldn't match the SDK map.
-			// Skip them for now but emit a note.
-			fmt.Printf("List methods are not supported: %s (%s), skipping.\n", typeName, g.docName)
-		case (deleteMethod != nil || updateMethod != nil) && len(postMethods) > 0:
-			// It can be useful to look at this output and look for potential missing resources with unexpected
-			// HTTP POST method names.
-			fmt.Printf("No create method for resource: %s (%s), skipping.\n", typeName, g.docName)
-		}
-
-		var newParent string
-		switch name {
-		case "Project", "Location", "Zone", "Global":
-			newParent = parent
-		default:
-			newParent = parent + name
-		}
-		err := g.findResources(newParent, res.Resources)
-		if err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 var pathRegex = regexp.MustCompile(`{([A-Za-z0-9]*)}`)
 
 func (g *packageGenerator) genToken(typeName string) string {
 	return fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 }
 
-func (g *packageGenerator) genResource(typeName string, createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod) error {
+func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource) error {
 	resourceTok := g.genToken(typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
 
-	createPath := createMethod.FlatPath
+	createPath := dd.createMethod.FlatPath
 	if createPath == "" {
-		createPath = createMethod.Path
+		createPath = dd.createMethod.Path
 	}
 
 	resourceMeta := resources.CloudAPIResource{
 		BaseUrl:    g.rest.BaseUrl,
 		CreatePath: createPath,
-		CreateVerb: createMethod.HttpMethod,
-		NoDelete:   deleteMethod == nil,
+		CreateVerb: dd.createMethod.HttpMethod,
+		NoDelete:   dd.deleteMethod == nil,
 	}
 
-	for _, name := range codegen.SortedKeys(createMethod.Parameters) {
-		param := createMethod.Parameters[name]
+	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
+		param := dd.createMethod.Parameters[name]
 		deprecated := strings.HasPrefix(param.Description, "Deprecated.")
 		required := param.Required || strings.HasPrefix(param.Description, "Required.")
-		if param.Location == "path" && deprecated {
-			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
-			return nil
-		}
-
 		if param.Location != "query" || deprecated {
 			continue
 		}
@@ -339,16 +258,16 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		requiredInputProperties.Add(sdkName)
 	}
 
-	if createMethod.Request != nil {
+	if dd.createMethod.Request != nil {
 		// If the request type matches the pattern when it contains a property of the type equal to the response
 		// type of the GET endpoint, then we want to flatten that property, so that the resource inputs are a superset
 		// of the resource outputs. This also helps reconcile the shape of create and update operations.
 		var flatten string
-		createRequest := g.rest.Schemas[createMethod.Request.Ref]
-		if createMethod.Request.Ref != getMethod.Response.Ref {
+		createRequest := g.rest.Schemas[dd.createMethod.Request.Ref]
+		if dd.createMethod.Request.Ref != dd.getMethod.Response.Ref {
 			for _, name := range codegen.SortedKeys(createRequest.Properties) {
 				v := createRequest.Properties[name]
-				if v.Ref == getMethod.Response.Ref {
+				if v.Ref == dd.getMethod.Response.Ref {
 					flatten = name
 				}
 			}
@@ -367,14 +286,14 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		}
 		resourceMeta.CreateProperties = bodyBag.properties
 
-		if updateMethod != nil {
-			resourceMeta.UpdateVerb = updateMethod.HttpMethod
+		if dd.updateMethod != nil {
+			resourceMeta.UpdateVerb = dd.updateMethod.HttpMethod
 			var updateFlatten string
-			updateRequest := g.rest.Schemas[updateMethod.Request.Ref]
-			if updateMethod.Request.Ref != getMethod.Response.Ref {
+			updateRequest := g.rest.Schemas[dd.updateMethod.Request.Ref]
+			if dd.updateMethod.Request.Ref != dd.getMethod.Response.Ref {
 				for _, name := range codegen.SortedKeys(updateRequest.Properties) {
 					v := updateRequest.Properties[name]
-					if v.Ref == getMethod.Response.Ref {
+					if v.Ref == dd.getMethod.Response.Ref {
 						updateFlatten = name
 					}
 				}
@@ -391,7 +310,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 				} else {
 					// TODO: do we need to handle masks?
 					if !strings.HasSuffix(name, "Mask") {
-						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, updateMethod.Request.Ref, name)
+						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, dd.updateMethod.Request.Ref, name)
 					}
 				}
 			}
@@ -400,8 +319,8 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 
 	properties := map[string]schema.PropertySpec{}
 	requiredProperties := codegen.NewStringSet()
-	if getMethod.Response != nil {
-		response := g.rest.Schemas[getMethod.Response.Ref]
+	if dd.getMethod.Response != nil {
+		response := g.rest.Schemas[dd.getMethod.Response.Ref]
 		responseBag, err := g.genProperties(typeName, &response, "", true)
 		if err != nil {
 			return err
@@ -420,9 +339,9 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 
 		// Option 2: the provider has to manually build it from the GET method path.
 		if resourceMeta.IdProperty == "" {
-			idPath := getMethod.FlatPath
+			idPath := dd.getMethod.FlatPath
 			if idPath == "" {
-				idPath = getMethod.Path
+				idPath = dd.getMethod.Path
 			}
 			v, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
 			if err != nil {
@@ -445,7 +364,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
-			Description: createMethod.Description,
+			Description: dd.createMethod.Description,
 			Type:        "object",
 			Properties:  properties,
 			Required:    requiredProperties.SortedValues(),
