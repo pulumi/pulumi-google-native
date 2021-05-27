@@ -319,6 +319,10 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 
 	subMatches := pathRegex.FindAllStringSubmatch(createPath, -1)
 	for _, names := range subMatches {
+		if len(names) < 2 {
+			return errors.Errorf("failed to match create path %q", createPath)
+		}
+
 		name := names[1]
 		sdkName := apiNameToSdkName(name)
 		inputProperties[sdkName] = schema.PropertySpec{
@@ -420,7 +424,6 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 			if idPath == "" {
 				idPath = getMethod.Path
 			}
-			resourceMeta.IdPath = idPath
 			v, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
 			if err != nil {
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
@@ -462,6 +465,10 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 
 	subMatches := pathRegex.FindAllStringSubmatch(idPath, -1)
 	for idx, names := range subMatches {
+		if len(names) < 2 {
+			return nil, errors.Errorf("failed to match id path %q", idPath)
+		}
+
 		name := names[1]
 
 		// If the property is already defined in the input args, add its SDK name.
@@ -493,12 +500,14 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 				return nil, errors.Errorf("property %q not found in response schema of %q", v, key)
 			}
 			result[name] = v
+			// Return the result because we get here only for the last match.
 			return result, nil
 		}
 
 		// Then, check if there is a property called "name".
 		if _, has := response.Properties["name"]; has {
 			result[name] = "name"
+			// Return the result because we get here only for the last match.
 			return result, nil
 		}
 
@@ -507,27 +516,6 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 	}
 
 	return result, nil
-}
-
-// resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.
-var resourceNamePropertyOverrides = map[string]string{
-	"apigee/v1:OrganizationEnvironmentKeystoreAlias.aliasesId":       "alias",
-	"appengine/v1:AppFirewallIngressRule.ingressRulesId":             "priority",
-	"appengine/v1beta:AppFirewallIngressRule.ingressRulesId":         "priority",
-	"bigquery/v2:Routine.routinesId":                                 "routineReference.routineId",
-	"dataproc/v1:RegionJob.jobId":                                    "reference.jobId",
-	"dataproc/v1beta2:RegionJob.jobId":                               "reference.jobId",
-	"dns/v1:Change.changeId":                                         "id",
-	"dns/v1beta2:Change.changeId":                                    "id",
-	"dns/v1beta2:ResponsePolicy.responsePolicy":                      "id",
-	"dns/v1beta2:ResponsePolicyRule.responsePolicyRule":              "ruleName",
-	"firebasehosting/v1beta1:SiteDomain.domainsId":                   "domainName",
-	"recommendationengine/v1beta1:CatalogCatalogItem.catalogItemsId": "id",
-	"run/v1alpha1:NamespaceJob.jobsId":                               "metadata.name",
-	"run/v1:Domainmapping.domainmappingsId":                          "metadata.name",
-	"run/v1:NamespaceDomainmapping.domainmappingsId":                 "metadata.name",
-	"run/v1:NamespaceService.servicesId":                             "metadata.name",
-	"run/v1:Service.servicesId":                                      "metadata.name",
 }
 
 func (g *packageGenerator) schemaContainsProperty(schema *discovery.JsonSchema, name string) bool {
