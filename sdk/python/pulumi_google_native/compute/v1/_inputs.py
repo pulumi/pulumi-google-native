@@ -94,8 +94,8 @@ __all__ = [
     'InstanceGroupManagerStatusVersionTargetArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
+    'InstanceItemsItemArgs',
     'InstancePropertiesArgs',
-    'InstanceTemplateItemsItemArgs',
     'Int64RangeMatchArgs',
     'InterconnectAttachmentPartnerMetadataArgs',
     'InterconnectAttachmentPrivateInfoArgs',
@@ -7028,6 +7028,45 @@ class InstanceGroupManagerVersionArgs:
 
 
 @pulumi.input_type
+class InstanceItemsItemArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+        :param pulumi.Input[str] value: Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class InstancePropertiesArgs:
     def __init__(__self__, *,
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
@@ -7332,45 +7371,6 @@ class InstancePropertiesArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input['TagsArgs']]):
         pulumi.set(self, "tags", value)
-
-
-@pulumi.input_type
-class InstanceTemplateItemsItemArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] key: Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-        :param pulumi.Input[str] value: Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -8069,14 +8069,14 @@ class LogConfigDataAccessOptionsArgs:
 class MetadataArgs:
     def __init__(__self__, *,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateItemsItemArgs']]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceItemsItemArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
         A metadata key/value entry.
         :param pulumi.Input[str] fingerprint: Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error 412 conditionNotMet.
                
                To see the latest fingerprint, make a get() request to retrieve the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateItemsItemArgs']]] items: Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceItemsItemArgs']]] items: Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#metadata for metadata.
         """
         if fingerprint is not None:
@@ -8102,14 +8102,14 @@ class MetadataArgs:
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateItemsItemArgs']]]]:
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceItemsItemArgs']]]]:
         """
         Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateItemsItemArgs']]]]):
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceItemsItemArgs']]]]):
         pulumi.set(self, "items", value)
 
     @property

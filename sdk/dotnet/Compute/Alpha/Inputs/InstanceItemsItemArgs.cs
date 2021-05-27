@@ -7,29 +7,25 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Compute.Beta.Outputs
+namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    [OutputType]
-    public sealed class InstanceTemplateItemsItemResponse
+    public sealed class InstanceItemsItemArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
         /// </summary>
-        public readonly string Key;
+        [Input("key")]
+        public Input<string>? Key { get; set; }
+
         /// <summary>
         /// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
         /// </summary>
-        public readonly string Value;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
-        [OutputConstructor]
-        private InstanceTemplateItemsItemResponse(
-            string key,
-
-            string value)
+        public InstanceItemsItemArgs()
         {
-            Key = key;
-            Value = value;
         }
     }
 }

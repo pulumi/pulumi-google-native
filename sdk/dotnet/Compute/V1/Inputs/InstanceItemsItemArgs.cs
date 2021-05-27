@@ -7,10 +7,10 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Compute.Beta.Inputs
+namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class InstanceTemplateItemsItemArgs : Pulumi.ResourceArgs
+    public sealed class InstanceItemsItemArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public InstanceTemplateItemsItemArgs()
+        public InstanceItemsItemArgs()
         {
         }
     }

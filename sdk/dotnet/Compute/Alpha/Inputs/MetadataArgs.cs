@@ -24,14 +24,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Fingerprint { get; set; }
 
         [Input("items")]
-        private InputList<Inputs.InstanceTemplateItemsItemArgs>? _items;
+        private InputList<Inputs.InstanceItemsItemArgs>? _items;
 
         /// <summary>
         /// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         /// </summary>
-        public InputList<Inputs.InstanceTemplateItemsItemArgs> Items
+        public InputList<Inputs.InstanceItemsItemArgs> Items
         {
-            get => _items ?? (_items = new InputList<Inputs.InstanceTemplateItemsItemArgs>());
+            get => _items ?? (_items = new InputList<Inputs.InstanceItemsItemArgs>());
             set => _items = value;
         }
 

@@ -30022,6 +30022,218 @@ func (o InstanceGroupManagerVersionResponseArrayOutput) Index(i pulumi.IntInput)
 	}).(InstanceGroupManagerVersionResponseOutput)
 }
 
+type InstanceItemsItem struct {
+	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+	Key *string `pulumi:"key"`
+	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+	Value *string `pulumi:"value"`
+}
+
+// InstanceItemsItemInput is an input type that accepts InstanceItemsItemArgs and InstanceItemsItemOutput values.
+// You can construct a concrete instance of `InstanceItemsItemInput` via:
+//
+//          InstanceItemsItemArgs{...}
+type InstanceItemsItemInput interface {
+	pulumi.Input
+
+	ToInstanceItemsItemOutput() InstanceItemsItemOutput
+	ToInstanceItemsItemOutputWithContext(context.Context) InstanceItemsItemOutput
+}
+
+type InstanceItemsItemArgs struct {
+	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (InstanceItemsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceItemsItem)(nil)).Elem()
+}
+
+func (i InstanceItemsItemArgs) ToInstanceItemsItemOutput() InstanceItemsItemOutput {
+	return i.ToInstanceItemsItemOutputWithContext(context.Background())
+}
+
+func (i InstanceItemsItemArgs) ToInstanceItemsItemOutputWithContext(ctx context.Context) InstanceItemsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceItemsItemOutput)
+}
+
+// InstanceItemsItemArrayInput is an input type that accepts InstanceItemsItemArray and InstanceItemsItemArrayOutput values.
+// You can construct a concrete instance of `InstanceItemsItemArrayInput` via:
+//
+//          InstanceItemsItemArray{ InstanceItemsItemArgs{...} }
+type InstanceItemsItemArrayInput interface {
+	pulumi.Input
+
+	ToInstanceItemsItemArrayOutput() InstanceItemsItemArrayOutput
+	ToInstanceItemsItemArrayOutputWithContext(context.Context) InstanceItemsItemArrayOutput
+}
+
+type InstanceItemsItemArray []InstanceItemsItemInput
+
+func (InstanceItemsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceItemsItem)(nil)).Elem()
+}
+
+func (i InstanceItemsItemArray) ToInstanceItemsItemArrayOutput() InstanceItemsItemArrayOutput {
+	return i.ToInstanceItemsItemArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceItemsItemArray) ToInstanceItemsItemArrayOutputWithContext(ctx context.Context) InstanceItemsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceItemsItemArrayOutput)
+}
+
+type InstanceItemsItemOutput struct{ *pulumi.OutputState }
+
+func (InstanceItemsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceItemsItem)(nil)).Elem()
+}
+
+func (o InstanceItemsItemOutput) ToInstanceItemsItemOutput() InstanceItemsItemOutput {
+	return o
+}
+
+func (o InstanceItemsItemOutput) ToInstanceItemsItemOutputWithContext(ctx context.Context) InstanceItemsItemOutput {
+	return o
+}
+
+// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+func (o InstanceItemsItemOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceItemsItem) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+func (o InstanceItemsItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceItemsItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type InstanceItemsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceItemsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceItemsItem)(nil)).Elem()
+}
+
+func (o InstanceItemsItemArrayOutput) ToInstanceItemsItemArrayOutput() InstanceItemsItemArrayOutput {
+	return o
+}
+
+func (o InstanceItemsItemArrayOutput) ToInstanceItemsItemArrayOutputWithContext(ctx context.Context) InstanceItemsItemArrayOutput {
+	return o
+}
+
+func (o InstanceItemsItemArrayOutput) Index(i pulumi.IntInput) InstanceItemsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceItemsItem {
+		return vs[0].([]InstanceItemsItem)[vs[1].(int)]
+	}).(InstanceItemsItemOutput)
+}
+
+type InstanceItemsItemResponse struct {
+	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+	Key string `pulumi:"key"`
+	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+	Value string `pulumi:"value"`
+}
+
+// InstanceItemsItemResponseInput is an input type that accepts InstanceItemsItemResponseArgs and InstanceItemsItemResponseOutput values.
+// You can construct a concrete instance of `InstanceItemsItemResponseInput` via:
+//
+//          InstanceItemsItemResponseArgs{...}
+type InstanceItemsItemResponseInput interface {
+	pulumi.Input
+
+	ToInstanceItemsItemResponseOutput() InstanceItemsItemResponseOutput
+	ToInstanceItemsItemResponseOutputWithContext(context.Context) InstanceItemsItemResponseOutput
+}
+
+type InstanceItemsItemResponseArgs struct {
+	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (InstanceItemsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceItemsItemResponse)(nil)).Elem()
+}
+
+func (i InstanceItemsItemResponseArgs) ToInstanceItemsItemResponseOutput() InstanceItemsItemResponseOutput {
+	return i.ToInstanceItemsItemResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceItemsItemResponseArgs) ToInstanceItemsItemResponseOutputWithContext(ctx context.Context) InstanceItemsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceItemsItemResponseOutput)
+}
+
+// InstanceItemsItemResponseArrayInput is an input type that accepts InstanceItemsItemResponseArray and InstanceItemsItemResponseArrayOutput values.
+// You can construct a concrete instance of `InstanceItemsItemResponseArrayInput` via:
+//
+//          InstanceItemsItemResponseArray{ InstanceItemsItemResponseArgs{...} }
+type InstanceItemsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToInstanceItemsItemResponseArrayOutput() InstanceItemsItemResponseArrayOutput
+	ToInstanceItemsItemResponseArrayOutputWithContext(context.Context) InstanceItemsItemResponseArrayOutput
+}
+
+type InstanceItemsItemResponseArray []InstanceItemsItemResponseInput
+
+func (InstanceItemsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceItemsItemResponse)(nil)).Elem()
+}
+
+func (i InstanceItemsItemResponseArray) ToInstanceItemsItemResponseArrayOutput() InstanceItemsItemResponseArrayOutput {
+	return i.ToInstanceItemsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceItemsItemResponseArray) ToInstanceItemsItemResponseArrayOutputWithContext(ctx context.Context) InstanceItemsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceItemsItemResponseArrayOutput)
+}
+
+type InstanceItemsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceItemsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceItemsItemResponse)(nil)).Elem()
+}
+
+func (o InstanceItemsItemResponseOutput) ToInstanceItemsItemResponseOutput() InstanceItemsItemResponseOutput {
+	return o
+}
+
+func (o InstanceItemsItemResponseOutput) ToInstanceItemsItemResponseOutputWithContext(ctx context.Context) InstanceItemsItemResponseOutput {
+	return o
+}
+
+// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+func (o InstanceItemsItemResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceItemsItemResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+func (o InstanceItemsItemResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceItemsItemResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type InstanceItemsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceItemsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceItemsItemResponse)(nil)).Elem()
+}
+
+func (o InstanceItemsItemResponseArrayOutput) ToInstanceItemsItemResponseArrayOutput() InstanceItemsItemResponseArrayOutput {
+	return o
+}
+
+func (o InstanceItemsItemResponseArrayOutput) ToInstanceItemsItemResponseArrayOutputWithContext(ctx context.Context) InstanceItemsItemResponseArrayOutput {
+	return o
+}
+
+func (o InstanceItemsItemResponseArrayOutput) Index(i pulumi.IntInput) InstanceItemsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceItemsItemResponse {
+		return vs[0].([]InstanceItemsItemResponse)[vs[1].(int)]
+	}).(InstanceItemsItemResponseOutput)
+}
+
 type InstanceProperties struct {
 	// Controls for advanced machine-related behavior features.
 	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
@@ -30960,218 +31172,6 @@ func (o InstancePropertiesResponsePtrOutput) Tags() TagsResponsePtrOutput {
 		}
 		return &v.Tags
 	}).(TagsResponsePtrOutput)
-}
-
-type InstanceTemplateItemsItem struct {
-	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-	Key *string `pulumi:"key"`
-	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-	Value *string `pulumi:"value"`
-}
-
-// InstanceTemplateItemsItemInput is an input type that accepts InstanceTemplateItemsItemArgs and InstanceTemplateItemsItemOutput values.
-// You can construct a concrete instance of `InstanceTemplateItemsItemInput` via:
-//
-//          InstanceTemplateItemsItemArgs{...}
-type InstanceTemplateItemsItemInput interface {
-	pulumi.Input
-
-	ToInstanceTemplateItemsItemOutput() InstanceTemplateItemsItemOutput
-	ToInstanceTemplateItemsItemOutputWithContext(context.Context) InstanceTemplateItemsItemOutput
-}
-
-type InstanceTemplateItemsItemArgs struct {
-	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (InstanceTemplateItemsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceTemplateItemsItem)(nil)).Elem()
-}
-
-func (i InstanceTemplateItemsItemArgs) ToInstanceTemplateItemsItemOutput() InstanceTemplateItemsItemOutput {
-	return i.ToInstanceTemplateItemsItemOutputWithContext(context.Background())
-}
-
-func (i InstanceTemplateItemsItemArgs) ToInstanceTemplateItemsItemOutputWithContext(ctx context.Context) InstanceTemplateItemsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateItemsItemOutput)
-}
-
-// InstanceTemplateItemsItemArrayInput is an input type that accepts InstanceTemplateItemsItemArray and InstanceTemplateItemsItemArrayOutput values.
-// You can construct a concrete instance of `InstanceTemplateItemsItemArrayInput` via:
-//
-//          InstanceTemplateItemsItemArray{ InstanceTemplateItemsItemArgs{...} }
-type InstanceTemplateItemsItemArrayInput interface {
-	pulumi.Input
-
-	ToInstanceTemplateItemsItemArrayOutput() InstanceTemplateItemsItemArrayOutput
-	ToInstanceTemplateItemsItemArrayOutputWithContext(context.Context) InstanceTemplateItemsItemArrayOutput
-}
-
-type InstanceTemplateItemsItemArray []InstanceTemplateItemsItemInput
-
-func (InstanceTemplateItemsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceTemplateItemsItem)(nil)).Elem()
-}
-
-func (i InstanceTemplateItemsItemArray) ToInstanceTemplateItemsItemArrayOutput() InstanceTemplateItemsItemArrayOutput {
-	return i.ToInstanceTemplateItemsItemArrayOutputWithContext(context.Background())
-}
-
-func (i InstanceTemplateItemsItemArray) ToInstanceTemplateItemsItemArrayOutputWithContext(ctx context.Context) InstanceTemplateItemsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateItemsItemArrayOutput)
-}
-
-type InstanceTemplateItemsItemOutput struct{ *pulumi.OutputState }
-
-func (InstanceTemplateItemsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceTemplateItemsItem)(nil)).Elem()
-}
-
-func (o InstanceTemplateItemsItemOutput) ToInstanceTemplateItemsItemOutput() InstanceTemplateItemsItemOutput {
-	return o
-}
-
-func (o InstanceTemplateItemsItemOutput) ToInstanceTemplateItemsItemOutputWithContext(ctx context.Context) InstanceTemplateItemsItemOutput {
-	return o
-}
-
-// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-func (o InstanceTemplateItemsItemOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceTemplateItemsItem) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-func (o InstanceTemplateItemsItemOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceTemplateItemsItem) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type InstanceTemplateItemsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (InstanceTemplateItemsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceTemplateItemsItem)(nil)).Elem()
-}
-
-func (o InstanceTemplateItemsItemArrayOutput) ToInstanceTemplateItemsItemArrayOutput() InstanceTemplateItemsItemArrayOutput {
-	return o
-}
-
-func (o InstanceTemplateItemsItemArrayOutput) ToInstanceTemplateItemsItemArrayOutputWithContext(ctx context.Context) InstanceTemplateItemsItemArrayOutput {
-	return o
-}
-
-func (o InstanceTemplateItemsItemArrayOutput) Index(i pulumi.IntInput) InstanceTemplateItemsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceTemplateItemsItem {
-		return vs[0].([]InstanceTemplateItemsItem)[vs[1].(int)]
-	}).(InstanceTemplateItemsItemOutput)
-}
-
-type InstanceTemplateItemsItemResponse struct {
-	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-	Key string `pulumi:"key"`
-	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-	Value string `pulumi:"value"`
-}
-
-// InstanceTemplateItemsItemResponseInput is an input type that accepts InstanceTemplateItemsItemResponseArgs and InstanceTemplateItemsItemResponseOutput values.
-// You can construct a concrete instance of `InstanceTemplateItemsItemResponseInput` via:
-//
-//          InstanceTemplateItemsItemResponseArgs{...}
-type InstanceTemplateItemsItemResponseInput interface {
-	pulumi.Input
-
-	ToInstanceTemplateItemsItemResponseOutput() InstanceTemplateItemsItemResponseOutput
-	ToInstanceTemplateItemsItemResponseOutputWithContext(context.Context) InstanceTemplateItemsItemResponseOutput
-}
-
-type InstanceTemplateItemsItemResponseArgs struct {
-	// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (InstanceTemplateItemsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceTemplateItemsItemResponse)(nil)).Elem()
-}
-
-func (i InstanceTemplateItemsItemResponseArgs) ToInstanceTemplateItemsItemResponseOutput() InstanceTemplateItemsItemResponseOutput {
-	return i.ToInstanceTemplateItemsItemResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceTemplateItemsItemResponseArgs) ToInstanceTemplateItemsItemResponseOutputWithContext(ctx context.Context) InstanceTemplateItemsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateItemsItemResponseOutput)
-}
-
-// InstanceTemplateItemsItemResponseArrayInput is an input type that accepts InstanceTemplateItemsItemResponseArray and InstanceTemplateItemsItemResponseArrayOutput values.
-// You can construct a concrete instance of `InstanceTemplateItemsItemResponseArrayInput` via:
-//
-//          InstanceTemplateItemsItemResponseArray{ InstanceTemplateItemsItemResponseArgs{...} }
-type InstanceTemplateItemsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToInstanceTemplateItemsItemResponseArrayOutput() InstanceTemplateItemsItemResponseArrayOutput
-	ToInstanceTemplateItemsItemResponseArrayOutputWithContext(context.Context) InstanceTemplateItemsItemResponseArrayOutput
-}
-
-type InstanceTemplateItemsItemResponseArray []InstanceTemplateItemsItemResponseInput
-
-func (InstanceTemplateItemsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceTemplateItemsItemResponse)(nil)).Elem()
-}
-
-func (i InstanceTemplateItemsItemResponseArray) ToInstanceTemplateItemsItemResponseArrayOutput() InstanceTemplateItemsItemResponseArrayOutput {
-	return i.ToInstanceTemplateItemsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i InstanceTemplateItemsItemResponseArray) ToInstanceTemplateItemsItemResponseArrayOutputWithContext(ctx context.Context) InstanceTemplateItemsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateItemsItemResponseArrayOutput)
-}
-
-type InstanceTemplateItemsItemResponseOutput struct{ *pulumi.OutputState }
-
-func (InstanceTemplateItemsItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceTemplateItemsItemResponse)(nil)).Elem()
-}
-
-func (o InstanceTemplateItemsItemResponseOutput) ToInstanceTemplateItemsItemResponseOutput() InstanceTemplateItemsItemResponseOutput {
-	return o
-}
-
-func (o InstanceTemplateItemsItemResponseOutput) ToInstanceTemplateItemsItemResponseOutputWithContext(ctx context.Context) InstanceTemplateItemsItemResponseOutput {
-	return o
-}
-
-// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-func (o InstanceTemplateItemsItemResponseOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceTemplateItemsItemResponse) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-func (o InstanceTemplateItemsItemResponseOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceTemplateItemsItemResponse) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type InstanceTemplateItemsItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (InstanceTemplateItemsItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceTemplateItemsItemResponse)(nil)).Elem()
-}
-
-func (o InstanceTemplateItemsItemResponseArrayOutput) ToInstanceTemplateItemsItemResponseArrayOutput() InstanceTemplateItemsItemResponseArrayOutput {
-	return o
-}
-
-func (o InstanceTemplateItemsItemResponseArrayOutput) ToInstanceTemplateItemsItemResponseArrayOutputWithContext(ctx context.Context) InstanceTemplateItemsItemResponseArrayOutput {
-	return o
-}
-
-func (o InstanceTemplateItemsItemResponseArrayOutput) Index(i pulumi.IntInput) InstanceTemplateItemsItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceTemplateItemsItemResponse {
-		return vs[0].([]InstanceTemplateItemsItemResponse)[vs[1].(int)]
-	}).(InstanceTemplateItemsItemResponseOutput)
 }
 
 // HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
@@ -34629,7 +34629,7 @@ type Metadata struct {
 	// To see the latest fingerprint, make a get() request to retrieve the resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-	Items []InstanceTemplateItemsItem `pulumi:"items"`
+	Items []InstanceItemsItem `pulumi:"items"`
 	// [Output Only] Type of the resource. Always compute#metadata for metadata.
 	Kind *string `pulumi:"kind"`
 }
@@ -34652,7 +34652,7 @@ type MetadataArgs struct {
 	// To see the latest fingerprint, make a get() request to retrieve the resource.
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-	Items InstanceTemplateItemsItemArrayInput `pulumi:"items"`
+	Items InstanceItemsItemArrayInput `pulumi:"items"`
 	// [Output Only] Type of the resource. Always compute#metadata for metadata.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 }
@@ -34743,8 +34743,8 @@ func (o MetadataOutput) Fingerprint() pulumi.StringPtrOutput {
 }
 
 // Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-func (o MetadataOutput) Items() InstanceTemplateItemsItemArrayOutput {
-	return o.ApplyT(func(v Metadata) []InstanceTemplateItemsItem { return v.Items }).(InstanceTemplateItemsItemArrayOutput)
+func (o MetadataOutput) Items() InstanceItemsItemArrayOutput {
+	return o.ApplyT(func(v Metadata) []InstanceItemsItem { return v.Items }).(InstanceItemsItemArrayOutput)
 }
 
 // [Output Only] Type of the resource. Always compute#metadata for metadata.
@@ -34783,13 +34783,13 @@ func (o MetadataPtrOutput) Fingerprint() pulumi.StringPtrOutput {
 }
 
 // Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-func (o MetadataPtrOutput) Items() InstanceTemplateItemsItemArrayOutput {
-	return o.ApplyT(func(v *Metadata) []InstanceTemplateItemsItem {
+func (o MetadataPtrOutput) Items() InstanceItemsItemArrayOutput {
+	return o.ApplyT(func(v *Metadata) []InstanceItemsItem {
 		if v == nil {
 			return nil
 		}
 		return v.Items
-	}).(InstanceTemplateItemsItemArrayOutput)
+	}).(InstanceItemsItemArrayOutput)
 }
 
 // [Output Only] Type of the resource. Always compute#metadata for metadata.
@@ -35293,7 +35293,7 @@ type MetadataResponse struct {
 	// To see the latest fingerprint, make a get() request to retrieve the resource.
 	Fingerprint string `pulumi:"fingerprint"`
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-	Items []InstanceTemplateItemsItemResponse `pulumi:"items"`
+	Items []InstanceItemsItemResponse `pulumi:"items"`
 	// [Output Only] Type of the resource. Always compute#metadata for metadata.
 	Kind string `pulumi:"kind"`
 }
@@ -35316,7 +35316,7 @@ type MetadataResponseArgs struct {
 	// To see the latest fingerprint, make a get() request to retrieve the resource.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-	Items InstanceTemplateItemsItemResponseArrayInput `pulumi:"items"`
+	Items InstanceItemsItemResponseArrayInput `pulumi:"items"`
 	// [Output Only] Type of the resource. Always compute#metadata for metadata.
 	Kind pulumi.StringInput `pulumi:"kind"`
 }
@@ -35407,8 +35407,8 @@ func (o MetadataResponseOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-func (o MetadataResponseOutput) Items() InstanceTemplateItemsItemResponseArrayOutput {
-	return o.ApplyT(func(v MetadataResponse) []InstanceTemplateItemsItemResponse { return v.Items }).(InstanceTemplateItemsItemResponseArrayOutput)
+func (o MetadataResponseOutput) Items() InstanceItemsItemResponseArrayOutput {
+	return o.ApplyT(func(v MetadataResponse) []InstanceItemsItemResponse { return v.Items }).(InstanceItemsItemResponseArrayOutput)
 }
 
 // [Output Only] Type of the resource. Always compute#metadata for metadata.
@@ -35447,13 +35447,13 @@ func (o MetadataResponsePtrOutput) Fingerprint() pulumi.StringPtrOutput {
 }
 
 // Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-func (o MetadataResponsePtrOutput) Items() InstanceTemplateItemsItemResponseArrayOutput {
-	return o.ApplyT(func(v *MetadataResponse) []InstanceTemplateItemsItemResponse {
+func (o MetadataResponsePtrOutput) Items() InstanceItemsItemResponseArrayOutput {
+	return o.ApplyT(func(v *MetadataResponse) []InstanceItemsItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Items
-	}).(InstanceTemplateItemsItemResponseArrayOutput)
+	}).(InstanceItemsItemResponseArrayOutput)
 }
 
 // [Output Only] Type of the resource. Always compute#metadata for metadata.
@@ -59871,14 +59871,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceItemsItemOutput{})
+	pulumi.RegisterOutputType(InstanceItemsItemArrayOutput{})
+	pulumi.RegisterOutputType(InstanceItemsItemResponseOutput{})
+	pulumi.RegisterOutputType(InstanceItemsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(InstanceTemplateItemsItemOutput{})
-	pulumi.RegisterOutputType(InstanceTemplateItemsItemArrayOutput{})
-	pulumi.RegisterOutputType(InstanceTemplateItemsItemResponseOutput{})
-	pulumi.RegisterOutputType(InstanceTemplateItemsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchResponseOutput{})
