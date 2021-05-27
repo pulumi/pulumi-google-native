@@ -52,9 +52,6 @@ func NewOrganizationWorkload(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.WorkloadId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkloadId'")
-	}
 	var resource OrganizationWorkload
 	err := ctx.RegisterResource("google-native:assuredworkloads/v1:OrganizationWorkload", name, args, &resource, opts...)
 	if err != nil {
@@ -152,7 +149,6 @@ type organizationWorkloadArgs struct {
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettings `pulumi:"resourceSettings"`
-	WorkloadId       string                                                  `pulumi:"workloadId"`
 }
 
 // The set of arguments for constructing a OrganizationWorkload resource.
@@ -178,7 +174,6 @@ type OrganizationWorkloadArgs struct {
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput
-	WorkloadId       pulumi.StringInput
 }
 
 func (OrganizationWorkloadArgs) ElementType() reflect.Type {

@@ -44,9 +44,6 @@ func NewDatasetConsentStoreConsent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConsentId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentId'")
-	}
 	if args.ConsentStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
@@ -133,7 +130,6 @@ func (DatasetConsentStoreConsentState) ElementType() reflect.Type {
 type datasetConsentStoreConsentArgs struct {
 	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact *string `pulumi:"consentArtifact"`
-	ConsentId       string  `pulumi:"consentId"`
 	ConsentStoreId  string  `pulumi:"consentStoreId"`
 	DatasetId       string  `pulumi:"datasetId"`
 	// Timestamp in UTC of when this Consent is considered expired.
@@ -158,7 +154,6 @@ type datasetConsentStoreConsentArgs struct {
 type DatasetConsentStoreConsentArgs struct {
 	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact pulumi.StringPtrInput
-	ConsentId       pulumi.StringInput
 	ConsentStoreId  pulumi.StringInput
 	DatasetId       pulumi.StringInput
 	// Timestamp in UTC of when this Consent is considered expired.

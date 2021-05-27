@@ -70,13 +70,9 @@ export class Contact extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contactId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'contactId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["contactId"] = args ? args.contactId : undefined;
             inputs["email"] = args ? args.email : undefined;
             inputs["languageTag"] = args ? args.languageTag : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -103,7 +99,6 @@ export class Contact extends pulumi.CustomResource {
  * The set of arguments for constructing a Contact resource.
  */
 export interface ContactArgs {
-    readonly contactId: pulumi.Input<string>;
     /**
      * Required. The email address to send notifications to. This does not need to be a Google account.
      */

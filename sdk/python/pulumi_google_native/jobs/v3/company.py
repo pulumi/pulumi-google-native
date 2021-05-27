@@ -15,7 +15,6 @@ __all__ = ['CompanyArgs', 'Company']
 @pulumi.input_type
 class CompanyArgs:
     def __init__(__self__, *,
-                 company_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  career_site_uri: Optional[pulumi.Input[str]] = None,
                  derived_info: Optional[pulumi.Input['CompanyDerivedInfoArgs']] = None,
@@ -46,7 +45,6 @@ class CompanyArgs:
         :param pulumi.Input[bool] suspended: Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
         :param pulumi.Input[str] website_uri: Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
         """
-        pulumi.set(__self__, "company_id", company_id)
         pulumi.set(__self__, "project", project)
         if career_site_uri is not None:
             pulumi.set(__self__, "career_site_uri", career_site_uri)
@@ -74,15 +72,6 @@ class CompanyArgs:
             pulumi.set(__self__, "suspended", suspended)
         if website_uri is not None:
             pulumi.set(__self__, "website_uri", website_uri)
-
-    @property
-    @pulumi.getter(name="companyId")
-    def company_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "company_id")
-
-    @company_id.setter
-    def company_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "company_id", value)
 
     @property
     @pulumi.getter
@@ -256,7 +245,6 @@ class Company(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  career_site_uri: Optional[pulumi.Input[str]] = None,
-                 company_id: Optional[pulumi.Input[str]] = None,
                  derived_info: Optional[pulumi.Input[pulumi.InputType['CompanyDerivedInfoArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
@@ -315,7 +303,6 @@ class Company(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  career_site_uri: Optional[pulumi.Input[str]] = None,
-                 company_id: Optional[pulumi.Input[str]] = None,
                  derived_info: Optional[pulumi.Input[pulumi.InputType['CompanyDerivedInfoArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
@@ -342,9 +329,6 @@ class Company(pulumi.CustomResource):
             __props__ = CompanyArgs.__new__(CompanyArgs)
 
             __props__.__dict__["career_site_uri"] = career_site_uri
-            if company_id is None and not opts.urn:
-                raise TypeError("Missing required property 'company_id'")
-            __props__.__dict__["company_id"] = company_id
             __props__.__dict__["derived_info"] = derived_info
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["eeo_text"] = eeo_text

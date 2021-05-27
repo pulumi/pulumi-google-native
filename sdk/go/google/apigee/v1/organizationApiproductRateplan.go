@@ -68,9 +68,6 @@ func NewOrganizationApiproductRateplan(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.RateplanId == nil {
-		return nil, errors.New("invalid value for required argument 'RateplanId'")
-	}
 	var resource OrganizationApiproductRateplan
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationApiproductRateplan", name, args, &resource, opts...)
 	if err != nil {
@@ -203,7 +200,6 @@ type organizationApiproductRateplanArgs struct {
 	OrganizationId    string           `pulumi:"organizationId"`
 	// Flag that specifies the billing account type, prepaid or postpaid.
 	PaymentFundingModel *string `pulumi:"paymentFundingModel"`
-	RateplanId          string  `pulumi:"rateplanId"`
 	// Details of the revenue sharing model.
 	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRange `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -242,7 +238,6 @@ type OrganizationApiproductRateplanArgs struct {
 	OrganizationId    pulumi.StringInput
 	// Flag that specifies the billing account type, prepaid or postpaid.
 	PaymentFundingModel pulumi.StringPtrInput
-	RateplanId          pulumi.StringInput
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeArrayInput
 	// Method used to calculate the revenue that is shared with developers.

@@ -13,7 +13,6 @@ __all__ = ['HttpHealthCheckArgs', 'HttpHealthCheck']
 @pulumi.input_type
 class HttpHealthCheckArgs:
     def __init__(__self__, *,
-                 http_health_check: pulumi.Input[str],
                  project: pulumi.Input[str],
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -47,7 +46,6 @@ class HttpHealthCheckArgs:
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         """
-        pulumi.set(__self__, "http_health_check", http_health_check)
         pulumi.set(__self__, "project", project)
         if check_interval_sec is not None:
             pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -79,15 +77,6 @@ class HttpHealthCheckArgs:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
         if unhealthy_threshold is not None:
             pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
-
-    @property
-    @pulumi.getter(name="httpHealthCheck")
-    def http_health_check(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "http_health_check")
-
-    @http_health_check.setter
-    def http_health_check(self, value: pulumi.Input[str]):
-        pulumi.set(self, "http_health_check", value)
 
     @property
     @pulumi.getter
@@ -286,7 +275,6 @@ class HttpHealthCheck(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  host: Optional[pulumi.Input[str]] = None,
-                 http_health_check: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -348,7 +336,6 @@ class HttpHealthCheck(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  host: Optional[pulumi.Input[str]] = None,
-                 http_health_check: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -377,9 +364,6 @@ class HttpHealthCheck(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["healthy_threshold"] = healthy_threshold
             __props__.__dict__["host"] = host
-            if http_health_check is None and not opts.urn:
-                raise TypeError("Missing required property 'http_health_check'")
-            __props__.__dict__["http_health_check"] = http_health_check
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name

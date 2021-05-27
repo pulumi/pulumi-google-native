@@ -192,9 +192,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("nodeGroup", required: true)]
-        public Input<string> NodeGroup { get; set; } = null!;
-
         /// <summary>
         /// URL of the node template to create the node group from.
         /// </summary>

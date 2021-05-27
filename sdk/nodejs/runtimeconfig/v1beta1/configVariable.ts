@@ -72,9 +72,6 @@ export class ConfigVariable extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.variableId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'variableId'");
-            }
             inputs["configId"] = args ? args.configId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -83,7 +80,6 @@ export class ConfigVariable extends pulumi.CustomResource {
             inputs["text"] = args ? args.text : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["value"] = args ? args.value : undefined;
-            inputs["variableId"] = args ? args.variableId : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -125,5 +121,4 @@ export interface ConfigVariableArgs {
      * The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
      */
     readonly value?: pulumi.Input<string>;
-    readonly variableId: pulumi.Input<string>;
 }

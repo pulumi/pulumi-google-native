@@ -58,9 +58,6 @@ func NewClusterNodePool(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.NodePoolId == nil {
-		return nil, errors.New("invalid value for required argument 'NodePoolId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -171,8 +168,7 @@ type clusterNodePoolArgs struct {
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint *MaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
-	Name       *string `pulumi:"name"`
-	NodePoolId string  `pulumi:"nodePoolId"`
+	Name *string `pulumi:"name"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent *string `pulumi:"parent"`
 	// [Output only] The pod CIDR block size per node in this node pool.
@@ -209,8 +205,7 @@ type ClusterNodePoolArgs struct {
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint MaxPodsConstraintPtrInput
 	// The name of the node pool.
-	Name       pulumi.StringPtrInput
-	NodePoolId pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent pulumi.StringPtrInput
 	// [Output only] The pod CIDR block size per node in this node pool.

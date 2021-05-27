@@ -49,9 +49,6 @@ func NewAgentTestCase(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TestCaseId == nil {
-		return nil, errors.New("invalid value for required argument 'TestCaseId'")
-	}
 	var resource AgentTestCase
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:AgentTestCase", name, args, &resource, opts...)
 	if err != nil {
@@ -131,7 +128,6 @@ type agentTestCaseArgs struct {
 	Tags []string `pulumi:"tags"`
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
 	TestCaseConversationTurns []GoogleCloudDialogflowCxV3beta1ConversationTurn `pulumi:"testCaseConversationTurns"`
-	TestCaseId                string                                           `pulumi:"testCaseId"`
 	// Config for the test case.
 	TestConfig *GoogleCloudDialogflowCxV3beta1TestConfig `pulumi:"testConfig"`
 }
@@ -153,7 +149,6 @@ type AgentTestCaseArgs struct {
 	Tags pulumi.StringArrayInput
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
 	TestCaseConversationTurns GoogleCloudDialogflowCxV3beta1ConversationTurnArrayInput
-	TestCaseId                pulumi.StringInput
 	// Config for the test case.
 	TestConfig GoogleCloudDialogflowCxV3beta1TestConfigPtrInput
 }

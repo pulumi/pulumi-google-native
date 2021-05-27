@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             set => _entities = value;
         }
 
-        [Input("entityTypeId", required: true)]
-        public Input<string> EntityTypeId { get; set; } = null!;
-
         /// <summary>
         /// Required. Indicates the kind of entity type.
         /// </summary>

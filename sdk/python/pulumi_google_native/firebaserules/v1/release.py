@@ -14,7 +14,6 @@ __all__ = ['ReleaseArgs', 'Release']
 class ReleaseArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 release_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ruleset_name: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,6 @@ class ReleaseArgs:
         :param pulumi.Input[str] update_time: Time the release was updated. Output only.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "release_id", release_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if name is not None:
@@ -45,15 +43,6 @@ class ReleaseArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="releaseId")
-    def release_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "release_id")
-
-    @release_id.setter
-    def release_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "release_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -112,7 +101,6 @@ class Release(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 release_id: Optional[pulumi.Input[str]] = None,
                  ruleset_name: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -153,7 +141,6 @@ class Release(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 release_id: Optional[pulumi.Input[str]] = None,
                  ruleset_name: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -173,9 +160,6 @@ class Release(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if release_id is None and not opts.urn:
-                raise TypeError("Missing required property 'release_id'")
-            __props__.__dict__["release_id"] = release_id
             __props__.__dict__["ruleset_name"] = ruleset_name
             __props__.__dict__["update_time"] = update_time
         super(Release, __self__).__init__(

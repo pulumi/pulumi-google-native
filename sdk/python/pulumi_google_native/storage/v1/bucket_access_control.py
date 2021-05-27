@@ -16,9 +16,9 @@ __all__ = ['BucketAccessControlArgs', 'BucketAccessControl']
 class BucketAccessControlArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 entity: pulumi.Input[str],
                  domain: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 entity: Optional[pulumi.Input[str]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -31,6 +31,8 @@ class BucketAccessControlArgs:
         """
         The set of arguments for constructing a BucketAccessControl resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] domain: The domain associated with the entity, if any.
+        :param pulumi.Input[str] email: The email address associated with the entity, if any.
         :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: 
                - user-userId 
                - user-email 
@@ -43,8 +45,6 @@ class BucketAccessControlArgs:
                - The user liz@example.com would be user-liz@example.com. 
                - The group example@googlegroups.com would be group-example@googlegroups.com. 
                - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-        :param pulumi.Input[str] domain: The domain associated with the entity, if any.
-        :param pulumi.Input[str] email: The email address associated with the entity, if any.
         :param pulumi.Input[str] entity_id: The ID for the entity, if any.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
         :param pulumi.Input[str] id: The ID of the access-control entry.
@@ -54,11 +54,12 @@ class BucketAccessControlArgs:
         :param pulumi.Input[str] self_link: The link to this access-control entry.
         """
         pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "entity", entity)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if entity is not None:
+            pulumi.set(__self__, "entity", entity)
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
         if etag is not None:
@@ -92,29 +93,6 @@ class BucketAccessControlArgs:
 
     @property
     @pulumi.getter
-    def entity(self) -> pulumi.Input[str]:
-        """
-        The entity holding the permission, in one of the following forms: 
-        - user-userId 
-        - user-email 
-        - group-groupId 
-        - group-email 
-        - domain-domain 
-        - project-team-projectId 
-        - allUsers 
-        - allAuthenticatedUsers Examples: 
-        - The user liz@example.com would be user-liz@example.com. 
-        - The group example@googlegroups.com would be group-example@googlegroups.com. 
-        - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-        """
-        return pulumi.get(self, "entity")
-
-    @entity.setter
-    def entity(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entity", value)
-
-    @property
-    @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
         The domain associated with the entity, if any.
@@ -136,6 +114,29 @@ class BucketAccessControlArgs:
     @email.setter
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entity holding the permission, in one of the following forms: 
+        - user-userId 
+        - user-email 
+        - group-groupId 
+        - group-email 
+        - domain-domain 
+        - project-team-projectId 
+        - allUsers 
+        - allAuthenticatedUsers Examples: 
+        - The user liz@example.com would be user-liz@example.com. 
+        - The group example@googlegroups.com would be group-example@googlegroups.com. 
+        - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity", value)
 
     @property
     @pulumi.getter(name="entityId")
@@ -341,8 +342,6 @@ class BucketAccessControl(pulumi.CustomResource):
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["domain"] = domain
             __props__.__dict__["email"] = email
-            if entity is None and not opts.urn:
-                raise TypeError("Missing required property 'entity'")
             __props__.__dict__["entity"] = entity
             __props__.__dict__["entity_id"] = entity_id
             __props__.__dict__["etag"] = etag

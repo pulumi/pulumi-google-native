@@ -104,9 +104,6 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.publicDelegatedPrefix === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'publicDelegatedPrefix'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -120,7 +117,6 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parentPrefix"] = args ? args.parentPrefix : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["publicDelegatedPrefix"] = args ? args.publicDelegatedPrefix : undefined;
             inputs["publicDelegatedSubPrefixs"] = args ? args.publicDelegatedSubPrefixs : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
@@ -192,7 +188,6 @@ export interface PublicDelegatedPrefixArgs {
      */
     readonly parentPrefix?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly publicDelegatedPrefix: pulumi.Input<string>;
     /**
      * The list of sub public delegated prefixes that exist for this public delegated prefix.
      */

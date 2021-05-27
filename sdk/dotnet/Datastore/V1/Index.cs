@@ -102,9 +102,6 @@ namespace Pulumi.GoogleNative.Datastore.V1
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
 
-        [Input("indexId", required: true)]
-        public Input<string> IndexId { get; set; } = null!;
-
         /// <summary>
         /// Required. The entity kind to which this index applies.
         /// </summary>

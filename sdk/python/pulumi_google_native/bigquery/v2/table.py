@@ -17,7 +17,6 @@ class TableArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 table_id: pulumi.Input[str],
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -81,7 +80,6 @@ class TableArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "table_id", table_id)
         if clustering is not None:
             pulumi.set(__self__, "clustering", clustering)
         if creation_time is not None:
@@ -158,15 +156,6 @@ class TableArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="tableId")
-    def table_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "table_id")
-
-    @table_id.setter
-    def table_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "table_id", value)
 
     @property
     @pulumi.getter
@@ -549,7 +538,6 @@ class Table(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  snapshot_definition: Optional[pulumi.Input[pulumi.InputType['SnapshotDefinitionArgs']]] = None,
                  streaming_buffer: Optional[pulumi.Input[pulumi.InputType['StreamingbufferArgs']]] = None,
-                 table_id: Optional[pulumi.Input[str]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -641,7 +629,6 @@ class Table(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  snapshot_definition: Optional[pulumi.Input[pulumi.InputType['SnapshotDefinitionArgs']]] = None,
                  streaming_buffer: Optional[pulumi.Input[pulumi.InputType['StreamingbufferArgs']]] = None,
-                 table_id: Optional[pulumi.Input[str]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -689,9 +676,6 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["snapshot_definition"] = snapshot_definition
             __props__.__dict__["streaming_buffer"] = streaming_buffer
-            if table_id is None and not opts.urn:
-                raise TypeError("Missing required property 'table_id'")
-            __props__.__dict__["table_id"] = table_id
             __props__.__dict__["table_reference"] = table_reference
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["type"] = type

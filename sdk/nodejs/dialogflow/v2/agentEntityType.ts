@@ -71,9 +71,6 @@ export class AgentEntityType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.entityTypeId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityTypeId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -84,7 +81,6 @@ export class AgentEntityType extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
             inputs["entities"] = args ? args.entities : undefined;
-            inputs["entityTypeId"] = args ? args.entityTypeId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -125,7 +121,6 @@ export interface AgentEntityTypeArgs {
      * Optional. The collection of entity entries associated with the entity type.
      */
     readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityArgs>[]>;
-    readonly entityTypeId: pulumi.Input<string>;
     /**
      * Required. Indicates the kind of entity type.
      */

@@ -16,7 +16,6 @@ __all__ = ['BucketObjectArgs', 'BucketObject']
 class BucketObjectArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 object: pulumi.Input[str],
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
                  component_count: Optional[pulumi.Input[int]] = None,
@@ -93,7 +92,6 @@ class BucketObjectArgs:
         :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format.
         """
         pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "object", object)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if cache_control is not None:
@@ -186,15 +184,6 @@ class BucketObjectArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
-
-    @property
-    @pulumi.getter
-    def object(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "object")
-
-    @object.setter
-    def object(self, value: pulumi.Input[str]):
-        pulumi.set(self, "object", value)
 
     @property
     @pulumi.getter
@@ -681,7 +670,6 @@ class BucketObject(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 object: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
@@ -786,7 +774,6 @@ class BucketObject(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 object: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
@@ -842,9 +829,6 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["metageneration"] = metageneration
             __props__.__dict__["name"] = name
-            if object is None and not opts.urn:
-                raise TypeError("Missing required property 'object'")
-            __props__.__dict__["object"] = object
             __props__.__dict__["owner"] = owner
             __props__.__dict__["predefined_acl"] = predefined_acl
             __props__.__dict__["projection"] = projection

@@ -15,7 +15,6 @@ __all__ = ['AnnotationSpecSetArgs', 'AnnotationSpecSet']
 @pulumi.input_type
 class AnnotationSpecSetArgs:
     def __init__(__self__, *,
-                 annotation_spec_set_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -30,7 +29,6 @@ class AnnotationSpecSetArgs:
         :param pulumi.Input[str] display_name: Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         :param pulumi.Input[str] name: The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         """
-        pulumi.set(__self__, "annotation_spec_set_id", annotation_spec_set_id)
         pulumi.set(__self__, "project", project)
         if annotation_specs is not None:
             pulumi.set(__self__, "annotation_specs", annotation_specs)
@@ -42,15 +40,6 @@ class AnnotationSpecSetArgs:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="annotationSpecSetId")
-    def annotation_spec_set_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "annotation_spec_set_id")
-
-    @annotation_spec_set_id.setter
-    def annotation_spec_set_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "annotation_spec_set_id", value)
 
     @property
     @pulumi.getter
@@ -127,7 +116,6 @@ class AnnotationSpecSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_spec_set_id: Optional[pulumi.Input[str]] = None,
                  annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]]] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -170,7 +158,6 @@ class AnnotationSpecSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_spec_set_id: Optional[pulumi.Input[str]] = None,
                  annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]]] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -189,9 +176,6 @@ class AnnotationSpecSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AnnotationSpecSetArgs.__new__(AnnotationSpecSetArgs)
 
-            if annotation_spec_set_id is None and not opts.urn:
-                raise TypeError("Missing required property 'annotation_spec_set_id'")
-            __props__.__dict__["annotation_spec_set_id"] = annotation_spec_set_id
             __props__.__dict__["annotation_specs"] = annotation_specs
             __props__.__dict__["blocking_resources"] = blocking_resources
             __props__.__dict__["description"] = description

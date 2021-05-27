@@ -17,7 +17,6 @@ class OrganizationReplayArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 replay_id: pulumi.Input[str],
                  config: Optional[pulumi.Input['GoogleCloudPolicysimulatorV1ReplayConfigArgs']] = None):
         """
         The set of arguments for constructing a OrganizationReplay resource.
@@ -25,7 +24,6 @@ class OrganizationReplayArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "replay_id", replay_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
 
@@ -48,15 +46,6 @@ class OrganizationReplayArgs:
         pulumi.set(self, "organization_id", value)
 
     @property
-    @pulumi.getter(name="replayId")
-    def replay_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "replay_id")
-
-    @replay_id.setter
-    def replay_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "replay_id", value)
-
-    @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['GoogleCloudPolicysimulatorV1ReplayConfigArgs']]:
         """
@@ -77,7 +66,6 @@ class OrganizationReplay(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 replay_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates and starts a Replay using the given ReplayConfig.
@@ -113,7 +101,6 @@ class OrganizationReplay(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 replay_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -133,9 +120,6 @@ class OrganizationReplay(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if replay_id is None and not opts.urn:
-                raise TypeError("Missing required property 'replay_id'")
-            __props__.__dict__["replay_id"] = replay_id
             __props__.__dict__["name"] = None
             __props__.__dict__["results_summary"] = None
             __props__.__dict__["state"] = None

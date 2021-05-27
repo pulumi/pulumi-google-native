@@ -174,9 +174,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("groupByTimeUnit")]
         public Input<string>? GroupByTimeUnit { get; set; }
 
-        [Input("hostQueryId", required: true)]
-        public Input<string> HostQueryId { get; set; } = null!;
-
         /// <summary>
         /// Maximum number of rows that can be returned in the result.
         /// </summary>

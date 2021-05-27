@@ -114,9 +114,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("inspectConfig")]
         public Input<Inputs.GooglePrivacyDlpV2InspectConfigArgs>? InspectConfig { get; set; }
 
-        [Input("inspectTemplateId", required: true)]
-        public Input<string> InspectTemplateId { get; set; } = null!;
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

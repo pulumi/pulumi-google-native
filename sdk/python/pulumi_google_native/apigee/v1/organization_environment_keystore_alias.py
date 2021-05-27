@@ -14,7 +14,6 @@ __all__ = ['OrganizationEnvironmentKeystoreAliasArgs', 'OrganizationEnvironmentK
 @pulumi.input_type
 class OrganizationEnvironmentKeystoreAliasArgs:
     def __init__(__self__, *,
-                 alias_id: pulumi.Input[str],
                  environment_id: pulumi.Input[str],
                  format: pulumi.Input[str],
                  keystore_id: pulumi.Input[str],
@@ -32,7 +31,6 @@ class OrganizationEnvironmentKeystoreAliasArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        pulumi.set(__self__, "alias_id", alias_id)
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "keystore_id", keystore_id)
@@ -51,15 +49,6 @@ class OrganizationEnvironmentKeystoreAliasArgs:
             pulumi.set(__self__, "ignore_newline_validation", ignore_newline_validation)
         if password is not None:
             pulumi.set(__self__, "password", password)
-
-    @property
-    @pulumi.getter(name="aliasId")
-    def alias_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "alias_id")
-
-    @alias_id.setter
-    def alias_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "alias_id", value)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -176,7 +165,6 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
-                 alias_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
@@ -222,7 +210,6 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
-                 alias_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
@@ -246,9 +233,6 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
             __props__ = OrganizationEnvironmentKeystoreAliasArgs.__new__(OrganizationEnvironmentKeystoreAliasArgs)
 
             __props__.__dict__["alias"] = alias
-            if alias_id is None and not opts.urn:
-                raise TypeError("Missing required property 'alias_id'")
-            __props__.__dict__["alias_id"] = alias_id
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             if environment_id is None and not opts.urn:

@@ -109,9 +109,6 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.entity === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entity'");
-            }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["email"] = args ? args.email : undefined;
@@ -178,7 +175,7 @@ export interface DefaultObjectAccessControlArgs {
      * - The group example@googlegroups.com would be group-example@googlegroups.com. 
      * - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
      */
-    readonly entity: pulumi.Input<string>;
+    readonly entity?: pulumi.Input<string>;
     /**
      * The ID for the entity, if any.
      */

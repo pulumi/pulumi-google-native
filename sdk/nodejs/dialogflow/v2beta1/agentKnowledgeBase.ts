@@ -58,14 +58,10 @@ export class AgentKnowledgeBase extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.knowledgeBaseId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'knowledgeBaseId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["knowledgeBaseId"] = args ? args.knowledgeBaseId : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -89,7 +85,6 @@ export interface AgentKnowledgeBaseArgs {
      * Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly knowledgeBaseId: pulumi.Input<string>;
     /**
      * Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
      */

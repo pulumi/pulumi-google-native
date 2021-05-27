@@ -166,8 +166,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <summary>
         /// The static IP address represented by this resource.
         /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
+        [Input("address")]
+        public Input<string>? Address { get; set; }
 
         /// <summary>
         /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.

@@ -50,9 +50,6 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -146,7 +143,6 @@ type domainArgs struct {
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime *string `pulumi:"createTime"`
-	DomainId   string  `pulumi:"domainId"`
 	DomainName *string `pulumi:"domainName"`
 	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
@@ -179,7 +175,6 @@ type DomainArgs struct {
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime pulumi.StringPtrInput
-	DomainId   pulumi.StringInput
 	DomainName pulumi.StringPtrInput
 	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn pulumi.StringPtrInput

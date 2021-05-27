@@ -16,7 +16,6 @@ __all__ = ['UrlMapArgs', 'UrlMap']
 class UrlMapArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 url_map: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  default_route_action: Optional[pulumi.Input['HttpRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
@@ -65,7 +64,6 @@ class UrlMapArgs:
                Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "url_map", url_map)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if default_route_action is not None:
@@ -107,15 +105,6 @@ class UrlMapArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="urlMap")
-    def url_map(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "url_map")
-
-    @url_map.setter
-    def url_map(self, value: pulumi.Input[str]):
-        pulumi.set(self, "url_map", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -342,7 +331,6 @@ class UrlMap(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
-                 url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a UrlMap resource in the specified project using the data included in the request.
@@ -419,7 +407,6 @@ class UrlMap(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
-                 url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -451,9 +438,6 @@ class UrlMap(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["tests"] = tests
-            if url_map is None and not opts.urn:
-                raise TypeError("Missing required property 'url_map'")
-            __props__.__dict__["url_map"] = url_map
         super(UrlMap, __self__).__init__(
             'google-native:compute/v1:UrlMap',
             resource_name,

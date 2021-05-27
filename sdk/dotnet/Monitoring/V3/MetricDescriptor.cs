@@ -162,9 +162,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("metadata")]
         public Input<Inputs.MetricDescriptorMetadataArgs>? Metadata { get; set; }
 
-        [Input("metricDescriptorId", required: true)]
-        public Input<string> MetricDescriptorId { get; set; } = null!;
-
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
         /// </summary>

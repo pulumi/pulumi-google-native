@@ -99,14 +99,10 @@ export class Company extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.companyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'companyId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["careerSiteUri"] = args ? args.careerSiteUri : undefined;
-            inputs["companyId"] = args ? args.companyId : undefined;
             inputs["derivedInfo"] = args ? args.derivedInfo : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["eeoText"] = args ? args.eeoText : undefined;
@@ -150,7 +146,6 @@ export interface CompanyArgs {
      * Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
      */
     readonly careerSiteUri?: pulumi.Input<string>;
-    readonly companyId: pulumi.Input<string>;
     /**
      * Derived details about the company.
      */

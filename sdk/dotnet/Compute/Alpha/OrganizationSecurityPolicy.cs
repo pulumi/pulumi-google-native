@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public OrganizationSecurityPolicy(string name, OrganizationSecurityPolicyArgs args, CustomResourceOptions? options = null)
+        public OrganizationSecurityPolicy(string name, OrganizationSecurityPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:OrganizationSecurityPolicy", name, args ?? new OrganizationSecurityPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -271,9 +271,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _rules ?? (_rules = new InputList<Inputs.SecurityPolicyRuleArgs>());
             set => _rules = value;
         }
-
-        [Input("securityPolicy", required: true)]
-        public Input<string> SecurityPolicy { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.

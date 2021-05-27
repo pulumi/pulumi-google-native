@@ -17,7 +17,6 @@ class DatabaseCollectionGroupIndexArgs:
     def __init__(__self__, *,
                  collection_group_id: pulumi.Input[str],
                  database_id: pulumi.Input[str],
-                 index_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,7 +31,6 @@ class DatabaseCollectionGroupIndexArgs:
         """
         pulumi.set(__self__, "collection_group_id", collection_group_id)
         pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "index_id", index_id)
         pulumi.set(__self__, "project", project)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
@@ -60,15 +58,6 @@ class DatabaseCollectionGroupIndexArgs:
     @database_id.setter
     def database_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "database_id", value)
-
-    @property
-    @pulumi.getter(name="indexId")
-    def index_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "index_id")
-
-    @index_id.setter
-    def index_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "index_id", value)
 
     @property
     @pulumi.getter
@@ -136,7 +125,6 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
                  collection_group_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
-                 index_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
@@ -179,7 +167,6 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
                  collection_group_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
-                 index_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
@@ -203,9 +190,6 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
                 raise TypeError("Missing required property 'database_id'")
             __props__.__dict__["database_id"] = database_id
             __props__.__dict__["fields"] = fields
-            if index_id is None and not opts.urn:
-                raise TypeError("Missing required property 'index_id'")
-            __props__.__dict__["index_id"] = index_id
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

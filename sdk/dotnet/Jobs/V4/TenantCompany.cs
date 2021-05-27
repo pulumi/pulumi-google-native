@@ -144,9 +144,6 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("careerSiteUri")]
         public Input<string>? CareerSiteUri { get; set; }
 
-        [Input("companyId", required: true)]
-        public Input<string> CompanyId { get; set; } = null!;
-
         /// <summary>
         /// Required. The display name of the company, for example, "Google LLC".
         /// </summary>

@@ -114,9 +114,6 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("createStatement")]
         public Input<string>? CreateStatement { get; set; }
 
-        [Input("databaseId", required: true)]
-        public Input<string> DatabaseId { get; set; } = null!;
-
         /// <summary>
         /// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         /// </summary>

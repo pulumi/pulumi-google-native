@@ -282,9 +282,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("interconnect", required: true)]
-        public Input<string> Interconnect { get; set; } = null!;
-
         [Input("interconnectAttachments")]
         private InputList<string>? _interconnectAttachments;
 

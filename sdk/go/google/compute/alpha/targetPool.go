@@ -65,9 +65,6 @@ func NewTargetPool(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.TargetPool == nil {
-		return nil, errors.New("invalid value for required argument 'TargetPool'")
-	}
 	var resource TargetPool
 	err := ctx.RegisterResource("google-native:compute/alpha:TargetPool", name, args, &resource, opts...)
 	if err != nil {
@@ -209,7 +206,6 @@ type targetPoolArgs struct {
 	// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
 	// CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	TargetPool      string  `pulumi:"targetPool"`
 }
 
 // The set of arguments for constructing a TargetPool resource.
@@ -253,7 +249,6 @@ type TargetPoolArgs struct {
 	// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
 	// CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
 	SessionAffinity pulumi.StringPtrInput
-	TargetPool      pulumi.StringInput
 }
 
 func (TargetPoolArgs) ElementType() reflect.Type {

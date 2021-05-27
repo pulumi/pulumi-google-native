@@ -70,16 +70,12 @@ export class OrganizationNotificationConfig extends pulumi.CustomResource {
             if ((!args || args.configId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.notificationConfigId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notificationConfigId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["configId"] = args ? args.configId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["notificationConfigId"] = args ? args.notificationConfigId : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
             inputs["streamingConfig"] = args ? args.streamingConfig : undefined;
@@ -111,7 +107,6 @@ export interface OrganizationNotificationConfigArgs {
      * The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
      */
     readonly name?: pulumi.Input<string>;
-    readonly notificationConfigId: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".

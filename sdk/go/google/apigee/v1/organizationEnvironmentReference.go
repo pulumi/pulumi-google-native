@@ -38,9 +38,6 @@ func NewOrganizationEnvironmentReference(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.ReferenceId == nil {
-		return nil, errors.New("invalid value for required argument 'ReferenceId'")
-	}
 	var resource OrganizationEnvironmentReference
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentReference", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +92,6 @@ type organizationEnvironmentReferenceArgs struct {
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
-	ReferenceId    string  `pulumi:"referenceId"`
 	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers *string `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -110,7 +106,6 @@ type OrganizationEnvironmentReferenceArgs struct {
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
-	ReferenceId    pulumi.StringInput
 	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers pulumi.StringPtrInput
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.

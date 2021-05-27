@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +42,9 @@ type TransferJob struct {
 func NewTransferJob(ctx *pulumi.Context,
 	name string, args *TransferJobArgs, opts ...pulumi.ResourceOption) (*TransferJob, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TransferJobArgs{}
 	}
 
-	if args.TransferJobId == nil {
-		return nil, errors.New("invalid value for required argument 'TransferJobId'")
-	}
 	var resource TransferJob
 	err := ctx.RegisterResource("google-native:storagetransfer/v1:TransferJob", name, args, &resource, opts...)
 	if err != nil {
@@ -138,8 +134,7 @@ type transferJobArgs struct {
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule *Schedule `pulumi:"schedule"`
 	// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-	Status        *string `pulumi:"status"`
-	TransferJobId string  `pulumi:"transferJobId"`
+	Status *string `pulumi:"status"`
 	// Transfer specification.
 	TransferSpec *TransferSpec `pulumi:"transferSpec"`
 }
@@ -159,8 +154,7 @@ type TransferJobArgs struct {
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule SchedulePtrInput
 	// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-	Status        pulumi.StringPtrInput
-	TransferJobId pulumi.StringInput
+	Status pulumi.StringPtrInput
 	// Transfer specification.
 	TransferSpec TransferSpecPtrInput
 }

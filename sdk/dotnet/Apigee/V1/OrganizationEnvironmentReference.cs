@@ -102,9 +102,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("referenceId", required: true)]
-        public Input<string> ReferenceId { get; set; } = null!;
-
         /// <summary>
         /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         /// </summary>

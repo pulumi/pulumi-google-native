@@ -198,9 +198,6 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("registrationId", required: true)]
-        public Input<string> RegistrationId { get; set; } = null!;
-
         /// <summary>
         /// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         /// </summary>

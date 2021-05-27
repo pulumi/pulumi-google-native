@@ -70,14 +70,8 @@ export class ManagedZoneRrset extends pulumi.CustomResource {
             if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.type === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'type'");
             }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -113,7 +107,7 @@ export interface ManagedZoneRrsetArgs {
     /**
      * For example, www.example.com.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
@@ -130,5 +124,5 @@ export interface ManagedZoneRrsetArgs {
     /**
      * The identifier of a supported record type. See the list of Supported DNS record types.
      */
-    readonly type: pulumi.Input<string>;
+    readonly type?: pulumi.Input<string>;
 }

@@ -78,9 +78,6 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
             if ((!args || args.catalogId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.catalogItemId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'catalogItemId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -88,7 +85,6 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["catalogId"] = args ? args.catalogId : undefined;
-            inputs["catalogItemId"] = args ? args.catalogItemId : undefined;
             inputs["categoryHierarchies"] = args ? args.categoryHierarchies : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -120,7 +116,6 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
  */
 export interface CatalogCatalogItemArgs {
     readonly catalogId: pulumi.Input<string>;
-    readonly catalogItemId: pulumi.Input<string>;
     /**
      * Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
      */

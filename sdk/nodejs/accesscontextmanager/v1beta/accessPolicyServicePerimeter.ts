@@ -70,14 +70,10 @@ export class AccessPolicyServicePerimeter extends pulumi.CustomResource {
             if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyId'");
             }
-            if ((!args || args.servicePerimeterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicePerimeterId'");
-            }
             inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["perimeterType"] = args ? args.perimeterType : undefined;
-            inputs["servicePerimeterId"] = args ? args.servicePerimeterId : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
@@ -111,7 +107,6 @@ export interface AccessPolicyServicePerimeterArgs {
      * Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
      */
     readonly perimeterType?: pulumi.Input<string>;
-    readonly servicePerimeterId: pulumi.Input<string>;
     /**
      * Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
      */

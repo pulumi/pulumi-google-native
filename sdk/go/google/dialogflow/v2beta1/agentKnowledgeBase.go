@@ -30,9 +30,6 @@ func NewAgentKnowledgeBase(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.KnowledgeBaseId == nil {
-		return nil, errors.New("invalid value for required argument 'KnowledgeBaseId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -81,8 +78,7 @@ func (AgentKnowledgeBaseState) ElementType() reflect.Type {
 
 type agentKnowledgeBaseArgs struct {
 	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName     *string `pulumi:"displayName"`
-	KnowledgeBaseId string  `pulumi:"knowledgeBaseId"`
+	DisplayName *string `pulumi:"displayName"`
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode *string `pulumi:"languageCode"`
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
@@ -93,8 +89,7 @@ type agentKnowledgeBaseArgs struct {
 // The set of arguments for constructing a AgentKnowledgeBase resource.
 type AgentKnowledgeBaseArgs struct {
 	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName     pulumi.StringPtrInput
-	KnowledgeBaseId pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode pulumi.StringPtrInput
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.

@@ -71,13 +71,9 @@ export class SiteDomain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainId'");
-            }
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            inputs["domainId"] = args ? args.domainId : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["domainRedirect"] = args ? args.domainRedirect : undefined;
             inputs["provisioning"] = args ? args.provisioning : undefined;
@@ -104,7 +100,6 @@ export class SiteDomain extends pulumi.CustomResource {
  * The set of arguments for constructing a SiteDomain resource.
  */
 export interface SiteDomainArgs {
-    readonly domainId: pulumi.Input<string>;
     /**
      * Required. The domain name of the association.
      */

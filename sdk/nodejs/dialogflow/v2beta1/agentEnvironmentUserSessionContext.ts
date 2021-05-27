@@ -58,9 +58,6 @@ export class AgentEnvironmentUserSessionContext extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contextId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'contextId'");
-            }
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
@@ -76,7 +73,6 @@ export class AgentEnvironmentUserSessionContext extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["contextId"] = args ? args.contextId : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["lifespanCount"] = args ? args.lifespanCount : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -101,7 +97,6 @@ export class AgentEnvironmentUserSessionContext extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentEnvironmentUserSessionContext resource.
  */
 export interface AgentEnvironmentUserSessionContextArgs {
-    readonly contextId: pulumi.Input<string>;
     readonly environmentId: pulumi.Input<string>;
     /**
      * Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.

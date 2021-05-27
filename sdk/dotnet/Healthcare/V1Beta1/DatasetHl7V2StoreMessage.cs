@@ -147,9 +147,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("messageId", required: true)]
-        public Input<string> MessageId { get; set; } = null!;
-
         /// <summary>
         /// The message type for this message. MSH-9.1.
         /// </summary>

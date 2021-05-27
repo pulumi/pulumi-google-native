@@ -15,7 +15,6 @@ __all__ = ['FirewallArgs', 'Firewall']
 @pulumi.input_type
 class FirewallArgs:
     def __init__(__self__, *,
-                 firewall: pulumi.Input[str],
                  project: pulumi.Input[str],
                  allowed: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowedItemArgs']]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -66,7 +65,6 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating sets of instances located in the network that may make network connections as specified in allowed[]. targetServiceAccounts cannot be used at the same time as targetTags or sourceTags. If neither targetServiceAccounts nor targetTags are specified, the firewall rule applies to all instances on the specified network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_tags: A list of tags that controls which instances the firewall rule applies to. If targetTags are specified, then the firewall rule applies only to instances in the VPC network that have one of those tags. If no targetTags are specified, the firewall rule applies to all instances on the specified network.
         """
-        pulumi.set(__self__, "firewall", firewall)
         pulumi.set(__self__, "project", project)
         if allowed is not None:
             pulumi.set(__self__, "allowed", allowed)
@@ -110,15 +108,6 @@ class FirewallArgs:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
         if target_tags is not None:
             pulumi.set(__self__, "target_tags", target_tags)
-
-    @property
-    @pulumi.getter
-    def firewall(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "firewall")
-
-    @firewall.setter
-    def firewall(self, value: pulumi.Input[str]):
-        pulumi.set(self, "firewall", value)
 
     @property
     @pulumi.getter
@@ -397,7 +386,6 @@ class Firewall(pulumi.CustomResource):
                  direction: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 firewall: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
@@ -476,7 +464,6 @@ class Firewall(pulumi.CustomResource):
                  direction: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 firewall: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
@@ -511,9 +498,6 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["direction"] = direction
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["enable_logging"] = enable_logging
-            if firewall is None and not opts.urn:
-                raise TypeError("Missing required property 'firewall'")
-            __props__.__dict__["firewall"] = firewall
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["log_config"] = log_config

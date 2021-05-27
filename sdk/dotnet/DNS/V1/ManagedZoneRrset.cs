@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// <summary>
         /// For example, www.example.com.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// <summary>
         /// The identifier of a supported record type. See the list of Supported DNS record types.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public ManagedZoneRrsetArgs()
         {

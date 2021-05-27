@@ -138,9 +138,6 @@ namespace Pulumi.GoogleNative.Ml.V1
             set => _labels = value;
         }
 
-        [Input("modelId", required: true)]
-        public Input<string> ModelId { get; set; } = null!;
-
         /// <summary>
         /// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
         /// </summary>

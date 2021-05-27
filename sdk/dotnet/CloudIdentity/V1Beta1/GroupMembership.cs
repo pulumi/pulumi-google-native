@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Input("memberKey")]
         public Input<Inputs.EntityKeyArgs>? MemberKey { get; set; }
 
-        [Input("membershipId", required: true)]
-        public Input<string> MembershipId { get; set; } = null!;
-
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         /// </summary>

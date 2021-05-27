@@ -336,9 +336,6 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Input("jobEndTime")]
         public Input<string>? JobEndTime { get; set; }
 
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
-
         /// <summary>
         /// The experience level associated with the job, such as "Entry Level".
         /// </summary>

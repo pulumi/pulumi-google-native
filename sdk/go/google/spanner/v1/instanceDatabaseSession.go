@@ -41,9 +41,6 @@ func NewInstanceDatabaseSession(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SessionId == nil {
-		return nil, errors.New("invalid value for required argument 'SessionId'")
-	}
 	var resource InstanceDatabaseSession
 	err := ctx.RegisterResource("google-native:spanner/v1:InstanceDatabaseSession", name, args, &resource, opts...)
 	if err != nil {
@@ -95,9 +92,8 @@ type instanceDatabaseSessionArgs struct {
 	DatabaseId string `pulumi:"databaseId"`
 	InstanceId string `pulumi:"instanceId"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels    map[string]string `pulumi:"labels"`
-	Project   string            `pulumi:"project"`
-	SessionId string            `pulumi:"sessionId"`
+	Labels  map[string]string `pulumi:"labels"`
+	Project string            `pulumi:"project"`
 }
 
 // The set of arguments for constructing a InstanceDatabaseSession resource.
@@ -105,9 +101,8 @@ type InstanceDatabaseSessionArgs struct {
 	DatabaseId pulumi.StringInput
 	InstanceId pulumi.StringInput
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels    pulumi.StringMapInput
-	Project   pulumi.StringInput
-	SessionId pulumi.StringInput
+	Labels  pulumi.StringMapInput
+	Project pulumi.StringInput
 }
 
 func (InstanceDatabaseSessionArgs) ElementType() reflect.Type {

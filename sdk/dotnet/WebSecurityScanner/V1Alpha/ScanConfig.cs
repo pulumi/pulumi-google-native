@@ -165,9 +165,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("scanConfigId", required: true)]
-        public Input<string> ScanConfigId { get; set; } = null!;
-
         /// <summary>
         /// The schedule of the ScanConfig.
         /// </summary>

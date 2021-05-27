@@ -69,7 +69,7 @@ export class SslCert extends pulumi.CustomResource {
     /**
      * Sha1 Fingerprint.
      */
-    public readonly sha1Fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly sha1Fingerprint!: pulumi.Output<string>;
 
     /**
      * Create a SslCert resource with the given unique name, arguments, and options.
@@ -88,19 +88,16 @@ export class SslCert extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sha1Fingerprint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sha1Fingerprint'");
-            }
             inputs["commonName"] = args ? args.commonName : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["sha1Fingerprint"] = args ? args.sha1Fingerprint : undefined;
             inputs["cert"] = undefined /*out*/;
             inputs["certSerialNumber"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["expirationTime"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["sha1Fingerprint"] = undefined /*out*/;
         } else {
             inputs["cert"] = undefined /*out*/;
             inputs["certSerialNumber"] = undefined /*out*/;
@@ -129,5 +126,4 @@ export interface SslCertArgs {
     readonly commonName?: pulumi.Input<string>;
     readonly instance: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly sha1Fingerprint: pulumi.Input<string>;
 }

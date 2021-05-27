@@ -71,9 +71,6 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.annotationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotationId'");
-            }
             if ((!args || args.annotationStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'annotationStoreId'");
             }
@@ -86,7 +83,6 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["annotationId"] = args ? args.annotationId : undefined;
             inputs["annotationSource"] = args ? args.annotationSource : undefined;
             inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
             inputs["customData"] = args ? args.customData : undefined;
@@ -116,7 +112,6 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetAnnotationStoreAnnotation resource.
  */
 export interface DatasetAnnotationStoreAnnotationArgs {
-    readonly annotationId: pulumi.Input<string>;
     /**
      * Details of the source.
      */

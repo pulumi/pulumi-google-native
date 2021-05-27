@@ -11,7 +11,6 @@ from .organization_apiproduct_rateplan import *
 from .organization_datacollector import *
 from .organization_developer import *
 from .organization_developer_app import *
-from .organization_developer_app_key import *
 from .organization_developer_subscription import *
 from .organization_envgroup import *
 from .organization_envgroup_attachment import *
@@ -33,7 +32,6 @@ from .organization_instance_canaryevaluation import *
 from .organization_instance_nat_address import *
 from .organization_report import *
 from .organization_sharedflow import *
-from .organization_site_apicategory import *
 from ._inputs import *
 from . import outputs
 
@@ -65,8 +63,6 @@ def _register_module():
                 return OrganizationDeveloper(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationDeveloperApp":
                 return OrganizationDeveloperApp(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationDeveloperAppKey":
-                return OrganizationDeveloperAppKey(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationDeveloperSubscription":
                 return OrganizationDeveloperSubscription(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationEnvgroup":
@@ -109,8 +105,6 @@ def _register_module():
                 return OrganizationReport(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationSharedflow":
                 return OrganizationSharedflow(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationSiteApicategory":
-                return OrganizationSiteApicategory(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

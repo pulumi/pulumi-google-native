@@ -14,7 +14,6 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
-                 domain_id: pulumi.Input[str],
                  domain_name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
@@ -32,7 +31,6 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         """
-        pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "project", project)
         if admin is not None:
@@ -47,15 +45,6 @@ class DomainArgs:
             pulumi.set(__self__, "locations", locations)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
-
-    @property
-    @pulumi.getter(name="domainId")
-    def domain_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domain_id")
-
-    @domain_id.setter
-    def domain_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domain_id", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -156,7 +145,6 @@ class Domain(pulumi.CustomResource):
                  admin: Optional[pulumi.Input[str]] = None,
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -202,7 +190,6 @@ class Domain(pulumi.CustomResource):
                  admin: Optional[pulumi.Input[str]] = None,
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -223,9 +210,6 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["admin"] = admin
             __props__.__dict__["audit_logs_enabled"] = audit_logs_enabled
             __props__.__dict__["authorized_networks"] = authorized_networks
-            if domain_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domain_id'")
-            __props__.__dict__["domain_id"] = domain_id
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name

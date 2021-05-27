@@ -54,9 +54,6 @@ func NewAgentEnvironmentExperiment(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.ExperimentId == nil {
-		return nil, errors.New("invalid value for required argument 'ExperimentId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -155,7 +152,6 @@ type agentEnvironmentExperimentArgs struct {
 	// End time of this experiment.
 	EndTime       *string `pulumi:"endTime"`
 	EnvironmentId string  `pulumi:"environmentId"`
-	ExperimentId  string  `pulumi:"experimentId"`
 	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength *string `pulumi:"experimentLength"`
 	// Last update time of this experiment.
@@ -188,7 +184,6 @@ type AgentEnvironmentExperimentArgs struct {
 	// End time of this experiment.
 	EndTime       pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
-	ExperimentId  pulumi.StringInput
 	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength pulumi.StringPtrInput
 	// Last update time of this experiment.

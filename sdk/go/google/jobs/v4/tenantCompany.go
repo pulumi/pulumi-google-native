@@ -50,9 +50,6 @@ func NewTenantCompany(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CompanyId == nil {
-		return nil, errors.New("invalid value for required argument 'CompanyId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -145,7 +142,6 @@ func (TenantCompanyState) ElementType() reflect.Type {
 type tenantCompanyArgs struct {
 	// The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri *string `pulumi:"careerSiteUri"`
-	CompanyId     string  `pulumi:"companyId"`
 	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName *string `pulumi:"displayName"`
 	// Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
@@ -174,7 +170,6 @@ type tenantCompanyArgs struct {
 type TenantCompanyArgs struct {
 	// The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri pulumi.StringPtrInput
-	CompanyId     pulumi.StringInput
 	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName pulumi.StringPtrInput
 	// Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.

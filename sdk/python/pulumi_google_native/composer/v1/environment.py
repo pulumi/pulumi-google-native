@@ -15,7 +15,6 @@ __all__ = ['EnvironmentArgs', 'Environment']
 @pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
-                 environment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
@@ -35,7 +34,6 @@ class EnvironmentArgs:
         :param pulumi.Input[str] update_time: The time at which this environment was last modified.
         :param pulumi.Input[str] uuid: The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
         """
-        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if config is not None:
@@ -52,15 +50,6 @@ class EnvironmentArgs:
             pulumi.set(__self__, "update_time", update_time)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter(name="environmentId")
-    def environment_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environment_id")
-
-    @environment_id.setter
-    def environment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter
@@ -172,7 +161,6 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 environment_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -220,7 +208,6 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 environment_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -242,9 +229,6 @@ class Environment(pulumi.CustomResource):
 
             __props__.__dict__["config"] = config
             __props__.__dict__["create_time"] = create_time
-            if environment_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environment_id'")
-            __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

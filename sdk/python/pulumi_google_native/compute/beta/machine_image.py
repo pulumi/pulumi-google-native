@@ -15,7 +15,6 @@ __all__ = ['MachineImageArgs', 'MachineImage']
 @pulumi.input_type
 class MachineImageArgs:
     def __init__(__self__, *,
-                 machine_image: pulumi.Input[str],
                  project: pulumi.Input[str],
                  source_instance: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -59,7 +58,6 @@ class MachineImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         :param pulumi.Input[str] total_storage_bytes: [Output Only] Total size of the storage used by the machine image.
         """
-        pulumi.set(__self__, "machine_image", machine_image)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_instance", source_instance)
         if creation_timestamp is not None:
@@ -92,15 +90,6 @@ class MachineImageArgs:
             pulumi.set(__self__, "storage_locations", storage_locations)
         if total_storage_bytes is not None:
             pulumi.set(__self__, "total_storage_bytes", total_storage_bytes)
-
-    @property
-    @pulumi.getter(name="machineImage")
-    def machine_image(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "machine_image")
-
-    @machine_image.setter
-    def machine_image(self, value: pulumi.Input[str]):
-        pulumi.set(self, "machine_image", value)
 
     @property
     @pulumi.getter
@@ -319,7 +308,6 @@ class MachineImage(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 machine_image: Optional[pulumi.Input[str]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -391,7 +379,6 @@ class MachineImage(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 machine_image: Optional[pulumi.Input[str]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -421,9 +408,6 @@ class MachineImage(pulumi.CustomResource):
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
-            if machine_image is None and not opts.urn:
-                raise TypeError("Missing required property 'machine_image'")
-            __props__.__dict__["machine_image"] = machine_image
             __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:

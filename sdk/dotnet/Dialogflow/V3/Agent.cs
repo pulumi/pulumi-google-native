@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
     public sealed class AgentArgs : Pulumi.ResourceArgs
     {
-        [Input("agentId", required: true)]
-        public Input<string> AgentId { get; set; } = null!;
-
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>

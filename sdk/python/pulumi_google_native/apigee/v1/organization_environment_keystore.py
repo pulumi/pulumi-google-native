@@ -14,7 +14,6 @@ __all__ = ['OrganizationEnvironmentKeystoreArgs', 'OrganizationEnvironmentKeysto
 class OrganizationEnvironmentKeystoreArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
-                 keystore_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -22,7 +21,6 @@ class OrganizationEnvironmentKeystoreArgs:
         :param pulumi.Input[str] name: Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         """
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "keystore_id", keystore_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -35,15 +33,6 @@ class OrganizationEnvironmentKeystoreArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
-
-    @property
-    @pulumi.getter(name="keystoreId")
-    def keystore_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "keystore_id")
-
-    @keystore_id.setter
-    def keystore_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "keystore_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -73,7 +62,6 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 keystore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -109,7 +97,6 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 keystore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -127,9 +114,6 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if keystore_id is None and not opts.urn:
-                raise TypeError("Missing required property 'keystore_id'")
-            __props__.__dict__["keystore_id"] = keystore_id
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

@@ -92,9 +92,6 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.targetHttpProxy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetHttpProxy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
@@ -106,7 +103,6 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["targetHttpProxy"] = args ? args.targetHttpProxy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -172,7 +168,6 @@ export interface RegionTargetHttpProxyArgs {
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly targetHttpProxy: pulumi.Input<string>;
     /**
      * URL to the UrlMap resource that defines the mapping from URL to the BackendService.
      */

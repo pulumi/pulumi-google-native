@@ -34,9 +34,6 @@ func NewAccessPolicyAccessLevel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessLevelId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessLevelId'")
-	}
 	if args.AccessPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
@@ -92,7 +89,6 @@ func (AccessPolicyAccessLevelState) ElementType() reflect.Type {
 }
 
 type accessPolicyAccessLevelArgs struct {
-	AccessLevelId  string `pulumi:"accessLevelId"`
 	AccessPolicyId string `pulumi:"accessPolicyId"`
 	// A `BasicLevel` composed of `Conditions`.
 	Basic *BasicLevel `pulumi:"basic"`
@@ -108,7 +104,6 @@ type accessPolicyAccessLevelArgs struct {
 
 // The set of arguments for constructing a AccessPolicyAccessLevel resource.
 type AccessPolicyAccessLevelArgs struct {
-	AccessLevelId  pulumi.StringInput
 	AccessPolicyId pulumi.StringInput
 	// A `BasicLevel` composed of `Conditions`.
 	Basic BasicLevelPtrInput

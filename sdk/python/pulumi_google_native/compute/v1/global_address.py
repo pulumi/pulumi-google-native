@@ -13,8 +13,8 @@ __all__ = ['GlobalAddressArgs', 'GlobalAddress']
 @pulumi.input_type
 class GlobalAddressArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -59,8 +59,9 @@ class GlobalAddressArgs:
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: [Output Only] The URLs of the resources that are using this address.
         """
-        pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "project", project)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
         if creation_timestamp is not None:
@@ -98,24 +99,24 @@ class GlobalAddressArgs:
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input[str]:
-        """
-        The static IP address represented by this resource.
-        """
-        return pulumi.get(self, "address")
-
-    @address.setter
-    def address(self, value: pulumi.Input[str]):
-        pulumi.set(self, "address", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The static IP address represented by this resource.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter(name="addressType")
@@ -436,8 +437,6 @@ class GlobalAddress(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GlobalAddressArgs.__new__(GlobalAddressArgs)
 
-            if address is None and not opts.urn:
-                raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["creation_timestamp"] = creation_timestamp

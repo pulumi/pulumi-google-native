@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,12 +36,9 @@ type TagValue struct {
 func NewTagValue(ctx *pulumi.Context,
 	name string, args *TagValueArgs, opts ...pulumi.ResourceOption) (*TagValue, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TagValueArgs{}
 	}
 
-	if args.TagValueId == nil {
-		return nil, errors.New("invalid value for required argument 'TagValueId'")
-	}
 	var resource TagValue
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:TagValue", name, args, &resource, opts...)
 	if err != nil {
@@ -117,7 +113,6 @@ type tagValueArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName    *string `pulumi:"shortName"`
-	TagValueId   string  `pulumi:"tagValueId"`
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
@@ -133,7 +128,6 @@ type TagValueArgs struct {
 	Parent pulumi.StringPtrInput
 	// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName    pulumi.StringPtrInput
-	TagValueId   pulumi.StringInput
 	ValidateOnly pulumi.StringPtrInput
 }
 

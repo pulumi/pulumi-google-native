@@ -16,7 +16,6 @@ __all__ = ['RulesetArgs', 'Ruleset']
 class RulesetArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 ruleset_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +28,6 @@ class RulesetArgs:
         :param pulumi.Input['SourceArgs'] source: `Source` for the `Ruleset`.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "ruleset_id", ruleset_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if metadata is not None:
@@ -47,15 +45,6 @@ class RulesetArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="rulesetId")
-    def ruleset_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "ruleset_id")
-
-    @ruleset_id.setter
-    def ruleset_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ruleset_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -115,7 +104,6 @@ class Ruleset(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ruleset_id: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
                  __props__=None):
         """
@@ -156,7 +144,6 @@ class Ruleset(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ruleset_id: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -176,9 +163,6 @@ class Ruleset(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if ruleset_id is None and not opts.urn:
-                raise TypeError("Missing required property 'ruleset_id'")
-            __props__.__dict__["ruleset_id"] = ruleset_id
             __props__.__dict__["source"] = source
         super(Ruleset, __self__).__init__(
             'google-native:firebaserules/v1:Ruleset',

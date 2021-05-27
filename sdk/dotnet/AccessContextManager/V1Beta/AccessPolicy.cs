@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessPolicy(string name, AccessPolicyArgs args, CustomResourceOptions? options = null)
+        public AccessPolicy(string name, AccessPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:accesscontextmanager/v1beta:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -78,9 +78,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("accessPolicyId", required: true)]
-        public Input<string> AccessPolicyId { get; set; } = null!;
-
         /// <summary>
         /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
         /// </summary>

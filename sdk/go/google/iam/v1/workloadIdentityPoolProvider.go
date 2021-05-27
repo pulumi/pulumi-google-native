@@ -48,9 +48,6 @@ func NewWorkloadIdentityPoolProvider(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ProviderId == nil {
-		return nil, errors.New("invalid value for required argument 'ProviderId'")
-	}
 	if args.WorkloadIdentityPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
@@ -141,7 +138,6 @@ type workloadIdentityPoolProviderArgs struct {
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           *Oidc  `pulumi:"oidc"`
 	Project                        string `pulumi:"project"`
-	ProviderId                     string `pulumi:"providerId"`
 	WorkloadIdentityPoolId         string `pulumi:"workloadIdentityPoolId"`
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
 }
@@ -164,7 +160,6 @@ type WorkloadIdentityPoolProviderArgs struct {
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           OidcPtrInput
 	Project                        pulumi.StringInput
-	ProviderId                     pulumi.StringInput
 	WorkloadIdentityPoolId         pulumi.StringInput
 	WorkloadIdentityPoolProviderId pulumi.StringInput
 }

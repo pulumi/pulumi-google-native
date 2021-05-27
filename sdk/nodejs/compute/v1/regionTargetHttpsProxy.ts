@@ -125,9 +125,6 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.targetHttpsProxy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetHttpsProxy'");
-            }
             inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -144,7 +141,6 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             inputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            inputs["targetHttpsProxy"] = args ? args.targetHttpsProxy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
             inputs["authorizationPolicy"] = undefined /*out*/;
@@ -245,7 +241,6 @@ export interface RegionTargetHttpsProxyArgs {
      * URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
      */
     readonly sslPolicy?: pulumi.Input<string>;
-    readonly targetHttpsProxy: pulumi.Input<string>;
     /**
      * A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
      * - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 

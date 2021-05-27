@@ -56,9 +56,6 @@ func NewRoutine(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RoutineId == nil {
-		return nil, errors.New("invalid value for required argument 'RoutineId'")
-	}
 	var resource Routine
 	err := ctx.RegisterResource("google-native:bigquery/v2:Routine", name, args, &resource, opts...)
 	if err != nil {
@@ -161,7 +158,6 @@ type routineArgs struct {
 	ReturnTableType *StandardSqlTableType `pulumi:"returnTableType"`
 	// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
 	ReturnType *StandardSqlDataType `pulumi:"returnType"`
-	RoutineId  string               `pulumi:"routineId"`
 	// Required. Reference describing the ID of this routine.
 	RoutineReference *RoutineReference `pulumi:"routineReference"`
 	// Required. The type of routine.
@@ -188,7 +184,6 @@ type RoutineArgs struct {
 	ReturnTableType StandardSqlTableTypePtrInput
 	// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
 	ReturnType StandardSqlDataTypePtrInput
-	RoutineId  pulumi.StringInput
 	// Required. Reference describing the ID of this routine.
 	RoutineReference RoutineReferencePtrInput
 	// Required. The type of routine.

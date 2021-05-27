@@ -180,9 +180,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("targetInstance", required: true)]
-        public Input<string> TargetInstance { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>

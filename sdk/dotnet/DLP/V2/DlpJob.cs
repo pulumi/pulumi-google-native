@@ -120,9 +120,6 @@ namespace Pulumi.GoogleNative.DLP.V2
 
     public sealed class DlpJobArgs : Pulumi.ResourceArgs
     {
-        [Input("dlpJobId", required: true)]
-        public Input<string> DlpJobId { get; set; } = null!;
-
         /// <summary>
         /// An inspection job scans a storage repository for InfoTypes.
         /// </summary>

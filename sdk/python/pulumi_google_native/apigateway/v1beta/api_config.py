@@ -17,7 +17,6 @@ class ApiConfigArgs:
     def __init__(__self__, *,
                  api_config_id: pulumi.Input[str],
                  api_id: pulumi.Input[str],
-                 config_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -39,7 +38,6 @@ class ApiConfigArgs:
         """
         pulumi.set(__self__, "api_config_id", api_config_id)
         pulumi.set(__self__, "api_id", api_id)
-        pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if display_name is not None:
@@ -74,15 +72,6 @@ class ApiConfigArgs:
     @api_id.setter
     def api_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "api_id", value)
-
-    @property
-    @pulumi.getter(name="configId")
-    def config_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "config_id")
-
-    @config_id.setter
-    def config_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter
@@ -194,7 +183,6 @@ class ApiConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
-                 config_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['ApigatewayGatewayConfigArgs']]] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
@@ -244,7 +232,6 @@ class ApiConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config_id: Optional[pulumi.Input[str]] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
-                 config_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['ApigatewayGatewayConfigArgs']]] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
@@ -272,9 +259,6 @@ class ApiConfig(pulumi.CustomResource):
             if api_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_id'")
             __props__.__dict__["api_id"] = api_id
-            if config_id is None and not opts.urn:
-                raise TypeError("Missing required property 'config_id'")
-            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["gateway_service_account"] = gateway_service_account

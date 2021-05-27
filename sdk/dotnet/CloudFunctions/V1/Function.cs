@@ -270,9 +270,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         [Input("eventTrigger")]
         public Input<Inputs.EventTriggerArgs>? EventTrigger { get; set; }
 
-        [Input("functionId", required: true)]
-        public Input<string> FunctionId { get; set; } = null!;
-
         /// <summary>
         /// An HTTPS endpoint type of source that can be triggered via URL.
         /// </summary>

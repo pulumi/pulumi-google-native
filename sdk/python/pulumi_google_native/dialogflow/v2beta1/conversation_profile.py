@@ -15,7 +15,6 @@ __all__ = ['ConversationProfileArgs', 'ConversationProfile']
 @pulumi.input_type
 class ConversationProfileArgs:
     def __init__(__self__, *,
-                 conversation_profile_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  automated_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs']] = None,
@@ -41,7 +40,6 @@ class ConversationProfileArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs'] notification_config: Configuration for publishing conversation lifecycle events.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs'] stt_config: Settings for speech transcription.
         """
-        pulumi.set(__self__, "conversation_profile_id", conversation_profile_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if automated_agent_config is not None:
@@ -64,15 +62,6 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "notification_config", notification_config)
         if stt_config is not None:
             pulumi.set(__self__, "stt_config", stt_config)
-
-    @property
-    @pulumi.getter(name="conversationProfileId")
-    def conversation_profile_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "conversation_profile_id")
-
-    @conversation_profile_id.setter
-    def conversation_profile_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "conversation_profile_id", value)
 
     @property
     @pulumi.getter
@@ -219,7 +208,6 @@ class ConversationProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_agent_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs']]] = None,
-                 conversation_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs']]] = None,
                  human_agent_handoff_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs']]] = None,
@@ -273,7 +261,6 @@ class ConversationProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_agent_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs']]] = None,
-                 conversation_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs']]] = None,
                  human_agent_handoff_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs']]] = None,
@@ -298,9 +285,6 @@ class ConversationProfile(pulumi.CustomResource):
             __props__ = ConversationProfileArgs.__new__(ConversationProfileArgs)
 
             __props__.__dict__["automated_agent_config"] = automated_agent_config
-            if conversation_profile_id is None and not opts.urn:
-                raise TypeError("Missing required property 'conversation_profile_id'")
-            __props__.__dict__["conversation_profile_id"] = conversation_profile_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["human_agent_assistant_config"] = human_agent_assistant_config
             __props__.__dict__["human_agent_handoff_config"] = human_agent_handoff_config

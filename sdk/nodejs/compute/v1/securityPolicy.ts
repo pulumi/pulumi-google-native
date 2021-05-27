@@ -80,9 +80,6 @@ export class SecurityPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.securityPolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securityPolicy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
@@ -92,7 +89,6 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["rules"] = args ? args.rules : undefined;
-            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -146,7 +142,6 @@ export interface SecurityPolicyArgs {
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.v1.SecurityPolicyRuleArgs>[]>;
-    readonly securityPolicy: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

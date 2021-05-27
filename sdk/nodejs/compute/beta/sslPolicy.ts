@@ -97,9 +97,6 @@ export class SslPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sslPolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sslPolicy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customFeatures"] = args ? args.customFeatures : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -113,7 +110,6 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["warnings"] = args ? args.warnings : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -188,7 +184,6 @@ export interface SslPolicyArgs {
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly sslPolicy: pulumi.Input<string>;
     /**
      * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */

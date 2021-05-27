@@ -160,9 +160,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("instanceGroup", required: true)]
-        public Input<string> InstanceGroup { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
         /// </summary>

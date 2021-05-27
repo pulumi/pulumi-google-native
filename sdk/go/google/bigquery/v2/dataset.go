@@ -53,9 +53,6 @@ func NewDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatasetId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -153,7 +150,6 @@ type datasetArgs struct {
 	Access []DatasetAccessItem `pulumi:"access"`
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *string `pulumi:"creationTime"`
-	DatasetId    string  `pulumi:"datasetId"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               *DatasetReference        `pulumi:"datasetReference"`
 	DefaultEncryptionConfiguration *EncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
@@ -190,7 +186,6 @@ type DatasetArgs struct {
 	Access DatasetAccessItemArrayInput
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringPtrInput
-	DatasetId    pulumi.StringInput
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               DatasetReferencePtrInput
 	DefaultEncryptionConfiguration EncryptionConfigurationPtrInput

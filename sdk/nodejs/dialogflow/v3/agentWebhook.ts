@@ -76,9 +76,6 @@ export class AgentWebhook extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.webhookId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'webhookId'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -87,7 +84,6 @@ export class AgentWebhook extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["webhookId"] = args ? args.webhookId : undefined;
         } else {
             inputs["disabled"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -129,5 +125,4 @@ export interface AgentWebhookArgs {
      * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
      */
     readonly timeout?: pulumi.Input<string>;
-    readonly webhookId: pulumi.Input<string>;
 }

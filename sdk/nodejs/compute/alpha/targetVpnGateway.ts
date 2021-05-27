@@ -102,9 +102,6 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.targetVpnGateway === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetVpnGateway'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["forwardingRules"] = args ? args.forwardingRules : undefined;
@@ -119,7 +116,6 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
             inputs["tunnels"] = args ? args.tunnels : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -198,7 +194,6 @@ export interface TargetVpnGatewayArgs {
      * [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
      */
     readonly status?: pulumi.Input<string>;
-    readonly targetVpnGateway: pulumi.Input<string>;
     /**
      * [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
      */

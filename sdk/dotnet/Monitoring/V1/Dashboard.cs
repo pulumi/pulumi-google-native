@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("columnLayout")]
         public Input<Inputs.ColumnLayoutArgs>? ColumnLayout { get; set; }
 
-        [Input("dashboardId", required: true)]
-        public Input<string> DashboardId { get; set; } = null!;
-
         /// <summary>
         /// Required. The mutable, human-readable name.
         /// </summary>

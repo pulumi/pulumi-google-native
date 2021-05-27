@@ -58,14 +58,10 @@ export class OrganizationGcpUserAccessBinding extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.gcpUserAccessBindingId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gcpUserAccessBindingId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["accessLevels"] = args ? args.accessLevels : undefined;
-            inputs["gcpUserAccessBindingId"] = args ? args.gcpUserAccessBindingId : undefined;
             inputs["groupKey"] = args ? args.groupKey : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
@@ -89,7 +85,6 @@ export interface OrganizationGcpUserAccessBindingArgs {
      * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
     readonly accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly gcpUserAccessBindingId: pulumi.Input<string>;
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */

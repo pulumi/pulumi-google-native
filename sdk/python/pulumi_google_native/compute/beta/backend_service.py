@@ -15,7 +15,6 @@ __all__ = ['BackendServiceArgs', 'BackendService']
 @pulumi.input_type
 class BackendServiceArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[str],
                  project: pulumi.Input[str],
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendArgs']]]] = None,
@@ -148,7 +147,6 @@ class BackendServiceArgs:
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
         """
-        pulumi.set(__self__, "backend_service", backend_service)
         pulumi.set(__self__, "project", project)
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -222,15 +220,6 @@ class BackendServiceArgs:
             pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
-
-    @property
-    @pulumi.getter(name="backendService")
-    def backend_service(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "backend_service")
-
-    @backend_service.setter
-    def backend_service(self, value: pulumi.Input[str]):
-        pulumi.set(self, "backend_service", value)
 
     @property
     @pulumi.getter
@@ -728,7 +717,6 @@ class BackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backend_service: Optional[pulumi.Input[str]] = None,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
@@ -889,7 +877,6 @@ class BackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backend_service: Optional[pulumi.Input[str]] = None,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
@@ -939,9 +926,6 @@ class BackendService(pulumi.CustomResource):
             __props__ = BackendServiceArgs.__new__(BackendServiceArgs)
 
             __props__.__dict__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
-            if backend_service is None and not opts.urn:
-                raise TypeError("Missing required property 'backend_service'")
-            __props__.__dict__["backend_service"] = backend_service
             __props__.__dict__["backends"] = backends
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["circuit_breakers"] = circuit_breakers

@@ -42,9 +42,6 @@ func NewOrganizationDeveloperSubscription(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SubscriptionId == nil {
-		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
-	}
 	var resource OrganizationDeveloperSubscription
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationDeveloperSubscription", name, args, &resource, opts...)
 	if err != nil {
@@ -108,8 +105,7 @@ type organizationDeveloperSubscriptionArgs struct {
 	EndTime        *string `pulumi:"endTime"`
 	OrganizationId string  `pulumi:"organizationId"`
 	// Time when the API product subscription starts in milliseconds since epoch.
-	StartTime      *string `pulumi:"startTime"`
-	SubscriptionId string  `pulumi:"subscriptionId"`
+	StartTime *string `pulumi:"startTime"`
 }
 
 // The set of arguments for constructing a OrganizationDeveloperSubscription resource.
@@ -121,8 +117,7 @@ type OrganizationDeveloperSubscriptionArgs struct {
 	EndTime        pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Time when the API product subscription starts in milliseconds since epoch.
-	StartTime      pulumi.StringPtrInput
-	SubscriptionId pulumi.StringInput
+	StartTime pulumi.StringPtrInput
 }
 
 func (OrganizationDeveloperSubscriptionArgs) ElementType() reflect.Type {

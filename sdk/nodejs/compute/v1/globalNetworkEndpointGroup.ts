@@ -111,9 +111,6 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkEndpointGroup === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'networkEndpointGroup'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -128,7 +125,6 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
-            inputs["networkEndpointGroup"] = args ? args.networkEndpointGroup : undefined;
             inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -210,7 +206,6 @@ export interface GlobalNetworkEndpointGroupArgs {
      * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
      */
     readonly network?: pulumi.Input<string>;
-    readonly networkEndpointGroup: pulumi.Input<string>;
     /**
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
      */

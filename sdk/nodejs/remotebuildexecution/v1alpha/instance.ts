@@ -67,9 +67,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -106,7 +103,7 @@ export interface InstanceArgs {
     /**
      * ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
-    readonly instanceId: pulumi.Input<string>;
+    readonly instanceId?: pulumi.Input<string>;
     /**
      * The location is a GCP region. Currently only `us-central1` is supported.
      */

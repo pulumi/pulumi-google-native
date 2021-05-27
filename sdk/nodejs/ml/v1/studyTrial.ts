@@ -96,9 +96,6 @@ export class StudyTrial extends pulumi.CustomResource {
             if ((!args || args.studyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyId'");
             }
-            if ((!args || args.trialId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'trialId'");
-            }
             inputs["finalMeasurement"] = args ? args.finalMeasurement : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["measurements"] = args ? args.measurements : undefined;
@@ -106,7 +103,6 @@ export class StudyTrial extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["studyId"] = args ? args.studyId : undefined;
-            inputs["trialId"] = args ? args.trialId : undefined;
             inputs["clientId"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["infeasibleReason"] = undefined /*out*/;
@@ -155,5 +151,4 @@ export interface StudyTrialArgs {
      */
     readonly state?: pulumi.Input<string>;
     readonly studyId: pulumi.Input<string>;
-    readonly trialId: pulumi.Input<string>;
 }

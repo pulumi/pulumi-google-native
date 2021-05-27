@@ -339,9 +339,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("sslPolicy")]
         public Input<string>? SslPolicy { get; set; }
 
-        [Input("targetHttpsProxy", required: true)]
-        public Input<string> TargetHttpsProxy { get; set; } = null!;
-
         /// <summary>
         /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
         /// - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 

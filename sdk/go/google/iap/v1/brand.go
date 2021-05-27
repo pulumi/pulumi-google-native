@@ -32,9 +32,6 @@ func NewBrand(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BrandId == nil {
-		return nil, errors.New("invalid value for required argument 'BrandId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -88,7 +85,6 @@ func (BrandState) ElementType() reflect.Type {
 type brandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle *string `pulumi:"applicationTitle"`
-	BrandId          string  `pulumi:"brandId"`
 	Project          string  `pulumi:"project"`
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail *string `pulumi:"supportEmail"`
@@ -98,7 +94,6 @@ type brandArgs struct {
 type BrandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle pulumi.StringPtrInput
-	BrandId          pulumi.StringInput
 	Project          pulumi.StringInput
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail pulumi.StringPtrInput

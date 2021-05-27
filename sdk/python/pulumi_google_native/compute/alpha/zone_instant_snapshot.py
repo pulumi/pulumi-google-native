@@ -13,7 +13,6 @@ __all__ = ['ZoneInstantSnapshotArgs', 'ZoneInstantSnapshot']
 @pulumi.input_type
 class ZoneInstantSnapshotArgs:
     def __init__(__self__, *,
-                 instant_snapshot: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -61,7 +60,6 @@ class ZoneInstantSnapshotArgs:
         :param pulumi.Input[str] source_disk_id: [Output Only] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
         :param pulumi.Input[str] status: [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         """
-        pulumi.set(__self__, "instant_snapshot", instant_snapshot)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if creation_timestamp is not None:
@@ -98,15 +96,6 @@ class ZoneInstantSnapshotArgs:
             pulumi.set(__self__, "source_disk_id", source_disk_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="instantSnapshot")
-    def instant_snapshot(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instant_snapshot")
-
-    @instant_snapshot.setter
-    def instant_snapshot(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instant_snapshot", value)
 
     @property
     @pulumi.getter
@@ -349,7 +338,6 @@ class ZoneInstantSnapshot(pulumi.CustomResource):
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instant_snapshot: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -425,7 +413,6 @@ class ZoneInstantSnapshot(pulumi.CustomResource):
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instant_snapshot: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -457,9 +444,6 @@ class ZoneInstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["disk_size_gb"] = disk_size_gb
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["id"] = id
-            if instant_snapshot is None and not opts.urn:
-                raise TypeError("Missing required property 'instant_snapshot'")
-            __props__.__dict__["instant_snapshot"] = instant_snapshot
             __props__.__dict__["kind"] = kind
             __props__.__dict__["label_fingerprint"] = label_fingerprint
             __props__.__dict__["labels"] = labels

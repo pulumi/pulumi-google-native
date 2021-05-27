@@ -16,7 +16,6 @@ __all__ = ['AgentFlowArgs', 'AgentFlow']
 class AgentFlowArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
-                 flow_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -38,7 +37,6 @@ class AgentFlowArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
         """
         pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "flow_id", flow_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if description is not None:
@@ -66,15 +64,6 @@ class AgentFlowArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
-
-    @property
-    @pulumi.getter(name="flowId")
-    def flow_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "flow_id")
-
-    @flow_id.setter
-    def flow_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "flow_id", value)
 
     @property
     @pulumi.getter
@@ -197,7 +186,6 @@ class AgentFlow(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]]] = None,
-                 flow_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -247,7 +235,6 @@ class AgentFlow(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]]] = None,
-                 flow_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -273,9 +260,6 @@ class AgentFlow(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["event_handlers"] = event_handlers
-            if flow_id is None and not opts.urn:
-                raise TypeError("Missing required property 'flow_id'")
-            __props__.__dict__["flow_id"] = flow_id
             __props__.__dict__["language_code"] = language_code
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

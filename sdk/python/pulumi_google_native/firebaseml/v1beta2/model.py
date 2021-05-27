@@ -15,7 +15,6 @@ __all__ = ['ModelArgs', 'Model']
 @pulumi.input_type
 class ModelArgs:
     def __init__(__self__, *,
-                 model_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,7 +29,6 @@ class ModelArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: User defined tags which can be used to group/filter models during listing
         :param pulumi.Input['TfLiteModelArgs'] tflite_model: A TFLite Model
         """
-        pulumi.set(__self__, "model_id", model_id)
         pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -42,15 +40,6 @@ class ModelArgs:
             pulumi.set(__self__, "tags", tags)
         if tflite_model is not None:
             pulumi.set(__self__, "tflite_model", tflite_model)
-
-    @property
-    @pulumi.getter(name="modelId")
-    def model_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "model_id")
-
-    @model_id.setter
-    def model_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "model_id", value)
 
     @property
     @pulumi.getter
@@ -128,7 +117,6 @@ class Model(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
@@ -171,7 +159,6 @@ class Model(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
@@ -190,9 +177,6 @@ class Model(pulumi.CustomResource):
             __props__ = ModelArgs.__new__(ModelArgs)
 
             __props__.__dict__["display_name"] = display_name
-            if model_id is None and not opts.urn:
-                raise TypeError("Missing required property 'model_id'")
-            __props__.__dict__["model_id"] = model_id
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

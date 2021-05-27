@@ -94,9 +94,6 @@ export class TypeProvider extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.typeProvider === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'typeProvider'");
-            }
             inputs["collectionOverrides"] = args ? args.collectionOverrides : undefined;
             inputs["credential"] = args ? args.credential : undefined;
             inputs["customCertificateAuthorityRoots"] = args ? args.customCertificateAuthorityRoots : undefined;
@@ -110,7 +107,6 @@ export class TypeProvider extends pulumi.CustomResource {
             inputs["options"] = args ? args.options : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["typeProvider"] = args ? args.typeProvider : undefined;
         } else {
             inputs["collectionOverrides"] = undefined /*out*/;
             inputs["credential"] = undefined /*out*/;
@@ -184,5 +180,4 @@ export interface TypeProviderArgs {
      * Self link for the type provider.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly typeProvider: pulumi.Input<string>;
 }

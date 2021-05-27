@@ -15,7 +15,6 @@ __all__ = ['InstructionArgs', 'Instruction']
 @pulumi.input_type
 class InstructionArgs:
     def __init__(__self__, *,
-                 instruction_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -38,7 +37,6 @@ class InstructionArgs:
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs'] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         :param pulumi.Input[str] update_time: Last update time of instruction.
         """
-        pulumi.set(__self__, "instruction_id", instruction_id)
         pulumi.set(__self__, "project", project)
         if blocking_resources is not None:
             pulumi.set(__self__, "blocking_resources", blocking_resources)
@@ -58,15 +56,6 @@ class InstructionArgs:
             pulumi.set(__self__, "pdf_instruction", pdf_instruction)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="instructionId")
-    def instruction_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instruction_id")
-
-    @instruction_id.setter
-    def instruction_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instruction_id", value)
 
     @property
     @pulumi.getter
@@ -197,7 +186,6 @@ class Instruction(pulumi.CustomResource):
                  data_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 instruction_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pdf_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -248,7 +236,6 @@ class Instruction(pulumi.CustomResource):
                  data_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 instruction_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pdf_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -271,9 +258,6 @@ class Instruction(pulumi.CustomResource):
             __props__.__dict__["data_type"] = data_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if instruction_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instruction_id'")
-            __props__.__dict__["instruction_id"] = instruction_id
             __props__.__dict__["name"] = name
             __props__.__dict__["pdf_instruction"] = pdf_instruction
             if project is None and not opts.urn:

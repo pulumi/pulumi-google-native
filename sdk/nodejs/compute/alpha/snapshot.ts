@@ -162,9 +162,6 @@ export class Snapshot extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.snapshot === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'snapshot'");
-            }
             inputs["autoCreated"] = args ? args.autoCreated : undefined;
             inputs["chainName"] = args ? args.chainName : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -186,7 +183,6 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
-            inputs["snapshot"] = args ? args.snapshot : undefined;
             inputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             inputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
@@ -314,7 +310,6 @@ export interface SnapshotArgs {
      * [Output Only] Server-defined URL for this resource's resource id.
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
-    readonly snapshot: pulumi.Input<string>;
     /**
      * Encrypts the snapshot using a customer-supplied encryption key.
      *

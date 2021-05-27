@@ -16,7 +16,6 @@ __all__ = ['KeyRingCryptoKeyCryptoKeyVersionArgs', 'KeyRingCryptoKeyCryptoKeyVer
 class KeyRingCryptoKeyCryptoKeyVersionArgs:
     def __init__(__self__, *,
                  crypto_key_id: pulumi.Input[str],
-                 crypto_key_version_id: pulumi.Input[str],
                  key_ring_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
@@ -28,7 +27,6 @@ class KeyRingCryptoKeyCryptoKeyVersionArgs:
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
-        pulumi.set(__self__, "crypto_key_version_id", crypto_key_version_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -45,15 +43,6 @@ class KeyRingCryptoKeyCryptoKeyVersionArgs:
     @crypto_key_id.setter
     def crypto_key_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "crypto_key_id", value)
-
-    @property
-    @pulumi.getter(name="cryptoKeyVersionId")
-    def crypto_key_version_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "crypto_key_version_id")
-
-    @crypto_key_version_id.setter
-    def crypto_key_version_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "crypto_key_version_id", value)
 
     @property
     @pulumi.getter(name="keyRingId")
@@ -113,7 +102,6 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
-                 crypto_key_version_id: Optional[pulumi.Input[str]] = None,
                  external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -153,7 +141,6 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
-                 crypto_key_version_id: Optional[pulumi.Input[str]] = None,
                  external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -174,9 +161,6 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
             if crypto_key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key_id'")
             __props__.__dict__["crypto_key_id"] = crypto_key_id
-            if crypto_key_version_id is None and not opts.urn:
-                raise TypeError("Missing required property 'crypto_key_version_id'")
-            __props__.__dict__["crypto_key_version_id"] = crypto_key_version_id
             __props__.__dict__["external_protection_level_options"] = external_protection_level_options
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")

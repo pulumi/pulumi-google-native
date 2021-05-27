@@ -16,7 +16,6 @@ __all__ = ['TraceSinkArgs', 'TraceSink']
 class TraceSinkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 trace_sink_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  output_config: Optional[pulumi.Input['OutputConfigArgs']] = None):
         """
@@ -25,7 +24,6 @@ class TraceSinkArgs:
         :param pulumi.Input['OutputConfigArgs'] output_config: Required. The export destination.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "trace_sink_id", trace_sink_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if output_config is not None:
@@ -39,15 +37,6 @@ class TraceSinkArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="traceSinkId")
-    def trace_sink_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "trace_sink_id")
-
-    @trace_sink_id.setter
-    def trace_sink_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "trace_sink_id", value)
 
     @property
     @pulumi.getter
@@ -82,7 +71,6 @@ class TraceSink(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  output_config: Optional[pulumi.Input[pulumi.InputType['OutputConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 trace_sink_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
@@ -119,7 +107,6 @@ class TraceSink(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  output_config: Optional[pulumi.Input[pulumi.InputType['OutputConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 trace_sink_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -137,9 +124,6 @@ class TraceSink(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if trace_sink_id is None and not opts.urn:
-                raise TypeError("Missing required property 'trace_sink_id'")
-            __props__.__dict__["trace_sink_id"] = trace_sink_id
             __props__.__dict__["writer_identity"] = None
         super(TraceSink, __self__).__init__(
             'google-native:cloudtrace/v2beta1:TraceSink',

@@ -245,9 +245,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
 
-        [Input("firewall", required: true)]
-        public Input<string> Firewall { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>

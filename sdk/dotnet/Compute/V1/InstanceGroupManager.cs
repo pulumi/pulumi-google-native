@@ -254,9 +254,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }
 
-        [Input("instanceGroupManager", required: true)]
-        public Input<string> InstanceGroupManager { get; set; } = null!;
-
         /// <summary>
         /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         /// </summary>

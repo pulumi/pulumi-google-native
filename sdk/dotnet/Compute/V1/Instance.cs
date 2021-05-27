@@ -384,9 +384,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#instance for instances.
         /// </summary>

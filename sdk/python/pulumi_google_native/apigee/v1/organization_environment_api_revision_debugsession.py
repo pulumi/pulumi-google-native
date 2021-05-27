@@ -14,7 +14,6 @@ __all__ = ['OrganizationEnvironmentApiRevisionDebugsessionArgs', 'OrganizationEn
 class OrganizationEnvironmentApiRevisionDebugsessionArgs:
     def __init__(__self__, *,
                  api_id: pulumi.Input[str],
-                 debugsession_id: pulumi.Input[str],
                  environment_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  revision_id: pulumi.Input[str],
@@ -34,7 +33,6 @@ class OrganizationEnvironmentApiRevisionDebugsessionArgs:
         :param pulumi.Input[int] validity: Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
         """
         pulumi.set(__self__, "api_id", api_id)
-        pulumi.set(__self__, "debugsession_id", debugsession_id)
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "revision_id", revision_id)
@@ -59,15 +57,6 @@ class OrganizationEnvironmentApiRevisionDebugsessionArgs:
     @api_id.setter
     def api_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "api_id", value)
-
-    @property
-    @pulumi.getter(name="debugsessionId")
-    def debugsession_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "debugsession_id")
-
-    @debugsession_id.setter
-    def debugsession_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "debugsession_id", value)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -176,7 +165,6 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  count: Optional[pulumi.Input[int]] = None,
-                 debugsession_id: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -224,7 +212,6 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_id: Optional[pulumi.Input[str]] = None,
                  count: Optional[pulumi.Input[int]] = None,
-                 debugsession_id: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -249,9 +236,6 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
                 raise TypeError("Missing required property 'api_id'")
             __props__.__dict__["api_id"] = api_id
             __props__.__dict__["count"] = count
-            if debugsession_id is None and not opts.urn:
-                raise TypeError("Missing required property 'debugsession_id'")
-            __props__.__dict__["debugsession_id"] = debugsession_id
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id

@@ -13,7 +13,6 @@ __all__ = ['LienArgs', 'Lien']
 @pulumi.input_type
 class LienArgs:
     def __init__(__self__, *,
-                 lien_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
@@ -29,7 +28,6 @@ class LienArgs:
         :param pulumi.Input[str] reason: Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restrictions: The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']
         """
-        pulumi.set(__self__, "lien_id", lien_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if name is not None:
@@ -42,15 +40,6 @@ class LienArgs:
             pulumi.set(__self__, "reason", reason)
         if restrictions is not None:
             pulumi.set(__self__, "restrictions", restrictions)
-
-    @property
-    @pulumi.getter(name="lienId")
-    def lien_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "lien_id")
-
-    @lien_id.setter
-    def lien_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "lien_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -131,7 +120,6 @@ class Lien(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 lien_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -154,7 +142,7 @@ class Lien(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LienArgs,
+                 args: Optional[LienArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.
@@ -175,7 +163,6 @@ class Lien(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 lien_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -194,9 +181,6 @@ class Lien(pulumi.CustomResource):
             __props__ = LienArgs.__new__(LienArgs)
 
             __props__.__dict__["create_time"] = create_time
-            if lien_id is None and not opts.urn:
-                raise TypeError("Missing required property 'lien_id'")
-            __props__.__dict__["lien_id"] = lien_id
             __props__.__dict__["name"] = name
             __props__.__dict__["origin"] = origin
             __props__.__dict__["parent"] = parent

@@ -15,7 +15,6 @@ __all__ = ['PolicyArgs', 'Policy']
 @pulumi.input_type
 class PolicyArgs:
     def __init__(__self__, *,
-                 policy_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None):
@@ -24,21 +23,11 @@ class PolicyArgs:
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
-        pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
-
-    @property
-    @pulumi.getter(name="policyId")
-    def policy_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "policy_id")
-
-    @policy_id.setter
-    def policy_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "policy_id", value)
 
     @property
     @pulumi.getter
@@ -80,7 +69,6 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  __props__=None):
@@ -117,7 +105,6 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  __props__=None):
@@ -133,9 +120,6 @@ class Policy(pulumi.CustomResource):
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
             __props__.__dict__["name"] = name
-            if policy_id is None and not opts.urn:
-                raise TypeError("Missing required property 'policy_id'")
-            __props__.__dict__["policy_id"] = policy_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

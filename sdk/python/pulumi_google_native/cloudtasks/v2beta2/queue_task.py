@@ -18,7 +18,6 @@ class QueueTaskArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  queue_id: pulumi.Input[str],
-                 task_id: pulumi.Input[str],
                  app_engine_http_request: Optional[pulumi.Input['AppEngineHttpRequestArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,7 +40,6 @@ class QueueTaskArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "queue_id", queue_id)
-        pulumi.set(__self__, "task_id", task_id)
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
         if create_time is not None:
@@ -85,15 +83,6 @@ class QueueTaskArgs:
     @queue_id.setter
     def queue_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "queue_id", value)
-
-    @property
-    @pulumi.getter(name="taskId")
-    def task_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "task_id")
-
-    @task_id.setter
-    def task_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "task_id", value)
 
     @property
     @pulumi.getter(name="appEngineHttpRequest")
@@ -207,7 +196,6 @@ class QueueTask(pulumi.CustomResource):
                  response_view: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['TaskStatusArgs']]] = None,
-                 task_id: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -258,7 +246,6 @@ class QueueTask(pulumi.CustomResource):
                  response_view: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['TaskStatusArgs']]] = None,
-                 task_id: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -288,9 +275,6 @@ class QueueTask(pulumi.CustomResource):
             __props__.__dict__["response_view"] = response_view
             __props__.__dict__["schedule_time"] = schedule_time
             __props__.__dict__["status"] = status
-            if task_id is None and not opts.urn:
-                raise TypeError("Missing required property 'task_id'")
-            __props__.__dict__["task_id"] = task_id
             __props__.__dict__["view"] = view
         super(QueueTask, __self__).__init__(
             'google-native:cloudtasks/v2beta2:QueueTask',

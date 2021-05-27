@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Subscription(string name, SubscriptionArgs args, CustomResourceOptions? options = null)
+        public Subscription(string name, SubscriptionArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:pubsub/v1beta1a:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -101,9 +101,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.PushConfigArgs>? PushConfig { get; set; }
-
-        [Input("subscriptionId", required: true)]
-        public Input<string> SubscriptionId { get; set; } = null!;
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages.

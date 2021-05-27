@@ -42,9 +42,6 @@ func NewInstanceWorkerpool(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WorkerpoolId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkerpoolId'")
-	}
 	var resource InstanceWorkerpool
 	err := ctx.RegisterResource("google-native:remotebuildexecution/v1alpha:InstanceWorkerpool", name, args, &resource, opts...)
 	if err != nil {
@@ -118,8 +115,7 @@ type instanceWorkerpoolArgs struct {
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig `pulumi:"workerConfig"`
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
-	WorkerCount  *string `pulumi:"workerCount"`
-	WorkerpoolId string  `pulumi:"workerpoolId"`
+	WorkerCount *string `pulumi:"workerCount"`
 }
 
 // The set of arguments for constructing a InstanceWorkerpool resource.
@@ -141,8 +137,7 @@ type InstanceWorkerpoolArgs struct {
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
-	WorkerCount  pulumi.StringPtrInput
-	WorkerpoolId pulumi.StringInput
+	WorkerCount pulumi.StringPtrInput
 }
 
 func (InstanceWorkerpoolArgs) ElementType() reflect.Type {

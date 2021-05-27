@@ -129,9 +129,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
-        [Input("webhookId", required: true)]
-        public Input<string> WebhookId { get; set; } = null!;
-
         public AgentWebhookArgs()
         {
         }

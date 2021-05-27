@@ -70,15 +70,11 @@ export class NamespaceService extends pulumi.CustomResource {
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceId'");
-            }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -113,7 +109,6 @@ export interface NamespaceServiceArgs {
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
     readonly namespaceId: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
     /**
      * Spec holds the desired state of the Service (from the client).
      */

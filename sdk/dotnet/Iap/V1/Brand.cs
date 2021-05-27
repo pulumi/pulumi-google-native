@@ -90,9 +90,6 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Input("applicationTitle")]
         public Input<string>? ApplicationTitle { get; set; }
 
-        [Input("brandId", required: true)]
-        public Input<string> BrandId { get; set; } = null!;
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

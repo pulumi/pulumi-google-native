@@ -15,7 +15,6 @@ __all__ = ['RegionJobArgs', 'RegionJob']
 @pulumi.input_type
 class RegionJobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
@@ -47,7 +46,6 @@ class RegionJobArgs:
         :param pulumi.Input['SparkRJobArgs'] spark_r_job: Optional. Job is a SparkR job.
         :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if hadoop_job is not None:
@@ -76,15 +74,6 @@ class RegionJobArgs:
             pulumi.set(__self__, "spark_r_job", spark_r_job)
         if spark_sql_job is not None:
             pulumi.set(__self__, "spark_sql_job", spark_sql_job)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -268,7 +257,6 @@ class RegionJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
                  hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
@@ -328,7 +316,6 @@ class RegionJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
                  hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
@@ -356,9 +343,6 @@ class RegionJob(pulumi.CustomResource):
 
             __props__.__dict__["hadoop_job"] = hadoop_job
             __props__.__dict__["hive_job"] = hive_job
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
-            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["pig_job"] = pig_job
             __props__.__dict__["placement"] = placement

@@ -84,9 +84,6 @@ func NewInterconnect(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Interconnect == nil {
-		return nil, errors.New("invalid value for required argument 'Interconnect'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -259,8 +256,7 @@ type interconnectArgs struct {
 	// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId *string `pulumi:"googleReferenceId"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id           *string `pulumi:"id"`
-	Interconnect string  `pulumi:"interconnect"`
+	Id *string `pulumi:"id"`
 	// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments []string `pulumi:"interconnectAttachments"`
 	// Type of interconnect, which can take one of the following values:
@@ -328,8 +324,7 @@ type InterconnectArgs struct {
 	// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id           pulumi.StringPtrInput
-	Interconnect pulumi.StringInput
+	Id pulumi.StringPtrInput
 	// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments pulumi.StringArrayInput
 	// Type of interconnect, which can take one of the following values:

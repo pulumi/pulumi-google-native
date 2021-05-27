@@ -36,9 +36,6 @@ func NewOrganizationExclusion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExclusionId == nil {
-		return nil, errors.New("invalid value for required argument 'ExclusionId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -101,8 +98,7 @@ type organizationExclusionArgs struct {
 	// Optional. A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled    *bool  `pulumi:"disabled"`
-	ExclusionId string `pulumi:"exclusionId"`
+	Disabled *bool `pulumi:"disabled"`
 	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter *string `pulumi:"filter"`
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -115,8 +111,7 @@ type OrganizationExclusionArgs struct {
 	// Optional. A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled    pulumi.BoolPtrInput
-	ExclusionId pulumi.StringInput
+	Disabled pulumi.BoolPtrInput
 	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter pulumi.StringPtrInput
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.

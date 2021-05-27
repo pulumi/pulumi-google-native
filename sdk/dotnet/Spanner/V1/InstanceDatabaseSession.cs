@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("sessionId", required: true)]
-        public Input<string> SessionId { get; set; } = null!;
-
         public InstanceDatabaseSessionArgs()
         {
         }

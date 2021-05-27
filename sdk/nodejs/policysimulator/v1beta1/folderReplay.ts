@@ -69,13 +69,9 @@ export class FolderReplay extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.replayId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'replayId'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["replayId"] = args ? args.replayId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["resultsSummary"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -102,5 +98,4 @@ export interface FolderReplayArgs {
     readonly config?: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
     readonly folderId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
-    readonly replayId: pulumi.Input<string>;
 }

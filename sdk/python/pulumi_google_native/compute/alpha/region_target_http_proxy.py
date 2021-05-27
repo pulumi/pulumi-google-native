@@ -15,7 +15,6 @@ class RegionTargetHttpProxyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 target_http_proxy: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
@@ -50,7 +49,6 @@ class RegionTargetHttpProxyArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "target_http_proxy", target_http_proxy)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -96,15 +94,6 @@ class RegionTargetHttpProxyArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="targetHttpProxy")
-    def target_http_proxy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "target_http_proxy")
-
-    @target_http_proxy.setter
-    def target_http_proxy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_http_proxy", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -271,7 +260,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 target_http_proxy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -334,7 +322,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 target_http_proxy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -365,9 +352,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
-            if target_http_proxy is None and not opts.urn:
-                raise TypeError("Missing required property 'target_http_proxy'")
-            __props__.__dict__["target_http_proxy"] = target_http_proxy
             __props__.__dict__["url_map"] = url_map
         super(RegionTargetHttpProxy, __self__).__init__(
             'google-native:compute/alpha:RegionTargetHttpProxy',

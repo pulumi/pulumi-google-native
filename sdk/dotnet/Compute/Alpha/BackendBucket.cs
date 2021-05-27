@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class BackendBucketArgs : Pulumi.ResourceArgs
     {
-        [Input("backendBucket", required: true)]
-        public Input<string> BackendBucket { get; set; } = null!;
-
         /// <summary>
         /// Cloud Storage bucket name.
         /// </summary>

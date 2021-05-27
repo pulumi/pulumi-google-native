@@ -37,9 +37,6 @@ func NewRepo(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RepoId == nil {
-		return nil, errors.New("invalid value for required argument 'RepoId'")
-	}
 	var resource Repo
 	err := ctx.RegisterResource("google-native:sourcerepo/v1:Repo", name, args, &resource, opts...)
 	if err != nil {
@@ -99,7 +96,6 @@ type repoArgs struct {
 	Project string  `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs map[string]string `pulumi:"pubsubConfigs"`
-	RepoId        string            `pulumi:"repoId"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size *string `pulumi:"size"`
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -115,7 +111,6 @@ type RepoArgs struct {
 	Project pulumi.StringInput
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs pulumi.StringMapInput
-	RepoId        pulumi.StringInput
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size pulumi.StringPtrInput
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.

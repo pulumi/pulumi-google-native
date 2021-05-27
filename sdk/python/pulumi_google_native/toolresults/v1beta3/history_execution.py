@@ -15,12 +15,12 @@ __all__ = ['HistoryExecutionArgs', 'HistoryExecution']
 @pulumi.input_type
 class HistoryExecutionArgs:
     def __init__(__self__, *,
-                 execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  completion_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  creation_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['MatrixDimensionDefinitionArgs']]]] = None,
+                 execution_id: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input['OutcomeArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input['SpecificationArgs']] = None,
@@ -28,16 +28,15 @@ class HistoryExecutionArgs:
                  test_execution_matrix_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HistoryExecution resource.
-        :param pulumi.Input[str] execution_id: A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
         :param pulumi.Input['TimestampArgs'] completion_time: The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
         :param pulumi.Input['TimestampArgs'] creation_time: The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
         :param pulumi.Input[Sequence[pulumi.Input['MatrixDimensionDefinitionArgs']]] dimension_definitions: The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
+        :param pulumi.Input[str] execution_id: A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
         :param pulumi.Input['OutcomeArgs'] outcome: Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input['SpecificationArgs'] specification: Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
         :param pulumi.Input[str] state: The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
         :param pulumi.Input[str] test_execution_matrix_id: TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
         """
-        pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
         pulumi.set(__self__, "project", project)
         if completion_time is not None:
@@ -46,6 +45,8 @@ class HistoryExecutionArgs:
             pulumi.set(__self__, "creation_time", creation_time)
         if dimension_definitions is not None:
             pulumi.set(__self__, "dimension_definitions", dimension_definitions)
+        if execution_id is not None:
+            pulumi.set(__self__, "execution_id", execution_id)
         if outcome is not None:
             pulumi.set(__self__, "outcome", outcome)
         if request_id is not None:
@@ -56,18 +57,6 @@ class HistoryExecutionArgs:
             pulumi.set(__self__, "state", state)
         if test_execution_matrix_id is not None:
             pulumi.set(__self__, "test_execution_matrix_id", test_execution_matrix_id)
-
-    @property
-    @pulumi.getter(name="executionId")
-    def execution_id(self) -> pulumi.Input[str]:
-        """
-        A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
-        """
-        return pulumi.get(self, "execution_id")
-
-    @execution_id.setter
-    def execution_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "execution_id", value)
 
     @property
     @pulumi.getter(name="historyId")
@@ -122,6 +111,18 @@ class HistoryExecutionArgs:
     @dimension_definitions.setter
     def dimension_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MatrixDimensionDefinitionArgs']]]]):
         pulumi.set(self, "dimension_definitions", value)
+
+    @property
+    @pulumi.getter(name="executionId")
+    def execution_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
+        """
+        return pulumi.get(self, "execution_id")
+
+    @execution_id.setter
+    def execution_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_id", value)
 
     @property
     @pulumi.getter
@@ -262,8 +263,6 @@ class HistoryExecution(pulumi.CustomResource):
             __props__.__dict__["completion_time"] = completion_time
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["dimension_definitions"] = dimension_definitions
-            if execution_id is None and not opts.urn:
-                raise TypeError("Missing required property 'execution_id'")
             __props__.__dict__["execution_id"] = execution_id
             if history_id is None and not opts.urn:
                 raise TypeError("Missing required property 'history_id'")

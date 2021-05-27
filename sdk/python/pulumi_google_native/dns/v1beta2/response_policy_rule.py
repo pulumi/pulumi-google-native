@@ -17,7 +17,6 @@ class ResponsePolicyRuleArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  response_policy: pulumi.Input[str],
-                 response_policy_rule: pulumi.Input[str],
                  behavior: Optional[pulumi.Input[str]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -33,7 +32,6 @@ class ResponsePolicyRuleArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "response_policy", response_policy)
-        pulumi.set(__self__, "response_policy_rule", response_policy_rule)
         if behavior is not None:
             pulumi.set(__self__, "behavior", behavior)
         if client_operation_id is not None:
@@ -64,15 +62,6 @@ class ResponsePolicyRuleArgs:
     @response_policy.setter
     def response_policy(self, value: pulumi.Input[str]):
         pulumi.set(self, "response_policy", value)
-
-    @property
-    @pulumi.getter(name="responsePolicyRule")
-    def response_policy_rule(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "response_policy_rule")
-
-    @response_policy_rule.setter
-    def response_policy_rule(self, value: pulumi.Input[str]):
-        pulumi.set(self, "response_policy_rule", value)
 
     @property
     @pulumi.getter
@@ -153,7 +142,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
-                 response_policy_rule: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -197,7 +185,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
-                 response_policy_rule: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -222,9 +209,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
             if response_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'response_policy'")
             __props__.__dict__["response_policy"] = response_policy
-            if response_policy_rule is None and not opts.urn:
-                raise TypeError("Missing required property 'response_policy_rule'")
-            __props__.__dict__["response_policy_rule"] = response_policy_rule
             __props__.__dict__["rule_name"] = rule_name
         super(ResponsePolicyRule, __self__).__init__(
             'google-native:dns/v1beta2:ResponsePolicyRule',

@@ -70,9 +70,6 @@ export class AgentEnvironment extends pulumi.CustomResource {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -82,7 +79,6 @@ export class AgentEnvironment extends pulumi.CustomResource {
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -115,7 +111,6 @@ export interface AgentEnvironmentArgs {
      * Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     /**
      * The name of the environment. Format: `projects//locations//agents//environments/`.

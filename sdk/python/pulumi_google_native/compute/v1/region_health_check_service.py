@@ -13,7 +13,6 @@ __all__ = ['RegionHealthCheckServiceArgs', 'RegionHealthCheckService']
 @pulumi.input_type
 class RegionHealthCheckServiceArgs:
     def __init__(__self__, *,
-                 health_check_service: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -45,7 +44,6 @@ class RegionHealthCheckServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_endpoints: List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
-        pulumi.set(__self__, "health_check_service", health_check_service)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if creation_timestamp is not None:
@@ -72,15 +70,6 @@ class RegionHealthCheckServiceArgs:
             pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
-
-    @property
-    @pulumi.getter(name="healthCheckService")
-    def health_check_service(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "health_check_service")
-
-    @health_check_service.setter
-    def health_check_service(self, value: pulumi.Input[str]):
-        pulumi.set(self, "health_check_service", value)
 
     @property
     @pulumi.getter
@@ -255,7 +244,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 health_check_service: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -315,7 +303,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 health_check_service: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -342,9 +329,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["fingerprint"] = fingerprint
-            if health_check_service is None and not opts.urn:
-                raise TypeError("Missing required property 'health_check_service'")
-            __props__.__dict__["health_check_service"] = health_check_service
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["health_status_aggregation_policy"] = health_status_aggregation_policy
             __props__.__dict__["id"] = id

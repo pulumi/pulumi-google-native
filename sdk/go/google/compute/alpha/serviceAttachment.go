@@ -64,9 +64,6 @@ func NewServiceAttachment(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.ServiceAttachment == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceAttachment'")
-	}
 	var resource ServiceAttachment
 	err := ctx.RegisterResource("google-native:compute/alpha:ServiceAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -202,8 +199,7 @@ type serviceAttachmentArgs struct {
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink          *string `pulumi:"selfLink"`
-	ServiceAttachment string  `pulumi:"serviceAttachment"`
+	SelfLink *string `pulumi:"selfLink"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService *string `pulumi:"targetService"`
 }
@@ -245,8 +241,7 @@ type ServiceAttachmentArgs struct {
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink          pulumi.StringPtrInput
-	ServiceAttachment pulumi.StringInput
+	SelfLink pulumi.StringPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringPtrInput
 }

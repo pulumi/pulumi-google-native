@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Folder(string name, FolderArgs args, CustomResourceOptions? options = null)
+        public Folder(string name, FolderArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudresourcemanager/v3:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -113,9 +113,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        [Input("folderId", required: true)]
-        public Input<string> FolderId { get; set; } = null!;
 
         /// <summary>
         /// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.

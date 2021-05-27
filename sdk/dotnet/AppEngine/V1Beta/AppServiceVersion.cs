@@ -552,9 +552,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("threadsafe")]
         public Input<bool>? Threadsafe { get; set; }
 
-        [Input("versionId", required: true)]
-        public Input<string> VersionId { get; set; } = null!;
-
         /// <summary>
         /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         /// </summary>

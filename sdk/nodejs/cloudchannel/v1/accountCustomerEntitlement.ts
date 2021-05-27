@@ -101,14 +101,10 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
             if ((!args || args.customerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customerId'");
             }
-            if ((!args || args.entitlementId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entitlementId'");
-            }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["associationInfo"] = args ? args.associationInfo : undefined;
             inputs["commitmentSettings"] = args ? args.commitmentSettings : undefined;
             inputs["customerId"] = args ? args.customerId : undefined;
-            inputs["entitlementId"] = args ? args.entitlementId : undefined;
             inputs["offer"] = args ? args.offer : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["purchaseOrderId"] = args ? args.purchaseOrderId : undefined;
@@ -155,7 +151,6 @@ export interface AccountCustomerEntitlementArgs {
      */
     readonly commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsArgs>;
     readonly customerId: pulumi.Input<string>;
-    readonly entitlementId: pulumi.Input<string>;
     /**
      * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */

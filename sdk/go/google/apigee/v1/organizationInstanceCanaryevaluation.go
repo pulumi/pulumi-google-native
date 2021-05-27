@@ -42,9 +42,6 @@ func NewOrganizationInstanceCanaryevaluation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CanaryevaluationId == nil {
-		return nil, errors.New("invalid value for required argument 'CanaryevaluationId'")
-	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
@@ -119,7 +116,6 @@ func (OrganizationInstanceCanaryevaluationState) ElementType() reflect.Type {
 }
 
 type organizationInstanceCanaryevaluationArgs struct {
-	CanaryevaluationId string `pulumi:"canaryevaluationId"`
 	// Required. The stable version that is serving requests.
 	Control *string `pulumi:"control"`
 	// Required. End time for the evaluation's analysis.
@@ -136,7 +132,6 @@ type organizationInstanceCanaryevaluationArgs struct {
 
 // The set of arguments for constructing a OrganizationInstanceCanaryevaluation resource.
 type OrganizationInstanceCanaryevaluationArgs struct {
-	CanaryevaluationId pulumi.StringInput
 	// Required. The stable version that is serving requests.
 	Control pulumi.StringPtrInput
 	// Required. End time for the evaluation's analysis.

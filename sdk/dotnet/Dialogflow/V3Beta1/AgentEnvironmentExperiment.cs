@@ -168,9 +168,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("experimentId", required: true)]
-        public Input<string> ExperimentId { get; set; } = null!;
-
         /// <summary>
         /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         /// </summary>

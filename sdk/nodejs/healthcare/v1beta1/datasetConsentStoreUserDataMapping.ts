@@ -83,9 +83,6 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.userDataMappingId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'userDataMappingId'");
-            }
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
             inputs["dataId"] = args ? args.dataId : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -93,7 +90,6 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["resourceAttributes"] = args ? args.resourceAttributes : undefined;
-            inputs["userDataMappingId"] = args ? args.userDataMappingId : undefined;
             inputs["userId"] = args ? args.userId : undefined;
             inputs["archiveTime"] = undefined /*out*/;
             inputs["archived"] = undefined /*out*/;
@@ -132,7 +128,6 @@ export interface DatasetConsentStoreUserDataMappingArgs {
      * Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
      */
     readonly resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.AttributeArgs>[]>;
-    readonly userDataMappingId: pulumi.Input<string>;
     /**
      * Required. User's UUID provided by the client.
      */

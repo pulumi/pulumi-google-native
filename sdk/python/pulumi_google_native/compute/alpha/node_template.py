@@ -15,7 +15,6 @@ __all__ = ['NodeTemplateArgs', 'NodeTemplate']
 @pulumi.input_type
 class NodeTemplateArgs:
     def __init__(__self__, *,
-                 node_template: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
@@ -59,7 +58,6 @@ class NodeTemplateArgs:
         :param pulumi.Input[str] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
-        pulumi.set(__self__, "node_template", node_template)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if accelerators is not None:
@@ -96,15 +94,6 @@ class NodeTemplateArgs:
             pulumi.set(__self__, "status", status)
         if status_message is not None:
             pulumi.set(__self__, "status_message", status_message)
-
-    @property
-    @pulumi.getter(name="nodeTemplate")
-    def node_template(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "node_template")
-
-    @node_template.setter
-    def node_template(self, value: pulumi.Input[str]):
-        pulumi.set(self, "node_template", value)
 
     @property
     @pulumi.getter
@@ -343,7 +332,6 @@ class NodeTemplate(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 node_template: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -415,7 +403,6 @@ class NodeTemplate(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 node_template: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -447,9 +434,6 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["node_affinity_labels"] = node_affinity_labels
-            if node_template is None and not opts.urn:
-                raise TypeError("Missing required property 'node_template'")
-            __props__.__dict__["node_template"] = node_template
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["node_type_flexibility"] = node_type_flexibility
             if project is None and not opts.urn:

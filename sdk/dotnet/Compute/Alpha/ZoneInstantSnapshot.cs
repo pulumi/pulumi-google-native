@@ -194,9 +194,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("instantSnapshot", required: true)]
-        public Input<string> InstantSnapshot { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
         /// </summary>

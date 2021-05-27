@@ -15,7 +15,6 @@ __all__ = ['GlobalForwardingRuleArgs', 'GlobalForwardingRule']
 @pulumi.input_type
 class GlobalForwardingRuleArgs:
     def __init__(__self__, *,
-                 forwarding_rule: pulumi.Input[str],
                  project: pulumi.Input[str],
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
@@ -163,7 +162,6 @@ class GlobalForwardingRuleArgs:
                
                If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
         """
-        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         pulumi.set(__self__, "project", project)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -225,15 +223,6 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "forwarding_rule")
-
-    @forwarding_rule.setter
-    def forwarding_rule(self, value: pulumi.Input[str]):
-        pulumi.set(self, "forwarding_rule", value)
 
     @property
     @pulumi.getter
@@ -697,7 +686,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -873,7 +861,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -917,9 +904,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["fingerprint"] = fingerprint
-            if forwarding_rule is None and not opts.urn:
-                raise TypeError("Missing required property 'forwarding_rule'")
-            __props__.__dict__["forwarding_rule"] = forwarding_rule
             __props__.__dict__["id"] = id
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector

@@ -165,9 +165,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             set => _testCaseConversationTurns = value;
         }
 
-        [Input("testCaseId", required: true)]
-        public Input<string> TestCaseId { get; set; } = null!;
-
         /// <summary>
         /// Config for the test case.
         /// </summary>

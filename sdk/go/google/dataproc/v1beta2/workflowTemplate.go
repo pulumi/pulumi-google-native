@@ -48,9 +48,6 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WorkflowTemplateId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkflowTemplateId'")
-	}
 	var resource WorkflowTemplate
 	err := ctx.RegisterResource("google-native:dataproc/v1beta2:WorkflowTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -134,8 +131,7 @@ type workflowTemplateArgs struct {
 	Placement *WorkflowTemplatePlacement `pulumi:"placement"`
 	Project   string                     `pulumi:"project"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version            *int   `pulumi:"version"`
-	WorkflowTemplateId string `pulumi:"workflowTemplateId"`
+	Version *int `pulumi:"version"`
 }
 
 // The set of arguments for constructing a WorkflowTemplate resource.
@@ -155,8 +151,7 @@ type WorkflowTemplateArgs struct {
 	Placement WorkflowTemplatePlacementPtrInput
 	Project   pulumi.StringInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version            pulumi.IntPtrInput
-	WorkflowTemplateId pulumi.StringInput
+	Version pulumi.IntPtrInput
 }
 
 func (WorkflowTemplateArgs) ElementType() reflect.Type {

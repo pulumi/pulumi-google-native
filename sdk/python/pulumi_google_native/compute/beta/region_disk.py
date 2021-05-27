@@ -15,7 +15,6 @@ __all__ = ['RegionDiskArgs', 'RegionDisk']
 @pulumi.input_type
 class RegionDiskArgs:
     def __init__(__self__, *,
-                 disk: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -140,7 +139,6 @@ class RegionDiskArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
-        pulumi.set(__self__, "disk", disk)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if creation_timestamp is not None:
@@ -223,15 +221,6 @@ class RegionDiskArgs:
             pulumi.set(__self__, "users", users)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter
-    def disk(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "disk")
-
-    @disk.setter
-    def disk(self, value: pulumi.Input[str]):
-        pulumi.set(self, "disk", value)
 
     @property
     @pulumi.getter
@@ -778,7 +767,6 @@ class RegionDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
@@ -931,7 +919,6 @@ class RegionDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
@@ -986,9 +973,6 @@ class RegionDisk(pulumi.CustomResource):
 
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            if disk is None and not opts.urn:
-                raise TypeError("Missing required property 'disk'")
-            __props__.__dict__["disk"] = disk
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features

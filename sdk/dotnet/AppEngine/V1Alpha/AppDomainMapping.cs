@@ -81,9 +81,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
-        [Input("domainMappingId", required: true)]
-        public Input<string> DomainMappingId { get; set; } = null!;
-
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
         /// </summary>

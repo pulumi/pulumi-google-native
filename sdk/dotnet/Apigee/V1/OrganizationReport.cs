@@ -285,9 +285,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _properties = value;
         }
 
-        [Input("reportId", required: true)]
-        public Input<string> ReportId { get; set; } = null!;
-
         [Input("sortByCols")]
         private InputList<string>? _sortByCols;
 

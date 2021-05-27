@@ -92,14 +92,10 @@ export class App extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: AppArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appId'");
-            }
-            inputs["appId"] = args ? args.appId : undefined;
             inputs["authDomain"] = args ? args.authDomain : undefined;
             inputs["codeBucket"] = args ? args.codeBucket : undefined;
             inputs["databaseType"] = args ? args.databaseType : undefined;
@@ -140,7 +136,6 @@ export class App extends pulumi.CustomResource {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
-    readonly appId: pulumi.Input<string>;
     /**
      * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
      */

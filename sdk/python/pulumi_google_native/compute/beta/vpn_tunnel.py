@@ -15,7 +15,6 @@ class VpnTunnelArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 vpn_tunnel: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detailed_status: Optional[pulumi.Input[str]] = None,
@@ -86,7 +85,6 @@ class VpnTunnelArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -156,15 +154,6 @@ class VpnTunnelArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="vpnTunnel")
-    def vpn_tunnel(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "vpn_tunnel")
-
-    @vpn_tunnel.setter
-    def vpn_tunnel(self, value: pulumi.Input[str]):
-        pulumi.set(self, "vpn_tunnel", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -500,7 +489,6 @@ class VpnTunnel(pulumi.CustomResource):
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
-                 vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a VpnTunnel resource in the specified project and region using the data included in the request.
@@ -599,7 +587,6 @@ class VpnTunnel(pulumi.CustomResource):
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
-                 vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -642,9 +629,6 @@ class VpnTunnel(pulumi.CustomResource):
             __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
             __props__.__dict__["vpn_gateway"] = vpn_gateway
             __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
-            if vpn_tunnel is None and not opts.urn:
-                raise TypeError("Missing required property 'vpn_tunnel'")
-            __props__.__dict__["vpn_tunnel"] = vpn_tunnel
         super(VpnTunnel, __self__).__init__(
             'google-native:compute/beta:VpnTunnel',
             resource_name,

@@ -44,9 +44,6 @@ func NewDlpJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DlpJobId == nil {
-		return nil, errors.New("invalid value for required argument 'DlpJobId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -125,7 +122,6 @@ func (DlpJobState) ElementType() reflect.Type {
 }
 
 type dlpJobArgs struct {
-	DlpJobId string `pulumi:"dlpJobId"`
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
@@ -138,7 +134,6 @@ type dlpJobArgs struct {
 
 // The set of arguments for constructing a DlpJob resource.
 type DlpJobArgs struct {
-	DlpJobId pulumi.StringInput
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob GooglePrivacyDlpV2InspectJobConfigPtrInput
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

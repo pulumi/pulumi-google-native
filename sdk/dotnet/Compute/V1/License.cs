@@ -129,9 +129,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("license", required: true)]
-        public Input<string> License { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
         /// </summary>

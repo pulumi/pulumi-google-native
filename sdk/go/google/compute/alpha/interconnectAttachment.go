@@ -116,9 +116,6 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InterconnectAttachment == nil {
-		return nil, errors.New("invalid value for required argument 'InterconnectAttachment'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -384,8 +381,7 @@ type interconnectAttachmentArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
-	Interconnect           *string `pulumi:"interconnect"`
-	InterconnectAttachment string  `pulumi:"interconnectAttachment"`
+	Interconnect *string `pulumi:"interconnect"`
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
@@ -486,8 +482,7 @@ type InterconnectAttachmentArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
-	Interconnect           pulumi.StringPtrInput
-	InterconnectAttachment pulumi.StringInput
+	Interconnect pulumi.StringPtrInput
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses pulumi.StringArrayInput

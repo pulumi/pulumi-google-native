@@ -219,9 +219,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("typeProvider", required: true)]
-        public Input<string> TypeProvider { get; set; } = null!;
-
         public TypeProviderArgs()
         {
         }

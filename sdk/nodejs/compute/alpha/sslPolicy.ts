@@ -105,9 +105,6 @@ export class SslPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sslPolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sslPolicy'");
-            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customFeatures"] = args ? args.customFeatures : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -122,7 +119,6 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
-            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["tlsSettings"] = args ? args.tlsSettings : undefined;
             inputs["warnings"] = args ? args.warnings : undefined;
         } else {
@@ -204,7 +200,6 @@ export interface SslPolicyArgs {
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
-    readonly sslPolicy: pulumi.Input<string>;
     /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */

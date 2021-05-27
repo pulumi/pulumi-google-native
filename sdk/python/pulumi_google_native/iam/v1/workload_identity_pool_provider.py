@@ -17,7 +17,6 @@ class WorkloadIdentityPoolProviderArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 provider_id: pulumi.Input[str],
                  workload_identity_pool_id: pulumi.Input[str],
                  workload_identity_pool_provider_id: pulumi.Input[str],
                  attribute_condition: Optional[pulumi.Input[str]] = None,
@@ -39,7 +38,6 @@ class WorkloadIdentityPoolProviderArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "provider_id", provider_id)
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
         if attribute_condition is not None:
@@ -74,15 +72,6 @@ class WorkloadIdentityPoolProviderArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="providerId")
-    def provider_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "provider_id")
-
-    @provider_id.setter
-    def provider_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "provider_id", value)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -201,7 +190,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['OidcArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provider_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -251,7 +239,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['OidcArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provider_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -279,9 +266,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if provider_id is None and not opts.urn:
-                raise TypeError("Missing required property 'provider_id'")
-            __props__.__dict__["provider_id"] = provider_id
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")
             __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id

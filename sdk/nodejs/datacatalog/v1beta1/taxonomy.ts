@@ -77,15 +77,11 @@ export class Taxonomy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.taxonomyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'taxonomyId'");
-            }
             inputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["taxonomyId"] = args ? args.taxonomyId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["policyTagCount"] = undefined /*out*/;
             inputs["taxonomyTimestamps"] = undefined /*out*/;
@@ -122,5 +118,4 @@ export interface TaxonomyArgs {
     readonly displayName?: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly taxonomyId: pulumi.Input<string>;
 }

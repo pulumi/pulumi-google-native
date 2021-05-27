@@ -198,9 +198,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("sslPolicy")]
         public Input<string>? SslPolicy { get; set; }
 
-        [Input("targetSslProxy", required: true)]
-        public Input<string> TargetSslProxy { get; set; } = null!;
-
         public TargetSslProxyArgs()
         {
         }

@@ -16,7 +16,6 @@ __all__ = ['OrganizationReportArgs', 'OrganizationReport']
 class OrganizationReportArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
-                 report_id: pulumi.Input[str],
                  chart_type: Optional[pulumi.Input[str]] = None,
                  comments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -55,7 +54,6 @@ class OrganizationReportArgs:
         :param pulumi.Input[str] topk: Legacy field: not used. This field contains the top k parameter value for restricting the result
         """
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "report_id", report_id)
         if chart_type is not None:
             pulumi.set(__self__, "chart_type", chart_type)
         if comments is not None:
@@ -99,15 +97,6 @@ class OrganizationReportArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="reportId")
-    def report_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "report_id")
-
-    @report_id.setter
-    def report_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "report_id", value)
 
     @property
     @pulumi.getter(name="chartType")
@@ -331,7 +320,6 @@ class OrganizationReport(pulumi.CustomResource):
                  offset: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ReportPropertyArgs']]]]] = None,
-                 report_id: Optional[pulumi.Input[str]] = None,
                  sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sort_order: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -398,7 +386,6 @@ class OrganizationReport(pulumi.CustomResource):
                  offset: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ReportPropertyArgs']]]]] = None,
-                 report_id: Optional[pulumi.Input[str]] = None,
                  sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sort_order: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -431,9 +418,6 @@ class OrganizationReport(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["properties"] = properties
-            if report_id is None and not opts.urn:
-                raise TypeError("Missing required property 'report_id'")
-            __props__.__dict__["report_id"] = report_id
             __props__.__dict__["sort_by_cols"] = sort_by_cols
             __props__.__dict__["sort_order"] = sort_order
             __props__.__dict__["tags"] = tags

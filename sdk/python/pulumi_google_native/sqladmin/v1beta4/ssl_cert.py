@@ -15,7 +15,6 @@ class SslCertArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 sha1_fingerprint: pulumi.Input[str],
                  common_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SslCert resource.
@@ -23,7 +22,6 @@ class SslCertArgs:
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
 
@@ -46,15 +44,6 @@ class SslCertArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="sha1Fingerprint")
-    def sha1_fingerprint(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sha1_fingerprint")
-
-    @sha1_fingerprint.setter
-    def sha1_fingerprint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sha1_fingerprint", value)
-
-    @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -75,7 +64,6 @@ class SslCert(pulumi.CustomResource):
                  common_name: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sha1_fingerprint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
@@ -111,7 +99,6 @@ class SslCert(pulumi.CustomResource):
                  common_name: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sha1_fingerprint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -131,15 +118,13 @@ class SslCert(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if sha1_fingerprint is None and not opts.urn:
-                raise TypeError("Missing required property 'sha1_fingerprint'")
-            __props__.__dict__["sha1_fingerprint"] = sha1_fingerprint
             __props__.__dict__["cert"] = None
             __props__.__dict__["cert_serial_number"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["expiration_time"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["sha1_fingerprint"] = None
         super(SslCert, __self__).__init__(
             'google-native:sqladmin/v1beta4:SslCert',
             resource_name,

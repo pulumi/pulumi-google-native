@@ -225,9 +225,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
-        [Input("uptimeCheckConfigId", required: true)]
-        public Input<string> UptimeCheckConfigId { get; set; } = null!;
-
         public UptimeCheckConfigArgs()
         {
         }

@@ -191,7 +191,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Device(string name, DeviceArgs args, CustomResourceOptions? options = null)
+        public Device(string name, DeviceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudidentity/v1:Device", name, args ?? new DeviceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -236,9 +236,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
 
         [Input("customer")]
         public Input<string>? Customer { get; set; }
-
-        [Input("deviceId", required: true)]
-        public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
         /// Most recent time when device synced with this service.

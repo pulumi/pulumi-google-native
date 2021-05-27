@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,12 +32,9 @@ type Lien struct {
 func NewLien(ctx *pulumi.Context,
 	name string, args *LienArgs, opts ...pulumi.ResourceOption) (*Lien, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &LienArgs{}
 	}
 
-	if args.LienId == nil {
-		return nil, errors.New("invalid value for required argument 'LienId'")
-	}
 	var resource Lien
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:Lien", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +93,6 @@ func (LienState) ElementType() reflect.Type {
 type lienArgs struct {
 	// The creation time of this Lien.
 	CreateTime *string `pulumi:"createTime"`
-	LienId     string  `pulumi:"lienId"`
 	// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
 	Name *string `pulumi:"name"`
 	// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'
@@ -114,7 +109,6 @@ type lienArgs struct {
 type LienArgs struct {
 	// The creation time of this Lien.
 	CreateTime pulumi.StringPtrInput
-	LienId     pulumi.StringInput
 	// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
 	Name pulumi.StringPtrInput
 	// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'

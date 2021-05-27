@@ -17,7 +17,6 @@ class VpnGatewayArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 vpn_gateway: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -47,7 +46,6 @@ class VpnGatewayArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -91,15 +89,6 @@ class VpnGatewayArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="vpnGateway")
-    def vpn_gateway(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "vpn_gateway")
-
-    @vpn_gateway.setter
-    def vpn_gateway(self, value: pulumi.Input[str]):
-        pulumi.set(self, "vpn_gateway", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -250,7 +239,6 @@ class VpnGateway(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]]] = None,
                  __props__=None):
         """
@@ -308,7 +296,6 @@ class VpnGateway(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -338,9 +325,6 @@ class VpnGateway(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
-            if vpn_gateway is None and not opts.urn:
-                raise TypeError("Missing required property 'vpn_gateway'")
-            __props__.__dict__["vpn_gateway"] = vpn_gateway
             __props__.__dict__["vpn_interfaces"] = vpn_interfaces
         super(VpnGateway, __self__).__init__(
             'google-native:compute/v1:VpnGateway',

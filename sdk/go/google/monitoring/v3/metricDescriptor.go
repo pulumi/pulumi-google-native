@@ -46,9 +46,6 @@ func NewMetricDescriptor(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.MetricDescriptorId == nil {
-		return nil, errors.New("invalid value for required argument 'MetricDescriptorId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -137,8 +134,7 @@ type metricDescriptorArgs struct {
 	// Optional. The launch stage of the metric definition.
 	LaunchStage *string `pulumi:"launchStage"`
 	// Optional. Metadata which can be used to guide usage of the metric.
-	Metadata           *MetricDescriptorMetadata `pulumi:"metadata"`
-	MetricDescriptorId string                    `pulumi:"metricDescriptorId"`
+	Metadata *MetricDescriptorMetadata `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
 	MetricKind *string `pulumi:"metricKind"`
 	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
@@ -165,8 +161,7 @@ type MetricDescriptorArgs struct {
 	// Optional. The launch stage of the metric definition.
 	LaunchStage pulumi.StringPtrInput
 	// Optional. Metadata which can be used to guide usage of the metric.
-	Metadata           MetricDescriptorMetadataPtrInput
-	MetricDescriptorId pulumi.StringInput
+	Metadata MetricDescriptorMetadataPtrInput
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
 	MetricKind pulumi.StringPtrInput
 	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.

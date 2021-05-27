@@ -181,9 +181,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("publicAdvertisedPrefix", required: true)]
-        public Input<string> PublicAdvertisedPrefix { get; set; } = null!;
-
         [Input("publicDelegatedPrefixs")]
         private InputList<Inputs.PublicAdvertisedPrefixPublicDelegatedPrefixArgs>? _publicDelegatedPrefixs;
 

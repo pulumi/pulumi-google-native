@@ -30,9 +30,6 @@ func NewAgentSessionContext(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ContextId == nil {
-		return nil, errors.New("invalid value for required argument 'ContextId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -86,7 +83,6 @@ func (AgentSessionContextState) ElementType() reflect.Type {
 }
 
 type agentSessionContextArgs struct {
-	ContextId string `pulumi:"contextId"`
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount *int   `pulumi:"lifespanCount"`
 	Location      string `pulumi:"location"`
@@ -100,7 +96,6 @@ type agentSessionContextArgs struct {
 
 // The set of arguments for constructing a AgentSessionContext resource.
 type AgentSessionContextArgs struct {
-	ContextId pulumi.StringInput
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount pulumi.IntPtrInput
 	Location      pulumi.StringInput

@@ -121,9 +121,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.serviceAttachment === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceAttachment'");
-            }
             inputs["connectedEndpoints"] = args ? args.connectedEndpoints : undefined;
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
             inputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
@@ -143,7 +140,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
             inputs["targetService"] = args ? args.targetService : undefined;
         } else {
             inputs["connectedEndpoints"] = undefined /*out*/;
@@ -245,7 +241,6 @@ export interface ServiceAttachmentArgs {
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly serviceAttachment: pulumi.Input<string>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */

@@ -110,9 +110,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.nodePoolId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nodePoolId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -130,7 +127,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["nodePoolId"] = args ? args.nodePoolId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["podIpv4CidrSize"] = args ? args.podIpv4CidrSize : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -208,7 +204,6 @@ export interface ClusterNodePoolArgs {
      * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
      */
     readonly networkConfig?: pulumi.Input<inputs.container.v1beta1.NodeNetworkConfigArgs>;
-    readonly nodePoolId: pulumi.Input<string>;
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */

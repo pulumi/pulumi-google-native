@@ -50,9 +50,6 @@ func NewHttpHealthCheck(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.HttpHealthCheck == nil {
-		return nil, errors.New("invalid value for required argument 'HttpHealthCheck'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -149,8 +146,7 @@ type httpHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
-	Host            *string `pulumi:"host"`
-	HttpHealthCheck string  `pulumi:"httpHealthCheck"`
+	Host *string `pulumi:"host"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
@@ -184,8 +180,7 @@ type HttpHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
-	Host            pulumi.StringPtrInput
-	HttpHealthCheck pulumi.StringInput
+	Host pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.

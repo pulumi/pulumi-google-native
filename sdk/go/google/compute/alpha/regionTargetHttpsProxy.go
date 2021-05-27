@@ -86,9 +86,6 @@ func NewRegionTargetHttpsProxy(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.TargetHttpsProxy == nil {
-		return nil, errors.New("invalid value for required argument 'TargetHttpsProxy'")
-	}
 	var resource RegionTargetHttpsProxy
 	err := ctx.RegisterResource("google-native:compute/alpha:RegionTargetHttpsProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -287,8 +284,7 @@ type regionTargetHttpsProxyArgs struct {
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
-	SslPolicy        *string `pulumi:"sslPolicy"`
-	TargetHttpsProxy string  `pulumi:"targetHttpsProxy"`
+	SslPolicy *string `pulumi:"sslPolicy"`
 	// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:
 	// - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map
 	// - projects/project/global/urlMaps/url-map
@@ -352,8 +348,7 @@ type RegionTargetHttpsProxyArgs struct {
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	SslCertificates pulumi.StringArrayInput
 	// URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
-	SslPolicy        pulumi.StringPtrInput
-	TargetHttpsProxy pulumi.StringInput
+	SslPolicy pulumi.StringPtrInput
 	// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:
 	// - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map
 	// - projects/project/global/urlMaps/url-map

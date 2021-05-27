@@ -140,9 +140,6 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClusterId == nil {
-		return nil, errors.New("invalid value for required argument 'ClusterId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -423,7 +420,6 @@ type clusterArgs struct {
 	Autoscaling *ClusterAutoscaling `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
 	BinaryAuthorization *BinaryAuthorization `pulumi:"binaryAuthorization"`
-	ClusterId           string               `pulumi:"clusterId"`
 	// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
 	// Telemetry integration for the cluster.
@@ -547,7 +543,6 @@ type ClusterArgs struct {
 	Autoscaling ClusterAutoscalingPtrInput
 	// Configuration for Binary Authorization.
 	BinaryAuthorization BinaryAuthorizationPtrInput
-	ClusterId           pulumi.StringInput
 	// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
 	ClusterIpv4Cidr pulumi.StringPtrInput
 	// Telemetry integration for the cluster.

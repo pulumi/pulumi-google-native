@@ -107,9 +107,6 @@ export class NodeTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.nodeTemplate === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nodeTemplate'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -125,7 +122,6 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
-            inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["nodeType"] = args ? args.nodeType : undefined;
             inputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -193,7 +189,6 @@ export interface NodeTemplateArgs {
      * Labels to use for node affinity, which will be used in instance scheduling.
      */
     readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly nodeTemplate: pulumi.Input<string>;
     /**
      * The node type to use for nodes group that are created from this template.
      */

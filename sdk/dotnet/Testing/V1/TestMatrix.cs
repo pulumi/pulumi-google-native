@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// <summary>
         /// Unique id set by the service.
         /// </summary>
-        [Input("testMatrixId", required: true)]
-        public Input<string> TestMatrixId { get; set; } = null!;
+        [Input("testMatrixId")]
+        public Input<string>? TestMatrixId { get; set; }
 
         /// <summary>
         /// Required. How to run the test.

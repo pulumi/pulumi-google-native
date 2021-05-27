@@ -48,9 +48,6 @@ func NewRegionWorkflowTemplate(ctx *pulumi.Context,
 	if args.RegionId == nil {
 		return nil, errors.New("invalid value for required argument 'RegionId'")
 	}
-	if args.WorkflowTemplateId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkflowTemplateId'")
-	}
 	var resource RegionWorkflowTemplate
 	err := ctx.RegisterResource("google-native:dataproc/v1beta2:RegionWorkflowTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -134,8 +131,7 @@ type regionWorkflowTemplateArgs struct {
 	Project   string                     `pulumi:"project"`
 	RegionId  string                     `pulumi:"regionId"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version            *int   `pulumi:"version"`
-	WorkflowTemplateId string `pulumi:"workflowTemplateId"`
+	Version *int `pulumi:"version"`
 }
 
 // The set of arguments for constructing a RegionWorkflowTemplate resource.
@@ -155,8 +151,7 @@ type RegionWorkflowTemplateArgs struct {
 	Project   pulumi.StringInput
 	RegionId  pulumi.StringInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version            pulumi.IntPtrInput
-	WorkflowTemplateId pulumi.StringInput
+	Version pulumi.IntPtrInput
 }
 
 func (RegionWorkflowTemplateArgs) ElementType() reflect.Type {

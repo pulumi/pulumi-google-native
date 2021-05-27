@@ -54,13 +54,9 @@ export class Config extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.configId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["configId"] = args ? args.configId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -80,7 +76,6 @@ export class Config extends pulumi.CustomResource {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
-    readonly configId: pulumi.Input<string>;
     /**
      * An optional description of the RuntimeConfig object.
      */

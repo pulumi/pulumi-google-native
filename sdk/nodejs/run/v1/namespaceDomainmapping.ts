@@ -67,14 +67,10 @@ export class NamespaceDomainmapping extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainmappingId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainmappingId'");
-            }
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["domainmappingId"] = args ? args.domainmappingId : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
@@ -103,7 +99,6 @@ export interface NamespaceDomainmappingArgs {
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
     readonly apiVersion?: pulumi.Input<string>;
-    readonly domainmappingId: pulumi.Input<string>;
     readonly dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".

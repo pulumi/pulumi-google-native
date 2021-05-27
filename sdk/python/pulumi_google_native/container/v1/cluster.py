@@ -15,7 +15,6 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 cluster_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
@@ -124,7 +123,6 @@ class ClusterArgs:
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if addons_config is not None:
@@ -229,15 +227,6 @@ class ClusterArgs:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "cluster_id")
-
-    @cluster_id.setter
-    def cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter
@@ -883,7 +872,6 @@ class Cluster(pulumi.CustomResource):
                  autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
-                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
@@ -1020,7 +1008,6 @@ class Cluster(pulumi.CustomResource):
                  autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
-                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
@@ -1086,9 +1073,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["autopilot"] = autopilot
             __props__.__dict__["autoscaling"] = autoscaling
             __props__.__dict__["binary_authorization"] = binary_authorization
-            if cluster_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_id'")
-            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["confidential_nodes"] = confidential_nodes

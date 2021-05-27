@@ -14,7 +14,6 @@ __all__ = ['AppFirewallIngressRuleArgs', 'AppFirewallIngressRule']
 class AppFirewallIngressRuleArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
-                 ingress_rule_id: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -27,7 +26,6 @@ class AppFirewallIngressRuleArgs:
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32.
         """
         pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "ingress_rule_id", ingress_rule_id)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if description is not None:
@@ -45,15 +43,6 @@ class AppFirewallIngressRuleArgs:
     @app_id.setter
     def app_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "app_id", value)
-
-    @property
-    @pulumi.getter(name="ingressRuleId")
-    def ingress_rule_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "ingress_rule_id")
-
-    @ingress_rule_id.setter
-    def ingress_rule_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ingress_rule_id", value)
 
     @property
     @pulumi.getter
@@ -112,7 +101,6 @@ class AppFirewallIngressRule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ingress_rule_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  source_range: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -153,7 +141,6 @@ class AppFirewallIngressRule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ingress_rule_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  source_range: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -173,9 +160,6 @@ class AppFirewallIngressRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["description"] = description
-            if ingress_rule_id is None and not opts.urn:
-                raise TypeError("Missing required property 'ingress_rule_id'")
-            __props__.__dict__["ingress_rule_id"] = ingress_rule_id
             __props__.__dict__["priority"] = priority
             __props__.__dict__["source_range"] = source_range
         super(AppFirewallIngressRule, __self__).__init__(

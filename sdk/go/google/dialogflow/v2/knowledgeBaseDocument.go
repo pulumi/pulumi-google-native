@@ -42,9 +42,6 @@ func NewKnowledgeBaseDocument(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DocumentId == nil {
-		return nil, errors.New("invalid value for required argument 'DocumentId'")
-	}
 	if args.KnowledgeBaseId == nil {
 		return nil, errors.New("invalid value for required argument 'KnowledgeBaseId'")
 	}
@@ -126,7 +123,6 @@ type knowledgeBaseDocumentArgs struct {
 	ContentUri *string `pulumi:"contentUri"`
 	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName *string `pulumi:"displayName"`
-	DocumentId  string  `pulumi:"documentId"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload *bool  `pulumi:"enableAutoReload"`
 	KnowledgeBaseId  string `pulumi:"knowledgeBaseId"`
@@ -150,7 +146,6 @@ type KnowledgeBaseDocumentArgs struct {
 	ContentUri pulumi.StringPtrInput
 	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringPtrInput
-	DocumentId  pulumi.StringInput
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolPtrInput
 	KnowledgeBaseId  pulumi.StringInput

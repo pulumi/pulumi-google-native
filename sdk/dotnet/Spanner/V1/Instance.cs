@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// <summary>
         /// Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
         /// </summary>
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

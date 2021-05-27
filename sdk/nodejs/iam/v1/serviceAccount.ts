@@ -81,15 +81,11 @@ export class ServiceAccount extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceAccountId'");
-            }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["disabled"] = undefined /*out*/;
             inputs["email"] = undefined /*out*/;
             inputs["oauth2ClientId"] = undefined /*out*/;
@@ -132,5 +128,4 @@ export interface ServiceAccountArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly serviceAccountId: pulumi.Input<string>;
 }

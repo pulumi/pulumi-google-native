@@ -87,9 +87,6 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.consentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentId'");
-            }
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
@@ -103,7 +100,6 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["consentArtifact"] = args ? args.consentArtifact : undefined;
-            inputs["consentId"] = args ? args.consentId : undefined;
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
@@ -144,7 +140,6 @@ export interface DatasetConsentStoreConsentArgs {
      * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
     readonly consentArtifact?: pulumi.Input<string>;
-    readonly consentId: pulumi.Input<string>;
     readonly consentStoreId: pulumi.Input<string>;
     readonly datasetId: pulumi.Input<string>;
     /**

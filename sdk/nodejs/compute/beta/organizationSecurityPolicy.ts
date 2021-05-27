@@ -108,13 +108,10 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OrganizationSecurityPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: OrganizationSecurityPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.securityPolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securityPolicy'");
-            }
             inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
             inputs["associations"] = args ? args.associations : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -131,7 +128,6 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
-            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -223,7 +219,6 @@ export interface OrganizationSecurityPolicyArgs {
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.beta.SecurityPolicyRuleArgs>[]>;
-    readonly securityPolicy: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

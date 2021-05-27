@@ -78,14 +78,10 @@ export class AccessPolicyServicePerimeter extends pulumi.CustomResource {
             if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyId'");
             }
-            if ((!args || args.servicePerimeterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicePerimeterId'");
-            }
             inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["perimeterType"] = args ? args.perimeterType : undefined;
-            inputs["servicePerimeterId"] = args ? args.servicePerimeterId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["title"] = args ? args.title : undefined;
@@ -123,7 +119,6 @@ export interface AccessPolicyServicePerimeterArgs {
      * Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
      */
     readonly perimeterType?: pulumi.Input<string>;
-    readonly servicePerimeterId: pulumi.Input<string>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
      */

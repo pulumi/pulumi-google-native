@@ -56,9 +56,6 @@ func NewOrganizationEnvironmentQuery(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.QueryId == nil {
-		return nil, errors.New("invalid value for required argument 'QueryId'")
-	}
 	var resource OrganizationEnvironmentQuery
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentQuery", name, args, &resource, opts...)
 	if err != nil {
@@ -163,7 +160,6 @@ type organizationEnvironmentQueryArgs struct {
 	OrganizationId string  `pulumi:"organizationId"`
 	// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
 	OutputFormat *string `pulumi:"outputFormat"`
-	QueryId      string  `pulumi:"queryId"`
 	// Asynchronous Report ID.
 	ReportDefinitionId *string `pulumi:"reportDefinitionId"`
 	// Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
@@ -192,7 +188,6 @@ type OrganizationEnvironmentQueryArgs struct {
 	OrganizationId pulumi.StringInput
 	// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
 	OutputFormat pulumi.StringPtrInput
-	QueryId      pulumi.StringInput
 	// Asynchronous Report ID.
 	ReportDefinitionId pulumi.StringPtrInput
 	// Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }

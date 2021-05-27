@@ -48,9 +48,6 @@ func NewConversationProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConversationProfileId == nil {
-		return nil, errors.New("invalid value for required argument 'ConversationProfileId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -138,8 +135,7 @@ func (ConversationProfileState) ElementType() reflect.Type {
 
 type conversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
-	AutomatedAgentConfig  *GoogleCloudDialogflowV2AutomatedAgentConfig `pulumi:"automatedAgentConfig"`
-	ConversationProfileId string                                       `pulumi:"conversationProfileId"`
+	AutomatedAgentConfig *GoogleCloudDialogflowV2AutomatedAgentConfig `pulumi:"automatedAgentConfig"`
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
@@ -165,8 +161,7 @@ type conversationProfileArgs struct {
 // The set of arguments for constructing a ConversationProfile resource.
 type ConversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
-	AutomatedAgentConfig  GoogleCloudDialogflowV2AutomatedAgentConfigPtrInput
-	ConversationProfileId pulumi.StringInput
+	AutomatedAgentConfig GoogleCloudDialogflowV2AutomatedAgentConfigPtrInput
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for agent assistance to use with this profile.

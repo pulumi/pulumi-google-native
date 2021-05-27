@@ -99,9 +99,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("entityOverrideMode")]
         public Input<string>? EntityOverrideMode { get; set; }
 
-        [Input("entityTypeId", required: true)]
-        public Input<string> EntityTypeId { get; set; } = null!;
-
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 

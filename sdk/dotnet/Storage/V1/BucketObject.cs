@@ -402,9 +402,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("object", required: true)]
-        public Input<string> Object { get; set; } = null!;
-
         /// <summary>
         /// The owner of the object. This will always be the uploader of the object.
         /// </summary>

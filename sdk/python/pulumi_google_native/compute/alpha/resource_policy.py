@@ -17,7 +17,6 @@ class ResourcePolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 resource_policy: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
@@ -49,7 +48,6 @@ class ResourcePolicyArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "resource_policy", resource_policy)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -96,15 +94,6 @@ class ResourcePolicyArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="resourcePolicy")
-    def resource_policy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "resource_policy")
-
-    @resource_policy.setter
-    def resource_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "resource_policy", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -284,7 +273,6 @@ class ResourcePolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_policy: Optional[pulumi.Input[str]] = None,
                  resource_status: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -344,7 +332,6 @@ class ResourcePolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_policy: Optional[pulumi.Input[str]] = None,
                  resource_status: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -377,9 +364,6 @@ class ResourcePolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            if resource_policy is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_policy'")
-            __props__.__dict__["resource_policy"] = resource_policy
             __props__.__dict__["resource_status"] = resource_status
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id

@@ -76,13 +76,9 @@ export class CompositeType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.compositeType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'compositeType'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["compositeType"] = args ? args.compositeType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["insertTime"] = args ? args.insertTime : undefined;
@@ -114,7 +110,6 @@ export class CompositeType extends pulumi.CustomResource {
  * The set of arguments for constructing a CompositeType resource.
  */
 export interface CompositeTypeArgs {
-    readonly compositeType: pulumi.Input<string>;
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */

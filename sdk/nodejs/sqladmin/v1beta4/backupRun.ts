@@ -107,9 +107,6 @@ export class BackupRun extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.id === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'id'");
-            }
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
@@ -192,7 +189,7 @@ export interface BackupRunArgs {
     /**
      * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
      */
-    readonly id: pulumi.Input<string>;
+    readonly id?: pulumi.Input<string>;
     /**
      * Name of the database instance.
      */

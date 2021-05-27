@@ -34,9 +34,6 @@ func NewAndroidApp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AndroidAppId == nil {
-		return nil, errors.New("invalid value for required argument 'AndroidAppId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -92,7 +89,6 @@ func (AndroidAppState) ElementType() reflect.Type {
 }
 
 type androidAppArgs struct {
-	AndroidAppId string `pulumi:"androidAppId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// The user-assigned display name for the `AndroidApp`.
@@ -107,7 +103,6 @@ type androidAppArgs struct {
 
 // The set of arguments for constructing a AndroidApp resource.
 type AndroidAppArgs struct {
-	AndroidAppId pulumi.StringInput
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// The user-assigned display name for the `AndroidApp`.

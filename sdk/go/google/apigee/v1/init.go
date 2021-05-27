@@ -37,8 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationDeveloper{}
 	case "google-native:apigee/v1:OrganizationDeveloperApp":
 		r = &OrganizationDeveloperApp{}
-	case "google-native:apigee/v1:OrganizationDeveloperAppKey":
-		r = &OrganizationDeveloperAppKey{}
 	case "google-native:apigee/v1:OrganizationDeveloperSubscription":
 		r = &OrganizationDeveloperSubscription{}
 	case "google-native:apigee/v1:OrganizationEnvgroup":
@@ -81,8 +79,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationReport{}
 	case "google-native:apigee/v1:OrganizationSharedflow":
 		r = &OrganizationSharedflow{}
-	case "google-native:apigee/v1:OrganizationSiteApicategory":
-		r = &OrganizationSiteApicategory{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

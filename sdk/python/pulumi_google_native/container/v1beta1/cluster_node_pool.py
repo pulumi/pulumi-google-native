@@ -16,7 +16,6 @@ __all__ = ['ClusterNodePoolArgs', 'ClusterNodePool']
 class ClusterNodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 node_pool_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
@@ -55,7 +54,6 @@ class ClusterNodePoolArgs:
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "node_pool_id", node_pool_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if autoscaling is not None:
@@ -99,15 +97,6 @@ class ClusterNodePoolArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter(name="nodePoolId")
-    def node_pool_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "node_pool_id")
-
-    @node_pool_id.setter
-    def node_pool_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "node_pool_id", value)
 
     @property
     @pulumi.getter
@@ -336,7 +325,6 @@ class ClusterNodePool(pulumi.CustomResource):
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
-                 node_pool_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -403,7 +391,6 @@ class ClusterNodePool(pulumi.CustomResource):
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
-                 node_pool_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -437,9 +424,6 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__.__dict__["max_pods_constraint"] = max_pods_constraint
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
-            if node_pool_id is None and not opts.urn:
-                raise TypeError("Missing required property 'node_pool_id'")
-            __props__.__dict__["node_pool_id"] = node_pool_id
             __props__.__dict__["parent"] = parent
             __props__.__dict__["pod_ipv4_cidr_size"] = pod_ipv4_cidr_size
             if project is None and not opts.urn:

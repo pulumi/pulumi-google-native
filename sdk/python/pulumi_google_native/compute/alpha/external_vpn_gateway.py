@@ -15,7 +15,6 @@ __all__ = ['ExternalVpnGatewayArgs', 'ExternalVpnGateway']
 @pulumi.input_type
 class ExternalVpnGatewayArgs:
     def __init__(__self__, *,
-                 external_vpn_gateway: pulumi.Input[str],
                  project: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -43,7 +42,6 @@ class ExternalVpnGatewayArgs:
         :param pulumi.Input[str] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
-        pulumi.set(__self__, "external_vpn_gateway", external_vpn_gateway)
         pulumi.set(__self__, "project", project)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -67,15 +65,6 @@ class ExternalVpnGatewayArgs:
             pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
-
-    @property
-    @pulumi.getter(name="externalVpnGateway")
-    def external_vpn_gateway(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "external_vpn_gateway")
-
-    @external_vpn_gateway.setter
-    def external_vpn_gateway(self, value: pulumi.Input[str]):
-        pulumi.set(self, "external_vpn_gateway", value)
 
     @property
     @pulumi.getter
@@ -225,7 +214,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 external_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -281,7 +269,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 external_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -306,9 +293,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            if external_vpn_gateway is None and not opts.urn:
-                raise TypeError("Missing required property 'external_vpn_gateway'")
-            __props__.__dict__["external_vpn_gateway"] = external_vpn_gateway
             __props__.__dict__["id"] = id
             __props__.__dict__["interfaces"] = interfaces
             __props__.__dict__["kind"] = kind

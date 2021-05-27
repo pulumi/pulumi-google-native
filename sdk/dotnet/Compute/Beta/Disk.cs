@@ -345,9 +345,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("disk", required: true)]
-        public Input<string> Disk { get; set; } = null!;
-
         /// <summary>
         /// Encrypts the disk using a customer-supplied encryption key.
         /// 

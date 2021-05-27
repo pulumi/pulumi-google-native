@@ -83,13 +83,9 @@ export class BackendBucket extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.backendBucket === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backendBucket'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["backendBucket"] = args ? args.backendBucket : undefined;
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -124,7 +120,6 @@ export class BackendBucket extends pulumi.CustomResource {
  * The set of arguments for constructing a BackendBucket resource.
  */
 export interface BackendBucketArgs {
-    readonly backendBucket: pulumi.Input<string>;
     /**
      * Cloud Storage bucket name.
      */

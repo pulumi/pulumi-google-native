@@ -79,16 +79,12 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["configuration"] = args ? args.configuration : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["jobReference"] = args ? args.jobReference : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -129,7 +125,6 @@ export interface JobArgs {
      * [Output-only] Opaque ID field of the job
      */
     readonly id?: pulumi.Input<string>;
-    readonly jobId: pulumi.Input<string>;
     /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */

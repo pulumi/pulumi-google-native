@@ -78,9 +78,6 @@ export class AgentFlow extends pulumi.CustomResource {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.flowId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'flowId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -91,7 +88,6 @@ export class AgentFlow extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            inputs["flowId"] = args ? args.flowId : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -132,7 +128,6 @@ export interface AgentFlowArgs {
      * A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      */
     readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
-    readonly flowId: pulumi.Input<string>;
     readonly languageCode?: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     /**

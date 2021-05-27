@@ -162,9 +162,6 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        [Input("domainId", required: true)]
-        public Input<string> DomainId { get; set; } = null!;
-
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 

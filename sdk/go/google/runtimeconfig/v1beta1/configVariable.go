@@ -40,9 +40,6 @@ func NewConfigVariable(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.VariableId == nil {
-		return nil, errors.New("invalid value for required argument 'VariableId'")
-	}
 	var resource ConfigVariable
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:ConfigVariable", name, args, &resource, opts...)
 	if err != nil {
@@ -107,8 +104,7 @@ type configVariableArgs struct {
 	// The time of the last variable update. Timestamp will be UTC timestamp.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
-	Value      *string `pulumi:"value"`
-	VariableId string  `pulumi:"variableId"`
+	Value *string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a ConfigVariable resource.
@@ -125,8 +121,7 @@ type ConfigVariableArgs struct {
 	// The time of the last variable update. Timestamp will be UTC timestamp.
 	UpdateTime pulumi.StringPtrInput
 	// The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
-	Value      pulumi.StringPtrInput
-	VariableId pulumi.StringInput
+	Value pulumi.StringPtrInput
 }
 
 func (ConfigVariableArgs) ElementType() reflect.Type {

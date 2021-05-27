@@ -17,7 +17,6 @@ class RouterArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 router: pulumi.Input[str],
                  bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
                  bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerArgs']]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -52,7 +51,6 @@ class RouterArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "router", router)
         if bgp is not None:
             pulumi.set(__self__, "bgp", bgp)
         if bgp_peers is not None:
@@ -102,15 +100,6 @@ class RouterArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter
-    def router(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "router")
-
-    @router.setter
-    def router(self, value: pulumi.Input[str]):
-        pulumi.set(self, "router", value)
 
     @property
     @pulumi.getter
@@ -298,7 +287,6 @@ class Router(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -361,7 +349,6 @@ class Router(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -394,9 +381,6 @@ class Router(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
-            if router is None and not opts.urn:
-                raise TypeError("Missing required property 'router'")
-            __props__.__dict__["router"] = router
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
         super(Router, __self__).__init__(

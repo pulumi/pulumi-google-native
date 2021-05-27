@@ -129,9 +129,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
 
-        [Input("deployment", required: true)]
-        public Input<string> Deployment { get; set; } = null!;
-
         /// <summary>
         /// An optional user-provided description of the deployment.
         /// </summary>

@@ -14,7 +14,6 @@ __all__ = ['WebAppArgs', 'WebApp']
 class WebAppArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 web_app_id: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -28,7 +27,6 @@ class WebAppArgs:
         :param pulumi.Input[str] name: The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "web_app_id", web_app_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if app_urls is not None:
@@ -49,15 +47,6 @@ class WebAppArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="webAppId")
-    def web_app_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "web_app_id")
-
-    @web_app_id.setter
-    def web_app_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "web_app_id", value)
 
     @property
     @pulumi.getter(name="appId")
@@ -118,7 +107,6 @@ class WebApp(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 web_app_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Requests the creation of a new WebApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
@@ -160,7 +148,6 @@ class WebApp(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 web_app_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -180,9 +167,6 @@ class WebApp(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if web_app_id is None and not opts.urn:
-                raise TypeError("Missing required property 'web_app_id'")
-            __props__.__dict__["web_app_id"] = web_app_id
             __props__.__dict__["web_id"] = None
         super(WebApp, __self__).__init__(
             'google-native:firebase/v1beta1:WebApp',

@@ -16,7 +16,6 @@ __all__ = ['AgentEnvironmentArgs', 'AgentEnvironment']
 class AgentEnvironmentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
-                 environment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class AgentEnvironmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]] version_configs: Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         """
         pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if description is not None:
@@ -51,15 +49,6 @@ class AgentEnvironmentArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
-
-    @property
-    @pulumi.getter(name="environmentId")
-    def environment_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environment_id")
-
-    @environment_id.setter
-    def environment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter
@@ -136,7 +125,6 @@ class AgentEnvironment(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -179,7 +167,6 @@ class AgentEnvironment(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -201,9 +188,6 @@ class AgentEnvironment(pulumi.CustomResource):
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if environment_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environment_id'")
-            __props__.__dict__["environment_id"] = environment_id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location

@@ -73,9 +73,6 @@ export class InstanceTable extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tableId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tableId'");
-            }
             inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             inputs["granularity"] = args ? args.granularity : undefined;
             inputs["initialSplits"] = args ? args.initialSplits : undefined;
@@ -124,5 +121,5 @@ export interface InstanceTableArgs {
     /**
      * Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */
-    readonly tableId: pulumi.Input<string>;
+    readonly tableId?: pulumi.Input<string>;
 }

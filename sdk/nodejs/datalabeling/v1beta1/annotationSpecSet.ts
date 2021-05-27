@@ -67,13 +67,9 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.annotationSpecSetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotationSpecSetId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["annotationSpecSetId"] = args ? args.annotationSpecSetId : undefined;
             inputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
             inputs["blockingResources"] = args ? args.blockingResources : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -98,7 +94,6 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
  * The set of arguments for constructing a AnnotationSpecSet resource.
  */
 export interface AnnotationSpecSetArgs {
-    readonly annotationSpecSetId: pulumi.Input<string>;
     /**
      * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */

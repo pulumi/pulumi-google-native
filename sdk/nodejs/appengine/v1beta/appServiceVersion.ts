@@ -205,9 +205,6 @@ export class AppServiceVersion extends pulumi.CustomResource {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.versionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionId'");
-            }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
             inputs["appEngineApis"] = args ? args.appEngineApis : undefined;
             inputs["appId"] = args ? args.appId : undefined;
@@ -246,7 +243,6 @@ export class AppServiceVersion extends pulumi.CustomResource {
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
             inputs["threadsafe"] = args ? args.threadsafe : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
             inputs["versionUrl"] = args ? args.versionUrl : undefined;
             inputs["vm"] = args ? args.vm : undefined;
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
@@ -447,7 +443,6 @@ export interface AppServiceVersionArgs {
      * Whether multiple requests can be dispatched to this version at once.
      */
     readonly threadsafe?: pulumi.Input<boolean>;
-    readonly versionId: pulumi.Input<string>;
     /**
      * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
      */

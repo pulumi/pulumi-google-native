@@ -15,7 +15,6 @@ __all__ = ['ChangeArgs', 'Change']
 @pulumi.input_type
 class ChangeArgs:
     def __init__(__self__, *,
-                 change_id: pulumi.Input[str],
                  managed_zone: pulumi.Input[str],
                  project: pulumi.Input[str],
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
@@ -35,7 +34,6 @@ class ChangeArgs:
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
         :param pulumi.Input[str] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
-        pulumi.set(__self__, "change_id", change_id)
         pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "project", project)
         if additions is not None:
@@ -54,15 +52,6 @@ class ChangeArgs:
             pulumi.set(__self__, "start_time", start_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="changeId")
-    def change_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "change_id")
-
-    @change_id.setter
-    def change_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "change_id", value)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -179,7 +168,6 @@ class Change(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
-                 change_id: Optional[pulumi.Input[str]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -227,7 +215,6 @@ class Change(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
-                 change_id: Optional[pulumi.Input[str]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -250,9 +237,6 @@ class Change(pulumi.CustomResource):
             __props__ = ChangeArgs.__new__(ChangeArgs)
 
             __props__.__dict__["additions"] = additions
-            if change_id is None and not opts.urn:
-                raise TypeError("Missing required property 'change_id'")
-            __props__.__dict__["change_id"] = change_id
             __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["deletions"] = deletions
             __props__.__dict__["id"] = id

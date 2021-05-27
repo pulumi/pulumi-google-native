@@ -95,9 +95,6 @@ export class ConversationProfile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.conversationProfileId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'conversationProfileId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -105,7 +102,6 @@ export class ConversationProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
-            inputs["conversationProfileId"] = args ? args.conversationProfileId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
             inputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
@@ -148,7 +144,6 @@ export interface ConversationProfileArgs {
      * Configuration for an automated agent to use with this profile.
      */
     readonly automatedAgentConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2AutomatedAgentConfigArgs>;
-    readonly conversationProfileId: pulumi.Input<string>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */

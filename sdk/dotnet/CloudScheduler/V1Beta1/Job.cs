@@ -174,9 +174,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         [Input("httpTarget")]
         public Input<Inputs.HttpTargetArgs>? HttpTarget { get; set; }
 
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
-
         /// <summary>
         /// The time the last job attempt started.
         /// </summary>

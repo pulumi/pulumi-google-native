@@ -40,9 +40,6 @@ func NewInstanceDatabase(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatabaseId == nil {
-		return nil, errors.New("invalid value for required argument 'DatabaseId'")
-	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
@@ -115,7 +112,6 @@ func (InstanceDatabaseState) ElementType() reflect.Type {
 type instanceDatabaseArgs struct {
 	// Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
 	CreateStatement *string `pulumi:"createStatement"`
-	DatabaseId      string  `pulumi:"databaseId"`
 	// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
@@ -128,7 +124,6 @@ type instanceDatabaseArgs struct {
 type InstanceDatabaseArgs struct {
 	// Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
 	CreateStatement pulumi.StringPtrInput
-	DatabaseId      pulumi.StringInput
 	// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
 	EncryptionConfig EncryptionConfigPtrInput
 	// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.

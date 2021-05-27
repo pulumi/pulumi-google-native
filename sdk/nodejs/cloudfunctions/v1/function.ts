@@ -151,9 +151,6 @@ export class Function extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.functionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'functionId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -167,7 +164,6 @@ export class Function extends pulumi.CustomResource {
             inputs["entryPoint"] = args ? args.entryPoint : undefined;
             inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["eventTrigger"] = args ? args.eventTrigger : undefined;
-            inputs["functionId"] = args ? args.functionId : undefined;
             inputs["httpsTrigger"] = args ? args.httpsTrigger : undefined;
             inputs["ingressSettings"] = args ? args.ingressSettings : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -256,7 +252,6 @@ export interface FunctionArgs {
      * A source that fires events in response to a condition in another service.
      */
     readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.v1.EventTriggerArgs>;
-    readonly functionId: pulumi.Input<string>;
     /**
      * An HTTPS endpoint type of source that can be triggered via URL.
      */

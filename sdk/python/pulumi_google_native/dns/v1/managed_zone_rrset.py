@@ -14,36 +14,38 @@ __all__ = ['ManagedZoneRrsetArgs', 'ManagedZoneRrset']
 class ManagedZoneRrsetArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 type: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ttl: Optional[pulumi.Input[int]] = None):
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ManagedZoneRrset resource.
         :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input[str] type: The identifier of a supported record type. See the list of Supported DNS record types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
+        :param pulumi.Input[str] type: The identifier of a supported record type. See the list of Supported DNS record types.
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "type", type)
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if rrdatas is not None:
             pulumi.set(__self__, "rrdatas", rrdatas)
         if signature_rrdatas is not None:
             pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -56,36 +58,12 @@ class ManagedZoneRrsetArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        For example, www.example.com.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        The identifier of a supported record type. See the list of Supported DNS record types.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="clientOperationId")
@@ -104,6 +82,18 @@ class ManagedZoneRrsetArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For example, www.example.com.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -140,6 +130,18 @@ class ManagedZoneRrsetArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of a supported record type. See the list of Supported DNS record types.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class ManagedZoneRrset(pulumi.CustomResource):
@@ -218,8 +220,6 @@ class ManagedZoneRrset(pulumi.CustomResource):
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
             __props__.__dict__["managed_zone"] = managed_zone
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -227,8 +227,6 @@ class ManagedZoneRrset(pulumi.CustomResource):
             __props__.__dict__["rrdatas"] = rrdatas
             __props__.__dict__["signature_rrdatas"] = signature_rrdatas
             __props__.__dict__["ttl"] = ttl
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(ManagedZoneRrset, __self__).__init__(
             'google-native:dns/v1:ManagedZoneRrset',

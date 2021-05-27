@@ -141,9 +141,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             set => _entities = value;
         }
 
-        [Input("entityTypeId", required: true)]
-        public Input<string> EntityTypeId { get; set; } = null!;
-
         [Input("excludedPhrases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs>? _excludedPhrases;
 

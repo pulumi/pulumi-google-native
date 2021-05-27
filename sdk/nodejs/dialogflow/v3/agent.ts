@@ -91,16 +91,12 @@ export class Agent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["avatarUri"] = args ? args.avatarUri : undefined;
             inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -138,7 +134,6 @@ export class Agent extends pulumi.CustomResource {
  * The set of arguments for constructing a Agent resource.
  */
 export interface AgentArgs {
-    readonly agentId: pulumi.Input<string>;
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */

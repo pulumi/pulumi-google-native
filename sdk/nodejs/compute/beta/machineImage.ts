@@ -111,9 +111,6 @@ export class MachineImage extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.machineImage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'machineImage'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -125,7 +122,6 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
-            inputs["machineImage"] = args ? args.machineImage : undefined;
             inputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -185,7 +181,6 @@ export interface MachineImageArgs {
      * [Output Only] The resource type, which is always compute#machineImage for machine image.
      */
     readonly kind?: pulumi.Input<string>;
-    readonly machineImage: pulumi.Input<string>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      *

@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// <summary>
         /// A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
         /// </summary>
-        [Input("executionId", required: true)]
-        public Input<string> ExecutionId { get; set; } = null!;
+        [Input("executionId")]
+        public Input<string>? ExecutionId { get; set; }
 
         [Input("historyId", required: true)]
         public Input<string> HistoryId { get; set; } = null!;

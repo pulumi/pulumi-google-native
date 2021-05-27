@@ -96,9 +96,6 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.messageId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'messageId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -107,7 +104,6 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["messageId"] = args ? args.messageId : undefined;
             inputs["messageType"] = args ? args.messageType : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["patientIds"] = args ? args.patientIds : undefined;
@@ -151,7 +147,6 @@ export interface DatasetHl7V2StoreMessageArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly location: pulumi.Input<string>;
-    readonly messageId: pulumi.Input<string>;
     /**
      * The message type for this message. MSH-9.1.
      */

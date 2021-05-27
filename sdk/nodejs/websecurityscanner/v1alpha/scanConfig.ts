@@ -90,9 +90,6 @@ export class ScanConfig extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.scanConfigId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'scanConfigId'");
-            }
             inputs["authentication"] = args ? args.authentication : undefined;
             inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -100,7 +97,6 @@ export class ScanConfig extends pulumi.CustomResource {
             inputs["maxQps"] = args ? args.maxQps : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["scanConfigId"] = args ? args.scanConfigId : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["startingUrls"] = args ? args.startingUrls : undefined;
             inputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
@@ -153,7 +149,6 @@ export interface ScanConfigArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly scanConfigId: pulumi.Input<string>;
     /**
      * The schedule of the ScanConfig.
      */

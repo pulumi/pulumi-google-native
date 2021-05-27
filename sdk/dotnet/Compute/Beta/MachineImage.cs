@@ -182,9 +182,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("machineImage", required: true)]
-        public Input<string> MachineImage { get; set; } = null!;
-
         /// <summary>
         /// Encrypts the machine image using a customer-supplied encryption key.
         /// 

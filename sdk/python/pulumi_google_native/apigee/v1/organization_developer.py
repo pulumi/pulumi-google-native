@@ -15,31 +15,30 @@ __all__ = ['OrganizationDeveloperArgs', 'OrganizationDeveloper']
 @pulumi.input_type
 class OrganizationDeveloperArgs:
     def __init__(__self__, *,
-                 developer_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  access_type: Optional[pulumi.Input[str]] = None,
                  app_family: Optional[pulumi.Input[str]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
                  companies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 developer_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  first_name: Optional[pulumi.Input[str]] = None,
                  last_name: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationDeveloper resource.
-        :param pulumi.Input[str] developer_id: ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
         :param pulumi.Input[str] access_type: Access type.
         :param pulumi.Input[str] app_family: Developer app family.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] apps: List of apps associated with the developer.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] companies: List of companies associated with the developer.
+        :param pulumi.Input[str] developer_id: ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
         :param pulumi.Input[str] email: Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
         :param pulumi.Input[str] first_name: Required. First name of the developer.
         :param pulumi.Input[str] last_name: Required. Last name of the developer.
         :param pulumi.Input[str] user_name: Required. User name of the developer. Not used by Apigee hybrid.
         """
-        pulumi.set(__self__, "developer_id", developer_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
@@ -51,6 +50,8 @@ class OrganizationDeveloperArgs:
             pulumi.set(__self__, "attributes", attributes)
         if companies is not None:
             pulumi.set(__self__, "companies", companies)
+        if developer_id is not None:
+            pulumi.set(__self__, "developer_id", developer_id)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if first_name is not None:
@@ -59,18 +60,6 @@ class OrganizationDeveloperArgs:
             pulumi.set(__self__, "last_name", last_name)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
-
-    @property
-    @pulumi.getter(name="developerId")
-    def developer_id(self) -> pulumi.Input[str]:
-        """
-        ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-        """
-        return pulumi.get(self, "developer_id")
-
-    @developer_id.setter
-    def developer_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "developer_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -140,6 +129,18 @@ class OrganizationDeveloperArgs:
     @companies.setter
     def companies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "companies", value)
+
+    @property
+    @pulumi.getter(name="developerId")
+    def developer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
+        """
+        return pulumi.get(self, "developer_id")
+
+    @developer_id.setter
+    def developer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "developer_id", value)
 
     @property
     @pulumi.getter
@@ -275,8 +276,6 @@ class OrganizationDeveloper(pulumi.CustomResource):
             __props__.__dict__["apps"] = apps
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["companies"] = companies
-            if developer_id is None and not opts.urn:
-                raise TypeError("Missing required property 'developer_id'")
             __props__.__dict__["developer_id"] = developer_id
             __props__.__dict__["email"] = email
             __props__.__dict__["first_name"] = first_name

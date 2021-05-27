@@ -147,9 +147,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("environments")]
         public Input<string>? Environments { get; set; }
 
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
-
         /// <summary>
         /// Required. Compute Engine location where the instance resides.
         /// </summary>

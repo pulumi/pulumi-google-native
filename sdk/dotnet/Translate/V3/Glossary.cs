@@ -102,9 +102,6 @@ namespace Pulumi.GoogleNative.Translate.V3
 
     public sealed class GlossaryArgs : Pulumi.ResourceArgs
     {
-        [Input("glossaryId", required: true)]
-        public Input<string> GlossaryId { get; set; } = null!;
-
         /// <summary>
         /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         /// </summary>

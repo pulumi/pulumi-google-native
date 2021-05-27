@@ -15,7 +15,6 @@ class AgentVersionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 version_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AgentVersion resource.
@@ -23,7 +22,6 @@ class AgentVersionArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "version_id", version_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
@@ -46,15 +44,6 @@ class AgentVersionArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "version_id")
-
-    @version_id.setter
-    def version_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "version_id", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -75,7 +64,6 @@ class AgentVersion(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an agent version. The new version points to the agent instance in the "default" environment.
@@ -111,7 +99,6 @@ class AgentVersion(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -131,9 +118,6 @@ class AgentVersion(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if version_id is None and not opts.urn:
-                raise TypeError("Missing required property 'version_id'")
-            __props__.__dict__["version_id"] = version_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["status"] = None

@@ -15,7 +15,6 @@ __all__ = ['AgentIntentArgs', 'AgentIntent']
 @pulumi.input_type
 class AgentIntentArgs:
     def __init__(__self__, *,
-                 intent_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
@@ -63,7 +62,6 @@ class AgentIntentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]] training_phrases: Optional. The collection of examples that the agent is trained on.
         :param pulumi.Input[str] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
-        pulumi.set(__self__, "intent_id", intent_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if action is not None:
@@ -110,15 +108,6 @@ class AgentIntentArgs:
             pulumi.set(__self__, "training_phrases", training_phrases)
         if webhook_state is not None:
             pulumi.set(__self__, "webhook_state", webhook_state)
-
-    @property
-    @pulumi.getter(name="intentId")
-    def intent_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "intent_id")
-
-    @intent_id.setter
-    def intent_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "intent_id", value)
 
     @property
     @pulumi.getter
@@ -409,7 +398,6 @@ class AgentIntent(pulumi.CustomResource):
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  followup_intent_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 intent_id: Optional[pulumi.Input[str]] = None,
                  intent_view: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -485,7 +473,6 @@ class AgentIntent(pulumi.CustomResource):
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  followup_intent_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 intent_id: Optional[pulumi.Input[str]] = None,
                  intent_view: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -522,9 +509,6 @@ class AgentIntent(pulumi.CustomResource):
             __props__.__dict__["events"] = events
             __props__.__dict__["followup_intent_info"] = followup_intent_info
             __props__.__dict__["input_context_names"] = input_context_names
-            if intent_id is None and not opts.urn:
-                raise TypeError("Missing required property 'intent_id'")
-            __props__.__dict__["intent_id"] = intent_id
             __props__.__dict__["intent_view"] = intent_view
             __props__.__dict__["is_fallback"] = is_fallback
             __props__.__dict__["language_code"] = language_code

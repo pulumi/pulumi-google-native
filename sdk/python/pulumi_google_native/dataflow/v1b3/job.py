@@ -15,7 +15,6 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  client_request_id: Optional[pulumi.Input[str]] = None,
@@ -68,7 +67,6 @@ class JobArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of Cloud Dataflow job.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if client_request_id is not None:
@@ -117,15 +115,6 @@ class JobArgs:
             pulumi.set(__self__, "type", type)
         if view is not None:
             pulumi.set(__self__, "view", view)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -437,7 +426,6 @@ class Job(pulumi.CustomResource):
                  current_state_time: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -518,7 +506,6 @@ class Job(pulumi.CustomResource):
                  current_state_time: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -556,9 +543,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["current_state_time"] = current_state_time
             __props__.__dict__["environment"] = environment
             __props__.__dict__["id"] = id
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
-            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_metadata"] = job_metadata
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:

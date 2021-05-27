@@ -153,9 +153,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
             set => _networks = value;
         }
 
-        [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

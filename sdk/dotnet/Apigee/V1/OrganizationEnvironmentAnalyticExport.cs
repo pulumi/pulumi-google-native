@@ -141,9 +141,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("exportId", required: true)]
-        public Input<string> ExportId { get; set; } = null!;
-
         /// <summary>
         /// Required. Display name of the export job.
         /// </summary>

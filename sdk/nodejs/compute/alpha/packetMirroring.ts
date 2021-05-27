@@ -103,9 +103,6 @@ export class PacketMirroring extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.packetMirroring === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'packetMirroring'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -122,7 +119,6 @@ export class PacketMirroring extends pulumi.CustomResource {
             inputs["mirroredResources"] = args ? args.mirroredResources : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
-            inputs["packetMirroring"] = args ? args.packetMirroring : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -197,7 +193,6 @@ export interface PacketMirroringArgs {
      * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
      */
     readonly network?: pulumi.Input<inputs.compute.alpha.PacketMirroringNetworkInfoArgs>;
-    readonly packetMirroring: pulumi.Input<string>;
     /**
      * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
      *

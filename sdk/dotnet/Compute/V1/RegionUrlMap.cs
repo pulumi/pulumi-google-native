@@ -284,9 +284,6 @@ namespace Pulumi.GoogleNative.Compute.V1
             set => _tests = value;
         }
 
-        [Input("urlMap", required: true)]
-        public Input<string> UrlMap { get; set; } = null!;
-
         public RegionUrlMapArgs()
         {
         }

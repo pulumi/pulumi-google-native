@@ -87,9 +87,6 @@ export class JobTrigger extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobTriggerId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobTriggerId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -99,7 +96,6 @@ export class JobTrigger extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
-            inputs["jobTriggerId"] = args ? args.jobTriggerId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -145,7 +141,6 @@ export interface JobTriggerArgs {
      * For inspect jobs, a snapshot of the configuration.
      */
     readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
-    readonly jobTriggerId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     /**
      * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.

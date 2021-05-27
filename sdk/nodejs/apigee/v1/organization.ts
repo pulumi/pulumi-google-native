@@ -128,9 +128,6 @@ export class Organization extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationId'");
-            }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
@@ -142,7 +139,6 @@ export class Organization extends pulumi.CustomResource {
             inputs["customerName"] = args ? args.customerName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["properties"] = args ? args.properties : undefined;
             inputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
@@ -220,7 +216,6 @@ export interface OrganizationArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly displayName?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
     readonly parent: pulumi.Input<string>;
     /**
      * Properties defined in the Apigee organization profile.

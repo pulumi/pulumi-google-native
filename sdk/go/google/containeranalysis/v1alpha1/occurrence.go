@@ -56,9 +56,6 @@ func NewOccurrence(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OccurrenceId == nil {
-		return nil, errors.New("invalid value for required argument 'OccurrenceId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -177,9 +174,8 @@ type occurrenceArgs struct {
 	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name *string `pulumi:"name"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-	NoteName     *string `pulumi:"noteName"`
-	OccurrenceId string  `pulumi:"occurrenceId"`
-	Project      string  `pulumi:"project"`
+	NoteName *string `pulumi:"noteName"`
+	Project  string  `pulumi:"project"`
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation *string `pulumi:"remediation"`
 	//  The resource for which the `Occurrence` applies.
@@ -215,9 +211,8 @@ type OccurrenceArgs struct {
 	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name pulumi.StringPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-	NoteName     pulumi.StringPtrInput
-	OccurrenceId pulumi.StringInput
-	Project      pulumi.StringInput
+	NoteName pulumi.StringPtrInput
+	Project  pulumi.StringInput
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation pulumi.StringPtrInput
 	//  The resource for which the `Occurrence` applies.

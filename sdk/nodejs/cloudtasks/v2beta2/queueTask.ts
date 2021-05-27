@@ -84,9 +84,6 @@ export class QueueTask extends pulumi.CustomResource {
             if ((!args || args.queueId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
-            if ((!args || args.taskId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'taskId'");
-            }
             inputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -97,7 +94,6 @@ export class QueueTask extends pulumi.CustomResource {
             inputs["responseView"] = args ? args.responseView : undefined;
             inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["taskId"] = args ? args.taskId : undefined;
             inputs["view"] = args ? args.view : undefined;
         } else {
             inputs["appEngineHttpRequest"] = undefined /*out*/;
@@ -150,7 +146,6 @@ export interface QueueTaskArgs {
      * The task status.
      */
     readonly status?: pulumi.Input<inputs.cloudtasks.v2beta2.TaskStatusArgs>;
-    readonly taskId: pulumi.Input<string>;
     /**
      * The view specifies which subset of the Task has been returned.
      */

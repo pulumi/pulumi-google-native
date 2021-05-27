@@ -15,12 +15,12 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  error_message: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  prediction_input: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputArgs']] = None,
                  prediction_output: Optional[pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs']] = None,
@@ -30,11 +30,11 @@ class JobArgs:
                  training_output: Optional[pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input[str] job_id: Required. The user-specified id of the job.
         :param pulumi.Input[str] create_time: When the job was created.
         :param pulumi.Input[str] end_time: When the job processing was completed.
         :param pulumi.Input[str] error_message: The details of a failure or a cancellation.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
+        :param pulumi.Input[str] job_id: Required. The user-specified id of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input['GoogleCloudMlV1__PredictionInputArgs'] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs'] prediction_output: The current prediction job result.
@@ -43,7 +43,6 @@ class JobArgs:
         :param pulumi.Input['GoogleCloudMlV1__TrainingInputArgs'] training_input: Input parameters to create a training job.
         :param pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs'] training_output: The current training job result.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "project", project)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -53,6 +52,8 @@ class JobArgs:
             pulumi.set(__self__, "error_message", error_message)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if prediction_input is not None:
@@ -67,18 +68,6 @@ class JobArgs:
             pulumi.set(__self__, "training_input", training_input)
         if training_output is not None:
             pulumi.set(__self__, "training_output", training_output)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        """
-        Required. The user-specified id of the job.
-        """
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -136,6 +125,18 @@ class JobArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The user-specified id of the job.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -312,8 +313,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["end_time"] = end_time
             __props__.__dict__["error_message"] = error_message
             __props__.__dict__["etag"] = etag
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
             __props__.__dict__["job_id"] = job_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["prediction_input"] = prediction_input

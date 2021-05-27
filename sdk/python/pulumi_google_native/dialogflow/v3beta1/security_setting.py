@@ -15,7 +15,6 @@ class SecuritySettingArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 security_setting_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class SecuritySettingArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "security_setting_id", security_setting_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_template is not None:
@@ -68,15 +66,6 @@ class SecuritySettingArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="securitySettingId")
-    def security_setting_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "security_setting_id")
-
-    @security_setting_id.setter
-    def security_setting_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "security_setting_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -177,7 +166,6 @@ class SecuritySetting(pulumi.CustomResource):
                  redaction_scope: Optional[pulumi.Input[str]] = None,
                  redaction_strategy: Optional[pulumi.Input[str]] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
-                 security_setting_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create security settings in the specified location.
@@ -225,7 +213,6 @@ class SecuritySetting(pulumi.CustomResource):
                  redaction_scope: Optional[pulumi.Input[str]] = None,
                  redaction_strategy: Optional[pulumi.Input[str]] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
-                 security_setting_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -251,9 +238,6 @@ class SecuritySetting(pulumi.CustomResource):
             __props__.__dict__["redaction_scope"] = redaction_scope
             __props__.__dict__["redaction_strategy"] = redaction_strategy
             __props__.__dict__["retention_window_days"] = retention_window_days
-            if security_setting_id is None and not opts.urn:
-                raise TypeError("Missing required property 'security_setting_id'")
-            __props__.__dict__["security_setting_id"] = security_setting_id
         super(SecuritySetting, __self__).__init__(
             'google-native:dialogflow/v3beta1:SecuritySetting',
             resource_name,

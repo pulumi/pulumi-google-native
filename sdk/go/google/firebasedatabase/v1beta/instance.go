@@ -34,9 +34,6 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceId == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -98,7 +95,6 @@ type instanceArgs struct {
 	DatabaseId *string `pulumi:"databaseId"`
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
-	InstanceId  string  `pulumi:"instanceId"`
 	Location    string  `pulumi:"location"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
 	Name *string `pulumi:"name"`
@@ -116,7 +112,6 @@ type InstanceArgs struct {
 	DatabaseId pulumi.StringPtrInput
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringPtrInput
-	InstanceId  pulumi.StringInput
 	Location    pulumi.StringInput
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
 	Name pulumi.StringPtrInput

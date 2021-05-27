@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("sourceId", required: true)]
-        public Input<string> SourceId { get; set; } = null!;
-
         public OrganizationSourceArgs()
         {
         }

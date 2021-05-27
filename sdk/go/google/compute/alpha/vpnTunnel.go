@@ -93,9 +93,6 @@ func NewVpnTunnel(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.VpnTunnel == nil {
-		return nil, errors.New("invalid value for required argument 'VpnTunnel'")
-	}
 	var resource VpnTunnel
 	err := ctx.RegisterResource("google-native:compute/alpha:VpnTunnel", name, args, &resource, opts...)
 	if err != nil {
@@ -320,8 +317,7 @@ type vpnTunnelArgs struct {
 	// URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
 	VpnGateway *string `pulumi:"vpnGateway"`
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
-	VpnGatewayInterface *int   `pulumi:"vpnGatewayInterface"`
-	VpnTunnel           string `pulumi:"vpnTunnel"`
+	VpnGatewayInterface *int `pulumi:"vpnGatewayInterface"`
 }
 
 // The set of arguments for constructing a VpnTunnel resource.
@@ -393,7 +389,6 @@ type VpnTunnelArgs struct {
 	VpnGateway pulumi.StringPtrInput
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface pulumi.IntPtrInput
-	VpnTunnel           pulumi.StringInput
 }
 
 func (VpnTunnelArgs) ElementType() reflect.Type {

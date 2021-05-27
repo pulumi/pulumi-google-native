@@ -130,9 +130,6 @@ func NewDisk(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Disk == nil {
-		return nil, errors.New("invalid value for required argument 'Disk'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -387,7 +384,6 @@ type diskArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	Disk        string  `pulumi:"disk"`
 	// Encrypts the disk using a customer-supplied encryption key.
 	//
 	// After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
@@ -502,7 +498,6 @@ type DiskArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	Disk        pulumi.StringInput
 	// Encrypts the disk using a customer-supplied encryption key.
 	//
 	// After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).

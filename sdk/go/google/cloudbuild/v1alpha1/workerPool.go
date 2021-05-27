@@ -47,9 +47,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WorkerPoolId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
-	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:cloudbuild/v1alpha1:WorkerPool", name, args, &resource, opts...)
 	if err != nil {
@@ -141,8 +138,7 @@ type workerPoolArgs struct {
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
 	// Total number of workers to be created across all requested regions.
-	WorkerCount  *string `pulumi:"workerCount"`
-	WorkerPoolId string  `pulumi:"workerPoolId"`
+	WorkerCount *string `pulumi:"workerCount"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
@@ -166,8 +162,7 @@ type WorkerPoolArgs struct {
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig WorkerConfigPtrInput
 	// Total number of workers to be created across all requested regions.
-	WorkerCount  pulumi.StringPtrInput
-	WorkerPoolId pulumi.StringInput
+	WorkerCount pulumi.StringPtrInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

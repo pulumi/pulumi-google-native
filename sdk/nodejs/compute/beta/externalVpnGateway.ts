@@ -85,15 +85,11 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.externalVpnGateway === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'externalVpnGateway'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["externalVpnGateway"] = args ? args.externalVpnGateway : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["interfaces"] = args ? args.interfaces : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -134,7 +130,6 @@ export interface ExternalVpnGatewayArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
-    readonly externalVpnGateway: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

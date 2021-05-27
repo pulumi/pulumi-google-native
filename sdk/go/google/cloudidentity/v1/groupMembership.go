@@ -39,9 +39,6 @@ func NewGroupMembership(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
-	if args.MembershipId == nil {
-		return nil, errors.New("invalid value for required argument 'MembershipId'")
-	}
 	var resource GroupMembership
 	err := ctx.RegisterResource("google-native:cloudidentity/v1:GroupMembership", name, args, &resource, opts...)
 	if err != nil {
@@ -98,8 +95,7 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	GroupId      string `pulumi:"groupId"`
-	MembershipId string `pulumi:"membershipId"`
+	GroupId string `pulumi:"groupId"`
 	// Required. Immutable. The `EntityKey` of the member.
 	PreferredMemberKey *EntityKey `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
@@ -108,8 +104,7 @@ type groupMembershipArgs struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	GroupId      pulumi.StringInput
-	MembershipId pulumi.StringInput
+	GroupId pulumi.StringInput
 	// Required. Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyPtrInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.

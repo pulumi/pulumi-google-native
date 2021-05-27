@@ -138,9 +138,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
 
-        [Input("configId", required: true)]
-        public Input<string> ConfigId { get; set; } = null!;
-
         /// <summary>
         /// Optional. Display name.
         /// </summary>

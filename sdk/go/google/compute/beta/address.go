@@ -69,9 +69,6 @@ func NewAddress(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Address == nil {
-		return nil, errors.New("invalid value for required argument 'Address'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -201,7 +198,7 @@ func (AddressState) ElementType() reflect.Type {
 
 type addressArgs struct {
 	// The static IP address represented by this resource.
-	Address string `pulumi:"address"`
+	Address *string `pulumi:"address"`
 	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
 	AddressType *string `pulumi:"addressType"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
@@ -254,7 +251,7 @@ type addressArgs struct {
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
 	// The static IP address represented by this resource.
-	Address pulumi.StringInput
+	Address pulumi.StringPtrInput
 	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
 	AddressType pulumi.StringPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.

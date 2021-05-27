@@ -15,7 +15,6 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
@@ -35,7 +34,6 @@ class JobArgs:
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if config is not None:
@@ -52,15 +50,6 @@ class JobArgs:
             pulumi.set(__self__, "template_id", template_id)
         if ttl_after_completion_days is not None:
             pulumi.set(__self__, "ttl_after_completion_days", ttl_after_completion_days)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -172,7 +161,6 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
@@ -220,7 +208,6 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
@@ -242,9 +229,6 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["config"] = config
             __props__.__dict__["input_uri"] = input_uri
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
-            __props__.__dict__["job_id"] = job_id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location

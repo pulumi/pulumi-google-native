@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("consentArtifact")]
         public Input<string>? ConsentArtifact { get; set; }
 
-        [Input("consentId", required: true)]
-        public Input<string> ConsentId { get; set; } = null!;
-
         [Input("consentStoreId", required: true)]
         public Input<string> ConsentStoreId { get; set; } = null!;
 

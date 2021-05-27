@@ -23,7 +23,6 @@ class MyStack : Stack
         var bucket = new Bucket("my-bucket", new BucketArgs
         {
             Name = randomString.Result,
-            Bucket = randomString.Result,
             Project = project,
         });
 

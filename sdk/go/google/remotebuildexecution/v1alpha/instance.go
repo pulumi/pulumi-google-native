@@ -34,9 +34,6 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceId == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -95,7 +92,7 @@ type instanceArgs struct {
 	// The policy to define whether or not RBE features can be used or how they can be used.
 	FeaturePolicy *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy `pulumi:"featurePolicy"`
 	// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId *string `pulumi:"instanceId"`
 	// The location is a GCP region. Currently only `us-central1` is supported.
 	Location *string `pulumi:"location"`
 	// Whether stack driver logging is enabled for the instance.
@@ -114,7 +111,7 @@ type InstanceArgs struct {
 	// The policy to define whether or not RBE features can be used or how they can be used.
 	FeaturePolicy GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrInput
 	// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-	InstanceId pulumi.StringInput
+	InstanceId pulumi.StringPtrInput
 	// The location is a GCP region. Currently only `us-central1` is supported.
 	Location pulumi.StringPtrInput
 	// Whether stack driver logging is enabled for the instance.

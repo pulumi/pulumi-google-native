@@ -15,7 +15,6 @@ __all__ = ['DatasetConsentStoreConsentArtifactArgs', 'DatasetConsentStoreConsent
 @pulumi.input_type
 class DatasetConsentStoreConsentArtifactArgs:
     def __init__(__self__, *,
-                 consent_artifact_id: pulumi.Input[str],
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
@@ -39,7 +38,6 @@ class DatasetConsentStoreConsentArtifactArgs:
         :param pulumi.Input['SignatureArgs'] user_signature: Optional. User's signature.
         :param pulumi.Input['SignatureArgs'] witness_signature: Optional. A signature from a witness.
         """
-        pulumi.set(__self__, "consent_artifact_id", consent_artifact_id)
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
@@ -60,15 +58,6 @@ class DatasetConsentStoreConsentArtifactArgs:
             pulumi.set(__self__, "user_signature", user_signature)
         if witness_signature is not None:
             pulumi.set(__self__, "witness_signature", witness_signature)
-
-    @property
-    @pulumi.getter(name="consentArtifactId")
-    def consent_artifact_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consent_artifact_id")
-
-    @consent_artifact_id.setter
-    def consent_artifact_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consent_artifact_id", value)
 
     @property
     @pulumi.getter(name="consentStoreId")
@@ -208,7 +197,6 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consent_artifact_id: Optional[pulumi.Input[str]] = None,
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
@@ -260,7 +248,6 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consent_artifact_id: Optional[pulumi.Input[str]] = None,
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
@@ -285,9 +272,6 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetConsentStoreConsentArtifactArgs.__new__(DatasetConsentStoreConsentArtifactArgs)
 
-            if consent_artifact_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consent_artifact_id'")
-            __props__.__dict__["consent_artifact_id"] = consent_artifact_id
             __props__.__dict__["consent_content_screenshots"] = consent_content_screenshots
             __props__.__dict__["consent_content_version"] = consent_content_version
             if consent_store_id is None and not opts.urn:

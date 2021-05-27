@@ -33,9 +33,6 @@ func NewBrandIdentityAwareProxyClient(ctx *pulumi.Context,
 	if args.BrandId == nil {
 		return nil, errors.New("invalid value for required argument 'BrandId'")
 	}
-	if args.IdentityAwareProxyClientId == nil {
-		return nil, errors.New("invalid value for required argument 'IdentityAwareProxyClientId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -85,18 +82,16 @@ func (BrandIdentityAwareProxyClientState) ElementType() reflect.Type {
 type brandIdentityAwareProxyClientArgs struct {
 	BrandId string `pulumi:"brandId"`
 	// Human-friendly name given to the OAuth client.
-	DisplayName                *string `pulumi:"displayName"`
-	IdentityAwareProxyClientId string  `pulumi:"identityAwareProxyClientId"`
-	Project                    string  `pulumi:"project"`
+	DisplayName *string `pulumi:"displayName"`
+	Project     string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a BrandIdentityAwareProxyClient resource.
 type BrandIdentityAwareProxyClientArgs struct {
 	BrandId pulumi.StringInput
 	// Human-friendly name given to the OAuth client.
-	DisplayName                pulumi.StringPtrInput
-	IdentityAwareProxyClientId pulumi.StringInput
-	Project                    pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
+	Project     pulumi.StringInput
 }
 
 func (BrandIdentityAwareProxyClientArgs) ElementType() reflect.Type {

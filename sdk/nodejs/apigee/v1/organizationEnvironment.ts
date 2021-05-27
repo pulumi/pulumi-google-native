@@ -75,15 +75,11 @@ export class OrganizationEnvironment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["properties"] = args ? args.properties : undefined;
@@ -118,7 +114,6 @@ export interface OrganizationEnvironmentArgs {
      * Optional. Display name for this environment.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
     /**
      * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */

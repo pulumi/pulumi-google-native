@@ -33,9 +33,6 @@ func NewAppDomainMapping(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	if args.DomainMappingId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainMappingId'")
-	}
 	var resource AppDomainMapping
 	err := ctx.RegisterResource("google-native:appengine/v1:AppDomainMapping", name, args, &resource, opts...)
 	if err != nil {
@@ -80,8 +77,7 @@ func (AppDomainMappingState) ElementType() reflect.Type {
 }
 
 type appDomainMappingArgs struct {
-	AppId           string `pulumi:"appId"`
-	DomainMappingId string `pulumi:"domainMappingId"`
+	AppId string `pulumi:"appId"`
 	// Relative name of the domain serving the application. Example: example.com.
 	Id *string `pulumi:"id"`
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
@@ -95,8 +91,7 @@ type appDomainMappingArgs struct {
 
 // The set of arguments for constructing a AppDomainMapping resource.
 type AppDomainMappingArgs struct {
-	AppId           pulumi.StringInput
-	DomainMappingId pulumi.StringInput
+	AppId pulumi.StringInput
 	// Relative name of the domain serving the application. Example: example.com.
 	Id pulumi.StringPtrInput
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly

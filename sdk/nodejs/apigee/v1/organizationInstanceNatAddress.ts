@@ -61,15 +61,11 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.natAddressId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'natAddressId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["natAddressId"] = args ? args.natAddressId : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["ipAddress"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -94,6 +90,5 @@ export interface OrganizationInstanceNatAddressArgs {
      * Required. Resource ID of the NAT address.
      */
     readonly name?: pulumi.Input<string>;
-    readonly natAddressId: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
 }

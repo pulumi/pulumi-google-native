@@ -333,9 +333,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("image", required: true)]
-        public Input<string> Image { get; set; } = null!;
-
         /// <summary>
         /// Encrypts the image using a customer-supplied encryption key.
         /// 

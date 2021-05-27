@@ -66,9 +66,6 @@ func NewGlobalNetworkEndpointGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NetworkEndpointGroup == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkEndpointGroup'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -211,8 +208,7 @@ type globalNetworkEndpointGroupArgs struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
-	Network              *string `pulumi:"network"`
-	NetworkEndpointGroup string  `pulumi:"networkEndpointGroup"`
+	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	Project             string  `pulumi:"project"`
@@ -262,8 +258,7 @@ type GlobalNetworkEndpointGroupArgs struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
-	Network              pulumi.StringPtrInput
-	NetworkEndpointGroup pulumi.StringInput
+	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType pulumi.StringPtrInput
 	Project             pulumi.StringInput

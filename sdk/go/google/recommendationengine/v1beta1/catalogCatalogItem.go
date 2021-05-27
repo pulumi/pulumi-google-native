@@ -41,9 +41,6 @@ func NewCatalogCatalogItem(ctx *pulumi.Context,
 	if args.CatalogId == nil {
 		return nil, errors.New("invalid value for required argument 'CatalogId'")
 	}
-	if args.CatalogItemId == nil {
-		return nil, errors.New("invalid value for required argument 'CatalogItemId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -110,8 +107,7 @@ func (CatalogCatalogItemState) ElementType() reflect.Type {
 }
 
 type catalogCatalogItemArgs struct {
-	CatalogId     string `pulumi:"catalogId"`
-	CatalogItemId string `pulumi:"catalogItemId"`
+	CatalogId string `pulumi:"catalogId"`
 	// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy `pulumi:"categoryHierarchies"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
@@ -134,8 +130,7 @@ type catalogCatalogItemArgs struct {
 
 // The set of arguments for constructing a CatalogCatalogItem resource.
 type CatalogCatalogItemArgs struct {
-	CatalogId     pulumi.StringInput
-	CatalogItemId pulumi.StringInput
+	CatalogId pulumi.StringInput
 	// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.

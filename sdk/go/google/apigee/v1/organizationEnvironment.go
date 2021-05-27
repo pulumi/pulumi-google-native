@@ -38,9 +38,6 @@ func NewOrganizationEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -107,8 +104,7 @@ type organizationEnvironmentArgs struct {
 	// Optional. Description of the environment.
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
-	DisplayName   *string `pulumi:"displayName"`
-	EnvironmentId string  `pulumi:"environmentId"`
+	DisplayName *string `pulumi:"displayName"`
 	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -121,8 +117,7 @@ type OrganizationEnvironmentArgs struct {
 	// Optional. Description of the environment.
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.
-	DisplayName   pulumi.StringPtrInput
-	EnvironmentId pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

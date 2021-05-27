@@ -16,7 +16,6 @@ __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
 class SecurityPolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 security_policy: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
@@ -40,7 +39,6 @@ class SecurityPolicyArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "security_policy", security_policy)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -68,15 +66,6 @@ class SecurityPolicyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "security_policy")
-
-    @security_policy.setter
-    def security_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "security_policy", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -200,7 +189,6 @@ class SecurityPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -252,7 +240,6 @@ class SecurityPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -277,9 +264,6 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rules"] = rules
-            if security_policy is None and not opts.urn:
-                raise TypeError("Missing required property 'security_policy'")
-            __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["self_link"] = self_link
         super(SecurityPolicy, __self__).__init__(
             'google-native:compute/v1:SecurityPolicy',

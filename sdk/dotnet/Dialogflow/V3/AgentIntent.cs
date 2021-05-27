@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("intentId", required: true)]
-        public Input<string> IntentId { get; set; } = null!;
-
         /// <summary>
         /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
         /// </summary>

@@ -182,9 +182,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("targetHttpProxy", required: true)]
-        public Input<string> TargetHttpProxy { get; set; } = null!;
-
         /// <summary>
         /// URL to the UrlMap resource that defines the mapping from URL to the BackendService.
         /// </summary>

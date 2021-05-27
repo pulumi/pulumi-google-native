@@ -97,9 +97,6 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.workloadId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workloadId'");
-            }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["complianceRegime"] = args ? args.complianceRegime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -112,7 +109,6 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             inputs["resourceSettings"] = args ? args.resourceSettings : undefined;
-            inputs["workloadId"] = args ? args.workloadId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["resources"] = undefined /*out*/;
         } else {
@@ -178,5 +174,4 @@ export interface OrganizationWorkloadArgs {
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
     readonly resourceSettings?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs>[]>;
-    readonly workloadId: pulumi.Input<string>;
 }

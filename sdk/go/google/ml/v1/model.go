@@ -40,9 +40,6 @@ func NewModel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ModelId == nil {
-		return nil, errors.New("invalid value for required argument 'ModelId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -117,8 +114,7 @@ type modelArgs struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.
 	Etag *string `pulumi:"etag"`
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-	Labels  map[string]string `pulumi:"labels"`
-	ModelId string            `pulumi:"modelId"`
+	Labels map[string]string `pulumi:"labels"`
 	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name *string `pulumi:"name"`
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
@@ -139,8 +135,7 @@ type ModelArgs struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.
 	Etag pulumi.StringPtrInput
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-	Labels  pulumi.StringMapInput
-	ModelId pulumi.StringInput
+	Labels pulumi.StringMapInput
 	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name pulumi.StringPtrInput
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.

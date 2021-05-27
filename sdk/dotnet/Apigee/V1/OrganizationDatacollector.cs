@@ -93,9 +93,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("dataCollectorId")]
         public Input<string>? DataCollectorId { get; set; }
 
-        [Input("datacollectorId", required: true)]
-        public Input<string> DatacollectorId { get; set; } = null!;
-
         /// <summary>
         /// A description of the data collector.
         /// </summary>

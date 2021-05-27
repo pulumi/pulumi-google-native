@@ -15,7 +15,6 @@ __all__ = ['DatasetArgs', 'Dataset']
 @pulumi.input_type
 class DatasetArgs:
     def __init__(__self__, *,
-                 dataset_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -36,7 +35,6 @@ class DatasetArgs:
         :param pulumi.Input[str] last_migrate_time: Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
         :param pulumi.Input[str] name: Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project", project)
         if blocking_resources is not None:
             pulumi.set(__self__, "blocking_resources", blocking_resources)
@@ -54,15 +52,6 @@ class DatasetArgs:
             pulumi.set(__self__, "last_migrate_time", last_migrate_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dataset_id")
-
-    @dataset_id.setter
-    def dataset_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dataset_id", value)
 
     @property
     @pulumi.getter
@@ -178,7 +167,6 @@ class Dataset(pulumi.CustomResource):
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  data_item_count: Optional[pulumi.Input[str]] = None,
-                 dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  input_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InputConfigArgs']]]]] = None,
@@ -227,7 +215,6 @@ class Dataset(pulumi.CustomResource):
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  data_item_count: Optional[pulumi.Input[str]] = None,
-                 dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  input_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InputConfigArgs']]]]] = None,
@@ -249,9 +236,6 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["blocking_resources"] = blocking_resources
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["data_item_count"] = data_item_count
-            if dataset_id is None and not opts.urn:
-                raise TypeError("Missing required property 'dataset_id'")
-            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["input_configs"] = input_configs

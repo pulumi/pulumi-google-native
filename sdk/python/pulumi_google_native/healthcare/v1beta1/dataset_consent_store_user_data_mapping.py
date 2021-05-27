@@ -19,7 +19,6 @@ class DatasetConsentStoreUserDataMappingArgs:
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 user_data_mapping_id: pulumi.Input[str],
                  data_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]] = None,
@@ -35,7 +34,6 @@ class DatasetConsentStoreUserDataMappingArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "user_data_mapping_id", user_data_mapping_id)
         if data_id is not None:
             pulumi.set(__self__, "data_id", data_id)
         if name is not None:
@@ -80,15 +78,6 @@ class DatasetConsentStoreUserDataMappingArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="userDataMappingId")
-    def user_data_mapping_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "user_data_mapping_id")
-
-    @user_data_mapping_id.setter
-    def user_data_mapping_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "user_data_mapping_id", value)
 
     @property
     @pulumi.getter(name="dataId")
@@ -151,7 +140,6 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]]] = None,
-                 user_data_mapping_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -195,7 +183,6 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]]] = None,
-                 user_data_mapping_id: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -224,9 +211,6 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_attributes"] = resource_attributes
-            if user_data_mapping_id is None and not opts.urn:
-                raise TypeError("Missing required property 'user_data_mapping_id'")
-            __props__.__dict__["user_data_mapping_id"] = user_data_mapping_id
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["archive_time"] = None
             __props__.__dict__["archived"] = None

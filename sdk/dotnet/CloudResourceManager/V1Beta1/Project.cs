@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
+        public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudresourcemanager/v1beta1:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         /// <summary>
         /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The number uniquely identifying the project. Example: `415104041262` Read-only.

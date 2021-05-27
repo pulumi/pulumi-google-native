@@ -165,9 +165,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("studyId", required: true)]
         public Input<string> StudyId { get; set; } = null!;
 
-        [Input("trialId", required: true)]
-        public Input<string> TrialId { get; set; } = null!;
-
         public StudyTrialArgs()
         {
         }

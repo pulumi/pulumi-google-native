@@ -18,7 +18,6 @@ class AgentFlowPageArgs:
                  agent_id: pulumi.Input[str],
                  flow_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 page_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
@@ -41,7 +40,6 @@ class AgentFlowPageArgs:
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "flow_id", flow_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "page_id", page_id)
         pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -86,15 +84,6 @@ class AgentFlowPageArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter(name="pageId")
-    def page_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "page_id")
-
-    @page_id.setter
-    def page_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "page_id", value)
 
     @property
     @pulumi.getter
@@ -213,7 +202,6 @@ class AgentFlowPage(pulumi.CustomResource):
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 page_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]]] = None,
@@ -264,7 +252,6 @@ class AgentFlowPage(pulumi.CustomResource):
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 page_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]]] = None,
@@ -295,9 +282,6 @@ class AgentFlowPage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if page_id is None and not opts.urn:
-                raise TypeError("Missing required property 'page_id'")
-            __props__.__dict__["page_id"] = page_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

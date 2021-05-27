@@ -62,14 +62,10 @@ export class Brand extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.brandId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'brandId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
-            inputs["brandId"] = args ? args.brandId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["supportEmail"] = args ? args.supportEmail : undefined;
             inputs["name"] = undefined /*out*/;
@@ -95,7 +91,6 @@ export interface BrandArgs {
      * Application name displayed on OAuth consent screen.
      */
     readonly applicationTitle?: pulumi.Input<string>;
-    readonly brandId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * Support email displayed on the OAuth consent screen.

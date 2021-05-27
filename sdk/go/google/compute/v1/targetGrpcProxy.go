@@ -45,9 +45,6 @@ func NewTargetGrpcProxy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TargetGrpcProxy == nil {
-		return nil, errors.New("invalid value for required argument 'TargetGrpcProxy'")
-	}
 	var resource TargetGrpcProxy
 	err := ctx.RegisterResource("google-native:compute/v1:TargetGrpcProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -133,8 +130,7 @@ type targetGrpcProxyArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId  *string `pulumi:"selfLinkWithId"`
-	TargetGrpcProxy string  `pulumi:"targetGrpcProxy"`
+	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
 	UrlMap *string `pulumi:"urlMap"`
 	// If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to
@@ -160,8 +156,7 @@ type TargetGrpcProxyArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL with id for the resource.
-	SelfLinkWithId  pulumi.StringPtrInput
-	TargetGrpcProxy pulumi.StringInput
+	SelfLinkWithId pulumi.StringPtrInput
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
 	UrlMap pulumi.StringPtrInput
 	// If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to

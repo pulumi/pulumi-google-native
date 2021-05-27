@@ -67,9 +67,6 @@ export class ResponsePolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.responsePolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'responsePolicy'");
-            }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["gkeClusters"] = args ? args.gkeClusters : undefined;
@@ -77,7 +74,6 @@ export class ResponsePolicy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["responsePolicy"] = args ? args.responsePolicy : undefined;
             inputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -116,7 +112,6 @@ export interface ResponsePolicyArgs {
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyNetworkArgs>[]>;
     readonly project: pulumi.Input<string>;
-    readonly responsePolicy: pulumi.Input<string>;
     /**
      * User assigned name for this Response Policy.
      */

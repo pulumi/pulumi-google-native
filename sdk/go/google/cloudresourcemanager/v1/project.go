@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +34,9 @@ type Project struct {
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProjectArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Project
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v1:Project", name, args, &resource, opts...)
 	if err != nil {
@@ -112,7 +108,7 @@ type projectArgs struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
 	Parent *ResourceId `pulumi:"parent"`
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber *string `pulumi:"projectNumber"`
 }
@@ -130,7 +126,7 @@ type ProjectArgs struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
 	Parent ResourceIdPtrInput
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringPtrInput
 }

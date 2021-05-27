@@ -71,9 +71,6 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.feedbackMessageId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'feedbackMessageId'");
-            }
             if ((!args || args.feedbackThreadId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedbackThreadId'");
             }
@@ -84,7 +81,6 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
             inputs["body"] = args ? args.body : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["feedbackMessageId"] = args ? args.feedbackMessageId : undefined;
             inputs["feedbackThreadId"] = args ? args.feedbackThreadId : undefined;
             inputs["image"] = args ? args.image : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -120,7 +116,6 @@ export interface DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs {
      */
     readonly createTime?: pulumi.Input<string>;
     readonly datasetId: pulumi.Input<string>;
-    readonly feedbackMessageId: pulumi.Input<string>;
     readonly feedbackThreadId: pulumi.Input<string>;
     /**
      * The image storing this feedback if the feedback is an image representing operator's comments.

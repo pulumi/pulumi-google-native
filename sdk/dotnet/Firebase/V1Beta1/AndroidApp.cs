@@ -90,9 +90,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
     public sealed class AndroidAppArgs : Pulumi.ResourceArgs
     {
-        [Input("androidAppId", required: true)]
-        public Input<string> AndroidAppId { get; set; } = null!;
-
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         /// </summary>

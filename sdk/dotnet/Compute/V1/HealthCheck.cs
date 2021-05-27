@@ -171,9 +171,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("grpcHealthCheck")]
         public Input<Inputs.GRPCHealthCheckArgs>? GrpcHealthCheck { get; set; }
 
-        [Input("healthCheck", required: true)]
-        public Input<string> HealthCheck { get; set; } = null!;
-
         /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>

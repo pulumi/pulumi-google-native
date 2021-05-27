@@ -17,7 +17,6 @@ class RegistryArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 registry_id: pulumi.Input[str],
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]] = None,
                  event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EventNotificationConfigArgs']]]] = None,
                  http_config: Optional[pulumi.Input['HttpConfigArgs']] = None,
@@ -39,7 +38,6 @@ class RegistryArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "registry_id", registry_id)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
         if event_notification_configs is not None:
@@ -74,15 +72,6 @@ class RegistryArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="registryId")
-    def registry_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "registry_id")
-
-    @registry_id.setter
-    def registry_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registry_id", value)
 
     @property
     @pulumi.getter
@@ -195,7 +184,6 @@ class Registry(pulumi.CustomResource):
                  mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 registry_id: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']]] = None,
                  __props__=None):
         """
@@ -245,7 +233,6 @@ class Registry(pulumi.CustomResource):
                  mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 registry_id: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -272,9 +259,6 @@ class Registry(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if registry_id is None and not opts.urn:
-                raise TypeError("Missing required property 'registry_id'")
-            __props__.__dict__["registry_id"] = registry_id
             __props__.__dict__["state_notification_config"] = state_notification_config
         super(Registry, __self__).__init__(
             'google-native:cloudiot/v1:Registry',

@@ -79,9 +79,6 @@ export class RegionCluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clusterName'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -122,7 +119,7 @@ export interface RegionClusterArgs {
     /**
      * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
-    readonly clusterName: pulumi.Input<string>;
+    readonly clusterName?: pulumi.Input<string>;
     /**
      * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */

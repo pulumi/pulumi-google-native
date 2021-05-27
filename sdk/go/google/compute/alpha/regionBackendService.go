@@ -151,9 +151,6 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BackendService == nil {
-		return nil, errors.New("invalid value for required argument 'BackendService'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -451,8 +448,7 @@ type regionBackendServiceArgs struct {
 	// If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-	AffinityCookieTtlSec *int   `pulumi:"affinityCookieTtlSec"`
-	BackendService       string `pulumi:"backendService"`
+	AffinityCookieTtlSec *int `pulumi:"affinityCookieTtlSec"`
 	// The list of backends that serve this BackendService.
 	Backends []Backend `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
@@ -588,7 +584,6 @@ type RegionBackendServiceArgs struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	AffinityCookieTtlSec pulumi.IntPtrInput
-	BackendService       pulumi.StringInput
 	// The list of backends that serve this BackendService.
 	Backends BackendArrayInput
 	// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.

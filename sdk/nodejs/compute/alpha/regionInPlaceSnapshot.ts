@@ -111,9 +111,6 @@ export class RegionInPlaceSnapshot extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.inPlaceSnapshot === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'inPlaceSnapshot'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -125,7 +122,6 @@ export class RegionInPlaceSnapshot extends pulumi.CustomResource {
             inputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["inPlaceSnapshot"] = args ? args.inPlaceSnapshot : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -187,7 +183,6 @@ export interface RegionInPlaceSnapshotArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
-    readonly inPlaceSnapshot: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#inPlaceSnapshot for InPlaceSnapshot resources.
      */

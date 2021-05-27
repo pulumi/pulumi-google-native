@@ -105,9 +105,6 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.firewallPolicy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'firewallPolicy'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -116,7 +113,6 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
-            inputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -178,7 +174,6 @@ export interface NetworkFirewallPolicyArgs {
      * To see the latest fingerprint, make get() request to the firewall policy.
      */
     readonly fingerprint?: pulumi.Input<string>;
-    readonly firewallPolicy: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

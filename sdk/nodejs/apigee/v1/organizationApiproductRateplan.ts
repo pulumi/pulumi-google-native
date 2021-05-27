@@ -129,9 +129,6 @@ export class OrganizationApiproductRateplan extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.rateplanId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rateplanId'");
-            }
             inputs["apiproduct"] = args ? args.apiproduct : undefined;
             inputs["apiproductId"] = args ? args.apiproductId : undefined;
             inputs["billingPeriod"] = args ? args.billingPeriod : undefined;
@@ -145,7 +142,6 @@ export class OrganizationApiproductRateplan extends pulumi.CustomResource {
             inputs["fixedRecurringFee"] = args ? args.fixedRecurringFee : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["paymentFundingModel"] = args ? args.paymentFundingModel : undefined;
-            inputs["rateplanId"] = args ? args.rateplanId : undefined;
             inputs["revenueShareRates"] = args ? args.revenueShareRates : undefined;
             inputs["revenueShareType"] = args ? args.revenueShareType : undefined;
             inputs["setupFee"] = args ? args.setupFee : undefined;
@@ -232,7 +228,6 @@ export interface OrganizationApiproductRateplanArgs {
      * Flag that specifies the billing account type, prepaid or postpaid.
      */
     readonly paymentFundingModel?: pulumi.Input<string>;
-    readonly rateplanId: pulumi.Input<string>;
     /**
      * Details of the revenue sharing model.
      */

@@ -79,9 +79,6 @@ export class InstanceDatabase extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.databaseId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'databaseId'");
-            }
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
@@ -89,7 +86,6 @@ export class InstanceDatabase extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["createStatement"] = args ? args.createStatement : undefined;
-            inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             inputs["extraStatements"] = args ? args.extraStatements : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -126,7 +122,6 @@ export interface InstanceDatabaseArgs {
      * Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
      */
     readonly createStatement?: pulumi.Input<string>;
-    readonly databaseId: pulumi.Input<string>;
     /**
      * Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
      */

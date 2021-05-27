@@ -103,9 +103,6 @@ export class OrganizationDeveloper extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.developerId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'developerId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -174,7 +171,7 @@ export interface OrganizationDeveloperArgs {
     /**
      * ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
      */
-    readonly developerId: pulumi.Input<string>;
+    readonly developerId?: pulumi.Input<string>;
     /**
      * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */

@@ -15,7 +15,6 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
-                 image: pulumi.Input[str],
                  project: pulumi.Input[str],
                  archive_size_bytes: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -112,7 +111,6 @@ class ImageArgs:
         :param pulumi.Input[str] status: [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         """
-        pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "project", project)
         if archive_size_bytes is not None:
             pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -184,15 +182,6 @@ class ImageArgs:
             pulumi.set(__self__, "status", status)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
-
-    @property
-    @pulumi.getter
-    def image(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: pulumi.Input[str]):
-        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter
@@ -656,7 +645,6 @@ class Image(pulumi.CustomResource):
                  force_create: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input[str]] = None,
                  image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -781,7 +769,6 @@ class Image(pulumi.CustomResource):
                  force_create: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input[str]] = None,
                  image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -830,9 +817,6 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["force_create"] = force_create
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["id"] = id
-            if image is None and not opts.urn:
-                raise TypeError("Missing required property 'image'")
-            __props__.__dict__["image"] = image
             __props__.__dict__["image_encryption_key"] = image_encryption_key
             __props__.__dict__["kind"] = kind
             __props__.__dict__["label_fingerprint"] = label_fingerprint

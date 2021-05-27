@@ -17,7 +17,6 @@ class ConfigWaiterArgs:
     def __init__(__self__, *,
                  config_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 waiter_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  done: Optional[pulumi.Input[bool]] = None,
                  error: Optional[pulumi.Input['StatusArgs']] = None,
@@ -38,7 +37,6 @@ class ConfigWaiterArgs:
         """
         pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "waiter_id", waiter_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if done is not None:
@@ -73,15 +71,6 @@ class ConfigWaiterArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="waiterId")
-    def waiter_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "waiter_id")
-
-    @waiter_id.setter
-    def waiter_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "waiter_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -192,7 +181,6 @@ class ConfigWaiter(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 waiter_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts.
@@ -241,7 +229,6 @@ class ConfigWaiter(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 waiter_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -268,9 +255,6 @@ class ConfigWaiter(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["success"] = success
             __props__.__dict__["timeout"] = timeout
-            if waiter_id is None and not opts.urn:
-                raise TypeError("Missing required property 'waiter_id'")
-            __props__.__dict__["waiter_id"] = waiter_id
         super(ConfigWaiter, __self__).__init__(
             'google-native:runtimeconfig/v1beta1:ConfigWaiter',
             resource_name,

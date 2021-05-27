@@ -49,9 +49,6 @@ func NewTargetHttpProxy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TargetHttpProxy == nil {
-		return nil, errors.New("invalid value for required argument 'TargetHttpProxy'")
-	}
 	var resource TargetHttpProxy
 	err := ctx.RegisterResource("google-native:compute/v1:TargetHttpProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -151,8 +148,7 @@ type targetHttpProxyArgs struct {
 	Region    *string `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink        *string `pulumi:"selfLink"`
-	TargetHttpProxy string  `pulumi:"targetHttpProxy"`
+	SelfLink *string `pulumi:"selfLink"`
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService.
 	UrlMap *string `pulumi:"urlMap"`
 }
@@ -182,8 +178,7 @@ type TargetHttpProxyArgs struct {
 	Region    pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink        pulumi.StringPtrInput
-	TargetHttpProxy pulumi.StringInput
+	SelfLink pulumi.StringPtrInput
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService.
 	UrlMap pulumi.StringPtrInput
 }

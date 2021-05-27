@@ -16,7 +16,6 @@ __all__ = ['ReservationArgs', 'Reservation']
 class ReservationArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 reservation: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  commitment: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -46,7 +45,6 @@ class ReservationArgs:
         :param pulumi.Input[str] status: [Output Only] The status of the reservation.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "reservation", reservation)
         pulumi.set(__self__, "zone", zone)
         if commitment is not None:
             pulumi.set(__self__, "commitment", commitment)
@@ -81,15 +79,6 @@ class ReservationArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def reservation(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "reservation")
-
-    @reservation.setter
-    def reservation(self, value: pulumi.Input[str]):
-        pulumi.set(self, "reservation", value)
 
     @property
     @pulumi.getter
@@ -258,7 +247,6 @@ class Reservation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reservation: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
@@ -316,7 +304,6 @@ class Reservation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reservation: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
@@ -345,9 +332,6 @@ class Reservation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            if reservation is None and not opts.urn:
-                raise TypeError("Missing required property 'reservation'")
-            __props__.__dict__["reservation"] = reservation
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["specific_reservation"] = specific_reservation

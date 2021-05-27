@@ -17,7 +17,6 @@ class RegistrationArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 registration_id: pulumi.Input[str],
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  contact_settings: Optional[pulumi.Input['ContactSettingsArgs']] = None,
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
@@ -41,7 +40,6 @@ class RegistrationArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "registration_id", registration_id)
         if contact_notices is not None:
             pulumi.set(__self__, "contact_notices", contact_notices)
         if contact_settings is not None:
@@ -78,15 +76,6 @@ class RegistrationArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="registrationId")
-    def registration_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "registration_id")
-
-    @registration_id.setter
-    def registration_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registration_id", value)
 
     @property
     @pulumi.getter(name="contactNotices")
@@ -211,7 +200,6 @@ class Registration(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 registration_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  yearly_price: Optional[pulumi.Input[pulumi.InputType['MoneyArgs']]] = None,
                  __props__=None):
@@ -263,7 +251,6 @@ class Registration(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 registration_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  yearly_price: Optional[pulumi.Input[pulumi.InputType['MoneyArgs']]] = None,
                  __props__=None):
@@ -291,9 +278,6 @@ class Registration(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if registration_id is None and not opts.urn:
-                raise TypeError("Missing required property 'registration_id'")
-            __props__.__dict__["registration_id"] = registration_id
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["yearly_price"] = yearly_price
             __props__.__dict__["create_time"] = None

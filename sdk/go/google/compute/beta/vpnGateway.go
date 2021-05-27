@@ -52,9 +52,6 @@ func NewVpnGateway(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.VpnGateway == nil {
-		return nil, errors.New("invalid value for required argument 'VpnGateway'")
-	}
 	var resource VpnGateway
 	err := ctx.RegisterResource("google-native:compute/beta:VpnGateway", name, args, &resource, opts...)
 	if err != nil {
@@ -154,8 +151,7 @@ type vpnGatewayArgs struct {
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink   *string `pulumi:"selfLink"`
-	VpnGateway string  `pulumi:"vpnGateway"`
+	SelfLink *string `pulumi:"selfLink"`
 	// A list of interfaces on this VPN gateway.
 	VpnInterfaces []VpnGatewayVpnGatewayInterface `pulumi:"vpnInterfaces"`
 }
@@ -185,8 +181,7 @@ type VpnGatewayArgs struct {
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink   pulumi.StringPtrInput
-	VpnGateway pulumi.StringInput
+	SelfLink pulumi.StringPtrInput
 	// A list of interfaces on this VPN gateway.
 	VpnInterfaces VpnGatewayVpnGatewayInterfaceArrayInput
 }

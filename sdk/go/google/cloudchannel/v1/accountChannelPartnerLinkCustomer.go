@@ -54,9 +54,6 @@ func NewAccountChannelPartnerLinkCustomer(ctx *pulumi.Context,
 	if args.ChannelPartnerLinkId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelPartnerLinkId'")
 	}
-	if args.CustomerId == nil {
-		return nil, errors.New("invalid value for required argument 'CustomerId'")
-	}
 	var resource AccountChannelPartnerLinkCustomer
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer", name, args, &resource, opts...)
 	if err != nil {
@@ -143,7 +140,6 @@ type accountChannelPartnerLinkCustomerArgs struct {
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     *string `pulumi:"channelPartnerId"`
 	ChannelPartnerLinkId string  `pulumi:"channelPartnerLinkId"`
-	CustomerId           string  `pulumi:"customerId"`
 	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain *string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
@@ -164,7 +160,6 @@ type AccountChannelPartnerLinkCustomerArgs struct {
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     pulumi.StringPtrInput
 	ChannelPartnerLinkId pulumi.StringInput
-	CustomerId           pulumi.StringInput
 	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain pulumi.StringPtrInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.

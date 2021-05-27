@@ -21,9 +21,13 @@ type CloudAPIResource struct {
 	CreateProperties map[string]CloudAPIProperty `json:"createProperties,omitempty"`
 	UpdateVerb       string                      `json:"updateVerb,omitempty"`
 	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
-	IdPath           string                      `json:"idPath,omitempty"`
-	IdParams         map[string]string           `json:"idParams,omitempty"`
 	NoDelete         bool                        `json:"noDelete,omitempty"`
+	// IdProperty contains the name of the output property that represents resource ID (a self link).
+	IdProperty string `json:"idProperty,omitempty"`
+	// IdPath is the template for building resource ID with ID parameter values. It should only
+	// be defined if IdProperty is missing.
+	IdPath   string            `json:"idPath,omitempty"`
+	IdParams map[string]string `json:"idParams,omitempty"`
 }
 
 // CloudAPIResourceParam is a URL parameter of an API resource.
@@ -33,9 +37,12 @@ type CloudAPIResourceParam struct {
 	Location string `json:"location"`
 }
 
-// RelativePath joins the resource base URL with the given path.
-func (r *CloudAPIResource) RelativePath(rel string) string {
-	return fmt.Sprintf("%s/%s", strings.TrimRight(r.BaseUrl, "/"), strings.TrimLeft(rel, "/"))
+// ResourceUrl returns the resource API URL by joining the base URL with the resource path.
+func (r *CloudAPIResource) ResourceUrl(path string) string {
+	if strings.HasPrefix(path, "https://") {
+		return path
+	}
+	return fmt.Sprintf("%s/%s", strings.TrimRight(r.BaseUrl, "/"), strings.TrimLeft(path, "/"))
 }
 
 // CloudAPIProperty is a property of a body of an API call payload.

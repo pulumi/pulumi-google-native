@@ -47,9 +47,6 @@ func NewQueueTask(ctx *pulumi.Context,
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
-	if args.TaskId == nil {
-		return nil, errors.New("invalid value for required argument 'TaskId'")
-	}
 	var resource QueueTask
 	err := ctx.RegisterResource("google-native:cloudtasks/v2beta2:QueueTask", name, args, &resource, opts...)
 	if err != nil {
@@ -127,7 +124,6 @@ type queueTaskArgs struct {
 	ScheduleTime *string `pulumi:"scheduleTime"`
 	// The task status.
 	Status *TaskStatus `pulumi:"status"`
-	TaskId string      `pulumi:"taskId"`
 	// The view specifies which subset of the Task has been returned.
 	View *string `pulumi:"view"`
 }
@@ -151,7 +147,6 @@ type QueueTaskArgs struct {
 	ScheduleTime pulumi.StringPtrInput
 	// The task status.
 	Status TaskStatusPtrInput
-	TaskId pulumi.StringInput
 	// The view specifies which subset of the Task has been returned.
 	View pulumi.StringPtrInput
 }

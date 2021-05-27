@@ -204,9 +204,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("network")]
         public Input<Inputs.PacketMirroringNetworkInfoArgs>? Network { get; set; }
 
-        [Input("packetMirroring", required: true)]
-        public Input<string> PacketMirroring { get; set; } = null!;
-
         /// <summary>
         /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
         /// 

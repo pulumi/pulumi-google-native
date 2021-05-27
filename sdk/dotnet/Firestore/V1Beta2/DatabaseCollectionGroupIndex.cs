@@ -102,9 +102,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
             set => _fields = value;
         }
 
-        [Input("indexId", required: true)]
-        public Input<string> IndexId { get; set; } = null!;
-
         /// <summary>
         /// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
         /// </summary>

@@ -14,7 +14,6 @@ __all__ = ['TargetInstanceArgs', 'TargetInstance']
 class TargetInstanceArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 target_instance: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -41,7 +40,6 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "target_instance", target_instance)
         pulumi.set(__self__, "zone", zone)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -70,15 +68,6 @@ class TargetInstanceArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="targetInstance")
-    def target_instance(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "target_instance")
-
-    @target_instance.setter
-    def target_instance(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_instance", value)
 
     @property
     @pulumi.getter
@@ -216,7 +205,6 @@ class TargetInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 target_instance: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -271,7 +259,6 @@ class TargetInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 target_instance: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -297,9 +284,6 @@ class TargetInstance(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
-            if target_instance is None and not opts.urn:
-                raise TypeError("Missing required property 'target_instance'")
-            __props__.__dict__["target_instance"] = target_instance
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone

@@ -266,9 +266,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             set => _rules = value;
         }
 
-        [Input("securityPolicy", required: true)]
-        public Input<string> SecurityPolicy { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>

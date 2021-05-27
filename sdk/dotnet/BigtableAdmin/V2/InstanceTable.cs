@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// <summary>
         /// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
         /// </summary>
-        [Input("tableId", required: true)]
-        public Input<string> TableId { get; set; } = null!;
+        [Input("tableId")]
+        public Input<string>? TableId { get; set; }
 
         public InstanceTableArgs()
         {

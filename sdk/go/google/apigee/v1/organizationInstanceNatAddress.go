@@ -33,9 +33,6 @@ func NewOrganizationInstanceNatAddress(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.NatAddressId == nil {
-		return nil, errors.New("invalid value for required argument 'NatAddressId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -86,7 +83,6 @@ type organizationInstanceNatAddressArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Required. Resource ID of the NAT address.
 	Name           *string `pulumi:"name"`
-	NatAddressId   string  `pulumi:"natAddressId"`
 	OrganizationId string  `pulumi:"organizationId"`
 }
 
@@ -95,7 +91,6 @@ type OrganizationInstanceNatAddressArgs struct {
 	InstanceId pulumi.StringInput
 	// Required. Resource ID of the NAT address.
 	Name           pulumi.StringPtrInput
-	NatAddressId   pulumi.StringInput
 	OrganizationId pulumi.StringInput
 }
 

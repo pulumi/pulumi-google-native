@@ -15,7 +15,6 @@ __all__ = ['InstanceDatabaseArgs', 'InstanceDatabase']
 @pulumi.input_type
 class InstanceDatabaseArgs:
     def __init__(__self__, *,
-                 database_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  create_statement: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,6 @@ class InstanceDatabaseArgs:
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_statements: Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
         """
-        pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
         if create_statement is not None:
@@ -36,15 +34,6 @@ class InstanceDatabaseArgs:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if extra_statements is not None:
             pulumi.set(__self__, "extra_statements", extra_statements)
-
-    @property
-    @pulumi.getter(name="databaseId")
-    def database_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "database_id")
-
-    @database_id.setter
-    def database_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database_id", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -107,7 +96,6 @@ class InstanceDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_statement: Optional[pulumi.Input[str]] = None,
-                 database_id: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -147,7 +135,6 @@ class InstanceDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_statement: Optional[pulumi.Input[str]] = None,
-                 database_id: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -165,9 +152,6 @@ class InstanceDatabase(pulumi.CustomResource):
             __props__ = InstanceDatabaseArgs.__new__(InstanceDatabaseArgs)
 
             __props__.__dict__["create_statement"] = create_statement
-            if database_id is None and not opts.urn:
-                raise TypeError("Missing required property 'database_id'")
-            __props__.__dict__["database_id"] = database_id
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["extra_statements"] = extra_statements
             if instance_id is None and not opts.urn:

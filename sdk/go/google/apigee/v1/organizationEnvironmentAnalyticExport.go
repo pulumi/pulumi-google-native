@@ -45,9 +45,6 @@ func NewOrganizationEnvironmentAnalyticExport(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.ExportId == nil {
-		return nil, errors.New("invalid value for required argument 'ExportId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -128,7 +125,6 @@ type organizationEnvironmentAnalyticExportArgs struct {
 	// Optional. Description of the export job.
 	Description   *string `pulumi:"description"`
 	EnvironmentId string  `pulumi:"environmentId"`
-	ExportId      string  `pulumi:"exportId"`
 	// Required. Display name of the export job.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -147,7 +143,6 @@ type OrganizationEnvironmentAnalyticExportArgs struct {
 	// Optional. Description of the export job.
 	Description   pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
-	ExportId      pulumi.StringInput
 	// Required. Display name of the export job.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

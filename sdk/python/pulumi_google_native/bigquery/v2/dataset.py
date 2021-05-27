@@ -15,7 +15,6 @@ __all__ = ['DatasetArgs', 'Dataset']
 @pulumi.input_type
 class DatasetArgs:
     def __init__(__self__, *,
-                 dataset_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  access: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
@@ -51,7 +50,6 @@ class DatasetArgs:
         :param pulumi.Input[bool] satisfies_pzs: [Output-only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
-        pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project", project)
         if access is not None:
             pulumi.set(__self__, "access", access)
@@ -85,15 +83,6 @@ class DatasetArgs:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
-
-    @property
-    @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dataset_id")
-
-    @dataset_id.setter
-    def dataset_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dataset_id", value)
 
     @property
     @pulumi.getter
@@ -301,7 +290,6 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
-                 dataset_id: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
@@ -365,7 +353,6 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
-                 dataset_id: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
@@ -395,9 +382,6 @@ class Dataset(pulumi.CustomResource):
 
             __props__.__dict__["access"] = access
             __props__.__dict__["creation_time"] = creation_time
-            if dataset_id is None and not opts.urn:
-                raise TypeError("Missing required property 'dataset_id'")
-            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["dataset_reference"] = dataset_reference
             __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms

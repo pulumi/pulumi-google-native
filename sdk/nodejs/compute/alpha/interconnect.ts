@@ -155,9 +155,6 @@ export class Interconnect extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.interconnect === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'interconnect'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -170,7 +167,6 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["googleIpAddress"] = args ? args.googleIpAddress : undefined;
             inputs["googleReferenceId"] = args ? args.googleReferenceId : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["interconnect"] = args ? args.interconnect : undefined;
             inputs["interconnectAttachments"] = args ? args.interconnectAttachments : undefined;
             inputs["interconnectType"] = args ? args.interconnectType : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -262,7 +258,6 @@ export interface InterconnectArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
-    readonly interconnect: pulumi.Input<string>;
     /**
      * [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */

@@ -153,9 +153,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("notification", required: true)]
-        public Input<string> Notification { get; set; } = null!;
-
         /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.
         /// </summary>

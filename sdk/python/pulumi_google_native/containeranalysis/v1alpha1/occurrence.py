@@ -15,7 +15,6 @@ __all__ = ['OccurrenceArgs', 'Occurrence']
 @pulumi.input_type
 class OccurrenceArgs:
     def __init__(__self__, *,
-                 occurrence_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  attestation: Optional[pulumi.Input['AttestationArgs']] = None,
                  build_details: Optional[pulumi.Input['BuildDetailsArgs']] = None,
@@ -52,7 +51,6 @@ class OccurrenceArgs:
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an upgrade.
         :param pulumi.Input['VulnerabilityDetailsArgs'] vulnerability_details: Details of a security vulnerability note.
         """
-        pulumi.set(__self__, "occurrence_id", occurrence_id)
         pulumi.set(__self__, "project", project)
         if attestation is not None:
             pulumi.set(__self__, "attestation", attestation)
@@ -86,15 +84,6 @@ class OccurrenceArgs:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability_details is not None:
             pulumi.set(__self__, "vulnerability_details", vulnerability_details)
-
-    @property
-    @pulumi.getter(name="occurrenceId")
-    def occurrence_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "occurrence_id")
-
-    @occurrence_id.setter
-    def occurrence_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "occurrence_id", value)
 
     @property
     @pulumi.getter
@@ -313,7 +302,6 @@ class Occurrence(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
-                 occurrence_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
@@ -378,7 +366,6 @@ class Occurrence(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
-                 occurrence_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
@@ -408,9 +395,6 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["note_name"] = note_name
-            if occurrence_id is None and not opts.urn:
-                raise TypeError("Missing required property 'occurrence_id'")
-            __props__.__dict__["occurrence_id"] = occurrence_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

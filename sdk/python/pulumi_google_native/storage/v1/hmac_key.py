@@ -13,27 +13,16 @@ __all__ = ['HmacKeyArgs', 'HmacKey']
 @pulumi.input_type
 class HmacKeyArgs:
     def __init__(__self__, *,
-                 access_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  service_account_email: pulumi.Input[str],
                  user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HmacKey resource.
         """
-        pulumi.set(__self__, "access_id", access_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account_email", service_account_email)
         if user_project is not None:
             pulumi.set(__self__, "user_project", user_project)
-
-    @property
-    @pulumi.getter(name="accessId")
-    def access_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "access_id")
-
-    @access_id.setter
-    def access_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "access_id", value)
 
     @property
     @pulumi.getter
@@ -68,7 +57,6 @@ class HmacKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -103,7 +91,6 @@ class HmacKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -119,9 +106,6 @@ class HmacKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HmacKeyArgs.__new__(HmacKeyArgs)
 
-            if access_id is None and not opts.urn:
-                raise TypeError("Missing required property 'access_id'")
-            __props__.__dict__["access_id"] = access_id
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -129,6 +113,7 @@ class HmacKey(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_account_email'")
             __props__.__dict__["service_account_email"] = service_account_email
             __props__.__dict__["user_project"] = user_project
+            __props__.__dict__["access_id"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None

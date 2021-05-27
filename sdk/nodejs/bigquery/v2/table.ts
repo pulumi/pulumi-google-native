@@ -165,9 +165,6 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tableId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tableId'");
-            }
             inputs["clustering"] = args ? args.clustering : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -195,7 +192,6 @@ export class Table extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["snapshotDefinition"] = args ? args.snapshotDefinition : undefined;
             inputs["streamingBuffer"] = args ? args.streamingBuffer : undefined;
-            inputs["tableId"] = args ? args.tableId : undefined;
             inputs["tableReference"] = args ? args.tableReference : undefined;
             inputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -343,7 +339,6 @@ export interface TableArgs {
      * [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
      */
     readonly streamingBuffer?: pulumi.Input<inputs.bigquery.v2.StreamingbufferArgs>;
-    readonly tableId: pulumi.Input<string>;
     /**
      * [Required] Reference describing the ID of this table.
      */

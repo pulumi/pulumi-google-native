@@ -176,9 +176,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("service")]
         public Input<string>? Service { get; set; }
 
-        [Input("targetTcpProxy", required: true)]
-        public Input<string> TargetTcpProxy { get; set; } = null!;
-
         public TargetTcpProxyArgs()
         {
         }

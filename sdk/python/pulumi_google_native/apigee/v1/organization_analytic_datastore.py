@@ -15,7 +15,6 @@ __all__ = ['OrganizationAnalyticDatastoreArgs', 'OrganizationAnalyticDatastore']
 @pulumi.input_type
 class OrganizationAnalyticDatastoreArgs:
     def __init__(__self__, *,
-                 datastore_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  datastore_config: Optional[pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +25,6 @@ class OrganizationAnalyticDatastoreArgs:
         :param pulumi.Input[str] display_name: Required. Display name in UI
         :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
         """
-        pulumi.set(__self__, "datastore_id", datastore_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if datastore_config is not None:
             pulumi.set(__self__, "datastore_config", datastore_config)
@@ -34,15 +32,6 @@ class OrganizationAnalyticDatastoreArgs:
             pulumi.set(__self__, "display_name", display_name)
         if target_type is not None:
             pulumi.set(__self__, "target_type", target_type)
-
-    @property
-    @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datastore_id")
-
-    @datastore_id.setter
-    def datastore_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datastore_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -96,7 +85,6 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datastore_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']]] = None,
-                 datastore_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,
@@ -135,7 +123,6 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datastore_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']]] = None,
-                 datastore_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,
@@ -152,9 +139,6 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
             __props__ = OrganizationAnalyticDatastoreArgs.__new__(OrganizationAnalyticDatastoreArgs)
 
             __props__.__dict__["datastore_config"] = datastore_config
-            if datastore_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datastore_id'")
-            __props__.__dict__["datastore_id"] = datastore_id
             __props__.__dict__["display_name"] = display_name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

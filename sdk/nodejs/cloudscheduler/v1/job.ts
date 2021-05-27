@@ -103,9 +103,6 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -116,7 +113,6 @@ export class Job extends pulumi.CustomResource {
             inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpTarget"] = args ? args.httpTarget : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["lastAttemptTime"] = args ? args.lastAttemptTime : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -172,7 +168,6 @@ export interface JobArgs {
      * HTTP target.
      */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.v1.HttpTargetArgs>;
-    readonly jobId: pulumi.Input<string>;
     /**
      * The time the last job attempt started.
      */

@@ -79,9 +79,6 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.consentArtifactId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentArtifactId'");
-            }
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
@@ -94,7 +91,6 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["consentArtifactId"] = args ? args.consentArtifactId : undefined;
             inputs["consentContentScreenshots"] = args ? args.consentContentScreenshots : undefined;
             inputs["consentContentVersion"] = args ? args.consentContentVersion : undefined;
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
@@ -128,7 +124,6 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetConsentStoreConsentArtifact resource.
  */
 export interface DatasetConsentStoreConsentArtifactArgs {
-    readonly consentArtifactId: pulumi.Input<string>;
     /**
      * Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
      */

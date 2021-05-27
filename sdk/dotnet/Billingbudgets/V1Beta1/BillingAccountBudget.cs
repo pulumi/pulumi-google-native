@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         [Input("budgetFilter")]
         public Input<Inputs.GoogleCloudBillingBudgetsV1beta1FilterArgs>? BudgetFilter { get; set; }
 
-        [Input("budgetId", required: true)]
-        public Input<string> BudgetId { get; set; } = null!;
-
         /// <summary>
         /// User data for display name in UI. Validation: &lt;= 60 chars.
         /// </summary>

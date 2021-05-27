@@ -39,9 +39,6 @@ func NewCompositeType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CompositeType == nil {
-		return nil, errors.New("invalid value for required argument 'CompositeType'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -107,7 +104,6 @@ func (CompositeTypeState) ElementType() reflect.Type {
 }
 
 type compositeTypeArgs struct {
-	CompositeType string `pulumi:"compositeType"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
 	Id          *string `pulumi:"id"`
@@ -129,7 +125,6 @@ type compositeTypeArgs struct {
 
 // The set of arguments for constructing a CompositeType resource.
 type CompositeTypeArgs struct {
-	CompositeType pulumi.StringInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
 	Id          pulumi.StringPtrInput

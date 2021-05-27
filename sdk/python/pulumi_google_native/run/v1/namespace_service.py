@@ -16,7 +16,6 @@ __all__ = ['NamespaceServiceArgs', 'NamespaceService']
 class NamespaceServiceArgs:
     def __init__(__self__, *,
                  namespace_id: pulumi.Input[str],
-                 service_id: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -32,7 +31,6 @@ class NamespaceServiceArgs:
         :param pulumi.Input['ServiceStatusArgs'] status: Status communicates the observed state of the Service (from the controller).
         """
         pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "service_id", service_id)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if dry_run is not None:
@@ -54,15 +52,6 @@ class NamespaceServiceArgs:
     @namespace_id.setter
     def namespace_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "namespace_id", value)
-
-    @property
-    @pulumi.getter(name="serviceId")
-    def service_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "service_id")
-
-    @service_id.setter
-    def service_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -144,7 +133,6 @@ class NamespaceService(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
                  __props__=None):
@@ -188,7 +176,6 @@ class NamespaceService(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
                  __props__=None):
@@ -210,9 +197,6 @@ class NamespaceService(pulumi.CustomResource):
             if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
-            if service_id is None and not opts.urn:
-                raise TypeError("Missing required property 'service_id'")
-            __props__.__dict__["service_id"] = service_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
         super(NamespaceService, __self__).__init__(

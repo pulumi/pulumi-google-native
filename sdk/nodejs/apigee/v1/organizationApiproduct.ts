@@ -108,14 +108,10 @@ export class OrganizationApiproduct extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apiproductId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apiproductId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["apiResources"] = args ? args.apiResources : undefined;
-            inputs["apiproductId"] = args ? args.apiproductId : undefined;
             inputs["approvalType"] = args ? args.approvalType : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["createdAt"] = args ? args.createdAt : undefined;
@@ -162,7 +158,6 @@ export class OrganizationApiproduct extends pulumi.CustomResource {
  */
 export interface OrganizationApiproductArgs {
     readonly apiResources?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly apiproductId: pulumi.Input<string>;
     /**
      * Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
      */

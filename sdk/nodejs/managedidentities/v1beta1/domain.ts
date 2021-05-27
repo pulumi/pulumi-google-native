@@ -99,9 +99,6 @@ export class Domain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainId'");
-            }
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
@@ -111,7 +108,6 @@ export class Domain extends pulumi.CustomResource {
             inputs["admin"] = args ? args.admin : undefined;
             inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locations"] = args ? args.locations : undefined;
@@ -162,7 +158,6 @@ export interface DomainArgs {
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */
     readonly authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly domainId: pulumi.Input<string>;
     readonly domainName: pulumi.Input<string>;
     /**
      * Optional. Resource labels that can contain user-provided metadata.

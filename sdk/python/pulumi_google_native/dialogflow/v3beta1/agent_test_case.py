@@ -18,7 +18,6 @@ class AgentTestCaseArgs:
                  agent_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 test_case_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  last_test_result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -39,7 +38,6 @@ class AgentTestCaseArgs:
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "test_case_id", test_case_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if last_test_result is not None:
@@ -81,15 +79,6 @@ class AgentTestCaseArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="testCaseId")
-    def test_case_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "test_case_id")
-
-    @test_case_id.setter
-    def test_case_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "test_case_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -190,7 +179,6 @@ class AgentTestCase(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]]] = None,
-                 test_case_id: Optional[pulumi.Input[str]] = None,
                  test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestConfigArgs']]] = None,
                  __props__=None):
         """
@@ -239,7 +227,6 @@ class AgentTestCase(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]]] = None,
-                 test_case_id: Optional[pulumi.Input[str]] = None,
                  test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -268,9 +255,6 @@ class AgentTestCase(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["test_case_conversation_turns"] = test_case_conversation_turns
-            if test_case_id is None and not opts.urn:
-                raise TypeError("Missing required property 'test_case_id'")
-            __props__.__dict__["test_case_id"] = test_case_id
             __props__.__dict__["test_config"] = test_config
             __props__.__dict__["creation_time"] = None
         super(AgentTestCase, __self__).__init__(

@@ -102,9 +102,6 @@ export class Router extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.router === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'router'");
-            }
             inputs["bgp"] = args ? args.bgp : undefined;
             inputs["bgpPeers"] = args ? args.bgpPeers : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -119,7 +116,6 @@ export class Router extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["router"] = args ? args.router : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
             inputs["bgp"] = undefined /*out*/;
@@ -197,7 +193,6 @@ export interface RouterArgs {
      */
     readonly region: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
-    readonly router: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

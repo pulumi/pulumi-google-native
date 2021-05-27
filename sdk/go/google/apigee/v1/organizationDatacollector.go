@@ -34,9 +34,6 @@ func NewOrganizationDatacollector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatacollectorId == nil {
-		return nil, errors.New("invalid value for required argument 'DatacollectorId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -93,7 +90,6 @@ func (OrganizationDatacollectorState) ElementType() reflect.Type {
 
 type organizationDatacollectorArgs struct {
 	DataCollectorId *string `pulumi:"dataCollectorId"`
-	DatacollectorId string  `pulumi:"datacollectorId"`
 	// A description of the data collector.
 	Description *string `pulumi:"description"`
 	// ID of the data collector. Must begin with `dc_`.
@@ -106,7 +102,6 @@ type organizationDatacollectorArgs struct {
 // The set of arguments for constructing a OrganizationDatacollector resource.
 type OrganizationDatacollectorArgs struct {
 	DataCollectorId pulumi.StringPtrInput
-	DatacollectorId pulumi.StringInput
 	// A description of the data collector.
 	Description pulumi.StringPtrInput
 	// ID of the data collector. Must begin with `dc_`.

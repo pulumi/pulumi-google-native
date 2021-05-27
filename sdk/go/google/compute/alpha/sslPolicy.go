@@ -56,9 +56,6 @@ func NewSslPolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SslPolicy == nil {
-		return nil, errors.New("invalid value for required argument 'SslPolicy'")
-	}
 	var resource SslPolicy
 	err := ctx.RegisterResource("google-native:compute/alpha:SslPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -178,7 +175,6 @@ type sslPolicyArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	SslPolicy      string  `pulumi:"sslPolicy"`
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings *ServerTlsSettings `pulumi:"tlsSettings"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
@@ -216,7 +212,6 @@ type SslPolicyArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
-	SslPolicy      pulumi.StringInput
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsPtrInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.

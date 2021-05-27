@@ -15,7 +15,6 @@ __all__ = ['BackupRunArgs', 'BackupRun']
 @pulumi.input_type
 class BackupRunArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
                  instance: pulumi.Input[str],
                  project: pulumi.Input[str],
                  backup_kind: Optional[pulumi.Input[str]] = None,
@@ -25,6 +24,7 @@ class BackupRunArgs:
                  end_time: Optional[pulumi.Input[str]] = None,
                  enqueued_time: Optional[pulumi.Input[str]] = None,
                  error: Optional[pulumi.Input['OperationErrorArgs']] = None,
+                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,6 @@ class BackupRunArgs:
                  window_start_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BackupRun resource.
-        :param pulumi.Input[str] id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
         :param pulumi.Input[str] instance: Name of the database instance.
         :param pulumi.Input[str] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
@@ -43,6 +42,7 @@ class BackupRunArgs:
         :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input['OperationErrorArgs'] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
+        :param pulumi.Input[str] id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
         :param pulumi.Input[str] kind: This is always *sql#backupRun*.
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
@@ -51,7 +51,6 @@ class BackupRunArgs:
         :param pulumi.Input[str] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         """
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "project", project)
         if backup_kind is not None:
@@ -68,6 +67,8 @@ class BackupRunArgs:
             pulumi.set(__self__, "enqueued_time", enqueued_time)
         if error is not None:
             pulumi.set(__self__, "error", error)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if location is not None:
@@ -82,18 +83,6 @@ class BackupRunArgs:
             pulumi.set(__self__, "type", type)
         if window_start_time is not None:
             pulumi.set(__self__, "window_start_time", window_start_time)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -199,6 +188,18 @@ class BackupRunArgs:
     @error.setter
     def error(self, value: Optional[pulumi.Input['OperationErrorArgs']]):
         pulumi.set(self, "error", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -390,8 +391,6 @@ class BackupRun(pulumi.CustomResource):
             __props__.__dict__["end_time"] = end_time
             __props__.__dict__["enqueued_time"] = enqueued_time
             __props__.__dict__["error"] = error
-            if id is None and not opts.urn:
-                raise TypeError("Missing required property 'id'")
             __props__.__dict__["id"] = id
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

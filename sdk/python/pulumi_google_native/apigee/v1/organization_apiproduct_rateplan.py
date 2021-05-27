@@ -17,7 +17,6 @@ class OrganizationApiproductRateplanArgs:
     def __init__(__self__, *,
                  apiproduct_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 rateplan_id: pulumi.Input[str],
                  apiproduct: Optional[pulumi.Input[str]] = None,
                  billing_period: Optional[pulumi.Input[str]] = None,
                  consumption_pricing_rates: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1RateRangeArgs']]]] = None,
@@ -55,7 +54,6 @@ class OrganizationApiproductRateplanArgs:
         """
         pulumi.set(__self__, "apiproduct_id", apiproduct_id)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "rateplan_id", rateplan_id)
         if apiproduct is not None:
             pulumi.set(__self__, "apiproduct", apiproduct)
         if billing_period is not None:
@@ -106,15 +104,6 @@ class OrganizationApiproductRateplanArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="rateplanId")
-    def rateplan_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "rateplan_id")
-
-    @rateplan_id.setter
-    def rateplan_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "rateplan_id", value)
 
     @property
     @pulumi.getter
@@ -327,7 +316,6 @@ class OrganizationApiproductRateplan(pulumi.CustomResource):
                  fixed_recurring_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  payment_funding_model: Optional[pulumi.Input[str]] = None,
-                 rateplan_id: Optional[pulumi.Input[str]] = None,
                  revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]] = None,
                  revenue_share_type: Optional[pulumi.Input[str]] = None,
                  setup_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
@@ -393,7 +381,6 @@ class OrganizationApiproductRateplan(pulumi.CustomResource):
                  fixed_recurring_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  payment_funding_model: Optional[pulumi.Input[str]] = None,
-                 rateplan_id: Optional[pulumi.Input[str]] = None,
                  revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]] = None,
                  revenue_share_type: Optional[pulumi.Input[str]] = None,
                  setup_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
@@ -428,9 +415,6 @@ class OrganizationApiproductRateplan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["payment_funding_model"] = payment_funding_model
-            if rateplan_id is None and not opts.urn:
-                raise TypeError("Missing required property 'rateplan_id'")
-            __props__.__dict__["rateplan_id"] = rateplan_id
             __props__.__dict__["revenue_share_rates"] = revenue_share_rates
             __props__.__dict__["revenue_share_type"] = revenue_share_type
             __props__.__dict__["setup_fee"] = setup_fee

@@ -13,7 +13,6 @@ __all__ = ['OrganizationEnvgroupArgs', 'OrganizationEnvgroup']
 @pulumi.input_type
 class OrganizationEnvgroupArgs:
     def __init__(__self__, *,
-                 envgroup_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -22,21 +21,11 @@ class OrganizationEnvgroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Host names for this environment group.
         :param pulumi.Input[str] name: ID of the environment group.
         """
-        pulumi.set(__self__, "envgroup_id", envgroup_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="envgroupId")
-    def envgroup_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "envgroup_id")
-
-    @envgroup_id.setter
-    def envgroup_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "envgroup_id", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -77,7 +66,6 @@ class OrganizationEnvgroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 envgroup_id: Optional[pulumi.Input[str]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -114,7 +102,6 @@ class OrganizationEnvgroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 envgroup_id: Optional[pulumi.Input[str]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -130,9 +117,6 @@ class OrganizationEnvgroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationEnvgroupArgs.__new__(OrganizationEnvgroupArgs)
 
-            if envgroup_id is None and not opts.urn:
-                raise TypeError("Missing required property 'envgroup_id'")
-            __props__.__dict__["envgroup_id"] = envgroup_id
             __props__.__dict__["hostnames"] = hostnames
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:

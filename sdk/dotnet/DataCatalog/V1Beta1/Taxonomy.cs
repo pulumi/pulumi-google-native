@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("taxonomyId", required: true)]
-        public Input<string> TaxonomyId { get; set; } = null!;
-
         public TaxonomyArgs()
         {
         }

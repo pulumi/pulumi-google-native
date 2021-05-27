@@ -102,9 +102,6 @@ export class SslCertificate extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sslCertificate === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sslCertificate'");
-            }
             inputs["certificate"] = args ? args.certificate : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -119,7 +116,6 @@ export class SslCertificate extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfManaged"] = args ? args.selfManaged : undefined;
-            inputs["sslCertificate"] = args ? args.sslCertificate : undefined;
             inputs["subjectAlternativeNames"] = args ? args.subjectAlternativeNames : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
@@ -198,7 +194,6 @@ export interface SslCertificateArgs {
      * Configuration and status of a self-managed SSL certificate.
      */
     readonly selfManaged?: pulumi.Input<inputs.compute.beta.SslCertificateSelfManagedSslCertificateArgs>;
-    readonly sslCertificate: pulumi.Input<string>;
     /**
      * [Output Only] Domains associated with the certificate via Subject Alternative Name.
      */

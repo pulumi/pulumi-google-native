@@ -83,9 +83,6 @@ export class AgentFlowVersion extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.versionId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionId'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -93,7 +90,6 @@ export class AgentFlowVersion extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["nluSettings"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -132,5 +128,4 @@ export interface AgentFlowVersionArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly versionId: pulumi.Input<string>;
 }

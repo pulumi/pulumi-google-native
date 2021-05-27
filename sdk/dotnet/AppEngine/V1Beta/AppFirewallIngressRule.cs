@@ -99,9 +99,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("ingressRuleId", required: true)]
-        public Input<string> IngressRuleId { get; set; } = null!;
-
         /// <summary>
         /// A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.
         /// </summary>

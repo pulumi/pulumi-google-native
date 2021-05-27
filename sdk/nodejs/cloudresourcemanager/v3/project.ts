@@ -82,13 +82,10 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -137,5 +134,5 @@ export interface ProjectArgs {
     /**
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
-    readonly project: pulumi.Input<string>;
+    readonly project?: pulumi.Input<string>;
 }

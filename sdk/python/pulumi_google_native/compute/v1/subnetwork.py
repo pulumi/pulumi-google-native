@@ -17,7 +17,6 @@ class SubnetworkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 subnetwork: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
@@ -67,7 +66,6 @@ class SubnetworkArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnetwork", subnetwork)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -129,15 +127,6 @@ class SubnetworkArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter
-    def subnetwork(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "subnetwork")
-
-    @subnetwork.setter
-    def subnetwork(self, value: pulumi.Input[str]):
-        pulumi.set(self, "subnetwork", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -408,7 +397,6 @@ class Subnetwork(pulumi.CustomResource):
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a subnetwork in the specified project using the data included in the request.
@@ -486,7 +474,6 @@ class Subnetwork(pulumi.CustomResource):
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -525,9 +512,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["state"] = state
-            if subnetwork is None and not opts.urn:
-                raise TypeError("Missing required property 'subnetwork'")
-            __props__.__dict__["subnetwork"] = subnetwork
         super(Subnetwork, __self__).__init__(
             'google-native:compute/v1:Subnetwork',
             resource_name,

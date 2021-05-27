@@ -36,9 +36,6 @@ func NewContact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ContactId == nil {
-		return nil, errors.New("invalid value for required argument 'ContactId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -98,7 +95,6 @@ func (ContactState) ElementType() reflect.Type {
 }
 
 type contactArgs struct {
-	ContactId string `pulumi:"contactId"`
 	// Required. The email address to send notifications to. This does not need to be a Google account.
 	Email *string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
@@ -116,7 +112,6 @@ type contactArgs struct {
 
 // The set of arguments for constructing a Contact resource.
 type ContactArgs struct {
-	ContactId pulumi.StringInput
 	// Required. The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringPtrInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.

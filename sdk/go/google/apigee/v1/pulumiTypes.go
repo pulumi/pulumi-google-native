@@ -679,47 +679,6 @@ func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1Api
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
 }
 
-func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return i.ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput).ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput is an input type that accepts GoogleCloudApigeeV1ApiCategoryDataResponseArgs, GoogleCloudApigeeV1ApiCategoryDataResponsePtr and GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput` via:
-//
-//          GoogleCloudApigeeV1ApiCategoryDataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput
-	ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput
-}
-
-type googleCloudApigeeV1ApiCategoryDataResponsePtrType GoogleCloudApigeeV1ApiCategoryDataResponseArgs
-
-func GoogleCloudApigeeV1ApiCategoryDataResponsePtr(v *GoogleCloudApigeeV1ApiCategoryDataResponseArgs) GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput {
-	return (*googleCloudApigeeV1ApiCategoryDataResponsePtrType)(v)
-}
-
-func (*googleCloudApigeeV1ApiCategoryDataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1ApiCategoryDataResponse)(nil)).Elem()
-}
-
-func (i *googleCloudApigeeV1ApiCategoryDataResponsePtrType) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return i.ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudApigeeV1ApiCategoryDataResponsePtrType) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput)
-}
-
 // the Api category resource.
 type GoogleCloudApigeeV1ApiCategoryDataResponseOutput struct{ *pulumi.OutputState }
 
@@ -735,16 +694,6 @@ func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1A
 	return o
 }
 
-func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return o.ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) *GoogleCloudApigeeV1ApiCategoryDataResponse {
-		return &v
-	}).(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput)
-}
-
 // Name of the category.
 func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -758,56 +707,6 @@ func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) SiteId() pulumi.String
 // Time the category was last modified in milliseconds since epoch.
 func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-type GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1ApiCategoryDataResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) Elem() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) GoogleCloudApigeeV1ApiCategoryDataResponse {
-		return *v
-	}).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
-}
-
-// Name of the category.
-func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the portal.
-func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) SiteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SiteId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time the category was last modified in milliseconds since epoch.
-func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudApigeeV1ApiProductRefResponse struct {
@@ -9470,7 +9369,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AsyncQueryResultResponseOutput{})

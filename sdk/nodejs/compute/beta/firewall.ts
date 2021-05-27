@@ -128,9 +128,6 @@ export class Firewall extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.firewall === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'firewall'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -142,7 +139,6 @@ export class Firewall extends pulumi.CustomResource {
             inputs["direction"] = args ? args.direction : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["firewall"] = args ? args.firewall : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
@@ -221,7 +217,6 @@ export interface FirewallArgs {
      * Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
      */
     readonly enableLogging?: pulumi.Input<boolean>;
-    readonly firewall: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

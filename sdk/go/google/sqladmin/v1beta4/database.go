@@ -41,9 +41,6 @@ func NewDatabase(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Database == nil {
-		return nil, errors.New("invalid value for required argument 'Database'")
-	}
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
@@ -120,7 +117,6 @@ type databaseArgs struct {
 	Charset *string `pulumi:"charset"`
 	// The Cloud SQL collation value.
 	Collation *string `pulumi:"collation"`
-	Database  string  `pulumi:"database"`
 	// This field is deprecated and will be removed from a future version of the API.
 	Etag *string `pulumi:"etag"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
@@ -142,7 +138,6 @@ type DatabaseArgs struct {
 	Charset pulumi.StringPtrInput
 	// The Cloud SQL collation value.
 	Collation pulumi.StringPtrInput
-	Database  pulumi.StringInput
 	// This field is deprecated and will be removed from a future version of the API.
 	Etag pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project ID.

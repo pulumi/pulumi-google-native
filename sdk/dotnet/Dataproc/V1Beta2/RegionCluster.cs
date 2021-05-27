@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// <summary>
         /// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         /// </summary>
-        [Input("clusterName", required: true)]
-        public Input<string> ClusterName { get; set; } = null!;
+        [Input("clusterName")]
+        public Input<string>? ClusterName { get; set; }
 
         /// <summary>
         /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.

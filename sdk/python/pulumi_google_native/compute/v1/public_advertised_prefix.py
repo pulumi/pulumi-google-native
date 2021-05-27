@@ -16,7 +16,6 @@ __all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
 class PublicAdvertisedPrefixArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 public_advertised_prefix: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
@@ -48,7 +47,6 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] status: The status of the public advertised prefix.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "public_advertised_prefix", public_advertised_prefix)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -84,15 +82,6 @@ class PublicAdvertisedPrefixArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="publicAdvertisedPrefix")
-    def public_advertised_prefix(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "public_advertised_prefix")
-
-    @public_advertised_prefix.setter
-    def public_advertised_prefix(self, value: pulumi.Input[str]):
-        pulumi.set(self, "public_advertised_prefix", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -264,7 +253,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 public_advertised_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicAdvertisedPrefixPublicDelegatedPrefixArgs']]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -324,7 +312,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 public_advertised_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicAdvertisedPrefixPublicDelegatedPrefixArgs']]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -353,9 +340,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if public_advertised_prefix is None and not opts.urn:
-                raise TypeError("Missing required property 'public_advertised_prefix'")
-            __props__.__dict__["public_advertised_prefix"] = public_advertised_prefix
             __props__.__dict__["public_delegated_prefixs"] = public_delegated_prefixs
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link

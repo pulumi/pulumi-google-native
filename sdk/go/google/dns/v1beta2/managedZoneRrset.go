@@ -38,14 +38,8 @@ func NewManagedZoneRrset(ctx *pulumi.Context,
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource ManagedZoneRrset
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ManagedZoneRrset", name, args, &resource, opts...)
@@ -105,8 +99,8 @@ type managedZoneRrsetArgs struct {
 	Kind              *string `pulumi:"kind"`
 	ManagedZone       string  `pulumi:"managedZone"`
 	// For example, www.example.com.
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -114,7 +108,7 @@ type managedZoneRrsetArgs struct {
 	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
 	Ttl *int `pulumi:"ttl"`
 	// The identifier of a supported record type. See the list of Supported DNS record types.
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ManagedZoneRrset resource.
@@ -123,7 +117,7 @@ type ManagedZoneRrsetArgs struct {
 	Kind              pulumi.StringPtrInput
 	ManagedZone       pulumi.StringInput
 	// For example, www.example.com.
-	Name    pulumi.StringInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayInput
@@ -132,7 +126,7 @@ type ManagedZoneRrsetArgs struct {
 	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
 	Ttl pulumi.IntPtrInput
 	// The identifier of a supported record type. See the list of Supported DNS record types.
-	Type pulumi.StringInput
+	Type pulumi.StringPtrInput
 }
 
 func (ManagedZoneRrsetArgs) ElementType() reflect.Type {

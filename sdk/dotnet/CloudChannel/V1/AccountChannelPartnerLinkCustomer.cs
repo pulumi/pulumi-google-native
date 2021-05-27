@@ -150,9 +150,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         [Input("channelPartnerLinkId", required: true)]
         public Input<string> ChannelPartnerLinkId { get; set; } = null!;
 
-        [Input("customerId", required: true)]
-        public Input<string> CustomerId { get; set; } = null!;
-
         /// <summary>
         /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         /// </summary>

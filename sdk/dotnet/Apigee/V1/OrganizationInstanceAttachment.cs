@@ -78,9 +78,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationInstanceAttachmentArgs : Pulumi.ResourceArgs
     {
-        [Input("attachmentId", required: true)]
-        public Input<string> AttachmentId { get; set; } = null!;
-
         /// <summary>
         /// ID of the attached environment.
         /// </summary>

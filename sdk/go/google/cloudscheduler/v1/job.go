@@ -52,9 +52,6 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobId == nil {
-		return nil, errors.New("invalid value for required argument 'JobId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -157,7 +154,6 @@ type jobArgs struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	HttpTarget *HttpTarget `pulumi:"httpTarget"`
-	JobId      string      `pulumi:"jobId"`
 	// The time the last job attempt started.
 	LastAttemptTime *string `pulumi:"lastAttemptTime"`
 	Location        string  `pulumi:"location"`
@@ -192,7 +188,6 @@ type JobArgs struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	HttpTarget HttpTargetPtrInput
-	JobId      pulumi.StringInput
 	// The time the last job attempt started.
 	LastAttemptTime pulumi.StringPtrInput
 	Location        pulumi.StringInput

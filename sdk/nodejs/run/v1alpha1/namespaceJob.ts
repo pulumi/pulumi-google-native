@@ -67,14 +67,10 @@ export class NamespaceJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobId'");
-            }
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
@@ -102,7 +98,6 @@ export interface NamespaceJobArgs {
      * Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
      */
     readonly apiVersion?: pulumi.Input<string>;
-    readonly jobId: pulumi.Input<string>;
     /**
      * Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
      */

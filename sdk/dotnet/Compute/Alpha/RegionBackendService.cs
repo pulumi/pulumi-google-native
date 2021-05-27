@@ -337,9 +337,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("affinityCookieTtlSec")]
         public Input<int>? AffinityCookieTtlSec { get; set; }
 
-        [Input("backendService", required: true)]
-        public Input<string> BackendService { get; set; } = null!;
-
         [Input("backends")]
         private InputList<Inputs.BackendArgs>? _backends;
 

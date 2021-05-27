@@ -314,9 +314,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("subnetwork", required: true)]
-        public Input<string> Subnetwork { get; set; } = null!;
-
         public SubnetworkArgs()
         {
         }

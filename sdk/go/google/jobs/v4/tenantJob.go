@@ -82,9 +82,6 @@ func NewTenantJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobId == nil {
-		return nil, errors.New("invalid value for required argument 'JobId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -263,7 +260,6 @@ type tenantJobArgs struct {
 	JobBenefits []string `pulumi:"jobBenefits"`
 	// The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
 	JobEndTime *string `pulumi:"jobEndTime"`
-	JobId      string  `pulumi:"jobId"`
 	// The experience level associated with the job, such as "Entry Level".
 	JobLevel *string `pulumi:"jobLevel"`
 	// The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
@@ -320,7 +316,6 @@ type TenantJobArgs struct {
 	JobBenefits pulumi.StringArrayInput
 	// The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
 	JobEndTime pulumi.StringPtrInput
-	JobId      pulumi.StringInput
 	// The experience level associated with the job, such as "Entry Level".
 	JobLevel pulumi.StringPtrInput
 	// The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored.

@@ -14,7 +14,6 @@ __all__ = ['DeviceArgs', 'Device']
 @pulumi.input_type
 class DeviceArgs:
     def __init__(__self__, *,
-                 device_id: pulumi.Input[str],
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
@@ -26,7 +25,6 @@ class DeviceArgs:
         :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
         """
-        pulumi.set(__self__, "device_id", device_id)
         if asset_tag is not None:
             pulumi.set(__self__, "asset_tag", asset_tag)
         if last_sync_time is not None:
@@ -35,15 +33,6 @@ class DeviceArgs:
             pulumi.set(__self__, "serial_number", serial_number)
         if wifi_mac_addresses is not None:
             pulumi.set(__self__, "wifi_mac_addresses", wifi_mac_addresses)
-
-    @property
-    @pulumi.getter(name="deviceId")
-    def device_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "device_id")
-
-    @device_id.setter
-    def device_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "device_id", value)
 
     @property
     @pulumi.getter(name="assetTag")
@@ -100,7 +89,6 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -119,7 +107,7 @@ class Device(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DeviceArgs,
+                 args: Optional[DeviceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium
@@ -140,7 +128,6 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -157,9 +144,6 @@ class Device(pulumi.CustomResource):
             __props__ = DeviceArgs.__new__(DeviceArgs)
 
             __props__.__dict__["asset_tag"] = asset_tag
-            if device_id is None and not opts.urn:
-                raise TypeError("Missing required property 'device_id'")
-            __props__.__dict__["device_id"] = device_id
             __props__.__dict__["last_sync_time"] = last_sync_time
             __props__.__dict__["serial_number"] = serial_number
             __props__.__dict__["wifi_mac_addresses"] = wifi_mac_addresses

@@ -15,7 +15,6 @@ __all__ = ['NetworkArgs', 'Network']
 @pulumi.input_type
 class NetworkArgs:
     def __init__(__self__, *,
-                 network: pulumi.Input[str],
                  project: pulumi.Input[str],
                  i_pv4_range: Optional[pulumi.Input[str]] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
@@ -57,7 +56,6 @@ class NetworkArgs:
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         """
-        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project", project)
         if i_pv4_range is not None:
             pulumi.set(__self__, "i_pv4_range", i_pv4_range)
@@ -91,15 +89,6 @@ class NetworkArgs:
             pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if subnetworks is not None:
             pulumi.set(__self__, "subnetworks", subnetworks)
-
-    @property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -321,7 +310,6 @@ class Network(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
                  peerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -391,7 +379,6 @@ class Network(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
                  peerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -421,9 +408,6 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
-            if network is None and not opts.urn:
-                raise TypeError("Missing required property 'network'")
-            __props__.__dict__["network"] = network
             __props__.__dict__["peerings"] = peerings
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

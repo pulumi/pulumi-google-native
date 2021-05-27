@@ -199,9 +199,6 @@ export class Image extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.image === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'image'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -214,7 +211,6 @@ export class Image extends pulumi.CustomResource {
             inputs["forceCreate"] = args ? args.forceCreate : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["image"] = args ? args.image : undefined;
             inputs["imageEncryptionKey"] = args ? args.imageEncryptionKey : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
@@ -320,7 +316,6 @@ export interface ImageArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
-    readonly image: pulumi.Input<string>;
     /**
      * Encrypts the image using a customer-supplied encryption key.
      *

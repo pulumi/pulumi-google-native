@@ -36,9 +36,6 @@ func NewDatasetAnnotationStoreAnnotation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AnnotationId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotationId'")
-	}
 	if args.AnnotationStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'AnnotationStoreId'")
 	}
@@ -107,7 +104,6 @@ func (DatasetAnnotationStoreAnnotationState) ElementType() reflect.Type {
 }
 
 type datasetAnnotationStoreAnnotationArgs struct {
-	AnnotationId string `pulumi:"annotationId"`
 	// Details of the source.
 	AnnotationSource  *AnnotationSource `pulumi:"annotationSource"`
 	AnnotationStoreId string            `pulumi:"annotationStoreId"`
@@ -128,7 +124,6 @@ type datasetAnnotationStoreAnnotationArgs struct {
 
 // The set of arguments for constructing a DatasetAnnotationStoreAnnotation resource.
 type DatasetAnnotationStoreAnnotationArgs struct {
-	AnnotationId pulumi.StringInput
 	// Details of the source.
 	AnnotationSource  AnnotationSourcePtrInput
 	AnnotationStoreId pulumi.StringInput

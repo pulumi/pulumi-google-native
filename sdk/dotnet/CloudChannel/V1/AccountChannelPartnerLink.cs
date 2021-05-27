@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("channelPartnerLinkId", required: true)]
-        public Input<string> ChannelPartnerLinkId { get; set; } = null!;
-
         /// <summary>
         /// Required. State of the channel partner link.
         /// </summary>

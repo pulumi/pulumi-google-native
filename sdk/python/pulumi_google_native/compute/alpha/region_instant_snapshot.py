@@ -13,7 +13,6 @@ __all__ = ['RegionInstantSnapshotArgs', 'RegionInstantSnapshot']
 @pulumi.input_type
 class RegionInstantSnapshotArgs:
     def __init__(__self__, *,
-                 instant_snapshot: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -61,7 +60,6 @@ class RegionInstantSnapshotArgs:
         :param pulumi.Input[str] status: [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
-        pulumi.set(__self__, "instant_snapshot", instant_snapshot)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if creation_timestamp is not None:
@@ -98,15 +96,6 @@ class RegionInstantSnapshotArgs:
             pulumi.set(__self__, "status", status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="instantSnapshot")
-    def instant_snapshot(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instant_snapshot")
-
-    @instant_snapshot.setter
-    def instant_snapshot(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instant_snapshot", value)
 
     @property
     @pulumi.getter
@@ -349,7 +338,6 @@ class RegionInstantSnapshot(pulumi.CustomResource):
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instant_snapshot: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -425,7 +413,6 @@ class RegionInstantSnapshot(pulumi.CustomResource):
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 instant_snapshot: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -457,9 +444,6 @@ class RegionInstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["disk_size_gb"] = disk_size_gb
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["id"] = id
-            if instant_snapshot is None and not opts.urn:
-                raise TypeError("Missing required property 'instant_snapshot'")
-            __props__.__dict__["instant_snapshot"] = instant_snapshot
             __props__.__dict__["kind"] = kind
             __props__.__dict__["label_fingerprint"] = label_fingerprint
             __props__.__dict__["labels"] = labels

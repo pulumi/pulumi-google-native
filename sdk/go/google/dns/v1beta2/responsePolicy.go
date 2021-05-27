@@ -36,9 +36,6 @@ func NewResponsePolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ResponsePolicy == nil {
-		return nil, errors.New("invalid value for required argument 'ResponsePolicy'")
-	}
 	var resource ResponsePolicy
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ResponsePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -98,9 +95,8 @@ type responsePolicyArgs struct {
 	Id   *string `pulumi:"id"`
 	Kind *string `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
-	Networks       []ResponsePolicyNetwork `pulumi:"networks"`
-	Project        string                  `pulumi:"project"`
-	ResponsePolicy string                  `pulumi:"responsePolicy"`
+	Networks []ResponsePolicyNetwork `pulumi:"networks"`
+	Project  string                  `pulumi:"project"`
 	// User assigned name for this Response Policy.
 	ResponsePolicyName *string `pulumi:"responsePolicyName"`
 }
@@ -116,9 +112,8 @@ type ResponsePolicyArgs struct {
 	Id   pulumi.StringPtrInput
 	Kind pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
-	Networks       ResponsePolicyNetworkArrayInput
-	Project        pulumi.StringInput
-	ResponsePolicy pulumi.StringInput
+	Networks ResponsePolicyNetworkArrayInput
+	Project  pulumi.StringInput
 	// User assigned name for this Response Policy.
 	ResponsePolicyName pulumi.StringPtrInput
 }

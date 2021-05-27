@@ -234,9 +234,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("selfLinkWithId")]
         public Input<string>? SelfLinkWithId { get; set; }
 
-        [Input("sslPolicy", required: true)]
-        public Input<string> SslPolicy { get; set; } = null!;
-
         /// <summary>
         /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         /// </summary>

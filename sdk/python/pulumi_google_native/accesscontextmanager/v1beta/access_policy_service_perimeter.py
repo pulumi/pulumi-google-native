@@ -16,7 +16,6 @@ __all__ = ['AccessPolicyServicePerimeterArgs', 'AccessPolicyServicePerimeter']
 class AccessPolicyServicePerimeterArgs:
     def __init__(__self__, *,
                  access_policy_id: pulumi.Input[str],
-                 service_perimeter_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class AccessPolicyServicePerimeterArgs:
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         pulumi.set(__self__, "access_policy_id", access_policy_id)
-        pulumi.set(__self__, "service_perimeter_id", service_perimeter_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -51,15 +49,6 @@ class AccessPolicyServicePerimeterArgs:
     @access_policy_id.setter
     def access_policy_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_policy_id", value)
-
-    @property
-    @pulumi.getter(name="servicePerimeterId")
-    def service_perimeter_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "service_perimeter_id")
-
-    @service_perimeter_id.setter
-    def service_perimeter_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_perimeter_id", value)
 
     @property
     @pulumi.getter
@@ -131,7 +120,6 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 service_perimeter_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -174,7 +162,6 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 service_perimeter_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -195,9 +182,6 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["perimeter_type"] = perimeter_type
-            if service_perimeter_id is None and not opts.urn:
-                raise TypeError("Missing required property 'service_perimeter_id'")
-            __props__.__dict__["service_perimeter_id"] = service_perimeter_id
             __props__.__dict__["status"] = status
             __props__.__dict__["title"] = title
         super(AccessPolicyServicePerimeter, __self__).__init__(

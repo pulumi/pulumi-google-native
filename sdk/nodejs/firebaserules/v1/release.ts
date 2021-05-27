@@ -65,13 +65,9 @@ export class Release extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.releaseId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'releaseId'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["releaseId"] = args ? args.releaseId : undefined;
             inputs["rulesetName"] = args ? args.rulesetName : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -100,7 +96,6 @@ export interface ReleaseArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly releaseId: pulumi.Input<string>;
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
      */

@@ -165,9 +165,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceGroupManager'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -184,7 +181,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
-            inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
             inputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -287,7 +283,6 @@ export interface RegionInstanceGroupManagerArgs {
      * [Output Only] The URL of the Instance Group resource.
      */
     readonly instanceGroup?: pulumi.Input<string>;
-    readonly instanceGroupManager: pulumi.Input<string>;
     /**
      * Instance lifecycle policy for this Instance Group Manager.
      */

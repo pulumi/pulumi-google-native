@@ -13,7 +13,6 @@ __all__ = ['OrganizationInstanceAttachmentArgs', 'OrganizationInstanceAttachment
 @pulumi.input_type
 class OrganizationInstanceAttachmentArgs:
     def __init__(__self__, *,
-                 attachment_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  environment: Optional[pulumi.Input[str]] = None):
@@ -21,20 +20,10 @@ class OrganizationInstanceAttachmentArgs:
         The set of arguments for constructing a OrganizationInstanceAttachment resource.
         :param pulumi.Input[str] environment: ID of the attached environment.
         """
-        pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
-
-    @property
-    @pulumi.getter(name="attachmentId")
-    def attachment_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attachment_id")
-
-    @attachment_id.setter
-    def attachment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attachment_id", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -72,7 +61,6 @@ class OrganizationInstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachment_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -108,7 +96,6 @@ class OrganizationInstanceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachment_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -124,9 +111,6 @@ class OrganizationInstanceAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationInstanceAttachmentArgs.__new__(OrganizationInstanceAttachmentArgs)
 
-            if attachment_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attachment_id'")
-            __props__.__dict__["attachment_id"] = attachment_id
             __props__.__dict__["environment"] = environment
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")

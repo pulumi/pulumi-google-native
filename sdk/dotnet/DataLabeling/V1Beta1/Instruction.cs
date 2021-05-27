@@ -156,9 +156,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("instructionId", required: true)]
-        public Input<string> InstructionId { get; set; } = null!;
-
         /// <summary>
         /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
         /// </summary>

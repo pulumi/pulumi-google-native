@@ -231,9 +231,6 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Input("serviceAccountName")]
         public Input<string>? ServiceAccountName { get; set; }
 
-        [Input("transferConfigId", required: true)]
-        public Input<string> TransferConfigId { get; set; } = null!;
-
         [Input("versionInfo")]
         public Input<string>? VersionInfo { get; set; }
 

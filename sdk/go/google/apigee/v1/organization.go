@@ -65,9 +65,6 @@ func NewOrganization(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrganizationId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationId'")
-	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
@@ -198,10 +195,9 @@ type organizationArgs struct {
 	// Not used by Apigee.
 	CustomerName *string `pulumi:"customerName"`
 	// Description of the Apigee organization.
-	Description    *string `pulumi:"description"`
-	DisplayName    *string `pulumi:"displayName"`
-	OrganizationId string  `pulumi:"organizationId"`
-	Parent         string  `pulumi:"parent"`
+	Description *string `pulumi:"description"`
+	DisplayName *string `pulumi:"displayName"`
+	Parent      string  `pulumi:"parent"`
 	// Properties defined in the Apigee organization profile.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -227,10 +223,9 @@ type OrganizationArgs struct {
 	// Not used by Apigee.
 	CustomerName pulumi.StringPtrInput
 	// Description of the Apigee organization.
-	Description    pulumi.StringPtrInput
-	DisplayName    pulumi.StringPtrInput
-	OrganizationId pulumi.StringInput
-	Parent         pulumi.StringInput
+	Description pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	Parent      pulumi.StringInput
 	// Properties defined in the Apigee organization profile.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.

@@ -15,7 +15,6 @@ __all__ = ['AutoscalerArgs', 'Autoscaler']
 @pulumi.input_type
 class AutoscalerArgs:
     def __init__(__self__, *,
-                 autoscaler: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  autoscaling_policy: Optional[pulumi.Input['AutoscalingPolicyArgs']] = None,
@@ -55,7 +54,6 @@ class AutoscalerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AutoscalerStatusDetailsArgs']]] status_details: [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
         """
-        pulumi.set(__self__, "autoscaler", autoscaler)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if autoscaling_policy is not None:
@@ -86,15 +84,6 @@ class AutoscalerArgs:
             pulumi.set(__self__, "status_details", status_details)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def autoscaler(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "autoscaler")
-
-    @autoscaler.setter
-    def autoscaler(self, value: pulumi.Input[str]):
-        pulumi.set(self, "autoscaler", value)
 
     @property
     @pulumi.getter
@@ -294,7 +283,6 @@ class Autoscaler(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaler: Optional[pulumi.Input[str]] = None,
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -362,7 +350,6 @@ class Autoscaler(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaler: Optional[pulumi.Input[str]] = None,
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -391,9 +378,6 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalerArgs.__new__(AutoscalerArgs)
 
-            if autoscaler is None and not opts.urn:
-                raise TypeError("Missing required property 'autoscaler'")
-            __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description

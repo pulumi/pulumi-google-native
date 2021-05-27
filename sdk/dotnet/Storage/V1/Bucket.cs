@@ -240,9 +240,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("billing")]
         public Input<Inputs.BucketBillingArgs>? Billing { get; set; }
 
-        [Input("bucket", required: true)]
-        public Input<string> Bucket { get; set; } = null!;
-
         [Input("cors")]
         private InputList<Inputs.BucketCorsItemArgs>? _cors;
 

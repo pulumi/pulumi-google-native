@@ -15,7 +15,6 @@ __all__ = ['ServiceConfigArgs', 'ServiceConfig']
 @pulumi.input_type
 class ServiceConfigArgs:
     def __init__(__self__, *,
-                 config_id: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  apis: Optional[pulumi.Input[Sequence[pulumi.Input['ApiArgs']]]] = None,
                  authentication: Optional[pulumi.Input['AuthenticationArgs']] = None,
@@ -74,7 +73,6 @@ class ServiceConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TypeArgs']]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
         :param pulumi.Input['UsageArgs'] usage: Configuration controlling usage of this service.
         """
-        pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "service_name", service_name)
         if apis is not None:
             pulumi.set(__self__, "apis", apis)
@@ -130,15 +128,6 @@ class ServiceConfigArgs:
             pulumi.set(__self__, "types", types)
         if usage is not None:
             pulumi.set(__self__, "usage", usage)
-
-    @property
-    @pulumi.getter(name="configId")
-    def config_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "config_id")
-
-    @config_id.setter
-    def config_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -483,7 +472,6 @@ class ServiceConfig(pulumi.CustomResource):
                  authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
                  backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
-                 config_id: Optional[pulumi.Input[str]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
                  context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
                  control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
@@ -570,7 +558,6 @@ class ServiceConfig(pulumi.CustomResource):
                  authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
                  backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
-                 config_id: Optional[pulumi.Input[str]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
                  context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
                  control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
@@ -611,9 +598,6 @@ class ServiceConfig(pulumi.CustomResource):
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["backend"] = backend
             __props__.__dict__["billing"] = billing
-            if config_id is None and not opts.urn:
-                raise TypeError("Missing required property 'config_id'")
-            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["config_version"] = config_version
             __props__.__dict__["context"] = context
             __props__.__dict__["control"] = control

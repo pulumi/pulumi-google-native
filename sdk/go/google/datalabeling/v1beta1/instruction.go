@@ -42,9 +42,6 @@ func NewInstruction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstructionId == nil {
-		return nil, errors.New("invalid value for required argument 'InstructionId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -127,8 +124,7 @@ type instructionArgs struct {
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the instruction. Maximum of 64 characters.
-	DisplayName   *string `pulumi:"displayName"`
-	InstructionId string  `pulumi:"instructionId"`
+	DisplayName *string `pulumi:"displayName"`
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name *string `pulumi:"name"`
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
@@ -151,8 +147,7 @@ type InstructionArgs struct {
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the instruction. Maximum of 64 characters.
-	DisplayName   pulumi.StringPtrInput
-	InstructionId pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name pulumi.StringPtrInput
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.

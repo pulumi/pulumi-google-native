@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
-        [Input("catalogItemId", required: true)]
-        public Input<string> CatalogItemId { get; set; } = null!;
-
         [Input("categoryHierarchies")]
         private InputList<Inputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>? _categoryHierarchies;
 

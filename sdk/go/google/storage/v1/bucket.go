@@ -78,9 +78,6 @@ func NewBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Bucket == nil {
-		return nil, errors.New("invalid value for required argument 'Bucket'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -228,7 +225,6 @@ type bucketArgs struct {
 	Acl []BucketAccessControlType `pulumi:"acl"`
 	// The bucket's billing configuration.
 	Billing *BucketBilling `pulumi:"billing"`
-	Bucket  string         `pulumi:"bucket"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors []BucketCorsItem `pulumi:"cors"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -295,7 +291,6 @@ type BucketArgs struct {
 	Acl BucketAccessControlTypeArrayInput
 	// The bucket's billing configuration.
 	Billing BucketBillingPtrInput
-	Bucket  pulumi.StringInput
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemArrayInput
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.

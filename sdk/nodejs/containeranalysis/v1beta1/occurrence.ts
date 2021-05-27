@@ -107,9 +107,6 @@ export class Occurrence extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.occurrenceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'occurrenceId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -124,7 +121,6 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
-            inputs["occurrenceId"] = args ? args.occurrenceId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
@@ -202,7 +198,6 @@ export interface OccurrenceArgs {
      * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
     readonly noteName?: pulumi.Input<string>;
-    readonly occurrenceId: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.

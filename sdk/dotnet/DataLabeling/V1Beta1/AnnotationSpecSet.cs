@@ -90,9 +90,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
     public sealed class AnnotationSpecSetArgs : Pulumi.ResourceArgs
     {
-        [Input("annotationSpecSetId", required: true)]
-        public Input<string> AnnotationSpecSetId { get; set; } = null!;
-
         [Input("annotationSpecs")]
         private InputList<Inputs.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>? _annotationSpecs;
 

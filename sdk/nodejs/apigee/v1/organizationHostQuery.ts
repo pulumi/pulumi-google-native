@@ -99,9 +99,6 @@ export class OrganizationHostQuery extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.hostQueryId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'hostQueryId'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -110,7 +107,6 @@ export class OrganizationHostQuery extends pulumi.CustomResource {
             inputs["envgroupHostname"] = args ? args.envgroupHostname : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["groupByTimeUnit"] = args ? args.groupByTimeUnit : undefined;
-            inputs["hostQueryId"] = args ? args.hostQueryId : undefined;
             inputs["limit"] = args ? args.limit : undefined;
             inputs["metrics"] = args ? args.metrics : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -174,7 +170,6 @@ export interface OrganizationHostQueryArgs {
      * Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
      */
     readonly groupByTimeUnit?: pulumi.Input<string>;
-    readonly hostQueryId: pulumi.Input<string>;
     /**
      * Maximum number of rows that can be returned in the result.
      */

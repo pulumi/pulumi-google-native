@@ -31,9 +31,6 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AutoscalingPolicyId == nil {
-		return nil, errors.New("invalid value for required argument 'AutoscalingPolicyId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -86,8 +83,7 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 }
 
 type autoscalingPolicyArgs struct {
-	AutoscalingPolicyId string                     `pulumi:"autoscalingPolicyId"`
-	BasicAlgorithm      *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
+	BasicAlgorithm *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	Id       *string `pulumi:"id"`
 	Location string  `pulumi:"location"`
@@ -100,8 +96,7 @@ type autoscalingPolicyArgs struct {
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
-	AutoscalingPolicyId pulumi.StringInput
-	BasicAlgorithm      BasicAutoscalingAlgorithmPtrInput
+	BasicAlgorithm BasicAutoscalingAlgorithmPtrInput
 	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	Id       pulumi.StringPtrInput
 	Location pulumi.StringInput

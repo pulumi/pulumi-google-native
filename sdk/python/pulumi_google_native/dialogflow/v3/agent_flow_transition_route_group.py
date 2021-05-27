@@ -19,7 +19,6 @@ class AgentFlowTransitionRouteGroupArgs:
                  flow_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 transition_route_group_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,7 +33,6 @@ class AgentFlowTransitionRouteGroupArgs:
         pulumi.set(__self__, "flow_id", flow_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "transition_route_group_id", transition_route_group_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if language_code is not None:
@@ -79,15 +77,6 @@ class AgentFlowTransitionRouteGroupArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="transitionRouteGroupId")
-    def transition_route_group_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "transition_route_group_id")
-
-    @transition_route_group_id.setter
-    def transition_route_group_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "transition_route_group_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -147,7 +136,6 @@ class AgentFlowTransitionRouteGroup(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 transition_route_group_id: Optional[pulumi.Input[str]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]]] = None,
                  __props__=None):
         """
@@ -190,7 +178,6 @@ class AgentFlowTransitionRouteGroup(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 transition_route_group_id: Optional[pulumi.Input[str]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -219,9 +206,6 @@ class AgentFlowTransitionRouteGroup(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            if transition_route_group_id is None and not opts.urn:
-                raise TypeError("Missing required property 'transition_route_group_id'")
-            __props__.__dict__["transition_route_group_id"] = transition_route_group_id
             __props__.__dict__["transition_routes"] = transition_routes
         super(AgentFlowTransitionRouteGroup, __self__).__init__(
             'google-native:dialogflow/v3:AgentFlowTransitionRouteGroup',

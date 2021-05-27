@@ -166,9 +166,6 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ForwardingRule == nil {
-		return nil, errors.New("invalid value for required argument 'ForwardingRule'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -530,8 +527,7 @@ type globalForwardingRuleArgs struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request.
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
-	Fingerprint    *string `pulumi:"fingerprint"`
-	ForwardingRule string  `pulumi:"forwardingRule"`
+	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
@@ -681,8 +677,7 @@ type GlobalForwardingRuleArgs struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request.
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
-	Fingerprint    pulumi.StringPtrInput
-	ForwardingRule pulumi.StringInput
+	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.

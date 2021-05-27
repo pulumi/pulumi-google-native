@@ -168,9 +168,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("selfLinkWithId")]
         public Input<string>? SelfLinkWithId { get; set; }
 
-        [Input("targetGrpcProxy", required: true)]
-        public Input<string> TargetGrpcProxy { get; set; } = null!;
-
         /// <summary>
         /// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
         /// </summary>

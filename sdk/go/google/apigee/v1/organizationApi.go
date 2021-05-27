@@ -32,9 +32,6 @@ func NewOrganizationApi(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApiId == nil {
-		return nil, errors.New("invalid value for required argument 'ApiId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -87,7 +84,6 @@ func (OrganizationApiState) ElementType() reflect.Type {
 
 type organizationApiArgs struct {
 	Action *string `pulumi:"action"`
-	ApiId  string  `pulumi:"apiId"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
@@ -102,7 +98,6 @@ type organizationApiArgs struct {
 // The set of arguments for constructing a OrganizationApi resource.
 type OrganizationApiArgs struct {
 	Action pulumi.StringPtrInput
-	ApiId  pulumi.StringInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.

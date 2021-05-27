@@ -117,9 +117,6 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
             set => _pubsubConfigs = value;
         }
 
-        [Input("repoId", required: true)]
-        public Input<string> RepoId { get; set; } = null!;
-
         /// <summary>
         /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         /// </summary>

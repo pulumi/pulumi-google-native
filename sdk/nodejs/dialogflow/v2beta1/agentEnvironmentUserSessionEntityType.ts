@@ -59,9 +59,6 @@ export class AgentEnvironmentUserSessionEntityType extends pulumi.CustomResource
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.entityTypeId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityTypeId'");
-            }
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
@@ -79,7 +76,6 @@ export class AgentEnvironmentUserSessionEntityType extends pulumi.CustomResource
             }
             inputs["entities"] = args ? args.entities : undefined;
             inputs["entityOverrideMode"] = args ? args.entityOverrideMode : undefined;
-            inputs["entityTypeId"] = args ? args.entityTypeId : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -110,7 +106,6 @@ export interface AgentEnvironmentUserSessionEntityTypeArgs {
      * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
      */
     readonly entityOverrideMode?: pulumi.Input<string>;
-    readonly entityTypeId: pulumi.Input<string>;
     readonly environmentId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     /**

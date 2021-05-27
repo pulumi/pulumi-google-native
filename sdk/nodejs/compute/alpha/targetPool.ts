@@ -111,9 +111,6 @@ export class TargetPool extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.targetPool === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetPool'");
-            }
             inputs["backupPool"] = args ? args.backupPool : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -129,7 +126,6 @@ export class TargetPool extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            inputs["targetPool"] = args ? args.targetPool : undefined;
         } else {
             inputs["backupPool"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -220,5 +216,4 @@ export interface TargetPoolArgs {
      * CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
-    readonly targetPool: pulumi.Input<string>;
 }

@@ -107,9 +107,6 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobId'");
-            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -118,7 +115,6 @@ export class Job extends pulumi.CustomResource {
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["inputUri"] = args ? args.inputUri : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["outputUri"] = args ? args.outputUri : undefined;
@@ -170,7 +166,6 @@ export interface JobArgs {
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
      */
     readonly inputUri?: pulumi.Input<string>;
-    readonly jobId: pulumi.Input<string>;
     readonly location: pulumi.Input<string>;
     /**
      * The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`

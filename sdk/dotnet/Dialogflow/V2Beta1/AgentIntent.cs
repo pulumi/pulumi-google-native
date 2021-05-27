@@ -240,9 +240,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             set => _inputContextNames = value;
         }
 
-        [Input("intentId", required: true)]
-        public Input<string> IntentId { get; set; } = null!;
-
         [Input("intentView")]
         public Input<string>? IntentView { get; set; }
 

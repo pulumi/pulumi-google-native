@@ -15,7 +15,6 @@ __all__ = ['NetworkEndpointGroupArgs', 'NetworkEndpointGroup']
 @pulumi.input_type
 class NetworkEndpointGroupArgs:
     def __init__(__self__, *,
-                 network_endpoint_group: pulumi.Input[str],
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -55,7 +54,6 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
-        pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if annotations is not None:
@@ -92,15 +90,6 @@ class NetworkEndpointGroupArgs:
             pulumi.set(__self__, "size", size)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-
-    @property
-    @pulumi.getter(name="networkEndpointGroup")
-    def network_endpoint_group(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "network_endpoint_group")
-
-    @network_endpoint_group.setter
-    def network_endpoint_group(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_endpoint_group", value)
 
     @property
     @pulumi.getter
@@ -341,7 +330,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_endpoint_group: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -409,7 +397,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_endpoint_group: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -441,9 +428,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if network_endpoint_group is None and not opts.urn:
-                raise TypeError("Missing required property 'network_endpoint_group'")
-            __props__.__dict__["network_endpoint_group"] = network_endpoint_group
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

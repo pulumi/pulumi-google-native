@@ -13,7 +13,6 @@ __all__ = ['AccessPolicyArgs', 'AccessPolicy']
 @pulumi.input_type
 class AccessPolicyArgs:
     def __init__(__self__, *,
-                 access_policy_id: pulumi.Input[str],
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -25,7 +24,6 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] parent: Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         :param pulumi.Input[str] title: Required. Human readable title. Does not affect behavior.
         """
-        pulumi.set(__self__, "access_policy_id", access_policy_id)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if name is not None:
@@ -34,15 +32,6 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "parent", parent)
         if title is not None:
             pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter(name="accessPolicyId")
-    def access_policy_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "access_policy_id")
-
-    @access_policy_id.setter
-    def access_policy_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "access_policy_id", value)
 
     @property
     @pulumi.getter
@@ -98,7 +87,6 @@ class AccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -118,7 +106,7 @@ class AccessPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessPolicyArgs,
+                 args: Optional[AccessPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
@@ -138,7 +126,6 @@ class AccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -155,9 +142,6 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
-            if access_policy_id is None and not opts.urn:
-                raise TypeError("Missing required property 'access_policy_id'")
-            __props__.__dict__["access_policy_id"] = access_policy_id
             __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent

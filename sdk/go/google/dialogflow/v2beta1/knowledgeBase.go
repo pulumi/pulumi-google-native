@@ -30,9 +30,6 @@ func NewKnowledgeBase(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.KnowledgeBaseId == nil {
-		return nil, errors.New("invalid value for required argument 'KnowledgeBaseId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -84,8 +81,7 @@ func (KnowledgeBaseState) ElementType() reflect.Type {
 
 type knowledgeBaseArgs struct {
 	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName     *string `pulumi:"displayName"`
-	KnowledgeBaseId string  `pulumi:"knowledgeBaseId"`
+	DisplayName *string `pulumi:"displayName"`
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
@@ -97,8 +93,7 @@ type knowledgeBaseArgs struct {
 // The set of arguments for constructing a KnowledgeBase resource.
 type KnowledgeBaseArgs struct {
 	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName     pulumi.StringPtrInput
-	KnowledgeBaseId pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringInput

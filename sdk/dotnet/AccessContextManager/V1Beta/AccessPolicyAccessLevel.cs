@@ -90,9 +90,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 
     public sealed class AccessPolicyAccessLevelArgs : Pulumi.ResourceArgs
     {
-        [Input("accessLevelId", required: true)]
-        public Input<string> AccessLevelId { get; set; } = null!;
-
         [Input("accessPolicyId", required: true)]
         public Input<string> AccessPolicyId { get; set; } = null!;
 

@@ -87,9 +87,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        [Input("apiId", required: true)]
-        public Input<string> ApiId { get; set; } = null!;
-
         /// <summary>
         /// The HTTP Content-Type header value specifying the content type of the body.
         /// </summary>

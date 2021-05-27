@@ -38,9 +38,6 @@ func NewOrganizationAnalyticDatastore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatastoreId == nil {
-		return nil, errors.New("invalid value for required argument 'DatastoreId'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -106,7 +103,6 @@ func (OrganizationAnalyticDatastoreState) ElementType() reflect.Type {
 type organizationAnalyticDatastoreArgs struct {
 	// Datastore Configurations.
 	DatastoreConfig *GoogleCloudApigeeV1DatastoreConfig `pulumi:"datastoreConfig"`
-	DatastoreId     string                              `pulumi:"datastoreId"`
 	// Required. Display name in UI
 	DisplayName    *string `pulumi:"displayName"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -118,7 +114,6 @@ type organizationAnalyticDatastoreArgs struct {
 type OrganizationAnalyticDatastoreArgs struct {
 	// Datastore Configurations.
 	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigPtrInput
-	DatastoreId     pulumi.StringInput
 	// Required. Display name in UI
 	DisplayName    pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

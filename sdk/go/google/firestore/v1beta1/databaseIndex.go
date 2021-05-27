@@ -35,9 +35,6 @@ func NewDatabaseIndex(ctx *pulumi.Context,
 	if args.DatabaseId == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
-	if args.IndexId == nil {
-		return nil, errors.New("invalid value for required argument 'IndexId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -93,8 +90,7 @@ type databaseIndexArgs struct {
 	CollectionId *string `pulumi:"collectionId"`
 	DatabaseId   string  `pulumi:"databaseId"`
 	// The fields to index.
-	Fields  []GoogleFirestoreAdminV1beta1IndexField `pulumi:"fields"`
-	IndexId string                                  `pulumi:"indexId"`
+	Fields []GoogleFirestoreAdminV1beta1IndexField `pulumi:"fields"`
 	// The resource name of the index. Output only.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
@@ -108,8 +104,7 @@ type DatabaseIndexArgs struct {
 	CollectionId pulumi.StringPtrInput
 	DatabaseId   pulumi.StringInput
 	// The fields to index.
-	Fields  GoogleFirestoreAdminV1beta1IndexFieldArrayInput
-	IndexId pulumi.StringInput
+	Fields GoogleFirestoreAdminV1beta1IndexFieldArrayInput
 	// The resource name of the index. Output only.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput

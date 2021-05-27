@@ -18,7 +18,6 @@ class DatasetHl7V2StoreMessageArgs:
                  dataset_id: pulumi.Input[str],
                  hl7_v2_store_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 message_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  data: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -42,7 +41,6 @@ class DatasetHl7V2StoreMessageArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "hl7_v2_store_id", hl7_v2_store_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "message_id", message_id)
         pulumi.set(__self__, "project", project)
         if data is not None:
             pulumi.set(__self__, "data", data)
@@ -87,15 +85,6 @@ class DatasetHl7V2StoreMessageArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter(name="messageId")
-    def message_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "message_id")
-
-    @message_id.setter
-    def message_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "message_id", value)
 
     @property
     @pulumi.getter
@@ -213,7 +202,6 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 message_id: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
@@ -265,7 +253,6 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 message_id: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
@@ -296,9 +283,6 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if message_id is None and not opts.urn:
-                raise TypeError("Missing required property 'message_id'")
-            __props__.__dict__["message_id"] = message_id
             __props__.__dict__["message_type"] = message_type
             __props__.__dict__["name"] = name
             __props__.__dict__["patient_ids"] = patient_ids

@@ -36,9 +36,6 @@ func NewOrganizationEnvironmentTraceConfigOverride(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.OverrideId == nil {
-		return nil, errors.New("invalid value for required argument 'OverrideId'")
-	}
 	var resource OrganizationEnvironmentTraceConfigOverride
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride", name, args, &resource, opts...)
 	if err != nil {
@@ -89,7 +86,6 @@ type organizationEnvironmentTraceConfigOverrideArgs struct {
 	// ID of the trace configuration override specified as a system-generated UUID.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
-	OverrideId     string  `pulumi:"overrideId"`
 	// Trace configuration to override.
 	SamplingConfig *GoogleCloudApigeeV1TraceSamplingConfig `pulumi:"samplingConfig"`
 }
@@ -102,7 +98,6 @@ type OrganizationEnvironmentTraceConfigOverrideArgs struct {
 	// ID of the trace configuration override specified as a system-generated UUID.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
-	OverrideId     pulumi.StringInput
 	// Trace configuration to override.
 	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigPtrInput
 }

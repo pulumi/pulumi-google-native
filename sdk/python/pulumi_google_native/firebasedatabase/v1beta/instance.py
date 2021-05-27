@@ -13,7 +13,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  database_id: Optional[pulumi.Input[str]] = None,
@@ -30,7 +29,6 @@ class InstanceArgs:
         :param pulumi.Input[str] state: The database's lifecycle state. Read-only.
         :param pulumi.Input[str] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if database_id is not None:
@@ -45,15 +43,6 @@ class InstanceArgs:
             pulumi.set(__self__, "type", type)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -150,7 +139,6 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -195,7 +183,6 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -216,9 +203,6 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["database_id"] = database_id
             __props__.__dict__["database_url"] = database_url
-            if instance_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_id'")
-            __props__.__dict__["instance_id"] = instance_id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location

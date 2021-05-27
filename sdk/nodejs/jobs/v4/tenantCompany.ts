@@ -99,9 +99,6 @@ export class TenantCompany extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.companyId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'companyId'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -109,7 +106,6 @@ export class TenantCompany extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["careerSiteUri"] = args ? args.careerSiteUri : undefined;
-            inputs["companyId"] = args ? args.companyId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["eeoText"] = args ? args.eeoText : undefined;
             inputs["externalId"] = args ? args.externalId : undefined;
@@ -154,7 +150,6 @@ export interface TenantCompanyArgs {
      * The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
      */
     readonly careerSiteUri?: pulumi.Input<string>;
-    readonly companyId: pulumi.Input<string>;
     /**
      * Required. The display name of the company, for example, "Google LLC".
      */

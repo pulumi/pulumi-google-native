@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public App(string name, AppArgs args, CustomResourceOptions? options = null)
+        public App(string name, AppArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:appengine/v1:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -135,9 +135,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
     public sealed class AppArgs : Pulumi.ResourceArgs
     {
-        [Input("appId", required: true)]
-        public Input<string> AppId { get; set; } = null!;
-
         /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
         /// </summary>

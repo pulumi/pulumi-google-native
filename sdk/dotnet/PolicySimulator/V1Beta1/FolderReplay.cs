@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("replayId", required: true)]
-        public Input<string> ReplayId { get; set; } = null!;
-
         public FolderReplayArgs()
         {
         }

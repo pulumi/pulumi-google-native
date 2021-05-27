@@ -132,9 +132,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("responsePolicy", required: true)]
-        public Input<string> ResponsePolicy { get; set; } = null!;
-
         /// <summary>
         /// User assigned name for this Response Policy.
         /// </summary>

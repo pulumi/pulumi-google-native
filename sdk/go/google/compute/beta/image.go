@@ -108,9 +108,6 @@ func NewImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Image == nil {
-		return nil, errors.New("invalid value for required argument 'Image'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -330,8 +327,7 @@ type imageArgs struct {
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id    *string `pulumi:"id"`
-	Image string  `pulumi:"image"`
+	Id *string `pulumi:"id"`
 	// Encrypts the image using a customer-supplied encryption key.
 	//
 	// After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
@@ -424,8 +420,7 @@ type ImageArgs struct {
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureArrayInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id    pulumi.StringPtrInput
-	Image pulumi.StringInput
+	Id pulumi.StringPtrInput
 	// Encrypts the image using a customer-supplied encryption key.
 	//
 	// After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).

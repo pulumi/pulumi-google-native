@@ -80,9 +80,6 @@ export class Database extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.database === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'database'");
-            }
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
@@ -91,7 +88,6 @@ export class Database extends pulumi.CustomResource {
             }
             inputs["charset"] = args ? args.charset : undefined;
             inputs["collation"] = args ? args.collation : undefined;
-            inputs["database"] = args ? args.database : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -129,7 +125,6 @@ export interface DatabaseArgs {
      * The Cloud SQL collation value.
      */
     readonly collation?: pulumi.Input<string>;
-    readonly database: pulumi.Input<string>;
     /**
      * This field is deprecated and will be removed from a future version of the API.
      */

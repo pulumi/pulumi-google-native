@@ -15,7 +15,6 @@ __all__ = ['InterconnectAttachmentArgs', 'InterconnectAttachment']
 @pulumi.input_type
 class InterconnectAttachmentArgs:
     def __init__(__self__, *,
-                 interconnect_attachment: pulumi.Input[str],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
@@ -108,7 +107,6 @@ class InterconnectAttachmentArgs:
                - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
-        pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if admin_enabled is not None:
@@ -169,15 +167,6 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "validate_only", validate_only)
         if vlan_tag8021q is not None:
             pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
-
-    @property
-    @pulumi.getter(name="interconnectAttachment")
-    def interconnect_attachment(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "interconnect_attachment")
-
-    @interconnect_attachment.setter
-    def interconnect_attachment(self, value: pulumi.Input[str]):
-        pulumi.set(self, "interconnect_attachment", value)
 
     @property
     @pulumi.getter
@@ -591,7 +580,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
@@ -712,7 +700,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
@@ -756,9 +743,6 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["google_reference_id"] = google_reference_id
             __props__.__dict__["id"] = id
             __props__.__dict__["interconnect"] = interconnect
-            if interconnect_attachment is None and not opts.urn:
-                raise TypeError("Missing required property 'interconnect_attachment'")
-            __props__.__dict__["interconnect_attachment"] = interconnect_attachment
             __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
             __props__.__dict__["kind"] = kind
             __props__.__dict__["mtu"] = mtu

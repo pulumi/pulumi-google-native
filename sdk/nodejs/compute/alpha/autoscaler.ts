@@ -109,16 +109,12 @@ export class Autoscaler extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.autoscaler === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'autoscaler'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["autoscaler"] = args ? args.autoscaler : undefined;
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -163,7 +159,6 @@ export class Autoscaler extends pulumi.CustomResource {
  * The set of arguments for constructing a Autoscaler resource.
  */
 export interface AutoscalerArgs {
-    readonly autoscaler: pulumi.Input<string>;
     /**
      * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
      *

@@ -150,9 +150,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("metricDescriptor")]
         public Input<Inputs.MetricDescriptorArgs>? MetricDescriptor { get; set; }
 
-        [Input("metricId", required: true)]
-        public Input<string> MetricId { get; set; } = null!;
-
         /// <summary>
         /// Required. The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: "projects/my-project/metrics/nginx%2Frequests".
         /// </summary>

@@ -108,9 +108,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("datastoreConfig")]
         public Input<Inputs.GoogleCloudApigeeV1DatastoreConfigArgs>? DatastoreConfig { get; set; }
 
-        [Input("datastoreId", required: true)]
-        public Input<string> DatastoreId { get; set; } = null!;
-
         /// <summary>
         /// Required. Display name in UI
         /// </summary>

@@ -15,7 +15,6 @@ __all__ = ['AgentEntityTypeArgs', 'AgentEntityType']
 @pulumi.input_type
 class AgentEntityTypeArgs:
     def __init__(__self__, *,
-                 entity_type_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
@@ -34,7 +33,6 @@ class AgentEntityTypeArgs:
         :param pulumi.Input[str] kind: Required. Indicates the kind of entity type.
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         """
-        pulumi.set(__self__, "entity_type_id", entity_type_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if auto_expansion_mode is not None:
@@ -51,15 +49,6 @@ class AgentEntityTypeArgs:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="entityTypeId")
-    def entity_type_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entity_type_id")
-
-    @entity_type_id.setter
-    def entity_type_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entity_type_id", value)
 
     @property
     @pulumi.getter
@@ -170,7 +159,6 @@ class AgentEntityType(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
-                 entity_type_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -217,7 +205,6 @@ class AgentEntityType(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
-                 entity_type_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -239,9 +226,6 @@ class AgentEntityType(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_fuzzy_extraction"] = enable_fuzzy_extraction
             __props__.__dict__["entities"] = entities
-            if entity_type_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entity_type_id'")
-            __props__.__dict__["entity_type_id"] = entity_type_id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["language_code"] = language_code
             if location is None and not opts.urn:

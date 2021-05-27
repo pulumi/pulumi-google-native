@@ -98,9 +98,6 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.uptimeCheckConfigId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'uptimeCheckConfigId'");
-            }
             inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["httpCheck"] = args ? args.httpCheck : undefined;
@@ -114,7 +111,6 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["selectedRegions"] = args ? args.selectedRegions : undefined;
             inputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["uptimeCheckConfigId"] = args ? args.uptimeCheckConfigId : undefined;
         } else {
             inputs["contentMatchers"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -189,5 +185,4 @@ export interface UptimeCheckConfigArgs {
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
      */
     readonly timeout?: pulumi.Input<string>;
-    readonly uptimeCheckConfigId: pulumi.Input<string>;
 }

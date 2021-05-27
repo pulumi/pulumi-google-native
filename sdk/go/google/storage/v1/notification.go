@@ -43,9 +43,6 @@ func NewNotification(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
-	if args.Notification == nil {
-		return nil, errors.New("invalid value for required argument 'Notification'")
-	}
 	var resource Notification
 	err := ctx.RegisterResource("google-native:storage/v1:Notification", name, args, &resource, opts...)
 	if err != nil {
@@ -120,8 +117,7 @@ type notificationArgs struct {
 	// The ID of the notification.
 	Id *string `pulumi:"id"`
 	// The kind of item this is. For notifications, this is always storage#notification.
-	Kind         *string `pulumi:"kind"`
-	Notification string  `pulumi:"notification"`
+	Kind *string `pulumi:"kind"`
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	Object_name_prefix *string `pulumi:"object_name_prefix"`
 	// The desired content of the Payload.
@@ -146,8 +142,7 @@ type NotificationArgs struct {
 	// The ID of the notification.
 	Id pulumi.StringPtrInput
 	// The kind of item this is. For notifications, this is always storage#notification.
-	Kind         pulumi.StringPtrInput
-	Notification pulumi.StringInput
+	Kind pulumi.StringPtrInput
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	Object_name_prefix pulumi.StringPtrInput
 	// The desired content of the Payload.

@@ -18,7 +18,6 @@ class HistoryExecutionStepArgs:
                  execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 step_id: pulumi.Input[str],
                  completion_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  creation_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -32,11 +31,11 @@ class HistoryExecutionStepArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 step_id: Optional[pulumi.Input[str]] = None,
                  test_execution_step: Optional[pulumi.Input['TestExecutionStepArgs']] = None,
                  tool_execution_step: Optional[pulumi.Input['ToolExecutionStepArgs']] = None):
         """
         The set of arguments for constructing a HistoryExecutionStep resource.
-        :param pulumi.Input[str] step_id: A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
         :param pulumi.Input['TimestampArgs'] completion_time: The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
         :param pulumi.Input['TimestampArgs'] creation_time: The time when the step was created. - In response: always set - In create/update request: never set
         :param pulumi.Input[str] description: A description of this tool For example: mvn clean package -D skipTests=true - In response: present if set by create/update request - In create/update request: optional
@@ -49,13 +48,13 @@ class HistoryExecutionStepArgs:
         :param pulumi.Input['OutcomeArgs'] outcome: Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input['DurationArgs'] run_duration: How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
         :param pulumi.Input[str] state: The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
+        :param pulumi.Input[str] step_id: A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
         :param pulumi.Input['TestExecutionStepArgs'] test_execution_step: An execution of a test runner.
         :param pulumi.Input['ToolExecutionStepArgs'] tool_execution_step: An execution of a tool (used for steps we don't explicitly support).
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "step_id", step_id)
         if completion_time is not None:
             pulumi.set(__self__, "completion_time", completion_time)
         if creation_time is not None:
@@ -82,6 +81,8 @@ class HistoryExecutionStepArgs:
             pulumi.set(__self__, "run_duration", run_duration)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if step_id is not None:
+            pulumi.set(__self__, "step_id", step_id)
         if test_execution_step is not None:
             pulumi.set(__self__, "test_execution_step", test_execution_step)
         if tool_execution_step is not None:
@@ -113,18 +114,6 @@ class HistoryExecutionStepArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="stepId")
-    def step_id(self) -> pulumi.Input[str]:
-        """
-        A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
-        """
-        return pulumi.get(self, "step_id")
-
-    @step_id.setter
-    def step_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "step_id", value)
 
     @property
     @pulumi.getter(name="completionTime")
@@ -280,6 +269,18 @@ class HistoryExecutionStepArgs:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="stepId")
+    def step_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
+        """
+        return pulumi.get(self, "step_id")
+
+    @step_id.setter
+    def step_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "step_id", value)
+
+    @property
     @pulumi.getter(name="testExecutionStep")
     def test_execution_step(self) -> Optional[pulumi.Input['TestExecutionStepArgs']]:
         """
@@ -427,8 +428,6 @@ class HistoryExecutionStep(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["run_duration"] = run_duration
             __props__.__dict__["state"] = state
-            if step_id is None and not opts.urn:
-                raise TypeError("Missing required property 'step_id'")
             __props__.__dict__["step_id"] = step_id
             __props__.__dict__["test_execution_step"] = test_execution_step
             __props__.__dict__["tool_execution_step"] = tool_execution_step

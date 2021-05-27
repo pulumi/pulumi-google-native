@@ -15,7 +15,6 @@ class OrganizationEnvironmentReferenceArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 reference_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  refers: Optional[pulumi.Input[str]] = None,
@@ -29,7 +28,6 @@ class OrganizationEnvironmentReferenceArgs:
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "reference_id", reference_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -56,15 +54,6 @@ class OrganizationEnvironmentReferenceArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="referenceId")
-    def reference_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "reference_id")
-
-    @reference_id.setter
-    def reference_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "reference_id", value)
 
     @property
     @pulumi.getter
@@ -124,7 +113,6 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 reference_id: Optional[pulumi.Input[str]] = None,
                  refers: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -166,7 +154,6 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 reference_id: Optional[pulumi.Input[str]] = None,
                  refers: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -189,9 +176,6 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if reference_id is None and not opts.urn:
-                raise TypeError("Missing required property 'reference_id'")
-            __props__.__dict__["reference_id"] = reference_id
             __props__.__dict__["refers"] = refers
             __props__.__dict__["resource_type"] = resource_type
         super(OrganizationEnvironmentReference, __self__).__init__(

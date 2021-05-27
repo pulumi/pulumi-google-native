@@ -65,9 +65,6 @@ func NewRoute(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Route == nil {
-		return nil, errors.New("invalid value for required argument 'Route'")
-	}
 	var resource Route
 	err := ctx.RegisterResource("google-native:compute/v1:Route", name, args, &resource, opts...)
 	if err != nil {
@@ -212,7 +209,6 @@ type routeArgs struct {
 	Priority  *int    `pulumi:"priority"`
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	Route     string  `pulumi:"route"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
@@ -259,7 +255,6 @@ type RouteArgs struct {
 	Priority  pulumi.IntPtrInput
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	Route     pulumi.StringInput
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringPtrInput
 	// A list of instance tags to which this route applies.

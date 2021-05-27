@@ -15,11 +15,11 @@ __all__ = ['OrganizationDeveloperAppArgs', 'OrganizationDeveloperApp']
 @pulumi.input_type
 class OrganizationDeveloperAppArgs:
     def __init__(__self__, *,
-                 app_id: pulumi.Input[str],
                  developer_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  api_products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_family: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
                  callback_url: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,
@@ -28,10 +28,10 @@ class OrganizationDeveloperAppArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationDeveloperApp resource.
-        :param pulumi.Input[str] app_id: ID of the developer app.
         :param pulumi.Input[str] developer_id: ID of the developer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_products: List of API products associated with the developer app.
         :param pulumi.Input[str] app_family: Developer app family.
+        :param pulumi.Input[str] app_id: ID of the developer app.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: List of attributes for the developer app.
         :param pulumi.Input[str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
         :param pulumi.Input[str] key_expires_in: Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
@@ -39,13 +39,14 @@ class OrganizationDeveloperAppArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
         :param pulumi.Input[str] status: Status of the credential. Valid values include `approved` or `revoked`.
         """
-        pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "developer_id", developer_id)
         pulumi.set(__self__, "organization_id", organization_id)
         if api_products is not None:
             pulumi.set(__self__, "api_products", api_products)
         if app_family is not None:
             pulumi.set(__self__, "app_family", app_family)
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
         if callback_url is not None:
@@ -58,18 +59,6 @@ class OrganizationDeveloperAppArgs:
             pulumi.set(__self__, "scopes", scopes)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="appId")
-    def app_id(self) -> pulumi.Input[str]:
-        """
-        ID of the developer app.
-        """
-        return pulumi.get(self, "app_id")
-
-    @app_id.setter
-    def app_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter(name="developerId")
@@ -115,6 +104,18 @@ class OrganizationDeveloperAppArgs:
     @app_family.setter
     def app_family(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "app_family", value)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the developer app.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter
@@ -271,8 +272,6 @@ class OrganizationDeveloperApp(pulumi.CustomResource):
 
             __props__.__dict__["api_products"] = api_products
             __props__.__dict__["app_family"] = app_family
-            if app_id is None and not opts.urn:
-                raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["callback_url"] = callback_url

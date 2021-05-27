@@ -74,11 +74,7 @@ export class GroupMembership extends pulumi.CustomResource {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.membershipId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'membershipId'");
-            }
             inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["membershipId"] = args ? args.membershipId : undefined;
             inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             inputs["roles"] = args ? args.roles : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -105,7 +101,6 @@ export class GroupMembership extends pulumi.CustomResource {
  */
 export interface GroupMembershipArgs {
     readonly groupId: pulumi.Input<string>;
-    readonly membershipId: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the member.
      */

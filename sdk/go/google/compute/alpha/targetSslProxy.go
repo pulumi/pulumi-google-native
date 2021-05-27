@@ -47,9 +47,6 @@ func NewTargetSslProxy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TargetSslProxy == nil {
-		return nil, errors.New("invalid value for required argument 'TargetSslProxy'")
-	}
 	var resource TargetSslProxy
 	err := ctx.RegisterResource("google-native:compute/alpha:TargetSslProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -145,8 +142,7 @@ type targetSslProxyArgs struct {
 	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
-	SslPolicy      *string `pulumi:"sslPolicy"`
-	TargetSslProxy string  `pulumi:"targetSslProxy"`
+	SslPolicy *string `pulumi:"sslPolicy"`
 }
 
 // The set of arguments for constructing a TargetSslProxy resource.
@@ -174,8 +170,7 @@ type TargetSslProxyArgs struct {
 	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
 	SslCertificates pulumi.StringArrayInput
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
-	SslPolicy      pulumi.StringPtrInput
-	TargetSslProxy pulumi.StringInput
+	SslPolicy pulumi.StringPtrInput
 }
 
 func (TargetSslProxyArgs) ElementType() reflect.Type {

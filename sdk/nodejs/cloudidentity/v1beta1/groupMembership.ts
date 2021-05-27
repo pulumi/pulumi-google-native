@@ -78,12 +78,8 @@ export class GroupMembership extends pulumi.CustomResource {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.membershipId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'membershipId'");
-            }
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["memberKey"] = args ? args.memberKey : undefined;
-            inputs["membershipId"] = args ? args.membershipId : undefined;
             inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             inputs["roles"] = args ? args.roles : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -115,7 +111,6 @@ export interface GroupMembershipArgs {
      * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
     readonly memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
-    readonly membershipId: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */

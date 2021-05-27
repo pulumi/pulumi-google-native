@@ -16,7 +16,6 @@ __all__ = ['AppDomainMappingArgs', 'AppDomainMapping']
 class AppDomainMappingArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
-                 domain_mapping_id: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class AppDomainMappingArgs:
         :param pulumi.Input['SslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "domain_mapping_id", domain_mapping_id)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -53,15 +51,6 @@ class AppDomainMappingArgs:
     @app_id.setter
     def app_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "app_id", value)
-
-    @property
-    @pulumi.getter(name="domainMappingId")
-    def domain_mapping_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domain_mapping_id")
-
-    @domain_mapping_id.setter
-    def domain_mapping_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domain_mapping_id", value)
 
     @property
     @pulumi.getter
@@ -136,7 +125,6 @@ class AppDomainMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 domain_mapping_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
@@ -179,7 +167,6 @@ class AppDomainMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 domain_mapping_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
@@ -201,9 +188,6 @@ class AppDomainMapping(pulumi.CustomResource):
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
-            if domain_mapping_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domain_mapping_id'")
-            __props__.__dict__["domain_mapping_id"] = domain_mapping_id
             __props__.__dict__["id"] = id
             __props__.__dict__["name"] = name
             __props__.__dict__["no_managed_certificate"] = no_managed_certificate

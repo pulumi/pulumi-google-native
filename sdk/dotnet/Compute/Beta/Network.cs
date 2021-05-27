@@ -198,9 +198,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
-
         [Input("peerings")]
         private InputList<Inputs.NetworkPeeringArgs>? _peerings;
 

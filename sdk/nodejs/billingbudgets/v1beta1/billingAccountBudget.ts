@@ -78,14 +78,10 @@ export class BillingAccountBudget extends pulumi.CustomResource {
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.budgetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'budgetId'");
-            }
             inputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
             inputs["amount"] = args ? args.amount : undefined;
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["budgetFilter"] = args ? args.budgetFilter : undefined;
-            inputs["budgetId"] = args ? args.budgetId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["thresholdRules"] = args ? args.thresholdRules : undefined;
@@ -123,7 +119,6 @@ export interface BillingAccountBudgetArgs {
      * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
     readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterArgs>;
-    readonly budgetId: pulumi.Input<string>;
     /**
      * User data for display name in UI. Validation: <= 60 chars.
      */

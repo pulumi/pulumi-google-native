@@ -30,9 +30,6 @@ func NewOrganizationInstanceAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AttachmentId == nil {
-		return nil, errors.New("invalid value for required argument 'AttachmentId'")
-	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
@@ -83,7 +80,6 @@ func (OrganizationInstanceAttachmentState) ElementType() reflect.Type {
 }
 
 type organizationInstanceAttachmentArgs struct {
-	AttachmentId string `pulumi:"attachmentId"`
 	// ID of the attached environment.
 	Environment    *string `pulumi:"environment"`
 	InstanceId     string  `pulumi:"instanceId"`
@@ -92,7 +88,6 @@ type organizationInstanceAttachmentArgs struct {
 
 // The set of arguments for constructing a OrganizationInstanceAttachment resource.
 type OrganizationInstanceAttachmentArgs struct {
-	AttachmentId pulumi.StringInput
 	// ID of the attached environment.
 	Environment    pulumi.StringPtrInput
 	InstanceId     pulumi.StringInput

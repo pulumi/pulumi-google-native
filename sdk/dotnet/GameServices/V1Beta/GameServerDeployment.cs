@@ -111,9 +111,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("gameServerDeploymentId", required: true)]
-        public Input<string> GameServerDeploymentId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 

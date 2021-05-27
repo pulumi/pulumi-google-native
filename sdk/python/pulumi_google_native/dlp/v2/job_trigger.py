@@ -15,7 +15,6 @@ __all__ = ['JobTriggerArgs', 'JobTrigger']
 @pulumi.input_type
 class JobTriggerArgs:
     def __init__(__self__, *,
-                 job_trigger_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class JobTriggerArgs:
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
-        pulumi.set(__self__, "job_trigger_id", job_trigger_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if description is not None:
@@ -52,15 +50,6 @@ class JobTriggerArgs:
             pulumi.set(__self__, "trigger_id", trigger_id)
         if triggers is not None:
             pulumi.set(__self__, "triggers", triggers)
-
-    @property
-    @pulumi.getter(name="jobTriggerId")
-    def job_trigger_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_trigger_id")
-
-    @job_trigger_id.setter
-    def job_trigger_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_trigger_id", value)
 
     @property
     @pulumi.getter
@@ -173,7 +162,6 @@ class JobTrigger(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
-                 job_trigger_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -221,7 +209,6 @@ class JobTrigger(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
-                 job_trigger_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -243,9 +230,6 @@ class JobTrigger(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_job"] = inspect_job
-            if job_trigger_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_trigger_id'")
-            __props__.__dict__["job_trigger_id"] = job_trigger_id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location

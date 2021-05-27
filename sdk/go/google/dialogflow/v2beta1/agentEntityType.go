@@ -36,9 +36,6 @@ func NewAgentEntityType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EntityTypeId == nil {
-		return nil, errors.New("invalid value for required argument 'EntityTypeId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -108,8 +105,7 @@ type agentEntityTypeArgs struct {
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
 	// Optional. The collection of entity entries associated with the entity type.
-	Entities     []GoogleCloudDialogflowV2beta1EntityTypeEntity `pulumi:"entities"`
-	EntityTypeId string                                         `pulumi:"entityTypeId"`
+	Entities []GoogleCloudDialogflowV2beta1EntityTypeEntity `pulumi:"entities"`
 	// Required. Indicates the kind of entity type.
 	Kind         *string `pulumi:"kind"`
 	LanguageCode *string `pulumi:"languageCode"`
@@ -128,8 +124,7 @@ type AgentEntityTypeArgs struct {
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
 	// Optional. The collection of entity entries associated with the entity type.
-	Entities     GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput
-	EntityTypeId pulumi.StringInput
+	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput
 	// Required. Indicates the kind of entity type.
 	Kind         pulumi.StringPtrInput
 	LanguageCode pulumi.StringPtrInput

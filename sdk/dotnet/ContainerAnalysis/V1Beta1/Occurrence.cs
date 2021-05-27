@@ -216,9 +216,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Input("noteName")]
         public Input<string>? NoteName { get; set; }
 
-        [Input("occurrenceId", required: true)]
-        public Input<string> OccurrenceId { get; set; } = null!;
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

@@ -93,16 +93,12 @@ export class Queue extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.queueId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'queueId'");
-            }
             inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pullTarget"] = args ? args.pullTarget : undefined;
             inputs["purgeTime"] = args ? args.purgeTime : undefined;
-            inputs["queueId"] = args ? args.queueId : undefined;
             inputs["rateLimits"] = args ? args.rateLimits : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -150,7 +146,6 @@ export interface QueueArgs {
      * The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
      */
     readonly purgeTime?: pulumi.Input<string>;
-    readonly queueId: pulumi.Input<string>;
     /**
      * Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts however they control how tasks are attempted in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc).
      */

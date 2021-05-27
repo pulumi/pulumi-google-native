@@ -150,9 +150,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Input("dynamicGroupMetadata")]
         public Input<Inputs.DynamicGroupMetadataArgs>? DynamicGroupMetadata { get; set; }
 
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
-
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the `Group`.
         /// </summary>

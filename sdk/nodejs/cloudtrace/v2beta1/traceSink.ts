@@ -62,13 +62,9 @@ export class TraceSink extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.traceSinkId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'traceSinkId'");
-            }
             inputs["name"] = args ? args.name : undefined;
             inputs["outputConfig"] = args ? args.outputConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["traceSinkId"] = args ? args.traceSinkId : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -95,5 +91,4 @@ export interface TraceSinkArgs {
      */
     readonly outputConfig?: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfigArgs>;
     readonly project: pulumi.Input<string>;
-    readonly traceSinkId: pulumi.Input<string>;
 }

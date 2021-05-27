@@ -15,7 +15,6 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  app_engine_http_target: Optional[pulumi.Input['AppEngineHttpTargetArgs']] = None,
@@ -51,7 +50,6 @@ class JobArgs:
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         :param pulumi.Input[str] user_update_time: The creation time of the job.
         """
-        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if app_engine_http_target is not None:
@@ -84,15 +82,6 @@ class JobArgs:
             pulumi.set(__self__, "time_zone", time_zone)
         if user_update_time is not None:
             pulumi.set(__self__, "user_update_time", user_update_time)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter
@@ -302,7 +291,6 @@ class Job(pulumi.CustomResource):
                  attempt_deadline: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  last_attempt_time: Optional[pulumi.Input[str]] = None,
                  legacy_app_engine_cron: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -366,7 +354,6 @@ class Job(pulumi.CustomResource):
                  attempt_deadline: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
-                 job_id: Optional[pulumi.Input[str]] = None,
                  last_attempt_time: Optional[pulumi.Input[str]] = None,
                  legacy_app_engine_cron: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -396,9 +383,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["attempt_deadline"] = attempt_deadline
             __props__.__dict__["description"] = description
             __props__.__dict__["http_target"] = http_target
-            if job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'job_id'")
-            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["last_attempt_time"] = last_attempt_time
             __props__.__dict__["legacy_app_engine_cron"] = legacy_app_engine_cron
             if location is None and not opts.urn:

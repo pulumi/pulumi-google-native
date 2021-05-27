@@ -105,9 +105,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
 
     public sealed class CompositeTypeArgs : Pulumi.ResourceArgs
     {
-        [Input("compositeType", required: true)]
-        public Input<string> CompositeType { get; set; } = null!;
-
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>

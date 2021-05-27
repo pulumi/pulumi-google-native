@@ -234,9 +234,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("organizationId", required: true)]
-        public Input<string> OrganizationId { get; set; } = null!;
-
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 

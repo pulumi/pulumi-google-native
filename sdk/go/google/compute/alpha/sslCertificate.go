@@ -55,9 +55,6 @@ func NewSslCertificate(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SslCertificate == nil {
-		return nil, errors.New("invalid value for required argument 'SslCertificate'")
-	}
 	var resource SslCertificate
 	err := ctx.RegisterResource("google-native:compute/alpha:SslCertificate", name, args, &resource, opts...)
 	if err != nil {
@@ -173,8 +170,7 @@ type sslCertificateArgs struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// Configuration and status of a self-managed SSL certificate.
-	SelfManaged    *SslCertificateSelfManagedSslCertificate `pulumi:"selfManaged"`
-	SslCertificate string                                   `pulumi:"sslCertificate"`
+	SelfManaged *SslCertificateSelfManagedSslCertificate `pulumi:"selfManaged"`
 	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -210,8 +206,7 @@ type SslCertificateArgs struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// Configuration and status of a self-managed SSL certificate.
-	SelfManaged    SslCertificateSelfManagedSslCertificatePtrInput
-	SslCertificate pulumi.StringInput
+	SelfManaged SslCertificateSelfManagedSslCertificatePtrInput
 	// [Output Only] Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayInput
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.

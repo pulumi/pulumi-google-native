@@ -195,9 +195,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.interconnectAttachment === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'interconnectAttachment'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -217,7 +214,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["googleReferenceId"] = args ? args.googleReferenceId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
-            inputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
             inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
@@ -350,7 +346,6 @@ export interface InterconnectAttachmentArgs {
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     readonly interconnect?: pulumi.Input<string>;
-    readonly interconnectAttachment: pulumi.Input<string>;
     /**
      * URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
      * Not currently available in all Interconnect locations.

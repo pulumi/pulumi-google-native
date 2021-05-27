@@ -15,7 +15,6 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
-                 group_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input['DynamicGroupMetadataArgs']] = None,
@@ -32,7 +31,6 @@ class GroupArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
         :param pulumi.Input[str] parent: Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
         """
-        pulumi.set(__self__, "group_id", group_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -47,15 +45,6 @@ class GroupArgs:
             pulumi.set(__self__, "labels", labels)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "group_id")
-
-    @group_id.setter
-    def group_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "group_id", value)
 
     @property
     @pulumi.getter
@@ -147,7 +136,6 @@ class Group(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
-                 group_id: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -169,7 +157,7 @@ class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GroupArgs,
+                 args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Group.
@@ -192,7 +180,6 @@ class Group(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
-                 group_id: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -212,9 +199,6 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["dynamic_group_metadata"] = dynamic_group_metadata
-            if group_id is None and not opts.urn:
-                raise TypeError("Missing required property 'group_id'")
-            __props__.__dict__["group_id"] = group_id
             __props__.__dict__["group_key"] = group_key
             __props__.__dict__["initial_group_config"] = initial_group_config
             __props__.__dict__["labels"] = labels

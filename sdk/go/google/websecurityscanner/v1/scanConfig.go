@@ -53,9 +53,6 @@ func NewScanConfig(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ScanConfigId == nil {
-		return nil, errors.New("invalid value for required argument 'ScanConfigId'")
-	}
 	var resource ScanConfig
 	err := ctx.RegisterResource("google-native:websecurityscanner/v1:ScanConfig", name, args, &resource, opts...)
 	if err != nil {
@@ -158,8 +155,7 @@ type scanConfigArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The risk level selected for the scan
-	RiskLevel    *string `pulumi:"riskLevel"`
-	ScanConfigId string  `pulumi:"scanConfigId"`
+	RiskLevel *string `pulumi:"riskLevel"`
 	// The schedule of the ScanConfig.
 	Schedule *Schedule `pulumi:"schedule"`
 	// Required. The starting URLs from which the scanner finds site pages.
@@ -190,8 +186,7 @@ type ScanConfigArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The risk level selected for the scan
-	RiskLevel    pulumi.StringPtrInput
-	ScanConfigId pulumi.StringInput
+	RiskLevel pulumi.StringPtrInput
 	// The schedule of the ScanConfig.
 	Schedule SchedulePtrInput
 	// Required. The starting URLs from which the scanner finds site pages.

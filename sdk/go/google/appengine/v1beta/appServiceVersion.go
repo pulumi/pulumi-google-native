@@ -106,9 +106,6 @@ func NewAppServiceVersion(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
-	if args.VersionId == nil {
-		return nil, errors.New("invalid value for required argument 'VersionId'")
-	}
 	var resource AppServiceVersion
 	err := ctx.RegisterResource("google-native:appengine/v1beta:AppServiceVersion", name, args, &resource, opts...)
 	if err != nil {
@@ -366,8 +363,7 @@ type appServiceVersionArgs struct {
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
-	Threadsafe *bool  `pulumi:"threadsafe"`
-	VersionId  string `pulumi:"versionId"`
+	Threadsafe *bool `pulumi:"threadsafe"`
 	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
 	VersionUrl *string `pulumi:"versionUrl"`
 	// Whether to deploy this version in a container on a virtual machine.
@@ -452,7 +448,6 @@ type AppServiceVersionArgs struct {
 	ServingStatus pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	VersionId  pulumi.StringInput
 	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
 	VersionUrl pulumi.StringPtrInput
 	// Whether to deploy this version in a container on a virtual machine.

@@ -110,9 +110,6 @@ export class TransferConfig extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.transferConfigId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transferConfigId'");
-            }
             inputs["authorizationCode"] = args ? args.authorizationCode : undefined;
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
             inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
@@ -127,7 +124,6 @@ export class TransferConfig extends pulumi.CustomResource {
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
             inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
-            inputs["transferConfigId"] = args ? args.transferConfigId : undefined;
             inputs["versionInfo"] = args ? args.versionInfo : undefined;
             inputs["datasetRegion"] = undefined /*out*/;
             inputs["nextRunTime"] = undefined /*out*/;
@@ -208,6 +204,5 @@ export interface TransferConfigArgs {
      */
     readonly scheduleOptions?: pulumi.Input<inputs.bigquerydatatransfer.v1.ScheduleOptionsArgs>;
     readonly serviceAccountName?: pulumi.Input<string>;
-    readonly transferConfigId: pulumi.Input<string>;
     readonly versionInfo?: pulumi.Input<string>;
 }

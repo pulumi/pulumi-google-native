@@ -92,9 +92,6 @@ export class TargetInstance extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.targetInstance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetInstance'");
-            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -110,7 +107,6 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
-            inputs["targetInstance"] = args ? args.targetInstance : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -180,7 +176,6 @@ export interface TargetInstanceArgs {
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
-    readonly targetInstance: pulumi.Input<string>;
     /**
      * [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

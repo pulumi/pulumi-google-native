@@ -354,9 +354,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("interconnect")]
         public Input<string>? Interconnect { get; set; }
 
-        [Input("interconnectAttachment", required: true)]
-        public Input<string> InterconnectAttachment { get; set; } = null!;
-
         [Input("ipsecInternalAddresses")]
         private InputList<string>? _ipsecInternalAddresses;
 

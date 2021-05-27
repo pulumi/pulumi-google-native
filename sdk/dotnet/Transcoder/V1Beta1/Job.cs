@@ -162,9 +162,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         [Input("inputUri")]
         public Input<string>? InputUri { get; set; }
 
-        [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

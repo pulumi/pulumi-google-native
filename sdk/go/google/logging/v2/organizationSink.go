@@ -49,9 +49,6 @@ func NewOrganizationSink(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SinkId == nil {
-		return nil, errors.New("invalid value for required argument 'SinkId'")
-	}
 	var resource OrganizationSink
 	err := ctx.RegisterResource("google-native:logging/v2:OrganizationSink", name, args, &resource, opts...)
 	if err != nil {
@@ -145,7 +142,6 @@ type organizationSinkArgs struct {
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 *string `pulumi:"name"`
 	OrganizationId       string  `pulumi:"organizationId"`
-	SinkId               string  `pulumi:"sinkId"`
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 }
 
@@ -168,7 +164,6 @@ type OrganizationSinkArgs struct {
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 pulumi.StringPtrInput
 	OrganizationId       pulumi.StringInput
-	SinkId               pulumi.StringInput
 	UniqueWriterIdentity pulumi.StringPtrInput
 }
 

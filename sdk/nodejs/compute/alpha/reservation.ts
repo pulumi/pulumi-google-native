@@ -102,9 +102,6 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.reservation === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reservation'");
-            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -116,7 +113,6 @@ export class Reservation extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["reservation"] = args ? args.reservation : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -177,7 +173,6 @@ export interface ReservationArgs {
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
-    readonly reservation: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.
      */

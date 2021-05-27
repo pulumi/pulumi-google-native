@@ -16,7 +16,6 @@ __all__ = ['AgentSessionEntityTypeArgs', 'AgentSessionEntityType']
 class AgentSessionEntityTypeArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
-                 entity_type_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  session_id: pulumi.Input[str],
@@ -30,7 +29,6 @@ class AgentSessionEntityTypeArgs:
         :param pulumi.Input[str] name: Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         """
         pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "entity_type_id", entity_type_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "session_id", session_id)
@@ -49,15 +47,6 @@ class AgentSessionEntityTypeArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
-
-    @property
-    @pulumi.getter(name="entityTypeId")
-    def entity_type_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entity_type_id")
-
-    @entity_type_id.setter
-    def entity_type_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entity_type_id", value)
 
     @property
     @pulumi.getter
@@ -131,7 +120,6 @@ class AgentSessionEntityType(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]]]] = None,
                  entity_override_mode: Optional[pulumi.Input[str]] = None,
-                 entity_type_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -173,7 +161,6 @@ class AgentSessionEntityType(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]]]] = None,
                  entity_override_mode: Optional[pulumi.Input[str]] = None,
-                 entity_type_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -195,9 +182,6 @@ class AgentSessionEntityType(pulumi.CustomResource):
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["entities"] = entities
             __props__.__dict__["entity_override_mode"] = entity_override_mode
-            if entity_type_id is None and not opts.urn:
-                raise TypeError("Missing required property 'entity_type_id'")
-            __props__.__dict__["entity_type_id"] = entity_type_id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location

@@ -99,15 +99,11 @@ export class Deployment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.deployment === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deployment'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["createPolicy"] = args ? args.createPolicy : undefined;
             inputs["credential"] = args ? args.credential : undefined;
-            inputs["deployment"] = args ? args.deployment : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -154,7 +150,6 @@ export interface DeploymentArgs {
      * User provided default credential for the deployment.
      */
     readonly credential?: pulumi.Input<inputs.deploymentmanager.alpha.CredentialArgs>;
-    readonly deployment: pulumi.Input<string>;
     /**
      * An optional user-provided description of the deployment.
      */

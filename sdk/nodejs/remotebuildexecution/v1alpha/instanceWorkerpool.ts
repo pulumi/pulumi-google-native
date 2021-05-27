@@ -77,9 +77,6 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.workerpoolId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerpoolId'");
-            }
             inputs["autoscale"] = args ? args.autoscale : undefined;
             inputs["channel"] = args ? args.channel : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -90,7 +87,6 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerCount"] = args ? args.workerCount : undefined;
-            inputs["workerpoolId"] = args ? args.workerpoolId : undefined;
         } else {
             inputs["autoscale"] = undefined /*out*/;
             inputs["channel"] = undefined /*out*/;
@@ -144,5 +140,4 @@ export interface InstanceWorkerpoolArgs {
      * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
      */
     readonly workerCount?: pulumi.Input<string>;
-    readonly workerpoolId: pulumi.Input<string>;
 }

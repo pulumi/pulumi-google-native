@@ -96,9 +96,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetAnnotationStoreAnnotationArgs : Pulumi.ResourceArgs
     {
-        [Input("annotationId", required: true)]
-        public Input<string> AnnotationId { get; set; } = null!;
-
         /// <summary>
         /// Details of the source.
         /// </summary>

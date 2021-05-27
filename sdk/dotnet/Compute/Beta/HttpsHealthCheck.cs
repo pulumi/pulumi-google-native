@@ -162,9 +162,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("host")]
         public Input<string>? Host { get; set; }
 
-        [Input("httpsHealthCheck", required: true)]
-        public Input<string> HttpsHealthCheck { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>

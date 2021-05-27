@@ -155,16 +155,12 @@ export class Device extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DeviceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DeviceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deviceId'");
-            }
             inputs["assetTag"] = args ? args.assetTag : undefined;
             inputs["customer"] = args ? args.customer : undefined;
-            inputs["deviceId"] = args ? args.deviceId : undefined;
             inputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
             inputs["serialNumber"] = args ? args.serialNumber : undefined;
             inputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
@@ -238,7 +234,6 @@ export interface DeviceArgs {
      */
     readonly assetTag?: pulumi.Input<string>;
     readonly customer?: pulumi.Input<string>;
-    readonly deviceId: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.
      */

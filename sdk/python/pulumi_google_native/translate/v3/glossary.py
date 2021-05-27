@@ -15,7 +15,6 @@ __all__ = ['GlossaryArgs', 'Glossary']
 @pulumi.input_type
 class GlossaryArgs:
     def __init__(__self__, *,
-                 glossary_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  input_config: Optional[pulumi.Input['GlossaryInputConfigArgs']] = None,
@@ -29,7 +28,6 @@ class GlossaryArgs:
         :param pulumi.Input['LanguageCodePairArgs'] language_pair: Used with unidirectional glossaries.
         :param pulumi.Input[str] name: Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         """
-        pulumi.set(__self__, "glossary_id", glossary_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if input_config is not None:
@@ -40,15 +38,6 @@ class GlossaryArgs:
             pulumi.set(__self__, "language_pair", language_pair)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="glossaryId")
-    def glossary_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "glossary_id")
-
-    @glossary_id.setter
-    def glossary_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "glossary_id", value)
 
     @property
     @pulumi.getter
@@ -122,7 +111,6 @@ class Glossary(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 glossary_id: Optional[pulumi.Input[str]] = None,
                  input_config: Optional[pulumi.Input[pulumi.InputType['GlossaryInputConfigArgs']]] = None,
                  language_codes_set: Optional[pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']]] = None,
                  language_pair: Optional[pulumi.Input[pulumi.InputType['LanguageCodePairArgs']]] = None,
@@ -164,7 +152,6 @@ class Glossary(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 glossary_id: Optional[pulumi.Input[str]] = None,
                  input_config: Optional[pulumi.Input[pulumi.InputType['GlossaryInputConfigArgs']]] = None,
                  language_codes_set: Optional[pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']]] = None,
                  language_pair: Optional[pulumi.Input[pulumi.InputType['LanguageCodePairArgs']]] = None,
@@ -183,9 +170,6 @@ class Glossary(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GlossaryArgs.__new__(GlossaryArgs)
 
-            if glossary_id is None and not opts.urn:
-                raise TypeError("Missing required property 'glossary_id'")
-            __props__.__dict__["glossary_id"] = glossary_id
             __props__.__dict__["input_config"] = input_config
             __props__.__dict__["language_codes_set"] = language_codes_set
             __props__.__dict__["language_pair"] = language_pair

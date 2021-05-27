@@ -36,9 +36,6 @@ func NewOrganizationInspectTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InspectTemplateId == nil {
-		return nil, errors.New("invalid value for required argument 'InspectTemplateId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -106,10 +103,9 @@ type organizationInspectTemplateArgs struct {
 	// Display name (max 256 chars).
 	DisplayName *string `pulumi:"displayName"`
 	// The core content of the template. Configuration of the scanning process.
-	InspectConfig     *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
-	InspectTemplateId string                           `pulumi:"inspectTemplateId"`
-	Location          string                           `pulumi:"location"`
-	OrganizationId    string                           `pulumi:"organizationId"`
+	InspectConfig  *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
+	Location       string                           `pulumi:"location"`
+	OrganizationId string                           `pulumi:"organizationId"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -121,10 +117,9 @@ type OrganizationInspectTemplateArgs struct {
 	// Display name (max 256 chars).
 	DisplayName pulumi.StringPtrInput
 	// The core content of the template. Configuration of the scanning process.
-	InspectConfig     GooglePrivacyDlpV2InspectConfigPtrInput
-	InspectTemplateId pulumi.StringInput
-	Location          pulumi.StringInput
-	OrganizationId    pulumi.StringInput
+	InspectConfig  GooglePrivacyDlpV2InspectConfigPtrInput
+	Location       pulumi.StringInput
+	OrganizationId pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

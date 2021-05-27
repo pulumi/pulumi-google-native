@@ -44,9 +44,6 @@ func NewConfigWaiter(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WaiterId == nil {
-		return nil, errors.New("invalid value for required argument 'WaiterId'")
-	}
 	var resource ConfigWaiter
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:ConfigWaiter", name, args, &resource, opts...)
 	if err != nil {
@@ -123,8 +120,7 @@ type configWaiterArgs struct {
 	// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
 	Success *EndCondition `pulumi:"success"`
 	// [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
-	Timeout  *string `pulumi:"timeout"`
-	WaiterId string  `pulumi:"waiterId"`
+	Timeout *string `pulumi:"timeout"`
 }
 
 // The set of arguments for constructing a ConfigWaiter resource.
@@ -145,8 +141,7 @@ type ConfigWaiterArgs struct {
 	// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
 	Success EndConditionPtrInput
 	// [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
-	Timeout  pulumi.StringPtrInput
-	WaiterId pulumi.StringInput
+	Timeout pulumi.StringPtrInput
 }
 
 func (ConfigWaiterArgs) ElementType() reflect.Type {

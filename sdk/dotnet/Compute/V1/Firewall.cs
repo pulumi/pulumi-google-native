@@ -233,9 +233,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        [Input("firewall", required: true)]
-        public Input<string> Firewall { get; set; } = null!;
-
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>

@@ -17,7 +17,6 @@ class OrganizationEnvironmentQueryArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 query_id: pulumi.Input[str],
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  envgroup_hostname: Optional[pulumi.Input[str]] = None,
@@ -45,7 +44,6 @@ class OrganizationEnvironmentQueryArgs:
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "query_id", query_id)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
         if dimensions is not None:
@@ -86,15 +84,6 @@ class OrganizationEnvironmentQueryArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="queryId")
-    def query_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "query_id")
-
-    @query_id.setter
-    def query_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "query_id", value)
 
     @property
     @pulumi.getter(name="csvDelimiter")
@@ -245,7 +234,6 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
-                 query_id: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,
                  time_range: Optional[Any] = None,
                  __props__=None):
@@ -301,7 +289,6 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
-                 query_id: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,
                  time_range: Optional[Any] = None,
                  __props__=None):
@@ -331,9 +318,6 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["output_format"] = output_format
-            if query_id is None and not opts.urn:
-                raise TypeError("Missing required property 'query_id'")
-            __props__.__dict__["query_id"] = query_id
             __props__.__dict__["report_definition_id"] = report_definition_id
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["created"] = None

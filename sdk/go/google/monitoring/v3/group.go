@@ -34,9 +34,6 @@ func NewGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GroupId == nil {
-		return nil, errors.New("invalid value for required argument 'GroupId'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -95,8 +92,7 @@ type groupArgs struct {
 	// A user-assigned name for this group, used only for display purposes.
 	DisplayName *string `pulumi:"displayName"`
 	// The filter used to determine which monitored resources belong to this group.
-	Filter  *string `pulumi:"filter"`
-	GroupId string  `pulumi:"groupId"`
+	Filter *string `pulumi:"filter"`
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
 	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
@@ -112,8 +108,7 @@ type GroupArgs struct {
 	// A user-assigned name for this group, used only for display purposes.
 	DisplayName pulumi.StringPtrInput
 	// The filter used to determine which monitored resources belong to this group.
-	Filter  pulumi.StringPtrInput
-	GroupId pulumi.StringInput
+	Filter pulumi.StringPtrInput
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
 	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.

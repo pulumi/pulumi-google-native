@@ -129,9 +129,6 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        [Input("variableId", required: true)]
-        public Input<string> VariableId { get; set; } = null!;
-
         public ConfigVariableArgs()
         {
         }

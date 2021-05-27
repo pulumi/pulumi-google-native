@@ -13,7 +13,6 @@ __all__ = ['KnowledgeBaseArgs', 'KnowledgeBase']
 @pulumi.input_type
 class KnowledgeBaseArgs:
     def __init__(__self__, *,
-                 knowledge_base_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -25,7 +24,6 @@ class KnowledgeBaseArgs:
         :param pulumi.Input[str] language_code: Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
         :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
-        pulumi.set(__self__, "knowledge_base_id", knowledge_base_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if display_name is not None:
@@ -34,15 +32,6 @@ class KnowledgeBaseArgs:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="knowledgeBaseId")
-    def knowledge_base_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "knowledge_base_id")
-
-    @knowledge_base_id.setter
-    def knowledge_base_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "knowledge_base_id", value)
 
     @property
     @pulumi.getter
@@ -105,7 +94,6 @@ class KnowledgeBase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -145,7 +133,6 @@ class KnowledgeBase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 knowledge_base_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,9 +150,6 @@ class KnowledgeBase(pulumi.CustomResource):
             __props__ = KnowledgeBaseArgs.__new__(KnowledgeBaseArgs)
 
             __props__.__dict__["display_name"] = display_name
-            if knowledge_base_id is None and not opts.urn:
-                raise TypeError("Missing required property 'knowledge_base_id'")
-            __props__.__dict__["knowledge_base_id"] = knowledge_base_id
             __props__.__dict__["language_code"] = language_code
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

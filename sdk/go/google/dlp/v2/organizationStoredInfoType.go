@@ -33,9 +33,6 @@ func NewOrganizationStoredInfoType(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.StoredInfoTypeId == nil {
-		return nil, errors.New("invalid value for required argument 'StoredInfoTypeId'")
-	}
 	var resource OrganizationStoredInfoType
 	err := ctx.RegisterResource("google-native:dlp/v2:OrganizationStoredInfoType", name, args, &resource, opts...)
 	if err != nil {
@@ -84,7 +81,7 @@ type organizationStoredInfoTypeArgs struct {
 	Config         *GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
 	OrganizationId string                                  `pulumi:"organizationId"`
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	StoredInfoTypeId string `pulumi:"storedInfoTypeId"`
+	StoredInfoTypeId *string `pulumi:"storedInfoTypeId"`
 }
 
 // The set of arguments for constructing a OrganizationStoredInfoType resource.
@@ -93,7 +90,7 @@ type OrganizationStoredInfoTypeArgs struct {
 	Config         GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput
 	OrganizationId pulumi.StringInput
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	StoredInfoTypeId pulumi.StringInput
+	StoredInfoTypeId pulumi.StringPtrInput
 }
 
 func (OrganizationStoredInfoTypeArgs) ElementType() reflect.Type {

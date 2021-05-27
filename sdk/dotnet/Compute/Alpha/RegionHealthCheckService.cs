@@ -162,9 +162,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
-        [Input("healthCheckService", required: true)]
-        public Input<string> HealthCheckService { get; set; } = null!;
-
         [Input("healthChecks")]
         private InputList<string>? _healthChecks;
 

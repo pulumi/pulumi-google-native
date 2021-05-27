@@ -17,7 +17,6 @@ class OrganizationWorkloadArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 workload_id: pulumi.Input[str],
                  billing_account: Optional[pulumi.Input[str]] = None,
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -42,7 +41,6 @@ class OrganizationWorkloadArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "workload_id", workload_id)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
         if compliance_regime is not None:
@@ -81,15 +79,6 @@ class OrganizationWorkloadArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="workloadId")
-    def workload_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "workload_id")
-
-    @workload_id.setter
-    def workload_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workload_id", value)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -226,7 +215,6 @@ class OrganizationWorkload(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
-                 workload_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates Assured Workload.
@@ -279,7 +267,6 @@ class OrganizationWorkload(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
-                 workload_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -308,9 +295,6 @@ class OrganizationWorkload(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
-            if workload_id is None and not opts.urn:
-                raise TypeError("Missing required property 'workload_id'")
-            __props__.__dict__["workload_id"] = workload_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["resources"] = None
         super(OrganizationWorkload, __self__).__init__(

@@ -15,7 +15,6 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 @pulumi.input_type
 class TransferJobArgs:
     def __init__(__self__, *,
-                 transfer_job_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class TransferJobArgs:
         :param pulumi.Input[str] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input['TransferSpecArgs'] transfer_spec: Transfer specification.
         """
-        pulumi.set(__self__, "transfer_job_id", transfer_job_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if latest_operation_name is not None:
@@ -52,15 +50,6 @@ class TransferJobArgs:
             pulumi.set(__self__, "status", status)
         if transfer_spec is not None:
             pulumi.set(__self__, "transfer_spec", transfer_spec)
-
-    @property
-    @pulumi.getter(name="transferJobId")
-    def transfer_job_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "transfer_job_id")
-
-    @transfer_job_id.setter
-    def transfer_job_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "transfer_job_id", value)
 
     @property
     @pulumi.getter
@@ -171,7 +160,6 @@ class TransferJob(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 transfer_job_id: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None):
         """
@@ -192,7 +180,7 @@ class TransferJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TransferJobArgs,
+                 args: Optional[TransferJobArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a transfer job that runs periodically.
@@ -219,7 +207,6 @@ class TransferJob(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 transfer_job_id: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -240,9 +227,6 @@ class TransferJob(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
-            if transfer_job_id is None and not opts.urn:
-                raise TypeError("Missing required property 'transfer_job_id'")
-            __props__.__dict__["transfer_job_id"] = transfer_job_id
             __props__.__dict__["transfer_spec"] = transfer_spec
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["deletion_time"] = None

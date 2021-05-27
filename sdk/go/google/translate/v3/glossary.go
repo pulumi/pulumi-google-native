@@ -38,9 +38,6 @@ func NewGlossary(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GlossaryId == nil {
-		return nil, errors.New("invalid value for required argument 'GlossaryId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -107,7 +104,6 @@ func (GlossaryState) ElementType() reflect.Type {
 }
 
 type glossaryArgs struct {
-	GlossaryId string `pulumi:"glossaryId"`
 	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig *GlossaryInputConfig `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
@@ -122,7 +118,6 @@ type glossaryArgs struct {
 
 // The set of arguments for constructing a Glossary resource.
 type GlossaryArgs struct {
-	GlossaryId pulumi.StringInput
 	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigPtrInput
 	// Used with equivalent term set glossaries.

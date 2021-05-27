@@ -81,9 +81,6 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policyId", required: true)]
-        public Input<string> PolicyId { get; set; } = null!;
-
         /// <summary>
         /// Basic information about the Organization Policy.
         /// </summary>

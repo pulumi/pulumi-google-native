@@ -126,9 +126,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("versionId", required: true)]
-        public Input<string> VersionId { get; set; } = null!;
-
         public AgentFlowVersionArgs()
         {
         }

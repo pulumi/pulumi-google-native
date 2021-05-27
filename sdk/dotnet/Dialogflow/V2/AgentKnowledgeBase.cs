@@ -84,9 +84,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("knowledgeBaseId", required: true)]
-        public Input<string> KnowledgeBaseId { get; set; } = null!;
-
         /// <summary>
         /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
         /// </summary>

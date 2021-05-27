@@ -13,7 +13,6 @@ __all__ = ['ConfigArgs', 'Config']
 @pulumi.input_type
 class ConfigArgs:
     def __init__(__self__, *,
-                 config_id: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -23,7 +22,6 @@ class ConfigArgs:
         :param pulumi.Input[str] description: An optional description of the RuntimeConfig object.
         :param pulumi.Input[str] name: The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
         """
-        pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -31,15 +29,6 @@ class ConfigArgs:
             pulumi.set(__self__, "name", name)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter(name="configId")
-    def config_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "config_id")
-
-    @config_id.setter
-    def config_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter
@@ -89,7 +78,6 @@ class Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -127,7 +115,6 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -144,9 +131,6 @@ class Config(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigArgs.__new__(ConfigArgs)
 
-            if config_id is None and not opts.urn:
-                raise TypeError("Missing required property 'config_id'")
-            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:

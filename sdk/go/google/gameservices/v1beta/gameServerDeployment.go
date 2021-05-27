@@ -39,9 +39,6 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 	if args.DeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'DeploymentId'")
 	}
-	if args.GameServerDeploymentId == nil {
-		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -108,8 +105,7 @@ type gameServerDeploymentArgs struct {
 	// Human readable description of the game server delpoyment.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
-	Etag                   *string `pulumi:"etag"`
-	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
+	Etag *string `pulumi:"etag"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
@@ -124,8 +120,7 @@ type GameServerDeploymentArgs struct {
 	// Human readable description of the game server delpoyment.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
-	Etag                   pulumi.StringPtrInput
-	GameServerDeploymentId pulumi.StringInput
+	Etag pulumi.StringPtrInput
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput

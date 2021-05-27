@@ -99,9 +99,6 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Input("databaseUrl")]
         public Input<string>? DatabaseUrl { get; set; }
 
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
-
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

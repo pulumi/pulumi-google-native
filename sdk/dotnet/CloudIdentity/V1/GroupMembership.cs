@@ -99,9 +99,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
-        [Input("membershipId", required: true)]
-        public Input<string> MembershipId { get; set; } = null!;
-
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the member.
         /// </summary>

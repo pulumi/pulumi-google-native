@@ -16,7 +16,6 @@ __all__ = ['FolderSinkArgs', 'FolderSink']
 class FolderSinkArgs:
     def __init__(__self__, *,
                  folder_id: pulumi.Input[str],
-                 sink_id: pulumi.Input[str],
                  bigquery_options: Optional[pulumi.Input['BigQueryOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -38,7 +37,6 @@ class FolderSinkArgs:
         :param pulumi.Input[str] name: Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         pulumi.set(__self__, "folder_id", folder_id)
-        pulumi.set(__self__, "sink_id", sink_id)
         if bigquery_options is not None:
             pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
@@ -66,15 +64,6 @@ class FolderSinkArgs:
     @folder_id.setter
     def folder_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "folder_id", value)
-
-    @property
-    @pulumi.getter(name="sinkId")
-    def sink_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sink_id")
-
-    @sink_id.setter
-    def sink_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sink_id", value)
 
     @property
     @pulumi.getter(name="bigqueryOptions")
@@ -196,7 +185,6 @@ class FolderSink(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sink_id: Optional[pulumi.Input[str]] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -246,7 +234,6 @@ class FolderSink(pulumi.CustomResource):
                  folder_id: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sink_id: Optional[pulumi.Input[str]] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -271,9 +258,6 @@ class FolderSink(pulumi.CustomResource):
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["include_children"] = include_children
             __props__.__dict__["name"] = name
-            if sink_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sink_id'")
-            __props__.__dict__["sink_id"] = sink_id
             __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

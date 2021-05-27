@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SettingSearchapplication(string name, SettingSearchapplicationArgs args, CustomResourceOptions? options = null)
+        public SettingSearchapplication(string name, SettingSearchapplicationArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudsearch/v1:SettingSearchapplication", name, args ?? new SettingSearchapplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -167,9 +167,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         [Input("scoringConfig")]
         public Input<Inputs.ScoringConfigArgs>? ScoringConfig { get; set; }
-
-        [Input("searchapplicationId", required: true)]
-        public Input<string> SearchapplicationId { get; set; } = null!;
 
         [Input("sourceConfig")]
         private InputList<Inputs.SourceConfigArgs>? _sourceConfig;
