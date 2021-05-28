@@ -1931,159 +1931,6 @@ func (o I18nConfigResponsePtrOutput) Root() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated in favor of [site channels](sites.channels).
-type PreviewConfigResponse struct {
-	// If true, preview URLs are enabled for this version.
-	Active bool `pulumi:"active"`
-	// Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-	ExpireTime string `pulumi:"expireTime"`
-}
-
-// PreviewConfigResponseInput is an input type that accepts PreviewConfigResponseArgs and PreviewConfigResponseOutput values.
-// You can construct a concrete instance of `PreviewConfigResponseInput` via:
-//
-//          PreviewConfigResponseArgs{...}
-type PreviewConfigResponseInput interface {
-	pulumi.Input
-
-	ToPreviewConfigResponseOutput() PreviewConfigResponseOutput
-	ToPreviewConfigResponseOutputWithContext(context.Context) PreviewConfigResponseOutput
-}
-
-// Deprecated in favor of [site channels](sites.channels).
-type PreviewConfigResponseArgs struct {
-	// If true, preview URLs are enabled for this version.
-	Active pulumi.BoolInput `pulumi:"active"`
-	// Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-}
-
-func (PreviewConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreviewConfigResponse)(nil)).Elem()
-}
-
-func (i PreviewConfigResponseArgs) ToPreviewConfigResponseOutput() PreviewConfigResponseOutput {
-	return i.ToPreviewConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PreviewConfigResponseArgs) ToPreviewConfigResponseOutputWithContext(ctx context.Context) PreviewConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreviewConfigResponseOutput)
-}
-
-func (i PreviewConfigResponseArgs) ToPreviewConfigResponsePtrOutput() PreviewConfigResponsePtrOutput {
-	return i.ToPreviewConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PreviewConfigResponseArgs) ToPreviewConfigResponsePtrOutputWithContext(ctx context.Context) PreviewConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreviewConfigResponseOutput).ToPreviewConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PreviewConfigResponsePtrInput is an input type that accepts PreviewConfigResponseArgs, PreviewConfigResponsePtr and PreviewConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PreviewConfigResponsePtrInput` via:
-//
-//          PreviewConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PreviewConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPreviewConfigResponsePtrOutput() PreviewConfigResponsePtrOutput
-	ToPreviewConfigResponsePtrOutputWithContext(context.Context) PreviewConfigResponsePtrOutput
-}
-
-type previewConfigResponsePtrType PreviewConfigResponseArgs
-
-func PreviewConfigResponsePtr(v *PreviewConfigResponseArgs) PreviewConfigResponsePtrInput {
-	return (*previewConfigResponsePtrType)(v)
-}
-
-func (*previewConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreviewConfigResponse)(nil)).Elem()
-}
-
-func (i *previewConfigResponsePtrType) ToPreviewConfigResponsePtrOutput() PreviewConfigResponsePtrOutput {
-	return i.ToPreviewConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *previewConfigResponsePtrType) ToPreviewConfigResponsePtrOutputWithContext(ctx context.Context) PreviewConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreviewConfigResponsePtrOutput)
-}
-
-// Deprecated in favor of [site channels](sites.channels).
-type PreviewConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (PreviewConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreviewConfigResponse)(nil)).Elem()
-}
-
-func (o PreviewConfigResponseOutput) ToPreviewConfigResponseOutput() PreviewConfigResponseOutput {
-	return o
-}
-
-func (o PreviewConfigResponseOutput) ToPreviewConfigResponseOutputWithContext(ctx context.Context) PreviewConfigResponseOutput {
-	return o
-}
-
-func (o PreviewConfigResponseOutput) ToPreviewConfigResponsePtrOutput() PreviewConfigResponsePtrOutput {
-	return o.ToPreviewConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PreviewConfigResponseOutput) ToPreviewConfigResponsePtrOutputWithContext(ctx context.Context) PreviewConfigResponsePtrOutput {
-	return o.ApplyT(func(v PreviewConfigResponse) *PreviewConfigResponse {
-		return &v
-	}).(PreviewConfigResponsePtrOutput)
-}
-
-// If true, preview URLs are enabled for this version.
-func (o PreviewConfigResponseOutput) Active() pulumi.BoolOutput {
-	return o.ApplyT(func(v PreviewConfigResponse) bool { return v.Active }).(pulumi.BoolOutput)
-}
-
-// Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-func (o PreviewConfigResponseOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v PreviewConfigResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
-}
-
-type PreviewConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PreviewConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreviewConfigResponse)(nil)).Elem()
-}
-
-func (o PreviewConfigResponsePtrOutput) ToPreviewConfigResponsePtrOutput() PreviewConfigResponsePtrOutput {
-	return o
-}
-
-func (o PreviewConfigResponsePtrOutput) ToPreviewConfigResponsePtrOutputWithContext(ctx context.Context) PreviewConfigResponsePtrOutput {
-	return o
-}
-
-func (o PreviewConfigResponsePtrOutput) Elem() PreviewConfigResponseOutput {
-	return o.ApplyT(func(v *PreviewConfigResponse) PreviewConfigResponse { return *v }).(PreviewConfigResponseOutput)
-}
-
-// If true, preview URLs are enabled for this version.
-func (o PreviewConfigResponsePtrOutput) Active() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PreviewConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Active
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-func (o PreviewConfigResponsePtrOutput) ExpireTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PreviewConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpireTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
 type RedirectResponse struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
@@ -2855,8 +2702,6 @@ type VersionResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
 	Name string `pulumi:"name"`
-	// Deprecated in favor of [site channels](sites.channels).
-	Preview PreviewConfigResponse `pulumi:"preview"`
 	// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
 	Status string `pulumi:"status"`
 	// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
@@ -2896,8 +2741,6 @@ type VersionResponseArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
 	Name pulumi.StringInput `pulumi:"name"`
-	// Deprecated in favor of [site channels](sites.channels).
-	Preview PreviewConfigResponseInput `pulumi:"preview"`
 	// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
 	Status pulumi.StringInput `pulumi:"status"`
 	// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
@@ -3032,11 +2875,6 @@ func (o VersionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VersionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Deprecated in favor of [site channels](sites.channels).
-func (o VersionResponseOutput) Preview() PreviewConfigResponseOutput {
-	return o.ApplyT(func(v VersionResponse) PreviewConfigResponse { return v.Preview }).(PreviewConfigResponseOutput)
-}
-
 // The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
 func (o VersionResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v VersionResponse) string { return v.Status }).(pulumi.StringOutput)
@@ -3165,16 +3003,6 @@ func (o VersionResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated in favor of [site channels](sites.channels).
-func (o VersionResponsePtrOutput) Preview() PreviewConfigResponsePtrOutput {
-	return o.ApplyT(func(v *VersionResponse) *PreviewConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Preview
-	}).(PreviewConfigResponsePtrOutput)
-}
-
 // The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
 func (o VersionResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VersionResponse) *string {
@@ -3219,8 +3047,6 @@ func init() {
 	pulumi.RegisterOutputType(HeaderResponseArrayOutput{})
 	pulumi.RegisterOutputType(I18nConfigResponseOutput{})
 	pulumi.RegisterOutputType(I18nConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(PreviewConfigResponseOutput{})
-	pulumi.RegisterOutputType(PreviewConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RedirectResponseOutput{})
 	pulumi.RegisterOutputType(RedirectResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseResponseOutput{})

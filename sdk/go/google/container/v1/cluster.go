@@ -53,8 +53,6 @@ type Cluster struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringOutput `pulumi:"initialClusterVersion"`
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyResponseOutput `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -83,8 +81,6 @@ type Cluster struct {
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyResponseOutput `pulumi:"networkPolicy"`
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntOutput `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -115,8 +111,6 @@ type Cluster struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingResponseOutput `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponseOutput `pulumi:"workloadIdentityConfig"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -192,8 +186,6 @@ type clusterState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicyResponse `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -222,8 +214,6 @@ type clusterState struct {
 	NetworkConfig *NetworkConfigResponse `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicyResponse `pulumi:"networkPolicy"`
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig *NodeConfigResponse `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -254,8 +244,6 @@ type clusterState struct {
 	VerticalPodAutoscaling *VerticalPodAutoscalingResponse `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfigResponse `pulumi:"workloadIdentityConfig"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone *string `pulumi:"zone"`
 }
 
 type ClusterState struct {
@@ -297,8 +285,6 @@ type ClusterState struct {
 	ExpireTime pulumi.StringPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount pulumi.IntPtrInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyResponsePtrInput
 	// The fingerprint of the set of labels for this cluster.
@@ -327,8 +313,6 @@ type ClusterState struct {
 	NetworkConfig NetworkConfigResponsePtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyResponsePtrInput
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig NodeConfigResponsePtrInput
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -359,8 +343,6 @@ type ClusterState struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingResponsePtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponsePtrInput
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -406,8 +388,6 @@ type clusterArgs struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -436,8 +416,6 @@ type clusterArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -471,8 +449,6 @@ type clusterArgs struct {
 	VerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -515,8 +491,6 @@ type ClusterArgs struct {
 	ExpireTime pulumi.StringPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount pulumi.IntPtrInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyPtrInput
 	// The fingerprint of the set of labels for this cluster.
@@ -545,8 +519,6 @@ type ClusterArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig NodeConfigPtrInput
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -580,8 +552,6 @@ type ClusterArgs struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigPtrInput
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone pulumi.StringPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

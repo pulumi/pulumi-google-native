@@ -47,16 +47,12 @@ type Cluster struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha pulumi.BoolOutput `pulumi:"enableKubernetesAlpha"`
-	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-	EnableTpu pulumi.BoolOutput `pulumi:"enableTpu"`
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringOutput `pulumi:"initialClusterVersion"`
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyResponseOutput `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -77,8 +73,6 @@ type Cluster struct {
 	MasterAuth MasterAuthResponseOutput `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponseOutput `pulumi:"masterAuthorizedNetworksConfig"`
-	// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-	MasterIpv4CidrBlock pulumi.StringOutput `pulumi:"masterIpv4CidrBlock"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService pulumi.StringOutput `pulumi:"monitoringService"`
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -89,8 +83,6 @@ type Cluster struct {
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyResponseOutput `pulumi:"networkPolicy"`
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntOutput `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -99,8 +91,6 @@ type Cluster struct {
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig PodSecurityPolicyConfigResponseOutput `pulumi:"podSecurityPolicyConfig"`
-	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-	PrivateCluster pulumi.BoolOutput `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponseOutput `pulumi:"privateClusterConfig"`
 	// Release channel configuration.
@@ -129,8 +119,6 @@ type Cluster struct {
 	WorkloadCertificates WorkloadCertificatesResponseOutput `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponseOutput `pulumi:"workloadIdentityConfig"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -140,11 +128,11 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:container/v1beta1:Cluster", name, args, &resource, opts...)
@@ -200,16 +188,12 @@ type clusterState struct {
 	Description *string `pulumi:"description"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
-	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-	EnableTpu *bool `pulumi:"enableTpu"`
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint *string `pulumi:"endpoint"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime *string `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicyResponse `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -230,8 +214,6 @@ type clusterState struct {
 	MasterAuth *MasterAuthResponse `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfigResponse `pulumi:"masterAuthorizedNetworksConfig"`
-	// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -242,8 +224,6 @@ type clusterState struct {
 	NetworkConfig *NetworkConfigResponse `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicyResponse `pulumi:"networkPolicy"`
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig *NodeConfigResponse `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -252,8 +232,6 @@ type clusterState struct {
 	NotificationConfig *NotificationConfigResponse `pulumi:"notificationConfig"`
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig *PodSecurityPolicyConfigResponse `pulumi:"podSecurityPolicyConfig"`
-	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-	PrivateCluster *bool `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
 	// Release channel configuration.
@@ -282,8 +260,6 @@ type clusterState struct {
 	WorkloadCertificates *WorkloadCertificatesResponse `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfigResponse `pulumi:"workloadIdentityConfig"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone *string `pulumi:"zone"`
 }
 
 type ClusterState struct {
@@ -319,16 +295,12 @@ type ClusterState struct {
 	Description pulumi.StringPtrInput
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha pulumi.BoolPtrInput
-	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-	EnableTpu pulumi.BoolPtrInput
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint pulumi.StringPtrInput
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime pulumi.StringPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount pulumi.IntPtrInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyResponsePtrInput
 	// The fingerprint of the set of labels for this cluster.
@@ -349,8 +321,6 @@ type ClusterState struct {
 	MasterAuth MasterAuthResponsePtrInput
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponsePtrInput
-	// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-	MasterIpv4CidrBlock pulumi.StringPtrInput
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService pulumi.StringPtrInput
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -361,8 +331,6 @@ type ClusterState struct {
 	NetworkConfig NetworkConfigResponsePtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyResponsePtrInput
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig NodeConfigResponsePtrInput
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -371,8 +339,6 @@ type ClusterState struct {
 	NotificationConfig NotificationConfigResponsePtrInput
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig PodSecurityPolicyConfigResponsePtrInput
-	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-	PrivateCluster pulumi.BoolPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponsePtrInput
 	// Release channel configuration.
@@ -401,8 +367,6 @@ type ClusterState struct {
 	WorkloadCertificates WorkloadCertificatesResponsePtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponsePtrInput
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -442,16 +406,12 @@ type clusterArgs struct {
 	Description *string `pulumi:"description"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
-	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-	EnableTpu *bool `pulumi:"enableTpu"`
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint *string `pulumi:"endpoint"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime *string `pulumi:"expireTime"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -459,7 +419,7 @@ type clusterArgs struct {
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac *LegacyAbac `pulumi:"legacyAbac"`
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -472,8 +432,6 @@ type clusterArgs struct {
 	MasterAuth *MasterAuth `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
-	// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -484,8 +442,6 @@ type clusterArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -496,8 +452,6 @@ type clusterArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig *PodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
-	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-	PrivateCluster *bool `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
 	Project              string                `pulumi:"project"`
@@ -527,8 +481,6 @@ type clusterArgs struct {
 	WorkloadCertificates *WorkloadCertificates `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -565,16 +517,12 @@ type ClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha pulumi.BoolPtrInput
-	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-	EnableTpu pulumi.BoolPtrInput
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint pulumi.StringPtrInput
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime pulumi.StringPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
-	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-	InitialNodeCount pulumi.IntPtrInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyPtrInput
 	// The fingerprint of the set of labels for this cluster.
@@ -582,7 +530,7 @@ type ClusterArgs struct {
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac LegacyAbacPtrInput
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -595,8 +543,6 @@ type ClusterArgs struct {
 	MasterAuth MasterAuthPtrInput
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput
-	// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-	MasterIpv4CidrBlock pulumi.StringPtrInput
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService pulumi.StringPtrInput
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -607,8 +553,6 @@ type ClusterArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput
-	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-	NodeConfig NodeConfigPtrInput
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -619,8 +563,6 @@ type ClusterArgs struct {
 	Parent pulumi.StringPtrInput
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig PodSecurityPolicyConfigPtrInput
-	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-	PrivateCluster pulumi.BoolPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
 	Project              pulumi.StringInput
@@ -650,8 +592,6 @@ type ClusterArgs struct {
 	WorkloadCertificates WorkloadCertificatesPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigPtrInput
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-	Zone pulumi.StringInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

@@ -29,8 +29,6 @@ type Firewall struct {
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -108,8 +106,6 @@ type firewallState struct {
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-	EnableLogging *bool `pulumi:"enableLogging"`
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
 	Kind *string `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -156,8 +152,6 @@ type FirewallState struct {
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-	EnableLogging pulumi.BoolPtrInput
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
 	Kind pulumi.StringPtrInput
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -208,8 +202,6 @@ type firewallArgs struct {
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-	EnableLogging *bool `pulumi:"enableLogging"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
@@ -261,8 +253,6 @@ type FirewallArgs struct {
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-	EnableLogging pulumi.BoolPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.

@@ -103,10 +103,6 @@ type RegionBackendService struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	OutlierDetection OutlierDetectionResponseOutput `pulumi:"outlierDetection"`
-	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-	//
-	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-	Port pulumi.IntOutput `pulumi:"port"`
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
 	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
@@ -267,10 +263,6 @@ type regionBackendServiceState struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	OutlierDetection *OutlierDetectionResponse `pulumi:"outlierDetection"`
-	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-	//
-	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-	Port *int `pulumi:"port"`
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
 	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
@@ -397,10 +389,6 @@ type RegionBackendServiceState struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	OutlierDetection OutlierDetectionResponsePtrInput
-	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-	//
-	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-	Port pulumi.IntPtrInput
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
 	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
@@ -533,10 +521,6 @@ type regionBackendServiceArgs struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	OutlierDetection *OutlierDetection `pulumi:"outlierDetection"`
-	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-	//
-	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-	Port *int `pulumi:"port"`
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
 	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
@@ -668,10 +652,6 @@ type RegionBackendServiceArgs struct {
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	OutlierDetection OutlierDetectionPtrInput
-	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-	//
-	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-	Port pulumi.IntPtrInput
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
 	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.

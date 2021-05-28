@@ -8156,12 +8156,8 @@ func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 type ResourceRequirements struct {
 	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-	LimitsInMap map[string]string `pulumi:"limitsInMap"`
 	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-	RequestsInMap map[string]string `pulumi:"requestsInMap"`
 }
 
 // ResourceRequirementsInput is an input type that accepts ResourceRequirementsArgs and ResourceRequirementsOutput values.
@@ -8179,12 +8175,8 @@ type ResourceRequirementsInput interface {
 type ResourceRequirementsArgs struct {
 	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-	LimitsInMap pulumi.StringMapInput `pulumi:"limitsInMap"`
 	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-	RequestsInMap pulumi.StringMapInput `pulumi:"requestsInMap"`
 }
 
 func (ResourceRequirementsArgs) ElementType() reflect.Type {
@@ -8270,19 +8262,9 @@ func (o ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-func (o ResourceRequirementsOutput) LimitsInMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.LimitsInMap }).(pulumi.StringMapOutput)
-}
-
 // Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
-}
-
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-func (o ResourceRequirementsOutput) RequestsInMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.RequestsInMap }).(pulumi.StringMapOutput)
 }
 
 type ResourceRequirementsPtrOutput struct{ *pulumi.OutputState }
@@ -8313,16 +8295,6 @@ func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-func (o ResourceRequirementsPtrOutput) LimitsInMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.LimitsInMap
-	}).(pulumi.StringMapOutput)
-}
-
 // Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
@@ -8333,26 +8305,12 @@ func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-func (o ResourceRequirementsPtrOutput) RequestsInMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.RequestsInMap
-	}).(pulumi.StringMapOutput)
-}
-
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponse struct {
 	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-	LimitsInMap map[string]string `pulumi:"limitsInMap"`
 	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-	RequestsInMap map[string]string `pulumi:"requestsInMap"`
 }
 
 // ResourceRequirementsResponseInput is an input type that accepts ResourceRequirementsResponseArgs and ResourceRequirementsResponseOutput values.
@@ -8370,12 +8328,8 @@ type ResourceRequirementsResponseInput interface {
 type ResourceRequirementsResponseArgs struct {
 	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-	LimitsInMap pulumi.StringMapInput `pulumi:"limitsInMap"`
 	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-	RequestsInMap pulumi.StringMapInput `pulumi:"requestsInMap"`
 }
 
 func (ResourceRequirementsResponseArgs) ElementType() reflect.Type {
@@ -8410,19 +8364,9 @@ func (o ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-func (o ResourceRequirementsResponseOutput) LimitsInMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.LimitsInMap }).(pulumi.StringMapOutput)
-}
-
 // Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
-}
-
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-func (o ResourceRequirementsResponseOutput) RequestsInMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.RequestsInMap }).(pulumi.StringMapOutput)
 }
 
 // SELinuxOptions are the labels to be applied to the container

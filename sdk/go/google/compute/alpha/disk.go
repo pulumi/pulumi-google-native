@@ -105,13 +105,6 @@ type Disk struct {
 	SourceImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceImageEncryptionKey"`
 	// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
-	// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - global/inPlaceSnapshots/inPlaceSnapshots
-	SourceInPlaceSnapshot pulumi.StringOutput `pulumi:"sourceInPlaceSnapshot"`
-	// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-	SourceInPlaceSnapshotId pulumi.StringOutput `pulumi:"sourceInPlaceSnapshotId"`
 	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot
 	// - projects/project/zones/zone/instantSnapshots/instantSnapshot
@@ -137,8 +130,6 @@ type Disk struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringOutput `pulumi:"type"`
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
@@ -275,13 +266,6 @@ type diskState struct {
 	SourceImageEncryptionKey *CustomerEncryptionKeyResponse `pulumi:"sourceImageEncryptionKey"`
 	// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId *string `pulumi:"sourceImageId"`
-	// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - global/inPlaceSnapshots/inPlaceSnapshots
-	SourceInPlaceSnapshot *string `pulumi:"sourceInPlaceSnapshot"`
-	// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-	SourceInPlaceSnapshotId *string `pulumi:"sourceInPlaceSnapshotId"`
 	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot
 	// - projects/project/zones/zone/instantSnapshots/instantSnapshot
@@ -307,8 +291,6 @@ type diskState struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status *string `pulumi:"status"`
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType *string `pulumi:"storageType"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type *string `pulumi:"type"`
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
@@ -411,13 +393,6 @@ type DiskState struct {
 	SourceImageEncryptionKey CustomerEncryptionKeyResponsePtrInput
 	// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringPtrInput
-	// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - global/inPlaceSnapshots/inPlaceSnapshots
-	SourceInPlaceSnapshot pulumi.StringPtrInput
-	// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-	SourceInPlaceSnapshotId pulumi.StringPtrInput
 	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot
 	// - projects/project/zones/zone/instantSnapshots/instantSnapshot
@@ -443,8 +418,6 @@ type DiskState struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status pulumi.StringPtrInput
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringPtrInput
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
@@ -555,13 +528,6 @@ type diskArgs struct {
 	SourceImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId *string `pulumi:"sourceImageId"`
-	// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - global/inPlaceSnapshots/inPlaceSnapshots
-	SourceInPlaceSnapshot *string `pulumi:"sourceInPlaceSnapshot"`
-	// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-	SourceInPlaceSnapshotId *string `pulumi:"sourceInPlaceSnapshotId"`
 	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot
 	// - projects/project/zones/zone/instantSnapshots/instantSnapshot
@@ -587,8 +553,6 @@ type diskArgs struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status *string `pulumi:"status"`
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType *string `pulumi:"storageType"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type *string `pulumi:"type"`
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
@@ -696,13 +660,6 @@ type DiskArgs struct {
 	SourceImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringPtrInput
-	// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots
-	// - global/inPlaceSnapshots/inPlaceSnapshots
-	SourceInPlaceSnapshot pulumi.StringPtrInput
-	// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-	SourceInPlaceSnapshotId pulumi.StringPtrInput
 	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot
 	// - projects/project/zones/zone/instantSnapshots/instantSnapshot
@@ -728,8 +685,6 @@ type DiskArgs struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status pulumi.StringPtrInput
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringPtrInput
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:

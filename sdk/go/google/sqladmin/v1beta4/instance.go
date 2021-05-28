@@ -27,8 +27,6 @@ type Instance struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponseOutput `pulumi:"diskEncryptionConfiguration"`
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionStatus DiskEncryptionStatusResponseOutput `pulumi:"diskEncryptionStatus"`
-	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
 	FailoverReplica InstanceFailoverReplicaResponseOutput `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
@@ -37,8 +35,6 @@ type Instance struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
 	IpAddresses IpMappingResponseArrayOutput `pulumi:"ipAddresses"`
-	// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// This is always *sql#instance*.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the instance which will act as primary in the replication setup.
@@ -125,8 +121,6 @@ type instanceState struct {
 	DiskEncryptionConfiguration *DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionStatus *DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
-	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-	Etag *string `pulumi:"etag"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
 	FailoverReplica *InstanceFailoverReplicaResponse `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
@@ -135,8 +129,6 @@ type instanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
 	IpAddresses []IpMappingResponse `pulumi:"ipAddresses"`
-	// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-	Ipv6Address *string `pulumi:"ipv6Address"`
 	// This is always *sql#instance*.
 	Kind *string `pulumi:"kind"`
 	// The name of the instance which will act as primary in the replication setup.
@@ -192,8 +184,6 @@ type InstanceState struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponsePtrInput
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionStatus DiskEncryptionStatusResponsePtrInput
-	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-	Etag pulumi.StringPtrInput
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
 	FailoverReplica InstanceFailoverReplicaResponsePtrInput
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
@@ -202,8 +192,6 @@ type InstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// The assigned IP addresses for the instance.
 	IpAddresses IpMappingResponseArrayInput
-	// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-	Ipv6Address pulumi.StringPtrInput
 	// This is always *sql#instance*.
 	Kind pulumi.StringPtrInput
 	// The name of the instance which will act as primary in the replication setup.
@@ -263,8 +251,6 @@ type instanceArgs struct {
 	DiskEncryptionConfiguration *DiskEncryptionConfiguration `pulumi:"diskEncryptionConfiguration"`
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionStatus *DiskEncryptionStatus `pulumi:"diskEncryptionStatus"`
-	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-	Etag *string `pulumi:"etag"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
 	FailoverReplica *InstanceFailoverReplica `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
@@ -273,8 +259,6 @@ type instanceArgs struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
 	IpAddresses []IpMapping `pulumi:"ipAddresses"`
-	// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-	Ipv6Address *string `pulumi:"ipv6Address"`
 	// This is always *sql#instance*.
 	Kind *string `pulumi:"kind"`
 	// The name of the instance which will act as primary in the replication setup.
@@ -331,8 +315,6 @@ type InstanceArgs struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionStatus DiskEncryptionStatusPtrInput
-	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-	Etag pulumi.StringPtrInput
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
 	FailoverReplica InstanceFailoverReplicaPtrInput
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
@@ -341,8 +323,6 @@ type InstanceArgs struct {
 	InstanceType pulumi.StringPtrInput
 	// The assigned IP addresses for the instance.
 	IpAddresses IpMappingArrayInput
-	// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-	Ipv6Address pulumi.StringPtrInput
 	// This is always *sql#instance*.
 	Kind pulumi.StringPtrInput
 	// The name of the instance which will act as primary in the replication setup.

@@ -15,10 +15,6 @@ import (
 type TargetHttpsProxy struct {
 	pulumi.CustomResourceState
 
-	// [Deprecated] Use serverTlsPolicy instead.
-	Authentication pulumi.StringOutput `pulumi:"authentication"`
-	// [Deprecated] Use authorizationPolicy instead.
-	Authorization pulumi.StringOutput `pulumi:"authorization"`
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
 	// Refer to the AuthorizationPolicy resource for additional details.
 	// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -105,10 +101,6 @@ func GetTargetHttpsProxy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetHttpsProxy resources.
 type targetHttpsProxyState struct {
-	// [Deprecated] Use serverTlsPolicy instead.
-	Authentication *string `pulumi:"authentication"`
-	// [Deprecated] Use authorizationPolicy instead.
-	Authorization *string `pulumi:"authorization"`
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
 	// Refer to the AuthorizationPolicy resource for additional details.
 	// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -164,10 +156,6 @@ type targetHttpsProxyState struct {
 }
 
 type TargetHttpsProxyState struct {
-	// [Deprecated] Use serverTlsPolicy instead.
-	Authentication pulumi.StringPtrInput
-	// [Deprecated] Use authorizationPolicy instead.
-	Authorization pulumi.StringPtrInput
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
 	// Refer to the AuthorizationPolicy resource for additional details.
 	// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -227,10 +215,6 @@ func (TargetHttpsProxyState) ElementType() reflect.Type {
 }
 
 type targetHttpsProxyArgs struct {
-	// [Deprecated] Use serverTlsPolicy instead.
-	Authentication *string `pulumi:"authentication"`
-	// [Deprecated] Use authorizationPolicy instead.
-	Authorization *string `pulumi:"authorization"`
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
 	// Refer to the AuthorizationPolicy resource for additional details.
 	// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -291,10 +275,6 @@ type targetHttpsProxyArgs struct {
 
 // The set of arguments for constructing a TargetHttpsProxy resource.
 type TargetHttpsProxyArgs struct {
-	// [Deprecated] Use serverTlsPolicy instead.
-	Authentication pulumi.StringPtrInput
-	// [Deprecated] Use authorizationPolicy instead.
-	Authorization pulumi.StringPtrInput
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
 	// Refer to the AuthorizationPolicy resource for additional details.
 	// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.

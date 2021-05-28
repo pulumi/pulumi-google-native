@@ -7819,28 +7819,20 @@ func (o ILBSubsettingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type IPAllocationPolicy struct {
 	// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
 	AllowRouteOverlap *bool `pulumi:"allowRouteOverlap"`
-	// This field is deprecated, use cluster_ipv4_cidr_block.
-	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork *bool `pulumi:"createSubnetwork"`
-	// This field is deprecated, use node_ipv4_cidr_block.
-	NodeIpv4Cidr *string `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock *string `pulumi:"nodeIpv4CidrBlock"`
-	// This field is deprecated, use services_ipv4_cidr_block.
-	ServicesIpv4Cidr *string `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName *string `pulumi:"subnetworkName"`
-	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
 	// Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
 	UseIpAliases *bool `pulumi:"useIpAliases"`
 	// Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -7862,28 +7854,20 @@ type IPAllocationPolicyInput interface {
 type IPAllocationPolicyArgs struct {
 	// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
 	AllowRouteOverlap pulumi.BoolPtrInput `pulumi:"allowRouteOverlap"`
-	// This field is deprecated, use cluster_ipv4_cidr_block.
-	ClusterIpv4Cidr pulumi.StringPtrInput `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork pulumi.BoolPtrInput `pulumi:"createSubnetwork"`
-	// This field is deprecated, use node_ipv4_cidr_block.
-	NodeIpv4Cidr pulumi.StringPtrInput `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock pulumi.StringPtrInput `pulumi:"nodeIpv4CidrBlock"`
-	// This field is deprecated, use services_ipv4_cidr_block.
-	ServicesIpv4Cidr pulumi.StringPtrInput `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName pulumi.StringPtrInput `pulumi:"subnetworkName"`
-	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-	TpuIpv4CidrBlock pulumi.StringPtrInput `pulumi:"tpuIpv4CidrBlock"`
 	// Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
 	UseIpAliases pulumi.BoolPtrInput `pulumi:"useIpAliases"`
 	// Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -7973,11 +7957,6 @@ func (o IPAllocationPolicyOutput) AllowRouteOverlap() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *bool { return v.AllowRouteOverlap }).(pulumi.BoolPtrOutput)
 }
 
-// This field is deprecated, use cluster_ipv4_cidr_block.
-func (o IPAllocationPolicyOutput) ClusterIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterIpv4Cidr }).(pulumi.StringPtrOutput)
-}
-
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -7993,19 +7972,9 @@ func (o IPAllocationPolicyOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *bool { return v.CreateSubnetwork }).(pulumi.BoolPtrOutput)
 }
 
-// This field is deprecated, use node_ipv4_cidr_block.
-func (o IPAllocationPolicyOutput) NodeIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.NodeIpv4Cidr }).(pulumi.StringPtrOutput)
-}
-
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.NodeIpv4CidrBlock }).(pulumi.StringPtrOutput)
-}
-
-// This field is deprecated, use services_ipv4_cidr_block.
-func (o IPAllocationPolicyOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesIpv4Cidr }).(pulumi.StringPtrOutput)
 }
 
 // The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -8021,11 +7990,6 @@ func (o IPAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrO
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 func (o IPAllocationPolicyOutput) SubnetworkName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.SubnetworkName }).(pulumi.StringPtrOutput)
-}
-
-// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-func (o IPAllocationPolicyOutput) TpuIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.TpuIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 // Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -8066,16 +8030,6 @@ func (o IPAllocationPolicyPtrOutput) AllowRouteOverlap() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This field is deprecated, use cluster_ipv4_cidr_block.
-func (o IPAllocationPolicyPtrOutput) ClusterIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterIpv4Cidr
-	}).(pulumi.StringPtrOutput)
-}
-
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
@@ -8106,16 +8060,6 @@ func (o IPAllocationPolicyPtrOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This field is deprecated, use node_ipv4_cidr_block.
-func (o IPAllocationPolicyPtrOutput) NodeIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeIpv4Cidr
-	}).(pulumi.StringPtrOutput)
-}
-
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyPtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
@@ -8123,16 +8067,6 @@ func (o IPAllocationPolicyPtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.NodeIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is deprecated, use services_ipv4_cidr_block.
-func (o IPAllocationPolicyPtrOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServicesIpv4Cidr
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8166,16 +8100,6 @@ func (o IPAllocationPolicyPtrOutput) SubnetworkName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-func (o IPAllocationPolicyPtrOutput) TpuIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TpuIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
 // Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
 func (o IPAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *bool {
@@ -8200,28 +8124,20 @@ func (o IPAllocationPolicyPtrOutput) UseRoutes() pulumi.BoolPtrOutput {
 type IPAllocationPolicyResponse struct {
 	// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
 	AllowRouteOverlap bool `pulumi:"allowRouteOverlap"`
-	// This field is deprecated, use cluster_ipv4_cidr_block.
-	ClusterIpv4Cidr string `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork bool `pulumi:"createSubnetwork"`
-	// This field is deprecated, use node_ipv4_cidr_block.
-	NodeIpv4Cidr string `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock string `pulumi:"nodeIpv4CidrBlock"`
-	// This field is deprecated, use services_ipv4_cidr_block.
-	ServicesIpv4Cidr string `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName string `pulumi:"subnetworkName"`
-	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-	TpuIpv4CidrBlock string `pulumi:"tpuIpv4CidrBlock"`
 	// Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
 	UseIpAliases bool `pulumi:"useIpAliases"`
 	// Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -8243,28 +8159,20 @@ type IPAllocationPolicyResponseInput interface {
 type IPAllocationPolicyResponseArgs struct {
 	// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
 	AllowRouteOverlap pulumi.BoolInput `pulumi:"allowRouteOverlap"`
-	// This field is deprecated, use cluster_ipv4_cidr_block.
-	ClusterIpv4Cidr pulumi.StringInput `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork pulumi.BoolInput `pulumi:"createSubnetwork"`
-	// This field is deprecated, use node_ipv4_cidr_block.
-	NodeIpv4Cidr pulumi.StringInput `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock pulumi.StringInput `pulumi:"nodeIpv4CidrBlock"`
-	// This field is deprecated, use services_ipv4_cidr_block.
-	ServicesIpv4Cidr pulumi.StringInput `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName pulumi.StringInput `pulumi:"subnetworkName"`
-	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-	TpuIpv4CidrBlock pulumi.StringInput `pulumi:"tpuIpv4CidrBlock"`
 	// Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
 	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
 	// Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -8354,11 +8262,6 @@ func (o IPAllocationPolicyResponseOutput) AllowRouteOverlap() pulumi.BoolOutput 
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.AllowRouteOverlap }).(pulumi.BoolOutput)
 }
 
-// This field is deprecated, use cluster_ipv4_cidr_block.
-func (o IPAllocationPolicyResponseOutput) ClusterIpv4Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4Cidr }).(pulumi.StringOutput)
-}
-
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
@@ -8374,19 +8277,9 @@ func (o IPAllocationPolicyResponseOutput) CreateSubnetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
 }
 
-// This field is deprecated, use node_ipv4_cidr_block.
-func (o IPAllocationPolicyResponseOutput) NodeIpv4Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.NodeIpv4Cidr }).(pulumi.StringOutput)
-}
-
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) NodeIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
-}
-
-// This field is deprecated, use services_ipv4_cidr_block.
-func (o IPAllocationPolicyResponseOutput) ServicesIpv4Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
 }
 
 // The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -8402,11 +8295,6 @@ func (o IPAllocationPolicyResponseOutput) ServicesSecondaryRangeName() pulumi.St
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 func (o IPAllocationPolicyResponseOutput) SubnetworkName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.SubnetworkName }).(pulumi.StringOutput)
-}
-
-// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-func (o IPAllocationPolicyResponseOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 // Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -8447,16 +8335,6 @@ func (o IPAllocationPolicyResponsePtrOutput) AllowRouteOverlap() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This field is deprecated, use cluster_ipv4_cidr_block.
-func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterIpv4Cidr
-	}).(pulumi.StringPtrOutput)
-}
-
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
@@ -8487,16 +8365,6 @@ func (o IPAllocationPolicyResponsePtrOutput) CreateSubnetwork() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This field is deprecated, use node_ipv4_cidr_block.
-func (o IPAllocationPolicyResponsePtrOutput) NodeIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeIpv4Cidr
-	}).(pulumi.StringPtrOutput)
-}
-
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponsePtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
@@ -8504,16 +8372,6 @@ func (o IPAllocationPolicyResponsePtrOutput) NodeIpv4CidrBlock() pulumi.StringPt
 			return nil
 		}
 		return &v.NodeIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is deprecated, use services_ipv4_cidr_block.
-func (o IPAllocationPolicyResponsePtrOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServicesIpv4Cidr
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8544,16 +8402,6 @@ func (o IPAllocationPolicyResponsePtrOutput) SubnetworkName() pulumi.StringPtrOu
 			return nil
 		}
 		return &v.SubnetworkName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-func (o IPAllocationPolicyResponsePtrOutput) TpuIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TpuIpv4CidrBlock
 	}).(pulumi.StringPtrOutput)
 }
 

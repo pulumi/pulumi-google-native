@@ -121,8 +121,6 @@ type RegionDisk struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringOutput `pulumi:"type"`
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
@@ -272,8 +270,6 @@ type regionDiskState struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status *string `pulumi:"status"`
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType *string `pulumi:"storageType"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type *string `pulumi:"type"`
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
@@ -389,8 +385,6 @@ type RegionDiskState struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status pulumi.StringPtrInput
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringPtrInput
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
@@ -514,8 +508,6 @@ type regionDiskArgs struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status *string `pulumi:"status"`
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType *string `pulumi:"storageType"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type *string `pulumi:"type"`
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
@@ -636,8 +628,6 @@ type RegionDiskArgs struct {
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
 	Status pulumi.StringPtrInput
-	// [Deprecated] Storage type of the persistent disk.
-	StorageType pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringPtrInput
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance

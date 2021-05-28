@@ -27,12 +27,6 @@ type RegionHealthCheckService struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy pulumi.StringOutput `pulumi:"healthStatusAggregationPolicy"`
-	// This field is deprecated. Use health_status_aggregation_policy instead.
-	//
-	// Policy for how the results from multiple health checks for the same endpoint are aggregated.
-	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
-	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-	HealthStatusAggregationStrategy pulumi.StringOutput `pulumi:"healthStatusAggregationStrategy"`
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -96,12 +90,6 @@ type regionHealthCheckServiceState struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy *string `pulumi:"healthStatusAggregationPolicy"`
-	// This field is deprecated. Use health_status_aggregation_policy instead.
-	//
-	// Policy for how the results from multiple health checks for the same endpoint are aggregated.
-	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
-	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-	HealthStatusAggregationStrategy *string `pulumi:"healthStatusAggregationStrategy"`
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -131,12 +119,6 @@ type RegionHealthCheckServiceState struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy pulumi.StringPtrInput
-	// This field is deprecated. Use health_status_aggregation_policy instead.
-	//
-	// Policy for how the results from multiple health checks for the same endpoint are aggregated.
-	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
-	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-	HealthStatusAggregationStrategy pulumi.StringPtrInput
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -170,12 +152,6 @@ type regionHealthCheckServiceArgs struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy *string `pulumi:"healthStatusAggregationPolicy"`
-	// This field is deprecated. Use health_status_aggregation_policy instead.
-	//
-	// Policy for how the results from multiple health checks for the same endpoint are aggregated.
-	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
-	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-	HealthStatusAggregationStrategy *string `pulumi:"healthStatusAggregationStrategy"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
@@ -210,12 +186,6 @@ type RegionHealthCheckServiceArgs struct {
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
 	HealthStatusAggregationPolicy pulumi.StringPtrInput
-	// This field is deprecated. Use health_status_aggregation_policy instead.
-	//
-	// Policy for how the results from multiple health checks for the same endpoint are aggregated.
-	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
-	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-	HealthStatusAggregationStrategy pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.

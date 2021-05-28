@@ -3857,223 +3857,6 @@ func (o SparkChartViewResponseOutput) SparkChartType() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkChartViewResponse) string { return v.SparkChartType }).(pulumi.StringOutput)
 }
 
-// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-type StatisticalTimeSeriesFilter struct {
-	// How many time series to output.
-	NumTimeSeries *int `pulumi:"numTimeSeries"`
-	// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-	RankingMethod *string `pulumi:"rankingMethod"`
-}
-
-// StatisticalTimeSeriesFilterInput is an input type that accepts StatisticalTimeSeriesFilterArgs and StatisticalTimeSeriesFilterOutput values.
-// You can construct a concrete instance of `StatisticalTimeSeriesFilterInput` via:
-//
-//          StatisticalTimeSeriesFilterArgs{...}
-type StatisticalTimeSeriesFilterInput interface {
-	pulumi.Input
-
-	ToStatisticalTimeSeriesFilterOutput() StatisticalTimeSeriesFilterOutput
-	ToStatisticalTimeSeriesFilterOutputWithContext(context.Context) StatisticalTimeSeriesFilterOutput
-}
-
-// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-type StatisticalTimeSeriesFilterArgs struct {
-	// How many time series to output.
-	NumTimeSeries pulumi.IntPtrInput `pulumi:"numTimeSeries"`
-	// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-	RankingMethod pulumi.StringPtrInput `pulumi:"rankingMethod"`
-}
-
-func (StatisticalTimeSeriesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatisticalTimeSeriesFilter)(nil)).Elem()
-}
-
-func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterOutput() StatisticalTimeSeriesFilterOutput {
-	return i.ToStatisticalTimeSeriesFilterOutputWithContext(context.Background())
-}
-
-func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterOutput)
-}
-
-func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterPtrOutput() StatisticalTimeSeriesFilterPtrOutput {
-	return i.ToStatisticalTimeSeriesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterOutput).ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx)
-}
-
-// StatisticalTimeSeriesFilterPtrInput is an input type that accepts StatisticalTimeSeriesFilterArgs, StatisticalTimeSeriesFilterPtr and StatisticalTimeSeriesFilterPtrOutput values.
-// You can construct a concrete instance of `StatisticalTimeSeriesFilterPtrInput` via:
-//
-//          StatisticalTimeSeriesFilterArgs{...}
-//
-//  or:
-//
-//          nil
-type StatisticalTimeSeriesFilterPtrInput interface {
-	pulumi.Input
-
-	ToStatisticalTimeSeriesFilterPtrOutput() StatisticalTimeSeriesFilterPtrOutput
-	ToStatisticalTimeSeriesFilterPtrOutputWithContext(context.Context) StatisticalTimeSeriesFilterPtrOutput
-}
-
-type statisticalTimeSeriesFilterPtrType StatisticalTimeSeriesFilterArgs
-
-func StatisticalTimeSeriesFilterPtr(v *StatisticalTimeSeriesFilterArgs) StatisticalTimeSeriesFilterPtrInput {
-	return (*statisticalTimeSeriesFilterPtrType)(v)
-}
-
-func (*statisticalTimeSeriesFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatisticalTimeSeriesFilter)(nil)).Elem()
-}
-
-func (i *statisticalTimeSeriesFilterPtrType) ToStatisticalTimeSeriesFilterPtrOutput() StatisticalTimeSeriesFilterPtrOutput {
-	return i.ToStatisticalTimeSeriesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *statisticalTimeSeriesFilterPtrType) ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterPtrOutput)
-}
-
-// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-type StatisticalTimeSeriesFilterOutput struct{ *pulumi.OutputState }
-
-func (StatisticalTimeSeriesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatisticalTimeSeriesFilter)(nil)).Elem()
-}
-
-func (o StatisticalTimeSeriesFilterOutput) ToStatisticalTimeSeriesFilterOutput() StatisticalTimeSeriesFilterOutput {
-	return o
-}
-
-func (o StatisticalTimeSeriesFilterOutput) ToStatisticalTimeSeriesFilterOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterOutput {
-	return o
-}
-
-func (o StatisticalTimeSeriesFilterOutput) ToStatisticalTimeSeriesFilterPtrOutput() StatisticalTimeSeriesFilterPtrOutput {
-	return o.ToStatisticalTimeSeriesFilterPtrOutputWithContext(context.Background())
-}
-
-func (o StatisticalTimeSeriesFilterOutput) ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v StatisticalTimeSeriesFilter) *StatisticalTimeSeriesFilter {
-		return &v
-	}).(StatisticalTimeSeriesFilterPtrOutput)
-}
-
-// How many time series to output.
-func (o StatisticalTimeSeriesFilterOutput) NumTimeSeries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v StatisticalTimeSeriesFilter) *int { return v.NumTimeSeries }).(pulumi.IntPtrOutput)
-}
-
-// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-func (o StatisticalTimeSeriesFilterOutput) RankingMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StatisticalTimeSeriesFilter) *string { return v.RankingMethod }).(pulumi.StringPtrOutput)
-}
-
-type StatisticalTimeSeriesFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (StatisticalTimeSeriesFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatisticalTimeSeriesFilter)(nil)).Elem()
-}
-
-func (o StatisticalTimeSeriesFilterPtrOutput) ToStatisticalTimeSeriesFilterPtrOutput() StatisticalTimeSeriesFilterPtrOutput {
-	return o
-}
-
-func (o StatisticalTimeSeriesFilterPtrOutput) ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterPtrOutput {
-	return o
-}
-
-func (o StatisticalTimeSeriesFilterPtrOutput) Elem() StatisticalTimeSeriesFilterOutput {
-	return o.ApplyT(func(v *StatisticalTimeSeriesFilter) StatisticalTimeSeriesFilter { return *v }).(StatisticalTimeSeriesFilterOutput)
-}
-
-// How many time series to output.
-func (o StatisticalTimeSeriesFilterPtrOutput) NumTimeSeries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatisticalTimeSeriesFilter) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NumTimeSeries
-	}).(pulumi.IntPtrOutput)
-}
-
-// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-func (o StatisticalTimeSeriesFilterPtrOutput) RankingMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatisticalTimeSeriesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RankingMethod
-	}).(pulumi.StringPtrOutput)
-}
-
-// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-type StatisticalTimeSeriesFilterResponse struct {
-	// How many time series to output.
-	NumTimeSeries int `pulumi:"numTimeSeries"`
-	// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-	RankingMethod string `pulumi:"rankingMethod"`
-}
-
-// StatisticalTimeSeriesFilterResponseInput is an input type that accepts StatisticalTimeSeriesFilterResponseArgs and StatisticalTimeSeriesFilterResponseOutput values.
-// You can construct a concrete instance of `StatisticalTimeSeriesFilterResponseInput` via:
-//
-//          StatisticalTimeSeriesFilterResponseArgs{...}
-type StatisticalTimeSeriesFilterResponseInput interface {
-	pulumi.Input
-
-	ToStatisticalTimeSeriesFilterResponseOutput() StatisticalTimeSeriesFilterResponseOutput
-	ToStatisticalTimeSeriesFilterResponseOutputWithContext(context.Context) StatisticalTimeSeriesFilterResponseOutput
-}
-
-// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-type StatisticalTimeSeriesFilterResponseArgs struct {
-	// How many time series to output.
-	NumTimeSeries pulumi.IntInput `pulumi:"numTimeSeries"`
-	// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-	RankingMethod pulumi.StringInput `pulumi:"rankingMethod"`
-}
-
-func (StatisticalTimeSeriesFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatisticalTimeSeriesFilterResponse)(nil)).Elem()
-}
-
-func (i StatisticalTimeSeriesFilterResponseArgs) ToStatisticalTimeSeriesFilterResponseOutput() StatisticalTimeSeriesFilterResponseOutput {
-	return i.ToStatisticalTimeSeriesFilterResponseOutputWithContext(context.Background())
-}
-
-func (i StatisticalTimeSeriesFilterResponseArgs) ToStatisticalTimeSeriesFilterResponseOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterResponseOutput)
-}
-
-// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-type StatisticalTimeSeriesFilterResponseOutput struct{ *pulumi.OutputState }
-
-func (StatisticalTimeSeriesFilterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatisticalTimeSeriesFilterResponse)(nil)).Elem()
-}
-
-func (o StatisticalTimeSeriesFilterResponseOutput) ToStatisticalTimeSeriesFilterResponseOutput() StatisticalTimeSeriesFilterResponseOutput {
-	return o
-}
-
-func (o StatisticalTimeSeriesFilterResponseOutput) ToStatisticalTimeSeriesFilterResponseOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterResponseOutput {
-	return o
-}
-
-// How many time series to output.
-func (o StatisticalTimeSeriesFilterResponseOutput) NumTimeSeries() pulumi.IntOutput {
-	return o.ApplyT(func(v StatisticalTimeSeriesFilterResponse) int { return v.NumTimeSeries }).(pulumi.IntOutput)
-}
-
-// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-func (o StatisticalTimeSeriesFilterResponseOutput) RankingMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v StatisticalTimeSeriesFilterResponse) string { return v.RankingMethod }).(pulumi.StringOutput)
-}
-
 // A widget that displays textual content.
 type Text struct {
 	// The text content to be displayed.
@@ -4827,8 +4610,6 @@ type TimeSeriesFilter struct {
 	PickTimeSeriesFilter *PickTimeSeriesFilter `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after aggregation is applied.
 	SecondaryAggregation *Aggregation `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter *StatisticalTimeSeriesFilter `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 // TimeSeriesFilterInput is an input type that accepts TimeSeriesFilterArgs and TimeSeriesFilterOutput values.
@@ -4852,8 +4633,6 @@ type TimeSeriesFilterArgs struct {
 	PickTimeSeriesFilter PickTimeSeriesFilterPtrInput `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after aggregation is applied.
 	SecondaryAggregation AggregationPtrInput `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterPtrInput `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 func (TimeSeriesFilterArgs) ElementType() reflect.Type {
@@ -4954,11 +4733,6 @@ func (o TimeSeriesFilterOutput) SecondaryAggregation() AggregationPtrOutput {
 	return o.ApplyT(func(v TimeSeriesFilter) *Aggregation { return v.SecondaryAggregation }).(AggregationPtrOutput)
 }
 
-// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-func (o TimeSeriesFilterOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v TimeSeriesFilter) *StatisticalTimeSeriesFilter { return v.StatisticalTimeSeriesFilter }).(StatisticalTimeSeriesFilterPtrOutput)
-}
-
 type TimeSeriesFilterPtrOutput struct{ *pulumi.OutputState }
 
 func (TimeSeriesFilterPtrOutput) ElementType() reflect.Type {
@@ -5017,16 +4791,6 @@ func (o TimeSeriesFilterPtrOutput) SecondaryAggregation() AggregationPtrOutput {
 	}).(AggregationPtrOutput)
 }
 
-// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-func (o TimeSeriesFilterPtrOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v *TimeSeriesFilter) *StatisticalTimeSeriesFilter {
-		if v == nil {
-			return nil
-		}
-		return v.StatisticalTimeSeriesFilter
-	}).(StatisticalTimeSeriesFilterPtrOutput)
-}
-
 // A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
 type TimeSeriesFilterRatio struct {
 	// The denominator of the ratio.
@@ -5037,8 +4801,6 @@ type TimeSeriesFilterRatio struct {
 	PickTimeSeriesFilter *PickTimeSeriesFilter `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after the ratio is computed.
 	SecondaryAggregation *Aggregation `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter *StatisticalTimeSeriesFilter `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 // TimeSeriesFilterRatioInput is an input type that accepts TimeSeriesFilterRatioArgs and TimeSeriesFilterRatioOutput values.
@@ -5062,8 +4824,6 @@ type TimeSeriesFilterRatioArgs struct {
 	PickTimeSeriesFilter PickTimeSeriesFilterPtrInput `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after the ratio is computed.
 	SecondaryAggregation AggregationPtrInput `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterPtrInput `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 func (TimeSeriesFilterRatioArgs) ElementType() reflect.Type {
@@ -5164,11 +4924,6 @@ func (o TimeSeriesFilterRatioOutput) SecondaryAggregation() AggregationPtrOutput
 	return o.ApplyT(func(v TimeSeriesFilterRatio) *Aggregation { return v.SecondaryAggregation }).(AggregationPtrOutput)
 }
 
-// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-func (o TimeSeriesFilterRatioOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v TimeSeriesFilterRatio) *StatisticalTimeSeriesFilter { return v.StatisticalTimeSeriesFilter }).(StatisticalTimeSeriesFilterPtrOutput)
-}
-
 type TimeSeriesFilterRatioPtrOutput struct{ *pulumi.OutputState }
 
 func (TimeSeriesFilterRatioPtrOutput) ElementType() reflect.Type {
@@ -5227,16 +4982,6 @@ func (o TimeSeriesFilterRatioPtrOutput) SecondaryAggregation() AggregationPtrOut
 	}).(AggregationPtrOutput)
 }
 
-// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-func (o TimeSeriesFilterRatioPtrOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterPtrOutput {
-	return o.ApplyT(func(v *TimeSeriesFilterRatio) *StatisticalTimeSeriesFilter {
-		if v == nil {
-			return nil
-		}
-		return v.StatisticalTimeSeriesFilter
-	}).(StatisticalTimeSeriesFilterPtrOutput)
-}
-
 // A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
 type TimeSeriesFilterRatioResponse struct {
 	// The denominator of the ratio.
@@ -5247,8 +4992,6 @@ type TimeSeriesFilterRatioResponse struct {
 	PickTimeSeriesFilter PickTimeSeriesFilterResponse `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after the ratio is computed.
 	SecondaryAggregation AggregationResponse `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponse `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 // TimeSeriesFilterRatioResponseInput is an input type that accepts TimeSeriesFilterRatioResponseArgs and TimeSeriesFilterRatioResponseOutput values.
@@ -5272,8 +5015,6 @@ type TimeSeriesFilterRatioResponseArgs struct {
 	PickTimeSeriesFilter PickTimeSeriesFilterResponseInput `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after the ratio is computed.
 	SecondaryAggregation AggregationResponseInput `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponseInput `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 func (TimeSeriesFilterRatioResponseArgs) ElementType() reflect.Type {
@@ -5323,13 +5064,6 @@ func (o TimeSeriesFilterRatioResponseOutput) SecondaryAggregation() AggregationR
 	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) AggregationResponse { return v.SecondaryAggregation }).(AggregationResponseOutput)
 }
 
-// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-func (o TimeSeriesFilterRatioResponseOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterResponseOutput {
-	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) StatisticalTimeSeriesFilterResponse {
-		return v.StatisticalTimeSeriesFilter
-	}).(StatisticalTimeSeriesFilterResponseOutput)
-}
-
 // A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
 type TimeSeriesFilterResponse struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -5340,8 +5074,6 @@ type TimeSeriesFilterResponse struct {
 	PickTimeSeriesFilter PickTimeSeriesFilterResponse `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after aggregation is applied.
 	SecondaryAggregation AggregationResponse `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponse `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 // TimeSeriesFilterResponseInput is an input type that accepts TimeSeriesFilterResponseArgs and TimeSeriesFilterResponseOutput values.
@@ -5365,8 +5097,6 @@ type TimeSeriesFilterResponseArgs struct {
 	PickTimeSeriesFilter PickTimeSeriesFilterResponseInput `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after aggregation is applied.
 	SecondaryAggregation AggregationResponseInput `pulumi:"secondaryAggregation"`
-	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponseInput `pulumi:"statisticalTimeSeriesFilter"`
 }
 
 func (TimeSeriesFilterResponseArgs) ElementType() reflect.Type {
@@ -5414,13 +5144,6 @@ func (o TimeSeriesFilterResponseOutput) PickTimeSeriesFilter() PickTimeSeriesFil
 // Apply a second aggregation after aggregation is applied.
 func (o TimeSeriesFilterResponseOutput) SecondaryAggregation() AggregationResponseOutput {
 	return o.ApplyT(func(v TimeSeriesFilterResponse) AggregationResponse { return v.SecondaryAggregation }).(AggregationResponseOutput)
-}
-
-// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-func (o TimeSeriesFilterResponseOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterResponseOutput {
-	return o.ApplyT(func(v TimeSeriesFilterResponse) StatisticalTimeSeriesFilterResponse {
-		return v.StatisticalTimeSeriesFilter
-	}).(StatisticalTimeSeriesFilterResponseOutput)
 }
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
@@ -6472,9 +6195,6 @@ func init() {
 	pulumi.RegisterOutputType(SparkChartViewOutput{})
 	pulumi.RegisterOutputType(SparkChartViewPtrOutput{})
 	pulumi.RegisterOutputType(SparkChartViewResponseOutput{})
-	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterOutput{})
-	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterPtrOutput{})
-	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterResponseOutput{})
 	pulumi.RegisterOutputType(TextOutput{})
 	pulumi.RegisterOutputType(TextPtrOutput{})
 	pulumi.RegisterOutputType(TextResponseOutput{})
