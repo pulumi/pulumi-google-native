@@ -81,9 +81,10 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 
 		typeName := fmt.Sprintf("%s%s", parentName, name)
 		switch {
-		case createMethod != nil && getMethod != nil && getMethod.HttpMethod != "GET":
-			return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
 		case createMethod != nil && getMethod != nil:
+			if getMethod.HttpMethod != "GET" {
+				return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
+			}
 			dd := discoveryDocumentResource{
 				createMethod: createMethod,
 				getMethod: getMethod,
