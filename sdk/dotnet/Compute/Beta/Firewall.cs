@@ -58,12 +58,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-        /// </summary>
-        [Output("enableLogging")]
-        public Output<bool> EnableLogging { get; private set; } = null!;
-
-        /// <summary>
         /// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
         /// </summary>
         [Output("kind")]
@@ -238,12 +232,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
-
-        /// <summary>
-        /// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-        /// </summary>
-        [Input("enableLogging")]
-        public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

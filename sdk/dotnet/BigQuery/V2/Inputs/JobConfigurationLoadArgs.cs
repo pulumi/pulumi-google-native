@@ -150,18 +150,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("schema")]
         public Input<Inputs.TableSchemaArgs>? Schema { get; set; }
 
-        /// <summary>
-        /// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
-        /// </summary>
-        [Input("schemaInline")]
-        public Input<string>? SchemaInline { get; set; }
-
-        /// <summary>
-        /// [Deprecated] The format of the schemaInline property.
-        /// </summary>
-        [Input("schemaInlineFormat")]
-        public Input<string>? SchemaInlineFormat { get; set; }
-
         [Input("schemaUpdateOptions")]
         private InputList<string>? _schemaUpdateOptions;
 

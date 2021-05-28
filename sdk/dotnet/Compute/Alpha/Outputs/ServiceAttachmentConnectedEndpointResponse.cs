@@ -18,10 +18,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// The url of a consumer forwarding rule. [Deprecated] Do not use.
-        /// </summary>
-        public readonly string ForwardingRule;
-        /// <summary>
         /// The PSC connection id of the connected endpoint.
         /// </summary>
         public readonly string PscConnectionId;
@@ -34,14 +30,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private ServiceAttachmentConnectedEndpointResponse(
             string endpoint,
 
-            string forwardingRule,
-
             string pscConnectionId,
 
             string status)
         {
             Endpoint = endpoint;
-            ForwardingRule = forwardingRule;
             PscConnectionId = pscConnectionId;
             Status = status;
         }

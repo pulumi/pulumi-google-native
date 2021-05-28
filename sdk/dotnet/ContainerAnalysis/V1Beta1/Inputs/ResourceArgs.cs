@@ -16,18 +16,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class ResourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
-        /// </summary>
-        [Input("contentHash")]
-        public Input<Inputs.HashArgs>? ContentHash { get; set; }
-
-        /// <summary>
-        /// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         /// </summary>
         [Input("uri")]

@@ -127,12 +127,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-        /// </summary>
-        [Output("subscriptionType")]
-        public Output<string> SubscriptionType { get; private set; } = null!;
-
-        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Output("type")]

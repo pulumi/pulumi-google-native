@@ -29,10 +29,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// The CPE of the resource being scanned.
         /// </summary>
         public readonly string Cpe;
-        /// <summary>
-        /// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-        /// </summary>
-        public readonly Outputs.OperationResponse Operation;
 
         [OutputConstructor]
         private DiscoveredResponse(
@@ -42,15 +38,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string continuousAnalysis,
 
-            string cpe,
-
-            Outputs.OperationResponse operation)
+            string cpe)
         {
             AnalysisStatus = analysisStatus;
             AnalysisStatusError = analysisStatusError;
             ContinuousAnalysis = continuousAnalysis;
             Cpe = cpe;
-            Operation = operation;
         }
     }
 }

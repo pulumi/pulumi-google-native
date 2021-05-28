@@ -91,12 +91,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? ParameterMode { get; set; }
 
         /// <summary>
-        /// [Deprecated] This property is deprecated.
-        /// </summary>
-        [Input("preserveNulls")]
-        public Input<bool>? PreserveNulls { get; set; }
-
-        /// <summary>
         /// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         /// </summary>
         [Input("priority")]

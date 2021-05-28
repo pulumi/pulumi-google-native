@@ -39,12 +39,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         [Input("secondaryAggregation")]
         public Input<Inputs.AggregationArgs>? SecondaryAggregation { get; set; }
 
-        /// <summary>
-        /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-        /// </summary>
-        [Input("statisticalTimeSeriesFilter")]
-        public Input<Inputs.StatisticalTimeSeriesFilterArgs>? StatisticalTimeSeriesFilter { get; set; }
-
         public TimeSeriesFilterRatioArgs()
         {
         }

@@ -54,10 +54,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Deprecated in favor of [site channels](sites.channels).
-        /// </summary>
-        public readonly Outputs.PreviewConfigResponse Preview;
-        /// <summary>
         /// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
         /// </summary>
         public readonly string Status;
@@ -88,8 +84,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 
             string name,
 
-            Outputs.PreviewConfigResponse preview,
-
             string status,
 
             string versionBytes)
@@ -104,7 +98,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
             FinalizeUser = finalizeUser;
             Labels = labels;
             Name = name;
-            Preview = preview;
             Status = status;
             VersionBytes = versionBytes;
         }

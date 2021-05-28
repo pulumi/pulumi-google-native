@@ -14,17 +14,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class UpcomingMaintenanceResponse
     {
         /// <summary>
-        /// [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        /// </summary>
-        public readonly string Date;
-        /// <summary>
         /// [Output Only] The start time window of the maintenance disruption.
         /// </summary>
         public readonly Outputs.UpcomingMaintenanceTimeWindowResponse StartTimeWindow;
-        /// <summary>
-        /// [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        /// </summary>
-        public readonly string Time;
         /// <summary>
         /// Defines the type of maintenance.
         /// </summary>
@@ -32,17 +24,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private UpcomingMaintenanceResponse(
-            string date,
-
             Outputs.UpcomingMaintenanceTimeWindowResponse startTimeWindow,
-
-            string time,
 
             string type)
         {
-            Date = date;
             StartTimeWindow = startTimeWindow;
-            Time = time;
             Type = type;
         }
     }

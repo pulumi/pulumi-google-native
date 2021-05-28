@@ -18,10 +18,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
         /// </summary>
         public readonly string ClientOperationId;
         /// <summary>
-        /// [Deprecated] This field is deprecated.
-        /// </summary>
-        public readonly string CreationTimestamp;
-        /// <summary>
         /// [Output Only] A textual description of the operation, which is set when the operation is created.
         /// </summary>
         public readonly string Description;
@@ -110,8 +106,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
         private OperationResponse(
             string clientOperationId,
 
-            string creationTimestamp,
-
             string description,
 
             string endTime,
@@ -155,7 +149,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Outputs
             string zone)
         {
             ClientOperationId = clientOperationId;
-            CreationTimestamp = creationTimestamp;
             Description = description;
             EndTime = endTime;
             Error = error;

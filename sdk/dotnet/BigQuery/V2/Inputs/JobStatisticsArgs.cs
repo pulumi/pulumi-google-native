@@ -115,12 +115,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
-        /// </summary>
-        [Input("totalBytesProcessed")]
-        public Input<string>? TotalBytesProcessed { get; set; }
-
-        /// <summary>
         /// [Output-only] Slot-milliseconds for the job.
         /// </summary>
         [Input("totalSlotMs")]

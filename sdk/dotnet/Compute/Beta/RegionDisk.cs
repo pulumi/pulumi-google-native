@@ -265,12 +265,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Deprecated] Storage type of the persistent disk.
-        /// </summary>
-        [Output("storageType")]
-        public Output<string> StorageType { get; private set; } = null!;
-
-        /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
         /// </summary>
         [Output("type")]
@@ -629,12 +623,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// [Deprecated] Storage type of the persistent disk.
-        /// </summary>
-        [Input("storageType")]
-        public Input<string>? StorageType { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd

@@ -22,10 +22,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
-        /// </summary>
-        public readonly string Tag;
-        /// <summary>
         /// Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to:  
         /// - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. 
         /// - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded up.  If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
@@ -38,13 +34,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string name,
 
-            string tag,
-
             Outputs.FixedOrPercentResponse targetSize)
         {
             InstanceTemplate = instanceTemplate;
             Name = name;
-            Tag = tag;
             TargetSize = targetSize;
         }
     }

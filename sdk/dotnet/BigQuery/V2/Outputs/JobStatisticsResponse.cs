@@ -74,10 +74,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
-        /// </summary>
-        public readonly string TotalBytesProcessed;
-        /// <summary>
         /// [Output-only] Slot-milliseconds for the job.
         /// </summary>
         public readonly string TotalSlotMs;
@@ -118,8 +114,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string startTime,
 
-            string totalBytesProcessed,
-
             string totalSlotMs,
 
             Outputs.TransactionInfoResponse transactionInfoTemplate)
@@ -139,7 +133,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ScriptStatistics = scriptStatistics;
             SessionInfoTemplate = sessionInfoTemplate;
             StartTime = startTime;
-            TotalBytesProcessed = totalBytesProcessed;
             TotalSlotMs = totalSlotMs;
             TransactionInfoTemplate = transactionInfoTemplate;
         }

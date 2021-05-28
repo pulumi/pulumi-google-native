@@ -18,32 +18,18 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Limits;
         /// <summary>
-        /// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> LimitsInMap;
-        /// <summary>
         /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
         public readonly ImmutableDictionary<string, string> Requests;
-        /// <summary>
-        /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> RequestsInMap;
 
         [OutputConstructor]
         private ResourceRequirementsResponse(
             ImmutableDictionary<string, string> limits,
 
-            ImmutableDictionary<string, string> limitsInMap,
-
-            ImmutableDictionary<string, string> requests,
-
-            ImmutableDictionary<string, string> requestsInMap)
+            ImmutableDictionary<string, string> requests)
         {
             Limits = limits;
-            LimitsInMap = limitsInMap;
             Requests = requests;
-            RequestsInMap = requestsInMap;
         }
     }
 }

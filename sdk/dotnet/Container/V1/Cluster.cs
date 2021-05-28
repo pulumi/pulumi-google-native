@@ -130,12 +130,6 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<string> InitialClusterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        /// </summary>
-        [Output("initialNodeCount")]
-        public Output<int> InitialNodeCount { get; private set; } = null!;
-
-        /// <summary>
         /// Configuration for cluster IP allocation.
         /// </summary>
         [Output("ipAllocationPolicy")]
@@ -218,12 +212,6 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Output("networkPolicy")]
         public Output<Outputs.NetworkPolicyResponse> NetworkPolicy { get; private set; } = null!;
-
-        /// <summary>
-        /// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-        /// </summary>
-        [Output("nodeConfig")]
-        public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
 
         /// <summary>
         /// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
@@ -314,12 +302,6 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Output("workloadIdentityConfig")]
         public Output<Outputs.WorkloadIdentityConfigResponse> WorkloadIdentityConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        /// </summary>
-        [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -487,12 +469,6 @@ namespace Pulumi.GoogleNative.Container.V1
         public Input<string>? InitialClusterVersion { get; set; }
 
         /// <summary>
-        /// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        /// </summary>
-        [Input("initialNodeCount")]
-        public Input<int>? InitialNodeCount { get; set; }
-
-        /// <summary>
         /// Configuration for cluster IP allocation.
         /// </summary>
         [Input("ipAllocationPolicy")]
@@ -581,12 +557,6 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("networkPolicy")]
         public Input<Inputs.NetworkPolicyArgs>? NetworkPolicy { get; set; }
-
-        /// <summary>
-        /// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-        /// </summary>
-        [Input("nodeConfig")]
-        public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }
 
         /// <summary>
         /// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
@@ -698,12 +668,6 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("workloadIdentityConfig")]
         public Input<Inputs.WorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
-
-        /// <summary>
-        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
 
         public ClusterArgs()
         {

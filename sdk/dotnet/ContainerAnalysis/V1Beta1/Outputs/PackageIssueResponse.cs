@@ -21,22 +21,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// The location of the available fix for vulnerability.
         /// </summary>
         public readonly Outputs.VulnerabilityLocationResponse FixedLocation;
-        /// <summary>
-        /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
-        /// </summary>
-        public readonly string SeverityName;
 
         [OutputConstructor]
         private PackageIssueResponse(
             Outputs.VulnerabilityLocationResponse affectedLocation,
 
-            Outputs.VulnerabilityLocationResponse fixedLocation,
-
-            string severityName)
+            Outputs.VulnerabilityLocationResponse fixedLocation)
         {
             AffectedLocation = affectedLocation;
             FixedLocation = fixedLocation;
-            SeverityName = severityName;
         }
     }
 }

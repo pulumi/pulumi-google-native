@@ -16,22 +16,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class UpcomingMaintenanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        /// </summary>
-        [Input("date")]
-        public Input<string>? Date { get; set; }
-
-        /// <summary>
         /// [Output Only] The start time window of the maintenance disruption.
         /// </summary>
         [Input("startTimeWindow")]
         public Input<Inputs.UpcomingMaintenanceTimeWindowArgs>? StartTimeWindow { get; set; }
-
-        /// <summary>
-        /// [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        /// </summary>
-        [Input("time")]
-        public Input<string>? Time { get; set; }
 
         /// <summary>
         /// Defines the type of maintenance.

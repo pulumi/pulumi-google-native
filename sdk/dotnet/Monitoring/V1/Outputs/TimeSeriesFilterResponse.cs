@@ -29,10 +29,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// Apply a second aggregation after aggregation is applied.
         /// </summary>
         public readonly Outputs.AggregationResponse SecondaryAggregation;
-        /// <summary>
-        /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-        /// </summary>
-        public readonly Outputs.StatisticalTimeSeriesFilterResponse StatisticalTimeSeriesFilter;
 
         [OutputConstructor]
         private TimeSeriesFilterResponse(
@@ -42,15 +38,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.PickTimeSeriesFilterResponse pickTimeSeriesFilter,
 
-            Outputs.AggregationResponse secondaryAggregation,
-
-            Outputs.StatisticalTimeSeriesFilterResponse statisticalTimeSeriesFilter)
+            Outputs.AggregationResponse secondaryAggregation)
         {
             Aggregation = aggregation;
             Filter = filter;
             PickTimeSeriesFilter = pickTimeSeriesFilter;
             SecondaryAggregation = secondaryAggregation;
-            StatisticalTimeSeriesFilter = statisticalTimeSeriesFilter;
         }
     }
 }

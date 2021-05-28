@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public Input<string>? ClientOperationId { get; set; }
 
         /// <summary>
-        /// [Deprecated] This field is deprecated.
-        /// </summary>
-        [Input("creationTimestamp")]
-        public Input<string>? CreationTimestamp { get; set; }
-
-        /// <summary>
         /// [Output Only] A textual description of the operation, which is set when the operation is created.
         /// </summary>
         [Input("description")]

@@ -64,12 +64,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
-        /// </summary>
-        [Output("loadBalancer")]
-        public Output<Outputs.NetworkEndpointGroupLbNetworkEndpointGroupResponse> LoadBalancer { get; private set; } = null!;
-
-        /// <summary>
         /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
@@ -221,12 +215,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
-
-        /// <summary>
-        /// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
-        /// </summary>
-        [Input("loadBalancer")]
-        public Input<Inputs.NetworkEndpointGroupLbNetworkEndpointGroupArgs>? LoadBalancer { get; set; }
 
         /// <summary>
         /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

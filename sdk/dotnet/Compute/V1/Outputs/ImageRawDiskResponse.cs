@@ -18,10 +18,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string ContainerType;
         /// <summary>
-        /// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-        /// </summary>
-        public readonly string Sha1Checksum;
-        /// <summary>
         /// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
         /// </summary>
         public readonly string Source;
@@ -30,12 +26,9 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         private ImageRawDiskResponse(
             string containerType,
 
-            string sha1Checksum,
-
             string source)
         {
             ContainerType = containerType;
-            Sha1Checksum = sha1Checksum;
             Source = source;
         }
     }

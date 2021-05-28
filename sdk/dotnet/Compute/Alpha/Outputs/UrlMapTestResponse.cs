@@ -34,10 +34,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int ExpectedRedirectResponseCode;
         /// <summary>
-        /// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
-        /// </summary>
-        public readonly string ExpectedUrlRedirect;
-        /// <summary>
         /// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
         /// </summary>
         public readonly ImmutableArray<Outputs.UrlMapTestHeaderResponse> Headers;
@@ -65,8 +61,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int expectedRedirectResponseCode,
 
-            string expectedUrlRedirect,
-
             ImmutableArray<Outputs.UrlMapTestHeaderResponse> headers,
 
             string host,
@@ -79,7 +73,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Description = description;
             ExpectedOutputUrl = expectedOutputUrl;
             ExpectedRedirectResponseCode = expectedRedirectResponseCode;
-            ExpectedUrlRedirect = expectedUrlRedirect;
             Headers = headers;
             Host = host;
             Path = path;

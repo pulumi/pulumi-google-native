@@ -233,21 +233,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SourceImageId { get; private set; } = null!;
 
         /// <summary>
-        /// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        /// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        /// - global/inPlaceSnapshots/inPlaceSnapshots
-        /// </summary>
-        [Output("sourceInPlaceSnapshot")]
-        public Output<string> SourceInPlaceSnapshot { get; private set; } = null!;
-
-        /// <summary>
-        /// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-        /// </summary>
-        [Output("sourceInPlaceSnapshotId")]
-        public Output<string> SourceInPlaceSnapshotId { get; private set; } = null!;
-
-        /// <summary>
         /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
         /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
         /// - projects/project/zones/zone/instantSnapshots/instantSnapshot 
@@ -299,12 +284,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
-
-        /// <summary>
-        /// [Deprecated] Storage type of the persistent disk.
-        /// </summary>
-        [Output("storageType")]
-        public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
@@ -642,21 +621,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? SourceImageId { get; set; }
 
         /// <summary>
-        /// [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        /// - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        /// - global/inPlaceSnapshots/inPlaceSnapshots
-        /// </summary>
-        [Input("sourceInPlaceSnapshot")]
-        public Input<string>? SourceInPlaceSnapshot { get; set; }
-
-        /// <summary>
-        /// [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-        /// </summary>
-        [Input("sourceInPlaceSnapshotId")]
-        public Input<string>? SourceInPlaceSnapshotId { get; set; }
-
-        /// <summary>
         /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
         /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
         /// - projects/project/zones/zone/instantSnapshots/instantSnapshot 
@@ -708,12 +672,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// [Deprecated] Storage type of the persistent disk.
-        /// </summary>
-        [Input("storageType")]
-        public Input<string>? StorageType { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd

@@ -73,18 +73,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.BigQueryModelTrainingArgs>? ModelTraining { get; set; }
 
         /// <summary>
-        /// [Output-only, Beta] Deprecated; do not use.
-        /// </summary>
-        [Input("modelTrainingCurrentIteration")]
-        public Input<int>? ModelTrainingCurrentIteration { get; set; }
-
-        /// <summary>
-        /// [Output-only, Beta] Deprecated; do not use.
-        /// </summary>
-        [Input("modelTrainingExpectedTotalIteration")]
-        public Input<string>? ModelTrainingExpectedTotalIteration { get; set; }
-
-        /// <summary>
         /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         /// </summary>
         [Input("numDmlAffectedRows")]

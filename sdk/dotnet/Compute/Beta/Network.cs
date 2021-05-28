@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>
-        /// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-        /// </summary>
-        [Output("IPv4Range")]
-        public Output<string> IPv4Range { get; private set; } = null!;
-
-        /// <summary>
         /// Must be set to create a VPC network. If not set, a legacy network is created.
         /// 
         /// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -138,12 +132,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class NetworkArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-        /// </summary>
-        [Input("IPv4Range")]
-        public Input<string>? IPv4Range { get; set; }
-
         /// <summary>
         /// Must be set to create a VPC network. If not set, a legacy network is created.
         /// 

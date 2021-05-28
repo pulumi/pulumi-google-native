@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// Deprecated in favor of stack trace fields inside specific warnings.
-        /// </summary>
-        [Input("stackTrace")]
-        public Input<Inputs.StackTraceArgs>? StackTrace { get; set; }
-
-        /// <summary>
         /// Type of issue. Required.
         /// </summary>
         [Input("type")]

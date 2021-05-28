@@ -58,12 +58,6 @@ namespace Pulumi.GoogleNative.TPU.V1
         public Output<string> HealthDescription { get; private set; } = null!;
 
         /// <summary>
-        /// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
-        /// </summary>
-        [Output("ipAddress")]
-        public Output<string> IpAddress { get; private set; } = null!;
-
-        /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// </summary>
         [Output("labels")]
@@ -86,12 +80,6 @@ namespace Pulumi.GoogleNative.TPU.V1
         /// </summary>
         [Output("networkEndpoints")]
         public Output<ImmutableArray<Outputs.NetworkEndpointResponse>> NetworkEndpoints { get; private set; } = null!;
-
-        /// <summary>
-        /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-        /// </summary>
-        [Output("port")]
-        public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
         /// The scheduling options for this node.
@@ -198,12 +186,6 @@ namespace Pulumi.GoogleNative.TPU.V1
         [Input("health")]
         public Input<string>? Health { get; set; }
 
-        /// <summary>
-        /// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -227,12 +209,6 @@ namespace Pulumi.GoogleNative.TPU.V1
 
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
-
-        /// <summary>
-        /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-        /// </summary>
-        [Input("port")]
-        public Input<string>? Port { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? ContainerType { get; set; }
 
         /// <summary>
-        /// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-        /// </summary>
-        [Input("sha1Checksum")]
-        public Input<string>? Sha1Checksum { get; set; }
-
-        /// <summary>
         /// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
         /// </summary>
         [Input("source")]
