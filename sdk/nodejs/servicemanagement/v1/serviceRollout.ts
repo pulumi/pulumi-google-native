@@ -40,10 +40,6 @@ export class ServiceRollout extends pulumi.CustomResource {
      */
     public readonly createTime!: pulumi.Output<string>;
     /**
-     * This field is deprecated and will be deleted. Please remove usage of this field.
-     */
-    public readonly createdBy!: pulumi.Output<string>;
-    /**
      * The strategy associated with a rollout to delete a `ManagedService`. Readonly.
      */
     public readonly deleteServiceStrategy!: pulumi.Output<outputs.servicemanagement.v1.DeleteServiceStrategyResponse>;
@@ -79,7 +75,6 @@ export class ServiceRollout extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["createdBy"] = args ? args.createdBy : undefined;
             inputs["deleteServiceStrategy"] = args ? args.deleteServiceStrategy : undefined;
             inputs["rolloutId"] = args ? args.rolloutId : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
@@ -87,7 +82,6 @@ export class ServiceRollout extends pulumi.CustomResource {
             inputs["trafficPercentStrategy"] = args ? args.trafficPercentStrategy : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
-            inputs["createdBy"] = undefined /*out*/;
             inputs["deleteServiceStrategy"] = undefined /*out*/;
             inputs["rolloutId"] = undefined /*out*/;
             inputs["serviceName"] = undefined /*out*/;
@@ -109,10 +103,6 @@ export interface ServiceRolloutArgs {
      * Creation time of the rollout. Readonly.
      */
     readonly createTime?: pulumi.Input<string>;
-    /**
-     * This field is deprecated and will be deleted. Please remove usage of this field.
-     */
-    readonly createdBy?: pulumi.Input<string>;
     /**
      * The strategy associated with a rollout to delete a `ManagedService`. Readonly.
      */

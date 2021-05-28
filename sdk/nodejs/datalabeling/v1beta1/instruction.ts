@@ -44,10 +44,6 @@ export class Instruction extends pulumi.CustomResource {
      */
     public readonly createTime!: pulumi.Output<string>;
     /**
-     * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-     */
-    public readonly csvInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionResponse>;
-    /**
      * Required. The data type of this instruction.
      */
     public readonly dataType!: pulumi.Output<string>;
@@ -88,7 +84,6 @@ export class Instruction extends pulumi.CustomResource {
             }
             inputs["blockingResources"] = args ? args.blockingResources : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["csvInstruction"] = args ? args.csvInstruction : undefined;
             inputs["dataType"] = args ? args.dataType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -99,7 +94,6 @@ export class Instruction extends pulumi.CustomResource {
         } else {
             inputs["blockingResources"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
-            inputs["csvInstruction"] = undefined /*out*/;
             inputs["dataType"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -126,10 +120,6 @@ export interface InstructionArgs {
      * Creation time of instruction.
      */
     readonly createTime?: pulumi.Input<string>;
-    /**
-     * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-     */
-    readonly csvInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionArgs>;
     /**
      * Required. The data type of this instruction.
      */

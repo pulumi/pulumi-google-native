@@ -66,10 +66,6 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly enableL2!: pulumi.Output<boolean>;
     /**
-     * Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
-     */
-    public readonly enablePrivateV6Access!: pulumi.Output<boolean>;
-    /**
      * [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
      */
     public readonly externalIpv6Prefix!: pulumi.Output<string>;
@@ -129,10 +125,6 @@ export class Subnetwork extends pulumi.CustomResource {
      * This field can be both set at resource creation time and updated using patch.
      */
     public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
-    /**
-     * Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-     */
-    public readonly privateIpv6GoogleAccessServiceAccounts!: pulumi.Output<string[]>;
     /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
@@ -195,7 +187,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             inputs["enableL2"] = args ? args.enableL2 : undefined;
-            inputs["enablePrivateV6Access"] = args ? args.enablePrivateV6Access : undefined;
             inputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["flowSampling"] = args ? args.flowSampling : undefined;
@@ -211,7 +202,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
             inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
-            inputs["privateIpv6GoogleAccessServiceAccounts"] = args ? args.privateIpv6GoogleAccessServiceAccounts : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -230,7 +220,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["enableFlowLogs"] = undefined /*out*/;
             inputs["enableL2"] = undefined /*out*/;
-            inputs["enablePrivateV6Access"] = undefined /*out*/;
             inputs["externalIpv6Prefix"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["flowSampling"] = undefined /*out*/;
@@ -245,7 +234,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["network"] = undefined /*out*/;
             inputs["privateIpGoogleAccess"] = undefined /*out*/;
             inputs["privateIpv6GoogleAccess"] = undefined /*out*/;
-            inputs["privateIpv6GoogleAccessServiceAccounts"] = undefined /*out*/;
             inputs["purpose"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
             inputs["role"] = undefined /*out*/;
@@ -297,10 +285,6 @@ export interface SubnetworkArgs {
      * Enables Layer2 communication on the subnetwork.
      */
     readonly enableL2?: pulumi.Input<boolean>;
-    /**
-     * Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
-     */
-    readonly enablePrivateV6Access?: pulumi.Input<boolean>;
     /**
      * [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
      */
@@ -365,10 +349,6 @@ export interface SubnetworkArgs {
      * This field can be both set at resource creation time and updated using patch.
      */
     readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
-    /**
-     * Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-     */
-    readonly privateIpv6GoogleAccessServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     readonly project: pulumi.Input<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.

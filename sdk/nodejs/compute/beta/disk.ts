@@ -215,10 +215,6 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * [Deprecated] Storage type of the persistent disk.
-     */
-    public readonly storageType!: pulumi.Output<string>;
-    /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
      */
     public readonly type!: pulumi.Output<string>;
@@ -286,7 +282,6 @@ export class Disk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = args ? args.sourceSnapshotId : undefined;
             inputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["storageType"] = args ? args.storageType : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["users"] = args ? args.users : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -326,7 +321,6 @@ export class Disk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["sourceStorageObject"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["storageType"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
@@ -527,10 +521,6 @@ export interface DiskArgs {
      * - DELETING: Disk is deleting.
      */
     readonly status?: pulumi.Input<string>;
-    /**
-     * [Deprecated] Storage type of the persistent disk.
-     */
-    readonly storageType?: pulumi.Input<string>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
      */

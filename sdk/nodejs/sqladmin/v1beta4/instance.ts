@@ -60,10 +60,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly diskEncryptionStatus!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse>;
     /**
-     * This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-     */
-    public readonly etag!: pulumi.Output<string>;
-    /**
      * The name and status of the failover replica. This property is applicable only to Second Generation instances.
      */
     public readonly failoverReplica!: pulumi.Output<outputs.sqladmin.v1beta4.InstanceFailoverReplicaResponse>;
@@ -79,10 +75,6 @@ export class Instance extends pulumi.CustomResource {
      * The assigned IP addresses for the instance.
      */
     public readonly ipAddresses!: pulumi.Output<outputs.sqladmin.v1beta4.IpMappingResponse[]>;
-    /**
-     * The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-     */
-    public readonly ipv6Address!: pulumi.Output<string>;
     /**
      * This is always *sql#instance*.
      */
@@ -184,12 +176,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             inputs["diskEncryptionConfiguration"] = args ? args.diskEncryptionConfiguration : undefined;
             inputs["diskEncryptionStatus"] = args ? args.diskEncryptionStatus : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
             inputs["failoverReplica"] = args ? args.failoverReplica : undefined;
             inputs["gceZone"] = args ? args.gceZone : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["ipAddresses"] = args ? args.ipAddresses : undefined;
-            inputs["ipv6Address"] = args ? args.ipv6Address : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
             inputs["maxDiskSize"] = args ? args.maxDiskSize : undefined;
@@ -217,12 +207,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["databaseVersion"] = undefined /*out*/;
             inputs["diskEncryptionConfiguration"] = undefined /*out*/;
             inputs["diskEncryptionStatus"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
             inputs["failoverReplica"] = undefined /*out*/;
             inputs["gceZone"] = undefined /*out*/;
             inputs["instanceType"] = undefined /*out*/;
             inputs["ipAddresses"] = undefined /*out*/;
-            inputs["ipv6Address"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["masterInstanceName"] = undefined /*out*/;
             inputs["maxDiskSize"] = undefined /*out*/;
@@ -280,10 +268,6 @@ export interface InstanceArgs {
      */
     readonly diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
     /**
-     * This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-     */
-    readonly etag?: pulumi.Input<string>;
-    /**
      * The name and status of the failover replica. This property is applicable only to Second Generation instances.
      */
     readonly failoverReplica?: pulumi.Input<inputs.sqladmin.v1beta4.InstanceFailoverReplicaArgs>;
@@ -299,10 +283,6 @@ export interface InstanceArgs {
      * The assigned IP addresses for the instance.
      */
     readonly ipAddresses?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1beta4.IpMappingArgs>[]>;
-    /**
-     * The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-     */
-    readonly ipv6Address?: pulumi.Input<string>;
     /**
      * This is always *sql#instance*.
      */

@@ -100,10 +100,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableKubernetesAlpha!: pulumi.Output<boolean>;
     /**
-     * Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-     */
-    public readonly enableTpu!: pulumi.Output<boolean>;
-    /**
      * [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
      */
     public readonly endpoint!: pulumi.Output<string>;
@@ -115,10 +111,6 @@ export class Cluster extends pulumi.CustomResource {
      * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
      */
     public readonly initialClusterVersion!: pulumi.Output<string>;
-    /**
-     * The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-     */
-    public readonly initialNodeCount!: pulumi.Output<number>;
     /**
      * Configuration for cluster IP allocation.
      */
@@ -160,10 +152,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.v1beta1.MasterAuthorizedNetworksConfigResponse>;
     /**
-     * The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-     */
-    public readonly masterIpv4CidrBlock!: pulumi.Output<string>;
-    /**
      * The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
      */
     public readonly monitoringService!: pulumi.Output<string>;
@@ -184,10 +172,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly networkPolicy!: pulumi.Output<outputs.container.v1beta1.NetworkPolicyResponse>;
     /**
-     * Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-     */
-    public readonly nodeConfig!: pulumi.Output<outputs.container.v1beta1.NodeConfigResponse>;
-    /**
      * [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
      */
     public readonly nodeIpv4CidrSize!: pulumi.Output<number>;
@@ -203,10 +187,6 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration for the PodSecurityPolicy feature.
      */
     public readonly podSecurityPolicyConfig!: pulumi.Output<outputs.container.v1beta1.PodSecurityPolicyConfigResponse>;
-    /**
-     * If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-     */
-    public readonly privateCluster!: pulumi.Output<boolean>;
     /**
      * Configuration for private cluster.
      */
@@ -263,10 +243,6 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
     public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.v1beta1.WorkloadIdentityConfigResponse>;
-    /**
-     * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-     */
-    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -279,11 +255,11 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
             }
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
@@ -301,11 +277,9 @@ export class Cluster extends pulumi.CustomResource {
             inputs["defaultMaxPodsConstraint"] = args ? args.defaultMaxPodsConstraint : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
-            inputs["enableTpu"] = args ? args.enableTpu : undefined;
             inputs["endpoint"] = args ? args.endpoint : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["initialClusterVersion"] = args ? args.initialClusterVersion : undefined;
-            inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["legacyAbac"] = args ? args.legacyAbac : undefined;
@@ -316,19 +290,16 @@ export class Cluster extends pulumi.CustomResource {
             inputs["master"] = args ? args.master : undefined;
             inputs["masterAuth"] = args ? args.masterAuth : undefined;
             inputs["masterAuthorizedNetworksConfig"] = args ? args.masterAuthorizedNetworksConfig : undefined;
-            inputs["masterIpv4CidrBlock"] = args ? args.masterIpv4CidrBlock : undefined;
             inputs["monitoringService"] = args ? args.monitoringService : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["networkPolicy"] = args ? args.networkPolicy : undefined;
-            inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeIpv4CidrSize"] = args ? args.nodeIpv4CidrSize : undefined;
             inputs["nodePools"] = args ? args.nodePools : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
-            inputs["privateCluster"] = args ? args.privateCluster : undefined;
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
@@ -344,7 +315,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             inputs["workloadCertificates"] = args ? args.workloadCertificates : undefined;
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
         } else {
             inputs["addonsConfig"] = undefined /*out*/;
             inputs["authenticatorGroupsConfig"] = undefined /*out*/;
@@ -362,11 +332,9 @@ export class Cluster extends pulumi.CustomResource {
             inputs["defaultMaxPodsConstraint"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["enableKubernetesAlpha"] = undefined /*out*/;
-            inputs["enableTpu"] = undefined /*out*/;
             inputs["endpoint"] = undefined /*out*/;
             inputs["expireTime"] = undefined /*out*/;
             inputs["initialClusterVersion"] = undefined /*out*/;
-            inputs["initialNodeCount"] = undefined /*out*/;
             inputs["ipAllocationPolicy"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["legacyAbac"] = undefined /*out*/;
@@ -377,18 +345,15 @@ export class Cluster extends pulumi.CustomResource {
             inputs["master"] = undefined /*out*/;
             inputs["masterAuth"] = undefined /*out*/;
             inputs["masterAuthorizedNetworksConfig"] = undefined /*out*/;
-            inputs["masterIpv4CidrBlock"] = undefined /*out*/;
             inputs["monitoringService"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
             inputs["networkConfig"] = undefined /*out*/;
             inputs["networkPolicy"] = undefined /*out*/;
-            inputs["nodeConfig"] = undefined /*out*/;
             inputs["nodeIpv4CidrSize"] = undefined /*out*/;
             inputs["nodePools"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
             inputs["podSecurityPolicyConfig"] = undefined /*out*/;
-            inputs["privateCluster"] = undefined /*out*/;
             inputs["privateClusterConfig"] = undefined /*out*/;
             inputs["releaseChannel"] = undefined /*out*/;
             inputs["resourceLabels"] = undefined /*out*/;
@@ -403,7 +368,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["verticalPodAutoscaling"] = undefined /*out*/;
             inputs["workloadCertificates"] = undefined /*out*/;
             inputs["workloadIdentityConfig"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -481,10 +445,6 @@ export interface ClusterArgs {
      */
     readonly enableKubernetesAlpha?: pulumi.Input<boolean>;
     /**
-     * Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-     */
-    readonly enableTpu?: pulumi.Input<boolean>;
-    /**
      * [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
      */
     readonly endpoint?: pulumi.Input<string>;
@@ -496,10 +456,6 @@ export interface ClusterArgs {
      * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
      */
     readonly initialClusterVersion?: pulumi.Input<string>;
-    /**
-     * The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-     */
-    readonly initialNodeCount?: pulumi.Input<number>;
     /**
      * Configuration for cluster IP allocation.
      */
@@ -515,7 +471,7 @@ export interface ClusterArgs {
     /**
      * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
      */
-    readonly location?: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
      */
@@ -541,10 +497,6 @@ export interface ClusterArgs {
      */
     readonly masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.v1beta1.MasterAuthorizedNetworksConfigArgs>;
     /**
-     * The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-     */
-    readonly masterIpv4CidrBlock?: pulumi.Input<string>;
-    /**
      * The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
      */
     readonly monitoringService?: pulumi.Input<string>;
@@ -565,10 +517,6 @@ export interface ClusterArgs {
      */
     readonly networkPolicy?: pulumi.Input<inputs.container.v1beta1.NetworkPolicyArgs>;
     /**
-     * Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-     */
-    readonly nodeConfig?: pulumi.Input<inputs.container.v1beta1.NodeConfigArgs>;
-    /**
      * [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
      */
     readonly nodeIpv4CidrSize?: pulumi.Input<number>;
@@ -588,10 +536,6 @@ export interface ClusterArgs {
      * Configuration for the PodSecurityPolicy feature.
      */
     readonly podSecurityPolicyConfig?: pulumi.Input<inputs.container.v1beta1.PodSecurityPolicyConfigArgs>;
-    /**
-     * If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-     */
-    readonly privateCluster?: pulumi.Input<boolean>;
     /**
      * Configuration for private cluster.
      */
@@ -649,8 +593,4 @@ export interface ClusterArgs {
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
     readonly workloadIdentityConfig?: pulumi.Input<inputs.container.v1beta1.WorkloadIdentityConfigArgs>;
-    /**
-     * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-     */
-    readonly zone: pulumi.Input<string>;
 }

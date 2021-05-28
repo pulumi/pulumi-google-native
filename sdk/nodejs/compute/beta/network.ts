@@ -36,10 +36,6 @@ export class Network extends pulumi.CustomResource {
     }
 
     /**
-     * Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-     */
-    public readonly IPv4Range!: pulumi.Output<string>;
-    /**
      * Must be set to create a VPC network. If not set, a legacy network is created.
      *
      * When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -104,7 +100,6 @@ export class Network extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["IPv4Range"] = args ? args.IPv4Range : undefined;
             inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -120,7 +115,6 @@ export class Network extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["subnetworks"] = args ? args.subnetworks : undefined;
         } else {
-            inputs["IPv4Range"] = undefined /*out*/;
             inputs["autoCreateSubnetworks"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -144,10 +138,6 @@ export class Network extends pulumi.CustomResource {
  * The set of arguments for constructing a Network resource.
  */
 export interface NetworkArgs {
-    /**
-     * Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-     */
-    readonly IPv4Range?: pulumi.Input<string>;
     /**
      * Must be set to create a VPC network. If not set, a legacy network is created.
      *

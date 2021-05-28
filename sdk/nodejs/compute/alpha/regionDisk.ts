@@ -191,17 +191,6 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly sourceImageId!: pulumi.Output<string>;
     /**
-     * [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-     * - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-     * - global/inPlaceSnapshots/inPlaceSnapshots
-     */
-    public readonly sourceInPlaceSnapshot!: pulumi.Output<string>;
-    /**
-     * [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-     */
-    public readonly sourceInPlaceSnapshotId!: pulumi.Output<string>;
-    /**
      * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
      * - projects/project/zones/zone/instantSnapshots/instantSnapshot 
@@ -240,10 +229,6 @@ export class RegionDisk extends pulumi.CustomResource {
      * - DELETING: Disk is deleting.
      */
     public readonly status!: pulumi.Output<string>;
-    /**
-     * [Deprecated] Storage type of the persistent disk.
-     */
-    public readonly storageType!: pulumi.Output<string>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
      */
@@ -313,8 +298,6 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceImage"] = args ? args.sourceImage : undefined;
             inputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
             inputs["sourceImageId"] = args ? args.sourceImageId : undefined;
-            inputs["sourceInPlaceSnapshot"] = args ? args.sourceInPlaceSnapshot : undefined;
-            inputs["sourceInPlaceSnapshotId"] = args ? args.sourceInPlaceSnapshotId : undefined;
             inputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
             inputs["sourceInstantSnapshotId"] = args ? args.sourceInstantSnapshotId : undefined;
             inputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
@@ -322,7 +305,6 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = args ? args.sourceSnapshotId : undefined;
             inputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["storageType"] = args ? args.storageType : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["userLicenses"] = args ? args.userLicenses : undefined;
             inputs["users"] = args ? args.users : undefined;
@@ -359,8 +341,6 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceImage"] = undefined /*out*/;
             inputs["sourceImageEncryptionKey"] = undefined /*out*/;
             inputs["sourceImageId"] = undefined /*out*/;
-            inputs["sourceInPlaceSnapshot"] = undefined /*out*/;
-            inputs["sourceInPlaceSnapshotId"] = undefined /*out*/;
             inputs["sourceInstantSnapshot"] = undefined /*out*/;
             inputs["sourceInstantSnapshotId"] = undefined /*out*/;
             inputs["sourceSnapshot"] = undefined /*out*/;
@@ -368,7 +348,6 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["sourceStorageObject"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["storageType"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
             inputs["userLicenses"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
@@ -547,17 +526,6 @@ export interface RegionDiskArgs {
      */
     readonly sourceImageId?: pulumi.Input<string>;
     /**
-     * [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-     * - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-     * - global/inPlaceSnapshots/inPlaceSnapshots
-     */
-    readonly sourceInPlaceSnapshot?: pulumi.Input<string>;
-    /**
-     * [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-     */
-    readonly sourceInPlaceSnapshotId?: pulumi.Input<string>;
-    /**
      * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
      * - projects/project/zones/zone/instantSnapshots/instantSnapshot 
@@ -596,10 +564,6 @@ export interface RegionDiskArgs {
      * - DELETING: Disk is deleting.
      */
     readonly status?: pulumi.Input<string>;
-    /**
-     * [Deprecated] Storage type of the persistent disk.
-     */
-    readonly storageType?: pulumi.Input<string>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
      */

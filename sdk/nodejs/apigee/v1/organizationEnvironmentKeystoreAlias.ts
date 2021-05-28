@@ -81,7 +81,6 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
             inputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
             inputs["keystoreId"] = args ? args.keystoreId : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["password"] = args ? args.password : undefined;
             inputs["certsInfo"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         } else {
@@ -119,5 +118,4 @@ export interface OrganizationEnvironmentKeystoreAliasArgs {
     readonly ignoreNewlineValidation?: pulumi.Input<string>;
     readonly keystoreId: pulumi.Input<string>;
     readonly organizationId: pulumi.Input<string>;
-    readonly password?: pulumi.Input<string>;
 }

@@ -109,10 +109,6 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-     */
-    public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
-    /**
      * Not used by Apigee.
      */
     public readonly type!: pulumi.Output<string>;
@@ -152,7 +148,6 @@ export class Organization extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["project"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
-            inputs["subscriptionType"] = undefined /*out*/;
         } else {
             inputs["addonsConfig"] = undefined /*out*/;
             inputs["analyticsRegion"] = undefined /*out*/;
@@ -173,7 +168,6 @@ export class Organization extends pulumi.CustomResource {
             inputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
             inputs["runtimeType"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
-            inputs["subscriptionType"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {

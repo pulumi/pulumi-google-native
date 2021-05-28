@@ -3813,14 +3813,6 @@ export namespace bigquery {
              */
             schema: outputs.bigquery.v2.TableSchemaResponse;
             /**
-             * [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
-             */
-            schemaInline: string;
-            /**
-             * [Deprecated] The format of the schemaInline property.
-             */
-            schemaInlineFormat: string;
-            /**
              * Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
              */
             schemaUpdateOptions: string[];
@@ -3899,10 +3891,6 @@ export namespace bigquery {
              * Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
              */
             parameterMode: string;
-            /**
-             * [Deprecated] This property is deprecated.
-             */
-            preserveNulls: boolean;
             /**
              * [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
              */
@@ -4112,14 +4100,6 @@ export namespace bigquery {
              */
             modelTraining: outputs.bigquery.v2.BigQueryModelTrainingResponse;
             /**
-             * [Output-only, Beta] Deprecated; do not use.
-             */
-            modelTrainingCurrentIteration: number;
-            /**
-             * [Output-only, Beta] Deprecated; do not use.
-             */
-            modelTrainingExpectedTotalIteration: string;
-            /**
              * [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
              */
             numDmlAffectedRows: string;
@@ -4272,10 +4252,6 @@ export namespace bigquery {
              * [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
              */
             startTime: string;
-            /**
-             * [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
-             */
-            totalBytesProcessed: string;
             /**
              * [Output-only] Slot-milliseconds for the job.
              */
@@ -10112,38 +10088,6 @@ export namespace compute {
         }
 
         /**
-         * [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
-         */
-        export interface AuthenticationPolicyResponse {
-            /**
-             * List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
-             */
-            origins: outputs.compute.alpha.OriginAuthenticationMethodResponse[];
-            /**
-             * List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
-             */
-            peers: outputs.compute.alpha.PeerAuthenticationMethodResponse[];
-            /**
-             * Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
-             */
-            principalBinding: string;
-            /**
-             * Configures the mechanism to obtain server-side security certificates and identity information.
-             */
-            serverTlsContext: outputs.compute.alpha.TlsContextResponse;
-        }
-
-        /**
-         * [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
-         */
-        export interface AuthorizationConfigResponse {
-            /**
-             * List of RbacPolicies.
-             */
-            policies: outputs.compute.alpha.RbacPolicyResponse[];
-        }
-
-        /**
          * Authorization-related information used by Cloud Audit Logging.
          */
         export interface AuthorizationLoggingOptionsResponse {
@@ -10810,28 +10754,6 @@ export namespace compute {
              * The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1.
              */
             maxRetries: number;
-        }
-
-        /**
-         * [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
-         */
-        export interface ClientTlsSettingsResponse {
-            /**
-             * Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
-             */
-            clientTlsContext: outputs.compute.alpha.TlsContextResponse;
-            /**
-             * Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
-             */
-            mode: string;
-            /**
-             * SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
-             */
-            sni: string;
-            /**
-             * A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
-             */
-            subjectAltNames: string[];
         }
 
         /**
@@ -11983,10 +11905,6 @@ export namespace compute {
              */
             containerType: string;
             /**
-             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-             */
-            sha1Checksum: string;
-            /**
              * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
              */
             source: string;
@@ -12138,10 +12056,6 @@ export namespace compute {
              */
             hasStatefulConfig: boolean;
             /**
-             * [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-             */
-            isStateful: boolean;
-            /**
              * [Output Only] Status of per-instance configs on the instance.
              */
             perInstanceConfigs: outputs.compute.alpha.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse;
@@ -12208,10 +12122,6 @@ export namespace compute {
              * Name of the version. Unique among all versions in the scope of this managed instance group.
              */
             name: string;
-            /**
-             * Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
-             */
-            tag: string;
             /**
              * Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to:  
              * - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. 
@@ -12420,56 +12330,6 @@ export namespace compute {
         }
 
         /**
-         * [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
-         */
-        export interface JwtHeaderResponse {
-            /**
-             * The HTTP header name.
-             */
-            name: string;
-            /**
-             * The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-             */
-            valuePrefix: string;
-        }
-
-        /**
-         * [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
-         */
-        export interface JwtResponse {
-            /**
-             * A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
-             */
-            audiences: string[];
-            /**
-             * Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
-             */
-            issuer: string;
-            /**
-             * The provider's public key set to validate the signature of the JWT.
-             */
-            jwksPublicKeys: string;
-            /**
-             * jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order:
-             *
-             * 1. The Authorization header using the Bearer schema. See `here `_. Example:
-             *
-             * Authorization: Bearer .
-             *
-             * 2. `access_token` query parameter. See `this `_
-             *
-             * Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations.
-             *
-             * This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
-             */
-            jwtHeaders: outputs.compute.alpha.JwtHeaderResponse[];
-            /**
-             * This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
-             */
-            jwtParams: string[];
-        }
-
-        /**
          * Commitment for a particular license resource.
          */
         export interface LicenseResourceCommitmentResponse {
@@ -12663,16 +12523,6 @@ export namespace compute {
         }
 
         /**
-         * [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
-         */
-        export interface MutualTlsResponse {
-            /**
-             * Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-             */
-            mode: string;
-        }
-
-        /**
          * The named port. For example: .
          */
         export interface NamedPortResponse {
@@ -12766,28 +12616,6 @@ export namespace compute {
              * For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
              */
             urlMask: string;
-        }
-
-        /**
-         * Load balancing specific fields for network endpoint group.
-         */
-        export interface NetworkEndpointGroupLbNetworkEndpointGroupResponse {
-            /**
-             * The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-             */
-            defaultPort: number;
-            /**
-             * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-             */
-            network: string;
-            /**
-             * Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-             */
-            subnetwork: string;
-            /**
-             * [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-             */
-            zone: string;
         }
 
         /**
@@ -13071,13 +12899,6 @@ export namespace compute {
         }
 
         /**
-         * [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
-         */
-        export interface OriginAuthenticationMethodResponse {
-            jwt: outputs.compute.alpha.JwtResponse;
-        }
-
-        /**
          * Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
          */
         export interface OutlierDetectionResponse {
@@ -13290,118 +13111,6 @@ export namespace compute {
         }
 
         /**
-         * [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
-         */
-        export interface PeerAuthenticationMethodResponse {
-            /**
-             * Set if mTLS is used for peer authentication.
-             */
-            mtls: outputs.compute.alpha.MutualTlsResponse;
-        }
-
-        /**
-         * Custom constraint that specifies a key and a list of allowed values for Istio attributes.
-         */
-        export interface PermissionConstraintResponse {
-            /**
-             * Key of the constraint.
-             */
-            key: string;
-            /**
-             * A list of allowed values.
-             */
-            values: string[];
-        }
-
-        /**
-         * [Deprecated] All fields defined in a permission are ANDed.
-         */
-        export interface PermissionResponse {
-            /**
-             * Extra custom constraints. The constraints are ANDed together.
-             */
-            constraints: outputs.compute.alpha.PermissionConstraintResponse[];
-            /**
-             * Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
-             */
-            hosts: string[];
-            /**
-             * HTTP method.
-             */
-            methods: string[];
-            /**
-             * Negate of hosts. Specifies exclusions.
-             */
-            notHosts: string[];
-            /**
-             * Negate of methods. Specifies exclusions.
-             */
-            notMethods: string[];
-            /**
-             * Negate of paths. Specifies exclusions.
-             */
-            notPaths: string[];
-            /**
-             * Negate of ports. Specifies exclusions.
-             */
-            notPorts: string[];
-            /**
-             * HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
-             */
-            paths: string[];
-            /**
-             * Port names or numbers.
-             */
-            ports: string[];
-        }
-
-        /**
-         * [Deprecated] All fields defined in a principal are ANDed.
-         */
-        export interface PrincipalResponse {
-            /**
-             * An expression to specify custom condition.
-             */
-            condition: string;
-            /**
-             * The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-             */
-            groups: string[];
-            /**
-             * IPv4 or IPv6 address or range (In CIDR format)
-             */
-            ips: string[];
-            /**
-             * The namespaces. Exact match, prefix match, and suffix match are supported.
-             */
-            namespaces: string[];
-            /**
-             * Negate of groups. Specifies exclusions.
-             */
-            notGroups: string[];
-            /**
-             * Negate of IPs. Specifies exclusions.
-             */
-            notIps: string[];
-            /**
-             * Negate of namespaces. Specifies exclusions.
-             */
-            notNamespaces: string[];
-            /**
-             * Negate of users. Specifies exclusions.
-             */
-            notUsers: string[];
-            /**
-             * A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-             */
-            properties: {[key: string]: string};
-            /**
-             * The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-             */
-            users: string[];
-        }
-
-        /**
          * Represents a CIDR range which can be used to assign addresses.
          */
         export interface PublicAdvertisedPrefixPublicDelegatedPrefixResponse {
@@ -13459,21 +13168,6 @@ export namespace compute {
              * [Output Only] The status of the sub public delegated prefix.
              */
             status: string;
-        }
-
-        export interface RbacPolicyResponse {
-            /**
-             * Name of the RbacPolicy.
-             */
-            name: string;
-            /**
-             * The list of permissions.
-             */
-            permissions: outputs.compute.alpha.PermissionResponse[];
-            /**
-             * The list of principals.
-             */
-            principals: outputs.compute.alpha.PrincipalResponse[];
         }
 
         /**
@@ -14669,28 +14363,12 @@ export namespace compute {
          */
         export interface SecuritySettingsResponse {
             /**
-             * [Deprecated] Use clientTlsPolicy instead.
-             */
-            authentication: string;
-            /**
-             * [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-             */
-            authenticationPolicy: outputs.compute.alpha.AuthenticationPolicyResponse;
-            /**
-             * [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-             */
-            authorizationConfig: outputs.compute.alpha.AuthorizationConfigResponse;
-            /**
              * Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
              * clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              * If left blank, communications are not encrypted.
              * Note: This field currently has no impact.
              */
             clientTlsPolicy: string;
-            /**
-             * [Deprecated] TLS Settings for the backend service.
-             */
-            clientTlsSettings: outputs.compute.alpha.ClientTlsSettingsResponse;
             /**
              * Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service.
              * Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities.
@@ -14746,10 +14424,6 @@ export namespace compute {
              * The url of a connected endpoint.
              */
             endpoint: string;
-            /**
-             * The url of a consumer forwarding rule. [Deprecated] Do not use.
-             */
-            forwardingRule: string;
             /**
              * The PSC connection id of the connected endpoint.
              */
@@ -15202,17 +14876,9 @@ export namespace compute {
          */
         export interface UpcomingMaintenanceResponse {
             /**
-             * [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-             */
-            date: string;
-            /**
              * [Output Only] The start time window of the maintenance disruption.
              */
             startTimeWindow: outputs.compute.alpha.UpcomingMaintenanceTimeWindowResponse;
-            /**
-             * [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-             */
-            time: string;
             /**
              * Defines the type of maintenance.
              */
@@ -15265,10 +14931,6 @@ export namespace compute {
              * expectedRedirectResponseCode cannot be set when service is set.
              */
             expectedRedirectResponseCode: number;
-            /**
-             * The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
-             */
-            expectedUrlRedirect: string;
             /**
              * HTTP headers for this request. If headers contains a host header, then host must also match the header value.
              */
@@ -17418,10 +17080,6 @@ export namespace compute {
              */
             containerType: string;
             /**
-             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-             */
-            sha1Checksum: string;
-            /**
              * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
              */
             source: string;
@@ -17532,10 +17190,6 @@ export namespace compute {
              * [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
              */
             hasStatefulConfig: boolean;
-            /**
-             * [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-             */
-            isStateful: boolean;
             /**
              * [Output Only] Status of per-instance configs on the instance.
              */
@@ -18083,28 +17737,6 @@ export namespace compute {
              * For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
              */
             urlMask: string;
-        }
-
-        /**
-         * Load balancing specific fields for network endpoint group.
-         */
-        export interface NetworkEndpointGroupLbNetworkEndpointGroupResponse {
-            /**
-             * The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-             */
-            defaultPort: number;
-            /**
-             * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-             */
-            network: string;
-            /**
-             * Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-             */
-            subnetwork: string;
-            /**
-             * [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-             */
-            zone: string;
         }
 
         /**
@@ -19489,10 +19121,6 @@ export namespace compute {
          */
         export interface SecuritySettingsResponse {
             /**
-             * [Deprecated] Use clientTlsPolicy instead.
-             */
-            authentication: string;
-            /**
              * Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
              * clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              * If left blank, communications are not encrypted.
@@ -19534,10 +19162,6 @@ export namespace compute {
              * The url of a connected endpoint.
              */
             endpoint: string;
-            /**
-             * The url of a consumer forwarding rule. [Deprecated] Do not use.
-             */
-            forwardingRule: string;
             /**
              * The PSC connection id of the connected endpoint.
              */
@@ -21964,10 +21588,6 @@ export namespace compute {
              * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
              */
             containerType: string;
-            /**
-             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-             */
-            sha1Checksum: string;
             /**
              * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
              */
@@ -24429,10 +24049,6 @@ export namespace container {
          */
         export interface IPAllocationPolicyResponse {
             /**
-             * This field is deprecated, use cluster_ipv4_cidr_block.
-             */
-            clusterIpv4Cidr: string;
-            /**
              * The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
             clusterIpv4CidrBlock: string;
@@ -24445,17 +24061,9 @@ export namespace container {
              */
             createSubnetwork: boolean;
             /**
-             * This field is deprecated, use node_ipv4_cidr_block.
-             */
-            nodeIpv4Cidr: string;
-            /**
              * The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
             nodeIpv4CidrBlock: string;
-            /**
-             * This field is deprecated, use services_ipv4_cidr_block.
-             */
-            servicesIpv4Cidr: string;
             /**
              * The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
@@ -25499,10 +25107,6 @@ export namespace container {
              */
             allowRouteOverlap: boolean;
             /**
-             * This field is deprecated, use cluster_ipv4_cidr_block.
-             */
-            clusterIpv4Cidr: string;
-            /**
              * The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
             clusterIpv4CidrBlock: string;
@@ -25515,17 +25119,9 @@ export namespace container {
              */
             createSubnetwork: boolean;
             /**
-             * This field is deprecated, use node_ipv4_cidr_block.
-             */
-            nodeIpv4Cidr: string;
-            /**
              * The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
             nodeIpv4CidrBlock: string;
-            /**
-             * This field is deprecated, use services_ipv4_cidr_block.
-             */
-            servicesIpv4Cidr: string;
             /**
              * The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
@@ -25538,10 +25134,6 @@ export namespace container {
              * A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
              */
             subnetworkName: string;
-            /**
-             * The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-             */
-            tpuIpv4CidrBlock: string;
             /**
              * Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
              */
@@ -26330,10 +25922,6 @@ export namespace containeranalysis {
              */
             checksum: string;
             /**
-             * Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-             */
-            name: string;
-            /**
              * Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
              */
             names: string[];
@@ -26661,10 +26249,6 @@ export namespace containeranalysis {
              * The CPE of the resource being scanned.
              */
             cpe: string;
-            /**
-             * An operation that indicates the status of the current scan. This field is deprecated, do not use.
-             */
-            operation: outputs.containeranalysis.v1alpha1.OperationResponse;
         }
 
         /**
@@ -26923,32 +26507,6 @@ export namespace containeranalysis {
              * The version installed at this location.
              */
             version: outputs.containeranalysis.v1alpha1.VersionResponse;
-        }
-
-        /**
-         * This resource represents a long-running operation that is the result of a network API call.
-         */
-        export interface OperationResponse {
-            /**
-             * If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-             */
-            done: boolean;
-            /**
-             * The error result of the operation in case of failure or cancellation.
-             */
-            error: outputs.containeranalysis.v1alpha1.StatusResponse;
-            /**
-             * Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-             */
-            metadata: {[key: string]: string};
-            /**
-             * The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-             */
-            name: string;
-            /**
-             * The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-             */
-            response: {[key: string]: string};
         }
 
         /**
@@ -27675,10 +27233,6 @@ export namespace containeranalysis {
              * Whether the resource is continuously analyzed.
              */
             continuousAnalysis: string;
-            /**
-             * The last time continuous analysis was done for this resource. Deprecated, do not use.
-             */
-            lastAnalysisTime: string;
         }
 
         /**
@@ -27936,20 +27490,6 @@ export namespace containeranalysis {
         }
 
         /**
-         * Container message for hash values.
-         */
-        export interface HashResponse {
-            /**
-             * Required. The type of hash that was performed.
-             */
-            type: string;
-            /**
-             * Required. The hash value.
-             */
-            value: string;
-        }
-
-        /**
          * This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
          */
         export interface HintResponse {
@@ -28081,10 +27621,6 @@ export namespace containeranalysis {
              * The location of the available fix for vulnerability.
              */
             fixedLocation: outputs.containeranalysis.v1beta1.VulnerabilityLocationResponse;
-            /**
-             * Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
-             */
-            severityName: string;
         }
 
         /**
@@ -28165,14 +27701,6 @@ export namespace containeranalysis {
          * An entity that can have metadata. For example, a Docker image.
          */
         export interface ResourceResponse {
-            /**
-             * Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
-             */
-            contentHash: outputs.containeranalysis.v1beta1.HashResponse;
-            /**
-             * Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
-             */
-            name: string;
             /**
              * Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
              */
@@ -29343,10 +28871,6 @@ export namespace dataflow {
              */
             teardownPolicy: string;
             /**
-             * Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-             */
-            workerHarnessContainerImage: string;
-            /**
              * Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
              */
             zone: string;
@@ -29687,16 +29211,6 @@ export namespace datalabeling {
              * Whether the classification task is multi-label or not.
              */
             isMultiLabel: boolean;
-        }
-
-        /**
-         * Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
-         */
-        export interface GoogleCloudDatalabelingV1beta1CsvInstructionResponse {
-            /**
-             * CSV file for the instruction. Only gcs path is allowed.
-             */
-            gcsFileUri: string;
         }
 
         /**
@@ -33333,10 +32847,6 @@ export namespace deploymentmanager {
              */
             clientOperationId: string;
             /**
-             * [Deprecated] This field is deprecated.
-             */
-            creationTimestamp: string;
-            /**
              * [Output Only] A textual description of the operation, which is set when the operation is created.
              */
             description: string;
@@ -33733,10 +33243,6 @@ export namespace deploymentmanager {
              */
             clientOperationId: string;
             /**
-             * [Deprecated] This field is deprecated.
-             */
-            creationTimestamp: string;
-            /**
              * [Output Only] A textual description of the operation, which is set when the operation is created.
              */
             description: string;
@@ -34124,10 +33630,6 @@ export namespace deploymentmanager {
              * [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
              */
             clientOperationId: string;
-            /**
-             * [Deprecated] This field is deprecated.
-             */
-            creationTimestamp: string;
             /**
              * [Output Only] A textual description of the operation, which is set when the operation is created.
              */
@@ -42039,20 +41541,6 @@ export namespace firebasehosting {
         }
 
         /**
-         * Deprecated in favor of [site channels](sites.channels).
-         */
-        export interface PreviewConfigResponse {
-            /**
-             * If true, preview URLs are enabled for this version.
-             */
-            active: boolean;
-            /**
-             * Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-             */
-            expireTime: string;
-        }
-
-        /**
          * A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
          */
         export interface RedirectResponse {
@@ -42212,10 +41700,6 @@ export namespace firebasehosting {
              * The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
              */
             name: string;
-            /**
-             * Deprecated in favor of [site channels](sites.channels).
-             */
-            preview: outputs.firebasehosting.v1beta1.PreviewConfigResponse;
             /**
              * The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
              */
@@ -48121,20 +47605,6 @@ export namespace monitoring {
         }
 
         /**
-         * A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-         */
-        export interface StatisticalTimeSeriesFilterResponse {
-            /**
-             * How many time series to output.
-             */
-            numTimeSeries: number;
-            /**
-             * rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-             */
-            rankingMethod: string;
-        }
-
-        /**
          * A widget that displays textual content.
          */
         export interface TextResponse {
@@ -48216,10 +47686,6 @@ export namespace monitoring {
              * Apply a second aggregation after the ratio is computed.
              */
             secondaryAggregation: outputs.monitoring.v1.AggregationResponse;
-            /**
-             * Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-             */
-            statisticalTimeSeriesFilter: outputs.monitoring.v1.StatisticalTimeSeriesFilterResponse;
         }
 
         /**
@@ -48242,10 +47708,6 @@ export namespace monitoring {
              * Apply a second aggregation after aggregation is applied.
              */
             secondaryAggregation: outputs.monitoring.v1.AggregationResponse;
-            /**
-             * Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-             */
-            statisticalTimeSeriesFilter: outputs.monitoring.v1.StatisticalTimeSeriesFilterResponse;
         }
 
         /**
@@ -53322,10 +52784,6 @@ export namespace pubsublite {
              * The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
              */
             count: string;
-            /**
-             * DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
-             */
-            scale: number;
         }
 
         /**
@@ -55296,17 +54754,9 @@ export namespace run {
              */
             limits: {[key: string]: string};
             /**
-             * Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-             */
-            limitsInMap: {[key: string]: string};
-            /**
              * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
             requests: {[key: string]: string};
-            /**
-             * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-             */
-            requestsInMap: {[key: string]: string};
         }
 
         /**
@@ -56508,10 +55958,6 @@ export namespace servicemanagement {
          * `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
          */
         export interface EndpointResponse {
-            /**
-             * Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
-             */
-            aliases: string[];
             /**
              * Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
              */
@@ -57823,10 +57269,6 @@ export namespace sqladmin {
              */
             activeDirectoryConfig: outputs.sqladmin.v1beta4.SqlActiveDirectoryConfigResponse;
             /**
-             * The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
-             */
-            authorizedGaeApplications: string[];
-            /**
              * Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
              */
             availabilityType: string;
@@ -57886,10 +57328,6 @@ export namespace sqladmin {
              * The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
              */
             pricingPlan: string;
-            /**
-             * The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
-             */
-            replicationType: string;
             /**
              * The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
              */
@@ -59993,16 +59431,6 @@ export namespace toolresults {
             iosTest: outputs.toolresults.v1beta3.IosTestResponse;
         }
 
-        /**
-         * A stacktrace.
-         */
-        export interface StackTraceResponse {
-            /**
-             * The stack trace message. Required
-             */
-            exception: string;
-        }
-
         export interface StepDimensionValueEntryResponse {
             key: string;
             value: string;
@@ -60079,10 +59507,6 @@ export namespace toolresults {
              * Severity of issue. Required.
              */
             severity: string;
-            /**
-             * Deprecated in favor of stack trace fields inside specific warnings.
-             */
-            stackTrace: outputs.toolresults.v1beta3.StackTraceResponse;
             /**
              * Type of issue. Required.
              */
