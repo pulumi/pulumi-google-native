@@ -14,10 +14,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class SecuritySettingsResponse
     {
         /// <summary>
-        /// [Deprecated] Use clientTlsPolicy instead.
-        /// </summary>
-        public readonly string Authentication;
-        /// <summary>
         /// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
         /// clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         /// If left blank, communications are not encrypted.
@@ -34,13 +30,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
         [OutputConstructor]
         private SecuritySettingsResponse(
-            string authentication,
-
             string clientTlsPolicy,
 
             ImmutableArray<string> subjectAltNames)
         {
-            Authentication = authentication;
             ClientTlsPolicy = clientTlsPolicy;
             SubjectAltNames = subjectAltNames;
         }

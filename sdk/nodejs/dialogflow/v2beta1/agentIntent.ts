@@ -80,10 +80,6 @@ export class AgentIntent extends pulumi.CustomResource {
      */
     public readonly mlDisabled!: pulumi.Output<boolean>;
     /**
-     * Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
-     */
-    public readonly mlEnabled!: pulumi.Output<boolean>;
-    /**
      * Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
      */
     public readonly name!: pulumi.Output<string>;
@@ -150,7 +146,6 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["messages"] = args ? args.messages : undefined;
             inputs["mlDisabled"] = args ? args.mlDisabled : undefined;
-            inputs["mlEnabled"] = args ? args.mlEnabled : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["outputContexts"] = args ? args.outputContexts : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
@@ -174,7 +169,6 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["liveAgentHandoff"] = undefined /*out*/;
             inputs["messages"] = undefined /*out*/;
             inputs["mlDisabled"] = undefined /*out*/;
-            inputs["mlEnabled"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["outputContexts"] = undefined /*out*/;
             inputs["parameters"] = undefined /*out*/;
@@ -239,10 +233,6 @@ export interface AgentIntentArgs {
      * Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
      */
     readonly mlDisabled?: pulumi.Input<boolean>;
-    /**
-     * Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
-     */
-    readonly mlEnabled?: pulumi.Input<boolean>;
     /**
      * Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
      */

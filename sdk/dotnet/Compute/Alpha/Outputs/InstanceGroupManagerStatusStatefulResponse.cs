@@ -18,10 +18,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly bool HasStatefulConfig;
         /// <summary>
-        /// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-        /// </summary>
-        public readonly bool IsStateful;
-        /// <summary>
         /// [Output Only] Status of per-instance configs on the instance.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse PerInstanceConfigs;
@@ -30,12 +26,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private InstanceGroupManagerStatusStatefulResponse(
             bool hasStatefulConfig,
 
-            bool isStateful,
-
             Outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse perInstanceConfigs)
         {
             HasStatefulConfig = hasStatefulConfig;
-            IsStateful = isStateful;
             PerInstanceConfigs = perInstanceConfigs;
         }
     }

@@ -195,6 +195,9 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             set => _instanceGroupUrls = value;
         }
 
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
         [Input("locations")]
         private InputList<string>? _locations;
 
@@ -269,9 +272,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
-
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
 
         public ClusterNodePoolArgs()
         {

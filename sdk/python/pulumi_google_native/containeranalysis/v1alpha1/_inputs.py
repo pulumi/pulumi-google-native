@@ -40,7 +40,6 @@ __all__ = [
     'InstallationArgs',
     'LayerArgs',
     'LocationArgs',
-    'OperationArgs',
     'PackageArgs',
     'PackageIssueArgs',
     'PgpSignedAttestationArgs',
@@ -64,21 +63,17 @@ class ArtifactArgs:
     def __init__(__self__, *,
                  checksum: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Artifact describes a build product.
         :param pulumi.Input[str] checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         :param pulumi.Input[str] id: Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
-        :param pulumi.Input[str] name: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if names is not None:
             pulumi.set(__self__, "names", names)
 
@@ -105,18 +100,6 @@ class ArtifactArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -1169,15 +1152,13 @@ class DiscoveredArgs:
                  analysis_status: Optional[pulumi.Input[str]] = None,
                  analysis_status_error: Optional[pulumi.Input['StatusArgs']] = None,
                  continuous_analysis: Optional[pulumi.Input[str]] = None,
-                 cpe: Optional[pulumi.Input[str]] = None,
-                 operation: Optional[pulumi.Input['OperationArgs']] = None):
+                 cpe: Optional[pulumi.Input[str]] = None):
         """
         Provides information about the scan status of a discovered resource.
         :param pulumi.Input[str] analysis_status: The status of discovery for the resource.
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
         :param pulumi.Input[str] continuous_analysis: Whether the resource is continuously analyzed.
         :param pulumi.Input[str] cpe: The CPE of the resource being scanned.
-        :param pulumi.Input['OperationArgs'] operation: An operation that indicates the status of the current scan. This field is deprecated, do not use.
         """
         if analysis_status is not None:
             pulumi.set(__self__, "analysis_status", analysis_status)
@@ -1187,8 +1168,6 @@ class DiscoveredArgs:
             pulumi.set(__self__, "continuous_analysis", continuous_analysis)
         if cpe is not None:
             pulumi.set(__self__, "cpe", cpe)
-        if operation is not None:
-            pulumi.set(__self__, "operation", operation)
 
     @property
     @pulumi.getter(name="analysisStatus")
@@ -1237,18 +1216,6 @@ class DiscoveredArgs:
     @cpe.setter
     def cpe(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpe", value)
-
-    @property
-    @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input['OperationArgs']]:
-        """
-        An operation that indicates the status of the current scan. This field is deprecated, do not use.
-        """
-        return pulumi.get(self, "operation")
-
-    @operation.setter
-    def operation(self, value: Optional[pulumi.Input['OperationArgs']]):
-        pulumi.set(self, "operation", value)
 
 
 @pulumi.input_type
@@ -2041,94 +2008,6 @@ class LocationArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input['VersionArgs']]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class OperationArgs:
-    def __init__(__self__, *,
-                 done: Optional[pulumi.Input[bool]] = None,
-                 error: Optional[pulumi.Input['StatusArgs']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 response: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        This resource represents a long-running operation that is the result of a network API call.
-        :param pulumi.Input[bool] done: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        :param pulumi.Input['StatusArgs'] error: The error result of the operation in case of failure or cancellation.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        :param pulumi.Input[str] name: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] response: The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        """
-        if done is not None:
-            pulumi.set(__self__, "done", done)
-        if error is not None:
-            pulumi.set(__self__, "error", error)
-        if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if response is not None:
-            pulumi.set(__self__, "response", response)
-
-    @property
-    @pulumi.getter
-    def done(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        """
-        return pulumi.get(self, "done")
-
-    @done.setter
-    def done(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "done", value)
-
-    @property
-    @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['StatusArgs']]:
-        """
-        The error result of the operation in case of failure or cancellation.
-        """
-        return pulumi.get(self, "error")
-
-    @error.setter
-    def error(self, value: Optional[pulumi.Input['StatusArgs']]):
-        pulumi.set(self, "error", value)
-
-    @property
-    @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        """
-        return pulumi.get(self, "metadata")
-
-    @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "metadata", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def response(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        """
-        return pulumi.get(self, "response")
-
-    @response.setter
-    def response(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "response", value)
 
 
 @pulumi.input_type

@@ -21,8 +21,6 @@ __all__ = [
     'AttachedDiskInitializeParamsArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
-    'AuthenticationPolicyArgs',
-    'AuthorizationConfigArgs',
     'AuthorizationLoggingOptionsArgs',
     'AutoscalerStatusDetailsArgs',
     'AutoscalingPolicyArgs',
@@ -48,7 +46,6 @@ __all__ = [
     'CallCredentialsArgs',
     'ChannelCredentialsArgs',
     'CircuitBreakersArgs',
-    'ClientTlsSettingsArgs',
     'ConditionArgs',
     'ConfidentialInstanceConfigArgs',
     'ConnectionDrainingArgs',
@@ -115,8 +112,6 @@ __all__ = [
     'InterconnectAttachmentPrivateInfoArgs',
     'InterconnectCircuitInfoArgs',
     'InterconnectOutageNotificationArgs',
-    'JwtArgs',
-    'JwtHeaderArgs',
     'LicenseResourceCommitmentArgs',
     'LicenseResourceRequirementsArgs',
     'LocalDiskArgs',
@@ -129,12 +124,10 @@ __all__ = [
     'MetadataCredentialsFromPluginArgs',
     'MetadataFilterArgs',
     'MetadataFilterLabelMatchArgs',
-    'MutualTlsArgs',
     'NamedPortArgs',
     'NetworkEndpointGroupAppEngineArgs',
     'NetworkEndpointGroupCloudFunctionArgs',
     'NetworkEndpointGroupCloudRunArgs',
-    'NetworkEndpointGroupLbNetworkEndpointGroupArgs',
     'NetworkEndpointGroupServerlessDeploymentArgs',
     'NetworkInterfaceArgs',
     'NetworkInterfaceSubInterfaceArgs',
@@ -145,7 +138,6 @@ __all__ = [
     'NodeGroupMaintenanceWindowArgs',
     'NodeTemplateNodeTypeFlexibilityArgs',
     'NotificationEndpointGrpcSettingsArgs',
-    'OriginAuthenticationMethodArgs',
     'OutlierDetectionArgs',
     'PacketMirroringFilterArgs',
     'PacketMirroringForwardingRuleInfoArgs',
@@ -155,13 +147,8 @@ __all__ = [
     'PacketMirroringNetworkInfoArgs',
     'PathMatcherArgs',
     'PathRuleArgs',
-    'PeerAuthenticationMethodArgs',
-    'PermissionArgs',
-    'PermissionConstraintArgs',
-    'PrincipalArgs',
     'PublicAdvertisedPrefixPublicDelegatedPrefixArgs',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixArgs',
-    'RbacPolicyArgs',
     'RequestMirrorPolicyArgs',
     'ReservationArgs',
     'ReservationAffinityArgs',
@@ -1604,102 +1591,6 @@ class AuditLogConfigArgs:
     @log_type.setter
     def log_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_type", value)
-
-
-@pulumi.input_type
-class AuthenticationPolicyArgs:
-    def __init__(__self__, *,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input['OriginAuthenticationMethodArgs']]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input['PeerAuthenticationMethodArgs']]]] = None,
-                 principal_binding: Optional[pulumi.Input[str]] = None,
-                 server_tls_context: Optional[pulumi.Input['TlsContextArgs']] = None):
-        """
-        [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
-        :param pulumi.Input[Sequence[pulumi.Input['OriginAuthenticationMethodArgs']]] origins: List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
-        :param pulumi.Input[Sequence[pulumi.Input['PeerAuthenticationMethodArgs']]] peers: List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
-        :param pulumi.Input[str] principal_binding: Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
-        :param pulumi.Input['TlsContextArgs'] server_tls_context: Configures the mechanism to obtain server-side security certificates and identity information.
-        """
-        if origins is not None:
-            pulumi.set(__self__, "origins", origins)
-        if peers is not None:
-            pulumi.set(__self__, "peers", peers)
-        if principal_binding is not None:
-            pulumi.set(__self__, "principal_binding", principal_binding)
-        if server_tls_context is not None:
-            pulumi.set(__self__, "server_tls_context", server_tls_context)
-
-    @property
-    @pulumi.getter
-    def origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OriginAuthenticationMethodArgs']]]]:
-        """
-        List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
-        """
-        return pulumi.get(self, "origins")
-
-    @origins.setter
-    def origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OriginAuthenticationMethodArgs']]]]):
-        pulumi.set(self, "origins", value)
-
-    @property
-    @pulumi.getter
-    def peers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PeerAuthenticationMethodArgs']]]]:
-        """
-        List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
-        """
-        return pulumi.get(self, "peers")
-
-    @peers.setter
-    def peers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PeerAuthenticationMethodArgs']]]]):
-        pulumi.set(self, "peers", value)
-
-    @property
-    @pulumi.getter(name="principalBinding")
-    def principal_binding(self) -> Optional[pulumi.Input[str]]:
-        """
-        Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
-        """
-        return pulumi.get(self, "principal_binding")
-
-    @principal_binding.setter
-    def principal_binding(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "principal_binding", value)
-
-    @property
-    @pulumi.getter(name="serverTlsContext")
-    def server_tls_context(self) -> Optional[pulumi.Input['TlsContextArgs']]:
-        """
-        Configures the mechanism to obtain server-side security certificates and identity information.
-        """
-        return pulumi.get(self, "server_tls_context")
-
-    @server_tls_context.setter
-    def server_tls_context(self, value: Optional[pulumi.Input['TlsContextArgs']]):
-        pulumi.set(self, "server_tls_context", value)
-
-
-@pulumi.input_type
-class AuthorizationConfigArgs:
-    def __init__(__self__, *,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['RbacPolicyArgs']]]] = None):
-        """
-        [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
-        :param pulumi.Input[Sequence[pulumi.Input['RbacPolicyArgs']]] policies: List of RbacPolicies.
-        """
-        if policies is not None:
-            pulumi.set(__self__, "policies", policies)
-
-    @property
-    @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RbacPolicyArgs']]]]:
-        """
-        List of RbacPolicies.
-        """
-        return pulumi.get(self, "policies")
-
-    @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RbacPolicyArgs']]]]):
-        pulumi.set(self, "policies", value)
 
 
 @pulumi.input_type
@@ -3764,78 +3655,6 @@ class CircuitBreakersArgs:
     @max_retries.setter
     def max_retries(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_retries", value)
-
-
-@pulumi.input_type
-class ClientTlsSettingsArgs:
-    def __init__(__self__, *,
-                 client_tls_context: Optional[pulumi.Input['TlsContextArgs']] = None,
-                 mode: Optional[pulumi.Input[str]] = None,
-                 sni: Optional[pulumi.Input[str]] = None,
-                 subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
-        :param pulumi.Input['TlsContextArgs'] client_tls_context: Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
-        :param pulumi.Input[str] mode: Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
-        :param pulumi.Input[str] sni: SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
-        """
-        if client_tls_context is not None:
-            pulumi.set(__self__, "client_tls_context", client_tls_context)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if sni is not None:
-            pulumi.set(__self__, "sni", sni)
-        if subject_alt_names is not None:
-            pulumi.set(__self__, "subject_alt_names", subject_alt_names)
-
-    @property
-    @pulumi.getter(name="clientTlsContext")
-    def client_tls_context(self) -> Optional[pulumi.Input['TlsContextArgs']]:
-        """
-        Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
-        """
-        return pulumi.get(self, "client_tls_context")
-
-    @client_tls_context.setter
-    def client_tls_context(self, value: Optional[pulumi.Input['TlsContextArgs']]):
-        pulumi.set(self, "client_tls_context", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter
-    def sni(self) -> Optional[pulumi.Input[str]]:
-        """
-        SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
-        """
-        return pulumi.get(self, "sni")
-
-    @sni.setter
-    def sni(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sni", value)
-
-    @property
-    @pulumi.getter(name="subjectAltNames")
-    def subject_alt_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
-        """
-        return pulumi.get(self, "subject_alt_names")
-
-    @subject_alt_names.setter
-    def subject_alt_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "subject_alt_names", value)
 
 
 @pulumi.input_type
@@ -7482,18 +7301,14 @@ class HttpRouteRuleMatchArgs:
 class ImageRawDiskArgs:
     def __init__(__self__, *,
                  container_type: Optional[pulumi.Input[str]] = None,
-                 sha1_checksum: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         The parameters of the raw disk image.
         :param pulumi.Input[str] container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param pulumi.Input[str] sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         :param pulumi.Input[str] source: The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
         """
         if container_type is not None:
             pulumi.set(__self__, "container_type", container_type)
-        if sha1_checksum is not None:
-            pulumi.set(__self__, "sha1_checksum", sha1_checksum)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -7508,18 +7323,6 @@ class ImageRawDiskArgs:
     @container_type.setter
     def container_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_type", value)
-
-    @property
-    @pulumi.getter(name="sha1Checksum")
-    def sha1_checksum(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-        """
-        return pulumi.get(self, "sha1_checksum")
-
-    @sha1_checksum.setter
-    def sha1_checksum(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sha1_checksum", value)
 
     @property
     @pulumi.getter
@@ -8013,17 +7816,13 @@ class InstanceGroupManagerStatusArgs:
 class InstanceGroupManagerStatusStatefulArgs:
     def __init__(__self__, *,
                  has_stateful_config: Optional[pulumi.Input[bool]] = None,
-                 is_stateful: Optional[pulumi.Input[bool]] = None,
                  per_instance_configs: Optional[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs']] = None):
         """
         :param pulumi.Input[bool] has_stateful_config: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input[bool] is_stateful: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         :param pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs'] per_instance_configs: [Output Only] Status of per-instance configs on the instance.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
-        if is_stateful is not None:
-            pulumi.set(__self__, "is_stateful", is_stateful)
         if per_instance_configs is not None:
             pulumi.set(__self__, "per_instance_configs", per_instance_configs)
 
@@ -8038,18 +7837,6 @@ class InstanceGroupManagerStatusStatefulArgs:
     @has_stateful_config.setter
     def has_stateful_config(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "has_stateful_config", value)
-
-    @property
-    @pulumi.getter(name="isStateful")
-    def is_stateful(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-        """
-        return pulumi.get(self, "is_stateful")
-
-    @is_stateful.setter
-    def is_stateful(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_stateful", value)
 
     @property
     @pulumi.getter(name="perInstanceConfigs")
@@ -8270,12 +8057,10 @@ class InstanceGroupManagerVersionArgs:
     def __init__(__self__, *,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
                  target_size: Optional[pulumi.Input['FixedOrPercentArgs']] = None):
         """
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create new instances in the managed instance group until the `targetSize` for this version is reached. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE; in those cases, existing instances are updated until the `targetSize` for this version is reached.
         :param pulumi.Input[str] name: Name of the version. Unique among all versions in the scope of this managed instance group.
-        :param pulumi.Input[str] tag: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
         :param pulumi.Input['FixedOrPercentArgs'] target_size: Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to:  
                - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. 
                - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded up.  If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
@@ -8284,8 +8069,6 @@ class InstanceGroupManagerVersionArgs:
             pulumi.set(__self__, "instance_template", instance_template)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
 
@@ -8312,18 +8095,6 @@ class InstanceGroupManagerVersionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
-        """
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag", value)
 
     @property
     @pulumi.getter(name="targetSize")
@@ -9053,154 +8824,6 @@ class InterconnectOutageNotificationArgs:
 
 
 @pulumi.input_type
-class JwtArgs:
-    def __init__(__self__, *,
-                 audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 issuer: Optional[pulumi.Input[str]] = None,
-                 jwks_public_keys: Optional[pulumi.Input[str]] = None,
-                 jwt_headers: Optional[pulumi.Input[Sequence[pulumi.Input['JwtHeaderArgs']]]] = None,
-                 jwt_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
-        :param pulumi.Input[str] issuer: Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
-        :param pulumi.Input[str] jwks_public_keys: The provider's public key set to validate the signature of the JWT.
-        :param pulumi.Input[Sequence[pulumi.Input['JwtHeaderArgs']]] jwt_headers: jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order:
-               
-               1. The Authorization header using the Bearer schema. See `here `_. Example:
-               
-               Authorization: Bearer .
-               
-               2. `access_token` query parameter. See `this `_
-               
-               Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations.
-               
-               This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jwt_params: This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
-        """
-        if audiences is not None:
-            pulumi.set(__self__, "audiences", audiences)
-        if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
-        if jwks_public_keys is not None:
-            pulumi.set(__self__, "jwks_public_keys", jwks_public_keys)
-        if jwt_headers is not None:
-            pulumi.set(__self__, "jwt_headers", jwt_headers)
-        if jwt_params is not None:
-            pulumi.set(__self__, "jwt_params", jwt_params)
-
-    @property
-    @pulumi.getter
-    def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
-        """
-        return pulumi.get(self, "audiences")
-
-    @audiences.setter
-    def audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "audiences", value)
-
-    @property
-    @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
-        """
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "issuer", value)
-
-    @property
-    @pulumi.getter(name="jwksPublicKeys")
-    def jwks_public_keys(self) -> Optional[pulumi.Input[str]]:
-        """
-        The provider's public key set to validate the signature of the JWT.
-        """
-        return pulumi.get(self, "jwks_public_keys")
-
-    @jwks_public_keys.setter
-    def jwks_public_keys(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "jwks_public_keys", value)
-
-    @property
-    @pulumi.getter(name="jwtHeaders")
-    def jwt_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JwtHeaderArgs']]]]:
-        """
-        jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order:
-
-        1. The Authorization header using the Bearer schema. See `here `_. Example:
-
-        Authorization: Bearer .
-
-        2. `access_token` query parameter. See `this `_
-
-        Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations.
-
-        This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
-        """
-        return pulumi.get(self, "jwt_headers")
-
-    @jwt_headers.setter
-    def jwt_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JwtHeaderArgs']]]]):
-        pulumi.set(self, "jwt_headers", value)
-
-    @property
-    @pulumi.getter(name="jwtParams")
-    def jwt_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
-        """
-        return pulumi.get(self, "jwt_params")
-
-    @jwt_params.setter
-    def jwt_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "jwt_params", value)
-
-
-@pulumi.input_type
-class JwtHeaderArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 value_prefix: Optional[pulumi.Input[str]] = None):
-        """
-        [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
-        :param pulumi.Input[str] name: The HTTP header name.
-        :param pulumi.Input[str] value_prefix: The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value_prefix is not None:
-            pulumi.set(__self__, "value_prefix", value_prefix)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The HTTP header name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="valuePrefix")
-    def value_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-        """
-        return pulumi.get(self, "value_prefix")
-
-    @value_prefix.setter
-    def value_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value_prefix", value)
-
-
-@pulumi.input_type
 class LicenseResourceCommitmentArgs:
     def __init__(__self__, *,
                  amount: Optional[pulumi.Input[str]] = None,
@@ -9765,30 +9388,6 @@ class MetadataFilterLabelMatchArgs:
 
 
 @pulumi.input_type
-class MutualTlsArgs:
-    def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[str]] = None):
-        """
-        [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
-        :param pulumi.Input[str] mode: Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-        """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
-
-
-@pulumi.input_type
 class NamedPortArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -10036,78 +9635,6 @@ class NetworkEndpointGroupCloudRunArgs:
     @url_mask.setter
     def url_mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_mask", value)
-
-
-@pulumi.input_type
-class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
-    def __init__(__self__, *,
-                 default_port: Optional[pulumi.Input[int]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
-        """
-        Load balancing specific fields for network endpoint group.
-        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] zone: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-        """
-        if default_port is not None:
-            pulumi.set(__self__, "default_port", default_port)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
-        if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="defaultPort")
-    def default_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "default_port")
-
-    @default_port.setter
-    def default_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "default_port", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
-    @property
-    @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "subnetwork")
-
-    @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subnetwork", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
@@ -11071,26 +10598,6 @@ class NotificationEndpointGrpcSettingsArgs:
 
 
 @pulumi.input_type
-class OriginAuthenticationMethodArgs:
-    def __init__(__self__, *,
-                 jwt: Optional[pulumi.Input['JwtArgs']] = None):
-        """
-        [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
-        """
-        if jwt is not None:
-            pulumi.set(__self__, "jwt", jwt)
-
-    @property
-    @pulumi.getter
-    def jwt(self) -> Optional[pulumi.Input['JwtArgs']]:
-        return pulumi.get(self, "jwt")
-
-    @jwt.setter
-    def jwt(self, value: Optional[pulumi.Input['JwtArgs']]):
-        pulumi.set(self, "jwt", value)
-
-
-@pulumi.input_type
 class OutlierDetectionArgs:
     def __init__(__self__, *,
                  base_ejection_time: Optional[pulumi.Input['DurationArgs']] = None,
@@ -11805,390 +11312,6 @@ class PathRuleArgs:
 
 
 @pulumi.input_type
-class PeerAuthenticationMethodArgs:
-    def __init__(__self__, *,
-                 mtls: Optional[pulumi.Input['MutualTlsArgs']] = None):
-        """
-        [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
-        :param pulumi.Input['MutualTlsArgs'] mtls: Set if mTLS is used for peer authentication.
-        """
-        if mtls is not None:
-            pulumi.set(__self__, "mtls", mtls)
-
-    @property
-    @pulumi.getter
-    def mtls(self) -> Optional[pulumi.Input['MutualTlsArgs']]:
-        """
-        Set if mTLS is used for peer authentication.
-        """
-        return pulumi.get(self, "mtls")
-
-    @mtls.setter
-    def mtls(self, value: Optional[pulumi.Input['MutualTlsArgs']]):
-        pulumi.set(self, "mtls", value)
-
-
-@pulumi.input_type
-class PermissionArgs:
-    def __init__(__self__, *,
-                 constraints: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionConstraintArgs']]]] = None,
-                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        [Deprecated] All fields defined in a permission are ANDed.
-        :param pulumi.Input[Sequence[pulumi.Input['PermissionConstraintArgs']]] constraints: Extra custom constraints. The constraints are ANDed together.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: HTTP method.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_hosts: Negate of hosts. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_methods: Negate of methods. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_paths: Negate of paths. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_ports: Negate of ports. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port names or numbers.
-        """
-        if constraints is not None:
-            pulumi.set(__self__, "constraints", constraints)
-        if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
-        if methods is not None:
-            pulumi.set(__self__, "methods", methods)
-        if not_hosts is not None:
-            pulumi.set(__self__, "not_hosts", not_hosts)
-        if not_methods is not None:
-            pulumi.set(__self__, "not_methods", not_methods)
-        if not_paths is not None:
-            pulumi.set(__self__, "not_paths", not_paths)
-        if not_ports is not None:
-            pulumi.set(__self__, "not_ports", not_ports)
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-        if ports is not None:
-            pulumi.set(__self__, "ports", ports)
-
-    @property
-    @pulumi.getter
-    def constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PermissionConstraintArgs']]]]:
-        """
-        Extra custom constraints. The constraints are ANDed together.
-        """
-        return pulumi.get(self, "constraints")
-
-    @constraints.setter
-    def constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionConstraintArgs']]]]):
-        pulumi.set(self, "constraints", value)
-
-    @property
-    @pulumi.getter
-    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "hosts")
-
-    @hosts.setter
-    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "hosts", value)
-
-    @property
-    @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        HTTP method.
-        """
-        return pulumi.get(self, "methods")
-
-    @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "methods", value)
-
-    @property
-    @pulumi.getter(name="notHosts")
-    def not_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of hosts. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_hosts")
-
-    @not_hosts.setter
-    def not_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_hosts", value)
-
-    @property
-    @pulumi.getter(name="notMethods")
-    def not_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of methods. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_methods")
-
-    @not_methods.setter
-    def not_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_methods", value)
-
-    @property
-    @pulumi.getter(name="notPaths")
-    def not_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of paths. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_paths")
-
-    @not_paths.setter
-    def not_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_paths", value)
-
-    @property
-    @pulumi.getter(name="notPorts")
-    def not_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of ports. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_ports")
-
-    @not_ports.setter
-    def not_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_ports", value)
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "paths")
-
-    @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "paths", value)
-
-    @property
-    @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Port names or numbers.
-        """
-        return pulumi.get(self, "ports")
-
-    @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ports", value)
-
-
-@pulumi.input_type
-class PermissionConstraintArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Custom constraint that specifies a key and a list of allowed values for Istio attributes.
-        :param pulumi.Input[str] key: Key of the constraint.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list of allowed values.
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Key of the constraint.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of allowed values.
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "values", value)
-
-
-@pulumi.input_type
-class PrincipalArgs:
-    def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[str]] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 not_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        [Deprecated] All fields defined in a principal are ANDed.
-        :param pulumi.Input[str] condition: An expression to specify custom condition.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: IPv4 or IPv6 address or range (In CIDR format)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: The namespaces. Exact match, prefix match, and suffix match are supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_groups: Negate of groups. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_ips: Negate of IPs. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_namespaces: Negate of namespaces. Specifies exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_users: Negate of users. Specifies exclusions.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-        """
-        if condition is not None:
-            pulumi.set(__self__, "condition", condition)
-        if groups is not None:
-            pulumi.set(__self__, "groups", groups)
-        if ips is not None:
-            pulumi.set(__self__, "ips", ips)
-        if namespaces is not None:
-            pulumi.set(__self__, "namespaces", namespaces)
-        if not_groups is not None:
-            pulumi.set(__self__, "not_groups", not_groups)
-        if not_ips is not None:
-            pulumi.set(__self__, "not_ips", not_ips)
-        if not_namespaces is not None:
-            pulumi.set(__self__, "not_namespaces", not_namespaces)
-        if not_users is not None:
-            pulumi.set(__self__, "not_users", not_users)
-        if properties is not None:
-            pulumi.set(__self__, "properties", properties)
-        if users is not None:
-            pulumi.set(__self__, "users", users)
-
-    @property
-    @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[str]]:
-        """
-        An expression to specify custom condition.
-        """
-        return pulumi.get(self, "condition")
-
-    @condition.setter
-    def condition(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "condition", value)
-
-    @property
-    @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "groups")
-
-    @groups.setter
-    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "groups", value)
-
-    @property
-    @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        IPv4 or IPv6 address or range (In CIDR format)
-        """
-        return pulumi.get(self, "ips")
-
-    @ips.setter
-    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ips", value)
-
-    @property
-    @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The namespaces. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "namespaces")
-
-    @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "namespaces", value)
-
-    @property
-    @pulumi.getter(name="notGroups")
-    def not_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of groups. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_groups")
-
-    @not_groups.setter
-    def not_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_groups", value)
-
-    @property
-    @pulumi.getter(name="notIps")
-    def not_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of IPs. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_ips")
-
-    @not_ips.setter
-    def not_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_ips", value)
-
-    @property
-    @pulumi.getter(name="notNamespaces")
-    def not_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of namespaces. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_namespaces")
-
-    @not_namespaces.setter
-    def not_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_namespaces", value)
-
-    @property
-    @pulumi.getter(name="notUsers")
-    def not_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Negate of users. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_users")
-
-    @not_users.setter
-    def not_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "not_users", value)
-
-    @property
-    @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-        """
-        return pulumi.get(self, "properties")
-
-    @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "properties", value)
-
-    @property
-    @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "users")
-
-    @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "users", value)
-
-
-@pulumi.input_type
 class PublicAdvertisedPrefixPublicDelegatedPrefixArgs:
     def __init__(__self__, *,
                  ip_range: Optional[pulumi.Input[str]] = None,
@@ -12394,61 +11517,6 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
-
-
-@pulumi.input_type
-class RbacPolicyArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]] = None):
-        """
-        :param pulumi.Input[str] name: Name of the RbacPolicy.
-        :param pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]] permissions: The list of permissions.
-        :param pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]] principals: The list of principals.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
-        if principals is not None:
-            pulumi.set(__self__, "principals", principals)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the RbacPolicy.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]]:
-        """
-        The list of permissions.
-        """
-        return pulumi.get(self, "permissions")
-
-    @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionArgs']]]]):
-        pulumi.set(self, "permissions", value)
-
-    @property
-    @pulumi.getter
-    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]]:
-        """
-        The list of principals.
-        """
-        return pulumi.get(self, "principals")
-
-    @principals.setter
-    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrincipalArgs']]]]):
-        pulumi.set(self, "principals", value)
 
 
 @pulumi.input_type
@@ -16511,75 +15579,23 @@ class SecurityPolicyRuleRateLimitOptionsThresholdArgs:
 @pulumi.input_type
 class SecuritySettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input[str]] = None,
-                 authentication_policy: Optional[pulumi.Input['AuthenticationPolicyArgs']] = None,
-                 authorization_config: Optional[pulumi.Input['AuthorizationConfigArgs']] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
-                 client_tls_settings: Optional[pulumi.Input['ClientTlsSettingsArgs']] = None,
                  subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The authentication and authorization settings for a BackendService.
-        :param pulumi.Input[str] authentication: [Deprecated] Use clientTlsPolicy instead.
-        :param pulumi.Input['AuthenticationPolicyArgs'] authentication_policy: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-        :param pulumi.Input['AuthorizationConfigArgs'] authorization_config: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
         :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
                clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                If left blank, communications are not encrypted.
                Note: This field currently has no impact.
-        :param pulumi.Input['ClientTlsSettingsArgs'] client_tls_settings: [Deprecated] TLS Settings for the backend service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service.
                Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities.
                Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
                Note: This field currently has no impact.
         """
-        if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
-        if authentication_policy is not None:
-            pulumi.set(__self__, "authentication_policy", authentication_policy)
-        if authorization_config is not None:
-            pulumi.set(__self__, "authorization_config", authorization_config)
         if client_tls_policy is not None:
             pulumi.set(__self__, "client_tls_policy", client_tls_policy)
-        if client_tls_settings is not None:
-            pulumi.set(__self__, "client_tls_settings", client_tls_settings)
         if subject_alt_names is not None:
             pulumi.set(__self__, "subject_alt_names", subject_alt_names)
-
-    @property
-    @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] Use clientTlsPolicy instead.
-        """
-        return pulumi.get(self, "authentication")
-
-    @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authentication", value)
-
-    @property
-    @pulumi.getter(name="authenticationPolicy")
-    def authentication_policy(self) -> Optional[pulumi.Input['AuthenticationPolicyArgs']]:
-        """
-        [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-        """
-        return pulumi.get(self, "authentication_policy")
-
-    @authentication_policy.setter
-    def authentication_policy(self, value: Optional[pulumi.Input['AuthenticationPolicyArgs']]):
-        pulumi.set(self, "authentication_policy", value)
-
-    @property
-    @pulumi.getter(name="authorizationConfig")
-    def authorization_config(self) -> Optional[pulumi.Input['AuthorizationConfigArgs']]:
-        """
-        [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-        """
-        return pulumi.get(self, "authorization_config")
-
-    @authorization_config.setter
-    def authorization_config(self, value: Optional[pulumi.Input['AuthorizationConfigArgs']]):
-        pulumi.set(self, "authorization_config", value)
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
@@ -16595,18 +15611,6 @@ class SecuritySettingsArgs:
     @client_tls_policy.setter
     def client_tls_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_tls_policy", value)
-
-    @property
-    @pulumi.getter(name="clientTlsSettings")
-    def client_tls_settings(self) -> Optional[pulumi.Input['ClientTlsSettingsArgs']]:
-        """
-        [Deprecated] TLS Settings for the backend service.
-        """
-        return pulumi.get(self, "client_tls_settings")
-
-    @client_tls_settings.setter
-    def client_tls_settings(self, value: Optional[pulumi.Input['ClientTlsSettingsArgs']]):
-        pulumi.set(self, "client_tls_settings", value)
 
     @property
     @pulumi.getter(name="subjectAltNames")
@@ -16745,20 +15749,16 @@ class ServiceAccountArgs:
 class ServiceAttachmentConnectedEndpointArgs:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input[str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         [Output Only] A connection connected to this service attachment.
         :param pulumi.Input[str] endpoint: The url of a connected endpoint.
-        :param pulumi.Input[str] forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the connected endpoint.
         :param pulumi.Input[str] status: The status of a connected endpoint to this service attachment.
         """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
-        if forwarding_rule is not None:
-            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         if psc_connection_id is not None:
             pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         if status is not None:
@@ -16775,18 +15775,6 @@ class ServiceAttachmentConnectedEndpointArgs:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[str]]:
-        """
-        The url of a consumer forwarding rule. [Deprecated] Do not use.
-        """
-        return pulumi.get(self, "forwarding_rule")
-
-    @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "forwarding_rule", value)
 
     @property
     @pulumi.getter(name="pscConnectionId")
@@ -18251,37 +17239,17 @@ class Uint128Args:
 @pulumi.input_type
 class UpcomingMaintenanceArgs:
     def __init__(__self__, *,
-                 date: Optional[pulumi.Input[str]] = None,
                  start_time_window: Optional[pulumi.Input['UpcomingMaintenanceTimeWindowArgs']] = None,
-                 time: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Upcoming Maintenance notification information.
-        :param pulumi.Input[str] date: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
         :param pulumi.Input['UpcomingMaintenanceTimeWindowArgs'] start_time_window: [Output Only] The start time window of the maintenance disruption.
-        :param pulumi.Input[str] time: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
         :param pulumi.Input[str] type: Defines the type of maintenance.
         """
-        if date is not None:
-            pulumi.set(__self__, "date", date)
         if start_time_window is not None:
             pulumi.set(__self__, "start_time_window", start_time_window)
-        if time is not None:
-            pulumi.set(__self__, "time", time)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def date(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        """
-        return pulumi.get(self, "date")
-
-    @date.setter
-    def date(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "date", value)
 
     @property
     @pulumi.getter(name="startTimeWindow")
@@ -18294,18 +17262,6 @@ class UpcomingMaintenanceArgs:
     @start_time_window.setter
     def start_time_window(self, value: Optional[pulumi.Input['UpcomingMaintenanceTimeWindowArgs']]):
         pulumi.set(self, "start_time_window", value)
-
-    @property
-    @pulumi.getter
-    def time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        """
-        return pulumi.get(self, "time")
-
-    @time.setter
-    def time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "time", value)
 
     @property
     @pulumi.getter
@@ -18359,7 +17315,6 @@ class UrlMapTestArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  expected_output_url: Optional[pulumi.Input[str]] = None,
                  expected_redirect_response_code: Optional[pulumi.Input[int]] = None,
-                 expected_url_redirect: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapTestHeaderArgs']]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -18374,7 +17329,6 @@ class UrlMapTestArgs:
                expectedOutputUrl is optional when service is specified.
         :param pulumi.Input[int] expected_redirect_response_code: For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
                expectedRedirectResponseCode cannot be set when service is set.
-        :param pulumi.Input[str] expected_url_redirect: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapTestHeaderArgs']]] headers: HTTP headers for this request. If headers contains a host header, then host must also match the header value.
         :param pulumi.Input[str] host: Host portion of the URL. If headers contains a host header, then host must also match the header value.
         :param pulumi.Input[str] path: Path portion of the URL.
@@ -18389,8 +17343,6 @@ class UrlMapTestArgs:
             pulumi.set(__self__, "expected_output_url", expected_output_url)
         if expected_redirect_response_code is not None:
             pulumi.set(__self__, "expected_redirect_response_code", expected_redirect_response_code)
-        if expected_url_redirect is not None:
-            pulumi.set(__self__, "expected_url_redirect", expected_url_redirect)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if host is not None:
@@ -18451,18 +17403,6 @@ class UrlMapTestArgs:
     @expected_redirect_response_code.setter
     def expected_redirect_response_code(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "expected_redirect_response_code", value)
-
-    @property
-    @pulumi.getter(name="expectedUrlRedirect")
-    def expected_url_redirect(self) -> Optional[pulumi.Input[str]]:
-        """
-        The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
-        """
-        return pulumi.get(self, "expected_url_redirect")
-
-    @expected_url_redirect.setter
-    def expected_url_redirect(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expected_url_redirect", value)
 
     @property
     @pulumi.getter

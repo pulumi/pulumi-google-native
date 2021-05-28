@@ -2373,7 +2373,6 @@ class WorkerPoolArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  taskrunner_settings: Optional[pulumi.Input['TaskRunnerSettingsArgs']] = None,
                  teardown_policy: Optional[pulumi.Input[str]] = None,
-                 worker_harness_container_image: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
@@ -2397,7 +2396,6 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] subnetwork: Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input['TaskRunnerSettingsArgs'] taskrunner_settings: Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
         :param pulumi.Input[str] teardown_policy: Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
-        :param pulumi.Input[str] worker_harness_container_image: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
         :param pulumi.Input[str] zone: Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
         """
         if autoscaling_settings is not None:
@@ -2440,8 +2438,6 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "taskrunner_settings", taskrunner_settings)
         if teardown_policy is not None:
             pulumi.set(__self__, "teardown_policy", teardown_policy)
-        if worker_harness_container_image is not None:
-            pulumi.set(__self__, "worker_harness_container_image", worker_harness_container_image)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -2684,18 +2680,6 @@ class WorkerPoolArgs:
     @teardown_policy.setter
     def teardown_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "teardown_policy", value)
-
-    @property
-    @pulumi.getter(name="workerHarnessContainerImage")
-    def worker_harness_container_image(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-        """
-        return pulumi.get(self, "worker_harness_container_image")
-
-    @worker_harness_container_image.setter
-    def worker_harness_container_image(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "worker_harness_container_image", value)
 
     @property
     @pulumi.getter

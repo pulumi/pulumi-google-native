@@ -200,14 +200,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.OutlierDetectionResponse> OutlierDetection { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-        /// 
-        /// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-        /// </summary>
-        [Output("port")]
-        public Output<int> Port { get; private set; } = null!;
-
-        /// <summary>
         /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
         /// 
         /// 
@@ -540,14 +532,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.OutlierDetectionArgs>? OutlierDetection { get; set; }
-
-        /// <summary>
-        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-        /// 
-        /// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.

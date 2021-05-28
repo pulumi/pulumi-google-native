@@ -165,12 +165,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.v1.OutlierDetectionResponse>;
     /**
-     * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-     *
-     * Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-     */
-    public readonly port!: pulumi.Output<number>;
-    /**
      * A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
      *
      *
@@ -262,7 +256,6 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["outlierDetection"] = args ? args.outlierDetection : undefined;
-            inputs["port"] = args ? args.port : undefined;
             inputs["portName"] = args ? args.portName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
@@ -297,7 +290,6 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
             inputs["outlierDetection"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
             inputs["portName"] = undefined /*out*/;
             inputs["protocol"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
@@ -451,12 +443,6 @@ export interface RegionBackendServiceArgs {
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.v1.OutlierDetectionArgs>;
-    /**
-     * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-     *
-     * Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-     */
-    readonly port?: pulumi.Input<number>;
     /**
      * A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
      *

@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// This field is deprecated and will be deleted. Please remove usage of this field.
-        /// </summary>
-        [Output("createdBy")]
-        public Output<string> CreatedBy { get; private set; } = null!;
-
-        /// <summary>
         /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
         /// </summary>
         [Output("deleteServiceStrategy")]
@@ -107,12 +101,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// This field is deprecated and will be deleted. Please remove usage of this field.
-        /// </summary>
-        [Input("createdBy")]
-        public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
         /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.

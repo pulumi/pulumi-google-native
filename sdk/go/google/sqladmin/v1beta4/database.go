@@ -19,8 +19,6 @@ type Database struct {
 	Charset pulumi.StringOutput `pulumi:"charset"`
 	// The Cloud SQL collation value.
 	Collation pulumi.StringOutput `pulumi:"collation"`
-	// This field is deprecated and will be removed from a future version of the API.
-	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// This is always *sql#database*.
@@ -73,8 +71,6 @@ type databaseState struct {
 	Charset *string `pulumi:"charset"`
 	// The Cloud SQL collation value.
 	Collation *string `pulumi:"collation"`
-	// This field is deprecated and will be removed from a future version of the API.
-	Etag *string `pulumi:"etag"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance *string `pulumi:"instance"`
 	// This is always *sql#database*.
@@ -93,8 +89,6 @@ type DatabaseState struct {
 	Charset pulumi.StringPtrInput
 	// The Cloud SQL collation value.
 	Collation pulumi.StringPtrInput
-	// This field is deprecated and will be removed from a future version of the API.
-	Etag pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance pulumi.StringPtrInput
 	// This is always *sql#database*.
@@ -117,8 +111,6 @@ type databaseArgs struct {
 	Charset *string `pulumi:"charset"`
 	// The Cloud SQL collation value.
 	Collation *string `pulumi:"collation"`
-	// This field is deprecated and will be removed from a future version of the API.
-	Etag *string `pulumi:"etag"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance string `pulumi:"instance"`
 	// This is always *sql#database*.
@@ -138,8 +130,6 @@ type DatabaseArgs struct {
 	Charset pulumi.StringPtrInput
 	// The Cloud SQL collation value.
 	Collation pulumi.StringPtrInput
-	// This field is deprecated and will be removed from a future version of the API.
-	Etag pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance pulumi.StringInput
 	// This is always *sql#database*.

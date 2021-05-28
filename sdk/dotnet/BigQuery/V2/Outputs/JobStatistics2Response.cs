@@ -54,14 +54,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.BigQueryModelTrainingResponse ModelTraining;
         /// <summary>
-        /// [Output-only, Beta] Deprecated; do not use.
-        /// </summary>
-        public readonly int ModelTrainingCurrentIteration;
-        /// <summary>
-        /// [Output-only, Beta] Deprecated; do not use.
-        /// </summary>
-        public readonly string ModelTrainingExpectedTotalIteration;
-        /// <summary>
         /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         /// </summary>
         public readonly string NumDmlAffectedRows;
@@ -140,10 +132,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.BigQueryModelTrainingResponse modelTraining,
 
-            int modelTrainingCurrentIteration,
-
-            string modelTrainingExpectedTotalIteration,
-
             string numDmlAffectedRows,
 
             ImmutableArray<Outputs.ExplainQueryStageResponse> queryPlan,
@@ -182,8 +170,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             DdlTargetTable = ddlTargetTable;
             EstimatedBytesProcessed = estimatedBytesProcessed;
             ModelTraining = modelTraining;
-            ModelTrainingCurrentIteration = modelTrainingCurrentIteration;
-            ModelTrainingExpectedTotalIteration = modelTrainingExpectedTotalIteration;
             NumDmlAffectedRows = numDmlAffectedRows;
             QueryPlan = queryPlan;
             ReferencedRoutines = referencedRoutines;

@@ -40,7 +40,6 @@ class BackendServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input['OutlierDetectionArgs']] = None,
-                 port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -115,9 +114,6 @@ class BackendServiceArgs:
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
                
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] port: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-               
-               Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
                
                
@@ -194,8 +190,6 @@ class BackendServiceArgs:
             pulumi.set(__self__, "network", network)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
         if protocol is not None:
@@ -550,20 +544,6 @@ class BackendServiceArgs:
         pulumi.set(self, "outlier_detection", value)
 
     @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-
-        Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
-
-    @property
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -716,7 +696,6 @@ class BackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -796,9 +775,6 @@ class BackendService(pulumi.CustomResource):
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
                
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] port: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-               
-               Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
                
                
@@ -874,7 +850,6 @@ class BackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -921,7 +896,6 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["outlier_detection"] = outlier_detection
-            __props__.__dict__["port"] = port
             __props__.__dict__["port_name"] = port_name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -979,7 +953,6 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["outlier_detection"] = None
-        __props__.__dict__["port"] = None
         __props__.__dict__["port_name"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["region"] = None
@@ -1210,16 +1183,6 @@ class BackendService(pulumi.CustomResource):
         Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "outlier_detection")
-
-    @property
-    @pulumi.getter
-    def port(self) -> pulumi.Output[int]:
-        """
-        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
-
-        Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
-        """
-        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="portName")

@@ -33,12 +33,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         [Input("continuousAnalysis")]
         public Input<string>? ContinuousAnalysis { get; set; }
 
-        /// <summary>
-        /// The last time continuous analysis was done for this resource. Deprecated, do not use.
-        /// </summary>
-        [Input("lastAnalysisTime")]
-        public Input<string>? LastAnalysisTime { get; set; }
-
         public DiscoveredArgs()
         {
         }

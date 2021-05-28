@@ -22,8 +22,6 @@ __all__ = [
     'AttachedDiskResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
-    'AuthenticationPolicyResponse',
-    'AuthorizationConfigResponse',
     'AuthorizationLoggingOptionsResponse',
     'AutoscalerStatusDetailsResponse',
     'AutoscalingPolicyCpuUtilizationResponse',
@@ -49,7 +47,6 @@ __all__ = [
     'CallCredentialsResponse',
     'ChannelCredentialsResponse',
     'CircuitBreakersResponse',
-    'ClientTlsSettingsResponse',
     'ConditionResponse',
     'ConfidentialInstanceConfigResponse',
     'ConnectionDrainingResponse',
@@ -116,8 +113,6 @@ __all__ = [
     'InterconnectAttachmentPrivateInfoResponse',
     'InterconnectCircuitInfoResponse',
     'InterconnectOutageNotificationResponse',
-    'JwtHeaderResponse',
-    'JwtResponse',
     'LicenseResourceCommitmentResponse',
     'LicenseResourceRequirementsResponse',
     'LocalDiskResponse',
@@ -130,12 +125,10 @@ __all__ = [
     'MetadataFilterLabelMatchResponse',
     'MetadataFilterResponse',
     'MetadataResponse',
-    'MutualTlsResponse',
     'NamedPortResponse',
     'NetworkEndpointGroupAppEngineResponse',
     'NetworkEndpointGroupCloudFunctionResponse',
     'NetworkEndpointGroupCloudRunResponse',
-    'NetworkEndpointGroupLbNetworkEndpointGroupResponse',
     'NetworkEndpointGroupServerlessDeploymentResponse',
     'NetworkInterfaceResponse',
     'NetworkInterfaceSubInterfaceResponse',
@@ -146,7 +139,6 @@ __all__ = [
     'NodeGroupMaintenanceWindowResponse',
     'NodeTemplateNodeTypeFlexibilityResponse',
     'NotificationEndpointGrpcSettingsResponse',
-    'OriginAuthenticationMethodResponse',
     'OutlierDetectionResponse',
     'PacketMirroringFilterResponse',
     'PacketMirroringForwardingRuleInfoResponse',
@@ -156,13 +148,8 @@ __all__ = [
     'PacketMirroringNetworkInfoResponse',
     'PathMatcherResponse',
     'PathRuleResponse',
-    'PeerAuthenticationMethodResponse',
-    'PermissionConstraintResponse',
-    'PermissionResponse',
-    'PrincipalResponse',
     'PublicAdvertisedPrefixPublicDelegatedPrefixResponse',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixResponse',
-    'RbacPolicyResponse',
     'RequestMirrorPolicyResponse',
     'ReservationAffinityResponse',
     'ReservationResponse',
@@ -1582,102 +1569,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-
-@pulumi.output_type
-class AuthenticationPolicyResponse(dict):
-    """
-    [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "principalBinding":
-            suggest = "principal_binding"
-        elif key == "serverTlsContext":
-            suggest = "server_tls_context"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuthenticationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuthenticationPolicyResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuthenticationPolicyResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 origins: Sequence['outputs.OriginAuthenticationMethodResponse'],
-                 peers: Sequence['outputs.PeerAuthenticationMethodResponse'],
-                 principal_binding: str,
-                 server_tls_context: 'outputs.TlsContextResponse'):
-        """
-        [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
-        :param Sequence['OriginAuthenticationMethodResponse'] origins: List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
-        :param Sequence['PeerAuthenticationMethodResponse'] peers: List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
-        :param str principal_binding: Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
-        :param 'TlsContextResponse' server_tls_context: Configures the mechanism to obtain server-side security certificates and identity information.
-        """
-        pulumi.set(__self__, "origins", origins)
-        pulumi.set(__self__, "peers", peers)
-        pulumi.set(__self__, "principal_binding", principal_binding)
-        pulumi.set(__self__, "server_tls_context", server_tls_context)
-
-    @property
-    @pulumi.getter
-    def origins(self) -> Sequence['outputs.OriginAuthenticationMethodResponse']:
-        """
-        List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
-        """
-        return pulumi.get(self, "origins")
-
-    @property
-    @pulumi.getter
-    def peers(self) -> Sequence['outputs.PeerAuthenticationMethodResponse']:
-        """
-        List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
-        """
-        return pulumi.get(self, "peers")
-
-    @property
-    @pulumi.getter(name="principalBinding")
-    def principal_binding(self) -> str:
-        """
-        Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
-        """
-        return pulumi.get(self, "principal_binding")
-
-    @property
-    @pulumi.getter(name="serverTlsContext")
-    def server_tls_context(self) -> 'outputs.TlsContextResponse':
-        """
-        Configures the mechanism to obtain server-side security certificates and identity information.
-        """
-        return pulumi.get(self, "server_tls_context")
-
-
-@pulumi.output_type
-class AuthorizationConfigResponse(dict):
-    """
-    [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
-    """
-    def __init__(__self__, *,
-                 policies: Sequence['outputs.RbacPolicyResponse']):
-        """
-        [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
-        :param Sequence['RbacPolicyResponse'] policies: List of RbacPolicies.
-        """
-        pulumi.set(__self__, "policies", policies)
-
-    @property
-    @pulumi.getter
-    def policies(self) -> Sequence['outputs.RbacPolicyResponse']:
-        """
-        List of RbacPolicies.
-        """
-        return pulumi.get(self, "policies")
 
 
 @pulumi.output_type
@@ -3802,80 +3693,6 @@ class CircuitBreakersResponse(dict):
         The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1.
         """
         return pulumi.get(self, "max_retries")
-
-
-@pulumi.output_type
-class ClientTlsSettingsResponse(dict):
-    """
-    [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clientTlsContext":
-            suggest = "client_tls_context"
-        elif key == "subjectAltNames":
-            suggest = "subject_alt_names"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientTlsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientTlsSettingsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientTlsSettingsResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 client_tls_context: 'outputs.TlsContextResponse',
-                 mode: str,
-                 sni: str,
-                 subject_alt_names: Sequence[str]):
-        """
-        [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
-        :param 'TlsContextResponse' client_tls_context: Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
-        :param str mode: Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
-        :param str sni: SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
-        :param Sequence[str] subject_alt_names: A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
-        """
-        pulumi.set(__self__, "client_tls_context", client_tls_context)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "sni", sni)
-        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
-
-    @property
-    @pulumi.getter(name="clientTlsContext")
-    def client_tls_context(self) -> 'outputs.TlsContextResponse':
-        """
-        Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
-        """
-        return pulumi.get(self, "client_tls_context")
-
-    @property
-    @pulumi.getter
-    def mode(self) -> str:
-        """
-        Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
-        """
-        return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter
-    def sni(self) -> str:
-        """
-        SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
-        """
-        return pulumi.get(self, "sni")
-
-    @property
-    @pulumi.getter(name="subjectAltNames")
-    def subject_alt_names(self) -> Sequence[str]:
-        """
-        A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
-        """
-        return pulumi.get(self, "subject_alt_names")
 
 
 @pulumi.output_type
@@ -7476,8 +7293,6 @@ class ImageRawDiskResponse(dict):
         suggest = None
         if key == "containerType":
             suggest = "container_type"
-        elif key == "sha1Checksum":
-            suggest = "sha1_checksum"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ImageRawDiskResponse. Access the value via the '{suggest}' property getter instead.")
@@ -7492,16 +7307,13 @@ class ImageRawDiskResponse(dict):
 
     def __init__(__self__, *,
                  container_type: str,
-                 sha1_checksum: str,
                  source: str):
         """
         The parameters of the raw disk image.
         :param str container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param str sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         :param str source: The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
         """
         pulumi.set(__self__, "container_type", container_type)
-        pulumi.set(__self__, "sha1_checksum", sha1_checksum)
         pulumi.set(__self__, "source", source)
 
     @property
@@ -7511,14 +7323,6 @@ class ImageRawDiskResponse(dict):
         The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
         """
         return pulumi.get(self, "container_type")
-
-    @property
-    @pulumi.getter(name="sha1Checksum")
-    def sha1_checksum(self) -> str:
-        """
-        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-        """
-        return pulumi.get(self, "sha1_checksum")
 
     @property
     @pulumi.getter
@@ -8010,8 +7814,6 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
         suggest = None
         if key == "hasStatefulConfig":
             suggest = "has_stateful_config"
-        elif key == "isStateful":
-            suggest = "is_stateful"
         elif key == "perInstanceConfigs":
             suggest = "per_instance_configs"
 
@@ -8028,15 +7830,12 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
 
     def __init__(__self__, *,
                  has_stateful_config: bool,
-                 is_stateful: bool,
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
         """
         :param bool has_stateful_config: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param bool is_stateful: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: [Output Only] Status of per-instance configs on the instance.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
-        pulumi.set(__self__, "is_stateful", is_stateful)
         pulumi.set(__self__, "per_instance_configs", per_instance_configs)
 
     @property
@@ -8046,14 +7845,6 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
         [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
         """
         return pulumi.get(self, "has_stateful_config")
-
-    @property
-    @pulumi.getter(name="isStateful")
-    def is_stateful(self) -> bool:
-        """
-        [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-        """
-        return pulumi.get(self, "is_stateful")
 
     @property
     @pulumi.getter(name="perInstanceConfigs")
@@ -8267,19 +8058,16 @@ class InstanceGroupManagerVersionResponse(dict):
     def __init__(__self__, *,
                  instance_template: str,
                  name: str,
-                 tag: str,
                  target_size: 'outputs.FixedOrPercentResponse'):
         """
         :param str instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create new instances in the managed instance group until the `targetSize` for this version is reached. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE; in those cases, existing instances are updated until the `targetSize` for this version is reached.
         :param str name: Name of the version. Unique among all versions in the scope of this managed instance group.
-        :param str tag: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
         :param 'FixedOrPercentResponse' target_size: Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to:  
                - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. 
                - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded up.  If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
         """
         pulumi.set(__self__, "instance_template", instance_template)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "tag", tag)
         pulumi.set(__self__, "target_size", target_size)
 
     @property
@@ -8297,14 +8085,6 @@ class InstanceGroupManagerVersionResponse(dict):
         Name of the version. Unique among all versions in the scope of this managed instance group.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def tag(self) -> str:
-        """
-        Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
-        """
-        return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter(name="targetSize")
@@ -8971,163 +8751,6 @@ class InterconnectOutageNotificationResponse(dict):
 
 
 @pulumi.output_type
-class JwtHeaderResponse(dict):
-    """
-    [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "valuePrefix":
-            suggest = "value_prefix"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JwtHeaderResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JwtHeaderResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JwtHeaderResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 name: str,
-                 value_prefix: str):
-        """
-        [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
-        :param str name: The HTTP header name.
-        :param str value_prefix: The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value_prefix", value_prefix)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The HTTP header name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="valuePrefix")
-    def value_prefix(self) -> str:
-        """
-        The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-        """
-        return pulumi.get(self, "value_prefix")
-
-
-@pulumi.output_type
-class JwtResponse(dict):
-    """
-    [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "jwksPublicKeys":
-            suggest = "jwks_public_keys"
-        elif key == "jwtHeaders":
-            suggest = "jwt_headers"
-        elif key == "jwtParams":
-            suggest = "jwt_params"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JwtResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JwtResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JwtResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 audiences: Sequence[str],
-                 issuer: str,
-                 jwks_public_keys: str,
-                 jwt_headers: Sequence['outputs.JwtHeaderResponse'],
-                 jwt_params: Sequence[str]):
-        """
-        [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
-        :param Sequence[str] audiences: A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
-        :param str issuer: Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
-        :param str jwks_public_keys: The provider's public key set to validate the signature of the JWT.
-        :param Sequence['JwtHeaderResponse'] jwt_headers: jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order:
-               
-               1. The Authorization header using the Bearer schema. See `here `_. Example:
-               
-               Authorization: Bearer .
-               
-               2. `access_token` query parameter. See `this `_
-               
-               Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations.
-               
-               This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
-        :param Sequence[str] jwt_params: This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
-        """
-        pulumi.set(__self__, "audiences", audiences)
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "jwks_public_keys", jwks_public_keys)
-        pulumi.set(__self__, "jwt_headers", jwt_headers)
-        pulumi.set(__self__, "jwt_params", jwt_params)
-
-    @property
-    @pulumi.getter
-    def audiences(self) -> Sequence[str]:
-        """
-        A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
-        """
-        return pulumi.get(self, "audiences")
-
-    @property
-    @pulumi.getter
-    def issuer(self) -> str:
-        """
-        Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
-        """
-        return pulumi.get(self, "issuer")
-
-    @property
-    @pulumi.getter(name="jwksPublicKeys")
-    def jwks_public_keys(self) -> str:
-        """
-        The provider's public key set to validate the signature of the JWT.
-        """
-        return pulumi.get(self, "jwks_public_keys")
-
-    @property
-    @pulumi.getter(name="jwtHeaders")
-    def jwt_headers(self) -> Sequence['outputs.JwtHeaderResponse']:
-        """
-        jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order:
-
-        1. The Authorization header using the Bearer schema. See `here `_. Example:
-
-        Authorization: Bearer .
-
-        2. `access_token` query parameter. See `this `_
-
-        Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations.
-
-        This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
-        """
-        return pulumi.get(self, "jwt_headers")
-
-    @property
-    @pulumi.getter(name="jwtParams")
-    def jwt_params(self) -> Sequence[str]:
-        """
-        This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
-        """
-        return pulumi.get(self, "jwt_params")
-
-
-@pulumi.output_type
 class LicenseResourceCommitmentResponse(dict):
     """
     Commitment for a particular license resource.
@@ -9757,28 +9380,6 @@ class MetadataResponse(dict):
 
 
 @pulumi.output_type
-class MutualTlsResponse(dict):
-    """
-    [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
-    """
-    def __init__(__self__, *,
-                 mode: str):
-        """
-        [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
-        :param str mode: Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-        """
-        pulumi.set(__self__, "mode", mode)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> str:
-        """
-        Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-        """
-        return pulumi.get(self, "mode")
-
-
-@pulumi.output_type
 class NamedPortResponse(dict):
     """
     The named port. For example: .
@@ -10045,78 +9646,6 @@ class NetworkEndpointGroupCloudRunResponse(dict):
         For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         return pulumi.get(self, "url_mask")
-
-
-@pulumi.output_type
-class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
-    """
-    Load balancing specific fields for network endpoint group.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "defaultPort":
-            suggest = "default_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointGroupLbNetworkEndpointGroupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkEndpointGroupLbNetworkEndpointGroupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkEndpointGroupLbNetworkEndpointGroupResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 default_port: int,
-                 network: str,
-                 subnetwork: str,
-                 zone: str):
-        """
-        Load balancing specific fields for network endpoint group.
-        :param int default_port: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        :param str network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-        :param str subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-        :param str zone: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-        """
-        pulumi.set(__self__, "default_port", default_port)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "subnetwork", subnetwork)
-        pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="defaultPort")
-    def default_port(self) -> int:
-        """
-        The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "default_port")
-
-    @property
-    @pulumi.getter
-    def network(self) -> str:
-        """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "network")
-
-    @property
-    @pulumi.getter
-    def subnetwork(self) -> str:
-        """
-        Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "subnetwork")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> str:
-        """
-        [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
@@ -11054,24 +10583,6 @@ class NotificationEndpointGrpcSettingsResponse(dict):
 
 
 @pulumi.output_type
-class OriginAuthenticationMethodResponse(dict):
-    """
-    [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
-    """
-    def __init__(__self__, *,
-                 jwt: 'outputs.JwtResponse'):
-        """
-        [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
-        """
-        pulumi.set(__self__, "jwt", jwt)
-
-    @property
-    @pulumi.getter
-    def jwt(self) -> 'outputs.JwtResponse':
-        return pulumi.get(self, "jwt")
-
-
-@pulumi.output_type
 class OutlierDetectionResponse(dict):
     """
     Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
@@ -11778,338 +11289,6 @@ class PathRuleResponse(dict):
 
 
 @pulumi.output_type
-class PeerAuthenticationMethodResponse(dict):
-    """
-    [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
-    """
-    def __init__(__self__, *,
-                 mtls: 'outputs.MutualTlsResponse'):
-        """
-        [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
-        :param 'MutualTlsResponse' mtls: Set if mTLS is used for peer authentication.
-        """
-        pulumi.set(__self__, "mtls", mtls)
-
-    @property
-    @pulumi.getter
-    def mtls(self) -> 'outputs.MutualTlsResponse':
-        """
-        Set if mTLS is used for peer authentication.
-        """
-        return pulumi.get(self, "mtls")
-
-
-@pulumi.output_type
-class PermissionConstraintResponse(dict):
-    """
-    Custom constraint that specifies a key and a list of allowed values for Istio attributes.
-    """
-    def __init__(__self__, *,
-                 key: str,
-                 values: Sequence[str]):
-        """
-        Custom constraint that specifies a key and a list of allowed values for Istio attributes.
-        :param str key: Key of the constraint.
-        :param Sequence[str] values: A list of allowed values.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter
-    def key(self) -> str:
-        """
-        Key of the constraint.
-        """
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Sequence[str]:
-        """
-        A list of allowed values.
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class PermissionResponse(dict):
-    """
-    [Deprecated] All fields defined in a permission are ANDed.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "notHosts":
-            suggest = "not_hosts"
-        elif key == "notMethods":
-            suggest = "not_methods"
-        elif key == "notPaths":
-            suggest = "not_paths"
-        elif key == "notPorts":
-            suggest = "not_ports"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PermissionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PermissionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PermissionResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 constraints: Sequence['outputs.PermissionConstraintResponse'],
-                 hosts: Sequence[str],
-                 methods: Sequence[str],
-                 not_hosts: Sequence[str],
-                 not_methods: Sequence[str],
-                 not_paths: Sequence[str],
-                 not_ports: Sequence[str],
-                 paths: Sequence[str],
-                 ports: Sequence[str]):
-        """
-        [Deprecated] All fields defined in a permission are ANDed.
-        :param Sequence['PermissionConstraintResponse'] constraints: Extra custom constraints. The constraints are ANDed together.
-        :param Sequence[str] hosts: Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
-        :param Sequence[str] methods: HTTP method.
-        :param Sequence[str] not_hosts: Negate of hosts. Specifies exclusions.
-        :param Sequence[str] not_methods: Negate of methods. Specifies exclusions.
-        :param Sequence[str] not_paths: Negate of paths. Specifies exclusions.
-        :param Sequence[str] not_ports: Negate of ports. Specifies exclusions.
-        :param Sequence[str] paths: HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
-        :param Sequence[str] ports: Port names or numbers.
-        """
-        pulumi.set(__self__, "constraints", constraints)
-        pulumi.set(__self__, "hosts", hosts)
-        pulumi.set(__self__, "methods", methods)
-        pulumi.set(__self__, "not_hosts", not_hosts)
-        pulumi.set(__self__, "not_methods", not_methods)
-        pulumi.set(__self__, "not_paths", not_paths)
-        pulumi.set(__self__, "not_ports", not_ports)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "ports", ports)
-
-    @property
-    @pulumi.getter
-    def constraints(self) -> Sequence['outputs.PermissionConstraintResponse']:
-        """
-        Extra custom constraints. The constraints are ANDed together.
-        """
-        return pulumi.get(self, "constraints")
-
-    @property
-    @pulumi.getter
-    def hosts(self) -> Sequence[str]:
-        """
-        Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "hosts")
-
-    @property
-    @pulumi.getter
-    def methods(self) -> Sequence[str]:
-        """
-        HTTP method.
-        """
-        return pulumi.get(self, "methods")
-
-    @property
-    @pulumi.getter(name="notHosts")
-    def not_hosts(self) -> Sequence[str]:
-        """
-        Negate of hosts. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_hosts")
-
-    @property
-    @pulumi.getter(name="notMethods")
-    def not_methods(self) -> Sequence[str]:
-        """
-        Negate of methods. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_methods")
-
-    @property
-    @pulumi.getter(name="notPaths")
-    def not_paths(self) -> Sequence[str]:
-        """
-        Negate of paths. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_paths")
-
-    @property
-    @pulumi.getter(name="notPorts")
-    def not_ports(self) -> Sequence[str]:
-        """
-        Negate of ports. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_ports")
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Sequence[str]:
-        """
-        HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "paths")
-
-    @property
-    @pulumi.getter
-    def ports(self) -> Sequence[str]:
-        """
-        Port names or numbers.
-        """
-        return pulumi.get(self, "ports")
-
-
-@pulumi.output_type
-class PrincipalResponse(dict):
-    """
-    [Deprecated] All fields defined in a principal are ANDed.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "notGroups":
-            suggest = "not_groups"
-        elif key == "notIps":
-            suggest = "not_ips"
-        elif key == "notNamespaces":
-            suggest = "not_namespaces"
-        elif key == "notUsers":
-            suggest = "not_users"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PrincipalResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PrincipalResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PrincipalResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 condition: str,
-                 groups: Sequence[str],
-                 ips: Sequence[str],
-                 namespaces: Sequence[str],
-                 not_groups: Sequence[str],
-                 not_ips: Sequence[str],
-                 not_namespaces: Sequence[str],
-                 not_users: Sequence[str],
-                 properties: Mapping[str, str],
-                 users: Sequence[str]):
-        """
-        [Deprecated] All fields defined in a principal are ANDed.
-        :param str condition: An expression to specify custom condition.
-        :param Sequence[str] groups: The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-        :param Sequence[str] ips: IPv4 or IPv6 address or range (In CIDR format)
-        :param Sequence[str] namespaces: The namespaces. Exact match, prefix match, and suffix match are supported.
-        :param Sequence[str] not_groups: Negate of groups. Specifies exclusions.
-        :param Sequence[str] not_ips: Negate of IPs. Specifies exclusions.
-        :param Sequence[str] not_namespaces: Negate of namespaces. Specifies exclusions.
-        :param Sequence[str] not_users: Negate of users. Specifies exclusions.
-        :param Mapping[str, str] properties: A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-        :param Sequence[str] users: The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-        """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "groups", groups)
-        pulumi.set(__self__, "ips", ips)
-        pulumi.set(__self__, "namespaces", namespaces)
-        pulumi.set(__self__, "not_groups", not_groups)
-        pulumi.set(__self__, "not_ips", not_ips)
-        pulumi.set(__self__, "not_namespaces", not_namespaces)
-        pulumi.set(__self__, "not_users", not_users)
-        pulumi.set(__self__, "properties", properties)
-        pulumi.set(__self__, "users", users)
-
-    @property
-    @pulumi.getter
-    def condition(self) -> str:
-        """
-        An expression to specify custom condition.
-        """
-        return pulumi.get(self, "condition")
-
-    @property
-    @pulumi.getter
-    def groups(self) -> Sequence[str]:
-        """
-        The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "groups")
-
-    @property
-    @pulumi.getter
-    def ips(self) -> Sequence[str]:
-        """
-        IPv4 or IPv6 address or range (In CIDR format)
-        """
-        return pulumi.get(self, "ips")
-
-    @property
-    @pulumi.getter
-    def namespaces(self) -> Sequence[str]:
-        """
-        The namespaces. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "namespaces")
-
-    @property
-    @pulumi.getter(name="notGroups")
-    def not_groups(self) -> Sequence[str]:
-        """
-        Negate of groups. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_groups")
-
-    @property
-    @pulumi.getter(name="notIps")
-    def not_ips(self) -> Sequence[str]:
-        """
-        Negate of IPs. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_ips")
-
-    @property
-    @pulumi.getter(name="notNamespaces")
-    def not_namespaces(self) -> Sequence[str]:
-        """
-        Negate of namespaces. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_namespaces")
-
-    @property
-    @pulumi.getter(name="notUsers")
-    def not_users(self) -> Sequence[str]:
-        """
-        Negate of users. Specifies exclusions.
-        """
-        return pulumi.get(self, "not_users")
-
-    @property
-    @pulumi.getter
-    def properties(self) -> Mapping[str, str]:
-        """
-        A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-        """
-        return pulumi.get(self, "properties")
-
-    @property
-    @pulumi.getter
-    def users(self) -> Sequence[str]:
-        """
-        The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-        """
-        return pulumi.get(self, "users")
-
-
-@pulumi.output_type
 class PublicAdvertisedPrefixPublicDelegatedPrefixResponse(dict):
     """
     Represents a CIDR range which can be used to assign addresses.
@@ -12299,46 +11478,6 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
         [Output Only] The status of the sub public delegated prefix.
         """
         return pulumi.get(self, "status")
-
-
-@pulumi.output_type
-class RbacPolicyResponse(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 permissions: Sequence['outputs.PermissionResponse'],
-                 principals: Sequence['outputs.PrincipalResponse']):
-        """
-        :param str name: Name of the RbacPolicy.
-        :param Sequence['PermissionResponse'] permissions: The list of permissions.
-        :param Sequence['PrincipalResponse'] principals: The list of principals.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "principals", principals)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        Name of the RbacPolicy.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def permissions(self) -> Sequence['outputs.PermissionResponse']:
-        """
-        The list of permissions.
-        """
-        return pulumi.get(self, "permissions")
-
-    @property
-    @pulumi.getter
-    def principals(self) -> Sequence['outputs.PrincipalResponse']:
-        """
-        The list of principals.
-        """
-        return pulumi.get(self, "principals")
 
 
 @pulumi.output_type
@@ -16374,14 +15513,8 @@ class SecuritySettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authenticationPolicy":
-            suggest = "authentication_policy"
-        elif key == "authorizationConfig":
-            suggest = "authorization_config"
-        elif key == "clientTlsPolicy":
+        if key == "clientTlsPolicy":
             suggest = "client_tls_policy"
-        elif key == "clientTlsSettings":
-            suggest = "client_tls_settings"
         elif key == "subjectAltNames":
             suggest = "subject_alt_names"
 
@@ -16397,57 +15530,21 @@ class SecuritySettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 authentication: str,
-                 authentication_policy: 'outputs.AuthenticationPolicyResponse',
-                 authorization_config: 'outputs.AuthorizationConfigResponse',
                  client_tls_policy: str,
-                 client_tls_settings: 'outputs.ClientTlsSettingsResponse',
                  subject_alt_names: Sequence[str]):
         """
         The authentication and authorization settings for a BackendService.
-        :param str authentication: [Deprecated] Use clientTlsPolicy instead.
-        :param 'AuthenticationPolicyResponse' authentication_policy: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-        :param 'AuthorizationConfigResponse' authorization_config: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
         :param str client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
                clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                If left blank, communications are not encrypted.
                Note: This field currently has no impact.
-        :param 'ClientTlsSettingsResponse' client_tls_settings: [Deprecated] TLS Settings for the backend service.
         :param Sequence[str] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service.
                Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities.
                Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
                Note: This field currently has no impact.
         """
-        pulumi.set(__self__, "authentication", authentication)
-        pulumi.set(__self__, "authentication_policy", authentication_policy)
-        pulumi.set(__self__, "authorization_config", authorization_config)
         pulumi.set(__self__, "client_tls_policy", client_tls_policy)
-        pulumi.set(__self__, "client_tls_settings", client_tls_settings)
         pulumi.set(__self__, "subject_alt_names", subject_alt_names)
-
-    @property
-    @pulumi.getter
-    def authentication(self) -> str:
-        """
-        [Deprecated] Use clientTlsPolicy instead.
-        """
-        return pulumi.get(self, "authentication")
-
-    @property
-    @pulumi.getter(name="authenticationPolicy")
-    def authentication_policy(self) -> 'outputs.AuthenticationPolicyResponse':
-        """
-        [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-        """
-        return pulumi.get(self, "authentication_policy")
-
-    @property
-    @pulumi.getter(name="authorizationConfig")
-    def authorization_config(self) -> 'outputs.AuthorizationConfigResponse':
-        """
-        [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-        """
-        return pulumi.get(self, "authorization_config")
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
@@ -16459,14 +15556,6 @@ class SecuritySettingsResponse(dict):
         Note: This field currently has no impact.
         """
         return pulumi.get(self, "client_tls_policy")
-
-    @property
-    @pulumi.getter(name="clientTlsSettings")
-    def client_tls_settings(self) -> 'outputs.ClientTlsSettingsResponse':
-        """
-        [Deprecated] TLS Settings for the backend service.
-        """
-        return pulumi.get(self, "client_tls_settings")
 
     @property
     @pulumi.getter(name="subjectAltNames")
@@ -16602,9 +15691,7 @@ class ServiceAttachmentConnectedEndpointResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "forwardingRule":
-            suggest = "forwarding_rule"
-        elif key == "pscConnectionId":
+        if key == "pscConnectionId":
             suggest = "psc_connection_id"
 
         if suggest:
@@ -16620,18 +15707,15 @@ class ServiceAttachmentConnectedEndpointResponse(dict):
 
     def __init__(__self__, *,
                  endpoint: str,
-                 forwarding_rule: str,
                  psc_connection_id: str,
                  status: str):
         """
         [Output Only] A connection connected to this service attachment.
         :param str endpoint: The url of a connected endpoint.
-        :param str forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
         :param str psc_connection_id: The PSC connection id of the connected endpoint.
         :param str status: The status of a connected endpoint to this service attachment.
         """
         pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         pulumi.set(__self__, "status", status)
 
@@ -16642,14 +15726,6 @@ class ServiceAttachmentConnectedEndpointResponse(dict):
         The url of a connected endpoint.
         """
         return pulumi.get(self, "endpoint")
-
-    @property
-    @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> str:
-        """
-        The url of a consumer forwarding rule. [Deprecated] Do not use.
-        """
-        return pulumi.get(self, "forwarding_rule")
 
     @property
     @pulumi.getter(name="pscConnectionId")
@@ -18203,29 +17279,15 @@ class UpcomingMaintenanceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 date: str,
                  start_time_window: 'outputs.UpcomingMaintenanceTimeWindowResponse',
-                 time: str,
                  type: str):
         """
         Upcoming Maintenance notification information.
-        :param str date: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
         :param 'UpcomingMaintenanceTimeWindowResponse' start_time_window: [Output Only] The start time window of the maintenance disruption.
-        :param str time: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
         :param str type: Defines the type of maintenance.
         """
-        pulumi.set(__self__, "date", date)
         pulumi.set(__self__, "start_time_window", start_time_window)
-        pulumi.set(__self__, "time", time)
         pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def date(self) -> str:
-        """
-        [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        """
-        return pulumi.get(self, "date")
 
     @property
     @pulumi.getter(name="startTimeWindow")
@@ -18234,14 +17296,6 @@ class UpcomingMaintenanceResponse(dict):
         [Output Only] The start time window of the maintenance disruption.
         """
         return pulumi.get(self, "start_time_window")
-
-    @property
-    @pulumi.getter
-    def time(self) -> str:
-        """
-        [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
-        """
-        return pulumi.get(self, "time")
 
     @property
     @pulumi.getter
@@ -18324,8 +17378,6 @@ class UrlMapTestResponse(dict):
             suggest = "expected_output_url"
         elif key == "expectedRedirectResponseCode":
             suggest = "expected_redirect_response_code"
-        elif key == "expectedUrlRedirect":
-            suggest = "expected_url_redirect"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in UrlMapTestResponse. Access the value via the '{suggest}' property getter instead.")
@@ -18343,7 +17395,6 @@ class UrlMapTestResponse(dict):
                  description: str,
                  expected_output_url: str,
                  expected_redirect_response_code: int,
-                 expected_url_redirect: str,
                  headers: Sequence['outputs.UrlMapTestHeaderResponse'],
                  host: str,
                  path: str,
@@ -18358,7 +17409,6 @@ class UrlMapTestResponse(dict):
                expectedOutputUrl is optional when service is specified.
         :param int expected_redirect_response_code: For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
                expectedRedirectResponseCode cannot be set when service is set.
-        :param str expected_url_redirect: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
         :param Sequence['UrlMapTestHeaderResponse'] headers: HTTP headers for this request. If headers contains a host header, then host must also match the header value.
         :param str host: Host portion of the URL. If headers contains a host header, then host must also match the header value.
         :param str path: Path portion of the URL.
@@ -18369,7 +17419,6 @@ class UrlMapTestResponse(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "expected_output_url", expected_output_url)
         pulumi.set(__self__, "expected_redirect_response_code", expected_redirect_response_code)
-        pulumi.set(__self__, "expected_url_redirect", expected_url_redirect)
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "path", path)
@@ -18410,14 +17459,6 @@ class UrlMapTestResponse(dict):
         expectedRedirectResponseCode cannot be set when service is set.
         """
         return pulumi.get(self, "expected_redirect_response_code")
-
-    @property
-    @pulumi.getter(name="expectedUrlRedirect")
-    def expected_url_redirect(self) -> str:
-        """
-        The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
-        """
-        return pulumi.get(self, "expected_url_redirect")
 
     @property
     @pulumi.getter

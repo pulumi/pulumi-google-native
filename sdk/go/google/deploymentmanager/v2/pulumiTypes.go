@@ -3147,8 +3147,6 @@ func (o ImportFileResponseArrayOutput) Index(i pulumi.IntInput) ImportFileRespon
 type Operation struct {
 	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId *string `pulumi:"clientOperationId"`
-	// [Deprecated] This field is deprecated.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// [Output Only] A textual description of the operation, which is set when the operation is created.
 	Description *string `pulumi:"description"`
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
@@ -3210,8 +3208,6 @@ type OperationInput interface {
 type OperationArgs struct {
 	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId pulumi.StringPtrInput `pulumi:"clientOperationId"`
-	// [Deprecated] This field is deprecated.
-	CreationTimestamp pulumi.StringPtrInput `pulumi:"creationTimestamp"`
 	// [Output Only] A textual description of the operation, which is set when the operation is created.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
@@ -3339,11 +3335,6 @@ func (o OperationOutput) ToOperationPtrOutputWithContext(ctx context.Context) Op
 // [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
 func (o OperationOutput) ClientOperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Operation) *string { return v.ClientOperationId }).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] This field is deprecated.
-func (o OperationOutput) CreationTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.CreationTimestamp }).(pulumi.StringPtrOutput)
 }
 
 // [Output Only] A textual description of the operation, which is set when the operation is created.
@@ -3481,16 +3472,6 @@ func (o OperationPtrOutput) ClientOperationId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ClientOperationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] This field is deprecated.
-func (o OperationPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreationTimestamp
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3718,8 +3699,6 @@ func (o OperationPtrOutput) Zone() pulumi.StringPtrOutput {
 type OperationResponse struct {
 	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId string `pulumi:"clientOperationId"`
-	// [Deprecated] This field is deprecated.
-	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// [Output Only] A textual description of the operation, which is set when the operation is created.
 	Description string `pulumi:"description"`
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
@@ -3779,8 +3758,6 @@ type OperationResponseInput interface {
 type OperationResponseArgs struct {
 	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId pulumi.StringInput `pulumi:"clientOperationId"`
-	// [Deprecated] This field is deprecated.
-	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
 	// [Output Only] A textual description of the operation, which is set when the operation is created.
 	Description pulumi.StringInput `pulumi:"description"`
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
@@ -3906,11 +3883,6 @@ func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx con
 // [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
 func (o OperationResponseOutput) ClientOperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.ClientOperationId }).(pulumi.StringOutput)
-}
-
-// [Deprecated] This field is deprecated.
-func (o OperationResponseOutput) CreationTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
 // [Output Only] A textual description of the operation, which is set when the operation is created.
@@ -4043,16 +4015,6 @@ func (o OperationResponsePtrOutput) ClientOperationId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ClientOperationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] This field is deprecated.
-func (o OperationResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreationTimestamp
 	}).(pulumi.StringPtrOutput)
 }
 

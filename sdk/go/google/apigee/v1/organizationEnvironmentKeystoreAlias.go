@@ -99,7 +99,6 @@ type organizationEnvironmentKeystoreAliasArgs struct {
 	IgnoreNewlineValidation *string             `pulumi:"ignoreNewlineValidation"`
 	KeystoreId              string              `pulumi:"keystoreId"`
 	OrganizationId          string              `pulumi:"organizationId"`
-	Password                *string             `pulumi:"password"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentKeystoreAlias resource.
@@ -117,7 +116,6 @@ type OrganizationEnvironmentKeystoreAliasArgs struct {
 	IgnoreNewlineValidation pulumi.StringPtrInput
 	KeystoreId              pulumi.StringInput
 	OrganizationId          pulumi.StringInput
-	Password                pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentKeystoreAliasArgs) ElementType() reflect.Type {

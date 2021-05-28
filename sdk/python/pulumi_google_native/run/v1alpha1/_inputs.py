@@ -2323,24 +2323,16 @@ class ProbeArgs:
 class ResourceRequirementsArgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 limits_in_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 requests_in_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 requests: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         ResourceRequirements describes the compute resource requirements.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits_in_map: Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] requests_in_map: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
-        if limits_in_map is not None:
-            pulumi.set(__self__, "limits_in_map", limits_in_map)
         if requests is not None:
             pulumi.set(__self__, "requests", requests)
-        if requests_in_map is not None:
-            pulumi.set(__self__, "requests_in_map", requests_in_map)
 
     @property
     @pulumi.getter
@@ -2355,18 +2347,6 @@ class ResourceRequirementsArgs:
         pulumi.set(self, "limits", value)
 
     @property
-    @pulumi.getter(name="limitsInMap")
-    def limits_in_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-        """
-        return pulumi.get(self, "limits_in_map")
-
-    @limits_in_map.setter
-    def limits_in_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "limits_in_map", value)
-
-    @property
     @pulumi.getter
     def requests(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -2377,18 +2357,6 @@ class ResourceRequirementsArgs:
     @requests.setter
     def requests(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "requests", value)
-
-    @property
-    @pulumi.getter(name="requestsInMap")
-    def requests_in_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-        """
-        return pulumi.get(self, "requests_in_map")
-
-    @requests_in_map.setter
-    def requests_in_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "requests_in_map", value)
 
 
 @pulumi.input_type

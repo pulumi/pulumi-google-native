@@ -123,9 +123,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
         public OrganizationEnvironmentKeystoreAliasArgs()
         {
         }

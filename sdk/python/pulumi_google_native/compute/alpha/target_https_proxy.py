@@ -14,8 +14,6 @@ __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
 class TargetHttpsProxyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 authentication: Optional[pulumi.Input[str]] = None,
-                 authorization: Optional[pulumi.Input[str]] = None,
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -37,8 +35,6 @@ class TargetHttpsProxyArgs:
                  url_map: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetHttpsProxy resource.
-        :param pulumi.Input[str] authentication: [Deprecated] Use serverTlsPolicy instead.
-        :param pulumi.Input[str] authorization: [Deprecated] Use authorizationPolicy instead.
         :param pulumi.Input[str] authorization_policy: Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
                Refer to the AuthorizationPolicy resource for additional details.
                authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -77,10 +73,6 @@ class TargetHttpsProxyArgs:
                - global/urlMaps/url-map
         """
         pulumi.set(__self__, "project", project)
-        if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
-        if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
         if authorization_policy is not None:
             pulumi.set(__self__, "authorization_policy", authorization_policy)
         if certificate_map is not None:
@@ -128,30 +120,6 @@ class TargetHttpsProxyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] Use serverTlsPolicy instead.
-        """
-        return pulumi.get(self, "authentication")
-
-    @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authentication", value)
-
-    @property
-    @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] Use authorizationPolicy instead.
-        """
-        return pulumi.get(self, "authorization")
-
-    @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authorization", value)
 
     @property
     @pulumi.getter(name="authorizationPolicy")
@@ -402,8 +370,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[str]] = None,
-                 authorization: Optional[pulumi.Input[str]] = None,
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -430,8 +396,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authentication: [Deprecated] Use serverTlsPolicy instead.
-        :param pulumi.Input[str] authorization: [Deprecated] Use authorizationPolicy instead.
         :param pulumi.Input[str] authorization_policy: Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
                Refer to the AuthorizationPolicy resource for additional details.
                authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -493,8 +457,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[str]] = None,
-                 authorization: Optional[pulumi.Input[str]] = None,
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -527,8 +489,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TargetHttpsProxyArgs.__new__(TargetHttpsProxyArgs)
 
-            __props__.__dict__["authentication"] = authentication
-            __props__.__dict__["authorization"] = authorization
             __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["certificate_map"] = certificate_map
             __props__.__dict__["creation_timestamp"] = creation_timestamp
@@ -573,8 +533,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         __props__ = TargetHttpsProxyArgs.__new__(TargetHttpsProxyArgs)
 
-        __props__.__dict__["authentication"] = None
-        __props__.__dict__["authorization"] = None
         __props__.__dict__["authorization_policy"] = None
         __props__.__dict__["certificate_map"] = None
         __props__.__dict__["creation_timestamp"] = None
@@ -593,22 +551,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["ssl_policy"] = None
         __props__.__dict__["url_map"] = None
         return TargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    def authentication(self) -> pulumi.Output[str]:
-        """
-        [Deprecated] Use serverTlsPolicy instead.
-        """
-        return pulumi.get(self, "authentication")
-
-    @property
-    @pulumi.getter
-    def authorization(self) -> pulumi.Output[str]:
-        """
-        [Deprecated] Use authorizationPolicy instead.
-        """
-        return pulumi.get(self, "authorization")
 
     @property
     @pulumi.getter(name="authorizationPolicy")

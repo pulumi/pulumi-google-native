@@ -1452,11 +1452,6 @@
             "createPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases",
             "createParams": [
                 {
-                    "name": "_password",
-                    "sdkName": "password",
-                    "location": "query"
-                },
-                {
                     "name": "alias",
                     "location": "query"
                 },
@@ -7410,7 +7405,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -7450,7 +7444,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -7519,8 +7512,6 @@
                 "sourceImage": {},
                 "sourceImageEncryptionKey": {},
                 "sourceImageId": {},
-                "sourceInPlaceSnapshot": {},
-                "sourceInPlaceSnapshotId": {},
                 "sourceInstantSnapshot": {},
                 "sourceInstantSnapshotId": {},
                 "sourceSnapshot": {},
@@ -7528,7 +7519,6 @@
                 "sourceSnapshotId": {},
                 "sourceStorageObject": {},
                 "status": {},
-                "storageType": {},
                 "type": {},
                 "userLicenses": {},
                 "users": {},
@@ -7568,8 +7558,6 @@
                 "sourceImage": {},
                 "sourceImageEncryptionKey": {},
                 "sourceImageId": {},
-                "sourceInPlaceSnapshot": {},
-                "sourceInPlaceSnapshotId": {},
                 "sourceInstantSnapshot": {},
                 "sourceInstantSnapshotId": {},
                 "sourceSnapshot": {},
@@ -7577,7 +7565,6 @@
                 "sourceSnapshotId": {},
                 "sourceStorageObject": {},
                 "status": {},
-                "storageType": {},
                 "type": {},
                 "userLicenses": {},
                 "users": {},
@@ -7702,7 +7689,6 @@
                 "destinationRanges": {},
                 "direction": {},
                 "disabled": {},
-                "enableLogging": {},
                 "id": {},
                 "kind": {},
                 "logConfig": {},
@@ -7726,7 +7712,6 @@
                 "destinationRanges": {},
                 "direction": {},
                 "disabled": {},
-                "enableLogging": {},
                 "id": {},
                 "kind": {},
                 "logConfig": {},
@@ -8083,7 +8068,6 @@
                 "description": {},
                 "id": {},
                 "kind": {},
-                "loadBalancer": {},
                 "name": {},
                 "network": {},
                 "networkEndpointType": {},
@@ -8977,7 +8961,6 @@
                 "description": {},
                 "edgeAvailabilityDomain": {},
                 "encryption": {},
-                "googleReferenceId": {},
                 "id": {},
                 "interconnect": {},
                 "ipsecInternalAddresses": {},
@@ -9011,7 +8994,6 @@
                 "description": {},
                 "edgeAvailabilityDomain": {},
                 "encryption": {},
-                "googleReferenceId": {},
                 "id": {},
                 "interconnect": {},
                 "ipsecInternalAddresses": {},
@@ -9431,7 +9413,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "IPv4Range": {},
                 "autoCreateSubnetworks": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -9449,7 +9430,6 @@
             },
             "updateVerb": "PATCH",
             "updateProperties": {
-                "IPv4Range": {},
                 "autoCreateSubnetworks": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -9495,7 +9475,6 @@
                 "description": {},
                 "id": {},
                 "kind": {},
-                "loadBalancer": {},
                 "name": {},
                 "network": {},
                 "networkEndpointType": {},
@@ -10168,7 +10147,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -10208,7 +10186,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -10318,8 +10295,6 @@
                 "sourceImage": {},
                 "sourceImageEncryptionKey": {},
                 "sourceImageId": {},
-                "sourceInPlaceSnapshot": {},
-                "sourceInPlaceSnapshotId": {},
                 "sourceInstantSnapshot": {},
                 "sourceInstantSnapshotId": {},
                 "sourceSnapshot": {},
@@ -10327,7 +10302,6 @@
                 "sourceSnapshotId": {},
                 "sourceStorageObject": {},
                 "status": {},
-                "storageType": {},
                 "type": {},
                 "userLicenses": {},
                 "users": {},
@@ -10493,7 +10467,6 @@
                 "fingerprint": {},
                 "healthChecks": {},
                 "healthStatusAggregationPolicy": {},
-                "healthStatusAggregationStrategy": {},
                 "id": {},
                 "kind": {},
                 "name": {},
@@ -10510,7 +10483,6 @@
                 "fingerprint": {},
                 "healthChecks": {},
                 "healthStatusAggregationPolicy": {},
-                "healthStatusAggregationStrategy": {},
                 "id": {},
                 "kind": {},
                 "name": {},
@@ -10842,7 +10814,6 @@
                 "description": {},
                 "id": {},
                 "kind": {},
-                "loadBalancer": {},
                 "name": {},
                 "network": {},
                 "networkEndpointType": {},
@@ -11100,8 +11071,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "authentication": {},
-                "authorization": {},
                 "authorizationPolicy": {},
                 "certificateMap": {},
                 "creationTimestamp": {},
@@ -11879,7 +11848,6 @@
                 "description": {},
                 "enableFlowLogs": {},
                 "enableL2": {},
-                "enablePrivateV6Access": {},
                 "externalIpv6Prefix": {},
                 "fingerprint": {},
                 "flowSampling": {},
@@ -11895,7 +11863,6 @@
                 "network": {},
                 "privateIpGoogleAccess": {},
                 "privateIpv6GoogleAccess": {},
-                "privateIpv6GoogleAccessServiceAccounts": {},
                 "purpose": {},
                 "region": {},
                 "role": {},
@@ -11914,7 +11881,6 @@
                 "description": {},
                 "enableFlowLogs": {},
                 "enableL2": {},
-                "enablePrivateV6Access": {},
                 "externalIpv6Prefix": {},
                 "fingerprint": {},
                 "flowSampling": {},
@@ -11930,7 +11896,6 @@
                 "network": {},
                 "privateIpGoogleAccess": {},
                 "privateIpv6GoogleAccess": {},
-                "privateIpv6GoogleAccessServiceAccounts": {},
                 "purpose": {},
                 "region": {},
                 "role": {},
@@ -12111,8 +12076,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "authentication": {},
-                "authorization": {},
                 "authorizationPolicy": {},
                 "certificateMap": {},
                 "creationTimestamp": {},
@@ -12134,8 +12097,6 @@
             },
             "updateVerb": "PATCH",
             "updateProperties": {
-                "authentication": {},
-                "authorization": {},
                 "authorizationPolicy": {},
                 "certificateMap": {},
                 "creationTimestamp": {},
@@ -12894,7 +12855,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -12932,7 +12892,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -13004,7 +12963,6 @@
                 "sourceSnapshotId": {},
                 "sourceStorageObject": {},
                 "status": {},
-                "storageType": {},
                 "type": {},
                 "users": {},
                 "zone": {}
@@ -13128,7 +13086,6 @@
                 "destinationRanges": {},
                 "direction": {},
                 "disabled": {},
-                "enableLogging": {},
                 "id": {},
                 "kind": {},
                 "logConfig": {},
@@ -13151,7 +13108,6 @@
                 "destinationRanges": {},
                 "direction": {},
                 "disabled": {},
-                "enableLogging": {},
                 "id": {},
                 "kind": {},
                 "logConfig": {},
@@ -13496,7 +13452,6 @@
                 "description": {},
                 "id": {},
                 "kind": {},
-                "loadBalancer": {},
                 "name": {},
                 "network": {},
                 "networkEndpointType": {},
@@ -14346,7 +14301,6 @@
                 "description": {},
                 "edgeAvailabilityDomain": {},
                 "encryption": {},
-                "googleReferenceId": {},
                 "id": {},
                 "interconnect": {},
                 "ipsecInternalAddresses": {},
@@ -14379,7 +14333,6 @@
                 "description": {},
                 "edgeAvailabilityDomain": {},
                 "encryption": {},
-                "googleReferenceId": {},
                 "id": {},
                 "interconnect": {},
                 "ipsecInternalAddresses": {},
@@ -14605,7 +14558,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "IPv4Range": {},
                 "autoCreateSubnetworks": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -14621,7 +14573,6 @@
             },
             "updateVerb": "PATCH",
             "updateProperties": {
-                "IPv4Range": {},
                 "autoCreateSubnetworks": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -14665,7 +14616,6 @@
                 "description": {},
                 "id": {},
                 "kind": {},
-                "loadBalancer": {},
                 "name": {},
                 "network": {},
                 "networkEndpointType": {},
@@ -15207,7 +15157,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -15245,7 +15194,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -15357,7 +15305,6 @@
                 "sourceSnapshotId": {},
                 "sourceStorageObject": {},
                 "status": {},
-                "storageType": {},
                 "type": {},
                 "users": {},
                 "zone": {}
@@ -15518,7 +15465,6 @@
                 "fingerprint": {},
                 "healthChecks": {},
                 "healthStatusAggregationPolicy": {},
-                "healthStatusAggregationStrategy": {},
                 "id": {},
                 "kind": {},
                 "name": {},
@@ -15534,7 +15480,6 @@
                 "fingerprint": {},
                 "healthChecks": {},
                 "healthStatusAggregationPolicy": {},
-                "healthStatusAggregationStrategy": {},
                 "id": {},
                 "kind": {},
                 "name": {},
@@ -15646,7 +15591,6 @@
                 "description": {},
                 "id": {},
                 "kind": {},
-                "loadBalancer": {},
                 "name": {},
                 "network": {},
                 "networkEndpointType": {},
@@ -15776,8 +15720,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "authentication": {},
-                "authorization": {},
                 "authorizationPolicy": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -16720,8 +16662,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "authentication": {},
-                "authorization": {},
                 "authorizationPolicy": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -16741,8 +16681,6 @@
             },
             "updateVerb": "PATCH",
             "updateProperties": {
-                "authentication": {},
-                "authorization": {},
                 "authorizationPolicy": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -17220,7 +17158,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -17256,7 +17193,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -18636,7 +18572,6 @@
                 "description": {},
                 "edgeAvailabilityDomain": {},
                 "encryption": {},
-                "googleReferenceId": {},
                 "id": {},
                 "interconnect": {},
                 "ipsecInternalAddresses": {},
@@ -18667,7 +18602,6 @@
                 "description": {},
                 "edgeAvailabilityDomain": {},
                 "encryption": {},
-                "googleReferenceId": {},
                 "id": {},
                 "interconnect": {},
                 "ipsecInternalAddresses": {},
@@ -18792,7 +18726,6 @@
             ],
             "createVerb": "POST",
             "createProperties": {
-                "IPv4Range": {},
                 "autoCreateSubnetworks": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -18808,7 +18741,6 @@
             },
             "updateVerb": "PATCH",
             "updateProperties": {
-                "IPv4Range": {},
                 "autoCreateSubnetworks": {},
                 "creationTimestamp": {},
                 "description": {},
@@ -19337,7 +19269,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -19373,7 +19304,6 @@
                 "name": {},
                 "network": {},
                 "outlierDetection": {},
-                "port": {},
                 "portName": {},
                 "protocol": {},
                 "region": {},
@@ -21048,9 +20978,6 @@
                 "initialClusterVersion": {
                     "container": "cluster"
                 },
-                "initialNodeCount": {
-                    "container": "cluster"
-                },
                 "ipAllocationPolicy": {
                     "container": "cluster"
                 },
@@ -21091,9 +21018,6 @@
                     "container": "cluster"
                 },
                 "networkPolicy": {
-                    "container": "cluster"
-                },
-                "nodeConfig": {
                     "container": "cluster"
                 },
                 "nodeIpv4CidrSize": {
@@ -21140,9 +21064,6 @@
                     "container": "cluster"
                 },
                 "workloadIdentityConfig": {
-                    "container": "cluster"
-                },
-                "zone": {
                     "container": "cluster"
                 }
             },
@@ -21228,15 +21149,16 @@
         },
         "google-native:container/v1beta1:Cluster": {
             "baseUrl": "https://container.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters",
+            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters",
             "createParams": [
                 {
-                    "name": "projectId",
+                    "name": "projectsId",
                     "sdkName": "project",
                     "location": "path"
                 },
                 {
-                    "name": "zone",
+                    "name": "locationsId",
+                    "sdkName": "location",
                     "location": "path"
                 }
             ],
@@ -21290,9 +21212,6 @@
                 "enableKubernetesAlpha": {
                     "container": "cluster"
                 },
-                "enableTpu": {
-                    "container": "cluster"
-                },
                 "endpoint": {
                     "container": "cluster"
                 },
@@ -21300,9 +21219,6 @@
                     "container": "cluster"
                 },
                 "initialClusterVersion": {
-                    "container": "cluster"
-                },
-                "initialNodeCount": {
                     "container": "cluster"
                 },
                 "ipAllocationPolicy": {
@@ -21335,9 +21251,6 @@
                 "masterAuthorizedNetworksConfig": {
                     "container": "cluster"
                 },
-                "masterIpv4CidrBlock": {
-                    "container": "cluster"
-                },
                 "monitoringService": {
                     "container": "cluster"
                 },
@@ -21353,9 +21266,6 @@
                 "networkPolicy": {
                     "container": "cluster"
                 },
-                "nodeConfig": {
-                    "container": "cluster"
-                },
                 "nodeIpv4CidrSize": {
                     "container": "cluster"
                 },
@@ -21367,9 +21277,6 @@
                 },
                 "parent": {},
                 "podSecurityPolicyConfig": {
-                    "container": "cluster"
-                },
-                "privateCluster": {
                     "container": "cluster"
                 },
                 "privateClusterConfig": {
@@ -21413,9 +21320,6 @@
                 },
                 "workloadIdentityConfig": {
                     "container": "cluster"
-                },
-                "zone": {
-                    "container": "cluster"
                 }
             },
             "updateVerb": "PUT",
@@ -21426,19 +21330,21 @@
         },
         "google-native:container/v1beta1:ClusterNodePool": {
             "baseUrl": "https://container.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
+            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
             "createParams": [
                 {
-                    "name": "projectId",
+                    "name": "projectsId",
                     "sdkName": "project",
                     "location": "path"
                 },
                 {
-                    "name": "zone",
+                    "name": "locationsId",
+                    "sdkName": "location",
                     "location": "path"
                 },
                 {
-                    "name": "clusterId",
+                    "name": "clustersId",
+                    "sdkName": "clusterId",
                     "location": "path"
                 }
             ],
@@ -21491,7 +21397,7 @@
                     "container": "nodePool"
                 }
             },
-            "updateVerb": "POST",
+            "updateVerb": "PUT",
             "updateProperties": {
                 "locations": {},
                 "name": {},
@@ -23061,9 +22967,6 @@
                     "container": "instruction"
                 },
                 "createTime": {
-                    "container": "instruction"
-                },
-                "csvInstruction": {
                     "container": "instruction"
                 },
                 "dataType": {
@@ -26184,7 +26087,6 @@
                 "liveAgentHandoff": {},
                 "messages": {},
                 "mlDisabled": {},
-                "mlEnabled": {},
                 "name": {},
                 "outputContexts": {},
                 "parameters": {},
@@ -26206,7 +26108,6 @@
                 "liveAgentHandoff": {},
                 "messages": {},
                 "mlDisabled": {},
-                "mlEnabled": {},
                 "name": {},
                 "outputContexts": {},
                 "parameters": {},
@@ -39896,7 +39797,6 @@
             "createVerb": "POST",
             "createProperties": {
                 "createTime": {},
-                "createdBy": {},
                 "deleteServiceStrategy": {},
                 "rolloutId": {},
                 "serviceName": {},
@@ -40372,7 +40272,6 @@
             "createProperties": {
                 "charset": {},
                 "collation": {},
-                "etag": {},
                 "instance": {},
                 "kind": {},
                 "name": {},
@@ -40384,7 +40283,6 @@
             "updateProperties": {
                 "charset": {},
                 "collation": {},
-                "etag": {},
                 "instance": {},
                 "kind": {},
                 "name": {},
@@ -40411,12 +40309,10 @@
                 "databaseVersion": {},
                 "diskEncryptionConfiguration": {},
                 "diskEncryptionStatus": {},
-                "etag": {},
                 "failoverReplica": {},
                 "gceZone": {},
                 "instanceType": {},
                 "ipAddresses": {},
-                "ipv6Address": {},
                 "kind": {},
                 "masterInstanceName": {},
                 "maxDiskSize": {},
@@ -40446,12 +40342,10 @@
                 "databaseVersion": {},
                 "diskEncryptionConfiguration": {},
                 "diskEncryptionStatus": {},
-                "etag": {},
                 "failoverReplica": {},
                 "gceZone": {},
                 "instanceType": {},
                 "ipAddresses": {},
-                "ipv6Address": {},
                 "kind": {},
                 "masterInstanceName": {},
                 "maxDiskSize": {},
@@ -41308,10 +41202,8 @@
                 "cidrBlock": {},
                 "description": {},
                 "health": {},
-                "ipAddress": {},
                 "labels": {},
                 "network": {},
-                "port": {},
                 "schedulingConfig": {},
                 "tensorflowVersion": {},
                 "useServiceNetworking": {}
@@ -41348,10 +41240,8 @@
                 "cidrBlock": {},
                 "description": {},
                 "health": {},
-                "ipAddress": {},
                 "labels": {},
                 "network": {},
-                "port": {},
                 "schedulingConfig": {},
                 "tensorflowVersion": {},
                 "useServiceNetworking": {}

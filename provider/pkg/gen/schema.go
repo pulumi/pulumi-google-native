@@ -212,9 +212,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
 		param := dd.createMethod.Parameters[name]
-		deprecated := strings.HasPrefix(param.Description, "Deprecated.")
 		required := param.Required || strings.HasPrefix(param.Description, "Required.")
-		if param.Location != "query" || deprecated {
+		if param.Location != "query" || isDeprecated(param.Description) {
 			continue
 		}
 
@@ -463,7 +462,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		value := typeSchema.Properties[name]
 		sdkName := apiNameToSdkName(name)
 
-		if strings.Contains(value.Description, "Deprecated.") {
+		if isDeprecated(value.Description) {
 			continue
 		}
 		if !isOutput && value.ReadOnly {
@@ -614,6 +613,23 @@ type propertyBag struct {
 	specs         map[string]schema.PropertySpec
 	properties    map[string]resources.CloudAPIProperty
 	requiredSpecs codegen.StringSet
+}
+
+// isDeprecated returns true if the description of a property or a parameter signals that it has
+// been deprecated.
+func isDeprecated(description string) bool {
+	// Unfortunately, there's no fixed format for the deprecation message.
+	// Also, the word "deprecated" appears in several legit descriptions, so
+	// we need that tricky exclusion list below to filter out the actual deprecations.
+	lowerDesc := strings.ToLower(description)
+	return strings.HasPrefix(lowerDesc, "deprecated") ||
+		strings.Contains(lowerDesc, ". deprecated") ||
+		strings.Contains(description, "(Deprecated") ||
+		strings.Contains(description, "Deprecated;") ||
+		strings.Contains(description, "Deprecated.") ||
+		strings.Contains(description, "[Deprecated]") ||
+		strings.Contains(description, "Deprecated in favor") ||
+		strings.Contains(description, "This field is deprecated")
 }
 
 func rawMessage(v interface{}) json.RawMessage {

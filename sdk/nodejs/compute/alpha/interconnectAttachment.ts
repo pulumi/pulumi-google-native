@@ -94,10 +94,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<string>;
     /**
-     * [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
-     */
-    public readonly googleReferenceId!: pulumi.Output<string>;
-    /**
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     public readonly interconnect!: pulumi.Output<string>;
@@ -215,7 +211,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             inputs["encryption"] = args ? args.encryption : undefined;
-            inputs["googleReferenceId"] = args ? args.googleReferenceId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
             inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
@@ -250,7 +245,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["edgeAvailabilityDomain"] = undefined /*out*/;
             inputs["encryption"] = undefined /*out*/;
-            inputs["googleReferenceId"] = undefined /*out*/;
             inputs["interconnect"] = undefined /*out*/;
             inputs["ipsecInternalAddresses"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -340,10 +334,6 @@ export interface InterconnectAttachmentArgs {
      * Not currently available in all Interconnect locations.
      */
     readonly encryption?: pulumi.Input<string>;
-    /**
-     * [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
-     */
-    readonly googleReferenceId?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

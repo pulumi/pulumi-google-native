@@ -15,8 +15,6 @@ import (
 type Network struct {
 	pulumi.CustomResourceState
 
-	// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-	IPv4Range pulumi.StringOutput `pulumi:"IPv4Range"`
 	// Must be set to create a VPC network. If not set, a legacy network is created.
 	//
 	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -83,8 +81,6 @@ func GetNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
-	// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-	IPv4Range *string `pulumi:"IPv4Range"`
 	// Must be set to create a VPC network. If not set, a legacy network is created.
 	//
 	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -120,8 +116,6 @@ type networkState struct {
 }
 
 type NetworkState struct {
-	// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-	IPv4Range pulumi.StringPtrInput
 	// Must be set to create a VPC network. If not set, a legacy network is created.
 	//
 	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -161,8 +155,6 @@ func (NetworkState) ElementType() reflect.Type {
 }
 
 type networkArgs struct {
-	// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-	IPv4Range *string `pulumi:"IPv4Range"`
 	// Must be set to create a VPC network. If not set, a legacy network is created.
 	//
 	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -203,8 +195,6 @@ type networkArgs struct {
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
-	// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-	IPv4Range pulumi.StringPtrInput
 	// Must be set to create a VPC network. If not set, a legacy network is created.
 	//
 	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.

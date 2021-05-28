@@ -25,10 +25,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// Whether the resource is continuously analyzed.
         /// </summary>
         public readonly string ContinuousAnalysis;
-        /// <summary>
-        /// The last time continuous analysis was done for this resource. Deprecated, do not use.
-        /// </summary>
-        public readonly string LastAnalysisTime;
 
         [OutputConstructor]
         private DiscoveredResponse(
@@ -36,14 +32,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
             Outputs.StatusResponse analysisStatusError,
 
-            string continuousAnalysis,
-
-            string lastAnalysisTime)
+            string continuousAnalysis)
         {
             AnalysisStatus = analysisStatus;
             AnalysisStatusError = analysisStatusError;
             ContinuousAnalysis = continuousAnalysis;
-            LastAnalysisTime = lastAnalysisTime;
         }
     }
 }

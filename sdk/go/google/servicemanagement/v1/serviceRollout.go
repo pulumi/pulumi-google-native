@@ -17,8 +17,6 @@ type ServiceRollout struct {
 
 	// Creation time of the rollout. Readonly.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// This field is deprecated and will be deleted. Please remove usage of this field.
-	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyResponseOutput `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -65,8 +63,6 @@ func GetServiceRollout(ctx *pulumi.Context,
 type serviceRolloutState struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime *string `pulumi:"createTime"`
-	// This field is deprecated and will be deleted. Please remove usage of this field.
-	CreatedBy *string `pulumi:"createdBy"`
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy *DeleteServiceStrategyResponse `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -82,8 +78,6 @@ type serviceRolloutState struct {
 type ServiceRolloutState struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime pulumi.StringPtrInput
-	// This field is deprecated and will be deleted. Please remove usage of this field.
-	CreatedBy pulumi.StringPtrInput
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyResponsePtrInput
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -103,8 +97,6 @@ func (ServiceRolloutState) ElementType() reflect.Type {
 type serviceRolloutArgs struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime *string `pulumi:"createTime"`
-	// This field is deprecated and will be deleted. Please remove usage of this field.
-	CreatedBy *string `pulumi:"createdBy"`
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy *DeleteServiceStrategy `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -121,8 +113,6 @@ type serviceRolloutArgs struct {
 type ServiceRolloutArgs struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime pulumi.StringPtrInput
-	// This field is deprecated and will be deleted. Please remove usage of this field.
-	CreatedBy pulumi.StringPtrInput
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyPtrInput
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'

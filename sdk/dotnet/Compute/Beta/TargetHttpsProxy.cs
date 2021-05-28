@@ -16,18 +16,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class TargetHttpsProxy : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Deprecated] Use serverTlsPolicy instead.
-        /// </summary>
-        [Output("authentication")]
-        public Output<string> Authentication { get; private set; } = null!;
-
-        /// <summary>
-        /// [Deprecated] Use authorizationPolicy instead.
-        /// </summary>
-        [Output("authorization")]
-        public Output<string> Authorization { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
         /// Refer to the AuthorizationPolicy resource for additional details.
         /// authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -180,18 +168,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class TargetHttpsProxyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// [Deprecated] Use serverTlsPolicy instead.
-        /// </summary>
-        [Input("authentication")]
-        public Input<string>? Authentication { get; set; }
-
-        /// <summary>
-        /// [Deprecated] Use authorizationPolicy instead.
-        /// </summary>
-        [Input("authorization")]
-        public Input<string>? Authorization { get; set; }
-
         /// <summary>
         /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
         /// Refer to the AuthorizationPolicy resource for additional details.

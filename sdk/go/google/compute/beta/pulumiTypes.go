@@ -27816,8 +27816,6 @@ func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRule
 type ImageRawDisk struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType *string `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum *string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source *string `pulumi:"source"`
 }
@@ -27837,8 +27835,6 @@ type ImageRawDiskInput interface {
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType pulumi.StringPtrInput `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum pulumi.StringPtrInput `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -27926,11 +27922,6 @@ func (o ImageRawDiskOutput) ContainerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.ContainerType }).(pulumi.StringPtrOutput)
 }
 
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskOutput) Sha1Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageRawDisk) *string { return v.Sha1Checksum }).(pulumi.StringPtrOutput)
-}
-
 // The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 func (o ImageRawDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
@@ -27964,16 +27955,6 @@ func (o ImageRawDiskPtrOutput) ContainerType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskPtrOutput) Sha1Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageRawDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sha1Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
 // The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
@@ -27988,8 +27969,6 @@ func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 type ImageRawDiskResponse struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType string `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source string `pulumi:"source"`
 }
@@ -28009,8 +27988,6 @@ type ImageRawDiskResponseInput interface {
 type ImageRawDiskResponseArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType pulumi.StringInput `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum pulumi.StringInput `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source pulumi.StringInput `pulumi:"source"`
 }
@@ -28098,11 +28075,6 @@ func (o ImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
 }
 
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskResponseOutput) Sha1Checksum() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Sha1Checksum }).(pulumi.StringOutput)
-}
-
 // The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 func (o ImageRawDiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Source }).(pulumi.StringOutput)
@@ -28133,16 +28105,6 @@ func (o ImageRawDiskResponsePtrOutput) ContainerType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ContainerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskResponsePtrOutput) Sha1Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageRawDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Sha1Checksum
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29717,8 +29679,6 @@ func (o InstanceGroupManagerStatusResponsePtrOutput) VersionTarget() InstanceGro
 type InstanceGroupManagerStatusStateful struct {
 	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig *bool `pulumi:"hasStatefulConfig"`
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-	IsStateful *bool `pulumi:"isStateful"`
 	// [Output Only] Status of per-instance configs on the instance.
 	PerInstanceConfigs *InstanceGroupManagerStatusStatefulPerInstanceConfigs `pulumi:"perInstanceConfigs"`
 }
@@ -29737,8 +29697,6 @@ type InstanceGroupManagerStatusStatefulInput interface {
 type InstanceGroupManagerStatusStatefulArgs struct {
 	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig pulumi.BoolPtrInput `pulumi:"hasStatefulConfig"`
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-	IsStateful pulumi.BoolPtrInput `pulumi:"isStateful"`
 	// [Output Only] Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrInput `pulumi:"perInstanceConfigs"`
 }
@@ -29825,11 +29783,6 @@ func (o InstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.Boo
 	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *bool { return v.HasStatefulConfig }).(pulumi.BoolPtrOutput)
 }
 
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-func (o InstanceGroupManagerStatusStatefulOutput) IsStateful() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *bool { return v.IsStateful }).(pulumi.BoolPtrOutput)
-}
-
 // [Output Only] Status of per-instance configs on the instance.
 func (o InstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStateful) *InstanceGroupManagerStatusStatefulPerInstanceConfigs {
@@ -29862,16 +29815,6 @@ func (o InstanceGroupManagerStatusStatefulPtrOutput) HasStatefulConfig() pulumi.
 			return nil
 		}
 		return v.HasStatefulConfig
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-func (o InstanceGroupManagerStatusStatefulPtrOutput) IsStateful() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStateful) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsStateful
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -30154,8 +30097,6 @@ func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponsePtrOutput) A
 type InstanceGroupManagerStatusStatefulResponse struct {
 	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-	IsStateful bool `pulumi:"isStateful"`
 	// [Output Only] Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse `pulumi:"perInstanceConfigs"`
 }
@@ -30174,8 +30115,6 @@ type InstanceGroupManagerStatusStatefulResponseInput interface {
 type InstanceGroupManagerStatusStatefulResponseArgs struct {
 	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
-	// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-	IsStateful pulumi.BoolInput `pulumi:"isStateful"`
 	// [Output Only] Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseInput `pulumi:"perInstanceConfigs"`
 }
@@ -30262,11 +30201,6 @@ func (o InstanceGroupManagerStatusStatefulResponseOutput) HasStatefulConfig() pu
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
 }
 
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-func (o InstanceGroupManagerStatusStatefulResponseOutput) IsStateful() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.IsStateful }).(pulumi.BoolOutput)
-}
-
 // [Output Only] Status of per-instance configs on the instance.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
@@ -30301,16 +30235,6 @@ func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) HasStatefulConfig()
 			return nil
 		}
 		return &v.HasStatefulConfig
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-func (o InstanceGroupManagerStatusStatefulResponsePtrOutput) IsStateful() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerStatusStatefulResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsStateful
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -38435,392 +38359,6 @@ func (o NetworkEndpointGroupCloudRunResponsePtrOutput) UrlMask() pulumi.StringPt
 			return nil
 		}
 		return &v.UrlMask
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancing specific fields for network endpoint group.
-type NetworkEndpointGroupLbNetworkEndpointGroup struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-	DefaultPort *int `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-	Network *string `pulumi:"network"`
-	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-	Subnetwork *string `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-	Zone *string `pulumi:"zone"`
-}
-
-// NetworkEndpointGroupLbNetworkEndpointGroupInput is an input type that accepts NetworkEndpointGroupLbNetworkEndpointGroupArgs and NetworkEndpointGroupLbNetworkEndpointGroupOutput values.
-// You can construct a concrete instance of `NetworkEndpointGroupLbNetworkEndpointGroupInput` via:
-//
-//          NetworkEndpointGroupLbNetworkEndpointGroupArgs{...}
-type NetworkEndpointGroupLbNetworkEndpointGroupInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointGroupLbNetworkEndpointGroupOutput() NetworkEndpointGroupLbNetworkEndpointGroupOutput
-	ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(context.Context) NetworkEndpointGroupLbNetworkEndpointGroupOutput
-}
-
-// Load balancing specific fields for network endpoint group.
-type NetworkEndpointGroupLbNetworkEndpointGroupArgs struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-	DefaultPort pulumi.IntPtrInput `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-	Network pulumi.StringPtrInput `pulumi:"network"`
-	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-	Zone pulumi.StringPtrInput `pulumi:"zone"`
-}
-
-func (NetworkEndpointGroupLbNetworkEndpointGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupOutput() NetworkEndpointGroupLbNetworkEndpointGroupOutput {
-	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(context.Background())
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupOutput)
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Background())
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupOutput).ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx)
-}
-
-// NetworkEndpointGroupLbNetworkEndpointGroupPtrInput is an input type that accepts NetworkEndpointGroupLbNetworkEndpointGroupArgs, NetworkEndpointGroupLbNetworkEndpointGroupPtr and NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput values.
-// You can construct a concrete instance of `NetworkEndpointGroupLbNetworkEndpointGroupPtrInput` via:
-//
-//          NetworkEndpointGroupLbNetworkEndpointGroupArgs{...}
-//
-//  or:
-//
-//          nil
-type NetworkEndpointGroupLbNetworkEndpointGroupPtrInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput
-	ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput
-}
-
-type networkEndpointGroupLbNetworkEndpointGroupPtrType NetworkEndpointGroupLbNetworkEndpointGroupArgs
-
-func NetworkEndpointGroupLbNetworkEndpointGroupPtr(v *NetworkEndpointGroupLbNetworkEndpointGroupArgs) NetworkEndpointGroupLbNetworkEndpointGroupPtrInput {
-	return (*networkEndpointGroupLbNetworkEndpointGroupPtrType)(v)
-}
-
-func (*networkEndpointGroupLbNetworkEndpointGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
-}
-
-func (i *networkEndpointGroupLbNetworkEndpointGroupPtrType) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *networkEndpointGroupLbNetworkEndpointGroupPtrType) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput)
-}
-
-// Load balancing specific fields for network endpoint group.
-type NetworkEndpointGroupLbNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
-
-func (NetworkEndpointGroupLbNetworkEndpointGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupOutput() NetworkEndpointGroupLbNetworkEndpointGroupOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return o.ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Background())
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *NetworkEndpointGroupLbNetworkEndpointGroup {
-		return &v
-	}).(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput)
-}
-
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) DefaultPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *int { return v.DefaultPort }).(pulumi.IntPtrOutput)
-}
-
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *string { return v.Network }).(pulumi.StringPtrOutput)
-}
-
-// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *string { return v.Zone }).(pulumi.StringPtrOutput)
-}
-
-type NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Elem() NetworkEndpointGroupLbNetworkEndpointGroupOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) NetworkEndpointGroupLbNetworkEndpointGroup {
-		return *v
-	}).(NetworkEndpointGroupLbNetworkEndpointGroupOutput)
-}
-
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) DefaultPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultPort
-	}).(pulumi.IntPtrOutput)
-}
-
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Subnetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Zone
-	}).(pulumi.StringPtrOutput)
-}
-
-// Load balancing specific fields for network endpoint group.
-type NetworkEndpointGroupLbNetworkEndpointGroupResponse struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-	DefaultPort int `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-	Network string `pulumi:"network"`
-	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-	Subnetwork string `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-	Zone string `pulumi:"zone"`
-}
-
-// NetworkEndpointGroupLbNetworkEndpointGroupResponseInput is an input type that accepts NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs and NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput values.
-// You can construct a concrete instance of `NetworkEndpointGroupLbNetworkEndpointGroupResponseInput` via:
-//
-//          NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs{...}
-type NetworkEndpointGroupLbNetworkEndpointGroupResponseInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput
-	ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutputWithContext(context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput
-}
-
-// Load balancing specific fields for network endpoint group.
-type NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-	DefaultPort pulumi.IntInput `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-	Network pulumi.StringInput `pulumi:"network"`
-	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-	// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupResponse)(nil)).Elem()
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
-	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput)
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput).ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(ctx)
-}
-
-// NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrInput is an input type that accepts NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs, NetworkEndpointGroupLbNetworkEndpointGroupResponsePtr and NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput values.
-// You can construct a concrete instance of `NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrInput` via:
-//
-//          NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrInput interface {
-	pulumi.Input
-
-	ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput
-	ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput
-}
-
-type networkEndpointGroupLbNetworkEndpointGroupResponsePtrType NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs
-
-func NetworkEndpointGroupLbNetworkEndpointGroupResponsePtr(v *NetworkEndpointGroupLbNetworkEndpointGroupResponseArgs) NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrInput {
-	return (*networkEndpointGroupLbNetworkEndpointGroupResponsePtrType)(v)
-}
-
-func (*networkEndpointGroupLbNetworkEndpointGroupResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkEndpointGroupLbNetworkEndpointGroupResponse)(nil)).Elem()
-}
-
-func (i *networkEndpointGroupLbNetworkEndpointGroupResponsePtrType) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *networkEndpointGroupLbNetworkEndpointGroupResponsePtrType) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput)
-}
-
-// Load balancing specific fields for network endpoint group.
-type NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupResponse)(nil)).Elem()
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return o.ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) *NetworkEndpointGroupLbNetworkEndpointGroupResponse {
-		return &v
-	}).(NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput)
-}
-
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) DefaultPort() pulumi.IntOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) int { return v.DefaultPort }).(pulumi.IntOutput)
-}
-
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Network }).(pulumi.StringOutput)
-}
-
-// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Subnetwork() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
-}
-
-// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkEndpointGroupLbNetworkEndpointGroupResponse)(nil)).Elem()
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput {
-	return o
-}
-
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) Elem() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroupResponse) NetworkEndpointGroupLbNetworkEndpointGroupResponse {
-		return *v
-	}).(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput)
-}
-
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) DefaultPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroupResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DefaultPort
-	}).(pulumi.IntPtrOutput)
-}
-
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroupResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroupResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subnetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-func (o NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroupResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -57793,8 +57331,6 @@ func (o SecurityPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) Security
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettings struct {
-	// [Deprecated] Use clientTlsPolicy instead.
-	Authentication *string `pulumi:"authentication"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 	// clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// If left blank, communications are not encrypted.
@@ -57820,8 +57356,6 @@ type SecuritySettingsInput interface {
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsArgs struct {
-	// [Deprecated] Use clientTlsPolicy instead.
-	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 	// clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// If left blank, communications are not encrypted.
@@ -57912,11 +57446,6 @@ func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx conte
 	}).(SecuritySettingsPtrOutput)
 }
 
-// [Deprecated] Use clientTlsPolicy instead.
-func (o SecuritySettingsOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecuritySettings) *string { return v.Authentication }).(pulumi.StringPtrOutput)
-}
-
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 // clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 // If left blank, communications are not encrypted.
@@ -57951,16 +57480,6 @@ func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
 	return o.ApplyT(func(v *SecuritySettings) SecuritySettings { return *v }).(SecuritySettingsOutput)
 }
 
-// [Deprecated] Use clientTlsPolicy instead.
-func (o SecuritySettingsPtrOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecuritySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Authentication
-	}).(pulumi.StringPtrOutput)
-}
-
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 // clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 // If left blank, communications are not encrypted.
@@ -57989,8 +57508,6 @@ func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsResponse struct {
-	// [Deprecated] Use clientTlsPolicy instead.
-	Authentication string `pulumi:"authentication"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 	// clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// If left blank, communications are not encrypted.
@@ -58016,8 +57533,6 @@ type SecuritySettingsResponseInput interface {
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsResponseArgs struct {
-	// [Deprecated] Use clientTlsPolicy instead.
-	Authentication pulumi.StringInput `pulumi:"authentication"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 	// clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// If left blank, communications are not encrypted.
@@ -58108,11 +57623,6 @@ func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponsePtrOutputWithC
 	}).(SecuritySettingsResponsePtrOutput)
 }
 
-// [Deprecated] Use clientTlsPolicy instead.
-func (o SecuritySettingsResponseOutput) Authentication() pulumi.StringOutput {
-	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.Authentication }).(pulumi.StringOutput)
-}
-
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
 // clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 // If left blank, communications are not encrypted.
@@ -58145,16 +57655,6 @@ func (o SecuritySettingsResponsePtrOutput) ToSecuritySettingsResponsePtrOutputWi
 
 func (o SecuritySettingsResponsePtrOutput) Elem() SecuritySettingsResponseOutput {
 	return o.ApplyT(func(v *SecuritySettingsResponse) SecuritySettingsResponse { return *v }).(SecuritySettingsResponseOutput)
-}
-
-// [Deprecated] Use clientTlsPolicy instead.
-func (o SecuritySettingsResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecuritySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Authentication
-	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
@@ -58657,8 +58157,6 @@ func (o ServiceAccountResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccou
 type ServiceAttachmentConnectedEndpoint struct {
 	// The url of a connected endpoint.
 	Endpoint *string `pulumi:"endpoint"`
-	// The url of a consumer forwarding rule. [Deprecated] Do not use.
-	ForwardingRule *string `pulumi:"forwardingRule"`
 	// The PSC connection id of the connected endpoint.
 	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// The status of a connected endpoint to this service attachment.
@@ -58680,8 +58178,6 @@ type ServiceAttachmentConnectedEndpointInput interface {
 type ServiceAttachmentConnectedEndpointArgs struct {
 	// The url of a connected endpoint.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// The url of a consumer forwarding rule. [Deprecated] Do not use.
-	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
 	// The PSC connection id of the connected endpoint.
 	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
 	// The status of a connected endpoint to this service attachment.
@@ -58745,11 +58241,6 @@ func (o ServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringPtrOut
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// The url of a consumer forwarding rule. [Deprecated] Do not use.
-func (o ServiceAttachmentConnectedEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
-}
-
 // The PSC connection id of the connected endpoint.
 func (o ServiceAttachmentConnectedEndpointOutput) PscConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
@@ -58784,8 +58275,6 @@ func (o ServiceAttachmentConnectedEndpointArrayOutput) Index(i pulumi.IntInput) 
 type ServiceAttachmentConnectedEndpointResponse struct {
 	// The url of a connected endpoint.
 	Endpoint string `pulumi:"endpoint"`
-	// The url of a consumer forwarding rule. [Deprecated] Do not use.
-	ForwardingRule string `pulumi:"forwardingRule"`
 	// The PSC connection id of the connected endpoint.
 	PscConnectionId string `pulumi:"pscConnectionId"`
 	// The status of a connected endpoint to this service attachment.
@@ -58807,8 +58296,6 @@ type ServiceAttachmentConnectedEndpointResponseInput interface {
 type ServiceAttachmentConnectedEndpointResponseArgs struct {
 	// The url of a connected endpoint.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// The url of a consumer forwarding rule. [Deprecated] Do not use.
-	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
 	// The PSC connection id of the connected endpoint.
 	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
 	// The status of a connected endpoint to this service attachment.
@@ -58870,11 +58357,6 @@ func (o ServiceAttachmentConnectedEndpointResponseOutput) ToServiceAttachmentCon
 // The url of a connected endpoint.
 func (o ServiceAttachmentConnectedEndpointResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// The url of a consumer forwarding rule. [Deprecated] Do not use.
-func (o ServiceAttachmentConnectedEndpointResponseOutput) ForwardingRule() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
 }
 
 // The PSC connection id of the connected endpoint.
@@ -67085,10 +66567,6 @@ func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunResponsePtrOutput{})
-	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupOutput{})
-	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput{})
-	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput{})
-	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})

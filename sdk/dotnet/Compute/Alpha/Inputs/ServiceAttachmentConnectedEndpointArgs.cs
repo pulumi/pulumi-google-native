@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The url of a consumer forwarding rule. [Deprecated] Do not use.
-        /// </summary>
-        [Input("forwardingRule")]
-        public Input<string>? ForwardingRule { get; set; }
-
-        /// <summary>
         /// The PSC connection id of the connected endpoint.
         /// </summary>
         [Input("pscConnectionId")]

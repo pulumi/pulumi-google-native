@@ -52,8 +52,6 @@ type Organization struct {
 	RuntimeType pulumi.StringOutput `pulumi:"runtimeType"`
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
-	// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-	SubscriptionType pulumi.StringOutput `pulumi:"subscriptionType"`
 	// Not used by Apigee.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -127,8 +125,6 @@ type organizationState struct {
 	RuntimeType *string `pulumi:"runtimeType"`
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State *string `pulumi:"state"`
-	// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-	SubscriptionType *string `pulumi:"subscriptionType"`
 	// Not used by Apigee.
 	Type *string `pulumi:"type"`
 }
@@ -171,8 +167,6 @@ type OrganizationState struct {
 	RuntimeType pulumi.StringPtrInput
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringPtrInput
-	// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-	SubscriptionType pulumi.StringPtrInput
 	// Not used by Apigee.
 	Type pulumi.StringPtrInput
 }

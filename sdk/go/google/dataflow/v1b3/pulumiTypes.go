@@ -8731,8 +8731,6 @@ type WorkerPool struct {
 	TaskrunnerSettings *TaskRunnerSettings `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy *string `pulumi:"teardownPolicy"`
-	// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-	WorkerHarnessContainerImage *string `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone *string `pulumi:"zone"`
 }
@@ -8790,8 +8788,6 @@ type WorkerPoolArgs struct {
 	TaskrunnerSettings TaskRunnerSettingsPtrInput `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy pulumi.StringPtrInput `pulumi:"teardownPolicy"`
-	// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-	WorkerHarnessContainerImage pulumi.StringPtrInput `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -8948,11 +8944,6 @@ func (o WorkerPoolOutput) TeardownPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPool) *string { return v.TeardownPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-func (o WorkerPoolOutput) WorkerHarnessContainerImage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPool) *string { return v.WorkerHarnessContainerImage }).(pulumi.StringPtrOutput)
-}
-
 // Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 func (o WorkerPoolOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPool) *string { return v.Zone }).(pulumi.StringPtrOutput)
@@ -9020,8 +9011,6 @@ type WorkerPoolResponse struct {
 	TaskrunnerSettings TaskRunnerSettingsResponse `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy string `pulumi:"teardownPolicy"`
-	// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-	WorkerHarnessContainerImage string `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone string `pulumi:"zone"`
 }
@@ -9079,8 +9068,6 @@ type WorkerPoolResponseArgs struct {
 	TaskrunnerSettings TaskRunnerSettingsResponseInput `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy pulumi.StringInput `pulumi:"teardownPolicy"`
-	// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-	WorkerHarnessContainerImage pulumi.StringInput `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -9235,11 +9222,6 @@ func (o WorkerPoolResponseOutput) TaskrunnerSettings() TaskRunnerSettingsRespons
 // Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 func (o WorkerPoolResponseOutput) TeardownPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolResponse) string { return v.TeardownPolicy }).(pulumi.StringOutput)
-}
-
-// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-func (o WorkerPoolResponseOutput) WorkerHarnessContainerImage() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkerPoolResponse) string { return v.WorkerHarnessContainerImage }).(pulumi.StringOutput)
 }
 
 // Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.

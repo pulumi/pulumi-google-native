@@ -16,8 +16,6 @@ type Artifact struct {
 	Checksum *string `pulumi:"checksum"`
 	// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
 	Id *string `pulumi:"id"`
-	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-	Name *string `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -39,8 +37,6 @@ type ArtifactArgs struct {
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
 	// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
@@ -107,11 +103,6 @@ func (o ArtifactOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Artifact) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-func (o ArtifactOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Artifact) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 func (o ArtifactOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Artifact) []string { return v.Names }).(pulumi.StringArrayOutput)
@@ -141,8 +132,6 @@ func (o ArtifactArrayOutput) Index(i pulumi.IntInput) ArtifactOutput {
 type ArtifactResponse struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
-	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-	Name string `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -162,8 +151,6 @@ type ArtifactResponseInput interface {
 type ArtifactResponseArgs struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-	Name pulumi.StringInput `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
@@ -223,11 +210,6 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
-}
-
-// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-func (o ArtifactResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ArtifactResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -5097,8 +5079,6 @@ type Discovered struct {
 	ContinuousAnalysis *string `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe *string `pulumi:"cpe"`
-	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-	Operation *Operation `pulumi:"operation"`
 }
 
 // DiscoveredInput is an input type that accepts DiscoveredArgs and DiscoveredOutput values.
@@ -5122,8 +5102,6 @@ type DiscoveredArgs struct {
 	ContinuousAnalysis pulumi.StringPtrInput `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe pulumi.StringPtrInput `pulumi:"cpe"`
-	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-	Operation OperationPtrInput `pulumi:"operation"`
 }
 
 func (DiscoveredArgs) ElementType() reflect.Type {
@@ -5224,11 +5202,6 @@ func (o DiscoveredOutput) Cpe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Discovered) *string { return v.Cpe }).(pulumi.StringPtrOutput)
 }
 
-// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-func (o DiscoveredOutput) Operation() OperationPtrOutput {
-	return o.ApplyT(func(v Discovered) *Operation { return v.Operation }).(OperationPtrOutput)
-}
-
 type DiscoveredPtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveredPtrOutput) ElementType() reflect.Type {
@@ -5287,16 +5260,6 @@ func (o DiscoveredPtrOutput) Cpe() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-func (o DiscoveredPtrOutput) Operation() OperationPtrOutput {
-	return o.ApplyT(func(v *Discovered) *Operation {
-		if v == nil {
-			return nil
-		}
-		return v.Operation
-	}).(OperationPtrOutput)
-}
-
 // Provides information about the scan status of a discovered resource.
 type DiscoveredResponse struct {
 	// The status of discovery for the resource.
@@ -5307,8 +5270,6 @@ type DiscoveredResponse struct {
 	ContinuousAnalysis string `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe string `pulumi:"cpe"`
-	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-	Operation OperationResponse `pulumi:"operation"`
 }
 
 // DiscoveredResponseInput is an input type that accepts DiscoveredResponseArgs and DiscoveredResponseOutput values.
@@ -5332,8 +5293,6 @@ type DiscoveredResponseArgs struct {
 	ContinuousAnalysis pulumi.StringInput `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe pulumi.StringInput `pulumi:"cpe"`
-	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-	Operation OperationResponseInput `pulumi:"operation"`
 }
 
 func (DiscoveredResponseArgs) ElementType() reflect.Type {
@@ -5434,11 +5393,6 @@ func (o DiscoveredResponseOutput) Cpe() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveredResponse) string { return v.Cpe }).(pulumi.StringOutput)
 }
 
-// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-func (o DiscoveredResponseOutput) Operation() OperationResponseOutput {
-	return o.ApplyT(func(v DiscoveredResponse) OperationResponse { return v.Operation }).(OperationResponseOutput)
-}
-
 type DiscoveredResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveredResponsePtrOutput) ElementType() reflect.Type {
@@ -5495,16 +5449,6 @@ func (o DiscoveredResponsePtrOutput) Cpe() pulumi.StringPtrOutput {
 		}
 		return &v.Cpe
 	}).(pulumi.StringPtrOutput)
-}
-
-// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-func (o DiscoveredResponsePtrOutput) Operation() OperationResponsePtrOutput {
-	return o.ApplyT(func(v *DiscoveredResponse) *OperationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Operation
-	}).(OperationResponsePtrOutput)
 }
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
@@ -10230,426 +10174,6 @@ func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationResponse {
 		return vs[0].([]LocationResponse)[vs[1].(int)]
 	}).(LocationResponseOutput)
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type Operation struct {
-	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-	Done *bool `pulumi:"done"`
-	// The error result of the operation in case of failure or cancellation.
-	Error *Status `pulumi:"error"`
-	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-	Name *string `pulumi:"name"`
-	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response map[string]string `pulumi:"response"`
-}
-
-// OperationInput is an input type that accepts OperationArgs and OperationOutput values.
-// You can construct a concrete instance of `OperationInput` via:
-//
-//          OperationArgs{...}
-type OperationInput interface {
-	pulumi.Input
-
-	ToOperationOutput() OperationOutput
-	ToOperationOutputWithContext(context.Context) OperationOutput
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationArgs struct {
-	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-	Done pulumi.BoolPtrInput `pulumi:"done"`
-	// The error result of the operation in case of failure or cancellation.
-	Error StatusPtrInput `pulumi:"error"`
-	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response pulumi.StringMapInput `pulumi:"response"`
-}
-
-func (OperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Operation)(nil)).Elem()
-}
-
-func (i OperationArgs) ToOperationOutput() OperationOutput {
-	return i.ToOperationOutputWithContext(context.Background())
-}
-
-func (i OperationArgs) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput)
-}
-
-func (i OperationArgs) ToOperationPtrOutput() OperationPtrOutput {
-	return i.ToOperationPtrOutputWithContext(context.Background())
-}
-
-func (i OperationArgs) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput).ToOperationPtrOutputWithContext(ctx)
-}
-
-// OperationPtrInput is an input type that accepts OperationArgs, OperationPtr and OperationPtrOutput values.
-// You can construct a concrete instance of `OperationPtrInput` via:
-//
-//          OperationArgs{...}
-//
-//  or:
-//
-//          nil
-type OperationPtrInput interface {
-	pulumi.Input
-
-	ToOperationPtrOutput() OperationPtrOutput
-	ToOperationPtrOutputWithContext(context.Context) OperationPtrOutput
-}
-
-type operationPtrType OperationArgs
-
-func OperationPtr(v *OperationArgs) OperationPtrInput {
-	return (*operationPtrType)(v)
-}
-
-func (*operationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Operation)(nil)).Elem()
-}
-
-func (i *operationPtrType) ToOperationPtrOutput() OperationPtrOutput {
-	return i.ToOperationPtrOutputWithContext(context.Background())
-}
-
-func (i *operationPtrType) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationPtrOutput)
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationOutput struct{ *pulumi.OutputState }
-
-func (OperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Operation)(nil)).Elem()
-}
-
-func (o OperationOutput) ToOperationOutput() OperationOutput {
-	return o
-}
-
-func (o OperationOutput) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
-	return o
-}
-
-func (o OperationOutput) ToOperationPtrOutput() OperationPtrOutput {
-	return o.ToOperationPtrOutputWithContext(context.Background())
-}
-
-func (o OperationOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return o.ApplyT(func(v Operation) *Operation {
-		return &v
-	}).(OperationPtrOutput)
-}
-
-// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationOutput) Done() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Operation) *bool { return v.Done }).(pulumi.BoolPtrOutput)
-}
-
-// The error result of the operation in case of failure or cancellation.
-func (o OperationOutput) Error() StatusPtrOutput {
-	return o.ApplyT(func(v Operation) *Status { return v.Error }).(StatusPtrOutput)
-}
-
-// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Operation) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Operation) map[string]string { return v.Response }).(pulumi.StringMapOutput)
-}
-
-type OperationPtrOutput struct{ *pulumi.OutputState }
-
-func (OperationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Operation)(nil)).Elem()
-}
-
-func (o OperationPtrOutput) ToOperationPtrOutput() OperationPtrOutput {
-	return o
-}
-
-func (o OperationPtrOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
-	return o
-}
-
-func (o OperationPtrOutput) Elem() OperationOutput {
-	return o.ApplyT(func(v *Operation) Operation { return *v }).(OperationOutput)
-}
-
-// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationPtrOutput) Done() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Operation) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Done
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The error result of the operation in case of failure or cancellation.
-func (o OperationPtrOutput) Error() StatusPtrOutput {
-	return o.ApplyT(func(v *Operation) *Status {
-		if v == nil {
-			return nil
-		}
-		return v.Error
-	}).(StatusPtrOutput)
-}
-
-// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Operation) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Operation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationPtrOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Operation) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Response
-	}).(pulumi.StringMapOutput)
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationResponse struct {
-	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-	Done bool `pulumi:"done"`
-	// The error result of the operation in case of failure or cancellation.
-	Error StatusResponse `pulumi:"error"`
-	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-	Name string `pulumi:"name"`
-	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response map[string]string `pulumi:"response"`
-}
-
-// OperationResponseInput is an input type that accepts OperationResponseArgs and OperationResponseOutput values.
-// You can construct a concrete instance of `OperationResponseInput` via:
-//
-//          OperationResponseArgs{...}
-type OperationResponseInput interface {
-	pulumi.Input
-
-	ToOperationResponseOutput() OperationResponseOutput
-	ToOperationResponseOutputWithContext(context.Context) OperationResponseOutput
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationResponseArgs struct {
-	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-	Done pulumi.BoolInput `pulumi:"done"`
-	// The error result of the operation in case of failure or cancellation.
-	Error StatusResponseInput `pulumi:"error"`
-	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response pulumi.StringMapInput `pulumi:"response"`
-}
-
-func (OperationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
-}
-
-func (i OperationResponseArgs) ToOperationResponseOutput() OperationResponseOutput {
-	return i.ToOperationResponseOutputWithContext(context.Background())
-}
-
-func (i OperationResponseArgs) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput)
-}
-
-func (i OperationResponseArgs) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return i.ToOperationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OperationResponseArgs) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput).ToOperationResponsePtrOutputWithContext(ctx)
-}
-
-// OperationResponsePtrInput is an input type that accepts OperationResponseArgs, OperationResponsePtr and OperationResponsePtrOutput values.
-// You can construct a concrete instance of `OperationResponsePtrInput` via:
-//
-//          OperationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OperationResponsePtrInput interface {
-	pulumi.Input
-
-	ToOperationResponsePtrOutput() OperationResponsePtrOutput
-	ToOperationResponsePtrOutputWithContext(context.Context) OperationResponsePtrOutput
-}
-
-type operationResponsePtrType OperationResponseArgs
-
-func OperationResponsePtr(v *OperationResponseArgs) OperationResponsePtrInput {
-	return (*operationResponsePtrType)(v)
-}
-
-func (*operationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationResponse)(nil)).Elem()
-}
-
-func (i *operationResponsePtrType) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return i.ToOperationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *operationResponsePtrType) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationResponsePtrOutput)
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationResponseOutput struct{ *pulumi.OutputState }
-
-func (OperationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
-}
-
-func (o OperationResponseOutput) ToOperationResponseOutput() OperationResponseOutput {
-	return o
-}
-
-func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
-	return o
-}
-
-func (o OperationResponseOutput) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return o.ToOperationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return o.ApplyT(func(v OperationResponse) *OperationResponse {
-		return &v
-	}).(OperationResponsePtrOutput)
-}
-
-// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationResponseOutput) Done() pulumi.BoolOutput {
-	return o.ApplyT(func(v OperationResponse) bool { return v.Done }).(pulumi.BoolOutput)
-}
-
-// The error result of the operation in case of failure or cancellation.
-func (o OperationResponseOutput) Error() StatusResponseOutput {
-	return o.ApplyT(func(v OperationResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
-}
-
-// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v OperationResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationResponseOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
-}
-
-type OperationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OperationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationResponse)(nil)).Elem()
-}
-
-func (o OperationResponsePtrOutput) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
-	return o
-}
-
-func (o OperationResponsePtrOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
-	return o
-}
-
-func (o OperationResponsePtrOutput) Elem() OperationResponseOutput {
-	return o.ApplyT(func(v *OperationResponse) OperationResponse { return *v }).(OperationResponseOutput)
-}
-
-// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationResponsePtrOutput) Done() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Done
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The error result of the operation in case of failure or cancellation.
-func (o OperationResponsePtrOutput) Error() StatusResponsePtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *StatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(StatusResponsePtrOutput)
-}
-
-// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationResponsePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OperationResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationResponsePtrOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OperationResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Response
-	}).(pulumi.StringMapOutput)
 }
 
 // This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
@@ -16377,10 +15901,6 @@ func init() {
 	pulumi.RegisterOutputType(LocationArrayOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})
 	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
-	pulumi.RegisterOutputType(OperationOutput{})
-	pulumi.RegisterOutputType(OperationPtrOutput{})
-	pulumi.RegisterOutputType(OperationResponseOutput{})
-	pulumi.RegisterOutputType(OperationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackagePtrOutput{})
 	pulumi.RegisterOutputType(PackageIssueOutput{})

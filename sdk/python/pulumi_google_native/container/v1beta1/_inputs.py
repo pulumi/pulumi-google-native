@@ -1122,60 +1122,44 @@ class HttpLoadBalancingArgs:
 class IPAllocationPolicyArgs:
     def __init__(__self__, *,
                  allow_route_overlap: Optional[pulumi.Input[bool]] = None,
-                 cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  create_subnetwork: Optional[pulumi.Input[bool]] = None,
-                 node_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-                 services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  subnetwork_name: Optional[pulumi.Input[str]] = None,
-                 tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  use_ip_aliases: Optional[pulumi.Input[bool]] = None,
                  use_routes: Optional[pulumi.Input[bool]] = None):
         """
         Configuration for controlling how IPs are allocated in the cluster.
         :param pulumi.Input[bool] allow_route_overlap: If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
-        :param pulumi.Input[str] cluster_ipv4_cidr: This field is deprecated, use cluster_ipv4_cidr_block.
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param pulumi.Input[bool] create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
-        :param pulumi.Input[str] node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param pulumi.Input[str] node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
-        :param pulumi.Input[str] services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param pulumi.Input[str] services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param pulumi.Input[str] subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
-        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
         :param pulumi.Input[bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         :param pulumi.Input[bool] use_routes: Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         """
         if allow_route_overlap is not None:
             pulumi.set(__self__, "allow_route_overlap", allow_route_overlap)
-        if cluster_ipv4_cidr is not None:
-            pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         if create_subnetwork is not None:
             pulumi.set(__self__, "create_subnetwork", create_subnetwork)
-        if node_ipv4_cidr is not None:
-            pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         if node_ipv4_cidr_block is not None:
             pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
-        if services_ipv4_cidr is not None:
-            pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         if services_ipv4_cidr_block is not None:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         if subnetwork_name is not None:
             pulumi.set(__self__, "subnetwork_name", subnetwork_name)
-        if tpu_ipv4_cidr_block is not None:
-            pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         if use_ip_aliases is not None:
             pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
         if use_routes is not None:
@@ -1192,18 +1176,6 @@ class IPAllocationPolicyArgs:
     @allow_route_overlap.setter
     def allow_route_overlap(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_route_overlap", value)
-
-    @property
-    @pulumi.getter(name="clusterIpv4Cidr")
-    def cluster_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is deprecated, use cluster_ipv4_cidr_block.
-        """
-        return pulumi.get(self, "cluster_ipv4_cidr")
-
-    @cluster_ipv4_cidr.setter
-    def cluster_ipv4_cidr(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cluster_ipv4_cidr", value)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -1242,18 +1214,6 @@ class IPAllocationPolicyArgs:
         pulumi.set(self, "create_subnetwork", value)
 
     @property
-    @pulumi.getter(name="nodeIpv4Cidr")
-    def node_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is deprecated, use node_ipv4_cidr_block.
-        """
-        return pulumi.get(self, "node_ipv4_cidr")
-
-    @node_ipv4_cidr.setter
-    def node_ipv4_cidr(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "node_ipv4_cidr", value)
-
-    @property
     @pulumi.getter(name="nodeIpv4CidrBlock")
     def node_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1264,18 +1224,6 @@ class IPAllocationPolicyArgs:
     @node_ipv4_cidr_block.setter
     def node_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_ipv4_cidr_block", value)
-
-    @property
-    @pulumi.getter(name="servicesIpv4Cidr")
-    def services_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is deprecated, use services_ipv4_cidr_block.
-        """
-        return pulumi.get(self, "services_ipv4_cidr")
-
-    @services_ipv4_cidr.setter
-    def services_ipv4_cidr(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "services_ipv4_cidr", value)
 
     @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
@@ -1312,18 +1260,6 @@ class IPAllocationPolicyArgs:
     @subnetwork_name.setter
     def subnetwork_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_name", value)
-
-    @property
-    @pulumi.getter(name="tpuIpv4CidrBlock")
-    def tpu_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
-        """
-        return pulumi.get(self, "tpu_ipv4_cidr_block")
-
-    @tpu_ipv4_cidr_block.setter
-    def tpu_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tpu_ipv4_cidr_block", value)
 
     @property
     @pulumi.getter(name="useIpAliases")

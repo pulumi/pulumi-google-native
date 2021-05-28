@@ -27,18 +27,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
             set => _limits = value;
         }
 
-        [Input("limitsInMap")]
-        private InputMap<string>? _limitsInMap;
-
-        /// <summary>
-        /// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-        /// </summary>
-        public InputMap<string> LimitsInMap
-        {
-            get => _limitsInMap ?? (_limitsInMap = new InputMap<string>());
-            set => _limitsInMap = value;
-        }
-
         [Input("requests")]
         private InputMap<string>? _requests;
 
@@ -49,18 +37,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         {
             get => _requests ?? (_requests = new InputMap<string>());
             set => _requests = value;
-        }
-
-        [Input("requestsInMap")]
-        private InputMap<string>? _requestsInMap;
-
-        /// <summary>
-        /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-        /// </summary>
-        public InputMap<string> RequestsInMap
-        {
-            get => _requestsInMap ?? (_requestsInMap = new InputMap<string>());
-            set => _requestsInMap = value;
         }
 
         public ResourceRequirementsArgs()

@@ -2244,10 +2244,6 @@ class JobConfigurationLoadResponse(dict):
             suggest = "projection_fields"
         elif key == "rangePartitioning":
             suggest = "range_partitioning"
-        elif key == "schemaInline":
-            suggest = "schema_inline"
-        elif key == "schemaInlineFormat":
-            suggest = "schema_inline_format"
         elif key == "schemaUpdateOptions":
             suggest = "schema_update_options"
         elif key == "skipLeadingRows":
@@ -2296,8 +2292,6 @@ class JobConfigurationLoadResponse(dict):
                  quote: str,
                  range_partitioning: 'outputs.RangePartitioningResponse',
                  schema: 'outputs.TableSchemaResponse',
-                 schema_inline: str,
-                 schema_inline_format: str,
                  schema_update_options: Sequence[str],
                  skip_leading_rows: int,
                  source_format: str,
@@ -2327,8 +2321,6 @@ class JobConfigurationLoadResponse(dict):
         :param str quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param 'RangePartitioningResponse' range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param 'TableSchemaResponse' schema: [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
-        :param str schema_inline: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
-        :param str schema_inline_format: [Deprecated] The format of the schemaInline property.
         :param Sequence[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         :param int skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
         :param str source_format: [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
@@ -2358,8 +2350,6 @@ class JobConfigurationLoadResponse(dict):
         pulumi.set(__self__, "quote", quote)
         pulumi.set(__self__, "range_partitioning", range_partitioning)
         pulumi.set(__self__, "schema", schema)
-        pulumi.set(__self__, "schema_inline", schema_inline)
-        pulumi.set(__self__, "schema_inline_format", schema_inline_format)
         pulumi.set(__self__, "schema_update_options", schema_update_options)
         pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
         pulumi.set(__self__, "source_format", source_format)
@@ -2537,22 +2527,6 @@ class JobConfigurationLoadResponse(dict):
         return pulumi.get(self, "schema")
 
     @property
-    @pulumi.getter(name="schemaInline")
-    def schema_inline(self) -> str:
-        """
-        [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
-        """
-        return pulumi.get(self, "schema_inline")
-
-    @property
-    @pulumi.getter(name="schemaInlineFormat")
-    def schema_inline_format(self) -> str:
-        """
-        [Deprecated] The format of the schemaInline property.
-        """
-        return pulumi.get(self, "schema_inline_format")
-
-    @property
     @pulumi.getter(name="schemaUpdateOptions")
     def schema_update_options(self) -> Sequence[str]:
         """
@@ -2636,8 +2610,6 @@ class JobConfigurationQueryResponse(dict):
             suggest = "maximum_bytes_billed"
         elif key == "parameterMode":
             suggest = "parameter_mode"
-        elif key == "preserveNulls":
-            suggest = "preserve_nulls"
         elif key == "queryParameters":
             suggest = "query_parameters"
         elif key == "rangePartitioning":
@@ -2681,7 +2653,6 @@ class JobConfigurationQueryResponse(dict):
                  maximum_billing_tier: int,
                  maximum_bytes_billed: str,
                  parameter_mode: str,
-                 preserve_nulls: bool,
                  priority: str,
                  query: str,
                  query_parameters: Sequence['outputs.QueryParameterResponse'],
@@ -2706,7 +2677,6 @@ class JobConfigurationQueryResponse(dict):
         :param int maximum_billing_tier: [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
         :param str maximum_bytes_billed: [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
         :param str parameter_mode: Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-        :param bool preserve_nulls: [Deprecated] This property is deprecated.
         :param str priority: [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         :param str query: [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
         :param Sequence['QueryParameterResponse'] query_parameters: Query parameters for standard SQL queries.
@@ -2731,7 +2701,6 @@ class JobConfigurationQueryResponse(dict):
         pulumi.set(__self__, "maximum_billing_tier", maximum_billing_tier)
         pulumi.set(__self__, "maximum_bytes_billed", maximum_bytes_billed)
         pulumi.set(__self__, "parameter_mode", parameter_mode)
-        pulumi.set(__self__, "preserve_nulls", preserve_nulls)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "query_parameters", query_parameters)
@@ -2839,14 +2808,6 @@ class JobConfigurationQueryResponse(dict):
         Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         """
         return pulumi.get(self, "parameter_mode")
-
-    @property
-    @pulumi.getter(name="preserveNulls")
-    def preserve_nulls(self) -> bool:
-        """
-        [Deprecated] This property is deprecated.
-        """
-        return pulumi.get(self, "preserve_nulls")
 
     @property
     @pulumi.getter
@@ -3369,10 +3330,6 @@ class JobStatistics2Response(dict):
             suggest = "estimated_bytes_processed"
         elif key == "modelTraining":
             suggest = "model_training"
-        elif key == "modelTrainingCurrentIteration":
-            suggest = "model_training_current_iteration"
-        elif key == "modelTrainingExpectedTotalIteration":
-            suggest = "model_training_expected_total_iteration"
         elif key == "numDmlAffectedRows":
             suggest = "num_dml_affected_rows"
         elif key == "queryPlan":
@@ -3420,8 +3377,6 @@ class JobStatistics2Response(dict):
                  ddl_target_table: 'outputs.TableReferenceResponse',
                  estimated_bytes_processed: str,
                  model_training: 'outputs.BigQueryModelTrainingResponse',
-                 model_training_current_iteration: int,
-                 model_training_expected_total_iteration: str,
                  num_dml_affected_rows: str,
                  query_plan: Sequence['outputs.ExplainQueryStageResponse'],
                  referenced_routines: Sequence['outputs.RoutineReferenceResponse'],
@@ -3447,8 +3402,6 @@ class JobStatistics2Response(dict):
         :param 'TableReferenceResponse' ddl_target_table: [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         :param str estimated_bytes_processed: [Output-only] The original estimate of bytes processed for the job.
         :param 'BigQueryModelTrainingResponse' model_training: [Output-only, Beta] Information about create model query job progress.
-        :param int model_training_current_iteration: [Output-only, Beta] Deprecated; do not use.
-        :param str model_training_expected_total_iteration: [Output-only, Beta] Deprecated; do not use.
         :param str num_dml_affected_rows: [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         :param Sequence['ExplainQueryStageResponse'] query_plan: [Output-only] Describes execution plan for the query.
         :param Sequence['RoutineReferenceResponse'] referenced_routines: [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
@@ -3474,8 +3427,6 @@ class JobStatistics2Response(dict):
         pulumi.set(__self__, "ddl_target_table", ddl_target_table)
         pulumi.set(__self__, "estimated_bytes_processed", estimated_bytes_processed)
         pulumi.set(__self__, "model_training", model_training)
-        pulumi.set(__self__, "model_training_current_iteration", model_training_current_iteration)
-        pulumi.set(__self__, "model_training_expected_total_iteration", model_training_expected_total_iteration)
         pulumi.set(__self__, "num_dml_affected_rows", num_dml_affected_rows)
         pulumi.set(__self__, "query_plan", query_plan)
         pulumi.set(__self__, "referenced_routines", referenced_routines)
@@ -3570,22 +3521,6 @@ class JobStatistics2Response(dict):
         [Output-only, Beta] Information about create model query job progress.
         """
         return pulumi.get(self, "model_training")
-
-    @property
-    @pulumi.getter(name="modelTrainingCurrentIteration")
-    def model_training_current_iteration(self) -> int:
-        """
-        [Output-only, Beta] Deprecated; do not use.
-        """
-        return pulumi.get(self, "model_training_current_iteration")
-
-    @property
-    @pulumi.getter(name="modelTrainingExpectedTotalIteration")
-    def model_training_expected_total_iteration(self) -> str:
-        """
-        [Output-only, Beta] Deprecated; do not use.
-        """
-        return pulumi.get(self, "model_training_expected_total_iteration")
 
     @property
     @pulumi.getter(name="numDmlAffectedRows")
@@ -3862,8 +3797,6 @@ class JobStatisticsResponse(dict):
             suggest = "session_info_template"
         elif key == "startTime":
             suggest = "start_time"
-        elif key == "totalBytesProcessed":
-            suggest = "total_bytes_processed"
         elif key == "totalSlotMs":
             suggest = "total_slot_ms"
         elif key == "transactionInfoTemplate":
@@ -3896,7 +3829,6 @@ class JobStatisticsResponse(dict):
                  script_statistics: 'outputs.ScriptStatisticsResponse',
                  session_info_template: 'outputs.SessionInfoResponse',
                  start_time: str,
-                 total_bytes_processed: str,
                  total_slot_ms: str,
                  transaction_info_template: 'outputs.TransactionInfoResponse'):
         """
@@ -3915,7 +3847,6 @@ class JobStatisticsResponse(dict):
         :param 'ScriptStatisticsResponse' script_statistics: [Output-only] Statistics for a child job of a script.
         :param 'SessionInfoResponse' session_info_template: [Output-only] [Preview] Information of the session if this job is part of one.
         :param str start_time: [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-        :param str total_bytes_processed: [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
         :param str total_slot_ms: [Output-only] Slot-milliseconds for the job.
         :param 'TransactionInfoResponse' transaction_info_template: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
@@ -3934,7 +3865,6 @@ class JobStatisticsResponse(dict):
         pulumi.set(__self__, "script_statistics", script_statistics)
         pulumi.set(__self__, "session_info_template", session_info_template)
         pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "total_bytes_processed", total_bytes_processed)
         pulumi.set(__self__, "total_slot_ms", total_slot_ms)
         pulumi.set(__self__, "transaction_info_template", transaction_info_template)
 
@@ -4057,14 +3987,6 @@ class JobStatisticsResponse(dict):
         [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         """
         return pulumi.get(self, "start_time")
-
-    @property
-    @pulumi.getter(name="totalBytesProcessed")
-    def total_bytes_processed(self) -> str:
-        """
-        [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
-        """
-        return pulumi.get(self, "total_bytes_processed")
 
     @property
     @pulumi.getter(name="totalSlotMs")

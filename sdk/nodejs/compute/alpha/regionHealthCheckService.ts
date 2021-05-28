@@ -57,14 +57,6 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
      */
     public readonly healthStatusAggregationPolicy!: pulumi.Output<string>;
     /**
-     * This field is deprecated. Use health_status_aggregation_policy instead.
-     *
-     * Policy for how the results from multiple health checks for the same endpoint are aggregated.  
-     * - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-     * - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-     */
-    public readonly healthStatusAggregationStrategy!: pulumi.Output<string>;
-    /**
      * [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
      */
     public readonly kind!: pulumi.Output<string>;
@@ -115,7 +107,6 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["healthStatusAggregationPolicy"] = args ? args.healthStatusAggregationPolicy : undefined;
-            inputs["healthStatusAggregationStrategy"] = args ? args.healthStatusAggregationStrategy : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -132,7 +123,6 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["healthChecks"] = undefined /*out*/;
             inputs["healthStatusAggregationPolicy"] = undefined /*out*/;
-            inputs["healthStatusAggregationStrategy"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["networkEndpointGroups"] = undefined /*out*/;
@@ -174,14 +164,6 @@ export interface RegionHealthCheckServiceArgs {
      * - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
      */
     readonly healthStatusAggregationPolicy?: pulumi.Input<string>;
-    /**
-     * This field is deprecated. Use health_status_aggregation_policy instead.
-     *
-     * Policy for how the results from multiple health checks for the same endpoint are aggregated.  
-     * - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-     * - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-     */
-    readonly healthStatusAggregationStrategy?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

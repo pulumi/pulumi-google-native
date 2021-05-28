@@ -57,11 +57,11 @@ func NewClusterNodePool(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource ClusterNodePool
 	err := ctx.RegisterResource("google-native:container/v1beta1:ClusterNodePool", name, args, &resource, opts...)
@@ -166,6 +166,7 @@ type clusterNodePoolArgs struct {
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
+	Location          string   `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// NodeManagement configuration for this NodePool.
@@ -189,7 +190,6 @@ type clusterNodePoolArgs struct {
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
 	Version *string `pulumi:"version"`
-	Zone    string  `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ClusterNodePool resource.
@@ -205,6 +205,7 @@ type ClusterNodePoolArgs struct {
 	InitialNodeCount pulumi.IntPtrInput
 	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
+	Location          pulumi.StringInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
 	// NodeManagement configuration for this NodePool.
@@ -228,7 +229,6 @@ type ClusterNodePoolArgs struct {
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.
 	Version pulumi.StringPtrInput
-	Zone    pulumi.StringInput
 }
 
 func (ClusterNodePoolArgs) ElementType() reflect.Type {

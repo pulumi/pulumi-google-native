@@ -29,7 +29,6 @@ class AgentIntentArgs:
                  live_agent_handoff: Optional[pulumi.Input[bool]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
-                 ml_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1ContextArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]] = None,
@@ -50,7 +49,6 @@ class AgentIntentArgs:
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
         :param pulumi.Input[bool] ml_disabled: Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
-        :param pulumi.Input[bool] ml_enabled: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
         :param pulumi.Input[str] name: Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1ContextArgs']]] output_contexts: Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]] parameters: Optional. The collection of parameters associated with the intent.
@@ -86,8 +84,6 @@ class AgentIntentArgs:
             pulumi.set(__self__, "messages", messages)
         if ml_disabled is not None:
             pulumi.set(__self__, "ml_disabled", ml_disabled)
-        if ml_enabled is not None:
-            pulumi.set(__self__, "ml_enabled", ml_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if output_contexts is not None:
@@ -262,18 +258,6 @@ class AgentIntentArgs:
         pulumi.set(self, "ml_disabled", value)
 
     @property
-    @pulumi.getter(name="mlEnabled")
-    def ml_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
-        """
-        return pulumi.get(self, "ml_enabled")
-
-    @ml_enabled.setter
-    def ml_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "ml_enabled", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -388,7 +372,6 @@ class AgentIntent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
-                 ml_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1ContextArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]]] = None,
@@ -414,7 +397,6 @@ class AgentIntent(pulumi.CustomResource):
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
         :param pulumi.Input[bool] ml_disabled: Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
-        :param pulumi.Input[bool] ml_enabled: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
         :param pulumi.Input[str] name: Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1ContextArgs']]]] output_contexts: Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]] parameters: Optional. The collection of parameters associated with the intent.
@@ -461,7 +443,6 @@ class AgentIntent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
-                 ml_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1ContextArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]]] = None,
@@ -498,7 +479,6 @@ class AgentIntent(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["messages"] = messages
             __props__.__dict__["ml_disabled"] = ml_disabled
-            __props__.__dict__["ml_enabled"] = ml_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["output_contexts"] = output_contexts
             __props__.__dict__["parameters"] = parameters
@@ -545,7 +525,6 @@ class AgentIntent(pulumi.CustomResource):
         __props__.__dict__["live_agent_handoff"] = None
         __props__.__dict__["messages"] = None
         __props__.__dict__["ml_disabled"] = None
-        __props__.__dict__["ml_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_contexts"] = None
         __props__.__dict__["parameters"] = None
@@ -644,14 +623,6 @@ class AgentIntent(pulumi.CustomResource):
         Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
         """
         return pulumi.get(self, "ml_disabled")
-
-    @property
-    @pulumi.getter(name="mlEnabled")
-    def ml_enabled(self) -> pulumi.Output[bool]:
-        """
-        Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
-        """
-        return pulumi.get(self, "ml_enabled")
 
     @property
     @pulumi.getter

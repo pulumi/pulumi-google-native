@@ -166,12 +166,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public Input<string>? TeardownPolicy { get; set; }
 
         /// <summary>
-        /// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
-        /// </summary>
-        [Input("workerHarnessContainerImage")]
-        public Input<string>? WorkerHarnessContainerImage { get; set; }
-
-        /// <summary>
         /// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
         /// </summary>
         [Input("zone")]

@@ -26522,8 +26522,6 @@ func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRule
 type ImageRawDisk struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType *string `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum *string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source *string `pulumi:"source"`
 }
@@ -26543,8 +26541,6 @@ type ImageRawDiskInput interface {
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType pulumi.StringPtrInput `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum pulumi.StringPtrInput `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -26632,11 +26628,6 @@ func (o ImageRawDiskOutput) ContainerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.ContainerType }).(pulumi.StringPtrOutput)
 }
 
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskOutput) Sha1Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageRawDisk) *string { return v.Sha1Checksum }).(pulumi.StringPtrOutput)
-}
-
 // The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 func (o ImageRawDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
@@ -26670,16 +26661,6 @@ func (o ImageRawDiskPtrOutput) ContainerType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskPtrOutput) Sha1Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageRawDisk) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sha1Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
 // The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
@@ -26694,8 +26675,6 @@ func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 type ImageRawDiskResponse struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType string `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source string `pulumi:"source"`
 }
@@ -26715,8 +26694,6 @@ type ImageRawDiskResponseInput interface {
 type ImageRawDiskResponseArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType pulumi.StringInput `pulumi:"containerType"`
-	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-	Sha1Checksum pulumi.StringInput `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source pulumi.StringInput `pulumi:"source"`
 }
@@ -26804,11 +26781,6 @@ func (o ImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
 }
 
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskResponseOutput) Sha1Checksum() pulumi.StringOutput {
-	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Sha1Checksum }).(pulumi.StringOutput)
-}
-
 // The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 func (o ImageRawDiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Source }).(pulumi.StringOutput)
@@ -26839,16 +26811,6 @@ func (o ImageRawDiskResponsePtrOutput) ContainerType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ContainerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-func (o ImageRawDiskResponsePtrOutput) Sha1Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageRawDiskResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Sha1Checksum
 	}).(pulumi.StringPtrOutput)
 }
 

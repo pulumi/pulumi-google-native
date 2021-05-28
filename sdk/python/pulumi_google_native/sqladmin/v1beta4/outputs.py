@@ -1296,8 +1296,6 @@ class SettingsResponse(dict):
             suggest = "activation_policy"
         elif key == "activeDirectoryConfig":
             suggest = "active_directory_config"
-        elif key == "authorizedGaeApplications":
-            suggest = "authorized_gae_applications"
         elif key == "availabilityType":
             suggest = "availability_type"
         elif key == "backupConfiguration":
@@ -1324,8 +1322,6 @@ class SettingsResponse(dict):
             suggest = "maintenance_window"
         elif key == "pricingPlan":
             suggest = "pricing_plan"
-        elif key == "replicationType":
-            suggest = "replication_type"
         elif key == "settingsVersion":
             suggest = "settings_version"
         elif key == "storageAutoResize":
@@ -1349,7 +1345,6 @@ class SettingsResponse(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_config: 'outputs.SqlActiveDirectoryConfigResponse',
-                 authorized_gae_applications: Sequence[str],
                  availability_type: str,
                  backup_configuration: 'outputs.BackupConfigurationResponse',
                  collation: str,
@@ -1365,7 +1360,6 @@ class SettingsResponse(dict):
                  location_preference: 'outputs.LocationPreferenceResponse',
                  maintenance_window: 'outputs.MaintenanceWindowResponse',
                  pricing_plan: str,
-                 replication_type: str,
                  settings_version: str,
                  storage_auto_resize: bool,
                  storage_auto_resize_limit: str,
@@ -1375,7 +1369,6 @@ class SettingsResponse(dict):
         Database instance settings.
         :param str activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
         :param 'SqlActiveDirectoryConfigResponse' active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
-        :param Sequence[str] authorized_gae_applications: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
         :param str availability_type: Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
         :param 'BackupConfigurationResponse' backup_configuration: The daily backup configuration for the instance.
         :param str collation: The name of server Instance collation.
@@ -1391,7 +1384,6 @@ class SettingsResponse(dict):
         :param 'LocationPreferenceResponse' location_preference: The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         :param 'MaintenanceWindowResponse' maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
         :param str pricing_plan: The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
-        :param str replication_type: The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
         :param str settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         :param bool storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param str storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1400,7 +1392,6 @@ class SettingsResponse(dict):
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_config", active_directory_config)
-        pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configuration", backup_configuration)
         pulumi.set(__self__, "collation", collation)
@@ -1416,7 +1407,6 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "location_preference", location_preference)
         pulumi.set(__self__, "maintenance_window", maintenance_window)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
-        pulumi.set(__self__, "replication_type", replication_type)
         pulumi.set(__self__, "settings_version", settings_version)
         pulumi.set(__self__, "storage_auto_resize", storage_auto_resize)
         pulumi.set(__self__, "storage_auto_resize_limit", storage_auto_resize_limit)
@@ -1438,14 +1428,6 @@ class SettingsResponse(dict):
         Active Directory configuration, relevant only for Cloud SQL for SQL Server.
         """
         return pulumi.get(self, "active_directory_config")
-
-    @property
-    @pulumi.getter(name="authorizedGaeApplications")
-    def authorized_gae_applications(self) -> Sequence[str]:
-        """
-        The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
-        """
-        return pulumi.get(self, "authorized_gae_applications")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -1566,14 +1548,6 @@ class SettingsResponse(dict):
         The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
         """
         return pulumi.get(self, "pricing_plan")
-
-    @property
-    @pulumi.getter(name="replicationType")
-    def replication_type(self) -> str:
-        """
-        The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
-        """
-        return pulumi.get(self, "replication_type")
 
     @property
     @pulumi.getter(name="settingsVersion")

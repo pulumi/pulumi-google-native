@@ -64,10 +64,6 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-     */
-    public readonly enableLogging!: pulumi.Output<boolean>;
-    /**
      * [Output Only] Type of the resource. Always compute#firewall for firewall rules.
      */
     public readonly kind!: pulumi.Output<string>;
@@ -142,7 +138,6 @@ export class Firewall extends pulumi.CustomResource {
             inputs["destinationRanges"] = args ? args.destinationRanges : undefined;
             inputs["direction"] = args ? args.direction : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
@@ -166,7 +161,6 @@ export class Firewall extends pulumi.CustomResource {
             inputs["destinationRanges"] = undefined /*out*/;
             inputs["direction"] = undefined /*out*/;
             inputs["disabled"] = undefined /*out*/;
-            inputs["enableLogging"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["logConfig"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -219,10 +213,6 @@ export interface FirewallArgs {
      * Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
      */
     readonly disabled?: pulumi.Input<boolean>;
-    /**
-     * Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
-     */
-    readonly enableLogging?: pulumi.Input<boolean>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

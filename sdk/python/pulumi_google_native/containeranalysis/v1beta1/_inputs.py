@@ -47,7 +47,6 @@ __all__ = [
     'GrafeasV1beta1IntotoSignatureArgs',
     'GrafeasV1beta1PackageDetailsArgs',
     'GrafeasV1beta1VulnerabilityDetailsArgs',
-    'HashArgs',
     'HintArgs',
     'InTotoArgs',
     'InstallationArgs',
@@ -1466,14 +1465,12 @@ class DiscoveredArgs:
     def __init__(__self__, *,
                  analysis_status: Optional[pulumi.Input[str]] = None,
                  analysis_status_error: Optional[pulumi.Input['StatusArgs']] = None,
-                 continuous_analysis: Optional[pulumi.Input[str]] = None,
-                 last_analysis_time: Optional[pulumi.Input[str]] = None):
+                 continuous_analysis: Optional[pulumi.Input[str]] = None):
         """
         Provides information about the analysis status of a discovered resource.
         :param pulumi.Input[str] analysis_status: The status of discovery for the resource.
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
         :param pulumi.Input[str] continuous_analysis: Whether the resource is continuously analyzed.
-        :param pulumi.Input[str] last_analysis_time: The last time continuous analysis was done for this resource. Deprecated, do not use.
         """
         if analysis_status is not None:
             pulumi.set(__self__, "analysis_status", analysis_status)
@@ -1481,8 +1478,6 @@ class DiscoveredArgs:
             pulumi.set(__self__, "analysis_status_error", analysis_status_error)
         if continuous_analysis is not None:
             pulumi.set(__self__, "continuous_analysis", continuous_analysis)
-        if last_analysis_time is not None:
-            pulumi.set(__self__, "last_analysis_time", last_analysis_time)
 
     @property
     @pulumi.getter(name="analysisStatus")
@@ -1519,18 +1514,6 @@ class DiscoveredArgs:
     @continuous_analysis.setter
     def continuous_analysis(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "continuous_analysis", value)
-
-    @property
-    @pulumi.getter(name="lastAnalysisTime")
-    def last_analysis_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The last time continuous analysis was done for this resource. Deprecated, do not use.
-        """
-        return pulumi.get(self, "last_analysis_time")
-
-    @last_analysis_time.setter
-    def last_analysis_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_analysis_time", value)
 
 
 @pulumi.input_type
@@ -2343,46 +2326,6 @@ class GrafeasV1beta1VulnerabilityDetailsArgs:
 
 
 @pulumi.input_type
-class HashArgs:
-    def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        Container message for hash values.
-        :param pulumi.Input[str] type: Required. The type of hash that was performed.
-        :param pulumi.Input[str] value: Required. The hash value.
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The type of hash that was performed.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The hash value.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
 class HintArgs:
     def __init__(__self__, *,
                  human_readable_name: Optional[pulumi.Input[str]] = None):
@@ -2813,20 +2756,16 @@ class PackageArgs:
 class PackageIssueArgs:
     def __init__(__self__, *,
                  affected_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
-                 fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
-                 severity_name: Optional[pulumi.Input[str]] = None):
+                 fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None):
         """
         This message wraps a location affected by a vulnerability and its associated fix (if one is available).
         :param pulumi.Input['VulnerabilityLocationArgs'] affected_location: Required. The location of the vulnerability.
         :param pulumi.Input['VulnerabilityLocationArgs'] fixed_location: The location of the available fix for vulnerability.
-        :param pulumi.Input[str] severity_name: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
         """
         if affected_location is not None:
             pulumi.set(__self__, "affected_location", affected_location)
         if fixed_location is not None:
             pulumi.set(__self__, "fixed_location", fixed_location)
-        if severity_name is not None:
-            pulumi.set(__self__, "severity_name", severity_name)
 
     @property
     @pulumi.getter(name="affectedLocation")
@@ -2851,18 +2790,6 @@ class PackageIssueArgs:
     @fixed_location.setter
     def fixed_location(self, value: Optional[pulumi.Input['VulnerabilityLocationArgs']]):
         pulumi.set(self, "fixed_location", value)
-
-    @property
-    @pulumi.getter(name="severityName")
-    def severity_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
-        """
-        return pulumi.get(self, "severity_name")
-
-    @severity_name.setter
-    def severity_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "severity_name", value)
 
 
 @pulumi.input_type
@@ -3044,45 +2971,13 @@ class RepoIdArgs:
 @pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
-                 content_hash: Optional[pulumi.Input['HashArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         An entity that can have metadata. For example, a Docker image.
-        :param pulumi.Input['HashArgs'] content_hash: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
-        :param pulumi.Input[str] name: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
         :param pulumi.Input[str] uri: Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         """
-        if content_hash is not None:
-            pulumi.set(__self__, "content_hash", content_hash)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
-
-    @property
-    @pulumi.getter(name="contentHash")
-    def content_hash(self) -> Optional[pulumi.Input['HashArgs']]:
-        """
-        Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
-        """
-        return pulumi.get(self, "content_hash")
-
-    @content_hash.setter
-    def content_hash(self, value: Optional[pulumi.Input['HashArgs']]):
-        pulumi.set(self, "content_hash", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter

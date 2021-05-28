@@ -112,12 +112,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<bool> EnableKubernetesAlpha { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-        /// </summary>
-        [Output("enableTpu")]
-        public Output<bool> EnableTpu { get; private set; } = null!;
-
-        /// <summary>
         /// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         /// </summary>
         [Output("endpoint")]
@@ -134,12 +128,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("initialClusterVersion")]
         public Output<string> InitialClusterVersion { get; private set; } = null!;
-
-        /// <summary>
-        /// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        /// </summary>
-        [Output("initialNodeCount")]
-        public Output<int> InitialNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for cluster IP allocation.
@@ -202,12 +190,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.MasterAuthorizedNetworksConfigResponse> MasterAuthorizedNetworksConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-        /// </summary>
-        [Output("masterIpv4CidrBlock")]
-        public Output<string> MasterIpv4CidrBlock { get; private set; } = null!;
-
-        /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </summary>
         [Output("monitoringService")]
@@ -238,12 +220,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.NetworkPolicyResponse> NetworkPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-        /// </summary>
-        [Output("nodeConfig")]
-        public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
-
-        /// <summary>
         /// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
         /// </summary>
         [Output("nodeIpv4CidrSize")]
@@ -266,12 +242,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("podSecurityPolicyConfig")]
         public Output<Outputs.PodSecurityPolicyConfigResponse> PodSecurityPolicyConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-        /// </summary>
-        [Output("privateCluster")]
-        public Output<bool> PrivateCluster { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for private cluster.
@@ -356,12 +326,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("workloadIdentityConfig")]
         public Output<Outputs.WorkloadIdentityConfigResponse> WorkloadIdentityConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        /// </summary>
-        [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -511,12 +475,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<bool>? EnableKubernetesAlpha { get; set; }
 
         /// <summary>
-        /// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
-        /// </summary>
-        [Input("enableTpu")]
-        public Input<bool>? EnableTpu { get; set; }
-
-        /// <summary>
         /// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         /// </summary>
         [Input("endpoint")]
@@ -533,12 +491,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("initialClusterVersion")]
         public Input<string>? InitialClusterVersion { get; set; }
-
-        /// <summary>
-        /// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        /// </summary>
-        [Input("initialNodeCount")]
-        public Input<int>? InitialNodeCount { get; set; }
 
         /// <summary>
         /// Configuration for cluster IP allocation.
@@ -561,8 +513,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// <summary>
         /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("locations")]
         private InputList<string>? _locations;
@@ -607,12 +559,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.MasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>
-        /// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
-        /// </summary>
-        [Input("masterIpv4CidrBlock")]
-        public Input<string>? MasterIpv4CidrBlock { get; set; }
-
-        /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </summary>
         [Input("monitoringService")]
@@ -641,12 +587,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("networkPolicy")]
         public Input<Inputs.NetworkPolicyArgs>? NetworkPolicy { get; set; }
-
-        /// <summary>
-        /// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-        /// </summary>
-        [Input("nodeConfig")]
-        public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }
 
         /// <summary>
         /// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
@@ -683,12 +623,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("podSecurityPolicyConfig")]
         public Input<Inputs.PodSecurityPolicyConfigArgs>? PodSecurityPolicyConfig { get; set; }
-
-        /// <summary>
-        /// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
-        /// </summary>
-        [Input("privateCluster")]
-        public Input<bool>? PrivateCluster { get; set; }
 
         /// <summary>
         /// Configuration for private cluster.
@@ -782,12 +716,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("workloadIdentityConfig")]
         public Input<Inputs.WorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
-
-        /// <summary>
-        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
 
         public ClusterArgs()
         {

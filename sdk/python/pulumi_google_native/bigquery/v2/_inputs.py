@@ -2532,8 +2532,6 @@ class JobConfigurationLoadArgs:
                  quote: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
-                 schema_inline: Optional[pulumi.Input[str]] = None,
-                 schema_inline_format: Optional[pulumi.Input[str]] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  skip_leading_rows: Optional[pulumi.Input[int]] = None,
                  source_format: Optional[pulumi.Input[str]] = None,
@@ -2563,8 +2561,6 @@ class JobConfigurationLoadArgs:
         :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
-        :param pulumi.Input[str] schema_inline: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
-        :param pulumi.Input[str] schema_inline_format: [Deprecated] The format of the schemaInline property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         :param pulumi.Input[int] skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
         :param pulumi.Input[str] source_format: [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
@@ -2615,10 +2611,6 @@ class JobConfigurationLoadArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
-        if schema_inline is not None:
-            pulumi.set(__self__, "schema_inline", schema_inline)
-        if schema_inline_format is not None:
-            pulumi.set(__self__, "schema_inline_format", schema_inline_format)
         if schema_update_options is not None:
             pulumi.set(__self__, "schema_update_options", schema_update_options)
         if skip_leading_rows is not None:
@@ -2887,30 +2879,6 @@ class JobConfigurationLoadArgs:
         pulumi.set(self, "schema", value)
 
     @property
-    @pulumi.getter(name="schemaInline")
-    def schema_inline(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
-        """
-        return pulumi.get(self, "schema_inline")
-
-    @schema_inline.setter
-    def schema_inline(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "schema_inline", value)
-
-    @property
-    @pulumi.getter(name="schemaInlineFormat")
-    def schema_inline_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] The format of the schemaInline property.
-        """
-        return pulumi.get(self, "schema_inline_format")
-
-    @schema_inline_format.setter
-    def schema_inline_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "schema_inline_format", value)
-
-    @property
     @pulumi.getter(name="schemaUpdateOptions")
     def schema_update_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -3010,7 +2978,6 @@ class JobConfigurationQueryArgs:
                  maximum_billing_tier: Optional[pulumi.Input[int]] = None,
                  maximum_bytes_billed: Optional[pulumi.Input[str]] = None,
                  parameter_mode: Optional[pulumi.Input[str]] = None,
-                 preserve_nulls: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
@@ -3035,7 +3002,6 @@ class JobConfigurationQueryArgs:
         :param pulumi.Input[int] maximum_billing_tier: [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
         :param pulumi.Input[str] maximum_bytes_billed: [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
         :param pulumi.Input[str] parameter_mode: Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-        :param pulumi.Input[bool] preserve_nulls: [Deprecated] This property is deprecated.
         :param pulumi.Input[str] priority: [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         :param pulumi.Input[str] query: [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
         :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] query_parameters: Query parameters for standard SQL queries.
@@ -3072,8 +3038,6 @@ class JobConfigurationQueryArgs:
             pulumi.set(__self__, "maximum_bytes_billed", maximum_bytes_billed)
         if parameter_mode is not None:
             pulumi.set(__self__, "parameter_mode", parameter_mode)
-        if preserve_nulls is not None:
-            pulumi.set(__self__, "preserve_nulls", preserve_nulls)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if query is not None:
@@ -3240,18 +3204,6 @@ class JobConfigurationQueryArgs:
     @parameter_mode.setter
     def parameter_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_mode", value)
-
-    @property
-    @pulumi.getter(name="preserveNulls")
-    def preserve_nulls(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Deprecated] This property is deprecated.
-        """
-        return pulumi.get(self, "preserve_nulls")
-
-    @preserve_nulls.setter
-    def preserve_nulls(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "preserve_nulls", value)
 
     @property
     @pulumi.getter
@@ -3712,7 +3664,6 @@ class JobStatisticsArgs:
                  script_statistics: Optional[pulumi.Input['ScriptStatisticsArgs']] = None,
                  session_info_template: Optional[pulumi.Input['SessionInfoArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 total_bytes_processed: Optional[pulumi.Input[str]] = None,
                  total_slot_ms: Optional[pulumi.Input[str]] = None,
                  transaction_info_template: Optional[pulumi.Input['TransactionInfoArgs']] = None):
         """
@@ -3731,7 +3682,6 @@ class JobStatisticsArgs:
         :param pulumi.Input['ScriptStatisticsArgs'] script_statistics: [Output-only] Statistics for a child job of a script.
         :param pulumi.Input['SessionInfoArgs'] session_info_template: [Output-only] [Preview] Information of the session if this job is part of one.
         :param pulumi.Input[str] start_time: [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-        :param pulumi.Input[str] total_bytes_processed: [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
         :param pulumi.Input[str] total_slot_ms: [Output-only] Slot-milliseconds for the job.
         :param pulumi.Input['TransactionInfoArgs'] transaction_info_template: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
@@ -3765,8 +3715,6 @@ class JobStatisticsArgs:
             pulumi.set(__self__, "session_info_template", session_info_template)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if total_bytes_processed is not None:
-            pulumi.set(__self__, "total_bytes_processed", total_bytes_processed)
         if total_slot_ms is not None:
             pulumi.set(__self__, "total_slot_ms", total_slot_ms)
         if transaction_info_template is not None:
@@ -3953,18 +3901,6 @@ class JobStatisticsArgs:
         pulumi.set(self, "start_time", value)
 
     @property
-    @pulumi.getter(name="totalBytesProcessed")
-    def total_bytes_processed(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
-        """
-        return pulumi.get(self, "total_bytes_processed")
-
-    @total_bytes_processed.setter
-    def total_bytes_processed(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "total_bytes_processed", value)
-
-    @property
     @pulumi.getter(name="totalSlotMs")
     def total_slot_ms(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4002,8 +3938,6 @@ class JobStatistics2Args:
                  ddl_target_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  estimated_bytes_processed: Optional[pulumi.Input[str]] = None,
                  model_training: Optional[pulumi.Input['BigQueryModelTrainingArgs']] = None,
-                 model_training_current_iteration: Optional[pulumi.Input[int]] = None,
-                 model_training_expected_total_iteration: Optional[pulumi.Input[str]] = None,
                  num_dml_affected_rows: Optional[pulumi.Input[str]] = None,
                  query_plan: Optional[pulumi.Input[Sequence[pulumi.Input['ExplainQueryStageArgs']]]] = None,
                  referenced_routines: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineReferenceArgs']]]] = None,
@@ -4029,8 +3963,6 @@ class JobStatistics2Args:
         :param pulumi.Input['TableReferenceArgs'] ddl_target_table: [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         :param pulumi.Input[str] estimated_bytes_processed: [Output-only] The original estimate of bytes processed for the job.
         :param pulumi.Input['BigQueryModelTrainingArgs'] model_training: [Output-only, Beta] Information about create model query job progress.
-        :param pulumi.Input[int] model_training_current_iteration: [Output-only, Beta] Deprecated; do not use.
-        :param pulumi.Input[str] model_training_expected_total_iteration: [Output-only, Beta] Deprecated; do not use.
         :param pulumi.Input[str] num_dml_affected_rows: [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         :param pulumi.Input[Sequence[pulumi.Input['ExplainQueryStageArgs']]] query_plan: [Output-only] Describes execution plan for the query.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineReferenceArgs']]] referenced_routines: [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
@@ -4066,10 +3998,6 @@ class JobStatistics2Args:
             pulumi.set(__self__, "estimated_bytes_processed", estimated_bytes_processed)
         if model_training is not None:
             pulumi.set(__self__, "model_training", model_training)
-        if model_training_current_iteration is not None:
-            pulumi.set(__self__, "model_training_current_iteration", model_training_current_iteration)
-        if model_training_expected_total_iteration is not None:
-            pulumi.set(__self__, "model_training_expected_total_iteration", model_training_expected_total_iteration)
         if num_dml_affected_rows is not None:
             pulumi.set(__self__, "num_dml_affected_rows", num_dml_affected_rows)
         if query_plan is not None:
@@ -4218,30 +4146,6 @@ class JobStatistics2Args:
     @model_training.setter
     def model_training(self, value: Optional[pulumi.Input['BigQueryModelTrainingArgs']]):
         pulumi.set(self, "model_training", value)
-
-    @property
-    @pulumi.getter(name="modelTrainingCurrentIteration")
-    def model_training_current_iteration(self) -> Optional[pulumi.Input[int]]:
-        """
-        [Output-only, Beta] Deprecated; do not use.
-        """
-        return pulumi.get(self, "model_training_current_iteration")
-
-    @model_training_current_iteration.setter
-    def model_training_current_iteration(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "model_training_current_iteration", value)
-
-    @property
-    @pulumi.getter(name="modelTrainingExpectedTotalIteration")
-    def model_training_expected_total_iteration(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output-only, Beta] Deprecated; do not use.
-        """
-        return pulumi.get(self, "model_training_expected_total_iteration")
-
-    @model_training_expected_total_iteration.setter
-    def model_training_expected_total_iteration(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "model_training_expected_total_iteration", value)
 
     @property
     @pulumi.getter(name="numDmlAffectedRows")

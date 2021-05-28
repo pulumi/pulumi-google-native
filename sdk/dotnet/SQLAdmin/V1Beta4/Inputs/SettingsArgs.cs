@@ -27,18 +27,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         [Input("activeDirectoryConfig")]
         public Input<Inputs.SqlActiveDirectoryConfigArgs>? ActiveDirectoryConfig { get; set; }
 
-        [Input("authorizedGaeApplications")]
-        private InputList<string>? _authorizedGaeApplications;
-
-        /// <summary>
-        /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
-        /// </summary>
-        public InputList<string> AuthorizedGaeApplications
-        {
-            get => _authorizedGaeApplications ?? (_authorizedGaeApplications = new InputList<string>());
-            set => _authorizedGaeApplications = value;
-        }
-
         /// <summary>
         /// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
         /// </summary>
@@ -140,12 +128,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
-
-        /// <summary>
-        /// The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
-        /// </summary>
-        [Input("replicationType")]
-        public Input<string>? ReplicationType { get; set; }
 
         /// <summary>
         /// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.

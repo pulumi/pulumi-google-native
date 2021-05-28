@@ -18,7 +18,6 @@ __all__ = [
     'DomainRedirectResponse',
     'HeaderResponse',
     'I18nConfigResponse',
-    'PreviewConfigResponse',
     'RedirectResponse',
     'ReleaseResponse',
     'RewriteResponse',
@@ -456,56 +455,6 @@ class I18nConfigResponse(dict):
 
 
 @pulumi.output_type
-class PreviewConfigResponse(dict):
-    """
-    Deprecated in favor of [site channels](sites.channels).
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expireTime":
-            suggest = "expire_time"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PreviewConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PreviewConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PreviewConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 active: bool,
-                 expire_time: str):
-        """
-        Deprecated in favor of [site channels](sites.channels).
-        :param bool active: If true, preview URLs are enabled for this version.
-        :param str expire_time: Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-        """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "expire_time", expire_time)
-
-    @property
-    @pulumi.getter
-    def active(self) -> bool:
-        """
-        If true, preview URLs are enabled for this version.
-        """
-        return pulumi.get(self, "active")
-
-    @property
-    @pulumi.getter(name="expireTime")
-    def expire_time(self) -> str:
-        """
-        Indicates the expiration time for previewing this version; preview URL requests received after this time will 404.
-        """
-        return pulumi.get(self, "expire_time")
-
-
-@pulumi.output_type
 class RedirectResponse(dict):
     """
     A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
@@ -923,7 +872,6 @@ class VersionResponse(dict):
                  finalize_user: 'outputs.ActingUserResponse',
                  labels: Mapping[str, str],
                  name: str,
-                 preview: 'outputs.PreviewConfigResponse',
                  status: str,
                  version_bytes: str):
         """
@@ -938,7 +886,6 @@ class VersionResponse(dict):
         :param 'ActingUserResponse' finalize_user: Identifies the user who `FINALIZED` the version.
         :param Mapping[str, str] labels: The labels used for extra metadata and/or filtering.
         :param str name: The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
-        :param 'PreviewConfigResponse' preview: Deprecated in favor of [site channels](sites.channels).
         :param str status: The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
         :param str version_bytes: The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
         """
@@ -952,7 +899,6 @@ class VersionResponse(dict):
         pulumi.set(__self__, "finalize_user", finalize_user)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "preview", preview)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "version_bytes", version_bytes)
 
@@ -1035,14 +981,6 @@ class VersionResponse(dict):
         The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def preview(self) -> 'outputs.PreviewConfigResponse':
-        """
-        Deprecated in favor of [site channels](sites.channels).
-        """
-        return pulumi.get(self, "preview")
 
     @property
     @pulumi.getter

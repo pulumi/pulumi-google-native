@@ -41,7 +41,6 @@ __all__ = [
     'InstallationResponse',
     'LayerResponse',
     'LocationResponse',
-    'OperationResponse',
     'PackageIssueResponse',
     'PackageResponse',
     'PgpSignedAttestationResponse',
@@ -67,16 +66,13 @@ class ArtifactResponse(dict):
     """
     def __init__(__self__, *,
                  checksum: str,
-                 name: str,
                  names: Sequence[str]):
         """
         Artifact describes a build product.
         :param str checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
-        :param str name: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         :param Sequence[str] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
         pulumi.set(__self__, "checksum", checksum)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "names", names)
 
     @property
@@ -86,14 +82,6 @@ class ArtifactResponse(dict):
         Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         """
         return pulumi.get(self, "checksum")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
-        """
-        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
@@ -1140,21 +1128,18 @@ class DiscoveredResponse(dict):
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
                  continuous_analysis: str,
-                 cpe: str,
-                 operation: 'outputs.OperationResponse'):
+                 cpe: str):
         """
         Provides information about the scan status of a discovered resource.
         :param str analysis_status: The status of discovery for the resource.
         :param 'StatusResponse' analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
         :param str continuous_analysis: Whether the resource is continuously analyzed.
         :param str cpe: The CPE of the resource being scanned.
-        :param 'OperationResponse' operation: An operation that indicates the status of the current scan. This field is deprecated, do not use.
         """
         pulumi.set(__self__, "analysis_status", analysis_status)
         pulumi.set(__self__, "analysis_status_error", analysis_status_error)
         pulumi.set(__self__, "continuous_analysis", continuous_analysis)
         pulumi.set(__self__, "cpe", cpe)
-        pulumi.set(__self__, "operation", operation)
 
     @property
     @pulumi.getter(name="analysisStatus")
@@ -1187,14 +1172,6 @@ class DiscoveredResponse(dict):
         The CPE of the resource being scanned.
         """
         return pulumi.get(self, "cpe")
-
-    @property
-    @pulumi.getter
-    def operation(self) -> 'outputs.OperationResponse':
-        """
-        An operation that indicates the status of the current scan. This field is deprecated, do not use.
-        """
-        return pulumi.get(self, "operation")
 
 
 @pulumi.output_type
@@ -2008,72 +1985,6 @@ class LocationResponse(dict):
         The version installed at this location.
         """
         return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class OperationResponse(dict):
-    """
-    This resource represents a long-running operation that is the result of a network API call.
-    """
-    def __init__(__self__, *,
-                 done: bool,
-                 error: 'outputs.StatusResponse',
-                 metadata: Mapping[str, str],
-                 name: str,
-                 response: Mapping[str, str]):
-        """
-        This resource represents a long-running operation that is the result of a network API call.
-        :param bool done: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        :param 'StatusResponse' error: The error result of the operation in case of failure or cancellation.
-        :param Mapping[str, str] metadata: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        :param str name: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        :param Mapping[str, str] response: The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        """
-        pulumi.set(__self__, "done", done)
-        pulumi.set(__self__, "error", error)
-        pulumi.set(__self__, "metadata", metadata)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "response", response)
-
-    @property
-    @pulumi.getter
-    def done(self) -> bool:
-        """
-        If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        """
-        return pulumi.get(self, "done")
-
-    @property
-    @pulumi.getter
-    def error(self) -> 'outputs.StatusResponse':
-        """
-        The error result of the operation in case of failure or cancellation.
-        """
-        return pulumi.get(self, "error")
-
-    @property
-    @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
-        """
-        Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        """
-        return pulumi.get(self, "metadata")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def response(self) -> Mapping[str, str]:
-        """
-        The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        """
-        return pulumi.get(self, "response")
 
 
 @pulumi.output_type

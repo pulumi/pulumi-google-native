@@ -94,12 +94,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Encryption { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
-        /// </summary>
-        [Output("googleReferenceId")]
-        public Output<string> GoogleReferenceId { get; private set; } = null!;
-
-        /// <summary>
         /// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
         /// </summary>
         [Output("interconnect")]
@@ -335,12 +329,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }
-
-        /// <summary>
-        /// [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
-        /// </summary>
-        [Input("googleReferenceId")]
-        public Input<string>? GoogleReferenceId { get; set; }
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

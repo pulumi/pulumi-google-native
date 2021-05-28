@@ -28,12 +28,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Collation { get; private set; } = null!;
 
         /// <summary>
-        /// This field is deprecated and will be removed from a future version of the API.
-        /// </summary>
-        [Output("etag")]
-        public Output<string> Etag { get; private set; } = null!;
-
-        /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project ID.
         /// </summary>
         [Output("instance")]
@@ -122,12 +116,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }
-
-        /// <summary>
-        /// This field is deprecated and will be removed from a future version of the API.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project ID.
