@@ -23,7 +23,6 @@ class SubnetworkArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
-                 enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
@@ -39,7 +38,6 @@ class SubnetworkArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -64,7 +62,6 @@ class SubnetworkArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
-        :param pulumi.Input[bool] enable_private_v6_access: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
                
@@ -84,7 +81,6 @@ class SubnetworkArgs:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
                
                This field can be both set at resource creation time and updated using patch.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ipv6_google_access_service_accounts: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
         :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
@@ -110,8 +106,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
         if enable_l2 is not None:
             pulumi.set(__self__, "enable_l2", enable_l2)
-        if enable_private_v6_access is not None:
-            pulumi.set(__self__, "enable_private_v6_access", enable_private_v6_access)
         if external_ipv6_prefix is not None:
             pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if fingerprint is not None:
@@ -142,8 +136,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
-        if private_ipv6_google_access_service_accounts is not None:
-            pulumi.set(__self__, "private_ipv6_google_access_service_accounts", private_ipv6_google_access_service_accounts)
         if purpose is not None:
             pulumi.set(__self__, "purpose", purpose)
         if request_id is not None:
@@ -261,18 +253,6 @@ class SubnetworkArgs:
     @enable_l2.setter
     def enable_l2(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_l2", value)
-
-    @property
-    @pulumi.getter(name="enablePrivateV6Access")
-    def enable_private_v6_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
-        """
-        return pulumi.get(self, "enable_private_v6_access")
-
-    @enable_private_v6_access.setter
-    def enable_private_v6_access(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_private_v6_access", value)
 
     @property
     @pulumi.getter(name="externalIpv6Prefix")
@@ -459,18 +439,6 @@ class SubnetworkArgs:
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
-    @pulumi.getter(name="privateIpv6GoogleAccessServiceAccounts")
-    def private_ipv6_google_access_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        """
-        return pulumi.get(self, "private_ipv6_google_access_service_accounts")
-
-    @private_ipv6_google_access_service_accounts.setter
-    def private_ipv6_google_access_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "private_ipv6_google_access_service_accounts", value)
-
-    @property
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
@@ -589,7 +557,6 @@ class Subnetwork(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
-                 enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
@@ -605,7 +572,6 @@ class Subnetwork(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -635,7 +601,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
-        :param pulumi.Input[bool] enable_private_v6_access: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
                
@@ -655,7 +620,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
                
                This field can be both set at resource creation time and updated using patch.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ipv6_google_access_service_accounts: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
         :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
@@ -698,7 +662,6 @@ class Subnetwork(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
-                 enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
@@ -714,7 +677,6 @@ class Subnetwork(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -744,7 +706,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_flow_logs"] = enable_flow_logs
             __props__.__dict__["enable_l2"] = enable_l2
-            __props__.__dict__["enable_private_v6_access"] = enable_private_v6_access
             __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["flow_sampling"] = flow_sampling
@@ -760,7 +721,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["private_ip_google_access"] = private_ip_google_access
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
-            __props__.__dict__["private_ipv6_google_access_service_accounts"] = private_ipv6_google_access_service_accounts
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -804,7 +764,6 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["enable_flow_logs"] = None
         __props__.__dict__["enable_l2"] = None
-        __props__.__dict__["enable_private_v6_access"] = None
         __props__.__dict__["external_ipv6_prefix"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["flow_sampling"] = None
@@ -819,7 +778,6 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["private_ip_google_access"] = None
         __props__.__dict__["private_ipv6_google_access"] = None
-        __props__.__dict__["private_ipv6_google_access_service_accounts"] = None
         __props__.__dict__["purpose"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["role"] = None
@@ -884,14 +842,6 @@ class Subnetwork(pulumi.CustomResource):
         Enables Layer2 communication on the subnetwork.
         """
         return pulumi.get(self, "enable_l2")
-
-    @property
-    @pulumi.getter(name="enablePrivateV6Access")
-    def enable_private_v6_access(self) -> pulumi.Output[bool]:
-        """
-        Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
-        """
-        return pulumi.get(self, "enable_private_v6_access")
 
     @property
     @pulumi.getter(name="externalIpv6Prefix")
@@ -1008,14 +958,6 @@ class Subnetwork(pulumi.CustomResource):
         This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
-
-    @property
-    @pulumi.getter(name="privateIpv6GoogleAccessServiceAccounts")
-    def private_ipv6_google_access_service_accounts(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        """
-        return pulumi.get(self, "private_ipv6_google_access_service_accounts")
 
     @property
     @pulumi.getter

@@ -119,7 +119,6 @@ __all__ = [
     'NetworkEndpointGroupAppEngineArgs',
     'NetworkEndpointGroupCloudFunctionArgs',
     'NetworkEndpointGroupCloudRunArgs',
-    'NetworkEndpointGroupLbNetworkEndpointGroupArgs',
     'NetworkInterfaceArgs',
     'NetworkPeeringArgs',
     'NetworkPerformanceConfigArgs',
@@ -6702,18 +6701,14 @@ class HttpRouteRuleMatchArgs:
 class ImageRawDiskArgs:
     def __init__(__self__, *,
                  container_type: Optional[pulumi.Input[str]] = None,
-                 sha1_checksum: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         The parameters of the raw disk image.
         :param pulumi.Input[str] container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param pulumi.Input[str] sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         :param pulumi.Input[str] source: The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
         """
         if container_type is not None:
             pulumi.set(__self__, "container_type", container_type)
-        if sha1_checksum is not None:
-            pulumi.set(__self__, "sha1_checksum", sha1_checksum)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -6728,18 +6723,6 @@ class ImageRawDiskArgs:
     @container_type.setter
     def container_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_type", value)
-
-    @property
-    @pulumi.getter(name="sha1Checksum")
-    def sha1_checksum(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-        """
-        return pulumi.get(self, "sha1_checksum")
-
-    @sha1_checksum.setter
-    def sha1_checksum(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sha1_checksum", value)
 
     @property
     @pulumi.getter
@@ -7095,17 +7078,13 @@ class InstanceGroupManagerStatusArgs:
 class InstanceGroupManagerStatusStatefulArgs:
     def __init__(__self__, *,
                  has_stateful_config: Optional[pulumi.Input[bool]] = None,
-                 is_stateful: Optional[pulumi.Input[bool]] = None,
                  per_instance_configs: Optional[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs']] = None):
         """
         :param pulumi.Input[bool] has_stateful_config: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input[bool] is_stateful: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         :param pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigsArgs'] per_instance_configs: [Output Only] Status of per-instance configs on the instance.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
-        if is_stateful is not None:
-            pulumi.set(__self__, "is_stateful", is_stateful)
         if per_instance_configs is not None:
             pulumi.set(__self__, "per_instance_configs", per_instance_configs)
 
@@ -7120,18 +7099,6 @@ class InstanceGroupManagerStatusStatefulArgs:
     @has_stateful_config.setter
     def has_stateful_config(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "has_stateful_config", value)
-
-    @property
-    @pulumi.getter(name="isStateful")
-    def is_stateful(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-        """
-        return pulumi.get(self, "is_stateful")
-
-    @is_stateful.setter
-    def is_stateful(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_stateful", value)
 
     @property
     @pulumi.getter(name="perInstanceConfigs")
@@ -8890,78 +8857,6 @@ class NetworkEndpointGroupCloudRunArgs:
     @url_mask.setter
     def url_mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_mask", value)
-
-
-@pulumi.input_type
-class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
-    def __init__(__self__, *,
-                 default_port: Optional[pulumi.Input[int]] = None,
-                 network: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
-        """
-        Load balancing specific fields for network endpoint group.
-        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] zone: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-        """
-        if default_port is not None:
-            pulumi.set(__self__, "default_port", default_port)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
-        if subnetwork is not None:
-            pulumi.set(__self__, "subnetwork", subnetwork)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="defaultPort")
-    def default_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "default_port")
-
-    @default_port.setter
-    def default_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "default_port", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "network", value)
-
-    @property
-    @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "subnetwork")
-
-    @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subnetwork", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
@@ -13678,12 +13573,10 @@ class SecurityPolicyRuleMatcherConfigLayer4ConfigArgs:
 @pulumi.input_type
 class SecuritySettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input[str]] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The authentication and authorization settings for a BackendService.
-        :param pulumi.Input[str] authentication: [Deprecated] Use clientTlsPolicy instead.
         :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends.
                clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                If left blank, communications are not encrypted.
@@ -13693,24 +13586,10 @@ class SecuritySettingsArgs:
                Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
                Note: This field currently has no impact.
         """
-        if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
         if client_tls_policy is not None:
             pulumi.set(__self__, "client_tls_policy", client_tls_policy)
         if subject_alt_names is not None:
             pulumi.set(__self__, "subject_alt_names", subject_alt_names)
-
-    @property
-    @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] Use clientTlsPolicy instead.
-        """
-        return pulumi.get(self, "authentication")
-
-    @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authentication", value)
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
@@ -13804,20 +13683,16 @@ class ServiceAccountArgs:
 class ServiceAttachmentConnectedEndpointArgs:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input[str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         [Output Only] A connection connected to this service attachment.
         :param pulumi.Input[str] endpoint: The url of a connected endpoint.
-        :param pulumi.Input[str] forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the connected endpoint.
         :param pulumi.Input[str] status: The status of a connected endpoint to this service attachment.
         """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
-        if forwarding_rule is not None:
-            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
         if psc_connection_id is not None:
             pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         if status is not None:
@@ -13834,18 +13709,6 @@ class ServiceAttachmentConnectedEndpointArgs:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[str]]:
-        """
-        The url of a consumer forwarding rule. [Deprecated] Do not use.
-        """
-        return pulumi.get(self, "forwarding_rule")
-
-    @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "forwarding_rule", value)
 
     @property
     @pulumi.getter(name="pscConnectionId")

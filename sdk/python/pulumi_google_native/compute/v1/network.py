@@ -16,7 +16,6 @@ __all__ = ['NetworkArgs', 'Network']
 class NetworkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 i_pv4_range: Optional[pulumi.Input[str]] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -32,7 +31,6 @@ class NetworkArgs:
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Network resource.
-        :param pulumi.Input[str] i_pv4_range: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
         :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created.
                
                When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -53,8 +51,6 @@ class NetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         """
         pulumi.set(__self__, "project", project)
-        if i_pv4_range is not None:
-            pulumi.set(__self__, "i_pv4_range", i_pv4_range)
         if auto_create_subnetworks is not None:
             pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
         if creation_timestamp is not None:
@@ -90,18 +86,6 @@ class NetworkArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="IPv4Range")
-    def i_pv4_range(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-        """
-        return pulumi.get(self, "i_pv4_range")
-
-    @i_pv4_range.setter
-    def i_pv4_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "i_pv4_range", value)
 
     @property
     @pulumi.getter(name="autoCreateSubnetworks")
@@ -268,7 +252,6 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 i_pv4_range: Optional[pulumi.Input[str]] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -289,7 +272,6 @@ class Network(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] i_pv4_range: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
         :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created.
                
                When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
@@ -333,7 +315,6 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 i_pv4_range: Optional[pulumi.Input[str]] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -360,7 +341,6 @@ class Network(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkArgs.__new__(NetworkArgs)
 
-            __props__.__dict__["i_pv4_range"] = i_pv4_range
             __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
@@ -399,7 +379,6 @@ class Network(pulumi.CustomResource):
 
         __props__ = NetworkArgs.__new__(NetworkArgs)
 
-        __props__.__dict__["i_pv4_range"] = None
         __props__.__dict__["auto_create_subnetworks"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -412,14 +391,6 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["subnetworks"] = None
         return Network(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="IPv4Range")
-    def i_pv4_range(self) -> pulumi.Output[str]:
-        """
-        Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
-        """
-        return pulumi.get(self, "i_pv4_range")
 
     @property
     @pulumi.getter(name="autoCreateSubnetworks")

@@ -1003,8 +1003,6 @@ class OperationResponse(dict):
         suggest = None
         if key == "clientOperationId":
             suggest = "client_operation_id"
-        elif key == "creationTimestamp":
-            suggest = "creation_timestamp"
         elif key == "endTime":
             suggest = "end_time"
         elif key == "httpErrorMessage":
@@ -1041,7 +1039,6 @@ class OperationResponse(dict):
 
     def __init__(__self__, *,
                  client_operation_id: str,
-                 creation_timestamp: str,
                  description: str,
                  end_time: str,
                  error: 'outputs.CompositeTypeErrorResponse',
@@ -1066,7 +1063,6 @@ class OperationResponse(dict):
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
         :param str client_operation_id: [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-        :param str creation_timestamp: [Deprecated] This field is deprecated.
         :param str description: [Output Only] A textual description of the operation, which is set when the operation is created.
         :param str end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
         :param 'CompositeTypeErrorResponse' error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
@@ -1090,7 +1086,6 @@ class OperationResponse(dict):
         :param str zone: [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         pulumi.set(__self__, "client_operation_id", client_operation_id)
-        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "error", error)
@@ -1120,14 +1115,6 @@ class OperationResponse(dict):
         [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
         """
         return pulumi.get(self, "client_operation_id")
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> str:
-        """
-        [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter

@@ -16,8 +16,8 @@ __all__ = ['ClusterNodePoolArgs', 'ClusterNodePool']
 class ClusterNodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 zone: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
@@ -54,8 +54,8 @@ class ClusterNodePoolArgs:
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "zone", zone)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if conditions is not None:
@@ -100,21 +100,21 @@ class ClusterNodePoolArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter
@@ -320,6 +320,7 @@ class ClusterNodePool(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
@@ -332,7 +333,6 @@ class ClusterNodePool(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a node pool for a cluster.
@@ -386,6 +386,7 @@ class ClusterNodePool(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
@@ -398,7 +399,6 @@ class ClusterNodePool(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -419,6 +419,9 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__.__dict__["config"] = config
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["instance_group_urls"] = instance_group_urls
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
             __props__.__dict__["management"] = management
             __props__.__dict__["max_pods_constraint"] = max_pods_constraint
@@ -433,9 +436,6 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__.__dict__["status"] = status
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
-            __props__.__dict__["zone"] = zone
         super(ClusterNodePool, __self__).__init__(
             'google-native:container/v1beta1:ClusterNodePool',
             resource_name,

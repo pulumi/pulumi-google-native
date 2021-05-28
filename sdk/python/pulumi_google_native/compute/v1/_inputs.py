@@ -6371,18 +6371,14 @@ class HttpRouteRuleMatchArgs:
 class ImageRawDiskArgs:
     def __init__(__self__, *,
                  container_type: Optional[pulumi.Input[str]] = None,
-                 sha1_checksum: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         The parameters of the raw disk image.
         :param pulumi.Input[str] container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param pulumi.Input[str] sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         :param pulumi.Input[str] source: The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
         """
         if container_type is not None:
             pulumi.set(__self__, "container_type", container_type)
-        if sha1_checksum is not None:
-            pulumi.set(__self__, "sha1_checksum", sha1_checksum)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -6397,18 +6393,6 @@ class ImageRawDiskArgs:
     @container_type.setter
     def container_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_type", value)
-
-    @property
-    @pulumi.getter(name="sha1Checksum")
-    def sha1_checksum(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
-        """
-        return pulumi.get(self, "sha1_checksum")
-
-    @sha1_checksum.setter
-    def sha1_checksum(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sha1_checksum", value)
 
     @property
     @pulumi.getter

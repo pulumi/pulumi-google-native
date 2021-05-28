@@ -2178,41 +2178,16 @@ class ResourceRequirementsResponse(dict):
     """
     ResourceRequirements describes the compute resource requirements.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "limitsInMap":
-            suggest = "limits_in_map"
-        elif key == "requestsInMap":
-            suggest = "requests_in_map"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceRequirementsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceRequirementsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceRequirementsResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  limits: Mapping[str, str],
-                 limits_in_map: Mapping[str, str],
-                 requests: Mapping[str, str],
-                 requests_in_map: Mapping[str, str]):
+                 requests: Mapping[str, str]):
         """
         ResourceRequirements describes the compute resource requirements.
         :param Mapping[str, str] limits: Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param Mapping[str, str] limits_in_map: Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
         :param Mapping[str, str] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param Mapping[str, str] requests_in_map: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
         """
         pulumi.set(__self__, "limits", limits)
-        pulumi.set(__self__, "limits_in_map", limits_in_map)
         pulumi.set(__self__, "requests", requests)
-        pulumi.set(__self__, "requests_in_map", requests_in_map)
 
     @property
     @pulumi.getter
@@ -2223,28 +2198,12 @@ class ResourceRequirementsResponse(dict):
         return pulumi.get(self, "limits")
 
     @property
-    @pulumi.getter(name="limitsInMap")
-    def limits_in_map(self) -> Mapping[str, str]:
-        """
-        Limits describes the maximum amount of compute resources allowed. This is a temporary field created to migrate away from the map limits field. This is done to become compliant with k8s style API. This field is deprecated in favor of limits field.
-        """
-        return pulumi.get(self, "limits_in_map")
-
-    @property
     @pulumi.getter
     def requests(self) -> Mapping[str, str]:
         """
         Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
-
-    @property
-    @pulumi.getter(name="requestsInMap")
-    def requests_in_map(self) -> Mapping[str, str]:
-        """
-        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
-        """
-        return pulumi.get(self, "requests_in_map")
 
 
 @pulumi.output_type

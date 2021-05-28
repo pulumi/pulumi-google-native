@@ -50,8 +50,6 @@ class DiskArgs:
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
-                 source_in_place_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_in_place_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -59,7 +57,6 @@ class DiskArgs:
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -129,11 +126,6 @@ class DiskArgs:
                global/images/family/my-image-family
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_image_id: [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
-        :param pulumi.Input[str] source_in_place_snapshot: [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-               - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-               - global/inPlaceSnapshots/inPlaceSnapshots
-        :param pulumi.Input[str] source_in_place_snapshot_id: [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
         :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
                - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
                - projects/project/zones/zone/instantSnapshots/instantSnapshot 
@@ -152,7 +144,6 @@ class DiskArgs:
                - FAILED: Disk creation failed. 
                - READY: Disk is ready for use. 
                - DELETING: Disk is deleting.
-        :param pulumi.Input[str] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
                https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
@@ -226,10 +217,6 @@ class DiskArgs:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_image_id is not None:
             pulumi.set(__self__, "source_image_id", source_image_id)
-        if source_in_place_snapshot is not None:
-            pulumi.set(__self__, "source_in_place_snapshot", source_in_place_snapshot)
-        if source_in_place_snapshot_id is not None:
-            pulumi.set(__self__, "source_in_place_snapshot_id", source_in_place_snapshot_id)
         if source_instant_snapshot is not None:
             pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if source_instant_snapshot_id is not None:
@@ -244,8 +231,6 @@ class DiskArgs:
             pulumi.set(__self__, "source_storage_object", source_storage_object)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_licenses is not None:
@@ -699,33 +684,6 @@ class DiskArgs:
         pulumi.set(self, "source_image_id", value)
 
     @property
-    @pulumi.getter(name="sourceInPlaceSnapshot")
-    def source_in_place_snapshot(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        - global/inPlaceSnapshots/inPlaceSnapshots
-        """
-        return pulumi.get(self, "source_in_place_snapshot")
-
-    @source_in_place_snapshot.setter
-    def source_in_place_snapshot(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_in_place_snapshot", value)
-
-    @property
-    @pulumi.getter(name="sourceInPlaceSnapshotId")
-    def source_in_place_snapshot_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-        """
-        return pulumi.get(self, "source_in_place_snapshot_id")
-
-    @source_in_place_snapshot_id.setter
-    def source_in_place_snapshot_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_in_place_snapshot_id", value)
-
-    @property
     @pulumi.getter(name="sourceInstantSnapshot")
     def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
@@ -821,18 +779,6 @@ class DiskArgs:
         pulumi.set(self, "status", value)
 
     @property
-    @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] Storage type of the persistent disk.
-        """
-        return pulumi.get(self, "storage_type")
-
-    @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_type", value)
-
-    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -909,8 +855,6 @@ class Disk(pulumi.CustomResource):
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
-                 source_in_place_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_in_place_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -918,7 +862,6 @@ class Disk(pulumi.CustomResource):
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -992,11 +935,6 @@ class Disk(pulumi.CustomResource):
                global/images/family/my-image-family
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_image_id: [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
-        :param pulumi.Input[str] source_in_place_snapshot: [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-               - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-               - global/inPlaceSnapshots/inPlaceSnapshots
-        :param pulumi.Input[str] source_in_place_snapshot_id: [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
         :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
                - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
                - projects/project/zones/zone/instantSnapshots/instantSnapshot 
@@ -1015,7 +953,6 @@ class Disk(pulumi.CustomResource):
                - FAILED: Disk creation failed. 
                - READY: Disk is ready for use. 
                - DELETING: Disk is deleting.
-        :param pulumi.Input[str] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
                https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
@@ -1080,8 +1017,6 @@ class Disk(pulumi.CustomResource):
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
-                 source_in_place_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_in_place_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
@@ -1089,7 +1024,6 @@ class Disk(pulumi.CustomResource):
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1142,8 +1076,6 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_image"] = source_image
             __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
             __props__.__dict__["source_image_id"] = source_image_id
-            __props__.__dict__["source_in_place_snapshot"] = source_in_place_snapshot
-            __props__.__dict__["source_in_place_snapshot_id"] = source_in_place_snapshot_id
             __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["source_instant_snapshot_id"] = source_instant_snapshot_id
             __props__.__dict__["source_snapshot"] = source_snapshot
@@ -1151,7 +1083,6 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_id"] = source_snapshot_id
             __props__.__dict__["source_storage_object"] = source_storage_object
             __props__.__dict__["status"] = status
-            __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["type"] = type
             __props__.__dict__["user_licenses"] = user_licenses
             __props__.__dict__["users"] = users
@@ -1211,8 +1142,6 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_image"] = None
         __props__.__dict__["source_image_encryption_key"] = None
         __props__.__dict__["source_image_id"] = None
-        __props__.__dict__["source_in_place_snapshot"] = None
-        __props__.__dict__["source_in_place_snapshot_id"] = None
         __props__.__dict__["source_instant_snapshot"] = None
         __props__.__dict__["source_instant_snapshot_id"] = None
         __props__.__dict__["source_snapshot"] = None
@@ -1220,7 +1149,6 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_snapshot_id"] = None
         __props__.__dict__["source_storage_object"] = None
         __props__.__dict__["status"] = None
-        __props__.__dict__["storage_type"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_licenses"] = None
         __props__.__dict__["users"] = None
@@ -1507,25 +1435,6 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "source_image_id")
 
     @property
-    @pulumi.getter(name="sourceInPlaceSnapshot")
-    def source_in_place_snapshot(self) -> pulumi.Output[str]:
-        """
-        [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
-        - global/inPlaceSnapshots/inPlaceSnapshots
-        """
-        return pulumi.get(self, "source_in_place_snapshot")
-
-    @property
-    @pulumi.getter(name="sourceInPlaceSnapshotId")
-    def source_in_place_snapshot_id(self) -> pulumi.Output[str]:
-        """
-        [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
-        """
-        return pulumi.get(self, "source_in_place_snapshot_id")
-
-    @property
     @pulumi.getter(name="sourceInstantSnapshot")
     def source_instant_snapshot(self) -> pulumi.Output[str]:
         """
@@ -1591,14 +1500,6 @@ class Disk(pulumi.CustomResource):
         - DELETING: Disk is deleting.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="storageType")
-    def storage_type(self) -> pulumi.Output[str]:
-        """
-        [Deprecated] Storage type of the persistent disk.
-        """
-        return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter

@@ -26,7 +26,6 @@ __all__ = [
     'RowResponse',
     'ScorecardResponse',
     'SparkChartViewResponse',
-    'StatisticalTimeSeriesFilterResponse',
     'TextResponse',
     'ThresholdResponse',
     'TileResponse',
@@ -713,58 +712,6 @@ class SparkChartViewResponse(dict):
 
 
 @pulumi.output_type
-class StatisticalTimeSeriesFilterResponse(dict):
-    """
-    A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "numTimeSeries":
-            suggest = "num_time_series"
-        elif key == "rankingMethod":
-            suggest = "ranking_method"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in StatisticalTimeSeriesFilterResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        StatisticalTimeSeriesFilterResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        StatisticalTimeSeriesFilterResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 num_time_series: int,
-                 ranking_method: str):
-        """
-        A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
-        :param int num_time_series: How many time series to output.
-        :param str ranking_method: rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-        """
-        pulumi.set(__self__, "num_time_series", num_time_series)
-        pulumi.set(__self__, "ranking_method", ranking_method)
-
-    @property
-    @pulumi.getter(name="numTimeSeries")
-    def num_time_series(self) -> int:
-        """
-        How many time series to output.
-        """
-        return pulumi.get(self, "num_time_series")
-
-    @property
-    @pulumi.getter(name="rankingMethod")
-    def ranking_method(self) -> str:
-        """
-        rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-        """
-        return pulumi.get(self, "ranking_method")
-
-
-@pulumi.output_type
 class TextResponse(dict):
     """
     A widget that displays textual content.
@@ -949,8 +896,6 @@ class TimeSeriesFilterRatioResponse(dict):
             suggest = "pick_time_series_filter"
         elif key == "secondaryAggregation":
             suggest = "secondary_aggregation"
-        elif key == "statisticalTimeSeriesFilter":
-            suggest = "statistical_time_series_filter"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TimeSeriesFilterRatioResponse. Access the value via the '{suggest}' property getter instead.")
@@ -967,21 +912,18 @@ class TimeSeriesFilterRatioResponse(dict):
                  denominator: 'outputs.RatioPartResponse',
                  numerator: 'outputs.RatioPartResponse',
                  pick_time_series_filter: 'outputs.PickTimeSeriesFilterResponse',
-                 secondary_aggregation: 'outputs.AggregationResponse',
-                 statistical_time_series_filter: 'outputs.StatisticalTimeSeriesFilterResponse'):
+                 secondary_aggregation: 'outputs.AggregationResponse'):
         """
         A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
         :param 'RatioPartResponse' denominator: The denominator of the ratio.
         :param 'RatioPartResponse' numerator: The numerator of the ratio.
         :param 'PickTimeSeriesFilterResponse' pick_time_series_filter: Ranking based time series filter.
         :param 'AggregationResponse' secondary_aggregation: Apply a second aggregation after the ratio is computed.
-        :param 'StatisticalTimeSeriesFilterResponse' statistical_time_series_filter: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
         """
         pulumi.set(__self__, "denominator", denominator)
         pulumi.set(__self__, "numerator", numerator)
         pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
         pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
-        pulumi.set(__self__, "statistical_time_series_filter", statistical_time_series_filter)
 
     @property
     @pulumi.getter
@@ -1015,14 +957,6 @@ class TimeSeriesFilterRatioResponse(dict):
         """
         return pulumi.get(self, "secondary_aggregation")
 
-    @property
-    @pulumi.getter(name="statisticalTimeSeriesFilter")
-    def statistical_time_series_filter(self) -> 'outputs.StatisticalTimeSeriesFilterResponse':
-        """
-        Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-        """
-        return pulumi.get(self, "statistical_time_series_filter")
-
 
 @pulumi.output_type
 class TimeSeriesFilterResponse(dict):
@@ -1036,8 +970,6 @@ class TimeSeriesFilterResponse(dict):
             suggest = "pick_time_series_filter"
         elif key == "secondaryAggregation":
             suggest = "secondary_aggregation"
-        elif key == "statisticalTimeSeriesFilter":
-            suggest = "statistical_time_series_filter"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TimeSeriesFilterResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1054,21 +986,18 @@ class TimeSeriesFilterResponse(dict):
                  aggregation: 'outputs.AggregationResponse',
                  filter: str,
                  pick_time_series_filter: 'outputs.PickTimeSeriesFilterResponse',
-                 secondary_aggregation: 'outputs.AggregationResponse',
-                 statistical_time_series_filter: 'outputs.StatisticalTimeSeriesFilterResponse'):
+                 secondary_aggregation: 'outputs.AggregationResponse'):
         """
         A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
         :param 'AggregationResponse' aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
         :param str filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         :param 'PickTimeSeriesFilterResponse' pick_time_series_filter: Ranking based time series filter.
         :param 'AggregationResponse' secondary_aggregation: Apply a second aggregation after aggregation is applied.
-        :param 'StatisticalTimeSeriesFilterResponse' statistical_time_series_filter: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
         """
         pulumi.set(__self__, "aggregation", aggregation)
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
         pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
-        pulumi.set(__self__, "statistical_time_series_filter", statistical_time_series_filter)
 
     @property
     @pulumi.getter
@@ -1101,14 +1030,6 @@ class TimeSeriesFilterResponse(dict):
         Apply a second aggregation after aggregation is applied.
         """
         return pulumi.get(self, "secondary_aggregation")
-
-    @property
-    @pulumi.getter(name="statisticalTimeSeriesFilter")
-    def statistical_time_series_filter(self) -> 'outputs.StatisticalTimeSeriesFilterResponse':
-        """
-        Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-        """
-        return pulumi.get(self, "statistical_time_series_filter")
 
 
 @pulumi.output_type

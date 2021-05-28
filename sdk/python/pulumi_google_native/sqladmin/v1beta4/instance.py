@@ -22,12 +22,10 @@ class InstanceArgs:
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input['DiskEncryptionConfigurationArgs']] = None,
                  disk_encryption_status: Optional[pulumi.Input['DiskEncryptionStatusArgs']] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
                  failover_replica: Optional[pulumi.Input['InstanceFailoverReplicaArgs']] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]]] = None,
-                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
@@ -56,12 +54,10 @@ class InstanceArgs:
         :param pulumi.Input[str] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
-        :param pulumi.Input[str] etag: This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
         :param pulumi.Input['InstanceFailoverReplicaArgs'] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
         :param pulumi.Input[str] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]] ip_addresses: The assigned IP addresses for the instance.
-        :param pulumi.Input[str] ipv6_address: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
         :param pulumi.Input[str] kind: This is always *sql#instance*.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
         :param pulumi.Input[str] max_disk_size: The maximum disk size of the instance in bytes.
@@ -95,8 +91,6 @@ class InstanceArgs:
             pulumi.set(__self__, "disk_encryption_configuration", disk_encryption_configuration)
         if disk_encryption_status is not None:
             pulumi.set(__self__, "disk_encryption_status", disk_encryption_status)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
         if failover_replica is not None:
             pulumi.set(__self__, "failover_replica", failover_replica)
         if gce_zone is not None:
@@ -105,8 +99,6 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_type", instance_type)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
-        if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if master_instance_name is not None:
@@ -231,18 +223,6 @@ class InstanceArgs:
         pulumi.set(self, "disk_encryption_status", value)
 
     @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
-
-    @property
     @pulumi.getter(name="failoverReplica")
     def failover_replica(self) -> Optional[pulumi.Input['InstanceFailoverReplicaArgs']]:
         """
@@ -289,18 +269,6 @@ class InstanceArgs:
     @ip_addresses.setter
     def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]]]):
         pulumi.set(self, "ip_addresses", value)
-
-    @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-        """
-        return pulumi.get(self, "ipv6_address")
-
-    @ipv6_address.setter
-    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ipv6_address", value)
 
     @property
     @pulumi.getter
@@ -542,12 +510,10 @@ class Instance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
                  failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
-                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
@@ -580,12 +546,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
-        :param pulumi.Input[str] etag: This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
         :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
         :param pulumi.Input[str] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
-        :param pulumi.Input[str] ipv6_address: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
         :param pulumi.Input[str] kind: This is always *sql#instance*.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
         :param pulumi.Input[str] max_disk_size: The maximum disk size of the instance in bytes.
@@ -637,12 +601,10 @@ class Instance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
                  failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
-                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
@@ -681,12 +643,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["disk_encryption_configuration"] = disk_encryption_configuration
             __props__.__dict__["disk_encryption_status"] = disk_encryption_status
-            __props__.__dict__["etag"] = etag
             __props__.__dict__["failover_replica"] = failover_replica
             __props__.__dict__["gce_zone"] = gce_zone
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ip_addresses"] = ip_addresses
-            __props__.__dict__["ipv6_address"] = ipv6_address
             __props__.__dict__["kind"] = kind
             __props__.__dict__["master_instance_name"] = master_instance_name
             __props__.__dict__["max_disk_size"] = max_disk_size
@@ -737,12 +697,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["database_version"] = None
         __props__.__dict__["disk_encryption_configuration"] = None
         __props__.__dict__["disk_encryption_status"] = None
-        __props__.__dict__["etag"] = None
         __props__.__dict__["failover_replica"] = None
         __props__.__dict__["gce_zone"] = None
         __props__.__dict__["instance_type"] = None
         __props__.__dict__["ip_addresses"] = None
-        __props__.__dict__["ipv6_address"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["master_instance_name"] = None
         __props__.__dict__["max_disk_size"] = None
@@ -814,14 +772,6 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "disk_encryption_status")
 
     @property
-    @pulumi.getter
-    def etag(self) -> pulumi.Output[str]:
-        """
-        This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-        """
-        return pulumi.get(self, "etag")
-
-    @property
     @pulumi.getter(name="failoverReplica")
     def failover_replica(self) -> pulumi.Output['outputs.InstanceFailoverReplicaResponse']:
         """
@@ -852,14 +802,6 @@ class Instance(pulumi.CustomResource):
         The assigned IP addresses for the instance.
         """
         return pulumi.get(self, "ip_addresses")
-
-    @property
-    @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> pulumi.Output[str]:
-        """
-        The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
-        """
-        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter

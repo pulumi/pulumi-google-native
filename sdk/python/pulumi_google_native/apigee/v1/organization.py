@@ -327,7 +327,6 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["project"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["subscription_type"] = None
         super(Organization, __self__).__init__(
             'google-native:apigee/v1:Organization',
             resource_name,
@@ -369,7 +368,6 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["runtime_database_encryption_key_name"] = None
         __props__.__dict__["runtime_type"] = None
         __props__.__dict__["state"] = None
-        __props__.__dict__["subscription_type"] = None
         __props__.__dict__["type"] = None
         return Organization(resource_name, opts=opts, __props__=__props__)
 
@@ -521,14 +519,6 @@ class Organization(pulumi.CustomResource):
         State of the organization. Values other than ACTIVE means the resource is not ready to use.
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> pulumi.Output[str]:
-        """
-        DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-        """
-        return pulumi.get(self, "subscription_type")
 
     @property
     @pulumi.getter

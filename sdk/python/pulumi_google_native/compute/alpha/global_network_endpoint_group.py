@@ -25,7 +25,6 @@ class GlobalNetworkEndpointGroupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input['NetworkEndpointGroupLbNetworkEndpointGroupArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
@@ -50,7 +49,6 @@ class GlobalNetworkEndpointGroupArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
-        :param pulumi.Input['NetworkEndpointGroupLbNetworkEndpointGroupArgs'] load_balancer: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
@@ -83,8 +81,6 @@ class GlobalNetworkEndpointGroupArgs:
             pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
-        if load_balancer is not None:
-            pulumi.set(__self__, "load_balancer", load_balancer)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -228,18 +224,6 @@ class GlobalNetworkEndpointGroupArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> Optional[pulumi.Input['NetworkEndpointGroupLbNetworkEndpointGroupArgs']]:
-        """
-        This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "load_balancer")
-
-    @load_balancer.setter
-    def load_balancer(self, value: Optional[pulumi.Input['NetworkEndpointGroupLbNetworkEndpointGroupArgs']]):
-        pulumi.set(self, "load_balancer", value)
 
     @property
     @pulumi.getter
@@ -409,7 +393,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupLbNetworkEndpointGroupArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
@@ -439,7 +422,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupLbNetworkEndpointGroupArgs']] load_balancer: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
@@ -486,7 +468,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupLbNetworkEndpointGroupArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
@@ -522,7 +503,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
-            __props__.__dict__["load_balancer"] = load_balancer
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
@@ -569,7 +549,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["default_port"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["kind"] = None
-        __props__.__dict__["load_balancer"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["network_endpoint_type"] = None
@@ -647,14 +626,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         """
         return pulumi.get(self, "kind")
-
-    @property
-    @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> pulumi.Output['outputs.NetworkEndpointGroupLbNetworkEndpointGroupResponse']:
-        """
-        This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "load_balancer")
 
     @property
     @pulumi.getter

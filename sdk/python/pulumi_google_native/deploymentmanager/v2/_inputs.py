@@ -608,7 +608,6 @@ class ImportFileArgs:
 class OperationArgs:
     def __init__(__self__, *,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  error: Optional[pulumi.Input['DeploymentErrorArgs']] = None,
@@ -634,7 +633,6 @@ class OperationArgs:
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
         :param pulumi.Input[str] client_operation_id: [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
-        :param pulumi.Input[str] creation_timestamp: [Deprecated] This field is deprecated.
         :param pulumi.Input[str] description: [Output Only] A textual description of the operation, which is set when the operation is created.
         :param pulumi.Input[str] end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
         :param pulumi.Input['DeploymentErrorArgs'] error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
@@ -660,8 +658,6 @@ class OperationArgs:
         """
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
-        if creation_timestamp is not None:
-            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if end_time is not None:
@@ -718,18 +714,6 @@ class OperationArgs:
     @client_operation_id.setter
     def client_operation_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_operation_id", value)
-
-    @property
-    @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] This field is deprecated.
-        """
-        return pulumi.get(self, "creation_timestamp")
-
-    @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter

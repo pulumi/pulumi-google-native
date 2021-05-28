@@ -18,7 +18,6 @@ class InstructionArgs:
                  project: pulumi.Input[str],
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 csv_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +28,6 @@ class InstructionArgs:
         The set of arguments for constructing a Instruction resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the instruction.
         :param pulumi.Input[str] create_time: Creation time of instruction.
-        :param pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs'] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         :param pulumi.Input[str] data_type: Required. The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
@@ -42,8 +40,6 @@ class InstructionArgs:
             pulumi.set(__self__, "blocking_resources", blocking_resources)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
-        if csv_instruction is not None:
-            pulumi.set(__self__, "csv_instruction", csv_instruction)
         if data_type is not None:
             pulumi.set(__self__, "data_type", data_type)
         if description is not None:
@@ -89,18 +85,6 @@ class InstructionArgs:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
-
-    @property
-    @pulumi.getter(name="csvInstruction")
-    def csv_instruction(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]:
-        """
-        Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-        """
-        return pulumi.get(self, "csv_instruction")
-
-    @csv_instruction.setter
-    def csv_instruction(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]):
-        pulumi.set(self, "csv_instruction", value)
 
     @property
     @pulumi.getter(name="dataType")
@@ -182,7 +166,6 @@ class Instruction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -198,7 +181,6 @@ class Instruction(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the instruction.
         :param pulumi.Input[str] create_time: Creation time of instruction.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         :param pulumi.Input[str] data_type: Required. The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
@@ -232,7 +214,6 @@ class Instruction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -254,7 +235,6 @@ class Instruction(pulumi.CustomResource):
 
             __props__.__dict__["blocking_resources"] = blocking_resources
             __props__.__dict__["create_time"] = create_time
-            __props__.__dict__["csv_instruction"] = csv_instruction
             __props__.__dict__["data_type"] = data_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -288,7 +268,6 @@ class Instruction(pulumi.CustomResource):
 
         __props__.__dict__["blocking_resources"] = None
         __props__.__dict__["create_time"] = None
-        __props__.__dict__["csv_instruction"] = None
         __props__.__dict__["data_type"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
@@ -312,14 +291,6 @@ class Instruction(pulumi.CustomResource):
         Creation time of instruction.
         """
         return pulumi.get(self, "create_time")
-
-    @property
-    @pulumi.getter(name="csvInstruction")
-    def csv_instruction(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1CsvInstructionResponse']:
-        """
-        Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-        """
-        return pulumi.get(self, "csv_instruction")
 
     @property
     @pulumi.getter(name="dataType")

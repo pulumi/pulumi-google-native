@@ -36,7 +36,6 @@ class ClusterArgs:
                  endpoint: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
-                 initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
@@ -50,7 +49,6 @@ class ClusterArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  network_policy: Optional[pulumi.Input['NetworkPolicyArgs']] = None,
-                 node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
@@ -66,8 +64,7 @@ class ClusterArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['VerticalPodAutoscalingArgs']] = None,
-                 workload_identity_config: Optional[pulumi.Input['WorkloadIdentityConfigArgs']] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
+                 workload_identity_config: Optional[pulumi.Input['WorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] location: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
@@ -90,7 +87,6 @@ class ClusterArgs:
         :param pulumi.Input[str] endpoint: [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         :param pulumi.Input[str] expire_time: [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
-        :param pulumi.Input[int] initial_node_count: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
@@ -104,7 +100,6 @@ class ClusterArgs:
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Configuration for cluster networking.
         :param pulumi.Input['NetworkPolicyArgs'] network_policy: Configuration options for the NetworkPolicy feature.
-        :param pulumi.Input['NodeConfigArgs'] node_config: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
         :param pulumi.Input[int] node_ipv4_cidr_size: [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration of the cluster.
@@ -121,7 +116,6 @@ class ClusterArgs:
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input['VerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
-        :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -163,8 +157,6 @@ class ClusterArgs:
             pulumi.set(__self__, "expire_time", expire_time)
         if initial_cluster_version is not None:
             pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
-        if initial_node_count is not None:
-            pulumi.set(__self__, "initial_node_count", initial_node_count)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if label_fingerprint is not None:
@@ -191,8 +183,6 @@ class ClusterArgs:
             pulumi.set(__self__, "network_config", network_config)
         if network_policy is not None:
             pulumi.set(__self__, "network_policy", network_policy)
-        if node_config is not None:
-            pulumi.set(__self__, "node_config", node_config)
         if node_ipv4_cidr_size is not None:
             pulumi.set(__self__, "node_ipv4_cidr_size", node_ipv4_cidr_size)
         if node_pools is not None:
@@ -225,8 +215,6 @@ class ClusterArgs:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_identity_config is not None:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -478,18 +466,6 @@ class ClusterArgs:
         pulumi.set(self, "initial_cluster_version", value)
 
     @property
-    @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        """
-        return pulumi.get(self, "initial_node_count")
-
-    @initial_node_count.setter
-    def initial_node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "initial_node_count", value)
-
-    @property
     @pulumi.getter(name="ipAllocationPolicy")
     def ip_allocation_policy(self) -> Optional[pulumi.Input['IPAllocationPolicyArgs']]:
         """
@@ -644,18 +620,6 @@ class ClusterArgs:
     @network_policy.setter
     def network_policy(self, value: Optional[pulumi.Input['NetworkPolicyArgs']]):
         pulumi.set(self, "network_policy", value)
-
-    @property
-    @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['NodeConfigArgs']]:
-        """
-        Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-        """
-        return pulumi.get(self, "node_config")
-
-    @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['NodeConfigArgs']]):
-        pulumi.set(self, "node_config", value)
 
     @property
     @pulumi.getter(name="nodeIpv4CidrSize")
@@ -849,18 +813,6 @@ class ClusterArgs:
     def workload_identity_config(self, value: Optional[pulumi.Input['WorkloadIdentityConfigArgs']]):
         pulumi.set(self, "workload_identity_config", value)
 
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
-
 
 class Cluster(pulumi.CustomResource):
     @overload
@@ -886,7 +838,6 @@ class Cluster(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
-                 initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
@@ -901,7 +852,6 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  node_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
@@ -919,7 +869,6 @@ class Cluster(pulumi.CustomResource):
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using.
@@ -945,7 +894,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         :param pulumi.Input[str] expire_time: [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
-        :param pulumi.Input[int] initial_node_count: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
         :param pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input[pulumi.InputType['LegacyAbacArgs']] legacy_abac: Configuration for the legacy ABAC authorization mode.
@@ -960,7 +908,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Configuration for cluster networking.
         :param pulumi.Input[pulumi.InputType['NetworkPolicyArgs']] network_policy: Configuration options for the NetworkPolicy feature.
-        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
         :param pulumi.Input[int] node_ipv4_cidr_size: [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration of the cluster.
@@ -977,7 +924,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
-        :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
         ...
     @overload
@@ -1022,7 +968,6 @@ class Cluster(pulumi.CustomResource):
                  endpoint: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
-                 initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
@@ -1037,7 +982,6 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  node_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
@@ -1055,7 +999,6 @@ class Cluster(pulumi.CustomResource):
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -1087,7 +1030,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
-            __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["label_fingerprint"] = label_fingerprint
             __props__.__dict__["legacy_abac"] = legacy_abac
@@ -1104,7 +1046,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["network_policy"] = network_policy
-            __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_ipv4_cidr_size"] = node_ipv4_cidr_size
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["notification_config"] = notification_config
@@ -1124,7 +1065,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_identity_config"] = workload_identity_config
-            __props__.__dict__["zone"] = zone
         super(Cluster, __self__).__init__(
             'google-native:container/v1:Cluster',
             resource_name,
@@ -1166,7 +1106,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["endpoint"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["initial_cluster_version"] = None
-        __props__.__dict__["initial_node_count"] = None
         __props__.__dict__["ip_allocation_policy"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["legacy_abac"] = None
@@ -1181,7 +1120,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["network_policy"] = None
-        __props__.__dict__["node_config"] = None
         __props__.__dict__["node_ipv4_cidr_size"] = None
         __props__.__dict__["node_pools"] = None
         __props__.__dict__["notification_config"] = None
@@ -1197,7 +1135,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tpu_ipv4_cidr_block"] = None
         __props__.__dict__["vertical_pod_autoscaling"] = None
         __props__.__dict__["workload_identity_config"] = None
-        __props__.__dict__["zone"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1353,14 +1290,6 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "initial_cluster_version")
 
     @property
-    @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> pulumi.Output[int]:
-        """
-        The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        """
-        return pulumi.get(self, "initial_node_count")
-
-    @property
     @pulumi.getter(name="ipAllocationPolicy")
     def ip_allocation_policy(self) -> pulumi.Output['outputs.IPAllocationPolicyResponse']:
         """
@@ -1471,14 +1400,6 @@ class Cluster(pulumi.CustomResource):
         Configuration options for the NetworkPolicy feature.
         """
         return pulumi.get(self, "network_policy")
-
-    @property
-    @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> pulumi.Output['outputs.NodeConfigResponse']:
-        """
-        Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
-        """
-        return pulumi.get(self, "node_config")
 
     @property
     @pulumi.getter(name="nodeIpv4CidrSize")
@@ -1599,12 +1520,4 @@ class Cluster(pulumi.CustomResource):
         Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
         return pulumi.get(self, "workload_identity_config")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Output[str]:
-        """
-        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        """
-        return pulumi.get(self, "zone")
 

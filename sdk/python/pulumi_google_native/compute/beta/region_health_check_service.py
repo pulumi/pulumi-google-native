@@ -20,7 +20,6 @@ class RegionHealthCheckServiceArgs:
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
-                 health_status_aggregation_strategy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -36,11 +35,6 @@ class RegionHealthCheckServiceArgs:
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
         :param pulumi.Input[str] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
-               - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-               - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-        :param pulumi.Input[str] health_status_aggregation_strategy: This field is deprecated. Use health_status_aggregation_policy instead.
-               
-               Policy for how the results from multiple health checks for the same endpoint are aggregated.  
                - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
                - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -62,8 +56,6 @@ class RegionHealthCheckServiceArgs:
             pulumi.set(__self__, "health_checks", health_checks)
         if health_status_aggregation_policy is not None:
             pulumi.set(__self__, "health_status_aggregation_policy", health_status_aggregation_policy)
-        if health_status_aggregation_strategy is not None:
-            pulumi.set(__self__, "health_status_aggregation_strategy", health_status_aggregation_strategy)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if kind is not None:
@@ -163,22 +155,6 @@ class RegionHealthCheckServiceArgs:
         pulumi.set(self, "health_status_aggregation_policy", value)
 
     @property
-    @pulumi.getter(name="healthStatusAggregationStrategy")
-    def health_status_aggregation_strategy(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field is deprecated. Use health_status_aggregation_policy instead.
-
-        Policy for how the results from multiple health checks for the same endpoint are aggregated.  
-        - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-        - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-        """
-        return pulumi.get(self, "health_status_aggregation_strategy")
-
-    @health_status_aggregation_strategy.setter
-    def health_status_aggregation_strategy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "health_status_aggregation_strategy", value)
-
-    @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -270,7 +246,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
-                 health_status_aggregation_strategy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -291,11 +266,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
         :param pulumi.Input[str] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
-               - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-               - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-        :param pulumi.Input[str] health_status_aggregation_strategy: This field is deprecated. Use health_status_aggregation_policy instead.
-               
-               Policy for how the results from multiple health checks for the same endpoint are aggregated.  
                - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
                - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -335,7 +305,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
-                 health_status_aggregation_strategy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -362,7 +331,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["health_status_aggregation_policy"] = health_status_aggregation_policy
-            __props__.__dict__["health_status_aggregation_strategy"] = health_status_aggregation_strategy
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
@@ -403,7 +371,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["health_checks"] = None
         __props__.__dict__["health_status_aggregation_policy"] = None
-        __props__.__dict__["health_status_aggregation_strategy"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_endpoint_groups"] = None
@@ -453,18 +420,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
         - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
         """
         return pulumi.get(self, "health_status_aggregation_policy")
-
-    @property
-    @pulumi.getter(name="healthStatusAggregationStrategy")
-    def health_status_aggregation_strategy(self) -> pulumi.Output[str]:
-        """
-        This field is deprecated. Use health_status_aggregation_policy instead.
-
-        Policy for how the results from multiple health checks for the same endpoint are aggregated.  
-        - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
-        - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-        """
-        return pulumi.get(self, "health_status_aggregation_strategy")
 
     @property
     @pulumi.getter

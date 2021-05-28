@@ -54,7 +54,6 @@ class DiskArgs:
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -135,7 +134,6 @@ class DiskArgs:
                - FAILED: Disk creation failed. 
                - READY: Disk is ready for use. 
                - DELETING: Disk is deleting.
-        :param pulumi.Input[str] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         """
@@ -215,8 +213,6 @@ class DiskArgs:
             pulumi.set(__self__, "source_storage_object", source_storage_object)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if users is not None:
@@ -724,18 +720,6 @@ class DiskArgs:
         pulumi.set(self, "status", value)
 
     @property
-    @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Deprecated] Storage type of the persistent disk.
-        """
-        return pulumi.get(self, "storage_type")
-
-    @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_type", value)
-
-    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -803,7 +787,6 @@ class Disk(pulumi.CustomResource):
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -888,7 +871,6 @@ class Disk(pulumi.CustomResource):
                - FAILED: Disk creation failed. 
                - READY: Disk is ready for use. 
                - DELETING: Disk is deleting.
-        :param pulumi.Input[str] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -955,7 +937,6 @@ class Disk(pulumi.CustomResource):
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1011,7 +992,6 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_id"] = source_snapshot_id
             __props__.__dict__["source_storage_object"] = source_storage_object
             __props__.__dict__["status"] = status
-            __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["type"] = type
             __props__.__dict__["users"] = users
             if zone is None and not opts.urn:
@@ -1074,7 +1054,6 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_snapshot_id"] = None
         __props__.__dict__["source_storage_object"] = None
         __props__.__dict__["status"] = None
-        __props__.__dict__["storage_type"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["users"] = None
         __props__.__dict__["zone"] = None
@@ -1398,14 +1377,6 @@ class Disk(pulumi.CustomResource):
         - DELETING: Disk is deleting.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="storageType")
-    def storage_type(self) -> pulumi.Output[str]:
-        """
-        [Deprecated] Storage type of the persistent disk.
-        """
-        return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter
