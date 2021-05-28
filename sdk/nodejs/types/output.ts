@@ -12220,6 +12220,17 @@ export namespace compute {
             targetSize: outputs.compute.alpha.FixedOrPercentResponse;
         }
 
+        export interface InstanceItemsItemResponse {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key: string;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value: string;
+        }
+
         export interface InstancePropertiesResponse {
             /**
              * Controls for advanced machine-related behavior features.
@@ -12303,17 +12314,6 @@ export namespace compute {
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
              */
             tags: outputs.compute.alpha.TagsResponse;
-        }
-
-        export interface InstanceTemplateItemsItemResponse {
-            /**
-             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-             */
-            key: string;
-            /**
-             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-             */
-            value: string;
         }
 
         /**
@@ -12655,7 +12655,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items: outputs.compute.alpha.InstanceTemplateItemsItemResponse[];
+            items: outputs.compute.alpha.InstanceItemsItemResponse[];
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -17611,6 +17611,17 @@ export namespace compute {
             targetSize: outputs.compute.beta.FixedOrPercentResponse;
         }
 
+        export interface InstanceItemsItemResponse {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key: string;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value: string;
+        }
+
         export interface InstancePropertiesResponse {
             /**
              * Controls for advanced machine-related behavior features.
@@ -17694,17 +17705,6 @@ export namespace compute {
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
              */
             tags: outputs.compute.beta.TagsResponse;
-        }
-
-        export interface InstanceTemplateItemsItemResponse {
-            /**
-             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-             */
-            key: string;
-            /**
-             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-             */
-            value: string;
         }
 
         /**
@@ -17982,7 +17982,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items: outputs.compute.beta.InstanceTemplateItemsItemResponse[];
+            items: outputs.compute.beta.InstanceItemsItemResponse[];
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -22146,6 +22146,17 @@ export namespace compute {
             targetSize: outputs.compute.v1.FixedOrPercentResponse;
         }
 
+        export interface InstanceItemsItemResponse {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key: string;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value: string;
+        }
+
         export interface InstancePropertiesResponse {
             /**
              * Controls for advanced machine-related behavior features.
@@ -22220,17 +22231,6 @@ export namespace compute {
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
              */
             tags: outputs.compute.v1.TagsResponse;
-        }
-
-        export interface InstanceTemplateItemsItemResponse {
-            /**
-             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
-             */
-            key: string;
-            /**
-             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
-             */
-            value: string;
         }
 
         /**
@@ -22508,7 +22508,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items: outputs.compute.v1.InstanceTemplateItemsItemResponse[];
+            items: outputs.compute.v1.InstanceItemsItemResponse[];
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
