@@ -6,12 +6,12 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./brand";
-export * from "./brandIdentityAwareProxyClient";
+export * from "./identityAwareProxyClient";
 export * from "./v1iamPolicy";
 
 // Import resources to register:
 import { Brand } from "./brand";
-import { BrandIdentityAwareProxyClient } from "./brandIdentityAwareProxyClient";
+import { IdentityAwareProxyClient } from "./identityAwareProxyClient";
 import { V1IamPolicy } from "./v1iamPolicy";
 
 const _module = {
@@ -20,8 +20,8 @@ const _module = {
         switch (type) {
             case "google-native:iap/v1:Brand":
                 return new Brand(name, <any>undefined, { urn })
-            case "google-native:iap/v1:BrandIdentityAwareProxyClient":
-                return new BrandIdentityAwareProxyClient(name, <any>undefined, { urn })
+            case "google-native:iap/v1:IdentityAwareProxyClient":
+                return new IdentityAwareProxyClient(name, <any>undefined, { urn })
             case "google-native:iap/v1:V1IamPolicy":
                 return new V1IamPolicy(name, <any>undefined, { urn })
             default:

@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./organizationSource";
 export * from "./organizationSourceIamPolicy";
+export * from "./source";
 
 // Import resources to register:
-import { OrganizationSource } from "./organizationSource";
 import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";
+import { Source } from "./source";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:securitycenter/v1beta1:OrganizationSource":
-                return new OrganizationSource(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1beta1:Source":
+                return new Source(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

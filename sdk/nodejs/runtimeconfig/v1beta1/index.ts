@@ -7,14 +7,14 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./config";
 export * from "./configIamPolicy";
-export * from "./configVariable";
-export * from "./configWaiter";
+export * from "./variable";
+export * from "./waiter";
 
 // Import resources to register:
 import { Config } from "./config";
 import { ConfigIamPolicy } from "./configIamPolicy";
-import { ConfigVariable } from "./configVariable";
-import { ConfigWaiter } from "./configWaiter";
+import { Variable } from "./variable";
+import { Waiter } from "./waiter";
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,10 +24,10 @@ const _module = {
                 return new Config(name, <any>undefined, { urn })
             case "google-native:runtimeconfig/v1beta1:ConfigIamPolicy":
                 return new ConfigIamPolicy(name, <any>undefined, { urn })
-            case "google-native:runtimeconfig/v1beta1:ConfigVariable":
-                return new ConfigVariable(name, <any>undefined, { urn })
-            case "google-native:runtimeconfig/v1beta1:ConfigWaiter":
-                return new ConfigWaiter(name, <any>undefined, { urn })
+            case "google-native:runtimeconfig/v1beta1:Variable":
+                return new Variable(name, <any>undefined, { urn })
+            case "google-native:runtimeconfig/v1beta1:Waiter":
+                return new Waiter(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

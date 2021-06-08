@@ -9,10 +9,6 @@ export * from "./deidentifyTemplate";
 export * from "./dlpJob";
 export * from "./inspectTemplate";
 export * from "./jobTrigger";
-export * from "./organizationDeidentifyTemplate";
-export * from "./organizationInspectTemplate";
-export * from "./organizationJobTrigger";
-export * from "./organizationStoredInfoType";
 export * from "./storedInfoType";
 
 // Import resources to register:
@@ -20,10 +16,6 @@ import { DeidentifyTemplate } from "./deidentifyTemplate";
 import { DlpJob } from "./dlpJob";
 import { InspectTemplate } from "./inspectTemplate";
 import { JobTrigger } from "./jobTrigger";
-import { OrganizationDeidentifyTemplate } from "./organizationDeidentifyTemplate";
-import { OrganizationInspectTemplate } from "./organizationInspectTemplate";
-import { OrganizationJobTrigger } from "./organizationJobTrigger";
-import { OrganizationStoredInfoType } from "./organizationStoredInfoType";
 import { StoredInfoType } from "./storedInfoType";
 
 const _module = {
@@ -38,14 +30,6 @@ const _module = {
                 return new InspectTemplate(name, <any>undefined, { urn })
             case "google-native:dlp/v2:JobTrigger":
                 return new JobTrigger(name, <any>undefined, { urn })
-            case "google-native:dlp/v2:OrganizationDeidentifyTemplate":
-                return new OrganizationDeidentifyTemplate(name, <any>undefined, { urn })
-            case "google-native:dlp/v2:OrganizationInspectTemplate":
-                return new OrganizationInspectTemplate(name, <any>undefined, { urn })
-            case "google-native:dlp/v2:OrganizationJobTrigger":
-                return new OrganizationJobTrigger(name, <any>undefined, { urn })
-            case "google-native:dlp/v2:OrganizationStoredInfoType":
-                return new OrganizationStoredInfoType(name, <any>undefined, { urn })
             case "google-native:dlp/v2:StoredInfoType":
                 return new StoredInfoType(name, <any>undefined, { urn })
             default:

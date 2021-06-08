@@ -5,33 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./endpoint";
 export * from "./namespace";
 export * from "./namespaceIamPolicy";
-export * from "./namespaceService";
-export * from "./namespaceServiceEndpoint";
 export * from "./namespaceServiceIamPolicy";
+export * from "./service";
 
 // Import resources to register:
+import { Endpoint } from "./endpoint";
 import { Namespace } from "./namespace";
 import { NamespaceIamPolicy } from "./namespaceIamPolicy";
-import { NamespaceService } from "./namespaceService";
-import { NamespaceServiceEndpoint } from "./namespaceServiceEndpoint";
 import { NamespaceServiceIamPolicy } from "./namespaceServiceIamPolicy";
+import { Service } from "./service";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:servicedirectory/v1:Endpoint":
+                return new Endpoint(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:NamespaceIamPolicy":
                 return new NamespaceIamPolicy(name, <any>undefined, { urn })
-            case "google-native:servicedirectory/v1:NamespaceService":
-                return new NamespaceService(name, <any>undefined, { urn })
-            case "google-native:servicedirectory/v1:NamespaceServiceEndpoint":
-                return new NamespaceServiceEndpoint(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:NamespaceServiceIamPolicy":
                 return new NamespaceServiceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1:Service":
+                return new Service(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -5,129 +5,125 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./api";
+export * from "./apiproduct";
+export * from "./app";
+export * from "./canaryevaluation";
+export * from "./datacollector";
+export * from "./datastore";
+export * from "./debugsession";
+export * from "./developer";
+export * from "./envGroupAttachment";
+export * from "./envgroup";
+export * from "./environment";
+export * from "./export";
+export * from "./hostQuery";
+export * from "./instance";
+export * from "./instanceAttachment";
+export * from "./keystore";
+export * from "./natAddress";
 export * from "./organization";
-export * from "./organizationAnalyticDatastore";
-export * from "./organizationApi";
-export * from "./organizationApiproduct";
-export * from "./organizationApiproductRateplan";
-export * from "./organizationDatacollector";
-export * from "./organizationDeveloper";
-export * from "./organizationDeveloperApp";
-export * from "./organizationDeveloperSubscription";
-export * from "./organizationEnvgroup";
-export * from "./organizationEnvgroupAttachment";
-export * from "./organizationEnvironment";
-export * from "./organizationEnvironmentAnalyticExport";
-export * from "./organizationEnvironmentApiRevisionDebugsession";
 export * from "./organizationEnvironmentIamPolicy";
-export * from "./organizationEnvironmentKeystore";
-export * from "./organizationEnvironmentKeystoreAlias";
-export * from "./organizationEnvironmentQuery";
-export * from "./organizationEnvironmentReference";
-export * from "./organizationEnvironmentResourcefile";
-export * from "./organizationEnvironmentTargetserver";
-export * from "./organizationEnvironmentTraceConfigOverride";
-export * from "./organizationHostQuery";
-export * from "./organizationInstance";
-export * from "./organizationInstanceAttachment";
-export * from "./organizationInstanceCanaryevaluation";
-export * from "./organizationInstanceNatAddress";
-export * from "./organizationReport";
-export * from "./organizationSharedflow";
+export * from "./override";
+export * from "./query";
+export * from "./rateplan";
+export * from "./reference";
+export * from "./report";
+export * from "./resourcefile";
+export * from "./sharedflow";
+export * from "./subscription";
+export * from "./targetserver";
 
 // Import resources to register:
+import { Api } from "./api";
+import { Apiproduct } from "./apiproduct";
+import { App } from "./app";
+import { Canaryevaluation } from "./canaryevaluation";
+import { Datacollector } from "./datacollector";
+import { Datastore } from "./datastore";
+import { Debugsession } from "./debugsession";
+import { Developer } from "./developer";
+import { EnvGroupAttachment } from "./envGroupAttachment";
+import { Envgroup } from "./envgroup";
+import { Environment } from "./environment";
+import { Export } from "./export";
+import { HostQuery } from "./hostQuery";
+import { Instance } from "./instance";
+import { InstanceAttachment } from "./instanceAttachment";
+import { Keystore } from "./keystore";
+import { NatAddress } from "./natAddress";
 import { Organization } from "./organization";
-import { OrganizationAnalyticDatastore } from "./organizationAnalyticDatastore";
-import { OrganizationApi } from "./organizationApi";
-import { OrganizationApiproduct } from "./organizationApiproduct";
-import { OrganizationApiproductRateplan } from "./organizationApiproductRateplan";
-import { OrganizationDatacollector } from "./organizationDatacollector";
-import { OrganizationDeveloper } from "./organizationDeveloper";
-import { OrganizationDeveloperApp } from "./organizationDeveloperApp";
-import { OrganizationDeveloperSubscription } from "./organizationDeveloperSubscription";
-import { OrganizationEnvgroup } from "./organizationEnvgroup";
-import { OrganizationEnvgroupAttachment } from "./organizationEnvgroupAttachment";
-import { OrganizationEnvironment } from "./organizationEnvironment";
-import { OrganizationEnvironmentAnalyticExport } from "./organizationEnvironmentAnalyticExport";
-import { OrganizationEnvironmentApiRevisionDebugsession } from "./organizationEnvironmentApiRevisionDebugsession";
 import { OrganizationEnvironmentIamPolicy } from "./organizationEnvironmentIamPolicy";
-import { OrganizationEnvironmentKeystore } from "./organizationEnvironmentKeystore";
-import { OrganizationEnvironmentKeystoreAlias } from "./organizationEnvironmentKeystoreAlias";
-import { OrganizationEnvironmentQuery } from "./organizationEnvironmentQuery";
-import { OrganizationEnvironmentReference } from "./organizationEnvironmentReference";
-import { OrganizationEnvironmentResourcefile } from "./organizationEnvironmentResourcefile";
-import { OrganizationEnvironmentTargetserver } from "./organizationEnvironmentTargetserver";
-import { OrganizationEnvironmentTraceConfigOverride } from "./organizationEnvironmentTraceConfigOverride";
-import { OrganizationHostQuery } from "./organizationHostQuery";
-import { OrganizationInstance } from "./organizationInstance";
-import { OrganizationInstanceAttachment } from "./organizationInstanceAttachment";
-import { OrganizationInstanceCanaryevaluation } from "./organizationInstanceCanaryevaluation";
-import { OrganizationInstanceNatAddress } from "./organizationInstanceNatAddress";
-import { OrganizationReport } from "./organizationReport";
-import { OrganizationSharedflow } from "./organizationSharedflow";
+import { Override } from "./override";
+import { Query } from "./query";
+import { Rateplan } from "./rateplan";
+import { Reference } from "./reference";
+import { Report } from "./report";
+import { Resourcefile } from "./resourcefile";
+import { Sharedflow } from "./sharedflow";
+import { Subscription } from "./subscription";
+import { Targetserver } from "./targetserver";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:apigee/v1:Api":
+                return new Api(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Apiproduct":
+                return new Apiproduct(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:App":
+                return new App(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Canaryevaluation":
+                return new Canaryevaluation(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Datacollector":
+                return new Datacollector(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Datastore":
+                return new Datastore(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Debugsession":
+                return new Debugsession(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Developer":
+                return new Developer(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:EnvGroupAttachment":
+                return new EnvGroupAttachment(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Envgroup":
+                return new Envgroup(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Environment":
+                return new Environment(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Export":
+                return new Export(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:HostQuery":
+                return new HostQuery(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Instance":
+                return new Instance(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:InstanceAttachment":
+                return new InstanceAttachment(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Keystore":
+                return new Keystore(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:NatAddress":
+                return new NatAddress(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Organization":
                 return new Organization(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationAnalyticDatastore":
-                return new OrganizationAnalyticDatastore(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationApi":
-                return new OrganizationApi(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationApiproduct":
-                return new OrganizationApiproduct(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationApiproductRateplan":
-                return new OrganizationApiproductRateplan(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationDatacollector":
-                return new OrganizationDatacollector(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationDeveloper":
-                return new OrganizationDeveloper(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationDeveloperApp":
-                return new OrganizationDeveloperApp(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationDeveloperSubscription":
-                return new OrganizationDeveloperSubscription(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvgroup":
-                return new OrganizationEnvgroup(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvgroupAttachment":
-                return new OrganizationEnvgroupAttachment(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironment":
-                return new OrganizationEnvironment(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentAnalyticExport":
-                return new OrganizationEnvironmentAnalyticExport(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
-                return new OrganizationEnvironmentApiRevisionDebugsession(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationEnvironmentIamPolicy":
                 return new OrganizationEnvironmentIamPolicy(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentKeystore":
-                return new OrganizationEnvironmentKeystore(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
-                return new OrganizationEnvironmentKeystoreAlias(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentQuery":
-                return new OrganizationEnvironmentQuery(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentReference":
-                return new OrganizationEnvironmentReference(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentResourcefile":
-                return new OrganizationEnvironmentResourcefile(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentTargetserver":
-                return new OrganizationEnvironmentTargetserver(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
-                return new OrganizationEnvironmentTraceConfigOverride(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationHostQuery":
-                return new OrganizationHostQuery(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationInstance":
-                return new OrganizationInstance(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationInstanceAttachment":
-                return new OrganizationInstanceAttachment(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationInstanceCanaryevaluation":
-                return new OrganizationInstanceCanaryevaluation(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationInstanceNatAddress":
-                return new OrganizationInstanceNatAddress(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationReport":
-                return new OrganizationReport(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:OrganizationSharedflow":
-                return new OrganizationSharedflow(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Override":
+                return new Override(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Query":
+                return new Query(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Rateplan":
+                return new Rateplan(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Reference":
+                return new Reference(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Report":
+                return new Report(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Resourcefile":
+                return new Resourcefile(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Sharedflow":
+                return new Sharedflow(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Subscription":
+                return new Subscription(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Targetserver":
+                return new Targetserver(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

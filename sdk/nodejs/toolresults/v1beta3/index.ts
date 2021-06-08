@@ -5,29 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./execution";
 export * from "./history";
-export * from "./historyExecution";
-export * from "./historyExecutionStep";
-export * from "./historyExecutionStepPerfSampleSeries";
+export * from "./perfSampleSeries";
+export * from "./step";
 
 // Import resources to register:
+import { Execution } from "./execution";
 import { History } from "./history";
-import { HistoryExecution } from "./historyExecution";
-import { HistoryExecutionStep } from "./historyExecutionStep";
-import { HistoryExecutionStepPerfSampleSeries } from "./historyExecutionStepPerfSampleSeries";
+import { PerfSampleSeries } from "./perfSampleSeries";
+import { Step } from "./step";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:toolresults/v1beta3:Execution":
+                return new Execution(name, <any>undefined, { urn })
             case "google-native:toolresults/v1beta3:History":
                 return new History(name, <any>undefined, { urn })
-            case "google-native:toolresults/v1beta3:HistoryExecution":
-                return new HistoryExecution(name, <any>undefined, { urn })
-            case "google-native:toolresults/v1beta3:HistoryExecutionStep":
-                return new HistoryExecutionStep(name, <any>undefined, { urn })
-            case "google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
-                return new HistoryExecutionStepPerfSampleSeries(name, <any>undefined, { urn })
+            case "google-native:toolresults/v1beta3:PerfSampleSeries":
+                return new PerfSampleSeries(name, <any>undefined, { urn })
+            case "google-native:toolresults/v1beta3:Step":
+                return new Step(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

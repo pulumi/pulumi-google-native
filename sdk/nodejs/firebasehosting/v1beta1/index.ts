@@ -5,25 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./channel";
 export * from "./site";
-export * from "./siteChannel";
-export * from "./siteDomain";
 
 // Import resources to register:
+import { Channel } from "./channel";
 import { Site } from "./site";
-import { SiteChannel } from "./siteChannel";
-import { SiteDomain } from "./siteDomain";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:firebasehosting/v1beta1:Channel":
+                return new Channel(name, <any>undefined, { urn })
             case "google-native:firebasehosting/v1beta1:Site":
                 return new Site(name, <any>undefined, { urn })
-            case "google-native:firebasehosting/v1beta1:SiteChannel":
-                return new SiteChannel(name, <any>undefined, { urn })
-            case "google-native:firebasehosting/v1beta1:SiteDomain":
-                return new SiteDomain(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

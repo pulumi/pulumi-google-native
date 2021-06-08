@@ -82,7 +82,6 @@ import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
 import * as pubsublite from "./pubsublite";
-import * as recommendationengine from "./recommendationengine";
 import * as redis from "./redis";
 import * as remotebuildexecution from "./remotebuildexecution";
 import * as retail from "./retail";
@@ -184,7 +183,6 @@ export {
     privateca,
     pubsub,
     pubsublite,
-    recommendationengine,
     redis,
     remotebuildexecution,
     retail,

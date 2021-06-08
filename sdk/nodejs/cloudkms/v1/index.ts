@@ -5,39 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./cryptoKey";
+export * from "./cryptoKeyVersion";
+export * from "./importJob";
 export * from "./keyRing";
-export * from "./keyRingCryptoKey";
-export * from "./keyRingCryptoKeyCryptoKeyVersion";
 export * from "./keyRingCryptoKeyIamPolicy";
 export * from "./keyRingIamPolicy";
-export * from "./keyRingImportJob";
 export * from "./keyRingImportJobIamPolicy";
 
 // Import resources to register:
+import { CryptoKey } from "./cryptoKey";
+import { CryptoKeyVersion } from "./cryptoKeyVersion";
+import { ImportJob } from "./importJob";
 import { KeyRing } from "./keyRing";
-import { KeyRingCryptoKey } from "./keyRingCryptoKey";
-import { KeyRingCryptoKeyCryptoKeyVersion } from "./keyRingCryptoKeyCryptoKeyVersion";
 import { KeyRingCryptoKeyIamPolicy } from "./keyRingCryptoKeyIamPolicy";
 import { KeyRingIamPolicy } from "./keyRingIamPolicy";
-import { KeyRingImportJob } from "./keyRingImportJob";
 import { KeyRingImportJobIamPolicy } from "./keyRingImportJobIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:cloudkms/v1:CryptoKey":
+                return new CryptoKey(name, <any>undefined, { urn })
+            case "google-native:cloudkms/v1:CryptoKeyVersion":
+                return new CryptoKeyVersion(name, <any>undefined, { urn })
+            case "google-native:cloudkms/v1:ImportJob":
+                return new ImportJob(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:KeyRing":
                 return new KeyRing(name, <any>undefined, { urn })
-            case "google-native:cloudkms/v1:KeyRingCryptoKey":
-                return new KeyRingCryptoKey(name, <any>undefined, { urn })
-            case "google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion":
-                return new KeyRingCryptoKeyCryptoKeyVersion(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
                 return new KeyRingCryptoKeyIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:KeyRingIamPolicy":
                 return new KeyRingIamPolicy(name, <any>undefined, { urn })
-            case "google-native:cloudkms/v1:KeyRingImportJob":
-                return new KeyRingImportJob(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:KeyRingImportJobIamPolicy":
                 return new KeyRingImportJobIamPolicy(name, <any>undefined, { urn })
             default:

@@ -5,73 +5,73 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./attributeDefinition";
+export * from "./consent";
+export * from "./consentArtifact";
+export * from "./consentStore";
 export * from "./dataset";
-export * from "./datasetConsentStore";
-export * from "./datasetConsentStoreAttributeDefinition";
-export * from "./datasetConsentStoreConsent";
-export * from "./datasetConsentStoreConsentArtifact";
 export * from "./datasetConsentStoreIamPolicy";
-export * from "./datasetConsentStoreUserDataMapping";
-export * from "./datasetDicomStore";
 export * from "./datasetDicomStoreIamPolicy";
-export * from "./datasetFhirStore";
 export * from "./datasetFhirStoreIamPolicy";
-export * from "./datasetHl7V2Store";
 export * from "./datasetHl7V2StoreIamPolicy";
-export * from "./datasetHl7V2StoreMessage";
 export * from "./datasetIamPolicy";
+export * from "./dicomStore";
+export * from "./fhirStore";
+export * from "./hl7V2Store";
+export * from "./message";
+export * from "./userDataMapping";
 
 // Import resources to register:
+import { AttributeDefinition } from "./attributeDefinition";
+import { Consent } from "./consent";
+import { ConsentArtifact } from "./consentArtifact";
+import { ConsentStore } from "./consentStore";
 import { Dataset } from "./dataset";
-import { DatasetConsentStore } from "./datasetConsentStore";
-import { DatasetConsentStoreAttributeDefinition } from "./datasetConsentStoreAttributeDefinition";
-import { DatasetConsentStoreConsent } from "./datasetConsentStoreConsent";
-import { DatasetConsentStoreConsentArtifact } from "./datasetConsentStoreConsentArtifact";
 import { DatasetConsentStoreIamPolicy } from "./datasetConsentStoreIamPolicy";
-import { DatasetConsentStoreUserDataMapping } from "./datasetConsentStoreUserDataMapping";
-import { DatasetDicomStore } from "./datasetDicomStore";
 import { DatasetDicomStoreIamPolicy } from "./datasetDicomStoreIamPolicy";
-import { DatasetFhirStore } from "./datasetFhirStore";
 import { DatasetFhirStoreIamPolicy } from "./datasetFhirStoreIamPolicy";
-import { DatasetHl7V2Store } from "./datasetHl7V2Store";
 import { DatasetHl7V2StoreIamPolicy } from "./datasetHl7V2StoreIamPolicy";
-import { DatasetHl7V2StoreMessage } from "./datasetHl7V2StoreMessage";
 import { DatasetIamPolicy } from "./datasetIamPolicy";
+import { DicomStore } from "./dicomStore";
+import { FhirStore } from "./fhirStore";
+import { Hl7V2Store } from "./hl7V2Store";
+import { Message } from "./message";
+import { UserDataMapping } from "./userDataMapping";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:healthcare/v1:AttributeDefinition":
+                return new AttributeDefinition(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:Consent":
+                return new Consent(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:ConsentArtifact":
+                return new ConsentArtifact(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:ConsentStore":
+                return new ConsentStore(name, <any>undefined, { urn })
             case "google-native:healthcare/v1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetConsentStore":
-                return new DatasetConsentStore(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetConsentStoreAttributeDefinition":
-                return new DatasetConsentStoreAttributeDefinition(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetConsentStoreConsent":
-                return new DatasetConsentStoreConsent(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetConsentStoreConsentArtifact":
-                return new DatasetConsentStoreConsentArtifact(name, <any>undefined, { urn })
             case "google-native:healthcare/v1:DatasetConsentStoreIamPolicy":
                 return new DatasetConsentStoreIamPolicy(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetConsentStoreUserDataMapping":
-                return new DatasetConsentStoreUserDataMapping(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetDicomStore":
-                return new DatasetDicomStore(name, <any>undefined, { urn })
             case "google-native:healthcare/v1:DatasetDicomStoreIamPolicy":
                 return new DatasetDicomStoreIamPolicy(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetFhirStore":
-                return new DatasetFhirStore(name, <any>undefined, { urn })
             case "google-native:healthcare/v1:DatasetFhirStoreIamPolicy":
                 return new DatasetFhirStoreIamPolicy(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetHl7V2Store":
-                return new DatasetHl7V2Store(name, <any>undefined, { urn })
             case "google-native:healthcare/v1:DatasetHl7V2StoreIamPolicy":
                 return new DatasetHl7V2StoreIamPolicy(name, <any>undefined, { urn })
-            case "google-native:healthcare/v1:DatasetHl7V2StoreMessage":
-                return new DatasetHl7V2StoreMessage(name, <any>undefined, { urn })
             case "google-native:healthcare/v1:DatasetIamPolicy":
                 return new DatasetIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:DicomStore":
+                return new DicomStore(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:FhirStore":
+                return new FhirStore(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:Hl7V2Store":
+                return new Hl7V2Store(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:Message":
+                return new Message(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1:UserDataMapping":
+                return new UserDataMapping(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

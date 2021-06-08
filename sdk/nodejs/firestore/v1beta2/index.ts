@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./databaseCollectionGroupIndex";
+export * from "./index_";
 
 // Import resources to register:
-import { DatabaseCollectionGroupIndex } from "./databaseCollectionGroupIndex";
+import { Index } from "./index_";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:firestore/v1beta2:DatabaseCollectionGroupIndex":
-                return new DatabaseCollectionGroupIndex(name, <any>undefined, { urn })
+            case "google-native:firestore/v1beta2:Index":
+                return new Index(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

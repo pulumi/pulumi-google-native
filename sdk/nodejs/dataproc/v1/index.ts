@@ -7,14 +7,11 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./autoscalingPolicy";
 export * from "./autoscalingPolicyIamPolicy";
-export * from "./regionAutoscalingPolicy";
+export * from "./cluster";
 export * from "./regionAutoscalingPolicyIamPolicy";
-export * from "./regionCluster";
 export * from "./regionClusterIamPolicy";
-export * from "./regionJob";
 export * from "./regionJobIamPolicy";
 export * from "./regionOperationIamPolicy";
-export * from "./regionWorkflowTemplate";
 export * from "./regionWorkflowTemplateIamPolicy";
 export * from "./workflowTemplate";
 export * from "./workflowTemplateIamPolicy";
@@ -22,14 +19,11 @@ export * from "./workflowTemplateIamPolicy";
 // Import resources to register:
 import { AutoscalingPolicy } from "./autoscalingPolicy";
 import { AutoscalingPolicyIamPolicy } from "./autoscalingPolicyIamPolicy";
-import { RegionAutoscalingPolicy } from "./regionAutoscalingPolicy";
+import { Cluster } from "./cluster";
 import { RegionAutoscalingPolicyIamPolicy } from "./regionAutoscalingPolicyIamPolicy";
-import { RegionCluster } from "./regionCluster";
 import { RegionClusterIamPolicy } from "./regionClusterIamPolicy";
-import { RegionJob } from "./regionJob";
 import { RegionJobIamPolicy } from "./regionJobIamPolicy";
 import { RegionOperationIamPolicy } from "./regionOperationIamPolicy";
-import { RegionWorkflowTemplate } from "./regionWorkflowTemplate";
 import { RegionWorkflowTemplateIamPolicy } from "./regionWorkflowTemplateIamPolicy";
 import { WorkflowTemplate } from "./workflowTemplate";
 import { WorkflowTemplateIamPolicy } from "./workflowTemplateIamPolicy";
@@ -42,22 +36,16 @@ const _module = {
                 return new AutoscalingPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-native:dataproc/v1:RegionAutoscalingPolicy":
-                return new RegionAutoscalingPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:Cluster":
+                return new Cluster(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
                 return new RegionAutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-native:dataproc/v1:RegionCluster":
-                return new RegionCluster(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionClusterIamPolicy":
                 return new RegionClusterIamPolicy(name, <any>undefined, { urn })
-            case "google-native:dataproc/v1:RegionJob":
-                return new RegionJob(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionJobIamPolicy":
                 return new RegionJobIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionOperationIamPolicy":
                 return new RegionOperationIamPolicy(name, <any>undefined, { urn })
-            case "google-native:dataproc/v1:RegionWorkflowTemplate":
-                return new RegionWorkflowTemplate(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
                 return new RegionWorkflowTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:WorkflowTemplate":

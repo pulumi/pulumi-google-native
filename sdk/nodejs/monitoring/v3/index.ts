@@ -10,7 +10,7 @@ export * from "./group";
 export * from "./metricDescriptor";
 export * from "./notificationChannel";
 export * from "./service";
-export * from "./serviceServiceLevelObjective";
+export * from "./serviceLevelObjective";
 export * from "./uptimeCheckConfig";
 
 // Import resources to register:
@@ -19,7 +19,7 @@ import { Group } from "./group";
 import { MetricDescriptor } from "./metricDescriptor";
 import { NotificationChannel } from "./notificationChannel";
 import { Service } from "./service";
-import { ServiceServiceLevelObjective } from "./serviceServiceLevelObjective";
+import { ServiceLevelObjective } from "./serviceLevelObjective";
 import { UptimeCheckConfig } from "./uptimeCheckConfig";
 
 const _module = {
@@ -36,8 +36,8 @@ const _module = {
                 return new NotificationChannel(name, <any>undefined, { urn })
             case "google-native:monitoring/v3:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-native:monitoring/v3:ServiceServiceLevelObjective":
-                return new ServiceServiceLevelObjective(name, <any>undefined, { urn })
+            case "google-native:monitoring/v3:ServiceLevelObjective":
+                return new ServiceLevelObjective(name, <any>undefined, { urn })
             case "google-native:monitoring/v3:UptimeCheckConfig":
                 return new UptimeCheckConfig(name, <any>undefined, { urn })
             default:

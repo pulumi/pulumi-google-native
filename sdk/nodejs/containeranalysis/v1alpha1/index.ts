@@ -9,7 +9,6 @@ export * from "./note";
 export * from "./noteIamPolicy";
 export * from "./occurrence";
 export * from "./occurrenceIamPolicy";
-export * from "./providerNote";
 export * from "./providerNoteIamPolicy";
 
 // Import resources to register:
@@ -17,7 +16,6 @@ import { Note } from "./note";
 import { NoteIamPolicy } from "./noteIamPolicy";
 import { Occurrence } from "./occurrence";
 import { OccurrenceIamPolicy } from "./occurrenceIamPolicy";
-import { ProviderNote } from "./providerNote";
 import { ProviderNoteIamPolicy } from "./providerNoteIamPolicy";
 
 const _module = {
@@ -32,8 +30,6 @@ const _module = {
                 return new Occurrence(name, <any>undefined, { urn })
             case "google-native:containeranalysis/v1alpha1:OccurrenceIamPolicy":
                 return new OccurrenceIamPolicy(name, <any>undefined, { urn })
-            case "google-native:containeranalysis/v1alpha1:ProviderNote":
-                return new ProviderNote(name, <any>undefined, { urn })
             case "google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy":
                 return new ProviderNoteIamPolicy(name, <any>undefined, { urn })
             default:

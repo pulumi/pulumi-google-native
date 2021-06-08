@@ -6,17 +6,15 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./app";
-export * from "./appAuthorizedCertificate";
-export * from "./appDomainMapping";
-export * from "./appFirewallIngressRule";
-export * from "./appServiceVersion";
+export * from "./authorizedCertificate";
+export * from "./domainMapping";
+export * from "./version";
 
 // Import resources to register:
 import { App } from "./app";
-import { AppAuthorizedCertificate } from "./appAuthorizedCertificate";
-import { AppDomainMapping } from "./appDomainMapping";
-import { AppFirewallIngressRule } from "./appFirewallIngressRule";
-import { AppServiceVersion } from "./appServiceVersion";
+import { AuthorizedCertificate } from "./authorizedCertificate";
+import { DomainMapping } from "./domainMapping";
+import { Version } from "./version";
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,14 +22,12 @@ const _module = {
         switch (type) {
             case "google-native:appengine/v1:App":
                 return new App(name, <any>undefined, { urn })
-            case "google-native:appengine/v1:AppAuthorizedCertificate":
-                return new AppAuthorizedCertificate(name, <any>undefined, { urn })
-            case "google-native:appengine/v1:AppDomainMapping":
-                return new AppDomainMapping(name, <any>undefined, { urn })
-            case "google-native:appengine/v1:AppFirewallIngressRule":
-                return new AppFirewallIngressRule(name, <any>undefined, { urn })
-            case "google-native:appengine/v1:AppServiceVersion":
-                return new AppServiceVersion(name, <any>undefined, { urn })
+            case "google-native:appengine/v1:AuthorizedCertificate":
+                return new AuthorizedCertificate(name, <any>undefined, { urn })
+            case "google-native:appengine/v1:DomainMapping":
+                return new DomainMapping(name, <any>undefined, { urn })
+            case "google-native:appengine/v1:Version":
+                return new Version(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

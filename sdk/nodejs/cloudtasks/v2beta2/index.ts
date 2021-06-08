@@ -7,12 +7,12 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./queue";
 export * from "./queueIamPolicy";
-export * from "./queueTask";
+export * from "./task";
 
 // Import resources to register:
 import { Queue } from "./queue";
 import { QueueIamPolicy } from "./queueIamPolicy";
-import { QueueTask } from "./queueTask";
+import { Task } from "./task";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,8 +22,8 @@ const _module = {
                 return new Queue(name, <any>undefined, { urn })
             case "google-native:cloudtasks/v2beta2:QueueIamPolicy":
                 return new QueueIamPolicy(name, <any>undefined, { urn })
-            case "google-native:cloudtasks/v2beta2:QueueTask":
-                return new QueueTask(name, <any>undefined, { urn })
+            case "google-native:cloudtasks/v2beta2:Task":
+                return new Task(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

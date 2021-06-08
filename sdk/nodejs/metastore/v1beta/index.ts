@@ -5,29 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./backup";
+export * from "./metadataImport";
 export * from "./service";
-export * from "./serviceBackup";
 export * from "./serviceIamPolicy";
-export * from "./serviceMetadataImport";
 
 // Import resources to register:
+import { Backup } from "./backup";
+import { MetadataImport } from "./metadataImport";
 import { Service } from "./service";
-import { ServiceBackup } from "./serviceBackup";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
-import { ServiceMetadataImport } from "./serviceMetadataImport";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:metastore/v1beta:Backup":
+                return new Backup(name, <any>undefined, { urn })
+            case "google-native:metastore/v1beta:MetadataImport":
+                return new MetadataImport(name, <any>undefined, { urn })
             case "google-native:metastore/v1beta:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-native:metastore/v1beta:ServiceBackup":
-                return new ServiceBackup(name, <any>undefined, { urn })
             case "google-native:metastore/v1beta:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
-            case "google-native:metastore/v1beta:ServiceMetadataImport":
-                return new ServiceMetadataImport(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

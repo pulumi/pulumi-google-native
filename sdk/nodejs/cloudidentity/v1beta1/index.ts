@@ -7,12 +7,12 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./device";
 export * from "./group";
-export * from "./groupMembership";
+export * from "./membership";
 
 // Import resources to register:
 import { Device } from "./device";
 import { Group } from "./group";
-import { GroupMembership } from "./groupMembership";
+import { Membership } from "./membership";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,8 +22,8 @@ const _module = {
                 return new Device(name, <any>undefined, { urn })
             case "google-native:cloudidentity/v1beta1:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "google-native:cloudidentity/v1beta1:GroupMembership":
-                return new GroupMembership(name, <any>undefined, { urn })
+            case "google-native:cloudidentity/v1beta1:Membership":
+                return new Membership(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

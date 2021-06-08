@@ -9,18 +9,18 @@ export * from "./job";
 export * from "./jobIamPolicy";
 export * from "./model";
 export * from "./modelIamPolicy";
-export * from "./modelVersion";
 export * from "./study";
-export * from "./studyTrial";
+export * from "./trial";
+export * from "./version";
 
 // Import resources to register:
 import { Job } from "./job";
 import { JobIamPolicy } from "./jobIamPolicy";
 import { Model } from "./model";
 import { ModelIamPolicy } from "./modelIamPolicy";
-import { ModelVersion } from "./modelVersion";
 import { Study } from "./study";
-import { StudyTrial } from "./studyTrial";
+import { Trial } from "./trial";
+import { Version } from "./version";
 
 const _module = {
     version: utilities.getVersion(),
@@ -34,12 +34,12 @@ const _module = {
                 return new Model(name, <any>undefined, { urn })
             case "google-native:ml/v1:ModelIamPolicy":
                 return new ModelIamPolicy(name, <any>undefined, { urn })
-            case "google-native:ml/v1:ModelVersion":
-                return new ModelVersion(name, <any>undefined, { urn })
             case "google-native:ml/v1:Study":
                 return new Study(name, <any>undefined, { urn })
-            case "google-native:ml/v1:StudyTrial":
-                return new StudyTrial(name, <any>undefined, { urn })
+            case "google-native:ml/v1:Trial":
+                return new Trial(name, <any>undefined, { urn })
+            case "google-native:ml/v1:Version":
+                return new Version(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
