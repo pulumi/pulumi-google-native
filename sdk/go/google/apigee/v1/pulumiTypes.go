@@ -1756,47 +1756,6 @@ func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1Certifi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertificateResponseOutput)
 }
 
-func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return i.ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertificateResponseOutput).ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudApigeeV1CertificateResponsePtrInput is an input type that accepts GoogleCloudApigeeV1CertificateResponseArgs, GoogleCloudApigeeV1CertificateResponsePtr and GoogleCloudApigeeV1CertificateResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1CertificateResponsePtrInput` via:
-//
-//          GoogleCloudApigeeV1CertificateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudApigeeV1CertificateResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput
-	ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput
-}
-
-type googleCloudApigeeV1CertificateResponsePtrType GoogleCloudApigeeV1CertificateResponseArgs
-
-func GoogleCloudApigeeV1CertificateResponsePtr(v *GoogleCloudApigeeV1CertificateResponseArgs) GoogleCloudApigeeV1CertificateResponsePtrInput {
-	return (*googleCloudApigeeV1CertificateResponsePtrType)(v)
-}
-
-func (*googleCloudApigeeV1CertificateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1CertificateResponse)(nil)).Elem()
-}
-
-func (i *googleCloudApigeeV1CertificateResponsePtrType) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return i.ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudApigeeV1CertificateResponsePtrType) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertificateResponsePtrOutput)
-}
-
 type GoogleCloudApigeeV1CertificateResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1CertificateResponseOutput) ElementType() reflect.Type {
@@ -1811,47 +1770,9 @@ func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1Certi
 	return o
 }
 
-func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return o.ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1CertificateResponse) *GoogleCloudApigeeV1CertificateResponse {
-		return &v
-	}).(GoogleCloudApigeeV1CertificateResponsePtrOutput)
-}
-
 // Chain of certificates under this name.
 func (o GoogleCloudApigeeV1CertificateResponseOutput) CertInfo() GoogleCloudApigeeV1CertInfoResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1CertificateResponse) []GoogleCloudApigeeV1CertInfoResponse {
-		return v.CertInfo
-	}).(GoogleCloudApigeeV1CertInfoResponseArrayOutput)
-}
-
-type GoogleCloudApigeeV1CertificateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1CertificateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1CertificateResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) Elem() GoogleCloudApigeeV1CertificateResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1CertificateResponse) GoogleCloudApigeeV1CertificateResponse { return *v }).(GoogleCloudApigeeV1CertificateResponseOutput)
-}
-
-// Chain of certificates under this name.
-func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) CertInfo() GoogleCloudApigeeV1CertInfoResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1CertificateResponse) []GoogleCloudApigeeV1CertInfoResponse {
-		if v == nil {
-			return nil
-		}
 		return v.CertInfo
 	}).(GoogleCloudApigeeV1CertInfoResponseArrayOutput)
 }
@@ -9384,7 +9305,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertificateResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertificateResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CustomReportMetricOutput{})

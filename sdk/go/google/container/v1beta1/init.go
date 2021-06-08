@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:container/v1beta1:Cluster":
 		r = &Cluster{}
-	case "google-native:container/v1beta1:ClusterNodePool":
-		r = &ClusterNodePool{}
+	case "google-native:container/v1beta1:NodePool":
+		r = &NodePool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

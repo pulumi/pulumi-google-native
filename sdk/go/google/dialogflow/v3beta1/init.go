@@ -23,32 +23,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dialogflow/v3beta1:Agent":
 		r = &Agent{}
-	case "google-native:dialogflow/v3beta1:AgentEntityType":
-		r = &AgentEntityType{}
-	case "google-native:dialogflow/v3beta1:AgentEnvironment":
-		r = &AgentEnvironment{}
-	case "google-native:dialogflow/v3beta1:AgentEnvironmentExperiment":
-		r = &AgentEnvironmentExperiment{}
-	case "google-native:dialogflow/v3beta1:AgentEnvironmentSessionEntityType":
-		r = &AgentEnvironmentSessionEntityType{}
-	case "google-native:dialogflow/v3beta1:AgentFlow":
-		r = &AgentFlow{}
-	case "google-native:dialogflow/v3beta1:AgentFlowPage":
-		r = &AgentFlowPage{}
-	case "google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup":
-		r = &AgentFlowTransitionRouteGroup{}
-	case "google-native:dialogflow/v3beta1:AgentFlowVersion":
-		r = &AgentFlowVersion{}
-	case "google-native:dialogflow/v3beta1:AgentIntent":
-		r = &AgentIntent{}
-	case "google-native:dialogflow/v3beta1:AgentSessionEntityType":
-		r = &AgentSessionEntityType{}
-	case "google-native:dialogflow/v3beta1:AgentTestCase":
-		r = &AgentTestCase{}
-	case "google-native:dialogflow/v3beta1:AgentWebhook":
-		r = &AgentWebhook{}
+	case "google-native:dialogflow/v3beta1:EntityType":
+		r = &EntityType{}
+	case "google-native:dialogflow/v3beta1:Environment":
+		r = &Environment{}
+	case "google-native:dialogflow/v3beta1:Experiment":
+		r = &Experiment{}
+	case "google-native:dialogflow/v3beta1:Flow":
+		r = &Flow{}
+	case "google-native:dialogflow/v3beta1:Intent":
+		r = &Intent{}
+	case "google-native:dialogflow/v3beta1:Page":
+		r = &Page{}
 	case "google-native:dialogflow/v3beta1:SecuritySetting":
 		r = &SecuritySetting{}
+	case "google-native:dialogflow/v3beta1:SessionEntityType":
+		r = &SessionEntityType{}
+	case "google-native:dialogflow/v3beta1:TestCase":
+		r = &TestCase{}
+	case "google-native:dialogflow/v3beta1:TransitionRouteGroup":
+		r = &TransitionRouteGroup{}
+	case "google-native:dialogflow/v3beta1:Version":
+		r = &Version{}
+	case "google-native:dialogflow/v3beta1:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

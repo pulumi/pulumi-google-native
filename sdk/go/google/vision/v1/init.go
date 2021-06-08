@@ -23,10 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:vision/v1:Product":
 		r = &Product{}
-	case "google-native:vision/v1:ProductReferenceImage":
-		r = &ProductReferenceImage{}
 	case "google-native:vision/v1:ProductSet":
 		r = &ProductSet{}
+	case "google-native:vision/v1:ReferenceImage":
+		r = &ReferenceImage{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

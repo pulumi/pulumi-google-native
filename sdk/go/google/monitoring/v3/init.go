@@ -31,8 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationChannel{}
 	case "google-native:monitoring/v3:Service":
 		r = &Service{}
-	case "google-native:monitoring/v3:ServiceServiceLevelObjective":
-		r = &ServiceServiceLevelObjective{}
+	case "google-native:monitoring/v3:ServiceLevelObjective":
+		r = &ServiceLevelObjective{}
 	case "google-native:monitoring/v3:UptimeCheckConfig":
 		r = &UptimeCheckConfig{}
 	default:

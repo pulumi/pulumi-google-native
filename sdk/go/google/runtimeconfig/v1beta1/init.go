@@ -25,10 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Config{}
 	case "google-native:runtimeconfig/v1beta1:ConfigIamPolicy":
 		r = &ConfigIamPolicy{}
-	case "google-native:runtimeconfig/v1beta1:ConfigVariable":
-		r = &ConfigVariable{}
-	case "google-native:runtimeconfig/v1beta1:ConfigWaiter":
-		r = &ConfigWaiter{}
+	case "google-native:runtimeconfig/v1beta1:Variable":
+		r = &Variable{}
+	case "google-native:runtimeconfig/v1beta1:Waiter":
+		r = &Waiter{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -847,141 +847,141 @@ func (o DeviceCredentialResponseArrayOutput) Index(i pulumi.IntInput) DeviceCred
 }
 
 // The device state, as reported by the device.
-type DeviceState struct {
+type DeviceStateType struct {
 	// The device state data.
 	BinaryData *string `pulumi:"binaryData"`
 	// [Output only] The time at which this state version was updated in Cloud IoT Core.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// DeviceStateInput is an input type that accepts DeviceStateArgs and DeviceStateOutput values.
-// You can construct a concrete instance of `DeviceStateInput` via:
+// DeviceStateTypeInput is an input type that accepts DeviceStateTypeArgs and DeviceStateTypeOutput values.
+// You can construct a concrete instance of `DeviceStateTypeInput` via:
 //
-//          DeviceStateArgs{...}
-type DeviceStateInput interface {
+//          DeviceStateTypeArgs{...}
+type DeviceStateTypeInput interface {
 	pulumi.Input
 
-	ToDeviceStateOutput() DeviceStateOutput
-	ToDeviceStateOutputWithContext(context.Context) DeviceStateOutput
+	ToDeviceStateTypeOutput() DeviceStateTypeOutput
+	ToDeviceStateTypeOutputWithContext(context.Context) DeviceStateTypeOutput
 }
 
 // The device state, as reported by the device.
-type DeviceStateArgs struct {
+type DeviceStateTypeArgs struct {
 	// The device state data.
 	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
 	// [Output only] The time at which this state version was updated in Cloud IoT Core.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
-func (DeviceStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceState)(nil)).Elem()
+func (DeviceStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
 }
 
-func (i DeviceStateArgs) ToDeviceStateOutput() DeviceStateOutput {
-	return i.ToDeviceStateOutputWithContext(context.Background())
+func (i DeviceStateTypeArgs) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
+	return i.ToDeviceStateTypeOutputWithContext(context.Background())
 }
 
-func (i DeviceStateArgs) ToDeviceStateOutputWithContext(ctx context.Context) DeviceStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateOutput)
+func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput)
 }
 
-func (i DeviceStateArgs) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
-	return i.ToDeviceStatePtrOutputWithContext(context.Background())
+func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
 }
 
-func (i DeviceStateArgs) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateOutput).ToDeviceStatePtrOutputWithContext(ctx)
+func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput).ToDeviceStateTypePtrOutputWithContext(ctx)
 }
 
-// DeviceStatePtrInput is an input type that accepts DeviceStateArgs, DeviceStatePtr and DeviceStatePtrOutput values.
-// You can construct a concrete instance of `DeviceStatePtrInput` via:
+// DeviceStateTypePtrInput is an input type that accepts DeviceStateTypeArgs, DeviceStateTypePtr and DeviceStateTypePtrOutput values.
+// You can construct a concrete instance of `DeviceStateTypePtrInput` via:
 //
-//          DeviceStateArgs{...}
+//          DeviceStateTypeArgs{...}
 //
 //  or:
 //
 //          nil
-type DeviceStatePtrInput interface {
+type DeviceStateTypePtrInput interface {
 	pulumi.Input
 
-	ToDeviceStatePtrOutput() DeviceStatePtrOutput
-	ToDeviceStatePtrOutputWithContext(context.Context) DeviceStatePtrOutput
+	ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput
+	ToDeviceStateTypePtrOutputWithContext(context.Context) DeviceStateTypePtrOutput
 }
 
-type deviceStatePtrType DeviceStateArgs
+type deviceStateTypePtrType DeviceStateTypeArgs
 
-func DeviceStatePtr(v *DeviceStateArgs) DeviceStatePtrInput {
-	return (*deviceStatePtrType)(v)
+func DeviceStateTypePtr(v *DeviceStateTypeArgs) DeviceStateTypePtrInput {
+	return (*deviceStateTypePtrType)(v)
 }
 
-func (*deviceStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceState)(nil)).Elem()
+func (*deviceStateTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
 }
 
-func (i *deviceStatePtrType) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
-	return i.ToDeviceStatePtrOutputWithContext(context.Background())
+func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
 }
 
-func (i *deviceStatePtrType) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStatePtrOutput)
+func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypePtrOutput)
 }
 
 // The device state, as reported by the device.
-type DeviceStateOutput struct{ *pulumi.OutputState }
+type DeviceStateTypeOutput struct{ *pulumi.OutputState }
 
-func (DeviceStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceState)(nil)).Elem()
+func (DeviceStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
 }
 
-func (o DeviceStateOutput) ToDeviceStateOutput() DeviceStateOutput {
+func (o DeviceStateTypeOutput) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
 	return o
 }
 
-func (o DeviceStateOutput) ToDeviceStateOutputWithContext(ctx context.Context) DeviceStateOutput {
+func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
 	return o
 }
 
-func (o DeviceStateOutput) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
-	return o.ToDeviceStatePtrOutputWithContext(context.Background())
+func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return o.ToDeviceStateTypePtrOutputWithContext(context.Background())
 }
 
-func (o DeviceStateOutput) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
-	return o.ApplyT(func(v DeviceState) *DeviceState {
+func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return o.ApplyT(func(v DeviceStateType) *DeviceStateType {
 		return &v
-	}).(DeviceStatePtrOutput)
+	}).(DeviceStateTypePtrOutput)
 }
 
 // The device state data.
-func (o DeviceStateOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceState) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
+func (o DeviceStateTypeOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceStateType) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
 
 // [Output only] The time at which this state version was updated in Cloud IoT Core.
-func (o DeviceStateOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceState) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o DeviceStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type DeviceStatePtrOutput struct{ *pulumi.OutputState }
+type DeviceStateTypePtrOutput struct{ *pulumi.OutputState }
 
-func (DeviceStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceState)(nil)).Elem()
+func (DeviceStateTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
 }
 
-func (o DeviceStatePtrOutput) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
+func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
 	return o
 }
 
-func (o DeviceStatePtrOutput) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
+func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
 	return o
 }
 
-func (o DeviceStatePtrOutput) Elem() DeviceStateOutput {
-	return o.ApplyT(func(v *DeviceState) DeviceState { return *v }).(DeviceStateOutput)
+func (o DeviceStateTypePtrOutput) Elem() DeviceStateTypeOutput {
+	return o.ApplyT(func(v *DeviceStateType) DeviceStateType { return *v }).(DeviceStateTypeOutput)
 }
 
 // The device state data.
-func (o DeviceStatePtrOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceState) *string {
+func (o DeviceStateTypePtrOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceStateType) *string {
 		if v == nil {
 			return nil
 		}
@@ -990,8 +990,8 @@ func (o DeviceStatePtrOutput) BinaryData() pulumi.StringPtrOutput {
 }
 
 // [Output only] The time at which this state version was updated in Cloud IoT Core.
-func (o DeviceStatePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceState) *string {
+func (o DeviceStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceStateType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4177,8 +4177,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceCredentialArrayOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialResponseOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialResponseArrayOutput{})
-	pulumi.RegisterOutputType(DeviceStateOutput{})
-	pulumi.RegisterOutputType(DeviceStatePtrOutput{})
+	pulumi.RegisterOutputType(DeviceStateTypeOutput{})
+	pulumi.RegisterOutputType(DeviceStateTypePtrOutput{})
 	pulumi.RegisterOutputType(DeviceStateResponseOutput{})
 	pulumi.RegisterOutputType(DeviceStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(EventNotificationConfigOutput{})

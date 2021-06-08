@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:appengine/v1alpha:AppAuthorizedCertificate":
-		r = &AppAuthorizedCertificate{}
-	case "google-native:appengine/v1alpha:AppDomainMapping":
-		r = &AppDomainMapping{}
+	case "google-native:appengine/v1alpha:AuthorizedCertificate":
+		r = &AuthorizedCertificate{}
+	case "google-native:appengine/v1alpha:DomainMapping":
+		r = &DomainMapping{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

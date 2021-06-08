@@ -54,6 +54,9 @@ func NewTransferConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -162,6 +165,7 @@ type transferConfigArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences *EmailPreferences `pulumi:"emailPreferences"`
+	Location         string            `pulumi:"location"`
 	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
@@ -192,6 +196,7 @@ type TransferConfigArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences EmailPreferencesPtrInput
+	Location         pulumi.StringInput
 	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.

@@ -21,22 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:bigtableadmin/v2:AppProfile":
+		r = &AppProfile{}
+	case "google-native:bigtableadmin/v2:Backup":
+		r = &Backup{}
+	case "google-native:bigtableadmin/v2:Cluster":
+		r = &Cluster{}
 	case "google-native:bigtableadmin/v2:Instance":
 		r = &Instance{}
-	case "google-native:bigtableadmin/v2:InstanceAppProfile":
-		r = &InstanceAppProfile{}
-	case "google-native:bigtableadmin/v2:InstanceCluster":
-		r = &InstanceCluster{}
-	case "google-native:bigtableadmin/v2:InstanceClusterBackup":
-		r = &InstanceClusterBackup{}
 	case "google-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
 		r = &InstanceClusterBackupIamPolicy{}
 	case "google-native:bigtableadmin/v2:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
-	case "google-native:bigtableadmin/v2:InstanceTable":
-		r = &InstanceTable{}
 	case "google-native:bigtableadmin/v2:InstanceTableIamPolicy":
 		r = &InstanceTableIamPolicy{}
+	case "google-native:bigtableadmin/v2:Table":
+		r = &Table{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

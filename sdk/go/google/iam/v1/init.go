@@ -21,20 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:iam/v1:Key":
+		r = &Key{}
 	case "google-native:iam/v1:OrganizationRole":
 		r = &OrganizationRole{}
+	case "google-native:iam/v1:Provider":
+		r = &Provider{}
 	case "google-native:iam/v1:Role":
 		r = &Role{}
 	case "google-native:iam/v1:ServiceAccount":
 		r = &ServiceAccount{}
 	case "google-native:iam/v1:ServiceAccountIamPolicy":
 		r = &ServiceAccountIamPolicy{}
-	case "google-native:iam/v1:ServiceAccountKey":
-		r = &ServiceAccountKey{}
 	case "google-native:iam/v1:WorkloadIdentityPool":
 		r = &WorkloadIdentityPool{}
-	case "google-native:iam/v1:WorkloadIdentityPoolProvider":
-		r = &WorkloadIdentityPoolProvider{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

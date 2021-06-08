@@ -21,14 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:cloudchannel/v1:AccountChannelPartnerLink":
-		r = &AccountChannelPartnerLink{}
-	case "google-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
-		r = &AccountChannelPartnerLinkCustomer{}
-	case "google-native:cloudchannel/v1:AccountCustomer":
-		r = &AccountCustomer{}
-	case "google-native:cloudchannel/v1:AccountCustomerEntitlement":
-		r = &AccountCustomerEntitlement{}
+	case "google-native:cloudchannel/v1:ChannelPartnerLink":
+		r = &ChannelPartnerLink{}
+	case "google-native:cloudchannel/v1:Customer":
+		r = &Customer{}
+	case "google-native:cloudchannel/v1:Entitlement":
+		r = &Entitlement{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

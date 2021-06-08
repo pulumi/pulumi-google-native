@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:toolresults/v1beta3:Execution":
+		r = &Execution{}
 	case "google-native:toolresults/v1beta3:History":
 		r = &History{}
-	case "google-native:toolresults/v1beta3:HistoryExecution":
-		r = &HistoryExecution{}
-	case "google-native:toolresults/v1beta3:HistoryExecutionStep":
-		r = &HistoryExecutionStep{}
-	case "google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
-		r = &HistoryExecutionStepPerfSampleSeries{}
+	case "google-native:toolresults/v1beta3:PerfSampleSeries":
+		r = &PerfSampleSeries{}
+	case "google-native:toolresults/v1beta3:Step":
+		r = &Step{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

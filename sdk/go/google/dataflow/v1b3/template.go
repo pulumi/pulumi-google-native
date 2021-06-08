@@ -32,6 +32,9 @@ func NewTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -90,7 +93,7 @@ type templateArgs struct {
 	// Required. The job name to use for the created job.
 	JobName *string `pulumi:"jobName"`
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The runtime parameters to pass to the job.
 	Parameters map[string]string `pulumi:"parameters"`
 	Project    string            `pulumi:"project"`
@@ -105,7 +108,7 @@ type TemplateArgs struct {
 	// Required. The job name to use for the created job.
 	JobName pulumi.StringPtrInput
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The runtime parameters to pass to the job.
 	Parameters pulumi.StringMapInput
 	Project    pulumi.StringInput

@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:accesscontextmanager/v1:AccessLevel":
+		r = &AccessLevel{}
 	case "google-native:accesscontextmanager/v1:AccessPolicy":
 		r = &AccessPolicy{}
-	case "google-native:accesscontextmanager/v1:AccessPolicyAccessLevel":
-		r = &AccessPolicyAccessLevel{}
-	case "google-native:accesscontextmanager/v1:AccessPolicyServicePerimeter":
-		r = &AccessPolicyServicePerimeter{}
-	case "google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding":
-		r = &OrganizationGcpUserAccessBinding{}
+	case "google-native:accesscontextmanager/v1:GcpUserAccessBinding":
+		r = &GcpUserAccessBinding{}
+	case "google-native:accesscontextmanager/v1:ServicePerimeter":
+		r = &ServicePerimeter{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

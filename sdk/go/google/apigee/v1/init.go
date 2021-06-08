@@ -21,64 +21,62 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:apigee/v1:Api":
+		r = &Api{}
+	case "google-native:apigee/v1:Apiproduct":
+		r = &Apiproduct{}
+	case "google-native:apigee/v1:App":
+		r = &App{}
+	case "google-native:apigee/v1:Canaryevaluation":
+		r = &Canaryevaluation{}
+	case "google-native:apigee/v1:Datacollector":
+		r = &Datacollector{}
+	case "google-native:apigee/v1:Datastore":
+		r = &Datastore{}
+	case "google-native:apigee/v1:Debugsession":
+		r = &Debugsession{}
+	case "google-native:apigee/v1:Developer":
+		r = &Developer{}
+	case "google-native:apigee/v1:EnvGroupAttachment":
+		r = &EnvGroupAttachment{}
+	case "google-native:apigee/v1:Envgroup":
+		r = &Envgroup{}
+	case "google-native:apigee/v1:Environment":
+		r = &Environment{}
+	case "google-native:apigee/v1:Export":
+		r = &Export{}
+	case "google-native:apigee/v1:HostQuery":
+		r = &HostQuery{}
+	case "google-native:apigee/v1:Instance":
+		r = &Instance{}
+	case "google-native:apigee/v1:InstanceAttachment":
+		r = &InstanceAttachment{}
+	case "google-native:apigee/v1:Keystore":
+		r = &Keystore{}
+	case "google-native:apigee/v1:NatAddress":
+		r = &NatAddress{}
 	case "google-native:apigee/v1:Organization":
 		r = &Organization{}
-	case "google-native:apigee/v1:OrganizationAnalyticDatastore":
-		r = &OrganizationAnalyticDatastore{}
-	case "google-native:apigee/v1:OrganizationApi":
-		r = &OrganizationApi{}
-	case "google-native:apigee/v1:OrganizationApiproduct":
-		r = &OrganizationApiproduct{}
-	case "google-native:apigee/v1:OrganizationApiproductRateplan":
-		r = &OrganizationApiproductRateplan{}
-	case "google-native:apigee/v1:OrganizationDatacollector":
-		r = &OrganizationDatacollector{}
-	case "google-native:apigee/v1:OrganizationDeveloper":
-		r = &OrganizationDeveloper{}
-	case "google-native:apigee/v1:OrganizationDeveloperApp":
-		r = &OrganizationDeveloperApp{}
-	case "google-native:apigee/v1:OrganizationDeveloperSubscription":
-		r = &OrganizationDeveloperSubscription{}
-	case "google-native:apigee/v1:OrganizationEnvgroup":
-		r = &OrganizationEnvgroup{}
-	case "google-native:apigee/v1:OrganizationEnvgroupAttachment":
-		r = &OrganizationEnvgroupAttachment{}
-	case "google-native:apigee/v1:OrganizationEnvironment":
-		r = &OrganizationEnvironment{}
-	case "google-native:apigee/v1:OrganizationEnvironmentAnalyticExport":
-		r = &OrganizationEnvironmentAnalyticExport{}
-	case "google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
-		r = &OrganizationEnvironmentApiRevisionDebugsession{}
 	case "google-native:apigee/v1:OrganizationEnvironmentIamPolicy":
 		r = &OrganizationEnvironmentIamPolicy{}
-	case "google-native:apigee/v1:OrganizationEnvironmentKeystore":
-		r = &OrganizationEnvironmentKeystore{}
-	case "google-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
-		r = &OrganizationEnvironmentKeystoreAlias{}
-	case "google-native:apigee/v1:OrganizationEnvironmentQuery":
-		r = &OrganizationEnvironmentQuery{}
-	case "google-native:apigee/v1:OrganizationEnvironmentReference":
-		r = &OrganizationEnvironmentReference{}
-	case "google-native:apigee/v1:OrganizationEnvironmentResourcefile":
-		r = &OrganizationEnvironmentResourcefile{}
-	case "google-native:apigee/v1:OrganizationEnvironmentTargetserver":
-		r = &OrganizationEnvironmentTargetserver{}
-	case "google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
-		r = &OrganizationEnvironmentTraceConfigOverride{}
-	case "google-native:apigee/v1:OrganizationHostQuery":
-		r = &OrganizationHostQuery{}
-	case "google-native:apigee/v1:OrganizationInstance":
-		r = &OrganizationInstance{}
-	case "google-native:apigee/v1:OrganizationInstanceAttachment":
-		r = &OrganizationInstanceAttachment{}
-	case "google-native:apigee/v1:OrganizationInstanceCanaryevaluation":
-		r = &OrganizationInstanceCanaryevaluation{}
-	case "google-native:apigee/v1:OrganizationInstanceNatAddress":
-		r = &OrganizationInstanceNatAddress{}
-	case "google-native:apigee/v1:OrganizationReport":
-		r = &OrganizationReport{}
-	case "google-native:apigee/v1:OrganizationSharedflow":
-		r = &OrganizationSharedflow{}
+	case "google-native:apigee/v1:Override":
+		r = &Override{}
+	case "google-native:apigee/v1:Query":
+		r = &Query{}
+	case "google-native:apigee/v1:Rateplan":
+		r = &Rateplan{}
+	case "google-native:apigee/v1:Reference":
+		r = &Reference{}
+	case "google-native:apigee/v1:Report":
+		r = &Report{}
+	case "google-native:apigee/v1:Resourcefile":
+		r = &Resourcefile{}
+	case "google-native:apigee/v1:Sharedflow":
+		r = &Sharedflow{}
+	case "google-native:apigee/v1:Subscription":
+		r = &Subscription{}
+	case "google-native:apigee/v1:Targetserver":
+		r = &Targetserver{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

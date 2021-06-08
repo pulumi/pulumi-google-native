@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:metastore/v1beta:Backup":
+		r = &Backup{}
+	case "google-native:metastore/v1beta:MetadataImport":
+		r = &MetadataImport{}
 	case "google-native:metastore/v1beta:Service":
 		r = &Service{}
-	case "google-native:metastore/v1beta:ServiceBackup":
-		r = &ServiceBackup{}
 	case "google-native:metastore/v1beta:ServiceIamPolicy":
 		r = &ServiceIamPolicy{}
-	case "google-native:metastore/v1beta:ServiceMetadataImport":
-		r = &ServiceMetadataImport{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

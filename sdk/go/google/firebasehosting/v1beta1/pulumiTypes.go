@@ -355,47 +355,6 @@ func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponseOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CertDnsChallengeResponseOutput)
 }
 
-func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return i.ToCertDnsChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertDnsChallengeResponseArgs) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertDnsChallengeResponseOutput).ToCertDnsChallengeResponsePtrOutputWithContext(ctx)
-}
-
-// CertDnsChallengeResponsePtrInput is an input type that accepts CertDnsChallengeResponseArgs, CertDnsChallengeResponsePtr and CertDnsChallengeResponsePtrOutput values.
-// You can construct a concrete instance of `CertDnsChallengeResponsePtrInput` via:
-//
-//          CertDnsChallengeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertDnsChallengeResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput
-	ToCertDnsChallengeResponsePtrOutputWithContext(context.Context) CertDnsChallengeResponsePtrOutput
-}
-
-type certDnsChallengeResponsePtrType CertDnsChallengeResponseArgs
-
-func CertDnsChallengeResponsePtr(v *CertDnsChallengeResponseArgs) CertDnsChallengeResponsePtrInput {
-	return (*certDnsChallengeResponsePtrType)(v)
-}
-
-func (*certDnsChallengeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertDnsChallengeResponse)(nil)).Elem()
-}
-
-func (i *certDnsChallengeResponsePtrType) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return i.ToCertDnsChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certDnsChallengeResponsePtrType) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertDnsChallengeResponsePtrOutput)
-}
-
 // Represents a DNS certificate challenge.
 type CertDnsChallengeResponseOutput struct{ *pulumi.OutputState }
 
@@ -411,16 +370,6 @@ func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponseOutputWithCont
 	return o
 }
 
-func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return o.ToCertDnsChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return o.ApplyT(func(v CertDnsChallengeResponse) *CertDnsChallengeResponse {
-		return &v
-	}).(CertDnsChallengeResponsePtrOutput)
-}
-
 // The domain name upon which the DNS challenge must be satisfied.
 func (o CertDnsChallengeResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v CertDnsChallengeResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -429,44 +378,6 @@ func (o CertDnsChallengeResponseOutput) DomainName() pulumi.StringOutput {
 // The value that must be present as a TXT record on the domain name to satisfy the challenge.
 func (o CertDnsChallengeResponseOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v CertDnsChallengeResponse) string { return v.Token }).(pulumi.StringOutput)
-}
-
-type CertDnsChallengeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertDnsChallengeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertDnsChallengeResponse)(nil)).Elem()
-}
-
-func (o CertDnsChallengeResponsePtrOutput) ToCertDnsChallengeResponsePtrOutput() CertDnsChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertDnsChallengeResponsePtrOutput) ToCertDnsChallengeResponsePtrOutputWithContext(ctx context.Context) CertDnsChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertDnsChallengeResponsePtrOutput) Elem() CertDnsChallengeResponseOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) CertDnsChallengeResponse { return *v }).(CertDnsChallengeResponseOutput)
-}
-
-// The domain name upon which the DNS challenge must be satisfied.
-func (o CertDnsChallengeResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The value that must be present as a TXT record on the domain name to satisfy the challenge.
-func (o CertDnsChallengeResponsePtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertDnsChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Token
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents an HTTP certificate challenge.
@@ -661,47 +572,6 @@ func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponseOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CertHttpChallengeResponseOutput)
 }
 
-func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return i.ToCertHttpChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertHttpChallengeResponseArgs) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertHttpChallengeResponseOutput).ToCertHttpChallengeResponsePtrOutputWithContext(ctx)
-}
-
-// CertHttpChallengeResponsePtrInput is an input type that accepts CertHttpChallengeResponseArgs, CertHttpChallengeResponsePtr and CertHttpChallengeResponsePtrOutput values.
-// You can construct a concrete instance of `CertHttpChallengeResponsePtrInput` via:
-//
-//          CertHttpChallengeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertHttpChallengeResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput
-	ToCertHttpChallengeResponsePtrOutputWithContext(context.Context) CertHttpChallengeResponsePtrOutput
-}
-
-type certHttpChallengeResponsePtrType CertHttpChallengeResponseArgs
-
-func CertHttpChallengeResponsePtr(v *CertHttpChallengeResponseArgs) CertHttpChallengeResponsePtrInput {
-	return (*certHttpChallengeResponsePtrType)(v)
-}
-
-func (*certHttpChallengeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertHttpChallengeResponse)(nil)).Elem()
-}
-
-func (i *certHttpChallengeResponsePtrType) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return i.ToCertHttpChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certHttpChallengeResponsePtrType) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertHttpChallengeResponsePtrOutput)
-}
-
 // Represents an HTTP certificate challenge.
 type CertHttpChallengeResponseOutput struct{ *pulumi.OutputState }
 
@@ -717,16 +587,6 @@ func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponseOutputWithCo
 	return o
 }
 
-func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return o.ToCertHttpChallengeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return o.ApplyT(func(v CertHttpChallengeResponse) *CertHttpChallengeResponse {
-		return &v
-	}).(CertHttpChallengeResponsePtrOutput)
-}
-
 // The URL path on which to serve the specified token to satisfy the certificate challenge.
 func (o CertHttpChallengeResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CertHttpChallengeResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -735,44 +595,6 @@ func (o CertHttpChallengeResponseOutput) Path() pulumi.StringOutput {
 // The token to serve at the specified URL path to satisfy the certificate challenge.
 func (o CertHttpChallengeResponseOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v CertHttpChallengeResponse) string { return v.Token }).(pulumi.StringOutput)
-}
-
-type CertHttpChallengeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertHttpChallengeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertHttpChallengeResponse)(nil)).Elem()
-}
-
-func (o CertHttpChallengeResponsePtrOutput) ToCertHttpChallengeResponsePtrOutput() CertHttpChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertHttpChallengeResponsePtrOutput) ToCertHttpChallengeResponsePtrOutputWithContext(ctx context.Context) CertHttpChallengeResponsePtrOutput {
-	return o
-}
-
-func (o CertHttpChallengeResponsePtrOutput) Elem() CertHttpChallengeResponseOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) CertHttpChallengeResponse { return *v }).(CertHttpChallengeResponseOutput)
-}
-
-// The URL path on which to serve the specified token to satisfy the certificate challenge.
-func (o CertHttpChallengeResponsePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// The token to serve at the specified URL path to satisfy the certificate challenge.
-func (o CertHttpChallengeResponsePtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertHttpChallengeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Token
-	}).(pulumi.StringPtrOutput)
 }
 
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
@@ -902,47 +724,6 @@ func (i DomainProvisioningArgs) ToDomainProvisioningOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningOutput)
 }
 
-func (i DomainProvisioningArgs) ToDomainProvisioningPtrOutput() DomainProvisioningPtrOutput {
-	return i.ToDomainProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i DomainProvisioningArgs) ToDomainProvisioningPtrOutputWithContext(ctx context.Context) DomainProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningOutput).ToDomainProvisioningPtrOutputWithContext(ctx)
-}
-
-// DomainProvisioningPtrInput is an input type that accepts DomainProvisioningArgs, DomainProvisioningPtr and DomainProvisioningPtrOutput values.
-// You can construct a concrete instance of `DomainProvisioningPtrInput` via:
-//
-//          DomainProvisioningArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainProvisioningPtrInput interface {
-	pulumi.Input
-
-	ToDomainProvisioningPtrOutput() DomainProvisioningPtrOutput
-	ToDomainProvisioningPtrOutputWithContext(context.Context) DomainProvisioningPtrOutput
-}
-
-type domainProvisioningPtrType DomainProvisioningArgs
-
-func DomainProvisioningPtr(v *DomainProvisioningArgs) DomainProvisioningPtrInput {
-	return (*domainProvisioningPtrType)(v)
-}
-
-func (*domainProvisioningPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProvisioning)(nil)).Elem()
-}
-
-func (i *domainProvisioningPtrType) ToDomainProvisioningPtrOutput() DomainProvisioningPtrOutput {
-	return i.ToDomainProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i *domainProvisioningPtrType) ToDomainProvisioningPtrOutputWithContext(ctx context.Context) DomainProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningPtrOutput)
-}
-
 // The current certificate provisioning status information for a domain.
 type DomainProvisioningOutput struct{ *pulumi.OutputState }
 
@@ -956,16 +737,6 @@ func (o DomainProvisioningOutput) ToDomainProvisioningOutput() DomainProvisionin
 
 func (o DomainProvisioningOutput) ToDomainProvisioningOutputWithContext(ctx context.Context) DomainProvisioningOutput {
 	return o
-}
-
-func (o DomainProvisioningOutput) ToDomainProvisioningPtrOutput() DomainProvisioningPtrOutput {
-	return o.ToDomainProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (o DomainProvisioningOutput) ToDomainProvisioningPtrOutputWithContext(ctx context.Context) DomainProvisioningPtrOutput {
-	return o.ApplyT(func(v DomainProvisioning) *DomainProvisioning {
-		return &v
-	}).(DomainProvisioningPtrOutput)
 }
 
 // The TXT records (for the certificate challenge) that were found at the last DNS fetch.
@@ -1006,104 +777,6 @@ func (o DomainProvisioningOutput) DnsStatus() pulumi.StringPtrOutput {
 // The list of IPs to which the domain is expected to resolve.
 func (o DomainProvisioningOutput) ExpectedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DomainProvisioning) []string { return v.ExpectedIps }).(pulumi.StringArrayOutput)
-}
-
-type DomainProvisioningPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainProvisioningPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProvisioning)(nil)).Elem()
-}
-
-func (o DomainProvisioningPtrOutput) ToDomainProvisioningPtrOutput() DomainProvisioningPtrOutput {
-	return o
-}
-
-func (o DomainProvisioningPtrOutput) ToDomainProvisioningPtrOutputWithContext(ctx context.Context) DomainProvisioningPtrOutput {
-	return o
-}
-
-func (o DomainProvisioningPtrOutput) Elem() DomainProvisioningOutput {
-	return o.ApplyT(func(v *DomainProvisioning) DomainProvisioning { return *v }).(DomainProvisioningOutput)
-}
-
-// The TXT records (for the certificate challenge) that were found at the last DNS fetch.
-func (o DomainProvisioningPtrOutput) CertChallengeDiscoveredTxt() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioning) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CertChallengeDiscoveredTxt
-	}).(pulumi.StringArrayOutput)
-}
-
-// The DNS challenge for generating a certificate.
-func (o DomainProvisioningPtrOutput) CertChallengeDns() CertDnsChallengePtrOutput {
-	return o.ApplyT(func(v *DomainProvisioning) *CertDnsChallenge {
-		if v == nil {
-			return nil
-		}
-		return v.CertChallengeDns
-	}).(CertDnsChallengePtrOutput)
-}
-
-// The HTTP challenge for generating a certificate.
-func (o DomainProvisioningPtrOutput) CertChallengeHttp() CertHttpChallengePtrOutput {
-	return o.ApplyT(func(v *DomainProvisioning) *CertHttpChallenge {
-		if v == nil {
-			return nil
-		}
-		return v.CertChallengeHttp
-	}).(CertHttpChallengePtrOutput)
-}
-
-// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
-func (o DomainProvisioningPtrOutput) CertStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioning) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CertStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IPs found at the last DNS fetch.
-func (o DomainProvisioningPtrOutput) DiscoveredIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioning) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DiscoveredIps
-	}).(pulumi.StringArrayOutput)
-}
-
-// The time at which the last DNS fetch occurred.
-func (o DomainProvisioningPtrOutput) DnsFetchTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioning) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DnsFetchTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DNS record match status as of the last DNS fetch.
-func (o DomainProvisioningPtrOutput) DnsStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioning) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DnsStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of IPs to which the domain is expected to resolve.
-func (o DomainProvisioningPtrOutput) ExpectedIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioning) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExpectedIps
-	}).(pulumi.StringArrayOutput)
 }
 
 // The current certificate provisioning status information for a domain.
@@ -1169,47 +842,6 @@ func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningResponseOutput)
 }
 
-func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return i.ToDomainProvisioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DomainProvisioningResponseArgs) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningResponseOutput).ToDomainProvisioningResponsePtrOutputWithContext(ctx)
-}
-
-// DomainProvisioningResponsePtrInput is an input type that accepts DomainProvisioningResponseArgs, DomainProvisioningResponsePtr and DomainProvisioningResponsePtrOutput values.
-// You can construct a concrete instance of `DomainProvisioningResponsePtrInput` via:
-//
-//          DomainProvisioningResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainProvisioningResponsePtrInput interface {
-	pulumi.Input
-
-	ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput
-	ToDomainProvisioningResponsePtrOutputWithContext(context.Context) DomainProvisioningResponsePtrOutput
-}
-
-type domainProvisioningResponsePtrType DomainProvisioningResponseArgs
-
-func DomainProvisioningResponsePtr(v *DomainProvisioningResponseArgs) DomainProvisioningResponsePtrInput {
-	return (*domainProvisioningResponsePtrType)(v)
-}
-
-func (*domainProvisioningResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProvisioningResponse)(nil)).Elem()
-}
-
-func (i *domainProvisioningResponsePtrType) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return i.ToDomainProvisioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *domainProvisioningResponsePtrType) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainProvisioningResponsePtrOutput)
-}
-
 // The current certificate provisioning status information for a domain.
 type DomainProvisioningResponseOutput struct{ *pulumi.OutputState }
 
@@ -1223,16 +855,6 @@ func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponseOutput() D
 
 func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponseOutputWithContext(ctx context.Context) DomainProvisioningResponseOutput {
 	return o
-}
-
-func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return o.ToDomainProvisioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return o.ApplyT(func(v DomainProvisioningResponse) *DomainProvisioningResponse {
-		return &v
-	}).(DomainProvisioningResponsePtrOutput)
 }
 
 // The TXT records (for the certificate challenge) that were found at the last DNS fetch.
@@ -1275,104 +897,6 @@ func (o DomainProvisioningResponseOutput) ExpectedIps() pulumi.StringArrayOutput
 	return o.ApplyT(func(v DomainProvisioningResponse) []string { return v.ExpectedIps }).(pulumi.StringArrayOutput)
 }
 
-type DomainProvisioningResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DomainProvisioningResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainProvisioningResponse)(nil)).Elem()
-}
-
-func (o DomainProvisioningResponsePtrOutput) ToDomainProvisioningResponsePtrOutput() DomainProvisioningResponsePtrOutput {
-	return o
-}
-
-func (o DomainProvisioningResponsePtrOutput) ToDomainProvisioningResponsePtrOutputWithContext(ctx context.Context) DomainProvisioningResponsePtrOutput {
-	return o
-}
-
-func (o DomainProvisioningResponsePtrOutput) Elem() DomainProvisioningResponseOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) DomainProvisioningResponse { return *v }).(DomainProvisioningResponseOutput)
-}
-
-// The TXT records (for the certificate challenge) that were found at the last DNS fetch.
-func (o DomainProvisioningResponsePtrOutput) CertChallengeDiscoveredTxt() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CertChallengeDiscoveredTxt
-	}).(pulumi.StringArrayOutput)
-}
-
-// The DNS challenge for generating a certificate.
-func (o DomainProvisioningResponsePtrOutput) CertChallengeDns() CertDnsChallengeResponsePtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *CertDnsChallengeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertChallengeDns
-	}).(CertDnsChallengeResponsePtrOutput)
-}
-
-// The HTTP challenge for generating a certificate.
-func (o DomainProvisioningResponsePtrOutput) CertChallengeHttp() CertHttpChallengeResponsePtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *CertHttpChallengeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertChallengeHttp
-	}).(CertHttpChallengeResponsePtrOutput)
-}
-
-// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
-func (o DomainProvisioningResponsePtrOutput) CertStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IPs found at the last DNS fetch.
-func (o DomainProvisioningResponsePtrOutput) DiscoveredIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DiscoveredIps
-	}).(pulumi.StringArrayOutput)
-}
-
-// The time at which the last DNS fetch occurred.
-func (o DomainProvisioningResponsePtrOutput) DnsFetchTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DnsFetchTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The DNS record match status as of the last DNS fetch.
-func (o DomainProvisioningResponsePtrOutput) DnsStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DnsStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of IPs to which the domain is expected to resolve.
-func (o DomainProvisioningResponsePtrOutput) ExpectedIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DomainProvisioningResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExpectedIps
-	}).(pulumi.StringArrayOutput)
-}
-
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirect struct {
 	// Required. The domain name to redirect to.
@@ -1412,47 +936,6 @@ func (i DomainRedirectArgs) ToDomainRedirectOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectOutput)
 }
 
-func (i DomainRedirectArgs) ToDomainRedirectPtrOutput() DomainRedirectPtrOutput {
-	return i.ToDomainRedirectPtrOutputWithContext(context.Background())
-}
-
-func (i DomainRedirectArgs) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectOutput).ToDomainRedirectPtrOutputWithContext(ctx)
-}
-
-// DomainRedirectPtrInput is an input type that accepts DomainRedirectArgs, DomainRedirectPtr and DomainRedirectPtrOutput values.
-// You can construct a concrete instance of `DomainRedirectPtrInput` via:
-//
-//          DomainRedirectArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainRedirectPtrInput interface {
-	pulumi.Input
-
-	ToDomainRedirectPtrOutput() DomainRedirectPtrOutput
-	ToDomainRedirectPtrOutputWithContext(context.Context) DomainRedirectPtrOutput
-}
-
-type domainRedirectPtrType DomainRedirectArgs
-
-func DomainRedirectPtr(v *DomainRedirectArgs) DomainRedirectPtrInput {
-	return (*domainRedirectPtrType)(v)
-}
-
-func (*domainRedirectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainRedirect)(nil)).Elem()
-}
-
-func (i *domainRedirectPtrType) ToDomainRedirectPtrOutput() DomainRedirectPtrOutput {
-	return i.ToDomainRedirectPtrOutputWithContext(context.Background())
-}
-
-func (i *domainRedirectPtrType) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectPtrOutput)
-}
-
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectOutput struct{ *pulumi.OutputState }
 
@@ -1468,16 +951,6 @@ func (o DomainRedirectOutput) ToDomainRedirectOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DomainRedirectOutput) ToDomainRedirectPtrOutput() DomainRedirectPtrOutput {
-	return o.ToDomainRedirectPtrOutputWithContext(context.Background())
-}
-
-func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
-	return o.ApplyT(func(v DomainRedirect) *DomainRedirect {
-		return &v
-	}).(DomainRedirectPtrOutput)
-}
-
 // Required. The domain name to redirect to.
 func (o DomainRedirectOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *string { return v.DomainName }).(pulumi.StringPtrOutput)
@@ -1486,44 +959,6 @@ func (o DomainRedirectOutput) DomainName() pulumi.StringPtrOutput {
 // Required. The redirect status code.
 func (o DomainRedirectOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type DomainRedirectPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainRedirectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainRedirect)(nil)).Elem()
-}
-
-func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutput() DomainRedirectPtrOutput {
-	return o
-}
-
-func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
-	return o
-}
-
-func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
-	return o.ApplyT(func(v *DomainRedirect) DomainRedirect { return *v }).(DomainRedirectOutput)
-}
-
-// Required. The domain name to redirect to.
-func (o DomainRedirectPtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirect) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required. The redirect status code.
-func (o DomainRedirectPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirect) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
@@ -1565,47 +1000,6 @@ func (i DomainRedirectResponseArgs) ToDomainRedirectResponseOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectResponseOutput)
 }
 
-func (i DomainRedirectResponseArgs) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return i.ToDomainRedirectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DomainRedirectResponseArgs) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectResponseOutput).ToDomainRedirectResponsePtrOutputWithContext(ctx)
-}
-
-// DomainRedirectResponsePtrInput is an input type that accepts DomainRedirectResponseArgs, DomainRedirectResponsePtr and DomainRedirectResponsePtrOutput values.
-// You can construct a concrete instance of `DomainRedirectResponsePtrInput` via:
-//
-//          DomainRedirectResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainRedirectResponsePtrInput interface {
-	pulumi.Input
-
-	ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput
-	ToDomainRedirectResponsePtrOutputWithContext(context.Context) DomainRedirectResponsePtrOutput
-}
-
-type domainRedirectResponsePtrType DomainRedirectResponseArgs
-
-func DomainRedirectResponsePtr(v *DomainRedirectResponseArgs) DomainRedirectResponsePtrInput {
-	return (*domainRedirectResponsePtrType)(v)
-}
-
-func (*domainRedirectResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainRedirectResponse)(nil)).Elem()
-}
-
-func (i *domainRedirectResponsePtrType) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return i.ToDomainRedirectResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *domainRedirectResponsePtrType) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectResponsePtrOutput)
-}
-
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectResponseOutput struct{ *pulumi.OutputState }
 
@@ -1621,16 +1015,6 @@ func (o DomainRedirectResponseOutput) ToDomainRedirectResponseOutputWithContext(
 	return o
 }
 
-func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return o.ToDomainRedirectResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return o.ApplyT(func(v DomainRedirectResponse) *DomainRedirectResponse {
-		return &v
-	}).(DomainRedirectResponsePtrOutput)
-}
-
 // Required. The domain name to redirect to.
 func (o DomainRedirectResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -1639,44 +1023,6 @@ func (o DomainRedirectResponseOutput) DomainName() pulumi.StringOutput {
 // Required. The redirect status code.
 func (o DomainRedirectResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type DomainRedirectResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DomainRedirectResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainRedirectResponse)(nil)).Elem()
-}
-
-func (o DomainRedirectResponsePtrOutput) ToDomainRedirectResponsePtrOutput() DomainRedirectResponsePtrOutput {
-	return o
-}
-
-func (o DomainRedirectResponsePtrOutput) ToDomainRedirectResponsePtrOutputWithContext(ctx context.Context) DomainRedirectResponsePtrOutput {
-	return o
-}
-
-func (o DomainRedirectResponsePtrOutput) Elem() DomainRedirectResponseOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) DomainRedirectResponse { return *v }).(DomainRedirectResponseOutput)
-}
-
-// Required. The domain name to redirect to.
-func (o DomainRedirectResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DomainName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required. The redirect status code.
-func (o DomainRedirectResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirectResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
@@ -3029,20 +2375,14 @@ func init() {
 	pulumi.RegisterOutputType(CertDnsChallengeOutput{})
 	pulumi.RegisterOutputType(CertDnsChallengePtrOutput{})
 	pulumi.RegisterOutputType(CertDnsChallengeResponseOutput{})
-	pulumi.RegisterOutputType(CertDnsChallengeResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertHttpChallengeOutput{})
 	pulumi.RegisterOutputType(CertHttpChallengePtrOutput{})
 	pulumi.RegisterOutputType(CertHttpChallengeResponseOutput{})
-	pulumi.RegisterOutputType(CertHttpChallengeResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudRunRewriteResponseOutput{})
 	pulumi.RegisterOutputType(DomainProvisioningOutput{})
-	pulumi.RegisterOutputType(DomainProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DomainProvisioningResponseOutput{})
-	pulumi.RegisterOutputType(DomainProvisioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})
-	pulumi.RegisterOutputType(DomainRedirectPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectResponseOutput{})
-	pulumi.RegisterOutputType(DomainRedirectResponsePtrOutput{})
 	pulumi.RegisterOutputType(HeaderResponseOutput{})
 	pulumi.RegisterOutputType(HeaderResponseArrayOutput{})
 	pulumi.RegisterOutputType(I18nConfigResponseOutput{})

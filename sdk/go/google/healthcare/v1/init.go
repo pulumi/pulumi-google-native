@@ -21,36 +21,36 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:healthcare/v1:AttributeDefinition":
+		r = &AttributeDefinition{}
+	case "google-native:healthcare/v1:Consent":
+		r = &Consent{}
+	case "google-native:healthcare/v1:ConsentArtifact":
+		r = &ConsentArtifact{}
+	case "google-native:healthcare/v1:ConsentStore":
+		r = &ConsentStore{}
 	case "google-native:healthcare/v1:Dataset":
 		r = &Dataset{}
-	case "google-native:healthcare/v1:DatasetConsentStore":
-		r = &DatasetConsentStore{}
-	case "google-native:healthcare/v1:DatasetConsentStoreAttributeDefinition":
-		r = &DatasetConsentStoreAttributeDefinition{}
-	case "google-native:healthcare/v1:DatasetConsentStoreConsent":
-		r = &DatasetConsentStoreConsent{}
-	case "google-native:healthcare/v1:DatasetConsentStoreConsentArtifact":
-		r = &DatasetConsentStoreConsentArtifact{}
 	case "google-native:healthcare/v1:DatasetConsentStoreIamPolicy":
 		r = &DatasetConsentStoreIamPolicy{}
-	case "google-native:healthcare/v1:DatasetConsentStoreUserDataMapping":
-		r = &DatasetConsentStoreUserDataMapping{}
-	case "google-native:healthcare/v1:DatasetDicomStore":
-		r = &DatasetDicomStore{}
 	case "google-native:healthcare/v1:DatasetDicomStoreIamPolicy":
 		r = &DatasetDicomStoreIamPolicy{}
-	case "google-native:healthcare/v1:DatasetFhirStore":
-		r = &DatasetFhirStore{}
 	case "google-native:healthcare/v1:DatasetFhirStoreIamPolicy":
 		r = &DatasetFhirStoreIamPolicy{}
-	case "google-native:healthcare/v1:DatasetHl7V2Store":
-		r = &DatasetHl7V2Store{}
 	case "google-native:healthcare/v1:DatasetHl7V2StoreIamPolicy":
 		r = &DatasetHl7V2StoreIamPolicy{}
-	case "google-native:healthcare/v1:DatasetHl7V2StoreMessage":
-		r = &DatasetHl7V2StoreMessage{}
 	case "google-native:healthcare/v1:DatasetIamPolicy":
 		r = &DatasetIamPolicy{}
+	case "google-native:healthcare/v1:DicomStore":
+		r = &DicomStore{}
+	case "google-native:healthcare/v1:FhirStore":
+		r = &FhirStore{}
+	case "google-native:healthcare/v1:Hl7V2Store":
+		r = &Hl7V2Store{}
+	case "google-native:healthcare/v1:Message":
+		r = &Message{}
+	case "google-native:healthcare/v1:UserDataMapping":
+		r = &UserDataMapping{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -21,12 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:firebasehosting/v1beta1:Channel":
+		r = &Channel{}
 	case "google-native:firebasehosting/v1beta1:Site":
 		r = &Site{}
-	case "google-native:firebasehosting/v1beta1:SiteChannel":
-		r = &SiteChannel{}
-	case "google-native:firebasehosting/v1beta1:SiteDomain":
-		r = &SiteDomain{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -21,16 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:gameservices/v1:Config":
+		r = &Config{}
+	case "google-native:gameservices/v1:GameServerCluster":
+		r = &GameServerCluster{}
 	case "google-native:gameservices/v1:GameServerDeployment":
 		r = &GameServerDeployment{}
-	case "google-native:gameservices/v1:GameServerDeploymentConfig":
-		r = &GameServerDeploymentConfig{}
 	case "google-native:gameservices/v1:GameServerDeploymentIamPolicy":
 		r = &GameServerDeploymentIamPolicy{}
 	case "google-native:gameservices/v1:Realm":
 		r = &Realm{}
-	case "google-native:gameservices/v1:RealmGameServerCluster":
-		r = &RealmGameServerCluster{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
