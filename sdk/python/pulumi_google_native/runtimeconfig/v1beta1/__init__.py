@@ -5,8 +5,8 @@
 # Export this package's modules as members:
 from .config import *
 from .config_iam_policy import *
-from .config_variable import *
-from .config_waiter import *
+from .variable import *
+from .waiter import *
 from ._inputs import *
 from . import outputs
 
@@ -26,10 +26,10 @@ def _register_module():
                 return Config(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:runtimeconfig/v1beta1:ConfigIamPolicy":
                 return ConfigIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:runtimeconfig/v1beta1:ConfigVariable":
-                return ConfigVariable(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:runtimeconfig/v1beta1:ConfigWaiter":
-                return ConfigWaiter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:runtimeconfig/v1beta1:Variable":
+                return Variable(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:runtimeconfig/v1beta1:Waiter":
+                return Waiter(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

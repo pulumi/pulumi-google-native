@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .catalog_branch_product import *
+from .product import *
 from ._inputs import *
 from . import outputs
 
@@ -19,8 +19,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:retail/v2beta:CatalogBranchProduct":
-                return CatalogBranchProduct(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-native:retail/v2beta:Product":
+                return Product(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

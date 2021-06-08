@@ -3,11 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .endpoint import *
 from .namespace import *
 from .namespace_iam_policy import *
-from .namespace_service import *
-from .namespace_service_endpoint import *
 from .namespace_service_iam_policy import *
+from .service import *
 from ._inputs import *
 from . import outputs
 
@@ -23,16 +23,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:servicedirectory/v1beta1:Namespace":
+            if typ == "google-native:servicedirectory/v1beta1:Endpoint":
+                return Endpoint(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:servicedirectory/v1beta1:Namespace":
                 return Namespace(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:servicedirectory/v1beta1:NamespaceIamPolicy":
                 return NamespaceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:servicedirectory/v1beta1:NamespaceService":
-                return NamespaceService(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:servicedirectory/v1beta1:NamespaceServiceEndpoint":
-                return NamespaceServiceEndpoint(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
                 return NamespaceServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:servicedirectory/v1beta1:Service":
+                return Service(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

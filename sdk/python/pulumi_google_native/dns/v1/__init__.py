@@ -5,8 +5,8 @@
 # Export this package's modules as members:
 from .change import *
 from .managed_zone import *
-from .managed_zone_rrset import *
 from .policy import *
+from .rrset import *
 from ._inputs import *
 from . import outputs
 
@@ -26,10 +26,10 @@ def _register_module():
                 return Change(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dns/v1:ManagedZone":
                 return ManagedZone(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dns/v1:ManagedZoneRrset":
-                return ManagedZoneRrset(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dns/v1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dns/v1:Rrset":
+                return Rrset(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

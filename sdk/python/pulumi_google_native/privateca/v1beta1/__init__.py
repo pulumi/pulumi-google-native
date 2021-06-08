@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .certificate import *
 from .certificate_authority import *
-from .certificate_authority_certificate import *
 from .certificate_authority_certificate_revocation_list_iam_policy import *
 from .certificate_authority_iam_policy import *
 from .reusable_config_iam_policy import *
@@ -23,10 +23,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:privateca/v1beta1:CertificateAuthority":
+            if typ == "google-native:privateca/v1beta1:Certificate":
+                return Certificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:privateca/v1beta1:CertificateAuthority":
                 return CertificateAuthority(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:privateca/v1beta1:CertificateAuthorityCertificate":
-                return CertificateAuthorityCertificate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy":
                 return CertificateAuthorityCertificateRevocationListIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:privateca/v1beta1:CertificateAuthorityIamPolicy":

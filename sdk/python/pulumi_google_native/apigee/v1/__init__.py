@@ -3,35 +3,34 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .api import *
+from .apiproduct import *
+from .app import *
+from .canaryevaluation import *
+from .datacollector import *
+from .datastore import *
+from .debugsession import *
+from .developer import *
+from .env_group_attachment import *
+from .envgroup import *
+from .environment import *
+from .export import *
+from .host_query import *
+from .instance import *
+from .instance_attachment import *
+from .keystore import *
+from .nat_address import *
 from .organization import *
-from .organization_analytic_datastore import *
-from .organization_api import *
-from .organization_apiproduct import *
-from .organization_apiproduct_rateplan import *
-from .organization_datacollector import *
-from .organization_developer import *
-from .organization_developer_app import *
-from .organization_developer_subscription import *
-from .organization_envgroup import *
-from .organization_envgroup_attachment import *
-from .organization_environment import *
-from .organization_environment_analytic_export import *
-from .organization_environment_api_revision_debugsession import *
 from .organization_environment_iam_policy import *
-from .organization_environment_keystore import *
-from .organization_environment_keystore_alias import *
-from .organization_environment_query import *
-from .organization_environment_reference import *
-from .organization_environment_resourcefile import *
-from .organization_environment_targetserver import *
-from .organization_environment_trace_config_override import *
-from .organization_host_query import *
-from .organization_instance import *
-from .organization_instance_attachment import *
-from .organization_instance_canaryevaluation import *
-from .organization_instance_nat_address import *
-from .organization_report import *
-from .organization_sharedflow import *
+from .override import *
+from .query import *
+from .rateplan import *
+from .reference import *
+from .report import *
+from .resourcefile import *
+from .sharedflow import *
+from .subscription import *
+from .targetserver import *
 from ._inputs import *
 from . import outputs
 
@@ -47,64 +46,62 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:apigee/v1:Organization":
+            if typ == "google-native:apigee/v1:Api":
+                return Api(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Apiproduct":
+                return Apiproduct(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:App":
+                return App(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Canaryevaluation":
+                return Canaryevaluation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Datacollector":
+                return Datacollector(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Datastore":
+                return Datastore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Debugsession":
+                return Debugsession(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Developer":
+                return Developer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:EnvGroupAttachment":
+                return EnvGroupAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Envgroup":
+                return Envgroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Environment":
+                return Environment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Export":
+                return Export(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:HostQuery":
+                return HostQuery(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:InstanceAttachment":
+                return InstanceAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Keystore":
+                return Keystore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:NatAddress":
+                return NatAddress(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Organization":
                 return Organization(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationAnalyticDatastore":
-                return OrganizationAnalyticDatastore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationApi":
-                return OrganizationApi(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationApiproduct":
-                return OrganizationApiproduct(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationApiproductRateplan":
-                return OrganizationApiproductRateplan(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationDatacollector":
-                return OrganizationDatacollector(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationDeveloper":
-                return OrganizationDeveloper(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationDeveloperApp":
-                return OrganizationDeveloperApp(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationDeveloperSubscription":
-                return OrganizationDeveloperSubscription(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvgroup":
-                return OrganizationEnvgroup(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvgroupAttachment":
-                return OrganizationEnvgroupAttachment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironment":
-                return OrganizationEnvironment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentAnalyticExport":
-                return OrganizationEnvironmentAnalyticExport(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
-                return OrganizationEnvironmentApiRevisionDebugsession(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationEnvironmentIamPolicy":
                 return OrganizationEnvironmentIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentKeystore":
-                return OrganizationEnvironmentKeystore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
-                return OrganizationEnvironmentKeystoreAlias(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentQuery":
-                return OrganizationEnvironmentQuery(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentReference":
-                return OrganizationEnvironmentReference(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentResourcefile":
-                return OrganizationEnvironmentResourcefile(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentTargetserver":
-                return OrganizationEnvironmentTargetserver(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
-                return OrganizationEnvironmentTraceConfigOverride(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationHostQuery":
-                return OrganizationHostQuery(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationInstance":
-                return OrganizationInstance(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationInstanceAttachment":
-                return OrganizationInstanceAttachment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationInstanceCanaryevaluation":
-                return OrganizationInstanceCanaryevaluation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationInstanceNatAddress":
-                return OrganizationInstanceNatAddress(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationReport":
-                return OrganizationReport(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:OrganizationSharedflow":
-                return OrganizationSharedflow(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Override":
+                return Override(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Query":
+                return Query(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Rateplan":
+                return Rateplan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Reference":
+                return Reference(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Report":
+                return Report(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Resourcefile":
+                return Resourcefile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Sharedflow":
+                return Sharedflow(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Subscription":
+                return Subscription(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Targetserver":
+                return Targetserver(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

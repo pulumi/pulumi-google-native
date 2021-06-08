@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .admin_subscription import *
-from .admin_topic import *
+from .subscription import *
+from .topic import *
 from ._inputs import *
 from . import outputs
 
@@ -20,10 +20,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:pubsublite/v1:AdminSubscription":
-                return AdminSubscription(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:pubsublite/v1:AdminTopic":
-                return AdminTopic(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-native:pubsublite/v1:Subscription":
+                return Subscription(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:pubsublite/v1:Topic":
+                return Topic(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

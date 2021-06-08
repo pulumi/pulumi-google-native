@@ -3,9 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .access_level import *
 from .access_policy import *
-from .access_policy_access_level import *
-from .access_policy_service_perimeter import *
+from .service_perimeter import *
 from ._inputs import *
 from . import outputs
 
@@ -21,12 +21,12 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:accesscontextmanager/v1beta:AccessPolicy":
+            if typ == "google-native:accesscontextmanager/v1beta:AccessLevel":
+                return AccessLevel(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:accesscontextmanager/v1beta:AccessPolicy":
                 return AccessPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel":
-                return AccessPolicyAccessLevel(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:accesscontextmanager/v1beta:AccessPolicyServicePerimeter":
-                return AccessPolicyServicePerimeter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:accesscontextmanager/v1beta:ServicePerimeter":
+                return ServicePerimeter(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -5,14 +5,11 @@
 # Export this package's modules as members:
 from .autoscaling_policy import *
 from .autoscaling_policy_iam_policy import *
-from .region_autoscaling_policy import *
+from .cluster import *
 from .region_autoscaling_policy_iam_policy import *
-from .region_cluster import *
 from .region_cluster_iam_policy import *
-from .region_job import *
 from .region_job_iam_policy import *
 from .region_operation_iam_policy import *
-from .region_workflow_template import *
 from .region_workflow_template_iam_policy import *
 from .workflow_template import *
 from .workflow_template_iam_policy import *
@@ -35,22 +32,16 @@ def _register_module():
                 return AutoscalingPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
                 return AutoscalingPolicyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dataproc/v1:RegionAutoscalingPolicy":
-                return RegionAutoscalingPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dataproc/v1:Cluster":
+                return Cluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
                 return RegionAutoscalingPolicyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dataproc/v1:RegionCluster":
-                return RegionCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionClusterIamPolicy":
                 return RegionClusterIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dataproc/v1:RegionJob":
-                return RegionJob(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionJobIamPolicy":
                 return RegionJobIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionOperationIamPolicy":
                 return RegionOperationIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dataproc/v1:RegionWorkflowTemplate":
-                return RegionWorkflowTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
                 return RegionWorkflowTemplateIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:WorkflowTemplate":

@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .workflow_execution import *
+from .execution import *
 from . import outputs
 
 def _register_module():
@@ -18,8 +18,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:workflowexecutions/v1beta:WorkflowExecution":
-                return WorkflowExecution(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-native:workflowexecutions/v1beta:Execution":
+                return Execution(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

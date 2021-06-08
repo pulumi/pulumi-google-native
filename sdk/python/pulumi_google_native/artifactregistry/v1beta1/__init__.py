@@ -5,7 +5,7 @@
 # Export this package's modules as members:
 from .repository import *
 from .repository_iam_policy import *
-from .repository_package_tag import *
+from .tag import *
 from ._inputs import *
 from . import outputs
 
@@ -25,8 +25,8 @@ def _register_module():
                 return Repository(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:artifactregistry/v1beta1:RepositoryIamPolicy":
                 return RepositoryIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:artifactregistry/v1beta1:RepositoryPackageTag":
-                return RepositoryPackageTag(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:artifactregistry/v1beta1:Tag":
+                return Tag(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

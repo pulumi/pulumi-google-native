@@ -4,10 +4,9 @@
 
 # Export this package's modules as members:
 from .app import *
-from .app_authorized_certificate import *
-from .app_domain_mapping import *
-from .app_firewall_ingress_rule import *
-from .app_service_version import *
+from .authorized_certificate import *
+from .domain_mapping import *
+from .version import *
 from ._inputs import *
 from . import outputs
 
@@ -25,14 +24,12 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-native:appengine/v1:App":
                 return App(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:appengine/v1:AppAuthorizedCertificate":
-                return AppAuthorizedCertificate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:appengine/v1:AppDomainMapping":
-                return AppDomainMapping(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:appengine/v1:AppFirewallIngressRule":
-                return AppFirewallIngressRule(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:appengine/v1:AppServiceVersion":
-                return AppServiceVersion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:appengine/v1:AuthorizedCertificate":
+                return AuthorizedCertificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:appengine/v1:DomainMapping":
+                return DomainMapping(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:appengine/v1:Version":
+                return Version(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

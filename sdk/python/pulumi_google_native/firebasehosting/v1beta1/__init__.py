@@ -3,10 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .channel import *
 from .site import *
-from .site_channel import *
-from .site_domain import *
-from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -21,12 +19,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:firebasehosting/v1beta1:Site":
+            if typ == "google-native:firebasehosting/v1beta1:Channel":
+                return Channel(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:firebasehosting/v1beta1:Site":
                 return Site(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:firebasehosting/v1beta1:SiteChannel":
-                return SiteChannel(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:firebasehosting/v1beta1:SiteDomain":
-                return SiteDomain(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -28,8 +28,6 @@ __all__ = [
     'IdentityConfigArgs',
     'InstanceGroupAutoscalingPolicyConfigArgs',
     'InstanceGroupConfigArgs',
-    'JobPlacementArgs',
-    'JobReferenceArgs',
     'JobSchedulingArgs',
     'KerberosConfigArgs',
     'LifecycleConfigArgs',
@@ -1472,86 +1470,6 @@ class InstanceGroupConfigArgs:
     @preemptibility.setter
     def preemptibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "preemptibility", value)
-
-
-@pulumi.input_type
-class JobPlacementArgs:
-    def __init__(__self__, *,
-                 cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 cluster_name: Optional[pulumi.Input[str]] = None):
-        """
-        Dataproc job config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_labels: Optional. Cluster labels to identify a cluster where the job will be submitted.
-        :param pulumi.Input[str] cluster_name: Required. The name of the cluster where the job will be submitted.
-        """
-        if cluster_labels is not None:
-            pulumi.set(__self__, "cluster_labels", cluster_labels)
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
-
-    @property
-    @pulumi.getter(name="clusterLabels")
-    def cluster_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Optional. Cluster labels to identify a cluster where the job will be submitted.
-        """
-        return pulumi.get(self, "cluster_labels")
-
-    @cluster_labels.setter
-    def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "cluster_labels", value)
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the cluster where the job will be submitted.
-        """
-        return pulumi.get(self, "cluster_name")
-
-    @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cluster_name", value)
-
-
-@pulumi.input_type
-class JobReferenceArgs:
-    def __init__(__self__, *,
-                 job_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
-        """
-        Encapsulates the full scoping used to reference a job.
-        :param pulumi.Input[str] job_id: Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
-        :param pulumi.Input[str] project: Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-        """
-        if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
-        """
-        return pulumi.get(self, "job_id")
-
-    @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "job_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

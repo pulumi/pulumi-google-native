@@ -3,13 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .key import *
 from .organization_role import *
+from .provider import *
 from .role import *
 from .service_account import *
 from .service_account_iam_policy import *
-from .service_account_key import *
 from .workload_identity_pool import *
-from .workload_identity_pool_provider import *
 from ._inputs import *
 from . import outputs
 
@@ -25,20 +25,20 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:iam/v1:OrganizationRole":
+            if typ == "google-native:iam/v1:Key":
+                return Key(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:iam/v1:OrganizationRole":
                 return OrganizationRole(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:iam/v1:Provider":
+                return Provider(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:iam/v1:Role":
                 return Role(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:iam/v1:ServiceAccount":
                 return ServiceAccount(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:iam/v1:ServiceAccountIamPolicy":
                 return ServiceAccountIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:iam/v1:ServiceAccountKey":
-                return ServiceAccountKey(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:iam/v1:WorkloadIdentityPool":
                 return WorkloadIdentityPool(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:iam/v1:WorkloadIdentityPoolProvider":
-                return WorkloadIdentityPoolProvider(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
