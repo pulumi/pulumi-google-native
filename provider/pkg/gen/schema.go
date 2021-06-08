@@ -624,6 +624,7 @@ func isDeprecated(description string) bool {
 	lowerDesc := strings.ToLower(description)
 	return strings.HasPrefix(lowerDesc, "deprecated") ||
 		strings.Contains(lowerDesc, ". deprecated") ||
+		strings.Contains(description, ". @Deprecated") ||
 		strings.Contains(description, "(Deprecated") ||
 		strings.Contains(description, "Deprecated;") ||
 		strings.Contains(description, "Deprecated.") ||

@@ -21,8 +21,8 @@ type discoveryDocumentResource struct {
 // values are pointers to CRUD REST methods.
 func findResources(docName string, rest map[string]discovery.RestResource) (map[string]discoveryDocumentResource, error) {
 	result := map[string]discoveryDocumentResource{}
-	add := func(typeName string, dd discoveryDocumentResource) {
-		addFoundResource(result, typeName, dd)
+	add := func(typeName string, dd discoveryDocumentResource) error {
+		return addFoundResource(result, typeName, dd)
 	}
 	err := findResourcesImpl(docName, "", rest, add)
 	if err != nil {
@@ -32,7 +32,7 @@ func findResources(docName string, rest map[string]discovery.RestResource) (map[
 }
 
 func findResourcesImpl(docName, parentName string, rest map[string]discovery.RestResource,
-	add func(string, discoveryDocumentResource)) error {
+	add func(string, discoveryDocumentResource) error) error {
 	var postMethods []discovery.RestMethod
 	for _, resourceName := range codegen.SortedKeys(rest) {
 		res := rest[resourceName]
@@ -72,26 +72,45 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 						getMethod: &getIamPolicy,
 						updateMethod: &restMethod,
 					}
-					add(typeName, dd)
+					err := add(typeName, dd)
+					if err != nil {
+						return err
+					}
 				}
 			case "delete", "dropDatabase" /*special case for Spanner Database*/ :
 				deleteMethod = &restMethod
 			}
 		}
 
-		typeName := fmt.Sprintf("%s%s", parentName, name)
+		typeName := name
 		switch {
 		case createMethod != nil && getMethod != nil:
 			if getMethod.HttpMethod != "GET" {
 				return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
 			}
+			if override, has := resourceNameByPathOverrides[createMethod.FlatPath]; has {
+				if override == "" {
+					return nil
+				}
+				typeName = override
+			}
+			if override, has := resourceNameByTypeOverrides[createMethod.Response.Ref]; has {
+				if override == "" {
+					return nil
+				}
+				typeName = override
+			}
+
 			dd := discoveryDocumentResource{
 				createMethod: createMethod,
 				getMethod: getMethod,
 				updateMethod: updateMethod,
 				deleteMethod: deleteMethod,
 			}
-			add(typeName, dd)
+			err := add(typeName, dd)
+			if err != nil {
+				return err
+			}
 		case strings.Contains(typeName, "Operation"):
 			// Operation variants don't need to be made rest.
 			continue
@@ -120,14 +139,94 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 	return nil
 }
 
-func addFoundResource(resourceMap map[string]discoveryDocumentResource,typeName string, dd discoveryDocumentResource) {
+func addFoundResource(resourceMap map[string]discoveryDocumentResource, typeName string, dd discoveryDocumentResource) error {
 	for _, param := range dd.createMethod.Parameters {
 		if param.Location == "path" && isDeprecated(param.Description) {
 			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
-			return
+			return nil
 		}
 	}
 
-	// TODO: resolve conflicts so that we never override resources with the same name
-	resourceMap[typeName] = dd
+	existing, has := resourceMap[typeName]
+	if !has {
+		// No conflict - use this resource.
+		resourceMap[typeName] = dd
+		return nil
+	}
+
+	// Check if two conflicting resources represent the same data type. Otherwise, error - we don't support this scenario.
+	if existing.createMethod.Response.Ref != dd.createMethod.Response.Ref {
+		return errors.Errorf("%q conflict: %q (%q) vs %q (%q)", typeName, existing.createMethod.Response.Ref, existing.createMethod.FlatPath, dd.createMethod.Response.Ref, dd.createMethod.FlatPath)
+	}
+
+	// Parse the paths of both resources to extract the parameters.
+	existingParams := findApiParams(existing)
+	newParams := findApiParams(dd)
+
+	// Check if one set of parameters is preferred over the other, pick the preferred one if so.
+	if preferParams(existingParams, newParams) {
+		return nil
+	}
+	if preferParams(newParams, existingParams) {
+		resourceMap[typeName] = dd
+		return nil
+	}
+
+	return errors.Errorf("%q incompatible params: %q vs %q", typeName, existing.createMethod.FlatPath, dd.createMethod.FlatPath)
+}
+
+func preferParams(set codegen.StringSet, other codegen.StringSet) bool {
+	if containsSet(set, other) {
+		return true
+	}
+
+	diff := diffSet(set, other)
+	if len(diff) == 1 && diff.Has("regionId") && set.Has("location") {
+		return true
+	}
+
+	return false
+}
+
+func containsSet(set codegen.StringSet, subset codegen.StringSet) bool {
+	for v := range subset {
+		if !set.Has(v) {
+			return false
+		}
+	}
+	return true
+}
+
+func diffSet(set codegen.StringSet, subset codegen.StringSet) codegen.StringSet {
+	result := codegen.NewStringSet()
+	for v := range subset {
+		if !set.Has(v) {
+			result.Add(v)
+		}
+	}
+	return result
+}
+
+func findApiParams(dd discoveryDocumentResource) codegen.StringSet {
+	path := dd.createMethod.FlatPath
+	if path == "" {
+		path = dd.createMethod.Path
+	}
+	params := findParams(path)
+	result := codegen.NewStringSet()
+	for _, param := range params {
+		result.Add(apiNameToSdkName(param))
+	}
+	return result
+}
+
+func findParams(path string) (result []string) {
+	subMatches := pathRegex.FindAllStringSubmatch(path, -1)
+	for _, names := range subMatches {
+		if len(names) < 2 {
+			panic(fmt.Sprintf("failed to match path parameters for %q", path))
+		}
+		result = append(result, names[1])
+	}
+	return
 }

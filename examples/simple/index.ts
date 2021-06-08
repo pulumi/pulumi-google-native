@@ -12,27 +12,16 @@ const cluster = new google.container.v1.Cluster("cluster", {
     location: region,
     parent: `projects/${project}/locations/${region}`,
     initialClusterVersion: "1.18.17-gke.1900",
-    initialNodeCount: 1,
     masterAuth: {
         password: "hDiqST+U7{t+BkQA+OD*",
         username: "admin",
     },
     name: clusterName,
     network: `projects/${project}/global/networks/default`,
-    nodeConfig: {
-        oauthScopes: [
-            "https://www.googleapis.com/auth/devstorage.read_only",
-            "https://www.googleapis.com/auth/logging.write",
-            "https://www.googleapis.com/auth/monitoring",
-            "https://www.googleapis.com/auth/service.management.readonly",
-            "https://www.googleapis.com/auth/servicecontrol",
-            "https://www.googleapis.com/auth/trace.append",
-        ],            
-    },
 });
 
 const nodePoolName = "extra-node-pool";
-const pool = new google.container.v1.ClusterNodePool(nodePoolName, {
+const pool = new google.container.v1.NodePool(nodePoolName, {
     project,
     location: region,
     clusterId: cluster.name,
