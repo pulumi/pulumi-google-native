@@ -189,6 +189,9 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Input("emailPreferences")]
         public Input<Inputs.EmailPreferencesArgs>? EmailPreferences { get; set; }
 
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         /// </summary>
