@@ -830,6 +830,62 @@
                 "projectsId": "project"
             }
         },
+        "google-native:apigee/v1:Alias": {
+            "baseUrl": "https://apigee.googleapis.com/",
+            "createPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases",
+            "createParams": [
+                {
+                    "name": "alias",
+                    "location": "query"
+                },
+                {
+                    "name": "format",
+                    "location": "query"
+                },
+                {
+                    "name": "ignoreExpiryValidation",
+                    "location": "query"
+                },
+                {
+                    "name": "ignoreNewlineValidation",
+                    "location": "query"
+                },
+                {
+                    "name": "organizationsId",
+                    "sdkName": "organizationId",
+                    "location": "path"
+                },
+                {
+                    "name": "environmentsId",
+                    "sdkName": "environmentId",
+                    "location": "path"
+                },
+                {
+                    "name": "keystoresId",
+                    "sdkName": "keystoreId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "contentType": {},
+                "data": {},
+                "extensions": {}
+            },
+            "updateVerb": "PUT",
+            "updateProperties": {
+                "contentType": {},
+                "data": {},
+                "extensions": {}
+            },
+            "idPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}",
+            "idParams": {
+                "aliasesId": "alias",
+                "environmentsId": "environmentId",
+                "keystoresId": "keystoreId",
+                "organizationsId": "organizationId"
+            }
+        },
         "google-native:apigee/v1:Api": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/apis",
@@ -2019,6 +2075,36 @@
                 "domainMappingsId": "name"
             }
         },
+        "google-native:appengine/v1:IngressRule": {
+            "baseUrl": "https://appengine.googleapis.com/",
+            "createPath": "v1/apps/{appsId}/firewall/ingressRules",
+            "createParams": [
+                {
+                    "name": "appsId",
+                    "sdkName": "appId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "action": {},
+                "description": {},
+                "priority": {},
+                "sourceRange": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "action": {},
+                "description": {},
+                "priority": {},
+                "sourceRange": {}
+            },
+            "idPath": "v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+            "idParams": {
+                "appsId": "appId",
+                "ingressRulesId": "priority"
+            }
+        },
         "google-native:appengine/v1:Version": {
             "baseUrl": "https://appengine.googleapis.com/",
             "createPath": "v1/apps/{appsId}/services/{servicesId}/versions",
@@ -2321,6 +2407,36 @@
             "idParams": {
                 "appsId": "appId",
                 "domainMappingsId": "name"
+            }
+        },
+        "google-native:appengine/v1beta:IngressRule": {
+            "baseUrl": "https://appengine.googleapis.com/",
+            "createPath": "v1beta/apps/{appsId}/firewall/ingressRules",
+            "createParams": [
+                {
+                    "name": "appsId",
+                    "sdkName": "appId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "action": {},
+                "description": {},
+                "priority": {},
+                "sourceRange": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "action": {},
+                "description": {},
+                "priority": {},
+                "sourceRange": {}
+            },
+            "idPath": "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+            "idParams": {
+                "appsId": "appId",
+                "ingressRulesId": "priority"
             }
         },
         "google-native:appengine/v1beta:Version": {
@@ -23380,6 +23496,82 @@
                 "region": "region"
             }
         },
+        "google-native:dataproc/v1:Job": {
+            "baseUrl": "https://dataproc.googleapis.com/",
+            "createPath": "v1/projects/{projectId}/regions/{region}/jobs:submit",
+            "createParams": [
+                {
+                    "name": "projectId",
+                    "sdkName": "project",
+                    "location": "path"
+                },
+                {
+                    "name": "region",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "hadoopJob": {
+                    "container": "job"
+                },
+                "hiveJob": {
+                    "container": "job"
+                },
+                "labels": {
+                    "container": "job"
+                },
+                "pigJob": {
+                    "container": "job"
+                },
+                "placement": {
+                    "container": "job"
+                },
+                "prestoJob": {
+                    "container": "job"
+                },
+                "pysparkJob": {
+                    "container": "job"
+                },
+                "reference": {
+                    "container": "job"
+                },
+                "requestId": {},
+                "scheduling": {
+                    "container": "job"
+                },
+                "sparkJob": {
+                    "container": "job"
+                },
+                "sparkRJob": {
+                    "container": "job"
+                },
+                "sparkSqlJob": {
+                    "container": "job"
+                }
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "hadoopJob": {},
+                "hiveJob": {},
+                "labels": {},
+                "pigJob": {},
+                "placement": {},
+                "prestoJob": {},
+                "pysparkJob": {},
+                "reference": {},
+                "scheduling": {},
+                "sparkJob": {},
+                "sparkRJob": {},
+                "sparkSqlJob": {}
+            },
+            "idPath": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
+            "idParams": {
+                "jobId": "reference.jobId",
+                "projectId": "project",
+                "region": "region"
+            }
+        },
         "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy": {
             "baseUrl": "https://dataproc.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:setIamPolicy",
@@ -23861,6 +24053,82 @@
             "idPath": "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}",
             "idParams": {
                 "clusterName": "clusterName",
+                "projectId": "project",
+                "region": "region"
+            }
+        },
+        "google-native:dataproc/v1beta2:Job": {
+            "baseUrl": "https://dataproc.googleapis.com/",
+            "createPath": "v1beta2/projects/{projectId}/regions/{region}/jobs:submit",
+            "createParams": [
+                {
+                    "name": "projectId",
+                    "sdkName": "project",
+                    "location": "path"
+                },
+                {
+                    "name": "region",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "hadoopJob": {
+                    "container": "job"
+                },
+                "hiveJob": {
+                    "container": "job"
+                },
+                "labels": {
+                    "container": "job"
+                },
+                "pigJob": {
+                    "container": "job"
+                },
+                "placement": {
+                    "container": "job"
+                },
+                "prestoJob": {
+                    "container": "job"
+                },
+                "pysparkJob": {
+                    "container": "job"
+                },
+                "reference": {
+                    "container": "job"
+                },
+                "requestId": {},
+                "scheduling": {
+                    "container": "job"
+                },
+                "sparkJob": {
+                    "container": "job"
+                },
+                "sparkRJob": {
+                    "container": "job"
+                },
+                "sparkSqlJob": {
+                    "container": "job"
+                }
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "hadoopJob": {},
+                "hiveJob": {},
+                "labels": {},
+                "pigJob": {},
+                "placement": {},
+                "prestoJob": {},
+                "pysparkJob": {},
+                "reference": {},
+                "scheduling": {},
+                "sparkJob": {},
+                "sparkRJob": {},
+                "sparkSqlJob": {}
+            },
+            "idPath": "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}",
+            "idParams": {
+                "jobId": "reference.jobId",
                 "projectId": "project",
                 "region": "region"
             }
@@ -28552,6 +28820,46 @@
             "idPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/channels/{channelsId}",
             "idParams": {
                 "channelsId": "channelId",
+                "projectsId": "project",
+                "sitesId": "siteId"
+            }
+        },
+        "google-native:firebasehosting/v1beta1:Domain": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains",
+            "createParams": [
+                {
+                    "name": "projectsId",
+                    "sdkName": "project",
+                    "location": "path"
+                },
+                {
+                    "name": "sitesId",
+                    "sdkName": "siteId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "domainName": {},
+                "domainRedirect": {},
+                "provisioning": {},
+                "site": {},
+                "status": {},
+                "updateTime": {}
+            },
+            "updateVerb": "PUT",
+            "updateProperties": {
+                "domainName": {},
+                "domainRedirect": {},
+                "provisioning": {},
+                "site": {},
+                "status": {},
+                "updateTime": {}
+            },
+            "idPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains/{domainsId}",
+            "idParams": {
+                "domainsId": "domainName",
                 "projectsId": "project",
                 "sitesId": "siteId"
             }
@@ -36242,6 +36550,56 @@
                 "topicsId": "topicId"
             }
         },
+        "google-native:recommendationengine/v1beta1:CatalogItem": {
+            "baseUrl": "https://recommendationengine.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems",
+            "createParams": [
+                {
+                    "name": "projectsId",
+                    "sdkName": "project",
+                    "location": "path"
+                },
+                {
+                    "name": "locationsId",
+                    "sdkName": "location",
+                    "location": "path"
+                },
+                {
+                    "name": "catalogsId",
+                    "sdkName": "catalogId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "categoryHierarchies": {},
+                "description": {},
+                "id": {},
+                "itemAttributes": {},
+                "itemGroupId": {},
+                "productMetadata": {},
+                "tags": {},
+                "title": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "categoryHierarchies": {},
+                "description": {},
+                "id": {},
+                "itemAttributes": {},
+                "itemGroupId": {},
+                "productMetadata": {},
+                "tags": {},
+                "title": {}
+            },
+            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
+            "idParams": {
+                "catalogItemsId": "id",
+                "catalogsId": "catalogId",
+                "locationsId": "location",
+                "projectsId": "project"
+            }
+        },
         "google-native:redis/v1:Instance": {
             "baseUrl": "https://redis.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
@@ -36836,6 +37194,30 @@
                 "locationsId": "location",
                 "projectsId": "project",
                 "servicesId": "serviceId"
+            }
+        },
+        "google-native:run/v1alpha1:Job": {
+            "baseUrl": "https://run.googleapis.com/",
+            "createPath": "apis/run.googleapis.com/v1alpha1/namespaces/{namespacesId}/jobs",
+            "createParams": [
+                {
+                    "name": "namespacesId",
+                    "sdkName": "namespaceId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "apiVersion": {},
+                "kind": {},
+                "metadata": {},
+                "spec": {},
+                "status": {}
+            },
+            "idPath": "apis/run.googleapis.com/v1alpha1/namespaces/{namespacesId}/jobs/{jobsId}",
+            "idParams": {
+                "jobsId": "metadata.name",
+                "namespacesId": "namespaceId"
             }
         },
         "google-native:runtimeconfig/v1beta1:Config": {

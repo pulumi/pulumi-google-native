@@ -81,6 +81,7 @@ from . import (
     privateca,
     pubsub,
     pubsublite,
+    recommendationengine,
     redis,
     remotebuildexecution,
     retail,

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:apigee/v1:Alias":
+		r = &Alias{}
 	case "google-native:apigee/v1:Api":
 		r = &Api{}
 	case "google-native:apigee/v1:Apiproduct":

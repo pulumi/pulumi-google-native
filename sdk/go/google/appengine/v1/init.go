@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthorizedCertificate{}
 	case "google-native:appengine/v1:DomainMapping":
 		r = &DomainMapping{}
+	case "google-native:appengine/v1:IngressRule":
+		r = &IngressRule{}
 	case "google-native:appengine/v1:Version":
 		r = &Version{}
 	default:

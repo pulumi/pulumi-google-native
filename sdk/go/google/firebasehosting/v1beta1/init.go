@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:firebasehosting/v1beta1:Channel":
 		r = &Channel{}
+	case "google-native:firebasehosting/v1beta1:Domain":
+		r = &Domain{}
 	case "google-native:firebasehosting/v1beta1:Site":
 		r = &Site{}
 	default:

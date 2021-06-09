@@ -6,10 +6,12 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./channel";
+export * from "./domain";
 export * from "./site";
 
 // Import resources to register:
 import { Channel } from "./channel";
+import { Domain } from "./domain";
 import { Site } from "./site";
 
 const _module = {
@@ -18,6 +20,8 @@ const _module = {
         switch (type) {
             case "google-native:firebasehosting/v1beta1:Channel":
                 return new Channel(name, <any>undefined, { urn })
+            case "google-native:firebasehosting/v1beta1:Domain":
+                return new Domain(name, <any>undefined, { urn })
             case "google-native:firebasehosting/v1beta1:Site":
                 return new Site(name, <any>undefined, { urn })
             default:

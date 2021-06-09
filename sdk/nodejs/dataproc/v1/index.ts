@@ -8,6 +8,7 @@ import * as utilities from "../../utilities";
 export * from "./autoscalingPolicy";
 export * from "./autoscalingPolicyIamPolicy";
 export * from "./cluster";
+export * from "./job";
 export * from "./regionAutoscalingPolicyIamPolicy";
 export * from "./regionClusterIamPolicy";
 export * from "./regionJobIamPolicy";
@@ -20,6 +21,7 @@ export * from "./workflowTemplateIamPolicy";
 import { AutoscalingPolicy } from "./autoscalingPolicy";
 import { AutoscalingPolicyIamPolicy } from "./autoscalingPolicyIamPolicy";
 import { Cluster } from "./cluster";
+import { Job } from "./job";
 import { RegionAutoscalingPolicyIamPolicy } from "./regionAutoscalingPolicyIamPolicy";
 import { RegionClusterIamPolicy } from "./regionClusterIamPolicy";
 import { RegionJobIamPolicy } from "./regionJobIamPolicy";
@@ -38,6 +40,8 @@ const _module = {
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:Job":
+                return new Job(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
                 return new RegionAutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionClusterIamPolicy":

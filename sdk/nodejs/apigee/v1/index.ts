@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./alias";
 export * from "./api";
 export * from "./apiproduct";
 export * from "./app";
@@ -35,6 +36,7 @@ export * from "./subscription";
 export * from "./targetserver";
 
 // Import resources to register:
+import { Alias } from "./alias";
 import { Api } from "./api";
 import { Apiproduct } from "./apiproduct";
 import { App } from "./app";
@@ -68,6 +70,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:apigee/v1:Alias":
+                return new Alias(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Api":
                 return new Api(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Apiproduct":

@@ -11,7 +11,11 @@ from . import outputs
 
 __all__ = [
     'ActingUserResponse',
+    'CertDnsChallengeResponse',
+    'CertHttpChallengeResponse',
     'CloudRunRewriteResponse',
+    'DomainProvisioningResponse',
+    'DomainRedirectResponse',
     'HeaderResponse',
     'I18nConfigResponse',
     'RedirectResponse',
@@ -72,6 +76,89 @@ class ActingUserResponse(dict):
 
 
 @pulumi.output_type
+class CertDnsChallengeResponse(dict):
+    """
+    Represents a DNS certificate challenge.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertDnsChallengeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertDnsChallengeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertDnsChallengeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_name: str,
+                 token: str):
+        """
+        Represents a DNS certificate challenge.
+        :param str domain_name: The domain name upon which the DNS challenge must be satisfied.
+        :param str token: The value that must be present as a TXT record on the domain name to satisfy the challenge.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The domain name upon which the DNS challenge must be satisfied.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        The value that must be present as a TXT record on the domain name to satisfy the challenge.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class CertHttpChallengeResponse(dict):
+    """
+    Represents an HTTP certificate challenge.
+    """
+    def __init__(__self__, *,
+                 path: str,
+                 token: str):
+        """
+        Represents an HTTP certificate challenge.
+        :param str path: The URL path on which to serve the specified token to satisfy the certificate challenge.
+        :param str token: The token to serve at the specified URL path to satisfy the certificate challenge.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The URL path on which to serve the specified token to satisfy the certificate challenge.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        The token to serve at the specified URL path to satisfy the certificate challenge.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
 class CloudRunRewriteResponse(dict):
     """
     A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
@@ -119,6 +206,186 @@ class CloudRunRewriteResponse(dict):
         Required. User-defined ID of the Cloud Run service.
         """
         return pulumi.get(self, "service_id")
+
+
+@pulumi.output_type
+class DomainProvisioningResponse(dict):
+    """
+    The current certificate provisioning status information for a domain.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certChallengeDiscoveredTxt":
+            suggest = "cert_challenge_discovered_txt"
+        elif key == "certChallengeDns":
+            suggest = "cert_challenge_dns"
+        elif key == "certChallengeHttp":
+            suggest = "cert_challenge_http"
+        elif key == "certStatus":
+            suggest = "cert_status"
+        elif key == "discoveredIps":
+            suggest = "discovered_ips"
+        elif key == "dnsFetchTime":
+            suggest = "dns_fetch_time"
+        elif key == "dnsStatus":
+            suggest = "dns_status"
+        elif key == "expectedIps":
+            suggest = "expected_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainProvisioningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainProvisioningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainProvisioningResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_challenge_discovered_txt: Sequence[str],
+                 cert_challenge_dns: 'outputs.CertDnsChallengeResponse',
+                 cert_challenge_http: 'outputs.CertHttpChallengeResponse',
+                 cert_status: str,
+                 discovered_ips: Sequence[str],
+                 dns_fetch_time: str,
+                 dns_status: str,
+                 expected_ips: Sequence[str]):
+        """
+        The current certificate provisioning status information for a domain.
+        :param Sequence[str] cert_challenge_discovered_txt: The TXT records (for the certificate challenge) that were found at the last DNS fetch.
+        :param 'CertDnsChallengeResponse' cert_challenge_dns: The DNS challenge for generating a certificate.
+        :param 'CertHttpChallengeResponse' cert_challenge_http: The HTTP challenge for generating a certificate.
+        :param str cert_status: The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
+        :param Sequence[str] discovered_ips: The IPs found at the last DNS fetch.
+        :param str dns_fetch_time: The time at which the last DNS fetch occurred.
+        :param str dns_status: The DNS record match status as of the last DNS fetch.
+        :param Sequence[str] expected_ips: The list of IPs to which the domain is expected to resolve.
+        """
+        pulumi.set(__self__, "cert_challenge_discovered_txt", cert_challenge_discovered_txt)
+        pulumi.set(__self__, "cert_challenge_dns", cert_challenge_dns)
+        pulumi.set(__self__, "cert_challenge_http", cert_challenge_http)
+        pulumi.set(__self__, "cert_status", cert_status)
+        pulumi.set(__self__, "discovered_ips", discovered_ips)
+        pulumi.set(__self__, "dns_fetch_time", dns_fetch_time)
+        pulumi.set(__self__, "dns_status", dns_status)
+        pulumi.set(__self__, "expected_ips", expected_ips)
+
+    @property
+    @pulumi.getter(name="certChallengeDiscoveredTxt")
+    def cert_challenge_discovered_txt(self) -> Sequence[str]:
+        """
+        The TXT records (for the certificate challenge) that were found at the last DNS fetch.
+        """
+        return pulumi.get(self, "cert_challenge_discovered_txt")
+
+    @property
+    @pulumi.getter(name="certChallengeDns")
+    def cert_challenge_dns(self) -> 'outputs.CertDnsChallengeResponse':
+        """
+        The DNS challenge for generating a certificate.
+        """
+        return pulumi.get(self, "cert_challenge_dns")
+
+    @property
+    @pulumi.getter(name="certChallengeHttp")
+    def cert_challenge_http(self) -> 'outputs.CertHttpChallengeResponse':
+        """
+        The HTTP challenge for generating a certificate.
+        """
+        return pulumi.get(self, "cert_challenge_http")
+
+    @property
+    @pulumi.getter(name="certStatus")
+    def cert_status(self) -> str:
+        """
+        The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
+        """
+        return pulumi.get(self, "cert_status")
+
+    @property
+    @pulumi.getter(name="discoveredIps")
+    def discovered_ips(self) -> Sequence[str]:
+        """
+        The IPs found at the last DNS fetch.
+        """
+        return pulumi.get(self, "discovered_ips")
+
+    @property
+    @pulumi.getter(name="dnsFetchTime")
+    def dns_fetch_time(self) -> str:
+        """
+        The time at which the last DNS fetch occurred.
+        """
+        return pulumi.get(self, "dns_fetch_time")
+
+    @property
+    @pulumi.getter(name="dnsStatus")
+    def dns_status(self) -> str:
+        """
+        The DNS record match status as of the last DNS fetch.
+        """
+        return pulumi.get(self, "dns_status")
+
+    @property
+    @pulumi.getter(name="expectedIps")
+    def expected_ips(self) -> Sequence[str]:
+        """
+        The list of IPs to which the domain is expected to resolve.
+        """
+        return pulumi.get(self, "expected_ips")
+
+
+@pulumi.output_type
+class DomainRedirectResponse(dict):
+    """
+    Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainRedirectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainRedirectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainRedirectResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_name: str,
+                 type: str):
+        """
+        Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
+        :param str domain_name: Required. The domain name to redirect to.
+        :param str type: Required. The redirect status code.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        Required. The domain name to redirect to.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Required. The redirect status code.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

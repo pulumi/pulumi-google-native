@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .alias import *
 from .api import *
 from .apiproduct import *
 from .app import *
@@ -46,7 +47,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:apigee/v1:Api":
+            if typ == "google-native:apigee/v1:Alias":
+                return Alias(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:Api":
                 return Api(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Apiproduct":
                 return Apiproduct(name, pulumi.ResourceOptions(urn=urn))

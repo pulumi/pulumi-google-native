@@ -8,12 +8,14 @@ import * as utilities from "../../utilities";
 export * from "./app";
 export * from "./authorizedCertificate";
 export * from "./domainMapping";
+export * from "./ingressRule";
 export * from "./version";
 
 // Import resources to register:
 import { App } from "./app";
 import { AuthorizedCertificate } from "./authorizedCertificate";
 import { DomainMapping } from "./domainMapping";
+import { IngressRule } from "./ingressRule";
 import { Version } from "./version";
 
 const _module = {
@@ -26,6 +28,8 @@ const _module = {
                 return new AuthorizedCertificate(name, <any>undefined, { urn })
             case "google-native:appengine/v1:DomainMapping":
                 return new DomainMapping(name, <any>undefined, { urn })
+            case "google-native:appengine/v1:IngressRule":
+                return new IngressRule(name, <any>undefined, { urn })
             case "google-native:appengine/v1:Version":
                 return new Version(name, <any>undefined, { urn })
             default:

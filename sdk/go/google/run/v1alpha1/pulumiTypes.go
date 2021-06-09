@@ -3776,6 +3776,47 @@ func (i InstanceSpecResponseArgs) ToInstanceSpecResponseOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecResponseOutput)
 }
 
+func (i InstanceSpecResponseArgs) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
+	return i.ToInstanceSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSpecResponseArgs) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecResponseOutput).ToInstanceSpecResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceSpecResponsePtrInput is an input type that accepts InstanceSpecResponseArgs, InstanceSpecResponsePtr and InstanceSpecResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceSpecResponsePtrInput` via:
+//
+//          InstanceSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput
+	ToInstanceSpecResponsePtrOutputWithContext(context.Context) InstanceSpecResponsePtrOutput
+}
+
+type instanceSpecResponsePtrType InstanceSpecResponseArgs
+
+func InstanceSpecResponsePtr(v *InstanceSpecResponseArgs) InstanceSpecResponsePtrInput {
+	return (*instanceSpecResponsePtrType)(v)
+}
+
+func (*instanceSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSpecResponse)(nil)).Elem()
+}
+
+func (i *instanceSpecResponsePtrType) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
+	return i.ToInstanceSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSpecResponsePtrType) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecResponsePtrOutput)
+}
+
 // InstanceSpec is a description of an instance.
 type InstanceSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -3789,6 +3830,16 @@ func (o InstanceSpecResponseOutput) ToInstanceSpecResponseOutput() InstanceSpecR
 
 func (o InstanceSpecResponseOutput) ToInstanceSpecResponseOutputWithContext(ctx context.Context) InstanceSpecResponseOutput {
 	return o
+}
+
+func (o InstanceSpecResponseOutput) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
+	return o.ToInstanceSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSpecResponseOutput) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
+	return o.ApplyT(func(v InstanceSpecResponse) *InstanceSpecResponse {
+		return &v
+	}).(InstanceSpecResponsePtrOutput)
 }
 
 // Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
@@ -3819,6 +3870,84 @@ func (o InstanceSpecResponseOutput) TerminationGracePeriodSeconds() pulumi.Strin
 // Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
 func (o InstanceSpecResponseOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v InstanceSpecResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+type InstanceSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSpecResponse)(nil)).Elem()
+}
+
+func (o InstanceSpecResponsePtrOutput) ToInstanceSpecResponsePtrOutput() InstanceSpecResponsePtrOutput {
+	return o
+}
+
+func (o InstanceSpecResponsePtrOutput) ToInstanceSpecResponsePtrOutputWithContext(ctx context.Context) InstanceSpecResponsePtrOutput {
+	return o
+}
+
+func (o InstanceSpecResponsePtrOutput) Elem() InstanceSpecResponseOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) InstanceSpecResponse { return *v }).(InstanceSpecResponseOutput)
+}
+
+// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+func (o InstanceSpecResponsePtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActiveDeadlineSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+func (o InstanceSpecResponsePtrOutput) Containers() ContainerResponseArrayOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) []ContainerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(ContainerResponseArrayOutput)
+}
+
+// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+func (o InstanceSpecResponsePtrOutput) RestartPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RestartPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+func (o InstanceSpecResponsePtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+func (o InstanceSpecResponsePtrOutput) TerminationGracePeriodSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TerminationGracePeriodSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+func (o InstanceSpecResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v *InstanceSpecResponse) []VolumeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(VolumeResponseArrayOutput)
 }
 
 // Instance represents the status of an instance of a Job.
@@ -4298,6 +4427,47 @@ func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponseOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecResponseOutput)
 }
 
+func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
+	return i.ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateSpecResponseArgs) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecResponseOutput).ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateSpecResponsePtrInput is an input type that accepts InstanceTemplateSpecResponseArgs, InstanceTemplateSpecResponsePtr and InstanceTemplateSpecResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateSpecResponsePtrInput` via:
+//
+//          InstanceTemplateSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput
+	ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Context) InstanceTemplateSpecResponsePtrOutput
+}
+
+type instanceTemplateSpecResponsePtrType InstanceTemplateSpecResponseArgs
+
+func InstanceTemplateSpecResponsePtr(v *InstanceTemplateSpecResponseArgs) InstanceTemplateSpecResponsePtrInput {
+	return (*instanceTemplateSpecResponsePtrType)(v)
+}
+
+func (*instanceTemplateSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateSpecResponse)(nil)).Elem()
+}
+
+func (i *instanceTemplateSpecResponsePtrType) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
+	return i.ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateSpecResponsePtrType) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecResponsePtrOutput)
+}
+
 // InstanceTemplateSpec describes the data an instance should have when created from a template.
 type InstanceTemplateSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -4313,9 +4483,47 @@ func (o InstanceTemplateSpecResponseOutput) ToInstanceTemplateSpecResponseOutput
 	return o
 }
 
+func (o InstanceTemplateSpecResponseOutput) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
+	return o.ToInstanceTemplateSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateSpecResponseOutput) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
+	return o.ApplyT(func(v InstanceTemplateSpecResponse) *InstanceTemplateSpecResponse {
+		return &v
+	}).(InstanceTemplateSpecResponsePtrOutput)
+}
+
 // Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
 func (o InstanceTemplateSpecResponseOutput) Spec() InstanceSpecResponseOutput {
 	return o.ApplyT(func(v InstanceTemplateSpecResponse) InstanceSpecResponse { return v.Spec }).(InstanceSpecResponseOutput)
+}
+
+type InstanceTemplateSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateSpecResponse)(nil)).Elem()
+}
+
+func (o InstanceTemplateSpecResponsePtrOutput) ToInstanceTemplateSpecResponsePtrOutput() InstanceTemplateSpecResponsePtrOutput {
+	return o
+}
+
+func (o InstanceTemplateSpecResponsePtrOutput) ToInstanceTemplateSpecResponsePtrOutputWithContext(ctx context.Context) InstanceTemplateSpecResponsePtrOutput {
+	return o
+}
+
+func (o InstanceTemplateSpecResponsePtrOutput) Elem() InstanceTemplateSpecResponseOutput {
+	return o.ApplyT(func(v *InstanceTemplateSpecResponse) InstanceTemplateSpecResponse { return *v }).(InstanceTemplateSpecResponseOutput)
+}
+
+// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+func (o InstanceTemplateSpecResponsePtrOutput) Spec() InstanceSpecResponsePtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateSpecResponse) *InstanceSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(InstanceSpecResponsePtrOutput)
 }
 
 // IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
@@ -4908,6 +5116,47 @@ func (i JobSpecArgs) ToJobSpecOutputWithContext(ctx context.Context) JobSpecOutp
 	return pulumi.ToOutputWithContext(ctx, i).(JobSpecOutput)
 }
 
+func (i JobSpecArgs) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return i.ToJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (i JobSpecArgs) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecOutput).ToJobSpecPtrOutputWithContext(ctx)
+}
+
+// JobSpecPtrInput is an input type that accepts JobSpecArgs, JobSpecPtr and JobSpecPtrOutput values.
+// You can construct a concrete instance of `JobSpecPtrInput` via:
+//
+//          JobSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type JobSpecPtrInput interface {
+	pulumi.Input
+
+	ToJobSpecPtrOutput() JobSpecPtrOutput
+	ToJobSpecPtrOutputWithContext(context.Context) JobSpecPtrOutput
+}
+
+type jobSpecPtrType JobSpecArgs
+
+func JobSpecPtr(v *JobSpecArgs) JobSpecPtrInput {
+	return (*jobSpecPtrType)(v)
+}
+
+func (*jobSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSpec)(nil)).Elem()
+}
+
+func (i *jobSpecPtrType) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return i.ToJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *jobSpecPtrType) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecPtrOutput)
+}
+
 // JobSpec describes how the job execution will look like.
 type JobSpecOutput struct{ *pulumi.OutputState }
 
@@ -4921,6 +5170,16 @@ func (o JobSpecOutput) ToJobSpecOutput() JobSpecOutput {
 
 func (o JobSpecOutput) ToJobSpecOutputWithContext(ctx context.Context) JobSpecOutput {
 	return o
+}
+
+func (o JobSpecOutput) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return o.ToJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (o JobSpecOutput) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return o.ApplyT(func(v JobSpec) *JobSpec {
+		return &v
+	}).(JobSpecPtrOutput)
 }
 
 // Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
@@ -4951,6 +5210,84 @@ func (o JobSpecOutput) Template() InstanceTemplateSpecPtrOutput {
 // Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobSpec) *int { return v.TtlSecondsAfterFinished }).(pulumi.IntPtrOutput)
+}
+
+type JobSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (JobSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSpec)(nil)).Elem()
+}
+
+func (o JobSpecPtrOutput) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return o
+}
+
+func (o JobSpecPtrOutput) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return o
+}
+
+func (o JobSpecPtrOutput) Elem() JobSpecOutput {
+	return o.ApplyT(func(v *JobSpec) JobSpec { return *v }).(JobSpecOutput)
+}
+
+// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+func (o JobSpecPtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDeadlineSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+func (o JobSpecPtrOutput) BackoffLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackoffLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecPtrOutput) Completions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Completions
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecPtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Describes the instance that will be created when executing a job.
+func (o JobSpecPtrOutput) Template() InstanceTemplateSpecPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *InstanceTemplateSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(InstanceTemplateSpecPtrOutput)
+}
+
+// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+func (o JobSpecPtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TtlSecondsAfterFinished
+	}).(pulumi.IntPtrOutput)
 }
 
 // JobSpec describes how the job execution will look like.
@@ -5008,6 +5345,47 @@ func (i JobSpecResponseArgs) ToJobSpecResponseOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobSpecResponseOutput)
 }
 
+func (i JobSpecResponseArgs) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
+	return i.ToJobSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobSpecResponseArgs) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecResponseOutput).ToJobSpecResponsePtrOutputWithContext(ctx)
+}
+
+// JobSpecResponsePtrInput is an input type that accepts JobSpecResponseArgs, JobSpecResponsePtr and JobSpecResponsePtrOutput values.
+// You can construct a concrete instance of `JobSpecResponsePtrInput` via:
+//
+//          JobSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput
+	ToJobSpecResponsePtrOutputWithContext(context.Context) JobSpecResponsePtrOutput
+}
+
+type jobSpecResponsePtrType JobSpecResponseArgs
+
+func JobSpecResponsePtr(v *JobSpecResponseArgs) JobSpecResponsePtrInput {
+	return (*jobSpecResponsePtrType)(v)
+}
+
+func (*jobSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSpecResponse)(nil)).Elem()
+}
+
+func (i *jobSpecResponsePtrType) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
+	return i.ToJobSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobSpecResponsePtrType) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecResponsePtrOutput)
+}
+
 // JobSpec describes how the job execution will look like.
 type JobSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -5021,6 +5399,16 @@ func (o JobSpecResponseOutput) ToJobSpecResponseOutput() JobSpecResponseOutput {
 
 func (o JobSpecResponseOutput) ToJobSpecResponseOutputWithContext(ctx context.Context) JobSpecResponseOutput {
 	return o
+}
+
+func (o JobSpecResponseOutput) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
+	return o.ToJobSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobSpecResponseOutput) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
+	return o.ApplyT(func(v JobSpecResponse) *JobSpecResponse {
+		return &v
+	}).(JobSpecResponsePtrOutput)
 }
 
 // Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
@@ -5051,6 +5439,84 @@ func (o JobSpecResponseOutput) Template() InstanceTemplateSpecResponseOutput {
 // Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
 func (o JobSpecResponseOutput) TtlSecondsAfterFinished() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSpecResponse) int { return v.TtlSecondsAfterFinished }).(pulumi.IntOutput)
+}
+
+type JobSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSpecResponse)(nil)).Elem()
+}
+
+func (o JobSpecResponsePtrOutput) ToJobSpecResponsePtrOutput() JobSpecResponsePtrOutput {
+	return o
+}
+
+func (o JobSpecResponsePtrOutput) ToJobSpecResponsePtrOutputWithContext(ctx context.Context) JobSpecResponsePtrOutput {
+	return o
+}
+
+func (o JobSpecResponsePtrOutput) Elem() JobSpecResponseOutput {
+	return o.ApplyT(func(v *JobSpecResponse) JobSpecResponse { return *v }).(JobSpecResponseOutput)
+}
+
+// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+func (o JobSpecResponsePtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActiveDeadlineSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+func (o JobSpecResponsePtrOutput) BackoffLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BackoffLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecResponsePtrOutput) Completions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Completions
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecResponsePtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Describes the instance that will be created when executing a job.
+func (o JobSpecResponsePtrOutput) Template() InstanceTemplateSpecResponsePtrOutput {
+	return o.ApplyT(func(v *JobSpecResponse) *InstanceTemplateSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Template
+	}).(InstanceTemplateSpecResponsePtrOutput)
+}
+
+// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+func (o JobSpecResponsePtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TtlSecondsAfterFinished
+	}).(pulumi.IntPtrOutput)
 }
 
 // JobStatus represents the current state of a Job.
@@ -5120,6 +5586,47 @@ func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStat
 	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
 }
 
+func (i JobStatusArgs) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return i.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusArgs) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput).ToJobStatusPtrOutputWithContext(ctx)
+}
+
+// JobStatusPtrInput is an input type that accepts JobStatusArgs, JobStatusPtr and JobStatusPtrOutput values.
+// You can construct a concrete instance of `JobStatusPtrInput` via:
+//
+//          JobStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type JobStatusPtrInput interface {
+	pulumi.Input
+
+	ToJobStatusPtrOutput() JobStatusPtrOutput
+	ToJobStatusPtrOutputWithContext(context.Context) JobStatusPtrOutput
+}
+
+type jobStatusPtrType JobStatusArgs
+
+func JobStatusPtr(v *JobStatusArgs) JobStatusPtrInput {
+	return (*jobStatusPtrType)(v)
+}
+
+func (*jobStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+}
+
+func (i *jobStatusPtrType) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return i.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusPtrType) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusPtrOutput)
+}
+
 // JobStatus represents the current state of a Job.
 type JobStatusOutput struct{ *pulumi.OutputState }
 
@@ -5133,6 +5640,16 @@ func (o JobStatusOutput) ToJobStatusOutput() JobStatusOutput {
 
 func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
 	return o
+}
+
+func (o JobStatusOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return o.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return o.ApplyT(func(v JobStatus) *JobStatus {
+		return &v
+	}).(JobStatusPtrOutput)
 }
 
 // Optional. The number of actively running instances. +optional
@@ -5178,6 +5695,114 @@ func (o JobStatusOutput) StartTime() pulumi.StringPtrOutput {
 // Optional. The number of instances which reached phase Succeeded. +optional
 func (o JobStatusOutput) Succeeded() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobStatus) *int { return v.Succeeded }).(pulumi.IntPtrOutput)
+}
+
+type JobStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusPtrOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return o
+}
+
+func (o JobStatusPtrOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return o
+}
+
+func (o JobStatusPtrOutput) Elem() JobStatusOutput {
+	return o.ApplyT(func(v *JobStatus) JobStatus { return *v }).(JobStatusOutput)
+}
+
+// Optional. The number of actively running instances. +optional
+func (o JobStatusPtrOutput) Active() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Active
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusPtrOutput) CompletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompletionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobStatusPtrOutput) Conditions() JobConditionArrayOutput {
+	return o.ApplyT(func(v *JobStatus) []JobCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(JobConditionArrayOutput)
+}
+
+// Optional. The number of instances which reached phase Failed. +optional
+func (o JobStatusPtrOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Failed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+func (o JobStatusPtrOutput) ImageDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageDigest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Status of completed, failed, and running instances. +optional
+func (o JobStatusPtrOutput) Instances() InstanceStatusArrayOutput {
+	return o.ApplyT(func(v *JobStatus) []InstanceStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(InstanceStatusArrayOutput)
+}
+
+// Optional. The 'generation' of the job that was last processed by the controller.
+func (o JobStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of instances which reached phase Succeeded. +optional
+func (o JobStatusPtrOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Succeeded
+	}).(pulumi.IntPtrOutput)
 }
 
 // JobStatus represents the current state of a Job.
@@ -5247,6 +5872,47 @@ func (i JobStatusResponseArgs) ToJobStatusResponseOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput)
 }
 
+func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput).ToJobStatusResponsePtrOutputWithContext(ctx)
+}
+
+// JobStatusResponsePtrInput is an input type that accepts JobStatusResponseArgs, JobStatusResponsePtr and JobStatusResponsePtrOutput values.
+// You can construct a concrete instance of `JobStatusResponsePtrInput` via:
+//
+//          JobStatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobStatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput
+	ToJobStatusResponsePtrOutputWithContext(context.Context) JobStatusResponsePtrOutput
+}
+
+type jobStatusResponsePtrType JobStatusResponseArgs
+
+func JobStatusResponsePtr(v *JobStatusResponseArgs) JobStatusResponsePtrInput {
+	return (*jobStatusResponsePtrType)(v)
+}
+
+func (*jobStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
+}
+
+func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponsePtrOutput)
+}
+
 // JobStatus represents the current state of a Job.
 type JobStatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -5260,6 +5926,16 @@ func (o JobStatusResponseOutput) ToJobStatusResponseOutput() JobStatusResponseOu
 
 func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
 	return o
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return o.ToJobStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return o.ApplyT(func(v JobStatusResponse) *JobStatusResponse {
+		return &v
+	}).(JobStatusResponsePtrOutput)
 }
 
 // Optional. The number of actively running instances. +optional
@@ -5305,6 +5981,114 @@ func (o JobStatusResponseOutput) StartTime() pulumi.StringOutput {
 // Optional. The number of instances which reached phase Succeeded. +optional
 func (o JobStatusResponseOutput) Succeeded() pulumi.IntOutput {
 	return o.ApplyT(func(v JobStatusResponse) int { return v.Succeeded }).(pulumi.IntOutput)
+}
+
+type JobStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
+}
+
+func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return o
+}
+
+func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return o
+}
+
+func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
+	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse { return *v }).(JobStatusResponseOutput)
+}
+
+// Optional. The number of actively running instances. +optional
+func (o JobStatusResponsePtrOutput) Active() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Active
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusResponsePtrOutput) CompletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CompletionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobStatusResponsePtrOutput) Conditions() JobConditionResponseArrayOutput {
+	return o.ApplyT(func(v *JobStatusResponse) []JobConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(JobConditionResponseArrayOutput)
+}
+
+// Optional. The number of instances which reached phase Failed. +optional
+func (o JobStatusResponsePtrOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Failed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+func (o JobStatusResponsePtrOutput) ImageDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageDigest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Status of completed, failed, and running instances. +optional
+func (o JobStatusResponsePtrOutput) Instances() InstanceStatusResponseArrayOutput {
+	return o.ApplyT(func(v *JobStatusResponse) []InstanceStatusResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(InstanceStatusResponseArrayOutput)
+}
+
+// Optional. The 'generation' of the job that was last processed by the controller.
+func (o JobStatusResponsePtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of instances which reached phase Succeeded. +optional
+func (o JobStatusResponsePtrOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Succeeded
+	}).(pulumi.IntPtrOutput)
 }
 
 // Maps a string key to a path within a volume.
@@ -6040,6 +6824,47 @@ func (i ObjectMetaArgs) ToObjectMetaOutputWithContext(ctx context.Context) Objec
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaOutput)
 }
 
+func (i ObjectMetaArgs) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
+	return i.ToObjectMetaPtrOutputWithContext(context.Background())
+}
+
+func (i ObjectMetaArgs) ToObjectMetaPtrOutputWithContext(ctx context.Context) ObjectMetaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaOutput).ToObjectMetaPtrOutputWithContext(ctx)
+}
+
+// ObjectMetaPtrInput is an input type that accepts ObjectMetaArgs, ObjectMetaPtr and ObjectMetaPtrOutput values.
+// You can construct a concrete instance of `ObjectMetaPtrInput` via:
+//
+//          ObjectMetaArgs{...}
+//
+//  or:
+//
+//          nil
+type ObjectMetaPtrInput interface {
+	pulumi.Input
+
+	ToObjectMetaPtrOutput() ObjectMetaPtrOutput
+	ToObjectMetaPtrOutputWithContext(context.Context) ObjectMetaPtrOutput
+}
+
+type objectMetaPtrType ObjectMetaArgs
+
+func ObjectMetaPtr(v *ObjectMetaArgs) ObjectMetaPtrInput {
+	return (*objectMetaPtrType)(v)
+}
+
+func (*objectMetaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMeta)(nil)).Elem()
+}
+
+func (i *objectMetaPtrType) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
+	return i.ToObjectMetaPtrOutputWithContext(context.Background())
+}
+
+func (i *objectMetaPtrType) ToObjectMetaPtrOutputWithContext(ctx context.Context) ObjectMetaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaPtrOutput)
+}
+
 // ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaOutput struct{ *pulumi.OutputState }
 
@@ -6053,6 +6878,16 @@ func (o ObjectMetaOutput) ToObjectMetaOutput() ObjectMetaOutput {
 
 func (o ObjectMetaOutput) ToObjectMetaOutputWithContext(ctx context.Context) ObjectMetaOutput {
 	return o
+}
+
+func (o ObjectMetaOutput) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
+	return o.ToObjectMetaPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectMetaOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) ObjectMetaPtrOutput {
+	return o.ApplyT(func(v ObjectMeta) *ObjectMeta {
+		return &v
+	}).(ObjectMetaPtrOutput)
 }
 
 // Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
@@ -6128,6 +6963,174 @@ func (o ObjectMetaOutput) SelfLink() pulumi.StringPtrOutput {
 // UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
 func (o ObjectMetaOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type ObjectMetaPtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectMetaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMeta)(nil)).Elem()
+}
+
+func (o ObjectMetaPtrOutput) ToObjectMetaPtrOutput() ObjectMetaPtrOutput {
+	return o
+}
+
+func (o ObjectMetaPtrOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) ObjectMetaPtrOutput {
+	return o
+}
+
+func (o ObjectMetaPtrOutput) Elem() ObjectMetaOutput {
+	return o.ApplyT(func(v *ObjectMeta) ObjectMeta { return *v }).(ObjectMetaOutput)
+}
+
+// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+func (o ObjectMetaPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMeta) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+func (o ObjectMetaPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+func (o ObjectMetaPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreationTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+func (o ObjectMetaPtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionGracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+func (o ObjectMetaPtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+func (o ObjectMetaPtrOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectMeta) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Finalizers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+func (o ObjectMetaPtrOutput) GenerateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+func (o ObjectMetaPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+func (o ObjectMetaPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMeta) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+func (o ObjectMetaPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+func (o ObjectMetaPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+func (o ObjectMetaPtrOutput) OwnerReferences() OwnerReferenceArrayOutput {
+	return o.ApplyT(func(v *ObjectMeta) []OwnerReference {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerReferences
+	}).(OwnerReferenceArrayOutput)
+}
+
+// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+func (o ObjectMetaPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+func (o ObjectMetaPtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMeta) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
 }
 
 // ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
@@ -6221,6 +7224,47 @@ func (i ObjectMetaResponseArgs) ToObjectMetaResponseOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponseOutput)
 }
 
+func (i ObjectMetaResponseArgs) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return i.ToObjectMetaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ObjectMetaResponseArgs) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponseOutput).ToObjectMetaResponsePtrOutputWithContext(ctx)
+}
+
+// ObjectMetaResponsePtrInput is an input type that accepts ObjectMetaResponseArgs, ObjectMetaResponsePtr and ObjectMetaResponsePtrOutput values.
+// You can construct a concrete instance of `ObjectMetaResponsePtrInput` via:
+//
+//          ObjectMetaResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ObjectMetaResponsePtrInput interface {
+	pulumi.Input
+
+	ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput
+	ToObjectMetaResponsePtrOutputWithContext(context.Context) ObjectMetaResponsePtrOutput
+}
+
+type objectMetaResponsePtrType ObjectMetaResponseArgs
+
+func ObjectMetaResponsePtr(v *ObjectMetaResponseArgs) ObjectMetaResponsePtrInput {
+	return (*objectMetaResponsePtrType)(v)
+}
+
+func (*objectMetaResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMetaResponse)(nil)).Elem()
+}
+
+func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return i.ToObjectMetaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponsePtrOutput)
+}
+
 // ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponseOutput struct{ *pulumi.OutputState }
 
@@ -6234,6 +7278,16 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutput() ObjectMetaRespons
 
 func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutputWithContext(ctx context.Context) ObjectMetaResponseOutput {
 	return o
+}
+
+func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return o.ToObjectMetaResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) *ObjectMetaResponse {
+		return &v
+	}).(ObjectMetaResponsePtrOutput)
 }
 
 // Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
@@ -6309,6 +7363,174 @@ func (o ObjectMetaResponseOutput) SelfLink() pulumi.StringOutput {
 // UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
 func (o ObjectMetaResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type ObjectMetaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectMetaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMetaResponse)(nil)).Elem()
+}
+
+func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return o
+}
+
+func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return o
+}
+
+func (o ObjectMetaResponsePtrOutput) Elem() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) ObjectMetaResponse { return *v }).(ObjectMetaResponseOutput)
+}
+
+// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+func (o ObjectMetaResponsePtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+func (o ObjectMetaResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+func (o ObjectMetaResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreationTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DeletionGracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeletionTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Finalizers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+func (o ObjectMetaResponsePtrOutput) GenerateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GenerateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+func (o ObjectMetaResponsePtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+func (o ObjectMetaResponsePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+func (o ObjectMetaResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+func (o ObjectMetaResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+func (o ObjectMetaResponsePtrOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) []OwnerReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerReferences
+	}).(OwnerReferenceResponseArrayOutput)
+}
+
+// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+func (o ObjectMetaResponsePtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+func (o ObjectMetaResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+func (o ObjectMetaResponsePtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uid
+	}).(pulumi.StringPtrOutput)
 }
 
 // OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
@@ -9575,6 +10797,7 @@ func init() {
 	pulumi.RegisterOutputType(InstanceSpecOutput{})
 	pulumi.RegisterOutputType(InstanceSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSpecResponseOutput{})
+	pulumi.RegisterOutputType(InstanceSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceStatusOutput{})
 	pulumi.RegisterOutputType(InstanceStatusArrayOutput{})
 	pulumi.RegisterOutputType(InstanceStatusResponseOutput{})
@@ -9582,6 +10805,7 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateSpecOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSpecResponseOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(IntOrStringOutput{})
 	pulumi.RegisterOutputType(IntOrStringPtrOutput{})
 	pulumi.RegisterOutputType(IntOrStringResponseOutput{})
@@ -9590,9 +10814,13 @@ func init() {
 	pulumi.RegisterOutputType(JobConditionResponseOutput{})
 	pulumi.RegisterOutputType(JobConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobSpecOutput{})
+	pulumi.RegisterOutputType(JobSpecPtrOutput{})
 	pulumi.RegisterOutputType(JobSpecResponseOutput{})
+	pulumi.RegisterOutputType(JobSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
+	pulumi.RegisterOutputType(JobStatusPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
+	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyToPathOutput{})
 	pulumi.RegisterOutputType(KeyToPathArrayOutput{})
 	pulumi.RegisterOutputType(KeyToPathResponseOutput{})
@@ -9604,7 +10832,9 @@ func init() {
 	pulumi.RegisterOutputType(LocalObjectReferencePtrOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
+	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
 	pulumi.RegisterOutputType(ObjectMetaResponseOutput{})
+	pulumi.RegisterOutputType(ObjectMetaResponsePtrOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceArrayOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceResponseOutput{})

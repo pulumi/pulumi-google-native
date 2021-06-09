@@ -6,6 +6,7 @@
 from .app import *
 from .authorized_certificate import *
 from .domain_mapping import *
+from .ingress_rule import *
 from .version import *
 from ._inputs import *
 from . import outputs
@@ -28,6 +29,8 @@ def _register_module():
                 return AuthorizedCertificate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:appengine/v1:DomainMapping":
                 return DomainMapping(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:appengine/v1:IngressRule":
+                return IngressRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:appengine/v1:Version":
                 return Version(name, pulumi.ResourceOptions(urn=urn))
             else:

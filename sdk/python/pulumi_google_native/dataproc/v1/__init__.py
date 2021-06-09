@@ -6,6 +6,7 @@
 from .autoscaling_policy import *
 from .autoscaling_policy_iam_policy import *
 from .cluster import *
+from .job import *
 from .region_autoscaling_policy_iam_policy import *
 from .region_cluster_iam_policy import *
 from .region_job_iam_policy import *
@@ -34,6 +35,8 @@ def _register_module():
                 return AutoscalingPolicyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:Cluster":
                 return Cluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dataproc/v1:Job":
+                return Job(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
                 return RegionAutoscalingPolicyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dataproc/v1:RegionClusterIamPolicy":

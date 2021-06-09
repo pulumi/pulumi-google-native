@@ -4,7 +4,9 @@
 
 # Export this package's modules as members:
 from .channel import *
+from .domain import *
 from .site import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -21,6 +23,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-native:firebasehosting/v1beta1:Channel":
                 return Channel(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:firebasehosting/v1beta1:Domain":
+                return Domain(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:firebasehosting/v1beta1:Site":
                 return Site(name, pulumi.ResourceOptions(urn=urn))
             else:

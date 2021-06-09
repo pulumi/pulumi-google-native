@@ -45,6 +45,31 @@ func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput)
 }
 
+// GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput is an input type that accepts GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray and GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray{ GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs{...} }
+type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput
+	ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput
+}
+
+type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyInput
+
+func (GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy)(nil)).Elem()
+}
+
+func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput)
+}
+
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput struct{ *pulumi.OutputState }
 
@@ -65,6 +90,26 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy) []string {
 		return v.Categories
 	}).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
+		return vs[0].([]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy)[vs[1].(int)]
+	}).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput)
 }
 
 // Category represents catalog item category hierarchy.
@@ -102,6 +147,31 @@ func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyRespon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput)
 }
 
+// GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayInput is an input type that accepts GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArray and GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArray{ GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArgs{...} }
+type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput
+	ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput
+}
+
+type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArray []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseInput
+
+func (GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArray) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArray) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput)
+}
+
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput struct{ *pulumi.OutputState }
 
@@ -122,6 +192,26 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyRespon
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse) []string {
 		return v.Categories
 	}).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse {
+		return vs[0].([]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse)[vs[1].(int)]
+	}).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput)
 }
 
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
@@ -163,6 +253,47 @@ func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToGoogleCloudRecom
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapOutput)
 }
 
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapOutput).ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapArgs, GoogleCloudRecommendationengineV1beta1FeatureMapPtr and GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1FeatureMapArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput
+}
+
+type googleCloudRecommendationengineV1beta1FeatureMapPtrType GoogleCloudRecommendationengineV1beta1FeatureMapArgs
+
+func GoogleCloudRecommendationengineV1beta1FeatureMapPtr(v *GoogleCloudRecommendationengineV1beta1FeatureMapArgs) GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput {
+	return (*googleCloudRecommendationengineV1beta1FeatureMapPtrType)(v)
+}
+
+func (*googleCloudRecommendationengineV1beta1FeatureMapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1FeatureMap)(nil)).Elem()
+}
+
+func (i *googleCloudRecommendationengineV1beta1FeatureMapPtrType) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecommendationengineV1beta1FeatureMapPtrType) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput)
+}
+
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
 type GoogleCloudRecommendationengineV1beta1FeatureMapOutput struct{ *pulumi.OutputState }
 
@@ -178,6 +309,16 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRec
 	return o
 }
 
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return o.ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) *GoogleCloudRecommendationengineV1beta1FeatureMap {
+		return &v
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput)
+}
+
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) CategoricalFeatures() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string {
@@ -188,6 +329,46 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) CategoricalFeatu
 // Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) NumericalFeatures() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string { return v.NumericalFeatures }).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1FeatureMap)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) Elem() GoogleCloudRecommendationengineV1beta1FeatureMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) GoogleCloudRecommendationengineV1beta1FeatureMap {
+		return *v
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapOutput)
+}
+
+// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) CategoricalFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CategoricalFeatures
+	}).(pulumi.StringMapOutput)
+}
+
+// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) NumericalFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.NumericalFeatures
+	}).(pulumi.StringMapOutput)
 }
 
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
@@ -229,6 +410,47 @@ func (i GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput)
 }
 
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput).ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs, GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtr and GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput
+}
+
+type googleCloudRecommendationengineV1beta1FeatureMapResponsePtrType GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs
+
+func GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtr(v *GoogleCloudRecommendationengineV1beta1FeatureMapResponseArgs) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrInput {
+	return (*googleCloudRecommendationengineV1beta1FeatureMapResponsePtrType)(v)
+}
+
+func (*googleCloudRecommendationengineV1beta1FeatureMapResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1FeatureMapResponse)(nil)).Elem()
+}
+
+func (i *googleCloudRecommendationengineV1beta1FeatureMapResponsePtrType) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecommendationengineV1beta1FeatureMapResponsePtrType) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput)
+}
+
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
 type GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput struct{ *pulumi.OutputState }
 
@@ -244,6 +466,16 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogle
 	return o
 }
 
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return o.ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) *GoogleCloudRecommendationengineV1beta1FeatureMapResponse {
+		return &v
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput)
+}
+
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) CategoricalFeatures() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]string {
@@ -254,6 +486,46 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) Categori
 // Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) NumericalFeatures() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]string {
+		return v.NumericalFeatures
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1FeatureMapResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMapResponse) GoogleCloudRecommendationengineV1beta1FeatureMapResponse {
+		return *v
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput)
+}
+
+// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) CategoricalFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CategoricalFeatures
+	}).(pulumi.StringMapOutput)
+}
+
+// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) NumericalFeatures() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
 		return v.NumericalFeatures
 	}).(pulumi.StringMapOutput)
 }
@@ -557,6 +829,47 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput)
 }
 
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput).ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput
+}
+
+type googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs
+
+func GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtr(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput {
+	return (*googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType)(v)
+}
+
+func (*googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItem)(nil)).Elem()
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput)
+}
+
 // ProductCatalogItem captures item metadata specific to retail products.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput struct{ *pulumi.OutputState }
 
@@ -570,6 +883,16 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogle
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput {
 	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return o.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
+		return &v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput)
 }
 
 // Optional. The available quantity of the item.
@@ -616,6 +939,106 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) PriceRan
 // Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) StockState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string { return v.StockState }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItem)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
+		return *v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput)
+}
+
+// Optional. The available quantity of the item.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) AvailableQuantity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableQuantity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) CanonicalProductUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanonicalProductUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Costs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Costs
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The exact product price.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ExactPrice() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
+		if v == nil {
+			return nil
+		}
+		return v.ExactPrice
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput)
+}
+
+// Optional. Product images for the catalog item.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Images() GoogleCloudRecommendationengineV1beta1ImageArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) []GoogleCloudRecommendationengineV1beta1Image {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(GoogleCloudRecommendationengineV1beta1ImageArrayOutput)
+}
+
+// Optional. The product price range.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) PriceRange() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
+		if v == nil {
+			return nil
+		}
+		return v.PriceRange
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput)
+}
+
+// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) StockState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StockState
+	}).(pulumi.StringPtrOutput)
 }
 
 // Exact product price.
@@ -816,6 +1239,47 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput)
 }
 
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput).ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput
+}
+
+type googleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrType GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseArgs
+
+func GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtr(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseArgs) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrInput {
+	return (*googleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrType)(v)
+}
+
+func (*googleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse)(nil)).Elem()
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput)
+}
+
 // Exact product price.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput struct{ *pulumi.OutputState }
 
@@ -831,6 +1295,16 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 	return o
 }
 
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return o.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
+		return &v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput)
+}
+
 // Optional. Display price of the product.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput) DisplayPrice() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) float64 {
@@ -843,6 +1317,46 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) float64 {
 		return v.OriginalPrice
 	}).(pulumi.Float64Output)
+}
+
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
+		return *v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput)
+}
+
+// Optional. Display price of the product.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) DisplayPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayPrice
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput) OriginalPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.OriginalPrice
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Product price range when there are a range of prices for different variations of the same product.
@@ -1039,6 +1553,47 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput)
 }
 
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput).ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput
+}
+
+type googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrType GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs
+
+func GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtr(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrInput {
+	return (*googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrType)(v)
+}
+
+func (*googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse)(nil)).Elem()
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput)
+}
+
 // Product price range when there are a range of prices for different variations of the same product.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput struct{ *pulumi.OutputState }
 
@@ -1054,6 +1609,16 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	return o
 }
 
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return o.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
+		return &v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput)
+}
+
 // Required. The maximum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) Max() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) float64 {
@@ -1066,6 +1631,46 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) float64 {
 		return v.Min
 	}).(pulumi.Float64Output)
+}
+
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
+		return *v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput)
+}
+
+// Required. The maximum product price.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required. The minimum product price.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.Float64PtrOutput)
 }
 
 // ProductCatalogItem captures item metadata specific to retail products.
@@ -1131,6 +1736,47 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput)
 }
 
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput).ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrInput` via:
+//
+//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput
+	ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput
+}
+
+type googleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrType GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs
+
+func GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtr(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseArgs) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrInput {
+	return (*googleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrType)(v)
+}
+
+func (*googleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse)(nil)).Elem()
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrType) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput)
+}
+
 // ProductCatalogItem captures item metadata specific to retail products.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput struct{ *pulumi.OutputState }
 
@@ -1144,6 +1790,16 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) 
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
 	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return o.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
+		return &v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput)
 }
 
 // Optional. The available quantity of the item.
@@ -1198,21 +1854,129 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) 
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) string { return v.StockState }).(pulumi.StringOutput)
 }
 
+type GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
+		return *v
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput)
+}
+
+// Optional. The available quantity of the item.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) AvailableQuantity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailableQuantity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) CanonicalProductUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CanonicalProductUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) Costs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Costs
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The exact product price.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) ExactPrice() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ExactPrice
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput)
+}
+
+// Optional. Product images for the catalog item.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) Images() GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) []GoogleCloudRecommendationengineV1beta1ImageResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput)
+}
+
+// Optional. The product price range.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) PriceRange() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PriceRange
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput)
+}
+
+// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput) StockState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StockState
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponsePtrOutput{})
 }
