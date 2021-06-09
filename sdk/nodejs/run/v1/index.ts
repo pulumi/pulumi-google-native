@@ -5,12 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./domainmapping";
+export * from "./domainMapping";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
 // Import resources to register:
-import { Domainmapping } from "./domainmapping";
+import { DomainMapping } from "./domainMapping";
 import { Service } from "./service";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
 
@@ -18,8 +18,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:run/v1:Domainmapping":
-                return new Domainmapping(name, <any>undefined, { urn })
+            case "google-native:run/v1:DomainMapping":
+                return new DomainMapping(name, <any>undefined, { urn })
             case "google-native:run/v1:Service":
                 return new Service(name, <any>undefined, { urn })
             case "google-native:run/v1:ServiceIamPolicy":

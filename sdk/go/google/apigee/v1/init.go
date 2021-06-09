@@ -25,24 +25,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Alias{}
 	case "google-native:apigee/v1:Api":
 		r = &Api{}
-	case "google-native:apigee/v1:Apiproduct":
-		r = &Apiproduct{}
+	case "google-native:apigee/v1:ApiProduct":
+		r = &ApiProduct{}
 	case "google-native:apigee/v1:App":
 		r = &App{}
-	case "google-native:apigee/v1:Canaryevaluation":
-		r = &Canaryevaluation{}
-	case "google-native:apigee/v1:Datacollector":
-		r = &Datacollector{}
+	case "google-native:apigee/v1:CanaryEvaluation":
+		r = &CanaryEvaluation{}
+	case "google-native:apigee/v1:DataCollector":
+		r = &DataCollector{}
 	case "google-native:apigee/v1:Datastore":
 		r = &Datastore{}
-	case "google-native:apigee/v1:Debugsession":
-		r = &Debugsession{}
+	case "google-native:apigee/v1:DebugSession":
+		r = &DebugSession{}
 	case "google-native:apigee/v1:Developer":
 		r = &Developer{}
-	case "google-native:apigee/v1:EnvGroupAttachment":
-		r = &EnvGroupAttachment{}
 	case "google-native:apigee/v1:Envgroup":
 		r = &Envgroup{}
+	case "google-native:apigee/v1:EnvgroupAttachment":
+		r = &EnvgroupAttachment{}
 	case "google-native:apigee/v1:Environment":
 		r = &Environment{}
 	case "google-native:apigee/v1:Export":
@@ -65,8 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Override{}
 	case "google-native:apigee/v1:Query":
 		r = &Query{}
-	case "google-native:apigee/v1:Rateplan":
-		r = &Rateplan{}
+	case "google-native:apigee/v1:RatePlan":
+		r = &RatePlan{}
 	case "google-native:apigee/v1:Reference":
 		r = &Reference{}
 	case "google-native:apigee/v1:Report":
@@ -77,8 +77,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Sharedflow{}
 	case "google-native:apigee/v1:Subscription":
 		r = &Subscription{}
-	case "google-native:apigee/v1:Targetserver":
-		r = &Targetserver{}
+	case "google-native:apigee/v1:TargetServer":
+		r = &TargetServer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

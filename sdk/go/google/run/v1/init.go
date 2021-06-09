@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:run/v1:Domainmapping":
-		r = &Domainmapping{}
+	case "google-native:run/v1:DomainMapping":
+		r = &DomainMapping{}
 	case "google-native:run/v1:Service":
 		r = &Service{}
 	case "google-native:run/v1:ServiceIamPolicy":

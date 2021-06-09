@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:cloudsearch/v1:Datasource":
-		r = &Datasource{}
-	case "google-native:cloudsearch/v1:Searchapplication":
-		r = &Searchapplication{}
+	case "google-native:cloudsearch/v1:DataSource":
+		r = &DataSource{}
+	case "google-native:cloudsearch/v1:SearchApplication":
+		r = &SearchApplication{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

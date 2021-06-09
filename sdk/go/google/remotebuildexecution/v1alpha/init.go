@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:remotebuildexecution/v1alpha:Instance":
 		r = &Instance{}
-	case "google-native:remotebuildexecution/v1alpha:Workerpool":
-		r = &Workerpool{}
+	case "google-native:remotebuildexecution/v1alpha:WorkerPool":
+		r = &WorkerPool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

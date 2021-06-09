@@ -5,15 +5,15 @@
 # Export this package's modules as members:
 from .alias import *
 from .api import *
-from .apiproduct import *
+from .api_product import *
 from .app import *
-from .canaryevaluation import *
-from .datacollector import *
+from .canary_evaluation import *
+from .data_collector import *
 from .datastore import *
-from .debugsession import *
+from .debug_session import *
 from .developer import *
-from .env_group_attachment import *
 from .envgroup import *
+from .envgroup_attachment import *
 from .environment import *
 from .export import *
 from .host_query import *
@@ -25,13 +25,13 @@ from .organization import *
 from .organization_environment_iam_policy import *
 from .override import *
 from .query import *
-from .rateplan import *
+from .rate_plan import *
 from .reference import *
 from .report import *
 from .resourcefile import *
 from .sharedflow import *
 from .subscription import *
-from .targetserver import *
+from .target_server import *
 from ._inputs import *
 from . import outputs
 
@@ -51,24 +51,24 @@ def _register_module():
                 return Alias(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Api":
                 return Api(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:Apiproduct":
-                return Apiproduct(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:ApiProduct":
+                return ApiProduct(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:App":
                 return App(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:Canaryevaluation":
-                return Canaryevaluation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:Datacollector":
-                return Datacollector(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:CanaryEvaluation":
+                return CanaryEvaluation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:DataCollector":
+                return DataCollector(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Datastore":
                 return Datastore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:Debugsession":
-                return Debugsession(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:DebugSession":
+                return DebugSession(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Developer":
                 return Developer(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:EnvGroupAttachment":
-                return EnvGroupAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Envgroup":
                 return Envgroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:EnvgroupAttachment":
+                return EnvgroupAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Environment":
                 return Environment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Export":
@@ -91,8 +91,8 @@ def _register_module():
                 return Override(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Query":
                 return Query(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:Rateplan":
-                return Rateplan(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:RatePlan":
+                return RatePlan(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Reference":
                 return Reference(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Report":
@@ -103,8 +103,8 @@ def _register_module():
                 return Sharedflow(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:Subscription":
                 return Subscription(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigee/v1:Targetserver":
-                return Targetserver(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:TargetServer":
+                return TargetServer(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

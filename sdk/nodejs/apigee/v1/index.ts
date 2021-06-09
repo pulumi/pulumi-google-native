@@ -7,15 +7,15 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./alias";
 export * from "./api";
-export * from "./apiproduct";
+export * from "./apiProduct";
 export * from "./app";
-export * from "./canaryevaluation";
-export * from "./datacollector";
+export * from "./canaryEvaluation";
+export * from "./dataCollector";
 export * from "./datastore";
-export * from "./debugsession";
+export * from "./debugSession";
 export * from "./developer";
-export * from "./envGroupAttachment";
 export * from "./envgroup";
+export * from "./envgroupAttachment";
 export * from "./environment";
 export * from "./export";
 export * from "./hostQuery";
@@ -27,26 +27,26 @@ export * from "./organization";
 export * from "./organizationEnvironmentIamPolicy";
 export * from "./override";
 export * from "./query";
-export * from "./rateplan";
+export * from "./ratePlan";
 export * from "./reference";
 export * from "./report";
 export * from "./resourcefile";
 export * from "./sharedflow";
 export * from "./subscription";
-export * from "./targetserver";
+export * from "./targetServer";
 
 // Import resources to register:
 import { Alias } from "./alias";
 import { Api } from "./api";
-import { Apiproduct } from "./apiproduct";
+import { ApiProduct } from "./apiProduct";
 import { App } from "./app";
-import { Canaryevaluation } from "./canaryevaluation";
-import { Datacollector } from "./datacollector";
+import { CanaryEvaluation } from "./canaryEvaluation";
+import { DataCollector } from "./dataCollector";
 import { Datastore } from "./datastore";
-import { Debugsession } from "./debugsession";
+import { DebugSession } from "./debugSession";
 import { Developer } from "./developer";
-import { EnvGroupAttachment } from "./envGroupAttachment";
 import { Envgroup } from "./envgroup";
+import { EnvgroupAttachment } from "./envgroupAttachment";
 import { Environment } from "./environment";
 import { Export } from "./export";
 import { HostQuery } from "./hostQuery";
@@ -58,13 +58,13 @@ import { Organization } from "./organization";
 import { OrganizationEnvironmentIamPolicy } from "./organizationEnvironmentIamPolicy";
 import { Override } from "./override";
 import { Query } from "./query";
-import { Rateplan } from "./rateplan";
+import { RatePlan } from "./ratePlan";
 import { Reference } from "./reference";
 import { Report } from "./report";
 import { Resourcefile } from "./resourcefile";
 import { Sharedflow } from "./sharedflow";
 import { Subscription } from "./subscription";
-import { Targetserver } from "./targetserver";
+import { TargetServer } from "./targetServer";
 
 const _module = {
     version: utilities.getVersion(),
@@ -74,24 +74,24 @@ const _module = {
                 return new Alias(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Api":
                 return new Api(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:Apiproduct":
-                return new Apiproduct(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:ApiProduct":
+                return new ApiProduct(name, <any>undefined, { urn })
             case "google-native:apigee/v1:App":
                 return new App(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:Canaryevaluation":
-                return new Canaryevaluation(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:Datacollector":
-                return new Datacollector(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:CanaryEvaluation":
+                return new CanaryEvaluation(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:DataCollector":
+                return new DataCollector(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Datastore":
                 return new Datastore(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:Debugsession":
-                return new Debugsession(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:DebugSession":
+                return new DebugSession(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Developer":
                 return new Developer(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:EnvGroupAttachment":
-                return new EnvGroupAttachment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Envgroup":
                 return new Envgroup(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:EnvgroupAttachment":
+                return new EnvgroupAttachment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Environment":
                 return new Environment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Export":
@@ -114,8 +114,8 @@ const _module = {
                 return new Override(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Query":
                 return new Query(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:Rateplan":
-                return new Rateplan(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:RatePlan":
+                return new RatePlan(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Reference":
                 return new Reference(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Report":
@@ -126,8 +126,8 @@ const _module = {
                 return new Sharedflow(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
-            case "google-native:apigee/v1:Targetserver":
-                return new Targetserver(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:TargetServer":
+                return new TargetServer(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
