@@ -144,6 +144,10 @@ var versionReplacer = strings.NewReplacer("alpha", "Alpha", "beta", "Beta", "v",
 
 func csharpNamespace(document *discovery.RestDescription) string {
 	moduleName := strings.Title(document.Name)
+	if v, ok := csharpNamespaceOverrides[moduleName]; ok {
+		return v
+	}
+
 	title := titleReplacer.Replace(document.Title)
 	idx := strings.Index(strings.ToLower(title), document.Name)
 	if idx >= 0 {

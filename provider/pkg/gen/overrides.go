@@ -5,11 +5,29 @@ package gen
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
 // that is present in the discovery document.
 var resourceNameByTypeOverrides = map[string]string{
+	// Apigee.
+	"GoogleCloudApigeeV1ApiProduct":       "ApiProduct",
+	"GoogleCloudApigeeV1CanaryEvaluation": "CanaryEvaluation",
+	"GoogleCloudApigeeV1DataCollector":    "DataCollector",
+	"GoogleCloudApigeeV1DebugSession":     "DebugSession",
+	"GoogleCloudApigeeV1RatePlan":         "RatePlan",
+	"GoogleCloudApigeeV1TargetServer":     "TargetServer",
+
+	// Cloud Search.
+	"DataSource":        "DataSource",
+	"SearchApplication": "SearchApplication",
+
 	// Diag Flow.
 	"GoogleCloudDialogflowV2SessionEntityType":        "SessionEntityType",
 	"GoogleCloudDialogflowV2beta1SessionEntityType":   "SessionEntityType",
 	"GoogleCloudDialogflowCxV3SessionEntityType":      "SessionEntityType",
 	"GoogleCloudDialogflowCxV3beta1SessionEntityType": "SessionEntityType",
+
+	// Remote Build Execution.
+	"GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest": "WorkerPool",
+
+	// Run.
+	"DomainMapping": "DomainMapping",
 }
 
 // resourceNameByPathOverrides is a map of Pulumi resource names by the API flat path
@@ -19,7 +37,7 @@ var resourceNameByPathOverrides = map[string]string{
 	"apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings": "",
 
 	// Apigee.
-	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments": "EnvGroupAttachment",
+	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments": "EnvgroupAttachment",
 	"v1/organizations/{organizationsId}/instances/{instancesId}/attachments": "InstanceAttachment",
 
 	// DLP.
@@ -78,6 +96,24 @@ var resourceNamePropertyOverrides = map[string]string{
 	"firebasehosting/v1beta1:Domain.domainsId":                "domainName",
 	"recommendationengine/v1beta1:CatalogItem.catalogItemsId": "id",
 	"run/v1alpha1:Job.jobsId":                                 "metadata.name",
-	"run/v1:Domainmapping.domainmappingsId":                   "metadata.name",
+	"run/v1:DomainMapping.domainmappingsId":                   "metadata.name",
 	"run/v1:Service.servicesId":                               "metadata.name",
+}
+
+// csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
+// that aren't successfully infered from the discovery document.
+var csharpNamespaceOverrides = map[string]string{
+	"billingbudgets":       "BillingBudgets",
+	"cloudkms":             "CloudKMS",
+	"datamigration":        "DataMigration",
+	"firebasedatabase":     "FirebaseDatabase",
+	"iam":                  "Iam",
+	"managedidentities":    "ManagedIdentities",
+	"ml":                   "ML",
+	"orgpolicy":            "OrgPolicy",
+	"privateca":            "PrivateCA",
+	"pubsub":               "PubSub",
+	"pubsublite":           "PubSubLite",
+	"recommendationengine": "RecommendationEngine",
+	"securitycenter":       "SecurityCenter",
 }

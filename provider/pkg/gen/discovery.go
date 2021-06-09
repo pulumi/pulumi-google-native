@@ -94,7 +94,11 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				}
 				typeName = override
 			}
-			if override, has := resourceNameByTypeOverrides[createMethod.Response.Ref]; has {
+			ref := createMethod.Response.Ref
+			if createMethod.Request != nil {
+				ref = createMethod.Request.Ref
+			}
+			if override, has := resourceNameByTypeOverrides[ref]; has {
 				if override == "" {
 					return nil
 				}
