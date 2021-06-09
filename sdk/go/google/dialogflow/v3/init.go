@@ -23,32 +23,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dialogflow/v3:Agent":
 		r = &Agent{}
-	case "google-native:dialogflow/v3:AgentEntityType":
-		r = &AgentEntityType{}
-	case "google-native:dialogflow/v3:AgentEnvironment":
-		r = &AgentEnvironment{}
-	case "google-native:dialogflow/v3:AgentEnvironmentExperiment":
-		r = &AgentEnvironmentExperiment{}
-	case "google-native:dialogflow/v3:AgentEnvironmentSessionEntityType":
-		r = &AgentEnvironmentSessionEntityType{}
-	case "google-native:dialogflow/v3:AgentFlow":
-		r = &AgentFlow{}
-	case "google-native:dialogflow/v3:AgentFlowPage":
-		r = &AgentFlowPage{}
-	case "google-native:dialogflow/v3:AgentFlowTransitionRouteGroup":
-		r = &AgentFlowTransitionRouteGroup{}
-	case "google-native:dialogflow/v3:AgentFlowVersion":
-		r = &AgentFlowVersion{}
-	case "google-native:dialogflow/v3:AgentIntent":
-		r = &AgentIntent{}
-	case "google-native:dialogflow/v3:AgentSessionEntityType":
-		r = &AgentSessionEntityType{}
-	case "google-native:dialogflow/v3:AgentTestCase":
-		r = &AgentTestCase{}
-	case "google-native:dialogflow/v3:AgentWebhook":
-		r = &AgentWebhook{}
+	case "google-native:dialogflow/v3:EntityType":
+		r = &EntityType{}
+	case "google-native:dialogflow/v3:Environment":
+		r = &Environment{}
+	case "google-native:dialogflow/v3:Experiment":
+		r = &Experiment{}
+	case "google-native:dialogflow/v3:Flow":
+		r = &Flow{}
+	case "google-native:dialogflow/v3:Intent":
+		r = &Intent{}
+	case "google-native:dialogflow/v3:Page":
+		r = &Page{}
 	case "google-native:dialogflow/v3:SecuritySetting":
 		r = &SecuritySetting{}
+	case "google-native:dialogflow/v3:SessionEntityType":
+		r = &SessionEntityType{}
+	case "google-native:dialogflow/v3:TestCase":
+		r = &TestCase{}
+	case "google-native:dialogflow/v3:TransitionRouteGroup":
+		r = &TransitionRouteGroup{}
+	case "google-native:dialogflow/v3:Version":
+		r = &Version{}
+	case "google-native:dialogflow/v3:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

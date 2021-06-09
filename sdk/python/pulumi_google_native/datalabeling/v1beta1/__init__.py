@@ -5,8 +5,8 @@
 # Export this package's modules as members:
 from .annotation_spec_set import *
 from .dataset import *
-from .dataset_annotated_dataset_feedback_thread_feedback_message import *
 from .evaluation_job import *
+from .feedback_message import *
 from .instruction import *
 from ._inputs import *
 from . import outputs
@@ -27,10 +27,10 @@ def _register_module():
                 return AnnotationSpecSet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datalabeling/v1beta1:Dataset":
                 return Dataset(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
-                return DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datalabeling/v1beta1:EvaluationJob":
                 return EvaluationJob(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:datalabeling/v1beta1:FeedbackMessage":
+                return FeedbackMessage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datalabeling/v1beta1:Instruction":
                 return Instruction(name, pulumi.ResourceOptions(urn=urn))
             else:

@@ -25,8 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Queue{}
 	case "google-native:cloudtasks/v2beta3:QueueIamPolicy":
 		r = &QueueIamPolicy{}
-	case "google-native:cloudtasks/v2beta3:QueueTask":
-		r = &QueueTask{}
+	case "google-native:cloudtasks/v2beta3:Task":
+		r = &Task{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

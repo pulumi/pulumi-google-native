@@ -5,19 +5,6 @@
 # Export this package's modules as members:
 from .billing_account_exclusion import *
 from .billing_account_sink import *
-from .bucket import *
-from .bucket_view import *
-from .exclusion import *
-from .folder_bucket import *
-from .folder_bucket_view import *
-from .folder_exclusion import *
-from .folder_sink import *
-from .metric import *
-from .organization_bucket import *
-from .organization_bucket_view import *
-from .organization_exclusion import *
-from .organization_sink import *
-from .sink import *
 from ._inputs import *
 from . import outputs
 
@@ -37,32 +24,6 @@ def _register_module():
                 return BillingAccountExclusion(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:logging/v2:BillingAccountSink":
                 return BillingAccountSink(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:Bucket":
-                return Bucket(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:BucketView":
-                return BucketView(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:Exclusion":
-                return Exclusion(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:FolderBucket":
-                return FolderBucket(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:FolderBucketView":
-                return FolderBucketView(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:FolderExclusion":
-                return FolderExclusion(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:FolderSink":
-                return FolderSink(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:Metric":
-                return Metric(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:OrganizationBucket":
-                return OrganizationBucket(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:OrganizationBucketView":
-                return OrganizationBucketView(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:OrganizationExclusion":
-                return OrganizationExclusion(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:OrganizationSink":
-                return OrganizationSink(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:logging/v2:Sink":
-                return Sink(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

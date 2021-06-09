@@ -7,15 +7,15 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./annotationSpecSet";
 export * from "./dataset";
-export * from "./datasetAnnotatedDatasetFeedbackThreadFeedbackMessage";
 export * from "./evaluationJob";
+export * from "./feedbackMessage";
 export * from "./instruction";
 
 // Import resources to register:
 import { AnnotationSpecSet } from "./annotationSpecSet";
 import { Dataset } from "./dataset";
-import { DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage } from "./datasetAnnotatedDatasetFeedbackThreadFeedbackMessage";
 import { EvaluationJob } from "./evaluationJob";
+import { FeedbackMessage } from "./feedbackMessage";
 import { Instruction } from "./instruction";
 
 const _module = {
@@ -26,10 +26,10 @@ const _module = {
                 return new AnnotationSpecSet(name, <any>undefined, { urn })
             case "google-native:datalabeling/v1beta1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
-            case "google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
-                return new DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(name, <any>undefined, { urn })
             case "google-native:datalabeling/v1beta1:EvaluationJob":
                 return new EvaluationJob(name, <any>undefined, { urn })
+            case "google-native:datalabeling/v1beta1:FeedbackMessage":
+                return new FeedbackMessage(name, <any>undefined, { urn })
             case "google-native:datalabeling/v1beta1:Instruction":
                 return new Instruction(name, <any>undefined, { urn })
             default:

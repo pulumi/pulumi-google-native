@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./settingDatasource";
-export * from "./settingSearchapplication";
+export * from "./datasource";
+export * from "./searchapplication";
 
 // Import resources to register:
-import { SettingDatasource } from "./settingDatasource";
-import { SettingSearchapplication } from "./settingSearchapplication";
+import { Datasource } from "./datasource";
+import { Searchapplication } from "./searchapplication";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:cloudsearch/v1:SettingDatasource":
-                return new SettingDatasource(name, <any>undefined, { urn })
-            case "google-native:cloudsearch/v1:SettingSearchapplication":
-                return new SettingSearchapplication(name, <any>undefined, { urn })
+            case "google-native:cloudsearch/v1:Datasource":
+                return new Datasource(name, <any>undefined, { urn })
+            case "google-native:cloudsearch/v1:Searchapplication":
+                return new Searchapplication(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

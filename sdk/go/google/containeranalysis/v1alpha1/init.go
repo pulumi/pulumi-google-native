@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Occurrence{}
 	case "google-native:containeranalysis/v1alpha1:OccurrenceIamPolicy":
 		r = &OccurrenceIamPolicy{}
-	case "google-native:containeranalysis/v1alpha1:ProviderNote":
-		r = &ProviderNote{}
 	case "google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy":
 		r = &ProviderNoteIamPolicy{}
 	default:

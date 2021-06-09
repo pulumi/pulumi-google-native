@@ -3,21 +3,17 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .agent_entity_type import *
-from .agent_environment import *
-from .agent_environment_user_session_context import *
-from .agent_environment_user_session_entity_type import *
-from .agent_intent import *
-from .agent_knowledge_base import *
-from .agent_knowledge_base_document import *
-from .agent_session_context import *
-from .agent_session_entity_type import *
-from .agent_version import *
+from .context import *
 from .conversation import *
-from .conversation_participant import *
 from .conversation_profile import *
+from .document import *
+from .entity_type import *
+from .environment import *
+from .intent import *
 from .knowledge_base import *
-from .knowledge_base_document import *
+from .participant import *
+from .session_entity_type import *
+from .version import *
 from ._inputs import *
 from . import outputs
 
@@ -33,36 +29,28 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:dialogflow/v2:AgentEntityType":
-                return AgentEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentEnvironment":
-                return AgentEnvironment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
-                return AgentEnvironmentUserSessionContext(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
-                return AgentEnvironmentUserSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentIntent":
-                return AgentIntent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentKnowledgeBase":
-                return AgentKnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentKnowledgeBaseDocument":
-                return AgentKnowledgeBaseDocument(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentSessionContext":
-                return AgentSessionContext(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentSessionEntityType":
-                return AgentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:AgentVersion":
-                return AgentVersion(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-native:dialogflow/v2:Context":
+                return Context(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:Conversation":
                 return Conversation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:ConversationParticipant":
-                return ConversationParticipant(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:ConversationProfile":
                 return ConversationProfile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:Document":
+                return Document(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:EntityType":
+                return EntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:Environment":
+                return Environment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:Intent":
+                return Intent(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:KnowledgeBase":
                 return KnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v2:KnowledgeBaseDocument":
-                return KnowledgeBaseDocument(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:Participant":
+                return Participant(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:SessionEntityType":
+                return SessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:Version":
+                return Version(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

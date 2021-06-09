@@ -23,14 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:appengine/v1:App":
 		r = &App{}
-	case "google-native:appengine/v1:AppAuthorizedCertificate":
-		r = &AppAuthorizedCertificate{}
-	case "google-native:appengine/v1:AppDomainMapping":
-		r = &AppDomainMapping{}
-	case "google-native:appengine/v1:AppFirewallIngressRule":
-		r = &AppFirewallIngressRule{}
-	case "google-native:appengine/v1:AppServiceVersion":
-		r = &AppServiceVersion{}
+	case "google-native:appengine/v1:AuthorizedCertificate":
+		r = &AuthorizedCertificate{}
+	case "google-native:appengine/v1:DomainMapping":
+		r = &DomainMapping{}
+	case "google-native:appengine/v1:IngressRule":
+		r = &IngressRule{}
+	case "google-native:appengine/v1:Version":
+		r = &Version{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

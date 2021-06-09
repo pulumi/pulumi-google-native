@@ -4,19 +4,18 @@
 
 # Export this package's modules as members:
 from .agent import *
-from .agent_entity_type import *
-from .agent_environment import *
-from .agent_environment_experiment import *
-from .agent_environment_session_entity_type import *
-from .agent_flow import *
-from .agent_flow_page import *
-from .agent_flow_transition_route_group import *
-from .agent_flow_version import *
-from .agent_intent import *
-from .agent_session_entity_type import *
-from .agent_test_case import *
-from .agent_webhook import *
+from .entity_type import *
+from .environment import *
+from .experiment import *
+from .flow import *
+from .intent import *
+from .page import *
 from .security_setting import *
+from .session_entity_type import *
+from .test_case import *
+from .transition_route_group import *
+from .version import *
+from .webhook import *
 from ._inputs import *
 from . import outputs
 
@@ -34,32 +33,30 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-native:dialogflow/v3:Agent":
                 return Agent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentEntityType":
-                return AgentEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentEnvironment":
-                return AgentEnvironment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentEnvironmentExperiment":
-                return AgentEnvironmentExperiment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentEnvironmentSessionEntityType":
-                return AgentEnvironmentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentFlow":
-                return AgentFlow(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentFlowPage":
-                return AgentFlowPage(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentFlowTransitionRouteGroup":
-                return AgentFlowTransitionRouteGroup(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentFlowVersion":
-                return AgentFlowVersion(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentIntent":
-                return AgentIntent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentSessionEntityType":
-                return AgentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentTestCase":
-                return AgentTestCase(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dialogflow/v3:AgentWebhook":
-                return AgentWebhook(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:EntityType":
+                return EntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Environment":
+                return Environment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Experiment":
+                return Experiment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Flow":
+                return Flow(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Intent":
+                return Intent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Page":
+                return Page(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v3:SecuritySetting":
                 return SecuritySetting(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:SessionEntityType":
+                return SessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:TestCase":
+                return TestCase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:TransitionRouteGroup":
+                return TransitionRouteGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Version":
+                return Version(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v3:Webhook":
+                return Webhook(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

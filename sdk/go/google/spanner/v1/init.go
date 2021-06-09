@@ -21,20 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:spanner/v1:Backup":
+		r = &Backup{}
+	case "google-native:spanner/v1:Database":
+		r = &Database{}
 	case "google-native:spanner/v1:Instance":
 		r = &Instance{}
-	case "google-native:spanner/v1:InstanceBackup":
-		r = &InstanceBackup{}
 	case "google-native:spanner/v1:InstanceBackupIamPolicy":
 		r = &InstanceBackupIamPolicy{}
-	case "google-native:spanner/v1:InstanceDatabase":
-		r = &InstanceDatabase{}
 	case "google-native:spanner/v1:InstanceDatabaseIamPolicy":
 		r = &InstanceDatabaseIamPolicy{}
-	case "google-native:spanner/v1:InstanceDatabaseSession":
-		r = &InstanceDatabaseSession{}
 	case "google-native:spanner/v1:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
+	case "google-native:spanner/v1:Session":
+		r = &Session{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

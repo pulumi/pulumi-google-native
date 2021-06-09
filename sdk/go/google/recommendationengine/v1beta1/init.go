@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:recommendationengine/v1beta1:CatalogCatalogItem":
-		r = &CatalogCatalogItem{}
+	case "google-native:recommendationengine/v1beta1:CatalogItem":
+		r = &CatalogItem{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

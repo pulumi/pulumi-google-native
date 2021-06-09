@@ -3,11 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .config import *
+from .rollout import *
 from .service import *
-from .service_config import *
 from .service_consumer_iam_policy import *
 from .service_iam_policy import *
-from .service_rollout import *
 from ._inputs import *
 from . import outputs
 
@@ -23,16 +23,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:servicemanagement/v1:Service":
+            if typ == "google-native:servicemanagement/v1:Config":
+                return Config(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:servicemanagement/v1:Rollout":
+                return Rollout(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:servicemanagement/v1:Service":
                 return Service(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:servicemanagement/v1:ServiceConfig":
-                return ServiceConfig(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:servicemanagement/v1:ServiceConsumerIamPolicy":
                 return ServiceConsumerIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:servicemanagement/v1:ServiceIamPolicy":
                 return ServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:servicemanagement/v1:ServiceRollout":
-                return ServiceRollout(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

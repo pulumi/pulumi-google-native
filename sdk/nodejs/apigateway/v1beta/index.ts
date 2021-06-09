@@ -6,17 +6,17 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./api";
-export * from "./apiConfig";
 export * from "./apiConfigIamPolicy";
 export * from "./apiIamPolicy";
+export * from "./config";
 export * from "./gateway";
 export * from "./gatewayIamPolicy";
 
 // Import resources to register:
 import { Api } from "./api";
-import { ApiConfig } from "./apiConfig";
 import { ApiConfigIamPolicy } from "./apiConfigIamPolicy";
 import { ApiIamPolicy } from "./apiIamPolicy";
+import { Config } from "./config";
 import { Gateway } from "./gateway";
 import { GatewayIamPolicy } from "./gatewayIamPolicy";
 
@@ -26,12 +26,12 @@ const _module = {
         switch (type) {
             case "google-native:apigateway/v1beta:Api":
                 return new Api(name, <any>undefined, { urn })
-            case "google-native:apigateway/v1beta:ApiConfig":
-                return new ApiConfig(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:ApiConfigIamPolicy":
                 return new ApiConfigIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:ApiIamPolicy":
                 return new ApiIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:Config":
+                return new Config(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:GatewayIamPolicy":

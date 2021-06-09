@@ -21,12 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:datacatalog/v1beta1:Entry":
+		r = &Entry{}
 	case "google-native:datacatalog/v1beta1:EntryGroup":
 		r = &EntryGroup{}
-	case "google-native:datacatalog/v1beta1:EntryGroupEntry":
-		r = &EntryGroupEntry{}
 	case "google-native:datacatalog/v1beta1:EntryGroupIamPolicy":
 		r = &EntryGroupIamPolicy{}
+	case "google-native:datacatalog/v1beta1:PolicyTag":
+		r = &PolicyTag{}
 	case "google-native:datacatalog/v1beta1:TagTemplate":
 		r = &TagTemplate{}
 	case "google-native:datacatalog/v1beta1:TagTemplateIamPolicy":
@@ -35,8 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Taxonomy{}
 	case "google-native:datacatalog/v1beta1:TaxonomyIamPolicy":
 		r = &TaxonomyIamPolicy{}
-	case "google-native:datacatalog/v1beta1:TaxonomyPolicyTag":
-		r = &TaxonomyPolicyTag{}
 	case "google-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
 		r = &TaxonomyPolicyTagIamPolicy{}
 	default:

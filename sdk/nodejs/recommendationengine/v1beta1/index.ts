@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./catalogCatalogItem";
+export * from "./catalogItem";
 
 // Import resources to register:
-import { CatalogCatalogItem } from "./catalogCatalogItem";
+import { CatalogItem } from "./catalogItem";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:recommendationengine/v1beta1:CatalogCatalogItem":
-                return new CatalogCatalogItem(name, <any>undefined, { urn })
+            case "google-native:recommendationengine/v1beta1:CatalogItem":
+                return new CatalogItem(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

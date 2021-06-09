@@ -21,36 +21,28 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:dialogflow/v2beta1:AgentEntityType":
-		r = &AgentEntityType{}
-	case "google-native:dialogflow/v2beta1:AgentEnvironment":
-		r = &AgentEnvironment{}
-	case "google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionContext":
-		r = &AgentEnvironmentUserSessionContext{}
-	case "google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType":
-		r = &AgentEnvironmentUserSessionEntityType{}
-	case "google-native:dialogflow/v2beta1:AgentIntent":
-		r = &AgentIntent{}
-	case "google-native:dialogflow/v2beta1:AgentKnowledgeBase":
-		r = &AgentKnowledgeBase{}
-	case "google-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument":
-		r = &AgentKnowledgeBaseDocument{}
-	case "google-native:dialogflow/v2beta1:AgentSessionContext":
-		r = &AgentSessionContext{}
-	case "google-native:dialogflow/v2beta1:AgentSessionEntityType":
-		r = &AgentSessionEntityType{}
-	case "google-native:dialogflow/v2beta1:AgentVersion":
-		r = &AgentVersion{}
+	case "google-native:dialogflow/v2beta1:Context":
+		r = &Context{}
 	case "google-native:dialogflow/v2beta1:Conversation":
 		r = &Conversation{}
-	case "google-native:dialogflow/v2beta1:ConversationParticipant":
-		r = &ConversationParticipant{}
 	case "google-native:dialogflow/v2beta1:ConversationProfile":
 		r = &ConversationProfile{}
+	case "google-native:dialogflow/v2beta1:Document":
+		r = &Document{}
+	case "google-native:dialogflow/v2beta1:EntityType":
+		r = &EntityType{}
+	case "google-native:dialogflow/v2beta1:Environment":
+		r = &Environment{}
+	case "google-native:dialogflow/v2beta1:Intent":
+		r = &Intent{}
 	case "google-native:dialogflow/v2beta1:KnowledgeBase":
 		r = &KnowledgeBase{}
-	case "google-native:dialogflow/v2beta1:KnowledgeBaseDocument":
-		r = &KnowledgeBaseDocument{}
+	case "google-native:dialogflow/v2beta1:Participant":
+		r = &Participant{}
+	case "google-native:dialogflow/v2beta1:SessionEntityType":
+		r = &SessionEntityType{}
+	case "google-native:dialogflow/v2beta1:Version":
+		r = &Version{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

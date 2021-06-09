@@ -7,12 +7,12 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./repository";
 export * from "./repositoryIamPolicy";
-export * from "./repositoryPackageTag";
+export * from "./tag";
 
 // Import resources to register:
 import { Repository } from "./repository";
 import { RepositoryIamPolicy } from "./repositoryIamPolicy";
-import { RepositoryPackageTag } from "./repositoryPackageTag";
+import { Tag } from "./tag";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,8 +22,8 @@ const _module = {
                 return new Repository(name, <any>undefined, { urn })
             case "google-native:artifactregistry/v1beta2:RepositoryIamPolicy":
                 return new RepositoryIamPolicy(name, <any>undefined, { urn })
-            case "google-native:artifactregistry/v1beta2:RepositoryPackageTag":
-                return new RepositoryPackageTag(name, <any>undefined, { urn })
+            case "google-native:artifactregistry/v1beta2:Tag":
+                return new Tag(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

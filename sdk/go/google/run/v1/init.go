@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:run/v1:Domainmapping":
 		r = &Domainmapping{}
-	case "google-native:run/v1:NamespaceDomainmapping":
-		r = &NamespaceDomainmapping{}
-	case "google-native:run/v1:NamespaceService":
-		r = &NamespaceService{}
 	case "google-native:run/v1:Service":
 		r = &Service{}
 	case "google-native:run/v1:ServiceIamPolicy":

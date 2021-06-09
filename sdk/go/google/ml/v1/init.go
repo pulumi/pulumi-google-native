@@ -29,12 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Model{}
 	case "google-native:ml/v1:ModelIamPolicy":
 		r = &ModelIamPolicy{}
-	case "google-native:ml/v1:ModelVersion":
-		r = &ModelVersion{}
 	case "google-native:ml/v1:Study":
 		r = &Study{}
-	case "google-native:ml/v1:StudyTrial":
-		r = &StudyTrial{}
+	case "google-native:ml/v1:Trial":
+		r = &Trial{}
+	case "google-native:ml/v1:Version":
+		r = &Version{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

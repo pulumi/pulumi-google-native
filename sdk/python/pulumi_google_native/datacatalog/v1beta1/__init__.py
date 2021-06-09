@@ -3,14 +3,14 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .entry import *
 from .entry_group import *
-from .entry_group_entry import *
 from .entry_group_iam_policy import *
+from .policy_tag import *
 from .tag_template import *
 from .tag_template_iam_policy import *
 from .taxonomy import *
 from .taxonomy_iam_policy import *
-from .taxonomy_policy_tag import *
 from .taxonomy_policy_tag_iam_policy import *
 from ._inputs import *
 from . import outputs
@@ -27,12 +27,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:datacatalog/v1beta1:EntryGroup":
+            if typ == "google-native:datacatalog/v1beta1:Entry":
+                return Entry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:datacatalog/v1beta1:EntryGroup":
                 return EntryGroup(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:datacatalog/v1beta1:EntryGroupEntry":
-                return EntryGroupEntry(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datacatalog/v1beta1:EntryGroupIamPolicy":
                 return EntryGroupIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:datacatalog/v1beta1:PolicyTag":
+                return PolicyTag(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datacatalog/v1beta1:TagTemplate":
                 return TagTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datacatalog/v1beta1:TagTemplateIamPolicy":
@@ -41,8 +43,6 @@ def _register_module():
                 return Taxonomy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datacatalog/v1beta1:TaxonomyIamPolicy":
                 return TaxonomyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:datacatalog/v1beta1:TaxonomyPolicyTag":
-                return TaxonomyPolicyTag(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
                 return TaxonomyPolicyTagIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:

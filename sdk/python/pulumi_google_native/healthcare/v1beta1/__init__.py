@@ -3,24 +3,24 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .annotation import *
+from .annotation_store import *
+from .attribute_definition import *
+from .consent import *
+from .consent_artifact import *
+from .consent_store import *
 from .dataset import *
-from .dataset_annotation_store import *
-from .dataset_annotation_store_annotation import *
 from .dataset_annotation_store_iam_policy import *
-from .dataset_consent_store import *
-from .dataset_consent_store_attribute_definition import *
-from .dataset_consent_store_consent import *
-from .dataset_consent_store_consent_artifact import *
 from .dataset_consent_store_iam_policy import *
-from .dataset_consent_store_user_data_mapping import *
-from .dataset_dicom_store import *
 from .dataset_dicom_store_iam_policy import *
-from .dataset_fhir_store import *
 from .dataset_fhir_store_iam_policy import *
-from .dataset_hl7_v2_store import *
 from .dataset_hl7_v2_store_iam_policy import *
-from .dataset_hl7_v2_store_message import *
 from .dataset_iam_policy import *
+from .dicom_store import *
+from .fhir_store import *
+from .hl7_v2_store import *
+from .message import *
+from .user_data_mapping import *
 from ._inputs import *
 from . import outputs
 
@@ -36,42 +36,42 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:healthcare/v1beta1:Dataset":
+            if typ == "google-native:healthcare/v1beta1:Annotation":
+                return Annotation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:AnnotationStore":
+                return AnnotationStore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:AttributeDefinition":
+                return AttributeDefinition(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:Consent":
+                return Consent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:ConsentArtifact":
+                return ConsentArtifact(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:ConsentStore":
+                return ConsentStore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:Dataset":
                 return Dataset(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetAnnotationStore":
-                return DatasetAnnotationStore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation":
-                return DatasetAnnotationStoreAnnotation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy":
                 return DatasetAnnotationStoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetConsentStore":
-                return DatasetConsentStore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition":
-                return DatasetConsentStoreAttributeDefinition(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetConsentStoreConsent":
-                return DatasetConsentStoreConsent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact":
-                return DatasetConsentStoreConsentArtifact(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
                 return DatasetConsentStoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetConsentStoreUserDataMapping":
-                return DatasetConsentStoreUserDataMapping(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetDicomStore":
-                return DatasetDicomStore(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetDicomStoreIamPolicy":
                 return DatasetDicomStoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetFhirStore":
-                return DatasetFhirStore(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
                 return DatasetFhirStoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetHl7V2Store":
-                return DatasetHl7V2Store(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy":
                 return DatasetHl7V2StoreIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:healthcare/v1beta1:DatasetHl7V2StoreMessage":
-                return DatasetHl7V2StoreMessage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:healthcare/v1beta1:DatasetIamPolicy":
                 return DatasetIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:DicomStore":
+                return DicomStore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:FhirStore":
+                return FhirStore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:Hl7V2Store":
+                return Hl7V2Store(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:Message":
+                return Message(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:healthcare/v1beta1:UserDataMapping":
+                return UserDataMapping(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

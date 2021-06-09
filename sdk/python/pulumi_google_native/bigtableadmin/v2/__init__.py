@@ -3,14 +3,14 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .app_profile import *
+from .backup import *
+from .cluster import *
 from .instance import *
-from .instance_app_profile import *
-from .instance_cluster import *
-from .instance_cluster_backup import *
 from .instance_cluster_backup_iam_policy import *
 from .instance_iam_policy import *
-from .instance_table import *
 from .instance_table_iam_policy import *
+from .table import *
 from ._inputs import *
 from . import outputs
 
@@ -26,22 +26,22 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:bigtableadmin/v2:Instance":
+            if typ == "google-native:bigtableadmin/v2:AppProfile":
+                return AppProfile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:bigtableadmin/v2:Backup":
+                return Backup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:bigtableadmin/v2:Cluster":
+                return Cluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:bigtableadmin/v2:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:bigtableadmin/v2:InstanceAppProfile":
-                return InstanceAppProfile(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:bigtableadmin/v2:InstanceCluster":
-                return InstanceCluster(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:bigtableadmin/v2:InstanceClusterBackup":
-                return InstanceClusterBackup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
                 return InstanceClusterBackupIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:bigtableadmin/v2:InstanceIamPolicy":
                 return InstanceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:bigtableadmin/v2:InstanceTable":
-                return InstanceTable(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:bigtableadmin/v2:InstanceTableIamPolicy":
                 return InstanceTableIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:bigtableadmin/v2:Table":
+                return Table(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

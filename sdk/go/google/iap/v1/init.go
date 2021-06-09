@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:iap/v1:Brand":
 		r = &Brand{}
-	case "google-native:iap/v1:BrandIdentityAwareProxyClient":
-		r = &BrandIdentityAwareProxyClient{}
+	case "google-native:iap/v1:IdentityAwareProxyClient":
+		r = &IdentityAwareProxyClient{}
 	case "google-native:iap/v1:V1IamPolicy":
 		r = &V1IamPolicy{}
 	default:

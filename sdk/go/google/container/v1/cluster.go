@@ -419,7 +419,7 @@ type clusterArgs struct {
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
-	NodePools []NodePool `pulumi:"nodePools"`
+	NodePools []NodePoolType `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
@@ -522,7 +522,7 @@ type ClusterArgs struct {
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
-	NodePools NodePoolArrayInput
+	NodePools NodePoolTypeArrayInput
 	// Notification configuration of the cluster.
 	NotificationConfig NotificationConfigPtrInput
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.

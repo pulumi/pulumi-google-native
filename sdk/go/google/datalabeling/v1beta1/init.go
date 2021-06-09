@@ -25,10 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AnnotationSpecSet{}
 	case "google-native:datalabeling/v1beta1:Dataset":
 		r = &Dataset{}
-	case "google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
-		r = &DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage{}
 	case "google-native:datalabeling/v1beta1:EvaluationJob":
 		r = &EvaluationJob{}
+	case "google-native:datalabeling/v1beta1:FeedbackMessage":
+		r = &FeedbackMessage{}
 	case "google-native:datalabeling/v1beta1:Instruction":
 		r = &Instruction{}
 	default:

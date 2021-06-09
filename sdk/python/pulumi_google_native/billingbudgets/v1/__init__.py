@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .billing_account_budget import *
+from .budget import *
 from ._inputs import *
 from . import outputs
 
@@ -19,8 +19,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:billingbudgets/v1:BillingAccountBudget":
-                return BillingAccountBudget(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-native:billingbudgets/v1:Budget":
+                return Budget(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

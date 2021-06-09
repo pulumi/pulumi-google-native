@@ -7,10 +7,6 @@ from .deidentify_template import *
 from .dlp_job import *
 from .inspect_template import *
 from .job_trigger import *
-from .organization_deidentify_template import *
-from .organization_inspect_template import *
-from .organization_job_trigger import *
-from .organization_stored_info_type import *
 from .stored_info_type import *
 from ._inputs import *
 from . import outputs
@@ -35,14 +31,6 @@ def _register_module():
                 return InspectTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dlp/v2:JobTrigger":
                 return JobTrigger(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dlp/v2:OrganizationDeidentifyTemplate":
-                return OrganizationDeidentifyTemplate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dlp/v2:OrganizationInspectTemplate":
-                return OrganizationInspectTemplate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dlp/v2:OrganizationJobTrigger":
-                return OrganizationJobTrigger(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:dlp/v2:OrganizationStoredInfoType":
-                return OrganizationStoredInfoType(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dlp/v2:StoredInfoType":
                 return StoredInfoType(name, pulumi.ResourceOptions(urn=urn))
             else:

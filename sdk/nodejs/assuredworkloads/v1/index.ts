@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./organizationWorkload";
+export * from "./workload";
 
 // Import resources to register:
-import { OrganizationWorkload } from "./organizationWorkload";
+import { Workload } from "./workload";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:assuredworkloads/v1:OrganizationWorkload":
-                return new OrganizationWorkload(name, <any>undefined, { urn })
+            case "google-native:assuredworkloads/v1:Workload":
+                return new Workload(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

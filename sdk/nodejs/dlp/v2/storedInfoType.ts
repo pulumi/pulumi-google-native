@@ -59,10 +59,14 @@ export class StoredInfoType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["config"] = args ? args.config : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
             inputs["currentVersion"] = undefined /*out*/;
@@ -88,6 +92,7 @@ export interface StoredInfoTypeArgs {
      * Required. Configuration of the storedInfoType to create.
      */
     readonly config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
+    readonly location: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

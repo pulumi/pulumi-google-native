@@ -21,18 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:cloudkms/v1:CryptoKey":
+		r = &CryptoKey{}
+	case "google-native:cloudkms/v1:CryptoKeyVersion":
+		r = &CryptoKeyVersion{}
+	case "google-native:cloudkms/v1:ImportJob":
+		r = &ImportJob{}
 	case "google-native:cloudkms/v1:KeyRing":
 		r = &KeyRing{}
-	case "google-native:cloudkms/v1:KeyRingCryptoKey":
-		r = &KeyRingCryptoKey{}
-	case "google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion":
-		r = &KeyRingCryptoKeyCryptoKeyVersion{}
 	case "google-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
 		r = &KeyRingCryptoKeyIamPolicy{}
 	case "google-native:cloudkms/v1:KeyRingIamPolicy":
 		r = &KeyRingIamPolicy{}
-	case "google-native:cloudkms/v1:KeyRingImportJob":
-		r = &KeyRingImportJob{}
 	case "google-native:cloudkms/v1:KeyRingImportJobIamPolicy":
 		r = &KeyRingImportJobIamPolicy{}
 	default:

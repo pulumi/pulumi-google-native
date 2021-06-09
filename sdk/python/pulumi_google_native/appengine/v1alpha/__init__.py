@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .app_authorized_certificate import *
-from .app_domain_mapping import *
+from .authorized_certificate import *
+from .domain_mapping import *
 from ._inputs import *
 from . import outputs
 
@@ -20,10 +20,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:appengine/v1alpha:AppAuthorizedCertificate":
-                return AppAuthorizedCertificate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:appengine/v1alpha:AppDomainMapping":
-                return AppDomainMapping(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-native:appengine/v1alpha:AuthorizedCertificate":
+                return AuthorizedCertificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:appengine/v1alpha:DomainMapping":
+                return DomainMapping(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

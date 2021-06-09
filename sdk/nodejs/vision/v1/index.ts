@@ -6,13 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./product";
-export * from "./productReferenceImage";
 export * from "./productSet";
+export * from "./referenceImage";
 
 // Import resources to register:
 import { Product } from "./product";
-import { ProductReferenceImage } from "./productReferenceImage";
 import { ProductSet } from "./productSet";
+import { ReferenceImage } from "./referenceImage";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,10 +20,10 @@ const _module = {
         switch (type) {
             case "google-native:vision/v1:Product":
                 return new Product(name, <any>undefined, { urn })
-            case "google-native:vision/v1:ProductReferenceImage":
-                return new ProductReferenceImage(name, <any>undefined, { urn })
             case "google-native:vision/v1:ProductSet":
                 return new ProductSet(name, <any>undefined, { urn })
+            case "google-native:vision/v1:ReferenceImage":
+                return new ReferenceImage(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

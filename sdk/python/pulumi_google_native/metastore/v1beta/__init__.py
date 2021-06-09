@@ -3,10 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .backup import *
+from .metadata_import import *
 from .service import *
-from .service_backup import *
 from .service_iam_policy import *
-from .service_metadata_import import *
 from ._inputs import *
 from . import outputs
 
@@ -22,14 +22,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:metastore/v1beta:Service":
+            if typ == "google-native:metastore/v1beta:Backup":
+                return Backup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:metastore/v1beta:MetadataImport":
+                return MetadataImport(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:metastore/v1beta:Service":
                 return Service(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:metastore/v1beta:ServiceBackup":
-                return ServiceBackup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:metastore/v1beta:ServiceIamPolicy":
                 return ServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:metastore/v1beta:ServiceMetadataImport":
-                return ServiceMetadataImport(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

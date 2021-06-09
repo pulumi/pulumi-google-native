@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:workflowexecutions/v1beta:WorkflowExecution":
-		r = &WorkflowExecution{}
+	case "google-native:workflowexecutions/v1beta:Execution":
+		r = &Execution{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

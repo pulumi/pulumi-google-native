@@ -7,9 +7,9 @@ from .job import *
 from .job_iam_policy import *
 from .model import *
 from .model_iam_policy import *
-from .model_version import *
 from .study import *
-from .study_trial import *
+from .trial import *
+from .version import *
 from ._inputs import *
 from . import outputs
 
@@ -33,12 +33,12 @@ def _register_module():
                 return Model(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:ml/v1:ModelIamPolicy":
                 return ModelIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:ml/v1:ModelVersion":
-                return ModelVersion(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:ml/v1:Study":
                 return Study(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:ml/v1:StudyTrial":
-                return StudyTrial(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:ml/v1:Trial":
+                return Trial(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:ml/v1:Version":
+                return Version(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

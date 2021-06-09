@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:cloudiot/v1:Device":
+		r = &Device{}
 	case "google-native:cloudiot/v1:Registry":
 		r = &Registry{}
-	case "google-native:cloudiot/v1:RegistryDevice":
-		r = &RegistryDevice{}
 	case "google-native:cloudiot/v1:RegistryGroupIamPolicy":
 		r = &RegistryGroupIamPolicy{}
 	case "google-native:cloudiot/v1:RegistryIamPolicy":

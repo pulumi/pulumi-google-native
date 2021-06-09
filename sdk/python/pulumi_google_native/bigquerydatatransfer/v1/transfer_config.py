@@ -15,6 +15,7 @@ __all__ = ['TransferConfigArgs', 'TransferConfig']
 @pulumi.input_type
 class TransferConfigArgs:
     def __init__(__self__, *,
+                 location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  authorization_code: Optional[pulumi.Input[str]] = None,
                  data_refresh_window_days: Optional[pulumi.Input[int]] = None,
@@ -44,6 +45,7 @@ class TransferConfigArgs:
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
         """
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if authorization_code is not None:
             pulumi.set(__self__, "authorization_code", authorization_code)
@@ -73,6 +75,15 @@ class TransferConfigArgs:
             pulumi.set(__self__, "service_account_name", service_account_name)
         if version_info is not None:
             pulumi.set(__self__, "version_info", version_info)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -255,6 +266,7 @@ class TransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input[pulumi.InputType['EmailPreferencesArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -312,6 +324,7 @@ class TransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input[pulumi.InputType['EmailPreferencesArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -339,6 +352,9 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["email_preferences"] = email_preferences
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
             __props__.__dict__["params"] = params

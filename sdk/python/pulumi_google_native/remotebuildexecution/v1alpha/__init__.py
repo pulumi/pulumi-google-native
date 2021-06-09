@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .instance import *
-from .instance_workerpool import *
+from .workerpool import *
 from ._inputs import *
 from . import outputs
 
@@ -22,8 +22,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-native:remotebuildexecution/v1alpha:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:remotebuildexecution/v1alpha:InstanceWorkerpool":
-                return InstanceWorkerpool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:remotebuildexecution/v1alpha:Workerpool":
+                return Workerpool(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

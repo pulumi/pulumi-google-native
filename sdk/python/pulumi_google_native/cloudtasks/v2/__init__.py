@@ -5,7 +5,7 @@
 # Export this package's modules as members:
 from .queue import *
 from .queue_iam_policy import *
-from .queue_task import *
+from .task import *
 from ._inputs import *
 from . import outputs
 
@@ -25,8 +25,8 @@ def _register_module():
                 return Queue(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:cloudtasks/v2:QueueIamPolicy":
                 return QueueIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:cloudtasks/v2:QueueTask":
-                return QueueTask(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:cloudtasks/v2:Task":
+                return Task(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -5,37 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./entry";
 export * from "./entryGroup";
-export * from "./entryGroupEntry";
 export * from "./entryGroupIamPolicy";
+export * from "./policyTag";
 export * from "./tagTemplate";
 export * from "./tagTemplateIamPolicy";
 export * from "./taxonomy";
 export * from "./taxonomyIamPolicy";
-export * from "./taxonomyPolicyTag";
 export * from "./taxonomyPolicyTagIamPolicy";
 
 // Import resources to register:
+import { Entry } from "./entry";
 import { EntryGroup } from "./entryGroup";
-import { EntryGroupEntry } from "./entryGroupEntry";
 import { EntryGroupIamPolicy } from "./entryGroupIamPolicy";
+import { PolicyTag } from "./policyTag";
 import { TagTemplate } from "./tagTemplate";
 import { TagTemplateIamPolicy } from "./tagTemplateIamPolicy";
 import { Taxonomy } from "./taxonomy";
 import { TaxonomyIamPolicy } from "./taxonomyIamPolicy";
-import { TaxonomyPolicyTag } from "./taxonomyPolicyTag";
 import { TaxonomyPolicyTagIamPolicy } from "./taxonomyPolicyTagIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:datacatalog/v1beta1:Entry":
+                return new Entry(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1beta1:EntryGroup":
                 return new EntryGroup(name, <any>undefined, { urn })
-            case "google-native:datacatalog/v1beta1:EntryGroupEntry":
-                return new EntryGroupEntry(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1beta1:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1beta1:PolicyTag":
+                return new PolicyTag(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1beta1:TagTemplate":
                 return new TagTemplate(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1beta1:TagTemplateIamPolicy":
@@ -44,8 +46,6 @@ const _module = {
                 return new Taxonomy(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1beta1:TaxonomyIamPolicy":
                 return new TaxonomyIamPolicy(name, <any>undefined, { urn })
-            case "google-native:datacatalog/v1beta1:TaxonomyPolicyTag":
-                return new TaxonomyPolicyTag(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
                 return new TaxonomyPolicyTagIamPolicy(name, <any>undefined, { urn })
             default:

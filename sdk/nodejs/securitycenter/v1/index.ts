@@ -5,25 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./organizationNotificationConfig";
-export * from "./organizationSource";
+export * from "./notificationConfig";
 export * from "./organizationSourceIamPolicy";
+export * from "./source";
 
 // Import resources to register:
-import { OrganizationNotificationConfig } from "./organizationNotificationConfig";
-import { OrganizationSource } from "./organizationSource";
+import { NotificationConfig } from "./notificationConfig";
 import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";
+import { Source } from "./source";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:securitycenter/v1:OrganizationNotificationConfig":
-                return new OrganizationNotificationConfig(name, <any>undefined, { urn })
-            case "google-native:securitycenter/v1:OrganizationSource":
-                return new OrganizationSource(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:NotificationConfig":
+                return new NotificationConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:Source":
+                return new Source(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

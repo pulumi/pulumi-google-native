@@ -25,8 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Device{}
 	case "google-native:cloudidentity/v1beta1:Group":
 		r = &Group{}
-	case "google-native:cloudidentity/v1beta1:GroupMembership":
-		r = &GroupMembership{}
+	case "google-native:cloudidentity/v1beta1:Membership":
+		r = &Membership{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

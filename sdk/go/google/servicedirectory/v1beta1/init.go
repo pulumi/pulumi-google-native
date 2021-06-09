@@ -21,16 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:servicedirectory/v1beta1:Endpoint":
+		r = &Endpoint{}
 	case "google-native:servicedirectory/v1beta1:Namespace":
 		r = &Namespace{}
 	case "google-native:servicedirectory/v1beta1:NamespaceIamPolicy":
 		r = &NamespaceIamPolicy{}
-	case "google-native:servicedirectory/v1beta1:NamespaceService":
-		r = &NamespaceService{}
-	case "google-native:servicedirectory/v1beta1:NamespaceServiceEndpoint":
-		r = &NamespaceServiceEndpoint{}
 	case "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
 		r = &NamespaceServiceIamPolicy{}
+	case "google-native:servicedirectory/v1beta1:Service":
+		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

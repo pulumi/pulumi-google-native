@@ -25,14 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Change{}
 	case "google-native:dns/v1beta2:ManagedZone":
 		r = &ManagedZone{}
-	case "google-native:dns/v1beta2:ManagedZoneRrset":
-		r = &ManagedZoneRrset{}
 	case "google-native:dns/v1beta2:Policy":
 		r = &Policy{}
 	case "google-native:dns/v1beta2:ResponsePolicy":
 		r = &ResponsePolicy{}
 	case "google-native:dns/v1beta2:ResponsePolicyRule":
 		r = &ResponsePolicyRule{}
+	case "google-native:dns/v1beta2:Rrset":
+		r = &Rrset{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

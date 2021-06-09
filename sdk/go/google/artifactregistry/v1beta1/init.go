@@ -25,8 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Repository{}
 	case "google-native:artifactregistry/v1beta1:RepositoryIamPolicy":
 		r = &RepositoryIamPolicy{}
-	case "google-native:artifactregistry/v1beta1:RepositoryPackageTag":
-		r = &RepositoryPackageTag{}
+	case "google-native:artifactregistry/v1beta1:Tag":
+		r = &Tag{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

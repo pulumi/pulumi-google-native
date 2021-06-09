@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./namespaceJob";
+export * from "./job";
 
 // Import resources to register:
-import { NamespaceJob } from "./namespaceJob";
+import { Job } from "./job";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:run/v1alpha1:NamespaceJob":
-                return new NamespaceJob(name, <any>undefined, { urn })
+            case "google-native:run/v1alpha1:Job":
+                return new Job(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

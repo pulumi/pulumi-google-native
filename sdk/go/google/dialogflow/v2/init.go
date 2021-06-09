@@ -21,36 +21,28 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:dialogflow/v2:AgentEntityType":
-		r = &AgentEntityType{}
-	case "google-native:dialogflow/v2:AgentEnvironment":
-		r = &AgentEnvironment{}
-	case "google-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
-		r = &AgentEnvironmentUserSessionContext{}
-	case "google-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
-		r = &AgentEnvironmentUserSessionEntityType{}
-	case "google-native:dialogflow/v2:AgentIntent":
-		r = &AgentIntent{}
-	case "google-native:dialogflow/v2:AgentKnowledgeBase":
-		r = &AgentKnowledgeBase{}
-	case "google-native:dialogflow/v2:AgentKnowledgeBaseDocument":
-		r = &AgentKnowledgeBaseDocument{}
-	case "google-native:dialogflow/v2:AgentSessionContext":
-		r = &AgentSessionContext{}
-	case "google-native:dialogflow/v2:AgentSessionEntityType":
-		r = &AgentSessionEntityType{}
-	case "google-native:dialogflow/v2:AgentVersion":
-		r = &AgentVersion{}
+	case "google-native:dialogflow/v2:Context":
+		r = &Context{}
 	case "google-native:dialogflow/v2:Conversation":
 		r = &Conversation{}
-	case "google-native:dialogflow/v2:ConversationParticipant":
-		r = &ConversationParticipant{}
 	case "google-native:dialogflow/v2:ConversationProfile":
 		r = &ConversationProfile{}
+	case "google-native:dialogflow/v2:Document":
+		r = &Document{}
+	case "google-native:dialogflow/v2:EntityType":
+		r = &EntityType{}
+	case "google-native:dialogflow/v2:Environment":
+		r = &Environment{}
+	case "google-native:dialogflow/v2:Intent":
+		r = &Intent{}
 	case "google-native:dialogflow/v2:KnowledgeBase":
 		r = &KnowledgeBase{}
-	case "google-native:dialogflow/v2:KnowledgeBaseDocument":
-		r = &KnowledgeBaseDocument{}
+	case "google-native:dialogflow/v2:Participant":
+		r = &Participant{}
+	case "google-native:dialogflow/v2:SessionEntityType":
+		r = &SessionEntityType{}
+	case "google-native:dialogflow/v2:Version":
+		r = &Version{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

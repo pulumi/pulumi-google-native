@@ -6,17 +6,17 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./app";
-export * from "./appAuthorizedCertificate";
-export * from "./appDomainMapping";
-export * from "./appFirewallIngressRule";
-export * from "./appServiceVersion";
+export * from "./authorizedCertificate";
+export * from "./domainMapping";
+export * from "./ingressRule";
+export * from "./version";
 
 // Import resources to register:
 import { App } from "./app";
-import { AppAuthorizedCertificate } from "./appAuthorizedCertificate";
-import { AppDomainMapping } from "./appDomainMapping";
-import { AppFirewallIngressRule } from "./appFirewallIngressRule";
-import { AppServiceVersion } from "./appServiceVersion";
+import { AuthorizedCertificate } from "./authorizedCertificate";
+import { DomainMapping } from "./domainMapping";
+import { IngressRule } from "./ingressRule";
+import { Version } from "./version";
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,14 +24,14 @@ const _module = {
         switch (type) {
             case "google-native:appengine/v1beta:App":
                 return new App(name, <any>undefined, { urn })
-            case "google-native:appengine/v1beta:AppAuthorizedCertificate":
-                return new AppAuthorizedCertificate(name, <any>undefined, { urn })
-            case "google-native:appengine/v1beta:AppDomainMapping":
-                return new AppDomainMapping(name, <any>undefined, { urn })
-            case "google-native:appengine/v1beta:AppFirewallIngressRule":
-                return new AppFirewallIngressRule(name, <any>undefined, { urn })
-            case "google-native:appengine/v1beta:AppServiceVersion":
-                return new AppServiceVersion(name, <any>undefined, { urn })
+            case "google-native:appengine/v1beta:AuthorizedCertificate":
+                return new AuthorizedCertificate(name, <any>undefined, { urn })
+            case "google-native:appengine/v1beta:DomainMapping":
+                return new DomainMapping(name, <any>undefined, { urn })
+            case "google-native:appengine/v1beta:IngressRule":
+                return new IngressRule(name, <any>undefined, { urn })
+            case "google-native:appengine/v1beta:Version":
+                return new Version(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

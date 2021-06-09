@@ -3,10 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .execution import *
 from .history import *
-from .history_execution import *
-from .history_execution_step import *
-from .history_execution_step_perf_sample_series import *
+from .perf_sample_series import *
+from .step import *
 from ._inputs import *
 from . import outputs
 
@@ -22,14 +22,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-native:toolresults/v1beta3:History":
+            if typ == "google-native:toolresults/v1beta3:Execution":
+                return Execution(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:toolresults/v1beta3:History":
                 return History(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:toolresults/v1beta3:HistoryExecution":
-                return HistoryExecution(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:toolresults/v1beta3:HistoryExecutionStep":
-                return HistoryExecutionStep(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
-                return HistoryExecutionStepPerfSampleSeries(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:toolresults/v1beta3:PerfSampleSeries":
+                return PerfSampleSeries(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:toolresults/v1beta3:Step":
+                return Step(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

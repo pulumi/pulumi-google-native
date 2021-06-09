@@ -5,25 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./accessLevel";
 export * from "./accessPolicy";
-export * from "./accessPolicyAccessLevel";
-export * from "./accessPolicyServicePerimeter";
+export * from "./servicePerimeter";
 
 // Import resources to register:
+import { AccessLevel } from "./accessLevel";
 import { AccessPolicy } from "./accessPolicy";
-import { AccessPolicyAccessLevel } from "./accessPolicyAccessLevel";
-import { AccessPolicyServicePerimeter } from "./accessPolicyServicePerimeter";
+import { ServicePerimeter } from "./servicePerimeter";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:accesscontextmanager/v1beta:AccessLevel":
+                return new AccessLevel(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1beta:AccessPolicy":
                 return new AccessPolicy(name, <any>undefined, { urn })
-            case "google-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel":
-                return new AccessPolicyAccessLevel(name, <any>undefined, { urn })
-            case "google-native:accesscontextmanager/v1beta:AccessPolicyServicePerimeter":
-                return new AccessPolicyServicePerimeter(name, <any>undefined, { urn })
+            case "google-native:accesscontextmanager/v1beta:ServicePerimeter":
+                return new ServicePerimeter(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

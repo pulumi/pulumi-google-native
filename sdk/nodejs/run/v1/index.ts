@@ -6,15 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./domainmapping";
-export * from "./namespaceDomainmapping";
-export * from "./namespaceService";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
 // Import resources to register:
 import { Domainmapping } from "./domainmapping";
-import { NamespaceDomainmapping } from "./namespaceDomainmapping";
-import { NamespaceService } from "./namespaceService";
 import { Service } from "./service";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
 
@@ -24,10 +20,6 @@ const _module = {
         switch (type) {
             case "google-native:run/v1:Domainmapping":
                 return new Domainmapping(name, <any>undefined, { urn })
-            case "google-native:run/v1:NamespaceDomainmapping":
-                return new NamespaceDomainmapping(name, <any>undefined, { urn })
-            case "google-native:run/v1:NamespaceService":
-                return new NamespaceService(name, <any>undefined, { urn })
             case "google-native:run/v1:Service":
                 return new Service(name, <any>undefined, { urn })
             case "google-native:run/v1:ServiceIamPolicy":

@@ -4,9 +4,9 @@
 
 # Export this package's modules as members:
 from .api import *
-from .api_config import *
 from .api_config_iam_policy import *
 from .api_iam_policy import *
+from .config import *
 from .gateway import *
 from .gateway_iam_policy import *
 from ._inputs import *
@@ -26,12 +26,12 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-native:apigateway/v1:Api":
                 return Api(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-native:apigateway/v1:ApiConfig":
-                return ApiConfig(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigateway/v1:ApiConfigIamPolicy":
                 return ApiConfigIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigateway/v1:ApiIamPolicy":
                 return ApiIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigateway/v1:Config":
+                return Config(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigateway/v1:Gateway":
                 return Gateway(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigateway/v1:GatewayIamPolicy":

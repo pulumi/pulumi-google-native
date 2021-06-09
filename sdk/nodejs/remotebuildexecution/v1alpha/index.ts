@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./instance";
-export * from "./instanceWorkerpool";
+export * from "./workerpool";
 
 // Import resources to register:
 import { Instance } from "./instance";
-import { InstanceWorkerpool } from "./instanceWorkerpool";
+import { Workerpool } from "./workerpool";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-native:remotebuildexecution/v1alpha:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-native:remotebuildexecution/v1alpha:InstanceWorkerpool":
-                return new InstanceWorkerpool(name, <any>undefined, { urn })
+            case "google-native:remotebuildexecution/v1alpha:Workerpool":
+                return new Workerpool(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

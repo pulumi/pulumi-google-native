@@ -25,22 +25,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AutoscalingPolicy{}
 	case "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
 		r = &AutoscalingPolicyIamPolicy{}
-	case "google-native:dataproc/v1:RegionAutoscalingPolicy":
-		r = &RegionAutoscalingPolicy{}
+	case "google-native:dataproc/v1:Cluster":
+		r = &Cluster{}
+	case "google-native:dataproc/v1:Job":
+		r = &Job{}
 	case "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
 		r = &RegionAutoscalingPolicyIamPolicy{}
-	case "google-native:dataproc/v1:RegionCluster":
-		r = &RegionCluster{}
 	case "google-native:dataproc/v1:RegionClusterIamPolicy":
 		r = &RegionClusterIamPolicy{}
-	case "google-native:dataproc/v1:RegionJob":
-		r = &RegionJob{}
 	case "google-native:dataproc/v1:RegionJobIamPolicy":
 		r = &RegionJobIamPolicy{}
 	case "google-native:dataproc/v1:RegionOperationIamPolicy":
 		r = &RegionOperationIamPolicy{}
-	case "google-native:dataproc/v1:RegionWorkflowTemplate":
-		r = &RegionWorkflowTemplate{}
 	case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
 		r = &RegionWorkflowTemplateIamPolicy{}
 	case "google-native:dataproc/v1:WorkflowTemplate":

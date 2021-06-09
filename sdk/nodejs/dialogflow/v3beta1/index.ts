@@ -6,35 +6,33 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./agent";
-export * from "./agentEntityType";
-export * from "./agentEnvironment";
-export * from "./agentEnvironmentExperiment";
-export * from "./agentEnvironmentSessionEntityType";
-export * from "./agentFlow";
-export * from "./agentFlowPage";
-export * from "./agentFlowTransitionRouteGroup";
-export * from "./agentFlowVersion";
-export * from "./agentIntent";
-export * from "./agentSessionEntityType";
-export * from "./agentTestCase";
-export * from "./agentWebhook";
+export * from "./entityType";
+export * from "./environment";
+export * from "./experiment";
+export * from "./flow";
+export * from "./intent";
+export * from "./page";
 export * from "./securitySetting";
+export * from "./sessionEntityType";
+export * from "./testCase";
+export * from "./transitionRouteGroup";
+export * from "./version";
+export * from "./webhook";
 
 // Import resources to register:
 import { Agent } from "./agent";
-import { AgentEntityType } from "./agentEntityType";
-import { AgentEnvironment } from "./agentEnvironment";
-import { AgentEnvironmentExperiment } from "./agentEnvironmentExperiment";
-import { AgentEnvironmentSessionEntityType } from "./agentEnvironmentSessionEntityType";
-import { AgentFlow } from "./agentFlow";
-import { AgentFlowPage } from "./agentFlowPage";
-import { AgentFlowTransitionRouteGroup } from "./agentFlowTransitionRouteGroup";
-import { AgentFlowVersion } from "./agentFlowVersion";
-import { AgentIntent } from "./agentIntent";
-import { AgentSessionEntityType } from "./agentSessionEntityType";
-import { AgentTestCase } from "./agentTestCase";
-import { AgentWebhook } from "./agentWebhook";
+import { EntityType } from "./entityType";
+import { Environment } from "./environment";
+import { Experiment } from "./experiment";
+import { Flow } from "./flow";
+import { Intent } from "./intent";
+import { Page } from "./page";
 import { SecuritySetting } from "./securitySetting";
+import { SessionEntityType } from "./sessionEntityType";
+import { TestCase } from "./testCase";
+import { TransitionRouteGroup } from "./transitionRouteGroup";
+import { Version } from "./version";
+import { Webhook } from "./webhook";
 
 const _module = {
     version: utilities.getVersion(),
@@ -42,32 +40,30 @@ const _module = {
         switch (type) {
             case "google-native:dialogflow/v3beta1:Agent":
                 return new Agent(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentEntityType":
-                return new AgentEntityType(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentEnvironment":
-                return new AgentEnvironment(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentEnvironmentExperiment":
-                return new AgentEnvironmentExperiment(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentEnvironmentSessionEntityType":
-                return new AgentEnvironmentSessionEntityType(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentFlow":
-                return new AgentFlow(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentFlowPage":
-                return new AgentFlowPage(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup":
-                return new AgentFlowTransitionRouteGroup(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentFlowVersion":
-                return new AgentFlowVersion(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentIntent":
-                return new AgentIntent(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentSessionEntityType":
-                return new AgentSessionEntityType(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentTestCase":
-                return new AgentTestCase(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v3beta1:AgentWebhook":
-                return new AgentWebhook(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:EntityType":
+                return new EntityType(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Environment":
+                return new Environment(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Experiment":
+                return new Experiment(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Flow":
+                return new Flow(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Intent":
+                return new Intent(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Page":
+                return new Page(name, <any>undefined, { urn })
             case "google-native:dialogflow/v3beta1:SecuritySetting":
                 return new SecuritySetting(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:SessionEntityType":
+                return new SessionEntityType(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:TestCase":
+                return new TestCase(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:TransitionRouteGroup":
+                return new TransitionRouteGroup(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Version":
+                return new Version(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -63,6 +63,9 @@ export class Template extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -108,7 +111,7 @@ export interface TemplateArgs {
     /**
      * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
      */
-    readonly location?: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The runtime parameters to pass to the job.
      */

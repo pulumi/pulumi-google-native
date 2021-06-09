@@ -5,33 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./config";
+export * from "./rollout";
 export * from "./service";
-export * from "./serviceConfig";
 export * from "./serviceConsumerIamPolicy";
 export * from "./serviceIamPolicy";
-export * from "./serviceRollout";
 
 // Import resources to register:
+import { Config } from "./config";
+import { Rollout } from "./rollout";
 import { Service } from "./service";
-import { ServiceConfig } from "./serviceConfig";
 import { ServiceConsumerIamPolicy } from "./serviceConsumerIamPolicy";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
-import { ServiceRollout } from "./serviceRollout";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:servicemanagement/v1:Config":
+                return new Config(name, <any>undefined, { urn })
+            case "google-native:servicemanagement/v1:Rollout":
+                return new Rollout(name, <any>undefined, { urn })
             case "google-native:servicemanagement/v1:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-native:servicemanagement/v1:ServiceConfig":
-                return new ServiceConfig(name, <any>undefined, { urn })
             case "google-native:servicemanagement/v1:ServiceConsumerIamPolicy":
                 return new ServiceConsumerIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicemanagement/v1:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
-            case "google-native:servicemanagement/v1:ServiceRollout":
-                return new ServiceRollout(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -3,7 +3,13 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-- Stop generating articial input properties for ID path segments. Calculate
+All the following changes are extensively breaking. We do our best to stabilize
+the resource shapes as soon as possible.
+
+- Refine resource naming to avoid excidingly long names and unobserved conflicts.
+  [#92](https://github.com/pulumi/pulumi-google-native/issues/92).
+
+- Stop generating artificial input properties for ID path segments. Calculate
   resource IDs automatically.
   [#100](https://github.com/pulumi/pulumi-google-native/pull/100),
   [#97](https://github.com/pulumi/pulumi-google-native/issues/97)

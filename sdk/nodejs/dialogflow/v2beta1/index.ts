@@ -5,73 +5,57 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./agentEntityType";
-export * from "./agentEnvironment";
-export * from "./agentEnvironmentUserSessionContext";
-export * from "./agentEnvironmentUserSessionEntityType";
-export * from "./agentIntent";
-export * from "./agentKnowledgeBase";
-export * from "./agentKnowledgeBaseDocument";
-export * from "./agentSessionContext";
-export * from "./agentSessionEntityType";
-export * from "./agentVersion";
+export * from "./context";
 export * from "./conversation";
-export * from "./conversationParticipant";
 export * from "./conversationProfile";
+export * from "./document";
+export * from "./entityType";
+export * from "./environment";
+export * from "./intent";
 export * from "./knowledgeBase";
-export * from "./knowledgeBaseDocument";
+export * from "./participant";
+export * from "./sessionEntityType";
+export * from "./version";
 
 // Import resources to register:
-import { AgentEntityType } from "./agentEntityType";
-import { AgentEnvironment } from "./agentEnvironment";
-import { AgentEnvironmentUserSessionContext } from "./agentEnvironmentUserSessionContext";
-import { AgentEnvironmentUserSessionEntityType } from "./agentEnvironmentUserSessionEntityType";
-import { AgentIntent } from "./agentIntent";
-import { AgentKnowledgeBase } from "./agentKnowledgeBase";
-import { AgentKnowledgeBaseDocument } from "./agentKnowledgeBaseDocument";
-import { AgentSessionContext } from "./agentSessionContext";
-import { AgentSessionEntityType } from "./agentSessionEntityType";
-import { AgentVersion } from "./agentVersion";
+import { Context } from "./context";
 import { Conversation } from "./conversation";
-import { ConversationParticipant } from "./conversationParticipant";
 import { ConversationProfile } from "./conversationProfile";
+import { Document } from "./document";
+import { EntityType } from "./entityType";
+import { Environment } from "./environment";
+import { Intent } from "./intent";
 import { KnowledgeBase } from "./knowledgeBase";
-import { KnowledgeBaseDocument } from "./knowledgeBaseDocument";
+import { Participant } from "./participant";
+import { SessionEntityType } from "./sessionEntityType";
+import { Version } from "./version";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:dialogflow/v2beta1:AgentEntityType":
-                return new AgentEntityType(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentEnvironment":
-                return new AgentEnvironment(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionContext":
-                return new AgentEnvironmentUserSessionContext(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType":
-                return new AgentEnvironmentUserSessionEntityType(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentIntent":
-                return new AgentIntent(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentKnowledgeBase":
-                return new AgentKnowledgeBase(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument":
-                return new AgentKnowledgeBaseDocument(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentSessionContext":
-                return new AgentSessionContext(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentSessionEntityType":
-                return new AgentSessionEntityType(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:AgentVersion":
-                return new AgentVersion(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:Context":
+                return new Context(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2beta1:Conversation":
                 return new Conversation(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:ConversationParticipant":
-                return new ConversationParticipant(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2beta1:ConversationProfile":
                 return new ConversationProfile(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:Document":
+                return new Document(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:EntityType":
+                return new EntityType(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:Environment":
+                return new Environment(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:Intent":
+                return new Intent(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2beta1:KnowledgeBase":
                 return new KnowledgeBase(name, <any>undefined, { urn })
-            case "google-native:dialogflow/v2beta1:KnowledgeBaseDocument":
-                return new KnowledgeBaseDocument(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:Participant":
+                return new Participant(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:SessionEntityType":
+                return new SessionEntityType(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2beta1:Version":
+                return new Version(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

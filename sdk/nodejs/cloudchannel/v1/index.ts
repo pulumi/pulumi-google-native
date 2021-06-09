@@ -5,29 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./accountChannelPartnerLink";
-export * from "./accountChannelPartnerLinkCustomer";
-export * from "./accountCustomer";
-export * from "./accountCustomerEntitlement";
+export * from "./channelPartnerLink";
+export * from "./customer";
+export * from "./entitlement";
 
 // Import resources to register:
-import { AccountChannelPartnerLink } from "./accountChannelPartnerLink";
-import { AccountChannelPartnerLinkCustomer } from "./accountChannelPartnerLinkCustomer";
-import { AccountCustomer } from "./accountCustomer";
-import { AccountCustomerEntitlement } from "./accountCustomerEntitlement";
+import { ChannelPartnerLink } from "./channelPartnerLink";
+import { Customer } from "./customer";
+import { Entitlement } from "./entitlement";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:cloudchannel/v1:AccountChannelPartnerLink":
-                return new AccountChannelPartnerLink(name, <any>undefined, { urn })
-            case "google-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
-                return new AccountChannelPartnerLinkCustomer(name, <any>undefined, { urn })
-            case "google-native:cloudchannel/v1:AccountCustomer":
-                return new AccountCustomer(name, <any>undefined, { urn })
-            case "google-native:cloudchannel/v1:AccountCustomerEntitlement":
-                return new AccountCustomerEntitlement(name, <any>undefined, { urn })
+            case "google-native:cloudchannel/v1:ChannelPartnerLink":
+                return new ChannelPartnerLink(name, <any>undefined, { urn })
+            case "google-native:cloudchannel/v1:Customer":
+                return new Customer(name, <any>undefined, { urn })
+            case "google-native:cloudchannel/v1:Entitlement":
+                return new Entitlement(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -15,6 +15,7 @@ __all__ = ['StoredInfoTypeArgs', 'StoredInfoType']
 @pulumi.input_type
 class StoredInfoTypeArgs:
     def __init__(__self__, *,
+                 location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  config: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None):
@@ -23,11 +24,21 @@ class StoredInfoTypeArgs:
         :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Required. Configuration of the storedInfoType to create.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if stored_info_type_id is not None:
             pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -69,6 +80,7 @@ class StoredInfoType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -105,6 +117,7 @@ class StoredInfoType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -120,6 +133,9 @@ class StoredInfoType(pulumi.CustomResource):
             __props__ = StoredInfoTypeArgs.__new__(StoredInfoTypeArgs)
 
             __props__.__dict__["config"] = config
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

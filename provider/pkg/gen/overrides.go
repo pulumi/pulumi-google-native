@@ -2,23 +2,82 @@
 
 package gen
 
+// resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
+// that is present in the discovery document.
+var resourceNameByTypeOverrides = map[string]string{
+	// Diag Flow.
+	"GoogleCloudDialogflowV2SessionEntityType":        "SessionEntityType",
+	"GoogleCloudDialogflowV2beta1SessionEntityType":   "SessionEntityType",
+	"GoogleCloudDialogflowCxV3SessionEntityType":      "SessionEntityType",
+	"GoogleCloudDialogflowCxV3beta1SessionEntityType": "SessionEntityType",
+}
+
+// resourceNameByPathOverrides is a map of Pulumi resource names by the API flat path
+// that is present in the discovery document.
+var resourceNameByPathOverrides = map[string]string{
+	// Cloud Run: remove domain mapping on the KNative path.
+	"apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings": "",
+
+	// Apigee.
+	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments": "EnvGroupAttachment",
+	"v1/organizations/{organizationsId}/instances/{instancesId}/attachments": "InstanceAttachment",
+
+	// DLP.
+	"v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates": "OrganizationsDeidentifyTemplate",
+	"v2/organizations/{organizationsId}/inspectTemplates":                            "",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
+
+	// Essential Contracts.
+	"v1/folders/{foldersId}/contacts":             "FolderContact",
+	"v1/organizations/{organizationsId}/contacts": "OrganizationContact",
+
+	// IAM.
+	"v1/organizations/{organizationsId}/roles": "OrganizationRole",
+
+	// Logging.
+	"v2/billingAccounts/{billingAccountsId}/exclusions":                                        "BillingAccountExclusion",
+	"v2/folders/{foldersId}/exclusions":                                                        "FolderExclusion",
+	"v2/organizations/{organizationsId}/exclusions":                                            "OrganizationExclusion",
+	"v2/{v2Id}/{v2Id1}/exclusions":                                                             "",
+	"v2/billingAccounts/{billingAccountsId}/sinks":                                             "BillingAccountSink",
+	"v2/folders/{foldersId}/sinks":                                                             "FolderSink",
+	"v2/organizations/{organizationsId}/sinks":                                                 "OrganizationSink",
+	"v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets":                   "BillingAccountBucket",
+	"v2/folders/{foldersId}/locations/{locationsId}/buckets":                                   "FolderBucket",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/buckets":                       "OrganizationBucket",
+	"v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views": "BillingAccountBucketView",
+	"v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views":                 "FolderBucketView",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views":     "OrganizationBucketView",
+	"v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views":               "BucketView",
+
+	// Org Policy.
+	"v2/folders/{foldersId}/policies":             "FolderPolicy",
+	"v2/organizations/{organizationsId}/policies": "OrganizationPolicy",
+
+	// Policy Simulator.
+	"v1/folders/{foldersId}/locations/{locationsId}/replays":                  "FolderReplay",
+	"v1/organizations/{organizationsId}/locations/{locationsId}/replays":      "OrganizationReplay",
+	"v1beta1/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
+	"v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
+}
+
 // resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.
 var resourceNamePropertyOverrides = map[string]string{
-	"apigee/v1:OrganizationEnvironmentKeystoreAlias.aliasesId":       "alias",
-	"appengine/v1:AppFirewallIngressRule.ingressRulesId":             "priority",
-	"appengine/v1beta:AppFirewallIngressRule.ingressRulesId":         "priority",
-	"bigquery/v2:Routine.routinesId":                                 "routineReference.routineId",
-	"dataproc/v1:RegionJob.jobId":                                    "reference.jobId",
-	"dataproc/v1beta2:RegionJob.jobId":                               "reference.jobId",
-	"dns/v1:Change.changeId":                                         "id",
-	"dns/v1beta2:Change.changeId":                                    "id",
-	"dns/v1beta2:ResponsePolicy.responsePolicy":                      "id",
-	"dns/v1beta2:ResponsePolicyRule.responsePolicyRule":              "ruleName",
-	"firebasehosting/v1beta1:SiteDomain.domainsId":                   "domainName",
-	"recommendationengine/v1beta1:CatalogCatalogItem.catalogItemsId": "id",
-	"run/v1alpha1:NamespaceJob.jobsId":                               "metadata.name",
-	"run/v1:Domainmapping.domainmappingsId":                          "metadata.name",
-	"run/v1:NamespaceDomainmapping.domainmappingsId":                 "metadata.name",
-	"run/v1:NamespaceService.servicesId":                             "metadata.name",
-	"run/v1:Service.servicesId":                                      "metadata.name",
+	"apigee/v1:Alias.aliasesId":                               "alias",
+	"appengine/v1:IngressRule.ingressRulesId":                 "priority",
+	"appengine/v1beta:IngressRule.ingressRulesId":             "priority",
+	"bigquery/v2:Routine.routinesId":                          "routineReference.routineId",
+	"dataproc/v1:Job.jobId":                                   "reference.jobId",
+	"dataproc/v1beta2:Job.jobId":                              "reference.jobId",
+	"dns/v1:Change.changeId":                                  "id",
+	"dns/v1beta2:Change.changeId":                             "id",
+	"dns/v1beta2:ResponsePolicy.responsePolicy":               "id",
+	"dns/v1beta2:ResponsePolicyRule.responsePolicyRule":       "ruleName",
+	"firebasehosting/v1beta1:Domain.domainsId":                "domainName",
+	"recommendationengine/v1beta1:CatalogItem.catalogItemsId": "id",
+	"run/v1alpha1:Job.jobsId":                                 "metadata.name",
+	"run/v1:Domainmapping.domainmappingsId":                   "metadata.name",
+	"run/v1:Service.servicesId":                               "metadata.name",
 }
