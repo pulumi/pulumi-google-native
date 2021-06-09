@@ -920,7 +920,7 @@
                 "organizationsId": "organizationId"
             }
         },
-        "google-native:apigee/v1:Apiproduct": {
+        "google-native:apigee/v1:ApiProduct": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/apiproducts",
             "createParams": [
@@ -1022,7 +1022,7 @@
                 "organizationsId": "organizationId"
             }
         },
-        "google-native:apigee/v1:Canaryevaluation": {
+        "google-native:apigee/v1:CanaryEvaluation": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/instances/{instancesId}/canaryevaluations",
             "createParams": [
@@ -1053,7 +1053,7 @@
                 "organizationsId": "organizationId"
             }
         },
-        "google-native:apigee/v1:Datacollector": {
+        "google-native:apigee/v1:DataCollector": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/datacollectors",
             "createParams": [
@@ -1109,7 +1109,7 @@
             },
             "idProperty": "self"
         },
-        "google-native:apigee/v1:Debugsession": {
+        "google-native:apigee/v1:DebugSession": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions",
             "createParams": [
@@ -1199,33 +1199,6 @@
                 "organizationsId": "organizationId"
             }
         },
-        "google-native:apigee/v1:EnvGroupAttachment": {
-            "baseUrl": "https://apigee.googleapis.com/",
-            "createPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments",
-            "createParams": [
-                {
-                    "name": "organizationsId",
-                    "sdkName": "organizationId",
-                    "location": "path"
-                },
-                {
-                    "name": "envgroupsId",
-                    "sdkName": "envgroupId",
-                    "location": "path"
-                }
-            ],
-            "createVerb": "POST",
-            "createProperties": {
-                "environment": {},
-                "name": {}
-            },
-            "idPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments/{attachmentsId}",
-            "idParams": {
-                "attachmentsId": "name",
-                "envgroupsId": "envgroupId",
-                "organizationsId": "organizationId"
-            }
-        },
         "google-native:apigee/v1:Envgroup": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/envgroups",
@@ -1253,6 +1226,33 @@
             "idPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}",
             "idParams": {
                 "envgroupsId": "name",
+                "organizationsId": "organizationId"
+            }
+        },
+        "google-native:apigee/v1:EnvgroupAttachment": {
+            "baseUrl": "https://apigee.googleapis.com/",
+            "createPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments",
+            "createParams": [
+                {
+                    "name": "organizationsId",
+                    "sdkName": "organizationId",
+                    "location": "path"
+                },
+                {
+                    "name": "envgroupsId",
+                    "sdkName": "envgroupId",
+                    "location": "path"
+                }
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "environment": {},
+                "name": {}
+            },
+            "idPath": "v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments/{attachmentsId}",
+            "idParams": {
+                "attachmentsId": "name",
+                "envgroupsId": "envgroupId",
                 "organizationsId": "organizationId"
             }
         },
@@ -1619,7 +1619,7 @@
             "noDelete": true,
             "idProperty": "self"
         },
-        "google-native:apigee/v1:Rateplan": {
+        "google-native:apigee/v1:RatePlan": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans",
             "createParams": [
@@ -1873,7 +1873,7 @@
                 "subscriptionsId": "name"
             }
         },
-        "google-native:apigee/v1:Targetserver": {
+        "google-native:apigee/v1:TargetServer": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers",
             "createParams": [
@@ -6470,7 +6470,7 @@
                 "projectsId": "project"
             }
         },
-        "google-native:cloudsearch/v1:Datasource": {
+        "google-native:cloudsearch/v1:DataSource": {
             "baseUrl": "https://cloudsearch.googleapis.com/",
             "createPath": "v1/settings/datasources",
             "createParams": null,
@@ -6517,7 +6517,7 @@
                 "datasourcesId": "name"
             }
         },
-        "google-native:cloudsearch/v1:Searchapplication": {
+        "google-native:cloudsearch/v1:SearchApplication": {
             "baseUrl": "https://cloudsearch.googleapis.com/",
             "createPath": "v1/settings/searchapplications",
             "createParams": null,
@@ -36772,7 +36772,7 @@
                 "projectsId": "project"
             }
         },
-        "google-native:remotebuildexecution/v1alpha:Workerpool": {
+        "google-native:remotebuildexecution/v1alpha:WorkerPool": {
             "baseUrl": "https://admin-remotebuildexecution.googleapis.com/",
             "createPath": "v1alpha/projects/{projectsId}/instances/{instancesId}/workerpools",
             "createParams": [
@@ -37060,7 +37060,7 @@
                 "projectsId": "project"
             }
         },
-        "google-native:run/v1:Domainmapping": {
+        "google-native:run/v1:DomainMapping": {
             "baseUrl": "https://run.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/locations/{locationsId}/domainmappings",
             "createParams": [
