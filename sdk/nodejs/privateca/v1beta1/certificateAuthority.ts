@@ -181,48 +181,48 @@ export class CertificateAuthority extends pulumi.CustomResource {
  * The set of arguments for constructing a CertificateAuthority resource.
  */
 export interface CertificateAuthorityArgs {
-    readonly certificateAuthorityId: pulumi.Input<string>;
+    certificateAuthorityId: pulumi.Input<string>;
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
      */
-    readonly certificatePolicy?: pulumi.Input<inputs.privateca.v1beta1.CertificateAuthorityPolicyArgs>;
+    certificatePolicy?: pulumi.Input<inputs.privateca.v1beta1.CertificateAuthorityPolicyArgs>;
     /**
      * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
      */
-    readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
+    config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
     /**
      * Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
      */
-    readonly gcsBucket?: pulumi.Input<string>;
+    gcsBucket?: pulumi.Input<string>;
     /**
      * Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
      */
-    readonly issuingOptions?: pulumi.Input<inputs.privateca.v1beta1.IssuingOptionsArgs>;
+    issuingOptions?: pulumi.Input<inputs.privateca.v1beta1.IssuingOptionsArgs>;
     /**
      * Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
      */
-    readonly keySpec?: pulumi.Input<inputs.privateca.v1beta1.KeyVersionSpecArgs>;
+    keySpec?: pulumi.Input<inputs.privateca.v1beta1.KeyVersionSpecArgs>;
     /**
      * Optional. Labels with user-defined metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
-    readonly lifetime?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
      */
-    readonly subordinateConfig?: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfigArgs>;
+    subordinateConfig?: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfigArgs>;
     /**
      * Required. Immutable. The Tier of this CertificateAuthority.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
     /**
      * Required. Immutable. The Type of this CertificateAuthority.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

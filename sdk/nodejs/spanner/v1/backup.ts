@@ -131,25 +131,25 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
-    readonly backupId: pulumi.Input<string>;
+    backupId: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
      */
-    readonly database?: pulumi.Input<string>;
-    readonly encryptionConfigEncryptionType: pulumi.Input<string>;
-    readonly encryptionConfigKmsKeyName?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
+    encryptionConfigEncryptionType: pulumi.Input<string>;
+    encryptionConfigKmsKeyName?: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
      */
-    readonly expireTime?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
      */
-    readonly versionTime?: pulumi.Input<string>;
+    versionTime?: pulumi.Input<string>;
 }

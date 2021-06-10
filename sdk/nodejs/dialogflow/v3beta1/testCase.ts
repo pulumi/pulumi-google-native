@@ -120,35 +120,35 @@ export class TestCase extends pulumi.CustomResource {
  * The set of arguments for constructing a TestCase resource.
  */
 export interface TestCaseArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The latest test result.
      */
-    readonly lastTestResult?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestCaseResultArgs>;
-    readonly location: pulumi.Input<string>;
+    lastTestResult?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestCaseResultArgs>;
+    location: pulumi.Input<string>;
     /**
      * The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
-    readonly notes?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    notes?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      */
-    readonly testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ConversationTurnArgs>[]>;
+    testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ConversationTurnArgs>[]>;
     /**
      * Config for the test case.
      */
-    readonly testConfig?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestConfigArgs>;
+    testConfig?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestConfigArgs>;
 }

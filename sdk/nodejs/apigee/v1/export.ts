@@ -128,27 +128,27 @@ export interface ExportArgs {
     /**
      * Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
      */
-    readonly csvDelimiter?: pulumi.Input<string>;
+    csvDelimiter?: pulumi.Input<string>;
     /**
      * Required. Name of the preconfigured datastore.
      */
-    readonly datastoreName?: pulumi.Input<string>;
+    datastoreName?: pulumi.Input<string>;
     /**
      * Required. Date range of the data to export.
      */
-    readonly dateRange?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DateRangeArgs>;
+    dateRange?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DateRangeArgs>;
     /**
      * Optional. Description of the export job.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
     /**
      * Required. Display name of the export job.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
      */
-    readonly outputFormat?: pulumi.Input<string>;
+    outputFormat?: pulumi.Input<string>;
 }

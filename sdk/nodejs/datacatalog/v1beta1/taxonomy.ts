@@ -107,15 +107,15 @@ export interface TaxonomyArgs {
     /**
      * Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
      */
-    readonly activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

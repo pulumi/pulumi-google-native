@@ -127,22 +127,22 @@ export interface ModelArgs {
     /**
      * Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * State common to all model types. Includes publishing and validation information.
      */
-    readonly state?: pulumi.Input<inputs.firebaseml.v1beta2.ModelStateArgs>;
+    state?: pulumi.Input<inputs.firebaseml.v1beta2.ModelStateArgs>;
     /**
      * User defined tags which can be used to group/filter models during listing
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A TFLite Model
      */
-    readonly tfliteModel?: pulumi.Input<inputs.firebaseml.v1beta2.TfLiteModelArgs>;
+    tfliteModel?: pulumi.Input<inputs.firebaseml.v1beta2.TfLiteModelArgs>;
 }

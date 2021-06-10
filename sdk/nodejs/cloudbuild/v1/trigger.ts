@@ -151,54 +151,54 @@ export interface TriggerArgs {
     /**
      * Contents of the build template.
      */
-    readonly build?: pulumi.Input<inputs.cloudbuild.v1.BuildArgs>;
+    build?: pulumi.Input<inputs.cloudbuild.v1.BuildArgs>;
     /**
      * Human-readable description of this trigger.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If true, the trigger will never automatically execute a build.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
      */
-    readonly filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string>;
     /**
      * Optional. A Common Expression Language string.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
      */
-    readonly github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfigArgs>;
+    github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfigArgs>;
     /**
      * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
      */
-    readonly ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
      */
-    readonly includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
      */
-    readonly pubsubConfig?: pulumi.Input<inputs.cloudbuild.v1.PubsubConfigArgs>;
+    pubsubConfig?: pulumi.Input<inputs.cloudbuild.v1.PubsubConfigArgs>;
     /**
      * Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
      */
-    readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Tags for annotation of a `BuildTrigger`
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
      */
-    readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.v1.RepoSourceArgs>;
+    triggerTemplate?: pulumi.Input<inputs.cloudbuild.v1.RepoSourceArgs>;
 }

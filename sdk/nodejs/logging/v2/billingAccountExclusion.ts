@@ -99,21 +99,21 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
  * The set of arguments for constructing a BillingAccountExclusion resource.
  */
 export interface BillingAccountExclusionArgs {
-    readonly billingAccountId: pulumi.Input<string>;
+    billingAccountId: pulumi.Input<string>;
     /**
      * Optional. A description of this exclusion.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

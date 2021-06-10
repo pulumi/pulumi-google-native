@@ -106,29 +106,29 @@ export interface ChangeArgs {
     /**
      * Which ResourceRecordSets to add?
      */
-    readonly additions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSetArgs>[]>;
-    readonly clientOperationId?: pulumi.Input<string>;
+    additions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSetArgs>[]>;
+    clientOperationId?: pulumi.Input<string>;
     /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.
      */
-    readonly deletions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSetArgs>[]>;
+    deletions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSetArgs>[]>;
     /**
      * Unique identifier for the resource; defined by the server (output only).
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * If the DNS queries for the zone will be served.
      */
-    readonly isServing?: pulumi.Input<boolean>;
-    readonly kind?: pulumi.Input<string>;
-    readonly managedZone: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    isServing?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
+    managedZone: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The time that this operation was started by the server (output only). This is in RFC3339 text format.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
     /**
      * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

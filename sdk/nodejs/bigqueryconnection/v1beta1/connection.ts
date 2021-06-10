@@ -114,20 +114,20 @@ export interface ConnectionArgs {
     /**
      * Cloud SQL properties.
      */
-    readonly cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlPropertiesArgs>;
-    readonly connectionId?: pulumi.Input<string>;
+    cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlPropertiesArgs>;
+    connectionId?: pulumi.Input<string>;
     /**
      * User provided description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * User provided display name for the connection.
      */
-    readonly friendlyName?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

@@ -125,23 +125,23 @@ export interface CanaryEvaluationArgs {
     /**
      * Required. The stable version that is serving requests.
      */
-    readonly control?: pulumi.Input<string>;
+    control?: pulumi.Input<string>;
     /**
      * Required. End time for the evaluation's analysis.
      */
-    readonly endTime?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Required. Labels used to filter the metrics used for a canary evaluation.
      */
-    readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>;
-    readonly organizationId: pulumi.Input<string>;
+    metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>;
+    organizationId: pulumi.Input<string>;
     /**
      * Required. Start time for the canary evaluation's analysis.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
     /**
      * Required. The newer version that is serving requests.
      */
-    readonly treatment?: pulumi.Input<string>;
+    treatment?: pulumi.Input<string>;
 }

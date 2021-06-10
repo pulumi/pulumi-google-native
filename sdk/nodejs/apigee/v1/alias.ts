@@ -99,23 +99,23 @@ export class Alias extends pulumi.CustomResource {
  * The set of arguments for constructing a Alias resource.
  */
 export interface AliasArgs {
-    readonly alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * The HTTP request/response body as raw binary.
      */
-    readonly data?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
+    data?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
-    readonly format: pulumi.Input<string>;
-    readonly ignoreExpiryValidation?: pulumi.Input<string>;
-    readonly ignoreNewlineValidation?: pulumi.Input<string>;
-    readonly keystoreId: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    format: pulumi.Input<string>;
+    ignoreExpiryValidation?: pulumi.Input<string>;
+    ignoreNewlineValidation?: pulumi.Input<string>;
+    keystoreId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

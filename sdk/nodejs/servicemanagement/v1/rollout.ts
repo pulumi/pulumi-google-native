@@ -102,25 +102,25 @@ export interface RolloutArgs {
     /**
      * Creation time of the rollout. Readonly.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The strategy associated with a rollout to delete a `ManagedService`. Readonly.
      */
-    readonly deleteServiceStrategy?: pulumi.Input<inputs.servicemanagement.v1.DeleteServiceStrategyArgs>;
+    deleteServiceStrategy?: pulumi.Input<inputs.servicemanagement.v1.DeleteServiceStrategyArgs>;
     /**
      * Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
      */
-    readonly rolloutId?: pulumi.Input<string>;
+    rolloutId?: pulumi.Input<string>;
     /**
      * The name of the service associated with this Rollout.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Google Service Control selects service configurations based on traffic percentage.
      */
-    readonly trafficPercentStrategy?: pulumi.Input<inputs.servicemanagement.v1.TrafficPercentStrategyArgs>;
+    trafficPercentStrategy?: pulumi.Input<inputs.servicemanagement.v1.TrafficPercentStrategyArgs>;
 }

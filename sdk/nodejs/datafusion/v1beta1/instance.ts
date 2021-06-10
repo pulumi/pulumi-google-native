@@ -222,64 +222,64 @@ export interface InstanceArgs {
     /**
      * List of accelerators enabled for this CDF instance.
      */
-    readonly accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.AcceleratorArgs>[]>;
+    accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.AcceleratorArgs>[]>;
     /**
      * Available versions that the instance can be upgraded to using UpdateInstanceRequest.
      */
-    readonly availableVersion?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.VersionArgs>[]>;
+    availableVersion?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.VersionArgs>[]>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */
-    readonly dataprocServiceAccount?: pulumi.Input<string>;
+    dataprocServiceAccount?: pulumi.Input<string>;
     /**
      * A description of this instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name for an instance.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Option to enable granular role-based access control.
      */
-    readonly enableRbac?: pulumi.Input<boolean>;
+    enableRbac?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Logging.
      */
-    readonly enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Monitoring.
      */
-    readonly enableStackdriverMonitoring?: pulumi.Input<boolean>;
-    readonly instanceId?: pulumi.Input<string>;
+    enableStackdriverMonitoring?: pulumi.Input<boolean>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
      */
-    readonly networkConfig?: pulumi.Input<inputs.datafusion.v1beta1.NetworkConfigArgs>;
+    networkConfig?: pulumi.Input<inputs.datafusion.v1beta1.NetworkConfigArgs>;
     /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
-    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */
-    readonly privateInstance?: pulumi.Input<boolean>;
-    readonly project: pulumi.Input<string>;
+    privateInstance?: pulumi.Input<boolean>;
+    project: pulumi.Input<string>;
     /**
      * Required. Instance type.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Current version of Data Fusion.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

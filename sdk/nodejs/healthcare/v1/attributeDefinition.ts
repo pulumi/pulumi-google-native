@@ -118,30 +118,30 @@ export interface AttributeDefinitionArgs {
     /**
      * Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
      */
-    readonly allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly attributeDefinitionId: pulumi.Input<string>;
+    allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    attributeDefinitionId: pulumi.Input<string>;
     /**
      * Required. The category of the attribute. The value of this field cannot be changed after creation.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
      */
-    readonly consentDefaultValues?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly consentStoreId: pulumi.Input<string>;
+    consentDefaultValues?: pulumi.Input<pulumi.Input<string>[]>;
+    consentStoreId: pulumi.Input<string>;
     /**
      * Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
      */
-    readonly dataMappingDefaultValue?: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
+    dataMappingDefaultValue?: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     /**
      * Optional. A description of the attribute.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

@@ -114,43 +114,43 @@ export class Notification extends pulumi.CustomResource {
  * The set of arguments for constructing a Notification resource.
  */
 export interface NotificationArgs {
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
-    readonly custom_attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    custom_attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * HTTP 1.1 Entity tag for this subscription notification.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * If present, only send notifications about listed event types. If empty, sent notifications for all event types.
      */
-    readonly event_types?: pulumi.Input<pulumi.Input<string>[]>;
+    event_types?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the notification.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * The kind of item this is. For notifications, this is always storage#notification.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */
-    readonly object_name_prefix?: pulumi.Input<string>;
+    object_name_prefix?: pulumi.Input<string>;
     /**
      * The desired content of the Payload.
      */
-    readonly payload_format?: pulumi.Input<string>;
-    readonly provisionalUserProject?: pulumi.Input<string>;
+    payload_format?: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The canonical URL of this notification.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
      */
-    readonly topic?: pulumi.Input<string>;
-    readonly userProject?: pulumi.Input<string>;
+    topic?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
 }

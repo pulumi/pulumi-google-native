@@ -153,67 +153,67 @@ export class ManagedZone extends pulumi.CustomResource {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
-    readonly clientOperationId?: pulumi.Input<string>;
+    clientOperationId?: pulumi.Input<string>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
      */
-    readonly creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string>;
     /**
      * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
      */
-    readonly dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string>;
     /**
      * DNSSEC configuration.
      */
-    readonly dnssecConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneDnsSecConfigArgs>;
+    dnssecConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneDnsSecConfigArgs>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
      */
-    readonly forwardingConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneForwardingConfigArgs>;
+    forwardingConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneForwardingConfigArgs>;
     /**
      * Unique identifier for the resource; defined by the server (output only)
      */
-    readonly id?: pulumi.Input<string>;
-    readonly kind?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * User labels.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
      */
-    readonly nameServerSet?: pulumi.Input<string>;
+    nameServerSet?: pulumi.Input<string>;
     /**
      * Delegate your managed_zone to these virtual name servers; defined by the server (output only)
      */
-    readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
      */
-    readonly peeringConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePeeringConfigArgs>;
+    peeringConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePeeringConfigArgs>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
-    readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePrivateVisibilityConfigArgs>;
-    readonly project: pulumi.Input<string>;
+    privateVisibilityConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePrivateVisibilityConfigArgs>;
+    project: pulumi.Input<string>;
     /**
      * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
      */
-    readonly reverseLookupConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneReverseLookupConfigArgs>;
+    reverseLookupConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneReverseLookupConfigArgs>;
     /**
      * This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
      */
-    readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneServiceDirectoryConfigArgs>;
+    serviceDirectoryConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneServiceDirectoryConfigArgs>;
     /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
      */
-    readonly visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string>;
 }

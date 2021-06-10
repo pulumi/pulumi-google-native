@@ -126,41 +126,41 @@ export interface WorkerPoolArgs {
     /**
      * Time at which the request to create the `WorkerPool` was received.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Time at which the request to delete the `WorkerPool` was received.
      */
-    readonly deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string>;
     /**
      * User-defined name of the `WorkerPool`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project ID of the GCP project for which the `WorkerPool` is created.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
      */
-    readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
      */
-    readonly serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string>;
     /**
      * WorkerPool Status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Time at which the request to update the `WorkerPool` was received.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`.
      */
-    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha1.WorkerConfigArgs>;
+    workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha1.WorkerConfigArgs>;
     /**
      * Total number of workers to be created across all requested regions.
      */
-    readonly workerCount?: pulumi.Input<string>;
+    workerCount?: pulumi.Input<string>;
 }

@@ -100,7 +100,7 @@ export interface VersionArgs {
     /**
      * Optional. The developer-provided description of this version.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

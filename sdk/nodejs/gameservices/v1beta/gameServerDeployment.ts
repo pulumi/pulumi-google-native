@@ -107,23 +107,23 @@ export class GameServerDeployment extends pulumi.CustomResource {
  * The set of arguments for constructing a GameServerDeployment resource.
  */
 export interface GameServerDeploymentArgs {
-    readonly deploymentId: pulumi.Input<string>;
+    deploymentId: pulumi.Input<string>;
     /**
      * Human readable description of the game server delpoyment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ETag of the resource.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The labels associated with this game server deployment. Each label is a key-value pair.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

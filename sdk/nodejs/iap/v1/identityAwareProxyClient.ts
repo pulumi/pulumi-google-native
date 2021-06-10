@@ -85,10 +85,10 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
  * The set of arguments for constructing a IdentityAwareProxyClient resource.
  */
 export interface IdentityAwareProxyClientArgs {
-    readonly brandId: pulumi.Input<string>;
+    brandId: pulumi.Input<string>;
     /**
      * Human-friendly name given to the OAuth client.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

@@ -123,8 +123,8 @@ export interface ExecutionArgs {
     /**
      * Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
      */
-    readonly argument?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly workflowId: pulumi.Input<string>;
+    argument?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    workflowId: pulumi.Input<string>;
 }

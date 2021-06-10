@@ -120,7 +120,7 @@ export class HmacKey extends pulumi.CustomResource {
  * The set of arguments for constructing a HmacKey resource.
  */
 export interface HmacKeyArgs {
-    readonly project: pulumi.Input<string>;
-    readonly serviceAccountEmail: pulumi.Input<string>;
-    readonly userProject?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    serviceAccountEmail: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
 }

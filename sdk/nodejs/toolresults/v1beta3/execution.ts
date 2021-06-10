@@ -120,36 +120,36 @@ export interface ExecutionArgs {
     /**
      * The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
      */
-    readonly completionTime?: pulumi.Input<inputs.toolresults.v1beta3.TimestampArgs>;
+    completionTime?: pulumi.Input<inputs.toolresults.v1beta3.TimestampArgs>;
     /**
      * The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
      */
-    readonly creationTime?: pulumi.Input<inputs.toolresults.v1beta3.TimestampArgs>;
+    creationTime?: pulumi.Input<inputs.toolresults.v1beta3.TimestampArgs>;
     /**
      * The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
      */
-    readonly dimensionDefinitions?: pulumi.Input<pulumi.Input<inputs.toolresults.v1beta3.MatrixDimensionDefinitionArgs>[]>;
+    dimensionDefinitions?: pulumi.Input<pulumi.Input<inputs.toolresults.v1beta3.MatrixDimensionDefinitionArgs>[]>;
     /**
      * A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
      */
-    readonly executionId?: pulumi.Input<string>;
-    readonly historyId: pulumi.Input<string>;
+    executionId?: pulumi.Input<string>;
+    historyId: pulumi.Input<string>;
     /**
      * Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
      */
-    readonly outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
      */
-    readonly specification?: pulumi.Input<inputs.toolresults.v1beta3.SpecificationArgs>;
+    specification?: pulumi.Input<inputs.toolresults.v1beta3.SpecificationArgs>;
     /**
      * The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
      */
-    readonly testExecutionMatrixId?: pulumi.Input<string>;
+    testExecutionMatrixId?: pulumi.Input<string>;
 }

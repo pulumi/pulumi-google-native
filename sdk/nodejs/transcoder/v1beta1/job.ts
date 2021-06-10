@@ -161,31 +161,31 @@ export interface JobArgs {
     /**
      * The configuration for this job.
      */
-    readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
+    config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
     /**
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
      */
-    readonly inputUri?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    inputUri?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
      */
-    readonly outputUri?: pulumi.Input<string>;
+    outputUri?: pulumi.Input<string>;
     /**
      * Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
      */
-    readonly priority?: pulumi.Input<number>;
-    readonly project: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
+    project: pulumi.Input<string>;
     /**
      * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
      */
-    readonly templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string>;
     /**
      * Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
      */
-    readonly ttlAfterCompletionDays?: pulumi.Input<number>;
+    ttlAfterCompletionDays?: pulumi.Input<number>;
 }

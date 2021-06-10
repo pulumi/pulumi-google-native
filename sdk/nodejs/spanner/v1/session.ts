@@ -95,11 +95,11 @@ export class Session extends pulumi.CustomResource {
  * The set of arguments for constructing a Session resource.
  */
 export interface SessionArgs {
-    readonly databaseId: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    databaseId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly project: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    project: pulumi.Input<string>;
 }

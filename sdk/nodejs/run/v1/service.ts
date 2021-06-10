@@ -102,24 +102,24 @@ export interface ServiceArgs {
     /**
      * The API version for this call such as "serving.knative.dev/v1".
      */
-    readonly apiVersion?: pulumi.Input<string>;
-    readonly dryRun?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "Service".
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
      */
-    readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
-    readonly project: pulumi.Input<string>;
+    metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
+    project: pulumi.Input<string>;
     /**
      * Spec holds the desired state of the Service (from the client).
      */
-    readonly spec?: pulumi.Input<inputs.run.v1.ServiceSpecArgs>;
+    spec?: pulumi.Input<inputs.run.v1.ServiceSpecArgs>;
     /**
      * Status communicates the observed state of the Service (from the controller).
      */
-    readonly status?: pulumi.Input<inputs.run.v1.ServiceStatusArgs>;
+    status?: pulumi.Input<inputs.run.v1.ServiceStatusArgs>;
 }

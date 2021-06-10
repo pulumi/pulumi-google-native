@@ -178,41 +178,41 @@ export interface ServiceArgs {
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      */
-    readonly hiveMetastoreConfig?: pulumi.Input<inputs.metastore.v1beta.HiveMetastoreConfigArgs>;
+    hiveMetastoreConfig?: pulumi.Input<inputs.metastore.v1beta.HiveMetastoreConfigArgs>;
     /**
      * User-defined labels for the metastore service.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.metastore.v1beta.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<inputs.metastore.v1beta.MaintenanceWindowArgs>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      */
-    readonly metadataIntegration?: pulumi.Input<inputs.metastore.v1beta.MetadataIntegrationArgs>;
+    metadataIntegration?: pulumi.Input<inputs.metastore.v1beta.MetadataIntegrationArgs>;
     /**
      * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
-    readonly port?: pulumi.Input<number>;
-    readonly project: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    project: pulumi.Input<string>;
     /**
      * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
      */
-    readonly releaseChannel?: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
     /**
      * The tier of the service.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
 }

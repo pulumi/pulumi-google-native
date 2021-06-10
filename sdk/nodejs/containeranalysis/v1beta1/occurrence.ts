@@ -157,62 +157,62 @@ export interface OccurrenceArgs {
     /**
      * Describes an attestation of an artifact.
      */
-    readonly attestation?: pulumi.Input<inputs.containeranalysis.v1beta1.DetailsArgs>;
+    attestation?: pulumi.Input<inputs.containeranalysis.v1beta1.DetailsArgs>;
     /**
      * Describes a verifiable build.
      */
-    readonly build?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1BuildDetailsArgs>;
+    build?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1BuildDetailsArgs>;
     /**
      * The time this occurrence was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Describes the deployment of an artifact on a runtime.
      */
-    readonly deployment?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DeploymentDetailsArgs>;
+    deployment?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DeploymentDetailsArgs>;
     /**
      * Describes how this resource derives from the basis in the associated note.
      */
-    readonly derivedImage?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1ImageDetailsArgs>;
+    derivedImage?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1ImageDetailsArgs>;
     /**
      * Describes when a resource was discovered.
      */
-    readonly discovered?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetailsArgs>;
+    discovered?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetailsArgs>;
     /**
      * Describes the installation of a package on the linked resource.
      */
-    readonly installation?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1PackageDetailsArgs>;
+    installation?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1PackageDetailsArgs>;
     /**
      * Describes a specific in-toto link.
      */
-    readonly intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1IntotoDetailsArgs>;
+    intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1IntotoDetailsArgs>;
     /**
      * This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
-    readonly noteName?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    noteName?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
-    readonly remediation?: pulumi.Input<string>;
+    remediation?: pulumi.Input<string>;
     /**
      * Required. Immutable. The resource for which the occurrence applies.
      */
-    readonly resource?: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
+    resource?: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
     /**
      * The time this occurrence was last updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
     /**
      * Describes a security vulnerability.
      */
-    readonly vulnerability?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1VulnerabilityDetailsArgs>;
+    vulnerability?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1VulnerabilityDetailsArgs>;
 }

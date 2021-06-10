@@ -151,42 +151,42 @@ export interface DeveloperArgs {
     /**
      * Access type.
      */
-    readonly accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string>;
     /**
      * Developer app family.
      */
-    readonly appFamily?: pulumi.Input<string>;
+    appFamily?: pulumi.Input<string>;
     /**
      * List of apps associated with the developer.
      */
-    readonly apps?: pulumi.Input<pulumi.Input<string>[]>;
+    apps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
      */
-    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
     /**
      * List of companies associated with the developer.
      */
-    readonly companies?: pulumi.Input<pulumi.Input<string>[]>;
+    companies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
      */
-    readonly developerId?: pulumi.Input<string>;
+    developerId?: pulumi.Input<string>;
     /**
      * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * Required. First name of the developer.
      */
-    readonly firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string>;
     /**
      * Required. Last name of the developer.
      */
-    readonly lastName?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    lastName?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Required. User name of the developer. Not used by Apigee hybrid.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }

@@ -152,15 +152,15 @@ export interface DefaultObjectAccessControlArgs {
     /**
      * The name of the bucket.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * The domain associated with the entity, if any.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The email address associated with the entity, if any.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The entity holding the permission, in one of the following forms: 
      * - user-userId 
@@ -175,43 +175,43 @@ export interface DefaultObjectAccessControlArgs {
      * - The group example@googlegroups.com would be group-example@googlegroups.com. 
      * - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
      */
-    readonly entity?: pulumi.Input<string>;
+    entity?: pulumi.Input<string>;
     /**
      * The ID for the entity, if any.
      */
-    readonly entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string>;
     /**
      * HTTP 1.1 Entity tag for the access-control entry.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The content generation of the object, if applied to an object.
      */
-    readonly generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string>;
     /**
      * The ID of the access-control entry.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the object, if applied to an object.
      */
-    readonly object?: pulumi.Input<string>;
+    object?: pulumi.Input<string>;
     /**
      * The project team associated with the entity, if any.
      */
-    readonly projectTeam?: pulumi.Input<inputs.storage.v1.DefaultObjectAccessControlProjectTeamArgs>;
-    readonly provisionalUserProject?: pulumi.Input<string>;
+    projectTeam?: pulumi.Input<inputs.storage.v1.DefaultObjectAccessControlProjectTeamArgs>;
+    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The access permission for the entity.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The link to this access-control entry.
      */
-    readonly selfLink?: pulumi.Input<string>;
-    readonly userProject?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
 }

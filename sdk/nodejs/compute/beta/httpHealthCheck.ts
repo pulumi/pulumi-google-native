@@ -140,55 +140,55 @@ export interface HttpHealthCheckArgs {
     /**
      * How often (in seconds) to send a health check. The default value is 5 seconds.
      */
-    readonly checkIntervalSec?: pulumi.Input<number>;
+    checkIntervalSec?: pulumi.Input<number>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */
-    readonly healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number>;
     /**
      * The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The TCP port number for the HTTP health check request. The default value is 80.
      */
-    readonly port?: pulumi.Input<number>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
      */
-    readonly requestPath?: pulumi.Input<string>;
+    requestPath?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
      */
-    readonly timeoutSec?: pulumi.Input<number>;
+    timeoutSec?: pulumi.Input<number>;
     /**
      * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
      */
-    readonly unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number>;
 }

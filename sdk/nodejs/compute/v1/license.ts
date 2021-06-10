@@ -114,36 +114,36 @@ export interface LicenseArgs {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of resource. Always compute#license for licenses.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * [Output Only] The unique code used to attach this license to images, snapshots, and disks.
      */
-    readonly licenseCode?: pulumi.Input<string>;
+    licenseCode?: pulumi.Input<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
-    readonly resourceRequirements?: pulumi.Input<inputs.compute.v1.LicenseResourceRequirementsArgs>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
+    resourceRequirements?: pulumi.Input<inputs.compute.v1.LicenseResourceRequirementsArgs>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
      */
-    readonly transferable?: pulumi.Input<boolean>;
+    transferable?: pulumi.Input<boolean>;
 }

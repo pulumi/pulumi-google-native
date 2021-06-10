@@ -106,17 +106,17 @@ export class Membership extends pulumi.CustomResource {
  * The set of arguments for constructing a Membership resource.
  */
 export interface MembershipArgs {
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
-    readonly memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
+    memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
     /**
      * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
-    readonly preferredMemberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
+    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
     /**
      * The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
      */
-    readonly roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.MembershipRoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.MembershipRoleArgs>[]>;
 }

@@ -88,7 +88,7 @@ export interface InstanceAttachmentArgs {
     /**
      * ID of the attached environment.
      */
-    readonly environment?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

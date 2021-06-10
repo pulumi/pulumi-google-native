@@ -126,12 +126,12 @@ export interface KeyArgs {
     /**
      * Human-readable display name of this key that you can modify. The maximum length is 63 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly keyId?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Key restrictions.
      */
-    readonly restrictions?: pulumi.Input<inputs.apikeys.v2.V2RestrictionsArgs>;
+    restrictions?: pulumi.Input<inputs.apikeys.v2.V2RestrictionsArgs>;
 }

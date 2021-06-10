@@ -108,19 +108,19 @@ export interface InspectTemplateArgs {
     /**
      * Short description (max 256 chars).
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name (max 256 chars).
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The core content of the template. Configuration of the scanning process.
      */
-    readonly inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    readonly templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string>;
 }

@@ -139,41 +139,41 @@ export interface SpokeArgs {
     /**
      * The time when the Spoke was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Short description of the spoke resource
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The resource URL of the hub resource that the spoke is attached to
      */
-    readonly hub?: pulumi.Input<string>;
+    hub?: pulumi.Input<string>;
     /**
      * User-defined labels.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The URIs of linked interconnect attachment resources
      */
-    readonly linkedInterconnectAttachments?: pulumi.Input<pulumi.Input<string>[]>;
+    linkedInterconnectAttachments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The URIs of linked Router appliance resources
      */
-    readonly linkedRouterApplianceInstances?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1alpha1.RouterApplianceInstanceArgs>[]>;
+    linkedRouterApplianceInstances?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1alpha1.RouterApplianceInstanceArgs>[]>;
     /**
      * The URIs of linked VPN tunnel resources
      */
-    readonly linkedVpnTunnels?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly location: pulumi.Input<string>;
+    linkedVpnTunnels?: pulumi.Input<pulumi.Input<string>[]>;
+    location: pulumi.Input<string>;
     /**
      * Immutable. The name of a Spoke resource.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
-    readonly spokeId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
+    spokeId?: pulumi.Input<string>;
     /**
      * The time when the Spoke was updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

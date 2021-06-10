@@ -86,9 +86,9 @@ export interface BillingAccountArgs {
     /**
      * The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
      */
-    readonly masterBillingAccount?: pulumi.Input<string>;
+    masterBillingAccount?: pulumi.Input<string>;
 }

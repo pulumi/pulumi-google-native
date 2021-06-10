@@ -134,50 +134,50 @@ export interface TypeProviderArgs {
     /**
      * Allows resource handling overrides for specific collections
      */
-    readonly collectionOverrides?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CollectionOverrideArgs>[]>;
+    collectionOverrides?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CollectionOverrideArgs>[]>;
     /**
      * Credential used when interacting with this type.
      */
-    readonly credential?: pulumi.Input<inputs.deploymentmanager.alpha.CredentialArgs>;
+    credential?: pulumi.Input<inputs.deploymentmanager.alpha.CredentialArgs>;
     /**
      * List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
      */
-    readonly customCertificateAuthorityRoots?: pulumi.Input<pulumi.Input<string>[]>;
+    customCertificateAuthorityRoots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Descriptor Url for the this type provider.
      */
-    readonly descriptorUrl?: pulumi.Input<string>;
+    descriptorUrl?: pulumi.Input<string>;
     /**
      * Unique identifier for the resource defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly insertTime?: pulumi.Input<string>;
+    insertTime?: pulumi.Input<string>;
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.TypeProviderLabelEntryArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.TypeProviderLabelEntryArgs>[]>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Operation that most recently ran, or is currently running, on this type provider.
      */
-    readonly operation?: pulumi.Input<inputs.deploymentmanager.alpha.OperationArgs>;
+    operation?: pulumi.Input<inputs.deploymentmanager.alpha.OperationArgs>;
     /**
      * Options to apply when handling any resources in this service.
      */
-    readonly options?: pulumi.Input<inputs.deploymentmanager.alpha.OptionsArgs>;
-    readonly project: pulumi.Input<string>;
+    options?: pulumi.Input<inputs.deploymentmanager.alpha.OptionsArgs>;
+    project: pulumi.Input<string>;
     /**
      * Self link for the type provider.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }

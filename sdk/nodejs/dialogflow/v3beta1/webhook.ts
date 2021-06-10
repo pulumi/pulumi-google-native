@@ -102,27 +102,27 @@ export class Webhook extends pulumi.CustomResource {
  * The set of arguments for constructing a Webhook resource.
  */
 export interface WebhookArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Indicates whether the webhook is disabled.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Required. The human-readable name of the webhook, unique within the agent.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Configuration for a generic web service.
      */
-    readonly genericWebService?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs>;
-    readonly location: pulumi.Input<string>;
+    genericWebService?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs>;
+    location: pulumi.Input<string>;
     /**
      * The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
      */
-    readonly timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string>;
 }

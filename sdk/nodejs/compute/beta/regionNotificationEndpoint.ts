@@ -114,35 +114,35 @@ export interface RegionNotificationEndpointArgs {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Settings of the gRPC notification endpoint including the endpoint URL and the retry duration.
      */
-    readonly grpcSettings?: pulumi.Input<inputs.compute.beta.NotificationEndpointGrpcSettingsArgs>;
+    grpcSettings?: pulumi.Input<inputs.compute.beta.NotificationEndpointGrpcSettingsArgs>;
     /**
      * [Output Only] A unique identifier for this resource type. The server generates this identifier.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#notificationEndpoint for notification endpoints.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }

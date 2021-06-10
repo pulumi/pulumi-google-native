@@ -101,18 +101,18 @@ export interface SessionEntityTypeArgs {
     /**
      * Required. The collection of entities associated with this session entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1EntityTypeEntityArgs>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1EntityTypeEntityArgs>[]>;
     /**
      * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
      */
-    readonly entityOverrideMode?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    entityOverrideMode?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly sessionId: pulumi.Input<string>;
-    readonly userId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    sessionId: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
 }

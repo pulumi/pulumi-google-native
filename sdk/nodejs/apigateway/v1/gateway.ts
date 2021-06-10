@@ -122,16 +122,16 @@ export interface GatewayArgs {
     /**
      * Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
      */
-    readonly apiConfig?: pulumi.Input<string>;
+    apiConfig?: pulumi.Input<string>;
     /**
      * Optional. Display name.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly gatewayId: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    gatewayId: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

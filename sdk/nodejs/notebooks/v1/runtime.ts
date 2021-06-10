@@ -129,16 +129,16 @@ export interface RuntimeArgs {
     /**
      * The config settings for accessing runtime.
      */
-    readonly accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly runtimeId: pulumi.Input<string>;
+    accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    runtimeId: pulumi.Input<string>;
     /**
      * The config settings for software inside the runtime.
      */
-    readonly softwareConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeSoftwareConfigArgs>;
+    softwareConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeSoftwareConfigArgs>;
     /**
      * Use a Compute Engine VM image to start the managed notebook instance.
      */
-    readonly virtualMachine?: pulumi.Input<inputs.notebooks.v1.VirtualMachineArgs>;
+    virtualMachine?: pulumi.Input<inputs.notebooks.v1.VirtualMachineArgs>;
 }

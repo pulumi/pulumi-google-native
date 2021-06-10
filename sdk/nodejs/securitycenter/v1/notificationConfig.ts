@@ -98,22 +98,22 @@ export class NotificationConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a NotificationConfig resource.
  */
 export interface NotificationConfigArgs {
-    readonly configId: pulumi.Input<string>;
+    configId: pulumi.Input<string>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
      */
-    readonly pubsubTopic?: pulumi.Input<string>;
+    pubsubTopic?: pulumi.Input<string>;
     /**
      * The config for triggering streaming-based notifications.
      */
-    readonly streamingConfig?: pulumi.Input<inputs.securitycenter.v1.StreamingConfigArgs>;
+    streamingConfig?: pulumi.Input<inputs.securitycenter.v1.StreamingConfigArgs>;
 }

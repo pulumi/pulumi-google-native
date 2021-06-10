@@ -147,39 +147,39 @@ export interface RegistrationArgs {
     /**
      * The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
      */
-    readonly contactNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    contactNotices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
      */
-    readonly contactSettings?: pulumi.Input<inputs.domains.v1alpha2.ContactSettingsArgs>;
+    contactSettings?: pulumi.Input<inputs.domains.v1alpha2.ContactSettingsArgs>;
     /**
      * Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
      */
-    readonly dnsSettings?: pulumi.Input<inputs.domains.v1alpha2.DnsSettingsArgs>;
+    dnsSettings?: pulumi.Input<inputs.domains.v1alpha2.DnsSettingsArgs>;
     /**
      * Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
      */
-    readonly domainNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNotices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of labels associated with the `Registration`.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
      */
-    readonly managementSettings?: pulumi.Input<inputs.domains.v1alpha2.ManagementSettingsArgs>;
-    readonly project: pulumi.Input<string>;
+    managementSettings?: pulumi.Input<inputs.domains.v1alpha2.ManagementSettingsArgs>;
+    project: pulumi.Input<string>;
     /**
      * When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
      */
-    readonly validateOnly?: pulumi.Input<boolean>;
+    validateOnly?: pulumi.Input<boolean>;
     /**
      * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
      */
-    readonly yearlyPrice?: pulumi.Input<inputs.domains.v1alpha2.MoneyArgs>;
+    yearlyPrice?: pulumi.Input<inputs.domains.v1alpha2.MoneyArgs>;
 }

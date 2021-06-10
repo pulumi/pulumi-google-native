@@ -158,15 +158,15 @@ export interface TargetPoolArgs {
      *
      * In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
      */
-    readonly backupPool?: pulumi.Input<string>;
+    backupPool?: pulumi.Input<string>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool (i.e., not as a backup pool to some other target pool). The value of the field must be in [0, 1].
      *
@@ -174,46 +174,46 @@ export interface TargetPoolArgs {
      *
      * In case where failoverRatio is not set or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
      */
-    readonly failoverRatio?: pulumi.Input<number>;
+    failoverRatio?: pulumi.Input<number>;
     /**
      * The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
      */
-    readonly healthChecks?: pulumi.Input<pulumi.Input<string>[]>;
+    healthChecks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
      */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] Type of the resource. Always compute#targetPool for target pools.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the target pool resides.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
-    readonly selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Session affinity option, must be one of the following values:
      * NONE: Connections from the same client IP may go to any instance in the pool.
      * CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
      * CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
      */
-    readonly sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string>;
 }

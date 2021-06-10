@@ -116,24 +116,24 @@ export interface HubArgs {
     /**
      * Time when the Hub was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Short description of the hub resource.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly hubId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    hubId?: pulumi.Input<string>;
     /**
      * User-defined labels.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The name of a Hub resource.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * Time when the Hub was updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

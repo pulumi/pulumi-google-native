@@ -116,18 +116,18 @@ export interface MetadataImportArgs {
     /**
      * Immutable. A database dump from a pre-existing metastore's database.
      */
-    readonly databaseDump?: pulumi.Input<inputs.metastore.v1alpha.DatabaseDumpArgs>;
+    databaseDump?: pulumi.Input<inputs.metastore.v1alpha.DatabaseDumpArgs>;
     /**
      * The description of the metadata import.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly metadataImportId: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    metadataImportId: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
 }

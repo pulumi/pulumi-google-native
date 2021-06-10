@@ -162,67 +162,67 @@ export interface RegionCommitmentArgs {
     /**
      * The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * [Output Only] Commitment end time in RFC3339 text format.
      */
-    readonly endTimestamp?: pulumi.Input<string>;
+    endTimestamp?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#commitment for commitments.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The license specification required as part of a license commitment.
      */
-    readonly licenseResource?: pulumi.Input<inputs.compute.v1.LicenseResourceCommitmentArgs>;
+    licenseResource?: pulumi.Input<inputs.compute.v1.LicenseResourceCommitmentArgs>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      */
-    readonly plan?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where this commitment may be used.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * List of reservations in this commitment.
      */
-    readonly reservations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ReservationArgs>[]>;
+    reservations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ReservationArgs>[]>;
     /**
      * A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
      */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.compute.v1.ResourceCommitmentArgs>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.compute.v1.ResourceCommitmentArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Commitment start time in RFC3339 text format.
      */
-    readonly startTimestamp?: pulumi.Input<string>;
+    startTimestamp?: pulumi.Input<string>;
     /**
      * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * [Output Only] An optional, human-readable explanation of the status.
      */
-    readonly statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string>;
 }

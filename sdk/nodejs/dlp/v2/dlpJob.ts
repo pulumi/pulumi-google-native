@@ -134,15 +134,15 @@ export interface DlpJobArgs {
     /**
      * An inspection job scans a storage repository for InfoTypes.
      */
-    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
+    inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
     /**
      * The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    readonly jobId?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    jobId?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * A risk analysis job calculates re-identification risk metrics for a BigQuery table.
      */
-    readonly riskJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2RiskAnalysisJobConfigArgs>;
+    riskJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2RiskAnalysisJobConfigArgs>;
 }

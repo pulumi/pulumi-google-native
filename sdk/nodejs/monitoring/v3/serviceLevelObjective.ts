@@ -112,29 +112,29 @@ export interface ServiceLevelObjectiveArgs {
     /**
      * A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
      */
-    readonly calendarPeriod?: pulumi.Input<string>;
+    calendarPeriod?: pulumi.Input<string>;
     /**
      * Name used for UI elements listing this SLO.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
      */
-    readonly goal?: pulumi.Input<number>;
+    goal?: pulumi.Input<number>;
     /**
      * Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
      */
-    readonly rollingPeriod?: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
+    rollingPeriod?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
     /**
      * The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
      */
-    readonly serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicatorArgs>;
-    readonly serviceLevelObjectiveId?: pulumi.Input<string>;
-    readonly v3Id: pulumi.Input<string>;
-    readonly v3Id1: pulumi.Input<string>;
+    serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicatorArgs>;
+    serviceLevelObjectiveId?: pulumi.Input<string>;
+    v3Id: pulumi.Input<string>;
+    v3Id1: pulumi.Input<string>;
 }

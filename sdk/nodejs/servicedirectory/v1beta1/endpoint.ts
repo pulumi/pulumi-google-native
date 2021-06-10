@@ -106,22 +106,22 @@ export interface EndpointArgs {
     /**
      * Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
      */
-    readonly address?: pulumi.Input<string>;
-    readonly endpointId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
+    endpointId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The resource name for the endpoint in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly namespaceId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
     /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
-    readonly port?: pulumi.Input<number>;
-    readonly project: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    project: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
 }

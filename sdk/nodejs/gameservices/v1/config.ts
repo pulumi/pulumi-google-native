@@ -118,28 +118,28 @@ export class Config extends pulumi.CustomResource {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
-    readonly configId: pulumi.Input<string>;
+    configId: pulumi.Input<string>;
     /**
      * The description of the game server config.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
      */
-    readonly fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1.FleetConfigArgs>[]>;
-    readonly gameServerDeploymentId: pulumi.Input<string>;
+    fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1.FleetConfigArgs>[]>;
+    gameServerDeploymentId: pulumi.Input<string>;
     /**
      * The labels associated with this game server config. Each label is a key-value pair.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The autoscaling settings.
      */
-    readonly scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1.ScalingConfigArgs>[]>;
+    scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1.ScalingConfigArgs>[]>;
 }

@@ -95,7 +95,7 @@ export interface FolderReplayArgs {
     /**
      * Required. The configuration used for the `Replay`.
      */
-    readonly config?: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
-    readonly folderId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
+    folderId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
 }

@@ -91,11 +91,11 @@ export interface StoredInfoTypeArgs {
     /**
      * Required. Configuration of the storedInfoType to create.
      */
-    readonly config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    readonly storedInfoTypeId?: pulumi.Input<string>;
+    storedInfoTypeId?: pulumi.Input<string>;
 }

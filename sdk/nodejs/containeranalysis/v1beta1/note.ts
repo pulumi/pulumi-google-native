@@ -173,71 +173,71 @@ export interface NoteArgs {
     /**
      * A note describing an attestation role.
      */
-    readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.v1beta1.AuthorityArgs>;
+    attestationAuthority?: pulumi.Input<inputs.containeranalysis.v1beta1.AuthorityArgs>;
     /**
      * A note describing a base image.
      */
-    readonly baseImage?: pulumi.Input<inputs.containeranalysis.v1beta1.BasisArgs>;
+    baseImage?: pulumi.Input<inputs.containeranalysis.v1beta1.BasisArgs>;
     /**
      * A note describing build provenance for a verifiable build.
      */
-    readonly build?: pulumi.Input<inputs.containeranalysis.v1beta1.BuildArgs>;
+    build?: pulumi.Input<inputs.containeranalysis.v1beta1.BuildArgs>;
     /**
      * The time this note was created. This field can be used as a filter in list requests.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * A note describing something that can be deployed.
      */
-    readonly deployable?: pulumi.Input<inputs.containeranalysis.v1beta1.DeployableArgs>;
+    deployable?: pulumi.Input<inputs.containeranalysis.v1beta1.DeployableArgs>;
     /**
      * A note describing the initial analysis of a resource.
      */
-    readonly discovery?: pulumi.Input<inputs.containeranalysis.v1beta1.DiscoveryArgs>;
+    discovery?: pulumi.Input<inputs.containeranalysis.v1beta1.DiscoveryArgs>;
     /**
      * Time of expiration for this note. Empty if note does not expire.
      */
-    readonly expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string>;
     /**
      * A note describing an in-toto link.
      */
-    readonly intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.InTotoArgs>;
+    intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.InTotoArgs>;
     /**
      * The type of analysis. This field can be used as a filter in list requests.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * A detailed description of this note.
      */
-    readonly longDescription?: pulumi.Input<string>;
+    longDescription?: pulumi.Input<string>;
     /**
      * The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly noteId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    noteId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.
      */
-    readonly package?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageArgs>;
-    readonly project: pulumi.Input<string>;
+    package?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageArgs>;
+    project: pulumi.Input<string>;
     /**
      * Other notes related to this note.
      */
-    readonly relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URLs associated with this note.
      */
-    readonly relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.RelatedUrlArgs>[]>;
+    relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.RelatedUrlArgs>[]>;
     /**
      * A one sentence description of this note.
      */
-    readonly shortDescription?: pulumi.Input<string>;
+    shortDescription?: pulumi.Input<string>;
     /**
      * The time this note was last updated. This field can be used as a filter in list requests.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
     /**
      * A note describing a package vulnerability.
      */
-    readonly vulnerability?: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityArgs>;
+    vulnerability?: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityArgs>;
 }

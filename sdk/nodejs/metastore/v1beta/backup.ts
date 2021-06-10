@@ -113,17 +113,17 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
-    readonly backupId: pulumi.Input<string>;
+    backupId: pulumi.Input<string>;
     /**
      * The description of the backup.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
-    readonly serviceId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
+    serviceId: pulumi.Input<string>;
 }

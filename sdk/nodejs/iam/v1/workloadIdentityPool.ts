@@ -104,16 +104,16 @@ export interface WorkloadIdentityPoolArgs {
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * A display name for the pool. Cannot exceed 32 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly workloadIdentityPoolId: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    workloadIdentityPoolId: pulumi.Input<string>;
 }

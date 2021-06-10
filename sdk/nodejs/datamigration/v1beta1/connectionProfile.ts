@@ -136,33 +136,33 @@ export interface ConnectionProfileArgs {
     /**
      * A CloudSQL database connection profile.
      */
-    readonly cloudsql?: pulumi.Input<inputs.datamigration.v1beta1.CloudSqlConnectionProfileArgs>;
-    readonly connectionProfileId: pulumi.Input<string>;
+    cloudsql?: pulumi.Input<inputs.datamigration.v1beta1.CloudSqlConnectionProfileArgs>;
+    connectionProfileId: pulumi.Input<string>;
     /**
      * The connection profile display name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * A MySQL database connection profile.
      */
-    readonly mysql?: pulumi.Input<inputs.datamigration.v1beta1.MySqlConnectionProfileArgs>;
+    mysql?: pulumi.Input<inputs.datamigration.v1beta1.MySqlConnectionProfileArgs>;
     /**
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The database provider.
      */
-    readonly provider?: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    provider?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }

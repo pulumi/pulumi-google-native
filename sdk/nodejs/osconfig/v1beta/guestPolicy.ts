@@ -125,31 +125,31 @@ export interface GuestPolicyArgs {
     /**
      * Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
      */
-    readonly assignment?: pulumi.Input<inputs.osconfig.v1beta.AssignmentArgs>;
+    assignment?: pulumi.Input<inputs.osconfig.v1beta.AssignmentArgs>;
     /**
      * Description of the guest policy. Length of the description is limited to 1024 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly guestPolicyId: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    guestPolicyId: pulumi.Input<string>;
     /**
      * Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
      */
-    readonly packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageRepositoryArgs>[]>;
+    packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageRepositoryArgs>[]>;
     /**
      * The software packages to be managed by this policy.
      */
-    readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageArgs>[]>;
+    project: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
      */
-    readonly recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.SoftwareRecipeArgs>[]>;
+    recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.SoftwareRecipeArgs>[]>;
 }

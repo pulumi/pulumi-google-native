@@ -139,50 +139,50 @@ export interface JobArgs {
     /**
      * When the job was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * When the job processing was completed.
      */
-    readonly endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
     /**
      * The details of a failure or a cancellation.
      */
-    readonly errorMessage?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Required. The user-specified id of the job.
      */
-    readonly jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string>;
     /**
      * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Input parameters to create a prediction job.
      */
-    readonly predictionInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionInputArgs>;
+    predictionInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionInputArgs>;
     /**
      * The current prediction job result.
      */
-    readonly predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutputArgs>;
-    readonly project: pulumi.Input<string>;
+    predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutputArgs>;
+    project: pulumi.Input<string>;
     /**
      * When the job processing was started.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
     /**
      * The detailed state of a job.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Input parameters to create a training job.
      */
-    readonly trainingInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingInputArgs>;
+    trainingInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingInputArgs>;
     /**
      * The current training job result.
      */
-    readonly trainingOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingOutputArgs>;
+    trainingOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingOutputArgs>;
 }

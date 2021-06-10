@@ -96,10 +96,10 @@ export interface EnvgroupArgs {
     /**
      * Required. Host names for this environment group.
      */
-    readonly hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the environment group.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

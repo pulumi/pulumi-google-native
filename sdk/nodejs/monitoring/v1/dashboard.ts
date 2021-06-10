@@ -109,30 +109,30 @@ export interface DashboardArgs {
     /**
      * The content is divided into equally spaced columns and the widgets are arranged vertically.
      */
-    readonly columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayoutArgs>;
+    columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayoutArgs>;
     /**
      * Required. The mutable, human-readable name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
      */
-    readonly gridLayout?: pulumi.Input<inputs.monitoring.v1.GridLayoutArgs>;
+    gridLayout?: pulumi.Input<inputs.monitoring.v1.GridLayoutArgs>;
     /**
      * The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
      */
-    readonly mosaicLayout?: pulumi.Input<inputs.monitoring.v1.MosaicLayoutArgs>;
+    mosaicLayout?: pulumi.Input<inputs.monitoring.v1.MosaicLayoutArgs>;
     /**
      * Immutable. The resource name of the dashboard.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
-    readonly rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayoutArgs>;
+    rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayoutArgs>;
 }

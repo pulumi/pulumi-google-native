@@ -240,119 +240,119 @@ export interface TableArgs {
     /**
      * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
      */
-    readonly clustering?: pulumi.Input<inputs.bigquery.v2.ClusteringArgs>;
+    clustering?: pulumi.Input<inputs.bigquery.v2.ClusteringArgs>;
     /**
      * [Output-only] The time when this table was created, in milliseconds since the epoch.
      */
-    readonly creationTime?: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     /**
      * [Optional] A user-friendly description of this table.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Custom encryption configuration (e.g., Cloud KMS keys).
      */
-    readonly encryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfigurationArgs>;
+    encryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfigurationArgs>;
     /**
      * [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
      */
-    readonly expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string>;
     /**
      * [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
      */
-    readonly externalDataConfiguration?: pulumi.Input<inputs.bigquery.v2.ExternalDataConfigurationArgs>;
+    externalDataConfiguration?: pulumi.Input<inputs.bigquery.v2.ExternalDataConfigurationArgs>;
     /**
      * [Optional] A descriptive name for this table.
      */
-    readonly friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string>;
     /**
      * [Output-only] An opaque ID uniquely identifying the table.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output-only] The type of the resource.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [Output-only] The time when this table was last modified, in milliseconds since the epoch.
      */
-    readonly lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * [Optional] Materialized view definition.
      */
-    readonly materializedView?: pulumi.Input<inputs.bigquery.v2.MaterializedViewDefinitionArgs>;
+    materializedView?: pulumi.Input<inputs.bigquery.v2.MaterializedViewDefinitionArgs>;
     /**
      * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
      */
-    readonly model?: pulumi.Input<inputs.bigquery.v2.ModelDefinitionArgs>;
+    model?: pulumi.Input<inputs.bigquery.v2.ModelDefinitionArgs>;
     /**
      * [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
      */
-    readonly numBytes?: pulumi.Input<string>;
+    numBytes?: pulumi.Input<string>;
     /**
      * [Output-only] The number of bytes in the table that are considered "long-term storage".
      */
-    readonly numLongTermBytes?: pulumi.Input<string>;
+    numLongTermBytes?: pulumi.Input<string>;
     /**
      * [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
      */
-    readonly numPhysicalBytes?: pulumi.Input<string>;
+    numPhysicalBytes?: pulumi.Input<string>;
     /**
      * [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
      */
-    readonly numRows?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    numRows?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */
-    readonly rangePartitioning?: pulumi.Input<inputs.bigquery.v2.RangePartitioningArgs>;
+    rangePartitioning?: pulumi.Input<inputs.bigquery.v2.RangePartitioningArgs>;
     /**
      * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
-    readonly requirePartitionFilter?: pulumi.Input<boolean>;
+    requirePartitionFilter?: pulumi.Input<boolean>;
     /**
      * [Optional] Describes the schema of this table.
      */
-    readonly schema?: pulumi.Input<inputs.bigquery.v2.TableSchemaArgs>;
+    schema?: pulumi.Input<inputs.bigquery.v2.TableSchemaArgs>;
     /**
      * [Output-only] A URL that can be used to access this resource again.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output-only] Snapshot definition.
      */
-    readonly snapshotDefinition?: pulumi.Input<inputs.bigquery.v2.SnapshotDefinitionArgs>;
+    snapshotDefinition?: pulumi.Input<inputs.bigquery.v2.SnapshotDefinitionArgs>;
     /**
      * [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
      */
-    readonly streamingBuffer?: pulumi.Input<inputs.bigquery.v2.StreamingbufferArgs>;
+    streamingBuffer?: pulumi.Input<inputs.bigquery.v2.StreamingbufferArgs>;
     /**
      * [Required] Reference describing the ID of this table.
      */
-    readonly tableReference?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
+    tableReference?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
     /**
      * Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */
-    readonly timePartitioning?: pulumi.Input<inputs.bigquery.v2.TimePartitioningArgs>;
+    timePartitioning?: pulumi.Input<inputs.bigquery.v2.TimePartitioningArgs>;
     /**
      * [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * [Optional] The view definition.
      */
-    readonly view?: pulumi.Input<inputs.bigquery.v2.ViewDefinitionArgs>;
+    view?: pulumi.Input<inputs.bigquery.v2.ViewDefinitionArgs>;
 }

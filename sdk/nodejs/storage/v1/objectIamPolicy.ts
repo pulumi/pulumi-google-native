@@ -104,26 +104,26 @@ export interface ObjectIamPolicyArgs {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    readonly bindings?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectIamPolicyBindingsItemArgs>[]>;
-    readonly bucket: pulumi.Input<string>;
+    bindings?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectIamPolicyBindingsItemArgs>[]>;
+    bucket: pulumi.Input<string>;
     /**
      * HTTP 1.1  Entity tag for the policy.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly generation?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    generation?: pulumi.Input<string>;
     /**
      * The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly object: pulumi.Input<string>;
-    readonly provisionalUserProject?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    object: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
      */
-    readonly resourceId?: pulumi.Input<string>;
-    readonly userProject?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
     /**
      * The IAM policy format version.
      */
-    readonly version?: pulumi.Input<number>;
+    version?: pulumi.Input<number>;
 }

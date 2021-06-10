@@ -83,7 +83,7 @@ export class KeyRing extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRing resource.
  */
 export interface KeyRingArgs {
-    readonly keyRingId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

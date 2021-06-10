@@ -141,30 +141,30 @@ export class Entitlement extends pulumi.CustomResource {
  * The set of arguments for constructing a Entitlement resource.
  */
 export interface EntitlementArgs {
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Association information to other entitlements.
      */
-    readonly associationInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoArgs>;
+    associationInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoArgs>;
     /**
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */
-    readonly commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsArgs>;
-    readonly customerId: pulumi.Input<string>;
+    commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsArgs>;
+    customerId: pulumi.Input<string>;
     /**
      * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */
-    readonly offer?: pulumi.Input<string>;
+    offer?: pulumi.Input<string>;
     /**
      * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ParameterArgs>[]>;
     /**
      * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
      */
-    readonly purchaseOrderId?: pulumi.Input<string>;
+    purchaseOrderId?: pulumi.Input<string>;
     /**
      * Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
      */
-    readonly requestId?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
 }

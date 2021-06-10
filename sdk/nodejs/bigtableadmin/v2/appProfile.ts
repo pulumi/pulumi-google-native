@@ -103,28 +103,28 @@ export class AppProfile extends pulumi.CustomResource {
  * The set of arguments for constructing a AppProfile resource.
  */
 export interface AppProfileArgs {
-    readonly appProfileId: pulumi.Input<string>;
+    appProfileId: pulumi.Input<string>;
     /**
      * Long form description of the use case for this AppProfile.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly ignoreWarnings?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    ignoreWarnings?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Use a multi-cluster routing policy.
      */
-    readonly multiClusterRoutingUseAny?: pulumi.Input<inputs.bigtableadmin.v2.MultiClusterRoutingUseAnyArgs>;
+    multiClusterRoutingUseAny?: pulumi.Input<inputs.bigtableadmin.v2.MultiClusterRoutingUseAnyArgs>;
     /**
      * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Use a single-cluster routing policy.
      */
-    readonly singleClusterRouting?: pulumi.Input<inputs.bigtableadmin.v2.SingleClusterRoutingArgs>;
+    singleClusterRouting?: pulumi.Input<inputs.bigtableadmin.v2.SingleClusterRoutingArgs>;
 }

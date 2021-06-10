@@ -108,32 +108,32 @@ export interface PolicyArgs {
     /**
      * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
      */
-    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.v1beta2.PolicyAlternativeNameServerConfigArgs>;
-    readonly clientOperationId?: pulumi.Input<string>;
+    alternativeNameServerConfig?: pulumi.Input<inputs.dns.v1beta2.PolicyAlternativeNameServerConfigArgs>;
+    clientOperationId?: pulumi.Input<string>;
     /**
      * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
      */
-    readonly enableInboundForwarding?: pulumi.Input<boolean>;
+    enableInboundForwarding?: pulumi.Input<boolean>;
     /**
      * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
      */
-    readonly enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * Unique identifier for the resource; defined by the server (output only).
      */
-    readonly id?: pulumi.Input<string>;
-    readonly kind?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * User-assigned name for this policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of network names specifying networks to which this policy is applied.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.PolicyNetworkArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.PolicyNetworkArgs>[]>;
+    project: pulumi.Input<string>;
 }

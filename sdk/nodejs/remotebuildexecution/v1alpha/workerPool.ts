@@ -109,35 +109,35 @@ export interface WorkerPoolArgs {
     /**
      * The autoscale policy to apply on a pool.
      */
-    readonly autoscale?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs>;
+    autoscale?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs>;
     /**
      * Channel specifies the release channel of the pool.
      */
-    readonly channel?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    channel?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
-    readonly poolId?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    poolId?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * State of the worker pool.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */
-    readonly workerConfig?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs>;
+    workerConfig?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs>;
     /**
      * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
      */
-    readonly workerCount?: pulumi.Input<string>;
+    workerCount?: pulumi.Input<string>;
 }

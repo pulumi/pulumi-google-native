@@ -106,26 +106,26 @@ export class FeedbackMessage extends pulumi.CustomResource {
  * The set of arguments for constructing a FeedbackMessage resource.
  */
 export interface FeedbackMessageArgs {
-    readonly annotatedDatasetId: pulumi.Input<string>;
+    annotatedDatasetId: pulumi.Input<string>;
     /**
      * String content of the feedback. Maximum of 10000 characters.
      */
-    readonly body?: pulumi.Input<string>;
+    body?: pulumi.Input<string>;
     /**
      * Create time.
      */
-    readonly createTime?: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
-    readonly feedbackThreadId: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    feedbackThreadId: pulumi.Input<string>;
     /**
      * The image storing this feedback if the feedback is an image representing operator's comments.
      */
-    readonly image?: pulumi.Input<string>;
+    image?: pulumi.Input<string>;
     /**
      * Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
      */
-    readonly name?: pulumi.Input<string>;
-    readonly operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>;
-    readonly project: pulumi.Input<string>;
-    readonly requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>;
+    name?: pulumi.Input<string>;
+    operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>;
+    project: pulumi.Input<string>;
+    requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>;
 }

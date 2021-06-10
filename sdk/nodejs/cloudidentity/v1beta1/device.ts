@@ -231,17 +231,17 @@ export interface DeviceArgs {
     /**
      * Asset tag of the device.
      */
-    readonly assetTag?: pulumi.Input<string>;
+    assetTag?: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.
      */
-    readonly lastSyncTime?: pulumi.Input<string>;
+    lastSyncTime?: pulumi.Input<string>;
     /**
      * Serial Number of device. Example: HT82V1A01076.
      */
-    readonly serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string>;
     /**
      * WiFi MAC addresses of device.
      */
-    readonly wifiMacAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    wifiMacAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }

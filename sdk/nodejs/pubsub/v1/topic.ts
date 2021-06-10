@@ -107,27 +107,27 @@ export interface TopicArgs {
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
      */
-    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.v1.MessageStoragePolicyArgs>;
+    messageStoragePolicy?: pulumi.Input<inputs.pubsub.v1.MessageStoragePolicyArgs>;
     /**
      * Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
-    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * Settings for validating messages published against a schema.
      */
-    readonly schemaSettings?: pulumi.Input<inputs.pubsub.v1.SchemaSettingsArgs>;
-    readonly topicId: pulumi.Input<string>;
+    schemaSettings?: pulumi.Input<inputs.pubsub.v1.SchemaSettingsArgs>;
+    topicId: pulumi.Input<string>;
 }

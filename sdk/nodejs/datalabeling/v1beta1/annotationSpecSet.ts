@@ -97,22 +97,22 @@ export interface AnnotationSpecSetArgs {
     /**
      * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
-    readonly annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>[]>;
+    annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>[]>;
     /**
      * The names of any related resources that are blocking changes to the annotation spec set.
      */
-    readonly blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
+    blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

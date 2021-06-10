@@ -125,29 +125,29 @@ export class CryptoKey extends pulumi.CustomResource {
  * The set of arguments for constructing a CryptoKey resource.
  */
 export interface CryptoKeyArgs {
-    readonly cryptoKeyId: pulumi.Input<string>;
-    readonly keyRingId: pulumi.Input<string>;
+    cryptoKeyId: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
-    readonly nextRotationTime?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    nextRotationTime?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Immutable. The immutable purpose of this CryptoKey.
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
-    readonly rotationPeriod?: pulumi.Input<string>;
-    readonly skipInitialVersionCreation?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string>;
+    skipInitialVersionCreation?: pulumi.Input<string>;
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
      */
-    readonly versionTemplate?: pulumi.Input<inputs.cloudkms.v1.CryptoKeyVersionTemplateArgs>;
+    versionTemplate?: pulumi.Input<inputs.cloudkms.v1.CryptoKeyVersionTemplateArgs>;
 }

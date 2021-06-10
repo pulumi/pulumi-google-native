@@ -126,19 +126,19 @@ export class Feature extends pulumi.CustomResource {
  * The set of arguments for constructing a Feature resource.
  */
 export interface FeatureArgs {
-    readonly featureId?: pulumi.Input<string>;
+    featureId?: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
      */
-    readonly membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
-    readonly spec?: pulumi.Input<inputs.gkehub.v1alpha.CommonFeatureSpecArgs>;
+    spec?: pulumi.Input<inputs.gkehub.v1alpha.CommonFeatureSpecArgs>;
 }

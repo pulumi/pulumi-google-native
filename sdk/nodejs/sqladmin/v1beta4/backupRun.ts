@@ -161,66 +161,66 @@ export interface BackupRunArgs {
     /**
      * Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
      */
-    readonly backupKind?: pulumi.Input<string>;
+    backupKind?: pulumi.Input<string>;
     /**
      * The description of this run, only applicable to on-demand backups.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Encryption configuration specific to a backup. Applies only to Second Generation instances.
      */
-    readonly diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfigurationArgs>;
+    diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfigurationArgs>;
     /**
      * Encryption status specific to a backup. Applies only to Second Generation instances.
      */
-    readonly diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
+    diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
     /**
      * The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
      */
-    readonly endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
     /**
      * The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
      */
-    readonly enqueuedTime?: pulumi.Input<string>;
+    enqueuedTime?: pulumi.Input<string>;
     /**
      * Information about why the backup operation failed. This is only present if the run has the FAILED status.
      */
-    readonly error?: pulumi.Input<inputs.sqladmin.v1beta4.OperationErrorArgs>;
+    error?: pulumi.Input<inputs.sqladmin.v1beta4.OperationErrorArgs>;
     /**
      * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Name of the database instance.
      */
-    readonly instance: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
     /**
      * This is always *sql#backupRun*.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Location of the backups.
      */
-    readonly location?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The URI of this resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
     /**
      * The status of this run.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
      */
-    readonly windowStartTime?: pulumi.Input<string>;
+    windowStartTime?: pulumi.Input<string>;
 }

@@ -113,32 +113,32 @@ export interface CompositeTypeArgs {
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly id?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    readonly insertTime?: pulumi.Input<string>;
+    insertTime?: pulumi.Input<string>;
     /**
      * Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CompositeTypeLabelEntryArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CompositeTypeLabelEntryArgs>[]>;
     /**
      * Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Operation that most recently ran, or is currently running, on this composite type.
      */
-    readonly operation?: pulumi.Input<inputs.deploymentmanager.alpha.OperationArgs>;
-    readonly project: pulumi.Input<string>;
+    operation?: pulumi.Input<inputs.deploymentmanager.alpha.OperationArgs>;
+    project: pulumi.Input<string>;
     /**
      * Server defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Files for the template type.
      */
-    readonly templateContents?: pulumi.Input<inputs.deploymentmanager.alpha.TemplateContentsArgs>;
+    templateContents?: pulumi.Input<inputs.deploymentmanager.alpha.TemplateContentsArgs>;
 }

@@ -154,29 +154,29 @@ export interface MembershipArgs {
     /**
      * Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
      */
-    readonly authority?: pulumi.Input<inputs.gkehub.v1beta1.AuthorityArgs>;
+    authority?: pulumi.Input<inputs.gkehub.v1beta1.AuthorityArgs>;
     /**
      * Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Optional. Endpoint information to reach this member.
      */
-    readonly endpoint?: pulumi.Input<inputs.gkehub.v1beta1.MembershipEndpointArgs>;
+    endpoint?: pulumi.Input<inputs.gkehub.v1beta1.MembershipEndpointArgs>;
     /**
      * Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
      */
-    readonly externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string>;
     /**
      * Optional. The infrastructure type this Membership is running on.
      */
-    readonly infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<string>;
     /**
      * Optional. GCP labels for this membership.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
-    readonly membershipId: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
+    membershipId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
 }

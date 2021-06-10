@@ -108,28 +108,28 @@ export interface EntityTypeArgs {
     /**
      * Optional. Indicates whether the entity type can be automatically expanded.
      */
-    readonly autoExpansionMode?: pulumi.Input<string>;
+    autoExpansionMode?: pulumi.Input<string>;
     /**
      * Required. The name of the entity type.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Optional. Enables fuzzy entity extraction during classification.
      */
-    readonly enableFuzzyExtraction?: pulumi.Input<boolean>;
+    enableFuzzyExtraction?: pulumi.Input<boolean>;
     /**
      * Optional. The collection of entity entries associated with the entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityArgs>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityArgs>[]>;
     /**
      * Required. Indicates the kind of entity type.
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly languageCode?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

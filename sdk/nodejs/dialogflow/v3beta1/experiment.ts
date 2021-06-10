@@ -148,56 +148,56 @@ export class Experiment extends pulumi.CustomResource {
  * The set of arguments for constructing a Experiment resource.
  */
 export interface ExperimentArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Creation time of this experiment.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The definition of the experiment.
      */
-    readonly definition?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs>;
+    definition?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs>;
     /**
      * The human-readable description of the experiment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * End time of this experiment.
      */
-    readonly endTime?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
     /**
      * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
      */
-    readonly experimentLength?: pulumi.Input<string>;
+    experimentLength?: pulumi.Input<string>;
     /**
      * Last update time of this experiment.
      */
-    readonly lastUpdateTime?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    lastUpdateTime?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The name of the experiment. Format: projects//locations//agents//environments//experiments/..
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Inference result of the experiment.
      */
-    readonly result?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentResultArgs>;
+    result?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentResultArgs>;
     /**
      * Start time of this experiment.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
     /**
      * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The history of updates to the experiment variants.
      */
-    readonly variantsHistory?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs>[]>;
+    variantsHistory?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs>[]>;
 }

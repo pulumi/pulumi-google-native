@@ -112,31 +112,31 @@ export interface SecuritySettingArgs {
     /**
      * Required. The human-readable name of the security settings, unique within the location.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
      */
-    readonly inspectTemplate?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    inspectTemplate?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * List of types of data to remove when retention settings triggers purge.
      */
-    readonly purgeDataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    purgeDataTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
      */
-    readonly redactionScope?: pulumi.Input<string>;
+    redactionScope?: pulumi.Input<string>;
     /**
      * Strategy that defines how we do redaction.
      */
-    readonly redactionStrategy?: pulumi.Input<string>;
+    redactionStrategy?: pulumi.Input<string>;
     /**
      * Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
      */
-    readonly retentionWindowDays?: pulumi.Input<number>;
+    retentionWindowDays?: pulumi.Input<number>;
 }

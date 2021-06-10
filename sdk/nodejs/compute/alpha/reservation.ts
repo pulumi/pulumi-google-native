@@ -150,59 +150,59 @@ export interface ReservationArgs {
     /**
      * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
-    readonly commitment?: pulumi.Input<string>;
+    commitment?: pulumi.Input<string>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#reservations for reservations.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.
      */
-    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
-    readonly selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Share-settings for shared-reservation
      */
-    readonly shareSettings?: pulumi.Input<inputs.compute.alpha.AllocationShareSettingsArgs>;
+    shareSettings?: pulumi.Input<inputs.compute.alpha.AllocationShareSettingsArgs>;
     /**
      * Reservation for instances with specific machine shapes.
      */
-    readonly specificReservation?: pulumi.Input<inputs.compute.alpha.AllocationSpecificSKUReservationArgs>;
+    specificReservation?: pulumi.Input<inputs.compute.alpha.AllocationSpecificSKUReservationArgs>;
     /**
      * Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
      */
-    readonly specificReservationRequired?: pulumi.Input<boolean>;
+    specificReservationRequired?: pulumi.Input<boolean>;
     /**
      * [Output Only] The status of the reservation.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
      */
-    readonly zone: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

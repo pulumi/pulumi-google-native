@@ -138,43 +138,43 @@ export class Connector extends pulumi.CustomResource {
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
-    readonly connectorId: pulumi.Input<string>;
+    connectorId: pulumi.Input<string>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    readonly ipCidrRange?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
-    readonly machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector.
      */
-    readonly maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number>;
     /**
      * Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
      */
-    readonly maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector.
      */
-    readonly minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
-    readonly minThroughput?: pulumi.Input<number>;
+    minThroughput?: pulumi.Input<number>;
     /**
      * The resource name in the format `projects/*&#47;locations/*&#47;connectors/*`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of a VPC network.
      */
-    readonly network?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The subnet in which to house the VPC Access Connector.
      */
-    readonly subnet?: pulumi.Input<inputs.vpcaccess.v1.SubnetArgs>;
+    subnet?: pulumi.Input<inputs.vpcaccess.v1.SubnetArgs>;
 }

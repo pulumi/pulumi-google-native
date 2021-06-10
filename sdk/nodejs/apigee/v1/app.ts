@@ -148,42 +148,42 @@ export interface AppArgs {
     /**
      * List of API products associated with the developer app.
      */
-    readonly apiProducts?: pulumi.Input<pulumi.Input<string>[]>;
+    apiProducts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Developer app family.
      */
-    readonly appFamily?: pulumi.Input<string>;
+    appFamily?: pulumi.Input<string>;
     /**
      * ID of the developer app.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * List of attributes for the developer app.
      */
-    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
     /**
      * Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
      */
-    readonly callbackUrl?: pulumi.Input<string>;
+    callbackUrl?: pulumi.Input<string>;
     /**
      * ID of the developer.
      */
-    readonly developerId: pulumi.Input<string>;
+    developerId: pulumi.Input<string>;
     /**
      * Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
      */
-    readonly keyExpiresIn?: pulumi.Input<string>;
+    keyExpiresIn?: pulumi.Input<string>;
     /**
      * Name of the developer app.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
      */
-    readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Status of the credential. Valid values include `approved` or `revoked`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

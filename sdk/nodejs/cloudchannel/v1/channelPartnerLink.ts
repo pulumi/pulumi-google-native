@@ -112,13 +112,13 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
  * The set of arguments for constructing a ChannelPartnerLink resource.
  */
 export interface ChannelPartnerLinkArgs {
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Required. State of the channel partner link.
      */
-    readonly linkState?: pulumi.Input<string>;
+    linkState?: pulumi.Input<string>;
     /**
      * Required. Cloud Identity ID of the linked reseller.
      */
-    readonly resellerCloudIdentityId?: pulumi.Input<string>;
+    resellerCloudIdentityId?: pulumi.Input<string>;
 }

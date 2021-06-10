@@ -94,17 +94,17 @@ export interface SubscriptionArgs {
     /**
      * The settings for this subscription's message delivery.
      */
-    readonly deliveryConfig?: pulumi.Input<inputs.pubsublite.v1.DeliveryConfigArgs>;
-    readonly location: pulumi.Input<string>;
+    deliveryConfig?: pulumi.Input<inputs.pubsublite.v1.DeliveryConfigArgs>;
+    location: pulumi.Input<string>;
     /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly skipBacklog?: pulumi.Input<string>;
-    readonly subscriptionId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    skipBacklog?: pulumi.Input<string>;
+    subscriptionId: pulumi.Input<string>;
     /**
      * The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
      */
-    readonly topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string>;
 }

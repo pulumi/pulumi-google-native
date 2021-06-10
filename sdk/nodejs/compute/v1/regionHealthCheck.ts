@@ -162,61 +162,61 @@ export interface RegionHealthCheckArgs {
     /**
      * How often (in seconds) to send a health check. The default value is 5 seconds.
      */
-    readonly checkIntervalSec?: pulumi.Input<number>;
+    checkIntervalSec?: pulumi.Input<number>;
     /**
      * [Output Only] Creation timestamp in 3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly grpcHealthCheck?: pulumi.Input<inputs.compute.v1.GRPCHealthCheckArgs>;
+    description?: pulumi.Input<string>;
+    grpcHealthCheck?: pulumi.Input<inputs.compute.v1.GRPCHealthCheckArgs>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */
-    readonly healthyThreshold?: pulumi.Input<number>;
-    readonly http2HealthCheck?: pulumi.Input<inputs.compute.v1.HTTP2HealthCheckArgs>;
-    readonly httpHealthCheck?: pulumi.Input<inputs.compute.v1.HTTPHealthCheckArgs>;
-    readonly httpsHealthCheck?: pulumi.Input<inputs.compute.v1.HTTPSHealthCheckArgs>;
+    healthyThreshold?: pulumi.Input<number>;
+    http2HealthCheck?: pulumi.Input<inputs.compute.v1.HTTP2HealthCheckArgs>;
+    httpHealthCheck?: pulumi.Input<inputs.compute.v1.HTTPHealthCheckArgs>;
+    httpsHealthCheck?: pulumi.Input<inputs.compute.v1.HTTPSHealthCheckArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Type of the resource.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Configure logging on this health check.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.v1.HealthCheckLogConfigArgs>;
+    logConfig?: pulumi.Input<inputs.compute.v1.HealthCheckLogConfigArgs>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] Region where the health check resides. Not applicable to global health checks.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
-    readonly sslHealthCheck?: pulumi.Input<inputs.compute.v1.SSLHealthCheckArgs>;
-    readonly tcpHealthCheck?: pulumi.Input<inputs.compute.v1.TCPHealthCheckArgs>;
+    selfLink?: pulumi.Input<string>;
+    sslHealthCheck?: pulumi.Input<inputs.compute.v1.SSLHealthCheckArgs>;
+    tcpHealthCheck?: pulumi.Input<inputs.compute.v1.TCPHealthCheckArgs>;
     /**
      * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
      */
-    readonly timeoutSec?: pulumi.Input<number>;
+    timeoutSec?: pulumi.Input<number>;
     /**
      * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
      */
-    readonly unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number>;
 }

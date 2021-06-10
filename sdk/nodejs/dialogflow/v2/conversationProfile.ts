@@ -143,43 +143,43 @@ export interface ConversationProfileArgs {
     /**
      * Configuration for an automated agent to use with this profile.
      */
-    readonly automatedAgentConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2AutomatedAgentConfigArgs>;
+    automatedAgentConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2AutomatedAgentConfigArgs>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Configuration for agent assistance to use with this profile.
      */
-    readonly humanAgentAssistantConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs>;
+    humanAgentAssistantConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs>;
     /**
      * Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
      */
-    readonly humanAgentHandoffConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs>;
+    humanAgentHandoffConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs>;
     /**
      * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
      */
-    readonly languageCode?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Configuration for logging conversation lifecycle events.
      */
-    readonly loggingConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2LoggingConfigArgs>;
+    loggingConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2LoggingConfigArgs>;
     /**
      * The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Configuration for publishing new message events. Event will be sent in format of ConversationEvent
      */
-    readonly newMessageEventNotificationConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigArgs>;
+    newMessageEventNotificationConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigArgs>;
     /**
      * Configuration for publishing conversation lifecycle events.
      */
-    readonly notificationConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigArgs>;
-    readonly project: pulumi.Input<string>;
+    notificationConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigArgs>;
+    project: pulumi.Input<string>;
     /**
      * Settings for speech transcription.
      */
-    readonly sttConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2SpeechToTextConfigArgs>;
+    sttConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2SpeechToTextConfigArgs>;
 }

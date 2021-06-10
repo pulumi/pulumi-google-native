@@ -85,14 +85,14 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
  * The set of arguments for constructing a EnvgroupAttachment resource.
  */
 export interface EnvgroupAttachmentArgs {
-    readonly envgroupId: pulumi.Input<string>;
+    envgroupId: pulumi.Input<string>;
     /**
      * Required. ID of the attached environment.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * ID of the environment group attachment.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

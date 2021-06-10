@@ -99,21 +99,21 @@ export interface ResponsePolicyRuleArgs {
     /**
      * Answer this query with a behavior rather than DNS data.
      */
-    readonly behavior?: pulumi.Input<string>;
-    readonly clientOperationId?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string>;
+    clientOperationId?: pulumi.Input<string>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
-    readonly dnsName?: pulumi.Input<string>;
-    readonly kind?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      */
-    readonly localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalDataArgs>;
-    readonly project: pulumi.Input<string>;
-    readonly responsePolicy: pulumi.Input<string>;
+    localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalDataArgs>;
+    project: pulumi.Input<string>;
+    responsePolicy: pulumi.Input<string>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      */
-    readonly ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string>;
 }

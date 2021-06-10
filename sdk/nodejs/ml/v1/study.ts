@@ -102,11 +102,11 @@ export class Study extends pulumi.CustomResource {
  * The set of arguments for constructing a Study resource.
  */
 export interface StudyArgs {
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. Configuration of the study.
      */
-    readonly studyConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
-    readonly studyId: pulumi.Input<string>;
+    studyConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
+    studyId: pulumi.Input<string>;
 }

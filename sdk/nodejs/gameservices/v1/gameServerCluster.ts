@@ -121,25 +121,25 @@ export interface GameServerClusterArgs {
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */
-    readonly connectionInfo?: pulumi.Input<inputs.gameservices.v1.GameServerClusterConnectionInfoArgs>;
+    connectionInfo?: pulumi.Input<inputs.gameservices.v1.GameServerClusterConnectionInfoArgs>;
     /**
      * Human readable description of the cluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ETag of the resource.
      */
-    readonly etag?: pulumi.Input<string>;
-    readonly gameServerClusterId: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    gameServerClusterId: pulumi.Input<string>;
     /**
      * The labels associated with this game server cluster. Each label is a key-value pair.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly realmId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    realmId: pulumi.Input<string>;
 }

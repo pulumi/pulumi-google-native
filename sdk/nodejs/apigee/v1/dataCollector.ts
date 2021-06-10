@@ -94,18 +94,18 @@ export class DataCollector extends pulumi.CustomResource {
  * The set of arguments for constructing a DataCollector resource.
  */
 export interface DataCollectorArgs {
-    readonly dataCollectorId?: pulumi.Input<string>;
+    dataCollectorId?: pulumi.Input<string>;
     /**
      * A description of the data collector.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * ID of the data collector. Must begin with `dc_`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Immutable. The type of data this data collector will collect.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

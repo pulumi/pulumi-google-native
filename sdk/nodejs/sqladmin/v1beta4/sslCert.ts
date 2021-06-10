@@ -123,7 +123,7 @@ export interface SslCertArgs {
     /**
      * User supplied name. Must be a distinct name from the other certificates for this instance.
      */
-    readonly commonName?: pulumi.Input<string>;
-    readonly instance: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    commonName?: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

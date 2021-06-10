@@ -89,15 +89,15 @@ export interface OverrideArgs {
     /**
      * ID of the API proxy that will have its trace configuration overridden.
      */
-    readonly apiProxy?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
+    apiProxy?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
     /**
      * ID of the trace configuration override specified as a system-generated UUID.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Trace configuration to override.
      */
-    readonly samplingConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfigArgs>;
+    samplingConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfigArgs>;
 }

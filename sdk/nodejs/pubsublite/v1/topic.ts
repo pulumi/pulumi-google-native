@@ -90,19 +90,19 @@ export class Topic extends pulumi.CustomResource {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The settings for this topic's partitions.
      */
-    readonly partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfigArgs>;
-    readonly project: pulumi.Input<string>;
+    partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfigArgs>;
+    project: pulumi.Input<string>;
     /**
      * The settings for this topic's message retention.
      */
-    readonly retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfigArgs>;
-    readonly topicId: pulumi.Input<string>;
+    retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfigArgs>;
+    topicId: pulumi.Input<string>;
 }

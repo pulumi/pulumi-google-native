@@ -89,19 +89,19 @@ export class Participant extends pulumi.CustomResource {
  * The set of arguments for constructing a Participant resource.
  */
 export interface ParticipantArgs {
-    readonly conversationId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    conversationId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
      */
-    readonly sipRecordingMediaLabel?: pulumi.Input<string>;
+    sipRecordingMediaLabel?: pulumi.Input<string>;
 }

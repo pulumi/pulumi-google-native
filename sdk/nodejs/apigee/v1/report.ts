@@ -199,70 +199,70 @@ export interface ReportArgs {
     /**
      * This field contains the chart type for the report
      */
-    readonly chartType?: pulumi.Input<string>;
+    chartType?: pulumi.Input<string>;
     /**
      * Legacy field: not used. This field contains a list of comments associated with custom report
      */
-    readonly comments?: pulumi.Input<pulumi.Input<string>[]>;
+    comments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This contains the list of dimensions for the report
      */
-    readonly dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This is the display name for the report
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * This field contains the filter expression
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * Legacy field: not used. Contains the from time for the report
      */
-    readonly fromTime?: pulumi.Input<string>;
+    fromTime?: pulumi.Input<string>;
     /**
      * Legacy field: not used This field contains the limit for the result retrieved
      */
-    readonly limit?: pulumi.Input<string>;
+    limit?: pulumi.Input<string>;
     /**
      * Required. This contains the list of metrics
      */
-    readonly metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricArgs>[]>;
+    metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricArgs>[]>;
     /**
      * Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Legacy field: not used. This field contains the offset for the data
      */
-    readonly offset?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    offset?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * This field contains report properties such as ui metadata etc.
      */
-    readonly properties?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1ReportPropertyArgs>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1ReportPropertyArgs>[]>;
     /**
      * Legacy field: not used much. Contains the list of sort by columns
      */
-    readonly sortByCols?: pulumi.Input<pulumi.Input<string>[]>;
+    sortByCols?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Legacy field: not used much. Contains the sort order for the sort columns
      */
-    readonly sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string>;
     /**
      * Legacy field: not used. This field contains a list of tags associated with custom report
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This field contains the time unit of aggregation for the report
      */
-    readonly timeUnit?: pulumi.Input<string>;
+    timeUnit?: pulumi.Input<string>;
     /**
      * Legacy field: not used. Contains the end time for the report
      */
-    readonly toTime?: pulumi.Input<string>;
+    toTime?: pulumi.Input<string>;
     /**
      * Legacy field: not used. This field contains the top k parameter value for restricting the result
      */
-    readonly topk?: pulumi.Input<string>;
+    topk?: pulumi.Input<string>;
 }

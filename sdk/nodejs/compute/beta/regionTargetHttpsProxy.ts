@@ -182,37 +182,37 @@ export interface RegionTargetHttpsProxyArgs {
      * authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Note: This field currently has no impact.
      */
-    readonly authorizationPolicy?: pulumi.Input<string>;
+    authorizationPolicy?: pulumi.Input<string>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
      * httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
      */
-    readonly httpFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    httpFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      *
@@ -220,7 +220,7 @@ export interface RegionTargetHttpsProxyArgs {
      *
      * The default is false.
      */
-    readonly proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean>;
     /**
      * Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
      * - When quic-override is set to NONE, Google manages whether QUIC is used. 
@@ -228,36 +228,36 @@ export interface RegionTargetHttpsProxyArgs {
      * - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
      * - If the quic-override flag is not specified, NONE is implied.
      */
-    readonly quicOverride?: pulumi.Input<string>;
+    quicOverride?: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
      * serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * If left blank, communications are not encrypted.
      * Note: This field currently has no impact.
      */
-    readonly serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      */
-    readonly sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
      */
-    readonly sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string>;
     /**
      * A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
      * - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 
      * - projects/project/global/urlMaps/url-map 
      * - global/urlMaps/url-map
      */
-    readonly urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string>;
 }

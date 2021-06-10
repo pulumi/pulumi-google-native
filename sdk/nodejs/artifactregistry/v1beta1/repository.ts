@@ -113,32 +113,32 @@ export interface RepositoryArgs {
     /**
      * The time when the repository was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The user-provided description of the repository.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The format of packages that are stored in the repository.
      */
-    readonly format?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
     /**
      * The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly repositoryId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

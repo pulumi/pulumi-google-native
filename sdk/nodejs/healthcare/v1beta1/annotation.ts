@@ -115,29 +115,29 @@ export interface AnnotationArgs {
     /**
      * Details of the source.
      */
-    readonly annotationSource?: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSourceArgs>;
-    readonly annotationStoreId: pulumi.Input<string>;
+    annotationSource?: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSourceArgs>;
+    annotationStoreId: pulumi.Input<string>;
     /**
      * Additional information for this annotation record, such as annotator and verifier information or study campaign.
      */
-    readonly customData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly datasetId: pulumi.Input<string>;
+    customData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    datasetId: pulumi.Input<string>;
     /**
      * Annotations for images. For example, bounding polygons.
      */
-    readonly imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotationArgs>;
-    readonly location: pulumi.Input<string>;
+    imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotationArgs>;
+    location: pulumi.Input<string>;
     /**
      * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Annotations for resource. For example, classification tags.
      */
-    readonly resourceAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ResourceAnnotationArgs>;
+    resourceAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ResourceAnnotationArgs>;
     /**
      * Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
      */
-    readonly textAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.SensitiveTextAnnotationArgs>;
+    textAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.SensitiveTextAnnotationArgs>;
 }

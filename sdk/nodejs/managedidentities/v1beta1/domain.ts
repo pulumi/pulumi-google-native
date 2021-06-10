@@ -149,27 +149,27 @@ export interface DomainArgs {
     /**
      * Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
      */
-    readonly admin?: pulumi.Input<string>;
+    admin?: pulumi.Input<string>;
     /**
      * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
      */
-    readonly auditLogsEnabled?: pulumi.Input<boolean>;
+    auditLogsEnabled?: pulumi.Input<boolean>;
     /**
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */
-    readonly authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly domainName: pulumi.Input<string>;
+    authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    domainName: pulumi.Input<string>;
     /**
      * Optional. Resource labels that can contain user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
-    readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly project: pulumi.Input<string>;
+    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    project: pulumi.Input<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
-    readonly reservedIpRange?: pulumi.Input<string>;
+    reservedIpRange?: pulumi.Input<string>;
 }

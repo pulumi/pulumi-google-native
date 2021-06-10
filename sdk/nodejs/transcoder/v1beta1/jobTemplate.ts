@@ -87,12 +87,12 @@ export interface JobTemplateArgs {
     /**
      * The configuration for this template.
      */
-    readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
-    readonly jobTemplateId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
+    jobTemplateId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

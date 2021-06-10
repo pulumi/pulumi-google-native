@@ -98,27 +98,27 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    readonly databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string>;
     /**
      * Immutable. The globally unique hostname of the database.
      */
-    readonly databaseUrl?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    databaseUrl?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The database's lifecycle state. Read-only.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
-    readonly type?: pulumi.Input<string>;
-    readonly validateOnly?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<string>;
 }

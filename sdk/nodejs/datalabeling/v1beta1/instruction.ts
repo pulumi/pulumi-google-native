@@ -115,34 +115,34 @@ export interface InstructionArgs {
     /**
      * The names of any related resources that are blocking changes to the instruction.
      */
-    readonly blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
+    blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Creation time of instruction.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Required. The data type of this instruction.
      */
-    readonly dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string>;
     /**
      * Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The display name of the instruction. Maximum of 64 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
-    readonly pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>;
-    readonly project: pulumi.Input<string>;
+    pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>;
+    project: pulumi.Input<string>;
     /**
      * Last update time of instruction.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

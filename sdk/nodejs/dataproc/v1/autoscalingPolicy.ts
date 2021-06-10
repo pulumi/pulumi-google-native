@@ -90,19 +90,19 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AutoscalingPolicy resource.
  */
 export interface AutoscalingPolicyArgs {
-    readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
+    basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
     /**
      * Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
      */
-    readonly id?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Optional. Describes how the autoscaler will operate for secondary workers.
      */
-    readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigArgs>;
+    secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigArgs>;
     /**
      * Required. Describes how the autoscaler will operate for primary workers.
      */
-    readonly workerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigArgs>;
+    workerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigArgs>;
 }

@@ -111,25 +111,25 @@ export interface PerfSampleSeriesArgs {
     /**
      * Basic series represented by a line chart
      */
-    readonly basicPerfSampleSeries?: pulumi.Input<inputs.toolresults.v1beta3.BasicPerfSampleSeriesArgs>;
+    basicPerfSampleSeries?: pulumi.Input<inputs.toolresults.v1beta3.BasicPerfSampleSeriesArgs>;
     /**
      * A tool results execution ID. @OutputOnly
      */
-    readonly executionId: pulumi.Input<string>;
+    executionId: pulumi.Input<string>;
     /**
      * A tool results history ID. @OutputOnly
      */
-    readonly historyId: pulumi.Input<string>;
+    historyId: pulumi.Input<string>;
     /**
      * The cloud project @OutputOnly
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * A sample series id @OutputOnly
      */
-    readonly sampleSeriesId?: pulumi.Input<string>;
+    sampleSeriesId?: pulumi.Input<string>;
     /**
      * A tool results step ID. @OutputOnly
      */
-    readonly stepId: pulumi.Input<string>;
+    stepId: pulumi.Input<string>;
 }

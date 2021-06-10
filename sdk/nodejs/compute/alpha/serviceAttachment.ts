@@ -174,75 +174,75 @@ export interface ServiceAttachmentArgs {
     /**
      * [Output Only] An array of connections for all the consumers connected to this service attachment.
      */
-    readonly connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConnectedEndpointArgs>[]>;
+    connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConnectedEndpointArgs>[]>;
     /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
-    readonly connectionPreference?: pulumi.Input<string>;
+    connectionPreference?: pulumi.Input<string>;
     /**
      * Projects that are allowed to connect to this service attachment.
      */
-    readonly consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerProjectLimitArgs>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerProjectLimitArgs>[]>;
     /**
      * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
      */
-    readonly consumerForwardingRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleArgs>[]>;
+    consumerForwardingRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleArgs>[]>;
     /**
      * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
      */
-    readonly consumerRejectLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerRejectLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
-    readonly enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource type. The server generates this identifier.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
      */
-    readonly natSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    natSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
      */
-    readonly producerForwardingRule?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    producerForwardingRule?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] An 128-bit global unique ID of the PSC service attachment.
      */
-    readonly pscServiceAttachmentId?: pulumi.Input<inputs.compute.alpha.Uint128Args>;
+    pscServiceAttachmentId?: pulumi.Input<inputs.compute.alpha.Uint128Args>;
     /**
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
-    readonly targetService?: pulumi.Input<string>;
+    targetService?: pulumi.Input<string>;
 }

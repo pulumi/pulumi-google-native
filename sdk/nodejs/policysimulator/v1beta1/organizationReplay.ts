@@ -95,7 +95,7 @@ export interface OrganizationReplayArgs {
     /**
      * Required. The configuration used for the `Replay`.
      */
-    readonly config?: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
-    readonly location: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
+    location: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }
