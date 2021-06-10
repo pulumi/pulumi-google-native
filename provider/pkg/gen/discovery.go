@@ -180,35 +180,16 @@ func addFoundResource(resourceMap map[string]discoveryDocumentResource, typeName
 }
 
 func preferParams(set codegen.StringSet, other codegen.StringSet) bool {
-	if containsSet(set, other) {
+	if set.Contains(other) {
 		return true
 	}
 
-	diff := diffSet(set, other)
+	diff := other.Subtract(set)
 	if len(diff) == 1 && diff.Has("regionId") && set.Has("location") {
 		return true
 	}
 
 	return false
-}
-
-func containsSet(set codegen.StringSet, subset codegen.StringSet) bool {
-	for v := range subset {
-		if !set.Has(v) {
-			return false
-		}
-	}
-	return true
-}
-
-func diffSet(set codegen.StringSet, subset codegen.StringSet) codegen.StringSet {
-	result := codegen.NewStringSet()
-	for v := range subset {
-		if !set.Has(v) {
-			result.Add(v)
-		}
-	}
-	return result
 }
 
 func findApiParams(dd discoveryDocumentResource) codegen.StringSet {
