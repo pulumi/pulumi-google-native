@@ -157,45 +157,45 @@ export interface EntryArgs {
     /**
      * Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
      */
-    readonly bigqueryDateShardedSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs>;
+    bigqueryDateShardedSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
      */
-    readonly bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs>;
+    bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly entryGroupId: pulumi.Input<string>;
-    readonly entryId: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    entryGroupId: pulumi.Input<string>;
+    entryId: pulumi.Input<string>;
     /**
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
      */
-    readonly gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs>;
+    gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs>;
     /**
      * The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
      */
-    readonly linkedResource?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    linkedResource?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Schema of the entry. An entry might not have any schema attached to it.
      */
-    readonly schema?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SchemaArgs>;
+    schema?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SchemaArgs>;
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
-    readonly userSpecifiedSystem?: pulumi.Input<string>;
+    userSpecifiedSystem?: pulumi.Input<string>;
     /**
      * Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
      */
-    readonly userSpecifiedType?: pulumi.Input<string>;
+    userSpecifiedType?: pulumi.Input<string>;
 }

@@ -95,21 +95,21 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
  * The set of arguments for constructing a TransitionRouteGroup resource.
  */
 export interface TransitionRouteGroupArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly flowId: pulumi.Input<string>;
-    readonly languageCode?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    flowId: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Transition routes associated with the TransitionRouteGroup.
      */
-    readonly transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteArgs>[]>;
+    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteArgs>[]>;
 }

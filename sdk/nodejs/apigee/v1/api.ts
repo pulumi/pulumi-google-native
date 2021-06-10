@@ -93,20 +93,20 @@ export class Api extends pulumi.CustomResource {
  * The set of arguments for constructing a Api resource.
  */
 export interface ApiArgs {
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * The HTTP request/response body as raw binary.
      */
-    readonly data?: pulumi.Input<string>;
+    data?: pulumi.Input<string>;
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
-    readonly validate?: pulumi.Input<string>;
+    extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    validate?: pulumi.Input<string>;
 }

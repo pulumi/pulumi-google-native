@@ -97,22 +97,22 @@ export interface RepoArgs {
     /**
      * How this repository mirrors a repository managed by another service. Read-only field.
      */
-    readonly mirrorConfig?: pulumi.Input<inputs.sourcerepo.v1.MirrorConfigArgs>;
+    mirrorConfig?: pulumi.Input<inputs.sourcerepo.v1.MirrorConfigArgs>;
     /**
      * Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
-    readonly pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */
-    readonly size?: pulumi.Input<string>;
+    size?: pulumi.Input<string>;
     /**
      * URL to clone the repository from Google Cloud Source Repositories. Read-only field.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }

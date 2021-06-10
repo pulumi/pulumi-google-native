@@ -92,18 +92,18 @@ export class Attestor extends pulumi.CustomResource {
  * The set of arguments for constructing a Attestor resource.
  */
 export interface AttestorArgs {
-    readonly attestorId: pulumi.Input<string>;
+    attestorId: pulumi.Input<string>;
     /**
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * This specifies how an attestation will be read, and how it will be used during policy enforcement.
      */
-    readonly userOwnedGrafeasNote?: pulumi.Input<inputs.binaryauthorization.v1.UserOwnedGrafeasNoteArgs>;
+    userOwnedGrafeasNote?: pulumi.Input<inputs.binaryauthorization.v1.UserOwnedGrafeasNoteArgs>;
 }

@@ -102,26 +102,26 @@ export interface OrganizationContactArgs {
     /**
      * Required. The email address to send notifications to. This does not need to be a Google account.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
      */
-    readonly languageTag?: pulumi.Input<string>;
+    languageTag?: pulumi.Input<string>;
     /**
      * The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */
-    readonly notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly organizationId: pulumi.Input<string>;
+    notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    organizationId: pulumi.Input<string>;
     /**
      * The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
      */
-    readonly validateTime?: pulumi.Input<string>;
+    validateTime?: pulumi.Input<string>;
     /**
      * The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
      */
-    readonly validationState?: pulumi.Input<string>;
+    validationState?: pulumi.Input<string>;
 }

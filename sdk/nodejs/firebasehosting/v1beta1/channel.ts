@@ -126,27 +126,27 @@ export class Channel extends pulumi.CustomResource {
  * The set of arguments for constructing a Channel resource.
  */
 export interface ChannelArgs {
-    readonly channelId: pulumi.Input<string>;
+    channelId: pulumi.Input<string>;
     /**
      * The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
      */
-    readonly expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
     /**
      * Text labels used for extra metadata and/or filtering.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
-    readonly retainedReleaseCount?: pulumi.Input<number>;
-    readonly siteId: pulumi.Input<string>;
+    retainedReleaseCount?: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
      */
-    readonly ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string>;
 }

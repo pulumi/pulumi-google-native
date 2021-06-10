@@ -111,22 +111,22 @@ export interface TagKeyArgs {
     /**
      * Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
-    readonly shortName?: pulumi.Input<string>;
-    readonly validateOnly?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<string>;
 }

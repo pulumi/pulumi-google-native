@@ -160,64 +160,64 @@ export interface NodePoolArgs {
     /**
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
-    readonly autoscaling?: pulumi.Input<inputs.container.v1.NodePoolAutoscalingArgs>;
-    readonly clusterId: pulumi.Input<string>;
+    autoscaling?: pulumi.Input<inputs.container.v1.NodePoolAutoscalingArgs>;
+    clusterId: pulumi.Input<string>;
     /**
      * Which conditions caused the current node pool state.
      */
-    readonly conditions?: pulumi.Input<pulumi.Input<inputs.container.v1.StatusConditionArgs>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.container.v1.StatusConditionArgs>[]>;
     /**
      * The node configuration of the pool.
      */
-    readonly config?: pulumi.Input<inputs.container.v1.NodeConfigArgs>;
+    config?: pulumi.Input<inputs.container.v1.NodeConfigArgs>;
     /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
-    readonly initialNodeCount?: pulumi.Input<number>;
+    initialNodeCount?: pulumi.Input<number>;
     /**
      * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
      */
-    readonly instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly location: pulumi.Input<string>;
+    instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    location: pulumi.Input<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
      */
-    readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * NodeManagement configuration for this NodePool.
      */
-    readonly management?: pulumi.Input<inputs.container.v1.NodeManagementArgs>;
+    management?: pulumi.Input<inputs.container.v1.NodeManagementArgs>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
-    readonly maxPodsConstraint?: pulumi.Input<inputs.container.v1.MaxPodsConstraintArgs>;
+    maxPodsConstraint?: pulumi.Input<inputs.container.v1.MaxPodsConstraintArgs>;
     /**
      * The name of the node pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
-    readonly podIpv4CidrSize?: pulumi.Input<number>;
-    readonly project: pulumi.Input<string>;
+    podIpv4CidrSize?: pulumi.Input<number>;
+    project: pulumi.Input<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output only] The status of the nodes in this pool instance.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
-    readonly upgradeSettings?: pulumi.Input<inputs.container.v1.UpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<inputs.container.v1.UpgradeSettingsArgs>;
     /**
      * The version of the Kubernetes of this node.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

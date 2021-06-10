@@ -132,31 +132,31 @@ export interface JobTriggerArgs {
     /**
      * User provided description (max 256 chars)
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name (max 100 chars)
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * For inspect jobs, a snapshot of the configuration.
      */
-    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
-    readonly location: pulumi.Input<string>;
+    inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
+    location: pulumi.Input<string>;
     /**
      * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. A status for this trigger.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    readonly triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string>;
     /**
      * A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
      */
-    readonly triggers?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2TriggerArgs>[]>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2TriggerArgs>[]>;
 }

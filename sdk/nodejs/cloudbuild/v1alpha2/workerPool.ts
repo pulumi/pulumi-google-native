@@ -119,15 +119,15 @@ export interface WorkerPoolArgs {
     /**
      * Network configuration for the `WorkerPool`.
      */
-    readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfigArgs>;
-    readonly project: pulumi.Input<string>;
+    networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfigArgs>;
+    project: pulumi.Input<string>;
     /**
      * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Worker configuration for the `WorkerPool`.
      */
-    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.WorkerConfigArgs>;
-    readonly workerPoolId: pulumi.Input<string>;
+    workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.WorkerConfigArgs>;
+    workerPoolId: pulumi.Input<string>;
 }

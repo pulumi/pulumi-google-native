@@ -102,23 +102,23 @@ export class Environment extends pulumi.CustomResource {
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The name of the environment. Format: `projects//locations//agents//environments/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
-    readonly versionConfigs?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>[]>;
+    versionConfigs?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>[]>;
 }

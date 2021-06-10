@@ -139,37 +139,37 @@ export interface MessageArgs {
     /**
      * Raw message bytes.
      */
-    readonly data?: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
-    readonly hl7V2StoreId: pulumi.Input<string>;
+    data?: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    hl7V2StoreId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The message type for this message. MSH-9.1.
      */
-    readonly messageType?: pulumi.Input<string>;
+    messageType?: pulumi.Input<string>;
     /**
      * Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */
-    readonly patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.PatientIdArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.PatientIdArgs>[]>;
+    project: pulumi.Input<string>;
     /**
      * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
      */
-    readonly schematizedData?: pulumi.Input<inputs.healthcare.v1beta1.SchematizedDataArgs>;
+    schematizedData?: pulumi.Input<inputs.healthcare.v1beta1.SchematizedDataArgs>;
     /**
      * The hospital that this message came from. MSH-4.
      */
-    readonly sendFacility?: pulumi.Input<string>;
+    sendFacility?: pulumi.Input<string>;
     /**
      * The datetime the sending application sent this message. MSH-7.
      */
-    readonly sendTime?: pulumi.Input<string>;
+    sendTime?: pulumi.Input<string>;
 }

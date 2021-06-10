@@ -136,16 +136,16 @@ export class ImportJob extends pulumi.CustomResource {
  * The set of arguments for constructing a ImportJob resource.
  */
 export interface ImportJobArgs {
-    readonly importJobId: pulumi.Input<string>;
+    importJobId: pulumi.Input<string>;
     /**
      * Required. Immutable. The wrapping method to be used for incoming key material.
      */
-    readonly importMethod?: pulumi.Input<string>;
-    readonly keyRingId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    importMethod?: pulumi.Input<string>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
-    readonly protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string>;
 }

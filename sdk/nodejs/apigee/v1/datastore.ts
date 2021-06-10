@@ -109,14 +109,14 @@ export interface DatastoreArgs {
     /**
      * Datastore Configurations.
      */
-    readonly datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigArgs>;
+    datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigArgs>;
     /**
      * Required. Display name in UI
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Destination storage type. Supported types `gcs` or `bigquery`.
      */
-    readonly targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string>;
 }

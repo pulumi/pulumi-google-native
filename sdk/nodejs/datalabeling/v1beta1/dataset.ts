@@ -115,34 +115,34 @@ export interface DatasetArgs {
     /**
      * The names of any related resources that are blocking changes to the dataset.
      */
-    readonly blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
+    blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Time the dataset is created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * The number of data items in the dataset.
      */
-    readonly dataItemCount?: pulumi.Input<string>;
+    dataItemCount?: pulumi.Input<string>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The display name of the dataset. Maximum of 64 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
      */
-    readonly inputConfigs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigArgs>[]>;
+    inputConfigs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigArgs>[]>;
     /**
      * Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
      */
-    readonly lastMigrateTime?: pulumi.Input<string>;
+    lastMigrateTime?: pulumi.Input<string>;
     /**
      * Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

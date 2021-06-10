@@ -102,14 +102,14 @@ export interface IndexArgs {
     /**
      * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
-    readonly ancestor?: pulumi.Input<string>;
+    ancestor?: pulumi.Input<string>;
     /**
      * Required. The entity kind to which this index applies.
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. An ordered sequence of property names and their index attributes.
      */
-    readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyArgs>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyArgs>[]>;
 }

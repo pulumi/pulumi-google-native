@@ -68,5 +68,5 @@ export interface TopicArgs {
     /**
      * Name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

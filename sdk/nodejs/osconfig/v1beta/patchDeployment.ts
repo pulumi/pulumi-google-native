@@ -137,35 +137,35 @@ export interface PatchDeploymentArgs {
     /**
      * Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Optional. Duration of the patch. After the duration ends, the patch times out.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * Required. VM instances to patch.
      */
-    readonly instanceFilter?: pulumi.Input<inputs.osconfig.v1beta.PatchInstanceFilterArgs>;
+    instanceFilter?: pulumi.Input<inputs.osconfig.v1beta.PatchInstanceFilterArgs>;
     /**
      * Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Required. Schedule a one-time execution.
      */
-    readonly oneTimeSchedule?: pulumi.Input<inputs.osconfig.v1beta.OneTimeScheduleArgs>;
+    oneTimeSchedule?: pulumi.Input<inputs.osconfig.v1beta.OneTimeScheduleArgs>;
     /**
      * Optional. Patch configuration that is applied.
      */
-    readonly patchConfig?: pulumi.Input<inputs.osconfig.v1beta.PatchConfigArgs>;
-    readonly patchDeploymentId: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    patchConfig?: pulumi.Input<inputs.osconfig.v1beta.PatchConfigArgs>;
+    patchDeploymentId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. Schedule recurring executions.
      */
-    readonly recurringSchedule?: pulumi.Input<inputs.osconfig.v1beta.RecurringScheduleArgs>;
+    recurringSchedule?: pulumi.Input<inputs.osconfig.v1beta.RecurringScheduleArgs>;
     /**
      * Optional. Rollout strategy of the patch job.
      */
-    readonly rollout?: pulumi.Input<inputs.osconfig.v1beta.PatchRolloutArgs>;
+    rollout?: pulumi.Input<inputs.osconfig.v1beta.PatchRolloutArgs>;
 }

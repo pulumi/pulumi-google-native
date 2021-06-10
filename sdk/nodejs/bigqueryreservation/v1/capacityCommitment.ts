@@ -118,20 +118,20 @@ export class CapacityCommitment extends pulumi.CustomResource {
  * The set of arguments for constructing a CapacityCommitment resource.
  */
 export interface CapacityCommitmentArgs {
-    readonly capacityCommitmentId?: pulumi.Input<string>;
-    readonly enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    capacityCommitmentId?: pulumi.Input<string>;
+    enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Capacity commitment commitment plan.
      */
-    readonly plan?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
      */
-    readonly renewalPlan?: pulumi.Input<string>;
+    renewalPlan?: pulumi.Input<string>;
     /**
      * Number of slots in this commitment.
      */
-    readonly slotCount?: pulumi.Input<string>;
+    slotCount?: pulumi.Input<string>;
 }

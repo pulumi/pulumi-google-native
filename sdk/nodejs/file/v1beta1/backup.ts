@@ -137,23 +137,23 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
-    readonly backupId: pulumi.Input<string>;
+    backupId: pulumi.Input<string>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
-    readonly sourceFileShare?: pulumi.Input<string>;
+    sourceFileShare?: pulumi.Input<string>;
     /**
      * The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
      */
-    readonly sourceInstance?: pulumi.Input<string>;
+    sourceInstance?: pulumi.Input<string>;
 }

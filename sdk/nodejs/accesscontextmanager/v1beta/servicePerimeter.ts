@@ -94,25 +94,25 @@ export class ServicePerimeter extends pulumi.CustomResource {
  * The set of arguments for constructing a ServicePerimeter resource.
  */
 export interface ServicePerimeterArgs {
-    readonly accessPolicyId: pulumi.Input<string>;
+    accessPolicyId: pulumi.Input<string>;
     /**
      * Description of the `ServicePerimeter` and its use. Does not affect behavior.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
      */
-    readonly perimeterType?: pulumi.Input<string>;
+    perimeterType?: pulumi.Input<string>;
     /**
      * Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
      */
-    readonly status?: pulumi.Input<inputs.accesscontextmanager.v1beta.ServicePerimeterConfigArgs>;
+    status?: pulumi.Input<inputs.accesscontextmanager.v1beta.ServicePerimeterConfigArgs>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }

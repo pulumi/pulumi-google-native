@@ -79,10 +79,10 @@ export class Keystore extends pulumi.CustomResource {
  * The set of arguments for constructing a Keystore resource.
  */
 export interface KeystoreArgs {
-    readonly environmentId: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
     /**
      * Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

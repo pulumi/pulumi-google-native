@@ -124,11 +124,11 @@ export interface KeyArgs {
     /**
      * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
      */
-    readonly keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string>;
     /**
      * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
      */
-    readonly privateKeyType?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly serviceAccountId: pulumi.Input<string>;
+    privateKeyType?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    serviceAccountId: pulumi.Input<string>;
 }

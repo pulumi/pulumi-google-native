@@ -109,26 +109,26 @@ export interface BudgetArgs {
     /**
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
-    readonly allUpdatesRule?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs>;
+    allUpdatesRule?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs>;
     /**
      * Required. Budgeted amount.
      */
-    readonly amount?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>;
-    readonly billingAccountId: pulumi.Input<string>;
+    amount?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>;
+    billingAccountId: pulumi.Input<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
-    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterArgs>;
+    budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterArgs>;
     /**
      * User data for display name in UI. Validation: <= 60 chars.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
      */
-    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>[]>;
+    thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>[]>;
 }

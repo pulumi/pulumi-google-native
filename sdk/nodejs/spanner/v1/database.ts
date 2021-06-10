@@ -121,15 +121,15 @@ export interface DatabaseArgs {
     /**
      * Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
      */
-    readonly createStatement?: pulumi.Input<string>;
+    createStatement?: pulumi.Input<string>;
     /**
      * Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
      */
-    readonly encryptionConfig?: pulumi.Input<inputs.spanner.v1.EncryptionConfigArgs>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.v1.EncryptionConfigArgs>;
     /**
      * Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
      */
-    readonly extraStatements?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly instanceId: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    extraStatements?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

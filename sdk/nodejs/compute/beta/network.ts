@@ -147,51 +147,51 @@ export interface NetworkArgs {
      *
      * For custom mode VPC networks, you can add subnets using the subnetworks insert method.
      */
-    readonly autoCreateSubnetworks?: pulumi.Input<boolean>;
+    autoCreateSubnetworks?: pulumi.Input<boolean>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * [Output Only] The gateway address for default routing out of the network, selected by GCP.
      */
-    readonly gatewayIPv4?: pulumi.Input<string>;
+    gatewayIPv4?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#network for networks.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * [Output Only] A list of network peerings for the resource.
      */
-    readonly peerings?: pulumi.Input<pulumi.Input<inputs.compute.beta.NetworkPeeringArgs>[]>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    peerings?: pulumi.Input<pulumi.Input<inputs.compute.beta.NetworkPeeringArgs>[]>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
-    readonly routingConfig?: pulumi.Input<inputs.compute.beta.NetworkRoutingConfigArgs>;
+    routingConfig?: pulumi.Input<inputs.compute.beta.NetworkRoutingConfigArgs>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
      */
-    readonly subnetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetworks?: pulumi.Input<pulumi.Input<string>[]>;
 }

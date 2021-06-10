@@ -99,22 +99,22 @@ export interface TemplateArgs {
     /**
      * The runtime environment for the job.
      */
-    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.RuntimeEnvironmentArgs>;
+    environment?: pulumi.Input<inputs.dataflow.v1b3.RuntimeEnvironmentArgs>;
     /**
      * Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
      */
-    readonly gcsPath?: pulumi.Input<string>;
+    gcsPath?: pulumi.Input<string>;
     /**
      * Required. The job name to use for the created job.
      */
-    readonly jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string>;
     /**
      * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The runtime parameters to pass to the job.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly project: pulumi.Input<string>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    project: pulumi.Input<string>;
 }

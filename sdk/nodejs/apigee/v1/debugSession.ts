@@ -111,32 +111,32 @@ export class DebugSession extends pulumi.CustomResource {
  * The set of arguments for constructing a DebugSession resource.
  */
 export interface DebugSessionArgs {
-    readonly apiId: pulumi.Input<string>;
+    apiId: pulumi.Input<string>;
     /**
      * Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
      */
-    readonly count?: pulumi.Input<number>;
-    readonly environmentId: pulumi.Input<string>;
+    count?: pulumi.Input<number>;
+    environmentId: pulumi.Input<string>;
     /**
      * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * A unique ID for this DebugSession.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
-    readonly revisionId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
+    revisionId: pulumi.Input<string>;
     /**
      * Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
      */
-    readonly timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string>;
     /**
      * Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
      */
-    readonly tracesize?: pulumi.Input<number>;
+    tracesize?: pulumi.Input<number>;
     /**
      * Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
      */
-    readonly validity?: pulumi.Input<number>;
+    validity?: pulumi.Input<number>;
 }

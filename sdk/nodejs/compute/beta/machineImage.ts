@@ -164,23 +164,23 @@ export interface MachineImageArgs {
     /**
      * [Output Only] The creation timestamp for this machine image in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
      */
-    readonly guestFlush?: pulumi.Input<boolean>;
+    guestFlush?: pulumi.Input<boolean>;
     /**
      * [Output Only] A unique identifier for this machine image. The server defines this identifier.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] The resource type, which is always compute#machineImage for machine image.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      *
@@ -190,45 +190,45 @@ export interface MachineImageArgs {
      *
      * If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
      */
-    readonly machineImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
+    machineImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.
      */
-    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * [Output Only] The URL for this machine image. The server defines this URL.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
      */
-    readonly sourceDiskEncryptionKeys?: pulumi.Input<pulumi.Input<inputs.compute.beta.SourceDiskEncryptionKeyArgs>[]>;
+    sourceDiskEncryptionKeys?: pulumi.Input<pulumi.Input<inputs.compute.beta.SourceDiskEncryptionKeyArgs>[]>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
      * - projects/project/zones/zone/instances/instance
      */
-    readonly sourceInstance: pulumi.Input<string>;
+    sourceInstance: pulumi.Input<string>;
     /**
      * [Output Only] Properties of source instance.
      */
-    readonly sourceInstanceProperties?: pulumi.Input<inputs.compute.beta.SourceInstancePropertiesArgs>;
+    sourceInstanceProperties?: pulumi.Input<inputs.compute.beta.SourceInstancePropertiesArgs>;
     /**
      * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      */
-    readonly storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] Total size of the storage used by the machine image.
      */
-    readonly totalStorageBytes?: pulumi.Input<string>;
+    totalStorageBytes?: pulumi.Input<string>;
 }

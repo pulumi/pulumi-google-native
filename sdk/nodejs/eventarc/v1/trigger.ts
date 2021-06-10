@@ -139,29 +139,29 @@ export interface TriggerArgs {
     /**
      * Required. Destination specifies where the events should be sent to.
      */
-    readonly destination?: pulumi.Input<inputs.eventarc.v1.DestinationArgs>;
+    destination?: pulumi.Input<inputs.eventarc.v1.DestinationArgs>;
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      */
-    readonly eventFilters?: pulumi.Input<pulumi.Input<inputs.eventarc.v1.EventFilterArgs>[]>;
+    eventFilters?: pulumi.Input<pulumi.Input<inputs.eventarc.v1.EventFilterArgs>[]>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */
-    readonly serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    readonly transport?: pulumi.Input<inputs.eventarc.v1.TransportArgs>;
-    readonly triggerId: pulumi.Input<string>;
-    readonly validateOnly: pulumi.Input<string>;
+    transport?: pulumi.Input<inputs.eventarc.v1.TransportArgs>;
+    triggerId: pulumi.Input<string>;
+    validateOnly: pulumi.Input<string>;
 }

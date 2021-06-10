@@ -116,38 +116,38 @@ export interface JobArgs {
     /**
      * [Required] Describes the job configuration.
      */
-    readonly configuration?: pulumi.Input<inputs.bigquery.v2.JobConfigurationArgs>;
+    configuration?: pulumi.Input<inputs.bigquery.v2.JobConfigurationArgs>;
     /**
      * [Output-only] A hash of this resource.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * [Output-only] Opaque ID field of the job
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
-    readonly jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
+    jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
     /**
      * [Output-only] The type of the resource.
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output-only] A URL that can be used to access this resource again.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output-only] Information about the job, including starting time and ending time of the job.
      */
-    readonly statistics?: pulumi.Input<inputs.bigquery.v2.JobStatisticsArgs>;
+    statistics?: pulumi.Input<inputs.bigquery.v2.JobStatisticsArgs>;
     /**
      * [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      */
-    readonly status?: pulumi.Input<inputs.bigquery.v2.JobStatusArgs>;
+    status?: pulumi.Input<inputs.bigquery.v2.JobStatusArgs>;
     /**
      * [Output-only] Email address of the user who ran the job.
      */
-    readonly user_email?: pulumi.Input<string>;
+    user_email?: pulumi.Input<string>;
 }

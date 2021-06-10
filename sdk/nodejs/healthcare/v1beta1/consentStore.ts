@@ -99,24 +99,24 @@ export class ConsentStore extends pulumi.CustomResource {
  * The set of arguments for constructing a ConsentStore resource.
  */
 export interface ConsentStoreArgs {
-    readonly consentStoreId: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     /**
      * Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
      */
-    readonly defaultConsentTtl?: pulumi.Input<string>;
+    defaultConsentTtl?: pulumi.Input<string>;
     /**
      * Optional. If `true`, UpdateConsent creates the Consent if it does not already exist. If unspecified, defaults to `false`.
      */
-    readonly enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
+    enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
     /**
      * Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

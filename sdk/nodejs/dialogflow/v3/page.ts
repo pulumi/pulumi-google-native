@@ -119,37 +119,37 @@ export class Page extends pulumi.CustomResource {
  * The set of arguments for constructing a Page resource.
  */
 export interface PageArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the page, unique within the agent.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The fulfillment to call when the session is entering the page.
      */
-    readonly entryFulfillment?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FulfillmentArgs>;
+    entryFulfillment?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FulfillmentArgs>;
     /**
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      */
-    readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
-    readonly flowId: pulumi.Input<string>;
+    eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
+    flowId: pulumi.Input<string>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      */
-    readonly form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormArgs>;
-    readonly languageCode?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormArgs>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
      */
-    readonly transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
      */
-    readonly transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteArgs>[]>;
+    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteArgs>[]>;
 }

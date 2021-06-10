@@ -108,27 +108,27 @@ export class Cluster extends pulumi.CustomResource {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
-    readonly defaultStorageType?: pulumi.Input<string>;
+    defaultStorageType?: pulumi.Input<string>;
     /**
      * Immutable. The encryption configuration for CMEK-protected clusters.
      */
-    readonly encryptionConfig?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionConfigArgs>;
-    readonly instanceId: pulumi.Input<string>;
+    encryptionConfig?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionConfigArgs>;
+    instanceId: pulumi.Input<string>;
     /**
      * Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
-    readonly serveNodes?: pulumi.Input<number>;
+    serveNodes?: pulumi.Input<number>;
 }

@@ -85,10 +85,10 @@ export class NatAddress extends pulumi.CustomResource {
  * The set of arguments for constructing a NatAddress resource.
  */
 export interface NatAddressArgs {
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Required. Resource ID of the NAT address.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
 }

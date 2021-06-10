@@ -93,27 +93,27 @@ export class ResponsePolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a ResponsePolicy resource.
  */
 export interface ResponsePolicyArgs {
-    readonly clientOperationId?: pulumi.Input<string>;
+    clientOperationId?: pulumi.Input<string>;
     /**
      * User-provided description for this Response Policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The list of Google Kubernetes Engine clusters to which this response policy is applied.
      */
-    readonly gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyGKEClusterArgs>[]>;
+    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyGKEClusterArgs>[]>;
     /**
      * Unique identifier for the resource; defined by the server (output only).
      */
-    readonly id?: pulumi.Input<string>;
-    readonly kind?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * List of network names specifying networks to which this policy is applied.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyNetworkArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyNetworkArgs>[]>;
+    project: pulumi.Input<string>;
     /**
      * User assigned name for this Response Policy.
      */
-    readonly responsePolicyName?: pulumi.Input<string>;
+    responsePolicyName?: pulumi.Input<string>;
 }

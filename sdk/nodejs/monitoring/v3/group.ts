@@ -97,23 +97,23 @@ export interface GroupArgs {
     /**
      * A user-assigned name for this group, used only for display purposes.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The filter used to determine which monitored resources belong to this group.
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
      */
-    readonly isCluster?: pulumi.Input<boolean>;
+    isCluster?: pulumi.Input<boolean>;
     /**
      * The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
      */
-    readonly parentName?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly validateOnly?: pulumi.Input<string>;
+    parentName?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<string>;
 }

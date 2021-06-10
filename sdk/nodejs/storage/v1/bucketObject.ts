@@ -262,138 +262,138 @@ export interface BucketObjectArgs {
     /**
      * Access controls on the object.
      */
-    readonly acl?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectAccessControlArgs>[]>;
+    acl?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectAccessControlArgs>[]>;
     /**
      * The name of the bucket containing this object.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
      */
-    readonly cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string>;
     /**
      * Number of underlying components that make up this object. Components are accumulated by compose operations.
      */
-    readonly componentCount?: pulumi.Input<number>;
+    componentCount?: pulumi.Input<number>;
     /**
      * Content-Disposition of the object data.
      */
-    readonly contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string>;
     /**
      * Content-Encoding of the object data.
      */
-    readonly contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string>;
     /**
      * Content-Language of the object data.
      */
-    readonly contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string>;
     /**
      * Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream.
      */
-    readonly contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     /**
      * CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
      */
-    readonly crc32c?: pulumi.Input<string>;
+    crc32c?: pulumi.Input<string>;
     /**
      * A timestamp in RFC 3339 format specified by the user for an object.
      */
-    readonly customTime?: pulumi.Input<string>;
+    customTime?: pulumi.Input<string>;
     /**
      * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
      */
-    readonly customerEncryption?: pulumi.Input<inputs.storage.v1.ObjectCustomerEncryptionArgs>;
+    customerEncryption?: pulumi.Input<inputs.storage.v1.ObjectCustomerEncryptionArgs>;
     /**
      * HTTP 1.1 Entity tag for the object.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
      */
-    readonly eventBasedHold?: pulumi.Input<boolean>;
+    eventBasedHold?: pulumi.Input<boolean>;
     /**
      * The content generation of this object. Used for object versioning.
      */
-    readonly generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string>;
     /**
      * The ID of the object, including the bucket name, object name, and generation number.
      */
-    readonly id?: pulumi.Input<string>;
-    readonly ifGenerationMatch?: pulumi.Input<string>;
-    readonly ifGenerationNotMatch?: pulumi.Input<string>;
-    readonly ifMetagenerationMatch?: pulumi.Input<string>;
-    readonly ifMetagenerationNotMatch?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    ifGenerationMatch?: pulumi.Input<string>;
+    ifGenerationNotMatch?: pulumi.Input<string>;
+    ifMetagenerationMatch?: pulumi.Input<string>;
+    ifMetagenerationNotMatch?: pulumi.Input<string>;
     /**
      * The kind of item this is. For objects, this is always storage#object.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
      */
-    readonly kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
      */
-    readonly md5Hash?: pulumi.Input<string>;
+    md5Hash?: pulumi.Input<string>;
     /**
      * Media download link.
      */
-    readonly mediaLink?: pulumi.Input<string>;
+    mediaLink?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
      */
-    readonly metageneration?: pulumi.Input<string>;
+    metageneration?: pulumi.Input<string>;
     /**
      * The name of the object. Required if not specified by URL parameter.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the object. This will always be the uploader of the object.
      */
-    readonly owner?: pulumi.Input<inputs.storage.v1.ObjectOwnerArgs>;
-    readonly predefinedAcl?: pulumi.Input<string>;
-    readonly projection?: pulumi.Input<string>;
-    readonly provisionalUserProject?: pulumi.Input<string>;
+    owner?: pulumi.Input<inputs.storage.v1.ObjectOwnerArgs>;
+    predefinedAcl?: pulumi.Input<string>;
+    projection?: pulumi.Input<string>;
+    provisionalUserProject?: pulumi.Input<string>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
-    readonly retentionExpirationTime?: pulumi.Input<string>;
+    retentionExpirationTime?: pulumi.Input<string>;
     /**
      * The link to this object.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Content-Length of the data in bytes.
      */
-    readonly size?: pulumi.Input<string>;
-    readonly source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
+    size?: pulumi.Input<string>;
+    source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * Storage class of the object.
      */
-    readonly storageClass?: pulumi.Input<string>;
+    storageClass?: pulumi.Input<string>;
     /**
      * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
      */
-    readonly temporaryHold?: pulumi.Input<boolean>;
+    temporaryHold?: pulumi.Input<boolean>;
     /**
      * The creation time of the object in RFC 3339 format.
      */
-    readonly timeCreated?: pulumi.Input<string>;
+    timeCreated?: pulumi.Input<string>;
     /**
      * The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
      */
-    readonly timeDeleted?: pulumi.Input<string>;
+    timeDeleted?: pulumi.Input<string>;
     /**
      * The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
      */
-    readonly timeStorageClassUpdated?: pulumi.Input<string>;
+    timeStorageClassUpdated?: pulumi.Input<string>;
     /**
      * The modification time of the object metadata in RFC 3339 format.
      */
-    readonly updated?: pulumi.Input<string>;
-    readonly userProject?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string>;
 }

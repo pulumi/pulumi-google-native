@@ -127,37 +127,37 @@ export interface ConsentArtifactArgs {
     /**
      * Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
      */
-    readonly consentContentScreenshots?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.ImageArgs>[]>;
+    consentContentScreenshots?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.ImageArgs>[]>;
     /**
      * Optional. An string indicating the version of the consent information shown to the user.
      */
-    readonly consentContentVersion?: pulumi.Input<string>;
-    readonly consentStoreId: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
+    consentContentVersion?: pulumi.Input<string>;
+    consentStoreId: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
     /**
      * Optional. A signature from a guardian.
      */
-    readonly guardianSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
-    readonly location: pulumi.Input<string>;
+    guardianSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
+    location: pulumi.Input<string>;
     /**
      * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
      */
-    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. User's UUID provided by the client.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     /**
      * Optional. User's signature.
      */
-    readonly userSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
+    userSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
     /**
      * Optional. A signature from a witness.
      */
-    readonly witnessSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
+    witnessSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
 }

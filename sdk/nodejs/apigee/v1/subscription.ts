@@ -106,15 +106,15 @@ export interface SubscriptionArgs {
     /**
      * Name of the API product for which the developer is purchasing a subscription.
      */
-    readonly apiproduct?: pulumi.Input<string>;
-    readonly developerId: pulumi.Input<string>;
+    apiproduct?: pulumi.Input<string>;
+    developerId: pulumi.Input<string>;
     /**
      * Time when the API product subscription ends in milliseconds since epoch.
      */
-    readonly endTime?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Time when the API product subscription starts in milliseconds since epoch.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
 }

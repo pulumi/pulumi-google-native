@@ -151,60 +151,60 @@ export interface RouterArgs {
     /**
      * BGP information specific to this router.
      */
-    readonly bgp?: pulumi.Input<inputs.compute.alpha.RouterBgpArgs>;
+    bgp?: pulumi.Input<inputs.compute.alpha.RouterBgpArgs>;
     /**
      * BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
      */
-    readonly bgpPeers?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouterBgpPeerArgs>[]>;
+    bgpPeers?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouterBgpPeerArgs>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
      * Not currently available in all Interconnect locations.
      */
-    readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
-    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouterInterfaceArgs>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouterInterfaceArgs>[]>;
     /**
      * [Output Only] Type of resource. Always compute#router for routers.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of NAT services created in this router.
      */
-    readonly nats?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouterNatArgs>[]>;
+    nats?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouterNatArgs>[]>;
     /**
      * URI of the network to which this router belongs.
      */
-    readonly network?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
-    readonly selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string>;
 }

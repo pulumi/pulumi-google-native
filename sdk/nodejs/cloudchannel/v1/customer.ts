@@ -140,34 +140,34 @@ export class Customer extends pulumi.CustomResource {
  * The set of arguments for constructing a Customer resource.
  */
 export interface CustomerArgs {
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
      */
-    readonly alternateEmail?: pulumi.Input<string>;
+    alternateEmail?: pulumi.Input<string>;
     /**
      * Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
      */
-    readonly channelPartnerId?: pulumi.Input<string>;
-    readonly channelPartnerLinkId: pulumi.Input<string>;
+    channelPartnerId?: pulumi.Input<string>;
+    channelPartnerLinkId: pulumi.Input<string>;
     /**
      * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
      */
-    readonly languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
     /**
      * Required. Name of the organization that the customer entity represents.
      */
-    readonly orgDisplayName?: pulumi.Input<string>;
+    orgDisplayName?: pulumi.Input<string>;
     /**
      * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
      */
-    readonly orgPostalAddress?: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
+    orgPostalAddress?: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
     /**
      * Primary contact info.
      */
-    readonly primaryContactInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfoArgs>;
+    primaryContactInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfoArgs>;
 }

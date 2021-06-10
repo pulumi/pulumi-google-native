@@ -224,56 +224,56 @@ export interface BuildArgs {
     /**
      * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
      */
-    readonly artifacts?: pulumi.Input<inputs.cloudbuild.v1.ArtifactsArgs>;
+    artifacts?: pulumi.Input<inputs.cloudbuild.v1.ArtifactsArgs>;
     /**
      * Secrets and secret environment variables.
      */
-    readonly availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.SecretsArgs>;
+    availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.SecretsArgs>;
     /**
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
      */
-    readonly images?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly location: pulumi.Input<string>;
+    images?: pulumi.Input<pulumi.Input<string>[]>;
+    location: pulumi.Input<string>;
     /**
      * Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
      */
-    readonly logsBucket?: pulumi.Input<string>;
+    logsBucket?: pulumi.Input<string>;
     /**
      * Special options for this build.
      */
-    readonly options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
-    readonly project: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
+    project: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */
-    readonly queueTtl?: pulumi.Input<string>;
+    queueTtl?: pulumi.Input<string>;
     /**
      * Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
      */
-    readonly secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.SecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.SecretArgs>[]>;
     /**
      * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
      */
-    readonly serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string>;
     /**
      * The location of the source files to build.
      */
-    readonly source?: pulumi.Input<inputs.cloudbuild.v1.SourceArgs>;
+    source?: pulumi.Input<inputs.cloudbuild.v1.SourceArgs>;
     /**
      * Required. The operations to be performed on the workspace.
      */
-    readonly steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
+    steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
     /**
      * Substitutions data for `Build` resource.
      */
-    readonly substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Tags for annotation of a `Build`. These are not docker tags.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
      */
-    readonly timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string>;
 }

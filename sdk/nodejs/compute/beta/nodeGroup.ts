@@ -151,55 +151,55 @@ export interface NodeGroupArgs {
     /**
      * Specifies how autoscaling should behave.
      */
-    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.beta.NodeGroupAutoscalingPolicyArgs>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.beta.NodeGroupAutoscalingPolicyArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly fingerprint?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
-    readonly initialNodeCount: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    initialNodeCount: pulumi.Input<string>;
     /**
      * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
      */
-    readonly locationHint?: pulumi.Input<string>;
+    locationHint?: pulumi.Input<string>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
      */
-    readonly maintenancePolicy?: pulumi.Input<string>;
-    readonly maintenanceWindow?: pulumi.Input<inputs.compute.beta.NodeGroupMaintenanceWindowArgs>;
+    maintenancePolicy?: pulumi.Input<string>;
+    maintenanceWindow?: pulumi.Input<inputs.compute.beta.NodeGroupMaintenanceWindowArgs>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * URL of the node template to create the node group from.
      */
-    readonly nodeTemplate?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    nodeTemplate?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] The total number of nodes in the node group.
      */
-    readonly size?: pulumi.Input<number>;
-    readonly status?: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
+    status?: pulumi.Input<string>;
     /**
      * [Output Only] The name of the zone where the node group resides, such as us-central1-a.
      */
-    readonly zone: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

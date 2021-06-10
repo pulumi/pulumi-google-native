@@ -146,55 +146,55 @@ export interface DomainArgs {
     /**
      * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
      */
-    readonly auditLogsEnabled?: pulumi.Input<boolean>;
+    auditLogsEnabled?: pulumi.Input<boolean>;
     /**
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
      */
-    readonly authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
      */
-    readonly createTime?: pulumi.Input<string>;
-    readonly domainName?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
      */
-    readonly fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user provided metadata
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
-    readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
      */
-    readonly managedIdentitiesAdminName?: pulumi.Input<string>;
+    managedIdentitiesAdminName?: pulumi.Input<string>;
     /**
      * Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
-    readonly reservedIpRange?: pulumi.Input<string>;
+    reservedIpRange?: pulumi.Input<string>;
     /**
      * The current state of this domain.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Additional information about the current status of this domain, if available.
      */
-    readonly statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string>;
     /**
      * The current trusts associated with the domain.
      */
-    readonly trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1alpha1.TrustArgs>[]>;
+    trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1alpha1.TrustArgs>[]>;
     /**
      * Last update time. Synthetic field is populated automatically by CCFE.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

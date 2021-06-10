@@ -101,16 +101,16 @@ export interface ReservationArgs {
     /**
      * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
      */
-    readonly ignoreIdleSlots?: pulumi.Input<boolean>;
-    readonly location: pulumi.Input<string>;
+    ignoreIdleSlots?: pulumi.Input<boolean>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly reservationId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    reservationId?: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
      */
-    readonly slotCapacity?: pulumi.Input<string>;
+    slotCapacity?: pulumi.Input<string>;
 }

@@ -140,25 +140,25 @@ export class Certificate extends pulumi.CustomResource {
  * The set of arguments for constructing a Certificate resource.
  */
 export interface CertificateArgs {
-    readonly certificateAuthorityId: pulumi.Input<string>;
-    readonly certificateId?: pulumi.Input<string>;
+    certificateAuthorityId: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
     /**
      * Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
      */
-    readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
+    config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
     /**
      * Optional. Labels with user-defined metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
      */
-    readonly lifetime?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
-    readonly pemCsr?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    pemCsr?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
 }

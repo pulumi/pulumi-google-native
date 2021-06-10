@@ -127,30 +127,30 @@ export interface GroupArgs {
     /**
      * Additional entity key aliases for a Group.
      */
-    readonly additionalGroupKeys?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>[]>;
+    additionalGroupKeys?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>[]>;
     /**
      * An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name of the `Group`.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Optional. Dynamic group metadata like queries and status.
      */
-    readonly dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1beta1.DynamicGroupMetadataArgs>;
+    dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1beta1.DynamicGroupMetadataArgs>;
     /**
      * Required. Immutable. The `EntityKey` of the `Group`.
      */
-    readonly groupKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
-    readonly initialGroupConfig: pulumi.Input<string>;
+    groupKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
+    initialGroupConfig: pulumi.Input<string>;
     /**
      * Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
      */
-    readonly parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
 }

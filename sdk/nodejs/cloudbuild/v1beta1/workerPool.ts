@@ -114,15 +114,15 @@ export class WorkerPool extends pulumi.CustomResource {
  * The set of arguments for constructing a WorkerPool resource.
  */
 export interface WorkerPoolArgs {
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Network configuration for the `WorkerPool`.
      */
-    readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.NetworkConfigArgs>;
-    readonly project: pulumi.Input<string>;
+    networkConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.NetworkConfigArgs>;
+    project: pulumi.Input<string>;
     /**
      * Worker configuration for the `WorkerPool`.
      */
-    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.WorkerConfigArgs>;
-    readonly workerPoolId: pulumi.Input<string>;
+    workerConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.WorkerConfigArgs>;
+    workerPoolId: pulumi.Input<string>;
 }

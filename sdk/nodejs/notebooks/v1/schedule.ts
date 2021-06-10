@@ -132,21 +132,21 @@ export interface ScheduleArgs {
     /**
      * Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
      */
-    readonly cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string>;
     /**
      * A brief description of this environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Notebook Execution Template corresponding to this schedule.
      */
-    readonly executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplateArgs>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly scheduleId: pulumi.Input<string>;
-    readonly state?: pulumi.Input<string>;
+    executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplateArgs>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    scheduleId: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */
-    readonly timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
 }

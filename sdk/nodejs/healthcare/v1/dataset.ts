@@ -80,15 +80,15 @@ export class Dataset extends pulumi.CustomResource {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
-    readonly datasetId?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
      */
-    readonly timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
 }

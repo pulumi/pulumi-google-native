@@ -95,19 +95,19 @@ export interface IndexArgs {
     /**
      * The collection ID to which this index applies. Required.
      */
-    readonly collectionId?: pulumi.Input<string>;
-    readonly databaseId: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string>;
+    databaseId: pulumi.Input<string>;
     /**
      * The fields to index.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1beta1.GoogleFirestoreAdminV1beta1IndexFieldArgs>[]>;
+    fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1beta1.GoogleFirestoreAdminV1beta1IndexFieldArgs>[]>;
     /**
      * The resource name of the index. Output only.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The state of the index. Output only.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }

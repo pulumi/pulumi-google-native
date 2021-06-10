@@ -104,16 +104,16 @@ export interface PolicyTagArgs {
     /**
      * Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */
-    readonly parentPolicyTag?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly taxonomyId: pulumi.Input<string>;
+    parentPolicyTag?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    taxonomyId: pulumi.Input<string>;
 }

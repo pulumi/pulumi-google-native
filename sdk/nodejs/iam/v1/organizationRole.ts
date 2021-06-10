@@ -109,34 +109,34 @@ export interface OrganizationRoleArgs {
     /**
      * The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
      */
-    readonly deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean>;
     /**
      * Optional. A human-readable description for the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Used to perform a consistent read-modify-write.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy.
      */
-    readonly includedPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    includedPermissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
      */
-    readonly roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
      */
-    readonly stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string>;
     /**
      * Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }

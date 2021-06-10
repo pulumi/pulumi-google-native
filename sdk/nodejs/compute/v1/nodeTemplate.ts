@@ -159,56 +159,56 @@ export class NodeTemplate extends pulumi.CustomResource {
  * The set of arguments for constructing a NodeTemplate resource.
  */
 export interface NodeTemplateArgs {
-    readonly accelerators?: pulumi.Input<pulumi.Input<inputs.compute.v1.AcceleratorConfigArgs>[]>;
+    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.v1.AcceleratorConfigArgs>[]>;
     /**
      * CPU overcommit.
      */
-    readonly cpuOvercommitType?: pulumi.Input<string>;
+    cpuOvercommitType?: pulumi.Input<string>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.v1.LocalDiskArgs>[]>;
+    description?: pulumi.Input<string>;
+    disks?: pulumi.Input<pulumi.Input<inputs.compute.v1.LocalDiskArgs>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Labels to use for node affinity, which will be used in instance scheduling.
      */
-    readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The node type to use for nodes group that are created from this template.
      */
-    readonly nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string>;
     /**
      * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
      *
      * This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
      */
-    readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.v1.NodeTemplateNodeTypeFlexibilityArgs>;
-    readonly project: pulumi.Input<string>;
+    nodeTypeFlexibility?: pulumi.Input<inputs.compute.v1.NodeTemplateNodeTypeFlexibilityArgs>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] The name of the region where the node template resides, such as us-central1.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * Sets the binding properties for the physical server. Valid values include:  
      * - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
@@ -216,13 +216,13 @@ export interface NodeTemplateArgs {
      *
      * See Sole-tenant node options for more information.
      */
-    readonly serverBinding?: pulumi.Input<inputs.compute.v1.ServerBindingArgs>;
+    serverBinding?: pulumi.Input<inputs.compute.v1.ServerBindingArgs>;
     /**
      * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * [Output Only] An optional, human-readable explanation of the status.
      */
-    readonly statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string>;
 }

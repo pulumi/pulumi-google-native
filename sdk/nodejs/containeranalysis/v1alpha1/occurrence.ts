@@ -163,66 +163,66 @@ export interface OccurrenceArgs {
     /**
      * Describes an attestation of an artifact.
      */
-    readonly attestation?: pulumi.Input<inputs.containeranalysis.v1alpha1.AttestationArgs>;
+    attestation?: pulumi.Input<inputs.containeranalysis.v1alpha1.AttestationArgs>;
     /**
      * Build details for a verifiable build.
      */
-    readonly buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetailsArgs>;
+    buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetailsArgs>;
     /**
      * The time this `Occurrence` was created.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Describes the deployment of an artifact on a runtime.
      */
-    readonly deployment?: pulumi.Input<inputs.containeranalysis.v1alpha1.DeploymentArgs>;
+    deployment?: pulumi.Input<inputs.containeranalysis.v1alpha1.DeploymentArgs>;
     /**
      * Describes how this resource derives from the basis in the associated note.
      */
-    readonly derivedImage?: pulumi.Input<inputs.containeranalysis.v1alpha1.DerivedArgs>;
+    derivedImage?: pulumi.Input<inputs.containeranalysis.v1alpha1.DerivedArgs>;
     /**
      * Describes the initial scan status for this resource.
      */
-    readonly discovered?: pulumi.Input<inputs.containeranalysis.v1alpha1.DiscoveredArgs>;
+    discovered?: pulumi.Input<inputs.containeranalysis.v1alpha1.DiscoveredArgs>;
     /**
      * Describes the installation of a package on the linked resource.
      */
-    readonly installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
+    installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
     /**
      * This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
-    readonly noteName?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    noteName?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the `Note`
      */
-    readonly remediation?: pulumi.Input<string>;
+    remediation?: pulumi.Input<string>;
     /**
      *  The resource for which the `Occurrence` applies.
      */
-    readonly resource?: pulumi.Input<inputs.containeranalysis.v1alpha1.ResourceArgs>;
+    resource?: pulumi.Input<inputs.containeranalysis.v1alpha1.ResourceArgs>;
     /**
      * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
      */
-    readonly resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string>;
     /**
      * The time this `Occurrence` was last updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
     /**
      * Describes an upgrade.
      */
-    readonly upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeOccurrenceArgs>;
+    upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeOccurrenceArgs>;
     /**
      * Details of a security vulnerability note.
      */
-    readonly vulnerabilityDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityDetailsArgs>;
+    vulnerabilityDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityDetailsArgs>;
 }

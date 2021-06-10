@@ -99,30 +99,30 @@ export interface InstanceArgs {
     /**
      * The policy to define whether or not RBE features can be used or how they can be used.
      */
-    readonly featurePolicy?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs>;
+    featurePolicy?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs>;
     /**
      * ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The location is a GCP region. Currently only `us-central1` is supported.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Whether stack driver logging is enabled for the instance.
      */
-    readonly loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean>;
     /**
      * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
      */
-    readonly parent?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * State of the instance.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }

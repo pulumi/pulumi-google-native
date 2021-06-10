@@ -121,40 +121,40 @@ export class EntityType extends pulumi.CustomResource {
  * The set of arguments for constructing a EntityType resource.
  */
 export interface EntityTypeArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Indicates whether the entity type can be automatically expanded.
      */
-    readonly autoExpansionMode?: pulumi.Input<string>;
+    autoExpansionMode?: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the entity type, unique within the agent.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Enables fuzzy entity extraction during classification.
      */
-    readonly enableFuzzyExtraction?: pulumi.Input<boolean>;
+    enableFuzzyExtraction?: pulumi.Input<boolean>;
     /**
      * The collection of entity entries associated with the entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs>[]>;
     /**
      * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */
-    readonly excludedPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs>[]>;
+    excludedPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs>[]>;
     /**
      * Required. Indicates the kind of entity type.
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly languageCode?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
      */
-    readonly redact?: pulumi.Input<boolean>;
+    redact?: pulumi.Input<boolean>;
 }

@@ -94,17 +94,17 @@ export interface ReferenceImageArgs {
     /**
      * Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
      */
-    readonly boundingPolys?: pulumi.Input<pulumi.Input<inputs.vision.v1.BoundingPolyArgs>[]>;
-    readonly location: pulumi.Input<string>;
+    boundingPolys?: pulumi.Input<pulumi.Input<inputs.vision.v1.BoundingPolyArgs>[]>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly productId: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly referenceImageId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    productId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    referenceImageId?: pulumi.Input<string>;
     /**
      * Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
      */
-    readonly uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
 }

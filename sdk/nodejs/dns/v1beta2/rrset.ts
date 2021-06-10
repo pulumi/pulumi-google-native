@@ -101,28 +101,28 @@ export class Rrset extends pulumi.CustomResource {
  * The set of arguments for constructing a Rrset resource.
  */
 export interface RrsetArgs {
-    readonly clientOperationId?: pulumi.Input<string>;
-    readonly kind?: pulumi.Input<string>;
-    readonly managedZone: pulumi.Input<string>;
+    clientOperationId?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    managedZone: pulumi.Input<string>;
     /**
      * For example, www.example.com.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
      */
-    readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * As defined in RFC 4034 (section 3.2).
      */
-    readonly signatureRrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    signatureRrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of seconds that this ResourceRecordSet can be cached by resolvers.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The identifier of a supported record type. See the list of Supported DNS record types.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

@@ -98,21 +98,21 @@ export class SessionEntityType extends pulumi.CustomResource {
  * The set of arguments for constructing a SessionEntityType resource.
  */
 export interface SessionEntityTypeArgs {
-    readonly agentId: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Required. The collection of entities to override or supplement the custom entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
     /**
      * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
      */
-    readonly entityOverrideMode?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    entityOverrideMode?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly sessionId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    sessionId: pulumi.Input<string>;
 }

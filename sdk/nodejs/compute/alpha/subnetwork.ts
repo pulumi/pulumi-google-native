@@ -258,7 +258,7 @@ export interface SubnetworkArgs {
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
      */
-    readonly aggregationInterval?: pulumi.Input<string>;
+    aggregationInterval?: pulumi.Input<string>;
     /**
      * Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
      *
@@ -268,125 +268,125 @@ export interface SubnetworkArgs {
      *
      * This field cannot be set to true at resource creation time.
      */
-    readonly allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
+    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
-    readonly enableFlowLogs?: pulumi.Input<boolean>;
+    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * Enables Layer2 communication on the subnetwork.
      */
-    readonly enableL2?: pulumi.Input<boolean>;
+    enableL2?: pulumi.Input<boolean>;
     /**
      * [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
      */
-    readonly externalIpv6Prefix?: pulumi.Input<string>;
+    externalIpv6Prefix?: pulumi.Input<string>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
      *
      * To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
      */
-    readonly fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
      */
-    readonly flowSampling?: pulumi.Input<number>;
+    flowSampling?: pulumi.Input<number>;
     /**
      * [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
      */
-    readonly gatewayAddress?: pulumi.Input<string>;
+    gatewayAddress?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
-    readonly ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string>;
     /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
      */
-    readonly ipv6AccessType?: pulumi.Input<string>;
+    ipv6AccessType?: pulumi.Input<string>;
     /**
      * [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
      */
-    readonly ipv6CidrRange?: pulumi.Input<string>;
+    ipv6CidrRange?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.alpha.SubnetworkLogConfigArgs>;
+    logConfig?: pulumi.Input<inputs.compute.alpha.SubnetworkLogConfigArgs>;
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA.
      */
-    readonly metadata?: pulumi.Input<string>;
+    metadata?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
      */
-    readonly network?: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
     /**
      * Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
      */
-    readonly privateIpGoogleAccess?: pulumi.Input<boolean>;
+    privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
      * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
      *
      * This field can be both set at resource creation time and updated using patch.
      */
-    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    privateIpv6GoogleAccess?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
-    readonly purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string>;
     /**
      * URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
      */
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SubnetworkSecondaryRangeArgs>[]>;
+    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SubnetworkSecondaryRangeArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
-    readonly selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string>;
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
      *
      * This field can be both set at resource creation time and updated using patch.
      */
-    readonly stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string>;
     /**
      * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
      */
-    readonly vlans?: pulumi.Input<pulumi.Input<number>[]>;
+    vlans?: pulumi.Input<pulumi.Input<number>[]>;
 }

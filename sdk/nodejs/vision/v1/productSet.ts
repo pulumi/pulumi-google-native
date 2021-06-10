@@ -96,12 +96,12 @@ export interface ProductSetArgs {
     /**
      * The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly productSetId?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    productSetId?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

@@ -134,35 +134,35 @@ export interface BillingAccountSinkArgs {
     /**
      * Optional. Options that affect sinks exporting data to BigQuery.
      */
-    readonly bigqueryOptions?: pulumi.Input<inputs.logging.v2.BigQueryOptionsArgs>;
-    readonly billingAccountId: pulumi.Input<string>;
+    bigqueryOptions?: pulumi.Input<inputs.logging.v2.BigQueryOptionsArgs>;
+    billingAccountId: pulumi.Input<string>;
     /**
      * Optional. A description of this sink. The maximum length of the description is 8000 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
      */
-    readonly destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string>;
     /**
      * Optional. If set to True, then this sink is disabled and it does not export any log entries.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
      */
-    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.v2.LogExclusionArgs>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.v2.LogExclusionArgs>[]>;
     /**
      * Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR 
      */
-    readonly filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
     /**
      * Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance 
      */
-    readonly includeChildren?: pulumi.Input<boolean>;
+    includeChildren?: pulumi.Input<boolean>;
     /**
      * Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly uniqueWriterIdentity?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    uniqueWriterIdentity?: pulumi.Input<string>;
 }

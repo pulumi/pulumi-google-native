@@ -126,40 +126,40 @@ export interface ServiceArgs {
     /**
      * Type used for App Engine services.
      */
-    readonly appEngine?: pulumi.Input<inputs.monitoring.v3.AppEngineArgs>;
+    appEngine?: pulumi.Input<inputs.monitoring.v3.AppEngineArgs>;
     /**
      * Type used for Cloud Endpoints services.
      */
-    readonly cloudEndpoints?: pulumi.Input<inputs.monitoring.v3.CloudEndpointsArgs>;
+    cloudEndpoints?: pulumi.Input<inputs.monitoring.v3.CloudEndpointsArgs>;
     /**
      * Type used for Istio services that live in a Kubernetes cluster.
      */
-    readonly clusterIstio?: pulumi.Input<inputs.monitoring.v3.ClusterIstioArgs>;
+    clusterIstio?: pulumi.Input<inputs.monitoring.v3.ClusterIstioArgs>;
     /**
      * Custom service type.
      */
-    readonly custom?: pulumi.Input<inputs.monitoring.v3.CustomArgs>;
+    custom?: pulumi.Input<inputs.monitoring.v3.CustomArgs>;
     /**
      * Name used for UI elements listing this Service.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
      */
-    readonly istioCanonicalService?: pulumi.Input<inputs.monitoring.v3.IstioCanonicalServiceArgs>;
+    istioCanonicalService?: pulumi.Input<inputs.monitoring.v3.IstioCanonicalServiceArgs>;
     /**
      * Type used for Istio services scoped to an Istio mesh.
      */
-    readonly meshIstio?: pulumi.Input<inputs.monitoring.v3.MeshIstioArgs>;
+    meshIstio?: pulumi.Input<inputs.monitoring.v3.MeshIstioArgs>;
     /**
      * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
-    readonly name?: pulumi.Input<string>;
-    readonly serviceId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      */
-    readonly telemetry?: pulumi.Input<inputs.monitoring.v3.TelemetryArgs>;
-    readonly v3Id: pulumi.Input<string>;
-    readonly v3Id1: pulumi.Input<string>;
+    telemetry?: pulumi.Input<inputs.monitoring.v3.TelemetryArgs>;
+    v3Id: pulumi.Input<string>;
+    v3Id1: pulumi.Input<string>;
 }

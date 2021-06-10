@@ -109,18 +109,18 @@ export interface EnvironmentArgs {
     /**
      * Optional. Description of the environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Optional. Display name for this environment.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
-    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1PropertiesArgs>;
+    properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1PropertiesArgs>;
 }

@@ -135,20 +135,20 @@ export interface TrialArgs {
     /**
      * The final measurement containing the objective value.
      */
-    readonly finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>;
-    readonly location: pulumi.Input<string>;
+    finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>;
+    location: pulumi.Input<string>;
     /**
      * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
      */
-    readonly measurements?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>[]>;
+    measurements?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>[]>;
     /**
      * The parameters of the trial.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_Trial_ParameterArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_Trial_ParameterArgs>[]>;
+    project: pulumi.Input<string>;
     /**
      * The detailed state of a trial.
      */
-    readonly state?: pulumi.Input<string>;
-    readonly studyId: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+    studyId: pulumi.Input<string>;
 }

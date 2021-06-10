@@ -139,54 +139,54 @@ export interface AppArgs {
     /**
      * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
      */
-    readonly authDomain?: pulumi.Input<string>;
+    authDomain?: pulumi.Input<string>;
     /**
      * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
      */
-    readonly codeBucket?: pulumi.Input<string>;
+    codeBucket?: pulumi.Input<string>;
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
      */
-    readonly databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<string>;
     /**
      * Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
      */
-    readonly defaultBucket?: pulumi.Input<string>;
+    defaultBucket?: pulumi.Input<string>;
     /**
      * Cookie expiration policy for this application.
      */
-    readonly defaultCookieExpiration?: pulumi.Input<string>;
+    defaultCookieExpiration?: pulumi.Input<string>;
     /**
      * Hostname used to reach this application, as resolved by App Engine.@OutputOnly
      */
-    readonly defaultHostname?: pulumi.Input<string>;
+    defaultHostname?: pulumi.Input<string>;
     /**
      * HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
      */
-    readonly dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlDispatchRuleArgs>[]>;
+    dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlDispatchRuleArgs>[]>;
     /**
      * The feature specific settings to be used in the application.
      */
-    readonly featureSettings?: pulumi.Input<inputs.appengine.v1beta.FeatureSettingsArgs>;
+    featureSettings?: pulumi.Input<inputs.appengine.v1beta.FeatureSettingsArgs>;
     /**
      * The Google Container Registry domain used for storing managed build docker images for this application.
      */
-    readonly gcrDomain?: pulumi.Input<string>;
-    readonly iap?: pulumi.Input<inputs.appengine.v1beta.IdentityAwareProxyArgs>;
+    gcrDomain?: pulumi.Input<string>;
+    iap?: pulumi.Input<inputs.appengine.v1beta.IdentityAwareProxyArgs>;
     /**
      * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Serving status of this application.
      */
-    readonly servingStatus?: pulumi.Input<string>;
+    servingStatus?: pulumi.Input<string>;
 }

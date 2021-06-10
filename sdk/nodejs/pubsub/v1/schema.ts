@@ -85,15 +85,15 @@ export interface SchemaArgs {
     /**
      * The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
      */
-    readonly definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string>;
     /**
      * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly schemaId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string>;
     /**
      * The type of the schema definition.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

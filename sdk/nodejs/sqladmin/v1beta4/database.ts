@@ -114,30 +114,30 @@ export interface DatabaseArgs {
     /**
      * The Cloud SQL charset value.
      */
-    readonly charset?: pulumi.Input<string>;
+    charset?: pulumi.Input<string>;
     /**
      * The Cloud SQL collation value.
      */
-    readonly collation?: pulumi.Input<string>;
+    collation?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. This does not include the project ID.
      */
-    readonly instance: pulumi.Input<string>;
+    instance: pulumi.Input<string>;
     /**
      * This is always *sql#database*.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The URI of this resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
-    readonly sqlserverDatabaseDetails?: pulumi.Input<inputs.sqladmin.v1beta4.SqlServerDatabaseDetailsArgs>;
+    selfLink?: pulumi.Input<string>;
+    sqlserverDatabaseDetails?: pulumi.Input<inputs.sqladmin.v1beta4.SqlServerDatabaseDetailsArgs>;
 }

@@ -90,10 +90,10 @@ export interface BrandArgs {
     /**
      * Application name displayed on OAuth consent screen.
      */
-    readonly applicationTitle?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    applicationTitle?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Support email displayed on the OAuth consent screen.
      */
-    readonly supportEmail?: pulumi.Input<string>;
+    supportEmail?: pulumi.Input<string>;
 }

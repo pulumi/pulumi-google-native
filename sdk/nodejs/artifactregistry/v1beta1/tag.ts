@@ -88,17 +88,17 @@ export class Tag extends pulumi.CustomResource {
  * The set of arguments for constructing a Tag resource.
  */
 export interface TagArgs {
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
      */
-    readonly name?: pulumi.Input<string>;
-    readonly packageId: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly repositoryId: pulumi.Input<string>;
-    readonly tagId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    packageId: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    repositoryId: pulumi.Input<string>;
+    tagId?: pulumi.Input<string>;
     /**
      * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

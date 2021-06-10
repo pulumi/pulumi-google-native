@@ -133,27 +133,27 @@ export interface InstanceArgs {
     /**
      * Optional. Description of the instance.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      */
-    readonly diskEncryptionKeyName?: pulumi.Input<string>;
+    diskEncryptionKeyName?: pulumi.Input<string>;
     /**
      * Optional. Display name for the instance.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly environments?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    environments?: pulumi.Input<string>;
     /**
      * Required. Compute Engine location where the instance resides.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly organizationId: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    organizationId: pulumi.Input<string>;
     /**
      * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
      */
-    readonly peeringCidrRange?: pulumi.Input<string>;
+    peeringCidrRange?: pulumi.Input<string>;
 }

@@ -107,27 +107,27 @@ export interface DomainArgs {
     /**
      * Required. The domain name of the association.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * If set, the domain should redirect with the provided parameters.
      */
-    readonly domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
-    readonly project: pulumi.Input<string>;
+    domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
+    project: pulumi.Input<string>;
     /**
      * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
      */
-    readonly provisioning?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainProvisioningArgs>;
+    provisioning?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainProvisioningArgs>;
     /**
      * Required. The site name of the association.
      */
-    readonly site?: pulumi.Input<string>;
-    readonly siteId: pulumi.Input<string>;
+    site?: pulumi.Input<string>;
+    siteId: pulumi.Input<string>;
     /**
      * Additional status of the domain association.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The time at which the domain was last updated.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

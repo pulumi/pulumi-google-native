@@ -145,54 +145,54 @@ export interface TestMatrixArgs {
     /**
      * Information about the client which invoked the test.
      */
-    readonly clientInfo?: pulumi.Input<inputs.testing.v1.ClientInfoArgs>;
+    clientInfo?: pulumi.Input<inputs.testing.v1.ClientInfoArgs>;
     /**
      * Required. The devices the tests are being executed on.
      */
-    readonly environmentMatrix?: pulumi.Input<inputs.testing.v1.EnvironmentMatrixArgs>;
+    environmentMatrix?: pulumi.Input<inputs.testing.v1.EnvironmentMatrixArgs>;
     /**
      * If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
      */
-    readonly failFast?: pulumi.Input<boolean>;
+    failFast?: pulumi.Input<boolean>;
     /**
      * The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
      */
-    readonly flakyTestAttempts?: pulumi.Input<number>;
+    flakyTestAttempts?: pulumi.Input<number>;
     /**
      * Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
      */
-    readonly invalidMatrixDetails?: pulumi.Input<string>;
+    invalidMatrixDetails?: pulumi.Input<string>;
     /**
      * Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
      */
-    readonly outcomeSummary?: pulumi.Input<string>;
+    outcomeSummary?: pulumi.Input<string>;
     /**
      * The cloud project that owns the test matrix.
      */
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * Required. Where the results for the matrix are written.
      */
-    readonly resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorageArgs>;
+    resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorageArgs>;
     /**
      * Indicates the current progress of the test matrix.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The list of test executions that the service creates for this matrix.
      */
-    readonly testExecutions?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestExecutionArgs>[]>;
+    testExecutions?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestExecutionArgs>[]>;
     /**
      * Unique id set by the service.
      */
-    readonly testMatrixId?: pulumi.Input<string>;
+    testMatrixId?: pulumi.Input<string>;
     /**
      * Required. How to run the test.
      */
-    readonly testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecificationArgs>;
+    testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecificationArgs>;
     /**
      * The time this test matrix was initially created.
      */
-    readonly timestamp?: pulumi.Input<string>;
+    timestamp?: pulumi.Input<string>;
 }

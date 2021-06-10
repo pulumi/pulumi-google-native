@@ -112,24 +112,24 @@ export class UserDataMapping extends pulumi.CustomResource {
  * The set of arguments for constructing a UserDataMapping resource.
  */
 export interface UserDataMappingArgs {
-    readonly consentStoreId: pulumi.Input<string>;
+    consentStoreId: pulumi.Input<string>;
     /**
      * Required. A unique identifier for the mapped resource.
      */
-    readonly dataId?: pulumi.Input<string>;
-    readonly datasetId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    dataId?: pulumi.Input<string>;
+    datasetId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
      */
-    readonly resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.AttributeArgs>[]>;
+    resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.AttributeArgs>[]>;
     /**
      * Required. User's UUID provided by the client.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
 }

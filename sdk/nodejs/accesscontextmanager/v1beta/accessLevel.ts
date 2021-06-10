@@ -94,25 +94,25 @@ export class AccessLevel extends pulumi.CustomResource {
  * The set of arguments for constructing a AccessLevel resource.
  */
 export interface AccessLevelArgs {
-    readonly accessPolicyId: pulumi.Input<string>;
+    accessPolicyId: pulumi.Input<string>;
     /**
      * A `BasicLevel` composed of `Conditions`.
      */
-    readonly basic?: pulumi.Input<inputs.accesscontextmanager.v1beta.BasicLevelArgs>;
+    basic?: pulumi.Input<inputs.accesscontextmanager.v1beta.BasicLevelArgs>;
     /**
      * A `CustomLevel` written in the Common Expression Language.
      */
-    readonly custom?: pulumi.Input<inputs.accesscontextmanager.v1beta.CustomLevelArgs>;
+    custom?: pulumi.Input<inputs.accesscontextmanager.v1beta.CustomLevelArgs>;
     /**
      * Description of the `AccessLevel` and its use. Does not affect behavior.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }

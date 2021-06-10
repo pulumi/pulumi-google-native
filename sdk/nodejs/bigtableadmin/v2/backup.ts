@@ -124,20 +124,20 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
-    readonly backupId: pulumi.Input<string>;
-    readonly clusterId: pulumi.Input<string>;
+    backupId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
-    readonly expireTime?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */
-    readonly sourceTable?: pulumi.Input<string>;
+    sourceTable?: pulumi.Input<string>;
 }

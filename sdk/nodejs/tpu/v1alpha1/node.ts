@@ -174,40 +174,40 @@ export interface NodeArgs {
     /**
      * Required. The type of hardware accelerators associated with this node.
      */
-    readonly acceleratorType?: pulumi.Input<string>;
+    acceleratorType?: pulumi.Input<string>;
     /**
      * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
      */
-    readonly cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * The user-supplied description of the TPU. Maximum of 512 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The health status of the TPU node.
      */
-    readonly health?: pulumi.Input<string>;
+    health?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
      */
-    readonly network?: pulumi.Input<string>;
-    readonly nodeId?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The scheduling options for this node.
      */
-    readonly schedulingConfig?: pulumi.Input<inputs.tpu.v1alpha1.SchedulingConfigArgs>;
+    schedulingConfig?: pulumi.Input<inputs.tpu.v1alpha1.SchedulingConfigArgs>;
     /**
      * Required. The version of Tensorflow running in the Node.
      */
-    readonly tensorflowVersion?: pulumi.Input<string>;
+    tensorflowVersion?: pulumi.Input<string>;
     /**
      * Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
      */
-    readonly useServiceNetworking?: pulumi.Input<boolean>;
+    useServiceNetworking?: pulumi.Input<boolean>;
 }

@@ -117,24 +117,24 @@ export interface EnvironmentArgs {
     /**
      * Use a container image to start the notebook instance.
      */
-    readonly containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>;
+    containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>;
     /**
      * A brief description of this environment.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of this environment for the UI.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
      */
-    readonly postStartupScript?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      */
-    readonly vmImage?: pulumi.Input<inputs.notebooks.v1.VmImageArgs>;
+    vmImage?: pulumi.Input<inputs.notebooks.v1.VmImageArgs>;
 }

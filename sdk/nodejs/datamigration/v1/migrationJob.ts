@@ -190,57 +190,57 @@ export interface MigrationJobArgs {
     /**
      * Required. The resource name (URI) of the destination connection profile.
      */
-    readonly destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string>;
     /**
      * The database engine type and provider of the destination.
      */
-    readonly destinationDatabase?: pulumi.Input<inputs.datamigration.v1.DatabaseTypeArgs>;
+    destinationDatabase?: pulumi.Input<inputs.datamigration.v1.DatabaseTypeArgs>;
     /**
      * The migration job display name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
      */
-    readonly dumpPath?: pulumi.Input<string>;
+    dumpPath?: pulumi.Input<string>;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
-    readonly migrationJobId: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
+    migrationJobId: pulumi.Input<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
      */
-    readonly reverseSshConnectivity?: pulumi.Input<inputs.datamigration.v1.ReverseSshConnectivityArgs>;
+    reverseSshConnectivity?: pulumi.Input<inputs.datamigration.v1.ReverseSshConnectivityArgs>;
     /**
      * Required. The resource name (URI) of the source connection profile.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * The database engine type and provider of the source.
      */
-    readonly sourceDatabase?: pulumi.Input<inputs.datamigration.v1.DatabaseTypeArgs>;
+    sourceDatabase?: pulumi.Input<inputs.datamigration.v1.DatabaseTypeArgs>;
     /**
      * The current migration job state.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * static ip connectivity data (default, no additional details needed).
      */
-    readonly staticIpConnectivity?: pulumi.Input<inputs.datamigration.v1.StaticIpConnectivityArgs>;
+    staticIpConnectivity?: pulumi.Input<inputs.datamigration.v1.StaticIpConnectivityArgs>;
     /**
      * Required. The migration job type.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The details of the VPC network that the source database is located in.
      */
-    readonly vpcPeeringConnectivity?: pulumi.Input<inputs.datamigration.v1.VpcPeeringConnectivityArgs>;
+    vpcPeeringConnectivity?: pulumi.Input<inputs.datamigration.v1.VpcPeeringConnectivityArgs>;
 }

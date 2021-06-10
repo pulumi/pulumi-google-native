@@ -141,28 +141,28 @@ export interface InstanceArgs {
     /**
      * The description of the instance (2048 characters or less).
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * File system shares on the instance. For this version, only a single file share is supported.
      */
-    readonly fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1.FileShareConfigArgs>[]>;
-    readonly instanceId: pulumi.Input<string>;
+    fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1.FileShareConfigArgs>[]>;
+    instanceId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.file.v1.NetworkConfigArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    networks?: pulumi.Input<pulumi.Input<inputs.file.v1.NetworkConfigArgs>[]>;
+    project: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
 }

@@ -102,24 +102,24 @@ export interface DomainMappingArgs {
     /**
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
-    readonly apiVersion?: pulumi.Input<string>;
-    readonly dryRun?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".
      */
-    readonly kind?: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Metadata associated with this BuildTemplate.
      */
-    readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
-    readonly project: pulumi.Input<string>;
+    metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
+    project: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */
-    readonly spec?: pulumi.Input<inputs.run.v1.DomainMappingSpecArgs>;
+    spec?: pulumi.Input<inputs.run.v1.DomainMappingSpecArgs>;
     /**
      * The current status of the DomainMapping.
      */
-    readonly status?: pulumi.Input<inputs.run.v1.DomainMappingStatusArgs>;
+    status?: pulumi.Input<inputs.run.v1.DomainMappingStatusArgs>;
 }

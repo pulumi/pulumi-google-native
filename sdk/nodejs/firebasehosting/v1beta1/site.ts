@@ -100,11 +100,11 @@ export interface SiteArgs {
     /**
      * Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * Optional. User-specified labels for the Hosting site.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly project: pulumi.Input<string>;
-    readonly siteId: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    project: pulumi.Input<string>;
+    siteId: pulumi.Input<string>;
 }

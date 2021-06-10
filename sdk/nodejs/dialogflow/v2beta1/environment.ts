@@ -117,20 +117,20 @@ export interface EnvironmentArgs {
     /**
      * Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
      */
-    readonly agentVersion?: pulumi.Input<string>;
+    agentVersion?: pulumi.Input<string>;
     /**
      * Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly environmentId: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    environmentId: pulumi.Input<string>;
     /**
      * Optional. The fulfillment settings to use for this environment.
      */
-    readonly fulfillment?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentArgs>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    fulfillment?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentArgs>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Optional. Text to speech settings for this environment.
      */
-    readonly textToSpeechSettings?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs>;
+    textToSpeechSettings?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs>;
 }

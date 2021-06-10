@@ -144,53 +144,53 @@ export interface ResourcePolicyArgs {
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Resource policy for instances for placement configuration.
      */
-    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyGroupPlacementPolicyArgs>;
+    groupPlacementPolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyGroupPlacementPolicyArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * Resource policy for scheduling instance operations.
      */
-    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyInstanceSchedulePolicyArgs>;
+    instanceSchedulePolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyInstanceSchedulePolicyArgs>;
     /**
      * [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The system status of the resource policy.
      */
-    readonly resourceStatus?: pulumi.Input<inputs.compute.alpha.ResourcePolicyResourceStatusArgs>;
+    resourceStatus?: pulumi.Input<inputs.compute.alpha.ResourcePolicyResourceStatusArgs>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
-    readonly selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string>;
     /**
      * Resource policy for persistent disks for creating snapshots.
      */
-    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicySnapshotSchedulePolicyArgs>;
+    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicySnapshotSchedulePolicyArgs>;
     /**
      * [Output Only] The status of resource policy creation.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Resource policy applicable to VMs for infrastructure maintenance.
      */
-    readonly vmMaintenancePolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyVmMaintenancePolicyArgs>;
+    vmMaintenancePolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyVmMaintenancePolicyArgs>;
 }

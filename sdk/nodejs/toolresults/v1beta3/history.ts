@@ -91,19 +91,19 @@ export interface HistoryArgs {
     /**
      * A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
      */
-    readonly historyId?: pulumi.Input<string>;
+    historyId?: pulumi.Input<string>;
     /**
      * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
      */
-    readonly testPlatform?: pulumi.Input<string>;
+    testPlatform?: pulumi.Input<string>;
 }

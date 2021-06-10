@@ -74,9 +74,9 @@ export interface ServiceArgs {
     /**
      * ID of the project that produces and owns this service.
      */
-    readonly producerProjectId?: pulumi.Input<string>;
+    producerProjectId?: pulumi.Input<string>;
     /**
      * The name of the service. See the [overview](/service-management/overview) for naming requirements.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

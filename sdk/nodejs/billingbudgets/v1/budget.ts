@@ -109,26 +109,26 @@ export interface BudgetArgs {
     /**
      * Required. Budgeted amount.
      */
-    readonly amount?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountArgs>;
-    readonly billingAccountId: pulumi.Input<string>;
+    amount?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountArgs>;
+    billingAccountId: pulumi.Input<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
-    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1FilterArgs>;
+    budgetFilter?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1FilterArgs>;
     /**
      * User data for display name in UI. The name must be less than or equal to 60 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
      */
-    readonly etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
     /**
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
-    readonly notificationsRule?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleArgs>;
+    notificationsRule?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleArgs>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
      */
-    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleArgs>[]>;
+    thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleArgs>[]>;
 }

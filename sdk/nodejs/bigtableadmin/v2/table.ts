@@ -103,23 +103,23 @@ export interface TableArgs {
     /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
      */
-    readonly columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */
-    readonly granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string>;
     /**
      * The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
      */
-    readonly initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.SplitArgs>[]>;
-    readonly instanceId: pulumi.Input<string>;
+    initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.SplitArgs>[]>;
+    instanceId: pulumi.Input<string>;
     /**
      * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */
-    readonly tableId?: pulumi.Input<string>;
+    tableId?: pulumi.Input<string>;
 }

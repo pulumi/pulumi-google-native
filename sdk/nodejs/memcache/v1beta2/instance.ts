@@ -177,44 +177,44 @@ export interface InstanceArgs {
     /**
      * The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
      */
-    readonly authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string>;
     /**
      * User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
      */
-    readonly displayName?: pulumi.Input<string>;
-    readonly instanceId: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * List of messages that describe the current state of the Memcached instance.
      */
-    readonly instanceMessages?: pulumi.Input<pulumi.Input<inputs.memcache.v1beta2.InstanceMessageArgs>[]>;
+    instanceMessages?: pulumi.Input<pulumi.Input<inputs.memcache.v1beta2.InstanceMessageArgs>[]>;
     /**
      * Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
      */
-    readonly memcacheVersion?: pulumi.Input<string>;
+    memcacheVersion?: pulumi.Input<string>;
     /**
      * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Required. Configuration for Memcached nodes.
      */
-    readonly nodeConfig?: pulumi.Input<inputs.memcache.v1beta2.NodeConfigArgs>;
+    nodeConfig?: pulumi.Input<inputs.memcache.v1beta2.NodeConfigArgs>;
     /**
      * Required. Number of nodes in the Memcached instance.
      */
-    readonly nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number>;
     /**
      * Optional: User defined parameters to apply to the memcached process on each node.
      */
-    readonly parameters?: pulumi.Input<inputs.memcache.v1beta2.MemcacheParametersArgs>;
-    readonly project: pulumi.Input<string>;
+    parameters?: pulumi.Input<inputs.memcache.v1beta2.MemcacheParametersArgs>;
+    project: pulumi.Input<string>;
     /**
      * Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
      */
-    readonly zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

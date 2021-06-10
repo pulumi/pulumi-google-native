@@ -148,59 +148,59 @@ export interface PacketMirroringArgs {
     /**
      * The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
      */
-    readonly collectorIlb?: pulumi.Input<inputs.compute.beta.PacketMirroringForwardingRuleInfoArgs>;
+    collectorIlb?: pulumi.Input<inputs.compute.beta.PacketMirroringForwardingRuleInfoArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
-    readonly creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
      *
      * The default is TRUE.
      */
-    readonly enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string>;
     /**
      * Filter for mirrored traffic. If unspecified, all traffic is mirrored.
      */
-    readonly filter?: pulumi.Input<inputs.compute.beta.PacketMirroringFilterArgs>;
+    filter?: pulumi.Input<inputs.compute.beta.PacketMirroringFilterArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
-    readonly id?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
      */
-    readonly mirroredResources?: pulumi.Input<inputs.compute.beta.PacketMirroringMirroredResourceInfoArgs>;
+    mirroredResources?: pulumi.Input<inputs.compute.beta.PacketMirroringMirroredResourceInfoArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
      */
-    readonly network?: pulumi.Input<inputs.compute.beta.PacketMirroringNetworkInfoArgs>;
+    network?: pulumi.Input<inputs.compute.beta.PacketMirroringNetworkInfoArgs>;
     /**
      * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
      *
      * Default value is 1000. Valid range is 0 through 65535.
      */
-    readonly priority?: pulumi.Input<number>;
-    readonly project: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
+    project: pulumi.Input<string>;
     /**
      * [Output Only] URI of the region where the packetMirroring resides.
      */
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
-    readonly selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string>;
 }

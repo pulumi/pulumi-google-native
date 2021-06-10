@@ -119,19 +119,19 @@ export interface ClusterArgs {
     /**
      * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
-    readonly clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
     /**
      * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
-    readonly config?: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
+    config?: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. The Google Cloud Platform project ID that the cluster belongs to.
      */
-    readonly project: pulumi.Input<string>;
-    readonly region: pulumi.Input<string>;
-    readonly requestId?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
 }

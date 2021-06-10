@@ -154,16 +154,16 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
  * The set of arguments for constructing a CryptoKeyVersion resource.
  */
 export interface CryptoKeyVersionArgs {
-    readonly cryptoKeyId: pulumi.Input<string>;
+    cryptoKeyId: pulumi.Input<string>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
      */
-    readonly externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptionsArgs>;
-    readonly keyRingId: pulumi.Input<string>;
-    readonly location: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptionsArgs>;
+    keyRingId: pulumi.Input<string>;
+    location: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The current state of the CryptoKeyVersion.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }

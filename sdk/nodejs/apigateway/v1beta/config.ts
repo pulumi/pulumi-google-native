@@ -148,36 +148,36 @@ export class Config extends pulumi.CustomResource {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
-    readonly apiConfigId: pulumi.Input<string>;
-    readonly apiId: pulumi.Input<string>;
+    apiConfigId: pulumi.Input<string>;
+    apiId: pulumi.Input<string>;
     /**
      * Optional. Display name.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Immutable. Gateway specific configuration.
      */
-    readonly gatewayConfig?: pulumi.Input<inputs.apigateway.v1beta.ApigatewayGatewayConfigArgs>;
+    gatewayConfig?: pulumi.Input<inputs.apigateway.v1beta.ApigatewayGatewayConfigArgs>;
     /**
      * Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
      */
-    readonly gatewayServiceAccount?: pulumi.Input<string>;
+    gatewayServiceAccount?: pulumi.Input<string>;
     /**
      * Optional. gRPC service definition files. If specified, openapi_documents must not be included.
      */
-    readonly grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigGrpcServiceDefinitionArgs>[]>;
+    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigGrpcServiceDefinitionArgs>[]>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly location: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location: pulumi.Input<string>;
     /**
      * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      */
-    readonly managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigFileArgs>[]>;
+    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigFileArgs>[]>;
     /**
      * Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
      */
-    readonly openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocumentArgs>[]>;
-    readonly project: pulumi.Input<string>;
+    openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocumentArgs>[]>;
+    project: pulumi.Input<string>;
 }

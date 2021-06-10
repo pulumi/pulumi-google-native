@@ -113,19 +113,19 @@ export interface GlossaryArgs {
     /**
      * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
-    readonly inputConfig?: pulumi.Input<inputs.translate.v3beta1.GlossaryInputConfigArgs>;
+    inputConfig?: pulumi.Input<inputs.translate.v3beta1.GlossaryInputConfigArgs>;
     /**
      * Used with equivalent term set glossaries.
      */
-    readonly languageCodesSet?: pulumi.Input<inputs.translate.v3beta1.LanguageCodesSetArgs>;
+    languageCodesSet?: pulumi.Input<inputs.translate.v3beta1.LanguageCodesSetArgs>;
     /**
      * Used with unidirectional glossaries.
      */
-    readonly languagePair?: pulumi.Input<inputs.translate.v3beta1.LanguageCodePairArgs>;
-    readonly location: pulumi.Input<string>;
+    languagePair?: pulumi.Input<inputs.translate.v3beta1.LanguageCodePairArgs>;
+    location: pulumi.Input<string>;
     /**
      * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly project: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }
