@@ -1,3 +1,10 @@
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fgoogle-native.svg)](https://npmjs.com/package/@pulumi/google-native)
+[![Python version](https://badge.fury.io/py/pulumi-google-native.svg)](https://pypi.org/project/pulumi-google-native)
+[![NuGet version](https://badge.fury.io/nu/pulumi.googlenative.svg)](https://badge.fury.io/nu/pulumi.googlenative)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-google-native/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-google-native/sdk/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fgoogle-native.svg)](https://github.com/pulumi/pulumi-google-native/blob/master/LICENSE)
+
 # Native Google Cloud Pulumi Provider (preview)
 
 The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud programs.
