@@ -8,6 +8,10 @@ import typing
 from .access_level import *
 from .access_policy import *
 from .gcp_user_access_binding import *
+from .get_access_level import *
+from .get_access_policy import *
+from .get_gcp_user_access_binding import *
+from .get_service_perimeter import *
 from .service_perimeter import *
 from ._inputs import *
 from . import outputs

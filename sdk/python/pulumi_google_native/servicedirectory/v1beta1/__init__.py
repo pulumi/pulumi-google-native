@@ -6,6 +6,11 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .endpoint import *
+from .get_endpoint import *
+from .get_namespace import *
+from .get_namespace_iam_policy import *
+from .get_namespace_service_iam_policy import *
+from .get_service import *
 from .namespace import *
 from .namespace_iam_policy import *
 from .namespace_service_iam_policy import *

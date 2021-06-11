@@ -8,6 +8,10 @@ import typing
 from .composite_type import *
 from .deployment import *
 from .deployment_iam_policy import *
+from .get_composite_type import *
+from .get_deployment import *
+from .get_deployment_iam_policy import *
+from .get_type_provider import *
 from .type_provider import *
 from ._inputs import *
 from . import outputs

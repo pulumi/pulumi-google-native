@@ -7,5 +7,7 @@ import typing
 # Export this package's modules as members:
 from .billing_account import *
 from .billing_account_iam_policy import *
+from .get_billing_account import *
+from .get_billing_account_iam_policy import *
 from ._inputs import *
 from . import outputs

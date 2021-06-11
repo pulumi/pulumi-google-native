@@ -11,5 +11,11 @@ from .api_iam_policy import *
 from .config import *
 from .gateway import *
 from .gateway_iam_policy import *
+from .get_api import *
+from .get_api_config_iam_policy import *
+from .get_api_iam_policy import *
+from .get_config import *
+from .get_gateway import *
+from .get_gateway_iam_policy import *
 from ._inputs import *
 from . import outputs

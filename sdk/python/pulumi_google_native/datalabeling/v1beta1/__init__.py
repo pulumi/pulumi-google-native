@@ -9,6 +9,11 @@ from .annotation_spec_set import *
 from .dataset import *
 from .evaluation_job import *
 from .feedback_message import *
+from .get_annotation_spec_set import *
+from .get_dataset import *
+from .get_evaluation_job import *
+from .get_feedback_message import *
+from .get_instruction import *
 from .instruction import *
 from ._inputs import *
 from . import outputs

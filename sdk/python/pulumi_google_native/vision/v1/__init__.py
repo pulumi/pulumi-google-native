@@ -5,6 +5,9 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_product import *
+from .get_product_set import *
+from .get_reference_image import *
 from .product import *
 from .product_set import *
 from .reference_image import *

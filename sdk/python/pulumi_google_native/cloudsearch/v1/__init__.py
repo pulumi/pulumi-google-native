@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .data_source import *
+from .get_data_source import *
+from .get_search_application import *
 from .search_application import *
 from ._inputs import *
 from . import outputs

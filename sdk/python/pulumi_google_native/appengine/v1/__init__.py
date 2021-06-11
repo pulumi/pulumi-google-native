@@ -8,6 +8,11 @@ import typing
 from .app import *
 from .authorized_certificate import *
 from .domain_mapping import *
+from .get_app import *
+from .get_authorized_certificate import *
+from .get_domain_mapping import *
+from .get_ingress_rule import *
+from .get_version import *
 from .ingress_rule import *
 from .version import *
 from ._inputs import *

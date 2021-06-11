@@ -9,6 +9,11 @@ from .certificate import *
 from .certificate_authority import *
 from .certificate_authority_certificate_revocation_list_iam_policy import *
 from .certificate_authority_iam_policy import *
+from .get_certificate import *
+from .get_certificate_authority import *
+from .get_certificate_authority_certificate_revocation_list_iam_policy import *
+from .get_certificate_authority_iam_policy import *
+from .get_reusable_config_iam_policy import *
 from .reusable_config_iam_policy import *
 from ._inputs import *
 from . import outputs

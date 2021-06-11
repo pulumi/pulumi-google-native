@@ -7,6 +7,10 @@ import typing
 # Export this package's modules as members:
 from .config import *
 from .config_iam_policy import *
+from .get_config import *
+from .get_config_iam_policy import *
+from .get_variable import *
+from .get_waiter import *
 from .variable import *
 from .waiter import *
 from ._inputs import *

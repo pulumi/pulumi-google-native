@@ -7,5 +7,7 @@ import typing
 # Export this package's modules as members:
 from .deployment import *
 from .deployment_iam_policy import *
+from .get_deployment import *
+from .get_deployment_iam_policy import *
 from ._inputs import *
 from . import outputs

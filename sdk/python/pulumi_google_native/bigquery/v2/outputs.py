@@ -82,6 +82,7 @@ __all__ = [
     'TransactionInfoResponse',
     'UserDefinedFunctionResourceResponse',
     'ViewDefinitionResponse',
+    'GetDatasetAccessItemResponse',
 ]
 
 @pulumi.output_type
@@ -5787,5 +5788,111 @@ class ViewDefinitionResponse(dict):
         Describes user-defined function resources used in the query.
         """
         return pulumi.get(self, "user_defined_function_resources")
+
+
+@pulumi.output_type
+class GetDatasetAccessItemResponse(dict):
+    def __init__(__self__, *,
+                 dataset: 'outputs.DatasetAccessEntryResponse',
+                 domain: str,
+                 group_by_email: str,
+                 iam_member: str,
+                 role: str,
+                 routine: 'outputs.RoutineReferenceResponse',
+                 special_group: str,
+                 user_by_email: str,
+                 view: 'outputs.TableReferenceResponse'):
+        """
+        :param 'DatasetAccessEntryResponse' dataset: [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+        :param str domain: [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+        :param str group_by_email: [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+        :param str iam_member: [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+        :param str role: [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        :param 'RoutineReferenceResponse' routine: [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+        :param str special_group: [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+        :param str user_by_email: [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+        :param 'TableReferenceResponse' view: [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "group_by_email", group_by_email)
+        pulumi.set(__self__, "iam_member", iam_member)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "routine", routine)
+        pulumi.set(__self__, "special_group", special_group)
+        pulumi.set(__self__, "user_by_email", user_by_email)
+        pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> 'outputs.DatasetAccessEntryResponse':
+        """
+        [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+        """
+        return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="groupByEmail")
+    def group_by_email(self) -> str:
+        """
+        [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+        """
+        return pulumi.get(self, "group_by_email")
+
+    @property
+    @pulumi.getter(name="iamMember")
+    def iam_member(self) -> str:
+        """
+        [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+        """
+        return pulumi.get(self, "iam_member")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def routine(self) -> 'outputs.RoutineReferenceResponse':
+        """
+        [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+        """
+        return pulumi.get(self, "routine")
+
+    @property
+    @pulumi.getter(name="specialGroup")
+    def special_group(self) -> str:
+        """
+        [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+        """
+        return pulumi.get(self, "special_group")
+
+    @property
+    @pulumi.getter(name="userByEmail")
+    def user_by_email(self) -> str:
+        """
+        [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+        """
+        return pulumi.get(self, "user_by_email")
+
+    @property
+    @pulumi.getter
+    def view(self) -> 'outputs.TableReferenceResponse':
+        """
+        [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        """
+        return pulumi.get(self, "view")
 
 

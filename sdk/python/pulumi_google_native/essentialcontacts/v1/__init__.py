@@ -7,4 +7,7 @@ import typing
 # Export this package's modules as members:
 from .contact import *
 from .folder_contact import *
+from .get_contact import *
+from .get_folder_contact import *
+from .get_organization_contact import *
 from .organization_contact import *

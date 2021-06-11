@@ -6,6 +6,10 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .change import *
+from .get_change import *
+from .get_managed_zone import *
+from .get_policy import *
+from .get_rrset import *
 from .managed_zone import *
 from .policy import *
 from .rrset import *

@@ -8,5 +8,8 @@ import typing
 from .channel_partner_link import *
 from .customer import *
 from .entitlement import *
+from .get_channel_partner_link import *
+from .get_customer import *
+from .get_entitlement import *
 from ._inputs import *
 from . import outputs

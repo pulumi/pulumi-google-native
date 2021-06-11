@@ -6,6 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .folder_policy import *
+from .get_folder_policy import *
+from .get_organization_policy import *
+from .get_policy import *
 from .organization_policy import *
 from .policy import *
 from ._inputs import *

@@ -6,6 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .brand import *
+from .get_brand import *
+from .get_identity_aware_proxy_client import *
+from .get_v1_iam_policy import *
 from .identity_aware_proxy_client import *
 from .v1_iam_policy import *
 from ._inputs import *

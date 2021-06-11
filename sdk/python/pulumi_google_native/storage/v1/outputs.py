@@ -36,6 +36,28 @@ __all__ = [
     'ObjectCustomerEncryptionResponse',
     'ObjectIamPolicyBindingsItemResponse',
     'ObjectOwnerResponse',
+    'GetBucketAccessControlProjectTeamResponse',
+    'GetBucketActionResponse',
+    'GetBucketBillingResponse',
+    'GetBucketBucketPolicyOnlyResponse',
+    'GetBucketConditionResponse',
+    'GetBucketCorsItemResponse',
+    'GetBucketEncryptionResponse',
+    'GetBucketIamConfigurationResponse',
+    'GetBucketIamPolicyBindingsItemResponse',
+    'GetBucketLifecycleResponse',
+    'GetBucketLoggingResponse',
+    'GetBucketOwnerResponse',
+    'GetBucketRetentionPolicyResponse',
+    'GetBucketRuleItemResponse',
+    'GetBucketUniformBucketLevelAccessResponse',
+    'GetBucketVersioningResponse',
+    'GetBucketWebsiteResponse',
+    'GetDefaultObjectAccessControlProjectTeamResponse',
+    'GetObjectAccessControlProjectTeamResponse',
+    'GetObjectCustomerEncryptionResponse',
+    'GetObjectIamPolicyBindingsItemResponse',
+    'GetObjectOwnerResponse',
 ]
 
 @pulumi.output_type
@@ -1682,6 +1704,902 @@ class ObjectOwnerResponse(dict):
         ObjectOwnerResponse.__key_warning(key)
         return super().get(key, default)
 
+    def __init__(__self__, *,
+                 entity: str,
+                 entity_id: str):
+        """
+        The owner of the object. This will always be the uploader of the object.
+        :param str entity: The entity, in the form user-userId.
+        :param str entity_id: The ID for the entity.
+        """
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "entity_id", entity_id)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> str:
+        """
+        The entity, in the form user-userId.
+        """
+        return pulumi.get(self, "entity")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        """
+        The ID for the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+
+@pulumi.output_type
+class GetBucketAccessControlProjectTeamResponse(dict):
+    """
+    The project team associated with the entity, if any.
+    """
+    def __init__(__self__, *,
+                 project_number: str,
+                 team: str):
+        """
+        The project team associated with the entity, if any.
+        :param str project_number: The project number.
+        :param str team: The team.
+        """
+        pulumi.set(__self__, "project_number", project_number)
+        pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> str:
+        """
+        The project number.
+        """
+        return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter
+    def team(self) -> str:
+        """
+        The team.
+        """
+        return pulumi.get(self, "team")
+
+
+@pulumi.output_type
+class GetBucketActionResponse(dict):
+    """
+    The action to take.
+    """
+    def __init__(__self__, *,
+                 storage_class: str,
+                 type: str):
+        """
+        The action to take.
+        :param str storage_class: Target storage class. Required iff the type of the action is SetStorageClass.
+        :param str type: Type of the action. Currently, only Delete and SetStorageClass are supported.
+        """
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        Target storage class. Required iff the type of the action is SetStorageClass.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the action. Currently, only Delete and SetStorageClass are supported.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetBucketBillingResponse(dict):
+    """
+    The bucket's billing configuration.
+    """
+    def __init__(__self__, *,
+                 requester_pays: bool):
+        """
+        The bucket's billing configuration.
+        :param bool requester_pays: When set to true, Requester Pays is enabled for this bucket.
+        """
+        pulumi.set(__self__, "requester_pays", requester_pays)
+
+    @property
+    @pulumi.getter(name="requesterPays")
+    def requester_pays(self) -> bool:
+        """
+        When set to true, Requester Pays is enabled for this bucket.
+        """
+        return pulumi.get(self, "requester_pays")
+
+
+@pulumi.output_type
+class GetBucketBucketPolicyOnlyResponse(dict):
+    """
+    The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+    """
+    def __init__(__self__, *,
+                 enabled: bool,
+                 locked_time: str):
+        """
+        The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+        :param bool enabled: If set, access is controlled only by bucket-level or above IAM policies.
+        :param str locked_time: The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "locked_time", locked_time)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        If set, access is controlled only by bucket-level or above IAM policies.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="lockedTime")
+    def locked_time(self) -> str:
+        """
+        The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+        """
+        return pulumi.get(self, "locked_time")
+
+
+@pulumi.output_type
+class GetBucketConditionResponse(dict):
+    """
+    The condition(s) under which the action will be taken.
+    """
+    def __init__(__self__, *,
+                 age: int,
+                 created_before: str,
+                 custom_time_before: str,
+                 days_since_custom_time: int,
+                 days_since_noncurrent_time: int,
+                 is_live: bool,
+                 matches_pattern: str,
+                 matches_storage_class: Sequence[str],
+                 noncurrent_time_before: str,
+                 num_newer_versions: int):
+        """
+        The condition(s) under which the action will be taken.
+        :param int age: Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+        :param str created_before: A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+        :param str custom_time_before: A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+        :param int days_since_custom_time: Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+        :param int days_since_noncurrent_time: Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+        :param bool is_live: Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+        :param str matches_pattern: A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+        :param Sequence[str] matches_storage_class: Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+        :param str noncurrent_time_before: A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+        :param int num_newer_versions: Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+        """
+        pulumi.set(__self__, "age", age)
+        pulumi.set(__self__, "created_before", created_before)
+        pulumi.set(__self__, "custom_time_before", custom_time_before)
+        pulumi.set(__self__, "days_since_custom_time", days_since_custom_time)
+        pulumi.set(__self__, "days_since_noncurrent_time", days_since_noncurrent_time)
+        pulumi.set(__self__, "is_live", is_live)
+        pulumi.set(__self__, "matches_pattern", matches_pattern)
+        pulumi.set(__self__, "matches_storage_class", matches_storage_class)
+        pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
+        pulumi.set(__self__, "num_newer_versions", num_newer_versions)
+
+    @property
+    @pulumi.getter
+    def age(self) -> int:
+        """
+        Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+        """
+        return pulumi.get(self, "age")
+
+    @property
+    @pulumi.getter(name="createdBefore")
+    def created_before(self) -> str:
+        """
+        A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+        """
+        return pulumi.get(self, "created_before")
+
+    @property
+    @pulumi.getter(name="customTimeBefore")
+    def custom_time_before(self) -> str:
+        """
+        A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+        """
+        return pulumi.get(self, "custom_time_before")
+
+    @property
+    @pulumi.getter(name="daysSinceCustomTime")
+    def days_since_custom_time(self) -> int:
+        """
+        Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+        """
+        return pulumi.get(self, "days_since_custom_time")
+
+    @property
+    @pulumi.getter(name="daysSinceNoncurrentTime")
+    def days_since_noncurrent_time(self) -> int:
+        """
+        Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+        """
+        return pulumi.get(self, "days_since_noncurrent_time")
+
+    @property
+    @pulumi.getter(name="isLive")
+    def is_live(self) -> bool:
+        """
+        Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+        """
+        return pulumi.get(self, "is_live")
+
+    @property
+    @pulumi.getter(name="matchesPattern")
+    def matches_pattern(self) -> str:
+        """
+        A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+        """
+        return pulumi.get(self, "matches_pattern")
+
+    @property
+    @pulumi.getter(name="matchesStorageClass")
+    def matches_storage_class(self) -> Sequence[str]:
+        """
+        Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+        """
+        return pulumi.get(self, "matches_storage_class")
+
+    @property
+    @pulumi.getter(name="noncurrentTimeBefore")
+    def noncurrent_time_before(self) -> str:
+        """
+        A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+        """
+        return pulumi.get(self, "noncurrent_time_before")
+
+    @property
+    @pulumi.getter(name="numNewerVersions")
+    def num_newer_versions(self) -> int:
+        """
+        Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+        """
+        return pulumi.get(self, "num_newer_versions")
+
+
+@pulumi.output_type
+class GetBucketCorsItemResponse(dict):
+    def __init__(__self__, *,
+                 max_age_seconds: int,
+                 method: Sequence[str],
+                 origin: Sequence[str],
+                 response_header: Sequence[str]):
+        """
+        :param int max_age_seconds: The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+        :param Sequence[str] method: The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        :param Sequence[str] origin: The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        :param Sequence[str] response_header: The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+        """
+        pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "response_header", response_header)
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> int:
+        """
+        The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+        """
+        return pulumi.get(self, "max_age_seconds")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Sequence[str]:
+        """
+        The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def origin(self) -> Sequence[str]:
+        """
+        The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        """
+        return pulumi.get(self, "origin")
+
+    @property
+    @pulumi.getter(name="responseHeader")
+    def response_header(self) -> Sequence[str]:
+        """
+        The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+        """
+        return pulumi.get(self, "response_header")
+
+
+@pulumi.output_type
+class GetBucketEncryptionResponse(dict):
+    """
+    Encryption configuration for a bucket.
+    """
+    def __init__(__self__, *,
+                 default_kms_key_name: str):
+        """
+        Encryption configuration for a bucket.
+        :param str default_kms_key_name: A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+        """
+        pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
+
+    @property
+    @pulumi.getter(name="defaultKmsKeyName")
+    def default_kms_key_name(self) -> str:
+        """
+        A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+        """
+        return pulumi.get(self, "default_kms_key_name")
+
+
+@pulumi.output_type
+class GetBucketIamConfigurationResponse(dict):
+    """
+    The bucket's IAM configuration.
+    """
+    def __init__(__self__, *,
+                 bucket_policy_only: 'outputs.GetBucketBucketPolicyOnlyResponse',
+                 public_access_prevention: str,
+                 uniform_bucket_level_access: 'outputs.GetBucketUniformBucketLevelAccessResponse'):
+        """
+        The bucket's IAM configuration.
+        :param 'GetBucketBucketPolicyOnlyResponse' bucket_policy_only: The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+        :param str public_access_prevention: The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+        :param 'GetBucketUniformBucketLevelAccessResponse' uniform_bucket_level_access: The bucket's uniform bucket-level access configuration.
+        """
+        pulumi.set(__self__, "bucket_policy_only", bucket_policy_only)
+        pulumi.set(__self__, "public_access_prevention", public_access_prevention)
+        pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
+
+    @property
+    @pulumi.getter(name="bucketPolicyOnly")
+    def bucket_policy_only(self) -> 'outputs.GetBucketBucketPolicyOnlyResponse':
+        """
+        The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+        """
+        return pulumi.get(self, "bucket_policy_only")
+
+    @property
+    @pulumi.getter(name="publicAccessPrevention")
+    def public_access_prevention(self) -> str:
+        """
+        The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+        """
+        return pulumi.get(self, "public_access_prevention")
+
+    @property
+    @pulumi.getter(name="uniformBucketLevelAccess")
+    def uniform_bucket_level_access(self) -> 'outputs.GetBucketUniformBucketLevelAccessResponse':
+        """
+        The bucket's uniform bucket-level access configuration.
+        """
+        return pulumi.get(self, "uniform_bucket_level_access")
+
+
+@pulumi.output_type
+class GetBucketIamPolicyBindingsItemResponse(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.ExprResponse',
+                 members: Sequence[str],
+                 role: str):
+        """
+        :param 'ExprResponse' condition: The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+        :param Sequence[str] members: A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+               - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+               - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+               - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+               - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+               - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+               - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+               - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+               - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+               - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+        :param str role: The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+               The new IAM roles are:  
+               - roles/storage.admin — Full control of Google Cloud Storage resources.  
+               - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+               - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+               - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+               - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+               - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+               - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+               - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+               - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.ExprResponse':
+        """
+        The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Sequence[str]:
+        """
+        A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+        - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+        - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+        - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+        - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+        - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+        - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+        - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+        - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+        - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+        The new IAM roles are:  
+        - roles/storage.admin — Full control of Google Cloud Storage resources.  
+        - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+        - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+        - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+        - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+        - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+        - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+        - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+        - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetBucketLifecycleResponse(dict):
+    """
+    The bucket's lifecycle configuration. See lifecycle management for more information.
+    """
+    def __init__(__self__, *,
+                 rule: Sequence['outputs.GetBucketRuleItemResponse']):
+        """
+        The bucket's lifecycle configuration. See lifecycle management for more information.
+        :param Sequence['GetBucketRuleItemResponse'] rule: A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+        """
+        pulumi.set(__self__, "rule", rule)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> Sequence['outputs.GetBucketRuleItemResponse']:
+        """
+        A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+        """
+        return pulumi.get(self, "rule")
+
+
+@pulumi.output_type
+class GetBucketLoggingResponse(dict):
+    """
+    The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+    """
+    def __init__(__self__, *,
+                 log_bucket: str,
+                 log_object_prefix: str):
+        """
+        The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+        :param str log_bucket: The destination bucket where the current bucket's logs should be placed.
+        :param str log_object_prefix: A prefix for log object names.
+        """
+        pulumi.set(__self__, "log_bucket", log_bucket)
+        pulumi.set(__self__, "log_object_prefix", log_object_prefix)
+
+    @property
+    @pulumi.getter(name="logBucket")
+    def log_bucket(self) -> str:
+        """
+        The destination bucket where the current bucket's logs should be placed.
+        """
+        return pulumi.get(self, "log_bucket")
+
+    @property
+    @pulumi.getter(name="logObjectPrefix")
+    def log_object_prefix(self) -> str:
+        """
+        A prefix for log object names.
+        """
+        return pulumi.get(self, "log_object_prefix")
+
+
+@pulumi.output_type
+class GetBucketOwnerResponse(dict):
+    """
+    The owner of the bucket. This is always the project team's owner group.
+    """
+    def __init__(__self__, *,
+                 entity: str,
+                 entity_id: str):
+        """
+        The owner of the bucket. This is always the project team's owner group.
+        :param str entity: The entity, in the form project-owner-projectId.
+        :param str entity_id: The ID for the entity.
+        """
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "entity_id", entity_id)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> str:
+        """
+        The entity, in the form project-owner-projectId.
+        """
+        return pulumi.get(self, "entity")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        """
+        The ID for the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+
+@pulumi.output_type
+class GetBucketRetentionPolicyResponse(dict):
+    """
+    The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+    """
+    def __init__(__self__, *,
+                 effective_time: str,
+                 is_locked: bool,
+                 retention_period: str):
+        """
+        The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+        :param str effective_time: Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+        :param bool is_locked: Once locked, an object retention policy cannot be modified.
+        :param str retention_period: The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+        """
+        pulumi.set(__self__, "effective_time", effective_time)
+        pulumi.set(__self__, "is_locked", is_locked)
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> str:
+        """
+        Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
+    @pulumi.getter(name="isLocked")
+    def is_locked(self) -> bool:
+        """
+        Once locked, an object retention policy cannot be modified.
+        """
+        return pulumi.get(self, "is_locked")
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> str:
+        """
+        The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+        """
+        return pulumi.get(self, "retention_period")
+
+
+@pulumi.output_type
+class GetBucketRuleItemResponse(dict):
+    def __init__(__self__, *,
+                 action: 'outputs.GetBucketActionResponse',
+                 condition: 'outputs.GetBucketConditionResponse'):
+        """
+        :param 'GetBucketActionResponse' action: The action to take.
+        :param 'GetBucketConditionResponse' condition: The condition(s) under which the action will be taken.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.GetBucketActionResponse':
+        """
+        The action to take.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GetBucketConditionResponse':
+        """
+        The condition(s) under which the action will be taken.
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class GetBucketUniformBucketLevelAccessResponse(dict):
+    """
+    The bucket's uniform bucket-level access configuration.
+    """
+    def __init__(__self__, *,
+                 enabled: bool,
+                 locked_time: str):
+        """
+        The bucket's uniform bucket-level access configuration.
+        :param bool enabled: If set, access is controlled only by bucket-level or above IAM policies.
+        :param str locked_time: The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "locked_time", locked_time)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        If set, access is controlled only by bucket-level or above IAM policies.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="lockedTime")
+    def locked_time(self) -> str:
+        """
+        The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+        """
+        return pulumi.get(self, "locked_time")
+
+
+@pulumi.output_type
+class GetBucketVersioningResponse(dict):
+    """
+    The bucket's versioning configuration.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        The bucket's versioning configuration.
+        :param bool enabled: While set to true, versioning is fully enabled for this bucket.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        While set to true, versioning is fully enabled for this bucket.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetBucketWebsiteResponse(dict):
+    """
+    The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+    """
+    def __init__(__self__, *,
+                 main_page_suffix: str,
+                 not_found_page: str):
+        """
+        The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+        :param str main_page_suffix: If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+        :param str not_found_page: If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+        """
+        pulumi.set(__self__, "main_page_suffix", main_page_suffix)
+        pulumi.set(__self__, "not_found_page", not_found_page)
+
+    @property
+    @pulumi.getter(name="mainPageSuffix")
+    def main_page_suffix(self) -> str:
+        """
+        If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+        """
+        return pulumi.get(self, "main_page_suffix")
+
+    @property
+    @pulumi.getter(name="notFoundPage")
+    def not_found_page(self) -> str:
+        """
+        If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+        """
+        return pulumi.get(self, "not_found_page")
+
+
+@pulumi.output_type
+class GetDefaultObjectAccessControlProjectTeamResponse(dict):
+    """
+    The project team associated with the entity, if any.
+    """
+    def __init__(__self__, *,
+                 project_number: str,
+                 team: str):
+        """
+        The project team associated with the entity, if any.
+        :param str project_number: The project number.
+        :param str team: The team.
+        """
+        pulumi.set(__self__, "project_number", project_number)
+        pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> str:
+        """
+        The project number.
+        """
+        return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter
+    def team(self) -> str:
+        """
+        The team.
+        """
+        return pulumi.get(self, "team")
+
+
+@pulumi.output_type
+class GetObjectAccessControlProjectTeamResponse(dict):
+    """
+    The project team associated with the entity, if any.
+    """
+    def __init__(__self__, *,
+                 project_number: str,
+                 team: str):
+        """
+        The project team associated with the entity, if any.
+        :param str project_number: The project number.
+        :param str team: The team.
+        """
+        pulumi.set(__self__, "project_number", project_number)
+        pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> str:
+        """
+        The project number.
+        """
+        return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter
+    def team(self) -> str:
+        """
+        The team.
+        """
+        return pulumi.get(self, "team")
+
+
+@pulumi.output_type
+class GetObjectCustomerEncryptionResponse(dict):
+    """
+    Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+    """
+    def __init__(__self__, *,
+                 encryption_algorithm: str,
+                 key_sha256: str):
+        """
+        Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        :param str encryption_algorithm: The encryption algorithm.
+        :param str key_sha256: SHA256 hash value of the encryption key.
+        """
+        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        pulumi.set(__self__, "key_sha256", key_sha256)
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> str:
+        """
+        The encryption algorithm.
+        """
+        return pulumi.get(self, "encryption_algorithm")
+
+    @property
+    @pulumi.getter(name="keySha256")
+    def key_sha256(self) -> str:
+        """
+        SHA256 hash value of the encryption key.
+        """
+        return pulumi.get(self, "key_sha256")
+
+
+@pulumi.output_type
+class GetObjectIamPolicyBindingsItemResponse(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.ExprResponse',
+                 members: Sequence[str],
+                 role: str):
+        """
+        :param 'ExprResponse' condition: The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+        :param Sequence[str] members: A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+               - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+               - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+               - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+               - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+               - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+               - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+               - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+               - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+               - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+        :param str role: The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+               The new IAM roles are:  
+               - roles/storage.admin — Full control of Google Cloud Storage resources.  
+               - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+               - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+               - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+               - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+               - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+               - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+               - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+               - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.ExprResponse':
+        """
+        The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Sequence[str]:
+        """
+        A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+        - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+        - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+        - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+        - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+        - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+        - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+        - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+        - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+        - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+        The new IAM roles are:  
+        - roles/storage.admin — Full control of Google Cloud Storage resources.  
+        - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+        - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+        - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+        - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+        - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+        - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+        - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+        - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetObjectOwnerResponse(dict):
+    """
+    The owner of the object. This will always be the uploader of the object.
+    """
     def __init__(__self__, *,
                  entity: str,
                  entity_id: str):

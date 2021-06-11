@@ -6,6 +6,11 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .config import *
+from .get_config import *
+from .get_rollout import *
+from .get_service import *
+from .get_service_consumer_iam_policy import *
+from .get_service_iam_policy import *
 from .rollout import *
 from .service import *
 from .service_consumer_iam_policy import *

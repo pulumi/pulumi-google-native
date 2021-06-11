@@ -6,6 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .device import *
+from .get_device import *
+from .get_group import *
+from .get_membership import *
 from .group import *
 from .membership import *
 from ._inputs import *

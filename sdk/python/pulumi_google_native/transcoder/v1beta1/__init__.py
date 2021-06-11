@@ -5,6 +5,8 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_job import *
+from .get_job_template import *
 from .job import *
 from .job_template import *
 from ._inputs import *

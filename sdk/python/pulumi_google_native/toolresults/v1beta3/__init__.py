@@ -6,6 +6,10 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .execution import *
+from .get_execution import *
+from .get_history import *
+from .get_perf_sample_series import *
+from .get_step import *
 from .history import *
 from .perf_sample_series import *
 from .step import *

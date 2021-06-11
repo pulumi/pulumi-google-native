@@ -7,5 +7,7 @@ import typing
 # Export this package's modules as members:
 from .billing_account_exclusion import *
 from .billing_account_sink import *
+from .get_billing_account_exclusion import *
+from .get_billing_account_sink import *
 from ._inputs import *
 from . import outputs

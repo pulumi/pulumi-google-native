@@ -6,5 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .android_app import *
+from .get_android_app import *
+from .get_ios_app import *
+from .get_web_app import *
 from .ios_app import *
 from .web_app import *

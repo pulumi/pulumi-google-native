@@ -5,6 +5,8 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_guest_policy import *
+from .get_patch_deployment import *
 from .guest_policy import *
 from .patch_deployment import *
 from ._inputs import *
