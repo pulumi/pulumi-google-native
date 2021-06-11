@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+(None)
+
+---
+
+## 0.3.0 (2021-06-09)
+
 All the following changes are extensively breaking. We do our best to stabilize
 the resource shapes as soon as possible.
 
@@ -20,8 +26,6 @@ the resource shapes as soon as possible.
 
 - Extend the pattern to catch more deprecation messages for properties and parameters
   [#99](https://github.com/pulumi/pulumi-google-native/issues/99)
-
----
 
 ## 0.2.0 (2021-05-08)
 
