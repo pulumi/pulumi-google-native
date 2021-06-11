@@ -3,7 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+- Add a corresponding Get function for each resource
+  [#82](https://github.com/pulumi/pulumi-google-native/issues/82)
 
 ---
 

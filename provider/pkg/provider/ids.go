@@ -65,9 +65,18 @@ func evalPropertyValue(values map[string]interface{}, path string) (string, bool
 
 // buildCreateUrl composes the URL to invoke to create a resource with given inputs.
 func buildCreateUrl(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
-	path := res.CreatePath
+	uri := res.ResourceUrl(res.CreatePath)
+	return buildUrl(uri, res.CreateParams, inputs)
+}
+
+func buildFunctionUrl(res resources.CloudAPIFunction, inputs resource.PropertyMap) (string, error) {
+	return buildUrl(res.Url, res.Params, inputs)
+}
+
+func buildUrl(uriTemplate string, params []resources.CloudAPIResourceParam, inputs resource.PropertyMap) (string, error) {
 	queryMap := map[string]string{}
-	for _, param := range res.CreateParams {
+	uriString := uriTemplate
+	for _, param := range params {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
@@ -80,17 +89,16 @@ func buildCreateUrl(res resources.CloudAPIResource, inputs resource.PropertyMap)
 		value := inputs[key].StringValue()
 		switch param.Location {
 		case "path":
-			path = strings.Replace(path, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
+			uriString = strings.Replace(uriString, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
 		case "query":
 			queryMap[param.Name] = value
 		default:
 			return "", errors.Errorf("unknown param location %q", param.Location)
 		}
 	}
-	baseUriString := res.ResourceUrl(path)
-	uri, err := url.Parse(baseUriString)
+	uri, err := url.Parse(uriString)
 	if err != nil {
-		return "", errors.Wrapf(err, "parsing resource URL %q", baseUriString)
+		return "", errors.Wrapf(err, "parsing resource URL %q", uriString)
 	}
 	query := uri.Query()
 	for key, value := range queryMap {
