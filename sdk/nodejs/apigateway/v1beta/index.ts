@@ -11,6 +11,12 @@ export * from "./apiIamPolicy";
 export * from "./config";
 export * from "./gateway";
 export * from "./gatewayIamPolicy";
+export * from "./getApi";
+export * from "./getApiConfigIamPolicy";
+export * from "./getApiIamPolicy";
+export * from "./getConfig";
+export * from "./getGateway";
+export * from "./getGatewayIamPolicy";
 
 // Import resources to register:
 import { Api } from "./api";

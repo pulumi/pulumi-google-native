@@ -7,6 +7,9 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./contact";
 export * from "./folderContact";
+export * from "./getContact";
+export * from "./getFolderContact";
+export * from "./getOrganizationContact";
 export * from "./organizationContact";
 
 // Import resources to register:

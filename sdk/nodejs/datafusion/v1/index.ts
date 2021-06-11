@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getInstance";
+export * from "./getInstanceIamPolicy";
 export * from "./instance";
 export * from "./instanceIamPolicy";
 

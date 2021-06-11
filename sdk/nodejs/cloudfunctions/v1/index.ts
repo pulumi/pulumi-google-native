@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./function";
 export * from "./functionIamPolicy";
+export * from "./getFunction";
+export * from "./getFunctionIamPolicy";
 
 // Import resources to register:
 import { Function } from "./function";

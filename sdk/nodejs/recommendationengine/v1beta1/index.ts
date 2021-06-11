@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./catalogItem";
+export * from "./getCatalogItem";
 
 // Import resources to register:
 import { CatalogItem } from "./catalogItem";

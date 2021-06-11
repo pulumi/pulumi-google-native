@@ -7,6 +7,10 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./backupRun";
 export * from "./database";
+export * from "./getBackupRun";
+export * from "./getDatabase";
+export * from "./getInstance";
+export * from "./getSslCert";
 export * from "./instance";
 export * from "./sslCert";
 

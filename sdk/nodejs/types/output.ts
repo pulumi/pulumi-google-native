@@ -736,6 +736,24 @@ export namespace apigee {
             enabled: boolean;
         }
 
+        /**
+         * the Api category resource.
+         */
+        export interface GoogleCloudApigeeV1ApiCategoryDataResponse {
+            /**
+             * Name of the category.
+             */
+            name: string;
+            /**
+             * Name of the portal.
+             */
+            siteId: string;
+            /**
+             * Time the category was last modified in milliseconds since epoch.
+             */
+            updateTime: string;
+        }
+
         export interface GoogleCloudApigeeV1ApiProductRefResponse {
             /**
              * Name of the API product.
@@ -3650,6 +3668,45 @@ export namespace bigquery {
              * [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
              */
             sourceUris: string[];
+        }
+
+        export interface GetDatasetAccessItemResponse {
+            /**
+             * [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+             */
+            dataset: outputs.bigquery.v2.DatasetAccessEntryResponse;
+            /**
+             * [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+             */
+            domain: string;
+            /**
+             * [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+             */
+            groupByEmail: string;
+            /**
+             * [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+             */
+            iamMember: string;
+            /**
+             * [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+             */
+            role: string;
+            /**
+             * [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+             */
+            routine: outputs.bigquery.v2.RoutineReferenceResponse;
+            /**
+             * [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+             */
+            specialGroup: string;
+            /**
+             * [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+             */
+            userByEmail: string;
+            /**
+             * [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+             */
+            view: outputs.bigquery.v2.TableReferenceResponse;
         }
 
         export interface GoogleSheetsOptionsResponse {
@@ -11306,6 +11363,100 @@ export namespace compute {
             portSpecification: string;
         }
 
+        export interface GetFirewallAllowedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        export interface GetFirewallDeniedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        /**
+         * The parameters of the raw disk image.
+         */
+        export interface GetImageRawDiskResponse {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType: string;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source: string;
+        }
+
+        export interface GetRouteDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface GetRouteWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.alpha.GetRouteDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
+        export interface GetSslPolicyDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface GetSslPolicyWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.alpha.GetSslPolicyDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
         /**
          * [Deprecated] gRPC config to access the SDS server. gRPC config to access the SDS server.
          */
@@ -16511,6 +16662,100 @@ export namespace compute {
             portSpecification: string;
         }
 
+        export interface GetFirewallAllowedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        export interface GetFirewallDeniedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        /**
+         * The parameters of the raw disk image.
+         */
+        export interface GetImageRawDiskResponse {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType: string;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source: string;
+        }
+
+        export interface GetRouteDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface GetRouteWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.beta.GetRouteDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
+        export interface GetSslPolicyDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface GetSslPolicyWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.beta.GetSslPolicyDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
         /**
          * Guest OS features.
          */
@@ -21047,6 +21292,100 @@ export namespace compute {
              * If not specified, gRPC health check follows behavior specified in port and portName fields.
              */
             portSpecification: string;
+        }
+
+        export interface GetFirewallAllowedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        export interface GetFirewallDeniedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        /**
+         * The parameters of the raw disk image.
+         */
+        export interface GetImageRawDiskResponse {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType: string;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source: string;
+        }
+
+        export interface GetRouteDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface GetRouteWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.v1.GetRouteDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
+        export interface GetSslPolicyDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface GetSslPolicyWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.v1.GetSslPolicyDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         /**
@@ -56867,6 +57206,20 @@ export namespace sqladmin {
         }
 
         /**
+         * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+         */
+        export interface GetInstanceFailoverReplicaResponse {
+            /**
+             * The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+             */
+            available: boolean;
+            /**
+             * The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+             */
+            name: string;
+        }
+
+        /**
          * Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
          */
         export interface InsightsConfigResponse {
@@ -57696,6 +58049,380 @@ export namespace storage {
              * An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title: string;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface GetBucketAccessControlProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
+        }
+
+        /**
+         * The action to take.
+         */
+        export interface GetBucketActionResponse {
+            /**
+             * Target storage class. Required iff the type of the action is SetStorageClass.
+             */
+            storageClass: string;
+            /**
+             * Type of the action. Currently, only Delete and SetStorageClass are supported.
+             */
+            type: string;
+        }
+
+        /**
+         * The bucket's billing configuration.
+         */
+        export interface GetBucketBillingResponse {
+            /**
+             * When set to true, Requester Pays is enabled for this bucket.
+             */
+            requesterPays: boolean;
+        }
+
+        /**
+         * The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+         */
+        export interface GetBucketBucketPolicyOnlyResponse {
+            /**
+             * If set, access is controlled only by bucket-level or above IAM policies.
+             */
+            enabled: boolean;
+            /**
+             * The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+             */
+            lockedTime: string;
+        }
+
+        /**
+         * The condition(s) under which the action will be taken.
+         */
+        export interface GetBucketConditionResponse {
+            /**
+             * Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+             */
+            age: number;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+             */
+            createdBefore: string;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+             */
+            customTimeBefore: string;
+            /**
+             * Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+             */
+            daysSinceCustomTime: number;
+            /**
+             * Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+             */
+            daysSinceNoncurrentTime: number;
+            /**
+             * Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+             */
+            isLive: boolean;
+            /**
+             * A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+             */
+            matchesPattern: string;
+            /**
+             * Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+             */
+            matchesStorageClass: string[];
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+             */
+            noncurrentTimeBefore: string;
+            /**
+             * Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+             */
+            numNewerVersions: number;
+        }
+
+        export interface GetBucketCorsItemResponse {
+            /**
+             * The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+             */
+            maxAgeSeconds: number;
+            /**
+             * The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+             */
+            method: string[];
+            /**
+             * The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+             */
+            origin: string[];
+            /**
+             * The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+             */
+            responseHeader: string[];
+        }
+
+        /**
+         * Encryption configuration for a bucket.
+         */
+        export interface GetBucketEncryptionResponse {
+            /**
+             * A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+             */
+            defaultKmsKeyName: string;
+        }
+
+        /**
+         * The bucket's IAM configuration.
+         */
+        export interface GetBucketIamConfigurationResponse {
+            /**
+             * The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+             */
+            bucketPolicyOnly: outputs.storage.v1.GetBucketBucketPolicyOnlyResponse;
+            /**
+             * The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+             */
+            publicAccessPrevention: string;
+            /**
+             * The bucket's uniform bucket-level access configuration.
+             */
+            uniformBucketLevelAccess: outputs.storage.v1.GetBucketUniformBucketLevelAccessResponse;
+        }
+
+        export interface GetBucketIamPolicyBindingsItemResponse {
+            /**
+             * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+             */
+            condition: outputs.storage.v1.ExprResponse;
+            /**
+             * A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+             * - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+             * - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+             * - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+             * - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+             * - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+             * - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+             * - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+             * - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+             * - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+             */
+            members: string[];
+            /**
+             * The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+             * The new IAM roles are:  
+             * - roles/storage.admin — Full control of Google Cloud Storage resources.  
+             * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+             * - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+             * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+             * - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+             * - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+             * - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+             * - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+             * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+             */
+            role: string;
+        }
+
+        /**
+         * The bucket's lifecycle configuration. See lifecycle management for more information.
+         */
+        export interface GetBucketLifecycleResponse {
+            /**
+             * A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+             */
+            rule: outputs.storage.v1.GetBucketRuleItemResponse[];
+        }
+
+        /**
+         * The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+         */
+        export interface GetBucketLoggingResponse {
+            /**
+             * The destination bucket where the current bucket's logs should be placed.
+             */
+            logBucket: string;
+            /**
+             * A prefix for log object names.
+             */
+            logObjectPrefix: string;
+        }
+
+        /**
+         * The owner of the bucket. This is always the project team's owner group.
+         */
+        export interface GetBucketOwnerResponse {
+            /**
+             * The entity, in the form project-owner-projectId.
+             */
+            entity: string;
+            /**
+             * The ID for the entity.
+             */
+            entityId: string;
+        }
+
+        /**
+         * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+         */
+        export interface GetBucketRetentionPolicyResponse {
+            /**
+             * Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+             */
+            effectiveTime: string;
+            /**
+             * Once locked, an object retention policy cannot be modified.
+             */
+            isLocked: boolean;
+            /**
+             * The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+             */
+            retentionPeriod: string;
+        }
+
+        export interface GetBucketRuleItemResponse {
+            /**
+             * The action to take.
+             */
+            action: outputs.storage.v1.GetBucketActionResponse;
+            /**
+             * The condition(s) under which the action will be taken.
+             */
+            condition: outputs.storage.v1.GetBucketConditionResponse;
+        }
+
+        /**
+         * The bucket's uniform bucket-level access configuration.
+         */
+        export interface GetBucketUniformBucketLevelAccessResponse {
+            /**
+             * If set, access is controlled only by bucket-level or above IAM policies.
+             */
+            enabled: boolean;
+            /**
+             * The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+             */
+            lockedTime: string;
+        }
+
+        /**
+         * The bucket's versioning configuration.
+         */
+        export interface GetBucketVersioningResponse {
+            /**
+             * While set to true, versioning is fully enabled for this bucket.
+             */
+            enabled: boolean;
+        }
+
+        /**
+         * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+         */
+        export interface GetBucketWebsiteResponse {
+            /**
+             * If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+             */
+            mainPageSuffix: string;
+            /**
+             * If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+             */
+            notFoundPage: string;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface GetDefaultObjectAccessControlProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface GetObjectAccessControlProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
+        }
+
+        /**
+         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+         */
+        export interface GetObjectCustomerEncryptionResponse {
+            /**
+             * The encryption algorithm.
+             */
+            encryptionAlgorithm: string;
+            /**
+             * SHA256 hash value of the encryption key.
+             */
+            keySha256: string;
+        }
+
+        export interface GetObjectIamPolicyBindingsItemResponse {
+            /**
+             * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+             */
+            condition: outputs.storage.v1.ExprResponse;
+            /**
+             * A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+             * - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+             * - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+             * - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+             * - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+             * - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+             * - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+             * - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+             * - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+             * - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+             */
+            members: string[];
+            /**
+             * The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+             * The new IAM roles are:  
+             * - roles/storage.admin — Full control of Google Cloud Storage resources.  
+             * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+             * - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+             * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+             * - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+             * - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+             * - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+             * - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+             * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+             */
+            role: string;
+        }
+
+        /**
+         * The owner of the object. This will always be the uploader of the object.
+         */
+        export interface GetObjectOwnerResponse {
+            /**
+             * The entity, in the form user-userId.
+             */
+            entity: string;
+            /**
+             * The ID for the entity.
+             */
+            entityId: string;
         }
 
         /**

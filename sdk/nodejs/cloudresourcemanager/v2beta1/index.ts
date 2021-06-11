@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./folder";
 export * from "./folderIamPolicy";
+export * from "./getFolder";
+export * from "./getFolderIamPolicy";
 
 // Import resources to register:
 import { Folder } from "./folder";

@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getTraceSink";
 export * from "./traceSink";
 
 // Import resources to register:

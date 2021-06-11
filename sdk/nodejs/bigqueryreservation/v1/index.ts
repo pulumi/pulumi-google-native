@@ -6,6 +6,8 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./capacityCommitment";
+export * from "./getCapacityCommitment";
+export * from "./getReservation";
 export * from "./reservation";
 
 // Import resources to register:

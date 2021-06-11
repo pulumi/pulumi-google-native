@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getQueue";
+export * from "./getQueueIamPolicy";
+export * from "./getTask";
 export * from "./queue";
 export * from "./queueIamPolicy";
 export * from "./task";

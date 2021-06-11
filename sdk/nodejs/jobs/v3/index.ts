@@ -6,6 +6,8 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./company";
+export * from "./getCompany";
+export * from "./getJob";
 export * from "./job";
 
 // Import resources to register:

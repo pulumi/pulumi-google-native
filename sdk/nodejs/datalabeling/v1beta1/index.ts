@@ -9,6 +9,11 @@ export * from "./annotationSpecSet";
 export * from "./dataset";
 export * from "./evaluationJob";
 export * from "./feedbackMessage";
+export * from "./getAnnotationSpecSet";
+export * from "./getDataset";
+export * from "./getEvaluationJob";
+export * from "./getFeedbackMessage";
+export * from "./getInstruction";
 export * from "./instruction";
 
 // Import resources to register:

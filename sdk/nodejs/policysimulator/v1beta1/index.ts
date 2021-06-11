@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./folderReplay";
+export * from "./getFolderReplay";
+export * from "./getOrganizationReplay";
+export * from "./getReplay";
 export * from "./organizationReplay";
 export * from "./replay";
 

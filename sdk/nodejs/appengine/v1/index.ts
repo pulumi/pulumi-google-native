@@ -8,6 +8,11 @@ import * as utilities from "../../utilities";
 export * from "./app";
 export * from "./authorizedCertificate";
 export * from "./domainMapping";
+export * from "./getApp";
+export * from "./getAuthorizedCertificate";
+export * from "./getDomainMapping";
+export * from "./getIngressRule";
+export * from "./getVersion";
 export * from "./ingressRule";
 export * from "./version";
 

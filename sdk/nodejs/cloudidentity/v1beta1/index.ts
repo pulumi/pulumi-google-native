@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./device";
+export * from "./getDevice";
+export * from "./getGroup";
+export * from "./getMembership";
 export * from "./group";
 export * from "./membership";
 

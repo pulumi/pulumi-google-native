@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./connectivityTest";
 export * from "./connectivityTestIamPolicy";
+export * from "./getConnectivityTest";
+export * from "./getConnectivityTestIamPolicy";
 
 // Import resources to register:
 import { ConnectivityTest } from "./connectivityTest";

@@ -6,6 +6,10 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./execution";
+export * from "./getExecution";
+export * from "./getHistory";
+export * from "./getPerfSampleSeries";
+export * from "./getStep";
 export * from "./history";
 export * from "./perfSampleSeries";
 export * from "./step";

@@ -7,6 +7,10 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./connectionProfile";
 export * from "./connectionProfileIamPolicy";
+export * from "./getConnectionProfile";
+export * from "./getConnectionProfileIamPolicy";
+export * from "./getMigrationJob";
+export * from "./getMigrationJobIamPolicy";
 export * from "./migrationJob";
 export * from "./migrationJobIamPolicy";
 

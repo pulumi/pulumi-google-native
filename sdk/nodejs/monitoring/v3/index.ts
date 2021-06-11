@@ -6,6 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./alertPolicy";
+export * from "./getAlertPolicy";
+export * from "./getGroup";
+export * from "./getMetricDescriptor";
+export * from "./getNotificationChannel";
+export * from "./getService";
+export * from "./getServiceLevelObjective";
+export * from "./getUptimeCheckConfig";
 export * from "./group";
 export * from "./metricDescriptor";
 export * from "./notificationChannel";

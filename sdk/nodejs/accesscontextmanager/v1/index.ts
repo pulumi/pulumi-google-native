@@ -8,6 +8,10 @@ import * as utilities from "../../utilities";
 export * from "./accessLevel";
 export * from "./accessPolicy";
 export * from "./gcpUserAccessBinding";
+export * from "./getAccessLevel";
+export * from "./getAccessPolicy";
+export * from "./getGcpUserAccessBinding";
+export * from "./getServicePerimeter";
 export * from "./servicePerimeter";
 
 // Import resources to register:

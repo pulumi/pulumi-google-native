@@ -7,6 +7,9 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./domain";
 export * from "./domainIamPolicy";
+export * from "./getDomain";
+export * from "./getDomainIamPolicy";
+export * from "./getPeeringIamPolicy";
 export * from "./peeringIamPolicy";
 
 // Import resources to register:

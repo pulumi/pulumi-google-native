@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./androidApp";
+export * from "./getAndroidApp";
+export * from "./getIosApp";
+export * from "./getWebApp";
 export * from "./iosApp";
 export * from "./webApp";
 

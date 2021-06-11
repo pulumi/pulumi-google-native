@@ -9,6 +9,11 @@ export * from "./config";
 export * from "./gameServerCluster";
 export * from "./gameServerDeployment";
 export * from "./gameServerDeploymentIamPolicy";
+export * from "./getConfig";
+export * from "./getGameServerCluster";
+export * from "./getGameServerDeployment";
+export * from "./getGameServerDeploymentIamPolicy";
+export * from "./getRealm";
 export * from "./realm";
 
 // Import resources to register:

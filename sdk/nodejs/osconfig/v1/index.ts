@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getPatchDeployment";
 export * from "./patchDeployment";
 
 // Import resources to register:

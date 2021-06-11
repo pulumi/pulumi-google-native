@@ -6,6 +6,10 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./backup";
+export * from "./getBackup";
+export * from "./getMetadataImport";
+export * from "./getService";
+export * from "./getServiceIamPolicy";
 export * from "./metadataImport";
 export * from "./service";
 export * from "./serviceIamPolicy";

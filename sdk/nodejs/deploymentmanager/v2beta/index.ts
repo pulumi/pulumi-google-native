@@ -8,6 +8,10 @@ import * as utilities from "../../utilities";
 export * from "./compositeType";
 export * from "./deployment";
 export * from "./deploymentIamPolicy";
+export * from "./getCompositeType";
+export * from "./getDeployment";
+export * from "./getDeploymentIamPolicy";
+export * from "./getTypeProvider";
 export * from "./typeProvider";
 
 // Import resources to register:

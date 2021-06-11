@@ -6,6 +6,10 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./change";
+export * from "./getChange";
+export * from "./getManagedZone";
+export * from "./getPolicy";
+export * from "./getRrset";
 export * from "./managedZone";
 export * from "./policy";
 export * from "./rrset";

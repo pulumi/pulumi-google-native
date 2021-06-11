@@ -7,6 +7,13 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./backup";
 export * from "./database";
+export * from "./getBackup";
+export * from "./getDatabase";
+export * from "./getInstance";
+export * from "./getInstanceBackupIamPolicy";
+export * from "./getInstanceDatabaseIamPolicy";
+export * from "./getInstanceIamPolicy";
+export * from "./getSession";
 export * from "./instance";
 export * from "./instanceBackupIamPolicy";
 export * from "./instanceDatabaseIamPolicy";

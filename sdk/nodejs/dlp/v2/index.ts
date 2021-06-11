@@ -7,6 +7,11 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./deidentifyTemplate";
 export * from "./dlpJob";
+export * from "./getDeidentifyTemplate";
+export * from "./getDlpJob";
+export * from "./getInspectTemplate";
+export * from "./getJobTrigger";
+export * from "./getStoredInfoType";
 export * from "./inspectTemplate";
 export * from "./jobTrigger";
 export * from "./storedInfoType";
