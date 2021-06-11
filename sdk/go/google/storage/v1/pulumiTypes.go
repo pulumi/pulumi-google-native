@@ -8040,6 +8040,1788 @@ func (o ObjectOwnerResponsePtrOutput) EntityId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The project team associated with the entity, if any.
+type GetBucketAccessControlProjectTeamResponse struct {
+	// The project number.
+	ProjectNumber string `pulumi:"projectNumber"`
+	// The team.
+	Team string `pulumi:"team"`
+}
+
+// GetBucketAccessControlProjectTeamResponseInput is an input type that accepts GetBucketAccessControlProjectTeamResponseArgs and GetBucketAccessControlProjectTeamResponseOutput values.
+// You can construct a concrete instance of `GetBucketAccessControlProjectTeamResponseInput` via:
+//
+//          GetBucketAccessControlProjectTeamResponseArgs{...}
+type GetBucketAccessControlProjectTeamResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketAccessControlProjectTeamResponseOutput() GetBucketAccessControlProjectTeamResponseOutput
+	ToGetBucketAccessControlProjectTeamResponseOutputWithContext(context.Context) GetBucketAccessControlProjectTeamResponseOutput
+}
+
+// The project team associated with the entity, if any.
+type GetBucketAccessControlProjectTeamResponseArgs struct {
+	// The project number.
+	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
+	// The team.
+	Team pulumi.StringInput `pulumi:"team"`
+}
+
+func (GetBucketAccessControlProjectTeamResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketAccessControlProjectTeamResponse)(nil)).Elem()
+}
+
+func (i GetBucketAccessControlProjectTeamResponseArgs) ToGetBucketAccessControlProjectTeamResponseOutput() GetBucketAccessControlProjectTeamResponseOutput {
+	return i.ToGetBucketAccessControlProjectTeamResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketAccessControlProjectTeamResponseArgs) ToGetBucketAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) GetBucketAccessControlProjectTeamResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketAccessControlProjectTeamResponseOutput)
+}
+
+// The project team associated with the entity, if any.
+type GetBucketAccessControlProjectTeamResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketAccessControlProjectTeamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketAccessControlProjectTeamResponse)(nil)).Elem()
+}
+
+func (o GetBucketAccessControlProjectTeamResponseOutput) ToGetBucketAccessControlProjectTeamResponseOutput() GetBucketAccessControlProjectTeamResponseOutput {
+	return o
+}
+
+func (o GetBucketAccessControlProjectTeamResponseOutput) ToGetBucketAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) GetBucketAccessControlProjectTeamResponseOutput {
+	return o
+}
+
+// The project number.
+func (o GetBucketAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketAccessControlProjectTeamResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// The team.
+func (o GetBucketAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketAccessControlProjectTeamResponse) string { return v.Team }).(pulumi.StringOutput)
+}
+
+// The action to take.
+type GetBucketActionResponse struct {
+	// Target storage class. Required iff the type of the action is SetStorageClass.
+	StorageClass string `pulumi:"storageClass"`
+	// Type of the action. Currently, only Delete and SetStorageClass are supported.
+	Type string `pulumi:"type"`
+}
+
+// GetBucketActionResponseInput is an input type that accepts GetBucketActionResponseArgs and GetBucketActionResponseOutput values.
+// You can construct a concrete instance of `GetBucketActionResponseInput` via:
+//
+//          GetBucketActionResponseArgs{...}
+type GetBucketActionResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketActionResponseOutput() GetBucketActionResponseOutput
+	ToGetBucketActionResponseOutputWithContext(context.Context) GetBucketActionResponseOutput
+}
+
+// The action to take.
+type GetBucketActionResponseArgs struct {
+	// Target storage class. Required iff the type of the action is SetStorageClass.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// Type of the action. Currently, only Delete and SetStorageClass are supported.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetBucketActionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketActionResponse)(nil)).Elem()
+}
+
+func (i GetBucketActionResponseArgs) ToGetBucketActionResponseOutput() GetBucketActionResponseOutput {
+	return i.ToGetBucketActionResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketActionResponseArgs) ToGetBucketActionResponseOutputWithContext(ctx context.Context) GetBucketActionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketActionResponseOutput)
+}
+
+// The action to take.
+type GetBucketActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketActionResponse)(nil)).Elem()
+}
+
+func (o GetBucketActionResponseOutput) ToGetBucketActionResponseOutput() GetBucketActionResponseOutput {
+	return o
+}
+
+func (o GetBucketActionResponseOutput) ToGetBucketActionResponseOutputWithContext(ctx context.Context) GetBucketActionResponseOutput {
+	return o
+}
+
+// Target storage class. Required iff the type of the action is SetStorageClass.
+func (o GetBucketActionResponseOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketActionResponse) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// Type of the action. Currently, only Delete and SetStorageClass are supported.
+func (o GetBucketActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketActionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The bucket's billing configuration.
+type GetBucketBillingResponse struct {
+	// When set to true, Requester Pays is enabled for this bucket.
+	RequesterPays bool `pulumi:"requesterPays"`
+}
+
+// GetBucketBillingResponseInput is an input type that accepts GetBucketBillingResponseArgs and GetBucketBillingResponseOutput values.
+// You can construct a concrete instance of `GetBucketBillingResponseInput` via:
+//
+//          GetBucketBillingResponseArgs{...}
+type GetBucketBillingResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketBillingResponseOutput() GetBucketBillingResponseOutput
+	ToGetBucketBillingResponseOutputWithContext(context.Context) GetBucketBillingResponseOutput
+}
+
+// The bucket's billing configuration.
+type GetBucketBillingResponseArgs struct {
+	// When set to true, Requester Pays is enabled for this bucket.
+	RequesterPays pulumi.BoolInput `pulumi:"requesterPays"`
+}
+
+func (GetBucketBillingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketBillingResponse)(nil)).Elem()
+}
+
+func (i GetBucketBillingResponseArgs) ToGetBucketBillingResponseOutput() GetBucketBillingResponseOutput {
+	return i.ToGetBucketBillingResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketBillingResponseArgs) ToGetBucketBillingResponseOutputWithContext(ctx context.Context) GetBucketBillingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketBillingResponseOutput)
+}
+
+// The bucket's billing configuration.
+type GetBucketBillingResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketBillingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketBillingResponse)(nil)).Elem()
+}
+
+func (o GetBucketBillingResponseOutput) ToGetBucketBillingResponseOutput() GetBucketBillingResponseOutput {
+	return o
+}
+
+func (o GetBucketBillingResponseOutput) ToGetBucketBillingResponseOutputWithContext(ctx context.Context) GetBucketBillingResponseOutput {
+	return o
+}
+
+// When set to true, Requester Pays is enabled for this bucket.
+func (o GetBucketBillingResponseOutput) RequesterPays() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketBillingResponse) bool { return v.RequesterPays }).(pulumi.BoolOutput)
+}
+
+// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+type GetBucketBucketPolicyOnlyResponse struct {
+	// If set, access is controlled only by bucket-level or above IAM policies.
+	Enabled bool `pulumi:"enabled"`
+	// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+	LockedTime string `pulumi:"lockedTime"`
+}
+
+// GetBucketBucketPolicyOnlyResponseInput is an input type that accepts GetBucketBucketPolicyOnlyResponseArgs and GetBucketBucketPolicyOnlyResponseOutput values.
+// You can construct a concrete instance of `GetBucketBucketPolicyOnlyResponseInput` via:
+//
+//          GetBucketBucketPolicyOnlyResponseArgs{...}
+type GetBucketBucketPolicyOnlyResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketBucketPolicyOnlyResponseOutput() GetBucketBucketPolicyOnlyResponseOutput
+	ToGetBucketBucketPolicyOnlyResponseOutputWithContext(context.Context) GetBucketBucketPolicyOnlyResponseOutput
+}
+
+// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+type GetBucketBucketPolicyOnlyResponseArgs struct {
+	// If set, access is controlled only by bucket-level or above IAM policies.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+	LockedTime pulumi.StringInput `pulumi:"lockedTime"`
+}
+
+func (GetBucketBucketPolicyOnlyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketBucketPolicyOnlyResponse)(nil)).Elem()
+}
+
+func (i GetBucketBucketPolicyOnlyResponseArgs) ToGetBucketBucketPolicyOnlyResponseOutput() GetBucketBucketPolicyOnlyResponseOutput {
+	return i.ToGetBucketBucketPolicyOnlyResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketBucketPolicyOnlyResponseArgs) ToGetBucketBucketPolicyOnlyResponseOutputWithContext(ctx context.Context) GetBucketBucketPolicyOnlyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketBucketPolicyOnlyResponseOutput)
+}
+
+// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+type GetBucketBucketPolicyOnlyResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketBucketPolicyOnlyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketBucketPolicyOnlyResponse)(nil)).Elem()
+}
+
+func (o GetBucketBucketPolicyOnlyResponseOutput) ToGetBucketBucketPolicyOnlyResponseOutput() GetBucketBucketPolicyOnlyResponseOutput {
+	return o
+}
+
+func (o GetBucketBucketPolicyOnlyResponseOutput) ToGetBucketBucketPolicyOnlyResponseOutputWithContext(ctx context.Context) GetBucketBucketPolicyOnlyResponseOutput {
+	return o
+}
+
+// If set, access is controlled only by bucket-level or above IAM policies.
+func (o GetBucketBucketPolicyOnlyResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketBucketPolicyOnlyResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+func (o GetBucketBucketPolicyOnlyResponseOutput) LockedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketBucketPolicyOnlyResponse) string { return v.LockedTime }).(pulumi.StringOutput)
+}
+
+// The condition(s) under which the action will be taken.
+type GetBucketConditionResponse struct {
+	// Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+	Age int `pulumi:"age"`
+	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+	CreatedBefore string `pulumi:"createdBefore"`
+	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+	CustomTimeBefore string `pulumi:"customTimeBefore"`
+	// Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+	DaysSinceCustomTime int `pulumi:"daysSinceCustomTime"`
+	// Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+	DaysSinceNoncurrentTime int `pulumi:"daysSinceNoncurrentTime"`
+	// Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+	IsLive bool `pulumi:"isLive"`
+	// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+	MatchesPattern string `pulumi:"matchesPattern"`
+	// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+	MatchesStorageClass []string `pulumi:"matchesStorageClass"`
+	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+	NoncurrentTimeBefore string `pulumi:"noncurrentTimeBefore"`
+	// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+	NumNewerVersions int `pulumi:"numNewerVersions"`
+}
+
+// GetBucketConditionResponseInput is an input type that accepts GetBucketConditionResponseArgs and GetBucketConditionResponseOutput values.
+// You can construct a concrete instance of `GetBucketConditionResponseInput` via:
+//
+//          GetBucketConditionResponseArgs{...}
+type GetBucketConditionResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketConditionResponseOutput() GetBucketConditionResponseOutput
+	ToGetBucketConditionResponseOutputWithContext(context.Context) GetBucketConditionResponseOutput
+}
+
+// The condition(s) under which the action will be taken.
+type GetBucketConditionResponseArgs struct {
+	// Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+	Age pulumi.IntInput `pulumi:"age"`
+	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+	CreatedBefore pulumi.StringInput `pulumi:"createdBefore"`
+	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+	CustomTimeBefore pulumi.StringInput `pulumi:"customTimeBefore"`
+	// Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+	DaysSinceCustomTime pulumi.IntInput `pulumi:"daysSinceCustomTime"`
+	// Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+	DaysSinceNoncurrentTime pulumi.IntInput `pulumi:"daysSinceNoncurrentTime"`
+	// Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+	IsLive pulumi.BoolInput `pulumi:"isLive"`
+	// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+	MatchesPattern pulumi.StringInput `pulumi:"matchesPattern"`
+	// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+	MatchesStorageClass pulumi.StringArrayInput `pulumi:"matchesStorageClass"`
+	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+	NoncurrentTimeBefore pulumi.StringInput `pulumi:"noncurrentTimeBefore"`
+	// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+	NumNewerVersions pulumi.IntInput `pulumi:"numNewerVersions"`
+}
+
+func (GetBucketConditionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketConditionResponse)(nil)).Elem()
+}
+
+func (i GetBucketConditionResponseArgs) ToGetBucketConditionResponseOutput() GetBucketConditionResponseOutput {
+	return i.ToGetBucketConditionResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketConditionResponseArgs) ToGetBucketConditionResponseOutputWithContext(ctx context.Context) GetBucketConditionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketConditionResponseOutput)
+}
+
+// The condition(s) under which the action will be taken.
+type GetBucketConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketConditionResponse)(nil)).Elem()
+}
+
+func (o GetBucketConditionResponseOutput) ToGetBucketConditionResponseOutput() GetBucketConditionResponseOutput {
+	return o
+}
+
+func (o GetBucketConditionResponseOutput) ToGetBucketConditionResponseOutputWithContext(ctx context.Context) GetBucketConditionResponseOutput {
+	return o
+}
+
+// Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+func (o GetBucketConditionResponseOutput) Age() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) int { return v.Age }).(pulumi.IntOutput)
+}
+
+// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+func (o GetBucketConditionResponseOutput) CreatedBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) string { return v.CreatedBefore }).(pulumi.StringOutput)
+}
+
+// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+func (o GetBucketConditionResponseOutput) CustomTimeBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) string { return v.CustomTimeBefore }).(pulumi.StringOutput)
+}
+
+// Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+func (o GetBucketConditionResponseOutput) DaysSinceCustomTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) int { return v.DaysSinceCustomTime }).(pulumi.IntOutput)
+}
+
+// Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+func (o GetBucketConditionResponseOutput) DaysSinceNoncurrentTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) int { return v.DaysSinceNoncurrentTime }).(pulumi.IntOutput)
+}
+
+// Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+func (o GetBucketConditionResponseOutput) IsLive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) bool { return v.IsLive }).(pulumi.BoolOutput)
+}
+
+// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+func (o GetBucketConditionResponseOutput) MatchesPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) string { return v.MatchesPattern }).(pulumi.StringOutput)
+}
+
+// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+func (o GetBucketConditionResponseOutput) MatchesStorageClass() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) []string { return v.MatchesStorageClass }).(pulumi.StringArrayOutput)
+}
+
+// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+func (o GetBucketConditionResponseOutput) NoncurrentTimeBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) string { return v.NoncurrentTimeBefore }).(pulumi.StringOutput)
+}
+
+// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+func (o GetBucketConditionResponseOutput) NumNewerVersions() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketConditionResponse) int { return v.NumNewerVersions }).(pulumi.IntOutput)
+}
+
+type GetBucketCorsItemResponse struct {
+	// The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+	MaxAgeSeconds int `pulumi:"maxAgeSeconds"`
+	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+	Method []string `pulumi:"method"`
+	// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+	Origin []string `pulumi:"origin"`
+	// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+	ResponseHeader []string `pulumi:"responseHeader"`
+}
+
+// GetBucketCorsItemResponseInput is an input type that accepts GetBucketCorsItemResponseArgs and GetBucketCorsItemResponseOutput values.
+// You can construct a concrete instance of `GetBucketCorsItemResponseInput` via:
+//
+//          GetBucketCorsItemResponseArgs{...}
+type GetBucketCorsItemResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketCorsItemResponseOutput() GetBucketCorsItemResponseOutput
+	ToGetBucketCorsItemResponseOutputWithContext(context.Context) GetBucketCorsItemResponseOutput
+}
+
+type GetBucketCorsItemResponseArgs struct {
+	// The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+	MaxAgeSeconds pulumi.IntInput `pulumi:"maxAgeSeconds"`
+	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+	Method pulumi.StringArrayInput `pulumi:"method"`
+	// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+	Origin pulumi.StringArrayInput `pulumi:"origin"`
+	// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+	ResponseHeader pulumi.StringArrayInput `pulumi:"responseHeader"`
+}
+
+func (GetBucketCorsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketCorsItemResponse)(nil)).Elem()
+}
+
+func (i GetBucketCorsItemResponseArgs) ToGetBucketCorsItemResponseOutput() GetBucketCorsItemResponseOutput {
+	return i.ToGetBucketCorsItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketCorsItemResponseArgs) ToGetBucketCorsItemResponseOutputWithContext(ctx context.Context) GetBucketCorsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketCorsItemResponseOutput)
+}
+
+// GetBucketCorsItemResponseArrayInput is an input type that accepts GetBucketCorsItemResponseArray and GetBucketCorsItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetBucketCorsItemResponseArrayInput` via:
+//
+//          GetBucketCorsItemResponseArray{ GetBucketCorsItemResponseArgs{...} }
+type GetBucketCorsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketCorsItemResponseArrayOutput() GetBucketCorsItemResponseArrayOutput
+	ToGetBucketCorsItemResponseArrayOutputWithContext(context.Context) GetBucketCorsItemResponseArrayOutput
+}
+
+type GetBucketCorsItemResponseArray []GetBucketCorsItemResponseInput
+
+func (GetBucketCorsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketCorsItemResponse)(nil)).Elem()
+}
+
+func (i GetBucketCorsItemResponseArray) ToGetBucketCorsItemResponseArrayOutput() GetBucketCorsItemResponseArrayOutput {
+	return i.ToGetBucketCorsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketCorsItemResponseArray) ToGetBucketCorsItemResponseArrayOutputWithContext(ctx context.Context) GetBucketCorsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketCorsItemResponseArrayOutput)
+}
+
+type GetBucketCorsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketCorsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketCorsItemResponse)(nil)).Elem()
+}
+
+func (o GetBucketCorsItemResponseOutput) ToGetBucketCorsItemResponseOutput() GetBucketCorsItemResponseOutput {
+	return o
+}
+
+func (o GetBucketCorsItemResponseOutput) ToGetBucketCorsItemResponseOutputWithContext(ctx context.Context) GetBucketCorsItemResponseOutput {
+	return o
+}
+
+// The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+func (o GetBucketCorsItemResponseOutput) MaxAgeSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketCorsItemResponse) int { return v.MaxAgeSeconds }).(pulumi.IntOutput)
+}
+
+// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+func (o GetBucketCorsItemResponseOutput) Method() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketCorsItemResponse) []string { return v.Method }).(pulumi.StringArrayOutput)
+}
+
+// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+func (o GetBucketCorsItemResponseOutput) Origin() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketCorsItemResponse) []string { return v.Origin }).(pulumi.StringArrayOutput)
+}
+
+// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+func (o GetBucketCorsItemResponseOutput) ResponseHeader() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketCorsItemResponse) []string { return v.ResponseHeader }).(pulumi.StringArrayOutput)
+}
+
+type GetBucketCorsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketCorsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketCorsItemResponse)(nil)).Elem()
+}
+
+func (o GetBucketCorsItemResponseArrayOutput) ToGetBucketCorsItemResponseArrayOutput() GetBucketCorsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetBucketCorsItemResponseArrayOutput) ToGetBucketCorsItemResponseArrayOutputWithContext(ctx context.Context) GetBucketCorsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetBucketCorsItemResponseArrayOutput) Index(i pulumi.IntInput) GetBucketCorsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketCorsItemResponse {
+		return vs[0].([]GetBucketCorsItemResponse)[vs[1].(int)]
+	}).(GetBucketCorsItemResponseOutput)
+}
+
+// Encryption configuration for a bucket.
+type GetBucketEncryptionResponse struct {
+	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
+}
+
+// GetBucketEncryptionResponseInput is an input type that accepts GetBucketEncryptionResponseArgs and GetBucketEncryptionResponseOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionResponseInput` via:
+//
+//          GetBucketEncryptionResponseArgs{...}
+type GetBucketEncryptionResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionResponseOutput() GetBucketEncryptionResponseOutput
+	ToGetBucketEncryptionResponseOutputWithContext(context.Context) GetBucketEncryptionResponseOutput
+}
+
+// Encryption configuration for a bucket.
+type GetBucketEncryptionResponseArgs struct {
+	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
+}
+
+func (GetBucketEncryptionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionResponse)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionResponseArgs) ToGetBucketEncryptionResponseOutput() GetBucketEncryptionResponseOutput {
+	return i.ToGetBucketEncryptionResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionResponseArgs) ToGetBucketEncryptionResponseOutputWithContext(ctx context.Context) GetBucketEncryptionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionResponseOutput)
+}
+
+// Encryption configuration for a bucket.
+type GetBucketEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionResponse)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionResponseOutput) ToGetBucketEncryptionResponseOutput() GetBucketEncryptionResponseOutput {
+	return o
+}
+
+func (o GetBucketEncryptionResponseOutput) ToGetBucketEncryptionResponseOutputWithContext(ctx context.Context) GetBucketEncryptionResponseOutput {
+	return o
+}
+
+// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+func (o GetBucketEncryptionResponseOutput) DefaultKmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionResponse) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+}
+
+// The bucket's IAM configuration.
+type GetBucketIamConfigurationResponse struct {
+	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+	BucketPolicyOnly GetBucketBucketPolicyOnlyResponse `pulumi:"bucketPolicyOnly"`
+	// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+	PublicAccessPrevention string `pulumi:"publicAccessPrevention"`
+	// The bucket's uniform bucket-level access configuration.
+	UniformBucketLevelAccess GetBucketUniformBucketLevelAccessResponse `pulumi:"uniformBucketLevelAccess"`
+}
+
+// GetBucketIamConfigurationResponseInput is an input type that accepts GetBucketIamConfigurationResponseArgs and GetBucketIamConfigurationResponseOutput values.
+// You can construct a concrete instance of `GetBucketIamConfigurationResponseInput` via:
+//
+//          GetBucketIamConfigurationResponseArgs{...}
+type GetBucketIamConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketIamConfigurationResponseOutput() GetBucketIamConfigurationResponseOutput
+	ToGetBucketIamConfigurationResponseOutputWithContext(context.Context) GetBucketIamConfigurationResponseOutput
+}
+
+// The bucket's IAM configuration.
+type GetBucketIamConfigurationResponseArgs struct {
+	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+	BucketPolicyOnly GetBucketBucketPolicyOnlyResponseInput `pulumi:"bucketPolicyOnly"`
+	// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+	PublicAccessPrevention pulumi.StringInput `pulumi:"publicAccessPrevention"`
+	// The bucket's uniform bucket-level access configuration.
+	UniformBucketLevelAccess GetBucketUniformBucketLevelAccessResponseInput `pulumi:"uniformBucketLevelAccess"`
+}
+
+func (GetBucketIamConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketIamConfigurationResponse)(nil)).Elem()
+}
+
+func (i GetBucketIamConfigurationResponseArgs) ToGetBucketIamConfigurationResponseOutput() GetBucketIamConfigurationResponseOutput {
+	return i.ToGetBucketIamConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketIamConfigurationResponseArgs) ToGetBucketIamConfigurationResponseOutputWithContext(ctx context.Context) GetBucketIamConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketIamConfigurationResponseOutput)
+}
+
+// The bucket's IAM configuration.
+type GetBucketIamConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketIamConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketIamConfigurationResponse)(nil)).Elem()
+}
+
+func (o GetBucketIamConfigurationResponseOutput) ToGetBucketIamConfigurationResponseOutput() GetBucketIamConfigurationResponseOutput {
+	return o
+}
+
+func (o GetBucketIamConfigurationResponseOutput) ToGetBucketIamConfigurationResponseOutputWithContext(ctx context.Context) GetBucketIamConfigurationResponseOutput {
+	return o
+}
+
+// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+func (o GetBucketIamConfigurationResponseOutput) BucketPolicyOnly() GetBucketBucketPolicyOnlyResponseOutput {
+	return o.ApplyT(func(v GetBucketIamConfigurationResponse) GetBucketBucketPolicyOnlyResponse { return v.BucketPolicyOnly }).(GetBucketBucketPolicyOnlyResponseOutput)
+}
+
+// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+func (o GetBucketIamConfigurationResponseOutput) PublicAccessPrevention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketIamConfigurationResponse) string { return v.PublicAccessPrevention }).(pulumi.StringOutput)
+}
+
+// The bucket's uniform bucket-level access configuration.
+func (o GetBucketIamConfigurationResponseOutput) UniformBucketLevelAccess() GetBucketUniformBucketLevelAccessResponseOutput {
+	return o.ApplyT(func(v GetBucketIamConfigurationResponse) GetBucketUniformBucketLevelAccessResponse {
+		return v.UniformBucketLevelAccess
+	}).(GetBucketUniformBucketLevelAccessResponseOutput)
+}
+
+type GetBucketIamPolicyBindingsItemResponse struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition ExprResponse `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members []string `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role string `pulumi:"role"`
+}
+
+// GetBucketIamPolicyBindingsItemResponseInput is an input type that accepts GetBucketIamPolicyBindingsItemResponseArgs and GetBucketIamPolicyBindingsItemResponseOutput values.
+// You can construct a concrete instance of `GetBucketIamPolicyBindingsItemResponseInput` via:
+//
+//          GetBucketIamPolicyBindingsItemResponseArgs{...}
+type GetBucketIamPolicyBindingsItemResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketIamPolicyBindingsItemResponseOutput() GetBucketIamPolicyBindingsItemResponseOutput
+	ToGetBucketIamPolicyBindingsItemResponseOutputWithContext(context.Context) GetBucketIamPolicyBindingsItemResponseOutput
+}
+
+type GetBucketIamPolicyBindingsItemResponseArgs struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition ExprResponseInput `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetBucketIamPolicyBindingsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (i GetBucketIamPolicyBindingsItemResponseArgs) ToGetBucketIamPolicyBindingsItemResponseOutput() GetBucketIamPolicyBindingsItemResponseOutput {
+	return i.ToGetBucketIamPolicyBindingsItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketIamPolicyBindingsItemResponseArgs) ToGetBucketIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) GetBucketIamPolicyBindingsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketIamPolicyBindingsItemResponseOutput)
+}
+
+// GetBucketIamPolicyBindingsItemResponseArrayInput is an input type that accepts GetBucketIamPolicyBindingsItemResponseArray and GetBucketIamPolicyBindingsItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetBucketIamPolicyBindingsItemResponseArrayInput` via:
+//
+//          GetBucketIamPolicyBindingsItemResponseArray{ GetBucketIamPolicyBindingsItemResponseArgs{...} }
+type GetBucketIamPolicyBindingsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketIamPolicyBindingsItemResponseArrayOutput() GetBucketIamPolicyBindingsItemResponseArrayOutput
+	ToGetBucketIamPolicyBindingsItemResponseArrayOutputWithContext(context.Context) GetBucketIamPolicyBindingsItemResponseArrayOutput
+}
+
+type GetBucketIamPolicyBindingsItemResponseArray []GetBucketIamPolicyBindingsItemResponseInput
+
+func (GetBucketIamPolicyBindingsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (i GetBucketIamPolicyBindingsItemResponseArray) ToGetBucketIamPolicyBindingsItemResponseArrayOutput() GetBucketIamPolicyBindingsItemResponseArrayOutput {
+	return i.ToGetBucketIamPolicyBindingsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketIamPolicyBindingsItemResponseArray) ToGetBucketIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) GetBucketIamPolicyBindingsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketIamPolicyBindingsItemResponseArrayOutput)
+}
+
+type GetBucketIamPolicyBindingsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketIamPolicyBindingsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (o GetBucketIamPolicyBindingsItemResponseOutput) ToGetBucketIamPolicyBindingsItemResponseOutput() GetBucketIamPolicyBindingsItemResponseOutput {
+	return o
+}
+
+func (o GetBucketIamPolicyBindingsItemResponseOutput) ToGetBucketIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) GetBucketIamPolicyBindingsItemResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+func (o GetBucketIamPolicyBindingsItemResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v GetBucketIamPolicyBindingsItemResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+func (o GetBucketIamPolicyBindingsItemResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketIamPolicyBindingsItemResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+// The new IAM roles are:
+// - roles/storage.admin — Full control of Google Cloud Storage resources.
+// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+func (o GetBucketIamPolicyBindingsItemResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketIamPolicyBindingsItemResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetBucketIamPolicyBindingsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketIamPolicyBindingsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (o GetBucketIamPolicyBindingsItemResponseArrayOutput) ToGetBucketIamPolicyBindingsItemResponseArrayOutput() GetBucketIamPolicyBindingsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetBucketIamPolicyBindingsItemResponseArrayOutput) ToGetBucketIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) GetBucketIamPolicyBindingsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetBucketIamPolicyBindingsItemResponseArrayOutput) Index(i pulumi.IntInput) GetBucketIamPolicyBindingsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketIamPolicyBindingsItemResponse {
+		return vs[0].([]GetBucketIamPolicyBindingsItemResponse)[vs[1].(int)]
+	}).(GetBucketIamPolicyBindingsItemResponseOutput)
+}
+
+// The bucket's lifecycle configuration. See lifecycle management for more information.
+type GetBucketLifecycleResponse struct {
+	// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+	Rule []GetBucketRuleItemResponse `pulumi:"rule"`
+}
+
+// GetBucketLifecycleResponseInput is an input type that accepts GetBucketLifecycleResponseArgs and GetBucketLifecycleResponseOutput values.
+// You can construct a concrete instance of `GetBucketLifecycleResponseInput` via:
+//
+//          GetBucketLifecycleResponseArgs{...}
+type GetBucketLifecycleResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketLifecycleResponseOutput() GetBucketLifecycleResponseOutput
+	ToGetBucketLifecycleResponseOutputWithContext(context.Context) GetBucketLifecycleResponseOutput
+}
+
+// The bucket's lifecycle configuration. See lifecycle management for more information.
+type GetBucketLifecycleResponseArgs struct {
+	// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+	Rule GetBucketRuleItemResponseArrayInput `pulumi:"rule"`
+}
+
+func (GetBucketLifecycleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleResponse)(nil)).Elem()
+}
+
+func (i GetBucketLifecycleResponseArgs) ToGetBucketLifecycleResponseOutput() GetBucketLifecycleResponseOutput {
+	return i.ToGetBucketLifecycleResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketLifecycleResponseArgs) ToGetBucketLifecycleResponseOutputWithContext(ctx context.Context) GetBucketLifecycleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLifecycleResponseOutput)
+}
+
+// The bucket's lifecycle configuration. See lifecycle management for more information.
+type GetBucketLifecycleResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLifecycleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLifecycleResponse)(nil)).Elem()
+}
+
+func (o GetBucketLifecycleResponseOutput) ToGetBucketLifecycleResponseOutput() GetBucketLifecycleResponseOutput {
+	return o
+}
+
+func (o GetBucketLifecycleResponseOutput) ToGetBucketLifecycleResponseOutputWithContext(ctx context.Context) GetBucketLifecycleResponseOutput {
+	return o
+}
+
+// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+func (o GetBucketLifecycleResponseOutput) Rule() GetBucketRuleItemResponseArrayOutput {
+	return o.ApplyT(func(v GetBucketLifecycleResponse) []GetBucketRuleItemResponse { return v.Rule }).(GetBucketRuleItemResponseArrayOutput)
+}
+
+// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+type GetBucketLoggingResponse struct {
+	// The destination bucket where the current bucket's logs should be placed.
+	LogBucket string `pulumi:"logBucket"`
+	// A prefix for log object names.
+	LogObjectPrefix string `pulumi:"logObjectPrefix"`
+}
+
+// GetBucketLoggingResponseInput is an input type that accepts GetBucketLoggingResponseArgs and GetBucketLoggingResponseOutput values.
+// You can construct a concrete instance of `GetBucketLoggingResponseInput` via:
+//
+//          GetBucketLoggingResponseArgs{...}
+type GetBucketLoggingResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketLoggingResponseOutput() GetBucketLoggingResponseOutput
+	ToGetBucketLoggingResponseOutputWithContext(context.Context) GetBucketLoggingResponseOutput
+}
+
+// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+type GetBucketLoggingResponseArgs struct {
+	// The destination bucket where the current bucket's logs should be placed.
+	LogBucket pulumi.StringInput `pulumi:"logBucket"`
+	// A prefix for log object names.
+	LogObjectPrefix pulumi.StringInput `pulumi:"logObjectPrefix"`
+}
+
+func (GetBucketLoggingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLoggingResponse)(nil)).Elem()
+}
+
+func (i GetBucketLoggingResponseArgs) ToGetBucketLoggingResponseOutput() GetBucketLoggingResponseOutput {
+	return i.ToGetBucketLoggingResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketLoggingResponseArgs) ToGetBucketLoggingResponseOutputWithContext(ctx context.Context) GetBucketLoggingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketLoggingResponseOutput)
+}
+
+// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+type GetBucketLoggingResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketLoggingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketLoggingResponse)(nil)).Elem()
+}
+
+func (o GetBucketLoggingResponseOutput) ToGetBucketLoggingResponseOutput() GetBucketLoggingResponseOutput {
+	return o
+}
+
+func (o GetBucketLoggingResponseOutput) ToGetBucketLoggingResponseOutputWithContext(ctx context.Context) GetBucketLoggingResponseOutput {
+	return o
+}
+
+// The destination bucket where the current bucket's logs should be placed.
+func (o GetBucketLoggingResponseOutput) LogBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLoggingResponse) string { return v.LogBucket }).(pulumi.StringOutput)
+}
+
+// A prefix for log object names.
+func (o GetBucketLoggingResponseOutput) LogObjectPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketLoggingResponse) string { return v.LogObjectPrefix }).(pulumi.StringOutput)
+}
+
+// The owner of the bucket. This is always the project team's owner group.
+type GetBucketOwnerResponse struct {
+	// The entity, in the form project-owner-projectId.
+	Entity string `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId string `pulumi:"entityId"`
+}
+
+// GetBucketOwnerResponseInput is an input type that accepts GetBucketOwnerResponseArgs and GetBucketOwnerResponseOutput values.
+// You can construct a concrete instance of `GetBucketOwnerResponseInput` via:
+//
+//          GetBucketOwnerResponseArgs{...}
+type GetBucketOwnerResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketOwnerResponseOutput() GetBucketOwnerResponseOutput
+	ToGetBucketOwnerResponseOutputWithContext(context.Context) GetBucketOwnerResponseOutput
+}
+
+// The owner of the bucket. This is always the project team's owner group.
+type GetBucketOwnerResponseArgs struct {
+	// The entity, in the form project-owner-projectId.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+}
+
+func (GetBucketOwnerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketOwnerResponse)(nil)).Elem()
+}
+
+func (i GetBucketOwnerResponseArgs) ToGetBucketOwnerResponseOutput() GetBucketOwnerResponseOutput {
+	return i.ToGetBucketOwnerResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketOwnerResponseArgs) ToGetBucketOwnerResponseOutputWithContext(ctx context.Context) GetBucketOwnerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketOwnerResponseOutput)
+}
+
+// The owner of the bucket. This is always the project team's owner group.
+type GetBucketOwnerResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketOwnerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketOwnerResponse)(nil)).Elem()
+}
+
+func (o GetBucketOwnerResponseOutput) ToGetBucketOwnerResponseOutput() GetBucketOwnerResponseOutput {
+	return o
+}
+
+func (o GetBucketOwnerResponseOutput) ToGetBucketOwnerResponseOutputWithContext(ctx context.Context) GetBucketOwnerResponseOutput {
+	return o
+}
+
+// The entity, in the form project-owner-projectId.
+func (o GetBucketOwnerResponseOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketOwnerResponse) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity.
+func (o GetBucketOwnerResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+type GetBucketRetentionPolicyResponse struct {
+	// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// Once locked, an object retention policy cannot be modified.
+	IsLocked bool `pulumi:"isLocked"`
+	// The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+	RetentionPeriod string `pulumi:"retentionPeriod"`
+}
+
+// GetBucketRetentionPolicyResponseInput is an input type that accepts GetBucketRetentionPolicyResponseArgs and GetBucketRetentionPolicyResponseOutput values.
+// You can construct a concrete instance of `GetBucketRetentionPolicyResponseInput` via:
+//
+//          GetBucketRetentionPolicyResponseArgs{...}
+type GetBucketRetentionPolicyResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketRetentionPolicyResponseOutput() GetBucketRetentionPolicyResponseOutput
+	ToGetBucketRetentionPolicyResponseOutputWithContext(context.Context) GetBucketRetentionPolicyResponseOutput
+}
+
+// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+type GetBucketRetentionPolicyResponseArgs struct {
+	// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// Once locked, an object retention policy cannot be modified.
+	IsLocked pulumi.BoolInput `pulumi:"isLocked"`
+	// The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
+}
+
+func (GetBucketRetentionPolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketRetentionPolicyResponse)(nil)).Elem()
+}
+
+func (i GetBucketRetentionPolicyResponseArgs) ToGetBucketRetentionPolicyResponseOutput() GetBucketRetentionPolicyResponseOutput {
+	return i.ToGetBucketRetentionPolicyResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketRetentionPolicyResponseArgs) ToGetBucketRetentionPolicyResponseOutputWithContext(ctx context.Context) GetBucketRetentionPolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketRetentionPolicyResponseOutput)
+}
+
+// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+type GetBucketRetentionPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketRetentionPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketRetentionPolicyResponse)(nil)).Elem()
+}
+
+func (o GetBucketRetentionPolicyResponseOutput) ToGetBucketRetentionPolicyResponseOutput() GetBucketRetentionPolicyResponseOutput {
+	return o
+}
+
+func (o GetBucketRetentionPolicyResponseOutput) ToGetBucketRetentionPolicyResponseOutputWithContext(ctx context.Context) GetBucketRetentionPolicyResponseOutput {
+	return o
+}
+
+// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+func (o GetBucketRetentionPolicyResponseOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketRetentionPolicyResponse) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// Once locked, an object retention policy cannot be modified.
+func (o GetBucketRetentionPolicyResponseOutput) IsLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketRetentionPolicyResponse) bool { return v.IsLocked }).(pulumi.BoolOutput)
+}
+
+// The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+func (o GetBucketRetentionPolicyResponseOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketRetentionPolicyResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
+type GetBucketRuleItemResponse struct {
+	// The action to take.
+	Action GetBucketActionResponse `pulumi:"action"`
+	// The condition(s) under which the action will be taken.
+	Condition GetBucketConditionResponse `pulumi:"condition"`
+}
+
+// GetBucketRuleItemResponseInput is an input type that accepts GetBucketRuleItemResponseArgs and GetBucketRuleItemResponseOutput values.
+// You can construct a concrete instance of `GetBucketRuleItemResponseInput` via:
+//
+//          GetBucketRuleItemResponseArgs{...}
+type GetBucketRuleItemResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketRuleItemResponseOutput() GetBucketRuleItemResponseOutput
+	ToGetBucketRuleItemResponseOutputWithContext(context.Context) GetBucketRuleItemResponseOutput
+}
+
+type GetBucketRuleItemResponseArgs struct {
+	// The action to take.
+	Action GetBucketActionResponseInput `pulumi:"action"`
+	// The condition(s) under which the action will be taken.
+	Condition GetBucketConditionResponseInput `pulumi:"condition"`
+}
+
+func (GetBucketRuleItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketRuleItemResponse)(nil)).Elem()
+}
+
+func (i GetBucketRuleItemResponseArgs) ToGetBucketRuleItemResponseOutput() GetBucketRuleItemResponseOutput {
+	return i.ToGetBucketRuleItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketRuleItemResponseArgs) ToGetBucketRuleItemResponseOutputWithContext(ctx context.Context) GetBucketRuleItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketRuleItemResponseOutput)
+}
+
+// GetBucketRuleItemResponseArrayInput is an input type that accepts GetBucketRuleItemResponseArray and GetBucketRuleItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetBucketRuleItemResponseArrayInput` via:
+//
+//          GetBucketRuleItemResponseArray{ GetBucketRuleItemResponseArgs{...} }
+type GetBucketRuleItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketRuleItemResponseArrayOutput() GetBucketRuleItemResponseArrayOutput
+	ToGetBucketRuleItemResponseArrayOutputWithContext(context.Context) GetBucketRuleItemResponseArrayOutput
+}
+
+type GetBucketRuleItemResponseArray []GetBucketRuleItemResponseInput
+
+func (GetBucketRuleItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketRuleItemResponse)(nil)).Elem()
+}
+
+func (i GetBucketRuleItemResponseArray) ToGetBucketRuleItemResponseArrayOutput() GetBucketRuleItemResponseArrayOutput {
+	return i.ToGetBucketRuleItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketRuleItemResponseArray) ToGetBucketRuleItemResponseArrayOutputWithContext(ctx context.Context) GetBucketRuleItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketRuleItemResponseArrayOutput)
+}
+
+type GetBucketRuleItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketRuleItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketRuleItemResponse)(nil)).Elem()
+}
+
+func (o GetBucketRuleItemResponseOutput) ToGetBucketRuleItemResponseOutput() GetBucketRuleItemResponseOutput {
+	return o
+}
+
+func (o GetBucketRuleItemResponseOutput) ToGetBucketRuleItemResponseOutputWithContext(ctx context.Context) GetBucketRuleItemResponseOutput {
+	return o
+}
+
+// The action to take.
+func (o GetBucketRuleItemResponseOutput) Action() GetBucketActionResponseOutput {
+	return o.ApplyT(func(v GetBucketRuleItemResponse) GetBucketActionResponse { return v.Action }).(GetBucketActionResponseOutput)
+}
+
+// The condition(s) under which the action will be taken.
+func (o GetBucketRuleItemResponseOutput) Condition() GetBucketConditionResponseOutput {
+	return o.ApplyT(func(v GetBucketRuleItemResponse) GetBucketConditionResponse { return v.Condition }).(GetBucketConditionResponseOutput)
+}
+
+type GetBucketRuleItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketRuleItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketRuleItemResponse)(nil)).Elem()
+}
+
+func (o GetBucketRuleItemResponseArrayOutput) ToGetBucketRuleItemResponseArrayOutput() GetBucketRuleItemResponseArrayOutput {
+	return o
+}
+
+func (o GetBucketRuleItemResponseArrayOutput) ToGetBucketRuleItemResponseArrayOutputWithContext(ctx context.Context) GetBucketRuleItemResponseArrayOutput {
+	return o
+}
+
+func (o GetBucketRuleItemResponseArrayOutput) Index(i pulumi.IntInput) GetBucketRuleItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketRuleItemResponse {
+		return vs[0].([]GetBucketRuleItemResponse)[vs[1].(int)]
+	}).(GetBucketRuleItemResponseOutput)
+}
+
+// The bucket's uniform bucket-level access configuration.
+type GetBucketUniformBucketLevelAccessResponse struct {
+	// If set, access is controlled only by bucket-level or above IAM policies.
+	Enabled bool `pulumi:"enabled"`
+	// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+	LockedTime string `pulumi:"lockedTime"`
+}
+
+// GetBucketUniformBucketLevelAccessResponseInput is an input type that accepts GetBucketUniformBucketLevelAccessResponseArgs and GetBucketUniformBucketLevelAccessResponseOutput values.
+// You can construct a concrete instance of `GetBucketUniformBucketLevelAccessResponseInput` via:
+//
+//          GetBucketUniformBucketLevelAccessResponseArgs{...}
+type GetBucketUniformBucketLevelAccessResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketUniformBucketLevelAccessResponseOutput() GetBucketUniformBucketLevelAccessResponseOutput
+	ToGetBucketUniformBucketLevelAccessResponseOutputWithContext(context.Context) GetBucketUniformBucketLevelAccessResponseOutput
+}
+
+// The bucket's uniform bucket-level access configuration.
+type GetBucketUniformBucketLevelAccessResponseArgs struct {
+	// If set, access is controlled only by bucket-level or above IAM policies.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+	LockedTime pulumi.StringInput `pulumi:"lockedTime"`
+}
+
+func (GetBucketUniformBucketLevelAccessResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketUniformBucketLevelAccessResponse)(nil)).Elem()
+}
+
+func (i GetBucketUniformBucketLevelAccessResponseArgs) ToGetBucketUniformBucketLevelAccessResponseOutput() GetBucketUniformBucketLevelAccessResponseOutput {
+	return i.ToGetBucketUniformBucketLevelAccessResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketUniformBucketLevelAccessResponseArgs) ToGetBucketUniformBucketLevelAccessResponseOutputWithContext(ctx context.Context) GetBucketUniformBucketLevelAccessResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketUniformBucketLevelAccessResponseOutput)
+}
+
+// The bucket's uniform bucket-level access configuration.
+type GetBucketUniformBucketLevelAccessResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketUniformBucketLevelAccessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketUniformBucketLevelAccessResponse)(nil)).Elem()
+}
+
+func (o GetBucketUniformBucketLevelAccessResponseOutput) ToGetBucketUniformBucketLevelAccessResponseOutput() GetBucketUniformBucketLevelAccessResponseOutput {
+	return o
+}
+
+func (o GetBucketUniformBucketLevelAccessResponseOutput) ToGetBucketUniformBucketLevelAccessResponseOutputWithContext(ctx context.Context) GetBucketUniformBucketLevelAccessResponseOutput {
+	return o
+}
+
+// If set, access is controlled only by bucket-level or above IAM policies.
+func (o GetBucketUniformBucketLevelAccessResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketUniformBucketLevelAccessResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+func (o GetBucketUniformBucketLevelAccessResponseOutput) LockedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketUniformBucketLevelAccessResponse) string { return v.LockedTime }).(pulumi.StringOutput)
+}
+
+// The bucket's versioning configuration.
+type GetBucketVersioningResponse struct {
+	// While set to true, versioning is fully enabled for this bucket.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetBucketVersioningResponseInput is an input type that accepts GetBucketVersioningResponseArgs and GetBucketVersioningResponseOutput values.
+// You can construct a concrete instance of `GetBucketVersioningResponseInput` via:
+//
+//          GetBucketVersioningResponseArgs{...}
+type GetBucketVersioningResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketVersioningResponseOutput() GetBucketVersioningResponseOutput
+	ToGetBucketVersioningResponseOutputWithContext(context.Context) GetBucketVersioningResponseOutput
+}
+
+// The bucket's versioning configuration.
+type GetBucketVersioningResponseArgs struct {
+	// While set to true, versioning is fully enabled for this bucket.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetBucketVersioningResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketVersioningResponse)(nil)).Elem()
+}
+
+func (i GetBucketVersioningResponseArgs) ToGetBucketVersioningResponseOutput() GetBucketVersioningResponseOutput {
+	return i.ToGetBucketVersioningResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketVersioningResponseArgs) ToGetBucketVersioningResponseOutputWithContext(ctx context.Context) GetBucketVersioningResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketVersioningResponseOutput)
+}
+
+// The bucket's versioning configuration.
+type GetBucketVersioningResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketVersioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketVersioningResponse)(nil)).Elem()
+}
+
+func (o GetBucketVersioningResponseOutput) ToGetBucketVersioningResponseOutput() GetBucketVersioningResponseOutput {
+	return o
+}
+
+func (o GetBucketVersioningResponseOutput) ToGetBucketVersioningResponseOutputWithContext(ctx context.Context) GetBucketVersioningResponseOutput {
+	return o
+}
+
+// While set to true, versioning is fully enabled for this bucket.
+func (o GetBucketVersioningResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketVersioningResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+type GetBucketWebsiteResponse struct {
+	// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+	MainPageSuffix string `pulumi:"mainPageSuffix"`
+	// If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+	NotFoundPage string `pulumi:"notFoundPage"`
+}
+
+// GetBucketWebsiteResponseInput is an input type that accepts GetBucketWebsiteResponseArgs and GetBucketWebsiteResponseOutput values.
+// You can construct a concrete instance of `GetBucketWebsiteResponseInput` via:
+//
+//          GetBucketWebsiteResponseArgs{...}
+type GetBucketWebsiteResponseInput interface {
+	pulumi.Input
+
+	ToGetBucketWebsiteResponseOutput() GetBucketWebsiteResponseOutput
+	ToGetBucketWebsiteResponseOutputWithContext(context.Context) GetBucketWebsiteResponseOutput
+}
+
+// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+type GetBucketWebsiteResponseArgs struct {
+	// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+	MainPageSuffix pulumi.StringInput `pulumi:"mainPageSuffix"`
+	// If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+	NotFoundPage pulumi.StringInput `pulumi:"notFoundPage"`
+}
+
+func (GetBucketWebsiteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketWebsiteResponse)(nil)).Elem()
+}
+
+func (i GetBucketWebsiteResponseArgs) ToGetBucketWebsiteResponseOutput() GetBucketWebsiteResponseOutput {
+	return i.ToGetBucketWebsiteResponseOutputWithContext(context.Background())
+}
+
+func (i GetBucketWebsiteResponseArgs) ToGetBucketWebsiteResponseOutputWithContext(ctx context.Context) GetBucketWebsiteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketWebsiteResponseOutput)
+}
+
+// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+type GetBucketWebsiteResponseOutput struct{ *pulumi.OutputState }
+
+func (GetBucketWebsiteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketWebsiteResponse)(nil)).Elem()
+}
+
+func (o GetBucketWebsiteResponseOutput) ToGetBucketWebsiteResponseOutput() GetBucketWebsiteResponseOutput {
+	return o
+}
+
+func (o GetBucketWebsiteResponseOutput) ToGetBucketWebsiteResponseOutputWithContext(ctx context.Context) GetBucketWebsiteResponseOutput {
+	return o
+}
+
+// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+func (o GetBucketWebsiteResponseOutput) MainPageSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketWebsiteResponse) string { return v.MainPageSuffix }).(pulumi.StringOutput)
+}
+
+// If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+func (o GetBucketWebsiteResponseOutput) NotFoundPage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketWebsiteResponse) string { return v.NotFoundPage }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+type GetDefaultObjectAccessControlProjectTeamResponse struct {
+	// The project number.
+	ProjectNumber string `pulumi:"projectNumber"`
+	// The team.
+	Team string `pulumi:"team"`
+}
+
+// GetDefaultObjectAccessControlProjectTeamResponseInput is an input type that accepts GetDefaultObjectAccessControlProjectTeamResponseArgs and GetDefaultObjectAccessControlProjectTeamResponseOutput values.
+// You can construct a concrete instance of `GetDefaultObjectAccessControlProjectTeamResponseInput` via:
+//
+//          GetDefaultObjectAccessControlProjectTeamResponseArgs{...}
+type GetDefaultObjectAccessControlProjectTeamResponseInput interface {
+	pulumi.Input
+
+	ToGetDefaultObjectAccessControlProjectTeamResponseOutput() GetDefaultObjectAccessControlProjectTeamResponseOutput
+	ToGetDefaultObjectAccessControlProjectTeamResponseOutputWithContext(context.Context) GetDefaultObjectAccessControlProjectTeamResponseOutput
+}
+
+// The project team associated with the entity, if any.
+type GetDefaultObjectAccessControlProjectTeamResponseArgs struct {
+	// The project number.
+	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
+	// The team.
+	Team pulumi.StringInput `pulumi:"team"`
+}
+
+func (GetDefaultObjectAccessControlProjectTeamResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultObjectAccessControlProjectTeamResponse)(nil)).Elem()
+}
+
+func (i GetDefaultObjectAccessControlProjectTeamResponseArgs) ToGetDefaultObjectAccessControlProjectTeamResponseOutput() GetDefaultObjectAccessControlProjectTeamResponseOutput {
+	return i.ToGetDefaultObjectAccessControlProjectTeamResponseOutputWithContext(context.Background())
+}
+
+func (i GetDefaultObjectAccessControlProjectTeamResponseArgs) ToGetDefaultObjectAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) GetDefaultObjectAccessControlProjectTeamResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefaultObjectAccessControlProjectTeamResponseOutput)
+}
+
+// The project team associated with the entity, if any.
+type GetDefaultObjectAccessControlProjectTeamResponseOutput struct{ *pulumi.OutputState }
+
+func (GetDefaultObjectAccessControlProjectTeamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefaultObjectAccessControlProjectTeamResponse)(nil)).Elem()
+}
+
+func (o GetDefaultObjectAccessControlProjectTeamResponseOutput) ToGetDefaultObjectAccessControlProjectTeamResponseOutput() GetDefaultObjectAccessControlProjectTeamResponseOutput {
+	return o
+}
+
+func (o GetDefaultObjectAccessControlProjectTeamResponseOutput) ToGetDefaultObjectAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) GetDefaultObjectAccessControlProjectTeamResponseOutput {
+	return o
+}
+
+// The project number.
+func (o GetDefaultObjectAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultObjectAccessControlProjectTeamResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// The team.
+func (o GetDefaultObjectAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultObjectAccessControlProjectTeamResponse) string { return v.Team }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+type GetObjectAccessControlProjectTeamResponse struct {
+	// The project number.
+	ProjectNumber string `pulumi:"projectNumber"`
+	// The team.
+	Team string `pulumi:"team"`
+}
+
+// GetObjectAccessControlProjectTeamResponseInput is an input type that accepts GetObjectAccessControlProjectTeamResponseArgs and GetObjectAccessControlProjectTeamResponseOutput values.
+// You can construct a concrete instance of `GetObjectAccessControlProjectTeamResponseInput` via:
+//
+//          GetObjectAccessControlProjectTeamResponseArgs{...}
+type GetObjectAccessControlProjectTeamResponseInput interface {
+	pulumi.Input
+
+	ToGetObjectAccessControlProjectTeamResponseOutput() GetObjectAccessControlProjectTeamResponseOutput
+	ToGetObjectAccessControlProjectTeamResponseOutputWithContext(context.Context) GetObjectAccessControlProjectTeamResponseOutput
+}
+
+// The project team associated with the entity, if any.
+type GetObjectAccessControlProjectTeamResponseArgs struct {
+	// The project number.
+	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
+	// The team.
+	Team pulumi.StringInput `pulumi:"team"`
+}
+
+func (GetObjectAccessControlProjectTeamResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectAccessControlProjectTeamResponse)(nil)).Elem()
+}
+
+func (i GetObjectAccessControlProjectTeamResponseArgs) ToGetObjectAccessControlProjectTeamResponseOutput() GetObjectAccessControlProjectTeamResponseOutput {
+	return i.ToGetObjectAccessControlProjectTeamResponseOutputWithContext(context.Background())
+}
+
+func (i GetObjectAccessControlProjectTeamResponseArgs) ToGetObjectAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) GetObjectAccessControlProjectTeamResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectAccessControlProjectTeamResponseOutput)
+}
+
+// The project team associated with the entity, if any.
+type GetObjectAccessControlProjectTeamResponseOutput struct{ *pulumi.OutputState }
+
+func (GetObjectAccessControlProjectTeamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectAccessControlProjectTeamResponse)(nil)).Elem()
+}
+
+func (o GetObjectAccessControlProjectTeamResponseOutput) ToGetObjectAccessControlProjectTeamResponseOutput() GetObjectAccessControlProjectTeamResponseOutput {
+	return o
+}
+
+func (o GetObjectAccessControlProjectTeamResponseOutput) ToGetObjectAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) GetObjectAccessControlProjectTeamResponseOutput {
+	return o
+}
+
+// The project number.
+func (o GetObjectAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectAccessControlProjectTeamResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// The team.
+func (o GetObjectAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectAccessControlProjectTeamResponse) string { return v.Team }).(pulumi.StringOutput)
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type GetObjectCustomerEncryptionResponse struct {
+	// The encryption algorithm.
+	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
+	// SHA256 hash value of the encryption key.
+	KeySha256 string `pulumi:"keySha256"`
+}
+
+// GetObjectCustomerEncryptionResponseInput is an input type that accepts GetObjectCustomerEncryptionResponseArgs and GetObjectCustomerEncryptionResponseOutput values.
+// You can construct a concrete instance of `GetObjectCustomerEncryptionResponseInput` via:
+//
+//          GetObjectCustomerEncryptionResponseArgs{...}
+type GetObjectCustomerEncryptionResponseInput interface {
+	pulumi.Input
+
+	ToGetObjectCustomerEncryptionResponseOutput() GetObjectCustomerEncryptionResponseOutput
+	ToGetObjectCustomerEncryptionResponseOutputWithContext(context.Context) GetObjectCustomerEncryptionResponseOutput
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type GetObjectCustomerEncryptionResponseArgs struct {
+	// The encryption algorithm.
+	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
+	// SHA256 hash value of the encryption key.
+	KeySha256 pulumi.StringInput `pulumi:"keySha256"`
+}
+
+func (GetObjectCustomerEncryptionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectCustomerEncryptionResponse)(nil)).Elem()
+}
+
+func (i GetObjectCustomerEncryptionResponseArgs) ToGetObjectCustomerEncryptionResponseOutput() GetObjectCustomerEncryptionResponseOutput {
+	return i.ToGetObjectCustomerEncryptionResponseOutputWithContext(context.Background())
+}
+
+func (i GetObjectCustomerEncryptionResponseArgs) ToGetObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) GetObjectCustomerEncryptionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectCustomerEncryptionResponseOutput)
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type GetObjectCustomerEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (GetObjectCustomerEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectCustomerEncryptionResponse)(nil)).Elem()
+}
+
+func (o GetObjectCustomerEncryptionResponseOutput) ToGetObjectCustomerEncryptionResponseOutput() GetObjectCustomerEncryptionResponseOutput {
+	return o
+}
+
+func (o GetObjectCustomerEncryptionResponseOutput) ToGetObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) GetObjectCustomerEncryptionResponseOutput {
+	return o
+}
+
+// The encryption algorithm.
+func (o GetObjectCustomerEncryptionResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectCustomerEncryptionResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
+}
+
+// SHA256 hash value of the encryption key.
+func (o GetObjectCustomerEncryptionResponseOutput) KeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectCustomerEncryptionResponse) string { return v.KeySha256 }).(pulumi.StringOutput)
+}
+
+type GetObjectIamPolicyBindingsItemResponse struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition ExprResponse `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members []string `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role string `pulumi:"role"`
+}
+
+// GetObjectIamPolicyBindingsItemResponseInput is an input type that accepts GetObjectIamPolicyBindingsItemResponseArgs and GetObjectIamPolicyBindingsItemResponseOutput values.
+// You can construct a concrete instance of `GetObjectIamPolicyBindingsItemResponseInput` via:
+//
+//          GetObjectIamPolicyBindingsItemResponseArgs{...}
+type GetObjectIamPolicyBindingsItemResponseInput interface {
+	pulumi.Input
+
+	ToGetObjectIamPolicyBindingsItemResponseOutput() GetObjectIamPolicyBindingsItemResponseOutput
+	ToGetObjectIamPolicyBindingsItemResponseOutputWithContext(context.Context) GetObjectIamPolicyBindingsItemResponseOutput
+}
+
+type GetObjectIamPolicyBindingsItemResponseArgs struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition ExprResponseInput `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetObjectIamPolicyBindingsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (i GetObjectIamPolicyBindingsItemResponseArgs) ToGetObjectIamPolicyBindingsItemResponseOutput() GetObjectIamPolicyBindingsItemResponseOutput {
+	return i.ToGetObjectIamPolicyBindingsItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetObjectIamPolicyBindingsItemResponseArgs) ToGetObjectIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) GetObjectIamPolicyBindingsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectIamPolicyBindingsItemResponseOutput)
+}
+
+// GetObjectIamPolicyBindingsItemResponseArrayInput is an input type that accepts GetObjectIamPolicyBindingsItemResponseArray and GetObjectIamPolicyBindingsItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetObjectIamPolicyBindingsItemResponseArrayInput` via:
+//
+//          GetObjectIamPolicyBindingsItemResponseArray{ GetObjectIamPolicyBindingsItemResponseArgs{...} }
+type GetObjectIamPolicyBindingsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetObjectIamPolicyBindingsItemResponseArrayOutput() GetObjectIamPolicyBindingsItemResponseArrayOutput
+	ToGetObjectIamPolicyBindingsItemResponseArrayOutputWithContext(context.Context) GetObjectIamPolicyBindingsItemResponseArrayOutput
+}
+
+type GetObjectIamPolicyBindingsItemResponseArray []GetObjectIamPolicyBindingsItemResponseInput
+
+func (GetObjectIamPolicyBindingsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (i GetObjectIamPolicyBindingsItemResponseArray) ToGetObjectIamPolicyBindingsItemResponseArrayOutput() GetObjectIamPolicyBindingsItemResponseArrayOutput {
+	return i.ToGetObjectIamPolicyBindingsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetObjectIamPolicyBindingsItemResponseArray) ToGetObjectIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) GetObjectIamPolicyBindingsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectIamPolicyBindingsItemResponseArrayOutput)
+}
+
+type GetObjectIamPolicyBindingsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetObjectIamPolicyBindingsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (o GetObjectIamPolicyBindingsItemResponseOutput) ToGetObjectIamPolicyBindingsItemResponseOutput() GetObjectIamPolicyBindingsItemResponseOutput {
+	return o
+}
+
+func (o GetObjectIamPolicyBindingsItemResponseOutput) ToGetObjectIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) GetObjectIamPolicyBindingsItemResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+func (o GetObjectIamPolicyBindingsItemResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v GetObjectIamPolicyBindingsItemResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+func (o GetObjectIamPolicyBindingsItemResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetObjectIamPolicyBindingsItemResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+// The new IAM roles are:
+// - roles/storage.admin — Full control of Google Cloud Storage resources.
+// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+func (o GetObjectIamPolicyBindingsItemResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectIamPolicyBindingsItemResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetObjectIamPolicyBindingsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetObjectIamPolicyBindingsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (o GetObjectIamPolicyBindingsItemResponseArrayOutput) ToGetObjectIamPolicyBindingsItemResponseArrayOutput() GetObjectIamPolicyBindingsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetObjectIamPolicyBindingsItemResponseArrayOutput) ToGetObjectIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) GetObjectIamPolicyBindingsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetObjectIamPolicyBindingsItemResponseArrayOutput) Index(i pulumi.IntInput) GetObjectIamPolicyBindingsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetObjectIamPolicyBindingsItemResponse {
+		return vs[0].([]GetObjectIamPolicyBindingsItemResponse)[vs[1].(int)]
+	}).(GetObjectIamPolicyBindingsItemResponseOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type GetObjectOwnerResponse struct {
+	// The entity, in the form user-userId.
+	Entity string `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId string `pulumi:"entityId"`
+}
+
+// GetObjectOwnerResponseInput is an input type that accepts GetObjectOwnerResponseArgs and GetObjectOwnerResponseOutput values.
+// You can construct a concrete instance of `GetObjectOwnerResponseInput` via:
+//
+//          GetObjectOwnerResponseArgs{...}
+type GetObjectOwnerResponseInput interface {
+	pulumi.Input
+
+	ToGetObjectOwnerResponseOutput() GetObjectOwnerResponseOutput
+	ToGetObjectOwnerResponseOutputWithContext(context.Context) GetObjectOwnerResponseOutput
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type GetObjectOwnerResponseArgs struct {
+	// The entity, in the form user-userId.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+}
+
+func (GetObjectOwnerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectOwnerResponse)(nil)).Elem()
+}
+
+func (i GetObjectOwnerResponseArgs) ToGetObjectOwnerResponseOutput() GetObjectOwnerResponseOutput {
+	return i.ToGetObjectOwnerResponseOutputWithContext(context.Background())
+}
+
+func (i GetObjectOwnerResponseArgs) ToGetObjectOwnerResponseOutputWithContext(ctx context.Context) GetObjectOwnerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectOwnerResponseOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type GetObjectOwnerResponseOutput struct{ *pulumi.OutputState }
+
+func (GetObjectOwnerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectOwnerResponse)(nil)).Elem()
+}
+
+func (o GetObjectOwnerResponseOutput) ToGetObjectOwnerResponseOutput() GetObjectOwnerResponseOutput {
+	return o
+}
+
+func (o GetObjectOwnerResponseOutput) ToGetObjectOwnerResponseOutputWithContext(ctx context.Context) GetObjectOwnerResponseOutput {
+	return o
+}
+
+// The entity, in the form user-userId.
+func (o GetObjectOwnerResponseOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectOwnerResponse) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity.
+func (o GetObjectOwnerResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketAccessControlTypeOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlTypeArrayOutput{})
@@ -8141,4 +9923,30 @@ func init() {
 	pulumi.RegisterOutputType(ObjectOwnerPtrOutput{})
 	pulumi.RegisterOutputType(ObjectOwnerResponseOutput{})
 	pulumi.RegisterOutputType(ObjectOwnerResponsePtrOutput{})
+	pulumi.RegisterOutputType(GetBucketAccessControlProjectTeamResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketActionResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketBillingResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketBucketPolicyOnlyResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketConditionResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketCorsItemResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketCorsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketIamConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketIamPolicyBindingsItemResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketIamPolicyBindingsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketLifecycleResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketLoggingResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketOwnerResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketRetentionPolicyResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketRuleItemResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketRuleItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketUniformBucketLevelAccessResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketVersioningResponseOutput{})
+	pulumi.RegisterOutputType(GetBucketWebsiteResponseOutput{})
+	pulumi.RegisterOutputType(GetDefaultObjectAccessControlProjectTeamResponseOutput{})
+	pulumi.RegisterOutputType(GetObjectAccessControlProjectTeamResponseOutput{})
+	pulumi.RegisterOutputType(GetObjectCustomerEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(GetObjectIamPolicyBindingsItemResponseOutput{})
+	pulumi.RegisterOutputType(GetObjectIamPolicyBindingsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetObjectOwnerResponseOutput{})
 }

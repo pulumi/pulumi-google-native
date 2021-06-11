@@ -59494,6 +59494,742 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 	}).(WeightedBackendServiceResponseOutput)
 }
 
+type GetFirewallAllowedItemResponse struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+	IPProtocol string `pulumi:"IPProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	//
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports []string `pulumi:"ports"`
+}
+
+// GetFirewallAllowedItemResponseInput is an input type that accepts GetFirewallAllowedItemResponseArgs and GetFirewallAllowedItemResponseOutput values.
+// You can construct a concrete instance of `GetFirewallAllowedItemResponseInput` via:
+//
+//          GetFirewallAllowedItemResponseArgs{...}
+type GetFirewallAllowedItemResponseInput interface {
+	pulumi.Input
+
+	ToGetFirewallAllowedItemResponseOutput() GetFirewallAllowedItemResponseOutput
+	ToGetFirewallAllowedItemResponseOutputWithContext(context.Context) GetFirewallAllowedItemResponseOutput
+}
+
+type GetFirewallAllowedItemResponseArgs struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+	IPProtocol pulumi.StringInput `pulumi:"IPProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	//
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (GetFirewallAllowedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallAllowedItemResponse)(nil)).Elem()
+}
+
+func (i GetFirewallAllowedItemResponseArgs) ToGetFirewallAllowedItemResponseOutput() GetFirewallAllowedItemResponseOutput {
+	return i.ToGetFirewallAllowedItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetFirewallAllowedItemResponseArgs) ToGetFirewallAllowedItemResponseOutputWithContext(ctx context.Context) GetFirewallAllowedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallAllowedItemResponseOutput)
+}
+
+// GetFirewallAllowedItemResponseArrayInput is an input type that accepts GetFirewallAllowedItemResponseArray and GetFirewallAllowedItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetFirewallAllowedItemResponseArrayInput` via:
+//
+//          GetFirewallAllowedItemResponseArray{ GetFirewallAllowedItemResponseArgs{...} }
+type GetFirewallAllowedItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallAllowedItemResponseArrayOutput() GetFirewallAllowedItemResponseArrayOutput
+	ToGetFirewallAllowedItemResponseArrayOutputWithContext(context.Context) GetFirewallAllowedItemResponseArrayOutput
+}
+
+type GetFirewallAllowedItemResponseArray []GetFirewallAllowedItemResponseInput
+
+func (GetFirewallAllowedItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallAllowedItemResponse)(nil)).Elem()
+}
+
+func (i GetFirewallAllowedItemResponseArray) ToGetFirewallAllowedItemResponseArrayOutput() GetFirewallAllowedItemResponseArrayOutput {
+	return i.ToGetFirewallAllowedItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallAllowedItemResponseArray) ToGetFirewallAllowedItemResponseArrayOutputWithContext(ctx context.Context) GetFirewallAllowedItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallAllowedItemResponseArrayOutput)
+}
+
+type GetFirewallAllowedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallAllowedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallAllowedItemResponse)(nil)).Elem()
+}
+
+func (o GetFirewallAllowedItemResponseOutput) ToGetFirewallAllowedItemResponseOutput() GetFirewallAllowedItemResponseOutput {
+	return o
+}
+
+func (o GetFirewallAllowedItemResponseOutput) ToGetFirewallAllowedItemResponseOutputWithContext(ctx context.Context) GetFirewallAllowedItemResponseOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+func (o GetFirewallAllowedItemResponseOutput) IPProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallAllowedItemResponse) string { return v.IPProtocol }).(pulumi.StringOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+//
+// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+func (o GetFirewallAllowedItemResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallAllowedItemResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type GetFirewallAllowedItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallAllowedItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallAllowedItemResponse)(nil)).Elem()
+}
+
+func (o GetFirewallAllowedItemResponseArrayOutput) ToGetFirewallAllowedItemResponseArrayOutput() GetFirewallAllowedItemResponseArrayOutput {
+	return o
+}
+
+func (o GetFirewallAllowedItemResponseArrayOutput) ToGetFirewallAllowedItemResponseArrayOutputWithContext(ctx context.Context) GetFirewallAllowedItemResponseArrayOutput {
+	return o
+}
+
+func (o GetFirewallAllowedItemResponseArrayOutput) Index(i pulumi.IntInput) GetFirewallAllowedItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallAllowedItemResponse {
+		return vs[0].([]GetFirewallAllowedItemResponse)[vs[1].(int)]
+	}).(GetFirewallAllowedItemResponseOutput)
+}
+
+type GetFirewallDeniedItemResponse struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+	IPProtocol string `pulumi:"IPProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	//
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports []string `pulumi:"ports"`
+}
+
+// GetFirewallDeniedItemResponseInput is an input type that accepts GetFirewallDeniedItemResponseArgs and GetFirewallDeniedItemResponseOutput values.
+// You can construct a concrete instance of `GetFirewallDeniedItemResponseInput` via:
+//
+//          GetFirewallDeniedItemResponseArgs{...}
+type GetFirewallDeniedItemResponseInput interface {
+	pulumi.Input
+
+	ToGetFirewallDeniedItemResponseOutput() GetFirewallDeniedItemResponseOutput
+	ToGetFirewallDeniedItemResponseOutputWithContext(context.Context) GetFirewallDeniedItemResponseOutput
+}
+
+type GetFirewallDeniedItemResponseArgs struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+	IPProtocol pulumi.StringInput `pulumi:"IPProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	//
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (GetFirewallDeniedItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallDeniedItemResponse)(nil)).Elem()
+}
+
+func (i GetFirewallDeniedItemResponseArgs) ToGetFirewallDeniedItemResponseOutput() GetFirewallDeniedItemResponseOutput {
+	return i.ToGetFirewallDeniedItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetFirewallDeniedItemResponseArgs) ToGetFirewallDeniedItemResponseOutputWithContext(ctx context.Context) GetFirewallDeniedItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallDeniedItemResponseOutput)
+}
+
+// GetFirewallDeniedItemResponseArrayInput is an input type that accepts GetFirewallDeniedItemResponseArray and GetFirewallDeniedItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetFirewallDeniedItemResponseArrayInput` via:
+//
+//          GetFirewallDeniedItemResponseArray{ GetFirewallDeniedItemResponseArgs{...} }
+type GetFirewallDeniedItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallDeniedItemResponseArrayOutput() GetFirewallDeniedItemResponseArrayOutput
+	ToGetFirewallDeniedItemResponseArrayOutputWithContext(context.Context) GetFirewallDeniedItemResponseArrayOutput
+}
+
+type GetFirewallDeniedItemResponseArray []GetFirewallDeniedItemResponseInput
+
+func (GetFirewallDeniedItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallDeniedItemResponse)(nil)).Elem()
+}
+
+func (i GetFirewallDeniedItemResponseArray) ToGetFirewallDeniedItemResponseArrayOutput() GetFirewallDeniedItemResponseArrayOutput {
+	return i.ToGetFirewallDeniedItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallDeniedItemResponseArray) ToGetFirewallDeniedItemResponseArrayOutputWithContext(ctx context.Context) GetFirewallDeniedItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallDeniedItemResponseArrayOutput)
+}
+
+type GetFirewallDeniedItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallDeniedItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallDeniedItemResponse)(nil)).Elem()
+}
+
+func (o GetFirewallDeniedItemResponseOutput) ToGetFirewallDeniedItemResponseOutput() GetFirewallDeniedItemResponseOutput {
+	return o
+}
+
+func (o GetFirewallDeniedItemResponseOutput) ToGetFirewallDeniedItemResponseOutputWithContext(ctx context.Context) GetFirewallDeniedItemResponseOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+func (o GetFirewallDeniedItemResponseOutput) IPProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallDeniedItemResponse) string { return v.IPProtocol }).(pulumi.StringOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+//
+// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+func (o GetFirewallDeniedItemResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallDeniedItemResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type GetFirewallDeniedItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallDeniedItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallDeniedItemResponse)(nil)).Elem()
+}
+
+func (o GetFirewallDeniedItemResponseArrayOutput) ToGetFirewallDeniedItemResponseArrayOutput() GetFirewallDeniedItemResponseArrayOutput {
+	return o
+}
+
+func (o GetFirewallDeniedItemResponseArrayOutput) ToGetFirewallDeniedItemResponseArrayOutputWithContext(ctx context.Context) GetFirewallDeniedItemResponseArrayOutput {
+	return o
+}
+
+func (o GetFirewallDeniedItemResponseArrayOutput) Index(i pulumi.IntInput) GetFirewallDeniedItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallDeniedItemResponse {
+		return vs[0].([]GetFirewallDeniedItemResponse)[vs[1].(int)]
+	}).(GetFirewallDeniedItemResponseOutput)
+}
+
+// The parameters of the raw disk image.
+type GetImageRawDiskResponse struct {
+	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+	ContainerType string `pulumi:"containerType"`
+	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+	Source string `pulumi:"source"`
+}
+
+// GetImageRawDiskResponseInput is an input type that accepts GetImageRawDiskResponseArgs and GetImageRawDiskResponseOutput values.
+// You can construct a concrete instance of `GetImageRawDiskResponseInput` via:
+//
+//          GetImageRawDiskResponseArgs{...}
+type GetImageRawDiskResponseInput interface {
+	pulumi.Input
+
+	ToGetImageRawDiskResponseOutput() GetImageRawDiskResponseOutput
+	ToGetImageRawDiskResponseOutputWithContext(context.Context) GetImageRawDiskResponseOutput
+}
+
+// The parameters of the raw disk image.
+type GetImageRawDiskResponseArgs struct {
+	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetImageRawDiskResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageRawDiskResponse)(nil)).Elem()
+}
+
+func (i GetImageRawDiskResponseArgs) ToGetImageRawDiskResponseOutput() GetImageRawDiskResponseOutput {
+	return i.ToGetImageRawDiskResponseOutputWithContext(context.Background())
+}
+
+func (i GetImageRawDiskResponseArgs) ToGetImageRawDiskResponseOutputWithContext(ctx context.Context) GetImageRawDiskResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageRawDiskResponseOutput)
+}
+
+// The parameters of the raw disk image.
+type GetImageRawDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (GetImageRawDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageRawDiskResponse)(nil)).Elem()
+}
+
+func (o GetImageRawDiskResponseOutput) ToGetImageRawDiskResponseOutput() GetImageRawDiskResponseOutput {
+	return o
+}
+
+func (o GetImageRawDiskResponseOutput) ToGetImageRawDiskResponseOutputWithContext(ctx context.Context) GetImageRawDiskResponseOutput {
+	return o
+}
+
+// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+func (o GetImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+func (o GetImageRawDiskResponseOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageRawDiskResponse) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetRouteDataItemResponse struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// GetRouteDataItemResponseInput is an input type that accepts GetRouteDataItemResponseArgs and GetRouteDataItemResponseOutput values.
+// You can construct a concrete instance of `GetRouteDataItemResponseInput` via:
+//
+//          GetRouteDataItemResponseArgs{...}
+type GetRouteDataItemResponseInput interface {
+	pulumi.Input
+
+	ToGetRouteDataItemResponseOutput() GetRouteDataItemResponseOutput
+	ToGetRouteDataItemResponseOutputWithContext(context.Context) GetRouteDataItemResponseOutput
+}
+
+type GetRouteDataItemResponseArgs struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRouteDataItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteDataItemResponse)(nil)).Elem()
+}
+
+func (i GetRouteDataItemResponseArgs) ToGetRouteDataItemResponseOutput() GetRouteDataItemResponseOutput {
+	return i.ToGetRouteDataItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetRouteDataItemResponseArgs) ToGetRouteDataItemResponseOutputWithContext(ctx context.Context) GetRouteDataItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteDataItemResponseOutput)
+}
+
+// GetRouteDataItemResponseArrayInput is an input type that accepts GetRouteDataItemResponseArray and GetRouteDataItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetRouteDataItemResponseArrayInput` via:
+//
+//          GetRouteDataItemResponseArray{ GetRouteDataItemResponseArgs{...} }
+type GetRouteDataItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteDataItemResponseArrayOutput() GetRouteDataItemResponseArrayOutput
+	ToGetRouteDataItemResponseArrayOutputWithContext(context.Context) GetRouteDataItemResponseArrayOutput
+}
+
+type GetRouteDataItemResponseArray []GetRouteDataItemResponseInput
+
+func (GetRouteDataItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteDataItemResponse)(nil)).Elem()
+}
+
+func (i GetRouteDataItemResponseArray) ToGetRouteDataItemResponseArrayOutput() GetRouteDataItemResponseArrayOutput {
+	return i.ToGetRouteDataItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteDataItemResponseArray) ToGetRouteDataItemResponseArrayOutputWithContext(ctx context.Context) GetRouteDataItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteDataItemResponseArrayOutput)
+}
+
+type GetRouteDataItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetRouteDataItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteDataItemResponse)(nil)).Elem()
+}
+
+func (o GetRouteDataItemResponseOutput) ToGetRouteDataItemResponseOutput() GetRouteDataItemResponseOutput {
+	return o
+}
+
+func (o GetRouteDataItemResponseOutput) ToGetRouteDataItemResponseOutputWithContext(ctx context.Context) GetRouteDataItemResponseOutput {
+	return o
+}
+
+// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o GetRouteDataItemResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// [Output Only] A warning data value corresponding to the key.
+func (o GetRouteDataItemResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRouteDataItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteDataItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteDataItemResponse)(nil)).Elem()
+}
+
+func (o GetRouteDataItemResponseArrayOutput) ToGetRouteDataItemResponseArrayOutput() GetRouteDataItemResponseArrayOutput {
+	return o
+}
+
+func (o GetRouteDataItemResponseArrayOutput) ToGetRouteDataItemResponseArrayOutputWithContext(ctx context.Context) GetRouteDataItemResponseArrayOutput {
+	return o
+}
+
+func (o GetRouteDataItemResponseArrayOutput) Index(i pulumi.IntInput) GetRouteDataItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteDataItemResponse {
+		return vs[0].([]GetRouteDataItemResponse)[vs[1].(int)]
+	}).(GetRouteDataItemResponseOutput)
+}
+
+type GetRouteWarningsItemResponse struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example:
+	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []GetRouteDataItemResponse `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// GetRouteWarningsItemResponseInput is an input type that accepts GetRouteWarningsItemResponseArgs and GetRouteWarningsItemResponseOutput values.
+// You can construct a concrete instance of `GetRouteWarningsItemResponseInput` via:
+//
+//          GetRouteWarningsItemResponseArgs{...}
+type GetRouteWarningsItemResponseInput interface {
+	pulumi.Input
+
+	ToGetRouteWarningsItemResponseOutput() GetRouteWarningsItemResponseOutput
+	ToGetRouteWarningsItemResponseOutputWithContext(context.Context) GetRouteWarningsItemResponseOutput
+}
+
+type GetRouteWarningsItemResponseArgs struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example:
+	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data GetRouteDataItemResponseArrayInput `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetRouteWarningsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteWarningsItemResponse)(nil)).Elem()
+}
+
+func (i GetRouteWarningsItemResponseArgs) ToGetRouteWarningsItemResponseOutput() GetRouteWarningsItemResponseOutput {
+	return i.ToGetRouteWarningsItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetRouteWarningsItemResponseArgs) ToGetRouteWarningsItemResponseOutputWithContext(ctx context.Context) GetRouteWarningsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteWarningsItemResponseOutput)
+}
+
+// GetRouteWarningsItemResponseArrayInput is an input type that accepts GetRouteWarningsItemResponseArray and GetRouteWarningsItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetRouteWarningsItemResponseArrayInput` via:
+//
+//          GetRouteWarningsItemResponseArray{ GetRouteWarningsItemResponseArgs{...} }
+type GetRouteWarningsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteWarningsItemResponseArrayOutput() GetRouteWarningsItemResponseArrayOutput
+	ToGetRouteWarningsItemResponseArrayOutputWithContext(context.Context) GetRouteWarningsItemResponseArrayOutput
+}
+
+type GetRouteWarningsItemResponseArray []GetRouteWarningsItemResponseInput
+
+func (GetRouteWarningsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteWarningsItemResponse)(nil)).Elem()
+}
+
+func (i GetRouteWarningsItemResponseArray) ToGetRouteWarningsItemResponseArrayOutput() GetRouteWarningsItemResponseArrayOutput {
+	return i.ToGetRouteWarningsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteWarningsItemResponseArray) ToGetRouteWarningsItemResponseArrayOutputWithContext(ctx context.Context) GetRouteWarningsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteWarningsItemResponseArrayOutput)
+}
+
+type GetRouteWarningsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetRouteWarningsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteWarningsItemResponse)(nil)).Elem()
+}
+
+func (o GetRouteWarningsItemResponseOutput) ToGetRouteWarningsItemResponseOutput() GetRouteWarningsItemResponseOutput {
+	return o
+}
+
+func (o GetRouteWarningsItemResponseOutput) ToGetRouteWarningsItemResponseOutputWithContext(ctx context.Context) GetRouteWarningsItemResponseOutput {
+	return o
+}
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o GetRouteWarningsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// [Output Only] Metadata about this warning in key: value format. For example:
+// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o GetRouteWarningsItemResponseOutput) Data() GetRouteDataItemResponseArrayOutput {
+	return o.ApplyT(func(v GetRouteWarningsItemResponse) []GetRouteDataItemResponse { return v.Data }).(GetRouteDataItemResponseArrayOutput)
+}
+
+// [Output Only] A human-readable description of the warning code.
+func (o GetRouteWarningsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetRouteWarningsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteWarningsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteWarningsItemResponse)(nil)).Elem()
+}
+
+func (o GetRouteWarningsItemResponseArrayOutput) ToGetRouteWarningsItemResponseArrayOutput() GetRouteWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetRouteWarningsItemResponseArrayOutput) ToGetRouteWarningsItemResponseArrayOutputWithContext(ctx context.Context) GetRouteWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetRouteWarningsItemResponseArrayOutput) Index(i pulumi.IntInput) GetRouteWarningsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteWarningsItemResponse {
+		return vs[0].([]GetRouteWarningsItemResponse)[vs[1].(int)]
+	}).(GetRouteWarningsItemResponseOutput)
+}
+
+type GetSslPolicyDataItemResponse struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// GetSslPolicyDataItemResponseInput is an input type that accepts GetSslPolicyDataItemResponseArgs and GetSslPolicyDataItemResponseOutput values.
+// You can construct a concrete instance of `GetSslPolicyDataItemResponseInput` via:
+//
+//          GetSslPolicyDataItemResponseArgs{...}
+type GetSslPolicyDataItemResponseInput interface {
+	pulumi.Input
+
+	ToGetSslPolicyDataItemResponseOutput() GetSslPolicyDataItemResponseOutput
+	ToGetSslPolicyDataItemResponseOutputWithContext(context.Context) GetSslPolicyDataItemResponseOutput
+}
+
+type GetSslPolicyDataItemResponseArgs struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSslPolicyDataItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSslPolicyDataItemResponse)(nil)).Elem()
+}
+
+func (i GetSslPolicyDataItemResponseArgs) ToGetSslPolicyDataItemResponseOutput() GetSslPolicyDataItemResponseOutput {
+	return i.ToGetSslPolicyDataItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetSslPolicyDataItemResponseArgs) ToGetSslPolicyDataItemResponseOutputWithContext(ctx context.Context) GetSslPolicyDataItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSslPolicyDataItemResponseOutput)
+}
+
+// GetSslPolicyDataItemResponseArrayInput is an input type that accepts GetSslPolicyDataItemResponseArray and GetSslPolicyDataItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetSslPolicyDataItemResponseArrayInput` via:
+//
+//          GetSslPolicyDataItemResponseArray{ GetSslPolicyDataItemResponseArgs{...} }
+type GetSslPolicyDataItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetSslPolicyDataItemResponseArrayOutput() GetSslPolicyDataItemResponseArrayOutput
+	ToGetSslPolicyDataItemResponseArrayOutputWithContext(context.Context) GetSslPolicyDataItemResponseArrayOutput
+}
+
+type GetSslPolicyDataItemResponseArray []GetSslPolicyDataItemResponseInput
+
+func (GetSslPolicyDataItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSslPolicyDataItemResponse)(nil)).Elem()
+}
+
+func (i GetSslPolicyDataItemResponseArray) ToGetSslPolicyDataItemResponseArrayOutput() GetSslPolicyDataItemResponseArrayOutput {
+	return i.ToGetSslPolicyDataItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetSslPolicyDataItemResponseArray) ToGetSslPolicyDataItemResponseArrayOutputWithContext(ctx context.Context) GetSslPolicyDataItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSslPolicyDataItemResponseArrayOutput)
+}
+
+type GetSslPolicyDataItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetSslPolicyDataItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSslPolicyDataItemResponse)(nil)).Elem()
+}
+
+func (o GetSslPolicyDataItemResponseOutput) ToGetSslPolicyDataItemResponseOutput() GetSslPolicyDataItemResponseOutput {
+	return o
+}
+
+func (o GetSslPolicyDataItemResponseOutput) ToGetSslPolicyDataItemResponseOutputWithContext(ctx context.Context) GetSslPolicyDataItemResponseOutput {
+	return o
+}
+
+// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o GetSslPolicyDataItemResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSslPolicyDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// [Output Only] A warning data value corresponding to the key.
+func (o GetSslPolicyDataItemResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSslPolicyDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSslPolicyDataItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSslPolicyDataItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSslPolicyDataItemResponse)(nil)).Elem()
+}
+
+func (o GetSslPolicyDataItemResponseArrayOutput) ToGetSslPolicyDataItemResponseArrayOutput() GetSslPolicyDataItemResponseArrayOutput {
+	return o
+}
+
+func (o GetSslPolicyDataItemResponseArrayOutput) ToGetSslPolicyDataItemResponseArrayOutputWithContext(ctx context.Context) GetSslPolicyDataItemResponseArrayOutput {
+	return o
+}
+
+func (o GetSslPolicyDataItemResponseArrayOutput) Index(i pulumi.IntInput) GetSslPolicyDataItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSslPolicyDataItemResponse {
+		return vs[0].([]GetSslPolicyDataItemResponse)[vs[1].(int)]
+	}).(GetSslPolicyDataItemResponseOutput)
+}
+
+type GetSslPolicyWarningsItemResponse struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example:
+	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []GetSslPolicyDataItemResponse `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// GetSslPolicyWarningsItemResponseInput is an input type that accepts GetSslPolicyWarningsItemResponseArgs and GetSslPolicyWarningsItemResponseOutput values.
+// You can construct a concrete instance of `GetSslPolicyWarningsItemResponseInput` via:
+//
+//          GetSslPolicyWarningsItemResponseArgs{...}
+type GetSslPolicyWarningsItemResponseInput interface {
+	pulumi.Input
+
+	ToGetSslPolicyWarningsItemResponseOutput() GetSslPolicyWarningsItemResponseOutput
+	ToGetSslPolicyWarningsItemResponseOutputWithContext(context.Context) GetSslPolicyWarningsItemResponseOutput
+}
+
+type GetSslPolicyWarningsItemResponseArgs struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example:
+	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data GetSslPolicyDataItemResponseArrayInput `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetSslPolicyWarningsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSslPolicyWarningsItemResponse)(nil)).Elem()
+}
+
+func (i GetSslPolicyWarningsItemResponseArgs) ToGetSslPolicyWarningsItemResponseOutput() GetSslPolicyWarningsItemResponseOutput {
+	return i.ToGetSslPolicyWarningsItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetSslPolicyWarningsItemResponseArgs) ToGetSslPolicyWarningsItemResponseOutputWithContext(ctx context.Context) GetSslPolicyWarningsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSslPolicyWarningsItemResponseOutput)
+}
+
+// GetSslPolicyWarningsItemResponseArrayInput is an input type that accepts GetSslPolicyWarningsItemResponseArray and GetSslPolicyWarningsItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetSslPolicyWarningsItemResponseArrayInput` via:
+//
+//          GetSslPolicyWarningsItemResponseArray{ GetSslPolicyWarningsItemResponseArgs{...} }
+type GetSslPolicyWarningsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetSslPolicyWarningsItemResponseArrayOutput() GetSslPolicyWarningsItemResponseArrayOutput
+	ToGetSslPolicyWarningsItemResponseArrayOutputWithContext(context.Context) GetSslPolicyWarningsItemResponseArrayOutput
+}
+
+type GetSslPolicyWarningsItemResponseArray []GetSslPolicyWarningsItemResponseInput
+
+func (GetSslPolicyWarningsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSslPolicyWarningsItemResponse)(nil)).Elem()
+}
+
+func (i GetSslPolicyWarningsItemResponseArray) ToGetSslPolicyWarningsItemResponseArrayOutput() GetSslPolicyWarningsItemResponseArrayOutput {
+	return i.ToGetSslPolicyWarningsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetSslPolicyWarningsItemResponseArray) ToGetSslPolicyWarningsItemResponseArrayOutputWithContext(ctx context.Context) GetSslPolicyWarningsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSslPolicyWarningsItemResponseArrayOutput)
+}
+
+type GetSslPolicyWarningsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetSslPolicyWarningsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSslPolicyWarningsItemResponse)(nil)).Elem()
+}
+
+func (o GetSslPolicyWarningsItemResponseOutput) ToGetSslPolicyWarningsItemResponseOutput() GetSslPolicyWarningsItemResponseOutput {
+	return o
+}
+
+func (o GetSslPolicyWarningsItemResponseOutput) ToGetSslPolicyWarningsItemResponseOutputWithContext(ctx context.Context) GetSslPolicyWarningsItemResponseOutput {
+	return o
+}
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o GetSslPolicyWarningsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSslPolicyWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// [Output Only] Metadata about this warning in key: value format. For example:
+// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o GetSslPolicyWarningsItemResponseOutput) Data() GetSslPolicyDataItemResponseArrayOutput {
+	return o.ApplyT(func(v GetSslPolicyWarningsItemResponse) []GetSslPolicyDataItemResponse { return v.Data }).(GetSslPolicyDataItemResponseArrayOutput)
+}
+
+// [Output Only] A human-readable description of the warning code.
+func (o GetSslPolicyWarningsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSslPolicyWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetSslPolicyWarningsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSslPolicyWarningsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSslPolicyWarningsItemResponse)(nil)).Elem()
+}
+
+func (o GetSslPolicyWarningsItemResponseArrayOutput) ToGetSslPolicyWarningsItemResponseArrayOutput() GetSslPolicyWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetSslPolicyWarningsItemResponseArrayOutput) ToGetSslPolicyWarningsItemResponseArrayOutputWithContext(ctx context.Context) GetSslPolicyWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o GetSslPolicyWarningsItemResponseArrayOutput) Index(i pulumi.IntInput) GetSslPolicyWarningsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSslPolicyWarningsItemResponse {
+		return vs[0].([]GetSslPolicyWarningsItemResponse)[vs[1].(int)]
+	}).(GetSslPolicyWarningsItemResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
@@ -60202,4 +60938,17 @@ func init() {
 	pulumi.RegisterOutputType(WeightedBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(WeightedBackendServiceResponseOutput{})
 	pulumi.RegisterOutputType(WeightedBackendServiceResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallAllowedItemResponseOutput{})
+	pulumi.RegisterOutputType(GetFirewallAllowedItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallDeniedItemResponseOutput{})
+	pulumi.RegisterOutputType(GetFirewallDeniedItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetImageRawDiskResponseOutput{})
+	pulumi.RegisterOutputType(GetRouteDataItemResponseOutput{})
+	pulumi.RegisterOutputType(GetRouteDataItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteWarningsItemResponseOutput{})
+	pulumi.RegisterOutputType(GetRouteWarningsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetSslPolicyDataItemResponseOutput{})
+	pulumi.RegisterOutputType(GetSslPolicyDataItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(GetSslPolicyWarningsItemResponseOutput{})
+	pulumi.RegisterOutputType(GetSslPolicyWarningsItemResponseArrayOutput{})
 }
