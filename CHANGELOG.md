@@ -5,6 +5,7 @@ CHANGELOG
 
 - Add a corresponding Get function for each resource
   [#82](https://github.com/pulumi/pulumi-google-native/issues/82)
+- Fix idpath for storagetransfer/v1:TransferJob [#116](https://github.com/pulumi/pulumi-google-native/pull/116).
 
 ---
 
