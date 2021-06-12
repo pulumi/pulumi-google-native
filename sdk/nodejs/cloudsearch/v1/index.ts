@@ -6,6 +6,8 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./dataSource";
+export * from "./getDataSource";
+export * from "./getSearchApplication";
 export * from "./searchApplication";
 
 // Import resources to register:

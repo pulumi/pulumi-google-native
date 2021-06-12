@@ -6,6 +6,10 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./device";
+export * from "./getDevice";
+export * from "./getRegistry";
+export * from "./getRegistryGroupIamPolicy";
+export * from "./getRegistryIamPolicy";
 export * from "./registry";
 export * from "./registryGroupIamPolicy";
 export * from "./registryIamPolicy";

@@ -7,6 +7,16 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./folder";
 export * from "./folderIamPolicy";
+export * from "./getFolder";
+export * from "./getFolderIamPolicy";
+export * from "./getLien";
+export * from "./getOrganizationIamPolicy";
+export * from "./getProject";
+export * from "./getProjectIamPolicy";
+export * from "./getTagKey";
+export * from "./getTagKeyIamPolicy";
+export * from "./getTagValue";
+export * from "./getTagValueIamPolicy";
 export * from "./lien";
 export * from "./organizationIamPolicy";
 export * from "./project";

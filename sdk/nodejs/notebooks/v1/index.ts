@@ -7,6 +7,12 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./environment";
 export * from "./execution";
+export * from "./getEnvironment";
+export * from "./getExecution";
+export * from "./getInstance";
+export * from "./getInstanceIamPolicy";
+export * from "./getRuntime";
+export * from "./getSchedule";
 export * from "./instance";
 export * from "./instanceIamPolicy";
 export * from "./runtime";

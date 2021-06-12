@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getSubscription";
+export * from "./getSubscriptionIamPolicy";
+export * from "./getTopic";
+export * from "./getTopicIamPolicy";
 export * from "./subscription";
 export * from "./subscriptionIamPolicy";
 export * from "./topic";

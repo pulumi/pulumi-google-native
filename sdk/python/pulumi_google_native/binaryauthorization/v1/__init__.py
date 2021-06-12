@@ -7,6 +7,9 @@ import typing
 # Export this package's modules as members:
 from .attestor import *
 from .attestor_iam_policy import *
+from .get_attestor import *
+from .get_attestor_iam_policy import *
+from .get_policy_iam_policy import *
 from .policy_iam_policy import *
 from ._inputs import *
 from . import outputs

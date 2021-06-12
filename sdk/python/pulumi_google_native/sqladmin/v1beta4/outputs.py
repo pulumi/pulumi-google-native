@@ -33,6 +33,7 @@ __all__ = [
     'SqlScheduledMaintenanceResponse',
     'SqlServerDatabaseDetailsResponse',
     'SslCertResponse',
+    'GetInstanceFailoverReplicaResponse',
 ]
 
 @pulumi.output_type
@@ -1923,5 +1924,38 @@ class SslCertResponse(dict):
         Sha1 Fingerprint.
         """
         return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class GetInstanceFailoverReplicaResponse(dict):
+    """
+    The name and status of the failover replica. This property is applicable only to Second Generation instances.
+    """
+    def __init__(__self__, *,
+                 available: bool,
+                 name: str):
+        """
+        The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        :param bool available: The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+        :param str name: The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        """
+        pulumi.set(__self__, "available", available)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        """
+        The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+        """
+        return pulumi.get(self, "available")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        """
+        return pulumi.get(self, "name")
 
 

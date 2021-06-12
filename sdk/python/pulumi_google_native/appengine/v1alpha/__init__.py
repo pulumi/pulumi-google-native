@@ -7,5 +7,7 @@ import typing
 # Export this package's modules as members:
 from .authorized_certificate import *
 from .domain_mapping import *
+from .get_authorized_certificate import *
+from .get_domain_mapping import *
 from ._inputs import *
 from . import outputs

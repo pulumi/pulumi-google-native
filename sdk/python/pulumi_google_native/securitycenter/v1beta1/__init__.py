@@ -5,6 +5,8 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_organization_source_iam_policy import *
+from .get_source import *
 from .organization_source_iam_policy import *
 from .source import *
 from ._inputs import *

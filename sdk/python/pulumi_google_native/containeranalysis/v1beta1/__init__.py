@@ -5,6 +5,10 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_note import *
+from .get_note_iam_policy import *
+from .get_occurrence import *
+from .get_occurrence_iam_policy import *
 from .note import *
 from .note_iam_policy import *
 from .occurrence import *

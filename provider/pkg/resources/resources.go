@@ -10,6 +10,7 @@ import (
 // CloudAPIMetadata is a collection of all resources and functions in the Google Cloud REST API.
 type CloudAPIMetadata struct {
 	Resources map[string]CloudAPIResource `json:"resources"`
+	Functions map[string]CloudAPIFunction `json:"functions"`
 }
 
 // CloudAPIResource is a resource in Google Cloud REST API.
@@ -30,6 +31,12 @@ type CloudAPIResource struct {
 	IdParams map[string]string `json:"idParams,omitempty"`
 }
 
+// CloudAPIFunction is a function in Google Cloud REST API.
+type CloudAPIFunction struct {
+	Url    string                  `json:"url"`
+	Params []CloudAPIResourceParam `json:"params"`
+}
+
 // CloudAPIResourceParam is a URL parameter of an API resource.
 type CloudAPIResourceParam struct {
 	Name     string `json:"name"`
@@ -39,10 +46,15 @@ type CloudAPIResourceParam struct {
 
 // ResourceUrl returns the resource API URL by joining the base URL with the resource path.
 func (r *CloudAPIResource) ResourceUrl(path string) string {
+	return CombineUrl(r.BaseUrl, path)
+}
+
+// CombineUrl concats a base URL of the service with a path of an endpoint.
+func CombineUrl(baseUrl, path string) string {
 	if strings.HasPrefix(path, "https://") {
 		return path
 	}
-	return fmt.Sprintf("%s/%s", strings.TrimRight(r.BaseUrl, "/"), strings.TrimLeft(path, "/"))
+	return fmt.Sprintf("%s/%s", strings.TrimRight(baseUrl, "/"), strings.TrimLeft(path, "/"))
 }
 
 // CloudAPIProperty is a property of a body of an API call payload.

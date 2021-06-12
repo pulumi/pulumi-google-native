@@ -6,6 +6,12 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./dataset";
+export * from "./getDataset";
+export * from "./getJob";
+export * from "./getRoutine";
+export * from "./getRowAccessPolicyIamPolicy";
+export * from "./getTable";
+export * from "./getTableIamPolicy";
 export * from "./job";
 export * from "./routine";
 export * from "./rowAccessPolicyIamPolicy";

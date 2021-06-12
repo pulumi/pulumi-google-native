@@ -123,8 +123,40 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 }
 
 // Invoke dynamically executes a built-in function in the provider.
-func (p *googleCloudProvider) Invoke(_ context.Context, _ *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "Invoke is not yet implemented")
+func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
+	label := fmt.Sprintf("%s.Invoke(%s)", p.name, req.Tok)
+	inv, ok := p.resourceMap.Functions[req.Tok]
+	if !ok {
+		return nil, errors.Errorf("invoke %q not found", req.Tok)
+	}
+
+	args, err := plugin.UnmarshalProperties(req.GetArgs(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.args", label), SkipNulls: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	uri, err := buildFunctionUrl(inv, args)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := p.client.sendRequestWithTimeout("GET", uri, nil, 0)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %s", err)
+	}
+
+	// Serialize and return outputs.
+	result, err := plugin.MarshalProperties(
+		resource.NewPropertyMapFromMap(resp),
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), SkipNulls: true},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return &rpc.InvokeResponse{Return: result}, nil
 }
 
 // StreamInvoke dynamically executes a built-in function in the provider. The result is streamed

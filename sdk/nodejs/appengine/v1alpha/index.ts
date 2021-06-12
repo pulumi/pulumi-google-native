@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./authorizedCertificate";
 export * from "./domainMapping";
+export * from "./getAuthorizedCertificate";
+export * from "./getDomainMapping";
 
 // Import resources to register:
 import { AuthorizedCertificate } from "./authorizedCertificate";

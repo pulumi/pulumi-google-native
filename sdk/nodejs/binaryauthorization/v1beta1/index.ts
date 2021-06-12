@@ -7,6 +7,9 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./attestor";
 export * from "./attestorIamPolicy";
+export * from "./getAttestor";
+export * from "./getAttestorIamPolicy";
+export * from "./getPolicyIamPolicy";
 export * from "./policyIamPolicy";
 
 // Import resources to register:

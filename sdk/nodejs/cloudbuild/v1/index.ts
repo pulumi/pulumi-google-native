@@ -6,6 +6,8 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./build";
+export * from "./getBuild";
+export * from "./getTrigger";
 export * from "./trigger";
 
 // Import resources to register:

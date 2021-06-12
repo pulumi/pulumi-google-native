@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getKey";
+export * from "./getOrganizationRole";
+export * from "./getProvider";
+export * from "./getRole";
+export * from "./getServiceAccount";
+export * from "./getServiceAccountIamPolicy";
+export * from "./getWorkloadIdentityPool";
 export * from "./key";
 export * from "./organizationRole";
 export * from "./provider";

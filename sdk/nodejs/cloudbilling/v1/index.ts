@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./billingAccount";
 export * from "./billingAccountIamPolicy";
+export * from "./getBillingAccount";
+export * from "./getBillingAccountIamPolicy";
 
 // Import resources to register:
 import { BillingAccount } from "./billingAccount";

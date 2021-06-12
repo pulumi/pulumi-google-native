@@ -8,6 +8,14 @@ import typing
 from .app_profile import *
 from .backup import *
 from .cluster import *
+from .get_app_profile import *
+from .get_backup import *
+from .get_cluster import *
+from .get_instance import *
+from .get_instance_cluster_backup_iam_policy import *
+from .get_instance_iam_policy import *
+from .get_instance_table_iam_policy import *
+from .get_table import *
 from .instance import *
 from .instance_cluster_backup_iam_policy import *
 from .instance_iam_policy import *

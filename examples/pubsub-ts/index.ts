@@ -50,3 +50,11 @@ const schema = new google.pubsub.v1.Schema("schema", {
     name: "my-schema",
     type: "avro",
 });
+
+// This is to test that an invoke works.
+export const topicReadName = topic.name.apply(async name => {
+    const parts = name.split('/');
+    const topicId = parts[parts.length-1];
+    const resp = await google.pubsub.v1.getTopic({ project, topicId });
+    return resp.name;
+});

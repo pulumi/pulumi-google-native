@@ -5,6 +5,14 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_schema import *
+from .get_schema_iam_policy import *
+from .get_snapshot import *
+from .get_snapshot_iam_policy import *
+from .get_subscription import *
+from .get_subscription_iam_policy import *
+from .get_topic import *
+from .get_topic_iam_policy import *
 from .schema import *
 from .schema_iam_policy import *
 from .snapshot import *

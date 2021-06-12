@@ -5,6 +5,8 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_membership import *
+from .get_membership_iam_policy import *
 from .membership import *
 from .membership_iam_policy import *
 from ._inputs import *

@@ -25989,6 +25989,175 @@ func (o ViewDefinitionResponsePtrOutput) UserDefinedFunctionResources() UserDefi
 	}).(UserDefinedFunctionResourceResponseArrayOutput)
 }
 
+type GetDatasetAccessItemResponse struct {
+	// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+	Dataset DatasetAccessEntryResponse `pulumi:"dataset"`
+	// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+	Domain string `pulumi:"domain"`
+	// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+	GroupByEmail string `pulumi:"groupByEmail"`
+	// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+	IamMember string `pulumi:"iamMember"`
+	// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+	Role string `pulumi:"role"`
+	// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+	Routine RoutineReferenceResponse `pulumi:"routine"`
+	// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+	SpecialGroup string `pulumi:"specialGroup"`
+	// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+	UserByEmail string `pulumi:"userByEmail"`
+	// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+	View TableReferenceResponse `pulumi:"view"`
+}
+
+// GetDatasetAccessItemResponseInput is an input type that accepts GetDatasetAccessItemResponseArgs and GetDatasetAccessItemResponseOutput values.
+// You can construct a concrete instance of `GetDatasetAccessItemResponseInput` via:
+//
+//          GetDatasetAccessItemResponseArgs{...}
+type GetDatasetAccessItemResponseInput interface {
+	pulumi.Input
+
+	ToGetDatasetAccessItemResponseOutput() GetDatasetAccessItemResponseOutput
+	ToGetDatasetAccessItemResponseOutputWithContext(context.Context) GetDatasetAccessItemResponseOutput
+}
+
+type GetDatasetAccessItemResponseArgs struct {
+	// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+	Dataset DatasetAccessEntryResponseInput `pulumi:"dataset"`
+	// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+	GroupByEmail pulumi.StringInput `pulumi:"groupByEmail"`
+	// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+	IamMember pulumi.StringInput `pulumi:"iamMember"`
+	// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+	Role pulumi.StringInput `pulumi:"role"`
+	// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+	Routine RoutineReferenceResponseInput `pulumi:"routine"`
+	// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+	SpecialGroup pulumi.StringInput `pulumi:"specialGroup"`
+	// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+	UserByEmail pulumi.StringInput `pulumi:"userByEmail"`
+	// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+	View TableReferenceResponseInput `pulumi:"view"`
+}
+
+func (GetDatasetAccessItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetAccessItemResponse)(nil)).Elem()
+}
+
+func (i GetDatasetAccessItemResponseArgs) ToGetDatasetAccessItemResponseOutput() GetDatasetAccessItemResponseOutput {
+	return i.ToGetDatasetAccessItemResponseOutputWithContext(context.Background())
+}
+
+func (i GetDatasetAccessItemResponseArgs) ToGetDatasetAccessItemResponseOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetAccessItemResponseOutput)
+}
+
+// GetDatasetAccessItemResponseArrayInput is an input type that accepts GetDatasetAccessItemResponseArray and GetDatasetAccessItemResponseArrayOutput values.
+// You can construct a concrete instance of `GetDatasetAccessItemResponseArrayInput` via:
+//
+//          GetDatasetAccessItemResponseArray{ GetDatasetAccessItemResponseArgs{...} }
+type GetDatasetAccessItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToGetDatasetAccessItemResponseArrayOutput() GetDatasetAccessItemResponseArrayOutput
+	ToGetDatasetAccessItemResponseArrayOutputWithContext(context.Context) GetDatasetAccessItemResponseArrayOutput
+}
+
+type GetDatasetAccessItemResponseArray []GetDatasetAccessItemResponseInput
+
+func (GetDatasetAccessItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetAccessItemResponse)(nil)).Elem()
+}
+
+func (i GetDatasetAccessItemResponseArray) ToGetDatasetAccessItemResponseArrayOutput() GetDatasetAccessItemResponseArrayOutput {
+	return i.ToGetDatasetAccessItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatasetAccessItemResponseArray) ToGetDatasetAccessItemResponseArrayOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetAccessItemResponseArrayOutput)
+}
+
+type GetDatasetAccessItemResponseOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetAccessItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetAccessItemResponse)(nil)).Elem()
+}
+
+func (o GetDatasetAccessItemResponseOutput) ToGetDatasetAccessItemResponseOutput() GetDatasetAccessItemResponseOutput {
+	return o
+}
+
+func (o GetDatasetAccessItemResponseOutput) ToGetDatasetAccessItemResponseOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseOutput {
+	return o
+}
+
+// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+func (o GetDatasetAccessItemResponseOutput) Dataset() DatasetAccessEntryResponseOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) DatasetAccessEntryResponse { return v.Dataset }).(DatasetAccessEntryResponseOutput)
+}
+
+// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+func (o GetDatasetAccessItemResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+func (o GetDatasetAccessItemResponseOutput) GroupByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.GroupByEmail }).(pulumi.StringOutput)
+}
+
+// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+func (o GetDatasetAccessItemResponseOutput) IamMember() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.IamMember }).(pulumi.StringOutput)
+}
+
+// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+func (o GetDatasetAccessItemResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+func (o GetDatasetAccessItemResponseOutput) Routine() RoutineReferenceResponseOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) RoutineReferenceResponse { return v.Routine }).(RoutineReferenceResponseOutput)
+}
+
+// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+func (o GetDatasetAccessItemResponseOutput) SpecialGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.SpecialGroup }).(pulumi.StringOutput)
+}
+
+// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+func (o GetDatasetAccessItemResponseOutput) UserByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.UserByEmail }).(pulumi.StringOutput)
+}
+
+// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+func (o GetDatasetAccessItemResponseOutput) View() TableReferenceResponseOutput {
+	return o.ApplyT(func(v GetDatasetAccessItemResponse) TableReferenceResponse { return v.View }).(TableReferenceResponseOutput)
+}
+
+type GetDatasetAccessItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetAccessItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetAccessItemResponse)(nil)).Elem()
+}
+
+func (o GetDatasetAccessItemResponseArrayOutput) ToGetDatasetAccessItemResponseArrayOutput() GetDatasetAccessItemResponseArrayOutput {
+	return o
+}
+
+func (o GetDatasetAccessItemResponseArrayOutput) ToGetDatasetAccessItemResponseArrayOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseArrayOutput {
+	return o
+}
+
+func (o GetDatasetAccessItemResponseArrayOutput) Index(i pulumi.IntInput) GetDatasetAccessItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetAccessItemResponse {
+		return vs[0].([]GetDatasetAccessItemResponse)[vs[1].(int)]
+	}).(GetDatasetAccessItemResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ArgumentOutput{})
 	pulumi.RegisterOutputType(ArgumentArrayOutput{})
@@ -26279,4 +26448,6 @@ func init() {
 	pulumi.RegisterOutputType(ViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(ViewDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ViewDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(GetDatasetAccessItemResponseOutput{})
+	pulumi.RegisterOutputType(GetDatasetAccessItemResponseArrayOutput{})
 }

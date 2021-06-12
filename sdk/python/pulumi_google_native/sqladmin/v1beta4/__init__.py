@@ -7,6 +7,10 @@ import typing
 # Export this package's modules as members:
 from .backup_run import *
 from .database import *
+from .get_backup_run import *
+from .get_database import *
+from .get_instance import *
+from .get_ssl_cert import *
 from .instance import *
 from .ssl_cert import *
 from ._inputs import *

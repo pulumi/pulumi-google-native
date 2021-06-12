@@ -46,6 +46,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	}
 	metadata := resources.CloudAPIMetadata{
 		Resources: map[string]resources.CloudAPIResource{},
+		Functions: map[string]resources.CloudAPIFunction{},
 	}
 
 	csharpNamespaces := map[string]string{
@@ -95,7 +96,13 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		}
 
 		for _, typeName := range codegen.SortedKeys(res) {
+			// Generate the resource itself.
 			err := gen.genResource(typeName, res[typeName])
+			if err != nil {
+				return nil, nil, err
+			}
+			// Generate a getXyz function for each Xyz resource.
+			err = gen.genFunction("get"+typeName, res[typeName])
 			if err != nil {
 				return nil, nil, err
 			}
@@ -122,7 +129,7 @@ will be introduced in minor version releases.`,
 			"pulumi": ">=3.0.0,<4.0.0",
 		},
 		"usesIOClasses": true,
-		"readme":        `The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud
+		"readme": `The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud
 programs. This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
@@ -380,6 +387,99 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	return nil
 }
 
+func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {
+	resourceTok := g.genToken(typeName)
+
+	inputProperties := map[string]schema.PropertySpec{}
+	requiredInputProperties := codegen.NewStringSet()
+
+	getPath := dd.getMethod.Path
+	if dd.getMethod.FlatPath != "" {
+		getPath = dd.getMethod.FlatPath
+	}
+
+	functionMeta := resources.CloudAPIFunction{
+		Url: resources.CombineUrl(g.rest.BaseUrl, getPath),
+	}
+
+	for _, name := range codegen.SortedKeys(dd.getMethod.Parameters) {
+		param := dd.getMethod.Parameters[name]
+		required := param.Required || strings.HasPrefix(param.Description, "Required.")
+		if param.Location != "query" || isDeprecated(param.Description) {
+			continue
+		}
+
+		p := resources.CloudAPIResourceParam{
+			Name:     name,
+			Location: "query",
+		}
+		sdkName := ToLowerCamel(name)
+		if sdkName != name {
+			p.SdkName = sdkName
+		}
+		functionMeta.Params = append(functionMeta.Params, p)
+
+		inputProperties[sdkName] = schema.PropertySpec{
+			TypeSpec: schema.TypeSpec{Type: "string"},
+		}
+		if required {
+			requiredInputProperties.Add(sdkName)
+		}
+	}
+
+	subMatches := pathRegex.FindAllStringSubmatch(getPath, -1)
+	for _, names := range subMatches {
+		if len(names) < 2 {
+			return errors.Errorf("failed to match get path %q", getPath)
+		}
+
+		name := names[1]
+		sdkName := apiNameToSdkName(name)
+		inputProperties[sdkName] = schema.PropertySpec{
+			TypeSpec: schema.TypeSpec{Type: "string"},
+		}
+		param := resources.CloudAPIResourceParam{
+			Name:     name,
+			Location: "path",
+		}
+		if sdkName != name {
+			param.SdkName = sdkName
+		}
+		functionMeta.Params = append(functionMeta.Params, param)
+		requiredInputProperties.Add(sdkName)
+	}
+
+	properties := map[string]schema.PropertySpec{}
+	requiredProperties := codegen.NewStringSet()
+	if dd.getMethod.Response != nil {
+		response := g.rest.Schemas[dd.getMethod.Response.Ref]
+		responseBag, err := g.genProperties(typeName, &response, "", true)
+		if err != nil {
+			return err
+		}
+		properties = responseBag.specs
+		requiredProperties = responseBag.requiredSpecs
+		g.escapeCSharpNames(typeName, properties)
+	}
+
+	functionSpec := schema.FunctionSpec{
+		Description: dd.getMethod.Description,
+		Inputs: &schema.ObjectTypeSpec{
+			Type:       "object",
+			Properties: inputProperties,
+			Required:   requiredInputProperties.SortedValues(),
+		},
+		Outputs: &schema.ObjectTypeSpec{
+			Type:       "object",
+			Properties: properties,
+			Required:   requiredProperties.SortedValues(),
+		},
+	}
+	g.pkg.Functions[resourceTok] = functionSpec
+	g.metadata.Functions[resourceTok] = functionMeta
+	return nil
+}
+
 // buildIdParams creates a map of parameters that are needed to build resource IDs from an ID path template.
 // Keys are API parameter names, values are SDK property names (that may be equal to keys, or not).
 func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputProperties map[string]schema.PropertySpec, response *discovery.JsonSchema) (map[string]string, error) {
@@ -525,7 +625,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
 	switch {
 	case prop.Items != nil:
-		items, err := g.genTypeSpec(typeName, propName + "Item", prop.Items, isOutput)
+		items, err := g.genTypeSpec(typeName, propName+"Item", prop.Items, isOutput)
 		if err != nil {
 			return nil, err
 		}

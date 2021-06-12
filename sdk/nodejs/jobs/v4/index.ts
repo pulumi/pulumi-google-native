@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./company";
+export * from "./getCompany";
+export * from "./getJob";
+export * from "./getTenant";
 export * from "./job";
 export * from "./tenant";
 

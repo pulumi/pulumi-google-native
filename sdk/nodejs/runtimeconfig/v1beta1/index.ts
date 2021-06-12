@@ -7,6 +7,10 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./config";
 export * from "./configIamPolicy";
+export * from "./getConfig";
+export * from "./getConfigIamPolicy";
+export * from "./getVariable";
+export * from "./getWaiter";
 export * from "./variable";
 export * from "./waiter";
 

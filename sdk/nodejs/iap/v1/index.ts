@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./brand";
+export * from "./getBrand";
+export * from "./getIdentityAwareProxyClient";
+export * from "./getV1IamPolicy";
 export * from "./identityAwareProxyClient";
 export * from "./v1iamPolicy";
 

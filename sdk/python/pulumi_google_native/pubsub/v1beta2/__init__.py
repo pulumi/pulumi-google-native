@@ -5,6 +5,10 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_subscription import *
+from .get_subscription_iam_policy import *
+from .get_topic import *
+from .get_topic_iam_policy import *
 from .subscription import *
 from .subscription_iam_policy import *
 from .topic import *

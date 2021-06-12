@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./channelPartnerLink";
 export * from "./customer";
 export * from "./entitlement";
+export * from "./getChannelPartnerLink";
+export * from "./getCustomer";
+export * from "./getEntitlement";
 
 // Import resources to register:
 import { ChannelPartnerLink } from "./channelPartnerLink";

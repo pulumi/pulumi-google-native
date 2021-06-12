@@ -10,6 +10,15 @@ from .bucket_access_control import *
 from .bucket_iam_policy import *
 from .bucket_object import *
 from .default_object_access_control import *
+from .get_bucket import *
+from .get_bucket_access_control import *
+from .get_bucket_iam_policy import *
+from .get_default_object_access_control import *
+from .get_hmac_key import *
+from .get_notification import *
+from .get_object import *
+from .get_object_access_control import *
+from .get_object_iam_policy import *
 from .hmac_key import *
 from .notification import *
 from .object_access_control import *

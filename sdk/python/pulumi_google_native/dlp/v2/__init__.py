@@ -7,6 +7,11 @@ import typing
 # Export this package's modules as members:
 from .deidentify_template import *
 from .dlp_job import *
+from .get_deidentify_template import *
+from .get_dlp_job import *
+from .get_inspect_template import *
+from .get_job_trigger import *
+from .get_stored_info_type import *
 from .inspect_template import *
 from .job_trigger import *
 from .stored_info_type import *

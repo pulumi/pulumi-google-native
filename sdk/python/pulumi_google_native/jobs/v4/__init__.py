@@ -6,6 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .company import *
+from .get_company import *
+from .get_job import *
+from .get_tenant import *
 from .job import *
 from .tenant import *
 from ._inputs import *

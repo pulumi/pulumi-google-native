@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getHub";
+export * from "./getHubIamPolicy";
+export * from "./getInternalRangeIamPolicy";
+export * from "./getPolicyBasedRouteIamPolicy";
+export * from "./getSpoke";
+export * from "./getSpokeIamPolicy";
 export * from "./hub";
 export * from "./hubIamPolicy";
 export * from "./internalRangeIamPolicy";

@@ -7,6 +7,9 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./channel";
 export * from "./domain";
+export * from "./getChannel";
+export * from "./getDomain";
+export * from "./getSite";
 export * from "./site";
 
 // Import resources to register:

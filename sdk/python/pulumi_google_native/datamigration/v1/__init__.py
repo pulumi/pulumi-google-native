@@ -7,6 +7,10 @@ import typing
 # Export this package's modules as members:
 from .connection_profile import *
 from .connection_profile_iam_policy import *
+from .get_connection_profile import *
+from .get_connection_profile_iam_policy import *
+from .get_migration_job import *
+from .get_migration_job_iam_policy import *
 from .migration_job import *
 from .migration_job_iam_policy import *
 from ._inputs import *

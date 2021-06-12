@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./folderPolicy";
+export * from "./getFolderPolicy";
+export * from "./getOrganizationPolicy";
+export * from "./getPolicy";
 export * from "./organizationPolicy";
 export * from "./policy";
 

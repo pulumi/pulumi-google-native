@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./budget";
+export * from "./getBudget";
 
 // Import resources to register:
 import { Budget } from "./budget";

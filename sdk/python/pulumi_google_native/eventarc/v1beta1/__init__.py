@@ -5,6 +5,8 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .get_trigger import *
+from .get_trigger_iam_policy import *
 from .trigger import *
 from .trigger_iam_policy import *
 from ._inputs import *

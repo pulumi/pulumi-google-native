@@ -7,6 +7,13 @@ import typing
 # Export this package's modules as members:
 from .backup import *
 from .database import *
+from .get_backup import *
+from .get_database import *
+from .get_instance import *
+from .get_instance_backup_iam_policy import *
+from .get_instance_database_iam_policy import *
+from .get_instance_iam_policy import *
+from .get_session import *
 from .instance import *
 from .instance_backup_iam_policy import *
 from .instance_database_iam_policy import *

@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./deployment";
 export * from "./deploymentIamPolicy";
+export * from "./getDeployment";
+export * from "./getDeploymentIamPolicy";
 
 // Import resources to register:
 import { Deployment } from "./deployment";

@@ -9,6 +9,11 @@ export * from "./certificate";
 export * from "./certificateAuthority";
 export * from "./certificateAuthorityCertificateRevocationListIamPolicy";
 export * from "./certificateAuthorityIamPolicy";
+export * from "./getCertificate";
+export * from "./getCertificateAuthority";
+export * from "./getCertificateAuthorityCertificateRevocationListIamPolicy";
+export * from "./getCertificateAuthorityIamPolicy";
+export * from "./getReusableConfigIamPolicy";
 export * from "./reusableConfigIamPolicy";
 
 // Import resources to register:

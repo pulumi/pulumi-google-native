@@ -6,6 +6,12 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .dataset import *
+from .get_dataset import *
+from .get_job import *
+from .get_routine import *
+from .get_row_access_policy_iam_policy import *
+from .get_table import *
+from .get_table_iam_policy import *
 from .job import *
 from .routine import *
 from .row_access_policy_iam_policy import *

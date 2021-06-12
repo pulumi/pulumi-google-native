@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./feed";
+export * from "./getFeed";
 
 // Import resources to register:
 import { Feed } from "./feed";

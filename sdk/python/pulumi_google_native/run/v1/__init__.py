@@ -6,6 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .domain_mapping import *
+from .get_domain_mapping import *
+from .get_service import *
+from .get_service_iam_policy import *
 from .service import *
 from .service_iam_policy import *
 from ._inputs import *

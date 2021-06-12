@@ -7,5 +7,7 @@ import typing
 # Export this package's modules as members:
 from .folder import *
 from .folder_iam_policy import *
+from .get_folder import *
+from .get_folder_iam_policy import *
 from ._inputs import *
 from . import outputs

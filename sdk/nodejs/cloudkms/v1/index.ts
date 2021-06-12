@@ -7,6 +7,13 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./cryptoKey";
 export * from "./cryptoKeyVersion";
+export * from "./getCryptoKey";
+export * from "./getCryptoKeyVersion";
+export * from "./getImportJob";
+export * from "./getKeyRing";
+export * from "./getKeyRingCryptoKeyIamPolicy";
+export * from "./getKeyRingIamPolicy";
+export * from "./getKeyRingImportJobIamPolicy";
 export * from "./importJob";
 export * from "./keyRing";
 export * from "./keyRingCryptoKeyIamPolicy";

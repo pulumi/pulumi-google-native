@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .backup import *
+from .get_backup import *
+from .get_instance import *
 from .instance import *
 from ._inputs import *
 from . import outputs

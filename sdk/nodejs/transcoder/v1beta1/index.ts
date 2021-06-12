@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getJob";
+export * from "./getJobTemplate";
 export * from "./job";
 export * from "./jobTemplate";
 

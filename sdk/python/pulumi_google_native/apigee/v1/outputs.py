@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'GoogleCloudApigeeV1AddonsConfigResponse',
     'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
+    'GoogleCloudApigeeV1ApiCategoryDataResponse',
     'GoogleCloudApigeeV1ApiProductRefResponse',
     'GoogleCloudApigeeV1AsyncQueryResultResponse',
     'GoogleCloudApigeeV1AttributeResponse',
@@ -132,6 +133,50 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse(dict):
         Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
+    """
+    the Api category resource.
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 site_id: str,
+                 update_time: str):
+        """
+        the Api category resource.
+        :param str name: Name of the category.
+        :param str site_id: Name of the portal.
+        :param str update_time: Time the category was last modified in milliseconds since epoch.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "site_id", site_id)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the category.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> str:
+        """
+        Name of the portal.
+        """
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Time the category was last modified in milliseconds since epoch.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

@@ -6,6 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./domainMapping";
+export * from "./getDomainMapping";
+export * from "./getService";
+export * from "./getServiceIamPolicy";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
