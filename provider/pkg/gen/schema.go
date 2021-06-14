@@ -559,10 +559,6 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 	}
 
 	// Next handle the 'query' part of idPath
-	if err != nil {
-		return nil, errors.Errorf("failed to parse query from idPath %v: %w", idPath, err)
-	}
-
 	subMatches = pathRegex.FindAllStringSubmatch(u.RawQuery, -1)
 	for _, names := range subMatches {
 		if len(names) < 2 {
