@@ -59,11 +59,8 @@ func TestStorageTransferTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir:         filepath.Join(getCwd(t), "storagetransfer-ts"),
-			SkipRefresh: true,
+			ExpectRefreshChanges: true,
 		})
-
-	integration.ProgramTest(t, &test)
-	test.SkipRefresh = false
 	integration.ProgramTest(t, &test)
 }
 
