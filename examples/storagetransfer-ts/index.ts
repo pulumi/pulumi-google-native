@@ -26,16 +26,16 @@ const bucket = new storage.Bucket("my-bucket", {
     project: project,
 });
 
-const storageTransferServiceAccount = gcp.storage.getTransferProjectServieAccount({
+const storageTransferServiceAccount = gnative.iam.v1.getServiceAccount({
     project: project,
-});
+    // TODO: Make it easier to get this: https://github.com/pulumi/pulumi-google-native/issues/119
+    serviceAccountId: "project-921927215178@storage-transfer-service.iam.gserviceaccount.com"
+})
 
-const iam = new storage.BucketIamPolicy("iam-dest", {
+const iam = new gcp.storage.BucketIAMMember("iam-dest", {
     bucket: bucket.name,
-    bindings: [{
-        members: [pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`],
-        role: "roles/storage.admin",
-    }]
+    role: "roles/storage.admin",
+    member: pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
 });
 
 const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
@@ -43,12 +43,10 @@ const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
     project: project
 });
 
-const iamSrc = new storage.BucketIamPolicy("iam-src", {
+const iamSrc = new gcp.storage.BucketIAMMember("iam-src", {
     bucket: srcBucket.name,
-    bindings: [{
-        members: [pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`],
-        role: "roles/storage.admin",
-    }]
+    role: "roles/storage.admin",
+    member: pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
 });
 
 const contents = [] as pulumi.Resource[];
