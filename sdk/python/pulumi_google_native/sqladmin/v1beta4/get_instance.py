@@ -159,7 +159,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="failoverReplica")
-    def failover_replica(self) -> 'outputs.GetInstanceFailoverReplicaResponse':
+    def failover_replica(self) -> 'outputs.InstanceFailoverReplicaResponse':
         """
         The name and status of the failover replica. This property is applicable only to Second Generation instances.
         """

@@ -75,7 +75,7 @@ class GetFirewallResult:
 
     @property
     @pulumi.getter
-    def allowed(self) -> Sequence['outputs.GetFirewallAllowedItemResponse']:
+    def allowed(self) -> Sequence['outputs.FirewallAllowedItemResponse']:
         """
         The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         """
@@ -91,7 +91,7 @@ class GetFirewallResult:
 
     @property
     @pulumi.getter
-    def denied(self) -> Sequence['outputs.GetFirewallDeniedItemResponse']:
+    def denied(self) -> Sequence['outputs.FirewallDeniedItemResponse']:
         """
         The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         """

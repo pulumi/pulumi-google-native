@@ -110,7 +110,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def billing(self) -> 'outputs.GetBucketBillingResponse':
+    def billing(self) -> 'outputs.BucketBillingResponse':
         """
         The bucket's billing configuration.
         """
@@ -118,7 +118,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def cors(self) -> Sequence['outputs.GetBucketCorsItemResponse']:
+    def cors(self) -> Sequence['outputs.BucketCorsItemResponse']:
         """
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         """
@@ -142,7 +142,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def encryption(self) -> 'outputs.GetBucketEncryptionResponse':
+    def encryption(self) -> 'outputs.BucketEncryptionResponse':
         """
         Encryption configuration for a bucket.
         """
@@ -158,7 +158,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter(name="iamConfiguration")
-    def iam_configuration(self) -> 'outputs.GetBucketIamConfigurationResponse':
+    def iam_configuration(self) -> 'outputs.BucketIamConfigurationResponse':
         """
         The bucket's IAM configuration.
         """
@@ -182,7 +182,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def lifecycle(self) -> 'outputs.GetBucketLifecycleResponse':
+    def lifecycle(self) -> 'outputs.BucketLifecycleResponse':
         """
         The bucket's lifecycle configuration. See lifecycle management for more information.
         """
@@ -206,7 +206,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def logging(self) -> 'outputs.GetBucketLoggingResponse':
+    def logging(self) -> 'outputs.BucketLoggingResponse':
         """
         The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
         """
@@ -230,7 +230,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def owner(self) -> 'outputs.GetBucketOwnerResponse':
+    def owner(self) -> 'outputs.BucketOwnerResponse':
         """
         The owner of the bucket. This is always the project team's owner group.
         """
@@ -246,7 +246,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> 'outputs.GetBucketRetentionPolicyResponse':
+    def retention_policy(self) -> 'outputs.BucketRetentionPolicyResponse':
         """
         The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         """
@@ -294,7 +294,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def versioning(self) -> 'outputs.GetBucketVersioningResponse':
+    def versioning(self) -> 'outputs.BucketVersioningResponse':
         """
         The bucket's versioning configuration.
         """
@@ -302,7 +302,7 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def website(self) -> 'outputs.GetBucketWebsiteResponse':
+    def website(self) -> 'outputs.BucketWebsiteResponse':
         """
         The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         """

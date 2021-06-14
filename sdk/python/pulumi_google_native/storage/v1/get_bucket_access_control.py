@@ -118,7 +118,7 @@ class GetBucketAccessControlResult:
 
     @property
     @pulumi.getter(name="projectTeam")
-    def project_team(self) -> 'outputs.GetBucketAccessControlProjectTeamResponse':
+    def project_team(self) -> 'outputs.BucketAccessControlProjectTeamResponse':
         """
         The project team associated with the entity, if any.
         """

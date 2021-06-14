@@ -194,7 +194,7 @@ class GetObjectResult:
 
     @property
     @pulumi.getter(name="customerEncryption")
-    def customer_encryption(self) -> 'outputs.GetObjectCustomerEncryptionResponse':
+    def customer_encryption(self) -> 'outputs.ObjectCustomerEncryptionResponse':
         """
         Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         """
@@ -282,7 +282,7 @@ class GetObjectResult:
 
     @property
     @pulumi.getter
-    def owner(self) -> 'outputs.GetObjectOwnerResponse':
+    def owner(self) -> 'outputs.ObjectOwnerResponse':
         """
         The owner of the object. This will always be the uploader of the object.
         """
