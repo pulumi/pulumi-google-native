@@ -3,8 +3,15 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+New features:
+
 - Add a corresponding Get function for each resource
   [#82](https://github.com/pulumi/pulumi-google-native/issues/82)
+
+Breaking changes:
+
+- Some child types renamed to match the parent type name
+  [#117](https://github.com/pulumi/pulumi-google-native/pull/117)
 
 ---
 
