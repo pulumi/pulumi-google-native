@@ -1,3 +1,5 @@
+// Copyright 2016-2021, Pulumi Corporation.
+
 import * as gcp from "@pulumi/gcp";
 import * as gnative from "@pulumi/google-native";
 import * as storage from "@pulumi/google-native/storage/v1";
@@ -28,10 +30,12 @@ const storageTransferServiceAccount = gcp.storage.getTransferProjectServieAccoun
     project: project,
 });
 
-const iam = new gcp.storage.BucketIAMMember("iam-dest", {
+const iam = new storage.BucketIamPolicy("iam-dest", {
     bucket: bucket.name,
-    role: "roles/storage.admin",
-    member: pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
+    bindings: [{
+        members: [pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`],
+        role: "roles/storage.admin",
+    }]
 });
 
 const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
@@ -39,10 +43,12 @@ const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
     project: project
 });
 
-const iamSrc = new gcp.storage.BucketIAMMember("iam-src", {
+const iamSrc = new storage.BucketIamPolicy("iam-src", {
     bucket: srcBucket.name,
-    role: "roles/storage.admin",
-    member: pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
+    bindings: [{
+        members: [pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`],
+        role: "roles/storage.admin",
+    }]
 });
 
 const contents = [] as pulumi.Resource[];
