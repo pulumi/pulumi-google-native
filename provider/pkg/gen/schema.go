@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"google.golang.org/api/discovery/v1"
 	"io/ioutil"
+	"net/url"
 	"os"
 	"path"
 	"path/filepath"
@@ -353,32 +354,27 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			if idPath == "" {
 				idPath = dd.getMethod.Path
 			}
-			var queryParams strings.Builder
+			queryParams := url.Values{}
 			for param, details := range dd.getMethod.Parameters {
 				if details.Location != "query" || !details.Required {
 					continue
 				}
-				if queryParams.Len() == 0 {
-					_, err = queryParams.WriteString("?")
-					if err != nil {
-						return err
-					}
-				} else {
-					_, err = queryParams.WriteString("&")
-					if err != nil {
-						return err
-					}
+				queryParams.Add(param, "{" + param + "}")
+			}
+			if len(queryParams) > 0 {
+				idPath, err = url.QueryUnescape(idPath + "?" + queryParams.Encode())
+				if err != nil {
+					fmt.Printf("Failed to unescape ID params for resource: %s: %v\n", resourceTok, err)
+					return nil
 				}
-				queryParams.WriteString(fmt.Sprintf("%[1]s={%[1]s}", param))
 			}
 
-			params := queryParams.String()
-			v, err := g.buildIdParams(typeName, idPath, params, inputProperties, &response)
+			v, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
 			if err != nil {
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
 				return nil
 			}
-			resourceMeta.IdPath = idPath + params
+			resourceMeta.IdPath = idPath
 			resourceMeta.IdParams = v
 		}
 	}
@@ -502,72 +498,95 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 
 // buildIdParams creates a map of parameters that are needed to build resource IDs from an ID path template.
 // Keys are API parameter names, values are SDK property names (that may be equal to keys, or not).
-func (g *packageGenerator) buildIdParams(typeName string, idPath string, queryParams string, inputProperties map[string]schema.PropertySpec, response *discovery.JsonSchema) (map[string]string, error) {
+func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputProperties map[string]schema.PropertySpec, response *discovery.JsonSchema) (map[string]string, error) {
 	result := map[string]string{}
 
-	replaceParamsWithProps := func(templatePath string, lastUnmatchedSegmentIsName bool) error {
-		subMatches := pathRegex.FindAllStringSubmatch(templatePath, -1)
-		for idx, names := range subMatches {
-			if len(names) < 2 {
-				return errors.Errorf("failed to match id path %q", templatePath)
-			}
+	u, err := url.Parse(idPath)
+	if err != nil {
+		return nil, err
+	}
 
-			name := names[1]
-
-			// If the property is already defined in the input args, add its SDK name.
-			sdkName := apiNameToSdkName(name)
-			if _, has := inputProperties[sdkName]; has {
-				result[name] = sdkName
-				continue
-			}
-
-			// If the property is already defined in the response, add its API name.
-			// Note: API name equals to SDK name for all response properties, currently.
-			if _, has := response.Properties[name]; has {
-				result[name] = name
-				continue
-			}
-
-			// The last parameter represents the resource name. It is not a part of the create path,
-			// and isn't always modelled as an explicit property in the SDKs. If it's missing in the SDK,
-			// it's assigned by the API, and the provider needs to infer its value from the response.
-			isLast := idx == len(subMatches)-1
-			if !isLast && !lastUnmatchedSegmentIsName {
-				return errors.Errorf("property %q not found in %q", name, templatePath)
-			}
-
-			// First, check if we have an explicit annotation for which property to use for name resolution.
-			key := fmt.Sprintf("%s:%s.%s", g.mod, typeName, name)
-			if v, has := resourceNamePropertyOverrides[key]; has {
-				if !g.schemaContainsProperty(response, v) {
-					return errors.Errorf("property %q not found in response schema of %q", v, key)
-				}
-				result[name] = v
-				// Return the result because we get here only for the last match.
-				return nil
-			}
-
-			// Then, check if there is a property called "name".
-			if _, has := response.Properties["name"]; has {
-				result[name] = "name"
-				// Return the result because we get here only for the last match.
-				return nil
-			}
-
-			// Give up if none is present.
-			return errors.Errorf("property %q not found in %q", name, templatePath)
+	// First look for substitutable references in the 'path' part of idPath
+	subMatches := pathRegex.FindAllStringSubmatch(u.RawPath, -1)
+	for idx, names := range subMatches {
+		if len(names) < 2 {
+			return nil, errors.Errorf("failed to match id path %q", u.RawPath)
 		}
-		return nil
+
+		name := names[1]
+
+		// If the property is already defined in the input args, add its SDK name.
+		sdkName := apiNameToSdkName(name)
+		if _, has := inputProperties[sdkName]; has {
+			result[name] = sdkName
+			continue
+		}
+
+		// If the property is already defined in the response, add its API name.
+		// Note: API name equals to SDK name for all response properties, currently.
+		if _, has := response.Properties[name]; has {
+			result[name] = name
+			continue
+		}
+
+		// The last parameter represents the resource name. It is not a part of the create path,
+		// and isn't always modelled as an explicit property in the SDKs. If it's missing in the SDK,
+		// it's assigned by the API, and the provider needs to infer its value from the response.
+		isLast := idx == len(subMatches)-1
+		if !isLast {
+			return nil, errors.Errorf("property %q not found in %q", name, u.RawPath)
+		}
+
+		// First, check if we have an explicit annotation for which property to use for name resolution.
+		key := fmt.Sprintf("%s:%s.%s", g.mod, typeName, name)
+		if v, has := resourceNamePropertyOverrides[key]; has {
+			if !g.schemaContainsProperty(response, v) {
+				return nil, errors.Errorf("property %q not found in response schema of %q", v, key)
+			}
+			result[name] = v
+			// Return the result because we get here only for the last match.
+			continue
+		}
+
+		// Then, check if there is a property called "name".
+		if _, has := response.Properties["name"]; has {
+			result[name] = "name"
+			continue
+		}
+
+		// Give up if none is present.
+		return nil, errors.Errorf("property %q not found in %q", name, u.RawPath)
 	}
 
-	err := replaceParamsWithProps(idPath, true)
+	// Next handle the 'query' part of idPath
 	if err != nil {
-		return nil, err
+		return nil, errors.Errorf("failed to parse query from idPath %v: %w", idPath, err)
 	}
 
-	err = replaceParamsWithProps(queryParams, false)
-	if err != nil {
-		return nil, err
+	subMatches = pathRegex.FindAllStringSubmatch(u.RawQuery, -1)
+	for _, names := range subMatches {
+		if len(names) < 2 {
+			return nil, errors.Errorf("failed to match id path %q", u.RawPath)
+		}
+
+		name := names[1]
+
+		// If the property is already defined in the input args, add its SDK name.
+		sdkName := apiNameToSdkName(name)
+		if _, has := inputProperties[sdkName]; has {
+			result[name] = sdkName
+			continue
+		}
+
+		// If the property is already defined in the response, add its API name.
+		// Note: API name equals to SDK name for all response properties, currently.
+		if _, has := response.Properties[name]; has {
+			result[name] = name
+			continue
+		}
+
+		// Give up if none is present.
+		return nil, errors.Errorf("property %q not found in %q", name, u.RawQuery)
 	}
 
 	return result, nil

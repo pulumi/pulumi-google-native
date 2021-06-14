@@ -26,16 +26,17 @@ const bucket = new storage.Bucket("my-bucket", {
     project: project,
 });
 
-const storageTransferServiceAccount = gnative.iam.v1.getServiceAccount({
-    project: project,
-    // TODO: Make it easier to get this: https://github.com/pulumi/pulumi-google-native/issues/119
-    serviceAccountId: "project-921927215178@storage-transfer-service.iam.gserviceaccount.com"
-})
+// TODO: Add support for this in Native provider: https://github.com/pulumi/pulumi-google-native/issues/119
+const storageTransferServiceAccount = gcp.storage.getTransferProjectServieAccount(
+    {
+        project: project,
+    }
+)
 
 const iam = new gcp.storage.BucketIAMMember("iam-dest", {
     bucket: bucket.name,
     role: "roles/storage.admin",
-    member: pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
+    member: pulumi.interpolate`serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
 });
 
 const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
@@ -46,7 +47,7 @@ const srcBucket = new gnative.storage.v1.Bucket("src-bucket", {
 const iamSrc = new gcp.storage.BucketIAMMember("iam-src", {
     bucket: srcBucket.name,
     role: "roles/storage.admin",
-    member: pulumi.interpolate `serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
+    member: pulumi.interpolate`serviceAccount:${storageTransferServiceAccount.then(sa => sa.email)}`,
 });
 
 const contents = [] as pulumi.Resource[];
@@ -64,7 +65,7 @@ crawlDirectory("bucket-content", (filepath: string) => {
 new gnative.storagetransfer.v1.TransferJob(
     transferJobName,
     {
-        name: pulumi.interpolate `transferJobs/transferjob-${randomString.result}`,
+        name: pulumi.interpolate`transferJobs/transferjob-${randomString.result}`,
         description: "s3-to-gcs-sync",
         status: "ENABLED",
         schedule: {
@@ -91,7 +92,7 @@ new gnative.storagetransfer.v1.TransferJob(
             },
         },
     },
-    { dependsOn: contents.concat([iam, iamSrc]) }
+    {dependsOn: contents.concat([iam, iamSrc])}
 );
 
 
