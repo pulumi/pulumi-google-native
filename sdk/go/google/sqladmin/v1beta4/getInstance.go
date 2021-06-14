@@ -36,7 +36,7 @@ type LookupInstanceResult struct {
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionStatus DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-	FailoverReplica GetInstanceFailoverReplicaResponse `pulumi:"failoverReplica"`
+	FailoverReplica InstanceFailoverReplicaResponse `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone string `pulumi:"gceZone"`
 	// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.

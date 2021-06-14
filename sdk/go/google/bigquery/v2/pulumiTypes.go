@@ -2392,7 +2392,7 @@ type BqmlTrainingRun struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State *string `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions *TableTrainingOptions `pulumi:"trainingOptions"`
+	TrainingOptions *BqmlTrainingRunTrainingOptions `pulumi:"trainingOptions"`
 }
 
 // BqmlTrainingRunInput is an input type that accepts BqmlTrainingRunArgs and BqmlTrainingRunOutput values.
@@ -2414,7 +2414,7 @@ type BqmlTrainingRunArgs struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions TableTrainingOptionsPtrInput `pulumi:"trainingOptions"`
+	TrainingOptions BqmlTrainingRunTrainingOptionsPtrInput `pulumi:"trainingOptions"`
 }
 
 func (BqmlTrainingRunArgs) ElementType() reflect.Type {
@@ -2484,8 +2484,8 @@ func (o BqmlTrainingRunOutput) State() pulumi.StringPtrOutput {
 }
 
 // [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-func (o BqmlTrainingRunOutput) TrainingOptions() TableTrainingOptionsPtrOutput {
-	return o.ApplyT(func(v BqmlTrainingRun) *TableTrainingOptions { return v.TrainingOptions }).(TableTrainingOptionsPtrOutput)
+func (o BqmlTrainingRunOutput) TrainingOptions() BqmlTrainingRunTrainingOptionsPtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRun) *BqmlTrainingRunTrainingOptions { return v.TrainingOptions }).(BqmlTrainingRunTrainingOptionsPtrOutput)
 }
 
 type BqmlTrainingRunArrayOutput struct{ *pulumi.OutputState }
@@ -2516,7 +2516,7 @@ type BqmlTrainingRunResponse struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State string `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions TableTrainingOptionsResponse `pulumi:"trainingOptions"`
+	TrainingOptions BqmlTrainingRunTrainingOptionsResponse `pulumi:"trainingOptions"`
 }
 
 // BqmlTrainingRunResponseInput is an input type that accepts BqmlTrainingRunResponseArgs and BqmlTrainingRunResponseOutput values.
@@ -2538,7 +2538,7 @@ type BqmlTrainingRunResponseArgs struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State pulumi.StringInput `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions TableTrainingOptionsResponseInput `pulumi:"trainingOptions"`
+	TrainingOptions BqmlTrainingRunTrainingOptionsResponseInput `pulumi:"trainingOptions"`
 }
 
 func (BqmlTrainingRunResponseArgs) ElementType() reflect.Type {
@@ -2608,8 +2608,8 @@ func (o BqmlTrainingRunResponseOutput) State() pulumi.StringOutput {
 }
 
 // [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-func (o BqmlTrainingRunResponseOutput) TrainingOptions() TableTrainingOptionsResponseOutput {
-	return o.ApplyT(func(v BqmlTrainingRunResponse) TableTrainingOptionsResponse { return v.TrainingOptions }).(TableTrainingOptionsResponseOutput)
+func (o BqmlTrainingRunResponseOutput) TrainingOptions() BqmlTrainingRunTrainingOptionsResponseOutput {
+	return o.ApplyT(func(v BqmlTrainingRunResponse) BqmlTrainingRunTrainingOptionsResponse { return v.TrainingOptions }).(BqmlTrainingRunTrainingOptionsResponseOutput)
 }
 
 type BqmlTrainingRunResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2630,6 +2630,355 @@ func (o BqmlTrainingRunResponseArrayOutput) Index(i pulumi.IntInput) BqmlTrainin
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BqmlTrainingRunResponse {
 		return vs[0].([]BqmlTrainingRunResponse)[vs[1].(int)]
 	}).(BqmlTrainingRunResponseOutput)
+}
+
+// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+type BqmlTrainingRunTrainingOptions struct {
+	EarlyStop               *bool    `pulumi:"earlyStop"`
+	L1Reg                   *float64 `pulumi:"l1Reg"`
+	L2Reg                   *float64 `pulumi:"l2Reg"`
+	LearnRate               *float64 `pulumi:"learnRate"`
+	LearnRateStrategy       *string  `pulumi:"learnRateStrategy"`
+	LineSearchInitLearnRate *float64 `pulumi:"lineSearchInitLearnRate"`
+	MaxIteration            *string  `pulumi:"maxIteration"`
+	MinRelProgress          *float64 `pulumi:"minRelProgress"`
+	WarmStart               *bool    `pulumi:"warmStart"`
+}
+
+// BqmlTrainingRunTrainingOptionsInput is an input type that accepts BqmlTrainingRunTrainingOptionsArgs and BqmlTrainingRunTrainingOptionsOutput values.
+// You can construct a concrete instance of `BqmlTrainingRunTrainingOptionsInput` via:
+//
+//          BqmlTrainingRunTrainingOptionsArgs{...}
+type BqmlTrainingRunTrainingOptionsInput interface {
+	pulumi.Input
+
+	ToBqmlTrainingRunTrainingOptionsOutput() BqmlTrainingRunTrainingOptionsOutput
+	ToBqmlTrainingRunTrainingOptionsOutputWithContext(context.Context) BqmlTrainingRunTrainingOptionsOutput
+}
+
+// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+type BqmlTrainingRunTrainingOptionsArgs struct {
+	EarlyStop               pulumi.BoolPtrInput    `pulumi:"earlyStop"`
+	L1Reg                   pulumi.Float64PtrInput `pulumi:"l1Reg"`
+	L2Reg                   pulumi.Float64PtrInput `pulumi:"l2Reg"`
+	LearnRate               pulumi.Float64PtrInput `pulumi:"learnRate"`
+	LearnRateStrategy       pulumi.StringPtrInput  `pulumi:"learnRateStrategy"`
+	LineSearchInitLearnRate pulumi.Float64PtrInput `pulumi:"lineSearchInitLearnRate"`
+	MaxIteration            pulumi.StringPtrInput  `pulumi:"maxIteration"`
+	MinRelProgress          pulumi.Float64PtrInput `pulumi:"minRelProgress"`
+	WarmStart               pulumi.BoolPtrInput    `pulumi:"warmStart"`
+}
+
+func (BqmlTrainingRunTrainingOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BqmlTrainingRunTrainingOptions)(nil)).Elem()
+}
+
+func (i BqmlTrainingRunTrainingOptionsArgs) ToBqmlTrainingRunTrainingOptionsOutput() BqmlTrainingRunTrainingOptionsOutput {
+	return i.ToBqmlTrainingRunTrainingOptionsOutputWithContext(context.Background())
+}
+
+func (i BqmlTrainingRunTrainingOptionsArgs) ToBqmlTrainingRunTrainingOptionsOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunTrainingOptionsOutput)
+}
+
+func (i BqmlTrainingRunTrainingOptionsArgs) ToBqmlTrainingRunTrainingOptionsPtrOutput() BqmlTrainingRunTrainingOptionsPtrOutput {
+	return i.ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i BqmlTrainingRunTrainingOptionsArgs) ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunTrainingOptionsOutput).ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(ctx)
+}
+
+// BqmlTrainingRunTrainingOptionsPtrInput is an input type that accepts BqmlTrainingRunTrainingOptionsArgs, BqmlTrainingRunTrainingOptionsPtr and BqmlTrainingRunTrainingOptionsPtrOutput values.
+// You can construct a concrete instance of `BqmlTrainingRunTrainingOptionsPtrInput` via:
+//
+//          BqmlTrainingRunTrainingOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type BqmlTrainingRunTrainingOptionsPtrInput interface {
+	pulumi.Input
+
+	ToBqmlTrainingRunTrainingOptionsPtrOutput() BqmlTrainingRunTrainingOptionsPtrOutput
+	ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(context.Context) BqmlTrainingRunTrainingOptionsPtrOutput
+}
+
+type bqmlTrainingRunTrainingOptionsPtrType BqmlTrainingRunTrainingOptionsArgs
+
+func BqmlTrainingRunTrainingOptionsPtr(v *BqmlTrainingRunTrainingOptionsArgs) BqmlTrainingRunTrainingOptionsPtrInput {
+	return (*bqmlTrainingRunTrainingOptionsPtrType)(v)
+}
+
+func (*bqmlTrainingRunTrainingOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BqmlTrainingRunTrainingOptions)(nil)).Elem()
+}
+
+func (i *bqmlTrainingRunTrainingOptionsPtrType) ToBqmlTrainingRunTrainingOptionsPtrOutput() BqmlTrainingRunTrainingOptionsPtrOutput {
+	return i.ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *bqmlTrainingRunTrainingOptionsPtrType) ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunTrainingOptionsPtrOutput)
+}
+
+// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+type BqmlTrainingRunTrainingOptionsOutput struct{ *pulumi.OutputState }
+
+func (BqmlTrainingRunTrainingOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BqmlTrainingRunTrainingOptions)(nil)).Elem()
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) ToBqmlTrainingRunTrainingOptionsOutput() BqmlTrainingRunTrainingOptionsOutput {
+	return o
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) ToBqmlTrainingRunTrainingOptionsOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsOutput {
+	return o
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) ToBqmlTrainingRunTrainingOptionsPtrOutput() BqmlTrainingRunTrainingOptionsPtrOutput {
+	return o.ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsPtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *BqmlTrainingRunTrainingOptions {
+		return &v
+	}).(BqmlTrainingRunTrainingOptionsPtrOutput)
+}
+func (o BqmlTrainingRunTrainingOptionsOutput) EarlyStop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *bool { return v.EarlyStop }).(pulumi.BoolPtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) L1Reg() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *float64 { return v.L1Reg }).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) L2Reg() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *float64 { return v.L2Reg }).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) LearnRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *float64 { return v.LearnRate }).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) LearnRateStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *string { return v.LearnRateStrategy }).(pulumi.StringPtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) LineSearchInitLearnRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *float64 { return v.LineSearchInitLearnRate }).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) MaxIteration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *string { return v.MaxIteration }).(pulumi.StringPtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) MinRelProgress() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *float64 { return v.MinRelProgress }).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsOutput) WarmStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptions) *bool { return v.WarmStart }).(pulumi.BoolPtrOutput)
+}
+
+type BqmlTrainingRunTrainingOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (BqmlTrainingRunTrainingOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BqmlTrainingRunTrainingOptions)(nil)).Elem()
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) ToBqmlTrainingRunTrainingOptionsPtrOutput() BqmlTrainingRunTrainingOptionsPtrOutput {
+	return o
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) ToBqmlTrainingRunTrainingOptionsPtrOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsPtrOutput {
+	return o
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) Elem() BqmlTrainingRunTrainingOptionsOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) BqmlTrainingRunTrainingOptions { return *v }).(BqmlTrainingRunTrainingOptionsOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) EarlyStop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EarlyStop
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) L1Reg() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.L1Reg
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) L2Reg() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.L2Reg
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) LearnRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LearnRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) LearnRateStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LearnRateStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) LineSearchInitLearnRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LineSearchInitLearnRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) MaxIteration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIteration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) MinRelProgress() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinRelProgress
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsPtrOutput) WarmStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BqmlTrainingRunTrainingOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WarmStart
+	}).(pulumi.BoolPtrOutput)
+}
+
+// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+type BqmlTrainingRunTrainingOptionsResponse struct {
+	EarlyStop               bool    `pulumi:"earlyStop"`
+	L1Reg                   float64 `pulumi:"l1Reg"`
+	L2Reg                   float64 `pulumi:"l2Reg"`
+	LearnRate               float64 `pulumi:"learnRate"`
+	LearnRateStrategy       string  `pulumi:"learnRateStrategy"`
+	LineSearchInitLearnRate float64 `pulumi:"lineSearchInitLearnRate"`
+	MaxIteration            string  `pulumi:"maxIteration"`
+	MinRelProgress          float64 `pulumi:"minRelProgress"`
+	WarmStart               bool    `pulumi:"warmStart"`
+}
+
+// BqmlTrainingRunTrainingOptionsResponseInput is an input type that accepts BqmlTrainingRunTrainingOptionsResponseArgs and BqmlTrainingRunTrainingOptionsResponseOutput values.
+// You can construct a concrete instance of `BqmlTrainingRunTrainingOptionsResponseInput` via:
+//
+//          BqmlTrainingRunTrainingOptionsResponseArgs{...}
+type BqmlTrainingRunTrainingOptionsResponseInput interface {
+	pulumi.Input
+
+	ToBqmlTrainingRunTrainingOptionsResponseOutput() BqmlTrainingRunTrainingOptionsResponseOutput
+	ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(context.Context) BqmlTrainingRunTrainingOptionsResponseOutput
+}
+
+// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+type BqmlTrainingRunTrainingOptionsResponseArgs struct {
+	EarlyStop               pulumi.BoolInput    `pulumi:"earlyStop"`
+	L1Reg                   pulumi.Float64Input `pulumi:"l1Reg"`
+	L2Reg                   pulumi.Float64Input `pulumi:"l2Reg"`
+	LearnRate               pulumi.Float64Input `pulumi:"learnRate"`
+	LearnRateStrategy       pulumi.StringInput  `pulumi:"learnRateStrategy"`
+	LineSearchInitLearnRate pulumi.Float64Input `pulumi:"lineSearchInitLearnRate"`
+	MaxIteration            pulumi.StringInput  `pulumi:"maxIteration"`
+	MinRelProgress          pulumi.Float64Input `pulumi:"minRelProgress"`
+	WarmStart               pulumi.BoolInput    `pulumi:"warmStart"`
+}
+
+func (BqmlTrainingRunTrainingOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BqmlTrainingRunTrainingOptionsResponse)(nil)).Elem()
+}
+
+func (i BqmlTrainingRunTrainingOptionsResponseArgs) ToBqmlTrainingRunTrainingOptionsResponseOutput() BqmlTrainingRunTrainingOptionsResponseOutput {
+	return i.ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i BqmlTrainingRunTrainingOptionsResponseArgs) ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BqmlTrainingRunTrainingOptionsResponseOutput)
+}
+
+// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+type BqmlTrainingRunTrainingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (BqmlTrainingRunTrainingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BqmlTrainingRunTrainingOptionsResponse)(nil)).Elem()
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) ToBqmlTrainingRunTrainingOptionsResponseOutput() BqmlTrainingRunTrainingOptionsResponseOutput {
+	return o
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) ToBqmlTrainingRunTrainingOptionsResponseOutputWithContext(ctx context.Context) BqmlTrainingRunTrainingOptionsResponseOutput {
+	return o
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) EarlyStop() pulumi.BoolOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) bool { return v.EarlyStop }).(pulumi.BoolOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) L1Reg() pulumi.Float64Output {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) float64 { return v.L1Reg }).(pulumi.Float64Output)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) L2Reg() pulumi.Float64Output {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) float64 { return v.L2Reg }).(pulumi.Float64Output)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) LearnRate() pulumi.Float64Output {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) float64 { return v.LearnRate }).(pulumi.Float64Output)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) LearnRateStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) string { return v.LearnRateStrategy }).(pulumi.StringOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) LineSearchInitLearnRate() pulumi.Float64Output {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) float64 { return v.LineSearchInitLearnRate }).(pulumi.Float64Output)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) MaxIteration() pulumi.StringOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) string { return v.MaxIteration }).(pulumi.StringOutput)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) MinRelProgress() pulumi.Float64Output {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) float64 { return v.MinRelProgress }).(pulumi.Float64Output)
+}
+
+func (o BqmlTrainingRunTrainingOptionsResponseOutput) WarmStart() pulumi.BoolOutput {
+	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) bool { return v.WarmStart }).(pulumi.BoolOutput)
 }
 
 type Clustering struct {
@@ -3560,8 +3909,8 @@ func (o CsvOptionsResponsePtrOutput) SkipLeadingRows() pulumi.StringPtrOutput {
 
 type DatasetAccessEntry struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      *DatasetReference         `pulumi:"dataset"`
-	Target_types []DatasetTarget_typesItem `pulumi:"target_types"`
+	Dataset      *DatasetReference                    `pulumi:"dataset"`
+	Target_types []DatasetAccessEntryTarget_typesItem `pulumi:"target_types"`
 }
 
 // DatasetAccessEntryInput is an input type that accepts DatasetAccessEntryArgs and DatasetAccessEntryOutput values.
@@ -3577,8 +3926,8 @@ type DatasetAccessEntryInput interface {
 
 type DatasetAccessEntryArgs struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      DatasetReferencePtrInput          `pulumi:"dataset"`
-	Target_types DatasetTarget_typesItemArrayInput `pulumi:"target_types"`
+	Dataset      DatasetReferencePtrInput                     `pulumi:"dataset"`
+	Target_types DatasetAccessEntryTarget_typesItemArrayInput `pulumi:"target_types"`
 }
 
 func (DatasetAccessEntryArgs) ElementType() reflect.Type {
@@ -3663,8 +4012,8 @@ func (o DatasetAccessEntryOutput) Dataset() DatasetReferencePtrOutput {
 	return o.ApplyT(func(v DatasetAccessEntry) *DatasetReference { return v.Dataset }).(DatasetReferencePtrOutput)
 }
 
-func (o DatasetAccessEntryOutput) Target_types() DatasetTarget_typesItemArrayOutput {
-	return o.ApplyT(func(v DatasetAccessEntry) []DatasetTarget_typesItem { return v.Target_types }).(DatasetTarget_typesItemArrayOutput)
+func (o DatasetAccessEntryOutput) Target_types() DatasetAccessEntryTarget_typesItemArrayOutput {
+	return o.ApplyT(func(v DatasetAccessEntry) []DatasetAccessEntryTarget_typesItem { return v.Target_types }).(DatasetAccessEntryTarget_typesItemArrayOutput)
 }
 
 type DatasetAccessEntryPtrOutput struct{ *pulumi.OutputState }
@@ -3695,19 +4044,19 @@ func (o DatasetAccessEntryPtrOutput) Dataset() DatasetReferencePtrOutput {
 	}).(DatasetReferencePtrOutput)
 }
 
-func (o DatasetAccessEntryPtrOutput) Target_types() DatasetTarget_typesItemArrayOutput {
-	return o.ApplyT(func(v *DatasetAccessEntry) []DatasetTarget_typesItem {
+func (o DatasetAccessEntryPtrOutput) Target_types() DatasetAccessEntryTarget_typesItemArrayOutput {
+	return o.ApplyT(func(v *DatasetAccessEntry) []DatasetAccessEntryTarget_typesItem {
 		if v == nil {
 			return nil
 		}
 		return v.Target_types
-	}).(DatasetTarget_typesItemArrayOutput)
+	}).(DatasetAccessEntryTarget_typesItemArrayOutput)
 }
 
 type DatasetAccessEntryResponse struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      DatasetReferenceResponse          `pulumi:"dataset"`
-	Target_types []DatasetTarget_typesItemResponse `pulumi:"target_types"`
+	Dataset      DatasetReferenceResponse                     `pulumi:"dataset"`
+	Target_types []DatasetAccessEntryTarget_typesItemResponse `pulumi:"target_types"`
 }
 
 // DatasetAccessEntryResponseInput is an input type that accepts DatasetAccessEntryResponseArgs and DatasetAccessEntryResponseOutput values.
@@ -3723,8 +4072,8 @@ type DatasetAccessEntryResponseInput interface {
 
 type DatasetAccessEntryResponseArgs struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      DatasetReferenceResponseInput             `pulumi:"dataset"`
-	Target_types DatasetTarget_typesItemResponseArrayInput `pulumi:"target_types"`
+	Dataset      DatasetReferenceResponseInput                        `pulumi:"dataset"`
+	Target_types DatasetAccessEntryTarget_typesItemResponseArrayInput `pulumi:"target_types"`
 }
 
 func (DatasetAccessEntryResponseArgs) ElementType() reflect.Type {
@@ -3758,8 +4107,202 @@ func (o DatasetAccessEntryResponseOutput) Dataset() DatasetReferenceResponseOutp
 	return o.ApplyT(func(v DatasetAccessEntryResponse) DatasetReferenceResponse { return v.Dataset }).(DatasetReferenceResponseOutput)
 }
 
-func (o DatasetAccessEntryResponseOutput) Target_types() DatasetTarget_typesItemResponseArrayOutput {
-	return o.ApplyT(func(v DatasetAccessEntryResponse) []DatasetTarget_typesItemResponse { return v.Target_types }).(DatasetTarget_typesItemResponseArrayOutput)
+func (o DatasetAccessEntryResponseOutput) Target_types() DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+	return o.ApplyT(func(v DatasetAccessEntryResponse) []DatasetAccessEntryTarget_typesItemResponse { return v.Target_types }).(DatasetAccessEntryTarget_typesItemResponseArrayOutput)
+}
+
+type DatasetAccessEntryTarget_typesItem struct {
+	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+	TargetType *string `pulumi:"targetType"`
+}
+
+// DatasetAccessEntryTarget_typesItemInput is an input type that accepts DatasetAccessEntryTarget_typesItemArgs and DatasetAccessEntryTarget_typesItemOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemInput` via:
+//
+//          DatasetAccessEntryTarget_typesItemArgs{...}
+type DatasetAccessEntryTarget_typesItemInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTarget_typesItemOutput() DatasetAccessEntryTarget_typesItemOutput
+	ToDatasetAccessEntryTarget_typesItemOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemOutput
+}
+
+type DatasetAccessEntryTarget_typesItemArgs struct {
+	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (DatasetAccessEntryTarget_typesItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+}
+
+func (i DatasetAccessEntryTarget_typesItemArgs) ToDatasetAccessEntryTarget_typesItemOutput() DatasetAccessEntryTarget_typesItemOutput {
+	return i.ToDatasetAccessEntryTarget_typesItemOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessEntryTarget_typesItemArgs) ToDatasetAccessEntryTarget_typesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemOutput)
+}
+
+// DatasetAccessEntryTarget_typesItemArrayInput is an input type that accepts DatasetAccessEntryTarget_typesItemArray and DatasetAccessEntryTarget_typesItemArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemArrayInput` via:
+//
+//          DatasetAccessEntryTarget_typesItemArray{ DatasetAccessEntryTarget_typesItemArgs{...} }
+type DatasetAccessEntryTarget_typesItemArrayInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTarget_typesItemArrayOutput() DatasetAccessEntryTarget_typesItemArrayOutput
+	ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemArrayOutput
+}
+
+type DatasetAccessEntryTarget_typesItemArray []DatasetAccessEntryTarget_typesItemInput
+
+func (DatasetAccessEntryTarget_typesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+}
+
+func (i DatasetAccessEntryTarget_typesItemArray) ToDatasetAccessEntryTarget_typesItemArrayOutput() DatasetAccessEntryTarget_typesItemArrayOutput {
+	return i.ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessEntryTarget_typesItemArray) ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemArrayOutput)
+}
+
+type DatasetAccessEntryTarget_typesItemOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTarget_typesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTarget_typesItemOutput) ToDatasetAccessEntryTarget_typesItemOutput() DatasetAccessEntryTarget_typesItemOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTarget_typesItemOutput) ToDatasetAccessEntryTarget_typesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemOutput {
+	return o
+}
+
+// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+func (o DatasetAccessEntryTarget_typesItemOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessEntryTarget_typesItem) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type DatasetAccessEntryTarget_typesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTarget_typesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTarget_typesItemArrayOutput) ToDatasetAccessEntryTarget_typesItemArrayOutput() DatasetAccessEntryTarget_typesItemArrayOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTarget_typesItemArrayOutput) ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemArrayOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTarget_typesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTarget_typesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTarget_typesItem {
+		return vs[0].([]DatasetAccessEntryTarget_typesItem)[vs[1].(int)]
+	}).(DatasetAccessEntryTarget_typesItemOutput)
+}
+
+type DatasetAccessEntryTarget_typesItemResponse struct {
+	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+	TargetType string `pulumi:"targetType"`
+}
+
+// DatasetAccessEntryTarget_typesItemResponseInput is an input type that accepts DatasetAccessEntryTarget_typesItemResponseArgs and DatasetAccessEntryTarget_typesItemResponseOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemResponseInput` via:
+//
+//          DatasetAccessEntryTarget_typesItemResponseArgs{...}
+type DatasetAccessEntryTarget_typesItemResponseInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTarget_typesItemResponseOutput() DatasetAccessEntryTarget_typesItemResponseOutput
+	ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemResponseOutput
+}
+
+type DatasetAccessEntryTarget_typesItemResponseArgs struct {
+	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+}
+
+func (DatasetAccessEntryTarget_typesItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+}
+
+func (i DatasetAccessEntryTarget_typesItemResponseArgs) ToDatasetAccessEntryTarget_typesItemResponseOutput() DatasetAccessEntryTarget_typesItemResponseOutput {
+	return i.ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessEntryTarget_typesItemResponseArgs) ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemResponseOutput)
+}
+
+// DatasetAccessEntryTarget_typesItemResponseArrayInput is an input type that accepts DatasetAccessEntryTarget_typesItemResponseArray and DatasetAccessEntryTarget_typesItemResponseArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemResponseArrayInput` via:
+//
+//          DatasetAccessEntryTarget_typesItemResponseArray{ DatasetAccessEntryTarget_typesItemResponseArgs{...} }
+type DatasetAccessEntryTarget_typesItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToDatasetAccessEntryTarget_typesItemResponseArrayOutput() DatasetAccessEntryTarget_typesItemResponseArrayOutput
+	ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemResponseArrayOutput
+}
+
+type DatasetAccessEntryTarget_typesItemResponseArray []DatasetAccessEntryTarget_typesItemResponseInput
+
+func (DatasetAccessEntryTarget_typesItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+}
+
+func (i DatasetAccessEntryTarget_typesItemResponseArray) ToDatasetAccessEntryTarget_typesItemResponseArrayOutput() DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+	return i.ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessEntryTarget_typesItemResponseArray) ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemResponseArrayOutput)
+}
+
+type DatasetAccessEntryTarget_typesItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTarget_typesItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTarget_typesItemResponseOutput) ToDatasetAccessEntryTarget_typesItemResponseOutput() DatasetAccessEntryTarget_typesItemResponseOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTarget_typesItemResponseOutput) ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseOutput {
+	return o
+}
+
+// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+func (o DatasetAccessEntryTarget_typesItemResponseOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessEntryTarget_typesItemResponse) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+type DatasetAccessEntryTarget_typesItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessEntryTarget_typesItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+}
+
+func (o DatasetAccessEntryTarget_typesItemResponseArrayOutput) ToDatasetAccessEntryTarget_typesItemResponseArrayOutput() DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTarget_typesItemResponseArrayOutput) ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+	return o
+}
+
+func (o DatasetAccessEntryTarget_typesItemResponseArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTarget_typesItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTarget_typesItemResponse {
+		return vs[0].([]DatasetAccessEntryTarget_typesItemResponse)[vs[1].(int)]
+	}).(DatasetAccessEntryTarget_typesItemResponseOutput)
 }
 
 type DatasetAccessItem struct {
@@ -4398,200 +4941,6 @@ func (o DatasetReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 		}
 		return &v.Project
 	}).(pulumi.StringPtrOutput)
-}
-
-type DatasetTarget_typesItem struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType *string `pulumi:"targetType"`
-}
-
-// DatasetTarget_typesItemInput is an input type that accepts DatasetTarget_typesItemArgs and DatasetTarget_typesItemOutput values.
-// You can construct a concrete instance of `DatasetTarget_typesItemInput` via:
-//
-//          DatasetTarget_typesItemArgs{...}
-type DatasetTarget_typesItemInput interface {
-	pulumi.Input
-
-	ToDatasetTarget_typesItemOutput() DatasetTarget_typesItemOutput
-	ToDatasetTarget_typesItemOutputWithContext(context.Context) DatasetTarget_typesItemOutput
-}
-
-type DatasetTarget_typesItemArgs struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
-}
-
-func (DatasetTarget_typesItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetTarget_typesItem)(nil)).Elem()
-}
-
-func (i DatasetTarget_typesItemArgs) ToDatasetTarget_typesItemOutput() DatasetTarget_typesItemOutput {
-	return i.ToDatasetTarget_typesItemOutputWithContext(context.Background())
-}
-
-func (i DatasetTarget_typesItemArgs) ToDatasetTarget_typesItemOutputWithContext(ctx context.Context) DatasetTarget_typesItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetTarget_typesItemOutput)
-}
-
-// DatasetTarget_typesItemArrayInput is an input type that accepts DatasetTarget_typesItemArray and DatasetTarget_typesItemArrayOutput values.
-// You can construct a concrete instance of `DatasetTarget_typesItemArrayInput` via:
-//
-//          DatasetTarget_typesItemArray{ DatasetTarget_typesItemArgs{...} }
-type DatasetTarget_typesItemArrayInput interface {
-	pulumi.Input
-
-	ToDatasetTarget_typesItemArrayOutput() DatasetTarget_typesItemArrayOutput
-	ToDatasetTarget_typesItemArrayOutputWithContext(context.Context) DatasetTarget_typesItemArrayOutput
-}
-
-type DatasetTarget_typesItemArray []DatasetTarget_typesItemInput
-
-func (DatasetTarget_typesItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetTarget_typesItem)(nil)).Elem()
-}
-
-func (i DatasetTarget_typesItemArray) ToDatasetTarget_typesItemArrayOutput() DatasetTarget_typesItemArrayOutput {
-	return i.ToDatasetTarget_typesItemArrayOutputWithContext(context.Background())
-}
-
-func (i DatasetTarget_typesItemArray) ToDatasetTarget_typesItemArrayOutputWithContext(ctx context.Context) DatasetTarget_typesItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetTarget_typesItemArrayOutput)
-}
-
-type DatasetTarget_typesItemOutput struct{ *pulumi.OutputState }
-
-func (DatasetTarget_typesItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetTarget_typesItem)(nil)).Elem()
-}
-
-func (o DatasetTarget_typesItemOutput) ToDatasetTarget_typesItemOutput() DatasetTarget_typesItemOutput {
-	return o
-}
-
-func (o DatasetTarget_typesItemOutput) ToDatasetTarget_typesItemOutputWithContext(ctx context.Context) DatasetTarget_typesItemOutput {
-	return o
-}
-
-// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-func (o DatasetTarget_typesItemOutput) TargetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetTarget_typesItem) *string { return v.TargetType }).(pulumi.StringPtrOutput)
-}
-
-type DatasetTarget_typesItemArrayOutput struct{ *pulumi.OutputState }
-
-func (DatasetTarget_typesItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetTarget_typesItem)(nil)).Elem()
-}
-
-func (o DatasetTarget_typesItemArrayOutput) ToDatasetTarget_typesItemArrayOutput() DatasetTarget_typesItemArrayOutput {
-	return o
-}
-
-func (o DatasetTarget_typesItemArrayOutput) ToDatasetTarget_typesItemArrayOutputWithContext(ctx context.Context) DatasetTarget_typesItemArrayOutput {
-	return o
-}
-
-func (o DatasetTarget_typesItemArrayOutput) Index(i pulumi.IntInput) DatasetTarget_typesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetTarget_typesItem {
-		return vs[0].([]DatasetTarget_typesItem)[vs[1].(int)]
-	}).(DatasetTarget_typesItemOutput)
-}
-
-type DatasetTarget_typesItemResponse struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType string `pulumi:"targetType"`
-}
-
-// DatasetTarget_typesItemResponseInput is an input type that accepts DatasetTarget_typesItemResponseArgs and DatasetTarget_typesItemResponseOutput values.
-// You can construct a concrete instance of `DatasetTarget_typesItemResponseInput` via:
-//
-//          DatasetTarget_typesItemResponseArgs{...}
-type DatasetTarget_typesItemResponseInput interface {
-	pulumi.Input
-
-	ToDatasetTarget_typesItemResponseOutput() DatasetTarget_typesItemResponseOutput
-	ToDatasetTarget_typesItemResponseOutputWithContext(context.Context) DatasetTarget_typesItemResponseOutput
-}
-
-type DatasetTarget_typesItemResponseArgs struct {
-	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-	TargetType pulumi.StringInput `pulumi:"targetType"`
-}
-
-func (DatasetTarget_typesItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetTarget_typesItemResponse)(nil)).Elem()
-}
-
-func (i DatasetTarget_typesItemResponseArgs) ToDatasetTarget_typesItemResponseOutput() DatasetTarget_typesItemResponseOutput {
-	return i.ToDatasetTarget_typesItemResponseOutputWithContext(context.Background())
-}
-
-func (i DatasetTarget_typesItemResponseArgs) ToDatasetTarget_typesItemResponseOutputWithContext(ctx context.Context) DatasetTarget_typesItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetTarget_typesItemResponseOutput)
-}
-
-// DatasetTarget_typesItemResponseArrayInput is an input type that accepts DatasetTarget_typesItemResponseArray and DatasetTarget_typesItemResponseArrayOutput values.
-// You can construct a concrete instance of `DatasetTarget_typesItemResponseArrayInput` via:
-//
-//          DatasetTarget_typesItemResponseArray{ DatasetTarget_typesItemResponseArgs{...} }
-type DatasetTarget_typesItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToDatasetTarget_typesItemResponseArrayOutput() DatasetTarget_typesItemResponseArrayOutput
-	ToDatasetTarget_typesItemResponseArrayOutputWithContext(context.Context) DatasetTarget_typesItemResponseArrayOutput
-}
-
-type DatasetTarget_typesItemResponseArray []DatasetTarget_typesItemResponseInput
-
-func (DatasetTarget_typesItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetTarget_typesItemResponse)(nil)).Elem()
-}
-
-func (i DatasetTarget_typesItemResponseArray) ToDatasetTarget_typesItemResponseArrayOutput() DatasetTarget_typesItemResponseArrayOutput {
-	return i.ToDatasetTarget_typesItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DatasetTarget_typesItemResponseArray) ToDatasetTarget_typesItemResponseArrayOutputWithContext(ctx context.Context) DatasetTarget_typesItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetTarget_typesItemResponseArrayOutput)
-}
-
-type DatasetTarget_typesItemResponseOutput struct{ *pulumi.OutputState }
-
-func (DatasetTarget_typesItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetTarget_typesItemResponse)(nil)).Elem()
-}
-
-func (o DatasetTarget_typesItemResponseOutput) ToDatasetTarget_typesItemResponseOutput() DatasetTarget_typesItemResponseOutput {
-	return o
-}
-
-func (o DatasetTarget_typesItemResponseOutput) ToDatasetTarget_typesItemResponseOutputWithContext(ctx context.Context) DatasetTarget_typesItemResponseOutput {
-	return o
-}
-
-// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-func (o DatasetTarget_typesItemResponseOutput) TargetType() pulumi.StringOutput {
-	return o.ApplyT(func(v DatasetTarget_typesItemResponse) string { return v.TargetType }).(pulumi.StringOutput)
-}
-
-type DatasetTarget_typesItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (DatasetTarget_typesItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetTarget_typesItemResponse)(nil)).Elem()
-}
-
-func (o DatasetTarget_typesItemResponseArrayOutput) ToDatasetTarget_typesItemResponseArrayOutput() DatasetTarget_typesItemResponseArrayOutput {
-	return o
-}
-
-func (o DatasetTarget_typesItemResponseArrayOutput) ToDatasetTarget_typesItemResponseArrayOutputWithContext(ctx context.Context) DatasetTarget_typesItemResponseArrayOutput {
-	return o
-}
-
-func (o DatasetTarget_typesItemResponseArrayOutput) Index(i pulumi.IntInput) DatasetTarget_typesItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetTarget_typesItemResponse {
-		return vs[0].([]DatasetTarget_typesItemResponse)[vs[1].(int)]
-	}).(DatasetTarget_typesItemResponseOutput)
 }
 
 type DestinationTableProperties struct {
@@ -8208,195 +8557,6 @@ func (o HivePartitioningOptionsResponsePtrOutput) SourceUriPrefix() pulumi.Strin
 		}
 		return &v.SourceUriPrefix
 	}).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type JobCategories struct {
-	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-	Names []string `pulumi:"names"`
-}
-
-// JobCategoriesInput is an input type that accepts JobCategoriesArgs and JobCategoriesOutput values.
-// You can construct a concrete instance of `JobCategoriesInput` via:
-//
-//          JobCategoriesArgs{...}
-type JobCategoriesInput interface {
-	pulumi.Input
-
-	ToJobCategoriesOutput() JobCategoriesOutput
-	ToJobCategoriesOutputWithContext(context.Context) JobCategoriesOutput
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type JobCategoriesArgs struct {
-	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (JobCategoriesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobCategories)(nil)).Elem()
-}
-
-func (i JobCategoriesArgs) ToJobCategoriesOutput() JobCategoriesOutput {
-	return i.ToJobCategoriesOutputWithContext(context.Background())
-}
-
-func (i JobCategoriesArgs) ToJobCategoriesOutputWithContext(ctx context.Context) JobCategoriesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobCategoriesOutput)
-}
-
-func (i JobCategoriesArgs) ToJobCategoriesPtrOutput() JobCategoriesPtrOutput {
-	return i.ToJobCategoriesPtrOutputWithContext(context.Background())
-}
-
-func (i JobCategoriesArgs) ToJobCategoriesPtrOutputWithContext(ctx context.Context) JobCategoriesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobCategoriesOutput).ToJobCategoriesPtrOutputWithContext(ctx)
-}
-
-// JobCategoriesPtrInput is an input type that accepts JobCategoriesArgs, JobCategoriesPtr and JobCategoriesPtrOutput values.
-// You can construct a concrete instance of `JobCategoriesPtrInput` via:
-//
-//          JobCategoriesArgs{...}
-//
-//  or:
-//
-//          nil
-type JobCategoriesPtrInput interface {
-	pulumi.Input
-
-	ToJobCategoriesPtrOutput() JobCategoriesPtrOutput
-	ToJobCategoriesPtrOutputWithContext(context.Context) JobCategoriesPtrOutput
-}
-
-type jobCategoriesPtrType JobCategoriesArgs
-
-func JobCategoriesPtr(v *JobCategoriesArgs) JobCategoriesPtrInput {
-	return (*jobCategoriesPtrType)(v)
-}
-
-func (*jobCategoriesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobCategories)(nil)).Elem()
-}
-
-func (i *jobCategoriesPtrType) ToJobCategoriesPtrOutput() JobCategoriesPtrOutput {
-	return i.ToJobCategoriesPtrOutputWithContext(context.Background())
-}
-
-func (i *jobCategoriesPtrType) ToJobCategoriesPtrOutputWithContext(ctx context.Context) JobCategoriesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobCategoriesPtrOutput)
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type JobCategoriesOutput struct{ *pulumi.OutputState }
-
-func (JobCategoriesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobCategories)(nil)).Elem()
-}
-
-func (o JobCategoriesOutput) ToJobCategoriesOutput() JobCategoriesOutput {
-	return o
-}
-
-func (o JobCategoriesOutput) ToJobCategoriesOutputWithContext(ctx context.Context) JobCategoriesOutput {
-	return o
-}
-
-func (o JobCategoriesOutput) ToJobCategoriesPtrOutput() JobCategoriesPtrOutput {
-	return o.ToJobCategoriesPtrOutputWithContext(context.Background())
-}
-
-func (o JobCategoriesOutput) ToJobCategoriesPtrOutputWithContext(ctx context.Context) JobCategoriesPtrOutput {
-	return o.ApplyT(func(v JobCategories) *JobCategories {
-		return &v
-	}).(JobCategoriesPtrOutput)
-}
-
-// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-func (o JobCategoriesOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobCategories) []string { return v.Names }).(pulumi.StringArrayOutput)
-}
-
-type JobCategoriesPtrOutput struct{ *pulumi.OutputState }
-
-func (JobCategoriesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobCategories)(nil)).Elem()
-}
-
-func (o JobCategoriesPtrOutput) ToJobCategoriesPtrOutput() JobCategoriesPtrOutput {
-	return o
-}
-
-func (o JobCategoriesPtrOutput) ToJobCategoriesPtrOutputWithContext(ctx context.Context) JobCategoriesPtrOutput {
-	return o
-}
-
-func (o JobCategoriesPtrOutput) Elem() JobCategoriesOutput {
-	return o.ApplyT(func(v *JobCategories) JobCategories { return *v }).(JobCategoriesOutput)
-}
-
-// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-func (o JobCategoriesPtrOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobCategories) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Names
-	}).(pulumi.StringArrayOutput)
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type JobCategoriesResponse struct {
-	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-	Names []string `pulumi:"names"`
-}
-
-// JobCategoriesResponseInput is an input type that accepts JobCategoriesResponseArgs and JobCategoriesResponseOutput values.
-// You can construct a concrete instance of `JobCategoriesResponseInput` via:
-//
-//          JobCategoriesResponseArgs{...}
-type JobCategoriesResponseInput interface {
-	pulumi.Input
-
-	ToJobCategoriesResponseOutput() JobCategoriesResponseOutput
-	ToJobCategoriesResponseOutputWithContext(context.Context) JobCategoriesResponseOutput
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type JobCategoriesResponseArgs struct {
-	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (JobCategoriesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobCategoriesResponse)(nil)).Elem()
-}
-
-func (i JobCategoriesResponseArgs) ToJobCategoriesResponseOutput() JobCategoriesResponseOutput {
-	return i.ToJobCategoriesResponseOutputWithContext(context.Background())
-}
-
-func (i JobCategoriesResponseArgs) ToJobCategoriesResponseOutputWithContext(ctx context.Context) JobCategoriesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobCategoriesResponseOutput)
-}
-
-// [Optional] The categories attached to this field, used for field-level access control.
-type JobCategoriesResponseOutput struct{ *pulumi.OutputState }
-
-func (JobCategoriesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobCategoriesResponse)(nil)).Elem()
-}
-
-func (o JobCategoriesResponseOutput) ToJobCategoriesResponseOutput() JobCategoriesResponseOutput {
-	return o
-}
-
-func (o JobCategoriesResponseOutput) ToJobCategoriesResponseOutputWithContext(ctx context.Context) JobCategoriesResponseOutput {
-	return o
-}
-
-// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-func (o JobCategoriesResponseOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobCategoriesResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type JobConfiguration struct {
@@ -12419,533 +12579,6 @@ func (o JobConfigurationTableCopyResponsePtrOutput) WriteDisposition() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobPolicyTags struct {
-	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-	Names []string `pulumi:"names"`
-}
-
-// JobPolicyTagsInput is an input type that accepts JobPolicyTagsArgs and JobPolicyTagsOutput values.
-// You can construct a concrete instance of `JobPolicyTagsInput` via:
-//
-//          JobPolicyTagsArgs{...}
-type JobPolicyTagsInput interface {
-	pulumi.Input
-
-	ToJobPolicyTagsOutput() JobPolicyTagsOutput
-	ToJobPolicyTagsOutputWithContext(context.Context) JobPolicyTagsOutput
-}
-
-type JobPolicyTagsArgs struct {
-	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (JobPolicyTagsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobPolicyTags)(nil)).Elem()
-}
-
-func (i JobPolicyTagsArgs) ToJobPolicyTagsOutput() JobPolicyTagsOutput {
-	return i.ToJobPolicyTagsOutputWithContext(context.Background())
-}
-
-func (i JobPolicyTagsArgs) ToJobPolicyTagsOutputWithContext(ctx context.Context) JobPolicyTagsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobPolicyTagsOutput)
-}
-
-func (i JobPolicyTagsArgs) ToJobPolicyTagsPtrOutput() JobPolicyTagsPtrOutput {
-	return i.ToJobPolicyTagsPtrOutputWithContext(context.Background())
-}
-
-func (i JobPolicyTagsArgs) ToJobPolicyTagsPtrOutputWithContext(ctx context.Context) JobPolicyTagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobPolicyTagsOutput).ToJobPolicyTagsPtrOutputWithContext(ctx)
-}
-
-// JobPolicyTagsPtrInput is an input type that accepts JobPolicyTagsArgs, JobPolicyTagsPtr and JobPolicyTagsPtrOutput values.
-// You can construct a concrete instance of `JobPolicyTagsPtrInput` via:
-//
-//          JobPolicyTagsArgs{...}
-//
-//  or:
-//
-//          nil
-type JobPolicyTagsPtrInput interface {
-	pulumi.Input
-
-	ToJobPolicyTagsPtrOutput() JobPolicyTagsPtrOutput
-	ToJobPolicyTagsPtrOutputWithContext(context.Context) JobPolicyTagsPtrOutput
-}
-
-type jobPolicyTagsPtrType JobPolicyTagsArgs
-
-func JobPolicyTagsPtr(v *JobPolicyTagsArgs) JobPolicyTagsPtrInput {
-	return (*jobPolicyTagsPtrType)(v)
-}
-
-func (*jobPolicyTagsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobPolicyTags)(nil)).Elem()
-}
-
-func (i *jobPolicyTagsPtrType) ToJobPolicyTagsPtrOutput() JobPolicyTagsPtrOutput {
-	return i.ToJobPolicyTagsPtrOutputWithContext(context.Background())
-}
-
-func (i *jobPolicyTagsPtrType) ToJobPolicyTagsPtrOutputWithContext(ctx context.Context) JobPolicyTagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobPolicyTagsPtrOutput)
-}
-
-type JobPolicyTagsOutput struct{ *pulumi.OutputState }
-
-func (JobPolicyTagsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobPolicyTags)(nil)).Elem()
-}
-
-func (o JobPolicyTagsOutput) ToJobPolicyTagsOutput() JobPolicyTagsOutput {
-	return o
-}
-
-func (o JobPolicyTagsOutput) ToJobPolicyTagsOutputWithContext(ctx context.Context) JobPolicyTagsOutput {
-	return o
-}
-
-func (o JobPolicyTagsOutput) ToJobPolicyTagsPtrOutput() JobPolicyTagsPtrOutput {
-	return o.ToJobPolicyTagsPtrOutputWithContext(context.Background())
-}
-
-func (o JobPolicyTagsOutput) ToJobPolicyTagsPtrOutputWithContext(ctx context.Context) JobPolicyTagsPtrOutput {
-	return o.ApplyT(func(v JobPolicyTags) *JobPolicyTags {
-		return &v
-	}).(JobPolicyTagsPtrOutput)
-}
-
-// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-func (o JobPolicyTagsOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobPolicyTags) []string { return v.Names }).(pulumi.StringArrayOutput)
-}
-
-type JobPolicyTagsPtrOutput struct{ *pulumi.OutputState }
-
-func (JobPolicyTagsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobPolicyTags)(nil)).Elem()
-}
-
-func (o JobPolicyTagsPtrOutput) ToJobPolicyTagsPtrOutput() JobPolicyTagsPtrOutput {
-	return o
-}
-
-func (o JobPolicyTagsPtrOutput) ToJobPolicyTagsPtrOutputWithContext(ctx context.Context) JobPolicyTagsPtrOutput {
-	return o
-}
-
-func (o JobPolicyTagsPtrOutput) Elem() JobPolicyTagsOutput {
-	return o.ApplyT(func(v *JobPolicyTags) JobPolicyTags { return *v }).(JobPolicyTagsOutput)
-}
-
-// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-func (o JobPolicyTagsPtrOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobPolicyTags) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Names
-	}).(pulumi.StringArrayOutput)
-}
-
-type JobPolicyTagsResponse struct {
-	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-	Names []string `pulumi:"names"`
-}
-
-// JobPolicyTagsResponseInput is an input type that accepts JobPolicyTagsResponseArgs and JobPolicyTagsResponseOutput values.
-// You can construct a concrete instance of `JobPolicyTagsResponseInput` via:
-//
-//          JobPolicyTagsResponseArgs{...}
-type JobPolicyTagsResponseInput interface {
-	pulumi.Input
-
-	ToJobPolicyTagsResponseOutput() JobPolicyTagsResponseOutput
-	ToJobPolicyTagsResponseOutputWithContext(context.Context) JobPolicyTagsResponseOutput
-}
-
-type JobPolicyTagsResponseArgs struct {
-	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-	Names pulumi.StringArrayInput `pulumi:"names"`
-}
-
-func (JobPolicyTagsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobPolicyTagsResponse)(nil)).Elem()
-}
-
-func (i JobPolicyTagsResponseArgs) ToJobPolicyTagsResponseOutput() JobPolicyTagsResponseOutput {
-	return i.ToJobPolicyTagsResponseOutputWithContext(context.Background())
-}
-
-func (i JobPolicyTagsResponseArgs) ToJobPolicyTagsResponseOutputWithContext(ctx context.Context) JobPolicyTagsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobPolicyTagsResponseOutput)
-}
-
-type JobPolicyTagsResponseOutput struct{ *pulumi.OutputState }
-
-func (JobPolicyTagsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobPolicyTagsResponse)(nil)).Elem()
-}
-
-func (o JobPolicyTagsResponseOutput) ToJobPolicyTagsResponseOutput() JobPolicyTagsResponseOutput {
-	return o
-}
-
-func (o JobPolicyTagsResponseOutput) ToJobPolicyTagsResponseOutputWithContext(ctx context.Context) JobPolicyTagsResponseOutput {
-	return o
-}
-
-// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-func (o JobPolicyTagsResponseOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JobPolicyTagsResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type JobRange struct {
-	// [TrustedTester] [Required] The end of range partitioning, exclusive.
-	End *string `pulumi:"end"`
-	// [TrustedTester] [Required] The width of each interval.
-	Interval *string `pulumi:"interval"`
-	// [TrustedTester] [Required] The start of range partitioning, inclusive.
-	Start *string `pulumi:"start"`
-}
-
-// JobRangeInput is an input type that accepts JobRangeArgs and JobRangeOutput values.
-// You can construct a concrete instance of `JobRangeInput` via:
-//
-//          JobRangeArgs{...}
-type JobRangeInput interface {
-	pulumi.Input
-
-	ToJobRangeOutput() JobRangeOutput
-	ToJobRangeOutputWithContext(context.Context) JobRangeOutput
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type JobRangeArgs struct {
-	// [TrustedTester] [Required] The end of range partitioning, exclusive.
-	End pulumi.StringPtrInput `pulumi:"end"`
-	// [TrustedTester] [Required] The width of each interval.
-	Interval pulumi.StringPtrInput `pulumi:"interval"`
-	// [TrustedTester] [Required] The start of range partitioning, inclusive.
-	Start pulumi.StringPtrInput `pulumi:"start"`
-}
-
-func (JobRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobRange)(nil)).Elem()
-}
-
-func (i JobRangeArgs) ToJobRangeOutput() JobRangeOutput {
-	return i.ToJobRangeOutputWithContext(context.Background())
-}
-
-func (i JobRangeArgs) ToJobRangeOutputWithContext(ctx context.Context) JobRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobRangeOutput)
-}
-
-func (i JobRangeArgs) ToJobRangePtrOutput() JobRangePtrOutput {
-	return i.ToJobRangePtrOutputWithContext(context.Background())
-}
-
-func (i JobRangeArgs) ToJobRangePtrOutputWithContext(ctx context.Context) JobRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobRangeOutput).ToJobRangePtrOutputWithContext(ctx)
-}
-
-// JobRangePtrInput is an input type that accepts JobRangeArgs, JobRangePtr and JobRangePtrOutput values.
-// You can construct a concrete instance of `JobRangePtrInput` via:
-//
-//          JobRangeArgs{...}
-//
-//  or:
-//
-//          nil
-type JobRangePtrInput interface {
-	pulumi.Input
-
-	ToJobRangePtrOutput() JobRangePtrOutput
-	ToJobRangePtrOutputWithContext(context.Context) JobRangePtrOutput
-}
-
-type jobRangePtrType JobRangeArgs
-
-func JobRangePtr(v *JobRangeArgs) JobRangePtrInput {
-	return (*jobRangePtrType)(v)
-}
-
-func (*jobRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobRange)(nil)).Elem()
-}
-
-func (i *jobRangePtrType) ToJobRangePtrOutput() JobRangePtrOutput {
-	return i.ToJobRangePtrOutputWithContext(context.Background())
-}
-
-func (i *jobRangePtrType) ToJobRangePtrOutputWithContext(ctx context.Context) JobRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobRangePtrOutput)
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type JobRangeOutput struct{ *pulumi.OutputState }
-
-func (JobRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobRange)(nil)).Elem()
-}
-
-func (o JobRangeOutput) ToJobRangeOutput() JobRangeOutput {
-	return o
-}
-
-func (o JobRangeOutput) ToJobRangeOutputWithContext(ctx context.Context) JobRangeOutput {
-	return o
-}
-
-func (o JobRangeOutput) ToJobRangePtrOutput() JobRangePtrOutput {
-	return o.ToJobRangePtrOutputWithContext(context.Background())
-}
-
-func (o JobRangeOutput) ToJobRangePtrOutputWithContext(ctx context.Context) JobRangePtrOutput {
-	return o.ApplyT(func(v JobRange) *JobRange {
-		return &v
-	}).(JobRangePtrOutput)
-}
-
-// [TrustedTester] [Required] The end of range partitioning, exclusive.
-func (o JobRangeOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobRange) *string { return v.End }).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The width of each interval.
-func (o JobRangeOutput) Interval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobRange) *string { return v.Interval }).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The start of range partitioning, inclusive.
-func (o JobRangeOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobRange) *string { return v.Start }).(pulumi.StringPtrOutput)
-}
-
-type JobRangePtrOutput struct{ *pulumi.OutputState }
-
-func (JobRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobRange)(nil)).Elem()
-}
-
-func (o JobRangePtrOutput) ToJobRangePtrOutput() JobRangePtrOutput {
-	return o
-}
-
-func (o JobRangePtrOutput) ToJobRangePtrOutputWithContext(ctx context.Context) JobRangePtrOutput {
-	return o
-}
-
-func (o JobRangePtrOutput) Elem() JobRangeOutput {
-	return o.ApplyT(func(v *JobRange) JobRange { return *v }).(JobRangeOutput)
-}
-
-// [TrustedTester] [Required] The end of range partitioning, exclusive.
-func (o JobRangePtrOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.End
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The width of each interval.
-func (o JobRangePtrOutput) Interval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Interval
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The start of range partitioning, inclusive.
-func (o JobRangePtrOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Start
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type JobRangeResponse struct {
-	// [TrustedTester] [Required] The end of range partitioning, exclusive.
-	End string `pulumi:"end"`
-	// [TrustedTester] [Required] The width of each interval.
-	Interval string `pulumi:"interval"`
-	// [TrustedTester] [Required] The start of range partitioning, inclusive.
-	Start string `pulumi:"start"`
-}
-
-// JobRangeResponseInput is an input type that accepts JobRangeResponseArgs and JobRangeResponseOutput values.
-// You can construct a concrete instance of `JobRangeResponseInput` via:
-//
-//          JobRangeResponseArgs{...}
-type JobRangeResponseInput interface {
-	pulumi.Input
-
-	ToJobRangeResponseOutput() JobRangeResponseOutput
-	ToJobRangeResponseOutputWithContext(context.Context) JobRangeResponseOutput
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type JobRangeResponseArgs struct {
-	// [TrustedTester] [Required] The end of range partitioning, exclusive.
-	End pulumi.StringInput `pulumi:"end"`
-	// [TrustedTester] [Required] The width of each interval.
-	Interval pulumi.StringInput `pulumi:"interval"`
-	// [TrustedTester] [Required] The start of range partitioning, inclusive.
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (JobRangeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobRangeResponse)(nil)).Elem()
-}
-
-func (i JobRangeResponseArgs) ToJobRangeResponseOutput() JobRangeResponseOutput {
-	return i.ToJobRangeResponseOutputWithContext(context.Background())
-}
-
-func (i JobRangeResponseArgs) ToJobRangeResponseOutputWithContext(ctx context.Context) JobRangeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobRangeResponseOutput)
-}
-
-func (i JobRangeResponseArgs) ToJobRangeResponsePtrOutput() JobRangeResponsePtrOutput {
-	return i.ToJobRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobRangeResponseArgs) ToJobRangeResponsePtrOutputWithContext(ctx context.Context) JobRangeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobRangeResponseOutput).ToJobRangeResponsePtrOutputWithContext(ctx)
-}
-
-// JobRangeResponsePtrInput is an input type that accepts JobRangeResponseArgs, JobRangeResponsePtr and JobRangeResponsePtrOutput values.
-// You can construct a concrete instance of `JobRangeResponsePtrInput` via:
-//
-//          JobRangeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobRangeResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobRangeResponsePtrOutput() JobRangeResponsePtrOutput
-	ToJobRangeResponsePtrOutputWithContext(context.Context) JobRangeResponsePtrOutput
-}
-
-type jobRangeResponsePtrType JobRangeResponseArgs
-
-func JobRangeResponsePtr(v *JobRangeResponseArgs) JobRangeResponsePtrInput {
-	return (*jobRangeResponsePtrType)(v)
-}
-
-func (*jobRangeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobRangeResponse)(nil)).Elem()
-}
-
-func (i *jobRangeResponsePtrType) ToJobRangeResponsePtrOutput() JobRangeResponsePtrOutput {
-	return i.ToJobRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobRangeResponsePtrType) ToJobRangeResponsePtrOutputWithContext(ctx context.Context) JobRangeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobRangeResponsePtrOutput)
-}
-
-// [TrustedTester] [Required] Defines the ranges for range partitioning.
-type JobRangeResponseOutput struct{ *pulumi.OutputState }
-
-func (JobRangeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobRangeResponse)(nil)).Elem()
-}
-
-func (o JobRangeResponseOutput) ToJobRangeResponseOutput() JobRangeResponseOutput {
-	return o
-}
-
-func (o JobRangeResponseOutput) ToJobRangeResponseOutputWithContext(ctx context.Context) JobRangeResponseOutput {
-	return o
-}
-
-func (o JobRangeResponseOutput) ToJobRangeResponsePtrOutput() JobRangeResponsePtrOutput {
-	return o.ToJobRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobRangeResponseOutput) ToJobRangeResponsePtrOutputWithContext(ctx context.Context) JobRangeResponsePtrOutput {
-	return o.ApplyT(func(v JobRangeResponse) *JobRangeResponse {
-		return &v
-	}).(JobRangeResponsePtrOutput)
-}
-
-// [TrustedTester] [Required] The end of range partitioning, exclusive.
-func (o JobRangeResponseOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v JobRangeResponse) string { return v.End }).(pulumi.StringOutput)
-}
-
-// [TrustedTester] [Required] The width of each interval.
-func (o JobRangeResponseOutput) Interval() pulumi.StringOutput {
-	return o.ApplyT(func(v JobRangeResponse) string { return v.Interval }).(pulumi.StringOutput)
-}
-
-// [TrustedTester] [Required] The start of range partitioning, inclusive.
-func (o JobRangeResponseOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v JobRangeResponse) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type JobRangeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobRangeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobRangeResponse)(nil)).Elem()
-}
-
-func (o JobRangeResponsePtrOutput) ToJobRangeResponsePtrOutput() JobRangeResponsePtrOutput {
-	return o
-}
-
-func (o JobRangeResponsePtrOutput) ToJobRangeResponsePtrOutputWithContext(ctx context.Context) JobRangeResponsePtrOutput {
-	return o
-}
-
-func (o JobRangeResponsePtrOutput) Elem() JobRangeResponseOutput {
-	return o.ApplyT(func(v *JobRangeResponse) JobRangeResponse { return *v }).(JobRangeResponseOutput)
-}
-
-// [TrustedTester] [Required] The end of range partitioning, exclusive.
-func (o JobRangeResponsePtrOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRangeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.End
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The width of each interval.
-func (o JobRangeResponsePtrOutput) Interval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRangeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Interval
-	}).(pulumi.StringPtrOutput)
-}
-
-// [TrustedTester] [Required] The start of range partitioning, inclusive.
-func (o JobRangeResponsePtrOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRangeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Start
-	}).(pulumi.StringPtrOutput)
-}
-
 type JobReference struct {
 	// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId *string `pulumi:"jobId"`
@@ -13284,218 +12917,6 @@ func (o JobReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobReservationUsageItem struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name *string `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs *string `pulumi:"slotMs"`
-}
-
-// JobReservationUsageItemInput is an input type that accepts JobReservationUsageItemArgs and JobReservationUsageItemOutput values.
-// You can construct a concrete instance of `JobReservationUsageItemInput` via:
-//
-//          JobReservationUsageItemArgs{...}
-type JobReservationUsageItemInput interface {
-	pulumi.Input
-
-	ToJobReservationUsageItemOutput() JobReservationUsageItemOutput
-	ToJobReservationUsageItemOutputWithContext(context.Context) JobReservationUsageItemOutput
-}
-
-type JobReservationUsageItemArgs struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs pulumi.StringPtrInput `pulumi:"slotMs"`
-}
-
-func (JobReservationUsageItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobReservationUsageItem)(nil)).Elem()
-}
-
-func (i JobReservationUsageItemArgs) ToJobReservationUsageItemOutput() JobReservationUsageItemOutput {
-	return i.ToJobReservationUsageItemOutputWithContext(context.Background())
-}
-
-func (i JobReservationUsageItemArgs) ToJobReservationUsageItemOutputWithContext(ctx context.Context) JobReservationUsageItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReservationUsageItemOutput)
-}
-
-// JobReservationUsageItemArrayInput is an input type that accepts JobReservationUsageItemArray and JobReservationUsageItemArrayOutput values.
-// You can construct a concrete instance of `JobReservationUsageItemArrayInput` via:
-//
-//          JobReservationUsageItemArray{ JobReservationUsageItemArgs{...} }
-type JobReservationUsageItemArrayInput interface {
-	pulumi.Input
-
-	ToJobReservationUsageItemArrayOutput() JobReservationUsageItemArrayOutput
-	ToJobReservationUsageItemArrayOutputWithContext(context.Context) JobReservationUsageItemArrayOutput
-}
-
-type JobReservationUsageItemArray []JobReservationUsageItemInput
-
-func (JobReservationUsageItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobReservationUsageItem)(nil)).Elem()
-}
-
-func (i JobReservationUsageItemArray) ToJobReservationUsageItemArrayOutput() JobReservationUsageItemArrayOutput {
-	return i.ToJobReservationUsageItemArrayOutputWithContext(context.Background())
-}
-
-func (i JobReservationUsageItemArray) ToJobReservationUsageItemArrayOutputWithContext(ctx context.Context) JobReservationUsageItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReservationUsageItemArrayOutput)
-}
-
-type JobReservationUsageItemOutput struct{ *pulumi.OutputState }
-
-func (JobReservationUsageItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobReservationUsageItem)(nil)).Elem()
-}
-
-func (o JobReservationUsageItemOutput) ToJobReservationUsageItemOutput() JobReservationUsageItemOutput {
-	return o
-}
-
-func (o JobReservationUsageItemOutput) ToJobReservationUsageItemOutputWithContext(ctx context.Context) JobReservationUsageItemOutput {
-	return o
-}
-
-// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-func (o JobReservationUsageItemOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobReservationUsageItem) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Output-only] Slot-milliseconds the job spent in the given reservation.
-func (o JobReservationUsageItemOutput) SlotMs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobReservationUsageItem) *string { return v.SlotMs }).(pulumi.StringPtrOutput)
-}
-
-type JobReservationUsageItemArrayOutput struct{ *pulumi.OutputState }
-
-func (JobReservationUsageItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobReservationUsageItem)(nil)).Elem()
-}
-
-func (o JobReservationUsageItemArrayOutput) ToJobReservationUsageItemArrayOutput() JobReservationUsageItemArrayOutput {
-	return o
-}
-
-func (o JobReservationUsageItemArrayOutput) ToJobReservationUsageItemArrayOutputWithContext(ctx context.Context) JobReservationUsageItemArrayOutput {
-	return o
-}
-
-func (o JobReservationUsageItemArrayOutput) Index(i pulumi.IntInput) JobReservationUsageItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobReservationUsageItem {
-		return vs[0].([]JobReservationUsageItem)[vs[1].(int)]
-	}).(JobReservationUsageItemOutput)
-}
-
-type JobReservationUsageItemResponse struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name string `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs string `pulumi:"slotMs"`
-}
-
-// JobReservationUsageItemResponseInput is an input type that accepts JobReservationUsageItemResponseArgs and JobReservationUsageItemResponseOutput values.
-// You can construct a concrete instance of `JobReservationUsageItemResponseInput` via:
-//
-//          JobReservationUsageItemResponseArgs{...}
-type JobReservationUsageItemResponseInput interface {
-	pulumi.Input
-
-	ToJobReservationUsageItemResponseOutput() JobReservationUsageItemResponseOutput
-	ToJobReservationUsageItemResponseOutputWithContext(context.Context) JobReservationUsageItemResponseOutput
-}
-
-type JobReservationUsageItemResponseArgs struct {
-	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-	Name pulumi.StringInput `pulumi:"name"`
-	// [Output-only] Slot-milliseconds the job spent in the given reservation.
-	SlotMs pulumi.StringInput `pulumi:"slotMs"`
-}
-
-func (JobReservationUsageItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (i JobReservationUsageItemResponseArgs) ToJobReservationUsageItemResponseOutput() JobReservationUsageItemResponseOutput {
-	return i.ToJobReservationUsageItemResponseOutputWithContext(context.Background())
-}
-
-func (i JobReservationUsageItemResponseArgs) ToJobReservationUsageItemResponseOutputWithContext(ctx context.Context) JobReservationUsageItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReservationUsageItemResponseOutput)
-}
-
-// JobReservationUsageItemResponseArrayInput is an input type that accepts JobReservationUsageItemResponseArray and JobReservationUsageItemResponseArrayOutput values.
-// You can construct a concrete instance of `JobReservationUsageItemResponseArrayInput` via:
-//
-//          JobReservationUsageItemResponseArray{ JobReservationUsageItemResponseArgs{...} }
-type JobReservationUsageItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToJobReservationUsageItemResponseArrayOutput() JobReservationUsageItemResponseArrayOutput
-	ToJobReservationUsageItemResponseArrayOutputWithContext(context.Context) JobReservationUsageItemResponseArrayOutput
-}
-
-type JobReservationUsageItemResponseArray []JobReservationUsageItemResponseInput
-
-func (JobReservationUsageItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (i JobReservationUsageItemResponseArray) ToJobReservationUsageItemResponseArrayOutput() JobReservationUsageItemResponseArrayOutput {
-	return i.ToJobReservationUsageItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i JobReservationUsageItemResponseArray) ToJobReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobReservationUsageItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobReservationUsageItemResponseArrayOutput)
-}
-
-type JobReservationUsageItemResponseOutput struct{ *pulumi.OutputState }
-
-func (JobReservationUsageItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (o JobReservationUsageItemResponseOutput) ToJobReservationUsageItemResponseOutput() JobReservationUsageItemResponseOutput {
-	return o
-}
-
-func (o JobReservationUsageItemResponseOutput) ToJobReservationUsageItemResponseOutputWithContext(ctx context.Context) JobReservationUsageItemResponseOutput {
-	return o
-}
-
-// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
-func (o JobReservationUsageItemResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v JobReservationUsageItemResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Output-only] Slot-milliseconds the job spent in the given reservation.
-func (o JobReservationUsageItemResponseOutput) SlotMs() pulumi.StringOutput {
-	return o.ApplyT(func(v JobReservationUsageItemResponse) string { return v.SlotMs }).(pulumi.StringOutput)
-}
-
-type JobReservationUsageItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (JobReservationUsageItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobReservationUsageItemResponse)(nil)).Elem()
-}
-
-func (o JobReservationUsageItemResponseArrayOutput) ToJobReservationUsageItemResponseArrayOutput() JobReservationUsageItemResponseArrayOutput {
-	return o
-}
-
-func (o JobReservationUsageItemResponseArrayOutput) ToJobReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobReservationUsageItemResponseArrayOutput {
-	return o
-}
-
-func (o JobReservationUsageItemResponseArrayOutput) Index(i pulumi.IntInput) JobReservationUsageItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobReservationUsageItemResponse {
-		return vs[0].([]JobReservationUsageItemResponse)[vs[1].(int)]
-	}).(JobReservationUsageItemResponseOutput)
-}
-
 type JobStatistics struct {
 	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
 	CompletionRatio *float64 `pulumi:"completionRatio"`
@@ -13516,7 +12937,7 @@ type JobStatistics struct {
 	// [Output-only] Quotas which delayed this job's start time.
 	QuotaDeferments []string `pulumi:"quotaDeferments"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage []JobReservationUsageItem `pulumi:"reservationUsage"`
+	ReservationUsage []JobStatisticsReservationUsageItem `pulumi:"reservationUsage"`
 	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 	Reservation_id *string `pulumi:"reservation_id"`
 	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
@@ -13564,7 +12985,7 @@ type JobStatisticsArgs struct {
 	// [Output-only] Quotas which delayed this job's start time.
 	QuotaDeferments pulumi.StringArrayInput `pulumi:"quotaDeferments"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage JobReservationUsageItemArrayInput `pulumi:"reservationUsage"`
+	ReservationUsage JobStatisticsReservationUsageItemArrayInput `pulumi:"reservationUsage"`
 	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 	Reservation_id pulumi.StringPtrInput `pulumi:"reservation_id"`
 	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
@@ -13704,8 +13125,8 @@ func (o JobStatisticsOutput) QuotaDeferments() pulumi.StringArrayOutput {
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatisticsOutput) ReservationUsage() JobReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v JobStatistics) []JobReservationUsageItem { return v.ReservationUsage }).(JobReservationUsageItemArrayOutput)
+func (o JobStatisticsOutput) ReservationUsage() JobStatisticsReservationUsageItemArrayOutput {
+	return o.ApplyT(func(v JobStatistics) []JobStatisticsReservationUsageItem { return v.ReservationUsage }).(JobStatisticsReservationUsageItemArrayOutput)
 }
 
 // [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
@@ -13852,13 +13273,13 @@ func (o JobStatisticsPtrOutput) QuotaDeferments() pulumi.StringArrayOutput {
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatisticsPtrOutput) ReservationUsage() JobReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v *JobStatistics) []JobReservationUsageItem {
+func (o JobStatisticsPtrOutput) ReservationUsage() JobStatisticsReservationUsageItemArrayOutput {
+	return o.ApplyT(func(v *JobStatistics) []JobStatisticsReservationUsageItem {
 		if v == nil {
 			return nil
 		}
 		return v.ReservationUsage
-	}).(JobReservationUsageItemArrayOutput)
+	}).(JobStatisticsReservationUsageItemArrayOutput)
 }
 
 // [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
@@ -13961,7 +13382,7 @@ type JobStatistics2 struct {
 	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables []TableReference `pulumi:"referencedTables"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage []JobReservationUsageItem `pulumi:"reservationUsage"`
+	ReservationUsage []JobStatistics2ReservationUsageItem `pulumi:"reservationUsage"`
 	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema *TableSchema `pulumi:"schema"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
@@ -14023,7 +13444,7 @@ type JobStatistics2Args struct {
 	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables TableReferenceArrayInput `pulumi:"referencedTables"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage JobReservationUsageItemArrayInput `pulumi:"reservationUsage"`
+	ReservationUsage JobStatistics2ReservationUsageItemArrayInput `pulumi:"reservationUsage"`
 	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaPtrInput `pulumi:"schema"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
@@ -14192,8 +13613,8 @@ func (o JobStatistics2Output) ReferencedTables() TableReferenceArrayOutput {
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatistics2Output) ReservationUsage() JobReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v JobStatistics2) []JobReservationUsageItem { return v.ReservationUsage }).(JobReservationUsageItemArrayOutput)
+func (o JobStatistics2Output) ReservationUsage() JobStatistics2ReservationUsageItemArrayOutput {
+	return o.ApplyT(func(v JobStatistics2) []JobStatistics2ReservationUsageItem { return v.ReservationUsage }).(JobStatistics2ReservationUsageItemArrayOutput)
 }
 
 // [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
@@ -14400,13 +13821,13 @@ func (o JobStatistics2PtrOutput) ReferencedTables() TableReferenceArrayOutput {
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatistics2PtrOutput) ReservationUsage() JobReservationUsageItemArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2) []JobReservationUsageItem {
+func (o JobStatistics2PtrOutput) ReservationUsage() JobStatistics2ReservationUsageItemArrayOutput {
+	return o.ApplyT(func(v *JobStatistics2) []JobStatistics2ReservationUsageItem {
 		if v == nil {
 			return nil
 		}
 		return v.ReservationUsage
-	}).(JobReservationUsageItemArrayOutput)
+	}).(JobStatistics2ReservationUsageItemArrayOutput)
 }
 
 // [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
@@ -14499,6 +13920,218 @@ func (o JobStatistics2PtrOutput) UndeclaredQueryParameters() QueryParameterArray
 	}).(QueryParameterArrayOutput)
 }
 
+type JobStatistics2ReservationUsageItem struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name *string `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs *string `pulumi:"slotMs"`
+}
+
+// JobStatistics2ReservationUsageItemInput is an input type that accepts JobStatistics2ReservationUsageItemArgs and JobStatistics2ReservationUsageItemOutput values.
+// You can construct a concrete instance of `JobStatistics2ReservationUsageItemInput` via:
+//
+//          JobStatistics2ReservationUsageItemArgs{...}
+type JobStatistics2ReservationUsageItemInput interface {
+	pulumi.Input
+
+	ToJobStatistics2ReservationUsageItemOutput() JobStatistics2ReservationUsageItemOutput
+	ToJobStatistics2ReservationUsageItemOutputWithContext(context.Context) JobStatistics2ReservationUsageItemOutput
+}
+
+type JobStatistics2ReservationUsageItemArgs struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs pulumi.StringPtrInput `pulumi:"slotMs"`
+}
+
+func (JobStatistics2ReservationUsageItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatistics2ReservationUsageItem)(nil)).Elem()
+}
+
+func (i JobStatistics2ReservationUsageItemArgs) ToJobStatistics2ReservationUsageItemOutput() JobStatistics2ReservationUsageItemOutput {
+	return i.ToJobStatistics2ReservationUsageItemOutputWithContext(context.Background())
+}
+
+func (i JobStatistics2ReservationUsageItemArgs) ToJobStatistics2ReservationUsageItemOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemOutput)
+}
+
+// JobStatistics2ReservationUsageItemArrayInput is an input type that accepts JobStatistics2ReservationUsageItemArray and JobStatistics2ReservationUsageItemArrayOutput values.
+// You can construct a concrete instance of `JobStatistics2ReservationUsageItemArrayInput` via:
+//
+//          JobStatistics2ReservationUsageItemArray{ JobStatistics2ReservationUsageItemArgs{...} }
+type JobStatistics2ReservationUsageItemArrayInput interface {
+	pulumi.Input
+
+	ToJobStatistics2ReservationUsageItemArrayOutput() JobStatistics2ReservationUsageItemArrayOutput
+	ToJobStatistics2ReservationUsageItemArrayOutputWithContext(context.Context) JobStatistics2ReservationUsageItemArrayOutput
+}
+
+type JobStatistics2ReservationUsageItemArray []JobStatistics2ReservationUsageItemInput
+
+func (JobStatistics2ReservationUsageItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItem)(nil)).Elem()
+}
+
+func (i JobStatistics2ReservationUsageItemArray) ToJobStatistics2ReservationUsageItemArrayOutput() JobStatistics2ReservationUsageItemArrayOutput {
+	return i.ToJobStatistics2ReservationUsageItemArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatistics2ReservationUsageItemArray) ToJobStatistics2ReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemArrayOutput)
+}
+
+type JobStatistics2ReservationUsageItemOutput struct{ *pulumi.OutputState }
+
+func (JobStatistics2ReservationUsageItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatistics2ReservationUsageItem)(nil)).Elem()
+}
+
+func (o JobStatistics2ReservationUsageItemOutput) ToJobStatistics2ReservationUsageItemOutput() JobStatistics2ReservationUsageItemOutput {
+	return o
+}
+
+func (o JobStatistics2ReservationUsageItemOutput) ToJobStatistics2ReservationUsageItemOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemOutput {
+	return o
+}
+
+// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+func (o JobStatistics2ReservationUsageItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatistics2ReservationUsageItem) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Output-only] Slot-milliseconds the job spent in the given reservation.
+func (o JobStatistics2ReservationUsageItemOutput) SlotMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatistics2ReservationUsageItem) *string { return v.SlotMs }).(pulumi.StringPtrOutput)
+}
+
+type JobStatistics2ReservationUsageItemArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatistics2ReservationUsageItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItem)(nil)).Elem()
+}
+
+func (o JobStatistics2ReservationUsageItemArrayOutput) ToJobStatistics2ReservationUsageItemArrayOutput() JobStatistics2ReservationUsageItemArrayOutput {
+	return o
+}
+
+func (o JobStatistics2ReservationUsageItemArrayOutput) ToJobStatistics2ReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemArrayOutput {
+	return o
+}
+
+func (o JobStatistics2ReservationUsageItemArrayOutput) Index(i pulumi.IntInput) JobStatistics2ReservationUsageItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatistics2ReservationUsageItem {
+		return vs[0].([]JobStatistics2ReservationUsageItem)[vs[1].(int)]
+	}).(JobStatistics2ReservationUsageItemOutput)
+}
+
+type JobStatistics2ReservationUsageItemResponse struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name string `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs string `pulumi:"slotMs"`
+}
+
+// JobStatistics2ReservationUsageItemResponseInput is an input type that accepts JobStatistics2ReservationUsageItemResponseArgs and JobStatistics2ReservationUsageItemResponseOutput values.
+// You can construct a concrete instance of `JobStatistics2ReservationUsageItemResponseInput` via:
+//
+//          JobStatistics2ReservationUsageItemResponseArgs{...}
+type JobStatistics2ReservationUsageItemResponseInput interface {
+	pulumi.Input
+
+	ToJobStatistics2ReservationUsageItemResponseOutput() JobStatistics2ReservationUsageItemResponseOutput
+	ToJobStatistics2ReservationUsageItemResponseOutputWithContext(context.Context) JobStatistics2ReservationUsageItemResponseOutput
+}
+
+type JobStatistics2ReservationUsageItemResponseArgs struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name pulumi.StringInput `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs pulumi.StringInput `pulumi:"slotMs"`
+}
+
+func (JobStatistics2ReservationUsageItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatistics2ReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (i JobStatistics2ReservationUsageItemResponseArgs) ToJobStatistics2ReservationUsageItemResponseOutput() JobStatistics2ReservationUsageItemResponseOutput {
+	return i.ToJobStatistics2ReservationUsageItemResponseOutputWithContext(context.Background())
+}
+
+func (i JobStatistics2ReservationUsageItemResponseArgs) ToJobStatistics2ReservationUsageItemResponseOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemResponseOutput)
+}
+
+// JobStatistics2ReservationUsageItemResponseArrayInput is an input type that accepts JobStatistics2ReservationUsageItemResponseArray and JobStatistics2ReservationUsageItemResponseArrayOutput values.
+// You can construct a concrete instance of `JobStatistics2ReservationUsageItemResponseArrayInput` via:
+//
+//          JobStatistics2ReservationUsageItemResponseArray{ JobStatistics2ReservationUsageItemResponseArgs{...} }
+type JobStatistics2ReservationUsageItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToJobStatistics2ReservationUsageItemResponseArrayOutput() JobStatistics2ReservationUsageItemResponseArrayOutput
+	ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(context.Context) JobStatistics2ReservationUsageItemResponseArrayOutput
+}
+
+type JobStatistics2ReservationUsageItemResponseArray []JobStatistics2ReservationUsageItemResponseInput
+
+func (JobStatistics2ReservationUsageItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (i JobStatistics2ReservationUsageItemResponseArray) ToJobStatistics2ReservationUsageItemResponseArrayOutput() JobStatistics2ReservationUsageItemResponseArrayOutput {
+	return i.ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatistics2ReservationUsageItemResponseArray) ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatistics2ReservationUsageItemResponseArrayOutput)
+}
+
+type JobStatistics2ReservationUsageItemResponseOutput struct{ *pulumi.OutputState }
+
+func (JobStatistics2ReservationUsageItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatistics2ReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (o JobStatistics2ReservationUsageItemResponseOutput) ToJobStatistics2ReservationUsageItemResponseOutput() JobStatistics2ReservationUsageItemResponseOutput {
+	return o
+}
+
+func (o JobStatistics2ReservationUsageItemResponseOutput) ToJobStatistics2ReservationUsageItemResponseOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemResponseOutput {
+	return o
+}
+
+// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+func (o JobStatistics2ReservationUsageItemResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatistics2ReservationUsageItemResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Output-only] Slot-milliseconds the job spent in the given reservation.
+func (o JobStatistics2ReservationUsageItemResponseOutput) SlotMs() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatistics2ReservationUsageItemResponse) string { return v.SlotMs }).(pulumi.StringOutput)
+}
+
+type JobStatistics2ReservationUsageItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatistics2ReservationUsageItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatistics2ReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (o JobStatistics2ReservationUsageItemResponseArrayOutput) ToJobStatistics2ReservationUsageItemResponseArrayOutput() JobStatistics2ReservationUsageItemResponseArrayOutput {
+	return o
+}
+
+func (o JobStatistics2ReservationUsageItemResponseArrayOutput) ToJobStatistics2ReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobStatistics2ReservationUsageItemResponseArrayOutput {
+	return o
+}
+
+func (o JobStatistics2ReservationUsageItemResponseArrayOutput) Index(i pulumi.IntInput) JobStatistics2ReservationUsageItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatistics2ReservationUsageItemResponse {
+		return vs[0].([]JobStatistics2ReservationUsageItemResponse)[vs[1].(int)]
+	}).(JobStatistics2ReservationUsageItemResponseOutput)
+}
+
 type JobStatistics2Response struct {
 	// [Output-only] Billing tier for the job.
 	BillingTier int `pulumi:"billingTier"`
@@ -14529,7 +14162,7 @@ type JobStatistics2Response struct {
 	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables []TableReferenceResponse `pulumi:"referencedTables"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage []JobReservationUsageItemResponse `pulumi:"reservationUsage"`
+	ReservationUsage []JobStatistics2ReservationUsageItemResponse `pulumi:"reservationUsage"`
 	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaResponse `pulumi:"schema"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
@@ -14591,7 +14224,7 @@ type JobStatistics2ResponseArgs struct {
 	// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables TableReferenceResponseArrayInput `pulumi:"referencedTables"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage JobReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
+	ReservationUsage JobStatistics2ReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
 	// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaResponseInput `pulumi:"schema"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
@@ -14760,8 +14393,8 @@ func (o JobStatistics2ResponseOutput) ReferencedTables() TableReferenceResponseA
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatistics2ResponseOutput) ReservationUsage() JobReservationUsageItemResponseArrayOutput {
-	return o.ApplyT(func(v JobStatistics2Response) []JobReservationUsageItemResponse { return v.ReservationUsage }).(JobReservationUsageItemResponseArrayOutput)
+func (o JobStatistics2ResponseOutput) ReservationUsage() JobStatistics2ReservationUsageItemResponseArrayOutput {
+	return o.ApplyT(func(v JobStatistics2Response) []JobStatistics2ReservationUsageItemResponse { return v.ReservationUsage }).(JobStatistics2ReservationUsageItemResponseArrayOutput)
 }
 
 // [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
@@ -14968,13 +14601,13 @@ func (o JobStatistics2ResponsePtrOutput) ReferencedTables() TableReferenceRespon
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatistics2ResponsePtrOutput) ReservationUsage() JobReservationUsageItemResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatistics2Response) []JobReservationUsageItemResponse {
+func (o JobStatistics2ResponsePtrOutput) ReservationUsage() JobStatistics2ReservationUsageItemResponseArrayOutput {
+	return o.ApplyT(func(v *JobStatistics2Response) []JobStatistics2ReservationUsageItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.ReservationUsage
-	}).(JobReservationUsageItemResponseArrayOutput)
+	}).(JobStatistics2ReservationUsageItemResponseArrayOutput)
 }
 
 // [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
@@ -15781,6 +15414,218 @@ func (o JobStatistics4ResponsePtrOutput) InputBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobStatisticsReservationUsageItem struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name *string `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs *string `pulumi:"slotMs"`
+}
+
+// JobStatisticsReservationUsageItemInput is an input type that accepts JobStatisticsReservationUsageItemArgs and JobStatisticsReservationUsageItemOutput values.
+// You can construct a concrete instance of `JobStatisticsReservationUsageItemInput` via:
+//
+//          JobStatisticsReservationUsageItemArgs{...}
+type JobStatisticsReservationUsageItemInput interface {
+	pulumi.Input
+
+	ToJobStatisticsReservationUsageItemOutput() JobStatisticsReservationUsageItemOutput
+	ToJobStatisticsReservationUsageItemOutputWithContext(context.Context) JobStatisticsReservationUsageItemOutput
+}
+
+type JobStatisticsReservationUsageItemArgs struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs pulumi.StringPtrInput `pulumi:"slotMs"`
+}
+
+func (JobStatisticsReservationUsageItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatisticsReservationUsageItem)(nil)).Elem()
+}
+
+func (i JobStatisticsReservationUsageItemArgs) ToJobStatisticsReservationUsageItemOutput() JobStatisticsReservationUsageItemOutput {
+	return i.ToJobStatisticsReservationUsageItemOutputWithContext(context.Background())
+}
+
+func (i JobStatisticsReservationUsageItemArgs) ToJobStatisticsReservationUsageItemOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemOutput)
+}
+
+// JobStatisticsReservationUsageItemArrayInput is an input type that accepts JobStatisticsReservationUsageItemArray and JobStatisticsReservationUsageItemArrayOutput values.
+// You can construct a concrete instance of `JobStatisticsReservationUsageItemArrayInput` via:
+//
+//          JobStatisticsReservationUsageItemArray{ JobStatisticsReservationUsageItemArgs{...} }
+type JobStatisticsReservationUsageItemArrayInput interface {
+	pulumi.Input
+
+	ToJobStatisticsReservationUsageItemArrayOutput() JobStatisticsReservationUsageItemArrayOutput
+	ToJobStatisticsReservationUsageItemArrayOutputWithContext(context.Context) JobStatisticsReservationUsageItemArrayOutput
+}
+
+type JobStatisticsReservationUsageItemArray []JobStatisticsReservationUsageItemInput
+
+func (JobStatisticsReservationUsageItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatisticsReservationUsageItem)(nil)).Elem()
+}
+
+func (i JobStatisticsReservationUsageItemArray) ToJobStatisticsReservationUsageItemArrayOutput() JobStatisticsReservationUsageItemArrayOutput {
+	return i.ToJobStatisticsReservationUsageItemArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatisticsReservationUsageItemArray) ToJobStatisticsReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemArrayOutput)
+}
+
+type JobStatisticsReservationUsageItemOutput struct{ *pulumi.OutputState }
+
+func (JobStatisticsReservationUsageItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatisticsReservationUsageItem)(nil)).Elem()
+}
+
+func (o JobStatisticsReservationUsageItemOutput) ToJobStatisticsReservationUsageItemOutput() JobStatisticsReservationUsageItemOutput {
+	return o
+}
+
+func (o JobStatisticsReservationUsageItemOutput) ToJobStatisticsReservationUsageItemOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemOutput {
+	return o
+}
+
+// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+func (o JobStatisticsReservationUsageItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatisticsReservationUsageItem) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Output-only] Slot-milliseconds the job spent in the given reservation.
+func (o JobStatisticsReservationUsageItemOutput) SlotMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatisticsReservationUsageItem) *string { return v.SlotMs }).(pulumi.StringPtrOutput)
+}
+
+type JobStatisticsReservationUsageItemArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatisticsReservationUsageItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatisticsReservationUsageItem)(nil)).Elem()
+}
+
+func (o JobStatisticsReservationUsageItemArrayOutput) ToJobStatisticsReservationUsageItemArrayOutput() JobStatisticsReservationUsageItemArrayOutput {
+	return o
+}
+
+func (o JobStatisticsReservationUsageItemArrayOutput) ToJobStatisticsReservationUsageItemArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemArrayOutput {
+	return o
+}
+
+func (o JobStatisticsReservationUsageItemArrayOutput) Index(i pulumi.IntInput) JobStatisticsReservationUsageItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatisticsReservationUsageItem {
+		return vs[0].([]JobStatisticsReservationUsageItem)[vs[1].(int)]
+	}).(JobStatisticsReservationUsageItemOutput)
+}
+
+type JobStatisticsReservationUsageItemResponse struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name string `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs string `pulumi:"slotMs"`
+}
+
+// JobStatisticsReservationUsageItemResponseInput is an input type that accepts JobStatisticsReservationUsageItemResponseArgs and JobStatisticsReservationUsageItemResponseOutput values.
+// You can construct a concrete instance of `JobStatisticsReservationUsageItemResponseInput` via:
+//
+//          JobStatisticsReservationUsageItemResponseArgs{...}
+type JobStatisticsReservationUsageItemResponseInput interface {
+	pulumi.Input
+
+	ToJobStatisticsReservationUsageItemResponseOutput() JobStatisticsReservationUsageItemResponseOutput
+	ToJobStatisticsReservationUsageItemResponseOutputWithContext(context.Context) JobStatisticsReservationUsageItemResponseOutput
+}
+
+type JobStatisticsReservationUsageItemResponseArgs struct {
+	// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+	Name pulumi.StringInput `pulumi:"name"`
+	// [Output-only] Slot-milliseconds the job spent in the given reservation.
+	SlotMs pulumi.StringInput `pulumi:"slotMs"`
+}
+
+func (JobStatisticsReservationUsageItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatisticsReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (i JobStatisticsReservationUsageItemResponseArgs) ToJobStatisticsReservationUsageItemResponseOutput() JobStatisticsReservationUsageItemResponseOutput {
+	return i.ToJobStatisticsReservationUsageItemResponseOutputWithContext(context.Background())
+}
+
+func (i JobStatisticsReservationUsageItemResponseArgs) ToJobStatisticsReservationUsageItemResponseOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemResponseOutput)
+}
+
+// JobStatisticsReservationUsageItemResponseArrayInput is an input type that accepts JobStatisticsReservationUsageItemResponseArray and JobStatisticsReservationUsageItemResponseArrayOutput values.
+// You can construct a concrete instance of `JobStatisticsReservationUsageItemResponseArrayInput` via:
+//
+//          JobStatisticsReservationUsageItemResponseArray{ JobStatisticsReservationUsageItemResponseArgs{...} }
+type JobStatisticsReservationUsageItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToJobStatisticsReservationUsageItemResponseArrayOutput() JobStatisticsReservationUsageItemResponseArrayOutput
+	ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(context.Context) JobStatisticsReservationUsageItemResponseArrayOutput
+}
+
+type JobStatisticsReservationUsageItemResponseArray []JobStatisticsReservationUsageItemResponseInput
+
+func (JobStatisticsReservationUsageItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatisticsReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (i JobStatisticsReservationUsageItemResponseArray) ToJobStatisticsReservationUsageItemResponseArrayOutput() JobStatisticsReservationUsageItemResponseArrayOutput {
+	return i.ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatisticsReservationUsageItemResponseArray) ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatisticsReservationUsageItemResponseArrayOutput)
+}
+
+type JobStatisticsReservationUsageItemResponseOutput struct{ *pulumi.OutputState }
+
+func (JobStatisticsReservationUsageItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatisticsReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (o JobStatisticsReservationUsageItemResponseOutput) ToJobStatisticsReservationUsageItemResponseOutput() JobStatisticsReservationUsageItemResponseOutput {
+	return o
+}
+
+func (o JobStatisticsReservationUsageItemResponseOutput) ToJobStatisticsReservationUsageItemResponseOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemResponseOutput {
+	return o
+}
+
+// [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+func (o JobStatisticsReservationUsageItemResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatisticsReservationUsageItemResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Output-only] Slot-milliseconds the job spent in the given reservation.
+func (o JobStatisticsReservationUsageItemResponseOutput) SlotMs() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatisticsReservationUsageItemResponse) string { return v.SlotMs }).(pulumi.StringOutput)
+}
+
+type JobStatisticsReservationUsageItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatisticsReservationUsageItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatisticsReservationUsageItemResponse)(nil)).Elem()
+}
+
+func (o JobStatisticsReservationUsageItemResponseArrayOutput) ToJobStatisticsReservationUsageItemResponseArrayOutput() JobStatisticsReservationUsageItemResponseArrayOutput {
+	return o
+}
+
+func (o JobStatisticsReservationUsageItemResponseArrayOutput) ToJobStatisticsReservationUsageItemResponseArrayOutputWithContext(ctx context.Context) JobStatisticsReservationUsageItemResponseArrayOutput {
+	return o
+}
+
+func (o JobStatisticsReservationUsageItemResponseArrayOutput) Index(i pulumi.IntInput) JobStatisticsReservationUsageItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatisticsReservationUsageItemResponse {
+		return vs[0].([]JobStatisticsReservationUsageItemResponse)[vs[1].(int)]
+	}).(JobStatisticsReservationUsageItemResponseOutput)
+}
+
 type JobStatisticsResponse struct {
 	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
 	CompletionRatio float64 `pulumi:"completionRatio"`
@@ -15801,7 +15646,7 @@ type JobStatisticsResponse struct {
 	// [Output-only] Quotas which delayed this job's start time.
 	QuotaDeferments []string `pulumi:"quotaDeferments"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage []JobReservationUsageItemResponse `pulumi:"reservationUsage"`
+	ReservationUsage []JobStatisticsReservationUsageItemResponse `pulumi:"reservationUsage"`
 	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 	Reservation_id string `pulumi:"reservation_id"`
 	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
@@ -15849,7 +15694,7 @@ type JobStatisticsResponseArgs struct {
 	// [Output-only] Quotas which delayed this job's start time.
 	QuotaDeferments pulumi.StringArrayInput `pulumi:"quotaDeferments"`
 	// [Output-only] Job resource usage breakdown by reservation.
-	ReservationUsage JobReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
+	ReservationUsage JobStatisticsReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
 	// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
 	Reservation_id pulumi.StringInput `pulumi:"reservation_id"`
 	// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
@@ -15989,8 +15834,8 @@ func (o JobStatisticsResponseOutput) QuotaDeferments() pulumi.StringArrayOutput 
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatisticsResponseOutput) ReservationUsage() JobReservationUsageItemResponseArrayOutput {
-	return o.ApplyT(func(v JobStatisticsResponse) []JobReservationUsageItemResponse { return v.ReservationUsage }).(JobReservationUsageItemResponseArrayOutput)
+func (o JobStatisticsResponseOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
+	return o.ApplyT(func(v JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse { return v.ReservationUsage }).(JobStatisticsReservationUsageItemResponseArrayOutput)
 }
 
 // [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
@@ -16137,13 +15982,13 @@ func (o JobStatisticsResponsePtrOutput) QuotaDeferments() pulumi.StringArrayOutp
 }
 
 // [Output-only] Job resource usage breakdown by reservation.
-func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobReservationUsageItemResponseArrayOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) []JobReservationUsageItemResponse {
+func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
+	return o.ApplyT(func(v *JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.ReservationUsage
-	}).(JobReservationUsageItemResponseArrayOutput)
+	}).(JobStatisticsReservationUsageItemResponseArrayOutput)
 }
 
 // [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
@@ -16554,236 +16399,6 @@ func (o JobStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobStructTypesItem struct {
-	// [Optional] Human-oriented description of the field.
-	Description *string `pulumi:"description"`
-	// [Optional] The name of this field.
-	Name *string `pulumi:"name"`
-	// [Required] The type of this field.
-	Type *QueryParameterType `pulumi:"type"`
-}
-
-// JobStructTypesItemInput is an input type that accepts JobStructTypesItemArgs and JobStructTypesItemOutput values.
-// You can construct a concrete instance of `JobStructTypesItemInput` via:
-//
-//          JobStructTypesItemArgs{...}
-type JobStructTypesItemInput interface {
-	pulumi.Input
-
-	ToJobStructTypesItemOutput() JobStructTypesItemOutput
-	ToJobStructTypesItemOutputWithContext(context.Context) JobStructTypesItemOutput
-}
-
-type JobStructTypesItemArgs struct {
-	// [Optional] Human-oriented description of the field.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// [Optional] The name of this field.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// [Required] The type of this field.
-	Type QueryParameterTypePtrInput `pulumi:"type"`
-}
-
-func (JobStructTypesItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStructTypesItem)(nil)).Elem()
-}
-
-func (i JobStructTypesItemArgs) ToJobStructTypesItemOutput() JobStructTypesItemOutput {
-	return i.ToJobStructTypesItemOutputWithContext(context.Background())
-}
-
-func (i JobStructTypesItemArgs) ToJobStructTypesItemOutputWithContext(ctx context.Context) JobStructTypesItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStructTypesItemOutput)
-}
-
-// JobStructTypesItemArrayInput is an input type that accepts JobStructTypesItemArray and JobStructTypesItemArrayOutput values.
-// You can construct a concrete instance of `JobStructTypesItemArrayInput` via:
-//
-//          JobStructTypesItemArray{ JobStructTypesItemArgs{...} }
-type JobStructTypesItemArrayInput interface {
-	pulumi.Input
-
-	ToJobStructTypesItemArrayOutput() JobStructTypesItemArrayOutput
-	ToJobStructTypesItemArrayOutputWithContext(context.Context) JobStructTypesItemArrayOutput
-}
-
-type JobStructTypesItemArray []JobStructTypesItemInput
-
-func (JobStructTypesItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStructTypesItem)(nil)).Elem()
-}
-
-func (i JobStructTypesItemArray) ToJobStructTypesItemArrayOutput() JobStructTypesItemArrayOutput {
-	return i.ToJobStructTypesItemArrayOutputWithContext(context.Background())
-}
-
-func (i JobStructTypesItemArray) ToJobStructTypesItemArrayOutputWithContext(ctx context.Context) JobStructTypesItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStructTypesItemArrayOutput)
-}
-
-type JobStructTypesItemOutput struct{ *pulumi.OutputState }
-
-func (JobStructTypesItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStructTypesItem)(nil)).Elem()
-}
-
-func (o JobStructTypesItemOutput) ToJobStructTypesItemOutput() JobStructTypesItemOutput {
-	return o
-}
-
-func (o JobStructTypesItemOutput) ToJobStructTypesItemOutputWithContext(ctx context.Context) JobStructTypesItemOutput {
-	return o
-}
-
-// [Optional] Human-oriented description of the field.
-func (o JobStructTypesItemOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStructTypesItem) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// [Optional] The name of this field.
-func (o JobStructTypesItemOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobStructTypesItem) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// [Required] The type of this field.
-func (o JobStructTypesItemOutput) Type() QueryParameterTypePtrOutput {
-	return o.ApplyT(func(v JobStructTypesItem) *QueryParameterType { return v.Type }).(QueryParameterTypePtrOutput)
-}
-
-type JobStructTypesItemArrayOutput struct{ *pulumi.OutputState }
-
-func (JobStructTypesItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStructTypesItem)(nil)).Elem()
-}
-
-func (o JobStructTypesItemArrayOutput) ToJobStructTypesItemArrayOutput() JobStructTypesItemArrayOutput {
-	return o
-}
-
-func (o JobStructTypesItemArrayOutput) ToJobStructTypesItemArrayOutputWithContext(ctx context.Context) JobStructTypesItemArrayOutput {
-	return o
-}
-
-func (o JobStructTypesItemArrayOutput) Index(i pulumi.IntInput) JobStructTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStructTypesItem {
-		return vs[0].([]JobStructTypesItem)[vs[1].(int)]
-	}).(JobStructTypesItemOutput)
-}
-
-type JobStructTypesItemResponse struct {
-	// [Optional] Human-oriented description of the field.
-	Description string `pulumi:"description"`
-	// [Optional] The name of this field.
-	Name string `pulumi:"name"`
-	// [Required] The type of this field.
-	Type QueryParameterTypeResponse `pulumi:"type"`
-}
-
-// JobStructTypesItemResponseInput is an input type that accepts JobStructTypesItemResponseArgs and JobStructTypesItemResponseOutput values.
-// You can construct a concrete instance of `JobStructTypesItemResponseInput` via:
-//
-//          JobStructTypesItemResponseArgs{...}
-type JobStructTypesItemResponseInput interface {
-	pulumi.Input
-
-	ToJobStructTypesItemResponseOutput() JobStructTypesItemResponseOutput
-	ToJobStructTypesItemResponseOutputWithContext(context.Context) JobStructTypesItemResponseOutput
-}
-
-type JobStructTypesItemResponseArgs struct {
-	// [Optional] Human-oriented description of the field.
-	Description pulumi.StringInput `pulumi:"description"`
-	// [Optional] The name of this field.
-	Name pulumi.StringInput `pulumi:"name"`
-	// [Required] The type of this field.
-	Type QueryParameterTypeResponseInput `pulumi:"type"`
-}
-
-func (JobStructTypesItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStructTypesItemResponse)(nil)).Elem()
-}
-
-func (i JobStructTypesItemResponseArgs) ToJobStructTypesItemResponseOutput() JobStructTypesItemResponseOutput {
-	return i.ToJobStructTypesItemResponseOutputWithContext(context.Background())
-}
-
-func (i JobStructTypesItemResponseArgs) ToJobStructTypesItemResponseOutputWithContext(ctx context.Context) JobStructTypesItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStructTypesItemResponseOutput)
-}
-
-// JobStructTypesItemResponseArrayInput is an input type that accepts JobStructTypesItemResponseArray and JobStructTypesItemResponseArrayOutput values.
-// You can construct a concrete instance of `JobStructTypesItemResponseArrayInput` via:
-//
-//          JobStructTypesItemResponseArray{ JobStructTypesItemResponseArgs{...} }
-type JobStructTypesItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToJobStructTypesItemResponseArrayOutput() JobStructTypesItemResponseArrayOutput
-	ToJobStructTypesItemResponseArrayOutputWithContext(context.Context) JobStructTypesItemResponseArrayOutput
-}
-
-type JobStructTypesItemResponseArray []JobStructTypesItemResponseInput
-
-func (JobStructTypesItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStructTypesItemResponse)(nil)).Elem()
-}
-
-func (i JobStructTypesItemResponseArray) ToJobStructTypesItemResponseArrayOutput() JobStructTypesItemResponseArrayOutput {
-	return i.ToJobStructTypesItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i JobStructTypesItemResponseArray) ToJobStructTypesItemResponseArrayOutputWithContext(ctx context.Context) JobStructTypesItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobStructTypesItemResponseArrayOutput)
-}
-
-type JobStructTypesItemResponseOutput struct{ *pulumi.OutputState }
-
-func (JobStructTypesItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobStructTypesItemResponse)(nil)).Elem()
-}
-
-func (o JobStructTypesItemResponseOutput) ToJobStructTypesItemResponseOutput() JobStructTypesItemResponseOutput {
-	return o
-}
-
-func (o JobStructTypesItemResponseOutput) ToJobStructTypesItemResponseOutputWithContext(ctx context.Context) JobStructTypesItemResponseOutput {
-	return o
-}
-
-// [Optional] Human-oriented description of the field.
-func (o JobStructTypesItemResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v JobStructTypesItemResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// [Optional] The name of this field.
-func (o JobStructTypesItemResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v JobStructTypesItemResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] The type of this field.
-func (o JobStructTypesItemResponseOutput) Type() QueryParameterTypeResponseOutput {
-	return o.ApplyT(func(v JobStructTypesItemResponse) QueryParameterTypeResponse { return v.Type }).(QueryParameterTypeResponseOutput)
-}
-
-type JobStructTypesItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (JobStructTypesItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobStructTypesItemResponse)(nil)).Elem()
-}
-
-func (o JobStructTypesItemResponseArrayOutput) ToJobStructTypesItemResponseArrayOutput() JobStructTypesItemResponseArrayOutput {
-	return o
-}
-
-func (o JobStructTypesItemResponseArrayOutput) ToJobStructTypesItemResponseArrayOutputWithContext(ctx context.Context) JobStructTypesItemResponseArrayOutput {
-	return o
-}
-
-func (o JobStructTypesItemResponseArrayOutput) Index(i pulumi.IntInput) JobStructTypesItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStructTypesItemResponse {
-		return vs[0].([]JobStructTypesItemResponse)[vs[1].(int)]
-	}).(JobStructTypesItemResponseOutput)
-}
-
 type MaterializedViewDefinition struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh *bool `pulumi:"enableRefresh"`
@@ -17162,7 +16777,7 @@ func (o MaterializedViewDefinitionResponsePtrOutput) RefreshIntervalMs() pulumi.
 
 type ModelDefinition struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions *TableModelOptions `pulumi:"modelOptions"`
+	ModelOptions *ModelDefinitionModelOptions `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns []BqmlTrainingRun `pulumi:"trainingRuns"`
 }
@@ -17180,7 +16795,7 @@ type ModelDefinitionInput interface {
 
 type ModelDefinitionArgs struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions TableModelOptionsPtrInput `pulumi:"modelOptions"`
+	ModelOptions ModelDefinitionModelOptionsPtrInput `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns BqmlTrainingRunArrayInput `pulumi:"trainingRuns"`
 }
@@ -17263,8 +16878,8 @@ func (o ModelDefinitionOutput) ToModelDefinitionPtrOutputWithContext(ctx context
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionOutput) ModelOptions() TableModelOptionsPtrOutput {
-	return o.ApplyT(func(v ModelDefinition) *TableModelOptions { return v.ModelOptions }).(TableModelOptionsPtrOutput)
+func (o ModelDefinitionOutput) ModelOptions() ModelDefinitionModelOptionsPtrOutput {
+	return o.ApplyT(func(v ModelDefinition) *ModelDefinitionModelOptions { return v.ModelOptions }).(ModelDefinitionModelOptionsPtrOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -17291,13 +16906,13 @@ func (o ModelDefinitionPtrOutput) Elem() ModelDefinitionOutput {
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionPtrOutput) ModelOptions() TableModelOptionsPtrOutput {
-	return o.ApplyT(func(v *ModelDefinition) *TableModelOptions {
+func (o ModelDefinitionPtrOutput) ModelOptions() ModelDefinitionModelOptionsPtrOutput {
+	return o.ApplyT(func(v *ModelDefinition) *ModelDefinitionModelOptions {
 		if v == nil {
 			return nil
 		}
 		return v.ModelOptions
-	}).(TableModelOptionsPtrOutput)
+	}).(ModelDefinitionModelOptionsPtrOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -17310,9 +16925,327 @@ func (o ModelDefinitionPtrOutput) TrainingRuns() BqmlTrainingRunArrayOutput {
 	}).(BqmlTrainingRunArrayOutput)
 }
 
+// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+type ModelDefinitionModelOptions struct {
+	Labels    []string `pulumi:"labels"`
+	LossType  *string  `pulumi:"lossType"`
+	ModelType *string  `pulumi:"modelType"`
+}
+
+// ModelDefinitionModelOptionsInput is an input type that accepts ModelDefinitionModelOptionsArgs and ModelDefinitionModelOptionsOutput values.
+// You can construct a concrete instance of `ModelDefinitionModelOptionsInput` via:
+//
+//          ModelDefinitionModelOptionsArgs{...}
+type ModelDefinitionModelOptionsInput interface {
+	pulumi.Input
+
+	ToModelDefinitionModelOptionsOutput() ModelDefinitionModelOptionsOutput
+	ToModelDefinitionModelOptionsOutputWithContext(context.Context) ModelDefinitionModelOptionsOutput
+}
+
+// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+type ModelDefinitionModelOptionsArgs struct {
+	Labels    pulumi.StringArrayInput `pulumi:"labels"`
+	LossType  pulumi.StringPtrInput   `pulumi:"lossType"`
+	ModelType pulumi.StringPtrInput   `pulumi:"modelType"`
+}
+
+func (ModelDefinitionModelOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDefinitionModelOptions)(nil)).Elem()
+}
+
+func (i ModelDefinitionModelOptionsArgs) ToModelDefinitionModelOptionsOutput() ModelDefinitionModelOptionsOutput {
+	return i.ToModelDefinitionModelOptionsOutputWithContext(context.Background())
+}
+
+func (i ModelDefinitionModelOptionsArgs) ToModelDefinitionModelOptionsOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsOutput)
+}
+
+func (i ModelDefinitionModelOptionsArgs) ToModelDefinitionModelOptionsPtrOutput() ModelDefinitionModelOptionsPtrOutput {
+	return i.ToModelDefinitionModelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ModelDefinitionModelOptionsArgs) ToModelDefinitionModelOptionsPtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsOutput).ToModelDefinitionModelOptionsPtrOutputWithContext(ctx)
+}
+
+// ModelDefinitionModelOptionsPtrInput is an input type that accepts ModelDefinitionModelOptionsArgs, ModelDefinitionModelOptionsPtr and ModelDefinitionModelOptionsPtrOutput values.
+// You can construct a concrete instance of `ModelDefinitionModelOptionsPtrInput` via:
+//
+//          ModelDefinitionModelOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ModelDefinitionModelOptionsPtrInput interface {
+	pulumi.Input
+
+	ToModelDefinitionModelOptionsPtrOutput() ModelDefinitionModelOptionsPtrOutput
+	ToModelDefinitionModelOptionsPtrOutputWithContext(context.Context) ModelDefinitionModelOptionsPtrOutput
+}
+
+type modelDefinitionModelOptionsPtrType ModelDefinitionModelOptionsArgs
+
+func ModelDefinitionModelOptionsPtr(v *ModelDefinitionModelOptionsArgs) ModelDefinitionModelOptionsPtrInput {
+	return (*modelDefinitionModelOptionsPtrType)(v)
+}
+
+func (*modelDefinitionModelOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDefinitionModelOptions)(nil)).Elem()
+}
+
+func (i *modelDefinitionModelOptionsPtrType) ToModelDefinitionModelOptionsPtrOutput() ModelDefinitionModelOptionsPtrOutput {
+	return i.ToModelDefinitionModelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *modelDefinitionModelOptionsPtrType) ToModelDefinitionModelOptionsPtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsPtrOutput)
+}
+
+// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+type ModelDefinitionModelOptionsOutput struct{ *pulumi.OutputState }
+
+func (ModelDefinitionModelOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDefinitionModelOptions)(nil)).Elem()
+}
+
+func (o ModelDefinitionModelOptionsOutput) ToModelDefinitionModelOptionsOutput() ModelDefinitionModelOptionsOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsOutput) ToModelDefinitionModelOptionsOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsOutput) ToModelDefinitionModelOptionsPtrOutput() ModelDefinitionModelOptionsPtrOutput {
+	return o.ToModelDefinitionModelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ModelDefinitionModelOptionsOutput) ToModelDefinitionModelOptionsPtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsPtrOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptions) *ModelDefinitionModelOptions {
+		return &v
+	}).(ModelDefinitionModelOptionsPtrOutput)
+}
+func (o ModelDefinitionModelOptionsOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptions) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+func (o ModelDefinitionModelOptionsOutput) LossType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptions) *string { return v.LossType }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelDefinitionModelOptionsOutput) ModelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptions) *string { return v.ModelType }).(pulumi.StringPtrOutput)
+}
+
+type ModelDefinitionModelOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelDefinitionModelOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDefinitionModelOptions)(nil)).Elem()
+}
+
+func (o ModelDefinitionModelOptionsPtrOutput) ToModelDefinitionModelOptionsPtrOutput() ModelDefinitionModelOptionsPtrOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsPtrOutput) ToModelDefinitionModelOptionsPtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsPtrOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsPtrOutput) Elem() ModelDefinitionModelOptionsOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptions) ModelDefinitionModelOptions { return *v }).(ModelDefinitionModelOptionsOutput)
+}
+
+func (o ModelDefinitionModelOptionsPtrOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ModelDefinitionModelOptionsPtrOutput) LossType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LossType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelDefinitionModelOptionsPtrOutput) ModelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelType
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+type ModelDefinitionModelOptionsResponse struct {
+	Labels    []string `pulumi:"labels"`
+	LossType  string   `pulumi:"lossType"`
+	ModelType string   `pulumi:"modelType"`
+}
+
+// ModelDefinitionModelOptionsResponseInput is an input type that accepts ModelDefinitionModelOptionsResponseArgs and ModelDefinitionModelOptionsResponseOutput values.
+// You can construct a concrete instance of `ModelDefinitionModelOptionsResponseInput` via:
+//
+//          ModelDefinitionModelOptionsResponseArgs{...}
+type ModelDefinitionModelOptionsResponseInput interface {
+	pulumi.Input
+
+	ToModelDefinitionModelOptionsResponseOutput() ModelDefinitionModelOptionsResponseOutput
+	ToModelDefinitionModelOptionsResponseOutputWithContext(context.Context) ModelDefinitionModelOptionsResponseOutput
+}
+
+// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+type ModelDefinitionModelOptionsResponseArgs struct {
+	Labels    pulumi.StringArrayInput `pulumi:"labels"`
+	LossType  pulumi.StringInput      `pulumi:"lossType"`
+	ModelType pulumi.StringInput      `pulumi:"modelType"`
+}
+
+func (ModelDefinitionModelOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDefinitionModelOptionsResponse)(nil)).Elem()
+}
+
+func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponseOutput() ModelDefinitionModelOptionsResponseOutput {
+	return i.ToModelDefinitionModelOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponseOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsResponseOutput)
+}
+
+func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
+	return i.ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ModelDefinitionModelOptionsResponseArgs) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsResponseOutput).ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// ModelDefinitionModelOptionsResponsePtrInput is an input type that accepts ModelDefinitionModelOptionsResponseArgs, ModelDefinitionModelOptionsResponsePtr and ModelDefinitionModelOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `ModelDefinitionModelOptionsResponsePtrInput` via:
+//
+//          ModelDefinitionModelOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ModelDefinitionModelOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput
+	ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Context) ModelDefinitionModelOptionsResponsePtrOutput
+}
+
+type modelDefinitionModelOptionsResponsePtrType ModelDefinitionModelOptionsResponseArgs
+
+func ModelDefinitionModelOptionsResponsePtr(v *ModelDefinitionModelOptionsResponseArgs) ModelDefinitionModelOptionsResponsePtrInput {
+	return (*modelDefinitionModelOptionsResponsePtrType)(v)
+}
+
+func (*modelDefinitionModelOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDefinitionModelOptionsResponse)(nil)).Elem()
+}
+
+func (i *modelDefinitionModelOptionsResponsePtrType) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
+	return i.ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *modelDefinitionModelOptionsResponsePtrType) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelDefinitionModelOptionsResponsePtrOutput)
+}
+
+// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+type ModelDefinitionModelOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ModelDefinitionModelOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDefinitionModelOptionsResponse)(nil)).Elem()
+}
+
+func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponseOutput() ModelDefinitionModelOptionsResponseOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponseOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponseOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
+	return o.ToModelDefinitionModelOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ModelDefinitionModelOptionsResponseOutput) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) *ModelDefinitionModelOptionsResponse {
+		return &v
+	}).(ModelDefinitionModelOptionsResponsePtrOutput)
+}
+func (o ModelDefinitionModelOptionsResponseOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+func (o ModelDefinitionModelOptionsResponseOutput) LossType() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) string { return v.LossType }).(pulumi.StringOutput)
+}
+
+func (o ModelDefinitionModelOptionsResponseOutput) ModelType() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelDefinitionModelOptionsResponse) string { return v.ModelType }).(pulumi.StringOutput)
+}
+
+type ModelDefinitionModelOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ModelDefinitionModelOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDefinitionModelOptionsResponse)(nil)).Elem()
+}
+
+func (o ModelDefinitionModelOptionsResponsePtrOutput) ToModelDefinitionModelOptionsResponsePtrOutput() ModelDefinitionModelOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsResponsePtrOutput) ToModelDefinitionModelOptionsResponsePtrOutputWithContext(ctx context.Context) ModelDefinitionModelOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ModelDefinitionModelOptionsResponsePtrOutput) Elem() ModelDefinitionModelOptionsResponseOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) ModelDefinitionModelOptionsResponse { return *v }).(ModelDefinitionModelOptionsResponseOutput)
+}
+
+func (o ModelDefinitionModelOptionsResponsePtrOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ModelDefinitionModelOptionsResponsePtrOutput) LossType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LossType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelDefinitionModelOptionsResponsePtrOutput) ModelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDefinitionModelOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ModelType
+	}).(pulumi.StringPtrOutput)
+}
+
 type ModelDefinitionResponse struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions TableModelOptionsResponse `pulumi:"modelOptions"`
+	ModelOptions ModelDefinitionModelOptionsResponse `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns []BqmlTrainingRunResponse `pulumi:"trainingRuns"`
 }
@@ -17330,7 +17263,7 @@ type ModelDefinitionResponseInput interface {
 
 type ModelDefinitionResponseArgs struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions TableModelOptionsResponseInput `pulumi:"modelOptions"`
+	ModelOptions ModelDefinitionModelOptionsResponseInput `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns BqmlTrainingRunResponseArrayInput `pulumi:"trainingRuns"`
 }
@@ -17413,8 +17346,8 @@ func (o ModelDefinitionResponseOutput) ToModelDefinitionResponsePtrOutputWithCon
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionResponseOutput) ModelOptions() TableModelOptionsResponseOutput {
-	return o.ApplyT(func(v ModelDefinitionResponse) TableModelOptionsResponse { return v.ModelOptions }).(TableModelOptionsResponseOutput)
+func (o ModelDefinitionResponseOutput) ModelOptions() ModelDefinitionModelOptionsResponseOutput {
+	return o.ApplyT(func(v ModelDefinitionResponse) ModelDefinitionModelOptionsResponse { return v.ModelOptions }).(ModelDefinitionModelOptionsResponseOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -17441,13 +17374,13 @@ func (o ModelDefinitionResponsePtrOutput) Elem() ModelDefinitionResponseOutput {
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionResponsePtrOutput) ModelOptions() TableModelOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *ModelDefinitionResponse) *TableModelOptionsResponse {
+func (o ModelDefinitionResponsePtrOutput) ModelOptions() ModelDefinitionModelOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *ModelDefinitionResponse) *ModelDefinitionModelOptionsResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.ModelOptions
-	}).(TableModelOptionsResponsePtrOutput)
+	}).(ModelDefinitionModelOptionsResponsePtrOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -18332,7 +18265,7 @@ type QueryParameterType struct {
 	// [Optional] The type of the array's elements, if this is an array.
 	ArrayType *QueryParameterType `pulumi:"arrayType"`
 	// [Optional] The types of the fields of this struct, in order, if this is a struct.
-	StructTypes []JobStructTypesItem `pulumi:"structTypes"`
+	StructTypes []QueryParameterTypeStructTypesItem `pulumi:"structTypes"`
 	// [Required] The top level type of this field.
 	Type *string `pulumi:"type"`
 }
@@ -18352,7 +18285,7 @@ type QueryParameterTypeArgs struct {
 	// [Optional] The type of the array's elements, if this is an array.
 	ArrayType QueryParameterTypePtrInput `pulumi:"arrayType"`
 	// [Optional] The types of the fields of this struct, in order, if this is a struct.
-	StructTypes JobStructTypesItemArrayInput `pulumi:"structTypes"`
+	StructTypes QueryParameterTypeStructTypesItemArrayInput `pulumi:"structTypes"`
 	// [Required] The top level type of this field.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -18440,8 +18373,8 @@ func (o QueryParameterTypeOutput) ArrayType() QueryParameterTypePtrOutput {
 }
 
 // [Optional] The types of the fields of this struct, in order, if this is a struct.
-func (o QueryParameterTypeOutput) StructTypes() JobStructTypesItemArrayOutput {
-	return o.ApplyT(func(v QueryParameterType) []JobStructTypesItem { return v.StructTypes }).(JobStructTypesItemArrayOutput)
+func (o QueryParameterTypeOutput) StructTypes() QueryParameterTypeStructTypesItemArrayOutput {
+	return o.ApplyT(func(v QueryParameterType) []QueryParameterTypeStructTypesItem { return v.StructTypes }).(QueryParameterTypeStructTypesItemArrayOutput)
 }
 
 // [Required] The top level type of this field.
@@ -18478,13 +18411,13 @@ func (o QueryParameterTypePtrOutput) ArrayType() QueryParameterTypePtrOutput {
 }
 
 // [Optional] The types of the fields of this struct, in order, if this is a struct.
-func (o QueryParameterTypePtrOutput) StructTypes() JobStructTypesItemArrayOutput {
-	return o.ApplyT(func(v *QueryParameterType) []JobStructTypesItem {
+func (o QueryParameterTypePtrOutput) StructTypes() QueryParameterTypeStructTypesItemArrayOutput {
+	return o.ApplyT(func(v *QueryParameterType) []QueryParameterTypeStructTypesItem {
 		if v == nil {
 			return nil
 		}
 		return v.StructTypes
-	}).(JobStructTypesItemArrayOutput)
+	}).(QueryParameterTypeStructTypesItemArrayOutput)
 }
 
 // [Required] The top level type of this field.
@@ -18501,7 +18434,7 @@ type QueryParameterTypeResponse struct {
 	// [Optional] The type of the array's elements, if this is an array.
 	ArrayType QueryParameterTypeResponse `pulumi:"arrayType"`
 	// [Optional] The types of the fields of this struct, in order, if this is a struct.
-	StructTypes []JobStructTypesItemResponse `pulumi:"structTypes"`
+	StructTypes []QueryParameterTypeStructTypesItemResponse `pulumi:"structTypes"`
 	// [Required] The top level type of this field.
 	Type string `pulumi:"type"`
 }
@@ -18521,7 +18454,7 @@ type QueryParameterTypeResponseArgs struct {
 	// [Optional] The type of the array's elements, if this is an array.
 	ArrayType QueryParameterTypeResponseInput `pulumi:"arrayType"`
 	// [Optional] The types of the fields of this struct, in order, if this is a struct.
-	StructTypes JobStructTypesItemResponseArrayInput `pulumi:"structTypes"`
+	StructTypes QueryParameterTypeStructTypesItemResponseArrayInput `pulumi:"structTypes"`
 	// [Required] The top level type of this field.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -18558,13 +18491,243 @@ func (o QueryParameterTypeResponseOutput) ArrayType() QueryParameterTypeResponse
 }
 
 // [Optional] The types of the fields of this struct, in order, if this is a struct.
-func (o QueryParameterTypeResponseOutput) StructTypes() JobStructTypesItemResponseArrayOutput {
-	return o.ApplyT(func(v QueryParameterTypeResponse) []JobStructTypesItemResponse { return v.StructTypes }).(JobStructTypesItemResponseArrayOutput)
+func (o QueryParameterTypeResponseOutput) StructTypes() QueryParameterTypeStructTypesItemResponseArrayOutput {
+	return o.ApplyT(func(v QueryParameterTypeResponse) []QueryParameterTypeStructTypesItemResponse { return v.StructTypes }).(QueryParameterTypeStructTypesItemResponseArrayOutput)
 }
 
 // [Required] The top level type of this field.
 func (o QueryParameterTypeResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryParameterTypeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type QueryParameterTypeStructTypesItem struct {
+	// [Optional] Human-oriented description of the field.
+	Description *string `pulumi:"description"`
+	// [Optional] The name of this field.
+	Name *string `pulumi:"name"`
+	// [Required] The type of this field.
+	Type *QueryParameterType `pulumi:"type"`
+}
+
+// QueryParameterTypeStructTypesItemInput is an input type that accepts QueryParameterTypeStructTypesItemArgs and QueryParameterTypeStructTypesItemOutput values.
+// You can construct a concrete instance of `QueryParameterTypeStructTypesItemInput` via:
+//
+//          QueryParameterTypeStructTypesItemArgs{...}
+type QueryParameterTypeStructTypesItemInput interface {
+	pulumi.Input
+
+	ToQueryParameterTypeStructTypesItemOutput() QueryParameterTypeStructTypesItemOutput
+	ToQueryParameterTypeStructTypesItemOutputWithContext(context.Context) QueryParameterTypeStructTypesItemOutput
+}
+
+type QueryParameterTypeStructTypesItemArgs struct {
+	// [Optional] Human-oriented description of the field.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// [Optional] The name of this field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Required] The type of this field.
+	Type QueryParameterTypePtrInput `pulumi:"type"`
+}
+
+func (QueryParameterTypeStructTypesItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryParameterTypeStructTypesItem)(nil)).Elem()
+}
+
+func (i QueryParameterTypeStructTypesItemArgs) ToQueryParameterTypeStructTypesItemOutput() QueryParameterTypeStructTypesItemOutput {
+	return i.ToQueryParameterTypeStructTypesItemOutputWithContext(context.Background())
+}
+
+func (i QueryParameterTypeStructTypesItemArgs) ToQueryParameterTypeStructTypesItemOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeStructTypesItemOutput)
+}
+
+// QueryParameterTypeStructTypesItemArrayInput is an input type that accepts QueryParameterTypeStructTypesItemArray and QueryParameterTypeStructTypesItemArrayOutput values.
+// You can construct a concrete instance of `QueryParameterTypeStructTypesItemArrayInput` via:
+//
+//          QueryParameterTypeStructTypesItemArray{ QueryParameterTypeStructTypesItemArgs{...} }
+type QueryParameterTypeStructTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToQueryParameterTypeStructTypesItemArrayOutput() QueryParameterTypeStructTypesItemArrayOutput
+	ToQueryParameterTypeStructTypesItemArrayOutputWithContext(context.Context) QueryParameterTypeStructTypesItemArrayOutput
+}
+
+type QueryParameterTypeStructTypesItemArray []QueryParameterTypeStructTypesItemInput
+
+func (QueryParameterTypeStructTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueryParameterTypeStructTypesItem)(nil)).Elem()
+}
+
+func (i QueryParameterTypeStructTypesItemArray) ToQueryParameterTypeStructTypesItemArrayOutput() QueryParameterTypeStructTypesItemArrayOutput {
+	return i.ToQueryParameterTypeStructTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i QueryParameterTypeStructTypesItemArray) ToQueryParameterTypeStructTypesItemArrayOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeStructTypesItemArrayOutput)
+}
+
+type QueryParameterTypeStructTypesItemOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterTypeStructTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryParameterTypeStructTypesItem)(nil)).Elem()
+}
+
+func (o QueryParameterTypeStructTypesItemOutput) ToQueryParameterTypeStructTypesItemOutput() QueryParameterTypeStructTypesItemOutput {
+	return o
+}
+
+func (o QueryParameterTypeStructTypesItemOutput) ToQueryParameterTypeStructTypesItemOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemOutput {
+	return o
+}
+
+// [Optional] Human-oriented description of the field.
+func (o QueryParameterTypeStructTypesItemOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueryParameterTypeStructTypesItem) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// [Optional] The name of this field.
+func (o QueryParameterTypeStructTypesItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueryParameterTypeStructTypesItem) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Required] The type of this field.
+func (o QueryParameterTypeStructTypesItemOutput) Type() QueryParameterTypePtrOutput {
+	return o.ApplyT(func(v QueryParameterTypeStructTypesItem) *QueryParameterType { return v.Type }).(QueryParameterTypePtrOutput)
+}
+
+type QueryParameterTypeStructTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterTypeStructTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueryParameterTypeStructTypesItem)(nil)).Elem()
+}
+
+func (o QueryParameterTypeStructTypesItemArrayOutput) ToQueryParameterTypeStructTypesItemArrayOutput() QueryParameterTypeStructTypesItemArrayOutput {
+	return o
+}
+
+func (o QueryParameterTypeStructTypesItemArrayOutput) ToQueryParameterTypeStructTypesItemArrayOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemArrayOutput {
+	return o
+}
+
+func (o QueryParameterTypeStructTypesItemArrayOutput) Index(i pulumi.IntInput) QueryParameterTypeStructTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueryParameterTypeStructTypesItem {
+		return vs[0].([]QueryParameterTypeStructTypesItem)[vs[1].(int)]
+	}).(QueryParameterTypeStructTypesItemOutput)
+}
+
+type QueryParameterTypeStructTypesItemResponse struct {
+	// [Optional] Human-oriented description of the field.
+	Description string `pulumi:"description"`
+	// [Optional] The name of this field.
+	Name string `pulumi:"name"`
+	// [Required] The type of this field.
+	Type QueryParameterTypeResponse `pulumi:"type"`
+}
+
+// QueryParameterTypeStructTypesItemResponseInput is an input type that accepts QueryParameterTypeStructTypesItemResponseArgs and QueryParameterTypeStructTypesItemResponseOutput values.
+// You can construct a concrete instance of `QueryParameterTypeStructTypesItemResponseInput` via:
+//
+//          QueryParameterTypeStructTypesItemResponseArgs{...}
+type QueryParameterTypeStructTypesItemResponseInput interface {
+	pulumi.Input
+
+	ToQueryParameterTypeStructTypesItemResponseOutput() QueryParameterTypeStructTypesItemResponseOutput
+	ToQueryParameterTypeStructTypesItemResponseOutputWithContext(context.Context) QueryParameterTypeStructTypesItemResponseOutput
+}
+
+type QueryParameterTypeStructTypesItemResponseArgs struct {
+	// [Optional] Human-oriented description of the field.
+	Description pulumi.StringInput `pulumi:"description"`
+	// [Optional] The name of this field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// [Required] The type of this field.
+	Type QueryParameterTypeResponseInput `pulumi:"type"`
+}
+
+func (QueryParameterTypeStructTypesItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryParameterTypeStructTypesItemResponse)(nil)).Elem()
+}
+
+func (i QueryParameterTypeStructTypesItemResponseArgs) ToQueryParameterTypeStructTypesItemResponseOutput() QueryParameterTypeStructTypesItemResponseOutput {
+	return i.ToQueryParameterTypeStructTypesItemResponseOutputWithContext(context.Background())
+}
+
+func (i QueryParameterTypeStructTypesItemResponseArgs) ToQueryParameterTypeStructTypesItemResponseOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeStructTypesItemResponseOutput)
+}
+
+// QueryParameterTypeStructTypesItemResponseArrayInput is an input type that accepts QueryParameterTypeStructTypesItemResponseArray and QueryParameterTypeStructTypesItemResponseArrayOutput values.
+// You can construct a concrete instance of `QueryParameterTypeStructTypesItemResponseArrayInput` via:
+//
+//          QueryParameterTypeStructTypesItemResponseArray{ QueryParameterTypeStructTypesItemResponseArgs{...} }
+type QueryParameterTypeStructTypesItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToQueryParameterTypeStructTypesItemResponseArrayOutput() QueryParameterTypeStructTypesItemResponseArrayOutput
+	ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(context.Context) QueryParameterTypeStructTypesItemResponseArrayOutput
+}
+
+type QueryParameterTypeStructTypesItemResponseArray []QueryParameterTypeStructTypesItemResponseInput
+
+func (QueryParameterTypeStructTypesItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueryParameterTypeStructTypesItemResponse)(nil)).Elem()
+}
+
+func (i QueryParameterTypeStructTypesItemResponseArray) ToQueryParameterTypeStructTypesItemResponseArrayOutput() QueryParameterTypeStructTypesItemResponseArrayOutput {
+	return i.ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i QueryParameterTypeStructTypesItemResponseArray) ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterTypeStructTypesItemResponseArrayOutput)
+}
+
+type QueryParameterTypeStructTypesItemResponseOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterTypeStructTypesItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryParameterTypeStructTypesItemResponse)(nil)).Elem()
+}
+
+func (o QueryParameterTypeStructTypesItemResponseOutput) ToQueryParameterTypeStructTypesItemResponseOutput() QueryParameterTypeStructTypesItemResponseOutput {
+	return o
+}
+
+func (o QueryParameterTypeStructTypesItemResponseOutput) ToQueryParameterTypeStructTypesItemResponseOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemResponseOutput {
+	return o
+}
+
+// [Optional] Human-oriented description of the field.
+func (o QueryParameterTypeStructTypesItemResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v QueryParameterTypeStructTypesItemResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// [Optional] The name of this field.
+func (o QueryParameterTypeStructTypesItemResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v QueryParameterTypeStructTypesItemResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] The type of this field.
+func (o QueryParameterTypeStructTypesItemResponseOutput) Type() QueryParameterTypeResponseOutput {
+	return o.ApplyT(func(v QueryParameterTypeStructTypesItemResponse) QueryParameterTypeResponse { return v.Type }).(QueryParameterTypeResponseOutput)
+}
+
+type QueryParameterTypeStructTypesItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterTypeStructTypesItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueryParameterTypeStructTypesItemResponse)(nil)).Elem()
+}
+
+func (o QueryParameterTypeStructTypesItemResponseArrayOutput) ToQueryParameterTypeStructTypesItemResponseArrayOutput() QueryParameterTypeStructTypesItemResponseArrayOutput {
+	return o
+}
+
+func (o QueryParameterTypeStructTypesItemResponseArrayOutput) ToQueryParameterTypeStructTypesItemResponseArrayOutputWithContext(ctx context.Context) QueryParameterTypeStructTypesItemResponseArrayOutput {
+	return o
+}
+
+func (o QueryParameterTypeStructTypesItemResponseArrayOutput) Index(i pulumi.IntInput) QueryParameterTypeStructTypesItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueryParameterTypeStructTypesItemResponse {
+		return vs[0].([]QueryParameterTypeStructTypesItemResponse)[vs[1].(int)]
+	}).(QueryParameterTypeStructTypesItemResponseOutput)
 }
 
 type QueryParameterValue struct {
@@ -19166,7 +19329,7 @@ type RangePartitioning struct {
 	// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
 	Field *string `pulumi:"field"`
 	// [TrustedTester] [Required] Defines the ranges for range partitioning.
-	Range *JobRange `pulumi:"range"`
+	Range *RangePartitioningRange `pulumi:"range"`
 }
 
 // RangePartitioningInput is an input type that accepts RangePartitioningArgs and RangePartitioningOutput values.
@@ -19184,7 +19347,7 @@ type RangePartitioningArgs struct {
 	// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// [TrustedTester] [Required] Defines the ranges for range partitioning.
-	Range JobRangePtrInput `pulumi:"range"`
+	Range RangePartitioningRangePtrInput `pulumi:"range"`
 }
 
 func (RangePartitioningArgs) ElementType() reflect.Type {
@@ -19270,8 +19433,8 @@ func (o RangePartitioningOutput) Field() pulumi.StringPtrOutput {
 }
 
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
-func (o RangePartitioningOutput) Range() JobRangePtrOutput {
-	return o.ApplyT(func(v RangePartitioning) *JobRange { return v.Range }).(JobRangePtrOutput)
+func (o RangePartitioningOutput) Range() RangePartitioningRangePtrOutput {
+	return o.ApplyT(func(v RangePartitioning) *RangePartitioningRange { return v.Range }).(RangePartitioningRangePtrOutput)
 }
 
 type RangePartitioningPtrOutput struct{ *pulumi.OutputState }
@@ -19303,20 +19466,364 @@ func (o RangePartitioningPtrOutput) Field() pulumi.StringPtrOutput {
 }
 
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
-func (o RangePartitioningPtrOutput) Range() JobRangePtrOutput {
-	return o.ApplyT(func(v *RangePartitioning) *JobRange {
+func (o RangePartitioningPtrOutput) Range() RangePartitioningRangePtrOutput {
+	return o.ApplyT(func(v *RangePartitioning) *RangePartitioningRange {
 		if v == nil {
 			return nil
 		}
 		return v.Range
-	}).(JobRangePtrOutput)
+	}).(RangePartitioningRangePtrOutput)
+}
+
+// [TrustedTester] [Required] Defines the ranges for range partitioning.
+type RangePartitioningRange struct {
+	// [TrustedTester] [Required] The end of range partitioning, exclusive.
+	End *string `pulumi:"end"`
+	// [TrustedTester] [Required] The width of each interval.
+	Interval *string `pulumi:"interval"`
+	// [TrustedTester] [Required] The start of range partitioning, inclusive.
+	Start *string `pulumi:"start"`
+}
+
+// RangePartitioningRangeInput is an input type that accepts RangePartitioningRangeArgs and RangePartitioningRangeOutput values.
+// You can construct a concrete instance of `RangePartitioningRangeInput` via:
+//
+//          RangePartitioningRangeArgs{...}
+type RangePartitioningRangeInput interface {
+	pulumi.Input
+
+	ToRangePartitioningRangeOutput() RangePartitioningRangeOutput
+	ToRangePartitioningRangeOutputWithContext(context.Context) RangePartitioningRangeOutput
+}
+
+// [TrustedTester] [Required] Defines the ranges for range partitioning.
+type RangePartitioningRangeArgs struct {
+	// [TrustedTester] [Required] The end of range partitioning, exclusive.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// [TrustedTester] [Required] The width of each interval.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// [TrustedTester] [Required] The start of range partitioning, inclusive.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (RangePartitioningRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RangePartitioningRange)(nil)).Elem()
+}
+
+func (i RangePartitioningRangeArgs) ToRangePartitioningRangeOutput() RangePartitioningRangeOutput {
+	return i.ToRangePartitioningRangeOutputWithContext(context.Background())
+}
+
+func (i RangePartitioningRangeArgs) ToRangePartitioningRangeOutputWithContext(ctx context.Context) RangePartitioningRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeOutput)
+}
+
+func (i RangePartitioningRangeArgs) ToRangePartitioningRangePtrOutput() RangePartitioningRangePtrOutput {
+	return i.ToRangePartitioningRangePtrOutputWithContext(context.Background())
+}
+
+func (i RangePartitioningRangeArgs) ToRangePartitioningRangePtrOutputWithContext(ctx context.Context) RangePartitioningRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeOutput).ToRangePartitioningRangePtrOutputWithContext(ctx)
+}
+
+// RangePartitioningRangePtrInput is an input type that accepts RangePartitioningRangeArgs, RangePartitioningRangePtr and RangePartitioningRangePtrOutput values.
+// You can construct a concrete instance of `RangePartitioningRangePtrInput` via:
+//
+//          RangePartitioningRangeArgs{...}
+//
+//  or:
+//
+//          nil
+type RangePartitioningRangePtrInput interface {
+	pulumi.Input
+
+	ToRangePartitioningRangePtrOutput() RangePartitioningRangePtrOutput
+	ToRangePartitioningRangePtrOutputWithContext(context.Context) RangePartitioningRangePtrOutput
+}
+
+type rangePartitioningRangePtrType RangePartitioningRangeArgs
+
+func RangePartitioningRangePtr(v *RangePartitioningRangeArgs) RangePartitioningRangePtrInput {
+	return (*rangePartitioningRangePtrType)(v)
+}
+
+func (*rangePartitioningRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RangePartitioningRange)(nil)).Elem()
+}
+
+func (i *rangePartitioningRangePtrType) ToRangePartitioningRangePtrOutput() RangePartitioningRangePtrOutput {
+	return i.ToRangePartitioningRangePtrOutputWithContext(context.Background())
+}
+
+func (i *rangePartitioningRangePtrType) ToRangePartitioningRangePtrOutputWithContext(ctx context.Context) RangePartitioningRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangePtrOutput)
+}
+
+// [TrustedTester] [Required] Defines the ranges for range partitioning.
+type RangePartitioningRangeOutput struct{ *pulumi.OutputState }
+
+func (RangePartitioningRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RangePartitioningRange)(nil)).Elem()
+}
+
+func (o RangePartitioningRangeOutput) ToRangePartitioningRangeOutput() RangePartitioningRangeOutput {
+	return o
+}
+
+func (o RangePartitioningRangeOutput) ToRangePartitioningRangeOutputWithContext(ctx context.Context) RangePartitioningRangeOutput {
+	return o
+}
+
+func (o RangePartitioningRangeOutput) ToRangePartitioningRangePtrOutput() RangePartitioningRangePtrOutput {
+	return o.ToRangePartitioningRangePtrOutputWithContext(context.Background())
+}
+
+func (o RangePartitioningRangeOutput) ToRangePartitioningRangePtrOutputWithContext(ctx context.Context) RangePartitioningRangePtrOutput {
+	return o.ApplyT(func(v RangePartitioningRange) *RangePartitioningRange {
+		return &v
+	}).(RangePartitioningRangePtrOutput)
+}
+
+// [TrustedTester] [Required] The end of range partitioning, exclusive.
+func (o RangePartitioningRangeOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RangePartitioningRange) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] The width of each interval.
+func (o RangePartitioningRangeOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RangePartitioningRange) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] The start of range partitioning, inclusive.
+func (o RangePartitioningRangeOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RangePartitioningRange) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type RangePartitioningRangePtrOutput struct{ *pulumi.OutputState }
+
+func (RangePartitioningRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RangePartitioningRange)(nil)).Elem()
+}
+
+func (o RangePartitioningRangePtrOutput) ToRangePartitioningRangePtrOutput() RangePartitioningRangePtrOutput {
+	return o
+}
+
+func (o RangePartitioningRangePtrOutput) ToRangePartitioningRangePtrOutputWithContext(ctx context.Context) RangePartitioningRangePtrOutput {
+	return o
+}
+
+func (o RangePartitioningRangePtrOutput) Elem() RangePartitioningRangeOutput {
+	return o.ApplyT(func(v *RangePartitioningRange) RangePartitioningRange { return *v }).(RangePartitioningRangeOutput)
+}
+
+// [TrustedTester] [Required] The end of range partitioning, exclusive.
+func (o RangePartitioningRangePtrOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RangePartitioningRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.End
+	}).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] The width of each interval.
+func (o RangePartitioningRangePtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RangePartitioningRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] The start of range partitioning, inclusive.
+func (o RangePartitioningRangePtrOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RangePartitioningRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Start
+	}).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] Defines the ranges for range partitioning.
+type RangePartitioningRangeResponse struct {
+	// [TrustedTester] [Required] The end of range partitioning, exclusive.
+	End string `pulumi:"end"`
+	// [TrustedTester] [Required] The width of each interval.
+	Interval string `pulumi:"interval"`
+	// [TrustedTester] [Required] The start of range partitioning, inclusive.
+	Start string `pulumi:"start"`
+}
+
+// RangePartitioningRangeResponseInput is an input type that accepts RangePartitioningRangeResponseArgs and RangePartitioningRangeResponseOutput values.
+// You can construct a concrete instance of `RangePartitioningRangeResponseInput` via:
+//
+//          RangePartitioningRangeResponseArgs{...}
+type RangePartitioningRangeResponseInput interface {
+	pulumi.Input
+
+	ToRangePartitioningRangeResponseOutput() RangePartitioningRangeResponseOutput
+	ToRangePartitioningRangeResponseOutputWithContext(context.Context) RangePartitioningRangeResponseOutput
+}
+
+// [TrustedTester] [Required] Defines the ranges for range partitioning.
+type RangePartitioningRangeResponseArgs struct {
+	// [TrustedTester] [Required] The end of range partitioning, exclusive.
+	End pulumi.StringInput `pulumi:"end"`
+	// [TrustedTester] [Required] The width of each interval.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// [TrustedTester] [Required] The start of range partitioning, inclusive.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (RangePartitioningRangeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RangePartitioningRangeResponse)(nil)).Elem()
+}
+
+func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponseOutput() RangePartitioningRangeResponseOutput {
+	return i.ToRangePartitioningRangeResponseOutputWithContext(context.Background())
+}
+
+func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponseOutputWithContext(ctx context.Context) RangePartitioningRangeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeResponseOutput)
+}
+
+func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
+	return i.ToRangePartitioningRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RangePartitioningRangeResponseArgs) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeResponseOutput).ToRangePartitioningRangeResponsePtrOutputWithContext(ctx)
+}
+
+// RangePartitioningRangeResponsePtrInput is an input type that accepts RangePartitioningRangeResponseArgs, RangePartitioningRangeResponsePtr and RangePartitioningRangeResponsePtrOutput values.
+// You can construct a concrete instance of `RangePartitioningRangeResponsePtrInput` via:
+//
+//          RangePartitioningRangeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RangePartitioningRangeResponsePtrInput interface {
+	pulumi.Input
+
+	ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput
+	ToRangePartitioningRangeResponsePtrOutputWithContext(context.Context) RangePartitioningRangeResponsePtrOutput
+}
+
+type rangePartitioningRangeResponsePtrType RangePartitioningRangeResponseArgs
+
+func RangePartitioningRangeResponsePtr(v *RangePartitioningRangeResponseArgs) RangePartitioningRangeResponsePtrInput {
+	return (*rangePartitioningRangeResponsePtrType)(v)
+}
+
+func (*rangePartitioningRangeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RangePartitioningRangeResponse)(nil)).Elem()
+}
+
+func (i *rangePartitioningRangeResponsePtrType) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
+	return i.ToRangePartitioningRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *rangePartitioningRangeResponsePtrType) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RangePartitioningRangeResponsePtrOutput)
+}
+
+// [TrustedTester] [Required] Defines the ranges for range partitioning.
+type RangePartitioningRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (RangePartitioningRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RangePartitioningRangeResponse)(nil)).Elem()
+}
+
+func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponseOutput() RangePartitioningRangeResponseOutput {
+	return o
+}
+
+func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponseOutputWithContext(ctx context.Context) RangePartitioningRangeResponseOutput {
+	return o
+}
+
+func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
+	return o.ToRangePartitioningRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RangePartitioningRangeResponseOutput) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
+	return o.ApplyT(func(v RangePartitioningRangeResponse) *RangePartitioningRangeResponse {
+		return &v
+	}).(RangePartitioningRangeResponsePtrOutput)
+}
+
+// [TrustedTester] [Required] The end of range partitioning, exclusive.
+func (o RangePartitioningRangeResponseOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v RangePartitioningRangeResponse) string { return v.End }).(pulumi.StringOutput)
+}
+
+// [TrustedTester] [Required] The width of each interval.
+func (o RangePartitioningRangeResponseOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v RangePartitioningRangeResponse) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// [TrustedTester] [Required] The start of range partitioning, inclusive.
+func (o RangePartitioningRangeResponseOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v RangePartitioningRangeResponse) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type RangePartitioningRangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RangePartitioningRangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RangePartitioningRangeResponse)(nil)).Elem()
+}
+
+func (o RangePartitioningRangeResponsePtrOutput) ToRangePartitioningRangeResponsePtrOutput() RangePartitioningRangeResponsePtrOutput {
+	return o
+}
+
+func (o RangePartitioningRangeResponsePtrOutput) ToRangePartitioningRangeResponsePtrOutputWithContext(ctx context.Context) RangePartitioningRangeResponsePtrOutput {
+	return o
+}
+
+func (o RangePartitioningRangeResponsePtrOutput) Elem() RangePartitioningRangeResponseOutput {
+	return o.ApplyT(func(v *RangePartitioningRangeResponse) RangePartitioningRangeResponse { return *v }).(RangePartitioningRangeResponseOutput)
+}
+
+// [TrustedTester] [Required] The end of range partitioning, exclusive.
+func (o RangePartitioningRangeResponsePtrOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RangePartitioningRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.End
+	}).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] The width of each interval.
+func (o RangePartitioningRangeResponsePtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RangePartitioningRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// [TrustedTester] [Required] The start of range partitioning, inclusive.
+func (o RangePartitioningRangeResponsePtrOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RangePartitioningRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Start
+	}).(pulumi.StringPtrOutput)
 }
 
 type RangePartitioningResponse struct {
 	// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
 	Field string `pulumi:"field"`
 	// [TrustedTester] [Required] Defines the ranges for range partitioning.
-	Range JobRangeResponse `pulumi:"range"`
+	Range RangePartitioningRangeResponse `pulumi:"range"`
 }
 
 // RangePartitioningResponseInput is an input type that accepts RangePartitioningResponseArgs and RangePartitioningResponseOutput values.
@@ -19334,7 +19841,7 @@ type RangePartitioningResponseArgs struct {
 	// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
 	Field pulumi.StringInput `pulumi:"field"`
 	// [TrustedTester] [Required] Defines the ranges for range partitioning.
-	Range JobRangeResponseInput `pulumi:"range"`
+	Range RangePartitioningRangeResponseInput `pulumi:"range"`
 }
 
 func (RangePartitioningResponseArgs) ElementType() reflect.Type {
@@ -19420,8 +19927,8 @@ func (o RangePartitioningResponseOutput) Field() pulumi.StringOutput {
 }
 
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
-func (o RangePartitioningResponseOutput) Range() JobRangeResponseOutput {
-	return o.ApplyT(func(v RangePartitioningResponse) JobRangeResponse { return v.Range }).(JobRangeResponseOutput)
+func (o RangePartitioningResponseOutput) Range() RangePartitioningRangeResponseOutput {
+	return o.ApplyT(func(v RangePartitioningResponse) RangePartitioningRangeResponse { return v.Range }).(RangePartitioningRangeResponseOutput)
 }
 
 type RangePartitioningResponsePtrOutput struct{ *pulumi.OutputState }
@@ -19453,13 +19960,13 @@ func (o RangePartitioningResponsePtrOutput) Field() pulumi.StringPtrOutput {
 }
 
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
-func (o RangePartitioningResponsePtrOutput) Range() JobRangeResponsePtrOutput {
-	return o.ApplyT(func(v *RangePartitioningResponse) *JobRangeResponse {
+func (o RangePartitioningResponsePtrOutput) Range() RangePartitioningRangeResponsePtrOutput {
+	return o.ApplyT(func(v *RangePartitioningResponse) *RangePartitioningRangeResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.Range
-	}).(JobRangeResponsePtrOutput)
+	}).(RangePartitioningRangeResponsePtrOutput)
 }
 
 type RoutineReference struct {
@@ -23096,7 +23603,7 @@ func (o StreamingbufferResponsePtrOutput) OldestEntryTime() pulumi.StringPtrOutp
 
 type TableFieldSchema struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories *JobCategories `pulumi:"categories"`
+	Categories *TableFieldSchemaCategories `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -23106,8 +23613,8 @@ type TableFieldSchema struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode *string `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-	Name       *string        `pulumi:"name"`
-	PolicyTags *JobPolicyTags `pulumi:"policyTags"`
+	Name       *string                     `pulumi:"name"`
+	PolicyTags *TableFieldSchemaPolicyTags `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision *string `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -23129,7 +23636,7 @@ type TableFieldSchemaInput interface {
 
 type TableFieldSchemaArgs struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories JobCategoriesPtrInput `pulumi:"categories"`
+	Categories TableFieldSchemaCategoriesPtrInput `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -23139,8 +23646,8 @@ type TableFieldSchemaArgs struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	PolicyTags JobPolicyTagsPtrInput `pulumi:"policyTags"`
+	Name       pulumi.StringPtrInput              `pulumi:"name"`
+	PolicyTags TableFieldSchemaPolicyTagsPtrInput `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision pulumi.StringPtrInput `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -23201,8 +23708,8 @@ func (o TableFieldSchemaOutput) ToTableFieldSchemaOutputWithContext(ctx context.
 }
 
 // [Optional] The categories attached to this field, used for field-level access control.
-func (o TableFieldSchemaOutput) Categories() JobCategoriesPtrOutput {
-	return o.ApplyT(func(v TableFieldSchema) *JobCategories { return v.Categories }).(JobCategoriesPtrOutput)
+func (o TableFieldSchemaOutput) Categories() TableFieldSchemaCategoriesPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *TableFieldSchemaCategories { return v.Categories }).(TableFieldSchemaCategoriesPtrOutput)
 }
 
 // [Optional] The field description. The maximum length is 1,024 characters.
@@ -23230,8 +23737,8 @@ func (o TableFieldSchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableFieldSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o TableFieldSchemaOutput) PolicyTags() JobPolicyTagsPtrOutput {
-	return o.ApplyT(func(v TableFieldSchema) *JobPolicyTags { return v.PolicyTags }).(JobPolicyTagsPtrOutput)
+func (o TableFieldSchemaOutput) PolicyTags() TableFieldSchemaPolicyTagsPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *TableFieldSchemaPolicyTags { return v.PolicyTags }).(TableFieldSchemaPolicyTagsPtrOutput)
 }
 
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
@@ -23269,9 +23776,381 @@ func (o TableFieldSchemaArrayOutput) Index(i pulumi.IntInput) TableFieldSchemaOu
 	}).(TableFieldSchemaOutput)
 }
 
+// [Optional] The categories attached to this field, used for field-level access control.
+type TableFieldSchemaCategories struct {
+	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+	Names []string `pulumi:"names"`
+}
+
+// TableFieldSchemaCategoriesInput is an input type that accepts TableFieldSchemaCategoriesArgs and TableFieldSchemaCategoriesOutput values.
+// You can construct a concrete instance of `TableFieldSchemaCategoriesInput` via:
+//
+//          TableFieldSchemaCategoriesArgs{...}
+type TableFieldSchemaCategoriesInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaCategoriesOutput() TableFieldSchemaCategoriesOutput
+	ToTableFieldSchemaCategoriesOutputWithContext(context.Context) TableFieldSchemaCategoriesOutput
+}
+
+// [Optional] The categories attached to this field, used for field-level access control.
+type TableFieldSchemaCategoriesArgs struct {
+	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+}
+
+func (TableFieldSchemaCategoriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaCategories)(nil)).Elem()
+}
+
+func (i TableFieldSchemaCategoriesArgs) ToTableFieldSchemaCategoriesOutput() TableFieldSchemaCategoriesOutput {
+	return i.ToTableFieldSchemaCategoriesOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaCategoriesArgs) ToTableFieldSchemaCategoriesOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaCategoriesOutput)
+}
+
+func (i TableFieldSchemaCategoriesArgs) ToTableFieldSchemaCategoriesPtrOutput() TableFieldSchemaCategoriesPtrOutput {
+	return i.ToTableFieldSchemaCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaCategoriesArgs) ToTableFieldSchemaCategoriesPtrOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaCategoriesOutput).ToTableFieldSchemaCategoriesPtrOutputWithContext(ctx)
+}
+
+// TableFieldSchemaCategoriesPtrInput is an input type that accepts TableFieldSchemaCategoriesArgs, TableFieldSchemaCategoriesPtr and TableFieldSchemaCategoriesPtrOutput values.
+// You can construct a concrete instance of `TableFieldSchemaCategoriesPtrInput` via:
+//
+//          TableFieldSchemaCategoriesArgs{...}
+//
+//  or:
+//
+//          nil
+type TableFieldSchemaCategoriesPtrInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaCategoriesPtrOutput() TableFieldSchemaCategoriesPtrOutput
+	ToTableFieldSchemaCategoriesPtrOutputWithContext(context.Context) TableFieldSchemaCategoriesPtrOutput
+}
+
+type tableFieldSchemaCategoriesPtrType TableFieldSchemaCategoriesArgs
+
+func TableFieldSchemaCategoriesPtr(v *TableFieldSchemaCategoriesArgs) TableFieldSchemaCategoriesPtrInput {
+	return (*tableFieldSchemaCategoriesPtrType)(v)
+}
+
+func (*tableFieldSchemaCategoriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaCategories)(nil)).Elem()
+}
+
+func (i *tableFieldSchemaCategoriesPtrType) ToTableFieldSchemaCategoriesPtrOutput() TableFieldSchemaCategoriesPtrOutput {
+	return i.ToTableFieldSchemaCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (i *tableFieldSchemaCategoriesPtrType) ToTableFieldSchemaCategoriesPtrOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaCategoriesPtrOutput)
+}
+
+// [Optional] The categories attached to this field, used for field-level access control.
+type TableFieldSchemaCategoriesOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaCategoriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaCategories)(nil)).Elem()
+}
+
+func (o TableFieldSchemaCategoriesOutput) ToTableFieldSchemaCategoriesOutput() TableFieldSchemaCategoriesOutput {
+	return o
+}
+
+func (o TableFieldSchemaCategoriesOutput) ToTableFieldSchemaCategoriesOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesOutput {
+	return o
+}
+
+func (o TableFieldSchemaCategoriesOutput) ToTableFieldSchemaCategoriesPtrOutput() TableFieldSchemaCategoriesPtrOutput {
+	return o.ToTableFieldSchemaCategoriesPtrOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaCategoriesOutput) ToTableFieldSchemaCategoriesPtrOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesPtrOutput {
+	return o.ApplyT(func(v TableFieldSchemaCategories) *TableFieldSchemaCategories {
+		return &v
+	}).(TableFieldSchemaCategoriesPtrOutput)
+}
+
+// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+func (o TableFieldSchemaCategoriesOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableFieldSchemaCategories) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+type TableFieldSchemaCategoriesPtrOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaCategoriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaCategories)(nil)).Elem()
+}
+
+func (o TableFieldSchemaCategoriesPtrOutput) ToTableFieldSchemaCategoriesPtrOutput() TableFieldSchemaCategoriesPtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaCategoriesPtrOutput) ToTableFieldSchemaCategoriesPtrOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesPtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaCategoriesPtrOutput) Elem() TableFieldSchemaCategoriesOutput {
+	return o.ApplyT(func(v *TableFieldSchemaCategories) TableFieldSchemaCategories { return *v }).(TableFieldSchemaCategoriesOutput)
+}
+
+// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+func (o TableFieldSchemaCategoriesPtrOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableFieldSchemaCategories) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Names
+	}).(pulumi.StringArrayOutput)
+}
+
+// [Optional] The categories attached to this field, used for field-level access control.
+type TableFieldSchemaCategoriesResponse struct {
+	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+	Names []string `pulumi:"names"`
+}
+
+// TableFieldSchemaCategoriesResponseInput is an input type that accepts TableFieldSchemaCategoriesResponseArgs and TableFieldSchemaCategoriesResponseOutput values.
+// You can construct a concrete instance of `TableFieldSchemaCategoriesResponseInput` via:
+//
+//          TableFieldSchemaCategoriesResponseArgs{...}
+type TableFieldSchemaCategoriesResponseInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaCategoriesResponseOutput() TableFieldSchemaCategoriesResponseOutput
+	ToTableFieldSchemaCategoriesResponseOutputWithContext(context.Context) TableFieldSchemaCategoriesResponseOutput
+}
+
+// [Optional] The categories attached to this field, used for field-level access control.
+type TableFieldSchemaCategoriesResponseArgs struct {
+	// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+}
+
+func (TableFieldSchemaCategoriesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaCategoriesResponse)(nil)).Elem()
+}
+
+func (i TableFieldSchemaCategoriesResponseArgs) ToTableFieldSchemaCategoriesResponseOutput() TableFieldSchemaCategoriesResponseOutput {
+	return i.ToTableFieldSchemaCategoriesResponseOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaCategoriesResponseArgs) ToTableFieldSchemaCategoriesResponseOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaCategoriesResponseOutput)
+}
+
+// [Optional] The categories attached to this field, used for field-level access control.
+type TableFieldSchemaCategoriesResponseOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaCategoriesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaCategoriesResponse)(nil)).Elem()
+}
+
+func (o TableFieldSchemaCategoriesResponseOutput) ToTableFieldSchemaCategoriesResponseOutput() TableFieldSchemaCategoriesResponseOutput {
+	return o
+}
+
+func (o TableFieldSchemaCategoriesResponseOutput) ToTableFieldSchemaCategoriesResponseOutputWithContext(ctx context.Context) TableFieldSchemaCategoriesResponseOutput {
+	return o
+}
+
+// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+func (o TableFieldSchemaCategoriesResponseOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableFieldSchemaCategoriesResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+type TableFieldSchemaPolicyTags struct {
+	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+	Names []string `pulumi:"names"`
+}
+
+// TableFieldSchemaPolicyTagsInput is an input type that accepts TableFieldSchemaPolicyTagsArgs and TableFieldSchemaPolicyTagsOutput values.
+// You can construct a concrete instance of `TableFieldSchemaPolicyTagsInput` via:
+//
+//          TableFieldSchemaPolicyTagsArgs{...}
+type TableFieldSchemaPolicyTagsInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaPolicyTagsOutput() TableFieldSchemaPolicyTagsOutput
+	ToTableFieldSchemaPolicyTagsOutputWithContext(context.Context) TableFieldSchemaPolicyTagsOutput
+}
+
+type TableFieldSchemaPolicyTagsArgs struct {
+	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+}
+
+func (TableFieldSchemaPolicyTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaPolicyTags)(nil)).Elem()
+}
+
+func (i TableFieldSchemaPolicyTagsArgs) ToTableFieldSchemaPolicyTagsOutput() TableFieldSchemaPolicyTagsOutput {
+	return i.ToTableFieldSchemaPolicyTagsOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaPolicyTagsArgs) ToTableFieldSchemaPolicyTagsOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaPolicyTagsOutput)
+}
+
+func (i TableFieldSchemaPolicyTagsArgs) ToTableFieldSchemaPolicyTagsPtrOutput() TableFieldSchemaPolicyTagsPtrOutput {
+	return i.ToTableFieldSchemaPolicyTagsPtrOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaPolicyTagsArgs) ToTableFieldSchemaPolicyTagsPtrOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaPolicyTagsOutput).ToTableFieldSchemaPolicyTagsPtrOutputWithContext(ctx)
+}
+
+// TableFieldSchemaPolicyTagsPtrInput is an input type that accepts TableFieldSchemaPolicyTagsArgs, TableFieldSchemaPolicyTagsPtr and TableFieldSchemaPolicyTagsPtrOutput values.
+// You can construct a concrete instance of `TableFieldSchemaPolicyTagsPtrInput` via:
+//
+//          TableFieldSchemaPolicyTagsArgs{...}
+//
+//  or:
+//
+//          nil
+type TableFieldSchemaPolicyTagsPtrInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaPolicyTagsPtrOutput() TableFieldSchemaPolicyTagsPtrOutput
+	ToTableFieldSchemaPolicyTagsPtrOutputWithContext(context.Context) TableFieldSchemaPolicyTagsPtrOutput
+}
+
+type tableFieldSchemaPolicyTagsPtrType TableFieldSchemaPolicyTagsArgs
+
+func TableFieldSchemaPolicyTagsPtr(v *TableFieldSchemaPolicyTagsArgs) TableFieldSchemaPolicyTagsPtrInput {
+	return (*tableFieldSchemaPolicyTagsPtrType)(v)
+}
+
+func (*tableFieldSchemaPolicyTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaPolicyTags)(nil)).Elem()
+}
+
+func (i *tableFieldSchemaPolicyTagsPtrType) ToTableFieldSchemaPolicyTagsPtrOutput() TableFieldSchemaPolicyTagsPtrOutput {
+	return i.ToTableFieldSchemaPolicyTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableFieldSchemaPolicyTagsPtrType) ToTableFieldSchemaPolicyTagsPtrOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaPolicyTagsPtrOutput)
+}
+
+type TableFieldSchemaPolicyTagsOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaPolicyTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaPolicyTags)(nil)).Elem()
+}
+
+func (o TableFieldSchemaPolicyTagsOutput) ToTableFieldSchemaPolicyTagsOutput() TableFieldSchemaPolicyTagsOutput {
+	return o
+}
+
+func (o TableFieldSchemaPolicyTagsOutput) ToTableFieldSchemaPolicyTagsOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsOutput {
+	return o
+}
+
+func (o TableFieldSchemaPolicyTagsOutput) ToTableFieldSchemaPolicyTagsPtrOutput() TableFieldSchemaPolicyTagsPtrOutput {
+	return o.ToTableFieldSchemaPolicyTagsPtrOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaPolicyTagsOutput) ToTableFieldSchemaPolicyTagsPtrOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsPtrOutput {
+	return o.ApplyT(func(v TableFieldSchemaPolicyTags) *TableFieldSchemaPolicyTags {
+		return &v
+	}).(TableFieldSchemaPolicyTagsPtrOutput)
+}
+
+// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+func (o TableFieldSchemaPolicyTagsOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableFieldSchemaPolicyTags) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+type TableFieldSchemaPolicyTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaPolicyTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaPolicyTags)(nil)).Elem()
+}
+
+func (o TableFieldSchemaPolicyTagsPtrOutput) ToTableFieldSchemaPolicyTagsPtrOutput() TableFieldSchemaPolicyTagsPtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaPolicyTagsPtrOutput) ToTableFieldSchemaPolicyTagsPtrOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsPtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaPolicyTagsPtrOutput) Elem() TableFieldSchemaPolicyTagsOutput {
+	return o.ApplyT(func(v *TableFieldSchemaPolicyTags) TableFieldSchemaPolicyTags { return *v }).(TableFieldSchemaPolicyTagsOutput)
+}
+
+// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+func (o TableFieldSchemaPolicyTagsPtrOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableFieldSchemaPolicyTags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Names
+	}).(pulumi.StringArrayOutput)
+}
+
+type TableFieldSchemaPolicyTagsResponse struct {
+	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+	Names []string `pulumi:"names"`
+}
+
+// TableFieldSchemaPolicyTagsResponseInput is an input type that accepts TableFieldSchemaPolicyTagsResponseArgs and TableFieldSchemaPolicyTagsResponseOutput values.
+// You can construct a concrete instance of `TableFieldSchemaPolicyTagsResponseInput` via:
+//
+//          TableFieldSchemaPolicyTagsResponseArgs{...}
+type TableFieldSchemaPolicyTagsResponseInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaPolicyTagsResponseOutput() TableFieldSchemaPolicyTagsResponseOutput
+	ToTableFieldSchemaPolicyTagsResponseOutputWithContext(context.Context) TableFieldSchemaPolicyTagsResponseOutput
+}
+
+type TableFieldSchemaPolicyTagsResponseArgs struct {
+	// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+}
+
+func (TableFieldSchemaPolicyTagsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaPolicyTagsResponse)(nil)).Elem()
+}
+
+func (i TableFieldSchemaPolicyTagsResponseArgs) ToTableFieldSchemaPolicyTagsResponseOutput() TableFieldSchemaPolicyTagsResponseOutput {
+	return i.ToTableFieldSchemaPolicyTagsResponseOutputWithContext(context.Background())
+}
+
+func (i TableFieldSchemaPolicyTagsResponseArgs) ToTableFieldSchemaPolicyTagsResponseOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFieldSchemaPolicyTagsResponseOutput)
+}
+
+type TableFieldSchemaPolicyTagsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaPolicyTagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaPolicyTagsResponse)(nil)).Elem()
+}
+
+func (o TableFieldSchemaPolicyTagsResponseOutput) ToTableFieldSchemaPolicyTagsResponseOutput() TableFieldSchemaPolicyTagsResponseOutput {
+	return o
+}
+
+func (o TableFieldSchemaPolicyTagsResponseOutput) ToTableFieldSchemaPolicyTagsResponseOutputWithContext(ctx context.Context) TableFieldSchemaPolicyTagsResponseOutput {
+	return o
+}
+
+// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+func (o TableFieldSchemaPolicyTagsResponseOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableFieldSchemaPolicyTagsResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
 type TableFieldSchemaResponse struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories JobCategoriesResponse `pulumi:"categories"`
+	Categories TableFieldSchemaCategoriesResponse `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -23281,8 +24160,8 @@ type TableFieldSchemaResponse struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode string `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-	Name       string                `pulumi:"name"`
-	PolicyTags JobPolicyTagsResponse `pulumi:"policyTags"`
+	Name       string                             `pulumi:"name"`
+	PolicyTags TableFieldSchemaPolicyTagsResponse `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision string `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -23304,7 +24183,7 @@ type TableFieldSchemaResponseInput interface {
 
 type TableFieldSchemaResponseArgs struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories JobCategoriesResponseInput `pulumi:"categories"`
+	Categories TableFieldSchemaCategoriesResponseInput `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description pulumi.StringInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -23314,8 +24193,8 @@ type TableFieldSchemaResponseArgs struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-	Name       pulumi.StringInput         `pulumi:"name"`
-	PolicyTags JobPolicyTagsResponseInput `pulumi:"policyTags"`
+	Name       pulumi.StringInput                      `pulumi:"name"`
+	PolicyTags TableFieldSchemaPolicyTagsResponseInput `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision pulumi.StringInput `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -23376,8 +24255,8 @@ func (o TableFieldSchemaResponseOutput) ToTableFieldSchemaResponseOutputWithCont
 }
 
 // [Optional] The categories attached to this field, used for field-level access control.
-func (o TableFieldSchemaResponseOutput) Categories() JobCategoriesResponseOutput {
-	return o.ApplyT(func(v TableFieldSchemaResponse) JobCategoriesResponse { return v.Categories }).(JobCategoriesResponseOutput)
+func (o TableFieldSchemaResponseOutput) Categories() TableFieldSchemaCategoriesResponseOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) TableFieldSchemaCategoriesResponse { return v.Categories }).(TableFieldSchemaCategoriesResponseOutput)
 }
 
 // [Optional] The field description. The maximum length is 1,024 characters.
@@ -23405,8 +24284,8 @@ func (o TableFieldSchemaResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableFieldSchemaResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o TableFieldSchemaResponseOutput) PolicyTags() JobPolicyTagsResponseOutput {
-	return o.ApplyT(func(v TableFieldSchemaResponse) JobPolicyTagsResponse { return v.PolicyTags }).(JobPolicyTagsResponseOutput)
+func (o TableFieldSchemaResponseOutput) PolicyTags() TableFieldSchemaPolicyTagsResponseOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) TableFieldSchemaPolicyTagsResponse { return v.PolicyTags }).(TableFieldSchemaPolicyTagsResponseOutput)
 }
 
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
@@ -23442,324 +24321,6 @@ func (o TableFieldSchemaResponseArrayOutput) Index(i pulumi.IntInput) TableField
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableFieldSchemaResponse {
 		return vs[0].([]TableFieldSchemaResponse)[vs[1].(int)]
 	}).(TableFieldSchemaResponseOutput)
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type TableModelOptions struct {
-	Labels    []string `pulumi:"labels"`
-	LossType  *string  `pulumi:"lossType"`
-	ModelType *string  `pulumi:"modelType"`
-}
-
-// TableModelOptionsInput is an input type that accepts TableModelOptionsArgs and TableModelOptionsOutput values.
-// You can construct a concrete instance of `TableModelOptionsInput` via:
-//
-//          TableModelOptionsArgs{...}
-type TableModelOptionsInput interface {
-	pulumi.Input
-
-	ToTableModelOptionsOutput() TableModelOptionsOutput
-	ToTableModelOptionsOutputWithContext(context.Context) TableModelOptionsOutput
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type TableModelOptionsArgs struct {
-	Labels    pulumi.StringArrayInput `pulumi:"labels"`
-	LossType  pulumi.StringPtrInput   `pulumi:"lossType"`
-	ModelType pulumi.StringPtrInput   `pulumi:"modelType"`
-}
-
-func (TableModelOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableModelOptions)(nil)).Elem()
-}
-
-func (i TableModelOptionsArgs) ToTableModelOptionsOutput() TableModelOptionsOutput {
-	return i.ToTableModelOptionsOutputWithContext(context.Background())
-}
-
-func (i TableModelOptionsArgs) ToTableModelOptionsOutputWithContext(ctx context.Context) TableModelOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableModelOptionsOutput)
-}
-
-func (i TableModelOptionsArgs) ToTableModelOptionsPtrOutput() TableModelOptionsPtrOutput {
-	return i.ToTableModelOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i TableModelOptionsArgs) ToTableModelOptionsPtrOutputWithContext(ctx context.Context) TableModelOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableModelOptionsOutput).ToTableModelOptionsPtrOutputWithContext(ctx)
-}
-
-// TableModelOptionsPtrInput is an input type that accepts TableModelOptionsArgs, TableModelOptionsPtr and TableModelOptionsPtrOutput values.
-// You can construct a concrete instance of `TableModelOptionsPtrInput` via:
-//
-//          TableModelOptionsArgs{...}
-//
-//  or:
-//
-//          nil
-type TableModelOptionsPtrInput interface {
-	pulumi.Input
-
-	ToTableModelOptionsPtrOutput() TableModelOptionsPtrOutput
-	ToTableModelOptionsPtrOutputWithContext(context.Context) TableModelOptionsPtrOutput
-}
-
-type tableModelOptionsPtrType TableModelOptionsArgs
-
-func TableModelOptionsPtr(v *TableModelOptionsArgs) TableModelOptionsPtrInput {
-	return (*tableModelOptionsPtrType)(v)
-}
-
-func (*tableModelOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableModelOptions)(nil)).Elem()
-}
-
-func (i *tableModelOptionsPtrType) ToTableModelOptionsPtrOutput() TableModelOptionsPtrOutput {
-	return i.ToTableModelOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *tableModelOptionsPtrType) ToTableModelOptionsPtrOutputWithContext(ctx context.Context) TableModelOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableModelOptionsPtrOutput)
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type TableModelOptionsOutput struct{ *pulumi.OutputState }
-
-func (TableModelOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableModelOptions)(nil)).Elem()
-}
-
-func (o TableModelOptionsOutput) ToTableModelOptionsOutput() TableModelOptionsOutput {
-	return o
-}
-
-func (o TableModelOptionsOutput) ToTableModelOptionsOutputWithContext(ctx context.Context) TableModelOptionsOutput {
-	return o
-}
-
-func (o TableModelOptionsOutput) ToTableModelOptionsPtrOutput() TableModelOptionsPtrOutput {
-	return o.ToTableModelOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o TableModelOptionsOutput) ToTableModelOptionsPtrOutputWithContext(ctx context.Context) TableModelOptionsPtrOutput {
-	return o.ApplyT(func(v TableModelOptions) *TableModelOptions {
-		return &v
-	}).(TableModelOptionsPtrOutput)
-}
-func (o TableModelOptionsOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableModelOptions) []string { return v.Labels }).(pulumi.StringArrayOutput)
-}
-
-func (o TableModelOptionsOutput) LossType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableModelOptions) *string { return v.LossType }).(pulumi.StringPtrOutput)
-}
-
-func (o TableModelOptionsOutput) ModelType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableModelOptions) *string { return v.ModelType }).(pulumi.StringPtrOutput)
-}
-
-type TableModelOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (TableModelOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableModelOptions)(nil)).Elem()
-}
-
-func (o TableModelOptionsPtrOutput) ToTableModelOptionsPtrOutput() TableModelOptionsPtrOutput {
-	return o
-}
-
-func (o TableModelOptionsPtrOutput) ToTableModelOptionsPtrOutputWithContext(ctx context.Context) TableModelOptionsPtrOutput {
-	return o
-}
-
-func (o TableModelOptionsPtrOutput) Elem() TableModelOptionsOutput {
-	return o.ApplyT(func(v *TableModelOptions) TableModelOptions { return *v }).(TableModelOptionsOutput)
-}
-
-func (o TableModelOptionsPtrOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableModelOptions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o TableModelOptionsPtrOutput) LossType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableModelOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LossType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o TableModelOptionsPtrOutput) ModelType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableModelOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModelType
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type TableModelOptionsResponse struct {
-	Labels    []string `pulumi:"labels"`
-	LossType  string   `pulumi:"lossType"`
-	ModelType string   `pulumi:"modelType"`
-}
-
-// TableModelOptionsResponseInput is an input type that accepts TableModelOptionsResponseArgs and TableModelOptionsResponseOutput values.
-// You can construct a concrete instance of `TableModelOptionsResponseInput` via:
-//
-//          TableModelOptionsResponseArgs{...}
-type TableModelOptionsResponseInput interface {
-	pulumi.Input
-
-	ToTableModelOptionsResponseOutput() TableModelOptionsResponseOutput
-	ToTableModelOptionsResponseOutputWithContext(context.Context) TableModelOptionsResponseOutput
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type TableModelOptionsResponseArgs struct {
-	Labels    pulumi.StringArrayInput `pulumi:"labels"`
-	LossType  pulumi.StringInput      `pulumi:"lossType"`
-	ModelType pulumi.StringInput      `pulumi:"modelType"`
-}
-
-func (TableModelOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableModelOptionsResponse)(nil)).Elem()
-}
-
-func (i TableModelOptionsResponseArgs) ToTableModelOptionsResponseOutput() TableModelOptionsResponseOutput {
-	return i.ToTableModelOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i TableModelOptionsResponseArgs) ToTableModelOptionsResponseOutputWithContext(ctx context.Context) TableModelOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableModelOptionsResponseOutput)
-}
-
-func (i TableModelOptionsResponseArgs) ToTableModelOptionsResponsePtrOutput() TableModelOptionsResponsePtrOutput {
-	return i.ToTableModelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TableModelOptionsResponseArgs) ToTableModelOptionsResponsePtrOutputWithContext(ctx context.Context) TableModelOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableModelOptionsResponseOutput).ToTableModelOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// TableModelOptionsResponsePtrInput is an input type that accepts TableModelOptionsResponseArgs, TableModelOptionsResponsePtr and TableModelOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `TableModelOptionsResponsePtrInput` via:
-//
-//          TableModelOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TableModelOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToTableModelOptionsResponsePtrOutput() TableModelOptionsResponsePtrOutput
-	ToTableModelOptionsResponsePtrOutputWithContext(context.Context) TableModelOptionsResponsePtrOutput
-}
-
-type tableModelOptionsResponsePtrType TableModelOptionsResponseArgs
-
-func TableModelOptionsResponsePtr(v *TableModelOptionsResponseArgs) TableModelOptionsResponsePtrInput {
-	return (*tableModelOptionsResponsePtrType)(v)
-}
-
-func (*tableModelOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableModelOptionsResponse)(nil)).Elem()
-}
-
-func (i *tableModelOptionsResponsePtrType) ToTableModelOptionsResponsePtrOutput() TableModelOptionsResponsePtrOutput {
-	return i.ToTableModelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *tableModelOptionsResponsePtrType) ToTableModelOptionsResponsePtrOutputWithContext(ctx context.Context) TableModelOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableModelOptionsResponsePtrOutput)
-}
-
-// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-type TableModelOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (TableModelOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableModelOptionsResponse)(nil)).Elem()
-}
-
-func (o TableModelOptionsResponseOutput) ToTableModelOptionsResponseOutput() TableModelOptionsResponseOutput {
-	return o
-}
-
-func (o TableModelOptionsResponseOutput) ToTableModelOptionsResponseOutputWithContext(ctx context.Context) TableModelOptionsResponseOutput {
-	return o
-}
-
-func (o TableModelOptionsResponseOutput) ToTableModelOptionsResponsePtrOutput() TableModelOptionsResponsePtrOutput {
-	return o.ToTableModelOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TableModelOptionsResponseOutput) ToTableModelOptionsResponsePtrOutputWithContext(ctx context.Context) TableModelOptionsResponsePtrOutput {
-	return o.ApplyT(func(v TableModelOptionsResponse) *TableModelOptionsResponse {
-		return &v
-	}).(TableModelOptionsResponsePtrOutput)
-}
-func (o TableModelOptionsResponseOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableModelOptionsResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
-}
-
-func (o TableModelOptionsResponseOutput) LossType() pulumi.StringOutput {
-	return o.ApplyT(func(v TableModelOptionsResponse) string { return v.LossType }).(pulumi.StringOutput)
-}
-
-func (o TableModelOptionsResponseOutput) ModelType() pulumi.StringOutput {
-	return o.ApplyT(func(v TableModelOptionsResponse) string { return v.ModelType }).(pulumi.StringOutput)
-}
-
-type TableModelOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TableModelOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableModelOptionsResponse)(nil)).Elem()
-}
-
-func (o TableModelOptionsResponsePtrOutput) ToTableModelOptionsResponsePtrOutput() TableModelOptionsResponsePtrOutput {
-	return o
-}
-
-func (o TableModelOptionsResponsePtrOutput) ToTableModelOptionsResponsePtrOutputWithContext(ctx context.Context) TableModelOptionsResponsePtrOutput {
-	return o
-}
-
-func (o TableModelOptionsResponsePtrOutput) Elem() TableModelOptionsResponseOutput {
-	return o.ApplyT(func(v *TableModelOptionsResponse) TableModelOptionsResponse { return *v }).(TableModelOptionsResponseOutput)
-}
-
-func (o TableModelOptionsResponsePtrOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableModelOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o TableModelOptionsResponsePtrOutput) LossType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableModelOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LossType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o TableModelOptionsResponsePtrOutput) ModelType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableModelOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ModelType
-	}).(pulumi.StringPtrOutput)
 }
 
 type TableReference struct {
@@ -24450,355 +25011,6 @@ func (o TableSchemaResponsePtrOutput) Fields() TableFieldSchemaResponseArrayOutp
 		}
 		return v.Fields
 	}).(TableFieldSchemaResponseArrayOutput)
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type TableTrainingOptions struct {
-	EarlyStop               *bool    `pulumi:"earlyStop"`
-	L1Reg                   *float64 `pulumi:"l1Reg"`
-	L2Reg                   *float64 `pulumi:"l2Reg"`
-	LearnRate               *float64 `pulumi:"learnRate"`
-	LearnRateStrategy       *string  `pulumi:"learnRateStrategy"`
-	LineSearchInitLearnRate *float64 `pulumi:"lineSearchInitLearnRate"`
-	MaxIteration            *string  `pulumi:"maxIteration"`
-	MinRelProgress          *float64 `pulumi:"minRelProgress"`
-	WarmStart               *bool    `pulumi:"warmStart"`
-}
-
-// TableTrainingOptionsInput is an input type that accepts TableTrainingOptionsArgs and TableTrainingOptionsOutput values.
-// You can construct a concrete instance of `TableTrainingOptionsInput` via:
-//
-//          TableTrainingOptionsArgs{...}
-type TableTrainingOptionsInput interface {
-	pulumi.Input
-
-	ToTableTrainingOptionsOutput() TableTrainingOptionsOutput
-	ToTableTrainingOptionsOutputWithContext(context.Context) TableTrainingOptionsOutput
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type TableTrainingOptionsArgs struct {
-	EarlyStop               pulumi.BoolPtrInput    `pulumi:"earlyStop"`
-	L1Reg                   pulumi.Float64PtrInput `pulumi:"l1Reg"`
-	L2Reg                   pulumi.Float64PtrInput `pulumi:"l2Reg"`
-	LearnRate               pulumi.Float64PtrInput `pulumi:"learnRate"`
-	LearnRateStrategy       pulumi.StringPtrInput  `pulumi:"learnRateStrategy"`
-	LineSearchInitLearnRate pulumi.Float64PtrInput `pulumi:"lineSearchInitLearnRate"`
-	MaxIteration            pulumi.StringPtrInput  `pulumi:"maxIteration"`
-	MinRelProgress          pulumi.Float64PtrInput `pulumi:"minRelProgress"`
-	WarmStart               pulumi.BoolPtrInput    `pulumi:"warmStart"`
-}
-
-func (TableTrainingOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableTrainingOptions)(nil)).Elem()
-}
-
-func (i TableTrainingOptionsArgs) ToTableTrainingOptionsOutput() TableTrainingOptionsOutput {
-	return i.ToTableTrainingOptionsOutputWithContext(context.Background())
-}
-
-func (i TableTrainingOptionsArgs) ToTableTrainingOptionsOutputWithContext(ctx context.Context) TableTrainingOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTrainingOptionsOutput)
-}
-
-func (i TableTrainingOptionsArgs) ToTableTrainingOptionsPtrOutput() TableTrainingOptionsPtrOutput {
-	return i.ToTableTrainingOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i TableTrainingOptionsArgs) ToTableTrainingOptionsPtrOutputWithContext(ctx context.Context) TableTrainingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTrainingOptionsOutput).ToTableTrainingOptionsPtrOutputWithContext(ctx)
-}
-
-// TableTrainingOptionsPtrInput is an input type that accepts TableTrainingOptionsArgs, TableTrainingOptionsPtr and TableTrainingOptionsPtrOutput values.
-// You can construct a concrete instance of `TableTrainingOptionsPtrInput` via:
-//
-//          TableTrainingOptionsArgs{...}
-//
-//  or:
-//
-//          nil
-type TableTrainingOptionsPtrInput interface {
-	pulumi.Input
-
-	ToTableTrainingOptionsPtrOutput() TableTrainingOptionsPtrOutput
-	ToTableTrainingOptionsPtrOutputWithContext(context.Context) TableTrainingOptionsPtrOutput
-}
-
-type tableTrainingOptionsPtrType TableTrainingOptionsArgs
-
-func TableTrainingOptionsPtr(v *TableTrainingOptionsArgs) TableTrainingOptionsPtrInput {
-	return (*tableTrainingOptionsPtrType)(v)
-}
-
-func (*tableTrainingOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableTrainingOptions)(nil)).Elem()
-}
-
-func (i *tableTrainingOptionsPtrType) ToTableTrainingOptionsPtrOutput() TableTrainingOptionsPtrOutput {
-	return i.ToTableTrainingOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *tableTrainingOptionsPtrType) ToTableTrainingOptionsPtrOutputWithContext(ctx context.Context) TableTrainingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTrainingOptionsPtrOutput)
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type TableTrainingOptionsOutput struct{ *pulumi.OutputState }
-
-func (TableTrainingOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableTrainingOptions)(nil)).Elem()
-}
-
-func (o TableTrainingOptionsOutput) ToTableTrainingOptionsOutput() TableTrainingOptionsOutput {
-	return o
-}
-
-func (o TableTrainingOptionsOutput) ToTableTrainingOptionsOutputWithContext(ctx context.Context) TableTrainingOptionsOutput {
-	return o
-}
-
-func (o TableTrainingOptionsOutput) ToTableTrainingOptionsPtrOutput() TableTrainingOptionsPtrOutput {
-	return o.ToTableTrainingOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o TableTrainingOptionsOutput) ToTableTrainingOptionsPtrOutputWithContext(ctx context.Context) TableTrainingOptionsPtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *TableTrainingOptions {
-		return &v
-	}).(TableTrainingOptionsPtrOutput)
-}
-func (o TableTrainingOptionsOutput) EarlyStop() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *bool { return v.EarlyStop }).(pulumi.BoolPtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) L1Reg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *float64 { return v.L1Reg }).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) L2Reg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *float64 { return v.L2Reg }).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) LearnRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *float64 { return v.LearnRate }).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) LearnRateStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *string { return v.LearnRateStrategy }).(pulumi.StringPtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) LineSearchInitLearnRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *float64 { return v.LineSearchInitLearnRate }).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) MaxIteration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *string { return v.MaxIteration }).(pulumi.StringPtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) MinRelProgress() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *float64 { return v.MinRelProgress }).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsOutput) WarmStart() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TableTrainingOptions) *bool { return v.WarmStart }).(pulumi.BoolPtrOutput)
-}
-
-type TableTrainingOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (TableTrainingOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableTrainingOptions)(nil)).Elem()
-}
-
-func (o TableTrainingOptionsPtrOutput) ToTableTrainingOptionsPtrOutput() TableTrainingOptionsPtrOutput {
-	return o
-}
-
-func (o TableTrainingOptionsPtrOutput) ToTableTrainingOptionsPtrOutputWithContext(ctx context.Context) TableTrainingOptionsPtrOutput {
-	return o
-}
-
-func (o TableTrainingOptionsPtrOutput) Elem() TableTrainingOptionsOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) TableTrainingOptions { return *v }).(TableTrainingOptionsOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) EarlyStop() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EarlyStop
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) L1Reg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.L1Reg
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) L2Reg() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.L2Reg
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) LearnRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.LearnRate
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) LearnRateStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LearnRateStrategy
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) LineSearchInitLearnRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.LineSearchInitLearnRate
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) MaxIteration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MaxIteration
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) MinRelProgress() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinRelProgress
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o TableTrainingOptionsPtrOutput) WarmStart() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TableTrainingOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.WarmStart
-	}).(pulumi.BoolPtrOutput)
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type TableTrainingOptionsResponse struct {
-	EarlyStop               bool    `pulumi:"earlyStop"`
-	L1Reg                   float64 `pulumi:"l1Reg"`
-	L2Reg                   float64 `pulumi:"l2Reg"`
-	LearnRate               float64 `pulumi:"learnRate"`
-	LearnRateStrategy       string  `pulumi:"learnRateStrategy"`
-	LineSearchInitLearnRate float64 `pulumi:"lineSearchInitLearnRate"`
-	MaxIteration            string  `pulumi:"maxIteration"`
-	MinRelProgress          float64 `pulumi:"minRelProgress"`
-	WarmStart               bool    `pulumi:"warmStart"`
-}
-
-// TableTrainingOptionsResponseInput is an input type that accepts TableTrainingOptionsResponseArgs and TableTrainingOptionsResponseOutput values.
-// You can construct a concrete instance of `TableTrainingOptionsResponseInput` via:
-//
-//          TableTrainingOptionsResponseArgs{...}
-type TableTrainingOptionsResponseInput interface {
-	pulumi.Input
-
-	ToTableTrainingOptionsResponseOutput() TableTrainingOptionsResponseOutput
-	ToTableTrainingOptionsResponseOutputWithContext(context.Context) TableTrainingOptionsResponseOutput
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type TableTrainingOptionsResponseArgs struct {
-	EarlyStop               pulumi.BoolInput    `pulumi:"earlyStop"`
-	L1Reg                   pulumi.Float64Input `pulumi:"l1Reg"`
-	L2Reg                   pulumi.Float64Input `pulumi:"l2Reg"`
-	LearnRate               pulumi.Float64Input `pulumi:"learnRate"`
-	LearnRateStrategy       pulumi.StringInput  `pulumi:"learnRateStrategy"`
-	LineSearchInitLearnRate pulumi.Float64Input `pulumi:"lineSearchInitLearnRate"`
-	MaxIteration            pulumi.StringInput  `pulumi:"maxIteration"`
-	MinRelProgress          pulumi.Float64Input `pulumi:"minRelProgress"`
-	WarmStart               pulumi.BoolInput    `pulumi:"warmStart"`
-}
-
-func (TableTrainingOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableTrainingOptionsResponse)(nil)).Elem()
-}
-
-func (i TableTrainingOptionsResponseArgs) ToTableTrainingOptionsResponseOutput() TableTrainingOptionsResponseOutput {
-	return i.ToTableTrainingOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i TableTrainingOptionsResponseArgs) ToTableTrainingOptionsResponseOutputWithContext(ctx context.Context) TableTrainingOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTrainingOptionsResponseOutput)
-}
-
-// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-type TableTrainingOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (TableTrainingOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableTrainingOptionsResponse)(nil)).Elem()
-}
-
-func (o TableTrainingOptionsResponseOutput) ToTableTrainingOptionsResponseOutput() TableTrainingOptionsResponseOutput {
-	return o
-}
-
-func (o TableTrainingOptionsResponseOutput) ToTableTrainingOptionsResponseOutputWithContext(ctx context.Context) TableTrainingOptionsResponseOutput {
-	return o
-}
-
-func (o TableTrainingOptionsResponseOutput) EarlyStop() pulumi.BoolOutput {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) bool { return v.EarlyStop }).(pulumi.BoolOutput)
-}
-
-func (o TableTrainingOptionsResponseOutput) L1Reg() pulumi.Float64Output {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) float64 { return v.L1Reg }).(pulumi.Float64Output)
-}
-
-func (o TableTrainingOptionsResponseOutput) L2Reg() pulumi.Float64Output {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) float64 { return v.L2Reg }).(pulumi.Float64Output)
-}
-
-func (o TableTrainingOptionsResponseOutput) LearnRate() pulumi.Float64Output {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) float64 { return v.LearnRate }).(pulumi.Float64Output)
-}
-
-func (o TableTrainingOptionsResponseOutput) LearnRateStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) string { return v.LearnRateStrategy }).(pulumi.StringOutput)
-}
-
-func (o TableTrainingOptionsResponseOutput) LineSearchInitLearnRate() pulumi.Float64Output {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) float64 { return v.LineSearchInitLearnRate }).(pulumi.Float64Output)
-}
-
-func (o TableTrainingOptionsResponseOutput) MaxIteration() pulumi.StringOutput {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) string { return v.MaxIteration }).(pulumi.StringOutput)
-}
-
-func (o TableTrainingOptionsResponseOutput) MinRelProgress() pulumi.Float64Output {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) float64 { return v.MinRelProgress }).(pulumi.Float64Output)
-}
-
-func (o TableTrainingOptionsResponseOutput) WarmStart() pulumi.BoolOutput {
-	return o.ApplyT(func(v TableTrainingOptionsResponse) bool { return v.WarmStart }).(pulumi.BoolOutput)
 }
 
 type TimePartitioning struct {
@@ -25989,175 +26201,6 @@ func (o ViewDefinitionResponsePtrOutput) UserDefinedFunctionResources() UserDefi
 	}).(UserDefinedFunctionResourceResponseArrayOutput)
 }
 
-type GetDatasetAccessItemResponse struct {
-	// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
-	Dataset DatasetAccessEntryResponse `pulumi:"dataset"`
-	// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
-	Domain string `pulumi:"domain"`
-	// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
-	GroupByEmail string `pulumi:"groupByEmail"`
-	// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-	IamMember string `pulumi:"iamMember"`
-	// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-	Role string `pulumi:"role"`
-	// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
-	Routine RoutineReferenceResponse `pulumi:"routine"`
-	// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
-	SpecialGroup string `pulumi:"specialGroup"`
-	// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-	UserByEmail string `pulumi:"userByEmail"`
-	// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
-	View TableReferenceResponse `pulumi:"view"`
-}
-
-// GetDatasetAccessItemResponseInput is an input type that accepts GetDatasetAccessItemResponseArgs and GetDatasetAccessItemResponseOutput values.
-// You can construct a concrete instance of `GetDatasetAccessItemResponseInput` via:
-//
-//          GetDatasetAccessItemResponseArgs{...}
-type GetDatasetAccessItemResponseInput interface {
-	pulumi.Input
-
-	ToGetDatasetAccessItemResponseOutput() GetDatasetAccessItemResponseOutput
-	ToGetDatasetAccessItemResponseOutputWithContext(context.Context) GetDatasetAccessItemResponseOutput
-}
-
-type GetDatasetAccessItemResponseArgs struct {
-	// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
-	Dataset DatasetAccessEntryResponseInput `pulumi:"dataset"`
-	// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
-	Domain pulumi.StringInput `pulumi:"domain"`
-	// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
-	GroupByEmail pulumi.StringInput `pulumi:"groupByEmail"`
-	// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-	IamMember pulumi.StringInput `pulumi:"iamMember"`
-	// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-	Role pulumi.StringInput `pulumi:"role"`
-	// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
-	Routine RoutineReferenceResponseInput `pulumi:"routine"`
-	// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
-	SpecialGroup pulumi.StringInput `pulumi:"specialGroup"`
-	// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-	UserByEmail pulumi.StringInput `pulumi:"userByEmail"`
-	// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
-	View TableReferenceResponseInput `pulumi:"view"`
-}
-
-func (GetDatasetAccessItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatasetAccessItemResponse)(nil)).Elem()
-}
-
-func (i GetDatasetAccessItemResponseArgs) ToGetDatasetAccessItemResponseOutput() GetDatasetAccessItemResponseOutput {
-	return i.ToGetDatasetAccessItemResponseOutputWithContext(context.Background())
-}
-
-func (i GetDatasetAccessItemResponseArgs) ToGetDatasetAccessItemResponseOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetAccessItemResponseOutput)
-}
-
-// GetDatasetAccessItemResponseArrayInput is an input type that accepts GetDatasetAccessItemResponseArray and GetDatasetAccessItemResponseArrayOutput values.
-// You can construct a concrete instance of `GetDatasetAccessItemResponseArrayInput` via:
-//
-//          GetDatasetAccessItemResponseArray{ GetDatasetAccessItemResponseArgs{...} }
-type GetDatasetAccessItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToGetDatasetAccessItemResponseArrayOutput() GetDatasetAccessItemResponseArrayOutput
-	ToGetDatasetAccessItemResponseArrayOutputWithContext(context.Context) GetDatasetAccessItemResponseArrayOutput
-}
-
-type GetDatasetAccessItemResponseArray []GetDatasetAccessItemResponseInput
-
-func (GetDatasetAccessItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatasetAccessItemResponse)(nil)).Elem()
-}
-
-func (i GetDatasetAccessItemResponseArray) ToGetDatasetAccessItemResponseArrayOutput() GetDatasetAccessItemResponseArrayOutput {
-	return i.ToGetDatasetAccessItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatasetAccessItemResponseArray) ToGetDatasetAccessItemResponseArrayOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetAccessItemResponseArrayOutput)
-}
-
-type GetDatasetAccessItemResponseOutput struct{ *pulumi.OutputState }
-
-func (GetDatasetAccessItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatasetAccessItemResponse)(nil)).Elem()
-}
-
-func (o GetDatasetAccessItemResponseOutput) ToGetDatasetAccessItemResponseOutput() GetDatasetAccessItemResponseOutput {
-	return o
-}
-
-func (o GetDatasetAccessItemResponseOutput) ToGetDatasetAccessItemResponseOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseOutput {
-	return o
-}
-
-// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
-func (o GetDatasetAccessItemResponseOutput) Dataset() DatasetAccessEntryResponseOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) DatasetAccessEntryResponse { return v.Dataset }).(DatasetAccessEntryResponseOutput)
-}
-
-// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
-func (o GetDatasetAccessItemResponseOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
-func (o GetDatasetAccessItemResponseOutput) GroupByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.GroupByEmail }).(pulumi.StringOutput)
-}
-
-// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-func (o GetDatasetAccessItemResponseOutput) IamMember() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.IamMember }).(pulumi.StringOutput)
-}
-
-// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-func (o GetDatasetAccessItemResponseOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.Role }).(pulumi.StringOutput)
-}
-
-// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
-func (o GetDatasetAccessItemResponseOutput) Routine() RoutineReferenceResponseOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) RoutineReferenceResponse { return v.Routine }).(RoutineReferenceResponseOutput)
-}
-
-// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
-func (o GetDatasetAccessItemResponseOutput) SpecialGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.SpecialGroup }).(pulumi.StringOutput)
-}
-
-// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-func (o GetDatasetAccessItemResponseOutput) UserByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) string { return v.UserByEmail }).(pulumi.StringOutput)
-}
-
-// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
-func (o GetDatasetAccessItemResponseOutput) View() TableReferenceResponseOutput {
-	return o.ApplyT(func(v GetDatasetAccessItemResponse) TableReferenceResponse { return v.View }).(TableReferenceResponseOutput)
-}
-
-type GetDatasetAccessItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatasetAccessItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatasetAccessItemResponse)(nil)).Elem()
-}
-
-func (o GetDatasetAccessItemResponseArrayOutput) ToGetDatasetAccessItemResponseArrayOutput() GetDatasetAccessItemResponseArrayOutput {
-	return o
-}
-
-func (o GetDatasetAccessItemResponseArrayOutput) ToGetDatasetAccessItemResponseArrayOutputWithContext(ctx context.Context) GetDatasetAccessItemResponseArrayOutput {
-	return o
-}
-
-func (o GetDatasetAccessItemResponseArrayOutput) Index(i pulumi.IntInput) GetDatasetAccessItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetAccessItemResponse {
-		return vs[0].([]GetDatasetAccessItemResponse)[vs[1].(int)]
-	}).(GetDatasetAccessItemResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ArgumentOutput{})
 	pulumi.RegisterOutputType(ArgumentArrayOutput{})
@@ -26199,6 +26242,9 @@ func init() {
 	pulumi.RegisterOutputType(BqmlTrainingRunArrayOutput{})
 	pulumi.RegisterOutputType(BqmlTrainingRunResponseOutput{})
 	pulumi.RegisterOutputType(BqmlTrainingRunResponseArrayOutput{})
+	pulumi.RegisterOutputType(BqmlTrainingRunTrainingOptionsOutput{})
+	pulumi.RegisterOutputType(BqmlTrainingRunTrainingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(BqmlTrainingRunTrainingOptionsResponseOutput{})
 	pulumi.RegisterOutputType(ClusteringOutput{})
 	pulumi.RegisterOutputType(ClusteringPtrOutput{})
 	pulumi.RegisterOutputType(ClusteringResponseOutput{})
@@ -26214,6 +26260,10 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessEntryOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryResponseOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemArrayOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemResponseOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemResponseOutput{})
@@ -26222,10 +26272,6 @@ func init() {
 	pulumi.RegisterOutputType(DatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponseOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(DatasetTarget_typesItemOutput{})
-	pulumi.RegisterOutputType(DatasetTarget_typesItemArrayOutput{})
-	pulumi.RegisterOutputType(DatasetTarget_typesItemResponseOutput{})
-	pulumi.RegisterOutputType(DatasetTarget_typesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DestinationTablePropertiesResponseOutput{})
@@ -26263,9 +26309,6 @@ func init() {
 	pulumi.RegisterOutputType(HivePartitioningOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsResponseOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobCategoriesOutput{})
-	pulumi.RegisterOutputType(JobCategoriesPtrOutput{})
-	pulumi.RegisterOutputType(JobCategoriesResponseOutput{})
 	pulumi.RegisterOutputType(JobConfigurationOutput{})
 	pulumi.RegisterOutputType(JobConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationExtractOutput{})
@@ -26286,25 +26329,18 @@ func init() {
 	pulumi.RegisterOutputType(JobConfigurationTableCopyPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationTableCopyResponseOutput{})
 	pulumi.RegisterOutputType(JobConfigurationTableCopyResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobPolicyTagsOutput{})
-	pulumi.RegisterOutputType(JobPolicyTagsPtrOutput{})
-	pulumi.RegisterOutputType(JobPolicyTagsResponseOutput{})
-	pulumi.RegisterOutputType(JobRangeOutput{})
-	pulumi.RegisterOutputType(JobRangePtrOutput{})
-	pulumi.RegisterOutputType(JobRangeResponseOutput{})
-	pulumi.RegisterOutputType(JobRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobReferenceOutput{})
 	pulumi.RegisterOutputType(JobReferencePtrOutput{})
 	pulumi.RegisterOutputType(JobReferenceResponseOutput{})
 	pulumi.RegisterOutputType(JobReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobReservationUsageItemOutput{})
-	pulumi.RegisterOutputType(JobReservationUsageItemArrayOutput{})
-	pulumi.RegisterOutputType(JobReservationUsageItemResponseOutput{})
-	pulumi.RegisterOutputType(JobReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsOutput{})
 	pulumi.RegisterOutputType(JobStatisticsPtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics2Output{})
 	pulumi.RegisterOutputType(JobStatistics2PtrOutput{})
+	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemOutput{})
+	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemArrayOutput{})
+	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemResponseOutput{})
+	pulumi.RegisterOutputType(JobStatistics2ReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics2ResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics3Output{})
@@ -26315,22 +26351,26 @@ func init() {
 	pulumi.RegisterOutputType(JobStatistics4PtrOutput{})
 	pulumi.RegisterOutputType(JobStatistics4ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics4ResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemOutput{})
+	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemArrayOutput{})
+	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseOutput{})
+	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
-	pulumi.RegisterOutputType(JobStructTypesItemOutput{})
-	pulumi.RegisterOutputType(JobStructTypesItemArrayOutput{})
-	pulumi.RegisterOutputType(JobStructTypesItemResponseOutput{})
-	pulumi.RegisterOutputType(JobStructTypesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(MaterializedViewDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(ModelDefinitionModelOptionsOutput{})
+	pulumi.RegisterOutputType(ModelDefinitionModelOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ModelDefinitionModelOptionsResponseOutput{})
+	pulumi.RegisterOutputType(ModelDefinitionModelOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ModelDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelReferenceOutput{})
@@ -26348,6 +26388,10 @@ func init() {
 	pulumi.RegisterOutputType(QueryParameterTypeOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterTypeResponseOutput{})
+	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemOutput{})
+	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemResponseOutput{})
+	pulumi.RegisterOutputType(QueryParameterTypeStructTypesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueOutput{})
 	pulumi.RegisterOutputType(QueryParameterValuePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueArrayOutput{})
@@ -26359,6 +26403,10 @@ func init() {
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseArrayOutput{})
 	pulumi.RegisterOutputType(RangePartitioningOutput{})
 	pulumi.RegisterOutputType(RangePartitioningPtrOutput{})
+	pulumi.RegisterOutputType(RangePartitioningRangeOutput{})
+	pulumi.RegisterOutputType(RangePartitioningRangePtrOutput{})
+	pulumi.RegisterOutputType(RangePartitioningRangeResponseOutput{})
+	pulumi.RegisterOutputType(RangePartitioningRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(RangePartitioningResponseOutput{})
 	pulumi.RegisterOutputType(RangePartitioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceOutput{})
@@ -26413,12 +26461,14 @@ func init() {
 	pulumi.RegisterOutputType(StreamingbufferResponsePtrOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaArrayOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaCategoriesOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaCategoriesPtrOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaCategoriesResponseOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaPolicyTagsOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaPolicyTagsPtrOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaPolicyTagsResponseOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaResponseOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaResponseArrayOutput{})
-	pulumi.RegisterOutputType(TableModelOptionsOutput{})
-	pulumi.RegisterOutputType(TableModelOptionsPtrOutput{})
-	pulumi.RegisterOutputType(TableModelOptionsResponseOutput{})
-	pulumi.RegisterOutputType(TableModelOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(TableReferenceOutput{})
 	pulumi.RegisterOutputType(TableReferencePtrOutput{})
 	pulumi.RegisterOutputType(TableReferenceArrayOutput{})
@@ -26429,9 +26479,6 @@ func init() {
 	pulumi.RegisterOutputType(TableSchemaPtrOutput{})
 	pulumi.RegisterOutputType(TableSchemaResponseOutput{})
 	pulumi.RegisterOutputType(TableSchemaResponsePtrOutput{})
-	pulumi.RegisterOutputType(TableTrainingOptionsOutput{})
-	pulumi.RegisterOutputType(TableTrainingOptionsPtrOutput{})
-	pulumi.RegisterOutputType(TableTrainingOptionsResponseOutput{})
 	pulumi.RegisterOutputType(TimePartitioningOutput{})
 	pulumi.RegisterOutputType(TimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TimePartitioningResponseOutput{})
@@ -26448,6 +26495,4 @@ func init() {
 	pulumi.RegisterOutputType(ViewDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(ViewDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ViewDefinitionResponsePtrOutput{})
-	pulumi.RegisterOutputType(GetDatasetAccessItemResponseOutput{})
-	pulumi.RegisterOutputType(GetDatasetAccessItemResponseArrayOutput{})
 }

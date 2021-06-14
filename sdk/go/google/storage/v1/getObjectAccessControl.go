@@ -57,7 +57,7 @@ type LookupObjectAccessControlResult struct {
 	// The name of the object, if applied to an object.
 	Object string `pulumi:"object"`
 	// The project team associated with the entity, if any.
-	ProjectTeam GetObjectAccessControlProjectTeamResponse `pulumi:"projectTeam"`
+	ProjectTeam ObjectAccessControlProjectTeamResponse `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role string `pulumi:"role"`
 	// The link to this access-control entry.

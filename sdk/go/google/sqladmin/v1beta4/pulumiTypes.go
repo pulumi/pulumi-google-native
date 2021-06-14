@@ -9040,70 +9040,6 @@ func (o SslCertResponsePtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-type GetInstanceFailoverReplicaResponse struct {
-	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
-	Available bool `pulumi:"available"`
-	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
-	Name string `pulumi:"name"`
-}
-
-// GetInstanceFailoverReplicaResponseInput is an input type that accepts GetInstanceFailoverReplicaResponseArgs and GetInstanceFailoverReplicaResponseOutput values.
-// You can construct a concrete instance of `GetInstanceFailoverReplicaResponseInput` via:
-//
-//          GetInstanceFailoverReplicaResponseArgs{...}
-type GetInstanceFailoverReplicaResponseInput interface {
-	pulumi.Input
-
-	ToGetInstanceFailoverReplicaResponseOutput() GetInstanceFailoverReplicaResponseOutput
-	ToGetInstanceFailoverReplicaResponseOutputWithContext(context.Context) GetInstanceFailoverReplicaResponseOutput
-}
-
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-type GetInstanceFailoverReplicaResponseArgs struct {
-	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
-	Available pulumi.BoolInput `pulumi:"available"`
-	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetInstanceFailoverReplicaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceFailoverReplicaResponse)(nil)).Elem()
-}
-
-func (i GetInstanceFailoverReplicaResponseArgs) ToGetInstanceFailoverReplicaResponseOutput() GetInstanceFailoverReplicaResponseOutput {
-	return i.ToGetInstanceFailoverReplicaResponseOutputWithContext(context.Background())
-}
-
-func (i GetInstanceFailoverReplicaResponseArgs) ToGetInstanceFailoverReplicaResponseOutputWithContext(ctx context.Context) GetInstanceFailoverReplicaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceFailoverReplicaResponseOutput)
-}
-
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-type GetInstanceFailoverReplicaResponseOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceFailoverReplicaResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceFailoverReplicaResponse)(nil)).Elem()
-}
-
-func (o GetInstanceFailoverReplicaResponseOutput) ToGetInstanceFailoverReplicaResponseOutput() GetInstanceFailoverReplicaResponseOutput {
-	return o
-}
-
-func (o GetInstanceFailoverReplicaResponseOutput) ToGetInstanceFailoverReplicaResponseOutputWithContext(ctx context.Context) GetInstanceFailoverReplicaResponseOutput {
-	return o
-}
-
-// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
-func (o GetInstanceFailoverReplicaResponseOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInstanceFailoverReplicaResponse) bool { return v.Available }).(pulumi.BoolOutput)
-}
-
-// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
-func (o GetInstanceFailoverReplicaResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceFailoverReplicaResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AclEntryOutput{})
 	pulumi.RegisterOutputType(AclEntryArrayOutput{})
@@ -9197,5 +9133,4 @@ func init() {
 	pulumi.RegisterOutputType(SslCertTypePtrOutput{})
 	pulumi.RegisterOutputType(SslCertResponseOutput{})
 	pulumi.RegisterOutputType(SslCertResponsePtrOutput{})
-	pulumi.RegisterOutputType(GetInstanceFailoverReplicaResponseOutput{})
 }

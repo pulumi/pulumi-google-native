@@ -47,5 +47,5 @@ type LookupSslPolicyResult struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings []GetSslPolicyWarningsItemResponse `pulumi:"warnings"`
+	Warnings []SslPolicyWarningsItemResponse `pulumi:"warnings"`
 }

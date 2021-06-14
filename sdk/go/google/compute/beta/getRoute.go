@@ -62,5 +62,5 @@ type LookupRouteResult struct {
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
 	// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-	Warnings []GetRouteWarningsItemResponse `pulumi:"warnings"`
+	Warnings []RouteWarningsItemResponse `pulumi:"warnings"`
 }

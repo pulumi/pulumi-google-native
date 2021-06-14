@@ -51,7 +51,7 @@ type LookupBucketAccessControlResult struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
-	ProjectTeam GetBucketAccessControlProjectTeamResponse `pulumi:"projectTeam"`
+	ProjectTeam BucketAccessControlProjectTeamResponse `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role string `pulumi:"role"`
 	// The link to this access-control entry.
