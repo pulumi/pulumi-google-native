@@ -95,7 +95,7 @@ export interface GetImageResult {
     /**
      * The parameters of the raw disk image.
      */
-    readonly rawDisk: outputs.compute.v1.GetImageRawDiskResponse;
+    readonly rawDisk: outputs.compute.v1.ImageRawDiskResponse;
     /**
      * [Output Only] Reserved for future use.
      */

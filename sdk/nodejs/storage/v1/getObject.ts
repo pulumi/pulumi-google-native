@@ -87,7 +87,7 @@ export interface GetObjectResult {
     /**
      * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
      */
-    readonly customerEncryption: outputs.storage.v1.GetObjectCustomerEncryptionResponse;
+    readonly customerEncryption: outputs.storage.v1.ObjectCustomerEncryptionResponse;
     /**
      * HTTP 1.1 Entity tag for the object.
      */
@@ -131,7 +131,7 @@ export interface GetObjectResult {
     /**
      * The owner of the object. This will always be the uploader of the object.
      */
-    readonly owner: outputs.storage.v1.GetObjectOwnerResponse;
+    readonly owner: outputs.storage.v1.ObjectOwnerResponse;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */

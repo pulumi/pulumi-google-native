@@ -95,7 +95,7 @@ export interface GetImageResult {
     /**
      * The parameters of the raw disk image.
      */
-    readonly rawDisk: outputs.compute.alpha.GetImageRawDiskResponse;
+    readonly rawDisk: outputs.compute.alpha.ImageRawDiskResponse;
     /**
      * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
      */

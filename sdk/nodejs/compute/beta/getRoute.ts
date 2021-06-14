@@ -103,5 +103,5 @@ export interface GetRouteResult {
     /**
      * [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      */
-    readonly warnings: outputs.compute.beta.GetRouteWarningsItemResponse[];
+    readonly warnings: outputs.compute.beta.RouteWarningsItemResponse[];
 }
