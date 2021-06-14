@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// <summary>
         /// The name and status of the failover replica. This property is applicable only to Second Generation instances.
         /// </summary>
-        public readonly Outputs.GetInstanceFailoverReplicaResponse FailoverReplica;
+        public readonly Outputs.InstanceFailoverReplicaResponse FailoverReplica;
         /// <summary>
         /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
         /// </summary>
@@ -171,7 +171,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
             Outputs.DiskEncryptionStatusResponse diskEncryptionStatus,
 
-            Outputs.GetInstanceFailoverReplicaResponse failoverReplica,
+            Outputs.InstanceFailoverReplicaResponse failoverReplica,
 
             string gceZone,
 

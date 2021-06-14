@@ -20,13 +20,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [TrustedTester] [Required] Defines the ranges for range partitioning.
         /// </summary>
-        public readonly Outputs.JobRangeResponse Range;
+        public readonly Outputs.RangePartitioningRangeResponse Range;
 
         [OutputConstructor]
         private RangePartitioningResponse(
             string field,
 
-            Outputs.JobRangeResponse range)
+            Outputs.RangePartitioningRangeResponse range)
         {
             Field = field;
             Range = range;

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// <summary>
         /// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
         /// </summary>
-        public readonly ImmutableArray<Outputs.BucketRuleItemResponse> Rule;
+        public readonly ImmutableArray<Outputs.BucketLifecycleRuleItemResponse> Rule;
 
         [OutputConstructor]
-        private BucketLifecycleResponse(ImmutableArray<Outputs.BucketRuleItemResponse> rule)
+        private BucketLifecycleResponse(ImmutableArray<Outputs.BucketLifecycleRuleItemResponse> rule)
         {
             Rule = rule;
         }

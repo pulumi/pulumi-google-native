@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
         /// <summary>
         /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public readonly Outputs.CompositeTypeErrorResponse Error;
+        public readonly Outputs.OperationErrorResponse Error;
         /// <summary>
         /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         /// </summary>
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
         /// <summary>
         /// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public readonly ImmutableArray<Outputs.CompositeTypeWarningsItemResponse> Warnings;
+        public readonly ImmutableArray<Outputs.OperationWarningsItemResponse> Warnings;
         /// <summary>
         /// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 
             string endTime,
 
-            Outputs.CompositeTypeErrorResponse error,
+            Outputs.OperationErrorResponse error,
 
             string httpErrorMessage,
 
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 
             string user,
 
-            ImmutableArray<Outputs.CompositeTypeWarningsItemResponse> warnings,
+            ImmutableArray<Outputs.OperationWarningsItemResponse> warnings,
 
             string zone)
         {

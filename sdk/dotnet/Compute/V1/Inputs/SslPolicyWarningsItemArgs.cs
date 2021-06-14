@@ -19,15 +19,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? Code { get; set; }
 
         [Input("data")]
-        private InputList<Inputs.SslPolicyDataItemArgs>? _data;
+        private InputList<Inputs.SslPolicyWarningsItemDataItemArgs>? _data;
 
         /// <summary>
         /// [Output Only] Metadata about this warning in key: value format. For example:
         /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         /// </summary>
-        public InputList<Inputs.SslPolicyDataItemArgs> Data
+        public InputList<Inputs.SslPolicyWarningsItemDataItemArgs> Data
         {
-            get => _data ?? (_data = new InputList<Inputs.SslPolicyDataItemArgs>());
+            get => _data ?? (_data = new InputList<Inputs.SslPolicyWarningsItemDataItemArgs>());
             set => _data = value;
         }
 

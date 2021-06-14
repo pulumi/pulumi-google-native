@@ -19,15 +19,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Code { get; set; }
 
         [Input("data")]
-        private InputList<Inputs.RouteDataItemArgs>? _data;
+        private InputList<Inputs.RouteWarningsItemDataItemArgs>? _data;
 
         /// <summary>
         /// [Output Only] Metadata about this warning in key: value format. For example:
         /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         /// </summary>
-        public InputList<Inputs.RouteDataItemArgs> Data
+        public InputList<Inputs.RouteWarningsItemDataItemArgs> Data
         {
-            get => _data ?? (_data = new InputList<Inputs.RouteDataItemArgs>());
+            get => _data ?? (_data = new InputList<Inputs.RouteWarningsItemDataItemArgs>());
             set => _data = value;
         }
 

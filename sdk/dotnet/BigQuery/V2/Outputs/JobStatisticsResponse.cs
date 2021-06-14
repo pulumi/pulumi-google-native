@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Output-only] Job resource usage breakdown by reservation.
         /// </summary>
-        public readonly ImmutableArray<Outputs.JobReservationUsageItemResponse> ReservationUsage;
+        public readonly ImmutableArray<Outputs.JobStatisticsReservationUsageItemResponse> ReservationUsage;
         /// <summary>
         /// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<string> quotaDeferments,
 
-            ImmutableArray<Outputs.JobReservationUsageItemResponse> reservationUsage,
+            ImmutableArray<Outputs.JobStatisticsReservationUsageItemResponse> reservationUsage,
 
             string reservation_id,
 

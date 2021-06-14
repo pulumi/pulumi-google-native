@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     public sealed class BucketLifecycleArgs : Pulumi.ResourceArgs
     {
         [Input("rule")]
-        private InputList<Inputs.BucketRuleItemArgs>? _rule;
+        private InputList<Inputs.BucketLifecycleRuleItemArgs>? _rule;
 
         /// <summary>
         /// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
         /// </summary>
-        public InputList<Inputs.BucketRuleItemArgs> Rule
+        public InputList<Inputs.BucketLifecycleRuleItemArgs> Rule
         {
-            get => _rule ?? (_rule = new InputList<Inputs.BucketRuleItemArgs>());
+            get => _rule ?? (_rule = new InputList<Inputs.BucketLifecycleRuleItemArgs>());
             set => _rule = value;
         }
 

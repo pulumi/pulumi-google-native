@@ -115,14 +115,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         [Input("reservationUsage")]
-        private InputList<Inputs.JobReservationUsageItemArgs>? _reservationUsage;
+        private InputList<Inputs.JobStatistics2ReservationUsageItemArgs>? _reservationUsage;
 
         /// <summary>
         /// [Output-only] Job resource usage breakdown by reservation.
         /// </summary>
-        public InputList<Inputs.JobReservationUsageItemArgs> ReservationUsage
+        public InputList<Inputs.JobStatistics2ReservationUsageItemArgs> ReservationUsage
         {
-            get => _reservationUsage ?? (_reservationUsage = new InputList<Inputs.JobReservationUsageItemArgs>());
+            get => _reservationUsage ?? (_reservationUsage = new InputList<Inputs.JobStatistics2ReservationUsageItemArgs>());
             set => _reservationUsage = value;
         }
 

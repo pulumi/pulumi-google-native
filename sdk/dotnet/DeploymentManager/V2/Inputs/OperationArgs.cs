@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Inputs
         /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
         /// </summary>
         [Input("error")]
-        public Input<Inputs.DeploymentErrorArgs>? Error { get; set; }
+        public Input<Inputs.OperationErrorArgs>? Error { get; set; }
 
         /// <summary>
         /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -142,14 +142,14 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Inputs
         public Input<string>? User { get; set; }
 
         [Input("warnings")]
-        private InputList<Inputs.DeploymentWarningsItemArgs>? _warnings;
+        private InputList<Inputs.OperationWarningsItemArgs>? _warnings;
 
         /// <summary>
         /// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public InputList<Inputs.DeploymentWarningsItemArgs> Warnings
+        public InputList<Inputs.OperationWarningsItemArgs> Warnings
         {
-            get => _warnings ?? (_warnings = new InputList<Inputs.DeploymentWarningsItemArgs>());
+            get => _warnings ?? (_warnings = new InputList<Inputs.OperationWarningsItemArgs>());
             set => _warnings = value;
         }
 

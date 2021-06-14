@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRouteWarningsItemResponse> Warnings;
+        public readonly ImmutableArray<Outputs.RouteWarningsItemResponse> Warnings;
 
         [OutputConstructor]
         private GetRouteResult(
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<string> tags,
 
-            ImmutableArray<Outputs.GetRouteWarningsItemResponse> warnings)
+            ImmutableArray<Outputs.RouteWarningsItemResponse> warnings)
         {
             AllowConflictingSubnetworks = allowConflictingSubnetworks;
             CreationTimestamp = creationTimestamp;

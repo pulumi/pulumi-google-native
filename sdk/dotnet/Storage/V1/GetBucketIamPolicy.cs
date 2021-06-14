@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// An association between a role, which comes with a set of permissions, and members who may assume that role.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetBucketIamPolicyBindingsItemResponse> Bindings;
+        public readonly ImmutableArray<Outputs.BucketIamPolicyBindingsItemResponse> Bindings;
         /// <summary>
         /// HTTP 1.1  Entity tag for the policy.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [OutputConstructor]
         private GetBucketIamPolicyResult(
-            ImmutableArray<Outputs.GetBucketIamPolicyBindingsItemResponse> bindings,
+            ImmutableArray<Outputs.BucketIamPolicyBindingsItemResponse> bindings,
 
             string etag,
 

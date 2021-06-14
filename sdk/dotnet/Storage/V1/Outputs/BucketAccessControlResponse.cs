@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// <summary>
         /// The project team associated with the entity, if any.
         /// </summary>
-        public readonly Outputs.BucketProjectTeamResponse ProjectTeam;
+        public readonly Outputs.BucketAccessControlProjectTeamResponse ProjectTeam;
         /// <summary>
         /// The access permission for the entity.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
 
             string kind,
 
-            Outputs.BucketProjectTeamResponse projectTeam,
+            Outputs.BucketAccessControlProjectTeamResponse projectTeam,
 
             string role,
 

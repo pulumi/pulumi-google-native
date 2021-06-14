@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// <summary>
         /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSslPolicyWarningsItemResponse> Warnings;
+        public readonly ImmutableArray<Outputs.SslPolicyWarningsItemResponse> Warnings;
 
         [OutputConstructor]
         private GetSslPolicyResult(
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string selfLink,
 
-            ImmutableArray<Outputs.GetSslPolicyWarningsItemResponse> warnings)
+            ImmutableArray<Outputs.SslPolicyWarningsItemResponse> warnings)
         {
             CreationTimestamp = creationTimestamp;
             CustomFeatures = customFeatures;

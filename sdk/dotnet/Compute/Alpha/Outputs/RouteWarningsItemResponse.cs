@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// [Output Only] Metadata about this warning in key: value format. For example:
         /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         /// </summary>
-        public readonly ImmutableArray<Outputs.RouteDataItemResponse> Data;
+        public readonly ImmutableArray<Outputs.RouteWarningsItemDataItemResponse> Data;
         /// <summary>
         /// [Output Only] A human-readable description of the warning code.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private RouteWarningsItemResponse(
             string code,
 
-            ImmutableArray<Outputs.RouteDataItemResponse> data,
+            ImmutableArray<Outputs.RouteWarningsItemDataItemResponse> data,
 
             string message)
         {

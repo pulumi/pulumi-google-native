@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         /// </summary>
         [Input("modelOptions")]
-        public Input<Inputs.TableModelOptionsArgs>? ModelOptions { get; set; }
+        public Input<Inputs.ModelDefinitionModelOptionsArgs>? ModelOptions { get; set; }
 
         [Input("trainingRuns")]
         private InputList<Inputs.BqmlTrainingRunArgs>? _trainingRuns;

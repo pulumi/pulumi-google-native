@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFirewallAllowedItemResponse> Allowed;
+        public readonly ImmutableArray<Outputs.FirewallAllowedItemResponse> Allowed;
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFirewallDeniedItemResponse> Denied;
+        public readonly ImmutableArray<Outputs.FirewallDeniedItemResponse> Denied;
         /// <summary>
         /// An optional description of this resource. Provide this field when you create the resource.
         /// </summary>
@@ -120,11 +120,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetFirewallResult(
-            ImmutableArray<Outputs.GetFirewallAllowedItemResponse> allowed,
+            ImmutableArray<Outputs.FirewallAllowedItemResponse> allowed,
 
             string creationTimestamp,
 
-            ImmutableArray<Outputs.GetFirewallDeniedItemResponse> denied,
+            ImmutableArray<Outputs.FirewallDeniedItemResponse> denied,
 
             string description,
 
