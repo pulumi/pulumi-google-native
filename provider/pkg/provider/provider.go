@@ -8,7 +8,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/golang/glog"
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
@@ -17,6 +16,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	rpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"google.golang.org/api/googleapi"
 	"google.golang.org/api/option"
@@ -174,7 +174,7 @@ func (p *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceP
 func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
 	urn := resource.URN(req.GetUrn())
 	label := fmt.Sprintf("%s.Check(%s)", p.name, urn)
-	glog.V(9).Infof("%s executing", label)
+	logging.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs.
 	newResInputs := req.GetNews()
@@ -209,7 +209,7 @@ func (p *googleCloudProvider) DiffConfig(context.Context, *rpc.DiffRequest) (*rp
 func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rpc.DiffResponse, error) {
 	urn := resource.URN(req.GetUrn())
 	label := fmt.Sprintf("%s.Diff(%s)", p.name, urn)
-	glog.V(9).Infof("%s executing", label)
+	logging.V(9).Infof("%s executing", label)
 
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
@@ -259,7 +259,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest) (*rpc.CreateResponse, error) {
 	urn := resource.URN(req.GetUrn())
 	label := fmt.Sprintf("%s.Create(%s)", p.name, urn)
-	glog.V(9).Infof("%s executing", label)
+	logging.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs
 	inputs, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
@@ -320,25 +320,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 
-		inputsMap := inputs.Mappable()
-		body := map[string]interface{}{}
-		for name, value := range res.CreateProperties {
-			parent := body
-			if value.Container != "" {
-				if v, has := body[value.Container].(map[string]interface{}); has {
-					parent = v
-				} else {
-					parent = map[string]interface{}{}
-					body[value.Container] = parent
-				}
-			}
-			sdkName := name
-			if value.SdkName != "" {
-				sdkName = value.SdkName
-			}
-			parent[name] = inputsMap[sdkName]
-		}
-
+		body := p.prepareAPIInputs(inputs, res.CreateProperties)
 		op, err := p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
@@ -367,6 +349,30 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}, nil
 }
 
+func (p *googleCloudProvider) prepareAPIInputs(
+	inputs resource.PropertyMap,
+	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
+	inputsMap := inputs.Mappable()
+	body := map[string]interface{}{}
+	for name, value := range properties {
+		parent := body
+		if value.Container != "" {
+			if v, has := body[value.Container].(map[string]interface{}); has {
+				parent = v
+			} else {
+				parent = map[string]interface{}{}
+				body[value.Container] = parent
+			}
+		}
+		sdkName := name
+		if value.SdkName != "" {
+			sdkName = value.SdkName
+		}
+		parent[name] = inputsMap[sdkName]
+	}
+	return body
+}
+
 func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -375,7 +381,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 		Jitter: true,
 	}
 	for {
-		glog.V(9).Infof("waiting for completion: %+v", resp)
+		logging.V(9).Infof("waiting for completion: %+v", resp)
 
 		// There are two styles of operations: one returns a 'done' boolean flag, another one returns status='DONE'.
 		done, hasDone := resp["done"].(bool)
@@ -498,7 +504,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
 	urn := resource.URN(req.GetUrn())
 	label := fmt.Sprintf("%s.Update(%s)", p.name, urn)
-	glog.V(9).Infof("%s executing", label)
+	logging.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs
 	inputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
@@ -514,24 +520,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	inputsMap := inputs.Mappable()
-	body := map[string]interface{}{}
-	for name, value := range res.UpdateProperties {
-		parent := body
-		if value.Container != "" {
-			if v, has := body[value.Container].(map[string]interface{}); has {
-				parent = v
-			} else {
-				parent = map[string]interface{}{}
-				body[value.Container] = parent
-			}
-		}
-		sdkName := name
-		if value.SdkName != "" {
-			sdkName = value.SdkName
-		}
-		parent[name] = inputsMap[sdkName]
-	}
+	body := p.prepareAPIInputs(inputs, res.UpdateProperties)
 
 	uri := res.ResourceUrl(req.GetId())
 	if strings.HasSuffix(uri, ":getIamPolicy") {
@@ -599,7 +588,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 	if res.NoDelete {
 		// At the time of writing, the classic GCP provider has the same behavior and warning for 10 resources.
-		glog.V(4).Infof("%q resources"+
+		logging.V(4).Infof("%q resources"+
 			" cannot be deleted from Google Cloud. The resource %s will be removed from Pulumi"+
 			" state, but will still be present on Google Cloud.", resourceKey, uri)
 		return &empty.Empty{}, nil

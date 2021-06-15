@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"google.golang.org/api/discovery/v1"
 	"io/ioutil"
+	"net/url"
 	"os"
 	"path"
 	"path/filepath"
@@ -353,6 +354,21 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			if idPath == "" {
 				idPath = dd.getMethod.Path
 			}
+			queryParams := url.Values{}
+			for param, details := range dd.getMethod.Parameters {
+				if details.Location != "query" || !details.Required {
+					continue
+				}
+				queryParams.Add(param, "{" + param + "}")
+			}
+			if len(queryParams) > 0 {
+				idPath, err = url.QueryUnescape(idPath + "?" + queryParams.Encode())
+				if err != nil {
+					fmt.Printf("Failed to unescape ID params for resource: %s: %v\n", resourceTok, err)
+					return nil
+				}
+			}
+
 			v, err := g.buildIdParams(typeName, idPath, inputProperties, &response)
 			if err != nil {
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
@@ -484,10 +500,16 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputProperties map[string]schema.PropertySpec, response *discovery.JsonSchema) (map[string]string, error) {
 	result := map[string]string{}
 
-	subMatches := pathRegex.FindAllStringSubmatch(idPath, -1)
+	u, err := url.Parse(idPath)
+	if err != nil {
+		return nil, err
+	}
+
+	// First look for substitutable references in the 'path' part of idPath
+	subMatches := pathRegex.FindAllStringSubmatch(u.RawPath, -1)
 	for idx, names := range subMatches {
 		if len(names) < 2 {
-			return nil, errors.Errorf("failed to match id path %q", idPath)
+			return nil, errors.Errorf("failed to match id path %q", u.RawPath)
 		}
 
 		name := names[1]
@@ -511,7 +533,7 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 		// it's assigned by the API, and the provider needs to infer its value from the response.
 		isLast := idx == len(subMatches)-1
 		if !isLast {
-			return nil, errors.Errorf("property %q not found in %q", name, idPath)
+			return nil, errors.Errorf("property %q not found in %q", name, u.RawPath)
 		}
 
 		// First, check if we have an explicit annotation for which property to use for name resolution.
@@ -522,18 +544,44 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 			}
 			result[name] = v
 			// Return the result because we get here only for the last match.
-			return result, nil
+			continue
 		}
 
 		// Then, check if there is a property called "name".
 		if _, has := response.Properties["name"]; has {
 			result[name] = "name"
-			// Return the result because we get here only for the last match.
-			return result, nil
+			continue
 		}
 
 		// Give up if none is present.
-		return nil, errors.Errorf("property %q not found in %q", name, idPath)
+		return nil, errors.Errorf("property %q not found in %q", name, u.RawPath)
+	}
+
+	// Next handle the 'query' part of idPath
+	subMatches = pathRegex.FindAllStringSubmatch(u.RawQuery, -1)
+	for _, names := range subMatches {
+		if len(names) < 2 {
+			return nil, errors.Errorf("failed to match id path %q", u.RawPath)
+		}
+
+		name := names[1]
+
+		// If the property is already defined in the input args, add its SDK name.
+		sdkName := apiNameToSdkName(name)
+		if _, has := inputProperties[sdkName]; has {
+			result[name] = sdkName
+			continue
+		}
+
+		// If the property is already defined in the response, add its API name.
+		// Note: API name equals to SDK name for all response properties, currently.
+		if _, has := response.Properties[name]; has {
+			result[name] = name
+			continue
+		}
+
+		// Give up if none is present.
+		return nil, errors.Errorf("property %q not found in %q", name, u.RawQuery)
 	}
 
 	return result, nil

@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"github.com/golang/glog"
 	"github.com/hashicorp/go-cleanhttp"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/logging"
 	"github.com/mitchellh/go-homedir"
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/googleapi"
@@ -19,10 +19,38 @@ import (
 	"google.golang.org/api/transport"
 	"io/ioutil"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"os"
+	"strings"
 	"time"
 )
+
+const (
+	requestFormat   = `HTTP Request Begin %[1]s %[2]s ===================================================
+%[3]s
+===================================================== HTTP Request End %[1]s %[2]s
+`
+	responseFormat = `HTTP Response Begin %[1]s [%[2]s ===================================================
+%[3]s
+===================================================== HTTP Response End %[1]s %[2]s
+`
+)
+
+// prettyPrintJsonLines iterates through a []byte line-by-line,
+// transforming any lines that are complete json into pretty-printed json.
+func prettyPrintJsonLines(b []byte) string {
+	parts := strings.Split(string(b), "\n")
+	for i, p := range parts {
+		if b := []byte(p); json.Valid(b) {
+			var out bytes.Buffer
+			json.Indent(&out, b, "", " ")
+			parts[i] = out.String()
+		}
+	}
+	return strings.Join(parts, "\n")
+}
+
 
 func newGoogleHttpClient(ctx context.Context, config credentialsConfig) (*googleHttpClient, error) {
 	client, err := newClient(ctx, config)
@@ -74,10 +102,15 @@ func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body ma
 	}
 	req.Header = reqHeaders
 
+	debugBody, _ := httputil.DumpRequest(req, true)
+	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
 	res, err = c.http.Do(req)
 	if err != nil {
 		return nil, err
 	}
+
+	debugResp, _ := httputil.DumpResponse(res, true)
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		googleapi.CloseBody(res)
@@ -128,9 +161,6 @@ func newClient(ctx context.Context, config credentialsConfig) (*http.Client, err
 	// 1. OAUTH2 TRANSPORT/CLIENT - sets up proper auth headers
 	client := oauth2.NewClient(cleanCtx, credentials.TokenSource)
 
-	// 2. Logging Transport - ensure we log HTTP requests to Google APIs.
-	loggingTransport := logging.NewTransport("Google", client.Transport)
-
 	// 3. Retry Transport - retries common temporary errors
 	// Keep order for wrapping logging so we log each retried request as well.
 	// This value should be used if needed to create shallow copies with additional retry predicates.
@@ -141,8 +171,6 @@ func newClient(ctx context.Context, config credentialsConfig) (*http.Client, err
 	//}
 
 	// Set final transport value.
-	client.Transport = loggingTransport
-
 	// This timeout is a timeout per HTTP request, not per logical operation.
 	client.Timeout = 30 * time.Second
 
