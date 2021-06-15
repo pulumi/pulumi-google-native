@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AcceleratorConfigArgs',
@@ -617,11 +618,11 @@ class ClientCertificateConfigArgs:
 class CloudRunConfigArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 load_balancer_type: Optional[pulumi.Input[str]] = None):
+                 load_balancer_type: Optional[pulumi.Input['CloudRunConfigLoadBalancerType']] = None):
         """
         Configuration options for the Cloud Run feature.
         :param pulumi.Input[bool] disabled: Whether Cloud Run addon is enabled for this cluster.
-        :param pulumi.Input[str] load_balancer_type: Which load balancer type is installed for Cloud Run.
+        :param pulumi.Input['CloudRunConfigLoadBalancerType'] load_balancer_type: Which load balancer type is installed for Cloud Run.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -642,14 +643,14 @@ class CloudRunConfigArgs:
 
     @property
     @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> Optional[pulumi.Input[str]]:
+    def load_balancer_type(self) -> Optional[pulumi.Input['CloudRunConfigLoadBalancerType']]:
         """
         Which load balancer type is installed for Cloud Run.
         """
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
-    def load_balancer_type(self, value: Optional[pulumi.Input[str]]):
+    def load_balancer_type(self, value: Optional[pulumi.Input['CloudRunConfigLoadBalancerType']]):
         pulumi.set(self, "load_balancer_type", value)
 
 
@@ -841,11 +842,11 @@ class DailyMaintenanceWindowArgs:
 class DatabaseEncryptionArgs:
     def __init__(__self__, *,
                  key_name: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['DatabaseEncryptionState']] = None):
         """
         Configuration of etcd encryption.
         :param pulumi.Input[str] key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-        :param pulumi.Input[str] state: Denotes the state of etcd encryption.
+        :param pulumi.Input['DatabaseEncryptionState'] state: Denotes the state of etcd encryption.
         """
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
@@ -866,14 +867,14 @@ class DatabaseEncryptionArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['DatabaseEncryptionState']]:
         """
         Denotes the state of etcd encryption.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['DatabaseEncryptionState']]):
         pulumi.set(self, "state", value)
 
 
@@ -1507,14 +1508,14 @@ class NetworkConfigArgs:
                  default_snat_status: Optional[pulumi.Input['DefaultSnatStatusArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         NetworkConfig reports the relative names of network & subnetwork.
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[str] network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
-        :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
+        :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param pulumi.Input[str] subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         if default_snat_status is not None:
@@ -1566,14 +1567,14 @@ class NetworkConfigArgs:
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[str]]:
+    def private_ipv6_google_access(self) -> Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']]:
         """
         The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[str]]):
+    def private_ipv6_google_access(self, value: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
@@ -1593,11 +1594,11 @@ class NetworkConfigArgs:
 class NetworkPolicyArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 provider: Optional[pulumi.Input[str]] = None):
+                 provider: Optional[pulumi.Input['NetworkPolicyProvider']] = None):
         """
         Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
         :param pulumi.Input[bool] enabled: Whether network policy is enabled on the cluster.
-        :param pulumi.Input[str] provider: The selected network policy provider.
+        :param pulumi.Input['NetworkPolicyProvider'] provider: The selected network policy provider.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -1618,14 +1619,14 @@ class NetworkPolicyArgs:
 
     @property
     @pulumi.getter
-    def provider(self) -> Optional[pulumi.Input[str]]:
+    def provider(self) -> Optional[pulumi.Input['NetworkPolicyProvider']]:
         """
         The selected network policy provider.
         """
         return pulumi.get(self, "provider")
 
     @provider.setter
-    def provider(self, value: Optional[pulumi.Input[str]]):
+    def provider(self, value: Optional[pulumi.Input['NetworkPolicyProvider']]):
         pulumi.set(self, "provider", value)
 
 
@@ -2139,7 +2140,7 @@ class NodePoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -2155,7 +2156,7 @@ class NodePoolArgs:
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
+        :param pulumi.Input['NodePoolStatus'] status: [Output only] The status of the nodes in this pool instance.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -2322,14 +2323,14 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['NodePoolStatus']]:
         """
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['NodePoolStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -2432,12 +2433,12 @@ class NodePoolAutoscalingArgs:
 @pulumi.input_type
 class NodeTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[str]] = None,
+                 effect: Optional[pulumi.Input['NodeTaintEffect']] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
-        :param pulumi.Input[str] effect: Effect for taint.
+        :param pulumi.Input['NodeTaintEffect'] effect: Effect for taint.
         :param pulumi.Input[str] key: Key for taint.
         :param pulumi.Input[str] value: Value for taint.
         """
@@ -2450,14 +2451,14 @@ class NodeTaintArgs:
 
     @property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[str]]:
+    def effect(self) -> Optional[pulumi.Input['NodeTaintEffect']]:
         """
         Effect for taint.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[str]]):
+    def effect(self, value: Optional[pulumi.Input['NodeTaintEffect']]):
         pulumi.set(self, "effect", value)
 
     @property
@@ -2736,36 +2737,36 @@ class RecurringTimeWindowArgs:
 @pulumi.input_type
 class ReleaseChannelArgs:
     def __init__(__self__, *,
-                 channel: Optional[pulumi.Input[str]] = None):
+                 channel: Optional[pulumi.Input['ReleaseChannelChannel']] = None):
         """
         ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
-        :param pulumi.Input[str] channel: channel specifies which release channel the cluster is subscribed to.
+        :param pulumi.Input['ReleaseChannelChannel'] channel: channel specifies which release channel the cluster is subscribed to.
         """
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
 
     @property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[str]]:
+    def channel(self) -> Optional[pulumi.Input['ReleaseChannelChannel']]:
         """
         channel specifies which release channel the cluster is subscribed to.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[str]]):
+    def channel(self, value: Optional[pulumi.Input['ReleaseChannelChannel']]):
         pulumi.set(self, "channel", value)
 
 
 @pulumi.input_type
 class ReservationAffinityArgs:
     def __init__(__self__, *,
-                 consume_reservation_type: Optional[pulumi.Input[str]] = None,
+                 consume_reservation_type: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from.
-        :param pulumi.Input[str] consume_reservation_type: Corresponds to the type of reservation consumption.
+        :param pulumi.Input['ReservationAffinityConsumeReservationType'] consume_reservation_type: Corresponds to the type of reservation consumption.
         :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label value(s) of reservation resource(s).
         """
@@ -2778,14 +2779,14 @@ class ReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="consumeReservationType")
-    def consume_reservation_type(self) -> Optional[pulumi.Input[str]]:
+    def consume_reservation_type(self) -> Optional[pulumi.Input['ReservationAffinityConsumeReservationType']]:
         """
         Corresponds to the type of reservation consumption.
         """
         return pulumi.get(self, "consume_reservation_type")
 
     @consume_reservation_type.setter
-    def consume_reservation_type(self, value: Optional[pulumi.Input[str]]):
+    def consume_reservation_type(self, value: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']]):
         pulumi.set(self, "consume_reservation_type", value)
 
     @property
@@ -2928,24 +2929,24 @@ class ResourceUsageExportConfigArgs:
 @pulumi.input_type
 class SandboxConfigArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['SandboxConfigType']] = None):
         """
         SandboxConfig contains configurations of the sandbox to use for the node.
-        :param pulumi.Input[str] type: Type of the sandbox to use for the node.
+        :param pulumi.Input['SandboxConfigType'] type: Type of the sandbox to use for the node.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['SandboxConfigType']]:
         """
         Type of the sandbox to use for the node.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['SandboxConfigType']]):
         pulumi.set(self, "type", value)
 
 
@@ -3016,11 +3017,11 @@ class ShieldedNodesArgs:
 @pulumi.input_type
 class StatusConditionArgs:
     def __init__(__self__, *,
-                 canonical_code: Optional[pulumi.Input[str]] = None,
+                 canonical_code: Optional[pulumi.Input['StatusConditionCanonicalCode']] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
-        :param pulumi.Input[str] canonical_code: Canonical code of the condition.
+        :param pulumi.Input['StatusConditionCanonicalCode'] canonical_code: Canonical code of the condition.
         :param pulumi.Input[str] message: Human-friendly representation of the condition
         """
         if canonical_code is not None:
@@ -3030,14 +3031,14 @@ class StatusConditionArgs:
 
     @property
     @pulumi.getter(name="canonicalCode")
-    def canonical_code(self) -> Optional[pulumi.Input[str]]:
+    def canonical_code(self) -> Optional[pulumi.Input['StatusConditionCanonicalCode']]:
         """
         Canonical code of the condition.
         """
         return pulumi.get(self, "canonical_code")
 
     @canonical_code.setter
-    def canonical_code(self, value: Optional[pulumi.Input[str]]):
+    def canonical_code(self, value: Optional[pulumi.Input['StatusConditionCanonicalCode']]):
         pulumi.set(self, "canonical_code", value)
 
     @property
@@ -3184,24 +3185,24 @@ class WorkloadIdentityConfigArgs:
 @pulumi.input_type
 class WorkloadMetadataConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[str]] = None):
+                 mode: Optional[pulumi.Input['WorkloadMetadataConfigMode']] = None):
         """
         WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
-        :param pulumi.Input[str] mode: Mode is the configuration for how to expose metadata to workloads running on the node pool.
+        :param pulumi.Input['WorkloadMetadataConfigMode'] mode: Mode is the configuration for how to expose metadata to workloads running on the node pool.
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
+    def mode(self) -> Optional[pulumi.Input['WorkloadMetadataConfigMode']]:
         """
         Mode is the configuration for how to expose metadata to workloads running on the node pool.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
+    def mode(self, value: Optional[pulumi.Input['WorkloadMetadataConfigMode']]):
         pulumi.set(self, "mode", value)
 
 

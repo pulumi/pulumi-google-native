@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RegionInstanceGroupManagerArgs', 'RegionInstanceGroupManager']
@@ -23,7 +24,7 @@ class RegionInstanceGroupManagerArgs:
                  current_actions: Optional[pulumi.Input['InstanceGroupManagerActionsSummaryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input['DistributionPolicyArgs']] = None,
-                 failover_action: Optional[pulumi.Input[str]] = None,
+                 failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
@@ -50,7 +51,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerActionsSummaryArgs'] current_actions: [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
-        :param pulumi.Input[str] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
                
                To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
@@ -218,14 +219,14 @@ class RegionInstanceGroupManagerArgs:
 
     @property
     @pulumi.getter(name="failoverAction")
-    def failover_action(self) -> Optional[pulumi.Input[str]]:
+    def failover_action(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']]:
         """
         The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         """
         return pulumi.get(self, "failover_action")
 
     @failover_action.setter
-    def failover_action(self, value: Optional[pulumi.Input[str]]):
+    def failover_action(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']]):
         pulumi.set(self, "failover_action", value)
 
     @property
@@ -445,7 +446,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  current_actions: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
-                 failover_action: Optional[pulumi.Input[str]] = None,
+                 failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
@@ -479,7 +480,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']] current_actions: [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
-        :param pulumi.Input[str] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
                
                To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
@@ -534,7 +535,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  current_actions: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
-                 failover_action: Optional[pulumi.Input[str]] = None,
+                 failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,

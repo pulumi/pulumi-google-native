@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['WorkerPoolArgs', 'WorkerPool']
@@ -22,7 +23,7 @@ class WorkerPoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['WorkerPoolState']] = None,
                  worker_config: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']] = None,
                  worker_count: Optional[pulumi.Input[str]] = None):
         """
@@ -32,7 +33,7 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] name: WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
         :param pulumi.Input[str] parent: Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         :param pulumi.Input[str] pool_id: ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-        :param pulumi.Input[str] state: State of the worker pool.
+        :param pulumi.Input['WorkerPoolState'] state: State of the worker pool.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs'] worker_config: Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
         :param pulumi.Input[str] worker_count: The desired number of workers in the worker pool. Must be a value between 0 and 15000.
         """
@@ -135,14 +136,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['WorkerPoolState']]:
         """
         State of the worker pool.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['WorkerPoolState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -182,7 +183,7 @@ class WorkerPool(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['WorkerPoolState']] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -196,7 +197,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
         :param pulumi.Input[str] parent: Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         :param pulumi.Input[str] pool_id: ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-        :param pulumi.Input[str] state: State of the worker pool.
+        :param pulumi.Input['WorkerPoolState'] state: State of the worker pool.
         :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']] worker_config: Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
         :param pulumi.Input[str] worker_count: The desired number of workers in the worker pool. Must be a value between 0 and 15000.
         """
@@ -231,7 +232,7 @@ class WorkerPool(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['WorkerPoolState']] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):

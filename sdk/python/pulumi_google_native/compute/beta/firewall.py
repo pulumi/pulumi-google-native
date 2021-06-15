@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['FirewallArgs', 'Firewall']
@@ -21,7 +22,7 @@ class FirewallArgs:
                  denied: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 direction: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input['FirewallDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -43,7 +44,7 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
-        :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#firewall for firewall rules.
@@ -176,14 +177,14 @@ class FirewallArgs:
 
     @property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[str]]:
+    def direction(self) -> Optional[pulumi.Input['FirewallDirection']]:
         """
         Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[str]]):
+    def direction(self, value: Optional[pulumi.Input['FirewallDirection']]):
         pulumi.set(self, "direction", value)
 
     @property
@@ -367,7 +368,7 @@ class Firewall(pulumi.CustomResource):
                  denied: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 direction: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input['FirewallDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -394,7 +395,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
-        :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#firewall for firewall rules.
@@ -443,7 +444,7 @@ class Firewall(pulumi.CustomResource):
                  denied: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 direction: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input['FirewallDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,

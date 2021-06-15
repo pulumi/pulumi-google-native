@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .deidentify_template import *
 from .dlp_job import *
 from .get_deidentify_template import *

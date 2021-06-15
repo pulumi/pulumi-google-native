@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .capacity_commitment import *
 from .get_capacity_commitment import *
 from .get_reservation import *

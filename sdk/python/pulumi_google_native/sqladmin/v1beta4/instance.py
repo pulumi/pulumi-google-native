@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -16,15 +17,15 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 backend_type: Optional[pulumi.Input[str]] = None,
+                 backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
-                 database_version: Optional[pulumi.Input[str]] = None,
+                 database_version: Optional[pulumi.Input['InstanceDatabaseVersion']] = None,
                  disk_encryption_configuration: Optional[pulumi.Input['DiskEncryptionConfigurationArgs']] = None,
                  disk_encryption_status: Optional[pulumi.Input['DiskEncryptionStatusArgs']] = None,
                  failover_replica: Optional[pulumi.Input['InstanceFailoverReplicaArgs']] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
-                 instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
@@ -43,20 +44,20 @@ class InstanceArgs:
                  server_ca_cert: Optional[pulumi.Input['SslCertArgs']] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input['SettingsArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 state: Optional[pulumi.Input['InstanceState']] = None,
+                 suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
-        :param pulumi.Input[str] backend_type:  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+        :param pulumi.Input['InstanceBackendType'] backend_type:  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
-        :param pulumi.Input[str] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input['InstanceFailoverReplicaArgs'] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
-        :param pulumi.Input[str] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+        :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always *sql#instance*.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
@@ -75,8 +76,8 @@ class InstanceArgs:
         :param pulumi.Input['SslCertArgs'] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
         :param pulumi.Input['SettingsArgs'] settings: The user settings.
-        :param pulumi.Input[str] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
+        :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
         pulumi.set(__self__, "project", project)
         if backend_type is not None:
@@ -152,14 +153,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="backendType")
-    def backend_type(self) -> Optional[pulumi.Input[str]]:
+    def backend_type(self) -> Optional[pulumi.Input['InstanceBackendType']]:
         """
          *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
         """
         return pulumi.get(self, "backend_type")
 
     @backend_type.setter
-    def backend_type(self, value: Optional[pulumi.Input[str]]):
+    def backend_type(self, value: Optional[pulumi.Input['InstanceBackendType']]):
         pulumi.set(self, "backend_type", value)
 
     @property
@@ -188,14 +189,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="databaseVersion")
-    def database_version(self) -> Optional[pulumi.Input[str]]:
+    def database_version(self) -> Optional[pulumi.Input['InstanceDatabaseVersion']]:
         """
         The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         """
         return pulumi.get(self, "database_version")
 
     @database_version.setter
-    def database_version(self, value: Optional[pulumi.Input[str]]):
+    def database_version(self, value: Optional[pulumi.Input['InstanceDatabaseVersion']]):
         pulumi.set(self, "database_version", value)
 
     @property
@@ -248,14 +249,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[str]]:
+    def instance_type(self) -> Optional[pulumi.Input['InstanceInstanceType']]:
         """
         The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[str]]):
+    def instance_type(self, value: Optional[pulumi.Input['InstanceInstanceType']]):
         pulumi.set(self, "instance_type", value)
 
     @property
@@ -476,26 +477,26 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['InstanceState']]:
         """
         The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['InstanceState']]):
         pulumi.set(self, "state", value)
 
     @property
     @pulumi.getter(name="suspensionReason")
-    def suspension_reason(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def suspension_reason(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]]:
         """
         If the instance state is SUSPENDED, the reason for the suspension.
         """
         return pulumi.get(self, "suspension_reason")
 
     @suspension_reason.setter
-    def suspension_reason(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def suspension_reason(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]]):
         pulumi.set(self, "suspension_reason", value)
 
 
@@ -504,15 +505,15 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_type: Optional[pulumi.Input[str]] = None,
+                 backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
-                 database_version: Optional[pulumi.Input[str]] = None,
+                 database_version: Optional[pulumi.Input['InstanceDatabaseVersion']] = None,
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
                  failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
-                 instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
@@ -532,23 +533,23 @@ class Instance(pulumi.CustomResource):
                  server_ca_cert: Optional[pulumi.Input[pulumi.InputType['SslCertArgs']]] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[pulumi.InputType['SettingsArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 state: Optional[pulumi.Input['InstanceState']] = None,
+                 suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,
                  __props__=None):
         """
         Creates a new Cloud SQL instance.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend_type:  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+        :param pulumi.Input['InstanceBackendType'] backend_type:  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
-        :param pulumi.Input[str] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
-        :param pulumi.Input[str] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+        :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always *sql#instance*.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
@@ -568,8 +569,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SslCertArgs']] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['SettingsArgs']] settings: The user settings.
-        :param pulumi.Input[str] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
+        :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
         ...
     @overload
@@ -595,15 +596,15 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_type: Optional[pulumi.Input[str]] = None,
+                 backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
-                 database_version: Optional[pulumi.Input[str]] = None,
+                 database_version: Optional[pulumi.Input['InstanceDatabaseVersion']] = None,
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
                  failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
-                 instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
@@ -623,8 +624,8 @@ class Instance(pulumi.CustomResource):
                  server_ca_cert: Optional[pulumi.Input[pulumi.InputType['SslCertArgs']]] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[pulumi.InputType['SettingsArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 state: Optional[pulumi.Input['InstanceState']] = None,
+                 suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

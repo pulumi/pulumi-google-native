@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .domain_mapping import *
 from .get_domain_mapping import *
 from .get_service import *

@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .config import *
 from .game_server_cluster import *
 from .game_server_deployment import *

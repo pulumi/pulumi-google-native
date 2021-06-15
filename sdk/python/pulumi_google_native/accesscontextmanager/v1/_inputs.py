@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ApiOperationArgs',
@@ -71,11 +72,11 @@ class ApiOperationArgs:
 @pulumi.input_type
 class BasicLevelArgs:
     def __init__(__self__, *,
-                 combining_function: Optional[pulumi.Input[str]] = None,
+                 combining_function: Optional[pulumi.Input['BasicLevelCombiningFunction']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None):
         """
         `BasicLevel` is an `AccessLevel` using a set of recommended features.
-        :param pulumi.Input[str] combining_function: How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
+        :param pulumi.Input['BasicLevelCombiningFunction'] combining_function: How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
         :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Required. A list of requirements for the `AccessLevel` to be granted.
         """
         if combining_function is not None:
@@ -85,14 +86,14 @@ class BasicLevelArgs:
 
     @property
     @pulumi.getter(name="combiningFunction")
-    def combining_function(self) -> Optional[pulumi.Input[str]]:
+    def combining_function(self) -> Optional[pulumi.Input['BasicLevelCombiningFunction']]:
         """
         How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
         """
         return pulumi.get(self, "combining_function")
 
     @combining_function.setter
-    def combining_function(self, value: Optional[pulumi.Input[str]]):
+    def combining_function(self, value: Optional[pulumi.Input['BasicLevelCombiningFunction']]):
         pulumi.set(self, "combining_function", value)
 
     @property
@@ -239,16 +240,16 @@ class CustomLevelArgs:
 @pulumi.input_type
 class DevicePolicyArgs:
     def __init__(__self__, *,
-                 allowed_device_management_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 allowed_encryption_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_device_management_levels: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedDeviceManagementLevelsItem']]]] = None,
+                 allowed_encryption_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedEncryptionStatusesItem']]]] = None,
                  os_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['OsConstraintArgs']]]] = None,
                  require_admin_approval: Optional[pulumi.Input[bool]] = None,
                  require_corp_owned: Optional[pulumi.Input[bool]] = None,
                  require_screenlock: Optional[pulumi.Input[bool]] = None):
         """
         `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_device_management_levels: Allowed device management levels, an empty list allows all management levels.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_encryption_statuses: Allowed encryptions statuses, an empty list allows all statuses.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedDeviceManagementLevelsItem']]] allowed_device_management_levels: Allowed device management levels, an empty list allows all management levels.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedEncryptionStatusesItem']]] allowed_encryption_statuses: Allowed encryptions statuses, an empty list allows all statuses.
         :param pulumi.Input[Sequence[pulumi.Input['OsConstraintArgs']]] os_constraints: Allowed OS versions, an empty list allows all types and all versions.
         :param pulumi.Input[bool] require_admin_approval: Whether the device needs to be approved by the customer admin.
         :param pulumi.Input[bool] require_corp_owned: Whether the device needs to be corp owned.
@@ -269,26 +270,26 @@ class DevicePolicyArgs:
 
     @property
     @pulumi.getter(name="allowedDeviceManagementLevels")
-    def allowed_device_management_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def allowed_device_management_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedDeviceManagementLevelsItem']]]]:
         """
         Allowed device management levels, an empty list allows all management levels.
         """
         return pulumi.get(self, "allowed_device_management_levels")
 
     @allowed_device_management_levels.setter
-    def allowed_device_management_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def allowed_device_management_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedDeviceManagementLevelsItem']]]]):
         pulumi.set(self, "allowed_device_management_levels", value)
 
     @property
     @pulumi.getter(name="allowedEncryptionStatuses")
-    def allowed_encryption_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def allowed_encryption_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedEncryptionStatusesItem']]]]:
         """
         Allowed encryptions statuses, an empty list allows all statuses.
         """
         return pulumi.get(self, "allowed_encryption_statuses")
 
     @allowed_encryption_statuses.setter
-    def allowed_encryption_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def allowed_encryption_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePolicyAllowedEncryptionStatusesItem']]]]):
         pulumi.set(self, "allowed_encryption_statuses", value)
 
     @property
@@ -344,11 +345,11 @@ class DevicePolicyArgs:
 class EgressFromArgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_type: Optional[pulumi.Input[str]] = None):
+                 identity_type: Optional[pulumi.Input['EgressFromIdentityType']] = None):
         """
         Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
-        :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+        :param pulumi.Input['EgressFromIdentityType'] identity_type: Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
@@ -369,14 +370,14 @@ class EgressFromArgs:
 
     @property
     @pulumi.getter(name="identityType")
-    def identity_type(self) -> Optional[pulumi.Input[str]]:
+    def identity_type(self) -> Optional[pulumi.Input['EgressFromIdentityType']]:
         """
         Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
         """
         return pulumi.get(self, "identity_type")
 
     @identity_type.setter
-    def identity_type(self, value: Optional[pulumi.Input[str]]):
+    def identity_type(self, value: Optional[pulumi.Input['EgressFromIdentityType']]):
         pulumi.set(self, "identity_type", value)
 
 
@@ -536,12 +537,12 @@ class ExprArgs:
 class IngressFromArgs:
     def __init__(__self__, *,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_type: Optional[pulumi.Input[str]] = None,
+                 identity_type: Optional[pulumi.Input['IngressFromIdentityType']] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['IngressSourceArgs']]]] = None):
         """
         Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
-        :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+        :param pulumi.Input['IngressFromIdentityType'] identity_type: Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
         :param pulumi.Input[Sequence[pulumi.Input['IngressSourceArgs']]] sources: Sources that this IngressPolicy authorizes access from.
         """
         if identities is not None:
@@ -565,14 +566,14 @@ class IngressFromArgs:
 
     @property
     @pulumi.getter(name="identityType")
-    def identity_type(self) -> Optional[pulumi.Input[str]]:
+    def identity_type(self) -> Optional[pulumi.Input['IngressFromIdentityType']]:
         """
         Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
         """
         return pulumi.get(self, "identity_type")
 
     @identity_type.setter
-    def identity_type(self, value: Optional[pulumi.Input[str]]):
+    def identity_type(self, value: Optional[pulumi.Input['IngressFromIdentityType']]):
         pulumi.set(self, "identity_type", value)
 
     @property
@@ -752,12 +753,12 @@ class MethodSelectorArgs:
 class OsConstraintArgs:
     def __init__(__self__, *,
                  minimum_version: Optional[pulumi.Input[str]] = None,
-                 os_type: Optional[pulumi.Input[str]] = None,
+                 os_type: Optional[pulumi.Input['OsConstraintOsType']] = None,
                  require_verified_chrome_os: Optional[pulumi.Input[bool]] = None):
         """
         A restriction on the OS type and version of devices making requests.
         :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-        :param pulumi.Input[str] os_type: Required. The allowed OS type.
+        :param pulumi.Input['OsConstraintOsType'] os_type: Required. The allowed OS type.
         :param pulumi.Input[bool] require_verified_chrome_os: Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
         """
         if minimum_version is not None:
@@ -781,14 +782,14 @@ class OsConstraintArgs:
 
     @property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[str]]:
+    def os_type(self) -> Optional[pulumi.Input['OsConstraintOsType']]:
         """
         Required. The allowed OS type.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[str]]):
+    def os_type(self, value: Optional[pulumi.Input['OsConstraintOsType']]):
         pulumi.set(self, "os_type", value)
 
     @property

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'FileShareConfigArgs',
@@ -89,12 +90,12 @@ class FileShareConfigArgs:
 @pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
-                 modes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 modes: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigModesItem']]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None):
         """
         Network configuration for the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] modes: Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigModesItem']]] modes: Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
         :param pulumi.Input[str] reserved_ip_range: A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
         """
@@ -107,14 +108,14 @@ class NetworkConfigArgs:
 
     @property
     @pulumi.getter
-    def modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigModesItem']]]]:
         """
         Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
         """
         return pulumi.get(self, "modes")
 
     @modes.setter
-    def modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigModesItem']]]]):
         pulumi.set(self, "modes", value)
 
     @property
@@ -145,18 +146,18 @@ class NetworkConfigArgs:
 @pulumi.input_type
 class NfsExportOptionsArgs:
     def __init__(__self__, *,
-                 access_mode: Optional[pulumi.Input[str]] = None,
+                 access_mode: Optional[pulumi.Input['NfsExportOptionsAccessMode']] = None,
                  anon_gid: Optional[pulumi.Input[str]] = None,
                  anon_uid: Optional[pulumi.Input[str]] = None,
                  ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 squash_mode: Optional[pulumi.Input[str]] = None):
+                 squash_mode: Optional[pulumi.Input['NfsExportOptionsSquashMode']] = None):
         """
         NFS export options specifications.
-        :param pulumi.Input[str] access_mode: Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+        :param pulumi.Input['NfsExportOptionsAccessMode'] access_mode: Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
         :param pulumi.Input[str] anon_gid: An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
         :param pulumi.Input[str] anon_uid: An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
-        :param pulumi.Input[str] squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
+        :param pulumi.Input['NfsExportOptionsSquashMode'] squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         """
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
@@ -171,14 +172,14 @@ class NfsExportOptionsArgs:
 
     @property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[str]]:
+    def access_mode(self) -> Optional[pulumi.Input['NfsExportOptionsAccessMode']]:
         """
         Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
         """
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[str]]):
+    def access_mode(self, value: Optional[pulumi.Input['NfsExportOptionsAccessMode']]):
         pulumi.set(self, "access_mode", value)
 
     @property
@@ -219,14 +220,14 @@ class NfsExportOptionsArgs:
 
     @property
     @pulumi.getter(name="squashMode")
-    def squash_mode(self) -> Optional[pulumi.Input[str]]:
+    def squash_mode(self) -> Optional[pulumi.Input['NfsExportOptionsSquashMode']]:
         """
         Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         """
         return pulumi.get(self, "squash_mode")
 
     @squash_mode.setter
-    def squash_mode(self, value: Optional[pulumi.Input[str]]):
+    def squash_mode(self, value: Optional[pulumi.Input['NfsExportOptionsSquashMode']]):
         pulumi.set(self, "squash_mode", value)
 
 

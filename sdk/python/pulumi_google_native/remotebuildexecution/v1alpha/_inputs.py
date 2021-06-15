@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs',
@@ -107,7 +108,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs:
                  docker_run_as_root: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs']] = None,
                  docker_runtime: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs']] = None,
                  docker_sibling_containers: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs']] = None,
-                 linux_isolation: Optional[pulumi.Input[str]] = None):
+                 linux_isolation: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation']] = None):
         """
         FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs'] container_image_sources: Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
@@ -118,7 +119,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs:
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs'] docker_run_as_root: Whether dockerRunAsRoot can be used.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs'] docker_runtime: Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs'] docker_sibling_containers: Whether dockerSiblingContainers can be used.
-        :param pulumi.Input[str] linux_isolation: linux_isolation allows overriding the docker runtime used for containers started on Linux.
+        :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation'] linux_isolation: linux_isolation allows overriding the docker runtime used for containers started on Linux.
         """
         if container_image_sources is not None:
             pulumi.set(__self__, "container_image_sources", container_image_sources)
@@ -237,14 +238,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs:
 
     @property
     @pulumi.getter(name="linuxIsolation")
-    def linux_isolation(self) -> Optional[pulumi.Input[str]]:
+    def linux_isolation(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation']]:
         """
         linux_isolation allows overriding the docker runtime used for containers started on Linux.
         """
         return pulumi.get(self, "linux_isolation")
 
     @linux_isolation.setter
-    def linux_isolation(self, value: Optional[pulumi.Input[str]]):
+    def linux_isolation(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation']]):
         pulumi.set(self, "linux_isolation", value)
 
 
@@ -252,11 +253,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs:
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
     def __init__(__self__, *,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input[str]] = None):
+                 policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']] = None):
         """
         Defines whether a feature can be used or what values are accepted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-        :param pulumi.Input[str] policy: The policy of the feature.
+        :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy'] policy: The policy of the feature.
         """
         if allowed_values is not None:
             pulumi.set(__self__, "allowed_values", allowed_values)
@@ -277,14 +278,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[str]]:
+    def policy(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]:
         """
         The policy of the feature.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[str]]):
+    def policy(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]):
         pulumi.set(self, "policy", value)
 
 

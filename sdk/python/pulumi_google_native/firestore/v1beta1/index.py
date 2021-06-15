@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['IndexArgs', 'Index']
@@ -20,13 +21,13 @@ class IndexArgs:
                  collection_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['IndexState']] = None):
         """
         The set of arguments for constructing a Index resource.
         :param pulumi.Input[str] collection_id: The collection ID to which this index applies. Required.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]] fields: The fields to index.
         :param pulumi.Input[str] name: The resource name of the index. Output only.
-        :param pulumi.Input[str] state: The state of the index. Output only.
+        :param pulumi.Input['IndexState'] state: The state of the index. Output only.
         """
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "project", project)
@@ -95,14 +96,14 @@ class IndexArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['IndexState']]:
         """
         The state of the index. Output only.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['IndexState']]):
         pulumi.set(self, "state", value)
 
 
@@ -116,7 +117,7 @@ class Index(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['IndexState']] = None,
                  __props__=None):
         """
         Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
@@ -126,7 +127,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[str] collection_id: The collection ID to which this index applies. Required.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]] fields: The fields to index.
         :param pulumi.Input[str] name: The resource name of the index. Output only.
-        :param pulumi.Input[str] state: The state of the index. Output only.
+        :param pulumi.Input['IndexState'] state: The state of the index. Output only.
         """
         ...
     @overload
@@ -157,7 +158,7 @@ class Index(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['IndexState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

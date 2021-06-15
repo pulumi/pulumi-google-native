@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ImageArgs', 'Image']
@@ -46,8 +47,8 @@ class ImageArgs:
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
-                 source_type: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 source_type: Optional[pulumi.Input['ImageSourceType']] = None,
+                 status: Optional[pulumi.Input['ImageStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
@@ -103,8 +104,8 @@ class ImageArgs:
                - The sourceDisk URL
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_snapshot_id: [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
-        :param pulumi.Input[str] source_type: The type of the image used to create this disk. The default and only value is RAW
-        :param pulumi.Input[str] status: [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+        :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
+        :param pulumi.Input['ImageStatus'] status: [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         """
         pulumi.set(__self__, "project", project)
@@ -564,26 +565,26 @@ class ImageArgs:
 
     @property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[str]]:
+    def source_type(self) -> Optional[pulumi.Input['ImageSourceType']]:
         """
         The type of the image used to create this disk. The default and only value is RAW
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[str]]):
+    def source_type(self, value: Optional[pulumi.Input['ImageSourceType']]):
         pulumi.set(self, "source_type", value)
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ImageStatus']]:
         """
         [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ImageStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -635,8 +636,8 @@ class Image(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
-                 source_type: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 source_type: Optional[pulumi.Input['ImageSourceType']] = None,
+                 status: Optional[pulumi.Input['ImageStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -696,8 +697,8 @@ class Image(pulumi.CustomResource):
                - The sourceDisk URL
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_snapshot_id: [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
-        :param pulumi.Input[str] source_type: The type of the image used to create this disk. The default and only value is RAW
-        :param pulumi.Input[str] status: [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+        :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
+        :param pulumi.Input['ImageStatus'] status: [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         """
         ...
@@ -755,8 +756,8 @@ class Image(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
-                 source_type: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 source_type: Optional[pulumi.Input['ImageSourceType']] = None,
+                 status: Optional[pulumi.Input['ImageStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:

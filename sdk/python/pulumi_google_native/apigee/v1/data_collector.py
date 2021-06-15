@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['DataCollectorArgs', 'DataCollector']
 
@@ -17,12 +18,12 @@ class DataCollectorArgs:
                  data_collector_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['DataCollectorType']] = None):
         """
         The set of arguments for constructing a DataCollector resource.
         :param pulumi.Input[str] description: A description of the data collector.
         :param pulumi.Input[str] name: ID of the data collector. Must begin with `dc_`.
-        :param pulumi.Input[str] type: Immutable. The type of data this data collector will collect.
+        :param pulumi.Input['DataCollectorType'] type: Immutable. The type of data this data collector will collect.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if data_collector_id is not None:
@@ -78,14 +79,14 @@ class DataCollectorArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['DataCollectorType']]:
         """
         Immutable. The type of data this data collector will collect.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['DataCollectorType']]):
         pulumi.set(self, "type", value)
 
 
@@ -98,7 +99,7 @@ class DataCollector(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['DataCollectorType']] = None,
                  __props__=None):
         """
         Creates a new data collector.
@@ -107,7 +108,7 @@ class DataCollector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the data collector.
         :param pulumi.Input[str] name: ID of the data collector. Must begin with `dc_`.
-        :param pulumi.Input[str] type: Immutable. The type of data this data collector will collect.
+        :param pulumi.Input['DataCollectorType'] type: Immutable. The type of data this data collector will collect.
         """
         ...
     @overload
@@ -137,7 +138,7 @@ class DataCollector(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['DataCollectorType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

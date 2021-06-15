@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudChannelV1AssociationInfoArgs',
@@ -199,11 +200,11 @@ class GoogleCloudChannelV1ParameterArgs:
 class GoogleCloudChannelV1PeriodArgs:
     def __init__(__self__, *,
                  duration: Optional[pulumi.Input[int]] = None,
-                 period_type: Optional[pulumi.Input[str]] = None):
+                 period_type: Optional[pulumi.Input['GoogleCloudChannelV1PeriodPeriodType']] = None):
         """
         Represents period in days/months/years.
         :param pulumi.Input[int] duration: Total duration of Period Type defined.
-        :param pulumi.Input[str] period_type: Period Type.
+        :param pulumi.Input['GoogleCloudChannelV1PeriodPeriodType'] period_type: Period Type.
         """
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -224,14 +225,14 @@ class GoogleCloudChannelV1PeriodArgs:
 
     @property
     @pulumi.getter(name="periodType")
-    def period_type(self) -> Optional[pulumi.Input[str]]:
+    def period_type(self) -> Optional[pulumi.Input['GoogleCloudChannelV1PeriodPeriodType']]:
         """
         Period Type.
         """
         return pulumi.get(self, "period_type")
 
     @period_type.setter
-    def period_type(self, value: Optional[pulumi.Input[str]]):
+    def period_type(self, value: Optional[pulumi.Input['GoogleCloudChannelV1PeriodPeriodType']]):
         pulumi.set(self, "period_type", value)
 
 
@@ -240,13 +241,13 @@ class GoogleCloudChannelV1RenewalSettingsArgs:
     def __init__(__self__, *,
                  enable_renewal: Optional[pulumi.Input[bool]] = None,
                  payment_cycle: Optional[pulumi.Input['GoogleCloudChannelV1PeriodArgs']] = None,
-                 payment_plan: Optional[pulumi.Input[str]] = None,
+                 payment_plan: Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsPaymentPlan']] = None,
                  resize_unit_count: Optional[pulumi.Input[bool]] = None):
         """
         Renewal settings for renewable Offers.
         :param pulumi.Input[bool] enable_renewal: If false, the plan will be completed at the end date.
         :param pulumi.Input['GoogleCloudChannelV1PeriodArgs'] payment_cycle: Describes how frequently the reseller will be billed, such as once per month.
-        :param pulumi.Input[str] payment_plan: Describes how a reseller will be billed.
+        :param pulumi.Input['GoogleCloudChannelV1RenewalSettingsPaymentPlan'] payment_plan: Describes how a reseller will be billed.
         :param pulumi.Input[bool] resize_unit_count: If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
         """
         if enable_renewal is not None:
@@ -284,14 +285,14 @@ class GoogleCloudChannelV1RenewalSettingsArgs:
 
     @property
     @pulumi.getter(name="paymentPlan")
-    def payment_plan(self) -> Optional[pulumi.Input[str]]:
+    def payment_plan(self) -> Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsPaymentPlan']]:
         """
         Describes how a reseller will be billed.
         """
         return pulumi.get(self, "payment_plan")
 
     @payment_plan.setter
-    def payment_plan(self, value: Optional[pulumi.Input[str]]):
+    def payment_plan(self, value: Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsPaymentPlan']]):
         pulumi.set(self, "payment_plan", value)
 
     @property

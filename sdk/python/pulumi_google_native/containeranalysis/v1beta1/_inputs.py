@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AliasContextArgs',
@@ -75,11 +76,11 @@ __all__ = [
 @pulumi.input_type
 class AliasContextArgs:
     def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['AliasContextKind']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         An alias to a repo revision.
-        :param pulumi.Input[str] kind: The alias kind.
+        :param pulumi.Input['AliasContextKind'] kind: The alias kind.
         :param pulumi.Input[str] name: The alias name.
         """
         if kind is not None:
@@ -89,14 +90,14 @@ class AliasContextArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['AliasContextKind']]:
         """
         The alias kind.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['AliasContextKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -624,13 +625,13 @@ class BuildProvenanceArgs:
 class BuildSignatureArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None,
-                 key_type: Optional[pulumi.Input[str]] = None,
+                 key_type: Optional[pulumi.Input['BuildSignatureKeyType']] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None):
         """
         Message encapsulating the signature of the verified build.
         :param pulumi.Input[str] key_id: An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such as the ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
-        :param pulumi.Input[str] key_type: The type of the key, either stored in `public_key` or referenced in `key_id`.
+        :param pulumi.Input['BuildSignatureKeyType'] key_type: The type of the key, either stored in `public_key` or referenced in `key_id`.
         :param pulumi.Input[str] public_key: Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
         :param pulumi.Input[str] signature: Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
         """
@@ -657,14 +658,14 @@ class BuildSignatureArgs:
 
     @property
     @pulumi.getter(name="keyType")
-    def key_type(self) -> Optional[pulumi.Input[str]]:
+    def key_type(self) -> Optional[pulumi.Input['BuildSignatureKeyType']]:
         """
         The type of the key, either stored in `public_key` or referenced in `key_id`.
         """
         return pulumi.get(self, "key_type")
 
     @key_type.setter
-    def key_type(self, value: Optional[pulumi.Input[str]]):
+    def key_type(self, value: Optional[pulumi.Input['BuildSignatureKeyType']]):
         pulumi.set(self, "key_type", value)
 
     @property
@@ -715,20 +716,20 @@ class ByProductsArgs:
 @pulumi.input_type
 class CVSSv3Args:
     def __init__(__self__, *,
-                 attack_complexity: Optional[pulumi.Input[str]] = None,
-                 attack_vector: Optional[pulumi.Input[str]] = None,
-                 availability_impact: Optional[pulumi.Input[str]] = None,
+                 attack_complexity: Optional[pulumi.Input['CVSSv3AttackComplexity']] = None,
+                 attack_vector: Optional[pulumi.Input['CVSSv3AttackVector']] = None,
+                 availability_impact: Optional[pulumi.Input['CVSSv3AvailabilityImpact']] = None,
                  base_score: Optional[pulumi.Input[float]] = None,
-                 confidentiality_impact: Optional[pulumi.Input[str]] = None,
+                 confidentiality_impact: Optional[pulumi.Input['CVSSv3ConfidentialityImpact']] = None,
                  exploitability_score: Optional[pulumi.Input[float]] = None,
                  impact_score: Optional[pulumi.Input[float]] = None,
-                 integrity_impact: Optional[pulumi.Input[str]] = None,
-                 privileges_required: Optional[pulumi.Input[str]] = None,
-                 scope: Optional[pulumi.Input[str]] = None,
-                 user_interaction: Optional[pulumi.Input[str]] = None):
+                 integrity_impact: Optional[pulumi.Input['CVSSv3IntegrityImpact']] = None,
+                 privileges_required: Optional[pulumi.Input['CVSSv3PrivilegesRequired']] = None,
+                 scope: Optional[pulumi.Input['CVSSv3Scope']] = None,
+                 user_interaction: Optional[pulumi.Input['CVSSv3UserInteraction']] = None):
         """
         Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
-        :param pulumi.Input[str] attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        :param pulumi.Input['CVSSv3AttackVector'] attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
         :param pulumi.Input[float] base_score: The base score is a function of the base metric scores.
         """
         if attack_complexity is not None:
@@ -756,32 +757,32 @@ class CVSSv3Args:
 
     @property
     @pulumi.getter(name="attackComplexity")
-    def attack_complexity(self) -> Optional[pulumi.Input[str]]:
+    def attack_complexity(self) -> Optional[pulumi.Input['CVSSv3AttackComplexity']]:
         return pulumi.get(self, "attack_complexity")
 
     @attack_complexity.setter
-    def attack_complexity(self, value: Optional[pulumi.Input[str]]):
+    def attack_complexity(self, value: Optional[pulumi.Input['CVSSv3AttackComplexity']]):
         pulumi.set(self, "attack_complexity", value)
 
     @property
     @pulumi.getter(name="attackVector")
-    def attack_vector(self) -> Optional[pulumi.Input[str]]:
+    def attack_vector(self) -> Optional[pulumi.Input['CVSSv3AttackVector']]:
         """
         Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
         """
         return pulumi.get(self, "attack_vector")
 
     @attack_vector.setter
-    def attack_vector(self, value: Optional[pulumi.Input[str]]):
+    def attack_vector(self, value: Optional[pulumi.Input['CVSSv3AttackVector']]):
         pulumi.set(self, "attack_vector", value)
 
     @property
     @pulumi.getter(name="availabilityImpact")
-    def availability_impact(self) -> Optional[pulumi.Input[str]]:
+    def availability_impact(self) -> Optional[pulumi.Input['CVSSv3AvailabilityImpact']]:
         return pulumi.get(self, "availability_impact")
 
     @availability_impact.setter
-    def availability_impact(self, value: Optional[pulumi.Input[str]]):
+    def availability_impact(self, value: Optional[pulumi.Input['CVSSv3AvailabilityImpact']]):
         pulumi.set(self, "availability_impact", value)
 
     @property
@@ -798,11 +799,11 @@ class CVSSv3Args:
 
     @property
     @pulumi.getter(name="confidentialityImpact")
-    def confidentiality_impact(self) -> Optional[pulumi.Input[str]]:
+    def confidentiality_impact(self) -> Optional[pulumi.Input['CVSSv3ConfidentialityImpact']]:
         return pulumi.get(self, "confidentiality_impact")
 
     @confidentiality_impact.setter
-    def confidentiality_impact(self, value: Optional[pulumi.Input[str]]):
+    def confidentiality_impact(self, value: Optional[pulumi.Input['CVSSv3ConfidentialityImpact']]):
         pulumi.set(self, "confidentiality_impact", value)
 
     @property
@@ -825,38 +826,38 @@ class CVSSv3Args:
 
     @property
     @pulumi.getter(name="integrityImpact")
-    def integrity_impact(self) -> Optional[pulumi.Input[str]]:
+    def integrity_impact(self) -> Optional[pulumi.Input['CVSSv3IntegrityImpact']]:
         return pulumi.get(self, "integrity_impact")
 
     @integrity_impact.setter
-    def integrity_impact(self, value: Optional[pulumi.Input[str]]):
+    def integrity_impact(self, value: Optional[pulumi.Input['CVSSv3IntegrityImpact']]):
         pulumi.set(self, "integrity_impact", value)
 
     @property
     @pulumi.getter(name="privilegesRequired")
-    def privileges_required(self) -> Optional[pulumi.Input[str]]:
+    def privileges_required(self) -> Optional[pulumi.Input['CVSSv3PrivilegesRequired']]:
         return pulumi.get(self, "privileges_required")
 
     @privileges_required.setter
-    def privileges_required(self, value: Optional[pulumi.Input[str]]):
+    def privileges_required(self, value: Optional[pulumi.Input['CVSSv3PrivilegesRequired']]):
         pulumi.set(self, "privileges_required", value)
 
     @property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[str]]:
+    def scope(self) -> Optional[pulumi.Input['CVSSv3Scope']]:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[str]]):
+    def scope(self, value: Optional[pulumi.Input['CVSSv3Scope']]):
         pulumi.set(self, "scope", value)
 
     @property
     @pulumi.getter(name="userInteraction")
-    def user_interaction(self) -> Optional[pulumi.Input[str]]:
+    def user_interaction(self) -> Optional[pulumi.Input['CVSSv3UserInteraction']]:
         return pulumi.get(self, "user_interaction")
 
     @user_interaction.setter
-    def user_interaction(self, value: Optional[pulumi.Input[str]]):
+    def user_interaction(self, value: Optional[pulumi.Input['CVSSv3UserInteraction']]):
         pulumi.set(self, "user_interaction", value)
 
 
@@ -1050,7 +1051,7 @@ class DeploymentArgs:
                  address: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  deploy_time: Optional[pulumi.Input[str]] = None,
-                 platform: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input['DeploymentPlatform']] = None,
                  resource_uri: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  undeploy_time: Optional[pulumi.Input[str]] = None,
                  user_email: Optional[pulumi.Input[str]] = None):
@@ -1059,7 +1060,7 @@ class DeploymentArgs:
         :param pulumi.Input[str] address: Address of the runtime element hosting this deployment.
         :param pulumi.Input[str] config: Configuration used to create this deployment.
         :param pulumi.Input[str] deploy_time: Required. Beginning of the lifetime of this deployment.
-        :param pulumi.Input[str] platform: Platform hosting this deployment.
+        :param pulumi.Input['DeploymentPlatform'] platform: Platform hosting this deployment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_uri: Resource URI for the artifact being deployed taken from the deployable field with the same name.
         :param pulumi.Input[str] undeploy_time: End of the lifetime of this deployment.
         :param pulumi.Input[str] user_email: Identity of the user that triggered this deployment.
@@ -1117,14 +1118,14 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[str]]:
+    def platform(self) -> Optional[pulumi.Input['DeploymentPlatform']]:
         """
         Platform hosting this deployment.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[str]]):
+    def platform(self, value: Optional[pulumi.Input['DeploymentPlatform']]):
         pulumi.set(self, "platform", value)
 
     @property
@@ -1463,14 +1464,14 @@ class DetailsArgs:
 @pulumi.input_type
 class DiscoveredArgs:
     def __init__(__self__, *,
-                 analysis_status: Optional[pulumi.Input[str]] = None,
+                 analysis_status: Optional[pulumi.Input['DiscoveredAnalysisStatus']] = None,
                  analysis_status_error: Optional[pulumi.Input['StatusArgs']] = None,
-                 continuous_analysis: Optional[pulumi.Input[str]] = None):
+                 continuous_analysis: Optional[pulumi.Input['DiscoveredContinuousAnalysis']] = None):
         """
         Provides information about the analysis status of a discovered resource.
-        :param pulumi.Input[str] analysis_status: The status of discovery for the resource.
+        :param pulumi.Input['DiscoveredAnalysisStatus'] analysis_status: The status of discovery for the resource.
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-        :param pulumi.Input[str] continuous_analysis: Whether the resource is continuously analyzed.
+        :param pulumi.Input['DiscoveredContinuousAnalysis'] continuous_analysis: Whether the resource is continuously analyzed.
         """
         if analysis_status is not None:
             pulumi.set(__self__, "analysis_status", analysis_status)
@@ -1481,14 +1482,14 @@ class DiscoveredArgs:
 
     @property
     @pulumi.getter(name="analysisStatus")
-    def analysis_status(self) -> Optional[pulumi.Input[str]]:
+    def analysis_status(self) -> Optional[pulumi.Input['DiscoveredAnalysisStatus']]:
         """
         The status of discovery for the resource.
         """
         return pulumi.get(self, "analysis_status")
 
     @analysis_status.setter
-    def analysis_status(self, value: Optional[pulumi.Input[str]]):
+    def analysis_status(self, value: Optional[pulumi.Input['DiscoveredAnalysisStatus']]):
         pulumi.set(self, "analysis_status", value)
 
     @property
@@ -1505,45 +1506,45 @@ class DiscoveredArgs:
 
     @property
     @pulumi.getter(name="continuousAnalysis")
-    def continuous_analysis(self) -> Optional[pulumi.Input[str]]:
+    def continuous_analysis(self) -> Optional[pulumi.Input['DiscoveredContinuousAnalysis']]:
         """
         Whether the resource is continuously analyzed.
         """
         return pulumi.get(self, "continuous_analysis")
 
     @continuous_analysis.setter
-    def continuous_analysis(self, value: Optional[pulumi.Input[str]]):
+    def continuous_analysis(self, value: Optional[pulumi.Input['DiscoveredContinuousAnalysis']]):
         pulumi.set(self, "continuous_analysis", value)
 
 
 @pulumi.input_type
 class DiscoveryArgs:
     def __init__(__self__, *,
-                 analysis_kind: Optional[pulumi.Input[str]] = None):
+                 analysis_kind: Optional[pulumi.Input['DiscoveryAnalysisKind']] = None):
         """
         A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
-        :param pulumi.Input[str] analysis_kind: Required. Immutable. The kind of analysis that is handled by this discovery.
+        :param pulumi.Input['DiscoveryAnalysisKind'] analysis_kind: Required. Immutable. The kind of analysis that is handled by this discovery.
         """
         if analysis_kind is not None:
             pulumi.set(__self__, "analysis_kind", analysis_kind)
 
     @property
     @pulumi.getter(name="analysisKind")
-    def analysis_kind(self) -> Optional[pulumi.Input[str]]:
+    def analysis_kind(self) -> Optional[pulumi.Input['DiscoveryAnalysisKind']]:
         """
         Required. Immutable. The kind of analysis that is handled by this discovery.
         """
         return pulumi.get(self, "analysis_kind")
 
     @analysis_kind.setter
-    def analysis_kind(self, value: Optional[pulumi.Input[str]]):
+    def analysis_kind(self, value: Optional[pulumi.Input['DiscoveryAnalysisKind']]):
         pulumi.set(self, "analysis_kind", value)
 
 
 @pulumi.input_type
 class DistributionArgs:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input['DistributionArchitecture']] = None,
                  cpe_uri: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  latest_version: Optional[pulumi.Input['VersionArgs']] = None,
@@ -1551,7 +1552,7 @@ class DistributionArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
-        :param pulumi.Input[str] architecture: The CPU architecture for which packages in this distribution channel were built.
+        :param pulumi.Input['DistributionArchitecture'] architecture: The CPU architecture for which packages in this distribution channel were built.
         :param pulumi.Input[str] cpe_uri: Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         :param pulumi.Input[str] description: The distribution channel-specific description of this package.
         :param pulumi.Input['VersionArgs'] latest_version: The latest available version of this package in this distribution channel.
@@ -1573,14 +1574,14 @@ class DistributionArgs:
 
     @property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[str]]:
+    def architecture(self) -> Optional[pulumi.Input['DistributionArchitecture']]:
         """
         The CPU architecture for which packages in this distribution channel were built.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[str]]):
+    def architecture(self, value: Optional[pulumi.Input['DistributionArchitecture']]):
         pulumi.set(self, "architecture", value)
 
     @property
@@ -1795,12 +1796,12 @@ class FingerprintArgs:
 @pulumi.input_type
 class GenericSignedAttestationArgs:
     def __init__(__self__, *,
-                 content_type: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input['GenericSignedAttestationContentType']] = None,
                  serialized_payload: Optional[pulumi.Input[str]] = None,
                  signatures: Optional[pulumi.Input[Sequence[pulumi.Input['SignatureArgs']]]] = None):
         """
         An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the `serialized_payload` that the `signatures` verify and any metadata necessary to interpret that plaintext. The signatures should always be over the `serialized_payload` bytestring.
-        :param pulumi.Input[str] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+        :param pulumi.Input['GenericSignedAttestationContentType'] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         :param pulumi.Input[str] serialized_payload: The serialized payload that is verified by one or more `signatures`. The encoding and semantic meaning of this payload must match what is set in `content_type`.
         :param pulumi.Input[Sequence[pulumi.Input['SignatureArgs']]] signatures: One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
         """
@@ -1813,14 +1814,14 @@ class GenericSignedAttestationArgs:
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[str]]:
+    def content_type(self) -> Optional[pulumi.Input['GenericSignedAttestationContentType']]:
         """
         Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[str]]):
+    def content_type(self, value: Optional[pulumi.Input['GenericSignedAttestationContentType']]):
         pulumi.set(self, "content_type", value)
 
     @property
@@ -2193,21 +2194,21 @@ class GrafeasV1beta1PackageDetailsArgs:
 class GrafeasV1beta1VulnerabilityDetailsArgs:
     def __init__(__self__, *,
                  cvss_score: Optional[pulumi.Input[float]] = None,
-                 effective_severity: Optional[pulumi.Input[str]] = None,
+                 effective_severity: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  package_issue: Optional[pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]] = None,
                  related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsSeverity']] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Details of a vulnerability Occurrence.
         :param pulumi.Input[float] cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-        :param pulumi.Input[str] effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         :param pulumi.Input[str] long_description: A detailed description of this vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: Required. The set of affected locations and their fixes (if available) within the associated resource.
         :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_urls: URLs related to this vulnerability.
-        :param pulumi.Input[str] severity: The note provider assigned Severity of the vulnerability.
+        :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsSeverity'] severity: The note provider assigned Severity of the vulnerability.
         :param pulumi.Input[str] short_description: A one sentence description of this vulnerability.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
@@ -2242,14 +2243,14 @@ class GrafeasV1beta1VulnerabilityDetailsArgs:
 
     @property
     @pulumi.getter(name="effectiveSeverity")
-    def effective_severity(self) -> Optional[pulumi.Input[str]]:
+    def effective_severity(self) -> Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity']]:
         """
         The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         """
         return pulumi.get(self, "effective_severity")
 
     @effective_severity.setter
-    def effective_severity(self, value: Optional[pulumi.Input[str]]):
+    def effective_severity(self, value: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity']]):
         pulumi.set(self, "effective_severity", value)
 
     @property
@@ -2290,14 +2291,14 @@ class GrafeasV1beta1VulnerabilityDetailsArgs:
 
     @property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
+    def severity(self) -> Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsSeverity']]:
         """
         The note provider assigned Severity of the vulnerability.
         """
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
+    def severity(self, value: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsSeverity']]):
         pulumi.set(self, "severity", value)
 
     @property
@@ -2532,11 +2533,11 @@ class KnowledgeBaseArgs:
 class LayerArgs:
     def __init__(__self__, *,
                  arguments: Optional[pulumi.Input[str]] = None,
-                 directive: Optional[pulumi.Input[str]] = None):
+                 directive: Optional[pulumi.Input['LayerDirective']] = None):
         """
         Layer holds metadata specific to a layer of a Docker image.
         :param pulumi.Input[str] arguments: The recovered arguments to the Dockerfile directive.
-        :param pulumi.Input[str] directive: Required. The recovered Dockerfile directive used to construct this layer.
+        :param pulumi.Input['LayerDirective'] directive: Required. The recovered Dockerfile directive used to construct this layer.
         """
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
@@ -2557,14 +2558,14 @@ class LayerArgs:
 
     @property
     @pulumi.getter
-    def directive(self) -> Optional[pulumi.Input[str]]:
+    def directive(self) -> Optional[pulumi.Input['LayerDirective']]:
         """
         Required. The recovered Dockerfile directive used to construct this layer.
         """
         return pulumi.get(self, "directive")
 
     @directive.setter
-    def directive(self, value: Optional[pulumi.Input[str]]):
+    def directive(self, value: Optional[pulumi.Input['LayerDirective']]):
         pulumi.set(self, "directive", value)
 
 
@@ -2795,12 +2796,12 @@ class PackageIssueArgs:
 @pulumi.input_type
 class PgpSignedAttestationArgs:
     def __init__(__self__, *,
-                 content_type: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input['PgpSignedAttestationContentType']] = None,
                  pgp_key_id: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None):
         """
         An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
-        :param pulumi.Input[str] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+        :param pulumi.Input['PgpSignedAttestationContentType'] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         :param pulumi.Input[str] pgp_key_id: The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
         :param pulumi.Input[str] signature: Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
         """
@@ -2813,14 +2814,14 @@ class PgpSignedAttestationArgs:
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[str]]:
+    def content_type(self) -> Optional[pulumi.Input['PgpSignedAttestationContentType']]:
         """
         Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[str]]):
+    def content_type(self, value: Optional[pulumi.Input['PgpSignedAttestationContentType']]):
         pulumi.set(self, "content_type", value)
 
     @property
@@ -3309,14 +3310,14 @@ class VersionArgs:
     def __init__(__self__, *,
                  epoch: Optional[pulumi.Input[int]] = None,
                  inclusive: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['VersionKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[str]] = None):
         """
         Version contains structured information about the version of a package.
         :param pulumi.Input[int] epoch: Used to correct mistakes in the version numbering scheme.
         :param pulumi.Input[bool] inclusive: Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
-        :param pulumi.Input[str] kind: Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+        :param pulumi.Input['VersionKind'] kind: Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
         :param pulumi.Input[str] name: Required only when version kind is NORMAL. The main part of the version name.
         :param pulumi.Input[str] revision: The iteration of the package build from the above version.
         """
@@ -3357,14 +3358,14 @@ class VersionArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['VersionKind']]:
         """
         Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['VersionKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -3398,7 +3399,7 @@ class VulnerabilityArgs:
                  cvss_score: Optional[pulumi.Input[float]] = None,
                  cvss_v3: Optional[pulumi.Input['CVSSv3Args']] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input['DetailArgs']]]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['VulnerabilitySeverity']] = None,
                  source_update_time: Optional[pulumi.Input[str]] = None,
                  windows_details: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsDetailArgs']]]] = None):
         """
@@ -3406,7 +3407,7 @@ class VulnerabilityArgs:
         :param pulumi.Input[float] cvss_score: The CVSS score for this vulnerability.
         :param pulumi.Input['CVSSv3Args'] cvss_v3: The full description of the CVSSv3.
         :param pulumi.Input[Sequence[pulumi.Input['DetailArgs']]] details: All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
-        :param pulumi.Input[str] severity: Note provider assigned impact of the vulnerability.
+        :param pulumi.Input['VulnerabilitySeverity'] severity: Note provider assigned impact of the vulnerability.
         :param pulumi.Input[str] source_update_time: The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
         :param pulumi.Input[Sequence[pulumi.Input['WindowsDetailArgs']]] windows_details: Windows details get their own format because the information format and model don't match a normal detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package, rather than a package being at an incorrect version.
         """
@@ -3461,14 +3462,14 @@ class VulnerabilityArgs:
 
     @property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
+    def severity(self) -> Optional[pulumi.Input['VulnerabilitySeverity']]:
         """
         Note provider assigned impact of the vulnerability.
         """
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
+    def severity(self, value: Optional[pulumi.Input['VulnerabilitySeverity']]):
         pulumi.set(self, "severity", value)
 
     @property

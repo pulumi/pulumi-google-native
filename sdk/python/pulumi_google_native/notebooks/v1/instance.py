@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -20,12 +21,12 @@ class InstanceArgs:
                  project: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 boot_disk_type: Optional[pulumi.Input[str]] = None,
+                 boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
                  container_image: Optional[pulumi.Input['ContainerImageArgs']] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 data_disk_type: Optional[pulumi.Input[str]] = None,
-                 disk_encryption: Optional[pulumi.Input[str]] = None,
+                 data_disk_type: Optional[pulumi.Input['InstanceDataDiskType']] = None,
+                 disk_encryption: Optional[pulumi.Input['InstanceDiskEncryption']] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -33,7 +34,7 @@ class InstanceArgs:
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 nic_type: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
@@ -49,12 +50,12 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
-        :param pulumi.Input[str] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         :param pulumi.Input['ContainerImageArgs'] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[str] data_disk_size_gb: Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
-        :param pulumi.Input[str] data_disk_type: Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-        :param pulumi.Input[str] disk_encryption: Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        :param pulumi.Input['InstanceDataDiskType'] data_disk_type: Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input['InstanceDiskEncryption'] disk_encryption: Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
@@ -62,7 +63,7 @@ class InstanceArgs:
         :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
-        :param pulumi.Input[str] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
@@ -186,14 +187,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="bootDiskType")
-    def boot_disk_type(self) -> Optional[pulumi.Input[str]]:
+    def boot_disk_type(self) -> Optional[pulumi.Input['InstanceBootDiskType']]:
         """
         Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         """
         return pulumi.get(self, "boot_disk_type")
 
     @boot_disk_type.setter
-    def boot_disk_type(self, value: Optional[pulumi.Input[str]]):
+    def boot_disk_type(self, value: Optional[pulumi.Input['InstanceBootDiskType']]):
         pulumi.set(self, "boot_disk_type", value)
 
     @property
@@ -234,26 +235,26 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="dataDiskType")
-    def data_disk_type(self) -> Optional[pulumi.Input[str]]:
+    def data_disk_type(self) -> Optional[pulumi.Input['InstanceDataDiskType']]:
         """
         Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         """
         return pulumi.get(self, "data_disk_type")
 
     @data_disk_type.setter
-    def data_disk_type(self, value: Optional[pulumi.Input[str]]):
+    def data_disk_type(self, value: Optional[pulumi.Input['InstanceDataDiskType']]):
         pulumi.set(self, "data_disk_type", value)
 
     @property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[str]]:
+    def disk_encryption(self) -> Optional[pulumi.Input['InstanceDiskEncryption']]:
         """
         Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[str]]):
+    def disk_encryption(self, value: Optional[pulumi.Input['InstanceDiskEncryption']]):
         pulumi.set(self, "disk_encryption", value)
 
     @property
@@ -342,14 +343,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[pulumi.Input[str]]:
+    def nic_type(self) -> Optional[pulumi.Input['InstanceNicType']]:
         """
         Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         """
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
-    def nic_type(self, value: Optional[pulumi.Input[str]]):
+    def nic_type(self, value: Optional[pulumi.Input['InstanceNicType']]):
         pulumi.set(self, "nic_type", value)
 
     @property
@@ -492,12 +493,12 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 boot_disk_type: Optional[pulumi.Input[str]] = None,
+                 boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 data_disk_type: Optional[pulumi.Input[str]] = None,
-                 disk_encryption: Optional[pulumi.Input[str]] = None,
+                 data_disk_type: Optional[pulumi.Input['InstanceDataDiskType']] = None,
+                 disk_encryption: Optional[pulumi.Input['InstanceDiskEncryption']] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -507,7 +508,7 @@ class Instance(pulumi.CustomResource):
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 nic_type: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
@@ -528,12 +529,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
-        :param pulumi.Input[str] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         :param pulumi.Input[pulumi.InputType['ContainerImageArgs']] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[str] data_disk_size_gb: Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
-        :param pulumi.Input[str] data_disk_type: Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-        :param pulumi.Input[str] disk_encryption: Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        :param pulumi.Input['InstanceDataDiskType'] data_disk_type: Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input['InstanceDiskEncryption'] disk_encryption: Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
@@ -541,7 +542,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
-        :param pulumi.Input[str] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
@@ -580,12 +581,12 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 boot_disk_type: Optional[pulumi.Input[str]] = None,
+                 boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 data_disk_type: Optional[pulumi.Input[str]] = None,
-                 disk_encryption: Optional[pulumi.Input[str]] = None,
+                 data_disk_type: Optional[pulumi.Input['InstanceDataDiskType']] = None,
+                 disk_encryption: Optional[pulumi.Input['InstanceDiskEncryption']] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -595,7 +596,7 @@ class Instance(pulumi.CustomResource):
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 nic_type: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,

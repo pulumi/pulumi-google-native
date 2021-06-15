@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ApiConfigHandlerArgs',
@@ -49,17 +50,17 @@ __all__ = [
 @pulumi.input_type
 class ApiConfigHandlerArgs:
     def __init__(__self__, *,
-                 auth_fail_action: Optional[pulumi.Input[str]] = None,
-                 login: Optional[pulumi.Input[str]] = None,
+                 auth_fail_action: Optional[pulumi.Input['ApiConfigHandlerAuthFailAction']] = None,
+                 login: Optional[pulumi.Input['ApiConfigHandlerLogin']] = None,
                  script: Optional[pulumi.Input[str]] = None,
-                 security_level: Optional[pulumi.Input[str]] = None,
+                 security_level: Optional[pulumi.Input['ApiConfigHandlerSecurityLevel']] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
-        :param pulumi.Input[str] auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
-        :param pulumi.Input[str] login: Level of login required to access this resource. Defaults to optional.
+        :param pulumi.Input['ApiConfigHandlerAuthFailAction'] auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
+        :param pulumi.Input['ApiConfigHandlerLogin'] login: Level of login required to access this resource. Defaults to optional.
         :param pulumi.Input[str] script: Path to the script from the application root directory.
-        :param pulumi.Input[str] security_level: Security (HTTPS) enforcement for this URL.
+        :param pulumi.Input['ApiConfigHandlerSecurityLevel'] security_level: Security (HTTPS) enforcement for this URL.
         :param pulumi.Input[str] url: URL to serve the endpoint at.
         """
         if auth_fail_action is not None:
@@ -75,26 +76,26 @@ class ApiConfigHandlerArgs:
 
     @property
     @pulumi.getter(name="authFailAction")
-    def auth_fail_action(self) -> Optional[pulumi.Input[str]]:
+    def auth_fail_action(self) -> Optional[pulumi.Input['ApiConfigHandlerAuthFailAction']]:
         """
         Action to take when users access resources that require authentication. Defaults to redirect.
         """
         return pulumi.get(self, "auth_fail_action")
 
     @auth_fail_action.setter
-    def auth_fail_action(self, value: Optional[pulumi.Input[str]]):
+    def auth_fail_action(self, value: Optional[pulumi.Input['ApiConfigHandlerAuthFailAction']]):
         pulumi.set(self, "auth_fail_action", value)
 
     @property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[str]]:
+    def login(self) -> Optional[pulumi.Input['ApiConfigHandlerLogin']]:
         """
         Level of login required to access this resource. Defaults to optional.
         """
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[str]]):
+    def login(self, value: Optional[pulumi.Input['ApiConfigHandlerLogin']]):
         pulumi.set(self, "login", value)
 
     @property
@@ -111,14 +112,14 @@ class ApiConfigHandlerArgs:
 
     @property
     @pulumi.getter(name="securityLevel")
-    def security_level(self) -> Optional[pulumi.Input[str]]:
+    def security_level(self) -> Optional[pulumi.Input['ApiConfigHandlerSecurityLevel']]:
         """
         Security (HTTPS) enforcement for this URL.
         """
         return pulumi.get(self, "security_level")
 
     @security_level.setter
-    def security_level(self, value: Optional[pulumi.Input[str]]):
+    def security_level(self, value: Optional[pulumi.Input['ApiConfigHandlerSecurityLevel']]):
         pulumi.set(self, "security_level", value)
 
     @property
@@ -708,13 +709,13 @@ class EndpointsApiServiceArgs:
                  config_id: Optional[pulumi.Input[str]] = None,
                  disable_trace_sampling: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rollout_strategy: Optional[pulumi.Input[str]] = None):
+                 rollout_strategy: Optional[pulumi.Input['EndpointsApiServiceRolloutStrategy']] = None):
         """
         Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
         :param pulumi.Input[str] config_id: Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
         :param pulumi.Input[bool] disable_trace_sampling: Enable or disable trace sampling. By default, this is set to false for enabled.
         :param pulumi.Input[str] name: Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
-        :param pulumi.Input[str] rollout_strategy: Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
+        :param pulumi.Input['EndpointsApiServiceRolloutStrategy'] rollout_strategy: Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -763,14 +764,14 @@ class EndpointsApiServiceArgs:
 
     @property
     @pulumi.getter(name="rolloutStrategy")
-    def rollout_strategy(self) -> Optional[pulumi.Input[str]]:
+    def rollout_strategy(self) -> Optional[pulumi.Input['EndpointsApiServiceRolloutStrategy']]:
         """
         Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
         """
         return pulumi.get(self, "rollout_strategy")
 
     @rollout_strategy.setter
-    def rollout_strategy(self, value: Optional[pulumi.Input[str]]):
+    def rollout_strategy(self, value: Optional[pulumi.Input['EndpointsApiServiceRolloutStrategy']]):
         pulumi.set(self, "rollout_strategy", value)
 
 
@@ -801,12 +802,12 @@ class EntrypointArgs:
 @pulumi.input_type
 class ErrorHandlerArgs:
     def __init__(__self__, *,
-                 error_code: Optional[pulumi.Input[str]] = None,
+                 error_code: Optional[pulumi.Input['ErrorHandlerErrorCode']] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  static_file: Optional[pulumi.Input[str]] = None):
         """
         Custom static error page to be served when an error occurs.
-        :param pulumi.Input[str] error_code: Error condition this handler applies to.
+        :param pulumi.Input['ErrorHandlerErrorCode'] error_code: Error condition this handler applies to.
         :param pulumi.Input[str] mime_type: MIME type of file. Defaults to text/html.
         :param pulumi.Input[str] static_file: Static file content to be served for this error.
         """
@@ -819,14 +820,14 @@ class ErrorHandlerArgs:
 
     @property
     @pulumi.getter(name="errorCode")
-    def error_code(self) -> Optional[pulumi.Input[str]]:
+    def error_code(self) -> Optional[pulumi.Input['ErrorHandlerErrorCode']]:
         """
         Error condition this handler applies to.
         """
         return pulumi.get(self, "error_code")
 
     @error_code.setter
-    def error_code(self, value: Optional[pulumi.Input[str]]):
+    def error_code(self, value: Optional[pulumi.Input['ErrorHandlerErrorCode']]):
         pulumi.set(self, "error_code", value)
 
     @property
@@ -1250,11 +1251,11 @@ class LivenessCheckArgs:
 class ManagedCertificateArgs:
     def __init__(__self__, *,
                  last_renewal_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['ManagedCertificateStatus']] = None):
         """
         A certificate managed by App Engine.
         :param pulumi.Input[str] last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        :param pulumi.Input[str] status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        :param pulumi.Input['ManagedCertificateStatus'] status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
         """
         if last_renewal_time is not None:
             pulumi.set(__self__, "last_renewal_time", last_renewal_time)
@@ -1275,14 +1276,14 @@ class ManagedCertificateArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ManagedCertificateStatus']]:
         """
         Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ManagedCertificateStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -1635,12 +1636,12 @@ class ResourceRecordArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  rrdata: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['ResourceRecordType']] = None):
         """
         A DNS resource record.
         :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        :param pulumi.Input[str] type: Resource record type. Example: AAAA.
+        :param pulumi.Input['ResourceRecordType'] type: Resource record type. Example: AAAA.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1675,14 +1676,14 @@ class ResourceRecordArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ResourceRecordType']]:
         """
         Resource record type. Example: AAAA.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ResourceRecordType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1803,12 +1804,12 @@ class SslSettingsArgs:
     def __init__(__self__, *,
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  pending_managed_certificate_id: Optional[pulumi.Input[str]] = None,
-                 ssl_management_type: Optional[pulumi.Input[str]] = None):
+                 ssl_management_type: Optional[pulumi.Input['SslSettingsSslManagementType']] = None):
         """
         SSL configuration for a DomainMapping resource.
         :param pulumi.Input[str] certificate_id: ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
         :param pulumi.Input[str] pending_managed_certificate_id: ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
-        :param pulumi.Input[str] ssl_management_type: SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
+        :param pulumi.Input['SslSettingsSslManagementType'] ssl_management_type: SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
@@ -1843,14 +1844,14 @@ class SslSettingsArgs:
 
     @property
     @pulumi.getter(name="sslManagementType")
-    def ssl_management_type(self) -> Optional[pulumi.Input[str]]:
+    def ssl_management_type(self) -> Optional[pulumi.Input['SslSettingsSslManagementType']]:
         """
         SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
         """
         return pulumi.get(self, "ssl_management_type")
 
     @ssl_management_type.setter
-    def ssl_management_type(self, value: Optional[pulumi.Input[str]]):
+    def ssl_management_type(self, value: Optional[pulumi.Input['SslSettingsSslManagementType']]):
         pulumi.set(self, "ssl_management_type", value)
 
 
@@ -2106,21 +2107,21 @@ class UrlDispatchRuleArgs:
 class UrlMapArgs:
     def __init__(__self__, *,
                  api_endpoint: Optional[pulumi.Input['ApiEndpointHandlerArgs']] = None,
-                 auth_fail_action: Optional[pulumi.Input[str]] = None,
-                 login: Optional[pulumi.Input[str]] = None,
-                 redirect_http_response_code: Optional[pulumi.Input[str]] = None,
+                 auth_fail_action: Optional[pulumi.Input['UrlMapAuthFailAction']] = None,
+                 login: Optional[pulumi.Input['UrlMapLogin']] = None,
+                 redirect_http_response_code: Optional[pulumi.Input['UrlMapRedirectHttpResponseCode']] = None,
                  script: Optional[pulumi.Input['ScriptHandlerArgs']] = None,
-                 security_level: Optional[pulumi.Input[str]] = None,
+                 security_level: Optional[pulumi.Input['UrlMapSecurityLevel']] = None,
                  static_files: Optional[pulumi.Input['StaticFilesHandlerArgs']] = None,
                  url_regex: Optional[pulumi.Input[str]] = None):
         """
         URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
         :param pulumi.Input['ApiEndpointHandlerArgs'] api_endpoint: Uses API Endpoints to handle requests.
-        :param pulumi.Input[str] auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
-        :param pulumi.Input[str] login: Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-        :param pulumi.Input[str] redirect_http_response_code: 30x code to use when performing redirects for the secure field. Defaults to 302.
+        :param pulumi.Input['UrlMapAuthFailAction'] auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
+        :param pulumi.Input['UrlMapLogin'] login: Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
+        :param pulumi.Input['UrlMapRedirectHttpResponseCode'] redirect_http_response_code: 30x code to use when performing redirects for the secure field. Defaults to 302.
         :param pulumi.Input['ScriptHandlerArgs'] script: Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
-        :param pulumi.Input[str] security_level: Security (HTTPS) enforcement for this URL.
+        :param pulumi.Input['UrlMapSecurityLevel'] security_level: Security (HTTPS) enforcement for this URL.
         :param pulumi.Input['StaticFilesHandlerArgs'] static_files: Returns the contents of a file, such as an image, as the response.
         :param pulumi.Input[str] url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
         """
@@ -2155,38 +2156,38 @@ class UrlMapArgs:
 
     @property
     @pulumi.getter(name="authFailAction")
-    def auth_fail_action(self) -> Optional[pulumi.Input[str]]:
+    def auth_fail_action(self) -> Optional[pulumi.Input['UrlMapAuthFailAction']]:
         """
         Action to take when users access resources that require authentication. Defaults to redirect.
         """
         return pulumi.get(self, "auth_fail_action")
 
     @auth_fail_action.setter
-    def auth_fail_action(self, value: Optional[pulumi.Input[str]]):
+    def auth_fail_action(self, value: Optional[pulumi.Input['UrlMapAuthFailAction']]):
         pulumi.set(self, "auth_fail_action", value)
 
     @property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[str]]:
+    def login(self) -> Optional[pulumi.Input['UrlMapLogin']]:
         """
         Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
         """
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[str]]):
+    def login(self, value: Optional[pulumi.Input['UrlMapLogin']]):
         pulumi.set(self, "login", value)
 
     @property
     @pulumi.getter(name="redirectHttpResponseCode")
-    def redirect_http_response_code(self) -> Optional[pulumi.Input[str]]:
+    def redirect_http_response_code(self) -> Optional[pulumi.Input['UrlMapRedirectHttpResponseCode']]:
         """
         30x code to use when performing redirects for the secure field. Defaults to 302.
         """
         return pulumi.get(self, "redirect_http_response_code")
 
     @redirect_http_response_code.setter
-    def redirect_http_response_code(self, value: Optional[pulumi.Input[str]]):
+    def redirect_http_response_code(self, value: Optional[pulumi.Input['UrlMapRedirectHttpResponseCode']]):
         pulumi.set(self, "redirect_http_response_code", value)
 
     @property
@@ -2203,14 +2204,14 @@ class UrlMapArgs:
 
     @property
     @pulumi.getter(name="securityLevel")
-    def security_level(self) -> Optional[pulumi.Input[str]]:
+    def security_level(self) -> Optional[pulumi.Input['UrlMapSecurityLevel']]:
         """
         Security (HTTPS) enforcement for this URL.
         """
         return pulumi.get(self, "security_level")
 
     @security_level.setter
-    def security_level(self, value: Optional[pulumi.Input[str]]):
+    def security_level(self, value: Optional[pulumi.Input['UrlMapSecurityLevel']]):
         pulumi.set(self, "security_level", value)
 
     @property

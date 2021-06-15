@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['VpnTunnelArgs', 'VpnTunnel']
 
@@ -35,7 +36,7 @@ class VpnTunnelArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['VpnTunnelStatus']] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None):
@@ -63,7 +64,7 @@ class VpnTunnelArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
-        :param pulumi.Input[str] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
+        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
                - PROVISIONING: Resource is being allocated for the VPN tunnel. 
                - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
                - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
@@ -396,7 +397,7 @@ class VpnTunnelArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['VpnTunnelStatus']]:
         """
         [Output Only] The status of the VPN tunnel, which can be one of the following: 
         - PROVISIONING: Resource is being allocated for the VPN tunnel. 
@@ -418,7 +419,7 @@ class VpnTunnelArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['VpnTunnelStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -485,7 +486,7 @@ class VpnTunnel(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['VpnTunnelStatus']] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
@@ -517,7 +518,7 @@ class VpnTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
-        :param pulumi.Input[str] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
+        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
                - PROVISIONING: Resource is being allocated for the VPN tunnel. 
                - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
                - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
@@ -583,7 +584,7 @@ class VpnTunnel(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['VpnTunnelStatus']] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,

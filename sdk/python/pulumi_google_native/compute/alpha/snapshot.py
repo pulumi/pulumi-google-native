@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -40,9 +41,9 @@ class SnapshotArgs:
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['SnapshotStatus']] = None,
                  storage_bytes: Optional[pulumi.Input[str]] = None,
-                 storage_bytes_status: Optional[pulumi.Input[str]] = None,
+                 storage_bytes_status: Optional[pulumi.Input['SnapshotStorageBytesStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
@@ -77,9 +78,9 @@ class SnapshotArgs:
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_disk_id: [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
-        :param pulumi.Input[str] status: [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
+        :param pulumi.Input['SnapshotStatus'] status: [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         :param pulumi.Input[str] storage_bytes: [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
-        :param pulumi.Input[str] storage_bytes_status: [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        :param pulumi.Input['SnapshotStorageBytesStatus'] storage_bytes_status: [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         pulumi.set(__self__, "project", project)
@@ -444,14 +445,14 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['SnapshotStatus']]:
         """
         [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['SnapshotStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -468,14 +469,14 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter(name="storageBytesStatus")
-    def storage_bytes_status(self) -> Optional[pulumi.Input[str]]:
+    def storage_bytes_status(self) -> Optional[pulumi.Input['SnapshotStorageBytesStatus']]:
         """
         [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         """
         return pulumi.get(self, "storage_bytes_status")
 
     @storage_bytes_status.setter
-    def storage_bytes_status(self, value: Optional[pulumi.Input[str]]):
+    def storage_bytes_status(self, value: Optional[pulumi.Input['SnapshotStorageBytesStatus']]):
         pulumi.set(self, "storage_bytes_status", value)
 
     @property
@@ -521,9 +522,9 @@ class Snapshot(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['SnapshotStatus']] = None,
                  storage_bytes: Optional[pulumi.Input[str]] = None,
-                 storage_bytes_status: Optional[pulumi.Input[str]] = None,
+                 storage_bytes_status: Optional[pulumi.Input['SnapshotStorageBytesStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -562,9 +563,9 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_disk_id: [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
-        :param pulumi.Input[str] status: [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
+        :param pulumi.Input['SnapshotStatus'] status: [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         :param pulumi.Input[str] storage_bytes: [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
-        :param pulumi.Input[str] storage_bytes_status: [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        :param pulumi.Input['SnapshotStorageBytesStatus'] storage_bytes_status: [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         ...
@@ -616,9 +617,9 @@ class Snapshot(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['SnapshotStatus']] = None,
                  storage_bytes: Optional[pulumi.Input[str]] = None,
-                 storage_bytes_status: Optional[pulumi.Input[str]] = None,
+                 storage_bytes_status: Optional[pulumi.Input['SnapshotStorageBytesStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:

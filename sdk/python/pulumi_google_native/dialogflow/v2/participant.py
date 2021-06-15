@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['ParticipantArgs', 'Participant']
 
@@ -17,12 +18,12 @@ class ParticipantArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input['ParticipantRole']] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Participant resource.
         :param pulumi.Input[str] name: Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-        :param pulumi.Input[str] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         :param pulumi.Input[str] sip_recording_media_label: Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
@@ -76,14 +77,14 @@ class ParticipantArgs:
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[str]]:
+    def role(self) -> Optional[pulumi.Input['ParticipantRole']]:
         """
         Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[str]]):
+    def role(self, value: Optional[pulumi.Input['ParticipantRole']]):
         pulumi.set(self, "role", value)
 
     @property
@@ -108,7 +109,7 @@ class Participant(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input['ParticipantRole']] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -117,7 +118,7 @@ class Participant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-        :param pulumi.Input[str] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         :param pulumi.Input[str] sip_recording_media_label: Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
         """
         ...
@@ -148,7 +149,7 @@ class Participant(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input['ParticipantRole']] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

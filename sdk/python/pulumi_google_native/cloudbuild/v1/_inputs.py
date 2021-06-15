@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ArtifactObjectsArgs',
@@ -331,13 +332,13 @@ class BuildOptionsArgs:
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  dynamic_substitutions: Optional[pulumi.Input[bool]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_streaming_option: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[str]] = None,
-                 machine_type: Optional[pulumi.Input[str]] = None,
-                 requested_verify_option: Optional[pulumi.Input[str]] = None,
+                 log_streaming_option: Optional[pulumi.Input['BuildOptionsLogStreamingOption']] = None,
+                 logging: Optional[pulumi.Input['BuildOptionsLogging']] = None,
+                 machine_type: Optional[pulumi.Input['BuildOptionsMachineType']] = None,
+                 requested_verify_option: Optional[pulumi.Input['BuildOptionsRequestedVerifyOption']] = None,
                  secret_env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source_provenance_hash: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 substitution_option: Optional[pulumi.Input[str]] = None,
+                 source_provenance_hash: Optional[pulumi.Input[Sequence[pulumi.Input['BuildOptionsSourceProvenanceHashItem']]]] = None,
+                 substitution_option: Optional[pulumi.Input['BuildOptionsSubstitutionOption']] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
@@ -345,13 +346,13 @@ class BuildOptionsArgs:
         :param pulumi.Input[str] disk_size_gb: Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
         :param pulumi.Input[bool] dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-        :param pulumi.Input[str] log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
-        :param pulumi.Input[str] logging: Option to specify the logging mode, which determines if and where build logs are stored.
-        :param pulumi.Input[str] machine_type: Compute Engine machine type on which to run the build.
-        :param pulumi.Input[str] requested_verify_option: Requested verifiability options.
+        :param pulumi.Input['BuildOptionsLogStreamingOption'] log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
+        :param pulumi.Input['BuildOptionsLogging'] logging: Option to specify the logging mode, which determines if and where build logs are stored.
+        :param pulumi.Input['BuildOptionsMachineType'] machine_type: Compute Engine machine type on which to run the build.
+        :param pulumi.Input['BuildOptionsRequestedVerifyOption'] requested_verify_option: Requested verifiability options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_env: A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_provenance_hash: Requested hash for SourceProvenance.
-        :param pulumi.Input[str] substitution_option: Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+        :param pulumi.Input[Sequence[pulumi.Input['BuildOptionsSourceProvenanceHashItem']]] source_provenance_hash: Requested hash for SourceProvenance.
+        :param pulumi.Input['BuildOptionsSubstitutionOption'] substitution_option: Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
         :param pulumi.Input[str] worker_pool: Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
         """
@@ -418,50 +419,50 @@ class BuildOptionsArgs:
 
     @property
     @pulumi.getter(name="logStreamingOption")
-    def log_streaming_option(self) -> Optional[pulumi.Input[str]]:
+    def log_streaming_option(self) -> Optional[pulumi.Input['BuildOptionsLogStreamingOption']]:
         """
         Option to define build log streaming behavior to Google Cloud Storage.
         """
         return pulumi.get(self, "log_streaming_option")
 
     @log_streaming_option.setter
-    def log_streaming_option(self, value: Optional[pulumi.Input[str]]):
+    def log_streaming_option(self, value: Optional[pulumi.Input['BuildOptionsLogStreamingOption']]):
         pulumi.set(self, "log_streaming_option", value)
 
     @property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input[str]]:
+    def logging(self) -> Optional[pulumi.Input['BuildOptionsLogging']]:
         """
         Option to specify the logging mode, which determines if and where build logs are stored.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input[str]]):
+    def logging(self, value: Optional[pulumi.Input['BuildOptionsLogging']]):
         pulumi.set(self, "logging", value)
 
     @property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[str]]:
+    def machine_type(self) -> Optional[pulumi.Input['BuildOptionsMachineType']]:
         """
         Compute Engine machine type on which to run the build.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[str]]):
+    def machine_type(self, value: Optional[pulumi.Input['BuildOptionsMachineType']]):
         pulumi.set(self, "machine_type", value)
 
     @property
     @pulumi.getter(name="requestedVerifyOption")
-    def requested_verify_option(self) -> Optional[pulumi.Input[str]]:
+    def requested_verify_option(self) -> Optional[pulumi.Input['BuildOptionsRequestedVerifyOption']]:
         """
         Requested verifiability options.
         """
         return pulumi.get(self, "requested_verify_option")
 
     @requested_verify_option.setter
-    def requested_verify_option(self, value: Optional[pulumi.Input[str]]):
+    def requested_verify_option(self, value: Optional[pulumi.Input['BuildOptionsRequestedVerifyOption']]):
         pulumi.set(self, "requested_verify_option", value)
 
     @property
@@ -478,26 +479,26 @@ class BuildOptionsArgs:
 
     @property
     @pulumi.getter(name="sourceProvenanceHash")
-    def source_provenance_hash(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def source_provenance_hash(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BuildOptionsSourceProvenanceHashItem']]]]:
         """
         Requested hash for SourceProvenance.
         """
         return pulumi.get(self, "source_provenance_hash")
 
     @source_provenance_hash.setter
-    def source_provenance_hash(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def source_provenance_hash(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BuildOptionsSourceProvenanceHashItem']]]]):
         pulumi.set(self, "source_provenance_hash", value)
 
     @property
     @pulumi.getter(name="substitutionOption")
-    def substitution_option(self) -> Optional[pulumi.Input[str]]:
+    def substitution_option(self) -> Optional[pulumi.Input['BuildOptionsSubstitutionOption']]:
         """
         Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
         """
         return pulumi.get(self, "substitution_option")
 
     @substitution_option.setter
-    def substitution_option(self, value: Optional[pulumi.Input[str]]):
+    def substitution_option(self, value: Optional[pulumi.Input['BuildOptionsSubstitutionOption']]):
         pulumi.set(self, "substitution_option", value)
 
     @property
@@ -825,12 +826,12 @@ class InlineSecretArgs:
 class PubsubConfigArgs:
     def __init__(__self__, *,
                  service_account_email: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['PubsubConfigState']] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
         :param pulumi.Input[str] service_account_email: Service account that will make the push request.
-        :param pulumi.Input[str] state: Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        :param pulumi.Input['PubsubConfigState'] state: Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
         """
         if service_account_email is not None:
@@ -854,14 +855,14 @@ class PubsubConfigArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['PubsubConfigState']]:
         """
         Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['PubsubConfigState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -881,12 +882,12 @@ class PubsubConfigArgs:
 class PullRequestFilterArgs:
     def __init__(__self__, *,
                  branch: Optional[pulumi.Input[str]] = None,
-                 comment_control: Optional[pulumi.Input[str]] = None,
+                 comment_control: Optional[pulumi.Input['PullRequestFilterCommentControl']] = None,
                  invert_regex: Optional[pulumi.Input[bool]] = None):
         """
         PullRequestFilter contains filter properties for matching GitHub Pull Requests.
         :param pulumi.Input[str] branch: Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-        :param pulumi.Input[str] comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+        :param pulumi.Input['PullRequestFilterCommentControl'] comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
         if branch is not None:
@@ -910,14 +911,14 @@ class PullRequestFilterArgs:
 
     @property
     @pulumi.getter(name="commentControl")
-    def comment_control(self) -> Optional[pulumi.Input[str]]:
+    def comment_control(self) -> Optional[pulumi.Input['PullRequestFilterCommentControl']]:
         """
         Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
         """
         return pulumi.get(self, "comment_control")
 
     @comment_control.setter
-    def comment_control(self, value: Optional[pulumi.Input[str]]):
+    def comment_control(self, value: Optional[pulumi.Input['PullRequestFilterCommentControl']]):
         pulumi.set(self, "comment_control", value)
 
     @property

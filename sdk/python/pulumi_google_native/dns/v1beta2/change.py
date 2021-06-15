@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ChangeArgs', 'Change']
@@ -24,7 +25,7 @@ class ChangeArgs:
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['ChangeStatus']] = None):
         """
         The set of arguments for constructing a Change resource.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] additions: Which ResourceRecordSets to add?
@@ -32,7 +33,7 @@ class ChangeArgs:
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        :param pulumi.Input[str] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+        :param pulumi.Input['ChangeStatus'] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "project", project)
@@ -151,14 +152,14 @@ class ChangeArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ChangeStatus']]:
         """
         Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ChangeStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -176,7 +177,7 @@ class Change(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ChangeStatus']] = None,
                  __props__=None):
         """
         Atomically updates the ResourceRecordSet collection.
@@ -188,7 +189,7 @@ class Change(pulumi.CustomResource):
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        :param pulumi.Input[str] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+        :param pulumi.Input['ChangeStatus'] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         ...
     @overload
@@ -223,7 +224,7 @@ class Change(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ChangeStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

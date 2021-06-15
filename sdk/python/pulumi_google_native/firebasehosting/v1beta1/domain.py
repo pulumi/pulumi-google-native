@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DomainArgs', 'Domain']
@@ -21,7 +22,7 @@ class DomainArgs:
                  domain_redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
                  provisioning: Optional[pulumi.Input['DomainProvisioningArgs']] = None,
                  site: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['DomainStatus']] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
@@ -29,7 +30,7 @@ class DomainArgs:
         :param pulumi.Input['DomainRedirectArgs'] domain_redirect: If set, the domain should redirect with the provided parameters.
         :param pulumi.Input['DomainProvisioningArgs'] provisioning: Information about the provisioning of certificates and the health of the DNS resolution for the domain.
         :param pulumi.Input[str] site: Required. The site name of the association.
-        :param pulumi.Input[str] status: Additional status of the domain association.
+        :param pulumi.Input['DomainStatus'] status: Additional status of the domain association.
         :param pulumi.Input[str] update_time: The time at which the domain was last updated.
         """
         pulumi.set(__self__, "project", project)
@@ -115,14 +116,14 @@ class DomainArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['DomainStatus']]:
         """
         Additional status of the domain association.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['DomainStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -149,7 +150,7 @@ class Domain(pulumi.CustomResource):
                  provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
                  site: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['DomainStatus']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -161,7 +162,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] domain_redirect: If set, the domain should redirect with the provided parameters.
         :param pulumi.Input[pulumi.InputType['DomainProvisioningArgs']] provisioning: Information about the provisioning of certificates and the health of the DNS resolution for the domain.
         :param pulumi.Input[str] site: Required. The site name of the association.
-        :param pulumi.Input[str] status: Additional status of the domain association.
+        :param pulumi.Input['DomainStatus'] status: Additional status of the domain association.
         :param pulumi.Input[str] update_time: The time at which the domain was last updated.
         """
         ...
@@ -194,7 +195,7 @@ class Domain(pulumi.CustomResource):
                  provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
                  site: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['DomainStatus']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

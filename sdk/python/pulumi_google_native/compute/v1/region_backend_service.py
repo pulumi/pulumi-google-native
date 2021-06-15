@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RegionBackendServiceArgs', 'RegionBackendService']
@@ -34,20 +35,20 @@ class RegionBackendServiceArgs:
                  iap: Optional[pulumi.Input['BackendServiceIAPArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policy: Optional[pulumi.Input[str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
+                 locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  max_stream_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input['OutlierDetectionArgs']] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['SecuritySettingsArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
@@ -86,8 +87,8 @@ class RegionBackendServiceArgs:
         :param pulumi.Input['BackendServiceIAPArgs'] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#backendService for backend services.
-        :param pulumi.Input[str] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
-        :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
+        :param pulumi.Input['RegionBackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        :param pulumi.Input['RegionBackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
                - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
                - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
                - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
@@ -120,7 +121,7 @@ class RegionBackendServiceArgs:
                
                
                Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
-        :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
+        :param pulumi.Input['RegionBackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends.
                
                Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
                
@@ -130,7 +131,7 @@ class RegionBackendServiceArgs:
                - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE.
+        :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE.
                
                When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
                
@@ -450,19 +451,19 @@ class RegionBackendServiceArgs:
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
+    def load_balancing_scheme(self) -> Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']]:
         """
         Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[str]]):
+    def load_balancing_scheme(self, value: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @property
     @pulumi.getter(name="localityLbPolicy")
-    def locality_lb_policy(self) -> Optional[pulumi.Input[str]]:
+    def locality_lb_policy(self) -> Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']]:
         """
         The load balancing algorithm used within the scope of the locality. The possible values are:  
         - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
@@ -483,7 +484,7 @@ class RegionBackendServiceArgs:
         return pulumi.get(self, "locality_lb_policy")
 
     @locality_lb_policy.setter
-    def locality_lb_policy(self, value: Optional[pulumi.Input[str]]):
+    def locality_lb_policy(self, value: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']]):
         pulumi.set(self, "locality_lb_policy", value)
 
     @property
@@ -572,7 +573,7 @@ class RegionBackendServiceArgs:
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
+    def protocol(self) -> Optional[pulumi.Input['RegionBackendServiceProtocol']]:
         """
         The protocol this BackendService uses to communicate with backends.
 
@@ -583,7 +584,7 @@ class RegionBackendServiceArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
+    def protocol(self, value: Optional[pulumi.Input['RegionBackendServiceProtocol']]):
         pulumi.set(self, "protocol", value)
 
     @property
@@ -635,7 +636,7 @@ class RegionBackendServiceArgs:
 
     @property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[str]]:
+    def session_affinity(self) -> Optional[pulumi.Input['RegionBackendServiceSessionAffinity']]:
         """
         Type of session affinity to use. The default is NONE.
 
@@ -650,7 +651,7 @@ class RegionBackendServiceArgs:
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[str]]):
+    def session_affinity(self, value: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']]):
         pulumi.set(self, "session_affinity", value)
 
     @property
@@ -688,8 +689,8 @@ class RegionBackendService(pulumi.CustomResource):
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policy: Optional[pulumi.Input[str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
+                 locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -697,13 +698,13 @@ class RegionBackendService(pulumi.CustomResource):
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -745,8 +746,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#backendService for backend services.
-        :param pulumi.Input[str] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
-        :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
+        :param pulumi.Input['RegionBackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        :param pulumi.Input['RegionBackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
                - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
                - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
                - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
@@ -779,7 +780,7 @@ class RegionBackendService(pulumi.CustomResource):
                
                
                Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
-        :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
+        :param pulumi.Input['RegionBackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends.
                
                Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
                
@@ -790,7 +791,7 @@ class RegionBackendService(pulumi.CustomResource):
                - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
                - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE.
+        :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE.
                
                When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
                
@@ -842,8 +843,8 @@ class RegionBackendService(pulumi.CustomResource):
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policy: Optional[pulumi.Input[str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
+                 locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -851,13 +852,13 @@ class RegionBackendService(pulumi.CustomResource):
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:

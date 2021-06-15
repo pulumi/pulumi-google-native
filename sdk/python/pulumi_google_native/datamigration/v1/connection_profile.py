@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
@@ -24,9 +25,9 @@ class ConnectionProfileArgs:
                  mysql: Optional[pulumi.Input['MySqlConnectionProfileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']] = None,
-                 provider: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['ConnectionProfileState']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input['CloudSqlConnectionProfileArgs'] cloudsql: A CloudSQL database connection profile.
@@ -35,8 +36,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input['MySqlConnectionProfileArgs'] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input['PostgreSqlConnectionProfileArgs'] postgresql: A PostgreSQL database connection profile.
-        :param pulumi.Input[str] provider: The database provider.
-        :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
+        :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "location", location)
@@ -161,14 +162,14 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def provider(self) -> Optional[pulumi.Input[str]]:
+    def provider(self) -> Optional[pulumi.Input['ConnectionProfileProvider']]:
         """
         The database provider.
         """
         return pulumi.get(self, "provider")
 
     @provider.setter
-    def provider(self, value: Optional[pulumi.Input[str]]):
+    def provider(self, value: Optional[pulumi.Input['ConnectionProfileProvider']]):
         pulumi.set(self, "provider", value)
 
     @property
@@ -182,14 +183,14 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['ConnectionProfileState']]:
         """
         The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['ConnectionProfileState']]):
         pulumi.set(self, "state", value)
 
 
@@ -207,9 +208,9 @@ class ConnectionProfile(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provider: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ConnectionProfileState']] = None,
                  __props__=None):
         """
         Creates a new connection profile in a given project and location.
@@ -222,8 +223,8 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']] postgresql: A PostgreSQL database connection profile.
-        :param pulumi.Input[str] provider: The database provider.
-        :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
+        :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         ...
     @overload
@@ -258,9 +259,9 @@ class ConnectionProfile(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 provider: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ConnectionProfileState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

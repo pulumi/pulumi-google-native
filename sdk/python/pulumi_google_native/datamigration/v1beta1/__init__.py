@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .connection_profile import *
 from .connection_profile_iam_policy import *
 from .get_connection_profile import *

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['AlertPolicyArgs', 'AlertPolicy']
@@ -16,7 +17,7 @@ __all__ = ['AlertPolicyArgs', 'AlertPolicy']
 class AlertPolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 combiner: Optional[pulumi.Input[str]] = None,
+                 combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
                  creation_record: Optional[pulumi.Input['MutationRecordArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +30,7 @@ class AlertPolicyArgs:
                  validity: Optional[pulumi.Input['StatusArgs']] = None):
         """
         The set of arguments for constructing a AlertPolicy resource.
-        :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
+        :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
         :param pulumi.Input['MutationRecordArgs'] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
@@ -76,14 +77,14 @@ class AlertPolicyArgs:
 
     @property
     @pulumi.getter
-    def combiner(self) -> Optional[pulumi.Input[str]]:
+    def combiner(self) -> Optional[pulumi.Input['AlertPolicyCombiner']]:
         """
         How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         """
         return pulumi.get(self, "combiner")
 
     @combiner.setter
-    def combiner(self, value: Optional[pulumi.Input[str]]):
+    def combiner(self, value: Optional[pulumi.Input['AlertPolicyCombiner']]):
         pulumi.set(self, "combiner", value)
 
     @property
@@ -212,7 +213,7 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 combiner: Optional[pulumi.Input[str]] = None,
+                 combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -230,7 +231,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
+        :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
         :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
@@ -266,7 +267,7 @@ class AlertPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 combiner: Optional[pulumi.Input[str]] = None,
+                 combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,

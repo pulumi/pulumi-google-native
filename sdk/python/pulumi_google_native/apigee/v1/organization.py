@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['OrganizationArgs', 'Organization']
@@ -20,27 +21,27 @@ class OrganizationArgs:
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
-                 billing_type: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
-                 runtime_type: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 runtime_type: Optional[pulumi.Input['OrganizationRuntimeType']] = None,
+                 type: Optional[pulumi.Input['OrganizationType']] = None):
         """
         The set of arguments for constructing a Organization resource.
         :param pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[str] analytics_region: Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
-        :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Properties defined in the Apigee organization profile.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
-        :param pulumi.Input[str] runtime_type: Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
-        :param pulumi.Input[str] type: Not used by Apigee.
+        :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        :param pulumi.Input['OrganizationType'] type: Not used by Apigee.
         """
         pulumi.set(__self__, "parent", parent)
         if addons_config is not None:
@@ -127,14 +128,14 @@ class OrganizationArgs:
 
     @property
     @pulumi.getter(name="billingType")
-    def billing_type(self) -> Optional[pulumi.Input[str]]:
+    def billing_type(self) -> Optional[pulumi.Input['OrganizationBillingType']]:
         """
         Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         """
         return pulumi.get(self, "billing_type")
 
     @billing_type.setter
-    def billing_type(self, value: Optional[pulumi.Input[str]]):
+    def billing_type(self, value: Optional[pulumi.Input['OrganizationBillingType']]):
         pulumi.set(self, "billing_type", value)
 
     @property
@@ -196,26 +197,26 @@ class OrganizationArgs:
 
     @property
     @pulumi.getter(name="runtimeType")
-    def runtime_type(self) -> Optional[pulumi.Input[str]]:
+    def runtime_type(self) -> Optional[pulumi.Input['OrganizationRuntimeType']]:
         """
         Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
         """
         return pulumi.get(self, "runtime_type")
 
     @runtime_type.setter
-    def runtime_type(self, value: Optional[pulumi.Input[str]]):
+    def runtime_type(self, value: Optional[pulumi.Input['OrganizationRuntimeType']]):
         pulumi.set(self, "runtime_type", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['OrganizationType']]:
         """
         Not used by Apigee.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['OrganizationType']]):
         pulumi.set(self, "type", value)
 
 
@@ -228,15 +229,15 @@ class Organization(pulumi.CustomResource):
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
-                 billing_type: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
-                 runtime_type: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 runtime_type: Optional[pulumi.Input['OrganizationRuntimeType']] = None,
+                 type: Optional[pulumi.Input['OrganizationType']] = None,
                  __props__=None):
         """
         Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
@@ -247,13 +248,13 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] analytics_region: Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
-        :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Properties defined in the Apigee organization profile.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
-        :param pulumi.Input[str] runtime_type: Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
-        :param pulumi.Input[str] type: Not used by Apigee.
+        :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        :param pulumi.Input['OrganizationType'] type: Not used by Apigee.
         """
         ...
     @overload
@@ -283,15 +284,15 @@ class Organization(pulumi.CustomResource):
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
-                 billing_type: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
-                 runtime_type: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 runtime_type: Optional[pulumi.Input['OrganizationRuntimeType']] = None,
+                 type: Optional[pulumi.Input['OrganizationType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

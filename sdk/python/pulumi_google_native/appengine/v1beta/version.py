@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['VersionArgs', 'Version']
@@ -36,7 +37,7 @@ class VersionArgs:
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]]] = None,
                  health_check: Optional[pulumi.Input['HealthCheckArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]]] = None,
                  liveness_check: Optional[pulumi.Input['LivenessCheckArgs']] = None,
@@ -51,7 +52,7 @@ class VersionArgs:
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 serving_status: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_url: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
@@ -77,7 +78,7 @@ class VersionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['HealthCheckArgs'] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
         :param pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['LivenessCheckArgs'] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
@@ -92,7 +93,7 @@ class VersionArgs:
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
-        :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
+        :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_url: Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
@@ -427,14 +428,14 @@ class VersionArgs:
 
     @property
     @pulumi.getter(name="inboundServices")
-    def inbound_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def inbound_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]]:
         """
         Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         """
         return pulumi.get(self, "inbound_services")
 
     @inbound_services.setter
-    def inbound_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def inbound_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]]):
         pulumi.set(self, "inbound_services", value)
 
     @property
@@ -607,14 +608,14 @@ class VersionArgs:
 
     @property
     @pulumi.getter(name="servingStatus")
-    def serving_status(self) -> Optional[pulumi.Input[str]]:
+    def serving_status(self) -> Optional[pulumi.Input['VersionServingStatus']]:
         """
         Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         """
         return pulumi.get(self, "serving_status")
 
     @serving_status.setter
-    def serving_status(self, value: Optional[pulumi.Input[str]]):
+    def serving_status(self, value: Optional[pulumi.Input['VersionServingStatus']]):
         pulumi.set(self, "serving_status", value)
 
     @property
@@ -691,7 +692,7 @@ class Version(pulumi.CustomResource):
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
                  liveness_check: Optional[pulumi.Input[pulumi.InputType['LivenessCheckArgs']]] = None,
@@ -707,7 +708,7 @@ class Version(pulumi.CustomResource):
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 serving_status: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_url: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
@@ -737,7 +738,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['LivenessCheckArgs']] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
@@ -752,7 +753,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
-        :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
+        :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_url: Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
@@ -802,7 +803,7 @@ class Version(pulumi.CustomResource):
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
                  liveness_check: Optional[pulumi.Input[pulumi.InputType['LivenessCheckArgs']]] = None,
@@ -818,7 +819,7 @@ class Version(pulumi.CustomResource):
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 serving_status: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_url: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,

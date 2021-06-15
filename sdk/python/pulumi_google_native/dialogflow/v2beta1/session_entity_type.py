@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['SessionEntityTypeArgs', 'SessionEntityType']
@@ -21,12 +22,12 @@ class SessionEntityTypeArgs:
                  session_id: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]] = None,
-                 entity_override_mode: Optional[pulumi.Input[str]] = None,
+                 entity_override_mode: Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SessionEntityType resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]] entities: Required. The collection of entities associated with this session entity type.
-        :param pulumi.Input[str] entity_override_mode: Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        :param pulumi.Input['SessionEntityTypeEntityOverrideMode'] entity_override_mode: Required. Indicates whether the additional data should override or supplement the custom entity type definition.
         :param pulumi.Input[str] name: Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         """
         pulumi.set(__self__, "environment_id", environment_id)
@@ -100,14 +101,14 @@ class SessionEntityTypeArgs:
 
     @property
     @pulumi.getter(name="entityOverrideMode")
-    def entity_override_mode(self) -> Optional[pulumi.Input[str]]:
+    def entity_override_mode(self) -> Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']]:
         """
         Required. Indicates whether the additional data should override or supplement the custom entity type definition.
         """
         return pulumi.get(self, "entity_override_mode")
 
     @entity_override_mode.setter
-    def entity_override_mode(self, value: Optional[pulumi.Input[str]]):
+    def entity_override_mode(self, value: Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']]):
         pulumi.set(self, "entity_override_mode", value)
 
     @property
@@ -129,7 +130,7 @@ class SessionEntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
-                 entity_override_mode: Optional[pulumi.Input[str]] = None,
+                 entity_override_mode: Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -143,7 +144,7 @@ class SessionEntityType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]] entities: Required. The collection of entities associated with this session entity type.
-        :param pulumi.Input[str] entity_override_mode: Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        :param pulumi.Input['SessionEntityTypeEntityOverrideMode'] entity_override_mode: Required. Indicates whether the additional data should override or supplement the custom entity type definition.
         :param pulumi.Input[str] name: Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         """
         ...
@@ -171,7 +172,7 @@ class SessionEntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
-                 entity_override_mode: Optional[pulumi.Input[str]] = None,
+                 entity_override_mode: Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

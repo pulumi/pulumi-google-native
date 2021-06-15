@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['AttributeDefinitionArgs', 'AttributeDefinition']
 
@@ -19,7 +20,7 @@ class AttributeDefinitionArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 category: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input['AttributeDefinitionCategory']] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -27,7 +28,7 @@ class AttributeDefinitionArgs:
         """
         The set of arguments for constructing a AttributeDefinition resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-        :param pulumi.Input[str] category: Required. The category of the attribute. The value of this field cannot be changed after creation.
+        :param pulumi.Input['AttributeDefinitionCategory'] category: Required. The category of the attribute. The value of this field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         :param pulumi.Input[str] description: Optional. A description of the attribute.
@@ -110,14 +111,14 @@ class AttributeDefinitionArgs:
 
     @property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[str]]:
+    def category(self) -> Optional[pulumi.Input['AttributeDefinitionCategory']]:
         """
         Required. The category of the attribute. The value of this field cannot be changed after creation.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[str]]):
+    def category(self, value: Optional[pulumi.Input['AttributeDefinitionCategory']]):
         pulumi.set(self, "category", value)
 
     @property
@@ -176,7 +177,7 @@ class AttributeDefinition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  attribute_definition_id: Optional[pulumi.Input[str]] = None,
-                 category: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input['AttributeDefinitionCategory']] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
@@ -192,7 +193,7 @@ class AttributeDefinition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-        :param pulumi.Input[str] category: Required. The category of the attribute. The value of this field cannot be changed after creation.
+        :param pulumi.Input['AttributeDefinitionCategory'] category: Required. The category of the attribute. The value of this field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         :param pulumi.Input[str] description: Optional. A description of the attribute.
@@ -224,7 +225,7 @@ class AttributeDefinition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  attribute_definition_id: Optional[pulumi.Input[str]] = None,
-                 category: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input['AttributeDefinitionCategory']] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,

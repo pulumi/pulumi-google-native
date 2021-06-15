@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InterconnectArgs', 'Interconnect']
@@ -26,21 +27,21 @@ class InterconnectArgs:
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 interconnect_type: Optional[pulumi.Input[str]] = None,
+                 interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 link_type: Optional[pulumi.Input[str]] = None,
+                 link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
-                 operational_status: Optional[pulumi.Input[str]] = None,
+                 operational_status: Optional[pulumi.Input['InterconnectOperationalStatus']] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  provisioned_link_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['InterconnectState']] = None):
         """
         The set of arguments for constructing a Interconnect resource.
         :param pulumi.Input[bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -53,7 +54,7 @@ class InterconnectArgs:
         :param pulumi.Input[str] google_reference_id: [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] interconnect_attachments: [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
-        :param pulumi.Input[str] interconnect_type: Type of interconnect, which can take one of the following values: 
+        :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: 
                - PARTNER: A partner-managed interconnection shared between customers though a partner. 
                - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#interconnect for interconnects.
@@ -61,13 +62,13 @@ class InterconnectArgs:
                
                To see the latest fingerprint, make a get() request to retrieve an Interconnect.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
-        :param pulumi.Input[str] link_type: Type of link requested, which can take one of the following values: 
+        :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: 
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
-        :param pulumi.Input[str] operational_status: [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+        :param pulumi.Input['InterconnectOperationalStatus'] operational_status: [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
                - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -75,7 +76,7 @@ class InterconnectArgs:
         :param pulumi.Input[int] provisioned_link_count: [Output Only] Number of links actually provisioned in this interconnect.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+        :param pulumi.Input['InterconnectState'] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
                - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
                - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
                - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -263,7 +264,7 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter(name="interconnectType")
-    def interconnect_type(self) -> Optional[pulumi.Input[str]]:
+    def interconnect_type(self) -> Optional[pulumi.Input['InterconnectInterconnectType']]:
         """
         Type of interconnect, which can take one of the following values: 
         - PARTNER: A partner-managed interconnection shared between customers though a partner. 
@@ -272,7 +273,7 @@ class InterconnectArgs:
         return pulumi.get(self, "interconnect_type")
 
     @interconnect_type.setter
-    def interconnect_type(self, value: Optional[pulumi.Input[str]]):
+    def interconnect_type(self, value: Optional[pulumi.Input['InterconnectInterconnectType']]):
         pulumi.set(self, "interconnect_type", value)
 
     @property
@@ -315,7 +316,7 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[str]]:
+    def link_type(self) -> Optional[pulumi.Input['InterconnectLinkType']]:
         """
         Type of link requested, which can take one of the following values: 
         - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
@@ -324,7 +325,7 @@ class InterconnectArgs:
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[str]]):
+    def link_type(self, value: Optional[pulumi.Input['InterconnectLinkType']]):
         pulumi.set(self, "link_type", value)
 
     @property
@@ -365,7 +366,7 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter(name="operationalStatus")
-    def operational_status(self) -> Optional[pulumi.Input[str]]:
+    def operational_status(self) -> Optional[pulumi.Input['InterconnectOperationalStatus']]:
         """
         [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
@@ -375,7 +376,7 @@ class InterconnectArgs:
         return pulumi.get(self, "operational_status")
 
     @operational_status.setter
-    def operational_status(self, value: Optional[pulumi.Input[str]]):
+    def operational_status(self, value: Optional[pulumi.Input['InterconnectOperationalStatus']]):
         pulumi.set(self, "operational_status", value)
 
     @property
@@ -437,7 +438,7 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['InterconnectState']]:
         """
         [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
         - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
@@ -447,7 +448,7 @@ class InterconnectArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['InterconnectState']]):
         pulumi.set(self, "state", value)
 
 
@@ -466,22 +467,22 @@ class Interconnect(pulumi.CustomResource):
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 interconnect_type: Optional[pulumi.Input[str]] = None,
+                 interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 link_type: Optional[pulumi.Input[str]] = None,
+                 link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
-                 operational_status: Optional[pulumi.Input[str]] = None,
+                 operational_status: Optional[pulumi.Input['InterconnectOperationalStatus']] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_link_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['InterconnectState']] = None,
                  __props__=None):
         """
         Creates a Interconnect in the specified project using the data included in the request.
@@ -498,7 +499,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[str] google_reference_id: [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] interconnect_attachments: [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
-        :param pulumi.Input[str] interconnect_type: Type of interconnect, which can take one of the following values: 
+        :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: 
                - PARTNER: A partner-managed interconnection shared between customers though a partner. 
                - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#interconnect for interconnects.
@@ -506,13 +507,13 @@ class Interconnect(pulumi.CustomResource):
                
                To see the latest fingerprint, make a get() request to retrieve an Interconnect.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
-        :param pulumi.Input[str] link_type: Type of link requested, which can take one of the following values: 
+        :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: 
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
-        :param pulumi.Input[str] operational_status: [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
+        :param pulumi.Input['InterconnectOperationalStatus'] operational_status: [Output Only] The current status of this Interconnect's functionality, which can take one of the following values: 
                - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -520,7 +521,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[int] provisioned_link_count: [Output Only] Number of links actually provisioned in this interconnect.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
+        :param pulumi.Input['InterconnectState'] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
                - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
                - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
                - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
@@ -559,22 +560,22 @@ class Interconnect(pulumi.CustomResource):
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 interconnect_type: Optional[pulumi.Input[str]] = None,
+                 interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 link_type: Optional[pulumi.Input[str]] = None,
+                 link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
-                 operational_status: Optional[pulumi.Input[str]] = None,
+                 operational_status: Optional[pulumi.Input['InterconnectOperationalStatus']] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_link_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['InterconnectState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

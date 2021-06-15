@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .composite_type import *
 from .deployment import *
 from .deployment_iam_policy import *

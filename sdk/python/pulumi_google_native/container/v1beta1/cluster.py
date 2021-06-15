@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -62,7 +63,7 @@ class ClusterArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  shielded_nodes: Optional[pulumi.Input['ShieldedNodesArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ClusterStatus']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['TpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -117,7 +118,7 @@ class ClusterArgs:
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
         :param pulumi.Input[str] services_ipv4_cidr: [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
         :param pulumi.Input['ShieldedNodesArgs'] shielded_nodes: Shielded Nodes configuration.
-        :param pulumi.Input[str] status: [Output only] The current status of this cluster.
+        :param pulumi.Input['ClusterStatus'] status: [Output only] The current status of this cluster.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input['TpuConfigArgs'] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
@@ -795,14 +796,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ClusterStatus']]:
         """
         [Output only] The current status of this cluster.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ClusterStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -930,7 +931,7 @@ class Cluster(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ClusterStatus']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -989,7 +990,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
         :param pulumi.Input[str] services_ipv4_cidr: [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
         :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
-        :param pulumi.Input[str] status: [Output only] The current status of this cluster.
+        :param pulumi.Input['ClusterStatus'] status: [Output only] The current status of this cluster.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input[pulumi.InputType['TpuConfigArgs']] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
@@ -1068,7 +1069,7 @@ class Cluster(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ClusterStatus']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,

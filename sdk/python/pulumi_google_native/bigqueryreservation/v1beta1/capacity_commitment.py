@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
 
@@ -18,13 +19,13 @@ class CapacityCommitmentArgs:
                  project: pulumi.Input[str],
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
-                 renewal_plan: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
+                 renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
                  slot_count: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
-        :param pulumi.Input[str] plan: Capacity commitment commitment plan.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
+        :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
+        :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
         """
         pulumi.set(__self__, "location", location)
@@ -78,26 +79,26 @@ class CapacityCommitmentArgs:
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[str]]:
+    def plan(self) -> Optional[pulumi.Input['CapacityCommitmentPlan']]:
         """
         Capacity commitment commitment plan.
         """
         return pulumi.get(self, "plan")
 
     @plan.setter
-    def plan(self, value: Optional[pulumi.Input[str]]):
+    def plan(self, value: Optional[pulumi.Input['CapacityCommitmentPlan']]):
         pulumi.set(self, "plan", value)
 
     @property
     @pulumi.getter(name="renewalPlan")
-    def renewal_plan(self) -> Optional[pulumi.Input[str]]:
+    def renewal_plan(self) -> Optional[pulumi.Input['CapacityCommitmentRenewalPlan']]:
         """
         The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         """
         return pulumi.get(self, "renewal_plan")
 
     @renewal_plan.setter
-    def renewal_plan(self, value: Optional[pulumi.Input[str]]):
+    def renewal_plan(self, value: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']]):
         pulumi.set(self, "renewal_plan", value)
 
     @property
@@ -121,9 +122,9 @@ class CapacityCommitment(pulumi.CustomResource):
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 renewal_plan: Optional[pulumi.Input[str]] = None,
+                 renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -131,8 +132,8 @@ class CapacityCommitment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] plan: Capacity commitment commitment plan.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
+        :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
+        :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
         """
         ...
@@ -162,9 +163,9 @@ class CapacityCommitment(pulumi.CustomResource):
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 renewal_plan: Optional[pulumi.Input[str]] = None,
+                 renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

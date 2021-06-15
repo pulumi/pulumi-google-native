@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleDatastoreAdminV1IndexedPropertyArgs',
@@ -15,11 +16,11 @@ __all__ = [
 @pulumi.input_type
 class GoogleDatastoreAdminV1IndexedPropertyArgs:
     def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyDirection']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         A property of an index.
-        :param pulumi.Input[str] direction: Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+        :param pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyDirection'] direction: Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         :param pulumi.Input[str] name: Required. The property name to index.
         """
         if direction is not None:
@@ -29,14 +30,14 @@ class GoogleDatastoreAdminV1IndexedPropertyArgs:
 
     @property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[str]]:
+    def direction(self) -> Optional[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyDirection']]:
         """
         Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[str]]):
+    def direction(self, value: Optional[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyDirection']]):
         pulumi.set(self, "direction", value)
 
     @property

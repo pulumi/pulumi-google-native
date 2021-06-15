@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'DynamicGroupMetadataArgs',
@@ -44,7 +45,7 @@ class DynamicGroupMetadataArgs:
 class DynamicGroupQueryArgs:
     def __init__(__self__, *,
                  query: Optional[pulumi.Input[str]] = None,
-                 resource_type: Optional[pulumi.Input[str]] = None):
+                 resource_type: Optional[pulumi.Input['DynamicGroupQueryResourceType']] = None):
         """
         Defines a query on a resource.
         :param pulumi.Input[str] query: Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
@@ -68,11 +69,11 @@ class DynamicGroupQueryArgs:
 
     @property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[str]]:
+    def resource_type(self) -> Optional[pulumi.Input['DynamicGroupQueryResourceType']]:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[str]]):
+    def resource_type(self, value: Optional[pulumi.Input['DynamicGroupQueryResourceType']]):
         pulumi.set(self, "resource_type", value)
 
 

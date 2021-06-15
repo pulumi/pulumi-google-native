@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['ChannelPartnerLinkArgs', 'ChannelPartnerLink']
 
@@ -15,11 +16,11 @@ __all__ = ['ChannelPartnerLinkArgs', 'ChannelPartnerLink']
 class ChannelPartnerLinkArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 link_state: Optional[pulumi.Input[str]] = None,
+                 link_state: Optional[pulumi.Input['ChannelPartnerLinkLinkState']] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ChannelPartnerLink resource.
-        :param pulumi.Input[str] link_state: Required. State of the channel partner link.
+        :param pulumi.Input['ChannelPartnerLinkLinkState'] link_state: Required. State of the channel partner link.
         :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -39,14 +40,14 @@ class ChannelPartnerLinkArgs:
 
     @property
     @pulumi.getter(name="linkState")
-    def link_state(self) -> Optional[pulumi.Input[str]]:
+    def link_state(self) -> Optional[pulumi.Input['ChannelPartnerLinkLinkState']]:
         """
         Required. State of the channel partner link.
         """
         return pulumi.get(self, "link_state")
 
     @link_state.setter
-    def link_state(self, value: Optional[pulumi.Input[str]]):
+    def link_state(self, value: Optional[pulumi.Input['ChannelPartnerLinkLinkState']]):
         pulumi.set(self, "link_state", value)
 
     @property
@@ -68,7 +69,7 @@ class ChannelPartnerLink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 link_state: Optional[pulumi.Input[str]] = None,
+                 link_state: Optional[pulumi.Input['ChannelPartnerLinkLinkState']] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -76,7 +77,7 @@ class ChannelPartnerLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] link_state: Required. State of the channel partner link.
+        :param pulumi.Input['ChannelPartnerLinkLinkState'] link_state: Required. State of the channel partner link.
         :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
         """
         ...
@@ -104,7 +105,7 @@ class ChannelPartnerLink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 link_state: Optional[pulumi.Input[str]] = None,
+                 link_state: Optional[pulumi.Input['ChannelPartnerLinkLinkState']] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

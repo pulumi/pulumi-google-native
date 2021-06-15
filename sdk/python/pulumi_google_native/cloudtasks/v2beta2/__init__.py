@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .get_queue import *
 from .get_queue_iam_policy import *
 from .get_task import *

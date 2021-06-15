@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AuditConfigArgs',
@@ -69,11 +70,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -94,14 +95,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -237,13 +238,13 @@ class ContactArgs:
 class ContactSettingsArgs:
     def __init__(__self__, *,
                  admin_contact: Optional[pulumi.Input['ContactArgs']] = None,
-                 privacy: Optional[pulumi.Input[str]] = None,
+                 privacy: Optional[pulumi.Input['ContactSettingsPrivacy']] = None,
                  registrant_contact: Optional[pulumi.Input['ContactArgs']] = None,
                  technical_contact: Optional[pulumi.Input['ContactArgs']] = None):
         """
         Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
         :param pulumi.Input['ContactArgs'] admin_contact: Required. The administrative contact for the `Registration`.
-        :param pulumi.Input[str] privacy: Required. Privacy setting for the contacts associated with the `Registration`.
+        :param pulumi.Input['ContactSettingsPrivacy'] privacy: Required. Privacy setting for the contacts associated with the `Registration`.
         :param pulumi.Input['ContactArgs'] registrant_contact: Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
         :param pulumi.Input['ContactArgs'] technical_contact: Required. The technical contact for the `Registration`.
         """
@@ -270,14 +271,14 @@ class ContactSettingsArgs:
 
     @property
     @pulumi.getter
-    def privacy(self) -> Optional[pulumi.Input[str]]:
+    def privacy(self) -> Optional[pulumi.Input['ContactSettingsPrivacy']]:
         """
         Required. Privacy setting for the contacts associated with the `Registration`.
         """
         return pulumi.get(self, "privacy")
 
     @privacy.setter
-    def privacy(self, value: Optional[pulumi.Input[str]]):
+    def privacy(self, value: Optional[pulumi.Input['ContactSettingsPrivacy']]):
         pulumi.set(self, "privacy", value)
 
     @property
@@ -404,15 +405,15 @@ class DnsSettingsArgs:
 @pulumi.input_type
 class DsRecordArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input['DsRecordAlgorithm']] = None,
                  digest: Optional[pulumi.Input[str]] = None,
-                 digest_type: Optional[pulumi.Input[str]] = None,
+                 digest_type: Optional[pulumi.Input['DsRecordDigestType']] = None,
                  key_tag: Optional[pulumi.Input[int]] = None):
         """
         Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
-        :param pulumi.Input[str] algorithm: The algorithm used to generate the referenced DNSKEY.
+        :param pulumi.Input['DsRecordAlgorithm'] algorithm: The algorithm used to generate the referenced DNSKEY.
         :param pulumi.Input[str] digest: The digest generated from the referenced DNSKEY.
-        :param pulumi.Input[str] digest_type: The hash function used to generate the digest of the referenced DNSKEY.
+        :param pulumi.Input['DsRecordDigestType'] digest_type: The hash function used to generate the digest of the referenced DNSKEY.
         :param pulumi.Input[int] key_tag: The key tag of the record. Must be set in range 0 -- 65535.
         """
         if algorithm is not None:
@@ -426,14 +427,14 @@ class DsRecordArgs:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input['DsRecordAlgorithm']]:
         """
         The algorithm used to generate the referenced DNSKEY.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input['DsRecordAlgorithm']]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -450,14 +451,14 @@ class DsRecordArgs:
 
     @property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[pulumi.Input[str]]:
+    def digest_type(self) -> Optional[pulumi.Input['DsRecordDigestType']]:
         """
         The hash function used to generate the digest of the referenced DNSKEY.
         """
         return pulumi.get(self, "digest_type")
 
     @digest_type.setter
-    def digest_type(self, value: Optional[pulumi.Input[str]]):
+    def digest_type(self, value: Optional[pulumi.Input['DsRecordDigestType']]):
         pulumi.set(self, "digest_type", value)
 
     @property
@@ -604,48 +605,48 @@ class GlueRecordArgs:
 @pulumi.input_type
 class GoogleDomainsDnsArgs:
     def __init__(__self__, *,
-                 ds_state: Optional[pulumi.Input[str]] = None):
+                 ds_state: Optional[pulumi.Input['GoogleDomainsDnsDsState']] = None):
         """
         Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
-        :param pulumi.Input[str] ds_state: Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        :param pulumi.Input['GoogleDomainsDnsDsState'] ds_state: Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         """
         if ds_state is not None:
             pulumi.set(__self__, "ds_state", ds_state)
 
     @property
     @pulumi.getter(name="dsState")
-    def ds_state(self) -> Optional[pulumi.Input[str]]:
+    def ds_state(self) -> Optional[pulumi.Input['GoogleDomainsDnsDsState']]:
         """
         Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         """
         return pulumi.get(self, "ds_state")
 
     @ds_state.setter
-    def ds_state(self, value: Optional[pulumi.Input[str]]):
+    def ds_state(self, value: Optional[pulumi.Input['GoogleDomainsDnsDsState']]):
         pulumi.set(self, "ds_state", value)
 
 
 @pulumi.input_type
 class ManagementSettingsArgs:
     def __init__(__self__, *,
-                 transfer_lock_state: Optional[pulumi.Input[str]] = None):
+                 transfer_lock_state: Optional[pulumi.Input['ManagementSettingsTransferLockState']] = None):
         """
         Defines renewal, billing, and transfer settings for a `Registration`.
-        :param pulumi.Input[str] transfer_lock_state: Controls whether the domain can be transferred to another registrar.
+        :param pulumi.Input['ManagementSettingsTransferLockState'] transfer_lock_state: Controls whether the domain can be transferred to another registrar.
         """
         if transfer_lock_state is not None:
             pulumi.set(__self__, "transfer_lock_state", transfer_lock_state)
 
     @property
     @pulumi.getter(name="transferLockState")
-    def transfer_lock_state(self) -> Optional[pulumi.Input[str]]:
+    def transfer_lock_state(self) -> Optional[pulumi.Input['ManagementSettingsTransferLockState']]:
         """
         Controls whether the domain can be transferred to another registrar.
         """
         return pulumi.get(self, "transfer_lock_state")
 
     @transfer_lock_state.setter
-    def transfer_lock_state(self, value: Optional[pulumi.Input[str]]):
+    def transfer_lock_state(self, value: Optional[pulumi.Input['ManagementSettingsTransferLockState']]):
         pulumi.set(self, "transfer_lock_state", value)
 
 

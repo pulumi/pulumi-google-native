@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .catalog_item import *
 from .get_catalog_item import *
 from ._inputs import *

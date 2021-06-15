@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'BindingArgs',
@@ -375,11 +376,11 @@ class RetryPolicyArgs:
 @pulumi.input_type
 class SchemaSettingsArgs:
     def __init__(__self__, *,
-                 encoding: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input['SchemaSettingsEncoding']] = None,
                  schema: Optional[pulumi.Input[str]] = None):
         """
         Settings for validating messages published against a schema.
-        :param pulumi.Input[str] encoding: The encoding of messages validated against `schema`.
+        :param pulumi.Input['SchemaSettingsEncoding'] encoding: The encoding of messages validated against `schema`.
         :param pulumi.Input[str] schema: Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         """
         if encoding is not None:
@@ -389,14 +390,14 @@ class SchemaSettingsArgs:
 
     @property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[str]]:
+    def encoding(self) -> Optional[pulumi.Input['SchemaSettingsEncoding']]:
         """
         The encoding of messages validated against `schema`.
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[str]]):
+    def encoding(self, value: Optional[pulumi.Input['SchemaSettingsEncoding']]):
         pulumi.set(self, "encoding", value)
 
     @property

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -23,7 +24,7 @@ class InstanceArgs:
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
-                 tier: Optional[pulumi.Input[str]] = None):
+                 tier: Optional[pulumi.Input['InstanceTier']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
@@ -31,7 +32,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
-        :param pulumi.Input[str] tier: The service tier of the instance.
+        :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
@@ -138,14 +139,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[str]]:
+    def tier(self) -> Optional[pulumi.Input['InstanceTier']]:
         """
         The service tier of the instance.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[str]]):
+    def tier(self, value: Optional[pulumi.Input['InstanceTier']]):
         pulumi.set(self, "tier", value)
 
 
@@ -162,7 +163,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input['InstanceTier']] = None,
                  __props__=None):
         """
         Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
@@ -174,7 +175,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
-        :param pulumi.Input[str] tier: The service tier of the instance.
+        :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         ...
     @overload
@@ -208,7 +209,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input['InstanceTier']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

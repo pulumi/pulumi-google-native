@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AuditConfigArgs',
@@ -70,11 +71,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -95,14 +96,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -189,13 +190,13 @@ class CloudSqlConnectionProfileArgs:
 @pulumi.input_type
 class CloudSqlSettingsArgs:
     def __init__(__self__, *,
-                 activation_policy: Optional[pulumi.Input[str]] = None,
+                 activation_policy: Optional[pulumi.Input['CloudSqlSettingsActivationPolicy']] = None,
                  auto_storage_increase: Optional[pulumi.Input[bool]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 data_disk_type: Optional[pulumi.Input[str]] = None,
+                 data_disk_type: Optional[pulumi.Input['CloudSqlSettingsDataDiskType']] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 database_version: Optional[pulumi.Input[str]] = None,
+                 database_version: Optional[pulumi.Input['CloudSqlSettingsDatabaseVersion']] = None,
                  ip_config: Optional[pulumi.Input['SqlIpConfigArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
@@ -205,13 +206,13 @@ class CloudSqlSettingsArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Settings for creating a Cloud SQL database instance.
-        :param pulumi.Input[str] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
+        :param pulumi.Input['CloudSqlSettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param pulumi.Input[bool] auto_storage_increase: [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
         :param pulumi.Input[str] collation: The Cloud SQL default instance level collation.
         :param pulumi.Input[str] data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
-        :param pulumi.Input[str] data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
+        :param pulumi.Input['CloudSqlSettingsDataDiskType'] data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] database_version: The database engine type and version.
+        :param pulumi.Input['CloudSqlSettingsDatabaseVersion'] database_version: The database engine type and version.
         :param pulumi.Input['SqlIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
         :param pulumi.Input[str] source_id: The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
@@ -251,14 +252,14 @@ class CloudSqlSettingsArgs:
 
     @property
     @pulumi.getter(name="activationPolicy")
-    def activation_policy(self) -> Optional[pulumi.Input[str]]:
+    def activation_policy(self) -> Optional[pulumi.Input['CloudSqlSettingsActivationPolicy']]:
         """
         The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         """
         return pulumi.get(self, "activation_policy")
 
     @activation_policy.setter
-    def activation_policy(self, value: Optional[pulumi.Input[str]]):
+    def activation_policy(self, value: Optional[pulumi.Input['CloudSqlSettingsActivationPolicy']]):
         pulumi.set(self, "activation_policy", value)
 
     @property
@@ -299,14 +300,14 @@ class CloudSqlSettingsArgs:
 
     @property
     @pulumi.getter(name="dataDiskType")
-    def data_disk_type(self) -> Optional[pulumi.Input[str]]:
+    def data_disk_type(self) -> Optional[pulumi.Input['CloudSqlSettingsDataDiskType']]:
         """
         The type of storage: `PD_SSD` (default) or `PD_HDD`.
         """
         return pulumi.get(self, "data_disk_type")
 
     @data_disk_type.setter
-    def data_disk_type(self, value: Optional[pulumi.Input[str]]):
+    def data_disk_type(self, value: Optional[pulumi.Input['CloudSqlSettingsDataDiskType']]):
         pulumi.set(self, "data_disk_type", value)
 
     @property
@@ -323,14 +324,14 @@ class CloudSqlSettingsArgs:
 
     @property
     @pulumi.getter(name="databaseVersion")
-    def database_version(self) -> Optional[pulumi.Input[str]]:
+    def database_version(self) -> Optional[pulumi.Input['CloudSqlSettingsDatabaseVersion']]:
         """
         The database engine type and version.
         """
         return pulumi.get(self, "database_version")
 
     @database_version.setter
-    def database_version(self, value: Optional[pulumi.Input[str]]):
+    def database_version(self, value: Optional[pulumi.Input['CloudSqlSettingsDatabaseVersion']]):
         pulumi.set(self, "database_version", value)
 
     @property
@@ -421,12 +422,12 @@ class CloudSqlSettingsArgs:
 @pulumi.input_type
 class DatabaseTypeArgs:
     def __init__(__self__, *,
-                 engine: Optional[pulumi.Input[str]] = None,
-                 provider: Optional[pulumi.Input[str]] = None):
+                 engine: Optional[pulumi.Input['DatabaseTypeEngine']] = None,
+                 provider: Optional[pulumi.Input['DatabaseTypeProvider']] = None):
         """
         A message defining the database engine and provider.
-        :param pulumi.Input[str] engine: The database engine.
-        :param pulumi.Input[str] provider: The database provider.
+        :param pulumi.Input['DatabaseTypeEngine'] engine: The database engine.
+        :param pulumi.Input['DatabaseTypeProvider'] provider: The database provider.
         """
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
@@ -435,26 +436,26 @@ class DatabaseTypeArgs:
 
     @property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[str]]:
+    def engine(self) -> Optional[pulumi.Input['DatabaseTypeEngine']]:
         """
         The database engine.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[str]]):
+    def engine(self, value: Optional[pulumi.Input['DatabaseTypeEngine']]):
         pulumi.set(self, "engine", value)
 
     @property
     @pulumi.getter
-    def provider(self) -> Optional[pulumi.Input[str]]:
+    def provider(self) -> Optional[pulumi.Input['DatabaseTypeProvider']]:
         """
         The database provider.
         """
         return pulumi.get(self, "provider")
 
     @provider.setter
-    def provider(self, value: Optional[pulumi.Input[str]]):
+    def provider(self, value: Optional[pulumi.Input['DatabaseTypeProvider']]):
         pulumi.set(self, "provider", value)
 
 

@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .change import *
 from .get_change import *
 from .get_managed_zone import *

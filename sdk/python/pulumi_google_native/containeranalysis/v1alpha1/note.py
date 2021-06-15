@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['NoteArgs', 'Note']
@@ -23,7 +24,7 @@ class NoteArgs:
                  deployable: Optional[pulumi.Input['DeployableArgs']] = None,
                  discovery: Optional[pulumi.Input['DiscoveryArgs']] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
@@ -42,7 +43,7 @@ class NoteArgs:
         :param pulumi.Input['DeployableArgs'] deployable: A note describing something that can be deployed.
         :param pulumi.Input['DiscoveryArgs'] discovery: A note describing a provider/analysis type.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note, null if note does not expire.
-        :param pulumi.Input[str] kind: This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+        :param pulumi.Input['NoteKind'] kind: This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this `Note`.
         :param pulumi.Input[str] name: The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
@@ -183,14 +184,14 @@ class NoteArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['NoteKind']]:
         """
         This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['NoteKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -311,7 +312,7 @@ class Note(pulumi.CustomResource):
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
@@ -335,7 +336,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeployableArgs']] deployable: A note describing something that can be deployed.
         :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing a provider/analysis type.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note, null if note does not expire.
-        :param pulumi.Input[str] kind: This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+        :param pulumi.Input['NoteKind'] kind: This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this `Note`.
         :param pulumi.Input[str] name: The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
@@ -376,7 +377,7 @@ class Note(pulumi.CustomResource):
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ApplicationInfoArgs',
@@ -80,16 +81,16 @@ class CompensationEntryArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  expected_units_per_year: Optional[pulumi.Input[float]] = None,
                  range: Optional[pulumi.Input['CompensationRangeArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['CompensationEntryType']] = None,
+                 unit: Optional[pulumi.Input['CompensationEntryUnit']] = None):
         """
         A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
         :param pulumi.Input['MoneyArgs'] amount: Compensation amount.
         :param pulumi.Input[str] description: Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
         :param pulumi.Input[float] expected_units_per_year: Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
         :param pulumi.Input['CompensationRangeArgs'] range: Compensation range.
-        :param pulumi.Input[str] type: Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
-        :param pulumi.Input[str] unit: Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+        :param pulumi.Input['CompensationEntryType'] type: Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
+        :param pulumi.Input['CompensationEntryUnit'] unit: Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         """
         if amount is not None:
             pulumi.set(__self__, "amount", amount)
@@ -154,26 +155,26 @@ class CompensationEntryArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['CompensationEntryType']]:
         """
         Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['CompensationEntryType']]):
         pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[str]]:
+    def unit(self) -> Optional[pulumi.Input['CompensationEntryUnit']]:
         """
         Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         """
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[str]]):
+    def unit(self, value: Optional[pulumi.Input['CompensationEntryUnit']]):
         pulumi.set(self, "unit", value)
 
 
@@ -301,11 +302,11 @@ class MoneyArgs:
 class ProcessingOptionsArgs:
     def __init__(__self__, *,
                  disable_street_address_resolution: Optional[pulumi.Input[bool]] = None,
-                 html_sanitization: Optional[pulumi.Input[str]] = None):
+                 html_sanitization: Optional[pulumi.Input['ProcessingOptionsHtmlSanitization']] = None):
         """
         Options for job processing.
         :param pulumi.Input[bool] disable_street_address_resolution: If set to `true`, the service does not attempt to resolve a more precise address for the job.
-        :param pulumi.Input[str] html_sanitization: Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+        :param pulumi.Input['ProcessingOptionsHtmlSanitization'] html_sanitization: Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
         """
         if disable_street_address_resolution is not None:
             pulumi.set(__self__, "disable_street_address_resolution", disable_street_address_resolution)
@@ -326,14 +327,14 @@ class ProcessingOptionsArgs:
 
     @property
     @pulumi.getter(name="htmlSanitization")
-    def html_sanitization(self) -> Optional[pulumi.Input[str]]:
+    def html_sanitization(self) -> Optional[pulumi.Input['ProcessingOptionsHtmlSanitization']]:
         """
         Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
         """
         return pulumi.get(self, "html_sanitization")
 
     @html_sanitization.setter
-    def html_sanitization(self, value: Optional[pulumi.Input[str]]):
+    def html_sanitization(self, value: Optional[pulumi.Input['ProcessingOptionsHtmlSanitization']]):
         pulumi.set(self, "html_sanitization", value)
 
 

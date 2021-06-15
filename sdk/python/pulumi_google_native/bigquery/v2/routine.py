@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RoutineArgs', 'Routine']
@@ -20,25 +21,25 @@ class RoutineArgs:
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 determinism_level: Optional[pulumi.Input[str]] = None,
+                 determinism_level: Optional[pulumi.Input['RoutineDeterminismLevel']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 language: Optional[pulumi.Input[str]] = None,
+                 language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
                  return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
                  routine_reference: Optional[pulumi.Input['RoutineReferenceArgs']] = None,
-                 routine_type: Optional[pulumi.Input[str]] = None):
+                 routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None):
         """
         The set of arguments for constructing a Routine resource.
         :param pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]] arguments: Optional.
         :param pulumi.Input[str] definition_body: Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
-        :param pulumi.Input[str] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
-        :param pulumi.Input[str] language: Optional. Defaults to "SQL".
+        :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
         :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Required. Reference describing the ID of this routine.
-        :param pulumi.Input[str] routine_type: Required. The type of routine.
+        :param pulumi.Input['RoutineRoutineType'] routine_type: Required. The type of routine.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project", project)
@@ -119,14 +120,14 @@ class RoutineArgs:
 
     @property
     @pulumi.getter(name="determinismLevel")
-    def determinism_level(self) -> Optional[pulumi.Input[str]]:
+    def determinism_level(self) -> Optional[pulumi.Input['RoutineDeterminismLevel']]:
         """
         Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
         """
         return pulumi.get(self, "determinism_level")
 
     @determinism_level.setter
-    def determinism_level(self, value: Optional[pulumi.Input[str]]):
+    def determinism_level(self, value: Optional[pulumi.Input['RoutineDeterminismLevel']]):
         pulumi.set(self, "determinism_level", value)
 
     @property
@@ -143,14 +144,14 @@ class RoutineArgs:
 
     @property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[str]]:
+    def language(self) -> Optional[pulumi.Input['RoutineLanguage']]:
         """
         Optional. Defaults to "SQL".
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[str]]):
+    def language(self, value: Optional[pulumi.Input['RoutineLanguage']]):
         pulumi.set(self, "language", value)
 
     @property
@@ -191,14 +192,14 @@ class RoutineArgs:
 
     @property
     @pulumi.getter(name="routineType")
-    def routine_type(self) -> Optional[pulumi.Input[str]]:
+    def routine_type(self) -> Optional[pulumi.Input['RoutineRoutineType']]:
         """
         Required. The type of routine.
         """
         return pulumi.get(self, "routine_type")
 
     @routine_type.setter
-    def routine_type(self, value: Optional[pulumi.Input[str]]):
+    def routine_type(self, value: Optional[pulumi.Input['RoutineRoutineType']]):
         pulumi.set(self, "routine_type", value)
 
 
@@ -211,14 +212,14 @@ class Routine(pulumi.CustomResource):
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 determinism_level: Optional[pulumi.Input[str]] = None,
+                 determinism_level: Optional[pulumi.Input['RoutineDeterminismLevel']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 language: Optional[pulumi.Input[str]] = None,
+                 language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
-                 routine_type: Optional[pulumi.Input[str]] = None,
+                 routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
                  __props__=None):
         """
         Creates a new routine in the dataset.
@@ -228,13 +229,13 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]] arguments: Optional.
         :param pulumi.Input[str] definition_body: Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
-        :param pulumi.Input[str] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
-        :param pulumi.Input[str] language: Optional. Defaults to "SQL".
+        :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
         :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Required. Reference describing the ID of this routine.
-        :param pulumi.Input[str] routine_type: Required. The type of routine.
+        :param pulumi.Input['RoutineRoutineType'] routine_type: Required. The type of routine.
         """
         ...
     @overload
@@ -264,14 +265,14 @@ class Routine(pulumi.CustomResource):
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 determinism_level: Optional[pulumi.Input[str]] = None,
+                 determinism_level: Optional[pulumi.Input['RoutineDeterminismLevel']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 language: Optional[pulumi.Input[str]] = None,
+                 language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
-                 routine_type: Optional[pulumi.Input[str]] = None,
+                 routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['NoteArgs', 'Note']
@@ -25,7 +26,7 @@ class NoteArgs:
                  discovery: Optional[pulumi.Input['DiscoveryArgs']] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  intoto: Optional[pulumi.Input['InTotoArgs']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input['PackageArgs']] = None,
@@ -44,7 +45,7 @@ class NoteArgs:
         :param pulumi.Input['DiscoveryArgs'] discovery: A note describing the initial analysis of a resource.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
         :param pulumi.Input['InTotoArgs'] intoto: A note describing an in-toto link.
-        :param pulumi.Input[str] kind: The type of analysis. This field can be used as a filter in list requests.
+        :param pulumi.Input['NoteKind'] kind: The type of analysis. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this note.
         :param pulumi.Input[str] name: The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
@@ -207,14 +208,14 @@ class NoteArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['NoteKind']]:
         """
         The type of analysis. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['NoteKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -327,7 +328,7 @@ class Note(pulumi.CustomResource):
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['InTotoArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
@@ -352,7 +353,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing the initial analysis of a resource.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
         :param pulumi.Input[pulumi.InputType['InTotoArgs']] intoto: A note describing an in-toto link.
-        :param pulumi.Input[str] kind: The type of analysis. This field can be used as a filter in list requests.
+        :param pulumi.Input['NoteKind'] kind: The type of analysis. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this note.
         :param pulumi.Input[str] name: The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
@@ -394,7 +395,7 @@ class Note(pulumi.CustomResource):
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['InTotoArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['NoteKind']] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,

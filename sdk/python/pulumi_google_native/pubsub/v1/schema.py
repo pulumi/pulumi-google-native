@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['SchemaArgs', 'Schema']
 
@@ -17,12 +18,12 @@ class SchemaArgs:
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['SchemaType']] = None):
         """
         The set of arguments for constructing a Schema resource.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
         :param pulumi.Input[str] name: Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-        :param pulumi.Input[str] type: The type of the schema definition.
+        :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
         pulumi.set(__self__, "project", project)
         if definition is not None:
@@ -78,14 +79,14 @@ class SchemaArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['SchemaType']]:
         """
         The type of the schema definition.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['SchemaType']]):
         pulumi.set(self, "type", value)
 
 
@@ -98,7 +99,7 @@ class Schema(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['SchemaType']] = None,
                  __props__=None):
         """
         Creates a schema.
@@ -107,7 +108,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
         :param pulumi.Input[str] name: Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-        :param pulumi.Input[str] type: The type of the schema definition.
+        :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
         ...
     @overload
@@ -137,7 +138,7 @@ class Schema(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['SchemaType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

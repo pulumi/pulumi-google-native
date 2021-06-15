@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['JobArgs', 'Job']
@@ -27,7 +28,7 @@ class JobArgs:
                  retry_config: Optional[pulumi.Input['RetryConfigArgs']] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['JobState']] = None,
                  status: Optional[pulumi.Input['StatusArgs']] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  user_update_time: Optional[pulumi.Input[str]] = None):
@@ -43,7 +44,7 @@ class JobArgs:
         :param pulumi.Input['RetryConfigArgs'] retry_config: Settings that determine the retry behavior.
         :param pulumi.Input[str] schedule: Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
         :param pulumi.Input[str] schedule_time: The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-        :param pulumi.Input[str] state: State of the job.
+        :param pulumi.Input['JobState'] state: State of the job.
         :param pulumi.Input['StatusArgs'] status: The response from the target for the last attempted execution.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         :param pulumi.Input[str] user_update_time: The creation time of the job.
@@ -219,14 +220,14 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['JobState']]:
         """
         State of the job.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['JobState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -283,7 +284,7 @@ class Job(pulumi.CustomResource):
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['JobState']] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  user_update_time: Optional[pulumi.Input[str]] = None,
@@ -303,7 +304,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RetryConfigArgs']] retry_config: Settings that determine the retry behavior.
         :param pulumi.Input[str] schedule: Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
         :param pulumi.Input[str] schedule_time: The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-        :param pulumi.Input[str] state: State of the job.
+        :param pulumi.Input['JobState'] state: State of the job.
         :param pulumi.Input[pulumi.InputType['StatusArgs']] status: The response from the target for the last attempted execution.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         :param pulumi.Input[str] user_update_time: The creation time of the job.
@@ -344,7 +345,7 @@ class Job(pulumi.CustomResource):
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['JobState']] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  user_update_time: Optional[pulumi.Input[str]] = None,

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ApplicationInfoArgs',
@@ -109,16 +110,16 @@ class CompensationEntryArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  expected_units_per_year: Optional[pulumi.Input[float]] = None,
                  range: Optional[pulumi.Input['CompensationRangeArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 unit: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['CompensationEntryType']] = None,
+                 unit: Optional[pulumi.Input['CompensationEntryUnit']] = None):
         """
         A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
         :param pulumi.Input['MoneyArgs'] amount: Optional. Compensation amount.
         :param pulumi.Input[str] description: Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
         :param pulumi.Input[float] expected_units_per_year: Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
         :param pulumi.Input['CompensationRangeArgs'] range: Optional. Compensation range.
-        :param pulumi.Input[str] type: Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-        :param pulumi.Input[str] unit: Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+        :param pulumi.Input['CompensationEntryType'] type: Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
+        :param pulumi.Input['CompensationEntryUnit'] unit: Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         """
         if amount is not None:
             pulumi.set(__self__, "amount", amount)
@@ -183,26 +184,26 @@ class CompensationEntryArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['CompensationEntryType']]:
         """
         Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['CompensationEntryType']]):
         pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[str]]:
+    def unit(self) -> Optional[pulumi.Input['CompensationEntryUnit']]:
         """
         Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         """
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[str]]):
+    def unit(self, value: Optional[pulumi.Input['CompensationEntryUnit']]):
         pulumi.set(self, "unit", value)
 
 
@@ -305,11 +306,11 @@ class CompensationRangeArgs:
 @pulumi.input_type
 class JobDerivedInfoArgs:
     def __init__(__self__, *,
-                 job_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 job_categories: Optional[pulumi.Input[Sequence[pulumi.Input['JobDerivedInfoJobCategoriesItem']]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]] = None):
         """
         Output only. Derived details about the job posting.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] job_categories: Job categories derived from Job.title and Job.description.
+        :param pulumi.Input[Sequence[pulumi.Input['JobDerivedInfoJobCategoriesItem']]] job_categories: Job categories derived from Job.title and Job.description.
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] locations: Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
         """
         if job_categories is not None:
@@ -319,14 +320,14 @@ class JobDerivedInfoArgs:
 
     @property
     @pulumi.getter(name="jobCategories")
-    def job_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def job_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobDerivedInfoJobCategoriesItem']]]]:
         """
         Job categories derived from Job.title and Job.description.
         """
         return pulumi.get(self, "job_categories")
 
     @job_categories.setter
-    def job_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def job_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobDerivedInfoJobCategoriesItem']]]]):
         pulumi.set(self, "job_categories", value)
 
     @property
@@ -386,13 +387,13 @@ class LatLngArgs:
 class LocationArgs:
     def __init__(__self__, *,
                  lat_lng: Optional[pulumi.Input['LatLngArgs']] = None,
-                 location_type: Optional[pulumi.Input[str]] = None,
+                 location_type: Optional[pulumi.Input['LocationLocationType']] = None,
                  postal_address: Optional[pulumi.Input['PostalAddressArgs']] = None,
                  radius_in_miles: Optional[pulumi.Input[float]] = None):
         """
         Output only. A resource that represents a location with full geographic information.
         :param pulumi.Input['LatLngArgs'] lat_lng: An object representing a latitude/longitude pair.
-        :param pulumi.Input[str] location_type: The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
+        :param pulumi.Input['LocationLocationType'] location_type: The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
         :param pulumi.Input['PostalAddressArgs'] postal_address: Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
         :param pulumi.Input[float] radius_in_miles: Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
         """
@@ -419,14 +420,14 @@ class LocationArgs:
 
     @property
     @pulumi.getter(name="locationType")
-    def location_type(self) -> Optional[pulumi.Input[str]]:
+    def location_type(self) -> Optional[pulumi.Input['LocationLocationType']]:
         """
         The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
         """
         return pulumi.get(self, "location_type")
 
     @location_type.setter
-    def location_type(self, value: Optional[pulumi.Input[str]]):
+    def location_type(self, value: Optional[pulumi.Input['LocationLocationType']]):
         pulumi.set(self, "location_type", value)
 
     @property
@@ -698,11 +699,11 @@ class PostalAddressArgs:
 class ProcessingOptionsArgs:
     def __init__(__self__, *,
                  disable_street_address_resolution: Optional[pulumi.Input[bool]] = None,
-                 html_sanitization: Optional[pulumi.Input[str]] = None):
+                 html_sanitization: Optional[pulumi.Input['ProcessingOptionsHtmlSanitization']] = None):
         """
         Input only. Options for job processing.
         :param pulumi.Input[bool] disable_street_address_resolution: Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
-        :param pulumi.Input[str] html_sanitization: Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+        :param pulumi.Input['ProcessingOptionsHtmlSanitization'] html_sanitization: Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
         """
         if disable_street_address_resolution is not None:
             pulumi.set(__self__, "disable_street_address_resolution", disable_street_address_resolution)
@@ -723,14 +724,14 @@ class ProcessingOptionsArgs:
 
     @property
     @pulumi.getter(name="htmlSanitization")
-    def html_sanitization(self) -> Optional[pulumi.Input[str]]:
+    def html_sanitization(self) -> Optional[pulumi.Input['ProcessingOptionsHtmlSanitization']]:
         """
         Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
         """
         return pulumi.get(self, "html_sanitization")
 
     @html_sanitization.setter
-    def html_sanitization(self, value: Optional[pulumi.Input[str]]):
+    def html_sanitization(self, value: Optional[pulumi.Input['ProcessingOptionsHtmlSanitization']]):
         pulumi.set(self, "html_sanitization", value)
 
 

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AwsAccessKeyArgs',
@@ -339,13 +340,13 @@ class HttpDataArgs:
 @pulumi.input_type
 class NotificationConfigArgs:
     def __init__(__self__, *,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 payload_format: Optional[pulumi.Input[str]] = None,
+                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]]] = None,
+                 payload_format: Optional[pulumi.Input['NotificationConfigPayloadFormat']] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None):
         """
         Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: Event types for which a notification is desired. If empty, send notifications for all event types.
-        :param pulumi.Input[str] payload_format: Required. The desired format of the notification message payloads.
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]] event_types: Event types for which a notification is desired. If empty, send notifications for all event types.
+        :param pulumi.Input['NotificationConfigPayloadFormat'] payload_format: Required. The desired format of the notification message payloads.
         :param pulumi.Input[str] pubsub_topic: Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
         """
         if event_types is not None:
@@ -357,26 +358,26 @@ class NotificationConfigArgs:
 
     @property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]]]:
         """
         Event types for which a notification is desired. If empty, send notifications for all event types.
         """
         return pulumi.get(self, "event_types")
 
     @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationConfigEventTypesItem']]]]):
         pulumi.set(self, "event_types", value)
 
     @property
     @pulumi.getter(name="payloadFormat")
-    def payload_format(self) -> Optional[pulumi.Input[str]]:
+    def payload_format(self) -> Optional[pulumi.Input['NotificationConfigPayloadFormat']]:
         """
         Required. The desired format of the notification message payloads.
         """
         return pulumi.get(self, "payload_format")
 
     @payload_format.setter
-    def payload_format(self, value: Optional[pulumi.Input[str]]):
+    def payload_format(self, value: Optional[pulumi.Input['NotificationConfigPayloadFormat']]):
         pulumi.set(self, "payload_format", value)
 
     @property

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AddressableArgs',
@@ -113,11 +114,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -138,14 +139,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -740,12 +741,12 @@ class ContainerPortArgs:
 @pulumi.input_type
 class DomainMappingSpecArgs:
     def __init__(__self__, *,
-                 certificate_mode: Optional[pulumi.Input[str]] = None,
+                 certificate_mode: Optional[pulumi.Input['DomainMappingSpecCertificateMode']] = None,
                  force_override: Optional[pulumi.Input[bool]] = None,
                  route_name: Optional[pulumi.Input[str]] = None):
         """
         The desired state of the Domain Mapping.
-        :param pulumi.Input[str] certificate_mode: The mode of the certificate.
+        :param pulumi.Input['DomainMappingSpecCertificateMode'] certificate_mode: The mode of the certificate.
         :param pulumi.Input[bool] force_override: If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
         :param pulumi.Input[str] route_name: The name of the Knative Route that this DomainMapping applies to. The route must exist.
         """
@@ -758,14 +759,14 @@ class DomainMappingSpecArgs:
 
     @property
     @pulumi.getter(name="certificateMode")
-    def certificate_mode(self) -> Optional[pulumi.Input[str]]:
+    def certificate_mode(self) -> Optional[pulumi.Input['DomainMappingSpecCertificateMode']]:
         """
         The mode of the certificate.
         """
         return pulumi.get(self, "certificate_mode")
 
     @certificate_mode.setter
-    def certificate_mode(self, value: Optional[pulumi.Input[str]]):
+    def certificate_mode(self, value: Optional[pulumi.Input['DomainMappingSpecCertificateMode']]):
         pulumi.set(self, "certificate_mode", value)
 
     @property
@@ -1918,12 +1919,12 @@ class ResourceRecordArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  rrdata: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['ResourceRecordType']] = None):
         """
         A DNS resource record.
         :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
         :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        :param pulumi.Input[str] type: Resource record type. Example: `AAAA`.
+        :param pulumi.Input['ResourceRecordType'] type: Resource record type. Example: `AAAA`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1958,14 +1959,14 @@ class ResourceRecordArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ResourceRecordType']]:
         """
         Resource record type. Example: `AAAA`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ResourceRecordType']]):
         pulumi.set(self, "type", value)
 
 

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['CryptoKeyVersionArgs', 'CryptoKeyVersion']
@@ -20,11 +21,11 @@ class CryptoKeyVersionArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  external_protection_level_options: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['CryptoKeyVersionState']] = None):
         """
         The set of arguments for constructing a CryptoKeyVersion resource.
         :param pulumi.Input['ExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        :param pulumi.Input['CryptoKeyVersionState'] state: The current state of the CryptoKeyVersion.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
@@ -85,14 +86,14 @@ class CryptoKeyVersionArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['CryptoKeyVersionState']]:
         """
         The current state of the CryptoKeyVersion.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['CryptoKeyVersionState']]):
         pulumi.set(self, "state", value)
 
 
@@ -106,7 +107,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['CryptoKeyVersionState']] = None,
                  __props__=None):
         """
         Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
@@ -114,7 +115,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        :param pulumi.Input['CryptoKeyVersionState'] state: The current state of the CryptoKeyVersion.
         """
         ...
     @overload
@@ -145,7 +146,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['CryptoKeyVersionState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RegistrationArgs', 'Registration']
@@ -17,22 +18,22 @@ class RegistrationArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
                  contact_settings: Optional[pulumi.Input['ContactSettingsArgs']] = None,
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  management_settings: Optional[pulumi.Input['ManagementSettingsArgs']] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  yearly_price: Optional[pulumi.Input['MoneyArgs']] = None):
         """
         The set of arguments for constructing a Registration resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
         :param pulumi.Input['ContactSettingsArgs'] contact_settings: Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         :param pulumi.Input['DnsSettingsArgs'] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
         :param pulumi.Input[str] domain_name: Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input['ManagementSettingsArgs'] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
@@ -79,14 +80,14 @@ class RegistrationArgs:
 
     @property
     @pulumi.getter(name="contactNotices")
-    def contact_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def contact_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]]:
         """
         The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
         """
         return pulumi.get(self, "contact_notices")
 
     @contact_notices.setter
-    def contact_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def contact_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]]):
         pulumi.set(self, "contact_notices", value)
 
     @property
@@ -127,14 +128,14 @@ class RegistrationArgs:
 
     @property
     @pulumi.getter(name="domainNotices")
-    def domain_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def domain_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]]:
         """
         The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         """
         return pulumi.get(self, "domain_notices")
 
     @domain_notices.setter
-    def domain_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def domain_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]]):
         pulumi.set(self, "domain_notices", value)
 
     @property
@@ -191,11 +192,11 @@ class Registration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
                  contact_settings: Optional[pulumi.Input[pulumi.InputType['ContactSettingsArgs']]] = None,
                  dns_settings: Optional[pulumi.Input[pulumi.InputType['DnsSettingsArgs']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
@@ -208,11 +209,11 @@ class Registration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
         :param pulumi.Input[pulumi.InputType['ContactSettingsArgs']] contact_settings: Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         :param pulumi.Input[pulumi.InputType['DnsSettingsArgs']] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
         :param pulumi.Input[str] domain_name: Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
+        :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input[pulumi.InputType['ManagementSettingsArgs']] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
@@ -242,11 +243,11 @@ class Registration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
                  contact_settings: Optional[pulumi.Input[pulumi.InputType['ContactSettingsArgs']]] = None,
                  dns_settings: Optional[pulumi.Input[pulumi.InputType['DnsSettingsArgs']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['MachineImageArgs', 'MachineImage']
@@ -30,7 +31,7 @@ class MachineImageArgs:
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]]] = None,
                  source_instance_properties: Optional[pulumi.Input['SourceInstancePropertiesArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['MachineImageStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  total_storage_bytes: Optional[pulumi.Input[str]] = None):
         """
@@ -56,7 +57,7 @@ class MachineImageArgs:
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]] source_disk_encryption_keys: [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input['SourceInstancePropertiesArgs'] source_instance_properties: [Output Only] Properties of source instance.
-        :param pulumi.Input[str] status: [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+        :param pulumi.Input['MachineImageStatus'] status: [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         :param pulumi.Input[str] total_storage_bytes: [Output Only] Total size of the storage used by the machine image.
         """
@@ -279,14 +280,14 @@ class MachineImageArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['MachineImageStatus']]:
         """
         [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['MachineImageStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -334,7 +335,7 @@ class MachineImage(pulumi.CustomResource):
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_properties: Optional[pulumi.Input[pulumi.InputType['SourceInstancePropertiesArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['MachineImageStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  total_storage_bytes: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -364,7 +365,7 @@ class MachineImage(pulumi.CustomResource):
                - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
                - projects/project/zones/zone/instances/instance
         :param pulumi.Input[pulumi.InputType['SourceInstancePropertiesArgs']] source_instance_properties: [Output Only] Properties of source instance.
-        :param pulumi.Input[str] status: [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+        :param pulumi.Input['MachineImageStatus'] status: [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         :param pulumi.Input[str] total_storage_bytes: [Output Only] Total size of the storage used by the machine image.
         """
@@ -407,7 +408,7 @@ class MachineImage(pulumi.CustomResource):
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_properties: Optional[pulumi.Input[pulumi.InputType['SourceInstancePropertiesArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['MachineImageStatus']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  total_storage_bytes: Optional[pulumi.Input[str]] = None,
                  __props__=None):

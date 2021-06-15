@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['ImportJobArgs', 'ImportJob']
 
@@ -18,12 +19,12 @@ class ImportJobArgs:
                  key_ring_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 import_method: Optional[pulumi.Input[str]] = None,
-                 protection_level: Optional[pulumi.Input[str]] = None):
+                 import_method: Optional[pulumi.Input['ImportJobImportMethod']] = None,
+                 protection_level: Optional[pulumi.Input['ImportJobProtectionLevel']] = None):
         """
         The set of arguments for constructing a ImportJob resource.
-        :param pulumi.Input[str] import_method: Required. Immutable. The wrapping method to be used for incoming key material.
-        :param pulumi.Input[str] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        :param pulumi.Input['ImportJobImportMethod'] import_method: Required. Immutable. The wrapping method to be used for incoming key material.
+        :param pulumi.Input['ImportJobProtectionLevel'] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
         pulumi.set(__self__, "import_job_id", import_job_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
@@ -72,26 +73,26 @@ class ImportJobArgs:
 
     @property
     @pulumi.getter(name="importMethod")
-    def import_method(self) -> Optional[pulumi.Input[str]]:
+    def import_method(self) -> Optional[pulumi.Input['ImportJobImportMethod']]:
         """
         Required. Immutable. The wrapping method to be used for incoming key material.
         """
         return pulumi.get(self, "import_method")
 
     @import_method.setter
-    def import_method(self, value: Optional[pulumi.Input[str]]):
+    def import_method(self, value: Optional[pulumi.Input['ImportJobImportMethod']]):
         pulumi.set(self, "import_method", value)
 
     @property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> Optional[pulumi.Input[str]]:
+    def protection_level(self) -> Optional[pulumi.Input['ImportJobProtectionLevel']]:
         """
         Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
         return pulumi.get(self, "protection_level")
 
     @protection_level.setter
-    def protection_level(self, value: Optional[pulumi.Input[str]]):
+    def protection_level(self, value: Optional[pulumi.Input['ImportJobProtectionLevel']]):
         pulumi.set(self, "protection_level", value)
 
 
@@ -101,19 +102,19 @@ class ImportJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
-                 import_method: Optional[pulumi.Input[str]] = None,
+                 import_method: Optional[pulumi.Input['ImportJobImportMethod']] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 protection_level: Optional[pulumi.Input[str]] = None,
+                 protection_level: Optional[pulumi.Input['ImportJobProtectionLevel']] = None,
                  __props__=None):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] import_method: Required. Immutable. The wrapping method to be used for incoming key material.
-        :param pulumi.Input[str] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        :param pulumi.Input['ImportJobImportMethod'] import_method: Required. Immutable. The wrapping method to be used for incoming key material.
+        :param pulumi.Input['ImportJobProtectionLevel'] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
         ...
     @overload
@@ -140,11 +141,11 @@ class ImportJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
-                 import_method: Optional[pulumi.Input[str]] = None,
+                 import_method: Optional[pulumi.Input['ImportJobImportMethod']] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 protection_level: Optional[pulumi.Input[str]] = None,
+                 protection_level: Optional[pulumi.Input['ImportJobProtectionLevel']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['NodePoolArgs', 'NodePool']
@@ -30,7 +31,7 @@ class NodePoolArgs:
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -47,7 +48,7 @@ class NodePoolArgs:
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
+        :param pulumi.Input['NodePoolStatus'] status: [Output only] The status of the nodes in this pool instance.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -258,14 +259,14 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['NodePoolStatus']]:
         """
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['NodePoolStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -313,7 +314,7 @@ class NodePool(pulumi.CustomResource):
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -334,7 +335,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
+        :param pulumi.Input['NodePoolStatus'] status: [Output only] The status of the nodes in this pool instance.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -377,7 +378,7 @@ class NodePool(pulumi.CustomResource):
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodePoolStatus']] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):

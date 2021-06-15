@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AttributeArgs',
@@ -117,11 +118,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -142,14 +143,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -415,13 +416,13 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationArgs:
                  dataset_uri: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  schema_config: Optional[pulumi.Input['SchemaConfigArgs']] = None,
-                 write_disposition: Optional[pulumi.Input[str]] = None):
+                 write_disposition: Optional[pulumi.Input['GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition']] = None):
         """
         The configuration for exporting to BigQuery.
         :param pulumi.Input[str] dataset_uri: BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
         :param pulumi.Input[bool] force: If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         :param pulumi.Input['SchemaConfigArgs'] schema_config: The configuration for the exported BigQuery schema.
-        :param pulumi.Input[str] write_disposition: Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
+        :param pulumi.Input['GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition'] write_disposition: Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         """
         if dataset_uri is not None:
             pulumi.set(__self__, "dataset_uri", dataset_uri)
@@ -470,14 +471,14 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationArgs:
 
     @property
     @pulumi.getter(name="writeDisposition")
-    def write_disposition(self) -> Optional[pulumi.Input[str]]:
+    def write_disposition(self) -> Optional[pulumi.Input['GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition']]:
         """
         Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         """
         return pulumi.get(self, "write_disposition")
 
     @write_disposition.setter
-    def write_disposition(self, value: Optional[pulumi.Input[str]]):
+    def write_disposition(self, value: Optional[pulumi.Input['GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition']]):
         pulumi.set(self, "write_disposition", value)
 
 
@@ -765,11 +766,11 @@ class PatientIdArgs:
 class SchemaConfigArgs:
     def __init__(__self__, *,
                  recursive_structure_depth: Optional[pulumi.Input[str]] = None,
-                 schema_type: Optional[pulumi.Input[str]] = None):
+                 schema_type: Optional[pulumi.Input['SchemaConfigSchemaType']] = None):
         """
         Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
         :param pulumi.Input[str] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
-        :param pulumi.Input[str] schema_type: Specifies the output schema type. Schema type is required.
+        :param pulumi.Input['SchemaConfigSchemaType'] schema_type: Specifies the output schema type. Schema type is required.
         """
         if recursive_structure_depth is not None:
             pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
@@ -790,14 +791,14 @@ class SchemaConfigArgs:
 
     @property
     @pulumi.getter(name="schemaType")
-    def schema_type(self) -> Optional[pulumi.Input[str]]:
+    def schema_type(self) -> Optional[pulumi.Input['SchemaConfigSchemaType']]:
         """
         Specifies the output schema type. Schema type is required.
         """
         return pulumi.get(self, "schema_type")
 
     @schema_type.setter
-    def schema_type(self, value: Optional[pulumi.Input[str]]):
+    def schema_type(self, value: Optional[pulumi.Input['SchemaConfigSchemaType']]):
         pulumi.set(self, "schema_type", value)
 
 
@@ -806,13 +807,13 @@ class SchemaPackageArgs:
     def __init__(__self__, *,
                  ignore_min_occurs: Optional[pulumi.Input[bool]] = None,
                  schemas: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7SchemaConfigArgs']]]] = None,
-                 schematized_parsing_type: Optional[pulumi.Input[str]] = None,
+                 schematized_parsing_type: Optional[pulumi.Input['SchemaPackageSchematizedParsingType']] = None,
                  types: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7TypesConfigArgs']]]] = None):
         """
         A schema package contains a set of schemas and type definitions.
         :param pulumi.Input[bool] ignore_min_occurs: Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
         :param pulumi.Input[Sequence[pulumi.Input['Hl7SchemaConfigArgs']]] schemas: Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
-        :param pulumi.Input[str] schematized_parsing_type: Determines how messages that fail to parse are handled.
+        :param pulumi.Input['SchemaPackageSchematizedParsingType'] schematized_parsing_type: Determines how messages that fail to parse are handled.
         :param pulumi.Input[Sequence[pulumi.Input['Hl7TypesConfigArgs']]] types: Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
         """
         if ignore_min_occurs is not None:
@@ -850,14 +851,14 @@ class SchemaPackageArgs:
 
     @property
     @pulumi.getter(name="schematizedParsingType")
-    def schematized_parsing_type(self) -> Optional[pulumi.Input[str]]:
+    def schematized_parsing_type(self) -> Optional[pulumi.Input['SchemaPackageSchematizedParsingType']]:
         """
         Determines how messages that fail to parse are handled.
         """
         return pulumi.get(self, "schematized_parsing_type")
 
     @schematized_parsing_type.setter
-    def schematized_parsing_type(self, value: Optional[pulumi.Input[str]]):
+    def schematized_parsing_type(self, value: Optional[pulumi.Input['SchemaPackageSchematizedParsingType']]):
         pulumi.set(self, "schematized_parsing_type", value)
 
     @property
@@ -1030,12 +1031,12 @@ class TypeArgs:
     def __init__(__self__, *,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['FieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 primitive: Optional[pulumi.Input[str]] = None):
+                 primitive: Optional[pulumi.Input['TypePrimitive']] = None):
         """
         A type definition for some HL7v2 type (incl. Segments and Datatypes).
         :param pulumi.Input[Sequence[pulumi.Input['FieldArgs']]] fields: The (sub) fields this type has (if not primitive).
         :param pulumi.Input[str] name: The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
-        :param pulumi.Input[str] primitive: If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
+        :param pulumi.Input['TypePrimitive'] primitive: If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
         """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
@@ -1070,14 +1071,14 @@ class TypeArgs:
 
     @property
     @pulumi.getter
-    def primitive(self) -> Optional[pulumi.Input[str]]:
+    def primitive(self) -> Optional[pulumi.Input['TypePrimitive']]:
         """
         If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
         """
         return pulumi.get(self, "primitive")
 
     @primitive.setter
-    def primitive(self, value: Optional[pulumi.Input[str]]):
+    def primitive(self, value: Optional[pulumi.Input['TypePrimitive']]):
         pulumi.set(self, "primitive", value)
 
 

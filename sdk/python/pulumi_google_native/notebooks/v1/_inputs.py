@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AcceleratorConfigArgs',
@@ -33,11 +34,11 @@ __all__ = [
 class AcceleratorConfigArgs:
     def __init__(__self__, *,
                  core_count: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['AcceleratorConfigType']] = None):
         """
         Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
         :param pulumi.Input[str] core_count: Count of cores of this accelerator.
-        :param pulumi.Input[str] type: Type of this accelerator.
+        :param pulumi.Input['AcceleratorConfigType'] type: Type of this accelerator.
         """
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
@@ -58,14 +59,14 @@ class AcceleratorConfigArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['AcceleratorConfigType']]:
         """
         Type of this accelerator.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['AcceleratorConfigType']]):
         pulumi.set(self, "type", value)
 
 
@@ -200,7 +201,7 @@ class ExecutionTemplateArgs:
                  output_notebook_folder: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[str]] = None,
                  params_yaml_file: Optional[pulumi.Input[str]] = None,
-                 scale_tier: Optional[pulumi.Input[str]] = None,
+                 scale_tier: Optional[pulumi.Input['ExecutionTemplateScaleTier']] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The description a notebook execution workload.
@@ -212,7 +213,7 @@ class ExecutionTemplateArgs:
         :param pulumi.Input[str] output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         :param pulumi.Input[str] parameters: Parameters used within the 'input_notebook_file' notebook.
         :param pulumi.Input[str] params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
-        :param pulumi.Input[str] scale_tier: Required. Scale tier of the hardware used for notebook execution.
+        :param pulumi.Input['ExecutionTemplateScaleTier'] scale_tier: Required. Scale tier of the hardware used for notebook execution.
         :param pulumi.Input[str] service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
         if accelerator_config is not None:
@@ -334,14 +335,14 @@ class ExecutionTemplateArgs:
 
     @property
     @pulumi.getter(name="scaleTier")
-    def scale_tier(self) -> Optional[pulumi.Input[str]]:
+    def scale_tier(self) -> Optional[pulumi.Input['ExecutionTemplateScaleTier']]:
         """
         Required. Scale tier of the hardware used for notebook execution.
         """
         return pulumi.get(self, "scale_tier")
 
     @scale_tier.setter
-    def scale_tier(self, value: Optional[pulumi.Input[str]]):
+    def scale_tier(self, value: Optional[pulumi.Input['ExecutionTemplateScaleTier']]):
         pulumi.set(self, "scale_tier", value)
 
     @property
@@ -523,14 +524,14 @@ class LocalDiskInitializeParamsArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_name: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 disk_type: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param pulumi.Input[str] description: Optional. Provide this property when creating the disk.
         :param pulumi.Input[str] disk_name: Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
         :param pulumi.Input[str] disk_size_gb: Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
-        :param pulumi.Input[str] disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input['LocalDiskInitializeParamsDiskType'] disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         """
         if description is not None:
@@ -582,14 +583,14 @@ class LocalDiskInitializeParamsArgs:
 
     @property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[str]]:
+    def disk_type(self) -> Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']]:
         """
         Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[str]]):
+    def disk_type(self, value: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']]):
         pulumi.set(self, "disk_type", value)
 
     @property
@@ -609,11 +610,11 @@ class LocalDiskInitializeParamsArgs:
 class RuntimeAcceleratorConfigArgs:
     def __init__(__self__, *,
                  core_count: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['RuntimeAcceleratorConfigType']] = None):
         """
         Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
         :param pulumi.Input[str] core_count: Count of cores of this accelerator.
-        :param pulumi.Input[str] type: Accelerator model.
+        :param pulumi.Input['RuntimeAcceleratorConfigType'] type: Accelerator model.
         """
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
@@ -634,25 +635,25 @@ class RuntimeAcceleratorConfigArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['RuntimeAcceleratorConfigType']]:
         """
         Accelerator model.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['RuntimeAcceleratorConfigType']]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class RuntimeAccessConfigArgs:
     def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[str]] = None,
+                 access_type: Optional[pulumi.Input['RuntimeAccessConfigAccessType']] = None,
                  runtime_owner: Optional[pulumi.Input[str]] = None):
         """
         Specifies the login configuration for Runtime
-        :param pulumi.Input[str] access_type: The type of access mode this instance.
+        :param pulumi.Input['RuntimeAccessConfigAccessType'] access_type: The type of access mode this instance.
         :param pulumi.Input[str] runtime_owner: The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
         """
         if access_type is not None:
@@ -662,14 +663,14 @@ class RuntimeAccessConfigArgs:
 
     @property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[str]]:
+    def access_type(self) -> Optional[pulumi.Input['RuntimeAccessConfigAccessType']]:
         """
         The type of access mode this instance.
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[str]]):
+    def access_type(self, value: Optional[pulumi.Input['RuntimeAccessConfigAccessType']]):
         pulumi.set(self, "access_type", value)
 
     @property
@@ -865,11 +866,11 @@ class RuntimeSoftwareConfigArgs:
 class SchedulerAcceleratorConfigArgs:
     def __init__(__self__, *,
                  core_count: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['SchedulerAcceleratorConfigType']] = None):
         """
         Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
         :param pulumi.Input[str] core_count: Count of cores of this accelerator.
-        :param pulumi.Input[str] type: Type of this accelerator.
+        :param pulumi.Input['SchedulerAcceleratorConfigType'] type: Type of this accelerator.
         """
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
@@ -890,14 +891,14 @@ class SchedulerAcceleratorConfigArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['SchedulerAcceleratorConfigType']]:
         """
         Type of this accelerator.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['SchedulerAcceleratorConfigType']]):
         pulumi.set(self, "type", value)
 
 
@@ -960,24 +961,24 @@ class ShieldedInstanceConfigArgs:
 @pulumi.input_type
 class UpgradeHistoryEntryArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[str]] = None,
+                 action: Optional[pulumi.Input['UpgradeHistoryEntryAction']] = None,
                  container_image: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  framework: Optional[pulumi.Input[str]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['UpgradeHistoryEntryState']] = None,
                  target_image: Optional[pulumi.Input[str]] = None,
                  target_version: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[str]] = None):
         """
         The entry of VM image upgrade history.
-        :param pulumi.Input[str] action: Action. Rolloback or Upgrade.
+        :param pulumi.Input['UpgradeHistoryEntryAction'] action: Action. Rolloback or Upgrade.
         :param pulumi.Input[str] container_image: The container image before this instance upgrade.
         :param pulumi.Input[str] create_time: The time that this instance upgrade history entry is created.
         :param pulumi.Input[str] framework: The framework of this notebook instance.
         :param pulumi.Input[str] snapshot: The snapshot of the boot disk of this notebook instance before upgrade.
-        :param pulumi.Input[str] state: The state of this instance upgrade history entry.
+        :param pulumi.Input['UpgradeHistoryEntryState'] state: The state of this instance upgrade history entry.
         :param pulumi.Input[str] target_image: Target VM Image. Format: ainotebooks-vm/project/image-name/name.
         :param pulumi.Input[str] target_version: Target VM Version, like m63.
         :param pulumi.Input[str] version: The version of the notebook instance before this upgrade.
@@ -1006,14 +1007,14 @@ class UpgradeHistoryEntryArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[str]]:
+    def action(self) -> Optional[pulumi.Input['UpgradeHistoryEntryAction']]:
         """
         Action. Rolloback or Upgrade.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[str]]):
+    def action(self, value: Optional[pulumi.Input['UpgradeHistoryEntryAction']]):
         pulumi.set(self, "action", value)
 
     @property
@@ -1066,14 +1067,14 @@ class UpgradeHistoryEntryArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['UpgradeHistoryEntryState']]:
         """
         The state of this instance upgrade history entry.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['UpgradeHistoryEntryState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -1161,7 +1162,7 @@ class VirtualMachineConfigArgs:
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 nic_type: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input['VirtualMachineConfigNicType']] = None,
                  shielded_instance_config: Optional[pulumi.Input['RuntimeShieldedInstanceConfigArgs']] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1176,7 +1177,7 @@ class VirtualMachineConfigArgs:
         :param pulumi.Input[str] machine_type: Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
-        :param pulumi.Input[str] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input['VirtualMachineConfigNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input['RuntimeShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM Instance configuration settings.
         :param pulumi.Input[str] subnet: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -1318,14 +1319,14 @@ class VirtualMachineConfigArgs:
 
     @property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[pulumi.Input[str]]:
+    def nic_type(self) -> Optional[pulumi.Input['VirtualMachineConfigNicType']]:
         """
         Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         """
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
-    def nic_type(self, value: Optional[pulumi.Input[str]]):
+    def nic_type(self, value: Optional[pulumi.Input['VirtualMachineConfigNicType']]):
         pulumi.set(self, "nic_type", value)
 
     @property

@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .get_repo import *
 from .get_repo_iam_policy import *
 from .repo import *

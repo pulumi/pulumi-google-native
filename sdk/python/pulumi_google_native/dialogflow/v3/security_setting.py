@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['SecuritySettingArgs', 'SecuritySetting']
 
@@ -18,18 +19,18 @@ class SecuritySettingArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[str]] = None,
+                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
+                 redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
+                 redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a SecuritySetting resource.
         :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
         :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] purge_data_types: List of types of data to remove when retention settings triggers purge.
-        :param pulumi.Input[str] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
-        :param pulumi.Input[str] redaction_strategy: Strategy that defines how we do redaction.
+        :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
+        :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
         :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
         """
         pulumi.set(__self__, "location", location)
@@ -105,38 +106,38 @@ class SecuritySettingArgs:
 
     @property
     @pulumi.getter(name="purgeDataTypes")
-    def purge_data_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def purge_data_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]]:
         """
         List of types of data to remove when retention settings triggers purge.
         """
         return pulumi.get(self, "purge_data_types")
 
     @purge_data_types.setter
-    def purge_data_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def purge_data_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]]):
         pulumi.set(self, "purge_data_types", value)
 
     @property
     @pulumi.getter(name="redactionScope")
-    def redaction_scope(self) -> Optional[pulumi.Input[str]]:
+    def redaction_scope(self) -> Optional[pulumi.Input['SecuritySettingRedactionScope']]:
         """
         Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
         """
         return pulumi.get(self, "redaction_scope")
 
     @redaction_scope.setter
-    def redaction_scope(self, value: Optional[pulumi.Input[str]]):
+    def redaction_scope(self, value: Optional[pulumi.Input['SecuritySettingRedactionScope']]):
         pulumi.set(self, "redaction_scope", value)
 
     @property
     @pulumi.getter(name="redactionStrategy")
-    def redaction_strategy(self) -> Optional[pulumi.Input[str]]:
+    def redaction_strategy(self) -> Optional[pulumi.Input['SecuritySettingRedactionStrategy']]:
         """
         Strategy that defines how we do redaction.
         """
         return pulumi.get(self, "redaction_strategy")
 
     @redaction_strategy.setter
-    def redaction_strategy(self, value: Optional[pulumi.Input[str]]):
+    def redaction_strategy(self, value: Optional[pulumi.Input['SecuritySettingRedactionStrategy']]):
         pulumi.set(self, "redaction_strategy", value)
 
     @property
@@ -162,9 +163,9 @@ class SecuritySetting(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[str]] = None,
+                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
+                 redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
+                 redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -175,9 +176,9 @@ class SecuritySetting(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
         :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] purge_data_types: List of types of data to remove when retention settings triggers purge.
-        :param pulumi.Input[str] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
-        :param pulumi.Input[str] redaction_strategy: Strategy that defines how we do redaction.
+        :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
+        :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
         :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
         """
         ...
@@ -209,9 +210,9 @@ class SecuritySetting(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[str]] = None,
+                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
+                 redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
+                 redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:

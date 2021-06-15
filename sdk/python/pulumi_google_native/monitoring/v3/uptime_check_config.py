@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['UptimeCheckConfigArgs', 'UptimeCheckConfig']
@@ -25,7 +26,7 @@ class UptimeCheckConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input['ResourceGroupArgs']] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input['TcpCheckArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
@@ -39,7 +40,7 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input[str] name: A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         :param pulumi.Input[str] period: How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         :param pulumi.Input['ResourceGroupArgs'] resource_group: The group resource associated with the configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
+        :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         :param pulumi.Input['TcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         """
@@ -188,14 +189,14 @@ class UptimeCheckConfigArgs:
 
     @property
     @pulumi.getter(name="selectedRegions")
-    def selected_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def selected_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]]:
         """
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         """
         return pulumi.get(self, "selected_regions")
 
     @selected_regions.setter
-    def selected_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def selected_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]]):
         pulumi.set(self, "selected_regions", value)
 
     @property
@@ -238,7 +239,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  period: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -256,7 +257,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
         :param pulumi.Input[str] period: How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         :param pulumi.Input[pulumi.InputType['ResourceGroupArgs']] resource_group: The group resource associated with the configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
+        :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         :param pulumi.Input[pulumi.InputType['TcpCheckArgs']] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         """
@@ -294,7 +295,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  period: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):

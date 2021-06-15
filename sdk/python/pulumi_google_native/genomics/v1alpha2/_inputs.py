@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'DiskArgs',
@@ -24,7 +25,7 @@ class DiskArgs:
                  read_only: Optional[pulumi.Input[bool]] = None,
                  size_gb: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['DiskType']] = None):
         """
         A Google Compute Engine disk resource specification.
         :param pulumi.Input[str] mount_point: Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
@@ -32,7 +33,7 @@ class DiskArgs:
         :param pulumi.Input[bool] read_only: Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
         :param pulumi.Input[int] size_gb: The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
         :param pulumi.Input[str] source: The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
-        :param pulumi.Input[str] type: Required. The type of the disk to create.
+        :param pulumi.Input['DiskType'] type: Required. The type of the disk to create.
         """
         if mount_point is not None:
             pulumi.set(__self__, "mount_point", mount_point)
@@ -109,14 +110,14 @@ class DiskArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['DiskType']]:
         """
         Required. The type of the disk to create.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['DiskType']]):
         pulumi.set(self, "type", value)
 
 

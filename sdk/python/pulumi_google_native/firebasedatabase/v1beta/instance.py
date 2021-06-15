@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -18,16 +19,16 @@ class InstanceArgs:
                  database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['InstanceState']] = None,
+                 type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
-        :param pulumi.Input[str] state: The database's lifecycle state. Read-only.
-        :param pulumi.Input[str] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
+        :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -100,26 +101,26 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['InstanceState']]:
         """
         The database's lifecycle state. Read-only.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['InstanceState']]):
         pulumi.set(self, "state", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['InstanceType']]:
         """
         The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['InstanceType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -142,8 +143,8 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['InstanceState']] = None,
+                 type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -154,8 +155,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
         :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        :param pulumi.Input[str] state: The database's lifecycle state. Read-only.
-        :param pulumi.Input[str] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
+        :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         ...
     @overload
@@ -186,8 +187,8 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['InstanceState']] = None,
+                 type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['HistoryArgs', 'History']
 
@@ -18,13 +19,13 @@ class HistoryArgs:
                  history_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 test_platform: Optional[pulumi.Input[str]] = None):
+                 test_platform: Optional[pulumi.Input['HistoryTestPlatform']] = None):
         """
         The set of arguments for constructing a History resource.
         :param pulumi.Input[str] display_name: A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
         :param pulumi.Input[str] history_id: A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
         :param pulumi.Input[str] name: A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-        :param pulumi.Input[str] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+        :param pulumi.Input['HistoryTestPlatform'] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         pulumi.set(__self__, "project", project)
         if display_name is not None:
@@ -94,14 +95,14 @@ class HistoryArgs:
 
     @property
     @pulumi.getter(name="testPlatform")
-    def test_platform(self) -> Optional[pulumi.Input[str]]:
+    def test_platform(self) -> Optional[pulumi.Input['HistoryTestPlatform']]:
         """
         The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         return pulumi.get(self, "test_platform")
 
     @test_platform.setter
-    def test_platform(self, value: Optional[pulumi.Input[str]]):
+    def test_platform(self, value: Optional[pulumi.Input['HistoryTestPlatform']]):
         pulumi.set(self, "test_platform", value)
 
 
@@ -115,7 +116,7 @@ class History(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 test_platform: Optional[pulumi.Input[str]] = None,
+                 test_platform: Optional[pulumi.Input['HistoryTestPlatform']] = None,
                  __props__=None):
         """
         Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
@@ -125,7 +126,7 @@ class History(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
         :param pulumi.Input[str] history_id: A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
         :param pulumi.Input[str] name: A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-        :param pulumi.Input[str] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+        :param pulumi.Input['HistoryTestPlatform'] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         ...
     @overload
@@ -156,7 +157,7 @@ class History(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 test_platform: Optional[pulumi.Input[str]] = None,
+                 test_platform: Optional[pulumi.Input['HistoryTestPlatform']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['AppArgs', 'App']
@@ -17,7 +18,7 @@ class AppArgs:
     def __init__(__self__, *,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
-                 database_type: Optional[pulumi.Input[str]] = None,
+                 database_type: Optional[pulumi.Input['AppDatabaseType']] = None,
                  default_bucket: Optional[pulumi.Input[str]] = None,
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
                  default_hostname: Optional[pulumi.Input[str]] = None,
@@ -28,12 +29,12 @@ class AppArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 serving_status: Optional[pulumi.Input[str]] = None):
+                 serving_status: Optional[pulumi.Input['AppServingStatus']] = None):
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[str] auth_domain: Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
         :param pulumi.Input[str] code_bucket: Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        :param pulumi.Input['AppDatabaseType'] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         :param pulumi.Input[str] default_bucket: Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
         :param pulumi.Input[str] default_cookie_expiration: Cookie expiration policy for this application.
         :param pulumi.Input[str] default_hostname: Hostname used to reach this application, as resolved by App Engine.@OutputOnly
@@ -43,7 +44,7 @@ class AppArgs:
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-        :param pulumi.Input[str] serving_status: Serving status of this application.
+        :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
         if auth_domain is not None:
             pulumi.set(__self__, "auth_domain", auth_domain)
@@ -100,14 +101,14 @@ class AppArgs:
 
     @property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[str]]:
+    def database_type(self) -> Optional[pulumi.Input['AppDatabaseType']]:
         """
         The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[str]]):
+    def database_type(self, value: Optional[pulumi.Input['AppDatabaseType']]):
         pulumi.set(self, "database_type", value)
 
     @property
@@ -229,14 +230,14 @@ class AppArgs:
 
     @property
     @pulumi.getter(name="servingStatus")
-    def serving_status(self) -> Optional[pulumi.Input[str]]:
+    def serving_status(self) -> Optional[pulumi.Input['AppServingStatus']]:
         """
         Serving status of this application.
         """
         return pulumi.get(self, "serving_status")
 
     @serving_status.setter
-    def serving_status(self, value: Optional[pulumi.Input[str]]):
+    def serving_status(self, value: Optional[pulumi.Input['AppServingStatus']]):
         pulumi.set(self, "serving_status", value)
 
 
@@ -247,7 +248,7 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
-                 database_type: Optional[pulumi.Input[str]] = None,
+                 database_type: Optional[pulumi.Input['AppDatabaseType']] = None,
                  default_bucket: Optional[pulumi.Input[str]] = None,
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
                  default_hostname: Optional[pulumi.Input[str]] = None,
@@ -258,7 +259,7 @@ class App(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 serving_status: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
         """
         Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
@@ -267,7 +268,7 @@ class App(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
         :param pulumi.Input[str] code_bucket: Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
-        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        :param pulumi.Input['AppDatabaseType'] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         :param pulumi.Input[str] default_bucket: Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
         :param pulumi.Input[str] default_cookie_expiration: Cookie expiration policy for this application.
         :param pulumi.Input[str] default_hostname: Hostname used to reach this application, as resolved by App Engine.@OutputOnly
@@ -277,7 +278,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         :param pulumi.Input[str] name: Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
-        :param pulumi.Input[str] serving_status: Serving status of this application.
+        :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
         ...
     @overload
@@ -305,7 +306,7 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
-                 database_type: Optional[pulumi.Input[str]] = None,
+                 database_type: Optional[pulumi.Input['AppDatabaseType']] = None,
                  default_bucket: Optional[pulumi.Input[str]] = None,
                  default_cookie_expiration: Optional[pulumi.Input[str]] = None,
                  default_hostname: Optional[pulumi.Input[str]] = None,
@@ -316,7 +317,7 @@ class App(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 serving_status: Optional[pulumi.Input[str]] = None,
+                 serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

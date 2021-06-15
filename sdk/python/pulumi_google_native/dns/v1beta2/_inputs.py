@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'DnsKeySpecArgs',
@@ -33,15 +34,15 @@ __all__ = [
 @pulumi.input_type
 class DnsKeySpecArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input['DnsKeySpecAlgorithm']] = None,
                  key_length: Optional[pulumi.Input[int]] = None,
-                 key_type: Optional[pulumi.Input[str]] = None,
+                 key_type: Optional[pulumi.Input['DnsKeySpecKeyType']] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
         Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
-        :param pulumi.Input[str] algorithm: String mnemonic specifying the DNSSEC algorithm of this key.
+        :param pulumi.Input['DnsKeySpecAlgorithm'] algorithm: String mnemonic specifying the DNSSEC algorithm of this key.
         :param pulumi.Input[int] key_length: Length of the keys in bits.
-        :param pulumi.Input[str] key_type: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
+        :param pulumi.Input['DnsKeySpecKeyType'] key_type: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -54,14 +55,14 @@ class DnsKeySpecArgs:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input['DnsKeySpecAlgorithm']]:
         """
         String mnemonic specifying the DNSSEC algorithm of this key.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input['DnsKeySpecAlgorithm']]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -78,14 +79,14 @@ class DnsKeySpecArgs:
 
     @property
     @pulumi.getter(name="keyType")
-    def key_type(self) -> Optional[pulumi.Input[str]]:
+    def key_type(self) -> Optional[pulumi.Input['DnsKeySpecKeyType']]:
         """
         Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
         """
         return pulumi.get(self, "key_type")
 
     @key_type.setter
-    def key_type(self, value: Optional[pulumi.Input[str]]):
+    def key_type(self, value: Optional[pulumi.Input['DnsKeySpecKeyType']]):
         pulumi.set(self, "key_type", value)
 
     @property
@@ -103,12 +104,12 @@ class ManagedZoneDnsSecConfigArgs:
     def __init__(__self__, *,
                  default_key_specs: Optional[pulumi.Input[Sequence[pulumi.Input['DnsKeySpecArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 non_existence: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 non_existence: Optional[pulumi.Input['ManagedZoneDnsSecConfigNonExistence']] = None,
+                 state: Optional[pulumi.Input['ManagedZoneDnsSecConfigState']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DnsKeySpecArgs']]] default_key_specs: Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
-        :param pulumi.Input[str] non_existence: Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
-        :param pulumi.Input[str] state: Specifies whether DNSSEC is enabled, and what mode it is in.
+        :param pulumi.Input['ManagedZoneDnsSecConfigNonExistence'] non_existence: Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
+        :param pulumi.Input['ManagedZoneDnsSecConfigState'] state: Specifies whether DNSSEC is enabled, and what mode it is in.
         """
         if default_key_specs is not None:
             pulumi.set(__self__, "default_key_specs", default_key_specs)
@@ -142,26 +143,26 @@ class ManagedZoneDnsSecConfigArgs:
 
     @property
     @pulumi.getter(name="nonExistence")
-    def non_existence(self) -> Optional[pulumi.Input[str]]:
+    def non_existence(self) -> Optional[pulumi.Input['ManagedZoneDnsSecConfigNonExistence']]:
         """
         Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
         """
         return pulumi.get(self, "non_existence")
 
     @non_existence.setter
-    def non_existence(self, value: Optional[pulumi.Input[str]]):
+    def non_existence(self, value: Optional[pulumi.Input['ManagedZoneDnsSecConfigNonExistence']]):
         pulumi.set(self, "non_existence", value)
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['ManagedZoneDnsSecConfigState']]:
         """
         Specifies whether DNSSEC is enabled, and what mode it is in.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['ManagedZoneDnsSecConfigState']]):
         pulumi.set(self, "state", value)
 
 
@@ -203,12 +204,12 @@ class ManagedZoneForwardingConfigArgs:
 @pulumi.input_type
 class ManagedZoneForwardingConfigNameServerTargetArgs:
     def __init__(__self__, *,
-                 forwarding_path: Optional[pulumi.Input[str]] = None,
+                 forwarding_path: Optional[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetForwardingPath']] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] forwarding_path: Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+        :param pulumi.Input['ManagedZoneForwardingConfigNameServerTargetForwardingPath'] forwarding_path: Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         :param pulumi.Input[str] ipv4_address: IPv4 address of a target name server.
         :param pulumi.Input[str] ipv6_address: IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated.
         """
@@ -223,14 +224,14 @@ class ManagedZoneForwardingConfigNameServerTargetArgs:
 
     @property
     @pulumi.getter(name="forwardingPath")
-    def forwarding_path(self) -> Optional[pulumi.Input[str]]:
+    def forwarding_path(self) -> Optional[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetForwardingPath']]:
         """
         Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         """
         return pulumi.get(self, "forwarding_path")
 
     @forwarding_path.setter
-    def forwarding_path(self, value: Optional[pulumi.Input[str]]):
+    def forwarding_path(self, value: Optional[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetForwardingPath']]):
         pulumi.set(self, "forwarding_path", value)
 
     @property
@@ -616,12 +617,12 @@ class PolicyAlternativeNameServerConfigArgs:
 @pulumi.input_type
 class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     def __init__(__self__, *,
-                 forwarding_path: Optional[pulumi.Input[str]] = None,
+                 forwarding_path: Optional[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerForwardingPath']] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] forwarding_path: Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+        :param pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerForwardingPath'] forwarding_path: Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         :param pulumi.Input[str] ipv4_address: IPv4 address to forward to.
         :param pulumi.Input[str] ipv6_address: IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
         """
@@ -636,14 +637,14 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
 
     @property
     @pulumi.getter(name="forwardingPath")
-    def forwarding_path(self) -> Optional[pulumi.Input[str]]:
+    def forwarding_path(self) -> Optional[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerForwardingPath']]:
         """
         Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         """
         return pulumi.get(self, "forwarding_path")
 
     @forwarding_path.setter
-    def forwarding_path(self, value: Optional[pulumi.Input[str]]):
+    def forwarding_path(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerForwardingPath']]):
         pulumi.set(self, "forwarding_path", value)
 
     @property

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ManagedZoneArgs', 'ManagedZone']
@@ -32,7 +33,7 @@ class ManagedZoneArgs:
                  private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
                  reverse_lookup_config: Optional[pulumi.Input['ManagedZoneReverseLookupConfigArgs']] = None,
                  service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
-                 visibility: Optional[pulumi.Input[str]] = None):
+                 visibility: Optional[pulumi.Input['ManagedZoneVisibility']] = None):
         """
         The set of arguments for constructing a ManagedZone resource.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format. Output only.
@@ -49,7 +50,7 @@ class ManagedZoneArgs:
         :param pulumi.Input['ManagedZonePrivateVisibilityConfigArgs'] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input['ManagedZoneReverseLookupConfigArgs'] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
         :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
-        :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        :param pulumi.Input['ManagedZoneVisibility'] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
         pulumi.set(__self__, "project", project)
         if client_operation_id is not None:
@@ -284,14 +285,14 @@ class ManagedZoneArgs:
 
     @property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[str]]:
+    def visibility(self) -> Optional[pulumi.Input['ManagedZoneVisibility']]:
         """
         The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[str]]):
+    def visibility(self, value: Optional[pulumi.Input['ManagedZoneVisibility']]):
         pulumi.set(self, "visibility", value)
 
 
@@ -317,7 +318,7 @@ class ManagedZone(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  reverse_lookup_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']]] = None,
                  service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input['ManagedZoneVisibility']] = None,
                  __props__=None):
         """
         Creates a new ManagedZone.
@@ -338,7 +339,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
         :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
-        :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        :param pulumi.Input['ManagedZoneVisibility'] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
         ...
     @overload
@@ -381,7 +382,7 @@ class ManagedZone(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  reverse_lookup_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']]] = None,
                  service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input['ManagedZoneVisibility']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

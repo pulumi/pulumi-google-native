@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -20,7 +21,7 @@ class InstanceArgs:
                  environments: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[str]] = None):
+                 peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] description: Optional. Description of the instance.
@@ -28,7 +29,7 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
         :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-        :param pulumi.Input[str] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+        :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
@@ -126,14 +127,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="peeringCidrRange")
-    def peering_cidr_range(self) -> Optional[pulumi.Input[str]]:
+    def peering_cidr_range(self) -> Optional[pulumi.Input['InstancePeeringCidrRange']]:
         """
         Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         return pulumi.get(self, "peering_cidr_range")
 
     @peering_cidr_range.setter
-    def peering_cidr_range(self, value: Optional[pulumi.Input[str]]):
+    def peering_cidr_range(self, value: Optional[pulumi.Input['InstancePeeringCidrRange']]):
         pulumi.set(self, "peering_cidr_range", value)
 
 
@@ -149,7 +150,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[str]] = None,
+                 peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None,
                  __props__=None):
         """
         Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.
@@ -161,7 +162,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
         :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-        :param pulumi.Input[str] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+        :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         ...
     @overload
@@ -194,7 +195,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[str]] = None,
+                 peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

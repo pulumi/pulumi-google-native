@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AccountArgs',
@@ -181,7 +182,7 @@ class AndroidInstrumentationTestArgs:
                  app_apk: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  app_bundle: Optional[pulumi.Input['AppBundleArgs']] = None,
                  app_package_id: Optional[pulumi.Input[str]] = None,
-                 orchestrator_option: Optional[pulumi.Input[str]] = None,
+                 orchestrator_option: Optional[pulumi.Input['AndroidInstrumentationTestOrchestratorOption']] = None,
                  sharding_option: Optional[pulumi.Input['ShardingOptionArgs']] = None,
                  test_apk: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  test_package_id: Optional[pulumi.Input[str]] = None,
@@ -192,7 +193,7 @@ class AndroidInstrumentationTestArgs:
         :param pulumi.Input['FileReferenceArgs'] app_apk: The APK for the application under test.
         :param pulumi.Input['AppBundleArgs'] app_bundle: A multi-apk app bundle for the application under test.
         :param pulumi.Input[str] app_package_id: The java package for the application under test. The default value is determined by examining the application's manifest.
-        :param pulumi.Input[str] orchestrator_option: The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+        :param pulumi.Input['AndroidInstrumentationTestOrchestratorOption'] orchestrator_option: The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
         :param pulumi.Input['ShardingOptionArgs'] sharding_option: The option to run tests in multiple shards in parallel.
         :param pulumi.Input['FileReferenceArgs'] test_apk: Required. The APK containing the test code to be executed.
         :param pulumi.Input[str] test_package_id: The java package for the test to be executed. The default value is determined by examining the application's manifest.
@@ -256,14 +257,14 @@ class AndroidInstrumentationTestArgs:
 
     @property
     @pulumi.getter(name="orchestratorOption")
-    def orchestrator_option(self) -> Optional[pulumi.Input[str]]:
+    def orchestrator_option(self) -> Optional[pulumi.Input['AndroidInstrumentationTestOrchestratorOption']]:
         """
         The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
         """
         return pulumi.get(self, "orchestrator_option")
 
     @orchestrator_option.setter
-    def orchestrator_option(self, value: Optional[pulumi.Input[str]]):
+    def orchestrator_option(self, value: Optional[pulumi.Input['AndroidInstrumentationTestOrchestratorOption']]):
         pulumi.set(self, "orchestrator_option", value)
 
     @property
@@ -1572,12 +1573,12 @@ class ResultStorageArgs:
 @pulumi.input_type
 class RoboDirectiveArgs:
     def __init__(__self__, *,
-                 action_type: Optional[pulumi.Input[str]] = None,
+                 action_type: Optional[pulumi.Input['RoboDirectiveActionType']] = None,
                  input_text: Optional[pulumi.Input[str]] = None,
                  resource_name: Optional[pulumi.Input[str]] = None):
         """
         Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
-        :param pulumi.Input[str] action_type: Required. The type of action that Robo should perform on the specified element.
+        :param pulumi.Input['RoboDirectiveActionType'] action_type: Required. The type of action that Robo should perform on the specified element.
         :param pulumi.Input[str] input_text: The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
         :param pulumi.Input[str] resource_name: Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         """
@@ -1590,14 +1591,14 @@ class RoboDirectiveArgs:
 
     @property
     @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[pulumi.Input[str]]:
+    def action_type(self) -> Optional[pulumi.Input['RoboDirectiveActionType']]:
         """
         Required. The type of action that Robo should perform on the specified element.
         """
         return pulumi.get(self, "action_type")
 
     @action_type.setter
-    def action_type(self, value: Optional[pulumi.Input[str]]):
+    def action_type(self, value: Optional[pulumi.Input['RoboDirectiveActionType']]):
         pulumi.set(self, "action_type", value)
 
     @property
@@ -1904,7 +1905,7 @@ class TestExecutionArgs:
                  matrix_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  shard: Optional[pulumi.Input['ShardArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TestExecutionState']] = None,
                  test_details: Optional[pulumi.Input['TestDetailsArgs']] = None,
                  test_specification: Optional[pulumi.Input['TestSpecificationArgs']] = None,
                  timestamp: Optional[pulumi.Input[str]] = None,
@@ -1916,7 +1917,7 @@ class TestExecutionArgs:
         :param pulumi.Input[str] matrix_id: Id of the containing TestMatrix.
         :param pulumi.Input[str] project: The cloud project that owns the test execution.
         :param pulumi.Input['ShardArgs'] shard: Details about the shard.
-        :param pulumi.Input[str] state: Indicates the current progress of the test execution (e.g., FINISHED).
+        :param pulumi.Input['TestExecutionState'] state: Indicates the current progress of the test execution (e.g., FINISHED).
         :param pulumi.Input['TestDetailsArgs'] test_details: Additional details about the running test.
         :param pulumi.Input['TestSpecificationArgs'] test_specification: How to run the test.
         :param pulumi.Input[str] timestamp: The time this test execution was initially created.
@@ -2005,14 +2006,14 @@ class TestExecutionArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['TestExecutionState']]:
         """
         Indicates the current progress of the test execution (e.g., FINISHED).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['TestExecutionState']]):
         pulumi.set(self, "state", value)
 
     @property

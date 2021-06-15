@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AndroidAppInfoArgs',
@@ -419,9 +420,9 @@ class AnyArgs:
 @pulumi.input_type
 class BasicPerfSampleSeriesArgs:
     def __init__(__self__, *,
-                 perf_metric_type: Optional[pulumi.Input[str]] = None,
-                 perf_unit: Optional[pulumi.Input[str]] = None,
-                 sample_series_label: Optional[pulumi.Input[str]] = None):
+                 perf_metric_type: Optional[pulumi.Input['BasicPerfSampleSeriesPerfMetricType']] = None,
+                 perf_unit: Optional[pulumi.Input['BasicPerfSampleSeriesPerfUnit']] = None,
+                 sample_series_label: Optional[pulumi.Input['BasicPerfSampleSeriesSampleSeriesLabel']] = None):
         """
         Encapsulates the metadata for basic sample series represented by a line chart
         """
@@ -434,29 +435,29 @@ class BasicPerfSampleSeriesArgs:
 
     @property
     @pulumi.getter(name="perfMetricType")
-    def perf_metric_type(self) -> Optional[pulumi.Input[str]]:
+    def perf_metric_type(self) -> Optional[pulumi.Input['BasicPerfSampleSeriesPerfMetricType']]:
         return pulumi.get(self, "perf_metric_type")
 
     @perf_metric_type.setter
-    def perf_metric_type(self, value: Optional[pulumi.Input[str]]):
+    def perf_metric_type(self, value: Optional[pulumi.Input['BasicPerfSampleSeriesPerfMetricType']]):
         pulumi.set(self, "perf_metric_type", value)
 
     @property
     @pulumi.getter(name="perfUnit")
-    def perf_unit(self) -> Optional[pulumi.Input[str]]:
+    def perf_unit(self) -> Optional[pulumi.Input['BasicPerfSampleSeriesPerfUnit']]:
         return pulumi.get(self, "perf_unit")
 
     @perf_unit.setter
-    def perf_unit(self, value: Optional[pulumi.Input[str]]):
+    def perf_unit(self, value: Optional[pulumi.Input['BasicPerfSampleSeriesPerfUnit']]):
         pulumi.set(self, "perf_unit", value)
 
     @property
     @pulumi.getter(name="sampleSeriesLabel")
-    def sample_series_label(self) -> Optional[pulumi.Input[str]]:
+    def sample_series_label(self) -> Optional[pulumi.Input['BasicPerfSampleSeriesSampleSeriesLabel']]:
         return pulumi.get(self, "sample_series_label")
 
     @sample_series_label.setter
-    def sample_series_label(self, value: Optional[pulumi.Input[str]]):
+    def sample_series_label(self, value: Optional[pulumi.Input['BasicPerfSampleSeriesSampleSeriesLabel']]):
         pulumi.set(self, "sample_series_label", value)
 
 
@@ -704,7 +705,7 @@ class InconclusiveDetailArgs:
 class IndividualOutcomeArgs:
     def __init__(__self__, *,
                  multistep_number: Optional[pulumi.Input[int]] = None,
-                 outcome_summary: Optional[pulumi.Input[str]] = None,
+                 outcome_summary: Optional[pulumi.Input['IndividualOutcomeOutcomeSummary']] = None,
                  run_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  step_id: Optional[pulumi.Input[str]] = None):
         """
@@ -735,11 +736,11 @@ class IndividualOutcomeArgs:
 
     @property
     @pulumi.getter(name="outcomeSummary")
-    def outcome_summary(self) -> Optional[pulumi.Input[str]]:
+    def outcome_summary(self) -> Optional[pulumi.Input['IndividualOutcomeOutcomeSummary']]:
         return pulumi.get(self, "outcome_summary")
 
     @outcome_summary.setter
-    def outcome_summary(self, value: Optional[pulumi.Input[str]]):
+    def outcome_summary(self, value: Optional[pulumi.Input['IndividualOutcomeOutcomeSummary']]):
         pulumi.set(self, "outcome_summary", value)
 
     @property
@@ -1021,14 +1022,14 @@ class OutcomeArgs:
                  inconclusive_detail: Optional[pulumi.Input['InconclusiveDetailArgs']] = None,
                  skipped_detail: Optional[pulumi.Input['SkippedDetailArgs']] = None,
                  success_detail: Optional[pulumi.Input['SuccessDetailArgs']] = None,
-                 summary: Optional[pulumi.Input[str]] = None):
+                 summary: Optional[pulumi.Input['OutcomeSummary']] = None):
         """
         Interprets a result so that humans and machines can act on it.
         :param pulumi.Input['FailureDetailArgs'] failure_detail: More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
         :param pulumi.Input['InconclusiveDetailArgs'] inconclusive_detail: More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
         :param pulumi.Input['SkippedDetailArgs'] skipped_detail: More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
         :param pulumi.Input['SuccessDetailArgs'] success_detail: More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
-        :param pulumi.Input[str] summary: The simplest way to interpret a result. Required
+        :param pulumi.Input['OutcomeSummary'] summary: The simplest way to interpret a result. Required
         """
         if failure_detail is not None:
             pulumi.set(__self__, "failure_detail", failure_detail)
@@ -1091,14 +1092,14 @@ class OutcomeArgs:
 
     @property
     @pulumi.getter
-    def summary(self) -> Optional[pulumi.Input[str]]:
+    def summary(self) -> Optional[pulumi.Input['OutcomeSummary']]:
         """
         The simplest way to interpret a result. Required
         """
         return pulumi.get(self, "summary")
 
     @summary.setter
-    def summary(self, value: Optional[pulumi.Input[str]]):
+    def summary(self, value: Optional[pulumi.Input['OutcomeSummary']]):
         pulumi.set(self, "summary", value)
 
 
@@ -1106,11 +1107,11 @@ class OutcomeArgs:
 class PrimaryStepArgs:
     def __init__(__self__, *,
                  individual_outcome: Optional[pulumi.Input[Sequence[pulumi.Input['IndividualOutcomeArgs']]]] = None,
-                 roll_up: Optional[pulumi.Input[str]] = None):
+                 roll_up: Optional[pulumi.Input['PrimaryStepRollUp']] = None):
         """
         Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
         :param pulumi.Input[Sequence[pulumi.Input['IndividualOutcomeArgs']]] individual_outcome: Step Id and outcome of each individual step.
-        :param pulumi.Input[str] roll_up: Rollup test status of multiple steps that were run with the same configuration as a group.
+        :param pulumi.Input['PrimaryStepRollUp'] roll_up: Rollup test status of multiple steps that were run with the same configuration as a group.
         """
         if individual_outcome is not None:
             pulumi.set(__self__, "individual_outcome", individual_outcome)
@@ -1131,14 +1132,14 @@ class PrimaryStepArgs:
 
     @property
     @pulumi.getter(name="rollUp")
-    def roll_up(self) -> Optional[pulumi.Input[str]]:
+    def roll_up(self) -> Optional[pulumi.Input['PrimaryStepRollUp']]:
         """
         Rollup test status of multiple steps that were run with the same configuration as a group.
         """
         return pulumi.get(self, "roll_up")
 
     @roll_up.setter
-    def roll_up(self, value: Optional[pulumi.Input[str]]):
+    def roll_up(self, value: Optional[pulumi.Input['PrimaryStepRollUp']]):
         pulumi.set(self, "roll_up", value)
 
 
@@ -1451,17 +1452,17 @@ class TestExecutionStepArgs:
 @pulumi.input_type
 class TestIssueArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input['TestIssueCategory']] = None,
                  error_message: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['TestIssueSeverity']] = None,
+                 type: Optional[pulumi.Input['TestIssueType']] = None,
                  warning: Optional[pulumi.Input['AnyArgs']] = None):
         """
         An issue detected occurring during a test execution.
-        :param pulumi.Input[str] category: Category of issue. Required.
+        :param pulumi.Input['TestIssueCategory'] category: Category of issue. Required.
         :param pulumi.Input[str] error_message: A brief human-readable message describing the issue. Required.
-        :param pulumi.Input[str] severity: Severity of issue. Required.
-        :param pulumi.Input[str] type: Type of issue. Required.
+        :param pulumi.Input['TestIssueSeverity'] severity: Severity of issue. Required.
+        :param pulumi.Input['TestIssueType'] type: Type of issue. Required.
         :param pulumi.Input['AnyArgs'] warning: Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
         """
         if category is not None:
@@ -1477,14 +1478,14 @@ class TestIssueArgs:
 
     @property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[str]]:
+    def category(self) -> Optional[pulumi.Input['TestIssueCategory']]:
         """
         Category of issue. Required.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[str]]):
+    def category(self, value: Optional[pulumi.Input['TestIssueCategory']]):
         pulumi.set(self, "category", value)
 
     @property
@@ -1501,26 +1502,26 @@ class TestIssueArgs:
 
     @property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
+    def severity(self) -> Optional[pulumi.Input['TestIssueSeverity']]:
         """
         Severity of issue. Required.
         """
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
+    def severity(self, value: Optional[pulumi.Input['TestIssueSeverity']]):
         pulumi.set(self, "severity", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['TestIssueType']]:
         """
         Type of issue. Required.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['TestIssueType']]):
         pulumi.set(self, "type", value)
 
     @property

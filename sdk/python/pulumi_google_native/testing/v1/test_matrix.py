@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['TestMatrixArgs', 'TestMatrix']
@@ -20,11 +21,11 @@ class TestMatrixArgs:
                  environment_matrix: Optional[pulumi.Input['EnvironmentMatrixArgs']] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 invalid_matrix_details: Optional[pulumi.Input[str]] = None,
-                 outcome_summary: Optional[pulumi.Input[str]] = None,
+                 invalid_matrix_details: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']] = None,
+                 outcome_summary: Optional[pulumi.Input['TestMatrixOutcomeSummary']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input['ResultStorageArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TestMatrixState']] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]]] = None,
                  test_matrix_id: Optional[pulumi.Input[str]] = None,
                  test_specification: Optional[pulumi.Input['TestSpecificationArgs']] = None,
@@ -36,10 +37,10 @@ class TestMatrixArgs:
         :param pulumi.Input['EnvironmentMatrixArgs'] environment_matrix: Required. The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-        :param pulumi.Input[str] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        :param pulumi.Input[str] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+        :param pulumi.Input['TestMatrixInvalidMatrixDetails'] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        :param pulumi.Input['TestMatrixOutcomeSummary'] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         :param pulumi.Input['ResultStorageArgs'] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input[str] state: Indicates the current progress of the test matrix.
+        :param pulumi.Input['TestMatrixState'] state: Indicates the current progress of the test matrix.
         :param pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]] test_executions: The list of test executions that the service creates for this matrix.
         :param pulumi.Input[str] test_matrix_id: Unique id set by the service.
         :param pulumi.Input['TestSpecificationArgs'] test_specification: Required. How to run the test.
@@ -135,26 +136,26 @@ class TestMatrixArgs:
 
     @property
     @pulumi.getter(name="invalidMatrixDetails")
-    def invalid_matrix_details(self) -> Optional[pulumi.Input[str]]:
+    def invalid_matrix_details(self) -> Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']]:
         """
         Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
         """
         return pulumi.get(self, "invalid_matrix_details")
 
     @invalid_matrix_details.setter
-    def invalid_matrix_details(self, value: Optional[pulumi.Input[str]]):
+    def invalid_matrix_details(self, value: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']]):
         pulumi.set(self, "invalid_matrix_details", value)
 
     @property
     @pulumi.getter(name="outcomeSummary")
-    def outcome_summary(self) -> Optional[pulumi.Input[str]]:
+    def outcome_summary(self) -> Optional[pulumi.Input['TestMatrixOutcomeSummary']]:
         """
         Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         """
         return pulumi.get(self, "outcome_summary")
 
     @outcome_summary.setter
-    def outcome_summary(self, value: Optional[pulumi.Input[str]]):
+    def outcome_summary(self, value: Optional[pulumi.Input['TestMatrixOutcomeSummary']]):
         pulumi.set(self, "outcome_summary", value)
 
     @property
@@ -180,14 +181,14 @@ class TestMatrixArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['TestMatrixState']]:
         """
         Indicates the current progress of the test matrix.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['TestMatrixState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -248,12 +249,12 @@ class TestMatrix(pulumi.CustomResource):
                  environment_matrix: Optional[pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']]] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 invalid_matrix_details: Optional[pulumi.Input[str]] = None,
-                 outcome_summary: Optional[pulumi.Input[str]] = None,
+                 invalid_matrix_details: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']] = None,
+                 outcome_summary: Optional[pulumi.Input['TestMatrixOutcomeSummary']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TestMatrixState']] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
                  test_matrix_id: Optional[pulumi.Input[str]] = None,
                  test_specification: Optional[pulumi.Input[pulumi.InputType['TestSpecificationArgs']]] = None,
@@ -268,11 +269,11 @@ class TestMatrix(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']] environment_matrix: Required. The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-        :param pulumi.Input[str] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        :param pulumi.Input[str] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+        :param pulumi.Input['TestMatrixInvalidMatrixDetails'] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        :param pulumi.Input['TestMatrixOutcomeSummary'] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input[str] state: Indicates the current progress of the test matrix.
+        :param pulumi.Input['TestMatrixState'] state: Indicates the current progress of the test matrix.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]] test_executions: The list of test executions that the service creates for this matrix.
         :param pulumi.Input[str] test_matrix_id: Unique id set by the service.
         :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: Required. How to run the test.
@@ -306,12 +307,12 @@ class TestMatrix(pulumi.CustomResource):
                  environment_matrix: Optional[pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']]] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 invalid_matrix_details: Optional[pulumi.Input[str]] = None,
-                 outcome_summary: Optional[pulumi.Input[str]] = None,
+                 invalid_matrix_details: Optional[pulumi.Input['TestMatrixInvalidMatrixDetails']] = None,
+                 outcome_summary: Optional[pulumi.Input['TestMatrixOutcomeSummary']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TestMatrixState']] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
                  test_matrix_id: Optional[pulumi.Input[str]] = None,
                  test_specification: Optional[pulumi.Input[pulumi.InputType['TestSpecificationArgs']]] = None,

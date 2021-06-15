@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['OrganizationRoleArgs', 'OrganizationRole']
 
@@ -20,7 +21,7 @@ class OrganizationRoleArgs:
                  included_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
-                 stage: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input['OrganizationRoleStage']] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationRole resource.
@@ -30,7 +31,7 @@ class OrganizationRoleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_permissions: The names of the permissions this role grants when bound in an IAM policy.
         :param pulumi.Input[str] name: The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
         :param pulumi.Input[str] role_id: The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-        :param pulumi.Input[str] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        :param pulumi.Input['OrganizationRoleStage'] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
         :param pulumi.Input[str] title: Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -134,14 +135,14 @@ class OrganizationRoleArgs:
 
     @property
     @pulumi.getter
-    def stage(self) -> Optional[pulumi.Input[str]]:
+    def stage(self) -> Optional[pulumi.Input['OrganizationRoleStage']]:
         """
         The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
         """
         return pulumi.get(self, "stage")
 
     @stage.setter
-    def stage(self, value: Optional[pulumi.Input[str]]):
+    def stage(self, value: Optional[pulumi.Input['OrganizationRoleStage']]):
         pulumi.set(self, "stage", value)
 
     @property
@@ -169,7 +170,7 @@ class OrganizationRole(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
-                 stage: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input['OrganizationRoleStage']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -183,7 +184,7 @@ class OrganizationRole(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_permissions: The names of the permissions this role grants when bound in an IAM policy.
         :param pulumi.Input[str] name: The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
         :param pulumi.Input[str] role_id: The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-        :param pulumi.Input[str] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        :param pulumi.Input['OrganizationRoleStage'] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
         :param pulumi.Input[str] title: Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
         """
         ...
@@ -217,7 +218,7 @@ class OrganizationRole(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
-                 stage: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input['OrganizationRoleStage']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

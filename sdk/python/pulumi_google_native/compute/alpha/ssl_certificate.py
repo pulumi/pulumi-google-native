@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['SslCertificateArgs', 'SslCertificate']
@@ -31,7 +32,7 @@ class SslCertificateArgs:
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input['SslCertificateSelfManagedSslCertificateArgs']] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['SslCertificateType']] = None):
         """
         The set of arguments for constructing a SslCertificate resource.
         :param pulumi.Input[str] certificate: A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
@@ -48,7 +49,7 @@ class SslCertificateArgs:
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['SslCertificateSelfManagedSslCertificateArgs'] self_managed: Configuration and status of a self-managed SSL certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: [Output Only] Domains associated with the certificate via Subject Alternative Name.
-        :param pulumi.Input[str] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+        :param pulumi.Input['SslCertificateType'] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         pulumi.set(__self__, "project", project)
         if certificate is not None:
@@ -272,14 +273,14 @@ class SslCertificateArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['SslCertificateType']]:
         """
         (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['SslCertificateType']]):
         pulumi.set(self, "type", value)
 
 
@@ -304,7 +305,7 @@ class SslCertificate(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']]] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['SslCertificateType']] = None,
                  __props__=None):
         """
         Creates a SslCertificate resource in the specified project using the data included in the request.
@@ -325,7 +326,7 @@ class SslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']] self_managed: Configuration and status of a self-managed SSL certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: [Output Only] Domains associated with the certificate via Subject Alternative Name.
-        :param pulumi.Input[str] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+        :param pulumi.Input['SslCertificateType'] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         ...
     @overload
@@ -367,7 +368,7 @@ class SslCertificate(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']]] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['SslCertificateType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

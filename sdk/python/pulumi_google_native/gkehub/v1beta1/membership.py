@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['MembershipArgs', 'Membership']
@@ -22,7 +23,7 @@ class MembershipArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[str]] = None,
+                 infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -31,7 +32,7 @@ class MembershipArgs:
         :param pulumi.Input[str] description: Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
-        :param pulumi.Input[str] infrastructure_type: Optional. The infrastructure type this Membership is running on.
+        :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
         pulumi.set(__self__, "location", location)
@@ -129,14 +130,14 @@ class MembershipArgs:
 
     @property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> Optional[pulumi.Input[str]]:
+    def infrastructure_type(self) -> Optional[pulumi.Input['MembershipInfrastructureType']]:
         """
         Optional. The infrastructure type this Membership is running on.
         """
         return pulumi.get(self, "infrastructure_type")
 
     @infrastructure_type.setter
-    def infrastructure_type(self, value: Optional[pulumi.Input[str]]):
+    def infrastructure_type(self, value: Optional[pulumi.Input['MembershipInfrastructureType']]):
         pulumi.set(self, "infrastructure_type", value)
 
     @property
@@ -170,7 +171,7 @@ class Membership(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[str]] = None,
+                 infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -186,7 +187,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
-        :param pulumi.Input[str] infrastructure_type: Optional. The infrastructure type this Membership is running on.
+        :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
         ...
@@ -217,7 +218,7 @@ class Membership(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[str]] = None,
+                 infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudApigeeV1AddonsConfigArgs',
@@ -1290,11 +1291,11 @@ class GoogleCloudApigeeV1TlsInfoCommonNameArgs:
 @pulumi.input_type
 class GoogleCloudApigeeV1TraceSamplingConfigArgs:
     def __init__(__self__, *,
-                 sampler: Optional[pulumi.Input[str]] = None,
+                 sampler: Optional[pulumi.Input['GoogleCloudApigeeV1TraceSamplingConfigSampler']] = None,
                  sampling_rate: Optional[pulumi.Input[float]] = None):
         """
         TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
-        :param pulumi.Input[str] sampler: Sampler of distributed tracing. OFF is the default value.
+        :param pulumi.Input['GoogleCloudApigeeV1TraceSamplingConfigSampler'] sampler: Sampler of distributed tracing. OFF is the default value.
         :param pulumi.Input[float] sampling_rate: Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
         """
         if sampler is not None:
@@ -1304,14 +1305,14 @@ class GoogleCloudApigeeV1TraceSamplingConfigArgs:
 
     @property
     @pulumi.getter
-    def sampler(self) -> Optional[pulumi.Input[str]]:
+    def sampler(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1TraceSamplingConfigSampler']]:
         """
         Sampler of distributed tracing. OFF is the default value.
         """
         return pulumi.get(self, "sampler")
 
     @sampler.setter
-    def sampler(self, value: Optional[pulumi.Input[str]]):
+    def sampler(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1TraceSamplingConfigSampler']]):
         pulumi.set(self, "sampler", value)
 
     @property
@@ -1371,11 +1372,11 @@ class GoogleIamV1AuditConfigArgs:
 class GoogleIamV1AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['GoogleIamV1AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['GoogleIamV1AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -1396,14 +1397,14 @@ class GoogleIamV1AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['GoogleIamV1AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['GoogleIamV1AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ArtifactArgs',
@@ -534,13 +535,13 @@ class BuildProvenanceArgs:
 class BuildSignatureArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None,
-                 key_type: Optional[pulumi.Input[str]] = None,
+                 key_type: Optional[pulumi.Input['BuildSignatureKeyType']] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None):
         """
         Message encapsulating the signature of the verified build.
         :param pulumi.Input[str] key_id: An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
-        :param pulumi.Input[str] key_type: The type of the key, either stored in `public_key` or referenced in `key_id`
+        :param pulumi.Input['BuildSignatureKeyType'] key_type: The type of the key, either stored in `public_key` or referenced in `key_id`
         :param pulumi.Input[str] public_key: Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
         :param pulumi.Input[str] signature: Signature of the related `BuildProvenance`, encoded in a base64 string.
         """
@@ -567,14 +568,14 @@ class BuildSignatureArgs:
 
     @property
     @pulumi.getter(name="keyType")
-    def key_type(self) -> Optional[pulumi.Input[str]]:
+    def key_type(self) -> Optional[pulumi.Input['BuildSignatureKeyType']]:
         """
         The type of the key, either stored in `public_key` or referenced in `key_id`
         """
         return pulumi.get(self, "key_type")
 
     @key_type.setter
-    def key_type(self, value: Optional[pulumi.Input[str]]):
+    def key_type(self, value: Optional[pulumi.Input['BuildSignatureKeyType']]):
         pulumi.set(self, "key_type", value)
 
     @property
@@ -776,7 +777,7 @@ class DeploymentArgs:
                  address: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  deploy_time: Optional[pulumi.Input[str]] = None,
-                 platform: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input['DeploymentPlatform']] = None,
                  resource_uri: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  undeploy_time: Optional[pulumi.Input[str]] = None,
                  user_email: Optional[pulumi.Input[str]] = None):
@@ -785,7 +786,7 @@ class DeploymentArgs:
         :param pulumi.Input[str] address: Address of the runtime element hosting this deployment.
         :param pulumi.Input[str] config: Configuration used to create this deployment.
         :param pulumi.Input[str] deploy_time: Beginning of the lifetime of this deployment.
-        :param pulumi.Input[str] platform: Platform hosting this deployment.
+        :param pulumi.Input['DeploymentPlatform'] platform: Platform hosting this deployment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_uri: Resource URI for the artifact being deployed taken from the deployable field with the same name.
         :param pulumi.Input[str] undeploy_time: End of the lifetime of this deployment.
         :param pulumi.Input[str] user_email: Identity of the user that triggered this deployment.
@@ -843,14 +844,14 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[str]]:
+    def platform(self) -> Optional[pulumi.Input['DeploymentPlatform']]:
         """
         Platform hosting this deployment.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[str]]):
+    def platform(self, value: Optional[pulumi.Input['DeploymentPlatform']]):
         pulumi.set(self, "platform", value)
 
     @property
@@ -1149,15 +1150,15 @@ class DetailArgs:
 @pulumi.input_type
 class DiscoveredArgs:
     def __init__(__self__, *,
-                 analysis_status: Optional[pulumi.Input[str]] = None,
+                 analysis_status: Optional[pulumi.Input['DiscoveredAnalysisStatus']] = None,
                  analysis_status_error: Optional[pulumi.Input['StatusArgs']] = None,
-                 continuous_analysis: Optional[pulumi.Input[str]] = None,
+                 continuous_analysis: Optional[pulumi.Input['DiscoveredContinuousAnalysis']] = None,
                  cpe: Optional[pulumi.Input[str]] = None):
         """
         Provides information about the scan status of a discovered resource.
-        :param pulumi.Input[str] analysis_status: The status of discovery for the resource.
+        :param pulumi.Input['DiscoveredAnalysisStatus'] analysis_status: The status of discovery for the resource.
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
-        :param pulumi.Input[str] continuous_analysis: Whether the resource is continuously analyzed.
+        :param pulumi.Input['DiscoveredContinuousAnalysis'] continuous_analysis: Whether the resource is continuously analyzed.
         :param pulumi.Input[str] cpe: The CPE of the resource being scanned.
         """
         if analysis_status is not None:
@@ -1171,14 +1172,14 @@ class DiscoveredArgs:
 
     @property
     @pulumi.getter(name="analysisStatus")
-    def analysis_status(self) -> Optional[pulumi.Input[str]]:
+    def analysis_status(self) -> Optional[pulumi.Input['DiscoveredAnalysisStatus']]:
         """
         The status of discovery for the resource.
         """
         return pulumi.get(self, "analysis_status")
 
     @analysis_status.setter
-    def analysis_status(self, value: Optional[pulumi.Input[str]]):
+    def analysis_status(self, value: Optional[pulumi.Input['DiscoveredAnalysisStatus']]):
         pulumi.set(self, "analysis_status", value)
 
     @property
@@ -1195,14 +1196,14 @@ class DiscoveredArgs:
 
     @property
     @pulumi.getter(name="continuousAnalysis")
-    def continuous_analysis(self) -> Optional[pulumi.Input[str]]:
+    def continuous_analysis(self) -> Optional[pulumi.Input['DiscoveredContinuousAnalysis']]:
         """
         Whether the resource is continuously analyzed.
         """
         return pulumi.get(self, "continuous_analysis")
 
     @continuous_analysis.setter
-    def continuous_analysis(self, value: Optional[pulumi.Input[str]]):
+    def continuous_analysis(self, value: Optional[pulumi.Input['DiscoveredContinuousAnalysis']]):
         pulumi.set(self, "continuous_analysis", value)
 
     @property
@@ -1221,31 +1222,31 @@ class DiscoveredArgs:
 @pulumi.input_type
 class DiscoveryArgs:
     def __init__(__self__, *,
-                 analysis_kind: Optional[pulumi.Input[str]] = None):
+                 analysis_kind: Optional[pulumi.Input['DiscoveryAnalysisKind']] = None):
         """
         A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
-        :param pulumi.Input[str] analysis_kind: The kind of analysis that is handled by this discovery.
+        :param pulumi.Input['DiscoveryAnalysisKind'] analysis_kind: The kind of analysis that is handled by this discovery.
         """
         if analysis_kind is not None:
             pulumi.set(__self__, "analysis_kind", analysis_kind)
 
     @property
     @pulumi.getter(name="analysisKind")
-    def analysis_kind(self) -> Optional[pulumi.Input[str]]:
+    def analysis_kind(self) -> Optional[pulumi.Input['DiscoveryAnalysisKind']]:
         """
         The kind of analysis that is handled by this discovery.
         """
         return pulumi.get(self, "analysis_kind")
 
     @analysis_kind.setter
-    def analysis_kind(self, value: Optional[pulumi.Input[str]]):
+    def analysis_kind(self, value: Optional[pulumi.Input['DiscoveryAnalysisKind']]):
         pulumi.set(self, "analysis_kind", value)
 
 
 @pulumi.input_type
 class DistributionArgs:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[str]] = None,
+                 architecture: Optional[pulumi.Input['DistributionArchitecture']] = None,
                  cpe_uri: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  latest_version: Optional[pulumi.Input['VersionArgs']] = None,
@@ -1253,7 +1254,7 @@ class DistributionArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
-        :param pulumi.Input[str] architecture: The CPU architecture for which packages in this distribution channel were built
+        :param pulumi.Input['DistributionArchitecture'] architecture: The CPU architecture for which packages in this distribution channel were built
         :param pulumi.Input[str] cpe_uri: The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         :param pulumi.Input[str] description: The distribution channel-specific description of this package.
         :param pulumi.Input['VersionArgs'] latest_version: The latest available version of this package in this distribution channel.
@@ -1275,14 +1276,14 @@ class DistributionArgs:
 
     @property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[str]]:
+    def architecture(self) -> Optional[pulumi.Input['DistributionArchitecture']]:
         """
         The CPU architecture for which packages in this distribution channel were built
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[str]]):
+    def architecture(self, value: Optional[pulumi.Input['DistributionArchitecture']]):
         pulumi.set(self, "architecture", value)
 
     @property
@@ -1477,11 +1478,11 @@ class FingerprintArgs:
 @pulumi.input_type
 class GoogleDevtoolsContaineranalysisV1alpha1AliasContextArgs:
     def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         An alias to a repo revision.
-        :param pulumi.Input[str] kind: The alias kind.
+        :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind'] kind: The alias kind.
         :param pulumi.Input[str] name: The alias name.
         """
         if kind is not None:
@@ -1491,14 +1492,14 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContextArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind']]:
         """
         The alias kind.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -1837,11 +1838,11 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs:
 @pulumi.input_type
 class HashArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['HashType']] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         Container message for hash values.
-        :param pulumi.Input[str] type: The type of hash that was performed.
+        :param pulumi.Input['HashType'] type: The type of hash that was performed.
         :param pulumi.Input[str] value: The hash value.
         """
         if type is not None:
@@ -1851,14 +1852,14 @@ class HashArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['HashType']]:
         """
         The type of hash that was performed.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['HashType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -1918,11 +1919,11 @@ class InstallationArgs:
 class LayerArgs:
     def __init__(__self__, *,
                  arguments: Optional[pulumi.Input[str]] = None,
-                 directive: Optional[pulumi.Input[str]] = None):
+                 directive: Optional[pulumi.Input['LayerDirective']] = None):
         """
         Layer holds metadata specific to a layer of a Docker image.
         :param pulumi.Input[str] arguments: The recovered arguments to the Dockerfile directive.
-        :param pulumi.Input[str] directive: The recovered Dockerfile directive used to construct this layer.
+        :param pulumi.Input['LayerDirective'] directive: The recovered Dockerfile directive used to construct this layer.
         """
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
@@ -1943,14 +1944,14 @@ class LayerArgs:
 
     @property
     @pulumi.getter
-    def directive(self) -> Optional[pulumi.Input[str]]:
+    def directive(self) -> Optional[pulumi.Input['LayerDirective']]:
         """
         The recovered Dockerfile directive used to construct this layer.
         """
         return pulumi.get(self, "directive")
 
     @directive.setter
-    def directive(self, value: Optional[pulumi.Input[str]]):
+    def directive(self, value: Optional[pulumi.Input['LayerDirective']]):
         pulumi.set(self, "directive", value)
 
 
@@ -2105,12 +2106,12 @@ class PackageIssueArgs:
 @pulumi.input_type
 class PgpSignedAttestationArgs:
     def __init__(__self__, *,
-                 content_type: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input['PgpSignedAttestationContentType']] = None,
                  pgp_key_id: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None):
         """
         An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
-        :param pulumi.Input[str] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+        :param pulumi.Input['PgpSignedAttestationContentType'] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         :param pulumi.Input[str] pgp_key_id: The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
         :param pulumi.Input[str] signature: The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
         """
@@ -2123,14 +2124,14 @@ class PgpSignedAttestationArgs:
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[str]]:
+    def content_type(self) -> Optional[pulumi.Input['PgpSignedAttestationContentType']]:
         """
         Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[str]]):
+    def content_type(self, value: Optional[pulumi.Input['PgpSignedAttestationContentType']]):
         pulumi.set(self, "content_type", value)
 
     @property
@@ -2747,14 +2748,14 @@ class VersionArgs:
     def __init__(__self__, *,
                  epoch: Optional[pulumi.Input[int]] = None,
                  inclusive: Optional[pulumi.Input[bool]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['VersionKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[str]] = None):
         """
         Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         :param pulumi.Input[int] epoch: Used to correct mistakes in the version numbering scheme.
         :param pulumi.Input[bool] inclusive: Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
-        :param pulumi.Input[str] kind: Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
+        :param pulumi.Input['VersionKind'] kind: Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
         :param pulumi.Input[str] name: The main part of the version name.
         :param pulumi.Input[str] revision: The iteration of the package build from the above version.
         """
@@ -2795,14 +2796,14 @@ class VersionArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['VersionKind']]:
         """
         Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['VersionKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -2834,16 +2835,16 @@ class VersionArgs:
 class VulnerabilityDetailsArgs:
     def __init__(__self__, *,
                  cvss_score: Optional[pulumi.Input[float]] = None,
-                 effective_severity: Optional[pulumi.Input[str]] = None,
+                 effective_severity: Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']] = None,
                  package_issue: Optional[pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input['VulnerabilityDetailsSeverity']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
         :param pulumi.Input[float] cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
-        :param pulumi.Input[str] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        :param pulumi.Input['VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
-        :param pulumi.Input[str] severity: The note provider assigned Severity of the vulnerability.
+        :param pulumi.Input['VulnerabilityDetailsSeverity'] severity: The note provider assigned Severity of the vulnerability.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
         if cvss_score is not None:
@@ -2871,14 +2872,14 @@ class VulnerabilityDetailsArgs:
 
     @property
     @pulumi.getter(name="effectiveSeverity")
-    def effective_severity(self) -> Optional[pulumi.Input[str]]:
+    def effective_severity(self) -> Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']]:
         """
         The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         """
         return pulumi.get(self, "effective_severity")
 
     @effective_severity.setter
-    def effective_severity(self, value: Optional[pulumi.Input[str]]):
+    def effective_severity(self, value: Optional[pulumi.Input['VulnerabilityDetailsEffectiveSeverity']]):
         pulumi.set(self, "effective_severity", value)
 
     @property
@@ -2895,14 +2896,14 @@ class VulnerabilityDetailsArgs:
 
     @property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
+    def severity(self) -> Optional[pulumi.Input['VulnerabilityDetailsSeverity']]:
         """
         The note provider assigned Severity of the vulnerability.
         """
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
+    def severity(self, value: Optional[pulumi.Input['VulnerabilityDetailsSeverity']]):
         pulumi.set(self, "severity", value)
 
     @property
@@ -2979,12 +2980,12 @@ class VulnerabilityTypeArgs:
     def __init__(__self__, *,
                  cvss_score: Optional[pulumi.Input[float]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input['DetailArgs']]]] = None,
-                 severity: Optional[pulumi.Input[str]] = None):
+                 severity: Optional[pulumi.Input['VulnerabilityTypeSeverity']] = None):
         """
         VulnerabilityType provides metadata about a security vulnerability.
         :param pulumi.Input[float] cvss_score: The CVSS score for this Vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['DetailArgs']]] details: All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
-        :param pulumi.Input[str] severity: Note provider assigned impact of the vulnerability
+        :param pulumi.Input['VulnerabilityTypeSeverity'] severity: Note provider assigned impact of the vulnerability
         """
         if cvss_score is not None:
             pulumi.set(__self__, "cvss_score", cvss_score)
@@ -3019,14 +3020,14 @@ class VulnerabilityTypeArgs:
 
     @property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
+    def severity(self) -> Optional[pulumi.Input['VulnerabilityTypeSeverity']]:
         """
         Note provider assigned impact of the vulnerability
         """
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
+    def severity(self, value: Optional[pulumi.Input['VulnerabilityTypeSeverity']]):
         pulumi.set(self, "severity", value)
 
 

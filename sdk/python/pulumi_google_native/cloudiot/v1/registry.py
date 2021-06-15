@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RegistryArgs', 'Registry']
@@ -21,7 +22,7 @@ class RegistryArgs:
                  event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EventNotificationConfigArgs']]]] = None,
                  http_config: Optional[pulumi.Input['HttpConfigArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 log_level: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input['RegistryLogLevel']] = None,
                  mqtt_config: Optional[pulumi.Input['MqttConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state_notification_config: Optional[pulumi.Input['StateNotificationConfigArgs']] = None):
@@ -31,7 +32,7 @@ class RegistryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EventNotificationConfigArgs']]] event_notification_configs: The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
         :param pulumi.Input['HttpConfigArgs'] http_config: The DeviceService (HTTP) configuration for this device registry.
         :param pulumi.Input[str] id: The identifier of this device registry. For example, `myRegistry`.
-        :param pulumi.Input[str] log_level: **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
+        :param pulumi.Input['RegistryLogLevel'] log_level: **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
         :param pulumi.Input['MqttConfigArgs'] mqtt_config: The MQTT configuration for this device registry.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
         :param pulumi.Input['StateNotificationConfigArgs'] state_notification_config: The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
@@ -123,14 +124,14 @@ class RegistryArgs:
 
     @property
     @pulumi.getter(name="logLevel")
-    def log_level(self) -> Optional[pulumi.Input[str]]:
+    def log_level(self) -> Optional[pulumi.Input['RegistryLogLevel']]:
         """
         **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
         """
         return pulumi.get(self, "log_level")
 
     @log_level.setter
-    def log_level(self, value: Optional[pulumi.Input[str]]):
+    def log_level(self, value: Optional[pulumi.Input['RegistryLogLevel']]):
         pulumi.set(self, "log_level", value)
 
     @property
@@ -180,7 +181,7 @@ class Registry(pulumi.CustomResource):
                  http_config: Optional[pulumi.Input[pulumi.InputType['HttpConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 log_level: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input['RegistryLogLevel']] = None,
                  mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -195,7 +196,7 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventNotificationConfigArgs']]]] event_notification_configs: The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
         :param pulumi.Input[pulumi.InputType['HttpConfigArgs']] http_config: The DeviceService (HTTP) configuration for this device registry.
         :param pulumi.Input[str] id: The identifier of this device registry. For example, `myRegistry`.
-        :param pulumi.Input[str] log_level: **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
+        :param pulumi.Input['RegistryLogLevel'] log_level: **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
         :param pulumi.Input[pulumi.InputType['MqttConfigArgs']] mqtt_config: The MQTT configuration for this device registry.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
         :param pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']] state_notification_config: The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
@@ -229,7 +230,7 @@ class Registry(pulumi.CustomResource):
                  http_config: Optional[pulumi.Input[pulumi.InputType['HttpConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 log_level: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input['RegistryLogLevel']] = None,
                  mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

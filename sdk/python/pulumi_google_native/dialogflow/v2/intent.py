@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['IntentArgs', 'Intent']
@@ -18,7 +19,7 @@ class IntentArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
-                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,11 +39,11 @@ class IntentArgs:
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
                  root_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]] = None,
-                 webhook_state: Optional[pulumi.Input[str]] = None):
+                 webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None):
         """
         The set of arguments for constructing a Intent resource.
         :param pulumi.Input[str] action: Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+        :param pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         :param pulumi.Input[str] display_name: Required. The name of this intent.
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
@@ -60,7 +61,7 @@ class IntentArgs:
         :param pulumi.Input[bool] reset_contexts: Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
         :param pulumi.Input[str] root_followup_intent_name: Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]] training_phrases: Optional. The collection of examples that the agent is trained on.
-        :param pulumi.Input[str] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
+        :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -141,14 +142,14 @@ class IntentArgs:
 
     @property
     @pulumi.getter(name="defaultResponsePlatforms")
-    def default_response_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def default_response_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]]:
         """
         Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         """
         return pulumi.get(self, "default_response_platforms")
 
     @default_response_platforms.setter
-    def default_response_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def default_response_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]]):
         pulumi.set(self, "default_response_platforms", value)
 
     @property
@@ -375,14 +376,14 @@ class IntentArgs:
 
     @property
     @pulumi.getter(name="webhookState")
-    def webhook_state(self) -> Optional[pulumi.Input[str]]:
+    def webhook_state(self) -> Optional[pulumi.Input['IntentWebhookState']]:
         """
         Optional. Indicates whether webhooks are enabled for the intent.
         """
         return pulumi.get(self, "webhook_state")
 
     @webhook_state.setter
-    def webhook_state(self, value: Optional[pulumi.Input[str]]):
+    def webhook_state(self, value: Optional[pulumi.Input['IntentWebhookState']]):
         pulumi.set(self, "webhook_state", value)
 
 
@@ -392,7 +393,7 @@ class Intent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -414,7 +415,7 @@ class Intent(pulumi.CustomResource):
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
                  root_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]] = None,
-                 webhook_state: Optional[pulumi.Input[str]] = None,
+                 webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
         """
         Creates an intent in the specified agent.
@@ -422,7 +423,7 @@ class Intent(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+        :param pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         :param pulumi.Input[str] display_name: Required. The name of this intent.
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
@@ -440,7 +441,7 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[bool] reset_contexts: Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
         :param pulumi.Input[str] root_followup_intent_name: Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]] training_phrases: Optional. The collection of examples that the agent is trained on.
-        :param pulumi.Input[str] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
+        :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
         ...
     @overload
@@ -467,7 +468,7 @@ class Intent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -489,7 +490,7 @@ class Intent(pulumi.CustomResource):
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
                  root_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]] = None,
-                 webhook_state: Optional[pulumi.Input[str]] = None,
+                 webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

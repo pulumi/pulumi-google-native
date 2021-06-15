@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['RegionHealthCheckServiceArgs', 'RegionHealthCheckService']
 
@@ -19,7 +20,7 @@ class RegionHealthCheckServiceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
+                 health_status_aggregation_policy: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,7 +36,7 @@ class RegionHealthCheckServiceArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
-        :param pulumi.Input[str] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
+        :param pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy'] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
                - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
                - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -146,7 +147,7 @@ class RegionHealthCheckServiceArgs:
 
     @property
     @pulumi.getter(name="healthStatusAggregationPolicy")
-    def health_status_aggregation_policy(self) -> Optional[pulumi.Input[str]]:
+    def health_status_aggregation_policy(self) -> Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']]:
         """
         Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
         - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
@@ -155,7 +156,7 @@ class RegionHealthCheckServiceArgs:
         return pulumi.get(self, "health_status_aggregation_policy")
 
     @health_status_aggregation_policy.setter
-    def health_status_aggregation_policy(self, value: Optional[pulumi.Input[str]]):
+    def health_status_aggregation_policy(self, value: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']]):
         pulumi.set(self, "health_status_aggregation_policy", value)
 
     @property
@@ -261,7 +262,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
+                 health_status_aggregation_policy: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -282,7 +283,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
-        :param pulumi.Input[str] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
+        :param pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy'] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
                - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
                - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -322,7 +323,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
+                 health_status_aggregation_policy: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

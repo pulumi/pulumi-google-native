@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ServiceAttachmentArgs', 'ServiceAttachment']
@@ -18,7 +19,7 @@ class ServiceAttachmentArgs:
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
-                 connection_preference: Optional[pulumi.Input[str]] = None,
+                 connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerForwardingRuleArgs']]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -36,7 +37,7 @@ class ServiceAttachmentArgs:
         The set of arguments for constructing a ServiceAttachment resource.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: [Output Only] An array of connections for all the consumers connected to this service attachment.
-        :param pulumi.Input[str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+        :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerForwardingRuleArgs']]] consumer_forwarding_rules: [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -118,14 +119,14 @@ class ServiceAttachmentArgs:
 
     @property
     @pulumi.getter(name="connectionPreference")
-    def connection_preference(self) -> Optional[pulumi.Input[str]]:
+    def connection_preference(self) -> Optional[pulumi.Input['ServiceAttachmentConnectionPreference']]:
         """
         The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         """
         return pulumi.get(self, "connection_preference")
 
     @connection_preference.setter
-    def connection_preference(self, value: Optional[pulumi.Input[str]]):
+    def connection_preference(self, value: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']]):
         pulumi.set(self, "connection_preference", value)
 
     @property
@@ -288,7 +289,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]]] = None,
-                 connection_preference: Optional[pulumi.Input[str]] = None,
+                 connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -311,7 +312,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]] connected_endpoints: [Output Only] An array of connections for all the consumers connected to this service attachment.
-        :param pulumi.Input[str] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+        :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]] consumer_forwarding_rules: [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -351,7 +352,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]]] = None,
-                 connection_preference: Optional[pulumi.Input[str]] = None,
+                 connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,

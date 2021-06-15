@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ExperimentArgs', 'Experiment']
@@ -29,7 +30,7 @@ class ExperimentArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ExperimentState']] = None,
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] = None):
         """
         The set of arguments for constructing a Experiment resource.
@@ -43,7 +44,7 @@ class ExperimentArgs:
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs'] result: Inference result of the experiment.
         :param pulumi.Input[str] start_time: Start time of this experiment.
-        :param pulumi.Input[str] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]] variants_history: The history of updates to the experiment variants.
         """
         pulumi.set(__self__, "agent_id", agent_id)
@@ -233,14 +234,14 @@ class ExperimentArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['ExperimentState']]:
         """
         The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['ExperimentState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -275,7 +276,7 @@ class Experiment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ExperimentState']] = None,
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]]] = None,
                  __props__=None):
         """
@@ -293,7 +294,7 @@ class Experiment(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']] result: Inference result of the experiment.
         :param pulumi.Input[str] start_time: Start time of this experiment.
-        :param pulumi.Input[str] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] variants_history: The history of updates to the experiment variants.
         """
         ...
@@ -334,7 +335,7 @@ class Experiment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ExperimentState']] = None,
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]]] = None,
                  __props__=None):
         if opts is None:

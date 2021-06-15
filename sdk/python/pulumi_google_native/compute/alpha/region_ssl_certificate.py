@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RegionSslCertificateArgs', 'RegionSslCertificate']
@@ -31,7 +32,7 @@ class RegionSslCertificateArgs:
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input['SslCertificateSelfManagedSslCertificateArgs']] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['RegionSslCertificateType']] = None):
         """
         The set of arguments for constructing a RegionSslCertificate resource.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
@@ -48,7 +49,7 @@ class RegionSslCertificateArgs:
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['SslCertificateSelfManagedSslCertificateArgs'] self_managed: Configuration and status of a self-managed SSL certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: [Output Only] Domains associated with the certificate via Subject Alternative Name.
-        :param pulumi.Input[str] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+        :param pulumi.Input['RegionSslCertificateType'] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -271,14 +272,14 @@ class RegionSslCertificateArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['RegionSslCertificateType']]:
         """
         (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['RegionSslCertificateType']]):
         pulumi.set(self, "type", value)
 
 
@@ -303,7 +304,7 @@ class RegionSslCertificate(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']]] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['RegionSslCertificateType']] = None,
                  __props__=None):
         """
         Creates a SslCertificate resource in the specified project and region using the data included in the request
@@ -324,7 +325,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']] self_managed: Configuration and status of a self-managed SSL certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: [Output Only] Domains associated with the certificate via Subject Alternative Name.
-        :param pulumi.Input[str] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+        :param pulumi.Input['RegionSslCertificateType'] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
         ...
     @overload
@@ -366,7 +367,7 @@ class RegionSslCertificate(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input[pulumi.InputType['SslCertificateSelfManagedSslCertificateArgs']]] = None,
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['RegionSslCertificateType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

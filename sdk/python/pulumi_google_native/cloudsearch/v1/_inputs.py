@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'CompositeFilterArgs',
@@ -29,10 +30,10 @@ __all__ = [
 @pulumi.input_type
 class CompositeFilterArgs:
     def __init__(__self__, *,
-                 logic_operator: Optional[pulumi.Input[str]] = None,
+                 logic_operator: Optional[pulumi.Input['CompositeFilterLogicOperator']] = None,
                  sub_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FilterArgs']]]] = None):
         """
-        :param pulumi.Input[str] logic_operator: The logic operator of the sub filter.
+        :param pulumi.Input['CompositeFilterLogicOperator'] logic_operator: The logic operator of the sub filter.
         :param pulumi.Input[Sequence[pulumi.Input['FilterArgs']]] sub_filters: Sub filters.
         """
         if logic_operator is not None:
@@ -42,14 +43,14 @@ class CompositeFilterArgs:
 
     @property
     @pulumi.getter(name="logicOperator")
-    def logic_operator(self) -> Optional[pulumi.Input[str]]:
+    def logic_operator(self) -> Optional[pulumi.Input['CompositeFilterLogicOperator']]:
         """
         The logic operator of the sub filter.
         """
         return pulumi.get(self, "logic_operator")
 
     @logic_operator.setter
-    def logic_operator(self, value: Optional[pulumi.Input[str]]):
+    def logic_operator(self, value: Optional[pulumi.Input['CompositeFilterLogicOperator']]):
         pulumi.set(self, "logic_operator", value)
 
     @property
@@ -404,10 +405,10 @@ class ScoringConfigArgs:
 class SortOptionsArgs:
     def __init__(__self__, *,
                  operator_name: Optional[pulumi.Input[str]] = None,
-                 sort_order: Optional[pulumi.Input[str]] = None):
+                 sort_order: Optional[pulumi.Input['SortOptionsSortOrder']] = None):
         """
         :param pulumi.Input[str] operator_name: Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
-        :param pulumi.Input[str] sort_order: Ascending is the default sort order
+        :param pulumi.Input['SortOptionsSortOrder'] sort_order: Ascending is the default sort order
         """
         if operator_name is not None:
             pulumi.set(__self__, "operator_name", operator_name)
@@ -428,14 +429,14 @@ class SortOptionsArgs:
 
     @property
     @pulumi.getter(name="sortOrder")
-    def sort_order(self) -> Optional[pulumi.Input[str]]:
+    def sort_order(self) -> Optional[pulumi.Input['SortOptionsSortOrder']]:
         """
         Ascending is the default sort order
         """
         return pulumi.get(self, "sort_order")
 
     @sort_order.setter
-    def sort_order(self, value: Optional[pulumi.Input[str]]):
+    def sort_order(self, value: Optional[pulumi.Input['SortOptionsSortOrder']]):
         pulumi.set(self, "sort_order", value)
 
 
@@ -443,11 +444,11 @@ class SortOptionsArgs:
 class SourceArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 predefined_source: Optional[pulumi.Input[str]] = None):
+                 predefined_source: Optional[pulumi.Input['SourcePredefinedSource']] = None):
         """
         Defines sources for the suggest/search APIs.
         :param pulumi.Input[str] name: Source name for content indexed by the Indexing API.
-        :param pulumi.Input[str] predefined_source: Predefined content source for Google Apps.
+        :param pulumi.Input['SourcePredefinedSource'] predefined_source: Predefined content source for Google Apps.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -468,14 +469,14 @@ class SourceArgs:
 
     @property
     @pulumi.getter(name="predefinedSource")
-    def predefined_source(self) -> Optional[pulumi.Input[str]]:
+    def predefined_source(self) -> Optional[pulumi.Input['SourcePredefinedSource']]:
         """
         Predefined content source for Google Apps.
         """
         return pulumi.get(self, "predefined_source")
 
     @predefined_source.setter
-    def predefined_source(self, value: Optional[pulumi.Input[str]]):
+    def predefined_source(self, value: Optional[pulumi.Input['SourcePredefinedSource']]):
         pulumi.set(self, "predefined_source", value)
 
 
@@ -578,24 +579,24 @@ class SourceCrowdingConfigArgs:
 @pulumi.input_type
 class SourceScoringConfigArgs:
     def __init__(__self__, *,
-                 source_importance: Optional[pulumi.Input[str]] = None):
+                 source_importance: Optional[pulumi.Input['SourceScoringConfigSourceImportance']] = None):
         """
         Set the scoring configuration. This allows modifying the ranking of results for a source.
-        :param pulumi.Input[str] source_importance: Importance of the source.
+        :param pulumi.Input['SourceScoringConfigSourceImportance'] source_importance: Importance of the source.
         """
         if source_importance is not None:
             pulumi.set(__self__, "source_importance", source_importance)
 
     @property
     @pulumi.getter(name="sourceImportance")
-    def source_importance(self) -> Optional[pulumi.Input[str]]:
+    def source_importance(self) -> Optional[pulumi.Input['SourceScoringConfigSourceImportance']]:
         """
         Importance of the source.
         """
         return pulumi.get(self, "source_importance")
 
     @source_importance.setter
-    def source_importance(self, value: Optional[pulumi.Input[str]]):
+    def source_importance(self, value: Optional[pulumi.Input['SourceScoringConfigSourceImportance']]):
         pulumi.set(self, "source_importance", value)
 
 

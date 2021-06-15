@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['IndexArgs', 'Index']
@@ -20,14 +21,14 @@ class IndexArgs:
                  project: pulumi.Input[str],
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 query_scope: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 query_scope: Optional[pulumi.Input['IndexQueryScope']] = None,
+                 state: Optional[pulumi.Input['IndexState']] = None):
         """
         The set of arguments for constructing a Index resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]] fields: The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
         :param pulumi.Input[str] name: A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-        :param pulumi.Input[str] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-        :param pulumi.Input[str] state: The serving state of the index.
+        :param pulumi.Input['IndexQueryScope'] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
+        :param pulumi.Input['IndexState'] state: The serving state of the index.
         """
         pulumi.set(__self__, "collection_group_id", collection_group_id)
         pulumi.set(__self__, "database_id", database_id)
@@ -94,26 +95,26 @@ class IndexArgs:
 
     @property
     @pulumi.getter(name="queryScope")
-    def query_scope(self) -> Optional[pulumi.Input[str]]:
+    def query_scope(self) -> Optional[pulumi.Input['IndexQueryScope']]:
         """
         Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         """
         return pulumi.get(self, "query_scope")
 
     @query_scope.setter
-    def query_scope(self, value: Optional[pulumi.Input[str]]):
+    def query_scope(self, value: Optional[pulumi.Input['IndexQueryScope']]):
         pulumi.set(self, "query_scope", value)
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['IndexState']]:
         """
         The serving state of the index.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['IndexState']]):
         pulumi.set(self, "state", value)
 
 
@@ -127,8 +128,8 @@ class Index(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query_scope: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 query_scope: Optional[pulumi.Input['IndexQueryScope']] = None,
+                 state: Optional[pulumi.Input['IndexState']] = None,
                  __props__=None):
         """
         Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
@@ -137,8 +138,8 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]] fields: The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
         :param pulumi.Input[str] name: A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-        :param pulumi.Input[str] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-        :param pulumi.Input[str] state: The serving state of the index.
+        :param pulumi.Input['IndexQueryScope'] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
+        :param pulumi.Input['IndexState'] state: The serving state of the index.
         """
         ...
     @overload
@@ -169,8 +170,8 @@ class Index(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query_scope: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 query_scope: Optional[pulumi.Input['IndexQueryScope']] = None,
+                 state: Optional[pulumi.Input['IndexState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

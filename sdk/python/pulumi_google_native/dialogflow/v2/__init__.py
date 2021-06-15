@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .context import *
 from .conversation import *
 from .conversation_profile import *

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['NodeTemplateArgs', 'NodeTemplate']
@@ -18,7 +19,7 @@ class NodeTemplateArgs:
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
+                 cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['LocalDiskArgs']]]] = None,
@@ -32,12 +33,12 @@ class NodeTemplateArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input['ServerBindingArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodeTemplateStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodeTemplate resource.
         :param pulumi.Input[str] region: [Output Only] The name of the region where the node template resides, such as us-central1.
-        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
+        :param pulumi.Input['NodeTemplateCpuOvercommitType'] cpu_overcommit_type: CPU overcommit.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -55,7 +56,7 @@ class NodeTemplateArgs:
                - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
                
                See Sole-tenant node options for more information.
-        :param pulumi.Input[str] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+        :param pulumi.Input['NodeTemplateStatus'] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
         pulumi.set(__self__, "project", project)
@@ -127,14 +128,14 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter(name="cpuOvercommitType")
-    def cpu_overcommit_type(self) -> Optional[pulumi.Input[str]]:
+    def cpu_overcommit_type(self) -> Optional[pulumi.Input['NodeTemplateCpuOvercommitType']]:
         """
         CPU overcommit.
         """
         return pulumi.get(self, "cpu_overcommit_type")
 
     @cpu_overcommit_type.setter
-    def cpu_overcommit_type(self, value: Optional[pulumi.Input[str]]):
+    def cpu_overcommit_type(self, value: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']]):
         pulumi.set(self, "cpu_overcommit_type", value)
 
     @property
@@ -295,14 +296,14 @@ class NodeTemplateArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['NodeTemplateStatus']]:
         """
         [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['NodeTemplateStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -324,7 +325,7 @@ class NodeTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
+                 cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
@@ -340,7 +341,7 @@ class NodeTemplate(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodeTemplateStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -348,7 +349,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
+        :param pulumi.Input['NodeTemplateCpuOvercommitType'] cpu_overcommit_type: CPU overcommit.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -367,7 +368,7 @@ class NodeTemplate(pulumi.CustomResource):
                - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
                
                See Sole-tenant node options for more information.
-        :param pulumi.Input[str] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+        :param pulumi.Input['NodeTemplateStatus'] status: [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         """
         ...
@@ -395,7 +396,7 @@ class NodeTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
+                 cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
@@ -411,7 +412,7 @@ class NodeTemplate(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['NodeTemplateStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DomainArgs', 'Domain']
@@ -26,7 +27,7 @@ class DomainArgs:
                  managed_identities_admin_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['DomainState']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  trusts: Optional[pulumi.Input[Sequence[pulumi.Input['TrustArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -41,7 +42,7 @@ class DomainArgs:
         :param pulumi.Input[str] managed_identities_admin_name: Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
         :param pulumi.Input[str] name: Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-        :param pulumi.Input[str] state: The current state of this domain.
+        :param pulumi.Input['DomainState'] state: The current state of this domain.
         :param pulumi.Input[str] status_message: Additional information about the current status of this domain, if available.
         :param pulumi.Input[Sequence[pulumi.Input['TrustArgs']]] trusts: The current trusts associated with the domain.
         :param pulumi.Input[str] update_time: Last update time. Synthetic field is populated automatically by CCFE.
@@ -204,14 +205,14 @@ class DomainArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['DomainState']]:
         """
         The current state of this domain.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['DomainState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -267,7 +268,7 @@ class Domain(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['DomainState']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  trusts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustArgs']]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -286,7 +287,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] managed_identities_admin_name: Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
         :param pulumi.Input[str] name: Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-        :param pulumi.Input[str] state: The current state of this domain.
+        :param pulumi.Input['DomainState'] state: The current state of this domain.
         :param pulumi.Input[str] status_message: Additional information about the current status of this domain, if available.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustArgs']]]] trusts: The current trusts associated with the domain.
         :param pulumi.Input[str] update_time: Last update time. Synthetic field is populated automatically by CCFE.
@@ -326,7 +327,7 @@ class Domain(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['DomainState']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  trusts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustArgs']]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,

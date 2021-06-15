@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['BackupRunArgs', 'BackupRun']
@@ -17,7 +18,7 @@ class BackupRunArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 backup_kind: Optional[pulumi.Input[str]] = None,
+                 backup_kind: Optional[pulumi.Input['BackupRunBackupKind']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input['DiskEncryptionConfigurationArgs']] = None,
                  disk_encryption_status: Optional[pulumi.Input['DiskEncryptionStatusArgs']] = None,
@@ -29,13 +30,13 @@ class BackupRunArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['BackupRunStatus']] = None,
+                 type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BackupRun resource.
         :param pulumi.Input[str] instance: Name of the database instance.
-        :param pulumi.Input[str] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+        :param pulumi.Input['BackupRunBackupKind'] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Encryption configuration specific to a backup. Applies only to Second Generation instances.
         :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Encryption status specific to a backup. Applies only to Second Generation instances.
@@ -47,8 +48,8 @@ class BackupRunArgs:
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-        :param pulumi.Input[str] status: The status of this run.
-        :param pulumi.Input[str] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        :param pulumi.Input['BackupRunStatus'] status: The status of this run.
+        :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         """
         pulumi.set(__self__, "instance", instance)
@@ -107,14 +108,14 @@ class BackupRunArgs:
 
     @property
     @pulumi.getter(name="backupKind")
-    def backup_kind(self) -> Optional[pulumi.Input[str]]:
+    def backup_kind(self) -> Optional[pulumi.Input['BackupRunBackupKind']]:
         """
         Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         """
         return pulumi.get(self, "backup_kind")
 
     @backup_kind.setter
-    def backup_kind(self, value: Optional[pulumi.Input[str]]):
+    def backup_kind(self, value: Optional[pulumi.Input['BackupRunBackupKind']]):
         pulumi.set(self, "backup_kind", value)
 
     @property
@@ -251,26 +252,26 @@ class BackupRunArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['BackupRunStatus']]:
         """
         The status of this run.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['BackupRunStatus']]):
         pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['BackupRunType']]:
         """
         The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['BackupRunType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -291,7 +292,7 @@ class BackupRun(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_kind: Optional[pulumi.Input[str]] = None,
+                 backup_kind: Optional[pulumi.Input['BackupRunBackupKind']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
@@ -305,8 +306,8 @@ class BackupRun(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['BackupRunStatus']] = None,
+                 type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -314,7 +315,7 @@ class BackupRun(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+        :param pulumi.Input['BackupRunBackupKind'] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Encryption configuration specific to a backup. Applies only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Encryption status specific to a backup. Applies only to Second Generation instances.
@@ -327,8 +328,8 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-        :param pulumi.Input[str] status: The status of this run.
-        :param pulumi.Input[str] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        :param pulumi.Input['BackupRunStatus'] status: The status of this run.
+        :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         """
         ...
@@ -355,7 +356,7 @@ class BackupRun(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_kind: Optional[pulumi.Input[str]] = None,
+                 backup_kind: Optional[pulumi.Input['BackupRunBackupKind']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
@@ -369,8 +370,8 @@ class BackupRun(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['BackupRunStatus']] = None,
+                 type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

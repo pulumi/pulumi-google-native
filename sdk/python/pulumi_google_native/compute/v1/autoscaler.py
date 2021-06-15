@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['AutoscalerArgs', 'Autoscaler']
@@ -28,7 +29,7 @@ class AutoscalerArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['AutoscalerStatus']] = None,
                  status_details: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerStatusDetailsArgs']]]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
@@ -46,7 +47,7 @@ class AutoscalerArgs:
         :param pulumi.Input[str] region: [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedule_status: [Output Only] Status information of existing scaling schedules.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+        :param pulumi.Input['AutoscalerStatus'] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
                - PENDING: Autoscaler backend hasn't read new/updated configuration. 
                - DELETING: Configuration is being deleted. 
                - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
@@ -239,7 +240,7 @@ class AutoscalerArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['AutoscalerStatus']]:
         """
         [Output Only] The status of the autoscaler configuration. Current set of possible values:  
         - PENDING: Autoscaler backend hasn't read new/updated configuration. 
@@ -250,7 +251,7 @@ class AutoscalerArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['AutoscalerStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -295,7 +296,7 @@ class Autoscaler(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['AutoscalerStatus']] = None,
                  status_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoscalerStatusDetailsArgs']]]]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -317,7 +318,7 @@ class Autoscaler(pulumi.CustomResource):
         :param pulumi.Input[str] region: [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedule_status: [Output Only] Status information of existing scaling schedules.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+        :param pulumi.Input['AutoscalerStatus'] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
                - PENDING: Autoscaler backend hasn't read new/updated configuration. 
                - DELETING: Configuration is being deleted. 
                - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
@@ -362,7 +363,7 @@ class Autoscaler(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['AutoscalerStatus']] = None,
                  status_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoscalerStatusDetailsArgs']]]]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
