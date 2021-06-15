@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// [Output Only] Metadata about this warning in key: value format. For example:
         /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
         /// </summary>
-        public readonly ImmutableArray<Outputs.SslPolicyDataItemResponse> Data;
+        public readonly ImmutableArray<Outputs.SslPolicyWarningsItemDataItemResponse> Data;
         /// <summary>
         /// [Output Only] A human-readable description of the warning code.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         private SslPolicyWarningsItemResponse(
             string code,
 
-            ImmutableArray<Outputs.SslPolicyDataItemResponse> data,
+            ImmutableArray<Outputs.SslPolicyWarningsItemDataItemResponse> data,
 
             string message)
         {

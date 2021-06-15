@@ -137,7 +137,7 @@ class GetSslPolicyResult:
 
     @property
     @pulumi.getter
-    def warnings(self) -> Sequence['outputs.GetSslPolicyWarningsItemResponse']:
+    def warnings(self) -> Sequence['outputs.SslPolicyWarningsItemResponse']:
         """
         [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """

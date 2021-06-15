@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// The parameters of the raw disk image.
         /// </summary>
-        public readonly Outputs.GetImageRawDiskResponse RawDisk;
+        public readonly Outputs.ImageRawDiskResponse RawDisk;
         /// <summary>
         /// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
         /// </summary>
@@ -219,7 +219,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string name,
 
-            Outputs.GetImageRawDiskResponse rawDisk,
+            Outputs.ImageRawDiskResponse rawDisk,
 
             Outputs.RolloutPolicyResponse rolloutOverride,
 

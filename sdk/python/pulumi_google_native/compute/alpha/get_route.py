@@ -237,7 +237,7 @@ class GetRouteResult:
 
     @property
     @pulumi.getter
-    def warnings(self) -> Sequence['outputs.GetRouteWarningsItemResponse']:
+    def warnings(self) -> Sequence['outputs.RouteWarningsItemResponse']:
         """
         [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """

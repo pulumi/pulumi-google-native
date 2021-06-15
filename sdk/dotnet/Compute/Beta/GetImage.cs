@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// <summary>
         /// The parameters of the raw disk image.
         /// </summary>
-        public readonly Outputs.GetImageRawDiskResponse RawDisk;
+        public readonly Outputs.ImageRawDiskResponse RawDisk;
         /// <summary>
         /// [Output Only] Reserved for future use.
         /// </summary>
@@ -211,7 +211,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string name,
 
-            Outputs.GetImageRawDiskResponse rawDisk,
+            Outputs.ImageRawDiskResponse rawDisk,
 
             bool satisfiesPzs,
 

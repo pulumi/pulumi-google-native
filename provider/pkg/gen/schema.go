@@ -102,7 +102,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				return nil, nil, err
 			}
 			// Generate a getXyz function for each Xyz resource.
-			err = gen.genFunction("get"+typeName, res[typeName])
+			err = gen.genFunction(typeName, res[typeName])
 			if err != nil {
 				return nil, nil, err
 			}
@@ -388,7 +388,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 }
 
 func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {
-	resourceTok := g.genToken(typeName)
+	resourceTok := g.genToken("get"+typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
@@ -459,7 +459,6 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		}
 		properties = responseBag.specs
 		requiredProperties = responseBag.requiredSpecs
-		g.escapeCSharpNames(typeName, properties)
 	}
 
 	functionSpec := schema.FunctionSpec{
@@ -637,7 +636,8 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 	case prop.Type == "any":
 		return &schema.TypeSpec{Ref: "pulumi.json#/Any"}, nil
 	case prop.Type == "object" && len(prop.Properties) > 0:
-		schemaName := fmt.Sprintf(`%s%s`, typeName, strings.Title(propName))
+		typePropName := fmt.Sprintf(`%s%s`, typeName, strings.Title(propName))
+		schemaName := typePropName
 		if isOutput {
 			schemaName += "Response"
 		}
@@ -646,7 +646,7 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			return nil, errors.Errorf("properties type name %q conflicts with a schema type", tok)
 		}
 		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
-		bag, err := g.genProperties(typeName, prop, "", isOutput)
+		bag, err := g.genProperties(typePropName, prop, "", isOutput)
 		if err != nil {
 			return nil, err
 		}
@@ -665,7 +665,8 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 	case prop.Type != "":
 		return &schema.TypeSpec{Type: prop.Type}, nil
 	case prop.Ref != "":
-		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, prop.Ref)
+		schemaName := prop.Ref
+		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, schemaName)
 		if isOutput {
 			tok += "Response"
 		}
@@ -674,8 +675,8 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 		if !g.visitedTypes.Has(tok) {
 			g.visitedTypes.Add(tok)
 
-			typeSchema := g.rest.Schemas[prop.Ref]
-			bag, err := g.genProperties(typeName, &typeSchema, "", isOutput)
+			typeSchema := g.rest.Schemas[schemaName]
+			bag, err := g.genProperties(schemaName, &typeSchema, "", isOutput)
 			if err != nil {
 				return nil, err
 			}
@@ -698,7 +699,7 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 	return nil, errors.New("unknown type")
 }
 
-func (m *packageGenerator) escapeCSharpNames(typeName string, resourceResponse map[string]schema.PropertySpec) {
+func (g *packageGenerator) escapeCSharpNames(typeName string, resourceResponse map[string]schema.PropertySpec) {
 	for name, swagger := range resourceResponse {
 		// C# doesn't allow properties to have the same name as its containing type.
 		if strings.Title(name) == typeName {

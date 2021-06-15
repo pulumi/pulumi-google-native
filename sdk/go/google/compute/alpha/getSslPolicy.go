@@ -51,5 +51,5 @@ type LookupSslPolicyResult struct {
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsResponse `pulumi:"tlsSettings"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings []GetSslPolicyWarningsItemResponse `pulumi:"warnings"`
+	Warnings []SslPolicyWarningsItemResponse `pulumi:"warnings"`
 }

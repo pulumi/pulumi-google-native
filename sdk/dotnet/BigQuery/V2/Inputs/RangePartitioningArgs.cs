@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// [TrustedTester] [Required] Defines the ranges for range partitioning.
         /// </summary>
         [Input("range")]
-        public Input<Inputs.JobRangeArgs>? Range { get; set; }
+        public Input<Inputs.RangePartitioningRangeArgs>? Range { get; set; }
 
         public RangePartitioningArgs()
         {

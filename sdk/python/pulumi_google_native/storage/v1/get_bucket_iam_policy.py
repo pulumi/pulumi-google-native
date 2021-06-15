@@ -36,7 +36,7 @@ class GetBucketIamPolicyResult:
 
     @property
     @pulumi.getter
-    def bindings(self) -> Sequence['outputs.GetBucketIamPolicyBindingsItemResponse']:
+    def bindings(self) -> Sequence['outputs.BucketIamPolicyBindingsItemResponse']:
         """
         An association between a role, which comes with a set of permissions, and members who may assume that role.
         """

@@ -1406,716 +1406,6 @@ func (o CollectionOverrideResponseArrayOutput) Index(i pulumi.IntInput) Collecti
 	}).(CollectionOverrideResponseOutput)
 }
 
-type CompositeTypeDataItem struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key *string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value *string `pulumi:"value"`
-}
-
-// CompositeTypeDataItemInput is an input type that accepts CompositeTypeDataItemArgs and CompositeTypeDataItemOutput values.
-// You can construct a concrete instance of `CompositeTypeDataItemInput` via:
-//
-//          CompositeTypeDataItemArgs{...}
-type CompositeTypeDataItemInput interface {
-	pulumi.Input
-
-	ToCompositeTypeDataItemOutput() CompositeTypeDataItemOutput
-	ToCompositeTypeDataItemOutputWithContext(context.Context) CompositeTypeDataItemOutput
-}
-
-type CompositeTypeDataItemArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (CompositeTypeDataItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeDataItem)(nil)).Elem()
-}
-
-func (i CompositeTypeDataItemArgs) ToCompositeTypeDataItemOutput() CompositeTypeDataItemOutput {
-	return i.ToCompositeTypeDataItemOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeDataItemArgs) ToCompositeTypeDataItemOutputWithContext(ctx context.Context) CompositeTypeDataItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeDataItemOutput)
-}
-
-// CompositeTypeDataItemArrayInput is an input type that accepts CompositeTypeDataItemArray and CompositeTypeDataItemArrayOutput values.
-// You can construct a concrete instance of `CompositeTypeDataItemArrayInput` via:
-//
-//          CompositeTypeDataItemArray{ CompositeTypeDataItemArgs{...} }
-type CompositeTypeDataItemArrayInput interface {
-	pulumi.Input
-
-	ToCompositeTypeDataItemArrayOutput() CompositeTypeDataItemArrayOutput
-	ToCompositeTypeDataItemArrayOutputWithContext(context.Context) CompositeTypeDataItemArrayOutput
-}
-
-type CompositeTypeDataItemArray []CompositeTypeDataItemInput
-
-func (CompositeTypeDataItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeDataItem)(nil)).Elem()
-}
-
-func (i CompositeTypeDataItemArray) ToCompositeTypeDataItemArrayOutput() CompositeTypeDataItemArrayOutput {
-	return i.ToCompositeTypeDataItemArrayOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeDataItemArray) ToCompositeTypeDataItemArrayOutputWithContext(ctx context.Context) CompositeTypeDataItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeDataItemArrayOutput)
-}
-
-type CompositeTypeDataItemOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeDataItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeDataItem)(nil)).Elem()
-}
-
-func (o CompositeTypeDataItemOutput) ToCompositeTypeDataItemOutput() CompositeTypeDataItemOutput {
-	return o
-}
-
-func (o CompositeTypeDataItemOutput) ToCompositeTypeDataItemOutputWithContext(ctx context.Context) CompositeTypeDataItemOutput {
-	return o
-}
-
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-func (o CompositeTypeDataItemOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeDataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] A warning data value corresponding to the key.
-func (o CompositeTypeDataItemOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeDataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type CompositeTypeDataItemArrayOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeDataItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeDataItem)(nil)).Elem()
-}
-
-func (o CompositeTypeDataItemArrayOutput) ToCompositeTypeDataItemArrayOutput() CompositeTypeDataItemArrayOutput {
-	return o
-}
-
-func (o CompositeTypeDataItemArrayOutput) ToCompositeTypeDataItemArrayOutputWithContext(ctx context.Context) CompositeTypeDataItemArrayOutput {
-	return o
-}
-
-func (o CompositeTypeDataItemArrayOutput) Index(i pulumi.IntInput) CompositeTypeDataItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeDataItem {
-		return vs[0].([]CompositeTypeDataItem)[vs[1].(int)]
-	}).(CompositeTypeDataItemOutput)
-}
-
-type CompositeTypeDataItemResponse struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key string `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value string `pulumi:"value"`
-}
-
-// CompositeTypeDataItemResponseInput is an input type that accepts CompositeTypeDataItemResponseArgs and CompositeTypeDataItemResponseOutput values.
-// You can construct a concrete instance of `CompositeTypeDataItemResponseInput` via:
-//
-//          CompositeTypeDataItemResponseArgs{...}
-type CompositeTypeDataItemResponseInput interface {
-	pulumi.Input
-
-	ToCompositeTypeDataItemResponseOutput() CompositeTypeDataItemResponseOutput
-	ToCompositeTypeDataItemResponseOutputWithContext(context.Context) CompositeTypeDataItemResponseOutput
-}
-
-type CompositeTypeDataItemResponseArgs struct {
-	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-	Key pulumi.StringInput `pulumi:"key"`
-	// [Output Only] A warning data value corresponding to the key.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (CompositeTypeDataItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeDataItemResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeDataItemResponseArgs) ToCompositeTypeDataItemResponseOutput() CompositeTypeDataItemResponseOutput {
-	return i.ToCompositeTypeDataItemResponseOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeDataItemResponseArgs) ToCompositeTypeDataItemResponseOutputWithContext(ctx context.Context) CompositeTypeDataItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeDataItemResponseOutput)
-}
-
-// CompositeTypeDataItemResponseArrayInput is an input type that accepts CompositeTypeDataItemResponseArray and CompositeTypeDataItemResponseArrayOutput values.
-// You can construct a concrete instance of `CompositeTypeDataItemResponseArrayInput` via:
-//
-//          CompositeTypeDataItemResponseArray{ CompositeTypeDataItemResponseArgs{...} }
-type CompositeTypeDataItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToCompositeTypeDataItemResponseArrayOutput() CompositeTypeDataItemResponseArrayOutput
-	ToCompositeTypeDataItemResponseArrayOutputWithContext(context.Context) CompositeTypeDataItemResponseArrayOutput
-}
-
-type CompositeTypeDataItemResponseArray []CompositeTypeDataItemResponseInput
-
-func (CompositeTypeDataItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeDataItemResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeDataItemResponseArray) ToCompositeTypeDataItemResponseArrayOutput() CompositeTypeDataItemResponseArrayOutput {
-	return i.ToCompositeTypeDataItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeDataItemResponseArray) ToCompositeTypeDataItemResponseArrayOutputWithContext(ctx context.Context) CompositeTypeDataItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeDataItemResponseArrayOutput)
-}
-
-type CompositeTypeDataItemResponseOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeDataItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeDataItemResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeDataItemResponseOutput) ToCompositeTypeDataItemResponseOutput() CompositeTypeDataItemResponseOutput {
-	return o
-}
-
-func (o CompositeTypeDataItemResponseOutput) ToCompositeTypeDataItemResponseOutputWithContext(ctx context.Context) CompositeTypeDataItemResponseOutput {
-	return o
-}
-
-// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-func (o CompositeTypeDataItemResponseOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// [Output Only] A warning data value corresponding to the key.
-func (o CompositeTypeDataItemResponseOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type CompositeTypeDataItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeDataItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeDataItemResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeDataItemResponseArrayOutput) ToCompositeTypeDataItemResponseArrayOutput() CompositeTypeDataItemResponseArrayOutput {
-	return o
-}
-
-func (o CompositeTypeDataItemResponseArrayOutput) ToCompositeTypeDataItemResponseArrayOutputWithContext(ctx context.Context) CompositeTypeDataItemResponseArrayOutput {
-	return o
-}
-
-func (o CompositeTypeDataItemResponseArrayOutput) Index(i pulumi.IntInput) CompositeTypeDataItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeDataItemResponse {
-		return vs[0].([]CompositeTypeDataItemResponse)[vs[1].(int)]
-	}).(CompositeTypeDataItemResponseOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type CompositeTypeError struct {
-	// [Output Only] The array of errors encountered while processing this operation.
-	Errors []CompositeTypeErrorsItem `pulumi:"errors"`
-}
-
-// CompositeTypeErrorInput is an input type that accepts CompositeTypeErrorArgs and CompositeTypeErrorOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorInput` via:
-//
-//          CompositeTypeErrorArgs{...}
-type CompositeTypeErrorInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorOutput() CompositeTypeErrorOutput
-	ToCompositeTypeErrorOutputWithContext(context.Context) CompositeTypeErrorOutput
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type CompositeTypeErrorArgs struct {
-	// [Output Only] The array of errors encountered while processing this operation.
-	Errors CompositeTypeErrorsItemArrayInput `pulumi:"errors"`
-}
-
-func (CompositeTypeErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeError)(nil)).Elem()
-}
-
-func (i CompositeTypeErrorArgs) ToCompositeTypeErrorOutput() CompositeTypeErrorOutput {
-	return i.ToCompositeTypeErrorOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorArgs) ToCompositeTypeErrorOutputWithContext(ctx context.Context) CompositeTypeErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorOutput)
-}
-
-func (i CompositeTypeErrorArgs) ToCompositeTypeErrorPtrOutput() CompositeTypeErrorPtrOutput {
-	return i.ToCompositeTypeErrorPtrOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorArgs) ToCompositeTypeErrorPtrOutputWithContext(ctx context.Context) CompositeTypeErrorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorOutput).ToCompositeTypeErrorPtrOutputWithContext(ctx)
-}
-
-// CompositeTypeErrorPtrInput is an input type that accepts CompositeTypeErrorArgs, CompositeTypeErrorPtr and CompositeTypeErrorPtrOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorPtrInput` via:
-//
-//          CompositeTypeErrorArgs{...}
-//
-//  or:
-//
-//          nil
-type CompositeTypeErrorPtrInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorPtrOutput() CompositeTypeErrorPtrOutput
-	ToCompositeTypeErrorPtrOutputWithContext(context.Context) CompositeTypeErrorPtrOutput
-}
-
-type compositeTypeErrorPtrType CompositeTypeErrorArgs
-
-func CompositeTypeErrorPtr(v *CompositeTypeErrorArgs) CompositeTypeErrorPtrInput {
-	return (*compositeTypeErrorPtrType)(v)
-}
-
-func (*compositeTypeErrorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompositeTypeError)(nil)).Elem()
-}
-
-func (i *compositeTypeErrorPtrType) ToCompositeTypeErrorPtrOutput() CompositeTypeErrorPtrOutput {
-	return i.ToCompositeTypeErrorPtrOutputWithContext(context.Background())
-}
-
-func (i *compositeTypeErrorPtrType) ToCompositeTypeErrorPtrOutputWithContext(ctx context.Context) CompositeTypeErrorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorPtrOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type CompositeTypeErrorOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeError)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorOutput) ToCompositeTypeErrorOutput() CompositeTypeErrorOutput {
-	return o
-}
-
-func (o CompositeTypeErrorOutput) ToCompositeTypeErrorOutputWithContext(ctx context.Context) CompositeTypeErrorOutput {
-	return o
-}
-
-func (o CompositeTypeErrorOutput) ToCompositeTypeErrorPtrOutput() CompositeTypeErrorPtrOutput {
-	return o.ToCompositeTypeErrorPtrOutputWithContext(context.Background())
-}
-
-func (o CompositeTypeErrorOutput) ToCompositeTypeErrorPtrOutputWithContext(ctx context.Context) CompositeTypeErrorPtrOutput {
-	return o.ApplyT(func(v CompositeTypeError) *CompositeTypeError {
-		return &v
-	}).(CompositeTypeErrorPtrOutput)
-}
-
-// [Output Only] The array of errors encountered while processing this operation.
-func (o CompositeTypeErrorOutput) Errors() CompositeTypeErrorsItemArrayOutput {
-	return o.ApplyT(func(v CompositeTypeError) []CompositeTypeErrorsItem { return v.Errors }).(CompositeTypeErrorsItemArrayOutput)
-}
-
-type CompositeTypeErrorPtrOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompositeTypeError)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorPtrOutput) ToCompositeTypeErrorPtrOutput() CompositeTypeErrorPtrOutput {
-	return o
-}
-
-func (o CompositeTypeErrorPtrOutput) ToCompositeTypeErrorPtrOutputWithContext(ctx context.Context) CompositeTypeErrorPtrOutput {
-	return o
-}
-
-func (o CompositeTypeErrorPtrOutput) Elem() CompositeTypeErrorOutput {
-	return o.ApplyT(func(v *CompositeTypeError) CompositeTypeError { return *v }).(CompositeTypeErrorOutput)
-}
-
-// [Output Only] The array of errors encountered while processing this operation.
-func (o CompositeTypeErrorPtrOutput) Errors() CompositeTypeErrorsItemArrayOutput {
-	return o.ApplyT(func(v *CompositeTypeError) []CompositeTypeErrorsItem {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(CompositeTypeErrorsItemArrayOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type CompositeTypeErrorResponse struct {
-	// [Output Only] The array of errors encountered while processing this operation.
-	Errors []CompositeTypeErrorsItemResponse `pulumi:"errors"`
-}
-
-// CompositeTypeErrorResponseInput is an input type that accepts CompositeTypeErrorResponseArgs and CompositeTypeErrorResponseOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorResponseInput` via:
-//
-//          CompositeTypeErrorResponseArgs{...}
-type CompositeTypeErrorResponseInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorResponseOutput() CompositeTypeErrorResponseOutput
-	ToCompositeTypeErrorResponseOutputWithContext(context.Context) CompositeTypeErrorResponseOutput
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type CompositeTypeErrorResponseArgs struct {
-	// [Output Only] The array of errors encountered while processing this operation.
-	Errors CompositeTypeErrorsItemResponseArrayInput `pulumi:"errors"`
-}
-
-func (CompositeTypeErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeErrorResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeErrorResponseArgs) ToCompositeTypeErrorResponseOutput() CompositeTypeErrorResponseOutput {
-	return i.ToCompositeTypeErrorResponseOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorResponseArgs) ToCompositeTypeErrorResponseOutputWithContext(ctx context.Context) CompositeTypeErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorResponseOutput)
-}
-
-func (i CompositeTypeErrorResponseArgs) ToCompositeTypeErrorResponsePtrOutput() CompositeTypeErrorResponsePtrOutput {
-	return i.ToCompositeTypeErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorResponseArgs) ToCompositeTypeErrorResponsePtrOutputWithContext(ctx context.Context) CompositeTypeErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorResponseOutput).ToCompositeTypeErrorResponsePtrOutputWithContext(ctx)
-}
-
-// CompositeTypeErrorResponsePtrInput is an input type that accepts CompositeTypeErrorResponseArgs, CompositeTypeErrorResponsePtr and CompositeTypeErrorResponsePtrOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorResponsePtrInput` via:
-//
-//          CompositeTypeErrorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CompositeTypeErrorResponsePtrInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorResponsePtrOutput() CompositeTypeErrorResponsePtrOutput
-	ToCompositeTypeErrorResponsePtrOutputWithContext(context.Context) CompositeTypeErrorResponsePtrOutput
-}
-
-type compositeTypeErrorResponsePtrType CompositeTypeErrorResponseArgs
-
-func CompositeTypeErrorResponsePtr(v *CompositeTypeErrorResponseArgs) CompositeTypeErrorResponsePtrInput {
-	return (*compositeTypeErrorResponsePtrType)(v)
-}
-
-func (*compositeTypeErrorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompositeTypeErrorResponse)(nil)).Elem()
-}
-
-func (i *compositeTypeErrorResponsePtrType) ToCompositeTypeErrorResponsePtrOutput() CompositeTypeErrorResponsePtrOutput {
-	return i.ToCompositeTypeErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *compositeTypeErrorResponsePtrType) ToCompositeTypeErrorResponsePtrOutputWithContext(ctx context.Context) CompositeTypeErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorResponsePtrOutput)
-}
-
-// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-type CompositeTypeErrorResponseOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeErrorResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorResponseOutput) ToCompositeTypeErrorResponseOutput() CompositeTypeErrorResponseOutput {
-	return o
-}
-
-func (o CompositeTypeErrorResponseOutput) ToCompositeTypeErrorResponseOutputWithContext(ctx context.Context) CompositeTypeErrorResponseOutput {
-	return o
-}
-
-func (o CompositeTypeErrorResponseOutput) ToCompositeTypeErrorResponsePtrOutput() CompositeTypeErrorResponsePtrOutput {
-	return o.ToCompositeTypeErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CompositeTypeErrorResponseOutput) ToCompositeTypeErrorResponsePtrOutputWithContext(ctx context.Context) CompositeTypeErrorResponsePtrOutput {
-	return o.ApplyT(func(v CompositeTypeErrorResponse) *CompositeTypeErrorResponse {
-		return &v
-	}).(CompositeTypeErrorResponsePtrOutput)
-}
-
-// [Output Only] The array of errors encountered while processing this operation.
-func (o CompositeTypeErrorResponseOutput) Errors() CompositeTypeErrorsItemResponseArrayOutput {
-	return o.ApplyT(func(v CompositeTypeErrorResponse) []CompositeTypeErrorsItemResponse { return v.Errors }).(CompositeTypeErrorsItemResponseArrayOutput)
-}
-
-type CompositeTypeErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompositeTypeErrorResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorResponsePtrOutput) ToCompositeTypeErrorResponsePtrOutput() CompositeTypeErrorResponsePtrOutput {
-	return o
-}
-
-func (o CompositeTypeErrorResponsePtrOutput) ToCompositeTypeErrorResponsePtrOutputWithContext(ctx context.Context) CompositeTypeErrorResponsePtrOutput {
-	return o
-}
-
-func (o CompositeTypeErrorResponsePtrOutput) Elem() CompositeTypeErrorResponseOutput {
-	return o.ApplyT(func(v *CompositeTypeErrorResponse) CompositeTypeErrorResponse { return *v }).(CompositeTypeErrorResponseOutput)
-}
-
-// [Output Only] The array of errors encountered while processing this operation.
-func (o CompositeTypeErrorResponsePtrOutput) Errors() CompositeTypeErrorsItemResponseArrayOutput {
-	return o.ApplyT(func(v *CompositeTypeErrorResponse) []CompositeTypeErrorsItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(CompositeTypeErrorsItemResponseArrayOutput)
-}
-
-type CompositeTypeErrorsItem struct {
-	// [Output Only] The error type identifier for this error.
-	Code *string `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-	Location *string `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
-	Message *string `pulumi:"message"`
-}
-
-// CompositeTypeErrorsItemInput is an input type that accepts CompositeTypeErrorsItemArgs and CompositeTypeErrorsItemOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorsItemInput` via:
-//
-//          CompositeTypeErrorsItemArgs{...}
-type CompositeTypeErrorsItemInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorsItemOutput() CompositeTypeErrorsItemOutput
-	ToCompositeTypeErrorsItemOutputWithContext(context.Context) CompositeTypeErrorsItemOutput
-}
-
-type CompositeTypeErrorsItemArgs struct {
-	// [Output Only] The error type identifier for this error.
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (CompositeTypeErrorsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeErrorsItem)(nil)).Elem()
-}
-
-func (i CompositeTypeErrorsItemArgs) ToCompositeTypeErrorsItemOutput() CompositeTypeErrorsItemOutput {
-	return i.ToCompositeTypeErrorsItemOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorsItemArgs) ToCompositeTypeErrorsItemOutputWithContext(ctx context.Context) CompositeTypeErrorsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorsItemOutput)
-}
-
-// CompositeTypeErrorsItemArrayInput is an input type that accepts CompositeTypeErrorsItemArray and CompositeTypeErrorsItemArrayOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorsItemArrayInput` via:
-//
-//          CompositeTypeErrorsItemArray{ CompositeTypeErrorsItemArgs{...} }
-type CompositeTypeErrorsItemArrayInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorsItemArrayOutput() CompositeTypeErrorsItemArrayOutput
-	ToCompositeTypeErrorsItemArrayOutputWithContext(context.Context) CompositeTypeErrorsItemArrayOutput
-}
-
-type CompositeTypeErrorsItemArray []CompositeTypeErrorsItemInput
-
-func (CompositeTypeErrorsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeErrorsItem)(nil)).Elem()
-}
-
-func (i CompositeTypeErrorsItemArray) ToCompositeTypeErrorsItemArrayOutput() CompositeTypeErrorsItemArrayOutput {
-	return i.ToCompositeTypeErrorsItemArrayOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorsItemArray) ToCompositeTypeErrorsItemArrayOutputWithContext(ctx context.Context) CompositeTypeErrorsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorsItemArrayOutput)
-}
-
-type CompositeTypeErrorsItemOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeErrorsItem)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorsItemOutput) ToCompositeTypeErrorsItemOutput() CompositeTypeErrorsItemOutput {
-	return o
-}
-
-func (o CompositeTypeErrorsItemOutput) ToCompositeTypeErrorsItemOutputWithContext(ctx context.Context) CompositeTypeErrorsItemOutput {
-	return o
-}
-
-// [Output Only] The error type identifier for this error.
-func (o CompositeTypeErrorsItemOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeErrorsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-func (o CompositeTypeErrorsItemOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeErrorsItem) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] An optional, human-readable error message.
-func (o CompositeTypeErrorsItemOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeErrorsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type CompositeTypeErrorsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeErrorsItem)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorsItemArrayOutput) ToCompositeTypeErrorsItemArrayOutput() CompositeTypeErrorsItemArrayOutput {
-	return o
-}
-
-func (o CompositeTypeErrorsItemArrayOutput) ToCompositeTypeErrorsItemArrayOutputWithContext(ctx context.Context) CompositeTypeErrorsItemArrayOutput {
-	return o
-}
-
-func (o CompositeTypeErrorsItemArrayOutput) Index(i pulumi.IntInput) CompositeTypeErrorsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeErrorsItem {
-		return vs[0].([]CompositeTypeErrorsItem)[vs[1].(int)]
-	}).(CompositeTypeErrorsItemOutput)
-}
-
-type CompositeTypeErrorsItemResponse struct {
-	// [Output Only] The error type identifier for this error.
-	Code string `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-	Location string `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
-	Message string `pulumi:"message"`
-}
-
-// CompositeTypeErrorsItemResponseInput is an input type that accepts CompositeTypeErrorsItemResponseArgs and CompositeTypeErrorsItemResponseOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorsItemResponseInput` via:
-//
-//          CompositeTypeErrorsItemResponseArgs{...}
-type CompositeTypeErrorsItemResponseInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorsItemResponseOutput() CompositeTypeErrorsItemResponseOutput
-	ToCompositeTypeErrorsItemResponseOutputWithContext(context.Context) CompositeTypeErrorsItemResponseOutput
-}
-
-type CompositeTypeErrorsItemResponseArgs struct {
-	// [Output Only] The error type identifier for this error.
-	Code pulumi.StringInput `pulumi:"code"`
-	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-	Location pulumi.StringInput `pulumi:"location"`
-	// [Output Only] An optional, human-readable error message.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (CompositeTypeErrorsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeErrorsItemResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeErrorsItemResponseArgs) ToCompositeTypeErrorsItemResponseOutput() CompositeTypeErrorsItemResponseOutput {
-	return i.ToCompositeTypeErrorsItemResponseOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorsItemResponseArgs) ToCompositeTypeErrorsItemResponseOutputWithContext(ctx context.Context) CompositeTypeErrorsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorsItemResponseOutput)
-}
-
-// CompositeTypeErrorsItemResponseArrayInput is an input type that accepts CompositeTypeErrorsItemResponseArray and CompositeTypeErrorsItemResponseArrayOutput values.
-// You can construct a concrete instance of `CompositeTypeErrorsItemResponseArrayInput` via:
-//
-//          CompositeTypeErrorsItemResponseArray{ CompositeTypeErrorsItemResponseArgs{...} }
-type CompositeTypeErrorsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToCompositeTypeErrorsItemResponseArrayOutput() CompositeTypeErrorsItemResponseArrayOutput
-	ToCompositeTypeErrorsItemResponseArrayOutputWithContext(context.Context) CompositeTypeErrorsItemResponseArrayOutput
-}
-
-type CompositeTypeErrorsItemResponseArray []CompositeTypeErrorsItemResponseInput
-
-func (CompositeTypeErrorsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeErrorsItemResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeErrorsItemResponseArray) ToCompositeTypeErrorsItemResponseArrayOutput() CompositeTypeErrorsItemResponseArrayOutput {
-	return i.ToCompositeTypeErrorsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeErrorsItemResponseArray) ToCompositeTypeErrorsItemResponseArrayOutputWithContext(ctx context.Context) CompositeTypeErrorsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeErrorsItemResponseArrayOutput)
-}
-
-type CompositeTypeErrorsItemResponseOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorsItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeErrorsItemResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorsItemResponseOutput) ToCompositeTypeErrorsItemResponseOutput() CompositeTypeErrorsItemResponseOutput {
-	return o
-}
-
-func (o CompositeTypeErrorsItemResponseOutput) ToCompositeTypeErrorsItemResponseOutputWithContext(ctx context.Context) CompositeTypeErrorsItemResponseOutput {
-	return o
-}
-
-// [Output Only] The error type identifier for this error.
-func (o CompositeTypeErrorsItemResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeErrorsItemResponse) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// [Output Only] Indicates the field in the request that caused the error. This property is optional.
-func (o CompositeTypeErrorsItemResponseOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeErrorsItemResponse) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// [Output Only] An optional, human-readable error message.
-func (o CompositeTypeErrorsItemResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeErrorsItemResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type CompositeTypeErrorsItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeErrorsItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeErrorsItemResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeErrorsItemResponseArrayOutput) ToCompositeTypeErrorsItemResponseArrayOutput() CompositeTypeErrorsItemResponseArrayOutput {
-	return o
-}
-
-func (o CompositeTypeErrorsItemResponseArrayOutput) ToCompositeTypeErrorsItemResponseArrayOutputWithContext(ctx context.Context) CompositeTypeErrorsItemResponseArrayOutput {
-	return o
-}
-
-func (o CompositeTypeErrorsItemResponseArrayOutput) Index(i pulumi.IntInput) CompositeTypeErrorsItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeErrorsItemResponse {
-		return vs[0].([]CompositeTypeErrorsItemResponse)[vs[1].(int)]
-	}).(CompositeTypeErrorsItemResponseOutput)
-}
-
 // Label object for CompositeTypes
 type CompositeTypeLabelEntry struct {
 	// Key of the label
@@ -2332,236 +1622,6 @@ func (o CompositeTypeLabelEntryResponseArrayOutput) Index(i pulumi.IntInput) Com
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeLabelEntryResponse {
 		return vs[0].([]CompositeTypeLabelEntryResponse)[vs[1].(int)]
 	}).(CompositeTypeLabelEntryResponseOutput)
-}
-
-type CompositeTypeWarningsItem struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code *string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data []CompositeTypeDataItem `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message *string `pulumi:"message"`
-}
-
-// CompositeTypeWarningsItemInput is an input type that accepts CompositeTypeWarningsItemArgs and CompositeTypeWarningsItemOutput values.
-// You can construct a concrete instance of `CompositeTypeWarningsItemInput` via:
-//
-//          CompositeTypeWarningsItemArgs{...}
-type CompositeTypeWarningsItemInput interface {
-	pulumi.Input
-
-	ToCompositeTypeWarningsItemOutput() CompositeTypeWarningsItemOutput
-	ToCompositeTypeWarningsItemOutputWithContext(context.Context) CompositeTypeWarningsItemOutput
-}
-
-type CompositeTypeWarningsItemArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data CompositeTypeDataItemArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (CompositeTypeWarningsItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeWarningsItem)(nil)).Elem()
-}
-
-func (i CompositeTypeWarningsItemArgs) ToCompositeTypeWarningsItemOutput() CompositeTypeWarningsItemOutput {
-	return i.ToCompositeTypeWarningsItemOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeWarningsItemArgs) ToCompositeTypeWarningsItemOutputWithContext(ctx context.Context) CompositeTypeWarningsItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeWarningsItemOutput)
-}
-
-// CompositeTypeWarningsItemArrayInput is an input type that accepts CompositeTypeWarningsItemArray and CompositeTypeWarningsItemArrayOutput values.
-// You can construct a concrete instance of `CompositeTypeWarningsItemArrayInput` via:
-//
-//          CompositeTypeWarningsItemArray{ CompositeTypeWarningsItemArgs{...} }
-type CompositeTypeWarningsItemArrayInput interface {
-	pulumi.Input
-
-	ToCompositeTypeWarningsItemArrayOutput() CompositeTypeWarningsItemArrayOutput
-	ToCompositeTypeWarningsItemArrayOutputWithContext(context.Context) CompositeTypeWarningsItemArrayOutput
-}
-
-type CompositeTypeWarningsItemArray []CompositeTypeWarningsItemInput
-
-func (CompositeTypeWarningsItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeWarningsItem)(nil)).Elem()
-}
-
-func (i CompositeTypeWarningsItemArray) ToCompositeTypeWarningsItemArrayOutput() CompositeTypeWarningsItemArrayOutput {
-	return i.ToCompositeTypeWarningsItemArrayOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeWarningsItemArray) ToCompositeTypeWarningsItemArrayOutputWithContext(ctx context.Context) CompositeTypeWarningsItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeWarningsItemArrayOutput)
-}
-
-type CompositeTypeWarningsItemOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeWarningsItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeWarningsItem)(nil)).Elem()
-}
-
-func (o CompositeTypeWarningsItemOutput) ToCompositeTypeWarningsItemOutput() CompositeTypeWarningsItemOutput {
-	return o
-}
-
-func (o CompositeTypeWarningsItemOutput) ToCompositeTypeWarningsItemOutputWithContext(ctx context.Context) CompositeTypeWarningsItemOutput {
-	return o
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-func (o CompositeTypeWarningsItemOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeWarningsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-func (o CompositeTypeWarningsItemOutput) Data() CompositeTypeDataItemArrayOutput {
-	return o.ApplyT(func(v CompositeTypeWarningsItem) []CompositeTypeDataItem { return v.Data }).(CompositeTypeDataItemArrayOutput)
-}
-
-// [Output Only] A human-readable description of the warning code.
-func (o CompositeTypeWarningsItemOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeTypeWarningsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type CompositeTypeWarningsItemArrayOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeWarningsItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeWarningsItem)(nil)).Elem()
-}
-
-func (o CompositeTypeWarningsItemArrayOutput) ToCompositeTypeWarningsItemArrayOutput() CompositeTypeWarningsItemArrayOutput {
-	return o
-}
-
-func (o CompositeTypeWarningsItemArrayOutput) ToCompositeTypeWarningsItemArrayOutputWithContext(ctx context.Context) CompositeTypeWarningsItemArrayOutput {
-	return o
-}
-
-func (o CompositeTypeWarningsItemArrayOutput) Index(i pulumi.IntInput) CompositeTypeWarningsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeWarningsItem {
-		return vs[0].([]CompositeTypeWarningsItem)[vs[1].(int)]
-	}).(CompositeTypeWarningsItemOutput)
-}
-
-type CompositeTypeWarningsItemResponse struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code string `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data []CompositeTypeDataItemResponse `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message string `pulumi:"message"`
-}
-
-// CompositeTypeWarningsItemResponseInput is an input type that accepts CompositeTypeWarningsItemResponseArgs and CompositeTypeWarningsItemResponseOutput values.
-// You can construct a concrete instance of `CompositeTypeWarningsItemResponseInput` via:
-//
-//          CompositeTypeWarningsItemResponseArgs{...}
-type CompositeTypeWarningsItemResponseInput interface {
-	pulumi.Input
-
-	ToCompositeTypeWarningsItemResponseOutput() CompositeTypeWarningsItemResponseOutput
-	ToCompositeTypeWarningsItemResponseOutputWithContext(context.Context) CompositeTypeWarningsItemResponseOutput
-}
-
-type CompositeTypeWarningsItemResponseArgs struct {
-	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code pulumi.StringInput `pulumi:"code"`
-	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-	Data CompositeTypeDataItemResponseArrayInput `pulumi:"data"`
-	// [Output Only] A human-readable description of the warning code.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (CompositeTypeWarningsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeWarningsItemResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeWarningsItemResponseArgs) ToCompositeTypeWarningsItemResponseOutput() CompositeTypeWarningsItemResponseOutput {
-	return i.ToCompositeTypeWarningsItemResponseOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeWarningsItemResponseArgs) ToCompositeTypeWarningsItemResponseOutputWithContext(ctx context.Context) CompositeTypeWarningsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeWarningsItemResponseOutput)
-}
-
-// CompositeTypeWarningsItemResponseArrayInput is an input type that accepts CompositeTypeWarningsItemResponseArray and CompositeTypeWarningsItemResponseArrayOutput values.
-// You can construct a concrete instance of `CompositeTypeWarningsItemResponseArrayInput` via:
-//
-//          CompositeTypeWarningsItemResponseArray{ CompositeTypeWarningsItemResponseArgs{...} }
-type CompositeTypeWarningsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToCompositeTypeWarningsItemResponseArrayOutput() CompositeTypeWarningsItemResponseArrayOutput
-	ToCompositeTypeWarningsItemResponseArrayOutputWithContext(context.Context) CompositeTypeWarningsItemResponseArrayOutput
-}
-
-type CompositeTypeWarningsItemResponseArray []CompositeTypeWarningsItemResponseInput
-
-func (CompositeTypeWarningsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeWarningsItemResponse)(nil)).Elem()
-}
-
-func (i CompositeTypeWarningsItemResponseArray) ToCompositeTypeWarningsItemResponseArrayOutput() CompositeTypeWarningsItemResponseArrayOutput {
-	return i.ToCompositeTypeWarningsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CompositeTypeWarningsItemResponseArray) ToCompositeTypeWarningsItemResponseArrayOutputWithContext(ctx context.Context) CompositeTypeWarningsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeWarningsItemResponseArrayOutput)
-}
-
-type CompositeTypeWarningsItemResponseOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeWarningsItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeWarningsItemResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeWarningsItemResponseOutput) ToCompositeTypeWarningsItemResponseOutput() CompositeTypeWarningsItemResponseOutput {
-	return o
-}
-
-func (o CompositeTypeWarningsItemResponseOutput) ToCompositeTypeWarningsItemResponseOutputWithContext(ctx context.Context) CompositeTypeWarningsItemResponseOutput {
-	return o
-}
-
-// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-func (o CompositeTypeWarningsItemResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
-func (o CompositeTypeWarningsItemResponseOutput) Data() CompositeTypeDataItemResponseArrayOutput {
-	return o.ApplyT(func(v CompositeTypeWarningsItemResponse) []CompositeTypeDataItemResponse { return v.Data }).(CompositeTypeDataItemResponseArrayOutput)
-}
-
-// [Output Only] A human-readable description of the warning code.
-func (o CompositeTypeWarningsItemResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v CompositeTypeWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type CompositeTypeWarningsItemResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeWarningsItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CompositeTypeWarningsItemResponse)(nil)).Elem()
-}
-
-func (o CompositeTypeWarningsItemResponseArrayOutput) ToCompositeTypeWarningsItemResponseArrayOutput() CompositeTypeWarningsItemResponseArrayOutput {
-	return o
-}
-
-func (o CompositeTypeWarningsItemResponseArrayOutput) ToCompositeTypeWarningsItemResponseArrayOutputWithContext(ctx context.Context) CompositeTypeWarningsItemResponseArrayOutput {
-	return o
-}
-
-func (o CompositeTypeWarningsItemResponseArrayOutput) Index(i pulumi.IntInput) CompositeTypeWarningsItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompositeTypeWarningsItemResponse {
-		return vs[0].([]CompositeTypeWarningsItemResponse)[vs[1].(int)]
-	}).(CompositeTypeWarningsItemResponseOutput)
 }
 
 type ConfigFile struct {
@@ -4904,7 +3964,7 @@ type Operation struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime *string `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error *CompositeTypeError `pulumi:"error"`
+	Error *OperationError `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage *string `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -4940,7 +4000,7 @@ type Operation struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User *string `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []CompositeTypeWarningsItem `pulumi:"warnings"`
+	Warnings []OperationWarningsItem `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone *string `pulumi:"zone"`
 }
@@ -4965,7 +4025,7 @@ type OperationArgs struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error CompositeTypeErrorPtrInput `pulumi:"error"`
+	Error OperationErrorPtrInput `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringPtrInput `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -5001,7 +4061,7 @@ type OperationArgs struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringPtrInput `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings CompositeTypeWarningsItemArrayInput `pulumi:"warnings"`
+	Warnings OperationWarningsItemArrayInput `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -5100,8 +4160,8 @@ func (o OperationOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Error() CompositeTypeErrorPtrOutput {
-	return o.ApplyT(func(v Operation) *CompositeTypeError { return v.Error }).(CompositeTypeErrorPtrOutput)
+func (o OperationOutput) Error() OperationErrorPtrOutput {
+	return o.ApplyT(func(v Operation) *OperationError { return v.Error }).(OperationErrorPtrOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5190,8 +4250,8 @@ func (o OperationOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Warnings() CompositeTypeWarningsItemArrayOutput {
-	return o.ApplyT(func(v Operation) []CompositeTypeWarningsItem { return v.Warnings }).(CompositeTypeWarningsItemArrayOutput)
+func (o OperationOutput) Warnings() OperationWarningsItemArrayOutput {
+	return o.ApplyT(func(v Operation) []OperationWarningsItem { return v.Warnings }).(OperationWarningsItemArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -5248,13 +4308,13 @@ func (o OperationPtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Error() CompositeTypeErrorPtrOutput {
-	return o.ApplyT(func(v *Operation) *CompositeTypeError {
+func (o OperationPtrOutput) Error() OperationErrorPtrOutput {
+	return o.ApplyT(func(v *Operation) *OperationError {
 		if v == nil {
 			return nil
 		}
 		return v.Error
-	}).(CompositeTypeErrorPtrOutput)
+	}).(OperationErrorPtrOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5428,13 +4488,13 @@ func (o OperationPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Warnings() CompositeTypeWarningsItemArrayOutput {
-	return o.ApplyT(func(v *Operation) []CompositeTypeWarningsItem {
+func (o OperationPtrOutput) Warnings() OperationWarningsItemArrayOutput {
+	return o.ApplyT(func(v *Operation) []OperationWarningsItem {
 		if v == nil {
 			return nil
 		}
 		return v.Warnings
-	}).(CompositeTypeWarningsItemArrayOutput)
+	}).(OperationWarningsItemArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -5447,6 +4507,504 @@ func (o OperationPtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type OperationError struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors []OperationErrorErrorsItem `pulumi:"errors"`
+}
+
+// OperationErrorInput is an input type that accepts OperationErrorArgs and OperationErrorOutput values.
+// You can construct a concrete instance of `OperationErrorInput` via:
+//
+//          OperationErrorArgs{...}
+type OperationErrorInput interface {
+	pulumi.Input
+
+	ToOperationErrorOutput() OperationErrorOutput
+	ToOperationErrorOutputWithContext(context.Context) OperationErrorOutput
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type OperationErrorArgs struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors OperationErrorErrorsItemArrayInput `pulumi:"errors"`
+}
+
+func (OperationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationError)(nil)).Elem()
+}
+
+func (i OperationErrorArgs) ToOperationErrorOutput() OperationErrorOutput {
+	return i.ToOperationErrorOutputWithContext(context.Background())
+}
+
+func (i OperationErrorArgs) ToOperationErrorOutputWithContext(ctx context.Context) OperationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorOutput)
+}
+
+func (i OperationErrorArgs) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
+	return i.ToOperationErrorPtrOutputWithContext(context.Background())
+}
+
+func (i OperationErrorArgs) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorOutput).ToOperationErrorPtrOutputWithContext(ctx)
+}
+
+// OperationErrorPtrInput is an input type that accepts OperationErrorArgs, OperationErrorPtr and OperationErrorPtrOutput values.
+// You can construct a concrete instance of `OperationErrorPtrInput` via:
+//
+//          OperationErrorArgs{...}
+//
+//  or:
+//
+//          nil
+type OperationErrorPtrInput interface {
+	pulumi.Input
+
+	ToOperationErrorPtrOutput() OperationErrorPtrOutput
+	ToOperationErrorPtrOutputWithContext(context.Context) OperationErrorPtrOutput
+}
+
+type operationErrorPtrType OperationErrorArgs
+
+func OperationErrorPtr(v *OperationErrorArgs) OperationErrorPtrInput {
+	return (*operationErrorPtrType)(v)
+}
+
+func (*operationErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationError)(nil)).Elem()
+}
+
+func (i *operationErrorPtrType) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
+	return i.ToOperationErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *operationErrorPtrType) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorPtrOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type OperationErrorOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationError)(nil)).Elem()
+}
+
+func (o OperationErrorOutput) ToOperationErrorOutput() OperationErrorOutput {
+	return o
+}
+
+func (o OperationErrorOutput) ToOperationErrorOutputWithContext(ctx context.Context) OperationErrorOutput {
+	return o
+}
+
+func (o OperationErrorOutput) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
+	return o.ToOperationErrorPtrOutputWithContext(context.Background())
+}
+
+func (o OperationErrorOutput) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
+	return o.ApplyT(func(v OperationError) *OperationError {
+		return &v
+	}).(OperationErrorPtrOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o OperationErrorOutput) Errors() OperationErrorErrorsItemArrayOutput {
+	return o.ApplyT(func(v OperationError) []OperationErrorErrorsItem { return v.Errors }).(OperationErrorErrorsItemArrayOutput)
+}
+
+type OperationErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationError)(nil)).Elem()
+}
+
+func (o OperationErrorPtrOutput) ToOperationErrorPtrOutput() OperationErrorPtrOutput {
+	return o
+}
+
+func (o OperationErrorPtrOutput) ToOperationErrorPtrOutputWithContext(ctx context.Context) OperationErrorPtrOutput {
+	return o
+}
+
+func (o OperationErrorPtrOutput) Elem() OperationErrorOutput {
+	return o.ApplyT(func(v *OperationError) OperationError { return *v }).(OperationErrorOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o OperationErrorPtrOutput) Errors() OperationErrorErrorsItemArrayOutput {
+	return o.ApplyT(func(v *OperationError) []OperationErrorErrorsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(OperationErrorErrorsItemArrayOutput)
+}
+
+type OperationErrorErrorsItem struct {
+	// [Output Only] The error type identifier for this error.
+	Code *string `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location *string `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message *string `pulumi:"message"`
+}
+
+// OperationErrorErrorsItemInput is an input type that accepts OperationErrorErrorsItemArgs and OperationErrorErrorsItemOutput values.
+// You can construct a concrete instance of `OperationErrorErrorsItemInput` via:
+//
+//          OperationErrorErrorsItemArgs{...}
+type OperationErrorErrorsItemInput interface {
+	pulumi.Input
+
+	ToOperationErrorErrorsItemOutput() OperationErrorErrorsItemOutput
+	ToOperationErrorErrorsItemOutputWithContext(context.Context) OperationErrorErrorsItemOutput
+}
+
+type OperationErrorErrorsItemArgs struct {
+	// [Output Only] The error type identifier for this error.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (OperationErrorErrorsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorErrorsItem)(nil)).Elem()
+}
+
+func (i OperationErrorErrorsItemArgs) ToOperationErrorErrorsItemOutput() OperationErrorErrorsItemOutput {
+	return i.ToOperationErrorErrorsItemOutputWithContext(context.Background())
+}
+
+func (i OperationErrorErrorsItemArgs) ToOperationErrorErrorsItemOutputWithContext(ctx context.Context) OperationErrorErrorsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemOutput)
+}
+
+// OperationErrorErrorsItemArrayInput is an input type that accepts OperationErrorErrorsItemArray and OperationErrorErrorsItemArrayOutput values.
+// You can construct a concrete instance of `OperationErrorErrorsItemArrayInput` via:
+//
+//          OperationErrorErrorsItemArray{ OperationErrorErrorsItemArgs{...} }
+type OperationErrorErrorsItemArrayInput interface {
+	pulumi.Input
+
+	ToOperationErrorErrorsItemArrayOutput() OperationErrorErrorsItemArrayOutput
+	ToOperationErrorErrorsItemArrayOutputWithContext(context.Context) OperationErrorErrorsItemArrayOutput
+}
+
+type OperationErrorErrorsItemArray []OperationErrorErrorsItemInput
+
+func (OperationErrorErrorsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationErrorErrorsItem)(nil)).Elem()
+}
+
+func (i OperationErrorErrorsItemArray) ToOperationErrorErrorsItemArrayOutput() OperationErrorErrorsItemArrayOutput {
+	return i.ToOperationErrorErrorsItemArrayOutputWithContext(context.Background())
+}
+
+func (i OperationErrorErrorsItemArray) ToOperationErrorErrorsItemArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemArrayOutput)
+}
+
+type OperationErrorErrorsItemOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorErrorsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorErrorsItem)(nil)).Elem()
+}
+
+func (o OperationErrorErrorsItemOutput) ToOperationErrorErrorsItemOutput() OperationErrorErrorsItemOutput {
+	return o
+}
+
+func (o OperationErrorErrorsItemOutput) ToOperationErrorErrorsItemOutputWithContext(ctx context.Context) OperationErrorErrorsItemOutput {
+	return o
+}
+
+// [Output Only] The error type identifier for this error.
+func (o OperationErrorErrorsItemOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationErrorErrorsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+func (o OperationErrorErrorsItemOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationErrorErrorsItem) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] An optional, human-readable error message.
+func (o OperationErrorErrorsItemOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationErrorErrorsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type OperationErrorErrorsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorErrorsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationErrorErrorsItem)(nil)).Elem()
+}
+
+func (o OperationErrorErrorsItemArrayOutput) ToOperationErrorErrorsItemArrayOutput() OperationErrorErrorsItemArrayOutput {
+	return o
+}
+
+func (o OperationErrorErrorsItemArrayOutput) ToOperationErrorErrorsItemArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemArrayOutput {
+	return o
+}
+
+func (o OperationErrorErrorsItemArrayOutput) Index(i pulumi.IntInput) OperationErrorErrorsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationErrorErrorsItem {
+		return vs[0].([]OperationErrorErrorsItem)[vs[1].(int)]
+	}).(OperationErrorErrorsItemOutput)
+}
+
+type OperationErrorErrorsItemResponse struct {
+	// [Output Only] The error type identifier for this error.
+	Code string `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location string `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message string `pulumi:"message"`
+}
+
+// OperationErrorErrorsItemResponseInput is an input type that accepts OperationErrorErrorsItemResponseArgs and OperationErrorErrorsItemResponseOutput values.
+// You can construct a concrete instance of `OperationErrorErrorsItemResponseInput` via:
+//
+//          OperationErrorErrorsItemResponseArgs{...}
+type OperationErrorErrorsItemResponseInput interface {
+	pulumi.Input
+
+	ToOperationErrorErrorsItemResponseOutput() OperationErrorErrorsItemResponseOutput
+	ToOperationErrorErrorsItemResponseOutputWithContext(context.Context) OperationErrorErrorsItemResponseOutput
+}
+
+type OperationErrorErrorsItemResponseArgs struct {
+	// [Output Only] The error type identifier for this error.
+	Code pulumi.StringInput `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location pulumi.StringInput `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (OperationErrorErrorsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (i OperationErrorErrorsItemResponseArgs) ToOperationErrorErrorsItemResponseOutput() OperationErrorErrorsItemResponseOutput {
+	return i.ToOperationErrorErrorsItemResponseOutputWithContext(context.Background())
+}
+
+func (i OperationErrorErrorsItemResponseArgs) ToOperationErrorErrorsItemResponseOutputWithContext(ctx context.Context) OperationErrorErrorsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemResponseOutput)
+}
+
+// OperationErrorErrorsItemResponseArrayInput is an input type that accepts OperationErrorErrorsItemResponseArray and OperationErrorErrorsItemResponseArrayOutput values.
+// You can construct a concrete instance of `OperationErrorErrorsItemResponseArrayInput` via:
+//
+//          OperationErrorErrorsItemResponseArray{ OperationErrorErrorsItemResponseArgs{...} }
+type OperationErrorErrorsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToOperationErrorErrorsItemResponseArrayOutput() OperationErrorErrorsItemResponseArrayOutput
+	ToOperationErrorErrorsItemResponseArrayOutputWithContext(context.Context) OperationErrorErrorsItemResponseArrayOutput
+}
+
+type OperationErrorErrorsItemResponseArray []OperationErrorErrorsItemResponseInput
+
+func (OperationErrorErrorsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (i OperationErrorErrorsItemResponseArray) ToOperationErrorErrorsItemResponseArrayOutput() OperationErrorErrorsItemResponseArrayOutput {
+	return i.ToOperationErrorErrorsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OperationErrorErrorsItemResponseArray) ToOperationErrorErrorsItemResponseArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorErrorsItemResponseArrayOutput)
+}
+
+type OperationErrorErrorsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorErrorsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (o OperationErrorErrorsItemResponseOutput) ToOperationErrorErrorsItemResponseOutput() OperationErrorErrorsItemResponseOutput {
+	return o
+}
+
+func (o OperationErrorErrorsItemResponseOutput) ToOperationErrorErrorsItemResponseOutputWithContext(ctx context.Context) OperationErrorErrorsItemResponseOutput {
+	return o
+}
+
+// [Output Only] The error type identifier for this error.
+func (o OperationErrorErrorsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorErrorsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+func (o OperationErrorErrorsItemResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorErrorsItemResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// [Output Only] An optional, human-readable error message.
+func (o OperationErrorErrorsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorErrorsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type OperationErrorErrorsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorErrorsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (o OperationErrorErrorsItemResponseArrayOutput) ToOperationErrorErrorsItemResponseArrayOutput() OperationErrorErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o OperationErrorErrorsItemResponseArrayOutput) ToOperationErrorErrorsItemResponseArrayOutputWithContext(ctx context.Context) OperationErrorErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o OperationErrorErrorsItemResponseArrayOutput) Index(i pulumi.IntInput) OperationErrorErrorsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationErrorErrorsItemResponse {
+		return vs[0].([]OperationErrorErrorsItemResponse)[vs[1].(int)]
+	}).(OperationErrorErrorsItemResponseOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type OperationErrorResponse struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors []OperationErrorErrorsItemResponse `pulumi:"errors"`
+}
+
+// OperationErrorResponseInput is an input type that accepts OperationErrorResponseArgs and OperationErrorResponseOutput values.
+// You can construct a concrete instance of `OperationErrorResponseInput` via:
+//
+//          OperationErrorResponseArgs{...}
+type OperationErrorResponseInput interface {
+	pulumi.Input
+
+	ToOperationErrorResponseOutput() OperationErrorResponseOutput
+	ToOperationErrorResponseOutputWithContext(context.Context) OperationErrorResponseOutput
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type OperationErrorResponseArgs struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors OperationErrorErrorsItemResponseArrayInput `pulumi:"errors"`
+}
+
+func (OperationErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorResponse)(nil)).Elem()
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponseOutput() OperationErrorResponseOutput {
+	return i.ToOperationErrorResponseOutputWithContext(context.Background())
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponseOutputWithContext(ctx context.Context) OperationErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponseOutput)
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return i.ToOperationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponseOutput).ToOperationErrorResponsePtrOutputWithContext(ctx)
+}
+
+// OperationErrorResponsePtrInput is an input type that accepts OperationErrorResponseArgs, OperationErrorResponsePtr and OperationErrorResponsePtrOutput values.
+// You can construct a concrete instance of `OperationErrorResponsePtrInput` via:
+//
+//          OperationErrorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OperationErrorResponsePtrInput interface {
+	pulumi.Input
+
+	ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput
+	ToOperationErrorResponsePtrOutputWithContext(context.Context) OperationErrorResponsePtrOutput
+}
+
+type operationErrorResponsePtrType OperationErrorResponseArgs
+
+func OperationErrorResponsePtr(v *OperationErrorResponseArgs) OperationErrorResponsePtrInput {
+	return (*operationErrorResponsePtrType)(v)
+}
+
+func (*operationErrorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationErrorResponse)(nil)).Elem()
+}
+
+func (i *operationErrorResponsePtrType) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return i.ToOperationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *operationErrorResponsePtrType) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponsePtrOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type OperationErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorResponse)(nil)).Elem()
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponseOutput() OperationErrorResponseOutput {
+	return o
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponseOutputWithContext(ctx context.Context) OperationErrorResponseOutput {
+	return o
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return o.ToOperationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return o.ApplyT(func(v OperationErrorResponse) *OperationErrorResponse {
+		return &v
+	}).(OperationErrorResponsePtrOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o OperationErrorResponseOutput) Errors() OperationErrorErrorsItemResponseArrayOutput {
+	return o.ApplyT(func(v OperationErrorResponse) []OperationErrorErrorsItemResponse { return v.Errors }).(OperationErrorErrorsItemResponseArrayOutput)
+}
+
+type OperationErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationErrorResponse)(nil)).Elem()
+}
+
+func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return o
+}
+
+func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return o
+}
+
+func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
+	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse { return *v }).(OperationErrorResponseOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o OperationErrorResponsePtrOutput) Errors() OperationErrorErrorsItemResponseArrayOutput {
+	return o.ApplyT(func(v *OperationErrorResponse) []OperationErrorErrorsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(OperationErrorErrorsItemResponseArrayOutput)
+}
+
 // Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
 type OperationResponse struct {
 	// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
@@ -5456,7 +5014,7 @@ type OperationResponse struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime string `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error CompositeTypeErrorResponse `pulumi:"error"`
+	Error OperationErrorResponse `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage string `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -5490,7 +5048,7 @@ type OperationResponse struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User string `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []CompositeTypeWarningsItemResponse `pulumi:"warnings"`
+	Warnings []OperationWarningsItemResponse `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone string `pulumi:"zone"`
 }
@@ -5515,7 +5073,7 @@ type OperationResponseArgs struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error CompositeTypeErrorResponseInput `pulumi:"error"`
+	Error OperationErrorResponseInput `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringInput `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -5549,7 +5107,7 @@ type OperationResponseArgs struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringInput `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings CompositeTypeWarningsItemResponseArrayInput `pulumi:"warnings"`
+	Warnings OperationWarningsItemResponseArrayInput `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -5648,8 +5206,8 @@ func (o OperationResponseOutput) EndTime() pulumi.StringOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponseOutput) Error() CompositeTypeErrorResponseOutput {
-	return o.ApplyT(func(v OperationResponse) CompositeTypeErrorResponse { return v.Error }).(CompositeTypeErrorResponseOutput)
+func (o OperationResponseOutput) Error() OperationErrorResponseOutput {
+	return o.ApplyT(func(v OperationResponse) OperationErrorResponse { return v.Error }).(OperationErrorResponseOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5733,8 +5291,8 @@ func (o OperationResponseOutput) User() pulumi.StringOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponseOutput) Warnings() CompositeTypeWarningsItemResponseArrayOutput {
-	return o.ApplyT(func(v OperationResponse) []CompositeTypeWarningsItemResponse { return v.Warnings }).(CompositeTypeWarningsItemResponseArrayOutput)
+func (o OperationResponseOutput) Warnings() OperationWarningsItemResponseArrayOutput {
+	return o.ApplyT(func(v OperationResponse) []OperationWarningsItemResponse { return v.Warnings }).(OperationWarningsItemResponseArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -5791,13 +5349,13 @@ func (o OperationResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Error() CompositeTypeErrorResponsePtrOutput {
-	return o.ApplyT(func(v *OperationResponse) *CompositeTypeErrorResponse {
+func (o OperationResponsePtrOutput) Error() OperationErrorResponsePtrOutput {
+	return o.ApplyT(func(v *OperationResponse) *OperationErrorResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.Error
-	}).(CompositeTypeErrorResponsePtrOutput)
+	}).(OperationErrorResponsePtrOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5961,13 +5519,13 @@ func (o OperationResponsePtrOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Warnings() CompositeTypeWarningsItemResponseArrayOutput {
-	return o.ApplyT(func(v *OperationResponse) []CompositeTypeWarningsItemResponse {
+func (o OperationResponsePtrOutput) Warnings() OperationWarningsItemResponseArrayOutput {
+	return o.ApplyT(func(v *OperationResponse) []OperationWarningsItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Warnings
-	}).(CompositeTypeWarningsItemResponseArrayOutput)
+	}).(OperationWarningsItemResponseArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -5978,6 +5536,448 @@ func (o OperationResponsePtrOutput) Zone() pulumi.StringPtrOutput {
 		}
 		return &v.Zone
 	}).(pulumi.StringPtrOutput)
+}
+
+type OperationWarningsItem struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code *string `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []OperationWarningsItemDataItem `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message *string `pulumi:"message"`
+}
+
+// OperationWarningsItemInput is an input type that accepts OperationWarningsItemArgs and OperationWarningsItemOutput values.
+// You can construct a concrete instance of `OperationWarningsItemInput` via:
+//
+//          OperationWarningsItemArgs{...}
+type OperationWarningsItemInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemOutput() OperationWarningsItemOutput
+	ToOperationWarningsItemOutputWithContext(context.Context) OperationWarningsItemOutput
+}
+
+type OperationWarningsItemArgs struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data OperationWarningsItemDataItemArrayInput `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (OperationWarningsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItem)(nil)).Elem()
+}
+
+func (i OperationWarningsItemArgs) ToOperationWarningsItemOutput() OperationWarningsItemOutput {
+	return i.ToOperationWarningsItemOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemArgs) ToOperationWarningsItemOutputWithContext(ctx context.Context) OperationWarningsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemOutput)
+}
+
+// OperationWarningsItemArrayInput is an input type that accepts OperationWarningsItemArray and OperationWarningsItemArrayOutput values.
+// You can construct a concrete instance of `OperationWarningsItemArrayInput` via:
+//
+//          OperationWarningsItemArray{ OperationWarningsItemArgs{...} }
+type OperationWarningsItemArrayInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemArrayOutput() OperationWarningsItemArrayOutput
+	ToOperationWarningsItemArrayOutputWithContext(context.Context) OperationWarningsItemArrayOutput
+}
+
+type OperationWarningsItemArray []OperationWarningsItemInput
+
+func (OperationWarningsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItem)(nil)).Elem()
+}
+
+func (i OperationWarningsItemArray) ToOperationWarningsItemArrayOutput() OperationWarningsItemArrayOutput {
+	return i.ToOperationWarningsItemArrayOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemArray) ToOperationWarningsItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemArrayOutput)
+}
+
+type OperationWarningsItemOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItem)(nil)).Elem()
+}
+
+func (o OperationWarningsItemOutput) ToOperationWarningsItemOutput() OperationWarningsItemOutput {
+	return o
+}
+
+func (o OperationWarningsItemOutput) ToOperationWarningsItemOutputWithContext(ctx context.Context) OperationWarningsItemOutput {
+	return o
+}
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o OperationWarningsItemOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationWarningsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o OperationWarningsItemOutput) Data() OperationWarningsItemDataItemArrayOutput {
+	return o.ApplyT(func(v OperationWarningsItem) []OperationWarningsItemDataItem { return v.Data }).(OperationWarningsItemDataItemArrayOutput)
+}
+
+// [Output Only] A human-readable description of the warning code.
+func (o OperationWarningsItemOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationWarningsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type OperationWarningsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItem)(nil)).Elem()
+}
+
+func (o OperationWarningsItemArrayOutput) ToOperationWarningsItemArrayOutput() OperationWarningsItemArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemArrayOutput) ToOperationWarningsItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemArrayOutput) Index(i pulumi.IntInput) OperationWarningsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationWarningsItem {
+		return vs[0].([]OperationWarningsItem)[vs[1].(int)]
+	}).(OperationWarningsItemOutput)
+}
+
+type OperationWarningsItemDataItem struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key *string `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value *string `pulumi:"value"`
+}
+
+// OperationWarningsItemDataItemInput is an input type that accepts OperationWarningsItemDataItemArgs and OperationWarningsItemDataItemOutput values.
+// You can construct a concrete instance of `OperationWarningsItemDataItemInput` via:
+//
+//          OperationWarningsItemDataItemArgs{...}
+type OperationWarningsItemDataItemInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemDataItemOutput() OperationWarningsItemDataItemOutput
+	ToOperationWarningsItemDataItemOutputWithContext(context.Context) OperationWarningsItemDataItemOutput
+}
+
+type OperationWarningsItemDataItemArgs struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OperationWarningsItemDataItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItemDataItem)(nil)).Elem()
+}
+
+func (i OperationWarningsItemDataItemArgs) ToOperationWarningsItemDataItemOutput() OperationWarningsItemDataItemOutput {
+	return i.ToOperationWarningsItemDataItemOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemDataItemArgs) ToOperationWarningsItemDataItemOutputWithContext(ctx context.Context) OperationWarningsItemDataItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemOutput)
+}
+
+// OperationWarningsItemDataItemArrayInput is an input type that accepts OperationWarningsItemDataItemArray and OperationWarningsItemDataItemArrayOutput values.
+// You can construct a concrete instance of `OperationWarningsItemDataItemArrayInput` via:
+//
+//          OperationWarningsItemDataItemArray{ OperationWarningsItemDataItemArgs{...} }
+type OperationWarningsItemDataItemArrayInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemDataItemArrayOutput() OperationWarningsItemDataItemArrayOutput
+	ToOperationWarningsItemDataItemArrayOutputWithContext(context.Context) OperationWarningsItemDataItemArrayOutput
+}
+
+type OperationWarningsItemDataItemArray []OperationWarningsItemDataItemInput
+
+func (OperationWarningsItemDataItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItemDataItem)(nil)).Elem()
+}
+
+func (i OperationWarningsItemDataItemArray) ToOperationWarningsItemDataItemArrayOutput() OperationWarningsItemDataItemArrayOutput {
+	return i.ToOperationWarningsItemDataItemArrayOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemDataItemArray) ToOperationWarningsItemDataItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemArrayOutput)
+}
+
+type OperationWarningsItemDataItemOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemDataItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItemDataItem)(nil)).Elem()
+}
+
+func (o OperationWarningsItemDataItemOutput) ToOperationWarningsItemDataItemOutput() OperationWarningsItemDataItemOutput {
+	return o
+}
+
+func (o OperationWarningsItemDataItemOutput) ToOperationWarningsItemDataItemOutputWithContext(ctx context.Context) OperationWarningsItemDataItemOutput {
+	return o
+}
+
+// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o OperationWarningsItemDataItemOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationWarningsItemDataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] A warning data value corresponding to the key.
+func (o OperationWarningsItemDataItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OperationWarningsItemDataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OperationWarningsItemDataItemArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemDataItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItemDataItem)(nil)).Elem()
+}
+
+func (o OperationWarningsItemDataItemArrayOutput) ToOperationWarningsItemDataItemArrayOutput() OperationWarningsItemDataItemArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemDataItemArrayOutput) ToOperationWarningsItemDataItemArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemDataItemArrayOutput) Index(i pulumi.IntInput) OperationWarningsItemDataItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationWarningsItemDataItem {
+		return vs[0].([]OperationWarningsItemDataItem)[vs[1].(int)]
+	}).(OperationWarningsItemDataItemOutput)
+}
+
+type OperationWarningsItemDataItemResponse struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// OperationWarningsItemDataItemResponseInput is an input type that accepts OperationWarningsItemDataItemResponseArgs and OperationWarningsItemDataItemResponseOutput values.
+// You can construct a concrete instance of `OperationWarningsItemDataItemResponseInput` via:
+//
+//          OperationWarningsItemDataItemResponseArgs{...}
+type OperationWarningsItemDataItemResponseInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemDataItemResponseOutput() OperationWarningsItemDataItemResponseOutput
+	ToOperationWarningsItemDataItemResponseOutputWithContext(context.Context) OperationWarningsItemDataItemResponseOutput
+}
+
+type OperationWarningsItemDataItemResponseArgs struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OperationWarningsItemDataItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItemDataItemResponse)(nil)).Elem()
+}
+
+func (i OperationWarningsItemDataItemResponseArgs) ToOperationWarningsItemDataItemResponseOutput() OperationWarningsItemDataItemResponseOutput {
+	return i.ToOperationWarningsItemDataItemResponseOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemDataItemResponseArgs) ToOperationWarningsItemDataItemResponseOutputWithContext(ctx context.Context) OperationWarningsItemDataItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemResponseOutput)
+}
+
+// OperationWarningsItemDataItemResponseArrayInput is an input type that accepts OperationWarningsItemDataItemResponseArray and OperationWarningsItemDataItemResponseArrayOutput values.
+// You can construct a concrete instance of `OperationWarningsItemDataItemResponseArrayInput` via:
+//
+//          OperationWarningsItemDataItemResponseArray{ OperationWarningsItemDataItemResponseArgs{...} }
+type OperationWarningsItemDataItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemDataItemResponseArrayOutput() OperationWarningsItemDataItemResponseArrayOutput
+	ToOperationWarningsItemDataItemResponseArrayOutputWithContext(context.Context) OperationWarningsItemDataItemResponseArrayOutput
+}
+
+type OperationWarningsItemDataItemResponseArray []OperationWarningsItemDataItemResponseInput
+
+func (OperationWarningsItemDataItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItemDataItemResponse)(nil)).Elem()
+}
+
+func (i OperationWarningsItemDataItemResponseArray) ToOperationWarningsItemDataItemResponseArrayOutput() OperationWarningsItemDataItemResponseArrayOutput {
+	return i.ToOperationWarningsItemDataItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemDataItemResponseArray) ToOperationWarningsItemDataItemResponseArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemDataItemResponseArrayOutput)
+}
+
+type OperationWarningsItemDataItemResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemDataItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItemDataItemResponse)(nil)).Elem()
+}
+
+func (o OperationWarningsItemDataItemResponseOutput) ToOperationWarningsItemDataItemResponseOutput() OperationWarningsItemDataItemResponseOutput {
+	return o
+}
+
+func (o OperationWarningsItemDataItemResponseOutput) ToOperationWarningsItemDataItemResponseOutputWithContext(ctx context.Context) OperationWarningsItemDataItemResponseOutput {
+	return o
+}
+
+// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o OperationWarningsItemDataItemResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationWarningsItemDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// [Output Only] A warning data value corresponding to the key.
+func (o OperationWarningsItemDataItemResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationWarningsItemDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OperationWarningsItemDataItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemDataItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItemDataItemResponse)(nil)).Elem()
+}
+
+func (o OperationWarningsItemDataItemResponseArrayOutput) ToOperationWarningsItemDataItemResponseArrayOutput() OperationWarningsItemDataItemResponseArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemDataItemResponseArrayOutput) ToOperationWarningsItemDataItemResponseArrayOutputWithContext(ctx context.Context) OperationWarningsItemDataItemResponseArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemDataItemResponseArrayOutput) Index(i pulumi.IntInput) OperationWarningsItemDataItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationWarningsItemDataItemResponse {
+		return vs[0].([]OperationWarningsItemDataItemResponse)[vs[1].(int)]
+	}).(OperationWarningsItemDataItemResponseOutput)
+}
+
+type OperationWarningsItemResponse struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []OperationWarningsItemDataItemResponse `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// OperationWarningsItemResponseInput is an input type that accepts OperationWarningsItemResponseArgs and OperationWarningsItemResponseOutput values.
+// You can construct a concrete instance of `OperationWarningsItemResponseInput` via:
+//
+//          OperationWarningsItemResponseArgs{...}
+type OperationWarningsItemResponseInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemResponseOutput() OperationWarningsItemResponseOutput
+	ToOperationWarningsItemResponseOutputWithContext(context.Context) OperationWarningsItemResponseOutput
+}
+
+type OperationWarningsItemResponseArgs struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data OperationWarningsItemDataItemResponseArrayInput `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (OperationWarningsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItemResponse)(nil)).Elem()
+}
+
+func (i OperationWarningsItemResponseArgs) ToOperationWarningsItemResponseOutput() OperationWarningsItemResponseOutput {
+	return i.ToOperationWarningsItemResponseOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemResponseArgs) ToOperationWarningsItemResponseOutputWithContext(ctx context.Context) OperationWarningsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemResponseOutput)
+}
+
+// OperationWarningsItemResponseArrayInput is an input type that accepts OperationWarningsItemResponseArray and OperationWarningsItemResponseArrayOutput values.
+// You can construct a concrete instance of `OperationWarningsItemResponseArrayInput` via:
+//
+//          OperationWarningsItemResponseArray{ OperationWarningsItemResponseArgs{...} }
+type OperationWarningsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToOperationWarningsItemResponseArrayOutput() OperationWarningsItemResponseArrayOutput
+	ToOperationWarningsItemResponseArrayOutputWithContext(context.Context) OperationWarningsItemResponseArrayOutput
+}
+
+type OperationWarningsItemResponseArray []OperationWarningsItemResponseInput
+
+func (OperationWarningsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItemResponse)(nil)).Elem()
+}
+
+func (i OperationWarningsItemResponseArray) ToOperationWarningsItemResponseArrayOutput() OperationWarningsItemResponseArrayOutput {
+	return i.ToOperationWarningsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OperationWarningsItemResponseArray) ToOperationWarningsItemResponseArrayOutputWithContext(ctx context.Context) OperationWarningsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationWarningsItemResponseArrayOutput)
+}
+
+type OperationWarningsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationWarningsItemResponse)(nil)).Elem()
+}
+
+func (o OperationWarningsItemResponseOutput) ToOperationWarningsItemResponseOutput() OperationWarningsItemResponseOutput {
+	return o
+}
+
+func (o OperationWarningsItemResponseOutput) ToOperationWarningsItemResponseOutputWithContext(ctx context.Context) OperationWarningsItemResponseOutput {
+	return o
+}
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o OperationWarningsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o OperationWarningsItemResponseOutput) Data() OperationWarningsItemDataItemResponseArrayOutput {
+	return o.ApplyT(func(v OperationWarningsItemResponse) []OperationWarningsItemDataItemResponse { return v.Data }).(OperationWarningsItemDataItemResponseArrayOutput)
+}
+
+// [Output Only] A human-readable description of the warning code.
+func (o OperationWarningsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type OperationWarningsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationWarningsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationWarningsItemResponse)(nil)).Elem()
+}
+
+func (o OperationWarningsItemResponseArrayOutput) ToOperationWarningsItemResponseArrayOutput() OperationWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemResponseArrayOutput) ToOperationWarningsItemResponseArrayOutputWithContext(ctx context.Context) OperationWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o OperationWarningsItemResponseArrayOutput) Index(i pulumi.IntInput) OperationWarningsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationWarningsItemResponse {
+		return vs[0].([]OperationWarningsItemResponse)[vs[1].(int)]
+	}).(OperationWarningsItemResponseOutput)
 }
 
 // Options allows customized resource handling by Deployment Manager.
@@ -8194,26 +8194,10 @@ func init() {
 	pulumi.RegisterOutputType(CollectionOverrideArrayOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideResponseOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideResponseArrayOutput{})
-	pulumi.RegisterOutputType(CompositeTypeDataItemOutput{})
-	pulumi.RegisterOutputType(CompositeTypeDataItemArrayOutput{})
-	pulumi.RegisterOutputType(CompositeTypeDataItemResponseOutput{})
-	pulumi.RegisterOutputType(CompositeTypeDataItemResponseArrayOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorPtrOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorResponseOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorResponsePtrOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorsItemOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorsItemArrayOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorsItemResponseOutput{})
-	pulumi.RegisterOutputType(CompositeTypeErrorsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(CompositeTypeLabelEntryOutput{})
 	pulumi.RegisterOutputType(CompositeTypeLabelEntryArrayOutput{})
 	pulumi.RegisterOutputType(CompositeTypeLabelEntryResponseOutput{})
 	pulumi.RegisterOutputType(CompositeTypeLabelEntryResponseArrayOutput{})
-	pulumi.RegisterOutputType(CompositeTypeWarningsItemOutput{})
-	pulumi.RegisterOutputType(CompositeTypeWarningsItemArrayOutput{})
-	pulumi.RegisterOutputType(CompositeTypeWarningsItemResponseOutput{})
-	pulumi.RegisterOutputType(CompositeTypeWarningsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigFileOutput{})
 	pulumi.RegisterOutputType(ConfigFilePtrOutput{})
 	pulumi.RegisterOutputType(ConfigFileResponseOutput{})
@@ -8251,8 +8235,24 @@ func init() {
 	pulumi.RegisterOutputType(InputMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationOutput{})
 	pulumi.RegisterOutputType(OperationPtrOutput{})
+	pulumi.RegisterOutputType(OperationErrorOutput{})
+	pulumi.RegisterOutputType(OperationErrorPtrOutput{})
+	pulumi.RegisterOutputType(OperationErrorErrorsItemOutput{})
+	pulumi.RegisterOutputType(OperationErrorErrorsItemArrayOutput{})
+	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseOutput{})
+	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
+	pulumi.RegisterOutputType(OperationErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationResponseOutput{})
 	pulumi.RegisterOutputType(OperationResponsePtrOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemArrayOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemDataItemOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemDataItemArrayOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemDataItemResponseOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemDataItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemResponseOutput{})
+	pulumi.RegisterOutputType(OperationWarningsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(OptionsOutput{})
 	pulumi.RegisterOutputType(OptionsPtrOutput{})
 	pulumi.RegisterOutputType(OptionsResponseOutput{})

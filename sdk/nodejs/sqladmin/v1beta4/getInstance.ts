@@ -55,7 +55,7 @@ export interface GetInstanceResult {
     /**
      * The name and status of the failover replica. This property is applicable only to Second Generation instances.
      */
-    readonly failoverReplica: outputs.sqladmin.v1beta4.GetInstanceFailoverReplicaResponse;
+    readonly failoverReplica: outputs.sqladmin.v1beta4.InstanceFailoverReplicaResponse;
     /**
      * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
      */

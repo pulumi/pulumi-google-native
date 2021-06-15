@@ -74,7 +74,7 @@ export interface GetBucketAccessControlResult {
     /**
      * The project team associated with the entity, if any.
      */
-    readonly projectTeam: outputs.storage.v1.GetBucketAccessControlProjectTeamResponse;
+    readonly projectTeam: outputs.storage.v1.BucketAccessControlProjectTeamResponse;
     /**
      * The access permission for the entity.
      */

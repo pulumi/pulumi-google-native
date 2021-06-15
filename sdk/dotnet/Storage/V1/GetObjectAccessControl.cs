@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// The project team associated with the entity, if any.
         /// </summary>
-        public readonly Outputs.GetObjectAccessControlProjectTeamResponse ProjectTeam;
+        public readonly Outputs.ObjectAccessControlProjectTeamResponse ProjectTeam;
         /// <summary>
         /// The access permission for the entity.
         /// </summary>
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string @object,
 
-            Outputs.GetObjectAccessControlProjectTeamResponse projectTeam,
+            Outputs.ObjectAccessControlProjectTeamResponse projectTeam,
 
             string role,
 

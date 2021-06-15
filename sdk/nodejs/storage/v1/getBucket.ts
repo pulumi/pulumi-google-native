@@ -43,11 +43,11 @@ export interface GetBucketResult {
     /**
      * The bucket's billing configuration.
      */
-    readonly billing: outputs.storage.v1.GetBucketBillingResponse;
+    readonly billing: outputs.storage.v1.BucketBillingResponse;
     /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
-    readonly cors: outputs.storage.v1.GetBucketCorsItemResponse[];
+    readonly cors: outputs.storage.v1.BucketCorsItemResponse[];
     /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
@@ -59,7 +59,7 @@ export interface GetBucketResult {
     /**
      * Encryption configuration for a bucket.
      */
-    readonly encryption: outputs.storage.v1.GetBucketEncryptionResponse;
+    readonly encryption: outputs.storage.v1.BucketEncryptionResponse;
     /**
      * HTTP 1.1 Entity tag for the bucket.
      */
@@ -67,7 +67,7 @@ export interface GetBucketResult {
     /**
      * The bucket's IAM configuration.
      */
-    readonly iamConfiguration: outputs.storage.v1.GetBucketIamConfigurationResponse;
+    readonly iamConfiguration: outputs.storage.v1.BucketIamConfigurationResponse;
     /**
      * The kind of item this is. For buckets, this is always storage#bucket.
      */
@@ -79,7 +79,7 @@ export interface GetBucketResult {
     /**
      * The bucket's lifecycle configuration. See lifecycle management for more information.
      */
-    readonly lifecycle: outputs.storage.v1.GetBucketLifecycleResponse;
+    readonly lifecycle: outputs.storage.v1.BucketLifecycleResponse;
     /**
      * The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
      */
@@ -91,7 +91,7 @@ export interface GetBucketResult {
     /**
      * The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
      */
-    readonly logging: outputs.storage.v1.GetBucketLoggingResponse;
+    readonly logging: outputs.storage.v1.BucketLoggingResponse;
     /**
      * The metadata generation of this bucket.
      */
@@ -103,7 +103,7 @@ export interface GetBucketResult {
     /**
      * The owner of the bucket. This is always the project team's owner group.
      */
-    readonly owner: outputs.storage.v1.GetBucketOwnerResponse;
+    readonly owner: outputs.storage.v1.BucketOwnerResponse;
     /**
      * The project number of the project the bucket belongs to.
      */
@@ -111,7 +111,7 @@ export interface GetBucketResult {
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
-    readonly retentionPolicy: outputs.storage.v1.GetBucketRetentionPolicyResponse;
+    readonly retentionPolicy: outputs.storage.v1.BucketRetentionPolicyResponse;
     /**
      * Reserved for future use.
      */
@@ -135,11 +135,11 @@ export interface GetBucketResult {
     /**
      * The bucket's versioning configuration.
      */
-    readonly versioning: outputs.storage.v1.GetBucketVersioningResponse;
+    readonly versioning: outputs.storage.v1.BucketVersioningResponse;
     /**
      * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
      */
-    readonly website: outputs.storage.v1.GetBucketWebsiteResponse;
+    readonly website: outputs.storage.v1.BucketWebsiteResponse;
     /**
      * The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
      */

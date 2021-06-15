@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Output-only] Job resource usage breakdown by reservation.
         /// </summary>
-        public readonly ImmutableArray<Outputs.JobReservationUsageItemResponse> ReservationUsage;
+        public readonly ImmutableArray<Outputs.JobStatistics2ReservationUsageItemResponse> ReservationUsage;
         /// <summary>
         /// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         /// </summary>
@@ -140,7 +140,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<Outputs.TableReferenceResponse> referencedTables,
 
-            ImmutableArray<Outputs.JobReservationUsageItemResponse> reservationUsage,
+            ImmutableArray<Outputs.JobStatistics2ReservationUsageItemResponse> reservationUsage,
 
             Outputs.TableSchemaResponse schema,
 

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// <summary>
         /// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         /// </summary>
-        public readonly ImmutableArray<Outputs.InstanceItemsItemResponse> Items;
+        public readonly ImmutableArray<Outputs.MetadataItemsItemResponse> Items;
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#metadata for metadata.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         private MetadataResponse(
             string fingerprint,
 
-            ImmutableArray<Outputs.InstanceItemsItemResponse> items,
+            ImmutableArray<Outputs.MetadataItemsItemResponse> items,
 
             string kind)
         {

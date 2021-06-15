@@ -20,13 +20,14 @@ __all__ = [
     'BindingResponse',
     'BqmlIterationResultResponse',
     'BqmlTrainingRunResponse',
+    'BqmlTrainingRunTrainingOptionsResponse',
     'ClusteringResponse',
     'ConnectionPropertyResponse',
     'CsvOptionsResponse',
     'DatasetAccessEntryResponse',
+    'DatasetAccessEntryTarget_typesItemResponse',
     'DatasetAccessItemResponse',
     'DatasetReferenceResponse',
-    'DatasetTarget_typesItemResponse',
     'DestinationTablePropertiesResponse',
     'EncryptionConfigurationResponse',
     'ErrorProtoResponse',
@@ -36,30 +37,30 @@ __all__ = [
     'ExternalDataConfigurationResponse',
     'GoogleSheetsOptionsResponse',
     'HivePartitioningOptionsResponse',
-    'JobCategoriesResponse',
     'JobConfigurationExtractResponse',
     'JobConfigurationLoadResponse',
     'JobConfigurationQueryResponse',
     'JobConfigurationResponse',
     'JobConfigurationTableCopyResponse',
-    'JobPolicyTagsResponse',
-    'JobRangeResponse',
     'JobReferenceResponse',
-    'JobReservationUsageItemResponse',
+    'JobStatistics2ReservationUsageItemResponse',
     'JobStatistics2Response',
     'JobStatistics3Response',
     'JobStatistics4Response',
+    'JobStatisticsReservationUsageItemResponse',
     'JobStatisticsResponse',
     'JobStatusResponse',
-    'JobStructTypesItemResponse',
     'MaterializedViewDefinitionResponse',
+    'ModelDefinitionModelOptionsResponse',
     'ModelDefinitionResponse',
     'ModelReferenceResponse',
     'ParquetOptionsResponse',
     'QueryParameterResponse',
     'QueryParameterTypeResponse',
+    'QueryParameterTypeStructTypesItemResponse',
     'QueryParameterValueResponse',
     'QueryTimelineSampleResponse',
+    'RangePartitioningRangeResponse',
     'RangePartitioningResponse',
     'RoutineReferenceResponse',
     'RowAccessPolicyReferenceResponse',
@@ -73,16 +74,15 @@ __all__ = [
     'StandardSqlStructTypeResponse',
     'StandardSqlTableTypeResponse',
     'StreamingbufferResponse',
+    'TableFieldSchemaCategoriesResponse',
+    'TableFieldSchemaPolicyTagsResponse',
     'TableFieldSchemaResponse',
-    'TableModelOptionsResponse',
     'TableReferenceResponse',
     'TableSchemaResponse',
-    'TableTrainingOptionsResponse',
     'TimePartitioningResponse',
     'TransactionInfoResponse',
     'UserDefinedFunctionResourceResponse',
     'ViewDefinitionResponse',
-    'GetDatasetAccessItemResponse',
 ]
 
 @pulumi.output_type
@@ -699,12 +699,12 @@ class BqmlTrainingRunResponse(dict):
                  iteration_results: Sequence['outputs.BqmlIterationResultResponse'],
                  start_time: str,
                  state: str,
-                 training_options: 'outputs.TableTrainingOptionsResponse'):
+                 training_options: 'outputs.BqmlTrainingRunTrainingOptionsResponse'):
         """
         :param Sequence['BqmlIterationResultResponse'] iteration_results: [Output-only, Beta] List of each iteration results.
         :param str start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
         :param str state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        :param 'TableTrainingOptionsResponse' training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        :param 'BqmlTrainingRunTrainingOptionsResponse' training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         pulumi.set(__self__, "iteration_results", iteration_results)
         pulumi.set(__self__, "start_time", start_time)
@@ -737,11 +737,118 @@ class BqmlTrainingRunResponse(dict):
 
     @property
     @pulumi.getter(name="trainingOptions")
-    def training_options(self) -> 'outputs.TableTrainingOptionsResponse':
+    def training_options(self) -> 'outputs.BqmlTrainingRunTrainingOptionsResponse':
         """
         [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         return pulumi.get(self, "training_options")
+
+
+@pulumi.output_type
+class BqmlTrainingRunTrainingOptionsResponse(dict):
+    """
+    [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "earlyStop":
+            suggest = "early_stop"
+        elif key == "l1Reg":
+            suggest = "l1_reg"
+        elif key == "l2Reg":
+            suggest = "l2_reg"
+        elif key == "learnRate":
+            suggest = "learn_rate"
+        elif key == "learnRateStrategy":
+            suggest = "learn_rate_strategy"
+        elif key == "lineSearchInitLearnRate":
+            suggest = "line_search_init_learn_rate"
+        elif key == "maxIteration":
+            suggest = "max_iteration"
+        elif key == "minRelProgress":
+            suggest = "min_rel_progress"
+        elif key == "warmStart":
+            suggest = "warm_start"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BqmlTrainingRunTrainingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BqmlTrainingRunTrainingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BqmlTrainingRunTrainingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 early_stop: bool,
+                 l1_reg: float,
+                 l2_reg: float,
+                 learn_rate: float,
+                 learn_rate_strategy: str,
+                 line_search_init_learn_rate: float,
+                 max_iteration: str,
+                 min_rel_progress: float,
+                 warm_start: bool):
+        """
+        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        """
+        pulumi.set(__self__, "early_stop", early_stop)
+        pulumi.set(__self__, "l1_reg", l1_reg)
+        pulumi.set(__self__, "l2_reg", l2_reg)
+        pulumi.set(__self__, "learn_rate", learn_rate)
+        pulumi.set(__self__, "learn_rate_strategy", learn_rate_strategy)
+        pulumi.set(__self__, "line_search_init_learn_rate", line_search_init_learn_rate)
+        pulumi.set(__self__, "max_iteration", max_iteration)
+        pulumi.set(__self__, "min_rel_progress", min_rel_progress)
+        pulumi.set(__self__, "warm_start", warm_start)
+
+    @property
+    @pulumi.getter(name="earlyStop")
+    def early_stop(self) -> bool:
+        return pulumi.get(self, "early_stop")
+
+    @property
+    @pulumi.getter(name="l1Reg")
+    def l1_reg(self) -> float:
+        return pulumi.get(self, "l1_reg")
+
+    @property
+    @pulumi.getter(name="l2Reg")
+    def l2_reg(self) -> float:
+        return pulumi.get(self, "l2_reg")
+
+    @property
+    @pulumi.getter(name="learnRate")
+    def learn_rate(self) -> float:
+        return pulumi.get(self, "learn_rate")
+
+    @property
+    @pulumi.getter(name="learnRateStrategy")
+    def learn_rate_strategy(self) -> str:
+        return pulumi.get(self, "learn_rate_strategy")
+
+    @property
+    @pulumi.getter(name="lineSearchInitLearnRate")
+    def line_search_init_learn_rate(self) -> float:
+        return pulumi.get(self, "line_search_init_learn_rate")
+
+    @property
+    @pulumi.getter(name="maxIteration")
+    def max_iteration(self) -> str:
+        return pulumi.get(self, "max_iteration")
+
+    @property
+    @pulumi.getter(name="minRelProgress")
+    def min_rel_progress(self) -> float:
+        return pulumi.get(self, "min_rel_progress")
+
+    @property
+    @pulumi.getter(name="warmStart")
+    def warm_start(self) -> bool:
+        return pulumi.get(self, "warm_start")
 
 
 @pulumi.output_type
@@ -891,7 +998,7 @@ class CsvOptionsResponse(dict):
 class DatasetAccessEntryResponse(dict):
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
-                 target_types: Sequence['outputs.DatasetTarget_typesItemResponse']):
+                 target_types: Sequence['outputs.DatasetAccessEntryTarget_typesItemResponse']):
         """
         :param 'DatasetReferenceResponse' dataset: [Required] The dataset this entry applies to.
         """
@@ -908,8 +1015,43 @@ class DatasetAccessEntryResponse(dict):
 
     @property
     @pulumi.getter
-    def target_types(self) -> Sequence['outputs.DatasetTarget_typesItemResponse']:
+    def target_types(self) -> Sequence['outputs.DatasetAccessEntryTarget_typesItemResponse']:
         return pulumi.get(self, "target_types")
+
+
+@pulumi.output_type
+class DatasetAccessEntryTarget_typesItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetType":
+            suggest = "target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessEntryTarget_typesItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetAccessEntryTarget_typesItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetAccessEntryTarget_typesItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_type: str):
+        """
+        :param str target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+        """
+        pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> str:
+        """
+        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+        """
+        return pulumi.get(self, "target_type")
 
 
 @pulumi.output_type
@@ -1085,41 +1227,6 @@ class DatasetReferenceResponse(dict):
         [Optional] The ID of the project containing this dataset.
         """
         return pulumi.get(self, "project")
-
-
-@pulumi.output_type
-class DatasetTarget_typesItemResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "targetType":
-            suggest = "target_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetTarget_typesItemResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatasetTarget_typesItemResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatasetTarget_typesItemResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 target_type: str):
-        """
-        :param str target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        pulumi.set(__self__, "target_type", target_type)
-
-    @property
-    @pulumi.getter(name="targetType")
-    def target_type(self) -> str:
-        """
-        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        return pulumi.get(self, "target_type")
 
 
 @pulumi.output_type
@@ -2047,28 +2154,6 @@ class HivePartitioningOptionsResponse(dict):
         [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
         """
         return pulumi.get(self, "source_uri_prefix")
-
-
-@pulumi.output_type
-class JobCategoriesResponse(dict):
-    """
-    [Optional] The categories attached to this field, used for field-level access control.
-    """
-    def __init__(__self__, *,
-                 names: Sequence[str]):
-        """
-        [Optional] The categories attached to this field, used for field-level access control.
-        :param Sequence[str] names: A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-        """
-        pulumi.set(__self__, "names", names)
-
-    @property
-    @pulumi.getter
-    def names(self) -> Sequence[str]:
-        """
-        A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-        """
-        return pulumi.get(self, "names")
 
 
 @pulumi.output_type
@@ -3142,68 +3227,6 @@ class JobConfigurationTableCopyResponse(dict):
 
 
 @pulumi.output_type
-class JobPolicyTagsResponse(dict):
-    def __init__(__self__, *,
-                 names: Sequence[str]):
-        """
-        :param Sequence[str] names: A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-        """
-        pulumi.set(__self__, "names", names)
-
-    @property
-    @pulumi.getter
-    def names(self) -> Sequence[str]:
-        """
-        A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-        """
-        return pulumi.get(self, "names")
-
-
-@pulumi.output_type
-class JobRangeResponse(dict):
-    """
-    [TrustedTester] [Required] Defines the ranges for range partitioning.
-    """
-    def __init__(__self__, *,
-                 end: str,
-                 interval: str,
-                 start: str):
-        """
-        [TrustedTester] [Required] Defines the ranges for range partitioning.
-        :param str end: [TrustedTester] [Required] The end of range partitioning, exclusive.
-        :param str interval: [TrustedTester] [Required] The width of each interval.
-        :param str start: [TrustedTester] [Required] The start of range partitioning, inclusive.
-        """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "start", start)
-
-    @property
-    @pulumi.getter
-    def end(self) -> str:
-        """
-        [TrustedTester] [Required] The end of range partitioning, exclusive.
-        """
-        return pulumi.get(self, "end")
-
-    @property
-    @pulumi.getter
-    def interval(self) -> str:
-        """
-        [TrustedTester] [Required] The width of each interval.
-        """
-        return pulumi.get(self, "interval")
-
-    @property
-    @pulumi.getter
-    def start(self) -> str:
-        """
-        [TrustedTester] [Required] The start of range partitioning, inclusive.
-        """
-        return pulumi.get(self, "start")
-
-
-@pulumi.output_type
 class JobReferenceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3261,7 +3284,7 @@ class JobReferenceResponse(dict):
 
 
 @pulumi.output_type
-class JobReservationUsageItemResponse(dict):
+class JobStatistics2ReservationUsageItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3269,14 +3292,14 @@ class JobReservationUsageItemResponse(dict):
             suggest = "slot_ms"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobReservationUsageItemResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in JobStatistics2ReservationUsageItemResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        JobReservationUsageItemResponse.__key_warning(key)
+        JobStatistics2ReservationUsageItemResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        JobReservationUsageItemResponse.__key_warning(key)
+        JobStatistics2ReservationUsageItemResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -3382,7 +3405,7 @@ class JobStatistics2Response(dict):
                  query_plan: Sequence['outputs.ExplainQueryStageResponse'],
                  referenced_routines: Sequence['outputs.RoutineReferenceResponse'],
                  referenced_tables: Sequence['outputs.TableReferenceResponse'],
-                 reservation_usage: Sequence['outputs.JobReservationUsageItemResponse'],
+                 reservation_usage: Sequence['outputs.JobStatistics2ReservationUsageItemResponse'],
                  schema: 'outputs.TableSchemaResponse',
                  statement_type: str,
                  timeline: Sequence['outputs.QueryTimelineSampleResponse'],
@@ -3407,7 +3430,7 @@ class JobStatistics2Response(dict):
         :param Sequence['ExplainQueryStageResponse'] query_plan: [Output-only] Describes execution plan for the query.
         :param Sequence['RoutineReferenceResponse'] referenced_routines: [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
         :param Sequence['TableReferenceResponse'] referenced_tables: [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-        :param Sequence['JobReservationUsageItemResponse'] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
+        :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
         :param 'TableSchemaResponse' schema: [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         :param str statement_type: The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         :param Sequence['QueryTimelineSampleResponse'] timeline: [Output-only] [Beta] Describes a timeline of job execution.
@@ -3557,7 +3580,7 @@ class JobStatistics2Response(dict):
 
     @property
     @pulumi.getter(name="reservationUsage")
-    def reservation_usage(self) -> Sequence['outputs.JobReservationUsageItemResponse']:
+    def reservation_usage(self) -> Sequence['outputs.JobStatistics2ReservationUsageItemResponse']:
         """
         [Output-only] Job resource usage breakdown by reservation.
         """
@@ -3772,6 +3795,52 @@ class JobStatistics4Response(dict):
 
 
 @pulumi.output_type
+class JobStatisticsReservationUsageItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slotMs":
+            suggest = "slot_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatisticsReservationUsageItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatisticsReservationUsageItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatisticsReservationUsageItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 slot_ms: str):
+        """
+        :param str name: [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        :param str slot_ms: [Output-only] Slot-milliseconds the job spent in the given reservation.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "slot_ms", slot_ms)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="slotMs")
+    def slot_ms(self) -> str:
+        """
+        [Output-only] Slot-milliseconds the job spent in the given reservation.
+        """
+        return pulumi.get(self, "slot_ms")
+
+
+@pulumi.output_type
 class JobStatisticsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3824,7 +3893,7 @@ class JobStatisticsResponse(dict):
                  parent_job_id: str,
                  query: 'outputs.JobStatistics2Response',
                  quota_deferments: Sequence[str],
-                 reservation_usage: Sequence['outputs.JobReservationUsageItemResponse'],
+                 reservation_usage: Sequence['outputs.JobStatisticsReservationUsageItemResponse'],
                  reservation_id: str,
                  row_level_security_statistics: 'outputs.RowLevelSecurityStatisticsResponse',
                  script_statistics: 'outputs.ScriptStatisticsResponse',
@@ -3842,7 +3911,7 @@ class JobStatisticsResponse(dict):
         :param str parent_job_id: [Output-only] If this is a child job, the id of the parent.
         :param 'JobStatistics2Response' query: [Output-only] Statistics for a query job.
         :param Sequence[str] quota_deferments: [Output-only] Quotas which delayed this job's start time.
-        :param Sequence['JobReservationUsageItemResponse'] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
+        :param Sequence['JobStatisticsReservationUsageItemResponse'] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
         :param str reservation_id: [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
         :param 'RowLevelSecurityStatisticsResponse' row_level_security_statistics: [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
         :param 'ScriptStatisticsResponse' script_statistics: [Output-only] Statistics for a child job of a script.
@@ -3943,7 +4012,7 @@ class JobStatisticsResponse(dict):
 
     @property
     @pulumi.getter(name="reservationUsage")
-    def reservation_usage(self) -> Sequence['outputs.JobReservationUsageItemResponse']:
+    def reservation_usage(self) -> Sequence['outputs.JobStatisticsReservationUsageItemResponse']:
         """
         [Output-only] Job resource usage breakdown by reservation.
         """
@@ -4064,46 +4133,6 @@ class JobStatusResponse(dict):
 
 
 @pulumi.output_type
-class JobStructTypesItemResponse(dict):
-    def __init__(__self__, *,
-                 description: str,
-                 name: str,
-                 type: 'outputs.QueryParameterTypeResponse'):
-        """
-        :param str description: [Optional] Human-oriented description of the field.
-        :param str name: [Optional] The name of this field.
-        :param 'QueryParameterTypeResponse' type: [Required] The type of this field.
-        """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def description(self) -> str:
-        """
-        [Optional] Human-oriented description of the field.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        [Optional] The name of this field.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def type(self) -> 'outputs.QueryParameterTypeResponse':
-        """
-        [Required] The type of this field.
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
 class MaterializedViewDefinitionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4176,6 +4205,57 @@ class MaterializedViewDefinitionResponse(dict):
 
 
 @pulumi.output_type
+class ModelDefinitionModelOptionsResponse(dict):
+    """
+    [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lossType":
+            suggest = "loss_type"
+        elif key == "modelType":
+            suggest = "model_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelDefinitionModelOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelDefinitionModelOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelDefinitionModelOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 labels: Sequence[str],
+                 loss_type: str,
+                 model_type: str):
+        """
+        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "loss_type", loss_type)
+        pulumi.set(__self__, "model_type", model_type)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence[str]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lossType")
+    def loss_type(self) -> str:
+        return pulumi.get(self, "loss_type")
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> str:
+        return pulumi.get(self, "model_type")
+
+
+@pulumi.output_type
 class ModelDefinitionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4197,10 +4277,10 @@ class ModelDefinitionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 model_options: 'outputs.TableModelOptionsResponse',
+                 model_options: 'outputs.ModelDefinitionModelOptionsResponse',
                  training_runs: Sequence['outputs.BqmlTrainingRunResponse']):
         """
-        :param 'TableModelOptionsResponse' model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        :param 'ModelDefinitionModelOptionsResponse' model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         :param Sequence['BqmlTrainingRunResponse'] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
         """
         pulumi.set(__self__, "model_options", model_options)
@@ -4208,7 +4288,7 @@ class ModelDefinitionResponse(dict):
 
     @property
     @pulumi.getter(name="modelOptions")
-    def model_options(self) -> 'outputs.TableModelOptionsResponse':
+    def model_options(self) -> 'outputs.ModelDefinitionModelOptionsResponse':
         """
         [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         """
@@ -4412,11 +4492,11 @@ class QueryParameterTypeResponse(dict):
 
     def __init__(__self__, *,
                  array_type: 'outputs.QueryParameterTypeResponse',
-                 struct_types: Sequence['outputs.JobStructTypesItemResponse'],
+                 struct_types: Sequence['outputs.QueryParameterTypeStructTypesItemResponse'],
                  type: str):
         """
         :param 'QueryParameterTypeResponse' array_type: [Optional] The type of the array's elements, if this is an array.
-        :param Sequence['JobStructTypesItemResponse'] struct_types: [Optional] The types of the fields of this struct, in order, if this is a struct.
+        :param Sequence['QueryParameterTypeStructTypesItemResponse'] struct_types: [Optional] The types of the fields of this struct, in order, if this is a struct.
         :param str type: [Required] The top level type of this field.
         """
         pulumi.set(__self__, "array_type", array_type)
@@ -4433,7 +4513,7 @@ class QueryParameterTypeResponse(dict):
 
     @property
     @pulumi.getter(name="structTypes")
-    def struct_types(self) -> Sequence['outputs.JobStructTypesItemResponse']:
+    def struct_types(self) -> Sequence['outputs.QueryParameterTypeStructTypesItemResponse']:
         """
         [Optional] The types of the fields of this struct, in order, if this is a struct.
         """
@@ -4444,6 +4524,46 @@ class QueryParameterTypeResponse(dict):
     def type(self) -> str:
         """
         [Required] The top level type of this field.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class QueryParameterTypeStructTypesItemResponse(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 name: str,
+                 type: 'outputs.QueryParameterTypeResponse'):
+        """
+        :param str description: [Optional] Human-oriented description of the field.
+        :param str name: [Optional] The name of this field.
+        :param 'QueryParameterTypeResponse' type: [Required] The type of this field.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        [Optional] Human-oriented description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        [Optional] The name of this field.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> 'outputs.QueryParameterTypeResponse':
+        """
+        [Required] The type of this field.
         """
         return pulumi.get(self, "type")
 
@@ -4595,13 +4715,57 @@ class QueryTimelineSampleResponse(dict):
 
 
 @pulumi.output_type
+class RangePartitioningRangeResponse(dict):
+    """
+    [TrustedTester] [Required] Defines the ranges for range partitioning.
+    """
+    def __init__(__self__, *,
+                 end: str,
+                 interval: str,
+                 start: str):
+        """
+        [TrustedTester] [Required] Defines the ranges for range partitioning.
+        :param str end: [TrustedTester] [Required] The end of range partitioning, exclusive.
+        :param str interval: [TrustedTester] [Required] The width of each interval.
+        :param str start: [TrustedTester] [Required] The start of range partitioning, inclusive.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        """
+        [TrustedTester] [Required] The end of range partitioning, exclusive.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> str:
+        """
+        [TrustedTester] [Required] The width of each interval.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        """
+        [TrustedTester] [Required] The start of range partitioning, inclusive.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
 class RangePartitioningResponse(dict):
     def __init__(__self__, *,
                  field: str,
-                 range: 'outputs.JobRangeResponse'):
+                 range: 'outputs.RangePartitioningRangeResponse'):
         """
         :param str field: [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-        :param 'JobRangeResponse' range: [TrustedTester] [Required] Defines the ranges for range partitioning.
+        :param 'RangePartitioningRangeResponse' range: [TrustedTester] [Required] Defines the ranges for range partitioning.
         """
         pulumi.set(__self__, "field", field)
         pulumi.set(__self__, "range", range)
@@ -4616,7 +4780,7 @@ class RangePartitioningResponse(dict):
 
     @property
     @pulumi.getter
-    def range(self) -> 'outputs.JobRangeResponse':
+    def range(self) -> 'outputs.RangePartitioningRangeResponse':
         """
         [TrustedTester] [Required] Defines the ranges for range partitioning.
         """
@@ -5212,6 +5376,46 @@ class StreamingbufferResponse(dict):
 
 
 @pulumi.output_type
+class TableFieldSchemaCategoriesResponse(dict):
+    """
+    [Optional] The categories attached to this field, used for field-level access control.
+    """
+    def __init__(__self__, *,
+                 names: Sequence[str]):
+        """
+        [Optional] The categories attached to this field, used for field-level access control.
+        :param Sequence[str] names: A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        """
+        pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        """
+        A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        """
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class TableFieldSchemaPolicyTagsResponse(dict):
+    def __init__(__self__, *,
+                 names: Sequence[str]):
+        """
+        :param Sequence[str] names: A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        """
+        pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        """
+        A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        """
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
 class TableFieldSchemaResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5233,18 +5437,18 @@ class TableFieldSchemaResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 categories: 'outputs.JobCategoriesResponse',
+                 categories: 'outputs.TableFieldSchemaCategoriesResponse',
                  description: str,
                  fields: Sequence['outputs.TableFieldSchemaResponse'],
                  max_length: str,
                  mode: str,
                  name: str,
-                 policy_tags: 'outputs.JobPolicyTagsResponse',
+                 policy_tags: 'outputs.TableFieldSchemaPolicyTagsResponse',
                  precision: str,
                  scale: str,
                  type: str):
         """
-        :param 'JobCategoriesResponse' categories: [Optional] The categories attached to this field, used for field-level access control.
+        :param 'TableFieldSchemaCategoriesResponse' categories: [Optional] The categories attached to this field, used for field-level access control.
         :param str description: [Optional] The field description. The maximum length is 1,024 characters.
         :param Sequence['TableFieldSchemaResponse'] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param str max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -5267,7 +5471,7 @@ class TableFieldSchemaResponse(dict):
 
     @property
     @pulumi.getter
-    def categories(self) -> 'outputs.JobCategoriesResponse':
+    def categories(self) -> 'outputs.TableFieldSchemaCategoriesResponse':
         """
         [Optional] The categories attached to this field, used for field-level access control.
         """
@@ -5315,7 +5519,7 @@ class TableFieldSchemaResponse(dict):
 
     @property
     @pulumi.getter(name="policyTags")
-    def policy_tags(self) -> 'outputs.JobPolicyTagsResponse':
+    def policy_tags(self) -> 'outputs.TableFieldSchemaPolicyTagsResponse':
         return pulumi.get(self, "policy_tags")
 
     @property
@@ -5341,57 +5545,6 @@ class TableFieldSchemaResponse(dict):
         [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
         """
         return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class TableModelOptionsResponse(dict):
-    """
-    [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "lossType":
-            suggest = "loss_type"
-        elif key == "modelType":
-            suggest = "model_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TableModelOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TableModelOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TableModelOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 labels: Sequence[str],
-                 loss_type: str,
-                 model_type: str):
-        """
-        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-        """
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "loss_type", loss_type)
-        pulumi.set(__self__, "model_type", model_type)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Sequence[str]:
-        return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter(name="lossType")
-    def loss_type(self) -> str:
-        return pulumi.get(self, "loss_type")
-
-    @property
-    @pulumi.getter(name="modelType")
-    def model_type(self) -> str:
-        return pulumi.get(self, "model_type")
 
 
 @pulumi.output_type
@@ -5469,113 +5622,6 @@ class TableSchemaResponse(dict):
         Describes the fields in a table.
         """
         return pulumi.get(self, "fields")
-
-
-@pulumi.output_type
-class TableTrainingOptionsResponse(dict):
-    """
-    [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "earlyStop":
-            suggest = "early_stop"
-        elif key == "l1Reg":
-            suggest = "l1_reg"
-        elif key == "l2Reg":
-            suggest = "l2_reg"
-        elif key == "learnRate":
-            suggest = "learn_rate"
-        elif key == "learnRateStrategy":
-            suggest = "learn_rate_strategy"
-        elif key == "lineSearchInitLearnRate":
-            suggest = "line_search_init_learn_rate"
-        elif key == "maxIteration":
-            suggest = "max_iteration"
-        elif key == "minRelProgress":
-            suggest = "min_rel_progress"
-        elif key == "warmStart":
-            suggest = "warm_start"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TableTrainingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TableTrainingOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TableTrainingOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 early_stop: bool,
-                 l1_reg: float,
-                 l2_reg: float,
-                 learn_rate: float,
-                 learn_rate_strategy: str,
-                 line_search_init_learn_rate: float,
-                 max_iteration: str,
-                 min_rel_progress: float,
-                 warm_start: bool):
-        """
-        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-        """
-        pulumi.set(__self__, "early_stop", early_stop)
-        pulumi.set(__self__, "l1_reg", l1_reg)
-        pulumi.set(__self__, "l2_reg", l2_reg)
-        pulumi.set(__self__, "learn_rate", learn_rate)
-        pulumi.set(__self__, "learn_rate_strategy", learn_rate_strategy)
-        pulumi.set(__self__, "line_search_init_learn_rate", line_search_init_learn_rate)
-        pulumi.set(__self__, "max_iteration", max_iteration)
-        pulumi.set(__self__, "min_rel_progress", min_rel_progress)
-        pulumi.set(__self__, "warm_start", warm_start)
-
-    @property
-    @pulumi.getter(name="earlyStop")
-    def early_stop(self) -> bool:
-        return pulumi.get(self, "early_stop")
-
-    @property
-    @pulumi.getter(name="l1Reg")
-    def l1_reg(self) -> float:
-        return pulumi.get(self, "l1_reg")
-
-    @property
-    @pulumi.getter(name="l2Reg")
-    def l2_reg(self) -> float:
-        return pulumi.get(self, "l2_reg")
-
-    @property
-    @pulumi.getter(name="learnRate")
-    def learn_rate(self) -> float:
-        return pulumi.get(self, "learn_rate")
-
-    @property
-    @pulumi.getter(name="learnRateStrategy")
-    def learn_rate_strategy(self) -> str:
-        return pulumi.get(self, "learn_rate_strategy")
-
-    @property
-    @pulumi.getter(name="lineSearchInitLearnRate")
-    def line_search_init_learn_rate(self) -> float:
-        return pulumi.get(self, "line_search_init_learn_rate")
-
-    @property
-    @pulumi.getter(name="maxIteration")
-    def max_iteration(self) -> str:
-        return pulumi.get(self, "max_iteration")
-
-    @property
-    @pulumi.getter(name="minRelProgress")
-    def min_rel_progress(self) -> float:
-        return pulumi.get(self, "min_rel_progress")
-
-    @property
-    @pulumi.getter(name="warmStart")
-    def warm_start(self) -> bool:
-        return pulumi.get(self, "warm_start")
 
 
 @pulumi.output_type
@@ -5788,111 +5834,5 @@ class ViewDefinitionResponse(dict):
         Describes user-defined function resources used in the query.
         """
         return pulumi.get(self, "user_defined_function_resources")
-
-
-@pulumi.output_type
-class GetDatasetAccessItemResponse(dict):
-    def __init__(__self__, *,
-                 dataset: 'outputs.DatasetAccessEntryResponse',
-                 domain: str,
-                 group_by_email: str,
-                 iam_member: str,
-                 role: str,
-                 routine: 'outputs.RoutineReferenceResponse',
-                 special_group: str,
-                 user_by_email: str,
-                 view: 'outputs.TableReferenceResponse'):
-        """
-        :param 'DatasetAccessEntryResponse' dataset: [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
-        :param str domain: [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
-        :param str group_by_email: [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
-        :param str iam_member: [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-        :param str role: [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-        :param 'RoutineReferenceResponse' routine: [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
-        :param str special_group: [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
-        :param str user_by_email: [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-        :param 'TableReferenceResponse' view: [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
-        """
-        pulumi.set(__self__, "dataset", dataset)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "group_by_email", group_by_email)
-        pulumi.set(__self__, "iam_member", iam_member)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "routine", routine)
-        pulumi.set(__self__, "special_group", special_group)
-        pulumi.set(__self__, "user_by_email", user_by_email)
-        pulumi.set(__self__, "view", view)
-
-    @property
-    @pulumi.getter
-    def dataset(self) -> 'outputs.DatasetAccessEntryResponse':
-        """
-        [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
-        """
-        return pulumi.get(self, "dataset")
-
-    @property
-    @pulumi.getter
-    def domain(self) -> str:
-        """
-        [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
-        """
-        return pulumi.get(self, "domain")
-
-    @property
-    @pulumi.getter(name="groupByEmail")
-    def group_by_email(self) -> str:
-        """
-        [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
-        """
-        return pulumi.get(self, "group_by_email")
-
-    @property
-    @pulumi.getter(name="iamMember")
-    def iam_member(self) -> str:
-        """
-        [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-        """
-        return pulumi.get(self, "iam_member")
-
-    @property
-    @pulumi.getter
-    def role(self) -> str:
-        """
-        [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-        """
-        return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def routine(self) -> 'outputs.RoutineReferenceResponse':
-        """
-        [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
-        """
-        return pulumi.get(self, "routine")
-
-    @property
-    @pulumi.getter(name="specialGroup")
-    def special_group(self) -> str:
-        """
-        [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
-        """
-        return pulumi.get(self, "special_group")
-
-    @property
-    @pulumi.getter(name="userByEmail")
-    def user_by_email(self) -> str:
-        """
-        [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-        """
-        return pulumi.get(self, "user_by_email")
-
-    @property
-    @pulumi.getter
-    def view(self) -> 'outputs.TableReferenceResponse':
-        """
-        [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
-        """
-        return pulumi.get(self, "view")
 
 

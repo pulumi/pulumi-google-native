@@ -60,7 +60,7 @@ type LookupImageResult struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// The parameters of the raw disk image.
-	RawDisk GetImageRawDiskResponse `pulumi:"rawDisk"`
+	RawDisk ImageRawDiskResponse `pulumi:"rawDisk"`
 	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
 	RolloutOverride RolloutPolicyResponse `pulumi:"rolloutOverride"`
 	// [Output Only] Reserved for future use.

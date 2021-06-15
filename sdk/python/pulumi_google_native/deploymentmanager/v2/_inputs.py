@@ -13,16 +13,16 @@ __all__ = [
     'AuditLogConfigArgs',
     'BindingArgs',
     'ConfigFileArgs',
-    'DeploymentDataItemArgs',
-    'DeploymentErrorArgs',
-    'DeploymentErrorsItemArgs',
     'DeploymentLabelEntryArgs',
     'DeploymentUpdateArgs',
     'DeploymentUpdateLabelEntryArgs',
-    'DeploymentWarningsItemArgs',
     'ExprArgs',
     'ImportFileArgs',
     'OperationArgs',
+    'OperationErrorArgs',
+    'OperationErrorErrorsItemArgs',
+    'OperationWarningsItemArgs',
+    'OperationWarningsItemDataItemArgs',
     'TargetConfigurationArgs',
 ]
 
@@ -186,124 +186,6 @@ class ConfigFileArgs:
 
 
 @pulumi.input_type
-class DeploymentDataItemArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        :param pulumi.Input[str] value: [Output Only] A warning data value corresponding to the key.
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A warning data value corresponding to the key.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class DeploymentErrorArgs:
-    def __init__(__self__, *,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentErrorsItemArgs']]]] = None):
-        """
-        [Output Only] If errors are generated during processing of the operation, this field will be populated.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentErrorsItemArgs']]] errors: [Output Only] The array of errors encountered while processing this operation.
-        """
-        if errors is not None:
-            pulumi.set(__self__, "errors", errors)
-
-    @property
-    @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentErrorsItemArgs']]]]:
-        """
-        [Output Only] The array of errors encountered while processing this operation.
-        """
-        return pulumi.get(self, "errors")
-
-    @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentErrorsItemArgs']]]]):
-        pulumi.set(self, "errors", value)
-
-
-@pulumi.input_type
-class DeploymentErrorsItemArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] code: [Output Only] The error type identifier for this error.
-        :param pulumi.Input[str] location: [Output Only] Indicates the field in the request that caused the error. This property is optional.
-        :param pulumi.Input[str] message: [Output Only] An optional, human-readable error message.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] The error type identifier for this error.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] Indicates the field in the request that caused the error. This property is optional.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] An optional, human-readable error message.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-
-@pulumi.input_type
 class DeploymentLabelEntryArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -439,61 +321,6 @@ class DeploymentUpdateLabelEntryArgs:
 
 
 @pulumi.input_type
-class DeploymentWarningsItemArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentDataItemArgs']]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentDataItemArgs']]] data: [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
-        :param pulumi.Input[str] message: [Output Only] A human-readable description of the warning code.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if data is not None:
-            pulumi.set(__self__, "data", data)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentDataItemArgs']]]]:
-        """
-        [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
-        """
-        return pulumi.get(self, "data")
-
-    @data.setter
-    def data(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentDataItemArgs']]]]):
-        pulumi.set(self, "data", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output Only] A human-readable description of the warning code.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-
-@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -610,7 +437,7 @@ class OperationArgs:
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input['DeploymentErrorArgs']] = None,
+                 error: Optional[pulumi.Input['OperationErrorArgs']] = None,
                  http_error_message: Optional[pulumi.Input[str]] = None,
                  http_error_status_code: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -628,14 +455,14 @@ class OperationArgs:
                  target_id: Optional[pulumi.Input[str]] = None,
                  target_link: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentWarningsItemArgs']]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemArgs']]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
         :param pulumi.Input[str] client_operation_id: [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
         :param pulumi.Input[str] description: [Output Only] A textual description of the operation, which is set when the operation is created.
         :param pulumi.Input[str] end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-        :param pulumi.Input['DeploymentErrorArgs'] error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        :param pulumi.Input['OperationErrorArgs'] error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
         :param pulumi.Input[str] http_error_message: [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         :param pulumi.Input[int] http_error_status_code: [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the operation. This identifier is defined by the server.
@@ -653,7 +480,7 @@ class OperationArgs:
         :param pulumi.Input[str] target_id: [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
         :param pulumi.Input[str] target_link: [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
         :param pulumi.Input[str] user: [Output Only] User who requested the operation, for example: `user@example.com`.
-        :param pulumi.Input[Sequence[pulumi.Input['DeploymentWarningsItemArgs']]] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+        :param pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemArgs']]] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         :param pulumi.Input[str] zone: [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         if client_operation_id is not None:
@@ -741,14 +568,14 @@ class OperationArgs:
 
     @property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['DeploymentErrorArgs']]:
+    def error(self) -> Optional[pulumi.Input['OperationErrorArgs']]:
         """
         [Output Only] If errors are generated during processing of the operation, this field will be populated.
         """
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['DeploymentErrorArgs']]):
+    def error(self, value: Optional[pulumi.Input['OperationErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @property
@@ -957,14 +784,14 @@ class OperationArgs:
 
     @property
     @pulumi.getter
-    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentWarningsItemArgs']]]]:
+    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemArgs']]]]:
         """
         [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         """
         return pulumi.get(self, "warnings")
 
     @warnings.setter
-    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentWarningsItemArgs']]]]):
+    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemArgs']]]]):
         pulumi.set(self, "warnings", value)
 
     @property
@@ -978,6 +805,179 @@ class OperationArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class OperationErrorArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['OperationErrorErrorsItemArgs']]]] = None):
+        """
+        [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        :param pulumi.Input[Sequence[pulumi.Input['OperationErrorErrorsItemArgs']]] errors: [Output Only] The array of errors encountered while processing this operation.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OperationErrorErrorsItemArgs']]]]:
+        """
+        [Output Only] The array of errors encountered while processing this operation.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OperationErrorErrorsItemArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+
+@pulumi.input_type
+class OperationErrorErrorsItemArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] code: [Output Only] The error type identifier for this error.
+        :param pulumi.Input[str] location: [Output Only] Indicates the field in the request that caused the error. This property is optional.
+        :param pulumi.Input[str] message: [Output Only] An optional, human-readable error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] An optional, human-readable error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class OperationWarningsItemArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 data: Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemDataItemArgs']]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemDataItemArgs']]] data: [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        :param pulumi.Input[str] message: [Output Only] A human-readable description of the warning code.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemDataItemArgs']]]]:
+        """
+        [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemDataItemArgs']]]]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class OperationWarningsItemDataItemArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param pulumi.Input[str] value: [Output Only] A warning data value corresponding to the key.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

@@ -231,7 +231,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="rawDisk")
-    def raw_disk(self) -> 'outputs.GetImageRawDiskResponse':
+    def raw_disk(self) -> 'outputs.ImageRawDiskResponse':
         """
         The parameters of the raw disk image.
         """

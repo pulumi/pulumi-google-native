@@ -82,7 +82,7 @@ export interface GetDefaultObjectAccessControlResult {
     /**
      * The project team associated with the entity, if any.
      */
-    readonly projectTeam: outputs.storage.v1.GetDefaultObjectAccessControlProjectTeamResponse;
+    readonly projectTeam: outputs.storage.v1.DefaultObjectAccessControlProjectTeamResponse;
     /**
      * The access permission for the entity.
      */

@@ -82,5 +82,5 @@ export interface GetSslPolicyResult {
     /**
      * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */
-    readonly warnings: outputs.compute.alpha.GetSslPolicyWarningsItemResponse[];
+    readonly warnings: outputs.compute.alpha.SslPolicyWarningsItemResponse[];
 }

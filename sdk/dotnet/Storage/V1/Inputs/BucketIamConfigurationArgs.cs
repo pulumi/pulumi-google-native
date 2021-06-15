@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         /// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
         /// </summary>
         [Input("bucketPolicyOnly")]
-        public Input<Inputs.BucketBucketPolicyOnlyArgs>? BucketPolicyOnly { get; set; }
+        public Input<Inputs.BucketIamConfigurationBucketPolicyOnlyArgs>? BucketPolicyOnly { get; set; }
 
         /// <summary>
         /// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         /// The bucket's uniform bucket-level access configuration.
         /// </summary>
         [Input("uniformBucketLevelAccess")]
-        public Input<Inputs.BucketUniformBucketLevelAccessArgs>? UniformBucketLevelAccess { get; set; }
+        public Input<Inputs.BucketIamConfigurationUniformBucketLevelAccessArgs>? UniformBucketLevelAccess { get; set; }
 
         public BucketIamConfigurationArgs()
         {

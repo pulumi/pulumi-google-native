@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         /// </summary>
-        public readonly Outputs.GetObjectCustomerEncryptionResponse CustomerEncryption;
+        public readonly Outputs.ObjectCustomerEncryptionResponse CustomerEncryption;
         /// <summary>
         /// HTTP 1.1 Entity tag for the object.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// The owner of the object. This will always be the uploader of the object.
         /// </summary>
-        public readonly Outputs.GetObjectOwnerResponse Owner;
+        public readonly Outputs.ObjectOwnerResponse Owner;
         /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
@@ -207,7 +207,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string customTime,
 
-            Outputs.GetObjectCustomerEncryptionResponse customerEncryption,
+            Outputs.ObjectCustomerEncryptionResponse customerEncryption,
 
             string etag,
 
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string name,
 
-            Outputs.GetObjectOwnerResponse owner,
+            Outputs.ObjectOwnerResponse owner,
 
             string retentionExpirationTime,
 

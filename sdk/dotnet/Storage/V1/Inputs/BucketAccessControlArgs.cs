@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         /// The project team associated with the entity, if any.
         /// </summary>
         [Input("projectTeam")]
-        public Input<Inputs.BucketProjectTeamArgs>? ProjectTeam { get; set; }
+        public Input<Inputs.BucketAccessControlProjectTeamArgs>? ProjectTeam { get; set; }
 
         /// <summary>
         /// The access permission for the entity.

@@ -37,7 +37,7 @@ export interface GetObjectIamPolicyResult {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    readonly bindings: outputs.storage.v1.GetObjectIamPolicyBindingsItemResponse[];
+    readonly bindings: outputs.storage.v1.ObjectIamPolicyBindingsItemResponse[];
     /**
      * HTTP 1.1  Entity tag for the policy.
      */

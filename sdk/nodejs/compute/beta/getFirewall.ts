@@ -31,7 +31,7 @@ export interface GetFirewallResult {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
      */
-    readonly allowed: outputs.compute.beta.GetFirewallAllowedItemResponse[];
+    readonly allowed: outputs.compute.beta.FirewallAllowedItemResponse[];
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -39,7 +39,7 @@ export interface GetFirewallResult {
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
      */
-    readonly denied: outputs.compute.beta.GetFirewallDeniedItemResponse[];
+    readonly denied: outputs.compute.beta.FirewallDeniedItemResponse[];
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */

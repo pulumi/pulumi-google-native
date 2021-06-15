@@ -140,7 +140,7 @@ class GetDefaultObjectAccessControlResult:
 
     @property
     @pulumi.getter(name="projectTeam")
-    def project_team(self) -> 'outputs.GetDefaultObjectAccessControlProjectTeamResponse':
+    def project_team(self) -> 'outputs.DefaultObjectAccessControlProjectTeamResponse':
         """
         The project team associated with the entity, if any.
         """

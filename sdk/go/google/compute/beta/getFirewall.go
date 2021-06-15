@@ -24,11 +24,11 @@ type LookupFirewallArgs struct {
 
 type LookupFirewallResult struct {
 	// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-	Allowed []GetFirewallAllowedItemResponse `pulumi:"allowed"`
+	Allowed []FirewallAllowedItemResponse `pulumi:"allowed"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-	Denied []GetFirewallDeniedItemResponse `pulumi:"denied"`
+	Denied []FirewallDeniedItemResponse `pulumi:"denied"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description string `pulumi:"description"`
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.

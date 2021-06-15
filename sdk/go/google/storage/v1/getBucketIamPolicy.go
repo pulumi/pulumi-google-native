@@ -26,7 +26,7 @@ type LookupBucketIamPolicyArgs struct {
 
 type LookupBucketIamPolicyResult struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings []GetBucketIamPolicyBindingsItemResponse `pulumi:"bindings"`
+	Bindings []BucketIamPolicyBindingsItemResponse `pulumi:"bindings"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.

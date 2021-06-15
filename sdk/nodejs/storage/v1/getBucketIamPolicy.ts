@@ -35,7 +35,7 @@ export interface GetBucketIamPolicyResult {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    readonly bindings: outputs.storage.v1.GetBucketIamPolicyBindingsItemResponse[];
+    readonly bindings: outputs.storage.v1.BucketIamPolicyBindingsItemResponse[];
     /**
      * HTTP 1.1  Entity tag for the policy.
      */
