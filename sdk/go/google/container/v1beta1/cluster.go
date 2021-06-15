@@ -579,7 +579,7 @@ type ClusterArgs struct {
 	// Shielded Nodes configuration.
 	ShieldedNodes ShieldedNodesPtrInput
 	// [Output only] The current status of this cluster.
-	Status pulumi.StringPtrInput
+	Status *ClusterStatus
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
 	Subnetwork pulumi.StringPtrInput
 	// Configuration for Cloud TPU support;

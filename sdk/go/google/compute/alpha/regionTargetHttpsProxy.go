@@ -312,7 +312,7 @@ type RegionTargetHttpsProxyArgs struct {
 	// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible.
 	// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
 	// - If the quic-override flag is not specified, NONE is implied.
-	QuicOverride pulumi.StringPtrInput
+	QuicOverride *RegionTargetHttpsProxyQuicOverride
 	// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput

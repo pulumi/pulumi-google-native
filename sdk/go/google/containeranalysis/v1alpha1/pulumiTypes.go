@@ -2602,7 +2602,7 @@ type BuildSignatureArgs struct {
 	// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 	// The type of the key, either stored in `public_key` or referenced in `key_id`
-	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
+	KeyType *BuildSignatureKeyType `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// Signature of the related `BuildProvenance`, encoded in a base64 string.
@@ -3849,7 +3849,7 @@ type DeploymentArgs struct {
 	// Beginning of the lifetime of this deployment.
 	DeployTime pulumi.StringPtrInput `pulumi:"deployTime"`
 	// Platform hosting this deployment.
-	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	Platform *DeploymentPlatform `pulumi:"platform"`
 	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
 	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
 	// End of the lifetime of this deployment.
@@ -5095,11 +5095,11 @@ type DiscoveredInput interface {
 // Provides information about the scan status of a discovered resource.
 type DiscoveredArgs struct {
 	// The status of discovery for the resource.
-	AnalysisStatus pulumi.StringPtrInput `pulumi:"analysisStatus"`
+	AnalysisStatus *DiscoveredAnalysisStatus `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
 	AnalysisStatusError StatusPtrInput `pulumi:"analysisStatusError"`
 	// Whether the resource is continuously analyzed.
-	ContinuousAnalysis pulumi.StringPtrInput `pulumi:"continuousAnalysis"`
+	ContinuousAnalysis *DiscoveredContinuousAnalysis `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe pulumi.StringPtrInput `pulumi:"cpe"`
 }
@@ -5471,7 +5471,7 @@ type DiscoveryInput interface {
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
 type DiscoveryArgs struct {
 	// The kind of analysis that is handled by this discovery.
-	AnalysisKind pulumi.StringPtrInput `pulumi:"analysisKind"`
+	AnalysisKind *DiscoveryAnalysisKind `pulumi:"analysisKind"`
 }
 
 func (DiscoveryArgs) ElementType() reflect.Type {
@@ -5749,7 +5749,7 @@ type DistributionInput interface {
 // This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
 type DistributionArgs struct {
 	// The CPU architecture for which packages in this distribution channel were built
-	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	Architecture *DistributionArchitecture `pulumi:"architecture"`
 	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
@@ -6648,7 +6648,7 @@ type GoogleDevtoolsContaineranalysisV1alpha1AliasContextInput interface {
 // An alias to a repo revision.
 type GoogleDevtoolsContaineranalysisV1alpha1AliasContextArgs struct {
 	// The alias kind.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	Kind *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind `pulumi:"kind"`
 	// The alias name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -9132,7 +9132,7 @@ type HashInput interface {
 // Container message for hash values.
 type HashArgs struct {
 	// The type of hash that was performed.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *HashType `pulumi:"type"`
 	// The hash value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -9746,7 +9746,7 @@ type LayerArgs struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments pulumi.StringPtrInput `pulumi:"arguments"`
 	// The recovered Dockerfile directive used to construct this layer.
-	Directive pulumi.StringPtrInput `pulumi:"directive"`
+	Directive *LayerDirective `pulumi:"directive"`
 }
 
 func (LayerArgs) ElementType() reflect.Type {
@@ -10736,7 +10736,7 @@ type PgpSignedAttestationInput interface {
 // An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
 type PgpSignedAttestationArgs struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
-	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	ContentType *PgpSignedAttestationContentType `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId pulumi.StringPtrInput `pulumi:"pgpKeyId"`
 	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
@@ -14378,7 +14378,7 @@ type VersionArgs struct {
 	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
 	Inclusive pulumi.BoolPtrInput `pulumi:"inclusive"`
 	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	Kind *VersionKind `pulumi:"kind"`
 	// The main part of the version name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The iteration of the package build from the above version.
@@ -14796,11 +14796,11 @@ type VulnerabilityDetailsArgs struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore pulumi.Float64PtrInput `pulumi:"cvssScore"`
 	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
-	EffectiveSeverity pulumi.StringPtrInput `pulumi:"effectiveSeverity"`
+	EffectiveSeverity *VulnerabilityDetailsEffectiveSeverity `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
 	// The note provider assigned Severity of the vulnerability.
-	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	Severity *VulnerabilityDetailsSeverity `pulumi:"severity"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -15459,7 +15459,7 @@ type VulnerabilityTypeArgs struct {
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
 	Details DetailArrayInput `pulumi:"details"`
 	// Note provider assigned impact of the vulnerability
-	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	Severity *VulnerabilityTypeSeverity `pulumi:"severity"`
 }
 
 func (VulnerabilityTypeArgs) ElementType() reflect.Type {

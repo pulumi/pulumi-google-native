@@ -304,13 +304,13 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	//  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
-	BackendType pulumi.StringPtrInput
+	BackendType *InstanceBackendType
 	// Connection name of the Cloud SQL instance used in connection strings.
 	ConnectionName pulumi.StringPtrInput
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
 	CurrentDiskSize pulumi.StringPtrInput
 	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
-	DatabaseVersion pulumi.StringPtrInput
+	DatabaseVersion *InstanceDatabaseVersion
 	// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput
 	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
@@ -320,7 +320,7 @@ type InstanceArgs struct {
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone pulumi.StringPtrInput
 	// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
-	InstanceType pulumi.StringPtrInput
+	InstanceType *InstanceInstanceType
 	// The assigned IP addresses for the instance.
 	IpAddresses IpMappingArrayInput
 	// This is always *sql#instance*.
@@ -360,9 +360,9 @@ type InstanceArgs struct {
 	// The user settings.
 	Settings SettingsPtrInput
 	// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
-	State pulumi.StringPtrInput
+	State *InstanceStateEnum
 	// If the instance state is SUSPENDED, the reason for the suspension.
-	SuspensionReason pulumi.StringArrayInput
+	SuspensionReason InstanceSuspensionReasonItemArrayInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

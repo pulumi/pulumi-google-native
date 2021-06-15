@@ -340,7 +340,7 @@ type ManagedCertificateArgs struct {
 	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
 	LastRenewalTime pulumi.StringPtrInput `pulumi:"lastRenewalTime"`
 	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *ManagedCertificateStatus `pulumi:"status"`
 }
 
 func (ManagedCertificateArgs) ElementType() reflect.Type {
@@ -650,7 +650,7 @@ type ResourceRecordArgs struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
 	// Resource record type. Example: AAAA.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *ResourceRecordType `pulumi:"type"`
 }
 
 func (ResourceRecordArgs) ElementType() reflect.Type {

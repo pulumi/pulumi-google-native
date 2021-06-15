@@ -329,7 +329,7 @@ type InstanceArgs struct {
 	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.StringPtrInput
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-	BootDiskType pulumi.StringPtrInput
+	BootDiskType *InstanceBootDiskType
 	// Use a container image to start the notebook instance.
 	ContainerImage ContainerImagePtrInput
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -337,9 +337,9 @@ type InstanceArgs struct {
 	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.StringPtrInput
 	// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-	DataDiskType pulumi.StringPtrInput
+	DataDiskType *InstanceDataDiskType
 	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
-	DiskEncryption pulumi.StringPtrInput
+	DiskEncryption *InstanceDiskEncryption
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
 	InstanceId       pulumi.StringInput
@@ -357,7 +357,7 @@ type InstanceArgs struct {
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringPtrInput
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-	NicType pulumi.StringPtrInput
+	NicType *InstanceNicType
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess pulumi.BoolPtrInput
 	// If true, no public IP will be assigned to this instance.

@@ -2339,7 +2339,7 @@ type SchemaSettingsInput interface {
 // Settings for validating messages published against a schema.
 type SchemaSettingsArgs struct {
 	// The encoding of messages validated against `schema`.
-	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	Encoding *SchemaSettingsEncoding `pulumi:"encoding"`
 	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 }

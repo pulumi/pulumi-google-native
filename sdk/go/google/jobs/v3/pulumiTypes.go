@@ -660,9 +660,9 @@ type CompensationEntryArgs struct {
 	// Optional. Compensation range.
 	Range CompensationRangePtrInput `pulumi:"range"`
 	// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *CompensationEntryType `pulumi:"type"`
 	// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	Unit *CompensationEntryUnit `pulumi:"unit"`
 }
 
 func (CompensationEntryArgs) ElementType() reflect.Type {
@@ -1584,7 +1584,7 @@ type JobDerivedInfoInput interface {
 // Output only. Derived details about the job posting.
 type JobDerivedInfoArgs struct {
 	// Job categories derived from Job.title and Job.description.
-	JobCategories pulumi.StringArrayInput `pulumi:"jobCategories"`
+	JobCategories JobDerivedInfoJobCategoriesItemArrayInput `pulumi:"jobCategories"`
 	// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
 	Locations LocationArrayInput `pulumi:"locations"`
 }
@@ -2202,7 +2202,7 @@ type LocationArgs struct {
 	// An object representing a latitude/longitude pair.
 	LatLng LatLngPtrInput `pulumi:"latLng"`
 	// The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
-	LocationType pulumi.StringPtrInput `pulumi:"locationType"`
+	LocationType *LocationLocationType `pulumi:"locationType"`
 	// Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
 	PostalAddress PostalAddressPtrInput `pulumi:"postalAddress"`
 	// Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
@@ -3662,7 +3662,7 @@ type ProcessingOptionsArgs struct {
 	// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
 	DisableStreetAddressResolution pulumi.BoolPtrInput `pulumi:"disableStreetAddressResolution"`
 	// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-	HtmlSanitization pulumi.StringPtrInput `pulumi:"htmlSanitization"`
+	HtmlSanitization *ProcessingOptionsHtmlSanitization `pulumi:"htmlSanitization"`
 }
 
 func (ProcessingOptionsArgs) ElementType() reflect.Type {

@@ -2081,9 +2081,9 @@ type BasicPerfSampleSeriesInput interface {
 
 // Encapsulates the metadata for basic sample series represented by a line chart
 type BasicPerfSampleSeriesArgs struct {
-	PerfMetricType    pulumi.StringPtrInput `pulumi:"perfMetricType"`
-	PerfUnit          pulumi.StringPtrInput `pulumi:"perfUnit"`
-	SampleSeriesLabel pulumi.StringPtrInput `pulumi:"sampleSeriesLabel"`
+	PerfMetricType    *BasicPerfSampleSeriesPerfMetricType    `pulumi:"perfMetricType"`
+	PerfUnit          *BasicPerfSampleSeriesPerfUnit          `pulumi:"perfUnit"`
+	SampleSeriesLabel *BasicPerfSampleSeriesSampleSeriesLabel `pulumi:"sampleSeriesLabel"`
 }
 
 func (BasicPerfSampleSeriesArgs) ElementType() reflect.Type {
@@ -3828,8 +3828,8 @@ type IndividualOutcomeInput interface {
 // Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
 type IndividualOutcomeArgs struct {
 	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
-	MultistepNumber pulumi.IntPtrInput    `pulumi:"multistepNumber"`
-	OutcomeSummary  pulumi.StringPtrInput `pulumi:"outcomeSummary"`
+	MultistepNumber pulumi.IntPtrInput               `pulumi:"multistepNumber"`
+	OutcomeSummary  *IndividualOutcomeOutcomeSummary `pulumi:"outcomeSummary"`
 	// How long it took for this step to run.
 	RunDuration DurationPtrInput      `pulumi:"runDuration"`
 	StepId      pulumi.StringPtrInput `pulumi:"stepId"`
@@ -6100,7 +6100,7 @@ type OutcomeArgs struct {
 	// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
 	SuccessDetail SuccessDetailPtrInput `pulumi:"successDetail"`
 	// The simplest way to interpret a result. Required
-	Summary pulumi.StringPtrInput `pulumi:"summary"`
+	Summary *OutcomeSummary `pulumi:"summary"`
 }
 
 func (OutcomeArgs) ElementType() reflect.Type {
@@ -6508,7 +6508,7 @@ type PrimaryStepArgs struct {
 	// Step Id and outcome of each individual step.
 	IndividualOutcome IndividualOutcomeArrayInput `pulumi:"individualOutcome"`
 	// Rollup test status of multiple steps that were run with the same configuration as a group.
-	RollUp pulumi.StringPtrInput `pulumi:"rollUp"`
+	RollUp *PrimaryStepRollUp `pulumi:"rollUp"`
 }
 
 func (PrimaryStepArgs) ElementType() reflect.Type {
@@ -8763,13 +8763,13 @@ type TestIssueInput interface {
 // An issue detected occurring during a test execution.
 type TestIssueArgs struct {
 	// Category of issue. Required.
-	Category pulumi.StringPtrInput `pulumi:"category"`
+	Category *TestIssueCategory `pulumi:"category"`
 	// A brief human-readable message describing the issue. Required.
 	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
 	// Severity of issue. Required.
-	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	Severity *TestIssueSeverity `pulumi:"severity"`
 	// Type of issue. Required.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *TestIssueType `pulumi:"type"`
 	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
 	Warning AnyPtrInput `pulumi:"warning"`
 }

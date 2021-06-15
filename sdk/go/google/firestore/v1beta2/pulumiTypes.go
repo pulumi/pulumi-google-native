@@ -34,11 +34,11 @@ type GoogleFirestoreAdminV1beta2IndexFieldInput interface {
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1beta2IndexFieldArgs struct {
 	// Indicates that this field supports operations on `array_value`s.
-	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
+	ArrayConfig *GoogleFirestoreAdminV1beta2IndexFieldArrayConfig `pulumi:"arrayConfig"`
 	// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-	Order pulumi.StringPtrInput `pulumi:"order"`
+	Order *GoogleFirestoreAdminV1beta2IndexFieldOrder `pulumi:"order"`
 }
 
 func (GoogleFirestoreAdminV1beta2IndexFieldArgs) ElementType() reflect.Type {

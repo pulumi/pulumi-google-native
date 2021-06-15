@@ -218,11 +218,11 @@ type RatePlanArgs struct {
 	Apiproduct   pulumi.StringPtrInput
 	ApiproductId pulumi.StringInput
 	// Frequency at which the customer will be billed.
-	BillingPeriod pulumi.StringPtrInput
+	BillingPeriod *RatePlanBillingPeriod
 	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
 	ConsumptionPricingRates GoogleCloudApigeeV1RateRangeArrayInput
 	// Pricing model used for consumption-based charges.
-	ConsumptionPricingType pulumi.StringPtrInput
+	ConsumptionPricingType *RatePlanConsumptionPricingType
 	// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
 	CurrencyCode pulumi.StringPtrInput
 	// Description of the rate plan.
@@ -237,17 +237,17 @@ type RatePlanArgs struct {
 	FixedRecurringFee GoogleTypeMoneyPtrInput
 	OrganizationId    pulumi.StringInput
 	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel pulumi.StringPtrInput
+	PaymentFundingModel *RatePlanPaymentFundingModel
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeArrayInput
 	// Method used to calculate the revenue that is shared with developers.
-	RevenueShareType pulumi.StringPtrInput
+	RevenueShareType *RatePlanRevenueShareType
 	// Initial, one-time fee paid when purchasing the API product.
 	SetupFee GoogleTypeMoneyPtrInput
 	// Time when the rate plan becomes active in milliseconds since epoch.
 	StartTime pulumi.StringPtrInput
 	// Current state of the rate plan (draft or published).
-	State pulumi.StringPtrInput
+	State *RatePlanStateEnum
 }
 
 func (RatePlanArgs) ElementType() reflect.Type {

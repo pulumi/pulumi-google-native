@@ -128,10 +128,10 @@ type CapacityCommitmentArgs struct {
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
 	Location                        pulumi.StringInput
 	// Capacity commitment commitment plan.
-	Plan    pulumi.StringPtrInput
+	Plan    *CapacityCommitmentPlan
 	Project pulumi.StringInput
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
-	RenewalPlan pulumi.StringPtrInput
+	RenewalPlan *CapacityCommitmentRenewalPlan
 	// Number of slots in this commitment.
 	SlotCount pulumi.StringPtrInput
 }

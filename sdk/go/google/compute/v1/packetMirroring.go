@@ -191,7 +191,7 @@ type PacketMirroringArgs struct {
 	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
 	//
 	// The default is TRUE.
-	Enable pulumi.StringPtrInput
+	Enable *PacketMirroringEnable
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter PacketMirroringFilterPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

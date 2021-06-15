@@ -172,7 +172,7 @@ type MembershipArgs struct {
 	// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
 	ExternalId pulumi.StringPtrInput
 	// Optional. The infrastructure type this Membership is running on.
-	InfrastructureType pulumi.StringPtrInput
+	InfrastructureType *MembershipInfrastructureType
 	// Optional. GCP labels for this membership.
 	Labels       pulumi.StringMapInput
 	Location     pulumi.StringInput

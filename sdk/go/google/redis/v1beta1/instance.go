@@ -238,7 +238,7 @@ type InstanceArgs struct {
 	// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
-	ConnectMode pulumi.StringPtrInput
+	ConnectMode *InstanceConnectMode
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	InstanceId  pulumi.StringInput
@@ -258,9 +258,9 @@ type InstanceArgs struct {
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
 	ReservedIpRange pulumi.StringPtrInput
 	// Required. The service tier of the instance.
-	Tier pulumi.StringPtrInput
+	Tier *InstanceTier
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
-	TransitEncryptionMode pulumi.StringPtrInput
+	TransitEncryptionMode *InstanceTransitEncryptionMode
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

@@ -125,7 +125,7 @@ type FeedArgs struct {
 	// A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
 	Condition ExprPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	ContentType pulumi.StringPtrInput
+	ContentType *FeedContentType
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
 	FeedId pulumi.StringPtrInput
 	// Required. Feed output configuration defining where the asset updates are published to.

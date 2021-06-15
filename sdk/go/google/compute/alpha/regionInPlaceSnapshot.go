@@ -246,7 +246,7 @@ type RegionInPlaceSnapshotArgs struct {
 	// [Output Only] The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringPtrInput
 	// [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-	Status pulumi.StringPtrInput
+	Status *RegionInPlaceSnapshotStatus
 	// [Output Only] URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone pulumi.StringPtrInput
 }

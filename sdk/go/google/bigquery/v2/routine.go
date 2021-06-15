@@ -174,11 +174,11 @@ type RoutineArgs struct {
 	// Optional. [Experimental] The description of the routine if defined.
 	Description pulumi.StringPtrInput
 	// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
-	DeterminismLevel pulumi.StringPtrInput
+	DeterminismLevel *RoutineDeterminismLevel
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayInput
 	// Optional. Defaults to "SQL".
-	Language pulumi.StringPtrInput
+	Language *RoutineLanguage
 	Project  pulumi.StringInput
 	// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
 	ReturnTableType StandardSqlTableTypePtrInput
@@ -187,7 +187,7 @@ type RoutineArgs struct {
 	// Required. Reference describing the ID of this routine.
 	RoutineReference RoutineReferencePtrInput
 	// Required. The type of routine.
-	RoutineType pulumi.StringPtrInput
+	RoutineType *RoutineRoutineType
 }
 
 func (RoutineArgs) ElementType() reflect.Type {

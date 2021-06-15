@@ -104,7 +104,7 @@ type ParticipantArgs struct {
 	ObfuscatedExternalUserId pulumi.StringPtrInput
 	Project                  pulumi.StringInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
-	Role pulumi.StringPtrInput
+	Role *ParticipantRole
 }
 
 func (ParticipantArgs) ElementType() reflect.Type {

@@ -352,7 +352,7 @@ type VpnTunnelArgs struct {
 	// - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state.
 	// - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT.
 	// - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
-	Status pulumi.StringPtrInput
+	Status *VpnTunnelStatus
 	// URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
 	TargetVpnGateway pulumi.StringPtrInput
 	// URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.

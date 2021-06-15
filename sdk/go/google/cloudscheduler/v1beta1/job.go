@@ -213,7 +213,7 @@ type JobArgs struct {
 	// The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
 	ScheduleTime pulumi.StringPtrInput
 	// State of the job.
-	State pulumi.StringPtrInput
+	State *JobStateEnum
 	// The response from the target for the last attempted execution.
 	Status StatusPtrInput
 	// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).

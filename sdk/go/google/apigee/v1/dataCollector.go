@@ -108,7 +108,7 @@ type DataCollectorArgs struct {
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Immutable. The type of data this data collector will collect.
-	Type pulumi.StringPtrInput
+	Type *DataCollectorType
 }
 
 func (DataCollectorArgs) ElementType() reflect.Type {

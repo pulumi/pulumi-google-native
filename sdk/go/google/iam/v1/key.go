@@ -127,9 +127,9 @@ type keyArgs struct {
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-	KeyAlgorithm pulumi.StringPtrInput
+	KeyAlgorithm *KeyKeyAlgorithm
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType   pulumi.StringPtrInput
+	PrivateKeyType   *KeyPrivateKeyType
 	Project          pulumi.StringInput
 	ServiceAccountId pulumi.StringInput
 }

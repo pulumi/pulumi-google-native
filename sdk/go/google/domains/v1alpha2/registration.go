@@ -159,7 +159,7 @@ type registrationArgs struct {
 // The set of arguments for constructing a Registration resource.
 type RegistrationArgs struct {
 	// The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
-	ContactNotices pulumi.StringArrayInput
+	ContactNotices RegistrationContactNoticesItemArrayInput
 	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
 	ContactSettings ContactSettingsPtrInput
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
@@ -167,7 +167,7 @@ type RegistrationArgs struct {
 	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName pulumi.StringPtrInput
 	// The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
-	DomainNotices pulumi.StringArrayInput
+	DomainNotices RegistrationDomainNoticesItemArrayInput
 	// Set of labels associated with the `Registration`.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput

@@ -221,7 +221,7 @@ type NoteArgs struct {
 	// A note describing an in-toto link.
 	Intoto InTotoPtrInput
 	// The type of analysis. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
+	Kind *NoteKind
 	// A detailed description of this note.
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.

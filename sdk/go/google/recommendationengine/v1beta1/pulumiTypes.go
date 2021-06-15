@@ -814,7 +814,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs struct {
 	// Optional. The product price range.
 	PriceRange GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrInput `pulumi:"priceRange"`
 	// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-	StockState pulumi.StringPtrInput `pulumi:"stockState"`
+	StockState *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState `pulumi:"stockState"`
 }
 
 func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ElementType() reflect.Type {

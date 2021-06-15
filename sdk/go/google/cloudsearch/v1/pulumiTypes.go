@@ -30,7 +30,7 @@ type CompositeFilterInput interface {
 
 type CompositeFilterArgs struct {
 	// The logic operator of the sub filter.
-	LogicOperator pulumi.StringPtrInput `pulumi:"logicOperator"`
+	LogicOperator *CompositeFilterLogicOperator `pulumi:"logicOperator"`
 	// Sub filters.
 	SubFilters FilterArrayInput `pulumi:"subFilters"`
 }
@@ -2061,7 +2061,7 @@ type SortOptionsArgs struct {
 	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 	OperatorName pulumi.StringPtrInput `pulumi:"operatorName"`
 	// Ascending is the default sort order
-	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
+	SortOrder *SortOptionsSortOrder `pulumi:"sortOrder"`
 }
 
 func (SortOptionsArgs) ElementType() reflect.Type {
@@ -2363,7 +2363,7 @@ type SourceArgs struct {
 	// Source name for content indexed by the Indexing API.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Predefined content source for Google Apps.
-	PredefinedSource pulumi.StringPtrInput `pulumi:"predefinedSource"`
+	PredefinedSource *SourcePredefinedSource `pulumi:"predefinedSource"`
 }
 
 func (SourceArgs) ElementType() reflect.Type {
@@ -3029,7 +3029,7 @@ type SourceScoringConfigInput interface {
 // Set the scoring configuration. This allows modifying the ranking of results for a source.
 type SourceScoringConfigArgs struct {
 	// Importance of the source.
-	SourceImportance pulumi.StringPtrInput `pulumi:"sourceImportance"`
+	SourceImportance *SourceScoringConfigSourceImportance `pulumi:"sourceImportance"`
 }
 
 func (SourceScoringConfigArgs) ElementType() reflect.Type {

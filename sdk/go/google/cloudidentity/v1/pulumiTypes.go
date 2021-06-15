@@ -321,7 +321,7 @@ type DynamicGroupQueryArgs struct {
 	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Resource type for the Dynamic Group Query
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	ResourceType *DynamicGroupQueryResourceType `pulumi:"resourceType"`
 }
 
 func (DynamicGroupQueryArgs) ElementType() reflect.Type {

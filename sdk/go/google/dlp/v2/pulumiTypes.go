@@ -1207,8 +1207,8 @@ type GooglePrivacyDlpV2BigQueryOptionsArgs struct {
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit pulumi.StringPtrInput `pulumi:"rowsLimit"`
 	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-	RowsLimitPercent pulumi.IntPtrInput    `pulumi:"rowsLimitPercent"`
-	SampleMethod     pulumi.StringPtrInput `pulumi:"sampleMethod"`
+	RowsLimitPercent pulumi.IntPtrInput                             `pulumi:"rowsLimitPercent"`
+	SampleMethod     *GooglePrivacyDlpV2BigQueryOptionsSampleMethod `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
 	TableReference GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"tableReference"`
 }
@@ -3252,7 +3252,7 @@ type GooglePrivacyDlpV2CharsToIgnoreArgs struct {
 	// Characters to not transform when masking.
 	CharactersToSkip pulumi.StringPtrInput `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
-	CommonCharactersToIgnore pulumi.StringPtrInput `pulumi:"commonCharactersToIgnore"`
+	CommonCharactersToIgnore *GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore `pulumi:"commonCharactersToIgnore"`
 }
 
 func (GooglePrivacyDlpV2CharsToIgnoreArgs) ElementType() reflect.Type {
@@ -3751,10 +3751,10 @@ type GooglePrivacyDlpV2CloudStorageOptionsArgs struct {
 	// The set of one or more files to scan.
 	FileSet GooglePrivacyDlpV2FileSetPtrInput `pulumi:"fileSet"`
 	// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
-	FileTypes pulumi.StringArrayInput `pulumi:"fileTypes"`
+	FileTypes GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayInput `pulumi:"fileTypes"`
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
-	FilesLimitPercent pulumi.IntPtrInput    `pulumi:"filesLimitPercent"`
-	SampleMethod      pulumi.StringPtrInput `pulumi:"sampleMethod"`
+	FilesLimitPercent pulumi.IntPtrInput                                 `pulumi:"filesLimitPercent"`
+	SampleMethod      *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod `pulumi:"sampleMethod"`
 }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsArgs) ElementType() reflect.Type {
@@ -4814,7 +4814,7 @@ type GooglePrivacyDlpV2ConditionArgs struct {
 	// Required. Field within the record this condition is evaluated against.
 	Field GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"field"`
 	// Required. Operator used to compare the field or infoType to the value.
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	Operator *GooglePrivacyDlpV2ConditionOperator `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
 	Value GooglePrivacyDlpV2ValuePtrInput `pulumi:"value"`
 }
@@ -5942,7 +5942,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput interface {
 // Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs struct {
 	// Common alphabets.
-	CommonAlphabet pulumi.StringPtrInput `pulumi:"commonAlphabet"`
+	CommonAlphabet *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"context"`
 	// Required. The key used by the encryption algorithm.
@@ -6289,11 +6289,11 @@ type GooglePrivacyDlpV2CustomInfoTypeArgs struct {
 	// A list of phrases to detect as a CustomInfoType.
 	Dictionary GooglePrivacyDlpV2DictionaryPtrInput `pulumi:"dictionary"`
 	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-	ExclusionType pulumi.StringPtrInput `pulumi:"exclusionType"`
+	ExclusionType *GooglePrivacyDlpV2CustomInfoTypeExclusionType `pulumi:"exclusionType"`
 	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
 	InfoType GooglePrivacyDlpV2InfoTypePtrInput `pulumi:"infoType"`
 	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
-	Likelihood pulumi.StringPtrInput `pulumi:"likelihood"`
+	Likelihood *GooglePrivacyDlpV2CustomInfoTypeLikelihood `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex GooglePrivacyDlpV2RegexPtrInput `pulumi:"regex"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
@@ -9387,7 +9387,7 @@ type GooglePrivacyDlpV2ExclusionRuleArgs struct {
 	// Set of infoTypes for which findings would affect this rule.
 	ExcludeInfoTypes GooglePrivacyDlpV2ExcludeInfoTypesPtrInput `pulumi:"excludeInfoTypes"`
 	// How the rule is applied, see MatchingType documentation for details.
-	MatchingType pulumi.StringPtrInput `pulumi:"matchingType"`
+	MatchingType *GooglePrivacyDlpV2ExclusionRuleMatchingType `pulumi:"matchingType"`
 	// Regular expression which defines the rule.
 	Regex GooglePrivacyDlpV2RegexPtrInput `pulumi:"regex"`
 }
@@ -9658,7 +9658,7 @@ type GooglePrivacyDlpV2ExpressionsArgs struct {
 	// Conditions to apply to the expression.
 	Conditions GooglePrivacyDlpV2ConditionsPtrInput `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
-	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
+	LogicalOperator *GooglePrivacyDlpV2ExpressionsLogicalOperator `pulumi:"logicalOperator"`
 }
 
 func (GooglePrivacyDlpV2ExpressionsArgs) ElementType() reflect.Type {
@@ -13331,7 +13331,7 @@ type GooglePrivacyDlpV2InspectConfigInput interface {
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfigArgs struct {
 	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	ContentOptions pulumi.StringArrayInput `pulumi:"contentOptions"`
+	ContentOptions GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes GooglePrivacyDlpV2CustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings.
@@ -13343,7 +13343,7 @@ type GooglePrivacyDlpV2InspectConfigArgs struct {
 	// Configuration to control the number of findings returned.
 	Limits GooglePrivacyDlpV2FindingLimitsPtrInput `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
-	MinLikelihood pulumi.StringPtrInput `pulumi:"minLikelihood"`
+	MinLikelihood *GooglePrivacyDlpV2InspectConfigMinLikelihood `pulumi:"minLikelihood"`
 	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
 	RuleSet GooglePrivacyDlpV2InspectionRuleSetArrayInput `pulumi:"ruleSet"`
 }
@@ -18628,7 +18628,7 @@ type GooglePrivacyDlpV2LikelihoodAdjustmentInput interface {
 // Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
 type GooglePrivacyDlpV2LikelihoodAdjustmentArgs struct {
 	// Set the likelihood of a finding to a fixed value.
-	FixedLikelihood pulumi.StringPtrInput `pulumi:"fixedLikelihood"`
+	FixedLikelihood *GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood `pulumi:"fixedLikelihood"`
 	// Increase or decrease the likelihood by the specified number of levels. For example, if a finding would be `POSSIBLE` without the detection rule and `relative_likelihood` is 1, then it is upgraded to `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`. Likelihood may never drop below `VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1 followed by an adjustment of -1 when base likelihood is `VERY_LIKELY` will result in a final likelihood of `LIKELY`.
 	RelativeLikelihood pulumi.IntPtrInput `pulumi:"relativeLikelihood"`
 }
@@ -19458,7 +19458,7 @@ type GooglePrivacyDlpV2OutputStorageConfigInput interface {
 // Cloud repository for storing output.
 type GooglePrivacyDlpV2OutputStorageConfigArgs struct {
 	// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
-	OutputSchema pulumi.StringPtrInput `pulumi:"outputSchema"`
+	OutputSchema *GooglePrivacyDlpV2OutputStorageConfigOutputSchema `pulumi:"outputSchema"`
 	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 	Table GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"table"`
 }
@@ -27940,7 +27940,7 @@ type GooglePrivacyDlpV2TimePartConfigInput interface {
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
 type GooglePrivacyDlpV2TimePartConfigArgs struct {
 	// The part of the time to keep.
-	PartToExtract pulumi.StringPtrInput `pulumi:"partToExtract"`
+	PartToExtract *GooglePrivacyDlpV2TimePartConfigPartToExtract `pulumi:"partToExtract"`
 }
 
 func (GooglePrivacyDlpV2TimePartConfigArgs) ElementType() reflect.Type {
@@ -29445,7 +29445,7 @@ type GooglePrivacyDlpV2ValueArgs struct {
 	// date
 	DateValue GoogleTypeDatePtrInput `pulumi:"dateValue"`
 	// day of week
-	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
+	DayOfWeekValue *GooglePrivacyDlpV2ValueDayOfWeekValue `pulumi:"dayOfWeekValue"`
 	// float
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
 	// integer

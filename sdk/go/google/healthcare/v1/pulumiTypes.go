@@ -470,7 +470,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1695,7 +1695,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestinationArgs struct {
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig SchemaConfigPtrInput `pulumi:"schemaConfig"`
 	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
+	WriteDisposition *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition `pulumi:"writeDisposition"`
 }
 
 func (GoogleCloudHealthcareV1FhirBigQueryDestinationArgs) ElementType() reflect.Type {
@@ -3973,7 +3973,7 @@ type SchemaConfigArgs struct {
 	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth pulumi.StringPtrInput `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
-	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
+	SchemaType *SchemaConfigSchemaType `pulumi:"schemaType"`
 }
 
 func (SchemaConfigArgs) ElementType() reflect.Type {
@@ -4196,7 +4196,7 @@ type SchemaPackageArgs struct {
 	// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
 	Schemas Hl7SchemaConfigArrayInput `pulumi:"schemas"`
 	// Determines how messages that fail to parse are handled.
-	SchematizedParsingType pulumi.StringPtrInput `pulumi:"schematizedParsingType"`
+	SchematizedParsingType *SchemaPackageSchematizedParsingType `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types Hl7TypesConfigArrayInput `pulumi:"types"`
 }
@@ -5602,7 +5602,7 @@ type TypeArgs struct {
 	// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-	Primitive pulumi.StringPtrInput `pulumi:"primitive"`
+	Primitive *TypePrimitive `pulumi:"primitive"`
 }
 
 func (TypeArgs) ElementType() reflect.Type {

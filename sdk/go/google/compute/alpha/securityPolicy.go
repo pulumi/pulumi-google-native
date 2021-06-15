@@ -251,7 +251,7 @@ type SecurityPolicyArgs struct {
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
-	Type         pulumi.StringPtrInput
+	Type         *SecurityPolicyType
 	ValidateOnly pulumi.StringPtrInput
 }
 

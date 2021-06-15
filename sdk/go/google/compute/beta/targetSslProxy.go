@@ -151,7 +151,7 @@ type TargetSslProxyArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput
+	ProxyHeader *TargetSslProxyProxyHeader
 	RequestId   pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput

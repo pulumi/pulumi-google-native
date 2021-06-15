@@ -201,7 +201,7 @@ type TargetVpnGatewayArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
-	Status pulumi.StringPtrInput
+	Status *TargetVpnGatewayStatus
 	// [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
 	Tunnels pulumi.StringArrayInput
 }

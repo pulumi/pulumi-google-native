@@ -106,7 +106,7 @@ type HistoryArgs struct {
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-	TestPlatform pulumi.StringPtrInput
+	TestPlatform *HistoryTestPlatform
 }
 
 func (HistoryArgs) ElementType() reflect.Type {

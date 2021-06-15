@@ -316,7 +316,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1018,7 +1018,7 @@ type EndpointArgs struct {
 	// A Compute Engine network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	NetworkType *EndpointNetworkType `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.

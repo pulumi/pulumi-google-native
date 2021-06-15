@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1625,7 +1625,7 @@ type HttpsTriggerInput interface {
 // Describes HttpsTrigger, could be used to connect web hooks to function.
 type HttpsTriggerArgs struct {
 	// The security level for the function.
-	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	SecurityLevel *HttpsTriggerSecurityLevel `pulumi:"securityLevel"`
 }
 
 func (HttpsTriggerArgs) ElementType() reflect.Type {

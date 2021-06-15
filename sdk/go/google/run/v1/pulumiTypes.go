@@ -510,7 +510,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -2473,7 +2473,7 @@ type DomainMappingSpecInput interface {
 // The desired state of the Domain Mapping.
 type DomainMappingSpecArgs struct {
 	// The mode of the certificate.
-	CertificateMode pulumi.StringPtrInput `pulumi:"certificateMode"`
+	CertificateMode *DomainMappingSpecCertificateMode `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
 	ForceOverride pulumi.BoolPtrInput `pulumi:"forceOverride"`
 	// The name of the Knative Route that this DomainMapping applies to. The route must exist.
@@ -7073,7 +7073,7 @@ type ResourceRecordArgs struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *ResourceRecordType `pulumi:"type"`
 }
 
 func (ResourceRecordArgs) ElementType() reflect.Type {

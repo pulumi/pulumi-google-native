@@ -222,9 +222,9 @@ type CertificateAuthorityArgs struct {
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig SubordinateConfigPtrInput
 	// Required. Immutable. The Tier of this CertificateAuthority.
-	Tier pulumi.StringPtrInput
+	Tier *CertificateAuthorityTier
 	// Required. Immutable. The Type of this CertificateAuthority.
-	Type pulumi.StringPtrInput
+	Type *CertificateAuthorityType
 }
 
 func (CertificateAuthorityArgs) ElementType() reflect.Type {

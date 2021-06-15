@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1020,7 +1020,7 @@ type CloudSqlPropertiesArgs struct {
 	// Cloud SQL instance ID in the form `project:location:instance`.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *CloudSqlPropertiesType `pulumi:"type"`
 }
 
 func (CloudSqlPropertiesArgs) ElementType() reflect.Type {

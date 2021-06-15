@@ -404,7 +404,7 @@ type VersionArgs struct {
 	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
 	Id pulumi.StringPtrInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
-	InboundServices pulumi.StringArrayInput
+	InboundServices VersionInboundServicesItemArrayInput
 	// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
@@ -435,7 +435,7 @@ type VersionArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	ServiceId      pulumi.StringInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
-	ServingStatus pulumi.StringPtrInput
+	ServingStatus *VersionServingStatus
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
 	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly

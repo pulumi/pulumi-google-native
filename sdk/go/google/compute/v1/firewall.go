@@ -242,7 +242,7 @@ type FirewallArgs struct {
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
 	DestinationRanges pulumi.StringArrayInput
 	// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
-	Direction pulumi.StringPtrInput
+	Direction *FirewallDirection
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

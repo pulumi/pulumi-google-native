@@ -30,7 +30,7 @@ type AcceleratorInput interface {
 // Identifies Data Fusion accelerators for an instance.
 type AcceleratorArgs struct {
 	// The type of an accelator for a CDF instance.
-	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	AcceleratorType *AcceleratorAcceleratorType `pulumi:"acceleratorType"`
 }
 
 func (AcceleratorArgs) ElementType() reflect.Type {
@@ -452,7 +452,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {

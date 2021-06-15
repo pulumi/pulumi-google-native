@@ -139,7 +139,7 @@ type CompositeTypeArgs struct {
 	Project   pulumi.StringInput
 	// Server defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	Status   pulumi.StringPtrInput
+	Status   *CompositeTypeStatus
 	// Files for the template type.
 	TemplateContents TemplateContentsPtrInput
 }

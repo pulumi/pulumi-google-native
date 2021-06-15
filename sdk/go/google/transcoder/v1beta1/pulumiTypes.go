@@ -734,7 +734,7 @@ type AnimationFadeArgs struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset pulumi.StringPtrInput `pulumi:"endTimeOffset"`
 	// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-	FadeType pulumi.StringPtrInput `pulumi:"fadeType"`
+	FadeType *AnimationFadeFadeType `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
 	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
@@ -5540,7 +5540,7 @@ type ManifestArgs struct {
 	// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
 	// Required. Type of the manifest, can be "HLS" or "DASH".
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *ManifestType `pulumi:"type"`
 }
 
 func (ManifestArgs) ElementType() reflect.Type {

@@ -205,7 +205,7 @@ type InstanceArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-	MemcacheVersion pulumi.StringPtrInput
+	MemcacheVersion *InstanceMemcacheVersion
 	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
 	Name pulumi.StringPtrInput
 	// Required. Configuration for Memcached nodes.

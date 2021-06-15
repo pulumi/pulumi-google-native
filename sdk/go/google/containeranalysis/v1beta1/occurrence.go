@@ -201,7 +201,7 @@ type OccurrenceArgs struct {
 	// Describes a specific in-toto link.
 	Intoto GrafeasV1beta1IntotoDetailsPtrInput
 	// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
+	Kind *OccurrenceKind
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name pulumi.StringPtrInput
 	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.

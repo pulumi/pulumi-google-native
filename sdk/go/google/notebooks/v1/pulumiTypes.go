@@ -34,7 +34,7 @@ type AcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Type of this accelerator.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *AcceleratorConfigType `pulumi:"type"`
 }
 
 func (AcceleratorConfigArgs) ElementType() reflect.Type {
@@ -1632,7 +1632,7 @@ type ExecutionTemplateArgs struct {
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
 	// Required. Scale tier of the hardware used for notebook execution.
-	ScaleTier pulumi.StringPtrInput `pulumi:"scaleTier"`
+	ScaleTier *ExecutionTemplateScaleTier `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
@@ -2805,7 +2805,7 @@ type LocalDiskInitializeParamsArgs struct {
 	// Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	DiskType *LocalDiskInitializeParamsDiskType `pulumi:"diskType"`
 	// Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
@@ -3558,7 +3558,7 @@ type RuntimeAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Accelerator model.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *RuntimeAcceleratorConfigType `pulumi:"type"`
 }
 
 func (RuntimeAcceleratorConfigArgs) ElementType() reflect.Type {
@@ -3862,7 +3862,7 @@ type RuntimeAccessConfigInput interface {
 // Specifies the login configuration for Runtime
 type RuntimeAccessConfigArgs struct {
 	// The type of access mode this instance.
-	AccessType pulumi.StringPtrInput `pulumi:"accessType"`
+	AccessType *RuntimeAccessConfigAccessType `pulumi:"accessType"`
 	// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
 	RuntimeOwner pulumi.StringPtrInput `pulumi:"runtimeOwner"`
 }
@@ -5263,7 +5263,7 @@ type SchedulerAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Type of this accelerator.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *SchedulerAcceleratorConfigType `pulumi:"type"`
 }
 
 func (SchedulerAcceleratorConfigArgs) ElementType() reflect.Type {
@@ -5927,7 +5927,7 @@ type UpgradeHistoryEntryInput interface {
 // The entry of VM image upgrade history.
 type UpgradeHistoryEntryArgs struct {
 	// Action. Rolloback or Upgrade.
-	Action pulumi.StringPtrInput `pulumi:"action"`
+	Action *UpgradeHistoryEntryAction `pulumi:"action"`
 	// The container image before this instance upgrade.
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// The time that this instance upgrade history entry is created.
@@ -5937,7 +5937,7 @@ type UpgradeHistoryEntryArgs struct {
 	// The snapshot of the boot disk of this notebook instance before upgrade.
 	Snapshot pulumi.StringPtrInput `pulumi:"snapshot"`
 	// The state of this instance upgrade history entry.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *UpgradeHistoryEntryState `pulumi:"state"`
 	// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
 	TargetImage pulumi.StringPtrInput `pulumi:"targetImage"`
 	// Target VM Version, like m63.
@@ -6447,7 +6447,7 @@ type VirtualMachineConfigArgs struct {
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	NicType *VirtualMachineConfigNicType `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`

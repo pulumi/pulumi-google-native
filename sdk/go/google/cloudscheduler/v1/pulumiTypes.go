@@ -44,7 +44,7 @@ type AppEngineHttpTargetArgs struct {
 	// HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
-	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	HttpMethod *AppEngineHttpTargetHttpMethod `pulumi:"httpMethod"`
 	// The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
 	RelativeUri pulumi.StringPtrInput `pulumi:"relativeUri"`
 }
@@ -846,7 +846,7 @@ type HttpTargetArgs struct {
 	// The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Which HTTP method to use for the request.
-	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	HttpMethod *HttpTargetHttpMethod `pulumi:"httpMethod"`
 	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.

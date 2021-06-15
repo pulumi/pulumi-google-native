@@ -50,7 +50,7 @@ type DiskArgs struct {
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Required. The type of the disk to create.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *DiskType `pulumi:"type"`
 }
 
 func (DiskArgs) ElementType() reflect.Type {

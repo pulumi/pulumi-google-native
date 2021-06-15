@@ -197,7 +197,7 @@ type ExperimentArgs struct {
 	// Start time of this experiment.
 	StartTime pulumi.StringPtrInput
 	// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
-	State pulumi.StringPtrInput
+	State *ExperimentStateEnum
 	// The history of updates to the experiment variants.
 	VariantsHistory GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayInput
 }

@@ -207,7 +207,7 @@ type OccurrenceArgs struct {
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationPtrInput
 	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
+	Kind *OccurrenceKind
 	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name pulumi.StringPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.

@@ -185,7 +185,7 @@ type RegionHealthCheckServiceArgs struct {
 	// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.
 	// - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service.
 	// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
-	HealthStatusAggregationPolicy pulumi.StringPtrInput
+	HealthStatusAggregationPolicy *RegionHealthCheckServiceHealthStatusAggregationPolicy
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.

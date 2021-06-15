@@ -184,11 +184,11 @@ type TaskArgs struct {
 	// The number of attempts which have received a response.
 	ResponseCount pulumi.IntPtrInput
 	// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-	ResponseView pulumi.StringPtrInput
+	ResponseView *TaskResponseView
 	// The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime pulumi.StringPtrInput
 	// The view specifies which subset of the Task has been returned.
-	View pulumi.StringPtrInput
+	View *TaskView
 }
 
 func (TaskArgs) ElementType() reflect.Type {

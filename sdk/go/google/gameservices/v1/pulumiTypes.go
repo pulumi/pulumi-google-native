@@ -266,7 +266,7 @@ type AuditLogConfigArgs struct {
 	ExemptedMembers       pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	IgnoreChildExemptions pulumi.BoolPtrInput     `pulumi:"ignoreChildExemptions"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -490,7 +490,7 @@ type AuthorizationLoggingOptionsInput interface {
 // Authorization-related information used by Cloud Audit Logging.
 type AuthorizationLoggingOptionsArgs struct {
 	// The type of the permission that was checked.
-	PermissionType pulumi.StringPtrInput `pulumi:"permissionType"`
+	PermissionType *AuthorizationLoggingOptionsPermissionType `pulumi:"permissionType"`
 }
 
 func (AuthorizationLoggingOptionsArgs) ElementType() reflect.Type {
@@ -931,7 +931,7 @@ type CloudAuditOptionsArgs struct {
 	// Information used by the Cloud Audit Logging pipeline.
 	AuthorizationLoggingOptions AuthorizationLoggingOptionsPtrInput `pulumi:"authorizationLoggingOptions"`
 	// The log_name to populate in the Cloud Audit Record.
-	LogName pulumi.StringPtrInput `pulumi:"logName"`
+	LogName *CloudAuditOptionsLogName `pulumi:"logName"`
 }
 
 func (CloudAuditOptionsArgs) ElementType() reflect.Type {
@@ -1154,13 +1154,13 @@ type ConditionInput interface {
 // A condition to be met.
 type ConditionArgs struct {
 	// Trusted attributes supplied by the IAM system.
-	Iam pulumi.StringPtrInput `pulumi:"iam"`
+	Iam *ConditionIam `pulumi:"iam"`
 	// An operator to apply the subject with.
-	Op pulumi.StringPtrInput `pulumi:"op"`
+	Op *ConditionOp `pulumi:"op"`
 	// Trusted attributes discharged by the service.
 	Svc pulumi.StringPtrInput `pulumi:"svc"`
 	// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-	Sys pulumi.StringPtrInput `pulumi:"sys"`
+	Sys *ConditionSys `pulumi:"sys"`
 	// The objects of the condition.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -1879,7 +1879,7 @@ type DataAccessOptionsInput interface {
 
 // Write a Data Access (Gin) log
 type DataAccessOptionsArgs struct {
-	LogMode pulumi.StringPtrInput `pulumi:"logMode"`
+	LogMode *DataAccessOptionsLogMode `pulumi:"logMode"`
 }
 
 func (DataAccessOptionsArgs) ElementType() reflect.Type {
@@ -3577,7 +3577,7 @@ type RuleInput interface {
 // A rule to be applied in a Policy.
 type RuleArgs struct {
 	// Required
-	Action pulumi.StringPtrInput `pulumi:"action"`
+	Action *RuleAction `pulumi:"action"`
 	// Additional restrictions that must be met. All conditions must pass for the rule to match.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
 	// Human-readable description of the rule.

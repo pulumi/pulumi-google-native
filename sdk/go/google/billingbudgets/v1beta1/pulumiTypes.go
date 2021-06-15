@@ -1064,11 +1064,11 @@ type GoogleCloudBillingBudgetsV1beta1FilterInput interface {
 // A filter for a budget, limiting the scope of the cost to calculate.
 type GoogleCloudBillingBudgetsV1beta1FilterArgs struct {
 	// Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
-	CalendarPeriod pulumi.StringPtrInput `pulumi:"calendarPeriod"`
+	CalendarPeriod *GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod `pulumi:"calendarPeriod"`
 	// Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
 	CreditTypes pulumi.StringArrayInput `pulumi:"creditTypes"`
 	// Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
-	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
+	CreditTypesTreatment *GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment `pulumi:"creditTypesTreatment"`
 	// Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
 	CustomPeriod GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrInput `pulumi:"customPeriod"`
 	// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
@@ -1826,7 +1826,7 @@ type GoogleCloudBillingBudgetsV1beta1ThresholdRuleInput interface {
 // ThresholdRule contains a definition of a threshold which triggers an alert (a notification of a threshold being crossed) to be sent when spend goes above the specified amount. Alerts are automatically e-mailed to users with the Billing Account Administrator role or the Billing Account User role. The thresholds here have no effect on notifications sent to anything configured under `Budget.all_updates_rule`.
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs struct {
 	// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
-	SpendBasis pulumi.StringPtrInput `pulumi:"spendBasis"`
+	SpendBasis *GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis `pulumi:"spendBasis"`
 	// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
 	ThresholdPercent pulumi.Float64PtrInput `pulumi:"thresholdPercent"`
 }

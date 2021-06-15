@@ -981,7 +981,7 @@ type ApigatewayAuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *ApigatewayAuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (ApigatewayAuditLogConfigArgs) ElementType() reflect.Type {

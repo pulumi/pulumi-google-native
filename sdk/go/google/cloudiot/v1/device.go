@@ -228,7 +228,7 @@ type DeviceArgs struct {
 	LastStateTime pulumi.StringPtrInput
 	Location      pulumi.StringInput
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
-	LogLevel pulumi.StringPtrInput
+	LogLevel *DeviceLogLevel
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
 	Metadata pulumi.StringMapInput
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.

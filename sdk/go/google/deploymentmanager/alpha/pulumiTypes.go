@@ -470,7 +470,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -3300,7 +3300,7 @@ type DiagnosticArgs struct {
 	// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// Level to record this diagnostic.
-	Level pulumi.StringPtrInput `pulumi:"level"`
+	Level *DiagnosticLevel `pulumi:"level"`
 }
 
 func (DiagnosticArgs) ElementType() reflect.Type {
@@ -4003,7 +4003,7 @@ type InputMappingArgs struct {
 	// The name of the field that is going to be injected.
 	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
 	// The location where this mapping applies.
-	Location pulumi.StringPtrInput `pulumi:"location"`
+	Location *InputMappingLocation `pulumi:"location"`
 	// Regex to evaluate on method to decide if input applies.
 	MethodMatch pulumi.StringPtrInput `pulumi:"methodMatch"`
 	// A jsonPath expression to select an element.
@@ -4626,7 +4626,7 @@ type OperationArgs struct {
 	// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *OperationStatus `pulumi:"status"`
 	// [Output Only] An optional textual description of the current status of the operation.
 	StatusMessage pulumi.StringPtrInput `pulumi:"statusMessage"`
 	// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
@@ -6135,7 +6135,7 @@ type OperationWarningsItemInput interface {
 
 type OperationWarningsItemArgs struct {
 	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code pulumi.StringPtrInput `pulumi:"code"`
+	Code *OperationWarningsItemCode `pulumi:"code"`
 	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data OperationWarningsItemDataItemArrayInput `pulumi:"data"`
 	// [Output Only] A human-readable description of the warning code.
@@ -7830,7 +7830,7 @@ type TemplateContentsArgs struct {
 	// Import files referenced by the main template.
 	Imports ImportFileArrayInput `pulumi:"imports"`
 	// Which interpreter (python or jinja) should be used during expansion.
-	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
+	Interpreter *TemplateContentsInterpreter `pulumi:"interpreter"`
 	// The filename of the mainTemplate
 	MainTemplate pulumi.StringPtrInput `pulumi:"mainTemplate"`
 	// The contents of the template schema.
@@ -8460,9 +8460,9 @@ type ValidationOptionsInput interface {
 // Options for how to validate and process properties on a resource.
 type ValidationOptionsArgs struct {
 	// Customize how deployment manager will validate the resource against schema errors.
-	SchemaValidation pulumi.StringPtrInput `pulumi:"schemaValidation"`
+	SchemaValidation *ValidationOptionsSchemaValidation `pulumi:"schemaValidation"`
 	// Specify what to do with extra properties when executing a request.
-	UndeclaredProperties pulumi.StringPtrInput `pulumi:"undeclaredProperties"`
+	UndeclaredProperties *ValidationOptionsUndeclaredProperties `pulumi:"undeclaredProperties"`
 }
 
 func (ValidationOptionsArgs) ElementType() reflect.Type {

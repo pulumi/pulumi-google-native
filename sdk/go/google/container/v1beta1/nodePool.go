@@ -224,7 +224,7 @@ type NodePoolArgs struct {
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output only] The status of the nodes in this pool instance.
-	Status pulumi.StringPtrInput
+	Status *NodePoolStatus
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.

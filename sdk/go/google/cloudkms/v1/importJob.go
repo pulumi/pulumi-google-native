@@ -142,12 +142,12 @@ type importJobArgs struct {
 type ImportJobArgs struct {
 	ImportJobId pulumi.StringInput
 	// Required. Immutable. The wrapping method to be used for incoming key material.
-	ImportMethod pulumi.StringPtrInput
+	ImportMethod *ImportJobImportMethod
 	KeyRingId    pulumi.StringInput
 	Location     pulumi.StringInput
 	Project      pulumi.StringInput
 	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-	ProtectionLevel pulumi.StringPtrInput
+	ProtectionLevel *ImportJobProtectionLevel
 }
 
 func (ImportJobArgs) ElementType() reflect.Type {

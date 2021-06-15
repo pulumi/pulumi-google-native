@@ -176,7 +176,7 @@ type FhirStoreArgs struct {
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
 	ValidationConfig ValidationConfigPtrInput
 	// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
-	Version pulumi.StringPtrInput
+	Version *FhirStoreVersion
 }
 
 func (FhirStoreArgs) ElementType() reflect.Type {

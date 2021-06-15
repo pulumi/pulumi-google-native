@@ -216,7 +216,7 @@ type nodeTemplateArgs struct {
 type NodeTemplateArgs struct {
 	Accelerators AcceleratorConfigArrayInput
 	// CPU overcommit.
-	CpuOvercommitType pulumi.StringPtrInput
+	CpuOvercommitType *NodeTemplateCpuOvercommitType
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -251,7 +251,7 @@ type NodeTemplateArgs struct {
 	// See Sole-tenant node options for more information.
 	ServerBinding ServerBindingPtrInput
 	// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
-	Status pulumi.StringPtrInput
+	Status *NodeTemplateStatus
 	// [Output Only] An optional, human-readable explanation of the status.
 	StatusMessage pulumi.StringPtrInput
 }

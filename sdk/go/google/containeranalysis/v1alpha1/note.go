@@ -208,7 +208,7 @@ type NoteArgs struct {
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime pulumi.StringPtrInput
 	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
+	Kind *NoteKind
 	// A detailed description of this `Note`.
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"

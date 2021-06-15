@@ -274,13 +274,13 @@ type AccessConfigArgs struct {
 	// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier.
 	//
 	// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
-	NetworkTier pulumi.StringPtrInput `pulumi:"networkTier"`
+	NetworkTier *AccessConfigNetworkTier `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
 	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
 	SetPublicPtr pulumi.BoolPtrInput `pulumi:"setPublicPtr"`
 	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *AccessConfigType `pulumi:"type"`
 }
 
 func (AccessConfigArgs) ElementType() reflect.Type {
@@ -1106,7 +1106,7 @@ type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs 
 	// Specifies the size of the disk in base-2 GB.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	Interface *AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface `pulumi:"interface"`
 }
 
 func (AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs) ElementType() reflect.Type {
@@ -2180,13 +2180,13 @@ type AttachedDiskArgs struct {
 	// This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams AttachedDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	Interface *AttachedDiskInterface `pulumi:"interface"`
 	// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// [Output Only] Any valid publicly visible licenses.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *AttachedDiskMode `pulumi:"mode"`
 	// [Output Only] shielded vm initial state stored on disk
 	ShieldedInstanceInitialState InitialStateConfigPtrInput `pulumi:"shieldedInstanceInitialState"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
@@ -2196,7 +2196,7 @@ type AttachedDiskArgs struct {
 	// Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *AttachedDiskType `pulumi:"type"`
 }
 
 func (AttachedDiskArgs) ElementType() reflect.Type {
@@ -2451,7 +2451,7 @@ type AttachedDiskInitializeParamsArgs struct {
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
-	OnUpdateAction pulumi.StringPtrInput `pulumi:"onUpdateAction"`
+	OnUpdateAction *AttachedDiskInitializeParamsOnUpdateAction `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS must be provisioned for the disk.
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -3650,7 +3650,7 @@ type AuditLogConfigArgs struct {
 	ExemptedMembers       pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	IgnoreChildExemptions pulumi.BoolPtrInput     `pulumi:"ignoreChildExemptions"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -3890,7 +3890,7 @@ type AuthorizationLoggingOptionsInput interface {
 // Authorization-related information used by Cloud Audit Logging.
 type AuthorizationLoggingOptionsArgs struct {
 	// The type of the permission that was checked.
-	PermissionType pulumi.StringPtrInput `pulumi:"permissionType"`
+	PermissionType *AuthorizationLoggingOptionsPermissionType `pulumi:"permissionType"`
 }
 
 func (AuthorizationLoggingOptionsArgs) ElementType() reflect.Type {
@@ -4113,7 +4113,7 @@ type AutoscalerStatusDetailsArgs struct {
 	// - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not exist.
 	// - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate.
 	// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *AutoscalerStatusDetailsType `pulumi:"type"`
 }
 
 func (AutoscalerStatusDetailsArgs) ElementType() reflect.Type {
@@ -4418,7 +4418,7 @@ type AutoscalingPolicyArgs struct {
 	// The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
 	MinNumReplicas pulumi.IntPtrInput `pulumi:"minNumReplicas"`
 	// Defines operating mode for this policy.
-	Mode           pulumi.StringPtrInput                   `pulumi:"mode"`
+	Mode           *AutoscalingPolicyMode                  `pulumi:"mode"`
 	ScaleInControl AutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
 	ScalingSchedules pulumi.StringMapInput `pulumi:"scalingSchedules"`
@@ -4691,7 +4691,7 @@ type AutoscalingPolicyCpuUtilizationArgs struct {
 	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
 	//
 	// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
-	PredictiveMethod pulumi.StringPtrInput `pulumi:"predictiveMethod"`
+	PredictiveMethod *AutoscalingPolicyCpuUtilizationPredictiveMethod `pulumi:"predictiveMethod"`
 	// The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
 	//
 	// If the CPU level is below the target utilization, the autoscaler scales in the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.
@@ -5089,7 +5089,7 @@ type AutoscalingPolicyCustomMetricUtilizationArgs struct {
 	// For example, a good metric to use as a utilization_target is https://www.googleapis.com/compute/v1/instance/network/received_bytes_count. The autoscaler works to keep this value constant for each of the instances.
 	UtilizationTarget pulumi.Float64PtrInput `pulumi:"utilizationTarget"`
 	// Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.
-	UtilizationTargetType pulumi.StringPtrInput `pulumi:"utilizationTargetType"`
+	UtilizationTargetType *AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType `pulumi:"utilizationTargetType"`
 }
 
 func (AutoscalingPolicyCustomMetricUtilizationArgs) ElementType() reflect.Type {
@@ -6342,7 +6342,7 @@ type BackendInput interface {
 // Message containing information of one individual backend.
 type BackendArgs struct {
 	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
-	BalancingMode pulumi.StringPtrInput `pulumi:"balancingMode"`
+	BalancingMode *BackendBalancingMode `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	//
 	// Not supported by:
@@ -6607,7 +6607,7 @@ type BackendBucketCdnPolicyArgs struct {
 	// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
 	//
 	// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
-	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
+	CacheMode *BackendBucketCdnPolicyCacheMode `pulumi:"cacheMode"`
 	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
@@ -8013,7 +8013,7 @@ type BackendServiceCdnPolicyArgs struct {
 	// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
 	//
 	// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
-	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
+	CacheMode *BackendServiceCdnPolicyCacheMode `pulumi:"cacheMode"`
 	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
@@ -11423,13 +11423,13 @@ type ConditionInput interface {
 // A condition to be met.
 type ConditionArgs struct {
 	// Trusted attributes supplied by the IAM system.
-	Iam pulumi.StringPtrInput `pulumi:"iam"`
+	Iam *ConditionIam `pulumi:"iam"`
 	// An operator to apply the subject with.
-	Op pulumi.StringPtrInput `pulumi:"op"`
+	Op *ConditionOp `pulumi:"op"`
 	// Trusted attributes discharged by the service.
 	Svc pulumi.StringPtrInput `pulumi:"svc"`
 	// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-	Sys pulumi.StringPtrInput `pulumi:"sys"`
+	Sys *ConditionSys `pulumi:"sys"`
 	// The objects of the condition.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -13871,7 +13871,7 @@ type DeprecationStatusArgs struct {
 	// The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
 	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *DeprecationStatusState `pulumi:"state"`
 }
 
 func (DeprecationStatusArgs) ElementType() reflect.Type {
@@ -14297,7 +14297,7 @@ type DiskInstantiationConfigArgs struct {
 	// - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks.
 	// - attach-read-only: to attach a read-only disk. Applicable to read-only disks.
 	// - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
-	InstantiateFrom pulumi.StringPtrInput `pulumi:"instantiateFrom"`
+	InstantiateFrom *DiskInstantiationConfigInstantiateFrom `pulumi:"instantiateFrom"`
 }
 
 func (DiskInstantiationConfigArgs) ElementType() reflect.Type {
@@ -14827,7 +14827,7 @@ type DistributionPolicyInput interface {
 
 type DistributionPolicyArgs struct {
 	// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
-	TargetShape pulumi.StringPtrInput `pulumi:"targetShape"`
+	TargetShape *DistributionPolicyTargetShape `pulumi:"targetShape"`
 	// Zones where the regional managed instance group will create and manage its instances.
 	Zones DistributionPolicyZoneConfigurationArrayInput `pulumi:"zones"`
 }
@@ -16219,7 +16219,7 @@ type FileContentBufferArgs struct {
 	// The raw content in the secure keys file.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The file type of source file.
-	FileType pulumi.StringPtrInput `pulumi:"fileType"`
+	FileType *FileContentBufferFileType `pulumi:"fileType"`
 }
 
 func (FileContentBufferArgs) ElementType() reflect.Type {
@@ -17059,7 +17059,7 @@ type FirewallLogConfigArgs struct {
 	// This field denotes whether to enable logging for a particular firewall rule.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
-	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	Metadata *FirewallLogConfigMetadata `pulumi:"metadata"`
 }
 
 func (FirewallLogConfigArgs) ElementType() reflect.Type {
@@ -17653,7 +17653,7 @@ type FirewallPolicyRuleArgs struct {
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The direction in which this rule applies.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Direction *FirewallPolicyRuleDirection `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
@@ -19154,7 +19154,7 @@ type GRPCHealthCheckArgs struct {
 	// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	//
 	// If not specified, gRPC health check follows behavior specified in port and portName fields.
-	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+	PortSpecification *GRPCHealthCheckPortSpecification `pulumi:"portSpecification"`
 }
 
 func (GRPCHealthCheckArgs) ElementType() reflect.Type {
@@ -19568,7 +19568,7 @@ type GuestOsFeatureInput interface {
 // Guest OS features.
 type GuestOsFeatureArgs struct {
 	// The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
 func (GuestOsFeatureArgs) ElementType() reflect.Type {
@@ -19794,9 +19794,9 @@ type HTTP2HealthCheckArgs struct {
 	// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	//
 	// If not specified, HTTP2 health check follows behavior specified in port and portName fields.
-	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+	PortSpecification *HTTP2HealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
+	ProxyHeader *HTTP2HealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The request path of the HTTP/2 health check request. The default value is /.
 	RequestPath pulumi.StringPtrInput `pulumi:"requestPath"`
 	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
@@ -20324,9 +20324,9 @@ type HTTPHealthCheckArgs struct {
 	// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	//
 	// If not specified, HTTP health check follows behavior specified in port and portName fields.
-	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+	PortSpecification *HTTPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
+	ProxyHeader *HTTPHealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The request path of the HTTP health check request. The default value is /.
 	RequestPath pulumi.StringPtrInput `pulumi:"requestPath"`
 	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
@@ -20854,9 +20854,9 @@ type HTTPSHealthCheckArgs struct {
 	// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	//
 	// If not specified, HTTPS health check follows behavior specified in port and portName fields.
-	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+	PortSpecification *HTTPSHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
+	ProxyHeader *HTTPSHealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The request path of the HTTPS health check request. The default value is /.
 	RequestPath pulumi.StringPtrInput `pulumi:"requestPath"`
 	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
@@ -24191,7 +24191,7 @@ type HttpRedirectActionArgs struct {
 	// - SEE_OTHER which corresponds to 303.
 	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
 	// - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
-	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	RedirectResponseCode *HttpRedirectActionRedirectResponseCode `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
 	// The default is set to false.
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
@@ -26540,7 +26540,7 @@ type ImageRawDiskInput interface {
 // The parameters of the raw disk image.
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-	ContainerType pulumi.StringPtrInput `pulumi:"containerType"`
+	ContainerType *ImageRawDiskContainerType `pulumi:"containerType"`
 	// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -29257,7 +29257,7 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	// The  instance redistribution policy for regional managed instance groups. Valid values are:
 	// - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region.
 	// - NONE: For non-autoscaled groups, proactive redistribution is disabled.
-	InstanceRedistributionType pulumi.StringPtrInput `pulumi:"instanceRedistributionType"`
+	InstanceRedistributionType *InstanceGroupManagerUpdatePolicyInstanceRedistributionType `pulumi:"instanceRedistributionType"`
 	// The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
 	//
 	// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
@@ -29270,11 +29270,11 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
 	MaxUnavailable FixedOrPercentPtrInput `pulumi:"maxUnavailable"`
 	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction pulumi.StringPtrInput `pulumi:"minimalAction"`
+	MinimalAction *InstanceGroupManagerUpdatePolicyMinimalAction `pulumi:"minimalAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
-	ReplacementMethod pulumi.StringPtrInput `pulumi:"replacementMethod"`
+	ReplacementMethod *InstanceGroupManagerUpdatePolicyReplacementMethod `pulumi:"replacementMethod"`
 	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *InstanceGroupManagerUpdatePolicyType `pulumi:"type"`
 }
 
 func (InstanceGroupManagerUpdatePolicyArgs) ElementType() reflect.Type {
@@ -30059,9 +30059,9 @@ type InstancePropertiesArgs struct {
 	// An array of network access configurations for this interface.
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 	// PostKeyRevocationActionType of the instance.
-	PostKeyRevocationActionType pulumi.StringPtrInput `pulumi:"postKeyRevocationActionType"`
+	PostKeyRevocationActionType *InstancePropertiesPostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
-	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
+	PrivateIpv6GoogleAccess *InstancePropertiesPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// Resource policies (names, not ULRs) applied to instances created from these properties.
@@ -32040,18 +32040,18 @@ type InterconnectOutageNotificationArgs struct {
 	// Form this outage is expected to take, which can take one of the following values:
 	// - OUTAGE: The Interconnect may be completely out of service for some or all of the specified window.
 	// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed values.
-	IssueType pulumi.StringPtrInput `pulumi:"issueType"`
+	IssueType *InterconnectOutageNotificationIssueType `pulumi:"issueType"`
 	// Unique identifier for this outage notification.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The party that generated this notification, which can take the following value:
 	// - GOOGLE: this notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of GOOGLE.
-	Source pulumi.StringPtrInput `pulumi:"source"`
+	Source *InterconnectOutageNotificationSource `pulumi:"source"`
 	// Scheduled start time for the outage (milliseconds since Unix epoch).
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// State of this notification, which can take one of the following values:
 	// - ACTIVE: This outage notification is active. The event could be in the past, present, or future. See start_time and end_time for scheduling.
 	// - CANCELLED: The outage associated with this notification was cancelled before the outage was due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the unprefixed values.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *InterconnectOutageNotificationState `pulumi:"state"`
 }
 
 func (InterconnectOutageNotificationArgs) ElementType() reflect.Type {
@@ -33365,7 +33365,7 @@ type LogConfigCloudAuditOptionsArgs struct {
 	// Information used by the Cloud Audit Logging pipeline.
 	AuthorizationLoggingOptions AuthorizationLoggingOptionsPtrInput `pulumi:"authorizationLoggingOptions"`
 	// The log_name to populate in the Cloud Audit Record.
-	LogName pulumi.StringPtrInput `pulumi:"logName"`
+	LogName *LogConfigCloudAuditOptionsLogName `pulumi:"logName"`
 }
 
 func (LogConfigCloudAuditOptionsArgs) ElementType() reflect.Type {
@@ -34091,7 +34091,7 @@ type LogConfigDataAccessOptionsInput interface {
 
 // Write a Data Access (Gin) log
 type LogConfigDataAccessOptionsArgs struct {
-	LogMode pulumi.StringPtrInput `pulumi:"logMode"`
+	LogMode *LogConfigDataAccessOptionsLogMode `pulumi:"logMode"`
 }
 
 func (LogConfigDataAccessOptionsArgs) ElementType() reflect.Type {
@@ -34588,7 +34588,7 @@ type MetadataFilterArgs struct {
 	// Supported values are:
 	// - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata.
 	// - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
-	FilterMatchCriteria pulumi.StringPtrInput `pulumi:"filterMatchCriteria"`
+	FilterMatchCriteria *MetadataFilterFilterMatchCriteria `pulumi:"filterMatchCriteria"`
 }
 
 func (MetadataFilterArgs) ElementType() reflect.Type {
@@ -36952,7 +36952,7 @@ type NetworkInterfaceArgs struct {
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP pulumi.StringPtrInput `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	NicType *NetworkInterfaceNicType `pulumi:"nicType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:
 	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork
 	// - regions/region/subnetworks/subnetwork
@@ -37348,7 +37348,7 @@ type NetworkPeeringArgs struct {
 	// Maximum Transmission Unit in bytes.
 	PeerMtu pulumi.IntPtrInput `pulumi:"peerMtu"`
 	// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *NetworkPeeringState `pulumi:"state"`
 	// [Output Only] Details about the current state of the peering.
 	StateDetails pulumi.StringPtrInput `pulumi:"stateDetails"`
 }
@@ -37690,7 +37690,7 @@ type NetworkRoutingConfigInput interface {
 // A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide.
 type NetworkRoutingConfigArgs struct {
 	// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
-	RoutingMode pulumi.StringPtrInput `pulumi:"routingMode"`
+	RoutingMode *NetworkRoutingConfigRoutingMode `pulumi:"routingMode"`
 }
 
 func (NetworkRoutingConfigArgs) ElementType() reflect.Type {
@@ -37964,7 +37964,7 @@ type NodeGroupAutoscalingPolicyArgs struct {
 	// The minimum number of nodes that the group should have.
 	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
 	// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see  Autoscaler modes.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *NodeGroupAutoscalingPolicyMode `pulumi:"mode"`
 }
 
 func (NodeGroupAutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -39988,7 +39988,7 @@ type PacketMirroringFilterArgs struct {
 	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
 	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Direction *PacketMirroringFilterDirection `pulumi:"direction"`
 }
 
 func (PacketMirroringFilterArgs) ElementType() reflect.Type {
@@ -42750,7 +42750,7 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefixArgs struct {
 	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// [Output Only] The status of the sub public delegated prefix.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *PublicDelegatedPrefixPublicDelegatedSubPrefixStatus `pulumi:"status"`
 }
 
 func (PublicDelegatedPrefixPublicDelegatedSubPrefixArgs) ElementType() reflect.Type {
@@ -43344,7 +43344,7 @@ type ReservationTypeArgs struct {
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired pulumi.BoolPtrInput `pulumi:"specificReservationRequired"`
 	// [Output Only] The status of the reservation.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *ReservationStatus `pulumi:"status"`
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -43505,7 +43505,7 @@ type ReservationAffinityInput interface {
 // Specifies the reservations that this instance can consume from.
 type ReservationAffinityArgs struct {
 	// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See  Consuming reserved instances for examples.
-	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	ConsumeReservationType *ReservationAffinityConsumeReservationType `pulumi:"consumeReservationType"`
 	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Corresponds to the label values of a reservation resource.
@@ -44043,7 +44043,7 @@ type ResourceCommitmentArgs struct {
 	// The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
 	Amount pulumi.StringPtrInput `pulumi:"amount"`
 	// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *ResourceCommitmentType `pulumi:"type"`
 }
 
 func (ResourceCommitmentArgs) ElementType() reflect.Type {
@@ -44621,7 +44621,7 @@ type ResourcePolicyGroupPlacementPolicyArgs struct {
 	// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
 	AvailabilityDomainCount pulumi.IntPtrInput `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
-	Collocation pulumi.StringPtrInput `pulumi:"collocation"`
+	Collocation *ResourcePolicyGroupPlacementPolicyCollocation `pulumi:"collocation"`
 	// Number of vms in this placement group
 	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
 }
@@ -46949,7 +46949,7 @@ type ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
 	// Maximum age of the snapshot that is allowed to be kept.
 	MaxRetentionDays pulumi.IntPtrInput `pulumi:"maxRetentionDays"`
 	// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
-	OnSourceDiskDelete pulumi.StringPtrInput `pulumi:"onSourceDiskDelete"`
+	OnSourceDiskDelete *ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete `pulumi:"onSourceDiskDelete"`
 }
 
 func (ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ElementType() reflect.Type {
@@ -48115,7 +48115,7 @@ type ResourcePolicyWeeklyCycleDayOfWeekInput interface {
 
 type ResourcePolicyWeeklyCycleDayOfWeekArgs struct {
 	// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
-	Day pulumi.StringPtrInput `pulumi:"day"`
+	Day *ResourcePolicyWeeklyCycleDayOfWeekDay `pulumi:"day"`
 	// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
@@ -48482,7 +48482,7 @@ type RouteWarningsItemInput interface {
 
 type RouteWarningsItemArgs struct {
 	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code pulumi.StringPtrInput `pulumi:"code"`
+	Code *RouteWarningsItemCode `pulumi:"code"`
 	// [Output Only] Metadata about this warning in key: value format. For example:
 	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data RouteWarningsItemDataItemArrayInput `pulumi:"data"`
@@ -49149,9 +49149,9 @@ type RouterBgpInput interface {
 
 type RouterBgpArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM.
-	AdvertiseMode pulumi.StringPtrInput `pulumi:"advertiseMode"`
+	AdvertiseMode *RouterBgpAdvertiseMode `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These groups will be advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
-	AdvertisedGroups pulumi.StringArrayInput `pulumi:"advertisedGroups"`
+	AdvertisedGroups RouterBgpAdvertisedGroupsItemArrayInput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These IP ranges will be advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
 	// Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource. All VPN tunnels that link to this router will have the same local ASN.
@@ -49353,11 +49353,11 @@ type RouterBgpPeerInput interface {
 
 type RouterBgpPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
-	AdvertiseMode pulumi.StringPtrInput `pulumi:"advertiseMode"`
+	AdvertiseMode *RouterBgpPeerAdvertiseMode `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options:
 	// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
 	// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
-	AdvertisedGroups pulumi.StringArrayInput `pulumi:"advertisedGroups"`
+	AdvertisedGroups RouterBgpPeerAdvertisedGroupsItemArrayInput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
 	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
@@ -49369,7 +49369,7 @@ type RouterBgpPeerArgs struct {
 	// [Output Only] The resource that configures and manages this BGP peer.
 	// - MANAGED_BY_USER is the default value and can be managed by you or other users
 	// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
-	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
+	ManagementType *RouterBgpPeerManagementType `pulumi:"managementType"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -49917,7 +49917,7 @@ type RouterInterfaceArgs struct {
 	// [Output Only] The resource that configures and manages this interface.
 	// - MANAGED_BY_USER is the default value and can be managed directly by users.
 	// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
-	ManagementType pulumi.StringPtrInput `pulumi:"managementType"`
+	ManagementType *RouterInterfaceManagementType `pulumi:"managementType"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -50220,14 +50220,14 @@ type RouterNatArgs struct {
 	// Specify the NatIpAllocateOption, which can take one of the following values:
 	// - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs.
 	// - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
-	NatIpAllocateOption pulumi.StringPtrInput `pulumi:"natIpAllocateOption"`
+	NatIpAllocateOption *RouterNatNatIpAllocateOption `pulumi:"natIpAllocateOption"`
 	// A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
 	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
 	// Specify the Nat option, which can take one of the following values:
 	// - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat.
 	// - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat.
 	// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
-	SourceSubnetworkIpRangesToNat pulumi.StringPtrInput `pulumi:"sourceSubnetworkIpRangesToNat"`
+	SourceSubnetworkIpRangesToNat *RouterNatSourceSubnetworkIpRangesToNat `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks RouterNatSubnetworkToNatArrayInput `pulumi:"subnetworks"`
 	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
@@ -50409,7 +50409,7 @@ type RouterNatLogConfigArgs struct {
 	// - ERRORS_ONLY: Export logs only for connection failures.
 	// - TRANSLATIONS_ONLY: Export logs only for successful connections.
 	// - ALL: Export logs for all connections, successful and unsuccessful.
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	Filter *RouterNatLogConfigFilter `pulumi:"filter"`
 }
 
 func (RouterNatLogConfigArgs) ElementType() reflect.Type {
@@ -50865,7 +50865,7 @@ type RouterNatSubnetworkToNatArgs struct {
 	// A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated only if "LIST_OF_SECONDARY_IP_RANGES" is one of the values in source_ip_ranges_to_nat.
 	SecondaryIpRangeNames pulumi.StringArrayInput `pulumi:"secondaryIpRangeNames"`
 	// Specify the options for NAT ranges in the Subnetwork. All options of a single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]
-	SourceIpRangesToNat pulumi.StringArrayInput `pulumi:"sourceIpRangesToNat"`
+	SourceIpRangesToNat RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput `pulumi:"sourceIpRangesToNat"`
 }
 
 func (RouterNatSubnetworkToNatArgs) ElementType() reflect.Type {
@@ -51105,7 +51105,7 @@ type RuleInput interface {
 // A rule to be applied in a Policy.
 type RuleArgs struct {
 	// Required
-	Action pulumi.StringPtrInput `pulumi:"action"`
+	Action *RuleAction `pulumi:"action"`
 	// Additional restrictions that must be met. All conditions must pass for the rule to match.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
 	// Human-readable description of the rule.
@@ -51423,9 +51423,9 @@ type SSLHealthCheckArgs struct {
 	// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	//
 	// If not specified, SSL health check follows behavior specified in port and portName fields.
-	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+	PortSpecification *SSLHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
+	ProxyHeader *SSLHealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
 	Request pulumi.StringPtrInput `pulumi:"request"`
 	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
@@ -51915,7 +51915,7 @@ type SchedulingArgs struct {
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities SchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
 	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
-	OnHostMaintenance pulumi.StringPtrInput `pulumi:"onHostMaintenance"`
+	OnHostMaintenance *SchedulingOnHostMaintenance `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 }
@@ -52136,7 +52136,7 @@ type SchedulingNodeAffinityArgs struct {
 	// Corresponds to the label key of Node resource.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	Operator *SchedulingNodeAffinityOperator `pulumi:"operator"`
 	// Corresponds to the label values of Node resource.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -52756,7 +52756,7 @@ type SecurityPolicyRuleMatcherArgs struct {
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 	Expr ExprPtrInput `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-	VersionedExpr pulumi.StringPtrInput `pulumi:"versionedExpr"`
+	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
 }
 
 func (SecurityPolicyRuleMatcherArgs) ElementType() reflect.Type {
@@ -53671,7 +53671,7 @@ type ServerBindingInput interface {
 }
 
 type ServerBindingArgs struct {
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *ServerBindingType `pulumi:"type"`
 }
 
 func (ServerBindingArgs) ElementType() reflect.Type {
@@ -55033,7 +55033,7 @@ type SslCertificateManagedSslCertificateArgs struct {
 	// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// [Output only] Status of the managed certificate resource.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *SslCertificateManagedSslCertificateStatus `pulumi:"status"`
 }
 
 func (SslCertificateManagedSslCertificateArgs) ElementType() reflect.Type {
@@ -55682,7 +55682,7 @@ type SslPolicyWarningsItemInput interface {
 
 type SslPolicyWarningsItemArgs struct {
 	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
-	Code pulumi.StringPtrInput `pulumi:"code"`
+	Code *SslPolicyWarningsItemCode `pulumi:"code"`
 	// [Output Only] Metadata about this warning in key: value format. For example:
 	// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
 	Data SslPolicyWarningsItemDataItemArrayInput `pulumi:"data"`
@@ -56657,7 +56657,7 @@ type SubnetworkLogConfigInput interface {
 // The available logging options for this subnetwork.
 type SubnetworkLogConfigArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-	AggregationInterval pulumi.StringPtrInput `pulumi:"aggregationInterval"`
+	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
@@ -56665,7 +56665,7 @@ type SubnetworkLogConfigArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	Metadata *SubnetworkLogConfigMetadata `pulumi:"metadata"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
 	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
 }
@@ -57345,9 +57345,9 @@ type TCPHealthCheckArgs struct {
 	// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
 	//
 	// If not specified, TCP health check follows behavior specified in port and portName fields.
-	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
+	PortSpecification *TCPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
+	ProxyHeader *TCPHealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
 	Request pulumi.StringPtrInput `pulumi:"request"`
 	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.

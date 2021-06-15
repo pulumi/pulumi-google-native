@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1240,9 +1240,9 @@ type CryptoKeyVersionTemplateInput interface {
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateArgs struct {
 	// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	Algorithm *CryptoKeyVersionTemplateAlgorithm `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-	ProtectionLevel pulumi.StringPtrInput `pulumi:"protectionLevel"`
+	ProtectionLevel *CryptoKeyVersionTemplateProtectionLevel `pulumi:"protectionLevel"`
 }
 
 func (CryptoKeyVersionTemplateArgs) ElementType() reflect.Type {

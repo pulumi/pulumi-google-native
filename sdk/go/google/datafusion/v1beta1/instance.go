@@ -277,7 +277,7 @@ type InstanceArgs struct {
 	PrivateInstance pulumi.BoolPtrInput
 	Project         pulumi.StringInput
 	// Required. Instance type.
-	Type pulumi.StringPtrInput
+	Type *InstanceType
 	// Current version of Data Fusion.
 	Version pulumi.StringPtrInput
 	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.

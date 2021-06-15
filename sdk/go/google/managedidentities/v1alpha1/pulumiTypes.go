@@ -565,7 +565,7 @@ type TrustArgs struct {
 	// The trust authentication type which decides whether the trusted side has forest/domain wide access or selective access to approved set of resources.
 	SelectiveAuthentication pulumi.BoolPtrInput `pulumi:"selectiveAuthentication"`
 	// The current state of this trust.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *TrustState `pulumi:"state"`
 	// Additional information about the current state of this trust, if available.
 	StateDescription pulumi.StringPtrInput `pulumi:"stateDescription"`
 	// The target dns server ip addresses which can resolve the remote domain involved in trust.
@@ -573,11 +573,11 @@ type TrustArgs struct {
 	// The fully qualified target domain name which will be in trust with current domain.
 	TargetDomainName pulumi.StringPtrInput `pulumi:"targetDomainName"`
 	// The trust direction decides the current domain is trusted, trusting or both.
-	TrustDirection pulumi.StringPtrInput `pulumi:"trustDirection"`
+	TrustDirection *TrustTrustDirection `pulumi:"trustDirection"`
 	// Input only, and will not be stored. The trust secret used for handshake with target domain.
 	TrustHandshakeSecret pulumi.StringPtrInput `pulumi:"trustHandshakeSecret"`
 	// The type of trust represented by the trust resource.
-	TrustType pulumi.StringPtrInput `pulumi:"trustType"`
+	TrustType *TrustTrustType `pulumi:"trustType"`
 	// Last update time.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }

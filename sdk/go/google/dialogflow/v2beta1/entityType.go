@@ -118,7 +118,7 @@ type entityTypeArgs struct {
 // The set of arguments for constructing a EntityType resource.
 type EntityTypeArgs struct {
 	// Optional. Indicates whether the entity type can be automatically expanded.
-	AutoExpansionMode pulumi.StringPtrInput
+	AutoExpansionMode *EntityTypeAutoExpansionMode
 	// Required. The name of the entity type.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Enables fuzzy entity extraction during classification.
@@ -126,7 +126,7 @@ type EntityTypeArgs struct {
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput
 	// Required. Indicates the kind of entity type.
-	Kind         pulumi.StringPtrInput
+	Kind         *EntityTypeKind
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`

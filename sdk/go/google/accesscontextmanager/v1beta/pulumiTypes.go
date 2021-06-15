@@ -32,7 +32,7 @@ type BasicLevelInput interface {
 // `BasicLevel` is an `AccessLevel` using a set of recommended features.
 type BasicLevelArgs struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
+	CombiningFunction *BasicLevelCombiningFunction `pulumi:"combiningFunction"`
 	// Required. A list of requirements for the `AccessLevel` to be granted.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
 }
@@ -904,9 +904,9 @@ type DevicePolicyInput interface {
 // `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
 type DevicePolicyArgs struct {
 	// Allowed device management levels, an empty list allows all management levels.
-	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
+	AllowedDeviceManagementLevels DevicePolicyAllowedDeviceManagementLevelsItemArrayInput `pulumi:"allowedDeviceManagementLevels"`
 	// Allowed encryptions statuses, an empty list allows all statuses.
-	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
+	AllowedEncryptionStatuses DevicePolicyAllowedEncryptionStatusesItemArrayInput `pulumi:"allowedEncryptionStatuses"`
 	// Allowed OS versions, an empty list allows all types and all versions.
 	OsConstraints OsConstraintArrayInput `pulumi:"osConstraints"`
 	// Whether the device needs to be approved by the customer admin.
@@ -1611,7 +1611,7 @@ type OsConstraintArgs struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// Required. The allowed OS type.
-	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	OsType *OsConstraintOsType `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs pulumi.BoolPtrInput `pulumi:"requireVerifiedChromeOs"`
 }

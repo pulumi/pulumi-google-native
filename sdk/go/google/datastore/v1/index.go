@@ -107,7 +107,7 @@ type indexArgs struct {
 // The set of arguments for constructing a Index resource.
 type IndexArgs struct {
 	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor pulumi.StringPtrInput
+	Ancestor *IndexAncestor
 	// Required. The entity kind to which this index applies.
 	Kind    pulumi.StringPtrInput
 	Project pulumi.StringInput

@@ -153,7 +153,7 @@ type JobTriggerArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Required. A status for this trigger.
-	Status pulumi.StringPtrInput
+	Status *JobTriggerStatus
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.

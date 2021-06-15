@@ -165,7 +165,7 @@ type TargetTcpProxyArgs struct {
 	// The default is false.
 	ProxyBind pulumi.BoolPtrInput
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput
+	ProxyHeader *TargetTcpProxyProxyHeader
 	RequestId   pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput

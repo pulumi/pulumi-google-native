@@ -2252,9 +2252,9 @@ type NotificationConfigInput interface {
 // Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigArgs struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
-	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+	EventTypes NotificationConfigEventTypesItemArrayInput `pulumi:"eventTypes"`
 	// Required. The desired format of the notification message payloads.
-	PayloadFormat pulumi.StringPtrInput `pulumi:"payloadFormat"`
+	PayloadFormat *NotificationConfigPayloadFormat `pulumi:"payloadFormat"`
 	// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 }

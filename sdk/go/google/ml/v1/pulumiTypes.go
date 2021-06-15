@@ -2490,7 +2490,7 @@ type GoogleCloudMlV1_StudyConfig_MetricSpecInput interface {
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpecArgs struct {
 	// Required. The optimization goal of the metric.
-	Goal pulumi.StringPtrInput `pulumi:"goal"`
+	Goal *GoogleCloudMlV1_StudyConfig_MetricSpecGoal `pulumi:"goal"`
 	// Required. The name of the metric.
 	Metric pulumi.StringPtrInput `pulumi:"metric"`
 }
@@ -2738,9 +2738,9 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpecArgs struct {
 	ParentDiscreteValues    GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrInput    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrInput         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
-	ScaleType pulumi.StringPtrInput `pulumi:"scaleType"`
+	ScaleType *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType `pulumi:"scaleType"`
 	// Required. The type of the parameter.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudMlV1_StudyConfig_ParameterSpecType `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1_StudyConfig_ParameterSpecArgs) ElementType() reflect.Type {
@@ -3358,7 +3358,7 @@ type GoogleCloudMlV1__AcceleratorConfigArgs struct {
 	// The number of accelerators to attach to each machine running the job.
 	Count pulumi.StringPtrInput `pulumi:"count"`
 	// The type of accelerator to use.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudMlV1__AcceleratorConfigType `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1__AcceleratorConfigArgs) ElementType() reflect.Type {
@@ -6490,7 +6490,7 @@ type GoogleCloudMlV1__HyperparameterOutputArgs struct {
 	// Start time for the trial.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// The detailed state of the trial.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *GoogleCloudMlV1__HyperparameterOutputState `pulumi:"state"`
 	// The trial id for these results.
 	TrialId pulumi.StringPtrInput `pulumi:"trialId"`
 }
@@ -6832,11 +6832,11 @@ type GoogleCloudMlV1__HyperparameterSpecInput interface {
 // Represents a set of hyperparameters to optimize.
 type GoogleCloudMlV1__HyperparameterSpecArgs struct {
 	// Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	Algorithm *GoogleCloudMlV1__HyperparameterSpecAlgorithm `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping pulumi.BoolPtrInput `pulumi:"enableTrialEarlyStopping"`
 	// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-	Goal pulumi.StringPtrInput `pulumi:"goal"`
+	Goal *GoogleCloudMlV1__HyperparameterSpecGoal `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag pulumi.StringPtrInput `pulumi:"hyperparameterMetricTag"`
 	// Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
@@ -8370,7 +8370,7 @@ type GoogleCloudMlV1__MetricSpecInput interface {
 // MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
 type GoogleCloudMlV1__MetricSpecArgs struct {
 	// metric name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name *GoogleCloudMlV1__MetricSpecName `pulumi:"name"`
 	// Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
 	Target pulumi.IntPtrInput `pulumi:"target"`
 }
@@ -8608,9 +8608,9 @@ type GoogleCloudMlV1__ParameterSpecArgs struct {
 	// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
 	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
-	ScaleType pulumi.StringPtrInput `pulumi:"scaleType"`
+	ScaleType *GoogleCloudMlV1__ParameterSpecScaleType `pulumi:"scaleType"`
 	// Required. The type of the parameter.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudMlV1__ParameterSpecType `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1__ParameterSpecArgs) ElementType() reflect.Type {
@@ -8918,7 +8918,7 @@ type GoogleCloudMlV1__PredictionInputArgs struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize pulumi.StringPtrInput `pulumi:"batchSize"`
 	// Required. The format of the input data files.
-	DataFormat pulumi.StringPtrInput `pulumi:"dataFormat"`
+	DataFormat *GoogleCloudMlV1__PredictionInputDataFormat `pulumi:"dataFormat"`
 	// Required. The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths pulumi.StringArrayInput `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
@@ -8926,7 +8926,7 @@ type GoogleCloudMlV1__PredictionInputArgs struct {
 	// Use this field if you want to use the default version for the specified model. The string must use the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
 	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
-	OutputDataFormat pulumi.StringPtrInput `pulumi:"outputDataFormat"`
+	OutputDataFormat *GoogleCloudMlV1__PredictionInputOutputDataFormat `pulumi:"outputDataFormat"`
 	// Required. The output Google Cloud Storage location.
 	OutputPath pulumi.StringPtrInput `pulumi:"outputPath"`
 	// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
@@ -11624,7 +11624,7 @@ type GoogleCloudMlV1__StudyConfigInput interface {
 // Represents configuration of a study.
 type GoogleCloudMlV1__StudyConfigArgs struct {
 	// The search algorithm specified for the study.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	Algorithm *GoogleCloudMlV1__StudyConfigAlgorithm `pulumi:"algorithm"`
 	// Configuration for automated stopping of unpromising Trials.
 	AutomatedStoppingConfig GoogleCloudMlV1__AutomatedStoppingConfigPtrInput `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
@@ -12092,7 +12092,7 @@ type GoogleCloudMlV1__TrainingInputArgs struct {
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
 	// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
-	ScaleTier pulumi.StringPtrInput `pulumi:"scaleTier"`
+	ScaleTier *GoogleCloudMlV1__TrainingInputScaleTier `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling GoogleCloudMlV1__SchedulingPtrInput `pulumi:"scheduling"`
 	// Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
@@ -13768,7 +13768,7 @@ type GoogleCloudMlV1__VersionArgs struct {
 	// Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
 	ExplanationConfig GoogleCloudMlV1__ExplanationConfigPtrInput `pulumi:"explanationConfig"`
 	// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-	Framework pulumi.StringPtrInput `pulumi:"framework"`
+	Framework *GoogleCloudMlV1__VersionFramework `pulumi:"framework"`
 	// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
 	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
 	// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
@@ -13796,7 +13796,7 @@ type GoogleCloudMlV1__VersionArgs struct {
 	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// The state of a version.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *GoogleCloudMlV1__VersionState `pulumi:"state"`
 }
 
 func (GoogleCloudMlV1__VersionArgs) ElementType() reflect.Type {
@@ -15384,7 +15384,7 @@ type GoogleIamV1__AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *GoogleIamV1__AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (GoogleIamV1__AuditLogConfigArgs) ElementType() reflect.Type {

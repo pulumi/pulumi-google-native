@@ -236,11 +236,11 @@ type MigrationJobArgs struct {
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypePtrInput
 	// The current migration job state.
-	State pulumi.StringPtrInput
+	State *MigrationJobStateEnum
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity StaticIpConnectivityPtrInput
 	// Required. The migration job type.
-	Type pulumi.StringPtrInput
+	Type *MigrationJobType
 	// The details of the VPC network that the source database is located in.
 	VpcPeeringConnectivity VpcPeeringConnectivityPtrInput
 }

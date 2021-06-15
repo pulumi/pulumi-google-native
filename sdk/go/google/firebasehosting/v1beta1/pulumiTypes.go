@@ -879,13 +879,13 @@ type DomainProvisioningArgs struct {
 	// The HTTP challenge for generating a certificate.
 	CertChallengeHttp CertHttpChallengePtrInput `pulumi:"certChallengeHttp"`
 	// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
-	CertStatus pulumi.StringPtrInput `pulumi:"certStatus"`
+	CertStatus *DomainProvisioningCertStatus `pulumi:"certStatus"`
 	// The IPs found at the last DNS fetch.
 	DiscoveredIps pulumi.StringArrayInput `pulumi:"discoveredIps"`
 	// The time at which the last DNS fetch occurred.
 	DnsFetchTime pulumi.StringPtrInput `pulumi:"dnsFetchTime"`
 	// The DNS record match status as of the last DNS fetch.
-	DnsStatus pulumi.StringPtrInput `pulumi:"dnsStatus"`
+	DnsStatus *DomainProvisioningDnsStatus `pulumi:"dnsStatus"`
 	// The list of IPs to which the domain is expected to resolve.
 	ExpectedIps pulumi.StringArrayInput `pulumi:"expectedIps"`
 }
@@ -1397,7 +1397,7 @@ type DomainRedirectArgs struct {
 	// Required. The domain name to redirect to.
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Required. The redirect status code.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *DomainRedirectType `pulumi:"type"`
 }
 
 func (DomainRedirectArgs) ElementType() reflect.Type {

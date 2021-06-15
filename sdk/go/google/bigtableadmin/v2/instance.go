@@ -122,7 +122,7 @@ type InstanceArgs struct {
 	Parent  pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Required. The type of the instance. Defaults to `PRODUCTION`.
-	Type pulumi.StringPtrInput
+	Type *InstanceType
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

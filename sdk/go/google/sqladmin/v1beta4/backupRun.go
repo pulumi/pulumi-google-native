@@ -190,7 +190,7 @@ type backupRunArgs struct {
 // The set of arguments for constructing a BackupRun resource.
 type BackupRunArgs struct {
 	// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
-	BackupKind pulumi.StringPtrInput
+	BackupKind *BackupRunBackupKind
 	// The description of this run, only applicable to on-demand backups.
 	Description pulumi.StringPtrInput
 	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
@@ -217,9 +217,9 @@ type BackupRunArgs struct {
 	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	StartTime pulumi.StringPtrInput
 	// The status of this run.
-	Status pulumi.StringPtrInput
+	Status *BackupRunStatus
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-	Type pulumi.StringPtrInput
+	Type *BackupRunType
 	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	WindowStartTime pulumi.StringPtrInput
 }

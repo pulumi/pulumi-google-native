@@ -271,7 +271,7 @@ type RegionInstantSnapshotArgs struct {
 	// [Output Only] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringPtrInput
 	// [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
-	Status pulumi.StringPtrInput
+	Status *RegionInstantSnapshotStatus
 	// [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone pulumi.StringPtrInput
 }

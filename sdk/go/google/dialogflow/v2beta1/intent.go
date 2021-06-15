@@ -229,7 +229,7 @@ type IntentArgs struct {
 	// Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
 	Action pulumi.StringPtrInput
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
-	DefaultResponsePlatforms pulumi.StringArrayInput
+	DefaultResponsePlatforms IntentDefaultResponsePlatformsItemArrayInput
 	// Required. The name of this intent.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
@@ -265,7 +265,7 @@ type IntentArgs struct {
 	// Optional. The collection of examples that the agent is trained on.
 	TrainingPhrases GoogleCloudDialogflowV2beta1IntentTrainingPhraseArrayInput
 	// Optional. Indicates whether webhooks are enabled for the intent.
-	WebhookState pulumi.StringPtrInput
+	WebhookState *IntentWebhookState
 }
 
 func (IntentArgs) ElementType() reflect.Type {

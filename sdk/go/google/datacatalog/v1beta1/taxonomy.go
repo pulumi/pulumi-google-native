@@ -111,7 +111,7 @@ type taxonomyArgs struct {
 // The set of arguments for constructing a Taxonomy resource.
 type TaxonomyArgs struct {
 	// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
-	ActivatedPolicyTypes pulumi.StringArrayInput
+	ActivatedPolicyTypes TaxonomyActivatedPolicyTypesItemArrayInput
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrInput
 	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.

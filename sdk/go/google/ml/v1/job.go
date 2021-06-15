@@ -180,7 +180,7 @@ type JobArgs struct {
 	// When the job processing was started.
 	StartTime pulumi.StringPtrInput
 	// The detailed state of a job.
-	State pulumi.StringPtrInput
+	State *JobStateEnum
 	// Input parameters to create a training job.
 	TrainingInput GoogleCloudMlV1__TrainingInputPtrInput
 	// The current training job result.

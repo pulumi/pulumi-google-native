@@ -7784,7 +7784,7 @@ type GoogleCloudApigeeV1TraceSamplingConfigInput interface {
 // TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
 type GoogleCloudApigeeV1TraceSamplingConfigArgs struct {
 	// Sampler of distributed tracing. OFF is the default value.
-	Sampler pulumi.StringPtrInput `pulumi:"sampler"`
+	Sampler *GoogleCloudApigeeV1TraceSamplingConfigSampler `pulumi:"sampler"`
 	// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
 	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
 }
@@ -8312,7 +8312,7 @@ type GoogleIamV1AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *GoogleIamV1AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (GoogleIamV1AuditLogConfigArgs) ElementType() reflect.Type {

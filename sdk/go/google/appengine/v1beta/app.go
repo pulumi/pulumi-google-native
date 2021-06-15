@@ -166,7 +166,7 @@ type AppArgs struct {
 	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
 	CodeBucket pulumi.StringPtrInput
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-	DatabaseType pulumi.StringPtrInput
+	DatabaseType *AppDatabaseType
 	// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
 	DefaultBucket pulumi.StringPtrInput
 	// Cookie expiration policy for this application.
@@ -187,7 +187,7 @@ type AppArgs struct {
 	// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
 	Name pulumi.StringPtrInput
 	// Serving status of this application.
-	ServingStatus pulumi.StringPtrInput
+	ServingStatus *AppServingStatus
 }
 
 func (AppArgs) ElementType() reflect.Type {

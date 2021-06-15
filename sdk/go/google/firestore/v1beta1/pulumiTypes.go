@@ -34,7 +34,7 @@ type GoogleFirestoreAdminV1beta1IndexFieldArgs struct {
 	// The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// The field's mode.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *GoogleFirestoreAdminV1beta1IndexFieldMode `pulumi:"mode"`
 }
 
 func (GoogleFirestoreAdminV1beta1IndexFieldArgs) ElementType() reflect.Type {

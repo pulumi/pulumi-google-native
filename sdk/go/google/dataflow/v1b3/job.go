@@ -260,7 +260,7 @@ type JobArgs struct {
 	// If this is specified, the job's initial state is populated from the given snapshot.
 	CreatedFromSnapshotId pulumi.StringPtrInput
 	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
-	CurrentState pulumi.StringPtrInput
+	CurrentState *JobCurrentState
 	// The timestamp associated with the current state.
 	CurrentStateTime pulumi.StringPtrInput
 	// The environment for the job.
@@ -284,7 +284,7 @@ type JobArgs struct {
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
 	ReplacedByJobId pulumi.StringPtrInput
 	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
-	RequestedState pulumi.StringPtrInput
+	RequestedState *JobRequestedState
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -300,7 +300,7 @@ type JobArgs struct {
 	// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
 	TransformNameMapping pulumi.StringMapInput
 	// The type of Cloud Dataflow job.
-	Type pulumi.StringPtrInput
+	Type *JobType
 	View pulumi.StringPtrInput
 }
 

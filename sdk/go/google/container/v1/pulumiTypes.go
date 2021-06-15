@@ -3264,7 +3264,7 @@ type CloudRunConfigArgs struct {
 	// Whether Cloud Run addon is enabled for this cluster.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Which load balancer type is installed for Cloud Run.
-	LoadBalancerType pulumi.StringPtrInput `pulumi:"loadBalancerType"`
+	LoadBalancerType *CloudRunConfigLoadBalancerType `pulumi:"loadBalancerType"`
 }
 
 func (CloudRunConfigArgs) ElementType() reflect.Type {
@@ -4030,7 +4030,7 @@ type ClusterUpdateArgs struct {
 	// The desired private cluster configuration.
 	DesiredPrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"desiredPrivateClusterConfig"`
 	// The desired state of IPv6 connectivity to Google Services.
-	DesiredPrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"desiredPrivateIpv6GoogleAccess"`
+	DesiredPrivateIpv6GoogleAccess *ClusterUpdateDesiredPrivateIpv6GoogleAccess `pulumi:"desiredPrivateIpv6GoogleAccess"`
 	// The desired release channel configuration.
 	DesiredReleaseChannel ReleaseChannelPtrInput `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
@@ -5319,7 +5319,7 @@ type DatabaseEncryptionArgs struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
 	// Denotes the state of etcd encryption.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *DatabaseEncryptionState `pulumi:"state"`
 }
 
 func (DatabaseEncryptionArgs) ElementType() reflect.Type {
@@ -10205,7 +10205,7 @@ type NetworkConfigArgs struct {
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
+	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
@@ -10615,7 +10615,7 @@ type NetworkPolicyArgs struct {
 	// Whether network policy is enabled on the cluster.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The selected network policy provider.
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	Provider *NetworkPolicyProvider `pulumi:"provider"`
 }
 
 func (NetworkPolicyArgs) ElementType() reflect.Type {
@@ -12987,7 +12987,7 @@ type NodePoolTypeArgs struct {
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *NodePoolStatus `pulumi:"status"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -13759,7 +13759,7 @@ type NodeTaintInput interface {
 // Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaintArgs struct {
 	// Effect for taint.
-	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	Effect *NodeTaintEffect `pulumi:"effect"`
 	// Key for taint.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Value for taint.
@@ -15641,7 +15641,7 @@ type ReleaseChannelInput interface {
 // ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
 type ReleaseChannelArgs struct {
 	// channel specifies which release channel the cluster is subscribed to.
-	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	Channel *ReleaseChannelChannel `pulumi:"channel"`
 }
 
 func (ReleaseChannelArgs) ElementType() reflect.Type {
@@ -15913,7 +15913,7 @@ type ReservationAffinityInput interface {
 // [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from.
 type ReservationAffinityArgs struct {
 	// Corresponds to the type of reservation consumption.
-	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	ConsumeReservationType *ReservationAffinityConsumeReservationType `pulumi:"consumeReservationType"`
 	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Corresponds to the label value(s) of reservation resource(s).
@@ -16835,7 +16835,7 @@ type SandboxConfigInput interface {
 // SandboxConfig contains configurations of the sandbox to use for the node.
 type SandboxConfigArgs struct {
 	// Type of the sandbox to use for the node.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *SandboxConfigType `pulumi:"type"`
 }
 
 func (SandboxConfigArgs) ElementType() reflect.Type {
@@ -17679,7 +17679,7 @@ type StatusConditionInput interface {
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 type StatusConditionArgs struct {
 	// Canonical code of the condition.
-	CanonicalCode pulumi.StringPtrInput `pulumi:"canonicalCode"`
+	CanonicalCode *StatusConditionCanonicalCode `pulumi:"canonicalCode"`
 	// Human-friendly representation of the condition
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -19043,7 +19043,7 @@ type WorkloadMetadataConfigInput interface {
 // WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
 type WorkloadMetadataConfigArgs struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node pool.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *WorkloadMetadataConfigMode `pulumi:"mode"`
 }
 
 func (WorkloadMetadataConfigArgs) ElementType() reflect.Type {

@@ -597,7 +597,7 @@ type DiskArgs struct {
 	// - FAILED: Disk creation failed.
 	// - READY: Disk is ready for use.
 	// - DELETING: Disk is deleting.
-	Status pulumi.StringPtrInput
+	Status *DiskStatus
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
 	Type pulumi.StringPtrInput
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance

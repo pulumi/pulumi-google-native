@@ -690,7 +690,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs struct {
 	// Whether dockerSiblingContainers can be used.
 	DockerSiblingContainers GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrInput `pulumi:"dockerSiblingContainers"`
 	// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-	LinuxIsolation pulumi.StringPtrInput `pulumi:"linuxIsolation"`
+	LinuxIsolation *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation `pulumi:"linuxIsolation"`
 }
 
 func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs) ElementType() reflect.Type {
@@ -966,7 +966,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs stru
 	// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
 	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
 	// The policy of the feature.
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	Policy *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy `pulumi:"policy"`
 }
 
 func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs) ElementType() reflect.Type {

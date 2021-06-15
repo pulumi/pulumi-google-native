@@ -136,7 +136,7 @@ type RegistryArgs struct {
 	Id       pulumi.StringPtrInput
 	Location pulumi.StringInput
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
-	LogLevel pulumi.StringPtrInput
+	LogLevel *RegistryLogLevel
 	// The MQTT configuration for this device registry.
 	MqttConfig MqttConfigPtrInput
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.

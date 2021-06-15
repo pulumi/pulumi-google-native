@@ -133,11 +133,11 @@ type SecuritySettingArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// List of types of data to remove when retention settings triggers purge.
-	PurgeDataTypes pulumi.StringArrayInput
+	PurgeDataTypes SecuritySettingPurgeDataTypesItemArrayInput
 	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
-	RedactionScope pulumi.StringPtrInput
+	RedactionScope *SecuritySettingRedactionScope
 	// Strategy that defines how we do redaction.
-	RedactionStrategy pulumi.StringPtrInput
+	RedactionStrategy *SecuritySettingRedactionStrategy
 	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
 	RetentionWindowDays pulumi.IntPtrInput
 }

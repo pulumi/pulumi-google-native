@@ -156,7 +156,7 @@ type InstanceArgs struct {
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-	PeeringCidrRange pulumi.StringPtrInput
+	PeeringCidrRange *InstancePeeringCidrRange
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

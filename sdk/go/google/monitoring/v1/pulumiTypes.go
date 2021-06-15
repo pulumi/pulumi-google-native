@@ -38,11 +38,11 @@ type AggregationArgs struct {
 	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
 	AlignmentPeriod pulumi.StringPtrInput `pulumi:"alignmentPeriod"`
 	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
+	CrossSeriesReducer *AggregationCrossSeriesReducer `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
 	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
 	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
+	PerSeriesAligner *AggregationPerSeriesAligner `pulumi:"perSeriesAligner"`
 }
 
 func (AggregationArgs) ElementType() reflect.Type {
@@ -307,7 +307,7 @@ type AxisArgs struct {
 	// The label of the axis.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// The axis scale. By default, a linear scale is used.
-	Scale pulumi.StringPtrInput `pulumi:"scale"`
+	Scale *AxisScale `pulumi:"scale"`
 }
 
 func (AxisArgs) ElementType() reflect.Type {
@@ -520,7 +520,7 @@ type ChartOptionsInput interface {
 // Options to control visual rendering of a chart.
 type ChartOptionsArgs struct {
 	// The chart mode.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *ChartOptionsMode `pulumi:"mode"`
 }
 
 func (ChartOptionsArgs) ElementType() reflect.Type {
@@ -1205,7 +1205,7 @@ type DataSetArgs struct {
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
-	PlotType pulumi.StringPtrInput `pulumi:"plotType"`
+	PlotType *DataSetPlotType `pulumi:"plotType"`
 	// Required. Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryPtrInput `pulumi:"timeSeriesQuery"`
 }
@@ -2443,11 +2443,11 @@ type PickTimeSeriesFilterInput interface {
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
 type PickTimeSeriesFilterArgs struct {
 	// How to use the ranking to select time series that pass through the filter.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Direction *PickTimeSeriesFilterDirection `pulumi:"direction"`
 	// How many time series to allow to pass through the filter.
 	NumTimeSeries pulumi.IntPtrInput `pulumi:"numTimeSeries"`
 	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-	RankingMethod pulumi.StringPtrInput `pulumi:"rankingMethod"`
+	RankingMethod *PickTimeSeriesFilterRankingMethod `pulumi:"rankingMethod"`
 }
 
 func (PickTimeSeriesFilterArgs) ElementType() reflect.Type {
@@ -3664,7 +3664,7 @@ type SparkChartViewArgs struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// Required. The type of sparkchart to show in this chartView.
-	SparkChartType pulumi.StringPtrInput `pulumi:"sparkChartType"`
+	SparkChartType *SparkChartViewSparkChartType `pulumi:"sparkChartType"`
 }
 
 func (SparkChartViewArgs) ElementType() reflect.Type {
@@ -3881,7 +3881,7 @@ type TextArgs struct {
 	// The text content to be displayed.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// How the text content is formatted.
-	Format pulumi.StringPtrInput `pulumi:"format"`
+	Format *TextFormat `pulumi:"format"`
 }
 
 func (TextArgs) ElementType() reflect.Type {
@@ -4100,9 +4100,9 @@ type ThresholdInput interface {
 // Defines a threshold for categorizing time series values.
 type ThresholdArgs struct {
 	// The state color for this threshold. Color is not allowed in a XyChart.
-	Color pulumi.StringPtrInput `pulumi:"color"`
+	Color *ThresholdColor `pulumi:"color"`
 	// The direction for the current threshold. Direction is not allowed in a XyChart.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Direction *ThresholdDirection `pulumi:"direction"`
 	// A label for the threshold.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
