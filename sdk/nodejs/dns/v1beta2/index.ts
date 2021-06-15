@@ -18,6 +18,9 @@ export * from "./responsePolicy";
 export * from "./responsePolicyRule";
 export * from "./rrset";
 
+// Export enums:
+export * from "../../types/enums/dns/v1beta2";
+
 // Import resources to register:
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";

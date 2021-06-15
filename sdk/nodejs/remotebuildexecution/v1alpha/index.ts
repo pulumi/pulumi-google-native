@@ -10,6 +10,9 @@ export * from "./getWorkerPool";
 export * from "./instance";
 export * from "./workerPool";
 
+// Export enums:
+export * from "../../types/enums/remotebuildexecution/v1alpha";
+
 // Import resources to register:
 import { Instance } from "./instance";
 import { WorkerPool } from "./workerPool";

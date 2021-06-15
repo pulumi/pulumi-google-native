@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -120,7 +120,7 @@ export interface FeedArgs {
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<enums.cloudasset.v1.FeedContentType>;
     /**
      * Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
      */

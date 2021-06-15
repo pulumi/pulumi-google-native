@@ -12,6 +12,9 @@ export * from "./getDomainIamPolicy";
 export * from "./getPeeringIamPolicy";
 export * from "./peeringIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/managedidentities/v1alpha1";
+
 // Import resources to register:
 import { Domain } from "./domain";
 import { DomainIamPolicy } from "./domainIamPolicy";

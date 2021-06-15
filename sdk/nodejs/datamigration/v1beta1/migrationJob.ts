@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -230,7 +230,7 @@ export interface MigrationJobArgs {
     /**
      * The current migration job state.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.datamigration.v1beta1.MigrationJobState>;
     /**
      * static ip connectivity data (default, no additional details needed).
      */
@@ -238,7 +238,7 @@ export interface MigrationJobArgs {
     /**
      * Required. The migration job type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.datamigration.v1beta1.MigrationJobType>;
     /**
      * The details of the VPC network that the source database is located in.
      */

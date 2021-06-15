@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -192,7 +192,7 @@ export interface NoteArgs {
     /**
      * This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<enums.containeranalysis.v1alpha1.NoteKind>;
     /**
      * A detailed description of this `Note`.
      */

@@ -10,6 +10,9 @@ export * from "./getMembershipIamPolicy";
 export * from "./membership";
 export * from "./membershipIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/gkehub/v1";
+
 // Import resources to register:
 import { Membership } from "./membership";
 import { MembershipIamPolicy } from "./membershipIamPolicy";

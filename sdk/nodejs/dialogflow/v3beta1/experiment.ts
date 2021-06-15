@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -195,7 +195,7 @@ export interface ExperimentArgs {
     /**
      * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.dialogflow.v3beta1.ExperimentState>;
     /**
      * The history of updates to the experiment variants.
      */

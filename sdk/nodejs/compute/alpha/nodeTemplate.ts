@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -169,7 +169,7 @@ export interface NodeTemplateArgs {
     /**
      * CPU overcommit.
      */
-    cpuOvercommitType?: pulumi.Input<string>;
+    cpuOvercommitType?: pulumi.Input<enums.compute.alpha.NodeTemplateCpuOvercommitType>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -230,7 +230,7 @@ export interface NodeTemplateArgs {
     /**
      * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.alpha.NodeTemplateStatus>;
     /**
      * [Output Only] An optional, human-readable explanation of the status.
      */

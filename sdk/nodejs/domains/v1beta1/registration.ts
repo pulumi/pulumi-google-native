@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -147,7 +147,7 @@ export interface RegistrationArgs {
     /**
      * The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
      */
-    contactNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    contactNotices?: pulumi.Input<pulumi.Input<enums.domains.v1beta1.RegistrationContactNoticesItem>[]>;
     /**
      * Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
      */
@@ -163,7 +163,7 @@ export interface RegistrationArgs {
     /**
      * The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
      */
-    domainNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNotices?: pulumi.Input<pulumi.Input<enums.domains.v1beta1.RegistrationDomainNoticesItem>[]>;
     /**
      * Set of labels associated with the `Registration`.
      */

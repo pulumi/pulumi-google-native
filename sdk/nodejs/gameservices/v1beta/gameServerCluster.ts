@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -127,7 +127,7 @@ export interface GameServerClusterArgs {
     /**
      * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
      */
-    allocationPriority?: pulumi.Input<string>;
+    allocationPriority?: pulumi.Input<enums.gameservices.v1beta.GameServerClusterAllocationPriority>;
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */

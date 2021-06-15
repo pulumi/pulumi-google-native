@@ -10,6 +10,9 @@ export * from "./getSecretIamPolicy";
 export * from "./secret";
 export * from "./secretIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/secretmanager/v1beta1";
+
 // Import resources to register:
 import { Secret } from "./secret";
 import { SecretIamPolicy } from "./secretIamPolicy";

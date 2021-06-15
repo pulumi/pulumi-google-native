@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -142,7 +142,7 @@ export interface WorkerPoolArgs {
     /**
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<enums.cloudbuild.v1alpha1.WorkerPoolRegionsItem>[]>;
     /**
      * The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
      */
@@ -150,7 +150,7 @@ export interface WorkerPoolArgs {
     /**
      * WorkerPool Status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.cloudbuild.v1alpha1.WorkerPoolStatus>;
     /**
      * Time at which the request to update the `WorkerPool` was received.
      */

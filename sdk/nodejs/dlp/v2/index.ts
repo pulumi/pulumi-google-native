@@ -16,6 +16,9 @@ export * from "./inspectTemplate";
 export * from "./jobTrigger";
 export * from "./storedInfoType";
 
+// Export enums:
+export * from "../../types/enums/dlp/v2";
+
 // Import resources to register:
 import { DeidentifyTemplate } from "./deidentifyTemplate";
 import { DlpJob } from "./dlpJob";

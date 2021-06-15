@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -116,7 +116,7 @@ export interface ChannelPartnerLinkArgs {
     /**
      * Required. State of the channel partner link.
      */
-    linkState?: pulumi.Input<string>;
+    linkState?: pulumi.Input<enums.cloudchannel.v1.ChannelPartnerLinkLinkState>;
     /**
      * Required. Cloud Identity ID of the linked reseller.
      */

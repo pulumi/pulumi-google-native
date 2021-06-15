@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -147,7 +147,7 @@ export interface AppArgs {
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
      */
-    databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<enums.appengine.v1beta.AppDatabaseType>;
     /**
      * Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
      */
@@ -188,5 +188,5 @@ export interface AppArgs {
     /**
      * Serving status of this application.
      */
-    servingStatus?: pulumi.Input<string>;
+    servingStatus?: pulumi.Input<enums.appengine.v1beta.AppServingStatus>;
 }

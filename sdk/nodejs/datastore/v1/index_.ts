@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -102,7 +102,7 @@ export interface IndexArgs {
     /**
      * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
-    ancestor?: pulumi.Input<string>;
+    ancestor?: pulumi.Input<enums.datastore.v1.IndexAncestor>;
     /**
      * Required. The entity kind to which this index applies.
      */

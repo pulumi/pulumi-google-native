@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -131,7 +131,7 @@ export interface RegistryArgs {
     /**
      * **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
      */
-    logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<enums.cloudiot.v1.RegistryLogLevel>;
     /**
      * The MQTT configuration for this device registry.
      */

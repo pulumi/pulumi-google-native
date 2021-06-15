@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getNode";
 export * from "./node";
 
+// Export enums:
+export * from "../../types/enums/tpu/v1";
+
 // Import resources to register:
 import { Node } from "./node";
 

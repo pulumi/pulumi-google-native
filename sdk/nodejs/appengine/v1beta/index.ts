@@ -16,6 +16,9 @@ export * from "./getVersion";
 export * from "./ingressRule";
 export * from "./version";
 
+// Export enums:
+export * from "../../types/enums/appengine/v1beta";
+
 // Import resources to register:
 import { App } from "./app";
 import { AuthorizedCertificate } from "./authorizedCertificate";

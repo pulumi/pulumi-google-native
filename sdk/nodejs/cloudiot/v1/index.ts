@@ -14,6 +14,9 @@ export * from "./registry";
 export * from "./registryGroupIamPolicy";
 export * from "./registryIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudiot/v1";
+
 // Import resources to register:
 import { Device } from "./device";
 import { Registry } from "./registry";

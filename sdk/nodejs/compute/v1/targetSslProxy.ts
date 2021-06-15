@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -143,7 +144,7 @@ export interface TargetSslProxyArgs {
     /**
      * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
      */
-    proxyHeader?: pulumi.Input<string>;
+    proxyHeader?: pulumi.Input<enums.compute.v1.TargetSslProxyProxyHeader>;
     requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.

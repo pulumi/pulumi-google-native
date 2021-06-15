@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -106,7 +106,7 @@ export interface SessionEntityTypeArgs {
     /**
      * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
      */
-    entityOverrideMode?: pulumi.Input<string>;
+    entityOverrideMode?: pulumi.Input<enums.dialogflow.v3beta1.SessionEntityTypeEntityOverrideMode>;
     environmentId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**

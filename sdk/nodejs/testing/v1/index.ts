@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getTestMatrix";
 export * from "./testMatrix";
 
+// Export enums:
+export * from "../../types/enums/testing/v1";
+
 // Import resources to register:
 import { TestMatrix } from "./testMatrix";
 

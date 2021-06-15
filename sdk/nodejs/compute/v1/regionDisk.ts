@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -490,7 +490,7 @@ export interface RegionDiskArgs {
      * - READY: Disk is ready for use. 
      * - DELETING: Disk is deleting.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.v1.RegionDiskStatus>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
      */

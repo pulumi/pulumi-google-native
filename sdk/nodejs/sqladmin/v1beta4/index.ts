@@ -14,6 +14,9 @@ export * from "./getSslCert";
 export * from "./instance";
 export * from "./sslCert";
 
+// Export enums:
+export * from "../../types/enums/sqladmin/v1beta4";
+
 // Import resources to register:
 import { BackupRun } from "./backupRun";
 import { Database } from "./database";

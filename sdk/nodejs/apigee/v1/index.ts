@@ -66,6 +66,9 @@ export * from "./sharedflow";
 export * from "./subscription";
 export * from "./targetServer";
 
+// Export enums:
+export * from "../../types/enums/apigee/v1";
+
 // Import resources to register:
 import { Alias } from "./alias";
 import { Api } from "./api";

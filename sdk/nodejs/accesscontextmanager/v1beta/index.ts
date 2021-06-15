@@ -12,6 +12,9 @@ export * from "./getAccessPolicy";
 export * from "./getServicePerimeter";
 export * from "./servicePerimeter";
 
+// Export enums:
+export * from "../../types/enums/accesscontextmanager/v1beta";
+
 // Import resources to register:
 import { AccessLevel } from "./accessLevel";
 import { AccessPolicy } from "./accessPolicy";

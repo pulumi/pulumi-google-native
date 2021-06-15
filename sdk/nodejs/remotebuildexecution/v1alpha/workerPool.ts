@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -131,7 +131,7 @@ export interface WorkerPoolArgs {
     /**
      * State of the worker pool.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.remotebuildexecution.v1alpha.WorkerPoolState>;
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */

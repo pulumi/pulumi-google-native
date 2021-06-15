@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getScanConfig";
 export * from "./scanConfig";
 
+// Export enums:
+export * from "../../types/enums/websecurityscanner/v1alpha";
+
 // Import resources to register:
 import { ScanConfig } from "./scanConfig";
 

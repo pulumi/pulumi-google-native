@@ -20,6 +20,9 @@ export * from "./keyRingCryptoKeyIamPolicy";
 export * from "./keyRingIamPolicy";
 export * from "./keyRingImportJobIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudkms/v1";
+
 // Import resources to register:
 import { CryptoKey } from "./cryptoKey";
 import { CryptoKeyVersion } from "./cryptoKeyVersion";

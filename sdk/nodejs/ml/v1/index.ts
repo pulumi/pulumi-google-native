@@ -20,6 +20,9 @@ export * from "./study";
 export * from "./trial";
 export * from "./version";
 
+// Export enums:
+export * from "../../types/enums/ml/v1";
+
 // Import resources to register:
 import { Job } from "./job";
 import { JobIamPolicy } from "./jobIamPolicy";

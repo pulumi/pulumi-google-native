@@ -202,6 +202,9 @@ export * from "./zoneInPlaceSnapshotIamPolicy";
 export * from "./zoneInstantSnapshot";
 export * from "./zoneInstantSnapshotIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/compute/alpha";
+
 // Import resources to register:
 import { Address } from "./address";
 import { Autoscaler } from "./autoscaler";

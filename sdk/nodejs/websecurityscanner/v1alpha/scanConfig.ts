@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -160,9 +160,9 @@ export interface ScanConfigArgs {
     /**
      * Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
      */
-    targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    targetPlatforms?: pulumi.Input<pulumi.Input<enums.websecurityscanner.v1alpha.ScanConfigTargetPlatformsItem>[]>;
     /**
      * The user agent used during scanning.
      */
-    userAgent?: pulumi.Input<string>;
+    userAgent?: pulumi.Input<enums.websecurityscanner.v1alpha.ScanConfigUserAgent>;
 }

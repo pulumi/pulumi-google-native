@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./environment";
 export * from "./getEnvironment";
 
+// Export enums:
+export * from "../../types/enums/composer/v1";
+
 // Import resources to register:
 import { Environment } from "./environment";
 

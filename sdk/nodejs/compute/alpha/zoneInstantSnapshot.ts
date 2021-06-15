@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -245,7 +246,7 @@ export interface ZoneInstantSnapshotArgs {
     /**
      * [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.alpha.ZoneInstantSnapshotStatus>;
     /**
      * [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

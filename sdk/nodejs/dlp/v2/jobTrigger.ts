@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -150,7 +150,7 @@ export interface JobTriggerArgs {
     /**
      * Required. A status for this trigger.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.dlp.v2.JobTriggerStatus>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */

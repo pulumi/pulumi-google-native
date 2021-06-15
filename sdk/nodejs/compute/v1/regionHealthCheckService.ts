@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -157,7 +158,7 @@ export interface RegionHealthCheckServiceArgs {
      * - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
      * - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
      */
-    healthStatusAggregationPolicy?: pulumi.Input<string>;
+    healthStatusAggregationPolicy?: pulumi.Input<enums.compute.v1.RegionHealthCheckServiceHealthStatusAggregationPolicy>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

@@ -10,6 +10,9 @@ export * from "./getBuild";
 export * from "./getTrigger";
 export * from "./trigger";
 
+// Export enums:
+export * from "../../types/enums/cloudbuild/v1";
+
 // Import resources to register:
 import { Build } from "./build";
 import { Trigger } from "./trigger";

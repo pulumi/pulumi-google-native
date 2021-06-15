@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -112,7 +112,7 @@ export interface ClusterArgs {
     /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
-    defaultStorageType?: pulumi.Input<string>;
+    defaultStorageType?: pulumi.Input<enums.bigtableadmin.v2.ClusterDefaultStorageType>;
     /**
      * Immutable. The encryption configuration for CMEK-protected clusters.
      */

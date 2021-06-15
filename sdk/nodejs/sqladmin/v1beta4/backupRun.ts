@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -161,7 +161,7 @@ export interface BackupRunArgs {
     /**
      * Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
      */
-    backupKind?: pulumi.Input<string>;
+    backupKind?: pulumi.Input<enums.sqladmin.v1beta4.BackupRunBackupKind>;
     /**
      * The description of this run, only applicable to on-demand backups.
      */
@@ -214,11 +214,11 @@ export interface BackupRunArgs {
     /**
      * The status of this run.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.sqladmin.v1beta4.BackupRunStatus>;
     /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.sqladmin.v1beta4.BackupRunType>;
     /**
      * The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
      */

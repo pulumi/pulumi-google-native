@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -568,7 +568,7 @@ export interface ClusterArgs {
     /**
      * [Output only] The current status of this cluster.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.container.v1beta1.ClusterStatus>;
     /**
      * The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
      */

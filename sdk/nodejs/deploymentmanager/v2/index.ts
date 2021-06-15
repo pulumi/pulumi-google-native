@@ -10,6 +10,9 @@ export * from "./deploymentIamPolicy";
 export * from "./getDeployment";
 export * from "./getDeploymentIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/deploymentmanager/v2";
+
 // Import resources to register:
 import { Deployment } from "./deployment";
 import { DeploymentIamPolicy } from "./deploymentIamPolicy";

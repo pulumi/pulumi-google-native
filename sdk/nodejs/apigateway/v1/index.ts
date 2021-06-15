@@ -18,6 +18,9 @@ export * from "./getConfig";
 export * from "./getGateway";
 export * from "./getGatewayIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/apigateway/v1";
+
 // Import resources to register:
 import { Api } from "./api";
 import { ApiConfigIamPolicy } from "./apiConfigIamPolicy";

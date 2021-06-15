@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -185,5 +185,5 @@ export interface PublicAdvertisedPrefixArgs {
     /**
      * The status of the public advertised prefix.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.v1.PublicAdvertisedPrefixStatus>;
 }

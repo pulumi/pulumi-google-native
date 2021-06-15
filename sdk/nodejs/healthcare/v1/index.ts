@@ -37,6 +37,9 @@ export * from "./hl7V2Store";
 export * from "./message";
 export * from "./userDataMapping";
 
+// Export enums:
+export * from "../../types/enums/healthcare/v1";
+
 // Import resources to register:
 import { AttributeDefinition } from "./attributeDefinition";
 import { Consent } from "./consent";

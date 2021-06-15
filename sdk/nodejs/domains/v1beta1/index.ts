@@ -10,6 +10,9 @@ export * from "./getRegistrationIamPolicy";
 export * from "./registration";
 export * from "./registrationIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/domains/v1beta1";
+
 // Import resources to register:
 import { Registration } from "./registration";
 import { RegistrationIamPolicy } from "./registrationIamPolicy";

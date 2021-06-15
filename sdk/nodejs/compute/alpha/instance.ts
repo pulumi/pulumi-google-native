@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -515,7 +515,7 @@ export interface InstanceArgs {
     /**
      * PostKeyRevocationActionType of the instance.
      */
-    postKeyRevocationActionType?: pulumi.Input<string>;
+    postKeyRevocationActionType?: pulumi.Input<enums.compute.alpha.InstancePostKeyRevocationActionType>;
     /**
      * Total amount of preserved state for SUSPENDED instances. Read-only in the api.
      */
@@ -523,7 +523,7 @@ export interface InstanceArgs {
     /**
      * The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
      */
-    privateIpv6GoogleAccess?: pulumi.Input<string>;
+    privateIpv6GoogleAccess?: pulumi.Input<enums.compute.alpha.InstancePrivateIpv6GoogleAccess>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
@@ -594,7 +594,7 @@ export interface InstanceArgs {
     /**
      * [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.alpha.InstanceStatus>;
     /**
      * [Output Only] An optional, human-readable explanation of the status.
      */

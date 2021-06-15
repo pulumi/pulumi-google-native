@@ -18,6 +18,9 @@ export * from "./policyBasedRouteIamPolicy";
 export * from "./spoke";
 export * from "./spokeIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/networkconnectivity/v1alpha1";
+
 // Import resources to register:
 import { Hub } from "./hub";
 import { HubIamPolicy } from "./hubIamPolicy";

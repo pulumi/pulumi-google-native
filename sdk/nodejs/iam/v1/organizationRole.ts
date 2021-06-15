@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -134,7 +135,7 @@ export interface OrganizationRoleArgs {
     /**
      * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<enums.iam.v1.OrganizationRoleStage>;
     /**
      * Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
      */

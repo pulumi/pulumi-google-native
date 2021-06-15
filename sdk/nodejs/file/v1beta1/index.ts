@@ -10,6 +10,9 @@ export * from "./getBackup";
 export * from "./getInstance";
 export * from "./instance";
 
+// Export enums:
+export * from "../../types/enums/file/v1beta1";
+
 // Import resources to register:
 import { Backup } from "./backup";
 import { Instance } from "./instance";

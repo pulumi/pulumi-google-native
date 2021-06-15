@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -113,7 +113,7 @@ export interface ProjectArgs {
     /**
      * The Project lifecycle state. Read-only.
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<enums.cloudresourcemanager.v1.ProjectLifecycleState>;
     /**
      * The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
      */

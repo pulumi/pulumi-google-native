@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -124,12 +124,12 @@ export interface CapacityCommitmentArgs {
     /**
      * Capacity commitment commitment plan.
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<enums.bigqueryreservation.v1beta1.CapacityCommitmentPlan>;
     project: pulumi.Input<string>;
     /**
      * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
      */
-    renewalPlan?: pulumi.Input<string>;
+    renewalPlan?: pulumi.Input<enums.bigqueryreservation.v1beta1.CapacityCommitmentRenewalPlan>;
     /**
      * Number of slots in this commitment.
      */

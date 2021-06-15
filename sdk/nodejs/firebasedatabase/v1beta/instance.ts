@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -115,10 +116,10 @@ export interface InstanceArgs {
     /**
      * The database's lifecycle state. Read-only.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.firebasedatabase.v1beta.InstanceState>;
     /**
      * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.firebasedatabase.v1beta.InstanceType>;
     validateOnly?: pulumi.Input<string>;
 }

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -142,7 +142,7 @@ export interface WorkloadArgs {
     /**
      * Required. Immutable. Compliance Regime associated with this workload.
      */
-    complianceRegime?: pulumi.Input<string>;
+    complianceRegime?: pulumi.Input<enums.assuredworkloads.v1.WorkloadComplianceRegime>;
     /**
      * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */

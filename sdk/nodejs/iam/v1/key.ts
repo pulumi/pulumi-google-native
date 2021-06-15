@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -124,11 +125,11 @@ export interface KeyArgs {
     /**
      * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
      */
-    keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<enums.iam.v1.KeyKeyAlgorithm>;
     /**
      * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
      */
-    privateKeyType?: pulumi.Input<string>;
+    privateKeyType?: pulumi.Input<enums.iam.v1.KeyPrivateKeyType>;
     project: pulumi.Input<string>;
     serviceAccountId: pulumi.Input<string>;
 }

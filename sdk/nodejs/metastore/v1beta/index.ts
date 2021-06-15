@@ -14,6 +14,9 @@ export * from "./metadataImport";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/metastore/v1beta";
+
 // Import resources to register:
 import { Backup } from "./backup";
 import { MetadataImport } from "./metadataImport";

@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./budget";
 export * from "./getBudget";
 
+// Export enums:
+export * from "../../types/enums/billingbudgets/v1";
+
 // Import resources to register:
 import { Budget } from "./budget";
 

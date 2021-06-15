@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -181,7 +181,7 @@ export interface SslPolicyArgs {
     /**
      * The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
      */
-    minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<enums.compute.alpha.SslPolicyMinTlsVersion>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -189,7 +189,7 @@ export interface SslPolicyArgs {
     /**
      * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<enums.compute.alpha.SslPolicyProfile>;
     project: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

@@ -12,6 +12,9 @@ export * from "./queue";
 export * from "./queueIamPolicy";
 export * from "./task";
 
+// Export enums:
+export * from "../../types/enums/cloudtasks/v2beta3";
+
 // Import resources to register:
 import { Queue } from "./queue";
 import { QueueIamPolicy } from "./queueIamPolicy";

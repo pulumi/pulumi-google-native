@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./catalogItem";
 export * from "./getCatalogItem";
 
+// Export enums:
+export * from "../../types/enums/recommendationengine/v1beta1";
+
 // Import resources to register:
 import { CatalogItem } from "./catalogItem";
 

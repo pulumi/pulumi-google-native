@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -212,7 +212,7 @@ export interface RegionNetworkEndpointGroupArgs {
     /**
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
      */
-    networkEndpointType?: pulumi.Input<string>;
+    networkEndpointType?: pulumi.Input<enums.compute.v1.RegionNetworkEndpointGroupNetworkEndpointType>;
     project: pulumi.Input<string>;
     /**
      * [Output Only] The URL of the region where the network endpoint group is located.

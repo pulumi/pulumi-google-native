@@ -10,6 +10,9 @@ export * from "./folderIamPolicy";
 export * from "./getFolder";
 export * from "./getFolderIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudresourcemanager/v2";
+
 // Import resources to register:
 import { Folder } from "./folder";
 import { FolderIamPolicy } from "./folderIamPolicy";

@@ -172,6 +172,9 @@ export * from "./urlMap";
 export * from "./vpnGateway";
 export * from "./vpnTunnel";
 
+// Export enums:
+export * from "../../types/enums/compute/beta";
+
 // Import resources to register:
 import { Address } from "./address";
 import { Autoscaler } from "./autoscaler";

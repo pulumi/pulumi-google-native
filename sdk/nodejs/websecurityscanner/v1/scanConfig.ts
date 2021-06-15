@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -157,7 +157,7 @@ export interface ScanConfigArgs {
     /**
      * Controls export of scan configurations and results to Security Command Center.
      */
-    exportToSecurityCommandCenter?: pulumi.Input<string>;
+    exportToSecurityCommandCenter?: pulumi.Input<enums.websecurityscanner.v1.ScanConfigExportToSecurityCommandCenter>;
     /**
      * Whether to keep scanning even if most requests return HTTP error codes.
      */
@@ -178,7 +178,7 @@ export interface ScanConfigArgs {
     /**
      * The risk level selected for the scan
      */
-    riskLevel?: pulumi.Input<string>;
+    riskLevel?: pulumi.Input<enums.websecurityscanner.v1.ScanConfigRiskLevel>;
     /**
      * The schedule of the ScanConfig.
      */
@@ -194,5 +194,5 @@ export interface ScanConfigArgs {
     /**
      * The user agent used during scanning.
      */
-    userAgent?: pulumi.Input<string>;
+    userAgent?: pulumi.Input<enums.websecurityscanner.v1.ScanConfigUserAgent>;
 }

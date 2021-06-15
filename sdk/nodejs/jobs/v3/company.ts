@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -186,7 +186,7 @@ export interface CompanyArgs {
     /**
      * Optional. The employer's company size.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<enums.jobs.v3.CompanySize>;
     /**
      * Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
      */

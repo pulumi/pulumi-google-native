@@ -10,6 +10,9 @@ export * from "./getCapacityCommitment";
 export * from "./getReservation";
 export * from "./reservation";
 
+// Export enums:
+export * from "../../types/enums/bigqueryreservation/v1";
+
 // Import resources to register:
 import { CapacityCommitment } from "./capacityCommitment";
 import { Reservation } from "./reservation";

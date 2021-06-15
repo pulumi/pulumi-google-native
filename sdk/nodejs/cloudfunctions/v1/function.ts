@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -259,7 +259,7 @@ export interface FunctionArgs {
     /**
      * The ingress settings for the function, controlling what traffic can reach it.
      */
-    ingressSettings?: pulumi.Input<string>;
+    ingressSettings?: pulumi.Input<enums.cloudfunctions.v1.FunctionIngressSettings>;
     /**
      * Labels associated with this Cloud Function.
      */
@@ -313,5 +313,5 @@ export interface FunctionArgs {
     /**
      * The egress settings for the connector, controlling what traffic is diverted through it.
      */
-    vpcConnectorEgressSettings?: pulumi.Input<string>;
+    vpcConnectorEgressSettings?: pulumi.Input<enums.cloudfunctions.v1.FunctionVpcConnectorEgressSettings>;
 }

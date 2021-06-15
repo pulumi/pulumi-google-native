@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -121,7 +122,7 @@ export interface RepositoryArgs {
     /**
      * The format of packages that are stored in the repository.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<enums.artifactregistry.v1beta1.RepositoryFormat>;
     /**
      * The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
      */

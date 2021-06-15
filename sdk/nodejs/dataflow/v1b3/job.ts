@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -221,7 +221,7 @@ export interface JobArgs {
     /**
      * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
      */
-    currentState?: pulumi.Input<string>;
+    currentState?: pulumi.Input<enums.dataflow.v1b3.JobCurrentState>;
     /**
      * The timestamp associated with the current state.
      */
@@ -269,7 +269,7 @@ export interface JobArgs {
     /**
      * The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
      */
-    requestedState?: pulumi.Input<string>;
+    requestedState?: pulumi.Input<enums.dataflow.v1b3.JobRequestedState>;
     /**
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
@@ -301,6 +301,6 @@ export interface JobArgs {
     /**
      * The type of Cloud Dataflow job.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.dataflow.v1b3.JobType>;
     view?: pulumi.Input<string>;
 }

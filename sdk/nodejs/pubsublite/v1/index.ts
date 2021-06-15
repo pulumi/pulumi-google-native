@@ -10,6 +10,9 @@ export * from "./getTopic";
 export * from "./subscription";
 export * from "./topic";
 
+// Export enums:
+export * from "../../types/enums/pubsublite/v1";
+
 // Import resources to register:
 import { Subscription } from "./subscription";
 import { Topic } from "./topic";

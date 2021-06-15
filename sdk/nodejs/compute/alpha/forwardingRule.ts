@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -358,7 +358,7 @@ export interface ForwardingRuleArgs {
      * - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
      * - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
      */
-    IPProtocol?: pulumi.Input<string>;
+    IPProtocol?: pulumi.Input<enums.compute.alpha.ForwardingRuleIPProtocol>;
     /**
      * This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
      *
@@ -394,7 +394,7 @@ export interface ForwardingRuleArgs {
     /**
      * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<enums.compute.alpha.ForwardingRuleIpVersion>;
     /**
      * Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
      */
@@ -431,7 +431,7 @@ export interface ForwardingRuleArgs {
      *
      * For more information about forwarding rules, refer to Forwarding rule concepts.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<enums.compute.alpha.ForwardingRuleLoadBalancingScheme>;
     /**
      * Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant configuration is made available to those proxies. Otherwise, all the resources (e.g. TargetHttpProxy, UrlMap) referenced by the ForwardingRule will not be visible to those proxies.
      * For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match.
@@ -458,7 +458,7 @@ export interface ForwardingRuleArgs {
      *
      * If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
      */
-    networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<enums.compute.alpha.ForwardingRuleNetworkTier>;
     /**
      * This field can be used only if: * Load balancing scheme is one of EXTERNAL,  INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is one of TCP, UDP, or SCTP.
      *
@@ -490,7 +490,7 @@ export interface ForwardingRuleArgs {
      * [Output Only] The PSC connection id of the PSC Forwarding Rule.
      */
     pscConnectionId?: pulumi.Input<string>;
-    pscConnectionStatus?: pulumi.Input<string>;
+    pscConnectionStatus?: pulumi.Input<enums.compute.alpha.ForwardingRulePscConnectionStatus>;
     /**
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

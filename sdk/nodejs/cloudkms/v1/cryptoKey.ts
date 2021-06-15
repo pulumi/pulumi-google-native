@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -140,7 +140,7 @@ export interface CryptoKeyArgs {
     /**
      * Immutable. The immutable purpose of this CryptoKey.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<enums.cloudkms.v1.CryptoKeyPurpose>;
     /**
      * next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */

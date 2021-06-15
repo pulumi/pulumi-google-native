@@ -10,6 +10,9 @@ export * from "./billingAccountIamPolicy";
 export * from "./getBillingAccount";
 export * from "./getBillingAccountIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudbilling/v1";
+
 // Import resources to register:
 import { BillingAccount } from "./billingAccount";
 import { BillingAccountIamPolicy } from "./billingAccountIamPolicy";

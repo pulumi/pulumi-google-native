@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -247,7 +247,7 @@ export interface InterconnectArgs {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner. 
      * - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      */
-    interconnectType?: pulumi.Input<string>;
+    interconnectType?: pulumi.Input<enums.compute.v1.InterconnectInterconnectType>;
     /**
      * [Output Only] Type of the resource. Always compute#interconnect for interconnects.
      */
@@ -257,7 +257,7 @@ export interface InterconnectArgs {
      * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
      * - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<enums.compute.v1.InterconnectLinkType>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
      */
@@ -276,7 +276,7 @@ export interface InterconnectArgs {
      * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
      * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
      */
-    operationalStatus?: pulumi.Input<string>;
+    operationalStatus?: pulumi.Input<enums.compute.v1.InterconnectOperationalStatus>;
     /**
      * [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
      */
@@ -301,5 +301,5 @@ export interface InterconnectArgs {
      * - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
      * - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.compute.v1.InterconnectState>;
 }

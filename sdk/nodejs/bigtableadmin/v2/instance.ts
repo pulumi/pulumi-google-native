@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -124,5 +125,5 @@ export interface InstanceArgs {
     /**
      * Required. The type of the instance. Defaults to `PRODUCTION`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.bigtableadmin.v2.InstanceType>;
 }

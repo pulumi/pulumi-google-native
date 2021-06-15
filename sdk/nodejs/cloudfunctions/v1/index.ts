@@ -10,6 +10,9 @@ export * from "./functionIamPolicy";
 export * from "./getFunction";
 export * from "./getFunctionIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudfunctions/v1";
+
 // Import resources to register:
 import { Function } from "./function";
 import { FunctionIamPolicy } from "./functionIamPolicy";

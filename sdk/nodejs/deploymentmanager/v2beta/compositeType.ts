@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -136,7 +136,7 @@ export interface CompositeTypeArgs {
      * Server defined URL for the resource.
      */
     selfLink?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.deploymentmanager.v2beta.CompositeTypeStatus>;
     /**
      * Files for the template type.
      */

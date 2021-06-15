@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -289,7 +289,7 @@ export interface InterconnectAttachmentArgs {
      * - BPS_20G: 20 Gbit/s 
      * - BPS_50G: 50 Gbit/s
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<enums.compute.beta.InterconnectAttachmentBandwidth>;
     /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
      */
@@ -320,14 +320,14 @@ export interface InterconnectAttachmentArgs {
      * - AVAILABILITY_DOMAIN_1 
      * - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
      */
-    edgeAvailabilityDomain?: pulumi.Input<string>;
+    edgeAvailabilityDomain?: pulumi.Input<enums.compute.beta.InterconnectAttachmentEdgeAvailabilityDomain>;
     /**
      * Indicates the user-supplied encryption option of this interconnect attachment: 
      * - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
      * - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
      * Not currently available in all Interconnect locations.
      */
-    encryption?: pulumi.Input<string>;
+    encryption?: pulumi.Input<enums.compute.beta.InterconnectAttachmentEncryption>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -368,7 +368,7 @@ export interface InterconnectAttachmentArgs {
      * - OS_ACTIVE: The attachment has been turned up and is ready to use. 
      * - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
      */
-    operationalStatus?: pulumi.Input<string>;
+    operationalStatus?: pulumi.Input<enums.compute.beta.InterconnectAttachmentOperationalStatus>;
     /**
      * [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
      */
@@ -408,14 +408,14 @@ export interface InterconnectAttachmentArgs {
      * - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
      * - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.compute.beta.InterconnectAttachmentState>;
     /**
      * The type of interconnect attachment this is, which can take one of the following values: 
      * - DEDICATED: an attachment to a Dedicated Interconnect. 
      * - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
      * - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.compute.beta.InterconnectAttachmentType>;
     validateOnly?: pulumi.Input<string>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.

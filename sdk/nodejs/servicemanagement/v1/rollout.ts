@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -118,7 +118,7 @@ export interface RolloutArgs {
     /**
      * The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.servicemanagement.v1.RolloutStatus>;
     /**
      * Google Service Control selects service configurations based on traffic percentage.
      */

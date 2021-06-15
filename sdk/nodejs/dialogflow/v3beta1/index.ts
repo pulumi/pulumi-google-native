@@ -32,6 +32,9 @@ export * from "./transitionRouteGroup";
 export * from "./version";
 export * from "./webhook";
 
+// Export enums:
+export * from "../../types/enums/dialogflow/v3beta1";
+
 // Import resources to register:
 import { Agent } from "./agent";
 import { EntityType } from "./entityType";

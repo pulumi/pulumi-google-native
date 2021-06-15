@@ -14,6 +14,9 @@ export * from "./managedZone";
 export * from "./policy";
 export * from "./rrset";
 
+// Export enums:
+export * from "../../types/enums/dns/v1";
+
 // Import resources to register:
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";

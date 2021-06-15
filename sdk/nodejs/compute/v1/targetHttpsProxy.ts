@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -213,7 +214,7 @@ export interface TargetHttpsProxyArgs {
      * - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
      * - If the quic-override flag is not specified, NONE is implied.
      */
-    quicOverride?: pulumi.Input<string>;
+    quicOverride?: pulumi.Input<enums.compute.v1.TargetHttpsProxyQuicOverride>;
     /**
      * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
      */

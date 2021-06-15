@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -222,7 +222,7 @@ export interface MachineImageArgs {
     /**
      * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.beta.MachineImageStatus>;
     /**
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      */

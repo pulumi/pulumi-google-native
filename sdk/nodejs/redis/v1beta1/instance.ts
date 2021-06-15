@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -218,7 +218,7 @@ export interface InstanceArgs {
     /**
      * Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
      */
-    connectMode?: pulumi.Input<string>;
+    connectMode?: pulumi.Input<enums.redis.v1beta1.InstanceConnectMode>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
@@ -256,9 +256,9 @@ export interface InstanceArgs {
     /**
      * Required. The service tier of the instance.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<enums.redis.v1beta1.InstanceTier>;
     /**
      * Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
      */
-    transitEncryptionMode?: pulumi.Input<string>;
+    transitEncryptionMode?: pulumi.Input<enums.redis.v1beta1.InstanceTransitEncryptionMode>;
 }

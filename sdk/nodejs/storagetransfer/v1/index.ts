@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getTransferJob";
 export * from "./transferJob";
 
+// Export enums:
+export * from "../../types/enums/storagetransfer/v1";
+
 // Import resources to register:
 import { TransferJob } from "./transferJob";
 

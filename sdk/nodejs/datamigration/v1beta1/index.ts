@@ -14,6 +14,9 @@ export * from "./getMigrationJobIamPolicy";
 export * from "./migrationJob";
 export * from "./migrationJobIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/datamigration/v1beta1";
+
 // Import resources to register:
 import { ConnectionProfile } from "./connectionProfile";
 import { ConnectionProfileIamPolicy } from "./connectionProfileIamPolicy";

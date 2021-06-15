@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -155,7 +156,7 @@ export interface TargetInstanceArgs {
     /**
      * NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
      */
-    natPolicy?: pulumi.Input<string>;
+    natPolicy?: pulumi.Input<enums.compute.beta.TargetInstanceNatPolicy>;
     /**
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */

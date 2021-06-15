@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -155,5 +156,5 @@ export interface InstanceArgs {
     /**
      * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
      */
-    peeringCidrRange?: pulumi.Input<string>;
+    peeringCidrRange?: pulumi.Input<enums.apigee.v1.InstancePeeringCidrRange>;
 }

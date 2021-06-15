@@ -10,6 +10,9 @@ export * from "./getTriggerIamPolicy";
 export * from "./trigger";
 export * from "./triggerIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/eventarc/v1";
+
 // Import resources to register:
 import { Trigger } from "./trigger";
 import { TriggerIamPolicy } from "./triggerIamPolicy";

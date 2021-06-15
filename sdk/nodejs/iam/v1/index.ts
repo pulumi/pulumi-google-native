@@ -20,6 +20,9 @@ export * from "./serviceAccount";
 export * from "./serviceAccountIamPolicy";
 export * from "./workloadIdentityPool";
 
+// Export enums:
+export * from "../../types/enums/iam/v1";
+
 // Import resources to register:
 import { Key } from "./key";
 import { OrganizationRole } from "./organizationRole";

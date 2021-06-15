@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -413,11 +413,11 @@ export interface ImageArgs {
     /**
      * The type of the image used to create this disk. The default and only value is RAW
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<enums.compute.v1.ImageSourceType>;
     /**
      * [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.v1.ImageStatus>;
     /**
      * Cloud Storage bucket storage location of the image (regional or multi-regional).
      */

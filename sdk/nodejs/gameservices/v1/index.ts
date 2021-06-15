@@ -16,6 +16,9 @@ export * from "./getGameServerDeploymentIamPolicy";
 export * from "./getRealm";
 export * from "./realm";
 
+// Export enums:
+export * from "../../types/enums/gameservices/v1";
+
 // Import resources to register:
 import { Config } from "./config";
 import { GameServerCluster } from "./gameServerCluster";
