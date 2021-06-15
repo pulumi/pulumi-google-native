@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
         /// </summary>
         [Input("entityOverrideMode")]
-        public Input<string>? EntityOverrideMode { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.SessionEntityTypeEntityOverrideMode>? EntityOverrideMode { get; set; }
 
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;

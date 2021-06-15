@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         /// </summary>
         [Input("code")]
-        public Input<string>? Code { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SslPolicyWarningsItemCode>? Code { get; set; }
 
         [Input("data")]
         private InputList<Inputs.SslPolicyWarningsItemDataItemArgs>? _data;

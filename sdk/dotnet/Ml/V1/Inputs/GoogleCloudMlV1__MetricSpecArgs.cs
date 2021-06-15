@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// metric name.
         /// </summary>
         [Input("name")]
-        public Input<string>? Name { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__MetricSpecName>? Name { get; set; }
 
         /// <summary>
         /// Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.

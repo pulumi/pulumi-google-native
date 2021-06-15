@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         /// </summary>
         [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AccessConfigNetworkTier>? NetworkTier { get; set; }
 
         /// <summary>
         /// [Output Only] The public DNS domain name for the instance.
@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AccessConfigType>? Type { get; set; }
 
         public AccessConfigArgs()
         {

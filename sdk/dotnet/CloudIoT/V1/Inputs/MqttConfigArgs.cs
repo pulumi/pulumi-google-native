@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         /// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
         /// </summary>
         [Input("mqttEnabledState")]
-        public Input<string>? MqttEnabledState { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.MqttConfigMqttEnabledState>? MqttEnabledState { get; set; }
 
         public MqttConfigArgs()
         {

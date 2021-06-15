@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1.WorkloadMetadataConfigMode>? Mode { get; set; }
 
         public WorkloadMetadataConfigArgs()
         {

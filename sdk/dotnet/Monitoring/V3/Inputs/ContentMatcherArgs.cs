@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         /// </summary>
         [Input("matcher")]
-        public Input<string>? Matcher { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.ContentMatcherMatcher>? Matcher { get; set; }
 
         public ContentMatcherArgs()
         {

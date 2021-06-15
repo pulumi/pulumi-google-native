@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         /// </summary>
         [Input("contentType")]
-        public Input<string>? ContentType { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.GenericSignedAttestationContentType>? ContentType { get; set; }
 
         /// <summary>
         /// The serialized payload that is verified by one or more `signatures`. The encoding and semantic meaning of this payload must match what is set in `content_type`.

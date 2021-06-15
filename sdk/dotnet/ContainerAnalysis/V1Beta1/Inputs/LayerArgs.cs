@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// Required. The recovered Dockerfile directive used to construct this layer.
         /// </summary>
         [Input("directive")]
-        public Input<string>? Directive { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.LayerDirective>? Directive { get; set; }
 
         public LayerArgs()
         {

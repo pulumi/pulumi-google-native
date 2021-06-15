@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         /// </summary>
         [Input("nicType")]
-        public Input<string>? NicType { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.VirtualMachineConfigNicType>? NicType { get; set; }
 
         /// <summary>
         /// Optional. Shielded VM Instance configuration settings.

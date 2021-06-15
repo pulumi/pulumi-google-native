@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
         /// </summary>
         [Input("metadata")]
-        public Input<string>? Metadata { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.FirewallLogConfigMetadata>? Metadata { get; set; }
 
         public FirewallLogConfigArgs()
         {

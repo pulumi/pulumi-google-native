@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         /// Type of Human Agent Assistant API feature to request.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2SuggestionFeatureType>? Type { get; set; }
 
         public GoogleCloudDialogflowV2SuggestionFeatureArgs()
         {

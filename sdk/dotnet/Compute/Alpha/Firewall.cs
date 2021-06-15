@@ -231,7 +231,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.FirewallDirection>? Direction { get; set; }
 
         /// <summary>
         /// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.

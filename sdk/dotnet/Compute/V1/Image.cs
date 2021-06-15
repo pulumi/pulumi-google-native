@@ -493,13 +493,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The type of the image used to create this disk. The default and only value is RAW
         /// </summary>
         [Input("sourceType")]
-        public Input<string>? SourceType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.ImageSourceType>? SourceType { get; set; }
 
         /// <summary>
         /// [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.ImageStatus>? Status { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

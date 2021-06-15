@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// The type of access mode this instance.
         /// </summary>
         [Input("accessType")]
-        public Input<string>? AccessType { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.RuntimeAccessConfigAccessType>? AccessType { get; set; }
 
         /// <summary>
         /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.

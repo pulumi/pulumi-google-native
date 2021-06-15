@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         /// Required. A day of the week.
         /// </summary>
         [Input("dayOfWeek")]
-        public Input<string>? DayOfWeek { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1.WeekDayOfMonthDayOfWeek>? DayOfWeek { get; set; }
 
         /// <summary>
         /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.

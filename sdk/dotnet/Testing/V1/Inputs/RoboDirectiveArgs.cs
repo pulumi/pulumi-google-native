@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         /// Required. The type of action that Robo should perform on the specified element.
         /// </summary>
         [Input("actionType")]
-        public Input<string>? ActionType { get; set; }
+        public Input<Pulumi.GoogleNative.Testing.V1.RoboDirectiveActionType>? ActionType { get; set; }
 
         /// <summary>
         /// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.

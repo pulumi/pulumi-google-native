@@ -190,7 +190,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] The status of resource policy creation.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ResourcePolicyStatus>? Status { get; set; }
 
         public ResourcePolicyArgs()
         {

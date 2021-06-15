@@ -97,14 +97,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     public sealed class TaxonomyArgs : Pulumi.ResourceArgs
     {
         [Input("activatedPolicyTypes")]
-        private InputList<string>? _activatedPolicyTypes;
+        private InputList<Pulumi.GoogleNative.DataCatalog.V1Beta1.TaxonomyActivatedPolicyTypesItem>? _activatedPolicyTypes;
 
         /// <summary>
         /// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
         /// </summary>
-        public InputList<string> ActivatedPolicyTypes
+        public InputList<Pulumi.GoogleNative.DataCatalog.V1Beta1.TaxonomyActivatedPolicyTypesItem> ActivatedPolicyTypes
         {
-            get => _activatedPolicyTypes ?? (_activatedPolicyTypes = new InputList<string>());
+            get => _activatedPolicyTypes ?? (_activatedPolicyTypes = new InputList<Pulumi.GoogleNative.DataCatalog.V1Beta1.TaxonomyActivatedPolicyTypesItem>());
             set => _activatedPolicyTypes = value;
         }
 

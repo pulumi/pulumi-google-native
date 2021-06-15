@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1.Inputs
         /// The current state of this trust.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Managedidentities.V1Alpha1.TrustState>? State { get; set; }
 
         /// <summary>
         /// Additional information about the current state of this trust, if available.
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1.Inputs
         /// The trust direction decides the current domain is trusted, trusting or both.
         /// </summary>
         [Input("trustDirection")]
-        public Input<string>? TrustDirection { get; set; }
+        public Input<Pulumi.GoogleNative.Managedidentities.V1Alpha1.TrustTrustDirection>? TrustDirection { get; set; }
 
         /// <summary>
         /// Input only, and will not be stored. The trust secret used for handshake with target domain.
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1.Inputs
         /// The type of trust represented by the trust resource.
         /// </summary>
         [Input("trustType")]
-        public Input<string>? TrustType { get; set; }
+        public Input<Pulumi.GoogleNative.Managedidentities.V1Alpha1.TrustTrustType>? TrustType { get; set; }
 
         /// <summary>
         /// Last update time.

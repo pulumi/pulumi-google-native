@@ -43,25 +43,25 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         /// Option to define build log streaming behavior to Google Cloud Storage.
         /// </summary>
         [Input("logStreamingOption")]
-        public Input<string>? LogStreamingOption { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsLogStreamingOption>? LogStreamingOption { get; set; }
 
         /// <summary>
         /// Option to specify the logging mode, which determines if and where build logs are stored.
         /// </summary>
         [Input("logging")]
-        public Input<string>? Logging { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsLogging>? Logging { get; set; }
 
         /// <summary>
         /// Compute Engine machine type on which to run the build.
         /// </summary>
         [Input("machineType")]
-        public Input<string>? MachineType { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsMachineType>? MachineType { get; set; }
 
         /// <summary>
         /// Requested verifiability options.
         /// </summary>
         [Input("requestedVerifyOption")]
-        public Input<string>? RequestedVerifyOption { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsRequestedVerifyOption>? RequestedVerifyOption { get; set; }
 
         [Input("secretEnv")]
         private InputList<string>? _secretEnv;
@@ -76,14 +76,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         }
 
         [Input("sourceProvenanceHash")]
-        private InputList<string>? _sourceProvenanceHash;
+        private InputList<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsSourceProvenanceHashItem>? _sourceProvenanceHash;
 
         /// <summary>
         /// Requested hash for SourceProvenance.
         /// </summary>
-        public InputList<string> SourceProvenanceHash
+        public InputList<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsSourceProvenanceHashItem> SourceProvenanceHash
         {
-            get => _sourceProvenanceHash ?? (_sourceProvenanceHash = new InputList<string>());
+            get => _sourceProvenanceHash ?? (_sourceProvenanceHash = new InputList<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsSourceProvenanceHashItem>());
             set => _sourceProvenanceHash = value;
         }
 
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         /// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
         /// </summary>
         [Input("substitutionOption")]
-        public Input<string>? SubstitutionOption { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.BuildOptionsSubstitutionOption>? SubstitutionOption { get; set; }
 
         [Input("volumes")]
         private InputList<Inputs.VolumeArgs>? _volumes;

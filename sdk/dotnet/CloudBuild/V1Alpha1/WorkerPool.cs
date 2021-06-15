@@ -145,14 +145,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         public Input<string> Project { get; set; } = null!;
 
         [Input("regions")]
-        private InputList<string>? _regions;
+        private InputList<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolRegionsItem>? _regions;
 
         /// <summary>
         /// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
         /// </summary>
-        public InputList<string> Regions
+        public InputList<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolRegionsItem> Regions
         {
-            get => _regions ?? (_regions = new InputList<string>());
+            get => _regions ?? (_regions = new InputList<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolRegionsItem>());
             set => _regions = value;
         }
 
@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         /// WorkerPool Status.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolStatus>? Status { get; set; }
 
         /// <summary>
         /// Time at which the request to update the `WorkerPool` was received.

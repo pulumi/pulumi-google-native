@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// Denotes the state of etcd encryption.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.DatabaseEncryptionState>? State { get; set; }
 
         public DatabaseEncryptionArgs()
         {

@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Inputs
         /// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
         /// </summary>
         [Input("networkType")]
-        public Input<string>? NetworkType { get; set; }
+        public Input<Pulumi.GoogleNative.NetworkManagement.V1Beta1.EndpointNetworkType>? NetworkType { get; set; }
 
         /// <summary>
         /// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.

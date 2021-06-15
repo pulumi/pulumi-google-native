@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         /// Indicates the warning code.
         /// </summary>
         [Input("code")]
-        public Input<string>? Code { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanRunWarningTraceCode>? Code { get; set; }
 
         public ScanRunWarningTraceArgs()
         {

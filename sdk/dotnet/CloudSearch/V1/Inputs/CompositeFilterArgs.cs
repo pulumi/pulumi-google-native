@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         /// The logic operator of the sub filter.
         /// </summary>
         [Input("logicOperator")]
-        public Input<string>? LogicOperator { get; set; }
+        public Input<Pulumi.GoogleNative.CloudSearch.V1.CompositeFilterLogicOperator>? LogicOperator { get; set; }
 
         [Input("subFilters")]
         private InputList<Inputs.FilterArgs>? _subFilters;

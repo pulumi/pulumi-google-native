@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         /// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
         /// </summary>
         [Input("speechModelVariant")]
-        public Input<string>? SpeechModelVariant { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant>? SpeechModelVariant { get; set; }
 
         public GoogleCloudDialogflowV2SpeechToTextConfigArgs()
         {

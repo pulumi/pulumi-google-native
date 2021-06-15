@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         /// Category of issue. Required.
         /// </summary>
         [Input("category")]
-        public Input<string>? Category { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.TestIssueCategory>? Category { get; set; }
 
         /// <summary>
         /// A brief human-readable message describing the issue. Required.
@@ -31,13 +31,13 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         /// Severity of issue. Required.
         /// </summary>
         [Input("severity")]
-        public Input<string>? Severity { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.TestIssueSeverity>? Severity { get; set; }
 
         /// <summary>
         /// Type of issue. Required.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.TestIssueType>? Type { get; set; }
 
         /// <summary>
         /// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings

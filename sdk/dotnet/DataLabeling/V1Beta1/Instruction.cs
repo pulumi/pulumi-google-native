@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Required. The data type of this instruction.
         /// </summary>
         [Input("dataType")]
-        public Input<string>? DataType { get; set; }
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.InstructionDataType>? DataType { get; set; }
 
         /// <summary>
         /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.

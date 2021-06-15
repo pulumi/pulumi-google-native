@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// Controls export of scan configurations and results to Security Command Center.
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
-        public Input<string>? ExportToSecurityCommandCenter { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigExportToSecurityCommandCenter>? ExportToSecurityCommandCenter { get; set; }
 
         /// <summary>
         /// Whether to keep scanning even if most requests return HTTP error codes.
@@ -217,7 +217,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// The risk level selected for the scan
         /// </summary>
         [Input("riskLevel")]
-        public Input<string>? RiskLevel { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigRiskLevel>? RiskLevel { get; set; }
 
         /// <summary>
         /// The schedule of the ScanConfig.
@@ -244,14 +244,14 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         public Input<bool>? StaticIpScan { get; set; }
 
         [Input("targetPlatforms")]
-        private InputList<string>? _targetPlatforms;
+        private InputList<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigTargetPlatformsItem>? _targetPlatforms;
 
         /// <summary>
         /// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         /// </summary>
-        public InputList<string> TargetPlatforms
+        public InputList<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigTargetPlatformsItem> TargetPlatforms
         {
-            get => _targetPlatforms ?? (_targetPlatforms = new InputList<string>());
+            get => _targetPlatforms ?? (_targetPlatforms = new InputList<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigTargetPlatformsItem>());
             set => _targetPlatforms = value;
         }
 
@@ -259,7 +259,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// The user agent used during scanning.
         /// </summary>
         [Input("userAgent")]
-        public Input<string>? UserAgent { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigUserAgent>? UserAgent { get; set; }
 
         public ScanConfigArgs()
         {

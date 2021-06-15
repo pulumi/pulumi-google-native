@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// The detailed state of a trial.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.TrialState>? State { get; set; }
 
         [Input("studyId", required: true)]
         public Input<string> StudyId { get; set; } = null!;

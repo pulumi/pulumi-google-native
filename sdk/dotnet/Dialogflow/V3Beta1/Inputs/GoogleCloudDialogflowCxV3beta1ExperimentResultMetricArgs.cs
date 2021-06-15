@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         /// Count-based metric type. Only one of type or count_type is specified in each Metric.
         /// </summary>
         [Input("countType")]
-        public Input<string>? CountType { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType>? CountType { get; set; }
 
         /// <summary>
         /// Ratio value of a metric.
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         /// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType>? Type { get; set; }
 
         public GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs()
         {

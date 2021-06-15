@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
         /// </summary>
         [Input("perimeterType")]
-        public Input<string>? PerimeterType { get; set; }
+        public Input<Pulumi.GoogleNative.AccessContextManager.V1Beta.ServicePerimeterPerimeterType>? PerimeterType { get; set; }
 
         /// <summary>
         /// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.

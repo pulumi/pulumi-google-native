@@ -274,7 +274,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         /// </summary>
         [Input("bootDiskType")]
-        public Input<string>? BootDiskType { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.InstanceBootDiskType>? BootDiskType { get; set; }
 
         /// <summary>
         /// Use a container image to start the notebook instance.
@@ -298,13 +298,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         /// </summary>
         [Input("dataDiskType")]
-        public Input<string>? DataDiskType { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.InstanceDataDiskType>? DataDiskType { get; set; }
 
         /// <summary>
         /// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         /// </summary>
         [Input("diskEncryption")]
-        public Input<string>? DiskEncryption { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.InstanceDiskEncryption>? DiskEncryption { get; set; }
 
         /// <summary>
         /// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
@@ -376,7 +376,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         /// </summary>
         [Input("nicType")]
-        public Input<string>? NicType { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.InstanceNicType>? NicType { get; set; }
 
         /// <summary>
         /// If true, the notebook instance will not register with the proxy.

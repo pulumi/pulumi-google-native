@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
         /// </summary>
         [Input("onHostMaintenance")]
-        public Input<string>? OnHostMaintenance { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SchedulingOnHostMaintenance>? OnHostMaintenance { get; set; }
 
         /// <summary>
         /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.

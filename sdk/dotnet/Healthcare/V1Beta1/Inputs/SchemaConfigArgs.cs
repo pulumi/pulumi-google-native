@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// Specifies the output schema type. Schema type is required.
         /// </summary>
         [Input("schemaType")]
-        public Input<string>? SchemaType { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.SchemaConfigSchemaType>? SchemaType { get; set; }
 
         public SchemaConfigArgs()
         {

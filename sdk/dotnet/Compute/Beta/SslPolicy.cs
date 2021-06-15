@@ -190,7 +190,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
         /// </summary>
         [Input("minTlsVersion")]
-        public Input<string>? MinTlsVersion { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SslPolicyMinTlsVersion>? MinTlsVersion { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         /// </summary>
         [Input("profile")]
-        public Input<string>? Profile { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SslPolicyProfile>? Profile { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

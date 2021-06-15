@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Type of transform.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.TransformSummaryKind>? Kind { get; set; }
 
         /// <summary>
         /// User provided name for this transform instance.

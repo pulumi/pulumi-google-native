@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.PubsubConfigState>? State { get; set; }
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.

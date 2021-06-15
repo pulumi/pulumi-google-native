@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
         /// </summary>
         [Input("sessionInitializationMode")]
-        public Input<string>? SessionInitializationMode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RouterBgpPeerBfdSessionInitializationMode>? SessionInitializationMode { get; set; }
 
         public RouterBgpPeerBfdArgs()
         {

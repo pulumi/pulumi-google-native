@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
         /// </summary>
         [Input("updateTrack")]
-        public Input<string>? UpdateTrack { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.MaintenanceWindowUpdateTrack>? UpdateTrack { get; set; }
 
         public MaintenanceWindowArgs()
         {

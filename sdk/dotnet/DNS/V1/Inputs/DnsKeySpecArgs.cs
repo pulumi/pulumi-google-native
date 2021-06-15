@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         /// String mnemonic specifying the DNSSEC algorithm of this key.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1.DnsKeySpecAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// Length of the keys in bits.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         /// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
         /// </summary>
         [Input("keyType")]
-        public Input<string>? KeyType { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1.DnsKeySpecKeyType>? KeyType { get; set; }
 
         [Input("kind")]
         public Input<string>? Kind { get; set; }

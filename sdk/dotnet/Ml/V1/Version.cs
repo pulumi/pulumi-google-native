@@ -274,7 +274,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
         /// </summary>
         [Input("framework")]
-        public Input<string>? Framework { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.VersionFramework>? Framework { get; set; }
 
         /// <summary>
         /// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
@@ -376,7 +376,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// The state of a version.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.VersionState>? State { get; set; }
 
         public VersionArgs()
         {

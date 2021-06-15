@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         /// Controls export of scan configurations and results to Security Command Center.
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
-        public Input<string>? ExportToSecurityCommandCenter { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1.ScanConfigExportToSecurityCommandCenter>? ExportToSecurityCommandCenter { get; set; }
 
         /// <summary>
         /// Whether to keep scanning even if most requests return HTTP error codes.
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         /// The risk level selected for the scan
         /// </summary>
         [Input("riskLevel")]
-        public Input<string>? RiskLevel { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1.ScanConfigRiskLevel>? RiskLevel { get; set; }
 
         /// <summary>
         /// The schedule of the ScanConfig.
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         /// The user agent used during scanning.
         /// </summary>
         [Input("userAgent")]
-        public Input<string>? UserAgent { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1.ScanConfigUserAgent>? UserAgent { get; set; }
 
         public ScanConfigArgs()
         {

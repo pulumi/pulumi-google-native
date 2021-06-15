@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// Optional. Defaults to FIXED_TYPE.
         /// </summary>
         [Input("argumentKind")]
-        public Input<string>? ArgumentKind { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.ArgumentArgumentKind>? ArgumentKind { get; set; }
 
         /// <summary>
         /// Required unless argument_kind = ANY_TYPE.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.ArgumentMode>? Mode { get; set; }
 
         /// <summary>
         /// Optional. The name of this argument. Can be absent for function return argument.

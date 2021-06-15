@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// The type of hash that was performed.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.HashType>? Type { get; set; }
 
         /// <summary>
         /// The hash value.

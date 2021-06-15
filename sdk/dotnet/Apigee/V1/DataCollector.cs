@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Immutable. The type of data this data collector will collect.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.DataCollectorType>? Type { get; set; }
 
         public DataCollectorArgs()
         {

@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
     public sealed class JobDerivedInfoArgs : Pulumi.ResourceArgs
     {
         [Input("jobCategories")]
-        private InputList<string>? _jobCategories;
+        private InputList<Pulumi.GoogleNative.Jobs.V3.JobDerivedInfoJobCategoriesItem>? _jobCategories;
 
         /// <summary>
         /// Job categories derived from Job.title and Job.description.
         /// </summary>
-        public InputList<string> JobCategories
+        public InputList<Pulumi.GoogleNative.Jobs.V3.JobDerivedInfoJobCategoriesItem> JobCategories
         {
-            get => _jobCategories ?? (_jobCategories = new InputList<string>());
+            get => _jobCategories ?? (_jobCategories = new InputList<Pulumi.GoogleNative.Jobs.V3.JobDerivedInfoJobCategoriesItem>());
             set => _jobCategories = value;
         }
 

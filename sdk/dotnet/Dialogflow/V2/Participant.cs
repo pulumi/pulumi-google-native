@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.ParticipantRole>? Role { get; set; }
 
         /// <summary>
         /// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.

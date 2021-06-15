@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
         /// </summary>
         [Input("maintenancePolicy")]
-        public Input<string>? MaintenancePolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupMaintenancePolicy>? MaintenancePolicy { get; set; }
 
         [Input("maintenanceWindow")]
         public Input<Inputs.NodeGroupMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<int>? Size { get; set; }
 
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] The name of the zone where the node group resides, such as us-central1-a.

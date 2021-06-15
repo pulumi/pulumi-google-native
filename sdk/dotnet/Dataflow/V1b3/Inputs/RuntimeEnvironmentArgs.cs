@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Configuration for VM IPs.
         /// </summary>
         [Input("ipConfiguration")]
-        public Input<string>? IpConfiguration { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.RuntimeEnvironmentIpConfiguration>? IpConfiguration { get; set; }
 
         /// <summary>
         /// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/

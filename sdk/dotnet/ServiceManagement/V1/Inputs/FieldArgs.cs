@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         /// The field cardinality.
         /// </summary>
         [Input("cardinality")]
-        public Input<string>? Cardinality { get; set; }
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.FieldCardinality>? Cardinality { get; set; }
 
         /// <summary>
         /// The string value of the default value of this field. Proto2 syntax only.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         /// The field type.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.FieldKind>? Kind { get; set; }
 
         /// <summary>
         /// The field name.

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         /// The log_name to populate in the Cloud Audit Record.
         /// </summary>
         [Input("logName")]
-        public Input<string>? LogName { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1.CloudAuditOptionsLogName>? LogName { get; set; }
 
         public CloudAuditOptionsArgs()
         {

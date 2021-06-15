@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         /// State of the worker pool.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.WorkerPoolState>? State { get; set; }
 
         /// <summary>
         /// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.

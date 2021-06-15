@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         /// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
         /// </summary>
         [Input("annotationType")]
-        public Input<string>? AnnotationType { get; set; }
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.GoogleCloudDatalabelingV1beta1InputConfigAnnotationType>? AnnotationType { get; set; }
 
         /// <summary>
         /// Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         /// Required. Data type must be specifed when user tries to import data.
         /// </summary>
         [Input("dataType")]
-        public Input<string>? DataType { get; set; }
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.GoogleCloudDatalabelingV1beta1InputConfigDataType>? DataType { get; set; }
 
         /// <summary>
         /// Source located in Cloud Storage.

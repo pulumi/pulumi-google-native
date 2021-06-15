@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// Required. The type of sparkchart to show in this chartView.
         /// </summary>
         [Input("sparkChartType")]
-        public Input<string>? SparkChartType { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.SparkChartViewSparkChartType>? SparkChartType { get; set; }
 
         public SparkChartViewArgs()
         {

@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         /// Optional. The type of how to aggregate answers.
         /// </summary>
         [Input("answerAggregationType")]
-        public Input<string>? AnswerAggregationType { get; set; }
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType>? AnswerAggregationType { get; set; }
 
         public GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs()
         {

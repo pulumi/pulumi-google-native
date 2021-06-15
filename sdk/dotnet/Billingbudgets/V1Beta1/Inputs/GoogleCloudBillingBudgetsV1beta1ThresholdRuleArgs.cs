@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Inputs
         /// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
         /// </summary>
         [Input("spendBasis")]
-        public Input<string>? SpendBasis { get; set; }
+        public Input<Pulumi.GoogleNative.Billingbudgets.V1Beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis>? SpendBasis { get; set; }
 
         /// <summary>
         /// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.

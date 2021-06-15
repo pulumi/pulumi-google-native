@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
         /// </summary>
         [Input("aggregationInterval")]
-        public Input<string>? AggregationInterval { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkLogConfigAggregationInterval>? AggregationInterval { get; set; }
 
         /// <summary>
         /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         /// </summary>
         [Input("metadata")]
-        public Input<string>? Metadata { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkLogConfigMetadata>? Metadata { get; set; }
 
         [Input("metadataFields")]
         private InputList<string>? _metadataFields;

@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class NetworkPerformanceConfigArgs : Pulumi.ResourceArgs
     {
         [Input("externalIpEgressBandwidthTier")]
-        public Input<string>? ExternalIpEgressBandwidthTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkPerformanceConfigExternalIpEgressBandwidthTier>? ExternalIpEgressBandwidthTier { get; set; }
 
         [Input("totalEgressBandwidthTier")]
-        public Input<string>? TotalEgressBandwidthTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkPerformanceConfigTotalEgressBandwidthTier>? TotalEgressBandwidthTier { get; set; }
 
         public NetworkPerformanceConfigArgs()
         {

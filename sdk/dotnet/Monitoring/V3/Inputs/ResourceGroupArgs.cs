@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         /// The resource type of the group members.
         /// </summary>
         [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.ResourceGroupResourceType>? ResourceType { get; set; }
 
         public ResourceGroupArgs()
         {

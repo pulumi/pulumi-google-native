@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         /// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
         /// </summary>
         [Input("comparison")]
-        public Input<string>? Comparison { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.MetricThresholdComparison>? Comparison { get; set; }
 
         [Input("denominatorAggregations")]
         private InputList<Inputs.AggregationArgs>? _denominatorAggregations;

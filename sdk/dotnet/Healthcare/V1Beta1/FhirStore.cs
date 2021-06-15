@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         /// </summary>
         [Input("version")]
-        public Input<string>? Version { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.FhirStoreVersion>? Version { get; set; }
 
         public FhirStoreArgs()
         {

@@ -25,13 +25,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// TODO(b/165626794): Remove this field Specifies the behavior to apply to existing, scheduled snapshots snapshots if the policy is changed.
         /// </summary>
         [Input("onPolicySwitch")]
-        public Input<string>? OnPolicySwitch { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch>? OnPolicySwitch { get; set; }
 
         /// <summary>
         /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
         /// </summary>
         [Input("onSourceDiskDelete")]
-        public Input<string>? OnSourceDiskDelete { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete>? OnSourceDiskDelete { get; set; }
 
         public ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs()
         {

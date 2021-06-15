@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// Asset content type. If not specified, no content but the asset name and type will be returned.
         /// </summary>
         [Input("contentType")]
-        public Input<string>? ContentType { get; set; }
+        public Input<Pulumi.GoogleNative.CloudAsset.V1.FeedContentType>? ContentType { get; set; }
 
         /// <summary>
         /// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.

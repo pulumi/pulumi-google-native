@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
         /// </summary>
         [Input("logLevel")]
-        public Input<string>? LogLevel { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.RegistryLogLevel>? LogLevel { get; set; }
 
         /// <summary>
         /// The MQTT configuration for this device registry.

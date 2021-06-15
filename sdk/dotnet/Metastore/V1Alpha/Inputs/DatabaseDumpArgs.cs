@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         /// The type of the database.
         /// </summary>
         [Input("databaseType")]
-        public Input<string>? DatabaseType { get; set; }
+        public Input<Pulumi.GoogleNative.Metastore.V1Alpha.DatabaseDumpDatabaseType>? DatabaseType { get; set; }
 
         /// <summary>
         /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Metastore.V1Alpha.DatabaseDumpType>? Type { get; set; }
 
         public DatabaseDumpArgs()
         {

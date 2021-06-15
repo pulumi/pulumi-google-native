@@ -185,7 +185,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Indicates the user-supplied redundancy type of this external VPN gateway.
         /// </summary>
         [Input("redundancyType")]
-        public Input<string>? RedundancyType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ExternalVpnGatewayRedundancyType>? RedundancyType { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

@@ -288,7 +288,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - BPS_50G: 50 Gbit/s
         /// </summary>
         [Input("bandwidth")]
-        public Input<string>? Bandwidth { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentBandwidth>? Bandwidth { get; set; }
 
         [Input("candidateSubnets")]
         private InputList<string>? _candidateSubnets;
@@ -339,7 +339,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         /// </summary>
         [Input("edgeAvailabilityDomain")]
-        public Input<string>? EdgeAvailabilityDomain { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentEdgeAvailabilityDomain>? EdgeAvailabilityDomain { get; set; }
 
         /// <summary>
         /// Indicates the user-supplied encryption option of this interconnect attachment: 
@@ -348,7 +348,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Not currently available in all Interconnect locations.
         /// </summary>
         [Input("encryption")]
-        public Input<string>? Encryption { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentEncryption>? Encryption { get; set; }
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -419,7 +419,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
         /// </summary>
         [Input("operationalStatus")]
-        public Input<string>? OperationalStatus { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentOperationalStatus>? OperationalStatus { get; set; }
 
         /// <summary>
         /// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
@@ -485,7 +485,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentState>? State { get; set; }
 
         /// <summary>
         /// The type of interconnect attachment this is, which can take one of the following values: 
@@ -494,7 +494,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentType>? Type { get; set; }
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

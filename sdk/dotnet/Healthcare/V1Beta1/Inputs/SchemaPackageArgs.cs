@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// Determines how messages that fail to parse are handled.
         /// </summary>
         [Input("schematizedParsingType")]
-        public Input<string>? SchematizedParsingType { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.SchemaPackageSchematizedParsingType>? SchematizedParsingType { get; set; }
 
         [Input("types")]
         private InputList<Inputs.Hl7TypesConfigArgs>? _types;
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// Determines how unexpected segments (segments not matched to the schema) are handled.
         /// </summary>
         [Input("unexpectedSegmentHandling")]
-        public Input<string>? UnexpectedSegmentHandling { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.SchemaPackageUnexpectedSegmentHandling>? UnexpectedSegmentHandling { get; set; }
 
         public SchemaPackageArgs()
         {

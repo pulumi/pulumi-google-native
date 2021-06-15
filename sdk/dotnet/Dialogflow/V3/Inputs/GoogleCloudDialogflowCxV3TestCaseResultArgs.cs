@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         /// Whether the test case passed in the agent environment.
         /// </summary>
         [Input("testResult")]
-        public Input<string>? TestResult { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3TestCaseResultTestResult>? TestResult { get; set; }
 
         /// <summary>
         /// The time that the test was run.

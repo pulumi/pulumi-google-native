@@ -278,7 +278,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ZoneInstantSnapshotStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

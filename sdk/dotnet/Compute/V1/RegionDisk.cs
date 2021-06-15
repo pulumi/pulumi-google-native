@@ -586,7 +586,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// - DELETING: Disk is deleting.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionDiskStatus>? Status { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd

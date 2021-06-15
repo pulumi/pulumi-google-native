@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// Canonical code of the condition.
         /// </summary>
         [Input("canonicalCode")]
-        public Input<string>? CanonicalCode { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1.StatusConditionCanonicalCode>? CanonicalCode { get; set; }
 
         /// <summary>
         /// Human-friendly representation of the condition

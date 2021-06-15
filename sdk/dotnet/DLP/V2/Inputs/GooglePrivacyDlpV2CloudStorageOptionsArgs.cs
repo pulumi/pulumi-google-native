@@ -34,14 +34,14 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2FileSetArgs>? FileSet { get; set; }
 
         [Input("fileTypes")]
-        private InputList<string>? _fileTypes;
+        private InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem>? _fileTypes;
 
         /// <summary>
         /// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         /// </summary>
-        public InputList<string> FileTypes
+        public InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem> FileTypes
         {
-            get => _fileTypes ?? (_fileTypes = new InputList<string>());
+            get => _fileTypes ?? (_fileTypes = new InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem>());
             set => _fileTypes = value;
         }
 
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<int>? FilesLimitPercent { get; set; }
 
         [Input("sampleMethod")]
-        public Input<string>? SampleMethod { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CloudStorageOptionsSampleMethod>? SampleMethod { get; set; }
 
         public GooglePrivacyDlpV2CloudStorageOptionsArgs()
         {

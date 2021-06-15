@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// The part of the time to keep.
         /// </summary>
         [Input("partToExtract")]
-        public Input<string>? PartToExtract { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2TimePartConfigPartToExtract>? PartToExtract { get; set; }
 
         public GooglePrivacyDlpV2TimePartConfigArgs()
         {

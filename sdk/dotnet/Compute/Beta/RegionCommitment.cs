@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         /// </summary>
         [Input("category")]
-        public Input<string>? Category { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RegionCommitmentCategory>? Category { get; set; }
 
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -208,7 +208,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         /// </summary>
         [Input("plan")]
-        public Input<string>? Plan { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RegionCommitmentPlan>? Plan { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RegionCommitmentStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] An optional, human-readable explanation of the status.
@@ -274,7 +274,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RegionCommitmentType>? Type { get; set; }
 
         public RegionCommitmentArgs()
         {

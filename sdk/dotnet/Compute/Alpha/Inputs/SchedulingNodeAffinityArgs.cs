@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
         /// </summary>
         [Input("operator")]
-        public Input<string>? Operator { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingNodeAffinityOperator>? Operator { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;

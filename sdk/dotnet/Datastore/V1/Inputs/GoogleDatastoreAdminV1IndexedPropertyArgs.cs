@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Datastore.V1.Inputs
         /// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Datastore.V1.GoogleDatastoreAdminV1IndexedPropertyDirection>? Direction { get; set; }
 
         /// <summary>
         /// Required. The property name to index.

@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// The log type that this config enables.
         /// </summary>
         [Input("logType")]
-        public Input<string>? LogType { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.AuditLogConfigLogType>? LogType { get; set; }
 
         public AuditLogConfigArgs()
         {

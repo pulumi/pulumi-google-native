@@ -166,13 +166,13 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
         /// </summary>
         [Input("invalidMatrixDetails")]
-        public Input<string>? InvalidMatrixDetails { get; set; }
+        public Input<Pulumi.GoogleNative.Testing.V1.TestMatrixInvalidMatrixDetails>? InvalidMatrixDetails { get; set; }
 
         /// <summary>
         /// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         /// </summary>
         [Input("outcomeSummary")]
-        public Input<string>? OutcomeSummary { get; set; }
+        public Input<Pulumi.GoogleNative.Testing.V1.TestMatrixOutcomeSummary>? OutcomeSummary { get; set; }
 
         /// <summary>
         /// The cloud project that owns the test matrix.
@@ -193,7 +193,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// Indicates the current progress of the test matrix.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Testing.V1.TestMatrixState>? State { get; set; }
 
         [Input("testExecutions")]
         private InputList<Inputs.TestExecutionArgs>? _testExecutions;

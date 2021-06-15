@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// The file type of source file.
         /// </summary>
         [Input("fileType")]
-        public Input<string>? FileType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.FileContentBufferFileType>? FileType { get; set; }
 
         public FileContentBufferArgs()
         {

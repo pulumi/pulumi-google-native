@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// Action. Rolloback or Upgrade.
         /// </summary>
         [Input("action")]
-        public Input<string>? Action { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.UpgradeHistoryEntryAction>? Action { get; set; }
 
         /// <summary>
         /// The container image before this instance upgrade.
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// The state of this instance upgrade history entry.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.UpgradeHistoryEntryState>? State { get; set; }
 
         /// <summary>
         /// Target VM Image. Format: ainotebooks-vm/project/image-name/name.

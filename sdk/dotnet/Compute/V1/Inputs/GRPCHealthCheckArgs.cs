@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// If not specified, gRPC health check follows behavior specified in port and portName fields.
         /// </summary>
         [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.GRPCHealthCheckPortSpecification>? PortSpecification { get; set; }
 
         public GRPCHealthCheckArgs()
         {

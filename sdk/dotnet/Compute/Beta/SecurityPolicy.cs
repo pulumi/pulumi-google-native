@@ -282,7 +282,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyType>? Type { get; set; }
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

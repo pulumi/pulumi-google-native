@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// The log type that this config enables.
         /// </summary>
         [Input("logType")]
-        public Input<string>? LogType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.AuditLogConfigLogType>? LogType { get; set; }
 
         public AuditLogConfigArgs()
         {

@@ -196,7 +196,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.DataCatalog.V1Beta1.EntryType>? Type { get; set; }
 
         /// <summary>
         /// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.

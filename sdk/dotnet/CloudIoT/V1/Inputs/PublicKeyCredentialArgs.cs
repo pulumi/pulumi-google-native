@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         /// The format of the key.
         /// </summary>
         [Input("format")]
-        public Input<string>? Format { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.PublicKeyCredentialFormat>? Format { get; set; }
 
         /// <summary>
         /// The key data.

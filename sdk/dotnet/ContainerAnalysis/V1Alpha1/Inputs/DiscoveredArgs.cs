@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// The status of discovery for the resource.
         /// </summary>
         [Input("analysisStatus")]
-        public Input<string>? AnalysisStatus { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.DiscoveredAnalysisStatus>? AnalysisStatus { get; set; }
 
         /// <summary>
         /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// Whether the resource is continuously analyzed.
         /// </summary>
         [Input("continuousAnalysis")]
-        public Input<string>? ContinuousAnalysis { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.DiscoveredContinuousAnalysis>? ContinuousAnalysis { get; set; }
 
         /// <summary>
         /// The CPE of the resource being scanned.

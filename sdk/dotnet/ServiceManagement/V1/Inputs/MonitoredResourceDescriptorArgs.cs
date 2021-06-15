@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         /// Optional. The launch stage of the monitored resource definition.
         /// </summary>
         [Input("launchStage")]
-        public Input<string>? LaunchStage { get; set; }
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.MonitoredResourceDescriptorLaunchStage>? LaunchStage { get; set; }
 
         /// <summary>
         /// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.

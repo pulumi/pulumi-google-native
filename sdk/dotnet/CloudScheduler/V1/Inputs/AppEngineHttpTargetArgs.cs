@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
         /// The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
         /// </summary>
         [Input("httpMethod")]
-        public Input<string>? HttpMethod { get; set; }
+        public Input<Pulumi.GoogleNative.CloudScheduler.V1.AppEngineHttpTargetHttpMethod>? HttpMethod { get; set; }
 
         /// <summary>
         /// The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.

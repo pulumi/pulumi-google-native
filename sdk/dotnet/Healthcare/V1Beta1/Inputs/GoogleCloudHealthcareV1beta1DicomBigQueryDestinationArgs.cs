@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
         /// </summary>
         [Input("writeDisposition")]
-        public Input<string>? WriteDisposition { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition>? WriteDisposition { get; set; }
 
         public GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs()
         {

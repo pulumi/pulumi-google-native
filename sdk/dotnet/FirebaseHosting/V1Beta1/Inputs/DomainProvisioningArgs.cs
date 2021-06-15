@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
         /// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
         /// </summary>
         [Input("certStatus")]
-        public Input<string>? CertStatus { get; set; }
+        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainProvisioningCertStatus>? CertStatus { get; set; }
 
         [Input("discoveredIps")]
         private InputList<string>? _discoveredIps;
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
         /// The DNS record match status as of the last DNS fetch.
         /// </summary>
         [Input("dnsStatus")]
-        public Input<string>? DnsStatus { get; set; }
+        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainProvisioningDnsStatus>? DnsStatus { get; set; }
 
         [Input("expectedIps")]
         private InputList<string>? _expectedIps;

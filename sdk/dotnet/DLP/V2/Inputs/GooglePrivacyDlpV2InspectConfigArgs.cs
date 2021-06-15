@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2InspectConfigArgs : Pulumi.ResourceArgs
     {
         [Input("contentOptions")]
-        private InputList<string>? _contentOptions;
+        private InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>? _contentOptions;
 
         /// <summary>
         /// List of options defining data content to scan. If empty, text, images, and other content will be included.
         /// </summary>
-        public InputList<string> ContentOptions
+        public InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem> ContentOptions
         {
-            get => _contentOptions ?? (_contentOptions = new InputList<string>());
+            get => _contentOptions ?? (_contentOptions = new InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>());
             set => _contentOptions = value;
         }
 
@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         /// </summary>
         [Input("minLikelihood")]
-        public Input<string>? MinLikelihood { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigMinLikelihood>? MinLikelihood { get; set; }
 
         [Input("ruleSet")]
         private InputList<Inputs.GooglePrivacyDlpV2InspectionRuleSetArgs>? _ruleSet;

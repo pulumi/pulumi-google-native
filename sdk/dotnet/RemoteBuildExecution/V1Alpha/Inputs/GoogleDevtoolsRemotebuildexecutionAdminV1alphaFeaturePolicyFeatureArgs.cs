@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         /// The policy of the feature.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public Input<Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy>? Policy { get; set; }
 
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs()
         {

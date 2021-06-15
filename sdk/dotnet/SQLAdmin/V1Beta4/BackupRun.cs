@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         /// </summary>
         [Input("backupKind")]
-        public Input<string>? BackupKind { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.BackupRunBackupKind>? BackupKind { get; set; }
 
         /// <summary>
         /// The description of this run, only applicable to on-demand backups.
@@ -235,13 +235,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The status of this run.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.BackupRunStatus>? Status { get; set; }
 
         /// <summary>
         /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.BackupRunType>? Type { get; set; }
 
         /// <summary>
         /// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.

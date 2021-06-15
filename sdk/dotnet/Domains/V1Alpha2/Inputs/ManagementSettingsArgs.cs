@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         /// Controls whether the domain can be transferred to another registrar.
         /// </summary>
         [Input("transferLockState")]
-        public Input<string>? TransferLockState { get; set; }
+        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.ManagementSettingsTransferLockState>? TransferLockState { get; set; }
 
         public ManagementSettingsArgs()
         {

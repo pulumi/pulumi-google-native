@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         /// Action to take when users access resources that require authentication. Defaults to redirect.
         /// </summary>
         [Input("authFailAction")]
-        public Input<string>? AuthFailAction { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.ApiConfigHandlerAuthFailAction>? AuthFailAction { get; set; }
 
         /// <summary>
         /// Level of login required to access this resource. Defaults to optional.
         /// </summary>
         [Input("login")]
-        public Input<string>? Login { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.ApiConfigHandlerLogin>? Login { get; set; }
 
         /// <summary>
         /// Path to the script from the application root directory.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         /// Security (HTTPS) enforcement for this URL.
         /// </summary>
         [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.ApiConfigHandlerSecurityLevel>? SecurityLevel { get; set; }
 
         /// <summary>
         /// URL to serve the endpoint at.

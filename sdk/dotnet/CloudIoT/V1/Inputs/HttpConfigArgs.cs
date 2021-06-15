@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         /// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
         /// </summary>
         [Input("httpEnabledState")]
-        public Input<string>? HttpEnabledState { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.HttpConfigHttpEnabledState>? HttpEnabledState { get; set; }
 
         public HttpConfigArgs()
         {

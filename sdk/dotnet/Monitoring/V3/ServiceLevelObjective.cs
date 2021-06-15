@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         /// </summary>
         [Input("calendarPeriod")]
-        public Input<string>? CalendarPeriod { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.ServiceLevelObjectiveCalendarPeriod>? CalendarPeriod { get; set; }
 
         /// <summary>
         /// Name used for UI elements listing this SLO.

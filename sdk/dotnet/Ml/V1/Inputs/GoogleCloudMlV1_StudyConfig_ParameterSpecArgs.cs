@@ -70,13 +70,13 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// How the parameter should be scaled. Leave unset for categorical parameters.
         /// </summary>
         [Input("scaleType")]
-        public Input<string>? ScaleType { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType>? ScaleType { get; set; }
 
         /// <summary>
         /// Required. The type of the parameter.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_ParameterSpecType>? Type { get; set; }
 
         public GoogleCloudMlV1_StudyConfig_ParameterSpecArgs()
         {

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
         /// </summary>
         [Input("logicalOperator")]
-        public Input<string>? LogicalOperator { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2ExpressionsLogicalOperator>? LogicalOperator { get; set; }
 
         public GooglePrivacyDlpV2ExpressionsArgs()
         {

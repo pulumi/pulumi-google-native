@@ -256,7 +256,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         /// </summary>
         [Input("visibility")]
-        public Input<string>? Visibility { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1Beta2.ManagedZoneVisibility>? Visibility { get; set; }
 
         public ManagedZoneArgs()
         {

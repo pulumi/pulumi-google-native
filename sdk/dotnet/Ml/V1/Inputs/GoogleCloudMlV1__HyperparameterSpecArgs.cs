@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__HyperparameterSpecAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         /// </summary>
         [Input("goal")]
-        public Input<string>? Goal { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__HyperparameterSpecGoal>? Goal { get; set; }
 
         /// <summary>
         /// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.

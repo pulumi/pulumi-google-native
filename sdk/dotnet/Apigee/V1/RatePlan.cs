@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Frequency at which the customer will be billed.
         /// </summary>
         [Input("billingPeriod")]
-        public Input<string>? BillingPeriod { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.RatePlanBillingPeriod>? BillingPeriod { get; set; }
 
         [Input("consumptionPricingRates")]
         private InputList<Inputs.GoogleCloudApigeeV1RateRangeArgs>? _consumptionPricingRates;
@@ -205,7 +205,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Pricing model used for consumption-based charges.
         /// </summary>
         [Input("consumptionPricingType")]
-        public Input<string>? ConsumptionPricingType { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.RatePlanConsumptionPricingType>? ConsumptionPricingType { get; set; }
 
         /// <summary>
         /// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
@@ -250,7 +250,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Flag that specifies the billing account type, prepaid or postpaid.
         /// </summary>
         [Input("paymentFundingModel")]
-        public Input<string>? PaymentFundingModel { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.RatePlanPaymentFundingModel>? PaymentFundingModel { get; set; }
 
         [Input("revenueShareRates")]
         private InputList<Inputs.GoogleCloudApigeeV1RevenueShareRangeArgs>? _revenueShareRates;
@@ -268,7 +268,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Method used to calculate the revenue that is shared with developers.
         /// </summary>
         [Input("revenueShareType")]
-        public Input<string>? RevenueShareType { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.RatePlanRevenueShareType>? RevenueShareType { get; set; }
 
         /// <summary>
         /// Initial, one-time fee paid when purchasing the API product.
@@ -286,7 +286,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Current state of the rate plan (draft or published).
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.RatePlanState>? State { get; set; }
 
         public RatePlanArgs()
         {

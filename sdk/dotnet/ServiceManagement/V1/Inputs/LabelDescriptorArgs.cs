@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         /// The type of data that can be assigned to the label.
         /// </summary>
         [Input("valueType")]
-        public Input<string>? ValueType { get; set; }
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.LabelDescriptorValueType>? ValueType { get; set; }
 
         public LabelDescriptorArgs()
         {

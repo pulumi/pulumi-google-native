@@ -374,7 +374,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SnapshotStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
@@ -386,7 +386,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         /// </summary>
         [Input("storageBytesStatus")]
-        public Input<string>? StorageBytesStatus { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SnapshotStorageBytesStatus>? StorageBytesStatus { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

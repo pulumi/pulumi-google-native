@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Firestore.V1.Inputs
         /// Indicates that this field supports operations on `array_value`s.
         /// </summary>
         [Input("arrayConfig")]
-        public Input<string>? ArrayConfig { get; set; }
+        public Input<Pulumi.GoogleNative.Firestore.V1.GoogleFirestoreAdminV1IndexFieldArrayConfig>? ArrayConfig { get; set; }
 
         /// <summary>
         /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Firestore.V1.Inputs
         /// Indicates that this field supports ordering by the specified order or comparing using =, !=, &lt;, &lt;=, &gt;, &gt;=.
         /// </summary>
         [Input("order")]
-        public Input<string>? Order { get; set; }
+        public Input<Pulumi.GoogleNative.Firestore.V1.GoogleFirestoreAdminV1IndexFieldOrder>? Order { get; set; }
 
         public GoogleFirestoreAdminV1IndexFieldArgs()
         {

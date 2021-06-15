@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         /// Post-patch reboot settings.
         /// </summary>
         [Input("rebootConfig")]
-        public Input<string>? RebootConfig { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.PatchConfigRebootConfig>? RebootConfig { get; set; }
 
         /// <summary>
         /// Windows update settings. Use this override the default windows patch rules.

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Jobs.V4.Inputs
         /// Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
         /// </summary>
         [Input("htmlSanitization")]
-        public Input<string>? HtmlSanitization { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V4.ProcessingOptionsHtmlSanitization>? HtmlSanitization { get; set; }
 
         public ProcessingOptionsArgs()
         {

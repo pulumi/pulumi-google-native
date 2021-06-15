@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
         /// The type of an accelator for a CDF instance.
         /// </summary>
         [Input("acceleratorType")]
-        public Input<string>? AcceleratorType { get; set; }
+        public Input<Pulumi.GoogleNative.DataFusion.V1Beta1.AcceleratorAcceleratorType>? AcceleratorType { get; set; }
 
         public AcceleratorArgs()
         {

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// The axis scale. By default, a linear scale is used.
         /// </summary>
         [Input("scale")]
-        public Input<string>? Scale { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.AxisScale>? Scale { get; set; }
 
         public AxisArgs()
         {

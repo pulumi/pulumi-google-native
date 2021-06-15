@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         /// The log type that this config enables.
         /// </summary>
         [Input("logType")]
-        public Input<string>? LogType { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.Alpha.AuditLogConfigLogType>? LogType { get; set; }
 
         public AuditLogConfigArgs()
         {

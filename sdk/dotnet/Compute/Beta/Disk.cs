@@ -379,7 +379,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.DiskInterface>? Interface { get; set; }
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#disk for disks.
@@ -622,7 +622,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// - DELETING: Disk is deleting.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.DiskStatus>? Status { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd

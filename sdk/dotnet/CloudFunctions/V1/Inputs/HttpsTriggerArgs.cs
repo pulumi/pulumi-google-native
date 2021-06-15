@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Inputs
         /// The security level for the function.
         /// </summary>
         [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
+        public Input<Pulumi.GoogleNative.CloudFunctions.V1.HttpsTriggerSecurityLevel>? SecurityLevel { get; set; }
 
         public HttpsTriggerArgs()
         {

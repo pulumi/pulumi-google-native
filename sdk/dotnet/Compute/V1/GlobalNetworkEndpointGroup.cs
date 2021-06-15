@@ -232,7 +232,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         /// </summary>
         [Input("networkEndpointType")]
-        public Input<string>? NetworkEndpointType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.GlobalNetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

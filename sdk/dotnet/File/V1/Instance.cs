@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.File.V1
         /// The service tier of the instance.
         /// </summary>
         [Input("tier")]
-        public Input<string>? Tier { get; set; }
+        public Input<Pulumi.GoogleNative.File.V1.InstanceTier>? Tier { get; set; }
 
         public InstanceArgs()
         {

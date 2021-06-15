@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         /// The algorithm used to generate the referenced DNSKEY.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.Domains.V1Beta1.DsRecordAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// The digest generated from the referenced DNSKEY.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         /// The hash function used to generate the digest of the referenced DNSKEY.
         /// </summary>
         [Input("digestType")]
-        public Input<string>? DigestType { get; set; }
+        public Input<Pulumi.GoogleNative.Domains.V1Beta1.DsRecordDigestType>? DigestType { get; set; }
 
         /// <summary>
         /// The key tag of the record. Must be set in range 0 -- 65535.

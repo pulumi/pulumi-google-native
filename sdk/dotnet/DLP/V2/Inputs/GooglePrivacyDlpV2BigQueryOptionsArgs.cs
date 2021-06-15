@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<int>? RowsLimitPercent { get; set; }
 
         [Input("sampleMethod")]
-        public Input<string>? SampleMethod { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2BigQueryOptionsSampleMethod>? SampleMethod { get; set; }
 
         /// <summary>
         /// Complete BigQuery table reference.

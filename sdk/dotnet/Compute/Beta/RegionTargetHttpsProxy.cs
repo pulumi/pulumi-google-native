@@ -247,7 +247,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// - If the quic-override flag is not specified, NONE is implied.
         /// </summary>
         [Input("quicOverride")]
-        public Input<string>? QuicOverride { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RegionTargetHttpsProxyQuicOverride>? QuicOverride { get; set; }
 
         /// <summary>
         /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.

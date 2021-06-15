@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
         /// </summary>
         [Input("day")]
-        public Input<string>? Day { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.ResourcePolicyWeeklyCycleDayOfWeekDay>? Day { get; set; }
 
         /// <summary>
         /// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.

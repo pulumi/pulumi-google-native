@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
         /// </summary>
         [Input("tlsMode")]
-        public Input<string>? TlsMode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ServerTlsSettingsTlsMode>? TlsMode { get; set; }
 
         public ServerTlsSettingsArgs()
         {

@@ -288,7 +288,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
-        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         /// </summary>
         [Input("purpose")]
-        public Input<string>? Purpose { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkPurpose>? Purpose { get; set; }
 
         /// <summary>
         /// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
@@ -312,7 +312,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkRole>? Role { get; set; }
 
         [Input("secondaryIpRanges")]
         private InputList<Inputs.SubnetworkSecondaryRangeArgs>? _secondaryIpRanges;
@@ -336,7 +336,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubnetworkState>? State { get; set; }
 
         public SubnetworkArgs()
         {

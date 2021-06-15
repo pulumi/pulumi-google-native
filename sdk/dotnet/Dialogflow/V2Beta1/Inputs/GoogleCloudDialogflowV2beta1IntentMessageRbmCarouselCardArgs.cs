@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// Required. The width of the cards in the carousel.
         /// </summary>
         [Input("cardWidth")]
-        public Input<string>? CardWidth { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth>? CardWidth { get; set; }
 
         public GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs()
         {

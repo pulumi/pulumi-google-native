@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
         /// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.CryptoKeyVersionTemplateAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
         /// </summary>
         [Input("protectionLevel")]
-        public Input<string>? ProtectionLevel { get; set; }
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.CryptoKeyVersionTemplateProtectionLevel>? ProtectionLevel { get; set; }
 
         public CryptoKeyVersionTemplateArgs()
         {

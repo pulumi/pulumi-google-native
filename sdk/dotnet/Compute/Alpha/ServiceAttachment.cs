@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         /// </summary>
         [Input("connectionPreference")]
-        public Input<string>? ConnectionPreference { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ServiceAttachmentConnectionPreference>? ConnectionPreference { get; set; }
 
         [Input("consumerAcceptLists")]
         private InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs>? _consumerAcceptLists;

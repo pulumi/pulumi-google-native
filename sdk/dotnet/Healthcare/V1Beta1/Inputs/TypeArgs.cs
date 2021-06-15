@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
         /// </summary>
         [Input("primitive")]
-        public Input<string>? Primitive { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.TypePrimitive>? Primitive { get; set; }
 
         public TypeArgs()
         {

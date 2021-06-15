@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// The specified Istio auth mode, either none, or mutual TLS.
         /// </summary>
         [Input("auth")]
-        public Input<string>? Auth { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.IstioConfigAuth>? Auth { get; set; }
 
         /// <summary>
         /// Whether Istio is enabled for this cluster.

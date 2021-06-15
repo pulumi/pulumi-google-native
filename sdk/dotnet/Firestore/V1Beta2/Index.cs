@@ -115,13 +115,13 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
         /// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         /// </summary>
         [Input("queryScope")]
-        public Input<string>? QueryScope { get; set; }
+        public Input<Pulumi.GoogleNative.Firestore.V1Beta2.IndexQueryScope>? QueryScope { get; set; }
 
         /// <summary>
         /// The serving state of the index.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Firestore.V1Beta2.IndexState>? State { get; set; }
 
         public IndexArgs()
         {

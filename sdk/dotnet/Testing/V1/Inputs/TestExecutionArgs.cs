@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         /// Indicates the current progress of the test execution (e.g., FINISHED).
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Testing.V1.TestExecutionState>? State { get; set; }
 
         /// <summary>
         /// Additional details about the running test.

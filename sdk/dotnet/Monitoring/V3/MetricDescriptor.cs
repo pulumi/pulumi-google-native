@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Optional. The launch stage of the metric definition.
         /// </summary>
         [Input("launchStage")]
-        public Input<string>? LaunchStage { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.MetricDescriptorLaunchStage>? LaunchStage { get; set; }
 
         /// <summary>
         /// Optional. Metadata which can be used to guide usage of the metric.
@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
         /// </summary>
         [Input("metricKind")]
-        public Input<string>? MetricKind { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.MetricDescriptorMetricKind>? MetricKind { get; set; }
 
         [Input("monitoredResourceTypes")]
         private InputList<string>? _monitoredResourceTypes;
@@ -205,7 +205,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
         /// </summary>
         [Input("valueType")]
-        public Input<string>? ValueType { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.MetricDescriptorValueType>? ValueType { get; set; }
 
         public MetricDescriptorArgs()
         {

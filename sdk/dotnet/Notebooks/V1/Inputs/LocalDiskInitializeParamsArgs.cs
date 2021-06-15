@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         /// </summary>
         [Input("diskType")]
-        public Input<string>? DiskType { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.LocalDiskInitializeParamsDiskType>? DiskType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

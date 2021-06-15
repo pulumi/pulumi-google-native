@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         /// Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
         /// </summary>
         [Input("accessMode")]
-        public Input<string>? AccessMode { get; set; }
+        public Input<Pulumi.GoogleNative.File.V1Beta1.NfsExportOptionsAccessMode>? AccessMode { get; set; }
 
         /// <summary>
         /// An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         /// </summary>
         [Input("squashMode")]
-        public Input<string>? SquashMode { get; set; }
+        public Input<Pulumi.GoogleNative.File.V1Beta1.NfsExportOptionsSquashMode>? SquashMode { get; set; }
 
         public NfsExportOptionsArgs()
         {

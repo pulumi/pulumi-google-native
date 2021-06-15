@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         /// </summary>
         [Input("combiner")]
-        public Input<string>? Combiner { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.AlertPolicyCombiner>? Combiner { get; set; }
 
         [Input("conditions")]
         private InputList<Inputs.ConditionArgs>? _conditions;

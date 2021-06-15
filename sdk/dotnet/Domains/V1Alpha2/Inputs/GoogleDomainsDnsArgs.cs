@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         /// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         /// </summary>
         [Input("dsState")]
-        public Input<string>? DsState { get; set; }
+        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.GoogleDomainsDnsDsState>? DsState { get; set; }
 
         public GoogleDomainsDnsArgs()
         {

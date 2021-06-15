@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkPeeringState>? State { get; set; }
 
         /// <summary>
         /// [Output Only] Details about the current state of the peering.

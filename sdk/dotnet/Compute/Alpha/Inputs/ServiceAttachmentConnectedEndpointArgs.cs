@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The status of a connected endpoint to this service attachment.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ServiceAttachmentConnectedEndpointStatus>? Status { get; set; }
 
         public ServiceAttachmentConnectedEndpointArgs()
         {

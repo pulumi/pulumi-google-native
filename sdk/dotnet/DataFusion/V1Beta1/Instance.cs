@@ -319,7 +319,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// Required. Instance type.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.DataFusion.V1Beta1.InstanceType>? Type { get; set; }
 
         /// <summary>
         /// Current version of Data Fusion.

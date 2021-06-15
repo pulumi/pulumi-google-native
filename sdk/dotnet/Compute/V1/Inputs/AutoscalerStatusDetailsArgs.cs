@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values might be added in the future. Some of the values might not be available in all API versions.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.AutoscalerStatusDetailsType>? Type { get; set; }
 
         public AutoscalerStatusDetailsArgs()
         {

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// Type of the sandbox to use for the node.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.SandboxConfigType>? Type { get; set; }
 
         public SandboxConfigArgs()
         {

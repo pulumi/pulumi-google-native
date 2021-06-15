@@ -193,7 +193,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         /// </summary>
         [Input("addressType")]
-        public Input<string>? AddressType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AddressAddressType>? AddressType { get; set; }
 
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -217,7 +217,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
         /// </summary>
         [Input("ipVersion")]
-        public Input<string>? IpVersion { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AddressIpVersion>? IpVersion { get; set; }
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#address for addresses.
@@ -263,7 +263,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// If this field is not specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AddressNetworkTier>? NetworkTier { get; set; }
 
         /// <summary>
         /// The prefix length if the resource represents an IP range.
@@ -283,7 +283,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
         /// </summary>
         [Input("purpose")]
-        public Input<string>? Purpose { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AddressPurpose>? Purpose { get; set; }
 
         /// <summary>
         /// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
@@ -310,7 +310,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AddressStatus>? Status { get; set; }
 
         /// <summary>
         /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.

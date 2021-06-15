@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.FirewallPolicyRuleSecureTagState>? State { get; set; }
 
         public FirewallPolicyRuleSecureTagArgs()
         {

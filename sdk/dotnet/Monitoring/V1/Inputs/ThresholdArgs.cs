@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// The state color for this threshold. Color is not allowed in a XyChart.
         /// </summary>
         [Input("color")]
-        public Input<string>? Color { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.ThresholdColor>? Color { get; set; }
 
         /// <summary>
         /// The direction for the current threshold. Direction is not allowed in a XyChart.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.ThresholdDirection>? Direction { get; set; }
 
         /// <summary>
         /// A label for the threshold.

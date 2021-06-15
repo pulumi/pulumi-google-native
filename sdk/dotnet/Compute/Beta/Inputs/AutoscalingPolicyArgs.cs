@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Defines operating mode for this policy.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.AutoscalingPolicyMode>? Mode { get; set; }
 
         [Input("scaleDownControl")]
         public Input<Inputs.AutoscalingPolicyScaleDownControlArgs>? ScaleDownControl { get; set; }

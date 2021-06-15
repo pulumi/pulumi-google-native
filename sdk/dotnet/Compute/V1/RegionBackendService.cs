@@ -446,7 +446,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         /// </summary>
         [Input("loadBalancingScheme")]
-        public Input<string>? LoadBalancingScheme { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionBackendServiceLoadBalancingScheme>? LoadBalancingScheme { get; set; }
 
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality. The possible values are:  
@@ -466,7 +466,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("localityLbPolicy")]
-        public Input<string>? LocalityLbPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionBackendServiceLocalityLbPolicy>? LocalityLbPolicy { get; set; }
 
         /// <summary>
         /// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
@@ -527,7 +527,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         /// </summary>
         [Input("protocol")]
-        public Input<string>? Protocol { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionBackendServiceProtocol>? Protocol { get; set; }
 
         /// <summary>
         /// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -570,7 +570,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("sessionAffinity")]
-        public Input<string>? SessionAffinity { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionBackendServiceSessionAffinity>? SessionAffinity { get; set; }
 
         /// <summary>
         /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.

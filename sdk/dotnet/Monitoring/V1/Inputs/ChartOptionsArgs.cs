@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// The chart mode.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.ChartOptionsMode>? Mode { get; set; }
 
         public ChartOptionsArgs()
         {

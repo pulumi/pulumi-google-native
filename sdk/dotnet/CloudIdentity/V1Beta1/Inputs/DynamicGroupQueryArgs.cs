@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
         public Input<string>? Query { get; set; }
 
         [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIdentity.V1Beta1.DynamicGroupQueryResourceType>? ResourceType { get; set; }
 
         public DynamicGroupQueryArgs()
         {

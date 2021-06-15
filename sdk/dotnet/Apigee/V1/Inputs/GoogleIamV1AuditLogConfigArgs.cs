@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         /// The log type that this config enables.
         /// </summary>
         [Input("logType")]
-        public Input<string>? LogType { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.GoogleIamV1AuditLogConfigLogType>? LogType { get; set; }
 
         public GoogleIamV1AuditLogConfigArgs()
         {

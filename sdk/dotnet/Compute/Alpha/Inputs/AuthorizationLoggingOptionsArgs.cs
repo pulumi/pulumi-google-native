@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The type of the permission that was checked.
         /// </summary>
         [Input("permissionType")]
-        public Input<string>? PermissionType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AuthorizationLoggingOptionsPermissionType>? PermissionType { get; set; }
 
         public AuthorizationLoggingOptionsArgs()
         {

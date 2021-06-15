@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         /// The encoding of messages validated against `schema`.
         /// </summary>
         [Input("encoding")]
-        public Input<string>? Encoding { get; set; }
+        public Input<Pulumi.GoogleNative.Pubsub.V1.SchemaSettingsEncoding>? Encoding { get; set; }
 
         /// <summary>
         /// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.

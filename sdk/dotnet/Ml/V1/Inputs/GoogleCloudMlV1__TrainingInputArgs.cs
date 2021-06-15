@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
         /// </summary>
         [Input("scaleTier")]
-        public Input<string>? ScaleTier { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__TrainingInputScaleTier>? ScaleTier { get; set; }
 
         /// <summary>
         /// Optional. Scheduling options for a training job.

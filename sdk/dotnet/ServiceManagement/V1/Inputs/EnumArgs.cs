@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         /// The source syntax.
         /// </summary>
         [Input("syntax")]
-        public Input<string>? Syntax { get; set; }
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.EnumSyntax>? Syntax { get; set; }
 
         public EnumArgs()
         {

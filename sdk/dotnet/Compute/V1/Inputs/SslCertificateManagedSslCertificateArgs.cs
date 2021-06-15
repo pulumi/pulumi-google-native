@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// [Output only] Status of the managed certificate resource.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.SslCertificateManagedSslCertificateStatus>? Status { get; set; }
 
         public SslCertificateManagedSslCertificateArgs()
         {

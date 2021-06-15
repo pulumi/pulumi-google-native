@@ -241,7 +241,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         /// </summary>
         [Input("logLevel")]
-        public Input<string>? LogLevel { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.DeviceLogLevel>? LogLevel { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

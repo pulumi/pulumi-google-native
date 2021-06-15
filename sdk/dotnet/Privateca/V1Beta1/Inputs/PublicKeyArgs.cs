@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         /// Optional. The type of public key. If specified, it must match the public key used for the`key` field.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.PublicKeyType>? Type { get; set; }
 
         public PublicKeyArgs()
         {

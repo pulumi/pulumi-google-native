@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
         /// </summary>
         [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskInterface>? Interface { get; set; }
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
@@ -115,13 +115,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskMode>? Mode { get; set; }
 
         /// <summary>
         /// For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
         /// </summary>
         [Input("savedState")]
-        public Input<string>? SavedState { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskSavedState>? SavedState { get; set; }
 
         /// <summary>
         /// [Output Only] shielded vm initial state stored on disk
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskType>? Type { get; set; }
 
         [Input("userLicenses")]
         private InputList<string>? _userLicenses;

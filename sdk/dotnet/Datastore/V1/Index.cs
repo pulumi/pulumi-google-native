@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         /// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         /// </summary>
         [Input("ancestor")]
-        public Input<string>? Ancestor { get; set; }
+        public Input<Pulumi.GoogleNative.Datastore.V1.IndexAncestor>? Ancestor { get; set; }
 
         /// <summary>
         /// Required. The entity kind to which this index applies.

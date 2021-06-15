@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         /// The health status of the TPU node.
         /// </summary>
         [Input("health")]
-        public Input<string>? Health { get; set; }
+        public Input<Pulumi.GoogleNative.TPU.V1Alpha1.NodeHealth>? Health { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

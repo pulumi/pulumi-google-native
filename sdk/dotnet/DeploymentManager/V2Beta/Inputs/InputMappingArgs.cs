@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         /// The location where this mapping applies.
         /// </summary>
         [Input("location")]
-        public Input<string>? Location { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.V2Beta.InputMappingLocation>? Location { get; set; }
 
         /// <summary>
         /// Regex to evaluate on method to decide if input applies.

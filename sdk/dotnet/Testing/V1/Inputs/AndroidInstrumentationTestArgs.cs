@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         /// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
         /// </summary>
         [Input("orchestratorOption")]
-        public Input<string>? OrchestratorOption { get; set; }
+        public Input<Pulumi.GoogleNative.Testing.V1.AndroidInstrumentationTestOrchestratorOption>? OrchestratorOption { get; set; }
 
         /// <summary>
         /// The option to run tests in multiple shards in parallel.

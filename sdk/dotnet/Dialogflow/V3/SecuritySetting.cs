@@ -127,14 +127,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string> Project { get; set; } = null!;
 
         [Input("purgeDataTypes")]
-        private InputList<string>? _purgeDataTypes;
+        private InputList<Pulumi.GoogleNative.Dialogflow.V3.SecuritySettingPurgeDataTypesItem>? _purgeDataTypes;
 
         /// <summary>
         /// List of types of data to remove when retention settings triggers purge.
         /// </summary>
-        public InputList<string> PurgeDataTypes
+        public InputList<Pulumi.GoogleNative.Dialogflow.V3.SecuritySettingPurgeDataTypesItem> PurgeDataTypes
         {
-            get => _purgeDataTypes ?? (_purgeDataTypes = new InputList<string>());
+            get => _purgeDataTypes ?? (_purgeDataTypes = new InputList<Pulumi.GoogleNative.Dialogflow.V3.SecuritySettingPurgeDataTypesItem>());
             set => _purgeDataTypes = value;
         }
 
@@ -142,13 +142,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
         /// </summary>
         [Input("redactionScope")]
-        public Input<string>? RedactionScope { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.SecuritySettingRedactionScope>? RedactionScope { get; set; }
 
         /// <summary>
         /// Strategy that defines how we do redaction.
         /// </summary>
         [Input("redactionStrategy")]
-        public Input<string>? RedactionStrategy { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.SecuritySettingRedactionStrategy>? RedactionStrategy { get; set; }
 
         /// <summary>
         /// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.

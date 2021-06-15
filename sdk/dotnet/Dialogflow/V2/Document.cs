@@ -136,14 +136,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Input<string> KnowledgeBaseId { get; set; } = null!;
 
         [Input("knowledgeTypes")]
-        private InputList<string>? _knowledgeTypes;
+        private InputList<Pulumi.GoogleNative.Dialogflow.V2.DocumentKnowledgeTypesItem>? _knowledgeTypes;
 
         /// <summary>
         /// Required. The knowledge type of document content.
         /// </summary>
-        public InputList<string> KnowledgeTypes
+        public InputList<Pulumi.GoogleNative.Dialogflow.V2.DocumentKnowledgeTypesItem> KnowledgeTypes
         {
-            get => _knowledgeTypes ?? (_knowledgeTypes = new InputList<string>());
+            get => _knowledgeTypes ?? (_knowledgeTypes = new InputList<Pulumi.GoogleNative.Dialogflow.V2.DocumentKnowledgeTypesItem>());
             set => _knowledgeTypes = value;
         }
 

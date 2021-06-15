@@ -256,7 +256,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         /// </summary>
         [Input("networkEndpointType")]
-        public Input<string>? NetworkEndpointType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.GlobalNetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.GlobalNetworkEndpointGroupType>? Type { get; set; }
 
         /// <summary>
         /// [Output Only] The URL of the zone where the network endpoint group is located.

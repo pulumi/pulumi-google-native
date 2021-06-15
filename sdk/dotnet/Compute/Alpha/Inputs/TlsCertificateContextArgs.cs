@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Defines how TLS certificates are obtained.
         /// </summary>
         [Input("certificateSource")]
-        public Input<string>? CertificateSource { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.TlsCertificateContextCertificateSource>? CertificateSource { get; set; }
 
         /// <summary>
         /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// Effect for taint.
         /// </summary>
         [Input("effect")]
-        public Input<string>? Effect { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.NodeTaintEffect>? Effect { get; set; }
 
         /// <summary>
         /// Key for taint.

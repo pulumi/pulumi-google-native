@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// The search algorithm specified for the study.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__StudyConfigAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// Configuration for automated stopping of unpromising Trials.

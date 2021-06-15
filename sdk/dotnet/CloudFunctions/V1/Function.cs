@@ -280,7 +280,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// The ingress settings for the function, controlling what traffic can reach it.
         /// </summary>
         [Input("ingressSettings")]
-        public Input<string>? IngressSettings { get; set; }
+        public Input<Pulumi.GoogleNative.CloudFunctions.V1.FunctionIngressSettings>? IngressSettings { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -370,7 +370,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// The egress settings for the connector, controlling what traffic is diverted through it.
         /// </summary>
         [Input("vpcConnectorEgressSettings")]
-        public Input<string>? VpcConnectorEgressSettings { get; set; }
+        public Input<Pulumi.GoogleNative.CloudFunctions.V1.FunctionVpcConnectorEgressSettings>? VpcConnectorEgressSettings { get; set; }
 
         public FunctionArgs()
         {

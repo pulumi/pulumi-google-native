@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
         /// </summary>
         [Input("containerType")]
-        public Input<string>? ContainerType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ImageRawDiskContainerType>? ContainerType { get; set; }
 
         /// <summary>
         /// The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.

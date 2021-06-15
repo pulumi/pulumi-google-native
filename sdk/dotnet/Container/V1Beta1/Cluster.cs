@@ -679,7 +679,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// [Output only] The current status of this cluster.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.ClusterStatus>? Status { get; set; }
 
         /// <summary>
         /// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.

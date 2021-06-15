@@ -352,7 +352,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
         /// </summary>
         [Input("IPProtocol")]
-        public Input<string>? IPProtocol { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ForwardingRuleIPProtocol>? IPProtocol { get; set; }
 
         /// <summary>
         /// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
@@ -404,7 +404,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         /// </summary>
         [Input("ipVersion")]
-        public Input<string>? IpVersion { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ForwardingRuleIpVersion>? IpVersion { get; set; }
 
         /// <summary>
         /// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
@@ -457,7 +457,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// For more information about forwarding rules, refer to Forwarding rule concepts.
         /// </summary>
         [Input("loadBalancingScheme")]
-        public Input<string>? LoadBalancingScheme { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ForwardingRuleLoadBalancingScheme>? LoadBalancingScheme { get; set; }
 
         [Input("metadataFilters")]
         private InputList<Inputs.MetadataFilterArgs>? _metadataFilters;
@@ -498,7 +498,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
         /// </summary>
         [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ForwardingRuleNetworkTier>? NetworkTier { get; set; }
 
         /// <summary>
         /// This field can be used only if: * Load balancing scheme is one of EXTERNAL,  INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is one of TCP, UDP, or SCTP.
@@ -546,7 +546,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? PscConnectionId { get; set; }
 
         [Input("pscConnectionStatus")]
-        public Input<string>? PscConnectionStatus { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ForwardingRulePscConnectionStatus>? PscConnectionStatus { get; set; }
 
         /// <summary>
         /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

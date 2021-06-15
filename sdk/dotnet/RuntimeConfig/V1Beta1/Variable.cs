@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.RuntimeConfig.V1Beta1.VariableState>? State { get; set; }
 
         /// <summary>
         /// The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.

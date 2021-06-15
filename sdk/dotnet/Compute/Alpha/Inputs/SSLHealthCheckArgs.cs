@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// If not specified, SSL health check follows behavior specified in port and portName fields.
         /// </summary>
         [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SSLHealthCheckPortSpecification>? PortSpecification { get; set; }
 
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         /// </summary>
         [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SSLHealthCheckProxyHeader>? ProxyHeader { get; set; }
 
         /// <summary>
         /// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.

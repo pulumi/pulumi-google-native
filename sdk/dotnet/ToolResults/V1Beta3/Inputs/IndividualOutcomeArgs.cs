@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public Input<int>? MultistepNumber { get; set; }
 
         [Input("outcomeSummary")]
-        public Input<string>? OutcomeSummary { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.IndividualOutcomeOutcomeSummary>? OutcomeSummary { get; set; }
 
         /// <summary>
         /// How long it took for this step to run.

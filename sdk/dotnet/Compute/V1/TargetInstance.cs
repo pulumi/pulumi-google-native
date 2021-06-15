@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
         /// </summary>
         [Input("natPolicy")]
-        public Input<string>? NatPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.TargetInstanceNatPolicy>? NatPolicy { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

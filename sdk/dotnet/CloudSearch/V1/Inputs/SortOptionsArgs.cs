@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         /// Ascending is the default sort order
         /// </summary>
         [Input("sortOrder")]
-        public Input<string>? SortOrder { get; set; }
+        public Input<Pulumi.GoogleNative.CloudSearch.V1.SortOptionsSortOrder>? SortOrder { get; set; }
 
         public SortOptionsArgs()
         {

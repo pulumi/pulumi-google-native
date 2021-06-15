@@ -226,7 +226,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RegionAutoscalerStatus>? Status { get; set; }
 
         [Input("statusDetails")]
         private InputList<Inputs.AutoscalerStatusDetailsArgs>? _statusDetails;

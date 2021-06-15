@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
         /// The current state of the environment.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Composer.V1Beta1.EnvironmentState>? State { get; set; }
 
         public EnvironmentArgs()
         {

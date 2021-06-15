@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// See go/stable-fleet-ug for more details.
         /// </summary>
         [Input("maintenanceInterval")]
-        public Input<string>? MaintenanceInterval { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>? MaintenanceInterval { get; set; }
 
         /// <summary>
         /// Minimum cpu platform the reservation.

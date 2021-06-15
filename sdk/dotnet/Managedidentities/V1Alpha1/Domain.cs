@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         /// The current state of this domain.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Managedidentities.V1Alpha1.DomainState>? State { get; set; }
 
         /// <summary>
         /// Additional information about the current status of this domain, if available.

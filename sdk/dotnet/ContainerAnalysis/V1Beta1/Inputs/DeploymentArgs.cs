@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// Platform hosting this deployment.
         /// </summary>
         [Input("platform")]
-        public Input<string>? Platform { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.DeploymentPlatform>? Platform { get; set; }
 
         [Input("resourceUri")]
         private InputList<string>? _resourceUri;

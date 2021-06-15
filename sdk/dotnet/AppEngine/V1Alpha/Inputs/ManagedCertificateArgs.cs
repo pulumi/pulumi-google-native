@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha.Inputs
         /// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Alpha.ManagedCertificateStatus>? Status { get; set; }
 
         public ManagedCertificateArgs()
         {

@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
         /// </summary>
         [Input("natPolicy")]
-        public Input<string>? NatPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.TargetInstanceNatPolicy>? NatPolicy { get; set; }
 
         /// <summary>
         /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.

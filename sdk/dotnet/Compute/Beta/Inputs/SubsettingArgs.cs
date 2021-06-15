@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class SubsettingArgs : Pulumi.ResourceArgs
     {
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SubsettingPolicy>? Policy { get; set; }
 
         public SubsettingArgs()
         {

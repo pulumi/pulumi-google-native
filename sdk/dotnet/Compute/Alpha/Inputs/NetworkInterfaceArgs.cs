@@ -69,7 +69,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Valid only if stackType is IPV4_IPV6.
         /// </summary>
         [Input("ipv6AccessType")]
-        public Input<string>? Ipv6AccessType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkInterfaceIpv6AccessType>? Ipv6AccessType { get; set; }
 
         /// <summary>
         /// [Output Only] An IPv6 internal network address for this network interface.
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         /// </summary>
         [Input("nicType")]
-        public Input<string>? NicType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkInterfaceNicType>? NicType { get; set; }
 
         /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// This field can be both set at instance creation and update network interface operations.
         /// </summary>
         [Input("stackType")]
-        public Input<string>? StackType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkInterfaceStackType>? StackType { get; set; }
 
         [Input("subinterfaces")]
         private InputList<Inputs.NetworkInterfaceSubInterfaceArgs>? _subinterfaces;

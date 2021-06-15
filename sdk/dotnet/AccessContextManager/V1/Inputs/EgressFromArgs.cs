@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         /// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
         /// </summary>
         [Input("identityType")]
-        public Input<string>? IdentityType { get; set; }
+        public Input<Pulumi.GoogleNative.AccessContextManager.V1.EgressFromIdentityType>? IdentityType { get; set; }
 
         public EgressFromArgs()
         {

@@ -214,7 +214,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
         [Input("connectMode")]
-        public Input<string>? ConnectMode { get; set; }
+        public Input<Pulumi.GoogleNative.Redis.V1Beta1.InstanceConnectMode>? ConnectMode { get; set; }
 
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
@@ -286,13 +286,13 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// Required. The service tier of the instance.
         /// </summary>
         [Input("tier")]
-        public Input<string>? Tier { get; set; }
+        public Input<Pulumi.GoogleNative.Redis.V1Beta1.InstanceTier>? Tier { get; set; }
 
         /// <summary>
         /// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         /// </summary>
         [Input("transitEncryptionMode")]
-        public Input<string>? TransitEncryptionMode { get; set; }
+        public Input<Pulumi.GoogleNative.Redis.V1Beta1.InstanceTransitEncryptionMode>? TransitEncryptionMode { get; set; }
 
         public InstanceArgs()
         {

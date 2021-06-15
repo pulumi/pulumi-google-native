@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Inputs
         /// Required. The allowed OS type.
         /// </summary>
         [Input("osType")]
-        public Input<string>? OsType { get; set; }
+        public Input<Pulumi.GoogleNative.AccessContextManager.V1Beta.OsConstraintOsType>? OsType { get; set; }
 
         /// <summary>
         /// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
         /// </summary>
         [Input("urlTypeHint")]
-        public Input<string>? UrlTypeHint { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint>? UrlTypeHint { get; set; }
 
         public GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs()
         {

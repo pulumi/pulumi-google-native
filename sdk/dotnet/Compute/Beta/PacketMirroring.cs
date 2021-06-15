@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The default is TRUE.
         /// </summary>
         [Input("enable")]
-        public Input<string>? Enable { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.PacketMirroringEnable>? Enable { get; set; }
 
         /// <summary>
         /// Filter for mirrored traffic. If unspecified, all traffic is mirrored.

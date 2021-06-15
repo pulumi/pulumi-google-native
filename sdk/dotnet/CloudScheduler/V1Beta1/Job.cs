@@ -226,7 +226,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         /// State of the job.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.CloudScheduler.V1Beta1.JobState>? State { get; set; }
 
         /// <summary>
         /// The response from the target for the last attempted execution.

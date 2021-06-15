@@ -16,26 +16,26 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     public sealed class DevicePolicyArgs : Pulumi.ResourceArgs
     {
         [Input("allowedDeviceManagementLevels")]
-        private InputList<string>? _allowedDeviceManagementLevels;
+        private InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedDeviceManagementLevelsItem>? _allowedDeviceManagementLevels;
 
         /// <summary>
         /// Allowed device management levels, an empty list allows all management levels.
         /// </summary>
-        public InputList<string> AllowedDeviceManagementLevels
+        public InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedDeviceManagementLevelsItem> AllowedDeviceManagementLevels
         {
-            get => _allowedDeviceManagementLevels ?? (_allowedDeviceManagementLevels = new InputList<string>());
+            get => _allowedDeviceManagementLevels ?? (_allowedDeviceManagementLevels = new InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedDeviceManagementLevelsItem>());
             set => _allowedDeviceManagementLevels = value;
         }
 
         [Input("allowedEncryptionStatuses")]
-        private InputList<string>? _allowedEncryptionStatuses;
+        private InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedEncryptionStatusesItem>? _allowedEncryptionStatuses;
 
         /// <summary>
         /// Allowed encryptions statuses, an empty list allows all statuses.
         /// </summary>
-        public InputList<string> AllowedEncryptionStatuses
+        public InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedEncryptionStatusesItem> AllowedEncryptionStatuses
         {
-            get => _allowedEncryptionStatuses ?? (_allowedEncryptionStatuses = new InputList<string>());
+            get => _allowedEncryptionStatuses ?? (_allowedEncryptionStatuses = new InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedEncryptionStatusesItem>());
             set => _allowedEncryptionStatuses = value;
         }
 

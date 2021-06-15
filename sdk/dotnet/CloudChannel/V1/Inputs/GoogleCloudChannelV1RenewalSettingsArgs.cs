@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         /// Describes how a reseller will be billed.
         /// </summary>
         [Input("paymentPlan")]
-        public Input<string>? PaymentPlan { get; set; }
+        public Input<Pulumi.GoogleNative.CloudChannel.V1.GoogleCloudChannelV1RenewalSettingsPaymentPlan>? PaymentPlan { get; set; }
 
         /// <summary>
         /// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.

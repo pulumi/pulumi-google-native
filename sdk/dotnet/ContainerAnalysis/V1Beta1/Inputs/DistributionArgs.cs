@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// The CPU architecture for which packages in this distribution channel were built.
         /// </summary>
         [Input("architecture")]
-        public Input<string>? Architecture { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.DistributionArchitecture>? Architecture { get; set; }
 
         /// <summary>
         /// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.

@@ -115,13 +115,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Input("postKeyRevocationActionType")]
-        public Input<string>? PostKeyRevocationActionType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesPostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
         /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
-        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
         /// Specifies the reservations that instances can consume from.

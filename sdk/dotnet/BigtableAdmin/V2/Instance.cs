@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Required. The type of the instance. Defaults to `PRODUCTION`.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.InstanceType>? Type { get; set; }
 
         public InstanceArgs()
         {

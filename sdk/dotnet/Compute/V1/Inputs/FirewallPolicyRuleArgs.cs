@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// The direction in which this rule applies.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.FirewallPolicyRuleDirection>? Direction { get; set; }
 
         /// <summary>
         /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.

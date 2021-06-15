@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         /// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
         /// </summary>
         [Input("sslManagementType")]
-        public Input<string>? SslManagementType { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.SslSettingsSslManagementType>? SslManagementType { get; set; }
 
         public SslSettingsArgs()
         {

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// How to use the ranking to select time series that pass through the filter.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.PickTimeSeriesFilterDirection>? Direction { get; set; }
 
         /// <summary>
         /// How many time series to allow to pass through the filter.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
         /// </summary>
         [Input("rankingMethod")]
-        public Input<string>? RankingMethod { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.PickTimeSeriesFilterRankingMethod>? RankingMethod { get; set; }
 
         public PickTimeSeriesFilterArgs()
         {

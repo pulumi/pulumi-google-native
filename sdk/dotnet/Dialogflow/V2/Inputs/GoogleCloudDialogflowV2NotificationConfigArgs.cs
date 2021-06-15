@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         /// Format of message.
         /// </summary>
         [Input("messageFormat")]
-        public Input<string>? MessageFormat { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2NotificationConfigMessageFormat>? MessageFormat { get; set; }
 
         /// <summary>
         /// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.

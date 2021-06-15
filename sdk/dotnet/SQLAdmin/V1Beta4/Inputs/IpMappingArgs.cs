@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.IpMappingType>? Type { get; set; }
 
         public IpMappingArgs()
         {

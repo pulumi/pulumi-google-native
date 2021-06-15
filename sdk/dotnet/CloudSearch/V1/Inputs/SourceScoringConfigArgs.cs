@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         /// Importance of the source.
         /// </summary>
         [Input("sourceImportance")]
-        public Input<string>? SourceImportance { get; set; }
+        public Input<Pulumi.GoogleNative.CloudSearch.V1.SourceScoringConfigSourceImportance>? SourceImportance { get; set; }
 
         public SourceScoringConfigArgs()
         {

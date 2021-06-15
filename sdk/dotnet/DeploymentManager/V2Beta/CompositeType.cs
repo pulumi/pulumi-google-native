@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public Input<string>? SelfLink { get; set; }
 
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.V2Beta.CompositeTypeStatus>? Status { get; set; }
 
         /// <summary>
         /// Files for the template type.

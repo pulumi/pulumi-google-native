@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         /// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
         /// </summary>
         [Input("rolloutStrategy")]
-        public Input<string>? RolloutStrategy { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.EndpointsApiServiceRolloutStrategy>? RolloutStrategy { get; set; }
 
         public EndpointsApiServiceArgs()
         {

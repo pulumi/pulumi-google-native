@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         /// Determines how messages that fail to parse are handled.
         /// </summary>
         [Input("schematizedParsingType")]
-        public Input<string>? SchematizedParsingType { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1.SchemaPackageSchematizedParsingType>? SchematizedParsingType { get; set; }
 
         [Input("types")]
         private InputList<Inputs.Hl7TypesConfigArgs>? _types;

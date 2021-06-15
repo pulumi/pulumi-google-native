@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
         /// </summary>
         [Input("combiningFunction")]
-        public Input<string>? CombiningFunction { get; set; }
+        public Input<Pulumi.GoogleNative.AccessContextManager.V1.BasicLevelCombiningFunction>? CombiningFunction { get; set; }
 
         [Input("conditions")]
         private InputList<Inputs.ConditionArgs>? _conditions;

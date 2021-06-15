@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
         /// </summary>
         [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SavedAttachedDiskInterface>? Interface { get; set; }
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SavedAttachedDiskMode>? Mode { get; set; }
 
         /// <summary>
         /// Specifies a URL of the disk attached to the source instance.
@@ -115,13 +115,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         /// </summary>
         [Input("storageBytesStatus")]
-        public Input<string>? StorageBytesStatus { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SavedAttachedDiskStorageBytesStatus>? StorageBytesStatus { get; set; }
 
         /// <summary>
         /// Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SavedAttachedDiskType>? Type { get; set; }
 
         public SavedAttachedDiskArgs()
         {

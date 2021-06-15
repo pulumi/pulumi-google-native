@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         /// Which interpreter (python or jinja) should be used during expansion.
         /// </summary>
         [Input("interpreter")]
-        public Input<string>? Interpreter { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.Alpha.TemplateContentsInterpreter>? Interpreter { get; set; }
 
         /// <summary>
         /// The filename of the mainTemplate
