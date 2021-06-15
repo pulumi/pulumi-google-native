@@ -52,6 +52,11 @@ func ToUpperCamel(s string) string {
 }
 
 func toCamelInitCase(s string, initCase bool) string {
+	if s == strings.ToUpper(s) {
+		// lowercase the UPPER_SNAKE_CASE
+		s = strings.ToLower(s)
+	}
+
 	s = strings.Trim(s, " ")
 	n := ""
 	capNext := initCase

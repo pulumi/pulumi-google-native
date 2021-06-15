@@ -34,7 +34,9 @@ const func = new google.cloudfunctions.v1.Function("function-py", {
     location: region,
     name: pulumi.interpolate`projects/${project}/locations/${region}/functions/${functionName}`,
     sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
-    httpsTrigger: {},
+    httpsTrigger: {
+        securityLevel: google.cloudfunctions.v1.HttpsTriggerSecurityLevel.SecureAlways,
+    },
     entryPoint: "handler",
     timeout: "60s",
     availableMemoryMb: 128,

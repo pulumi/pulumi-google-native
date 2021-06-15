@@ -48,7 +48,7 @@ const schema = new google.pubsub.v1.Schema("schema", {
         ],
     }),
     name: "my-schema",
-    type: "avro",
+    type: "AVRO",
 });
 
 // This is to test that an invoke works.
