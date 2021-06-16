@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
         /// </summary>
         [Input("commentControl")]
-        public Input<string>? CommentControl { get; set; }
+        public Input<Pulumi.GoogleNative.CloudBuild.V1.PullRequestFilterCommentControl>? CommentControl { get; set; }
 
         /// <summary>
         /// If true, branches that do NOT match the git_ref will trigger a build.

@@ -24,6 +24,9 @@ export * from "./taxonomy";
 export * from "./taxonomyIamPolicy";
 export * from "./taxonomyPolicyTagIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/datacatalog/v1beta1";
+
 // Import resources to register:
 import { Entry } from "./entry";
 import { EntryGroup } from "./entryGroup";

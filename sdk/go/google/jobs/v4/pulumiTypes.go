@@ -526,9 +526,9 @@ type CompensationEntryArgs struct {
 	// Compensation range.
 	Range CompensationRangePtrInput `pulumi:"range"`
 	// Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *CompensationEntryType `pulumi:"type"`
 	// Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	Unit *CompensationEntryUnit `pulumi:"unit"`
 }
 
 func (CompensationEntryArgs) ElementType() reflect.Type {
@@ -2624,7 +2624,7 @@ type ProcessingOptionsArgs struct {
 	// If set to `true`, the service does not attempt to resolve a more precise address for the job.
 	DisableStreetAddressResolution pulumi.BoolPtrInput `pulumi:"disableStreetAddressResolution"`
 	// Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-	HtmlSanitization pulumi.StringPtrInput `pulumi:"htmlSanitization"`
+	HtmlSanitization *ProcessingOptionsHtmlSanitization `pulumi:"htmlSanitization"`
 }
 
 func (ProcessingOptionsArgs) ElementType() reflect.Type {

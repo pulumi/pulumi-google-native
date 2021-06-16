@@ -122,7 +122,7 @@ type InstanceArgs struct {
 	Parent  pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// State of the instance.
-	State pulumi.StringPtrInput
+	State *InstanceStateEnum
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

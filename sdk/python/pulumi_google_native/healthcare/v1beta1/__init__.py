@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .annotation import *
 from .annotation_store import *
 from .attribute_definition import *

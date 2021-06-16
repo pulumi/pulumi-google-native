@@ -16,6 +16,9 @@ export * from "./getFeedbackMessage";
 export * from "./getInstruction";
 export * from "./instruction";
 
+// Export enums:
+export * from "../../types/enums/datalabeling/v1beta1";
+
 // Import resources to register:
 import { AnnotationSpecSet } from "./annotationSpecSet";
 import { Dataset } from "./dataset";

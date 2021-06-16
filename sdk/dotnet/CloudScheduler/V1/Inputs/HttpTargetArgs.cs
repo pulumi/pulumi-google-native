@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
         /// Which HTTP method to use for the request.
         /// </summary>
         [Input("httpMethod")]
-        public Input<string>? HttpMethod { get; set; }
+        public Input<Pulumi.GoogleNative.CloudScheduler.V1.HttpTargetHttpMethod>? HttpMethod { get; set; }
 
         /// <summary>
         /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.

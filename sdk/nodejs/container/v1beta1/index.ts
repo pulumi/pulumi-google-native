@@ -10,6 +10,9 @@ export * from "./getCluster";
 export * from "./getNodePool";
 export * from "./nodePool";
 
+// Export enums:
+export * from "../../types/enums/container/v1beta1";
+
 // Import resources to register:
 import { Cluster } from "./cluster";
 import { NodePool } from "./nodePool";

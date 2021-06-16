@@ -446,7 +446,7 @@ type InterconnectAttachmentArgs struct {
 	// - BPS_10G: 10 Gbit/s
 	// - BPS_20G: 20 Gbit/s
 	// - BPS_50G: 50 Gbit/s
-	Bandwidth pulumi.StringPtrInput
+	Bandwidth *InterconnectAttachmentBandwidth
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayInput
 	// [Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
@@ -463,12 +463,12 @@ type InterconnectAttachmentArgs struct {
 	// - AVAILABILITY_DOMAIN_ANY
 	// - AVAILABILITY_DOMAIN_1
 	// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
-	EdgeAvailabilityDomain pulumi.StringPtrInput
+	EdgeAvailabilityDomain *InterconnectAttachmentEdgeAvailabilityDomain
 	// Indicates the user-supplied encryption option of this interconnect attachment:
 	// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment.
 	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
 	//   Not currently available in all Interconnect locations.
-	Encryption pulumi.StringPtrInput
+	Encryption *InterconnectAttachmentEncryption
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
@@ -491,7 +491,7 @@ type InterconnectAttachmentArgs struct {
 	// [Output Only] The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
 	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
 	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-	OperationalStatus pulumi.StringPtrInput
+	OperationalStatus *InterconnectAttachmentOperationalStatus
 	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringPtrInput
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
@@ -517,12 +517,12 @@ type InterconnectAttachmentArgs struct {
 	// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
 	// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it.
 	// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
-	State pulumi.StringPtrInput
+	State *InterconnectAttachmentStateEnum
 	// The type of interconnect attachment this is, which can take one of the following values:
 	// - DEDICATED: an attachment to a Dedicated Interconnect.
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
 	// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
-	Type         pulumi.StringPtrInput
+	Type         *InterconnectAttachmentType
 	ValidateOnly pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntPtrInput

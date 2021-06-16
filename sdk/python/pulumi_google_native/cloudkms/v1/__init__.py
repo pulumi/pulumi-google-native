@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .crypto_key import *
 from .crypto_key_version import *
 from .get_crypto_key import *

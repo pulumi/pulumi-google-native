@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['PacketMirroringArgs', 'PacketMirroring']
@@ -20,7 +21,7 @@ class PacketMirroringArgs:
                  collector_ilb: Optional[pulumi.Input['PacketMirroringForwardingRuleInfoArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input['PacketMirroringEnable']] = None,
                  filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -36,7 +37,7 @@ class PacketMirroringArgs:
         :param pulumi.Input['PacketMirroringForwardingRuleInfoArgs'] collector_ilb: The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
+        :param pulumi.Input['PacketMirroringEnable'] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
                
                The default is TRUE.
         :param pulumi.Input['PacketMirroringFilterArgs'] filter: Filter for mirrored traffic. If unspecified, all traffic is mirrored.
@@ -138,7 +139,7 @@ class PacketMirroringArgs:
 
     @property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[str]]:
+    def enable(self) -> Optional[pulumi.Input['PacketMirroringEnable']]:
         """
         Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
 
@@ -147,7 +148,7 @@ class PacketMirroringArgs:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[str]]):
+    def enable(self, value: Optional[pulumi.Input['PacketMirroringEnable']]):
         pulumi.set(self, "enable", value)
 
     @property
@@ -266,7 +267,7 @@ class PacketMirroring(pulumi.CustomResource):
                  collector_ilb: Optional[pulumi.Input[pulumi.InputType['PacketMirroringForwardingRuleInfoArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input['PacketMirroringEnable']] = None,
                  filter: Optional[pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -287,7 +288,7 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PacketMirroringForwardingRuleInfoArgs']] collector_ilb: The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
+        :param pulumi.Input['PacketMirroringEnable'] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
                
                The default is TRUE.
         :param pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']] filter: Filter for mirrored traffic. If unspecified, all traffic is mirrored.
@@ -329,7 +330,7 @@ class PacketMirroring(pulumi.CustomResource):
                  collector_ilb: Optional[pulumi.Input[pulumi.InputType['PacketMirroringForwardingRuleInfoArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input['PacketMirroringEnable']] = None,
                  filter: Optional[pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,

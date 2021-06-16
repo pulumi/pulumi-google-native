@@ -10,6 +10,9 @@ export * from "./connectivityTestIamPolicy";
 export * from "./getConnectivityTest";
 export * from "./getConnectivityTestIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/networkmanagement/v1beta1";
+
 // Import resources to register:
 import { ConnectivityTest } from "./connectivityTest";
 import { ConnectivityTestIamPolicy } from "./connectivityTestIamPolicy";

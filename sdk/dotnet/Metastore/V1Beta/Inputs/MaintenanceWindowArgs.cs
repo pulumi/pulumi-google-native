@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         /// The day of week, when the window starts.
         /// </summary>
         [Input("dayOfWeek")]
-        public Input<string>? DayOfWeek { get; set; }
+        public Input<Pulumi.GoogleNative.Metastore.V1Beta.MaintenanceWindowDayOfWeek>? DayOfWeek { get; set; }
 
         /// <summary>
         /// The hour of day (0-23) when the window starts.

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1.Inputs
         /// The field's mode.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Firestore.V1Beta1.GoogleFirestoreAdminV1beta1IndexFieldMode>? Mode { get; set; }
 
         public GoogleFirestoreAdminV1beta1IndexFieldArgs()
         {

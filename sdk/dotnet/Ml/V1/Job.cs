@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// The detailed state of a job.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.JobState>? State { get; set; }
 
         /// <summary>
         /// Input parameters to create a training job.

@@ -22,6 +22,9 @@ export * from "./instanceIamPolicy";
 export * from "./instanceTableIamPolicy";
 export * from "./table";
 
+// Export enums:
+export * from "../../types/enums/bigtableadmin/v2";
+
 // Import resources to register:
 import { AppProfile } from "./appProfile";
 import { Backup } from "./backup";

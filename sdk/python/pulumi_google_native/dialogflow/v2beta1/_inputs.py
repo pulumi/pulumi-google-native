@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs',
@@ -292,24 +293,24 @@ class GoogleCloudDialogflowV2beta1FulfillmentArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1FulfillmentFeatureType']] = None):
         """
         Whether fulfillment is enabled for the specific feature.
-        :param pulumi.Input[str] type: The type of the feature that enabled for fulfillment.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1FulfillmentFeatureType'] type: The type of the feature that enabled for fulfillment.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1FulfillmentFeatureType']]:
         """
         The type of the feature that enabled for fulfillment.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1FulfillmentFeatureType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1085,7 +1086,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageArgs:
                  list_select: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs']] = None,
                  media_content: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs']] = None,
                  payload: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 platform: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessagePlatform']] = None,
                  quick_replies: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs']] = None,
                  rbm_carousel_rich_card: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs']] = None,
                  rbm_standalone_rich_card: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs']] = None,
@@ -1108,7 +1109,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs'] list_select: Displays a list card for Actions on Google.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs'] media_content: The media content card for Actions on Google.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] payload: A custom platform-specific response.
-        :param pulumi.Input[str] platform: Optional. The platform that this message is intended for.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessagePlatform'] platform: Optional. The platform that this message is intended for.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs'] quick_replies: Displays quick replies.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs'] rbm_carousel_rich_card: Rich Business Messaging (RBM) carousel rich card response.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs'] rbm_standalone_rich_card: Standalone Rich Business Messaging (RBM) rich card response.
@@ -1274,14 +1275,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageArgs:
 
     @property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[str]]:
+    def platform(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessagePlatform']]:
         """
         Optional. The platform that this message is intended for.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[str]]):
+    def platform(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessagePlatform']]):
         pulumi.set(self, "platform", value)
 
     @property
@@ -1572,11 +1573,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs:
     def __init__(__self__, *,
-                 image_display_options: Optional[pulumi.Input[str]] = None,
+                 image_display_options: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions']] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]]] = None):
         """
         Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
-        :param pulumi.Input[str] image_display_options: Optional. Settings for displaying the image. Applies to every image in items.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions'] image_display_options: Optional. Settings for displaying the image. Applies to every image in items.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]] items: Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
         """
         if image_display_options is not None:
@@ -1586,14 +1587,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs:
 
     @property
     @pulumi.getter(name="imageDisplayOptions")
-    def image_display_options(self) -> Optional[pulumi.Input[str]]:
+    def image_display_options(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions']]:
         """
         Optional. Settings for displaying the image. Applies to every image in items.
         """
         return pulumi.get(self, "image_display_options")
 
     @image_display_options.setter
-    def image_display_options(self, value: Optional[pulumi.Input[str]]):
+    def image_display_options(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions']]):
         pulumi.set(self, "image_display_options", value)
 
     @property
@@ -1701,11 +1702,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs:
     def __init__(__self__, *,
                  url: Optional[pulumi.Input[str]] = None,
-                 url_type_hint: Optional[pulumi.Input[str]] = None):
+                 url_type_hint: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']] = None):
         """
         Actions on Google action to open a given url.
         :param pulumi.Input[str] url: Required. URL
-        :param pulumi.Input[str] url_type_hint: Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint'] url_type_hint: Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
         """
         if url is not None:
             pulumi.set(__self__, "url", url)
@@ -1726,14 +1727,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
 
     @property
     @pulumi.getter(name="urlTypeHint")
-    def url_type_hint(self) -> Optional[pulumi.Input[str]]:
+    def url_type_hint(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']]:
         """
         Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
         """
         return pulumi.get(self, "url_type_hint")
 
     @url_type_hint.setter
-    def url_type_hint(self, value: Optional[pulumi.Input[str]]):
+    def url_type_hint(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']]):
         pulumi.set(self, "url_type_hint", value)
 
 
@@ -1949,11 +1950,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs:
 class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs:
     def __init__(__self__, *,
                  header: Optional[pulumi.Input[str]] = None,
-                 horizontal_alignment: Optional[pulumi.Input[str]] = None):
+                 horizontal_alignment: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment']] = None):
         """
         Column properties for TableCard.
         :param pulumi.Input[str] header: Required. Column heading.
-        :param pulumi.Input[str] horizontal_alignment: Optional. Defines text alignment for all cells in this column.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment'] horizontal_alignment: Optional. Defines text alignment for all cells in this column.
         """
         if header is not None:
             pulumi.set(__self__, "header", header)
@@ -1974,14 +1975,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs:
 
     @property
     @pulumi.getter(name="horizontalAlignment")
-    def horizontal_alignment(self) -> Optional[pulumi.Input[str]]:
+    def horizontal_alignment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment']]:
         """
         Optional. Defines text alignment for all cells in this column.
         """
         return pulumi.get(self, "horizontal_alignment")
 
     @horizontal_alignment.setter
-    def horizontal_alignment(self, value: Optional[pulumi.Input[str]]):
+    def horizontal_alignment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment']]):
         pulumi.set(self, "horizontal_alignment", value)
 
 
@@ -2197,11 +2198,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs:
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs:
     def __init__(__self__, *,
                  media_objects: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs']]]] = None,
-                 media_type: Optional[pulumi.Input[str]] = None):
+                 media_type: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType']] = None):
         """
         The media content card for Actions on Google.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs']]] media_objects: Required. List of media objects.
-        :param pulumi.Input[str] media_type: Optional. What type of media is the content (ie "audio").
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType'] media_type: Optional. What type of media is the content (ie "audio").
         """
         if media_objects is not None:
             pulumi.set(__self__, "media_objects", media_objects)
@@ -2222,14 +2223,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs:
 
     @property
     @pulumi.getter(name="mediaType")
-    def media_type(self) -> Optional[pulumi.Input[str]]:
+    def media_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType']]:
         """
         Optional. What type of media is the content (ie "audio").
         """
         return pulumi.get(self, "media_type")
 
     @media_type.setter
-    def media_type(self, value: Optional[pulumi.Input[str]]):
+    def media_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType']]):
         pulumi.set(self, "media_type", value)
 
 
@@ -2437,12 +2438,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs:
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs:
     def __init__(__self__, *,
                  file_uri: Optional[pulumi.Input[str]] = None,
-                 height: Optional[pulumi.Input[str]] = None,
+                 height: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight']] = None,
                  thumbnail_uri: Optional[pulumi.Input[str]] = None):
         """
         Rich Business Messaging (RBM) Media displayed in Cards The following media-types are currently supported: Image Types * image/jpeg * image/jpg' * image/gif * image/png Video Types * video/h263 * video/m4v * video/mp4 * video/mpeg * video/mpeg4 * video/webm
         :param pulumi.Input[str] file_uri: Required. Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
-        :param pulumi.Input[str] height: Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight'] height: Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
         :param pulumi.Input[str] thumbnail_uri: Optional. Publicly reachable URI of the thumbnail.If you don't provide a thumbnail URI, the RBM platform displays a blank placeholder thumbnail until the user's device downloads the file. Depending on the user's setting, the file may not download automatically and may require the user to tap a download button.
         """
         if file_uri is not None:
@@ -2466,14 +2467,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs:
 
     @property
     @pulumi.getter
-    def height(self) -> Optional[pulumi.Input[str]]:
+    def height(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight']]:
         """
         Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
         """
         return pulumi.get(self, "height")
 
     @height.setter
-    def height(self, value: Optional[pulumi.Input[str]]):
+    def height(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight']]):
         pulumi.set(self, "height", value)
 
     @property
@@ -2493,11 +2494,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs:
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs:
     def __init__(__self__, *,
                  card_contents: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs']]]] = None,
-                 card_width: Optional[pulumi.Input[str]] = None):
+                 card_width: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth']] = None):
         """
         Carousel Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. If you want to show a single card with more control over the layout, please use RbmStandaloneCard instead.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs']]] card_contents: Required. The cards in the carousel. A carousel must have at least 2 cards and at most 10.
-        :param pulumi.Input[str] card_width: Required. The width of the cards in the carousel.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth'] card_width: Required. The width of the cards in the carousel.
         """
         if card_contents is not None:
             pulumi.set(__self__, "card_contents", card_contents)
@@ -2518,14 +2519,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs:
 
     @property
     @pulumi.getter(name="cardWidth")
-    def card_width(self) -> Optional[pulumi.Input[str]]:
+    def card_width(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth']]:
         """
         Required. The width of the cards in the carousel.
         """
         return pulumi.get(self, "card_width")
 
     @card_width.setter
-    def card_width(self, value: Optional[pulumi.Input[str]]):
+    def card_width(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth']]):
         pulumi.set(self, "card_width", value)
 
 
@@ -2533,13 +2534,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs:
 class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs:
     def __init__(__self__, *,
                  card_content: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs']] = None,
-                 card_orientation: Optional[pulumi.Input[str]] = None,
-                 thumbnail_image_alignment: Optional[pulumi.Input[str]] = None):
+                 card_orientation: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation']] = None,
+                 thumbnail_image_alignment: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment']] = None):
         """
         Standalone Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. You can group multiple rich cards into one using RbmCarouselCard but carousel cards will give you less control over the card layout.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs'] card_content: Required. Card content.
-        :param pulumi.Input[str] card_orientation: Required. Orientation of the card.
-        :param pulumi.Input[str] thumbnail_image_alignment: Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation'] card_orientation: Required. Orientation of the card.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment'] thumbnail_image_alignment: Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
         """
         if card_content is not None:
             pulumi.set(__self__, "card_content", card_content)
@@ -2562,26 +2563,26 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs:
 
     @property
     @pulumi.getter(name="cardOrientation")
-    def card_orientation(self) -> Optional[pulumi.Input[str]]:
+    def card_orientation(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation']]:
         """
         Required. Orientation of the card.
         """
         return pulumi.get(self, "card_orientation")
 
     @card_orientation.setter
-    def card_orientation(self, value: Optional[pulumi.Input[str]]):
+    def card_orientation(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation']]):
         pulumi.set(self, "card_orientation", value)
 
     @property
     @pulumi.getter(name="thumbnailImageAlignment")
-    def thumbnail_image_alignment(self) -> Optional[pulumi.Input[str]]:
+    def thumbnail_image_alignment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment']]:
         """
         Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
         """
         return pulumi.get(self, "thumbnail_image_alignment")
 
     @thumbnail_image_alignment.setter
-    def thumbnail_image_alignment(self, value: Optional[pulumi.Input[str]]):
+    def thumbnail_image_alignment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment']]):
         pulumi.set(self, "thumbnail_image_alignment", value)
 
 
@@ -3440,13 +3441,13 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  parts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs']]]] = None,
                  times_added_count: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseType']] = None):
         """
         Represents an example that the agent is trained on.
         :param pulumi.Input[str] name: The unique identifier of this training phrase.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs']]] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
         :param pulumi.Input[int] times_added_count: Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
-        :param pulumi.Input[str] type: Required. The type of the training phrase.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseType'] type: Required. The type of the training phrase.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -3495,14 +3496,14 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseType']]:
         """
         Required. The type of the training phrase.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseType']]):
         pulumi.set(self, "type", value)
 
 
@@ -3605,11 +3606,11 @@ class GoogleCloudDialogflowV2beta1LoggingConfigArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1NotificationConfigArgs:
     def __init__(__self__, *,
-                 message_format: Optional[pulumi.Input[str]] = None,
+                 message_format: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat']] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Defines notification behavior.
-        :param pulumi.Input[str] message_format: Format of message.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat'] message_format: Format of message.
         :param pulumi.Input[str] topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
         """
         if message_format is not None:
@@ -3619,14 +3620,14 @@ class GoogleCloudDialogflowV2beta1NotificationConfigArgs:
 
     @property
     @pulumi.getter(name="messageFormat")
-    def message_format(self) -> Optional[pulumi.Input[str]]:
+    def message_format(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat']]:
         """
         Format of message.
         """
         return pulumi.get(self, "message_format")
 
     @message_format.setter
-    def message_format(self, value: Optional[pulumi.Input[str]]):
+    def message_format(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat']]):
         pulumi.set(self, "message_format", value)
 
     @property
@@ -3645,48 +3646,48 @@ class GoogleCloudDialogflowV2beta1NotificationConfigArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs:
     def __init__(__self__, *,
-                 speech_model_variant: Optional[pulumi.Input[str]] = None):
+                 speech_model_variant: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant']] = None):
         """
         Configures speech transcription for ConversationProfile.
-        :param pulumi.Input[str] speech_model_variant: Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant'] speech_model_variant: Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
         """
         if speech_model_variant is not None:
             pulumi.set(__self__, "speech_model_variant", speech_model_variant)
 
     @property
     @pulumi.getter(name="speechModelVariant")
-    def speech_model_variant(self) -> Optional[pulumi.Input[str]]:
+    def speech_model_variant(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant']]:
         """
         Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
         """
         return pulumi.get(self, "speech_model_variant")
 
     @speech_model_variant.setter
-    def speech_model_variant(self, value: Optional[pulumi.Input[str]]):
+    def speech_model_variant(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant']]):
         pulumi.set(self, "speech_model_variant", value)
 
 
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1SuggestionFeatureArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureType']] = None):
         """
         The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
-        :param pulumi.Input[str] type: Type of Human Agent Assistant API feature to request.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureType'] type: Type of Human Agent Assistant API feature to request.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureType']]:
         """
         Type of Human Agent Assistant API feature to request.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureType']]):
         pulumi.set(self, "type", value)
 
 
@@ -3694,13 +3695,13 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureArgs:
 class GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs:
     def __init__(__self__, *,
                  enable_text_to_speech: Optional[pulumi.Input[bool]] = None,
-                 output_audio_encoding: Optional[pulumi.Input[str]] = None,
+                 output_audio_encoding: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding']] = None,
                  sample_rate_hertz: Optional[pulumi.Input[int]] = None,
                  synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Instructs the speech synthesizer on how to generate the output audio content.
         :param pulumi.Input[bool] enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
-        :param pulumi.Input[str] output_audio_encoding: Required. Audio encoding of the synthesized audio content.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding'] output_audio_encoding: Required. Audio encoding of the synthesized audio content.
         :param pulumi.Input[int] sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
@@ -3727,14 +3728,14 @@ class GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs:
 
     @property
     @pulumi.getter(name="outputAudioEncoding")
-    def output_audio_encoding(self) -> Optional[pulumi.Input[str]]:
+    def output_audio_encoding(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding']]:
         """
         Required. Audio encoding of the synthesized audio content.
         """
         return pulumi.get(self, "output_audio_encoding")
 
     @output_audio_encoding.setter
-    def output_audio_encoding(self, value: Optional[pulumi.Input[str]]):
+    def output_audio_encoding(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding']]):
         pulumi.set(self, "output_audio_encoding", value)
 
     @property

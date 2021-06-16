@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -186,7 +186,7 @@ export interface CompanyArgs {
     /**
      * The employer's company size.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<enums.jobs.v4.CompanySize>;
     tenantId: pulumi.Input<string>;
     /**
      * The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
@@ -27,8 +28,8 @@ class CertificateAuthorityArgs:
                  lifetime: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['SubordinateConfigArgs']] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 tier: Optional[pulumi.Input['CertificateAuthorityTier']] = None,
+                 type: Optional[pulumi.Input['CertificateAuthorityType']] = None):
         """
         The set of arguments for constructing a CertificateAuthority resource.
         :param pulumi.Input['CertificateAuthorityPolicyArgs'] certificate_policy: Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
@@ -39,8 +40,8 @@ class CertificateAuthorityArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input['SubordinateConfigArgs'] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
-        :param pulumi.Input[str] tier: Required. Immutable. The Tier of this CertificateAuthority.
-        :param pulumi.Input[str] type: Required. Immutable. The Type of this CertificateAuthority.
+        :param pulumi.Input['CertificateAuthorityTier'] tier: Required. Immutable. The Tier of this CertificateAuthority.
+        :param pulumi.Input['CertificateAuthorityType'] type: Required. Immutable. The Type of this CertificateAuthority.
         """
         pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
         pulumi.set(__self__, "location", location)
@@ -202,26 +203,26 @@ class CertificateAuthorityArgs:
 
     @property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[str]]:
+    def tier(self) -> Optional[pulumi.Input['CertificateAuthorityTier']]:
         """
         Required. Immutable. The Tier of this CertificateAuthority.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[str]]):
+    def tier(self, value: Optional[pulumi.Input['CertificateAuthorityTier']]):
         pulumi.set(self, "tier", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['CertificateAuthorityType']]:
         """
         Required. Immutable. The Type of this CertificateAuthority.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['CertificateAuthorityType']]):
         pulumi.set(self, "type", value)
 
 
@@ -242,8 +243,8 @@ class CertificateAuthority(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['SubordinateConfigArgs']]] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input['CertificateAuthorityTier']] = None,
+                 type: Optional[pulumi.Input['CertificateAuthorityType']] = None,
                  __props__=None):
         """
         Create a new CertificateAuthority in a given Project and Location.
@@ -258,8 +259,8 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input[pulumi.InputType['SubordinateConfigArgs']] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
-        :param pulumi.Input[str] tier: Required. Immutable. The Tier of this CertificateAuthority.
-        :param pulumi.Input[str] type: Required. Immutable. The Type of this CertificateAuthority.
+        :param pulumi.Input['CertificateAuthorityTier'] tier: Required. Immutable. The Tier of this CertificateAuthority.
+        :param pulumi.Input['CertificateAuthorityType'] type: Required. Immutable. The Type of this CertificateAuthority.
         """
         ...
     @overload
@@ -297,8 +298,8 @@ class CertificateAuthority(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['SubordinateConfigArgs']]] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input['CertificateAuthorityTier']] = None,
+                 type: Optional[pulumi.Input['CertificateAuthorityType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

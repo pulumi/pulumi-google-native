@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
         /// Required. The redirect status code.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainRedirectType>? Type { get; set; }
 
         public DomainRedirectArgs()
         {

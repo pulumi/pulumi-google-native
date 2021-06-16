@@ -250,7 +250,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// The current migration job state.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.MigrationJobState>? State { get; set; }
 
         /// <summary>
         /// static ip connectivity data (default, no additional details needed).
@@ -262,7 +262,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// Required. The migration job type.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.MigrationJobType>? Type { get; set; }
 
         /// <summary>
         /// The details of the VPC network that the source database is located in.

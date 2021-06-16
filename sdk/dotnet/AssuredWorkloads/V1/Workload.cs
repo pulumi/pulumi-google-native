@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Required. Immutable. Compliance Regime associated with this workload.
         /// </summary>
         [Input("complianceRegime")]
-        public Input<string>? ComplianceRegime { get; set; }
+        public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.WorkloadComplianceRegime>? ComplianceRegime { get; set; }
 
         /// <summary>
         /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload

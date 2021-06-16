@@ -108,7 +108,7 @@ type SessionEntityTypeArgs struct {
 	// Required. The collection of entities to override or supplement the custom entity type.
 	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityArrayInput
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
-	EntityOverrideMode pulumi.StringPtrInput
+	EntityOverrideMode *SessionEntityTypeEntityOverrideMode
 	EnvironmentId      pulumi.StringInput
 	Location           pulumi.StringInput
 	// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.

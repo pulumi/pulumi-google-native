@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1.ChangeStatus>? Status { get; set; }
 
         public ChangeArgs()
         {

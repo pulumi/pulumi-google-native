@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs',
@@ -57,11 +58,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
     def __init__(__self__, *,
                  resource_id: Optional[pulumi.Input[str]] = None,
-                 resource_type: Optional[pulumi.Input[str]] = None):
+                 resource_type: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType']] = None):
         """
         Represent the custom settings for the resources to be created.
         :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
-        :param pulumi.Input[str] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType'] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
@@ -82,14 +83,14 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
 
     @property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[str]]:
+    def resource_type(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType']]:
         """
         Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[str]]):
+    def resource_type(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType']]):
         pulumi.set(self, "resource_type", value)
 
 

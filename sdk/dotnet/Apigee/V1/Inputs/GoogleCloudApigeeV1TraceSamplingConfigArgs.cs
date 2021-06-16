@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         /// Sampler of distributed tracing. OFF is the default value.
         /// </summary>
         [Input("sampler")]
-        public Input<string>? Sampler { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.GoogleCloudApigeeV1TraceSamplingConfigSampler>? Sampler { get; set; }
 
         /// <summary>
         /// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are &gt; 0 and &lt;= 0.5.

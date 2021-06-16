@@ -32,7 +32,7 @@ type AutoscalingSettingsInput interface {
 // Settings for WorkerPool autoscaling.
 type AutoscalingSettingsArgs struct {
 	// The algorithm to use for autoscaling.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	Algorithm *AutoscalingSettingsAlgorithm `pulumi:"algorithm"`
 	// The maximum number of workers to cap scaling at.
 	MaxNumWorkers pulumi.IntPtrInput `pulumi:"maxNumWorkers"`
 }
@@ -2367,7 +2367,7 @@ type EnvironmentArgs struct {
 	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
 	Experiments pulumi.StringArrayInput `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
-	FlexResourceSchedulingGoal pulumi.StringPtrInput `pulumi:"flexResourceSchedulingGoal"`
+	FlexResourceSchedulingGoal *EnvironmentFlexResourceSchedulingGoal `pulumi:"flexResourceSchedulingGoal"`
 	// Experimental settings.
 	InternalExperiments pulumi.StringMapInput `pulumi:"internalExperiments"`
 	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
@@ -3194,7 +3194,7 @@ type ExecutionStageStateArgs struct {
 	// The name of the execution stage.
 	ExecutionStageName pulumi.StringPtrInput `pulumi:"executionStageName"`
 	// Executions stage states allow the same set of values as JobState.
-	ExecutionStageState pulumi.StringPtrInput `pulumi:"executionStageState"`
+	ExecutionStageState *ExecutionStageStateExecutionStageState `pulumi:"executionStageState"`
 }
 
 func (ExecutionStageStateArgs) ElementType() reflect.Type {
@@ -3444,7 +3444,7 @@ type ExecutionStageSummaryArgs struct {
 	// Input sources for this stage.
 	InputSource StageSourceArrayInput `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	Kind *ExecutionStageSummaryKind `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Output sources for this stage.
@@ -5398,7 +5398,7 @@ type RuntimeEnvironmentArgs struct {
 	// Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine pulumi.BoolPtrInput `pulumi:"enableStreamingEngine"`
 	// Configuration for VM IPs.
-	IpConfiguration pulumi.StringPtrInput `pulumi:"ipConfiguration"`
+	IpConfiguration *RuntimeEnvironmentIpConfiguration `pulumi:"ipConfiguration"`
 	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The machine type to use for the job. Defaults to the value from the template if not specified.
@@ -6325,7 +6325,7 @@ type SdkVersionInput interface {
 // The version of the SDK used to run the job.
 type SdkVersionArgs struct {
 	// The support status for this SDK version.
-	SdkSupportStatus pulumi.StringPtrInput `pulumi:"sdkSupportStatus"`
+	SdkSupportStatus *SdkVersionSdkSupportStatus `pulumi:"sdkSupportStatus"`
 	// The version of the SDK used to run the job.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 	// A readable string describing the version of the SDK.
@@ -8444,7 +8444,7 @@ type TransformSummaryArgs struct {
 	// User names for all collection inputs to this transform.
 	InputCollectionName pulumi.StringArrayInput `pulumi:"inputCollectionName"`
 	// Type of transform.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	Kind *TransformSummaryKind `pulumi:"kind"`
 	// User provided name for this transform instance.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// User names for all collection outputs to this transform.
@@ -8753,7 +8753,7 @@ type WorkerPoolArgs struct {
 	// Data disks that are used by a VM in this workflow.
 	DataDisks DiskArrayInput `pulumi:"dataDisks"`
 	// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
-	DefaultPackageSet pulumi.StringPtrInput `pulumi:"defaultPackageSet"`
+	DefaultPackageSet *WorkerPoolDefaultPackageSet `pulumi:"defaultPackageSet"`
 	// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Fully qualified source image for disks.
@@ -8761,7 +8761,7 @@ type WorkerPoolArgs struct {
 	// Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Configuration for VM IPs.
-	IpConfiguration pulumi.StringPtrInput `pulumi:"ipConfiguration"`
+	IpConfiguration *WorkerPoolIpConfiguration `pulumi:"ipConfiguration"`
 	// The kind of the worker pool; currently only `harness` and `shuffle` are supported.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a reasonable default.
@@ -8787,7 +8787,7 @@ type WorkerPoolArgs struct {
 	// Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
 	TaskrunnerSettings TaskRunnerSettingsPtrInput `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
-	TeardownPolicy pulumi.StringPtrInput `pulumi:"teardownPolicy"`
+	TeardownPolicy *WorkerPoolTeardownPolicy `pulumi:"teardownPolicy"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }

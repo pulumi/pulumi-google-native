@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -367,7 +367,7 @@ export interface VersionArgs {
     /**
      * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
      */
-    inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
+    inboundServices?: pulumi.Input<pulumi.Input<enums.appengine.v1.VersionInboundServicesItem>[]>;
     /**
      * Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
      */
@@ -428,7 +428,7 @@ export interface VersionArgs {
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
      */
-    servingStatus?: pulumi.Input<string>;
+    servingStatus?: pulumi.Input<enums.appengine.v1.VersionServingStatus>;
     /**
      * Whether multiple requests can be dispatched to this version at once.
      */

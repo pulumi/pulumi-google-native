@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
@@ -29,7 +30,7 @@ class PublicAdvertisedPrefixArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None):
         """
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
@@ -46,7 +47,7 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL with id for the resource.
         :param pulumi.Input[str] shared_secret: [Output Only] The shared secret to be used for reverse DNS verification.
-        :param pulumi.Input[str] status: The status of the public advertised prefix.
+        :param pulumi.Input['PublicAdvertisedPrefixStatus'] status: The status of the public advertised prefix.
         """
         pulumi.set(__self__, "project", project)
         if creation_timestamp is not None:
@@ -244,14 +245,14 @@ class PublicAdvertisedPrefixArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['PublicAdvertisedPrefixStatus']]:
         """
         The status of the public advertised prefix.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -274,7 +275,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None,
                  __props__=None):
         """
         Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
@@ -295,7 +296,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL with id for the resource.
         :param pulumi.Input[str] shared_secret: [Output Only] The shared secret to be used for reverse DNS verification.
-        :param pulumi.Input[str] status: The status of the public advertised prefix.
+        :param pulumi.Input['PublicAdvertisedPrefixStatus'] status: The status of the public advertised prefix.
         """
         ...
     @overload
@@ -335,7 +336,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

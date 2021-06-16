@@ -106,7 +106,7 @@ type responsePolicyRuleArgs struct {
 // The set of arguments for constructing a ResponsePolicyRule resource.
 type ResponsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
-	Behavior          pulumi.StringPtrInput
+	Behavior          *ResponsePolicyRuleBehavior
 	ClientOperationId pulumi.StringPtrInput
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringPtrInput

@@ -333,7 +333,7 @@ type InstanceGroupManagerArgs struct {
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyPtrInput
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-	FailoverAction pulumi.StringPtrInput
+	FailoverAction *InstanceGroupManagerFailoverAction
 	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
 	//
 	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.

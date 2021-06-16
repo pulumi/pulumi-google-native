@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// The log_name to populate in the Cloud Audit Record.
         /// </summary>
         [Input("logName")]
-        public Input<string>? LogName { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.LogConfigCloudAuditOptionsLogName>? LogName { get; set; }
 
         public LogConfigCloudAuditOptionsArgs()
         {

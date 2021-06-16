@@ -38,13 +38,13 @@ type ApiConfigHandlerInput interface {
 // Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
 type ApiConfigHandlerArgs struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
-	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
+	AuthFailAction *ApiConfigHandlerAuthFailAction `pulumi:"authFailAction"`
 	// Level of login required to access this resource. Defaults to optional.
-	Login pulumi.StringPtrInput `pulumi:"login"`
+	Login *ApiConfigHandlerLogin `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script pulumi.StringPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	SecurityLevel *ApiConfigHandlerSecurityLevel `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -4247,7 +4247,7 @@ type EndpointsApiServiceArgs struct {
 	// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-	RolloutStrategy pulumi.StringPtrInput `pulumi:"rolloutStrategy"`
+	RolloutStrategy *EndpointsApiServiceRolloutStrategy `pulumi:"rolloutStrategy"`
 }
 
 func (EndpointsApiServiceArgs) ElementType() reflect.Type {
@@ -4889,7 +4889,7 @@ type ErrorHandlerInput interface {
 // Custom static error page to be served when an error occurs.
 type ErrorHandlerArgs struct {
 	// Error condition this handler applies to.
-	ErrorCode pulumi.StringPtrInput `pulumi:"errorCode"`
+	ErrorCode *ErrorHandlerErrorCode `pulumi:"errorCode"`
 	// MIME type of file. Defaults to text/html.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
 	// Static file content to be served for this error.
@@ -7023,7 +7023,7 @@ type ManagedCertificateArgs struct {
 	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
 	LastRenewalTime pulumi.StringPtrInput `pulumi:"lastRenewalTime"`
 	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status *ManagedCertificateStatus `pulumi:"status"`
 }
 
 func (ManagedCertificateArgs) ElementType() reflect.Type {
@@ -9205,7 +9205,7 @@ type ResourceRecordArgs struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
 	// Resource record type. Example: AAAA.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *ResourceRecordType `pulumi:"type"`
 }
 
 func (ResourceRecordArgs) ElementType() reflect.Type {
@@ -10050,7 +10050,7 @@ type SslSettingsArgs struct {
 	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
 	PendingManagedCertificateId pulumi.StringPtrInput `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
-	SslManagementType pulumi.StringPtrInput `pulumi:"sslManagementType"`
+	SslManagementType *SslSettingsSslManagementType `pulumi:"sslManagementType"`
 }
 
 func (SslSettingsArgs) ElementType() reflect.Type {
@@ -11377,15 +11377,15 @@ type UrlMapArgs struct {
 	// Uses API Endpoints to handle requests.
 	ApiEndpoint ApiEndpointHandlerPtrInput `pulumi:"apiEndpoint"`
 	// Action to take when users access resources that require authentication. Defaults to redirect.
-	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
+	AuthFailAction *UrlMapAuthFailAction `pulumi:"authFailAction"`
 	// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-	Login pulumi.StringPtrInput `pulumi:"login"`
+	Login *UrlMapLogin `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field. Defaults to 302.
-	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
+	RedirectHttpResponseCode *UrlMapRedirectHttpResponseCode `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
 	Script ScriptHandlerPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	SecurityLevel *UrlMapSecurityLevel `pulumi:"securityLevel"`
 	// Returns the contents of a file, such as an image, as the response.
 	StaticFiles StaticFilesHandlerPtrInput `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.

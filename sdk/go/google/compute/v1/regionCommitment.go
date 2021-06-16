@@ -191,7 +191,7 @@ type regionCommitmentArgs struct {
 // The set of arguments for constructing a RegionCommitment resource.
 type RegionCommitmentArgs struct {
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category pulumi.StringPtrInput
+	Category *RegionCommitmentCategory
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -207,7 +207,7 @@ type RegionCommitmentArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-	Plan    pulumi.StringPtrInput
+	Plan    *RegionCommitmentPlan
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where this commitment may be used.
 	Region    pulumi.StringInput
@@ -221,7 +221,7 @@ type RegionCommitmentArgs struct {
 	// [Output Only] Commitment start time in RFC3339 text format.
 	StartTimestamp pulumi.StringPtrInput
 	// [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-	Status pulumi.StringPtrInput
+	Status *RegionCommitmentStatus
 	// [Output Only] An optional, human-readable explanation of the status.
 	StatusMessage pulumi.StringPtrInput
 }

@@ -1725,7 +1725,7 @@ type GoogleCloudChannelV1PeriodArgs struct {
 	// Total duration of Period Type defined.
 	Duration pulumi.IntPtrInput `pulumi:"duration"`
 	// Period Type.
-	PeriodType pulumi.StringPtrInput `pulumi:"periodType"`
+	PeriodType *GoogleCloudChannelV1PeriodPeriodType `pulumi:"periodType"`
 }
 
 func (GoogleCloudChannelV1PeriodArgs) ElementType() reflect.Type {
@@ -2211,7 +2211,7 @@ type GoogleCloudChannelV1RenewalSettingsArgs struct {
 	// Describes how frequently the reseller will be billed, such as once per month.
 	PaymentCycle GoogleCloudChannelV1PeriodPtrInput `pulumi:"paymentCycle"`
 	// Describes how a reseller will be billed.
-	PaymentPlan pulumi.StringPtrInput `pulumi:"paymentPlan"`
+	PaymentPlan *GoogleCloudChannelV1RenewalSettingsPaymentPlan `pulumi:"paymentPlan"`
 	// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
 	ResizeUnitCount pulumi.BoolPtrInput `pulumi:"resizeUnitCount"`
 }

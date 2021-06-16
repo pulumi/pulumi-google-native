@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['EntityTypeArgs', 'EntityType']
@@ -18,23 +19,23 @@ class EntityTypeArgs:
                  agent_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 auto_expansion_mode: Optional[pulumi.Input[str]] = None,
+                 auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]] = None,
                  excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redact: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EntityType resource.
-        :param pulumi.Input[str] auto_expansion_mode: Indicates whether the entity type can be automatically expanded.
+        :param pulumi.Input['EntityTypeAutoExpansionMode'] auto_expansion_mode: Indicates whether the entity type can be automatically expanded.
         :param pulumi.Input[str] display_name: Required. The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-        :param pulumi.Input[str] kind: Required. Indicates the kind of entity type.
+        :param pulumi.Input['EntityTypeKind'] kind: Required. Indicates the kind of entity type.
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
         :param pulumi.Input[bool] redact: Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         """
@@ -89,14 +90,14 @@ class EntityTypeArgs:
 
     @property
     @pulumi.getter(name="autoExpansionMode")
-    def auto_expansion_mode(self) -> Optional[pulumi.Input[str]]:
+    def auto_expansion_mode(self) -> Optional[pulumi.Input['EntityTypeAutoExpansionMode']]:
         """
         Indicates whether the entity type can be automatically expanded.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
     @auto_expansion_mode.setter
-    def auto_expansion_mode(self, value: Optional[pulumi.Input[str]]):
+    def auto_expansion_mode(self, value: Optional[pulumi.Input['EntityTypeAutoExpansionMode']]):
         pulumi.set(self, "auto_expansion_mode", value)
 
     @property
@@ -149,14 +150,14 @@ class EntityTypeArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['EntityTypeKind']]:
         """
         Required. Indicates the kind of entity type.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['EntityTypeKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -199,12 +200,12 @@ class EntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 auto_expansion_mode: Optional[pulumi.Input[str]] = None,
+                 auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]]] = None,
                  excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -216,12 +217,12 @@ class EntityType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auto_expansion_mode: Indicates whether the entity type can be automatically expanded.
+        :param pulumi.Input['EntityTypeAutoExpansionMode'] auto_expansion_mode: Indicates whether the entity type can be automatically expanded.
         :param pulumi.Input[str] display_name: Required. The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-        :param pulumi.Input[str] kind: Required. Indicates the kind of entity type.
+        :param pulumi.Input['EntityTypeKind'] kind: Required. Indicates the kind of entity type.
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
         :param pulumi.Input[bool] redact: Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         """
@@ -250,12 +251,12 @@ class EntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 auto_expansion_mode: Optional[pulumi.Input[str]] = None,
+                 auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]]] = None,
                  excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

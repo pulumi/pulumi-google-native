@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// Defines operating mode for this policy.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.AutoscalingPolicyMode>? Mode { get; set; }
 
         [Input("scaleInControl")]
         public Input<Inputs.AutoscalingPolicyScaleInControlArgs>? ScaleInControl { get; set; }

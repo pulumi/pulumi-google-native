@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'InstanceMessageArgs',
@@ -17,10 +18,10 @@ __all__ = [
 @pulumi.input_type
 class InstanceMessageArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[str]] = None,
+                 code: Optional[pulumi.Input['InstanceMessageCode']] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] code: A code that correspond to one type of user-facing message.
+        :param pulumi.Input['InstanceMessageCode'] code: A code that correspond to one type of user-facing message.
         :param pulumi.Input[str] message: Message on memcached instance which will be exposed to users.
         """
         if code is not None:
@@ -30,14 +31,14 @@ class InstanceMessageArgs:
 
     @property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
+    def code(self) -> Optional[pulumi.Input['InstanceMessageCode']]:
         """
         A code that correspond to one type of user-facing message.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
+    def code(self, value: Optional[pulumi.Input['InstanceMessageCode']]):
         pulumi.set(self, "code", value)
 
     @property

@@ -102,7 +102,7 @@ type ParticipantArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
-	Role pulumi.StringPtrInput
+	Role *ParticipantRole
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
 	SipRecordingMediaLabel pulumi.StringPtrInput
 }

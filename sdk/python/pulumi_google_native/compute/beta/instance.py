@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -43,8 +44,8 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
-                 post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -60,7 +61,7 @@ class InstanceArgs:
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['InstanceStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input['TagsArgs']] = None):
         """
@@ -104,8 +105,8 @@ class InstanceArgs:
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-        :param pulumi.Input[str] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
-        :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
@@ -119,7 +120,7 @@ class InstanceArgs:
         :param pulumi.Input[str] source_machine_image: Source machine image
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input[bool] start_restricted: [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-        :param pulumi.Input[str] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        :param pulumi.Input['InstanceStatus'] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
@@ -561,26 +562,26 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="postKeyRevocationActionType")
-    def post_key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+    def post_key_revocation_action_type(self) -> Optional[pulumi.Input['InstancePostKeyRevocationActionType']]:
         """
         PostKeyRevocationActionType of the instance.
         """
         return pulumi.get(self, "post_key_revocation_action_type")
 
     @post_key_revocation_action_type.setter
-    def post_key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+    def post_key_revocation_action_type(self, value: Optional[pulumi.Input['InstancePostKeyRevocationActionType']]):
         pulumi.set(self, "post_key_revocation_action_type", value)
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[str]]:
+    def private_ipv6_google_access(self) -> Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]:
         """
         The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[str]]):
+    def private_ipv6_google_access(self, value: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
@@ -755,14 +756,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['InstanceStatus']]:
         """
         [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['InstanceStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -821,8 +822,8 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
-                 post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
@@ -839,7 +840,7 @@ class Instance(pulumi.CustomResource):
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['InstanceStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -887,8 +888,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-        :param pulumi.Input[str] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
-        :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
@@ -902,7 +903,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] source_machine_image: Source machine image
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input[bool] start_restricted: [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-        :param pulumi.Input[str] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        :param pulumi.Input['InstanceStatus'] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
         :param pulumi.Input[pulumi.InputType['TagsArgs']] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -957,8 +958,8 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
-                 post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
@@ -975,7 +976,7 @@ class Instance(pulumi.CustomResource):
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['InstanceStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,

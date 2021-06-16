@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -190,7 +190,7 @@ export interface RatePlanArgs {
     /**
      * Frequency at which the customer will be billed.
      */
-    billingPeriod?: pulumi.Input<string>;
+    billingPeriod?: pulumi.Input<enums.apigee.v1.RatePlanBillingPeriod>;
     /**
      * API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ``` { "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, } ``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
      */
@@ -198,7 +198,7 @@ export interface RatePlanArgs {
     /**
      * Pricing model used for consumption-based charges.
      */
-    consumptionPricingType?: pulumi.Input<string>;
+    consumptionPricingType?: pulumi.Input<enums.apigee.v1.RatePlanConsumptionPricingType>;
     /**
      * Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
      */
@@ -227,7 +227,7 @@ export interface RatePlanArgs {
     /**
      * Flag that specifies the billing account type, prepaid or postpaid.
      */
-    paymentFundingModel?: pulumi.Input<string>;
+    paymentFundingModel?: pulumi.Input<enums.apigee.v1.RatePlanPaymentFundingModel>;
     /**
      * Details of the revenue sharing model.
      */
@@ -235,7 +235,7 @@ export interface RatePlanArgs {
     /**
      * Method used to calculate the revenue that is shared with developers.
      */
-    revenueShareType?: pulumi.Input<string>;
+    revenueShareType?: pulumi.Input<enums.apigee.v1.RatePlanRevenueShareType>;
     /**
      * Initial, one-time fee paid when purchasing the API product.
      */
@@ -247,5 +247,5 @@ export interface RatePlanArgs {
     /**
      * Current state of the rate plan (draft or published).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.apigee.v1.RatePlanState>;
 }

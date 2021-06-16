@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['RegionTargetHttpsProxyArgs', 'RegionTargetHttpsProxy']
 
@@ -25,7 +26,7 @@ class RegionTargetHttpsProxyArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
-                 quic_override: Optional[pulumi.Input[str]] = None,
+                 quic_override: Optional[pulumi.Input['RegionTargetHttpsProxyQuicOverride']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -54,7 +55,7 @@ class RegionTargetHttpsProxyArgs:
                When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
                
                The default is false.
-        :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
+        :param pulumi.Input['RegionTargetHttpsProxyQuicOverride'] quic_override: Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
                - When quic-override is set to NONE, Google manages whether QUIC is used. 
                - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
                - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
@@ -262,7 +263,7 @@ class RegionTargetHttpsProxyArgs:
 
     @property
     @pulumi.getter(name="quicOverride")
-    def quic_override(self) -> Optional[pulumi.Input[str]]:
+    def quic_override(self) -> Optional[pulumi.Input['RegionTargetHttpsProxyQuicOverride']]:
         """
         Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
         - When quic-override is set to NONE, Google manages whether QUIC is used. 
@@ -273,7 +274,7 @@ class RegionTargetHttpsProxyArgs:
         return pulumi.get(self, "quic_override")
 
     @quic_override.setter
-    def quic_override(self, value: Optional[pulumi.Input[str]]):
+    def quic_override(self, value: Optional[pulumi.Input['RegionTargetHttpsProxyQuicOverride']]):
         pulumi.set(self, "quic_override", value)
 
     @property
@@ -380,7 +381,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
-                 quic_override: Optional[pulumi.Input[str]] = None,
+                 quic_override: Optional[pulumi.Input['RegionTargetHttpsProxyQuicOverride']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -413,7 +414,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
                
                The default is false.
-        :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
+        :param pulumi.Input['RegionTargetHttpsProxyQuicOverride'] quic_override: Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
                - When quic-override is set to NONE, Google manages whether QUIC is used. 
                - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
                - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
@@ -467,7 +468,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
-                 quic_override: Optional[pulumi.Input[str]] = None,
+                 quic_override: Optional[pulumi.Input['RegionTargetHttpsProxyQuicOverride']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Required
         /// </summary>
         [Input("action")]
-        public Input<string>? Action { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RuleAction>? Action { get; set; }
 
         [Input("conditions")]
         private InputList<Inputs.ConditionArgs>? _conditions;

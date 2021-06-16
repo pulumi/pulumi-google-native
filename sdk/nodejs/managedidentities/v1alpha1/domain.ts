@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -184,7 +184,7 @@ export interface DomainArgs {
     /**
      * The current state of this domain.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.managedidentities.v1alpha1.DomainState>;
     /**
      * Additional information about the current status of this domain, if available.
      */

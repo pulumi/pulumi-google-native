@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getPipeline";
 export * from "./pipeline";
 
+// Export enums:
+export * from "../../types/enums/genomics/v1alpha2";
+
 // Import resources to register:
 import { Pipeline } from "./pipeline";
 

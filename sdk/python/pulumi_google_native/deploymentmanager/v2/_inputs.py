@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AuditConfigArgs',
@@ -70,11 +71,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -95,14 +96,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -450,7 +451,7 @@ class OperationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['OperationStatus']] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  target_link: Optional[pulumi.Input[str]] = None,
@@ -475,7 +476,7 @@ class OperationArgs:
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] start_time: [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
-        :param pulumi.Input[str] status: [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
+        :param pulumi.Input['OperationStatus'] status: [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
         :param pulumi.Input[str] status_message: [Output Only] An optional textual description of the current status of the operation.
         :param pulumi.Input[str] target_id: [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
         :param pulumi.Input[str] target_link: [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
@@ -724,14 +725,14 @@ class OperationArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['OperationStatus']]:
         """
         [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['OperationStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -889,11 +890,11 @@ class OperationErrorErrorsItemArgs:
 @pulumi.input_type
 class OperationWarningsItemArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[str]] = None,
+                 code: Optional[pulumi.Input['OperationWarningsItemCode']] = None,
                  data: Optional[pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemDataItemArgs']]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param pulumi.Input['OperationWarningsItemCode'] code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         :param pulumi.Input[Sequence[pulumi.Input['OperationWarningsItemDataItemArgs']]] data: [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
         :param pulumi.Input[str] message: [Output Only] A human-readable description of the warning code.
         """
@@ -906,14 +907,14 @@ class OperationWarningsItemArgs:
 
     @property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
+    def code(self) -> Optional[pulumi.Input['OperationWarningsItemCode']]:
         """
         [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
+    def code(self, value: Optional[pulumi.Input['OperationWarningsItemCode']]):
         pulumi.set(self, "code", value)
 
     @property

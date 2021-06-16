@@ -526,9 +526,9 @@ type InstanceArgs struct {
 	NetworkInterfaces        NetworkInterfaceArrayInput
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput
 	// PostKeyRevocationActionType of the instance.
-	PostKeyRevocationActionType pulumi.StringPtrInput
+	PostKeyRevocationActionType *InstancePostKeyRevocationActionType
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
-	PrivateIpv6GoogleAccess pulumi.StringPtrInput
+	PrivateIpv6GoogleAccess *InstancePrivateIpv6GoogleAccess
 	Project                 pulumi.StringInput
 	RequestId               pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
@@ -559,7 +559,7 @@ type InstanceArgs struct {
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted pulumi.BoolPtrInput
 	// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
-	Status pulumi.StringPtrInput
+	Status *InstanceStatus
 	// [Output Only] An optional, human-readable explanation of the status.
 	StatusMessage pulumi.StringPtrInput
 	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.

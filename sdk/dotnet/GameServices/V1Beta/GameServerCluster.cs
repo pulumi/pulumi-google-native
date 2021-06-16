@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         /// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         /// </summary>
         [Input("allocationPriority")]
-        public Input<string>? AllocationPriority { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1Beta.GameServerClusterAllocationPriority>? AllocationPriority { get; set; }
 
         /// <summary>
         /// The game server cluster connection information. This information is used to manage game server clusters.

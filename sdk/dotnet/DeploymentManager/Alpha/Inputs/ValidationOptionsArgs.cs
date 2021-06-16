@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         /// Customize how deployment manager will validate the resource against schema errors.
         /// </summary>
         [Input("schemaValidation")]
-        public Input<string>? SchemaValidation { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.Alpha.ValidationOptionsSchemaValidation>? SchemaValidation { get; set; }
 
         /// <summary>
         /// Specify what to do with extra properties when executing a request.
         /// </summary>
         [Input("undeclaredProperties")]
-        public Input<string>? UndeclaredProperties { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.Alpha.ValidationOptionsUndeclaredProperties>? UndeclaredProperties { get; set; }
 
         public ValidationOptionsArgs()
         {

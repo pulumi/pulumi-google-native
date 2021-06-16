@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InstructionArgs', 'Instruction']
@@ -18,7 +19,7 @@ class InstructionArgs:
                  project: pulumi.Input[str],
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 data_type: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -28,7 +29,7 @@ class InstructionArgs:
         The set of arguments for constructing a Instruction resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the instruction.
         :param pulumi.Input[str] create_time: Creation time of instruction.
-        :param pulumi.Input[str] data_type: Required. The data type of this instruction.
+        :param pulumi.Input['InstructionDataType'] data_type: Required. The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
         :param pulumi.Input[str] name: Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
@@ -88,14 +89,14 @@ class InstructionArgs:
 
     @property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[str]]:
+    def data_type(self) -> Optional[pulumi.Input['InstructionDataType']]:
         """
         Required. The data type of this instruction.
         """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[str]]):
+    def data_type(self, value: Optional[pulumi.Input['InstructionDataType']]):
         pulumi.set(self, "data_type", value)
 
     @property
@@ -166,7 +167,7 @@ class Instruction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 data_type: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -181,7 +182,7 @@ class Instruction(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the instruction.
         :param pulumi.Input[str] create_time: Creation time of instruction.
-        :param pulumi.Input[str] data_type: Required. The data type of this instruction.
+        :param pulumi.Input['InstructionDataType'] data_type: Required. The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
         :param pulumi.Input[str] name: Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
@@ -214,7 +215,7 @@ class Instruction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 data_type: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -265,7 +265,7 @@ export interface JobArgs {
     /**
      * The desired education degrees for the job, such as Bachelors, Masters.
      */
-    degreeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    degreeTypes?: pulumi.Input<pulumi.Input<enums.jobs.v4.JobDegreeTypesItem>[]>;
     /**
      * The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
      */
@@ -277,7 +277,7 @@ export interface JobArgs {
     /**
      * The employment type(s) of a job, for example, full time or part time.
      */
-    employmentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    employmentTypes?: pulumi.Input<pulumi.Input<enums.jobs.v4.JobEmploymentTypesItem>[]>;
     /**
      * A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000.
      */
@@ -285,7 +285,7 @@ export interface JobArgs {
     /**
      * The benefits included with the job.
      */
-    jobBenefits?: pulumi.Input<pulumi.Input<string>[]>;
+    jobBenefits?: pulumi.Input<pulumi.Input<enums.jobs.v4.JobJobBenefitsItem>[]>;
     /**
      * The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
      */
@@ -293,7 +293,7 @@ export interface JobArgs {
     /**
      * The experience level associated with the job, such as "Entry Level".
      */
-    jobLevel?: pulumi.Input<string>;
+    jobLevel?: pulumi.Input<enums.jobs.v4.JobJobLevel>;
     /**
      * The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
      */
@@ -317,7 +317,7 @@ export interface JobArgs {
     /**
      * The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
      */
-    postingRegion?: pulumi.Input<string>;
+    postingRegion?: pulumi.Input<enums.jobs.v4.JobPostingRegion>;
     /**
      * Options for job processing.
      */

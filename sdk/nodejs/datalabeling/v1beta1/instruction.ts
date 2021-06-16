@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -123,7 +123,7 @@ export interface InstructionArgs {
     /**
      * Required. The data type of this instruction.
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<enums.datalabeling.v1beta1.InstructionDataType>;
     /**
      * Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
      */

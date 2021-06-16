@@ -210,11 +210,11 @@ type ServiceArgs struct {
 	Port    pulumi.IntPtrInput
 	Project pulumi.StringInput
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-	ReleaseChannel pulumi.StringPtrInput
+	ReleaseChannel *ServiceReleaseChannel
 	RequestId      pulumi.StringPtrInput
 	ServiceId      pulumi.StringInput
 	// The tier of the service.
-	Tier pulumi.StringPtrInput
+	Tier *ServiceTier
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

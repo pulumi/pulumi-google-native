@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -162,7 +162,7 @@ export interface RoutineArgs {
     /**
      * Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
      */
-    determinismLevel?: pulumi.Input<string>;
+    determinismLevel?: pulumi.Input<enums.bigquery.v2.RoutineDeterminismLevel>;
     /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
      */
@@ -170,7 +170,7 @@ export interface RoutineArgs {
     /**
      * Optional. Defaults to "SQL".
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<enums.bigquery.v2.RoutineLanguage>;
     project: pulumi.Input<string>;
     /**
      * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
@@ -187,5 +187,5 @@ export interface RoutineArgs {
     /**
      * Required. The type of routine.
      */
-    routineType?: pulumi.Input<string>;
+    routineType?: pulumi.Input<enums.bigquery.v2.RoutineRoutineType>;
 }

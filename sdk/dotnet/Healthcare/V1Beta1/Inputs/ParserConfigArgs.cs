@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
         /// </summary>
         [Input("version")]
-        public Input<string>? Version { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.ParserConfigVersion>? Version { get; set; }
 
         public ParserConfigArgs()
         {

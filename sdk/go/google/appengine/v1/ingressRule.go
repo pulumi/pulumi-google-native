@@ -97,7 +97,7 @@ type ingressRuleArgs struct {
 // The set of arguments for constructing a IngressRule resource.
 type IngressRuleArgs struct {
 	// The action to take on matched requests.
-	Action pulumi.StringPtrInput
+	Action *IngressRuleAction
 	AppId  pulumi.StringInput
 	// An optional string description of this rule. This field has a maximum length of 100 characters.
 	Description pulumi.StringPtrInput

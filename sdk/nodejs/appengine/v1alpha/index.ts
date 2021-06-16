@@ -10,6 +10,9 @@ export * from "./domainMapping";
 export * from "./getAuthorizedCertificate";
 export * from "./getDomainMapping";
 
+// Export enums:
+export * from "../../types/enums/appengine/v1alpha";
+
 // Import resources to register:
 import { AuthorizedCertificate } from "./authorizedCertificate";
 import { DomainMapping } from "./domainMapping";

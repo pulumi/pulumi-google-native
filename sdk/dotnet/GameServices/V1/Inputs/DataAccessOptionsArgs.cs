@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     public sealed class DataAccessOptionsArgs : Pulumi.ResourceArgs
     {
         [Input("logMode")]
-        public Input<string>? LogMode { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1.DataAccessOptionsLogMode>? LogMode { get; set; }
 
         public DataAccessOptionsArgs()
         {

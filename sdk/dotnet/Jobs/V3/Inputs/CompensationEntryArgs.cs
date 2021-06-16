@@ -43,13 +43,13 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
         /// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V3.CompensationEntryType>? Type { get; set; }
 
         /// <summary>
         /// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         /// </summary>
         [Input("unit")]
-        public Input<string>? Unit { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V3.CompensationEntryUnit>? Unit { get; set; }
 
         public CompensationEntryArgs()
         {

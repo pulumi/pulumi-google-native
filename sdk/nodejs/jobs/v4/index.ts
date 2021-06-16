@@ -12,6 +12,9 @@ export * from "./getTenant";
 export * from "./job";
 export * from "./tenant";
 
+// Export enums:
+export * from "../../types/enums/jobs/v4";
+
 // Import resources to register:
 import { Company } from "./company";
 import { Job } from "./job";

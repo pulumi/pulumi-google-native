@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Required. The format of the input data files.
         /// </summary>
         [Input("dataFormat")]
-        public Input<string>? DataFormat { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__PredictionInputDataFormat>? DataFormat { get; set; }
 
         [Input("inputPaths")]
         private InputList<string>? _inputPaths;
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Optional. Format of the output data files, defaults to JSON.
         /// </summary>
         [Input("outputDataFormat")]
-        public Input<string>? OutputDataFormat { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__PredictionInputOutputDataFormat>? OutputDataFormat { get; set; }
 
         /// <summary>
         /// Required. The output Google Cloud Storage location.

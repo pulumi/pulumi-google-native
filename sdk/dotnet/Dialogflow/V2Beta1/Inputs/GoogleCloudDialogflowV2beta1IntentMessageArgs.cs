@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// Optional. The platform that this message is intended for.
         /// </summary>
         [Input("platform")]
-        public Input<string>? Platform { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessagePlatform>? Platform { get; set; }
 
         /// <summary>
         /// Displays quick replies.

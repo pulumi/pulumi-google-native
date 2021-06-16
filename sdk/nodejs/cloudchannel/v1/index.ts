@@ -12,6 +12,9 @@ export * from "./getChannelPartnerLink";
 export * from "./getCustomer";
 export * from "./getEntitlement";
 
+// Export enums:
+export * from "../../types/enums/cloudchannel/v1";
+
 // Import resources to register:
 import { ChannelPartnerLink } from "./channelPartnerLink";
 import { Customer } from "./customer";

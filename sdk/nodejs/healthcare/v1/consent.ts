@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -163,7 +163,7 @@ export interface ConsentArgs {
     /**
      * Required. Indicates the current state of this Consent.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.healthcare.v1.ConsentState>;
     /**
      * Input only. The time to live for this Consent from when it is created.
      */

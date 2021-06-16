@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
         /// </summary>
         [Input("instantiateFrom")]
-        public Input<string>? InstantiateFrom { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.DiskInstantiationConfigInstantiateFrom>? InstantiateFrom { get; set; }
 
         public DiskInstantiationConfigArgs()
         {

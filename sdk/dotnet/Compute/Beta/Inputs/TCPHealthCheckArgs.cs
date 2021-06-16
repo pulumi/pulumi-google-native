@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// If not specified, TCP health check follows behavior specified in port and portName fields.
         /// </summary>
         [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.TCPHealthCheckPortSpecification>? PortSpecification { get; set; }
 
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         /// </summary>
         [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.TCPHealthCheckProxyHeader>? ProxyHeader { get; set; }
 
         /// <summary>
         /// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.

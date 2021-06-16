@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AdBreakArgs',
@@ -180,13 +181,13 @@ class AnimationEndArgs:
 class AnimationFadeArgs:
     def __init__(__self__, *,
                  end_time_offset: Optional[pulumi.Input[str]] = None,
-                 fade_type: Optional[pulumi.Input[str]] = None,
+                 fade_type: Optional[pulumi.Input['AnimationFadeFadeType']] = None,
                  start_time_offset: Optional[pulumi.Input[str]] = None,
                  xy: Optional[pulumi.Input['NormalizedCoordinateArgs']] = None):
         """
         Display overlay object with fade animation.
         :param pulumi.Input[str] end_time_offset: The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-        :param pulumi.Input[str] fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+        :param pulumi.Input['AnimationFadeFadeType'] fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
         :param pulumi.Input[str] start_time_offset: The time to start the fade animation, in seconds. Default: 0
         :param pulumi.Input['NormalizedCoordinateArgs'] xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
@@ -213,14 +214,14 @@ class AnimationFadeArgs:
 
     @property
     @pulumi.getter(name="fadeType")
-    def fade_type(self) -> Optional[pulumi.Input[str]]:
+    def fade_type(self) -> Optional[pulumi.Input['AnimationFadeFadeType']]:
         """
         Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
         """
         return pulumi.get(self, "fade_type")
 
     @fade_type.setter
-    def fade_type(self, value: Optional[pulumi.Input[str]]):
+    def fade_type(self, value: Optional[pulumi.Input['AnimationFadeFadeType']]):
         pulumi.set(self, "fade_type", value)
 
     @property
@@ -1309,12 +1310,12 @@ class ManifestArgs:
     def __init__(__self__, *,
                  file_name: Optional[pulumi.Input[str]] = None,
                  mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['ManifestType']] = None):
         """
         Manifest configuration.
         :param pulumi.Input[str] file_name: The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mux_streams: Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-        :param pulumi.Input[str] type: Required. Type of the manifest, can be "HLS" or "DASH".
+        :param pulumi.Input['ManifestType'] type: Required. Type of the manifest, can be "HLS" or "DASH".
         """
         if file_name is not None:
             pulumi.set(__self__, "file_name", file_name)
@@ -1349,14 +1350,14 @@ class ManifestArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ManifestType']]:
         """
         Required. Type of the manifest, can be "HLS" or "DASH".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ManifestType']]):
         pulumi.set(self, "type", value)
 
 

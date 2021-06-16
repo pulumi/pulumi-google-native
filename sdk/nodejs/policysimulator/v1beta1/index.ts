@@ -12,6 +12,9 @@ export * from "./getReplay";
 export * from "./organizationReplay";
 export * from "./replay";
 
+// Export enums:
+export * from "../../types/enums/policysimulator/v1beta1";
+
 // Import resources to register:
 import { FolderReplay } from "./folderReplay";
 import { OrganizationReplay } from "./organizationReplay";

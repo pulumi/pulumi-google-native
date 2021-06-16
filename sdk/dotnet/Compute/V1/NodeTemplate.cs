@@ -162,7 +162,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// CPU overcommit.
         /// </summary>
         [Input("cpuOvercommitType")]
-        public Input<string>? CpuOvercommitType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.NodeTemplateCpuOvercommitType>? CpuOvercommitType { get; set; }
 
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -260,7 +260,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.NodeTemplateStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] An optional, human-readable explanation of the status.

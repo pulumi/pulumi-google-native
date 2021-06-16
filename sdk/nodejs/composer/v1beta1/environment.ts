@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -127,5 +127,5 @@ export interface EnvironmentArgs {
     /**
      * The current state of the environment.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.composer.v1beta1.EnvironmentState>;
 }

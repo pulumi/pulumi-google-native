@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -197,7 +197,7 @@ export interface IntentArgs {
     /**
      * Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
      */
-    defaultResponsePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultResponsePlatforms?: pulumi.Input<pulumi.Input<enums.dialogflow.v2beta1.IntentDefaultResponsePlatformsItem>[]>;
     /**
      * Required. The name of this intent.
      */
@@ -265,5 +265,5 @@ export interface IntentArgs {
     /**
      * Optional. Indicates whether webhooks are enabled for the intent.
      */
-    webhookState?: pulumi.Input<string>;
+    webhookState?: pulumi.Input<enums.dialogflow.v2beta1.IntentWebhookState>;
 }

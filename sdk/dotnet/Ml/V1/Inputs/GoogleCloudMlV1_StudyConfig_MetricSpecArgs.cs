@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Required. The optimization goal of the metric.
         /// </summary>
         [Input("goal")]
-        public Input<string>? Goal { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_MetricSpecGoal>? Goal { get; set; }
 
         /// <summary>
         /// Required. The name of the metric.

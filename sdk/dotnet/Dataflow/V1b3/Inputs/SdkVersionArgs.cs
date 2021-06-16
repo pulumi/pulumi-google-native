@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// The support status for this SDK version.
         /// </summary>
         [Input("sdkSupportStatus")]
-        public Input<string>? SdkSupportStatus { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.SdkVersionSdkSupportStatus>? SdkSupportStatus { get; set; }
 
         /// <summary>
         /// The version of the SDK used to run the job.

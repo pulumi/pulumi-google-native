@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['ZoneInPlaceSnapshotArgs', 'ZoneInPlaceSnapshot']
 
@@ -30,7 +31,7 @@ class ZoneInPlaceSnapshotArgs:
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['ZoneInPlaceSnapshotStatus']] = None):
         """
         The set of arguments for constructing a ZoneInPlaceSnapshot resource.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -53,7 +54,7 @@ class ZoneInPlaceSnapshotArgs:
                - projects/project/zones/zone/disks/disk 
                - zones/zone/disks/disk
         :param pulumi.Input[str] source_disk_id: [Output Only] The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
-        :param pulumi.Input[str] status: [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
+        :param pulumi.Input['ZoneInPlaceSnapshotStatus'] status: [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
@@ -295,14 +296,14 @@ class ZoneInPlaceSnapshotArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ZoneInPlaceSnapshotStatus']]:
         """
         [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ZoneInPlaceSnapshotStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -327,7 +328,7 @@ class ZoneInPlaceSnapshot(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ZoneInPlaceSnapshotStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -354,7 +355,7 @@ class ZoneInPlaceSnapshot(pulumi.CustomResource):
                - projects/project/zones/zone/disks/disk 
                - zones/zone/disks/disk
         :param pulumi.Input[str] source_disk_id: [Output Only] The ID value of the disk used to create this InPlaceSnapshot. This value may be used to determine whether the InPlaceSnapshot was taken from the current or a previous instance of a given disk name.
-        :param pulumi.Input[str] status: [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
+        :param pulumi.Input['ZoneInPlaceSnapshotStatus'] status: [Output Only] The status of the inPlaceSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the in-place snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         ...
@@ -397,7 +398,7 @@ class ZoneInPlaceSnapshot(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ZoneInPlaceSnapshotStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

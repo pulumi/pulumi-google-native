@@ -171,10 +171,10 @@ type ConnectionProfileArgs struct {
 	Postgresql PostgreSqlConnectionProfilePtrInput
 	Project    pulumi.StringInput
 	// The database provider.
-	Provider  pulumi.StringPtrInput
+	Provider  *ConnectionProfileProvider
 	RequestId pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State pulumi.StringPtrInput
+	State *ConnectionProfileStateEnum
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {

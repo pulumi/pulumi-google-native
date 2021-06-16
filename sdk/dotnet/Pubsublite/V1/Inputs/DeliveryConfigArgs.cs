@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
         /// The DeliveryRequirement for this subscription.
         /// </summary>
         [Input("deliveryRequirement")]
-        public Input<string>? DeliveryRequirement { get; set; }
+        public Input<Pulumi.GoogleNative.Pubsublite.V1.DeliveryConfigDeliveryRequirement>? DeliveryRequirement { get; set; }
 
         public DeliveryConfigArgs()
         {

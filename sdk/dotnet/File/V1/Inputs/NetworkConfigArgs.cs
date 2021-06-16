@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.File.V1.Inputs
     public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
     {
         [Input("modes")]
-        private InputList<string>? _modes;
+        private InputList<Pulumi.GoogleNative.File.V1.NetworkConfigModesItem>? _modes;
 
         /// <summary>
         /// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
         /// </summary>
-        public InputList<string> Modes
+        public InputList<Pulumi.GoogleNative.File.V1.NetworkConfigModesItem> Modes
         {
-            get => _modes ?? (_modes = new InputList<string>());
+            get => _modes ?? (_modes = new InputList<Pulumi.GoogleNative.File.V1.NetworkConfigModesItem>());
             set => _modes = value;
         }
 

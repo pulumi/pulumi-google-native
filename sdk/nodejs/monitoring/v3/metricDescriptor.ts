@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -145,7 +145,7 @@ export interface MetricDescriptorArgs {
     /**
      * Optional. The launch stage of the metric definition.
      */
-    launchStage?: pulumi.Input<string>;
+    launchStage?: pulumi.Input<enums.monitoring.v3.MetricDescriptorLaunchStage>;
     /**
      * Optional. Metadata which can be used to guide usage of the metric.
      */
@@ -153,7 +153,7 @@ export interface MetricDescriptorArgs {
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
      */
-    metricKind?: pulumi.Input<string>;
+    metricKind?: pulumi.Input<enums.monitoring.v3.MetricDescriptorMetricKind>;
     /**
      * Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
      */
@@ -174,5 +174,5 @@ export interface MetricDescriptorArgs {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
      */
-    valueType?: pulumi.Input<string>;
+    valueType?: pulumi.Input<enums.monitoring.v3.MetricDescriptorValueType>;
 }

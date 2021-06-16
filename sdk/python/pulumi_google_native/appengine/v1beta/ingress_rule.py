@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['IngressRuleArgs', 'IngressRule']
 
@@ -14,13 +15,13 @@ __all__ = ['IngressRuleArgs', 'IngressRule']
 class IngressRuleArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
-                 action: Optional[pulumi.Input[str]] = None,
+                 action: Optional[pulumi.Input['IngressRuleAction']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  source_range: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IngressRule resource.
-        :param pulumi.Input[str] action: The action to take on matched requests.
+        :param pulumi.Input['IngressRuleAction'] action: The action to take on matched requests.
         :param pulumi.Input[str] description: An optional string description of this rule. This field has a maximum length of 100 characters.
         :param pulumi.Input[int] priority: A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32.
@@ -46,14 +47,14 @@ class IngressRuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[str]]:
+    def action(self) -> Optional[pulumi.Input['IngressRuleAction']]:
         """
         The action to take on matched requests.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[str]]):
+    def action(self, value: Optional[pulumi.Input['IngressRuleAction']]):
         pulumi.set(self, "action", value)
 
     @property
@@ -98,7 +99,7 @@ class IngressRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[str]] = None,
+                 action: Optional[pulumi.Input['IngressRuleAction']] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -109,7 +110,7 @@ class IngressRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The action to take on matched requests.
+        :param pulumi.Input['IngressRuleAction'] action: The action to take on matched requests.
         :param pulumi.Input[str] description: An optional string description of this rule. This field has a maximum length of 100 characters.
         :param pulumi.Input[int] priority: A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32.
@@ -138,7 +139,7 @@ class IngressRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[str]] = None,
+                 action: Optional[pulumi.Input['IngressRuleAction']] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,

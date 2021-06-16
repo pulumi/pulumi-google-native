@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         /// Optional. The type of IPv6 access for a cluster.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
-        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+        public Input<Pulumi.GoogleNative.Dataproc.V1.GceClusterConfigPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
         /// Optional. Reservation Affinity for consuming Zonal reservation.

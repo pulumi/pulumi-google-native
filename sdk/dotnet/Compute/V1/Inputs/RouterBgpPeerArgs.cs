@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// User-specified flag to indicate which mode to use for advertisement.
         /// </summary>
         [Input("advertiseMode")]
-        public Input<string>? AdvertiseMode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerAdvertiseMode>? AdvertiseMode { get; set; }
 
         [Input("advertisedGroups")]
-        private InputList<string>? _advertisedGroups;
+        private InputList<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerAdvertisedGroupsItem>? _advertisedGroups;
 
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
         /// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
         /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
-        public InputList<string> AdvertisedGroups
+        public InputList<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerAdvertisedGroupsItem> AdvertisedGroups
         {
-            get => _advertisedGroups ?? (_advertisedGroups = new InputList<string>());
+            get => _advertisedGroups ?? (_advertisedGroups = new InputList<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerAdvertisedGroupsItem>());
             set => _advertisedGroups = value;
         }
 
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         /// </summary>
         [Input("managementType")]
-        public Input<string>? ManagementType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerManagementType>? ManagementType { get; set; }
 
         /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

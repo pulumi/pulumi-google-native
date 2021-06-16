@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Inputs
         /// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.V2.OperationStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] An optional textual description of the current status of the operation.

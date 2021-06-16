@@ -25,19 +25,19 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         /// Action to take when users access resources that require authentication. Defaults to redirect.
         /// </summary>
         [Input("authFailAction")]
-        public Input<string>? AuthFailAction { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.UrlMapAuthFailAction>? AuthFailAction { get; set; }
 
         /// <summary>
         /// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
         /// </summary>
         [Input("login")]
-        public Input<string>? Login { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.UrlMapLogin>? Login { get; set; }
 
         /// <summary>
         /// 30x code to use when performing redirects for the secure field. Defaults to 302.
         /// </summary>
         [Input("redirectHttpResponseCode")]
-        public Input<string>? RedirectHttpResponseCode { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.UrlMapRedirectHttpResponseCode>? RedirectHttpResponseCode { get; set; }
 
         /// <summary>
         /// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         /// Security (HTTPS) enforcement for this URL.
         /// </summary>
         [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.UrlMapSecurityLevel>? SecurityLevel { get; set; }
 
         /// <summary>
         /// Returns the contents of a file, such as an image, as the response.

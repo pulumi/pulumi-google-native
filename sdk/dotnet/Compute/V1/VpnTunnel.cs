@@ -346,7 +346,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.VpnTunnelStatus>? Status { get; set; }
 
         /// <summary>
         /// URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['ConversationArgs', 'Conversation']
 
@@ -18,11 +19,11 @@ class ConversationArgs:
                  project: pulumi.Input[str],
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
-                 conversation_stage: Optional[pulumi.Input[str]] = None):
+                 conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None):
         """
         The set of arguments for constructing a Conversation resource.
         :param pulumi.Input[str] conversation_profile: Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
-        :param pulumi.Input[str] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+        :param pulumi.Input['ConversationConversationStage'] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -74,14 +75,14 @@ class ConversationArgs:
 
     @property
     @pulumi.getter(name="conversationStage")
-    def conversation_stage(self) -> Optional[pulumi.Input[str]]:
+    def conversation_stage(self) -> Optional[pulumi.Input['ConversationConversationStage']]:
         """
         The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
         return pulumi.get(self, "conversation_stage")
 
     @conversation_stage.setter
-    def conversation_stage(self, value: Optional[pulumi.Input[str]]):
+    def conversation_stage(self, value: Optional[pulumi.Input['ConversationConversationStage']]):
         pulumi.set(self, "conversation_stage", value)
 
 
@@ -92,7 +93,7 @@ class Conversation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
-                 conversation_stage: Optional[pulumi.Input[str]] = None,
+                 conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -102,7 +103,7 @@ class Conversation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] conversation_profile: Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
-        :param pulumi.Input[str] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+        :param pulumi.Input['ConversationConversationStage'] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
         ...
     @overload
@@ -130,7 +131,7 @@ class Conversation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
-                 conversation_stage: Optional[pulumi.Input[str]] = None,
+                 conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):

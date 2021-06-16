@@ -122,7 +122,7 @@ type serviceLevelObjectiveArgs struct {
 // The set of arguments for constructing a ServiceLevelObjective resource.
 type ServiceLevelObjectiveArgs struct {
 	// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
-	CalendarPeriod pulumi.StringPtrInput
+	CalendarPeriod *ServiceLevelObjectiveCalendarPeriod
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
 	// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.

@@ -238,13 +238,13 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// Required. Immutable. The Tier of this CertificateAuthority.
         /// </summary>
         [Input("tier")]
-        public Input<string>? Tier { get; set; }
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.CertificateAuthorityTier>? Tier { get; set; }
 
         /// <summary>
         /// Required. Immutable. The Type of this CertificateAuthority.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.CertificateAuthorityType>? Type { get; set; }
 
         public CertificateAuthorityArgs()
         {

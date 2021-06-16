@@ -7,7 +7,12 @@ New features:
 
 - Add a corresponding Get function for each resource
   [#82](https://github.com/pulumi/pulumi-google-native/issues/82)
-- Fix idpath for storagetransfer/v1:TransferJob [#116](https://github.com/pulumi/pulumi-google-native/pull/116).
+- Add enums to all SDKs for properties that are annotated as enums in discovery docs
+  [#86](https://github.com/pulumi/pulumi-google-native/issues/86)
+
+Bug fixes:
+
+- Fix idpath for storagetransfer/v1:TransferJob [#116](https://github.com/pulumi/pulumi-google-native/pull/116)
 
 Breaking changes:
 

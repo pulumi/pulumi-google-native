@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// - ALL: Export logs for all connections, successful and unsuccessful.
         /// </summary>
         [Input("filter")]
-        public Input<string>? Filter { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.RouterNatLogConfigFilter>? Filter { get; set; }
 
         public RouterNatLogConfigArgs()
         {

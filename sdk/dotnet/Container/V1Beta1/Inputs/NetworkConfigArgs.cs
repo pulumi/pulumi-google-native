@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         /// </summary>
         [Input("datapathProvider")]
-        public Input<string>? DatapathProvider { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.NetworkConfigDatapathProvider>? DatapathProvider { get; set; }
 
         /// <summary>
         /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
-        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.NetworkConfigPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
         /// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet

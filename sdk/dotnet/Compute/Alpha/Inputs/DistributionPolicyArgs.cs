@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
         /// </summary>
         [Input("targetShape")]
-        public Input<string>? TargetShape { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.DistributionPolicyTargetShape>? TargetShape { get; set; }
 
         [Input("zones")]
         private InputList<Inputs.DistributionPolicyZoneConfigurationArgs>? _zones;

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
         /// The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
         /// </summary>
         [Input("locationType")]
-        public Input<string>? LocationType { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V3.LocationLocationType>? LocationType { get; set; }
 
         /// <summary>
         /// Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.

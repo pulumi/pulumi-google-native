@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         /// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
         /// </summary>
         [Input("preemptibility")]
-        public Input<string>? Preemptibility { get; set; }
+        public Input<Pulumi.GoogleNative.Dataproc.V1Beta2.InstanceGroupConfigPreemptibility>? Preemptibility { get; set; }
 
         public InstanceGroupConfigArgs()
         {

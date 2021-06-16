@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
         /// </summary>
         [Input("onSourceDiskDelete")]
-        public Input<string>? OnSourceDiskDelete { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete>? OnSourceDiskDelete { get; set; }
 
         public ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs()
         {

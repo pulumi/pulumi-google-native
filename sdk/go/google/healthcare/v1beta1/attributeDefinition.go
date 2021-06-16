@@ -132,7 +132,7 @@ type AttributeDefinitionArgs struct {
 	AllowedValues         pulumi.StringArrayInput
 	AttributeDefinitionId pulumi.StringInput
 	// Required. The category of the attribute. The value of this field cannot be changed after creation.
-	Category pulumi.StringPtrInput
+	Category *AttributeDefinitionCategory
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayInput
 	ConsentStoreId       pulumi.StringInput

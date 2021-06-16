@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
         /// </summary>
         [Input("responseView")]
-        public Input<string>? ResponseView { get; set; }
+        public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.TaskResponseView>? ResponseView { get; set; }
 
         /// <summary>
         /// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// The view specifies which subset of the Task has been returned.
         /// </summary>
         [Input("view")]
-        public Input<string>? View { get; set; }
+        public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.TaskView>? View { get; set; }
 
         public TaskArgs()
         {

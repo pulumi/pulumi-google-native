@@ -25,13 +25,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         /// Indicates NLU model training mode.
         /// </summary>
         [Input("modelTrainingMode")]
-        public Input<string>? ModelTrainingMode { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode>? ModelTrainingMode { get; set; }
 
         /// <summary>
         /// Indicates the type of NLU model.
         /// </summary>
         [Input("modelType")]
-        public Input<string>? ModelType { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3NluSettingsModelType>? ModelType { get; set; }
 
         public GoogleCloudDialogflowCxV3NluSettingsArgs()
         {

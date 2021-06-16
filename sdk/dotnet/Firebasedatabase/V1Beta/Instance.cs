@@ -118,13 +118,13 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// The database's lifecycle state. Read-only.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Firebasedatabase.V1Beta.InstanceState>? State { get; set; }
 
         /// <summary>
         /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Firebasedatabase.V1Beta.InstanceType>? Type { get; set; }
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

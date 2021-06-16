@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./feed";
 export * from "./getFeed";
 
+// Export enums:
+export * from "../../types/enums/cloudasset/v1";
+
 // Import resources to register:
 import { Feed } from "./feed";
 

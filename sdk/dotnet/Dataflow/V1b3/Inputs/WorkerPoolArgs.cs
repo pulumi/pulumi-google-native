@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
         /// </summary>
         [Input("defaultPackageSet")]
-        public Input<string>? DefaultPackageSet { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.WorkerPoolDefaultPackageSet>? DefaultPackageSet { get; set; }
 
         /// <summary>
         /// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Configuration for VM IPs.
         /// </summary>
         [Input("ipConfiguration")]
-        public Input<string>? IpConfiguration { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.WorkerPoolIpConfiguration>? IpConfiguration { get; set; }
 
         /// <summary>
         /// The kind of the worker pool; currently only `harness` and `shuffle` are supported.
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
         /// </summary>
         [Input("teardownPolicy")]
-        public Input<string>? TeardownPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.WorkerPoolTeardownPolicy>? TeardownPolicy { get; set; }
 
         /// <summary>
         /// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.

@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Executions stage states allow the same set of values as JobState.
         /// </summary>
         [Input("executionStageState")]
-        public Input<string>? ExecutionStageState { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.ExecutionStageStateExecutionStageState>? ExecutionStageState { get; set; }
 
         public ExecutionStageStateArgs()
         {

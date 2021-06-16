@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
         /// </summary>
         [Input("stage")]
-        public Input<string>? Stage { get; set; }
+        public Input<Pulumi.GoogleNative.IAM.V1.OrganizationRoleStage>? Stage { get; set; }
 
         /// <summary>
         /// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.

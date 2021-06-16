@@ -12,6 +12,9 @@ export * from "./getMembership";
 export * from "./group";
 export * from "./membership";
 
+// Export enums:
+export * from "../../types/enums/cloudidentity/v1beta1";
+
 // Import resources to register:
 import { Device } from "./device";
 import { Group } from "./group";

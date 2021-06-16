@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['TrialArgs', 'Trial']
@@ -21,13 +22,13 @@ class TrialArgs:
                  final_measurement: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['TrialState']] = None):
         """
         The set of arguments for constructing a Trial resource.
         :param pulumi.Input['GoogleCloudMlV1__MeasurementArgs'] final_measurement: The final measurement containing the objective value.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]] measurements: A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]] parameters: The parameters of the trial.
-        :param pulumi.Input[str] state: The detailed state of a trial.
+        :param pulumi.Input['TrialState'] state: The detailed state of a trial.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -106,14 +107,14 @@ class TrialArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['TrialState']]:
         """
         The detailed state of a trial.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['TrialState']]):
         pulumi.set(self, "state", value)
 
 
@@ -127,7 +128,7 @@ class Trial(pulumi.CustomResource):
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TrialState']] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -138,7 +139,7 @@ class Trial(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']] final_measurement: The final measurement containing the objective value.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]] measurements: A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]] parameters: The parameters of the trial.
-        :param pulumi.Input[str] state: The detailed state of a trial.
+        :param pulumi.Input['TrialState'] state: The detailed state of a trial.
         """
         ...
     @overload
@@ -169,7 +170,7 @@ class Trial(pulumi.CustomResource):
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TrialState']] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

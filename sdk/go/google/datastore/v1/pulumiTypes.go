@@ -32,7 +32,7 @@ type GoogleDatastoreAdminV1IndexedPropertyInput interface {
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyArgs struct {
 	// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Direction *GoogleDatastoreAdminV1IndexedPropertyDirection `pulumi:"direction"`
 	// Required. The property name to index.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }

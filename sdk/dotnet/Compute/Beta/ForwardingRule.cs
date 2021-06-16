@@ -343,7 +343,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
         /// </summary>
         [Input("IPProtocol")]
-        public Input<string>? IPProtocol { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRuleIPProtocol>? IPProtocol { get; set; }
 
         /// <summary>
         /// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
@@ -395,7 +395,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
         /// </summary>
         [Input("ipVersion")]
-        public Input<string>? IpVersion { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRuleIpVersion>? IpVersion { get; set; }
 
         /// <summary>
         /// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
@@ -448,7 +448,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// For more information about forwarding rules, refer to Forwarding rule concepts.
         /// </summary>
         [Input("loadBalancingScheme")]
-        public Input<string>? LoadBalancingScheme { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRuleLoadBalancingScheme>? LoadBalancingScheme { get; set; }
 
         [Input("metadataFilters")]
         private InputList<Inputs.MetadataFilterArgs>? _metadataFilters;
@@ -489,7 +489,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
         /// </summary>
         [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRuleNetworkTier>? NetworkTier { get; set; }
 
         /// <summary>
         /// This field can be used only if: * Load balancing scheme is one of EXTERNAL,  INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is one of TCP, UDP, or SCTP.

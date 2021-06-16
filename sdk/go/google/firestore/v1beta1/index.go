@@ -109,7 +109,7 @@ type IndexArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The state of the index. Output only.
-	State pulumi.StringPtrInput
+	State *IndexStateEnum
 }
 
 func (IndexArgs) ElementType() reflect.Type {

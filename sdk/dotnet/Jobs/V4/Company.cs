@@ -205,7 +205,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// The employer's company size.
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V4.CompanySize>? Size { get; set; }
 
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;

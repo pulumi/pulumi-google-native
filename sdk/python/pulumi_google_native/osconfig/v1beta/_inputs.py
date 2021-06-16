@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AptRepositoryArgs',
@@ -55,14 +56,14 @@ __all__ = [
 @pulumi.input_type
 class AptRepositoryArgs:
     def __init__(__self__, *,
-                 archive_type: Optional[pulumi.Input[str]] = None,
+                 archive_type: Optional[pulumi.Input['AptRepositoryArchiveType']] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
                  gpg_key: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
-        :param pulumi.Input[str] archive_type: Type of archive files in this repository. The default behavior is DEB.
+        :param pulumi.Input['AptRepositoryArchiveType'] archive_type: Type of archive files in this repository. The default behavior is DEB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] components: Required. List of components for this repository. Must contain at least one item.
         :param pulumi.Input[str] distribution: Required. Distribution of this repository.
         :param pulumi.Input[str] gpg_key: URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
@@ -81,14 +82,14 @@ class AptRepositoryArgs:
 
     @property
     @pulumi.getter(name="archiveType")
-    def archive_type(self) -> Optional[pulumi.Input[str]]:
+    def archive_type(self) -> Optional[pulumi.Input['AptRepositoryArchiveType']]:
         """
         Type of archive files in this repository. The default behavior is DEB.
         """
         return pulumi.get(self, "archive_type")
 
     @archive_type.setter
-    def archive_type(self, value: Optional[pulumi.Input[str]]):
+    def archive_type(self, value: Optional[pulumi.Input['AptRepositoryArchiveType']]):
         pulumi.set(self, "archive_type", value)
 
     @property
@@ -145,12 +146,12 @@ class AptSettingsArgs:
     def __init__(__self__, *,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['AptSettingsType']] = None):
         """
         Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of packages to exclude from update. These packages will be excluded
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
-        :param pulumi.Input[str] type: By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
+        :param pulumi.Input['AptSettingsType'] type: By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
         """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
@@ -185,14 +186,14 @@ class AptSettingsArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['AptSettingsType']]:
         """
         By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['AptSettingsType']]):
         pulumi.set(self, "type", value)
 
 
@@ -409,13 +410,13 @@ class ExecStepConfigArgs:
     def __init__(__self__, *,
                  allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  gcs_object: Optional[pulumi.Input['GcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[str]] = None,
+                 interpreter: Optional[pulumi.Input['ExecStepConfigInterpreter']] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
         Common configurations for an ExecStep.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['GcsObjectArgs'] gcs_object: A Google Cloud Storage object containing the executable.
-        :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        :param pulumi.Input['ExecStepConfigInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
         :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -453,14 +454,14 @@ class ExecStepConfigArgs:
 
     @property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[str]]:
+    def interpreter(self) -> Optional[pulumi.Input['ExecStepConfigInterpreter']]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
         """
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[str]]):
+    def interpreter(self, value: Optional[pulumi.Input['ExecStepConfigInterpreter']]):
         pulumi.set(self, "interpreter", value)
 
     @property
@@ -688,13 +689,13 @@ class OneTimeScheduleArgs:
 @pulumi.input_type
 class PackageArgs:
     def __init__(__self__, *,
-                 desired_state: Optional[pulumi.Input[str]] = None,
-                 manager: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input['PackageDesiredState']] = None,
+                 manager: Optional[pulumi.Input['PackageManager']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
-        :param pulumi.Input[str] desired_state: The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-        :param pulumi.Input[str] manager: Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
+        :param pulumi.Input['PackageDesiredState'] desired_state: The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
+        :param pulumi.Input['PackageManager'] manager: Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
         :param pulumi.Input[str] name: Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         """
         if desired_state is not None:
@@ -706,26 +707,26 @@ class PackageArgs:
 
     @property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[str]]:
+    def desired_state(self) -> Optional[pulumi.Input['PackageDesiredState']]:
         """
         The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[str]]):
+    def desired_state(self, value: Optional[pulumi.Input['PackageDesiredState']]):
         pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter
-    def manager(self) -> Optional[pulumi.Input[str]]:
+    def manager(self) -> Optional[pulumi.Input['PackageManager']]:
         """
         Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
         """
         return pulumi.get(self, "manager")
 
     @manager.setter
-    def manager(self, value: Optional[pulumi.Input[str]]):
+    def manager(self, value: Optional[pulumi.Input['PackageManager']]):
         pulumi.set(self, "manager", value)
 
     @property
@@ -820,7 +821,7 @@ class PatchConfigArgs:
                  goo: Optional[pulumi.Input['GooSettingsArgs']] = None,
                  post_step: Optional[pulumi.Input['ExecStepArgs']] = None,
                  pre_step: Optional[pulumi.Input['ExecStepArgs']] = None,
-                 reboot_config: Optional[pulumi.Input[str]] = None,
+                 reboot_config: Optional[pulumi.Input['PatchConfigRebootConfig']] = None,
                  windows_update: Optional[pulumi.Input['WindowsUpdateSettingsArgs']] = None,
                  yum: Optional[pulumi.Input['YumSettingsArgs']] = None,
                  zypper: Optional[pulumi.Input['ZypperSettingsArgs']] = None):
@@ -830,7 +831,7 @@ class PatchConfigArgs:
         :param pulumi.Input['GooSettingsArgs'] goo: Goo update settings. Use this setting to override the default `goo` patch rules.
         :param pulumi.Input['ExecStepArgs'] post_step: The `ExecStep` to run after the patch update.
         :param pulumi.Input['ExecStepArgs'] pre_step: The `ExecStep` to run before the patch update.
-        :param pulumi.Input[str] reboot_config: Post-patch reboot settings.
+        :param pulumi.Input['PatchConfigRebootConfig'] reboot_config: Post-patch reboot settings.
         :param pulumi.Input['WindowsUpdateSettingsArgs'] windows_update: Windows update settings. Use this override the default windows patch rules.
         :param pulumi.Input['YumSettingsArgs'] yum: Yum update settings. Use this setting to override the default `yum` patch rules.
         :param pulumi.Input['ZypperSettingsArgs'] zypper: Zypper update settings. Use this setting to override the default `zypper` patch rules.
@@ -902,14 +903,14 @@ class PatchConfigArgs:
 
     @property
     @pulumi.getter(name="rebootConfig")
-    def reboot_config(self) -> Optional[pulumi.Input[str]]:
+    def reboot_config(self) -> Optional[pulumi.Input['PatchConfigRebootConfig']]:
         """
         Post-patch reboot settings.
         """
         return pulumi.get(self, "reboot_config")
 
     @reboot_config.setter
-    def reboot_config(self, value: Optional[pulumi.Input[str]]):
+    def reboot_config(self, value: Optional[pulumi.Input['PatchConfigRebootConfig']]):
         pulumi.set(self, "reboot_config", value)
 
     @property
@@ -1065,11 +1066,11 @@ class PatchInstanceFilterGroupLabelArgs:
 class PatchRolloutArgs:
     def __init__(__self__, *,
                  disruption_budget: Optional[pulumi.Input['FixedOrPercentArgs']] = None,
-                 mode: Optional[pulumi.Input[str]] = None):
+                 mode: Optional[pulumi.Input['PatchRolloutMode']] = None):
         """
         Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
         :param pulumi.Input['FixedOrPercentArgs'] disruption_budget: The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
-        :param pulumi.Input[str] mode: Mode of the patch rollout.
+        :param pulumi.Input['PatchRolloutMode'] mode: Mode of the patch rollout.
         """
         if disruption_budget is not None:
             pulumi.set(__self__, "disruption_budget", disruption_budget)
@@ -1090,14 +1091,14 @@ class PatchRolloutArgs:
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
+    def mode(self) -> Optional[pulumi.Input['PatchRolloutMode']]:
         """
         Mode of the patch rollout.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
+    def mode(self, value: Optional[pulumi.Input['PatchRolloutMode']]):
         pulumi.set(self, "mode", value)
 
 
@@ -1105,7 +1106,7 @@ class PatchRolloutArgs:
 class RecurringScheduleArgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 frequency: Optional[pulumi.Input[str]] = None,
+                 frequency: Optional[pulumi.Input['RecurringScheduleFrequency']] = None,
                  monthly: Optional[pulumi.Input['MonthlyScheduleArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  time_of_day: Optional[pulumi.Input['TimeOfDayArgs']] = None,
@@ -1114,7 +1115,7 @@ class RecurringScheduleArgs:
         """
         Sets the time for recurring patch deployments.
         :param pulumi.Input[str] end_time: Optional. The end time at which a recurring patch deployment schedule is no longer active.
-        :param pulumi.Input[str] frequency: Required. The frequency unit of this recurring schedule.
+        :param pulumi.Input['RecurringScheduleFrequency'] frequency: Required. The frequency unit of this recurring schedule.
         :param pulumi.Input['MonthlyScheduleArgs'] monthly: Required. Schedule with monthly executions.
         :param pulumi.Input[str] start_time: Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
         :param pulumi.Input['TimeOfDayArgs'] time_of_day: Required. Time of the day to run a recurring deployment.
@@ -1150,14 +1151,14 @@ class RecurringScheduleArgs:
 
     @property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[str]]:
+    def frequency(self) -> Optional[pulumi.Input['RecurringScheduleFrequency']]:
         """
         Required. The frequency unit of this recurring schedule.
         """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[str]]):
+    def frequency(self, value: Optional[pulumi.Input['RecurringScheduleFrequency']]):
         pulumi.set(self, "frequency", value)
 
     @property
@@ -1225,7 +1226,7 @@ class RecurringScheduleArgs:
 class SoftwareRecipeArgs:
     def __init__(__self__, *,
                  artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]] = None,
-                 desired_state: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input['SoftwareRecipeDesiredState']] = None,
                  install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
@@ -1233,7 +1234,7 @@ class SoftwareRecipeArgs:
         """
         A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
-        :param pulumi.Input[str] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+        :param pulumi.Input['SoftwareRecipeDesiredState'] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
         :param pulumi.Input[str] name: Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
@@ -1266,14 +1267,14 @@ class SoftwareRecipeArgs:
 
     @property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[str]]:
+    def desired_state(self) -> Optional[pulumi.Input['SoftwareRecipeDesiredState']]:
         """
         Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[str]]):
+    def desired_state(self, value: Optional[pulumi.Input['SoftwareRecipeDesiredState']]):
         pulumi.set(self, "desired_state", value)
 
     @property
@@ -1762,12 +1763,12 @@ class SoftwareRecipeStepExtractArchiveArgs:
     def __init__(__self__, *,
                  artifact_id: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveType']] = None):
         """
         Extracts an archive of the type specified in the specified directory.
         :param pulumi.Input[str] artifact_id: Required. The id of the relevant artifact in the recipe.
         :param pulumi.Input[str] destination: Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
-        :param pulumi.Input[str] type: Required. The type of the archive to extract.
+        :param pulumi.Input['SoftwareRecipeStepExtractArchiveType'] type: Required. The type of the archive to extract.
         """
         if artifact_id is not None:
             pulumi.set(__self__, "artifact_id", artifact_id)
@@ -1802,14 +1803,14 @@ class SoftwareRecipeStepExtractArchiveArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveType']]:
         """
         Required. The type of the archive to extract.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1921,12 +1922,12 @@ class SoftwareRecipeStepInstallRpmArgs:
 class SoftwareRecipeStepRunScriptArgs:
     def __init__(__self__, *,
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 interpreter: Optional[pulumi.Input[str]] = None,
+                 interpreter: Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']] = None,
                  script: Optional[pulumi.Input[str]] = None):
         """
         Runs a script through an interpreter.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input[str] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        :param pulumi.Input['SoftwareRecipeStepRunScriptInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
         :param pulumi.Input[str] script: Required. The shell script to be executed.
         """
         if allowed_exit_codes is not None:
@@ -1950,14 +1951,14 @@ class SoftwareRecipeStepRunScriptArgs:
 
     @property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[str]]:
+    def interpreter(self) -> Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
         """
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[str]]):
+    def interpreter(self, value: Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']]):
         pulumi.set(self, "interpreter", value)
 
     @property
@@ -2088,11 +2089,11 @@ class TimeZoneArgs:
 @pulumi.input_type
 class WeekDayOfMonthArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input[str]] = None,
+                 day_of_week: Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']] = None,
                  week_ordinal: Optional[pulumi.Input[int]] = None):
         """
         Represents one week day in a month. An example is "the 4th Sunday".
-        :param pulumi.Input[str] day_of_week: Required. A day of the week.
+        :param pulumi.Input['WeekDayOfMonthDayOfWeek'] day_of_week: Required. A day of the week.
         :param pulumi.Input[int] week_ordinal: Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         if day_of_week is not None:
@@ -2102,14 +2103,14 @@ class WeekDayOfMonthArgs:
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input[str]]:
+    def day_of_week(self) -> Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']]:
         """
         Required. A day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input[str]]):
+    def day_of_week(self, value: Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']]):
         pulumi.set(self, "day_of_week", value)
 
     @property
@@ -2128,36 +2129,36 @@ class WeekDayOfMonthArgs:
 @pulumi.input_type
 class WeeklyScheduleArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input[str]] = None):
+                 day_of_week: Optional[pulumi.Input['WeeklyScheduleDayOfWeek']] = None):
         """
         Represents a weekly schedule.
-        :param pulumi.Input[str] day_of_week: Required. Day of the week.
+        :param pulumi.Input['WeeklyScheduleDayOfWeek'] day_of_week: Required. Day of the week.
         """
         if day_of_week is not None:
             pulumi.set(__self__, "day_of_week", day_of_week)
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input[str]]:
+    def day_of_week(self) -> Optional[pulumi.Input['WeeklyScheduleDayOfWeek']]:
         """
         Required. Day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input[str]]):
+    def day_of_week(self, value: Optional[pulumi.Input['WeeklyScheduleDayOfWeek']]):
         pulumi.set(self, "day_of_week", value)
 
 
 @pulumi.input_type
 class WindowsUpdateSettingsArgs:
     def __init__(__self__, *,
-                 classifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 classifications: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsUpdateSettingsClassificationsItem']]]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exclusive_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Windows patching is performed using the Windows Update Agent.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] classifications: Only apply updates of these windows update classifications. If empty, all updates are applied.
+        :param pulumi.Input[Sequence[pulumi.Input['WindowsUpdateSettingsClassificationsItem']]] classifications: Only apply updates of these windows update classifications. If empty, all updates are applied.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
         """
@@ -2170,14 +2171,14 @@ class WindowsUpdateSettingsArgs:
 
     @property
     @pulumi.getter
-    def classifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def classifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WindowsUpdateSettingsClassificationsItem']]]]:
         """
         Only apply updates of these windows update classifications. If empty, all updates are applied.
         """
         return pulumi.get(self, "classifications")
 
     @classifications.setter
-    def classifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def classifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WindowsUpdateSettingsClassificationsItem']]]]):
         pulumi.set(self, "classifications", value)
 
     @property

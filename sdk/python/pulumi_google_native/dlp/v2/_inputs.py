@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GooglePrivacyDlpV2ActionArgs',
@@ -316,7 +317,7 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
                  identifying_fields: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]] = None,
                  rows_limit: Optional[pulumi.Input[str]] = None,
                  rows_limit_percent: Optional[pulumi.Input[int]] = None,
-                 sample_method: Optional[pulumi.Input[str]] = None,
+                 sample_method: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryOptionsSampleMethod']] = None,
                  table_reference: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']] = None):
         """
         Options defining BigQuery table and row identifiers.
@@ -389,11 +390,11 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
 
     @property
     @pulumi.getter(name="sampleMethod")
-    def sample_method(self) -> Optional[pulumi.Input[str]]:
+    def sample_method(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryOptionsSampleMethod']]:
         return pulumi.get(self, "sample_method")
 
     @sample_method.setter
-    def sample_method(self, value: Optional[pulumi.Input[str]]):
+    def sample_method(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryOptionsSampleMethod']]):
         pulumi.set(self, "sample_method", value)
 
     @property
@@ -645,11 +646,11 @@ class GooglePrivacyDlpV2CharacterMaskConfigArgs:
 class GooglePrivacyDlpV2CharsToIgnoreArgs:
     def __init__(__self__, *,
                  characters_to_skip: Optional[pulumi.Input[str]] = None,
-                 common_characters_to_ignore: Optional[pulumi.Input[str]] = None):
+                 common_characters_to_ignore: Optional[pulumi.Input['GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore']] = None):
         """
         Characters to skip when doing deidentification of a value. These will be left alone and skipped.
         :param pulumi.Input[str] characters_to_skip: Characters to not transform when masking.
-        :param pulumi.Input[str] common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
+        :param pulumi.Input['GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore'] common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
         """
         if characters_to_skip is not None:
             pulumi.set(__self__, "characters_to_skip", characters_to_skip)
@@ -670,14 +671,14 @@ class GooglePrivacyDlpV2CharsToIgnoreArgs:
 
     @property
     @pulumi.getter(name="commonCharactersToIgnore")
-    def common_characters_to_ignore(self) -> Optional[pulumi.Input[str]]:
+    def common_characters_to_ignore(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore']]:
         """
         Common characters to not transform when masking. Useful to avoid removing punctuation.
         """
         return pulumi.get(self, "common_characters_to_ignore")
 
     @common_characters_to_ignore.setter
-    def common_characters_to_ignore(self, value: Optional[pulumi.Input[str]]):
+    def common_characters_to_ignore(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore']]):
         pulumi.set(self, "common_characters_to_ignore", value)
 
 
@@ -711,15 +712,15 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
                  bytes_limit_per_file: Optional[pulumi.Input[str]] = None,
                  bytes_limit_per_file_percent: Optional[pulumi.Input[int]] = None,
                  file_set: Optional[pulumi.Input['GooglePrivacyDlpV2FileSetArgs']] = None,
-                 file_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem']]]] = None,
                  files_limit_percent: Optional[pulumi.Input[int]] = None,
-                 sample_method: Optional[pulumi.Input[str]] = None):
+                 sample_method: Optional[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsSampleMethod']] = None):
         """
         Options defining a file or a set of files within a Google Cloud Storage bucket.
         :param pulumi.Input[str] bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         :param pulumi.Input[int] bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         :param pulumi.Input['GooglePrivacyDlpV2FileSetArgs'] file_set: The set of one or more files to scan.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem']]] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         :param pulumi.Input[int] files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
         """
         if bytes_limit_per_file is not None:
@@ -773,14 +774,14 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
 
     @property
     @pulumi.getter(name="fileTypes")
-    def file_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def file_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem']]]]:
         """
         List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         """
         return pulumi.get(self, "file_types")
 
     @file_types.setter
-    def file_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def file_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem']]]]):
         pulumi.set(self, "file_types", value)
 
     @property
@@ -797,11 +798,11 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
 
     @property
     @pulumi.getter(name="sampleMethod")
-    def sample_method(self) -> Optional[pulumi.Input[str]]:
+    def sample_method(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsSampleMethod']]:
         return pulumi.get(self, "sample_method")
 
     @sample_method.setter
-    def sample_method(self, value: Optional[pulumi.Input[str]]):
+    def sample_method(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsSampleMethod']]):
         pulumi.set(self, "sample_method", value)
 
 
@@ -889,12 +890,12 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSetArgs:
 class GooglePrivacyDlpV2ConditionArgs:
     def __init__(__self__, *,
                  field: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
-                 operator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input['GooglePrivacyDlpV2ConditionOperator']] = None,
                  value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None):
         """
         The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Required. Field within the record this condition is evaluated against.
-        :param pulumi.Input[str] operator: Required. Operator used to compare the field or infoType to the value.
+        :param pulumi.Input['GooglePrivacyDlpV2ConditionOperator'] operator: Required. Operator used to compare the field or infoType to the value.
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] value: Value to compare against. [Mandatory, except for `EXISTS` tests.]
         """
         if field is not None:
@@ -918,14 +919,14 @@ class GooglePrivacyDlpV2ConditionArgs:
 
     @property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[str]]:
+    def operator(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ConditionOperator']]:
         """
         Required. Operator used to compare the field or infoType to the value.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[str]]):
+    def operator(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ConditionOperator']]):
         pulumi.set(self, "operator", value)
 
     @property
@@ -1104,7 +1105,7 @@ class GooglePrivacyDlpV2CryptoKeyArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
     def __init__(__self__, *,
-                 common_alphabet: Optional[pulumi.Input[str]] = None,
+                 common_alphabet: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet']] = None,
                  context: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
                  crypto_key: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']] = None,
                  custom_alphabet: Optional[pulumi.Input[str]] = None,
@@ -1112,7 +1113,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
                  surrogate_info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
         """
         Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
-        :param pulumi.Input[str] common_alphabet: Common alphabets.
+        :param pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet'] common_alphabet: Common alphabets.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
         :param pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'] crypto_key: Required. The key used by the encryption algorithm.
         :param pulumi.Input[str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
@@ -1134,14 +1135,14 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
 
     @property
     @pulumi.getter(name="commonAlphabet")
-    def common_alphabet(self) -> Optional[pulumi.Input[str]]:
+    def common_alphabet(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet']]:
         """
         Common alphabets.
         """
         return pulumi.get(self, "common_alphabet")
 
     @common_alphabet.setter
-    def common_alphabet(self, value: Optional[pulumi.Input[str]]):
+    def common_alphabet(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet']]):
         pulumi.set(self, "common_alphabet", value)
 
     @property
@@ -1210,9 +1211,9 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
     def __init__(__self__, *,
                  detection_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2DetectionRuleArgs']]]] = None,
                  dictionary: Optional[pulumi.Input['GooglePrivacyDlpV2DictionaryArgs']] = None,
-                 exclusion_type: Optional[pulumi.Input[str]] = None,
+                 exclusion_type: Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeExclusionType']] = None,
                  info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None,
-                 likelihood: Optional[pulumi.Input[str]] = None,
+                 likelihood: Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeLikelihood']] = None,
                  regex: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']] = None,
                  stored_type: Optional[pulumi.Input['GooglePrivacyDlpV2StoredTypeArgs']] = None,
                  surrogate_type: Optional[pulumi.Input['GooglePrivacyDlpV2SurrogateTypeArgs']] = None):
@@ -1220,9 +1221,9 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
         Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2DetectionRuleArgs']]] detection_rules: Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order that they are specified. Not supported for the `surrogate_type` CustomInfoType.
         :param pulumi.Input['GooglePrivacyDlpV2DictionaryArgs'] dictionary: A list of phrases to detect as a CustomInfoType.
-        :param pulumi.Input[str] exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+        :param pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeExclusionType'] exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
-        :param pulumi.Input[str] likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
+        :param pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeLikelihood'] likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
         :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] regex: Regular expression based CustomInfoType.
         :param pulumi.Input['GooglePrivacyDlpV2StoredTypeArgs'] stored_type: Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
         :param pulumi.Input['GooglePrivacyDlpV2SurrogateTypeArgs'] surrogate_type: Message for detecting output from deidentification transformations that support reversing.
@@ -1270,14 +1271,14 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
 
     @property
     @pulumi.getter(name="exclusionType")
-    def exclusion_type(self) -> Optional[pulumi.Input[str]]:
+    def exclusion_type(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeExclusionType']]:
         """
         If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
         """
         return pulumi.get(self, "exclusion_type")
 
     @exclusion_type.setter
-    def exclusion_type(self, value: Optional[pulumi.Input[str]]):
+    def exclusion_type(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeExclusionType']]):
         pulumi.set(self, "exclusion_type", value)
 
     @property
@@ -1294,14 +1295,14 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
 
     @property
     @pulumi.getter
-    def likelihood(self) -> Optional[pulumi.Input[str]]:
+    def likelihood(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeLikelihood']]:
         """
         Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
         """
         return pulumi.get(self, "likelihood")
 
     @likelihood.setter
-    def likelihood(self, value: Optional[pulumi.Input[str]]):
+    def likelihood(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeLikelihood']]):
         pulumi.set(self, "likelihood", value)
 
     @property
@@ -1682,13 +1683,13 @@ class GooglePrivacyDlpV2ExclusionRuleArgs:
     def __init__(__self__, *,
                  dictionary: Optional[pulumi.Input['GooglePrivacyDlpV2DictionaryArgs']] = None,
                  exclude_info_types: Optional[pulumi.Input['GooglePrivacyDlpV2ExcludeInfoTypesArgs']] = None,
-                 matching_type: Optional[pulumi.Input[str]] = None,
+                 matching_type: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleMatchingType']] = None,
                  regex: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']] = None):
         """
         The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
         :param pulumi.Input['GooglePrivacyDlpV2DictionaryArgs'] dictionary: Dictionary which defines the rule.
         :param pulumi.Input['GooglePrivacyDlpV2ExcludeInfoTypesArgs'] exclude_info_types: Set of infoTypes for which findings would affect this rule.
-        :param pulumi.Input[str] matching_type: How the rule is applied, see MatchingType documentation for details.
+        :param pulumi.Input['GooglePrivacyDlpV2ExclusionRuleMatchingType'] matching_type: How the rule is applied, see MatchingType documentation for details.
         :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] regex: Regular expression which defines the rule.
         """
         if dictionary is not None:
@@ -1726,14 +1727,14 @@ class GooglePrivacyDlpV2ExclusionRuleArgs:
 
     @property
     @pulumi.getter(name="matchingType")
-    def matching_type(self) -> Optional[pulumi.Input[str]]:
+    def matching_type(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleMatchingType']]:
         """
         How the rule is applied, see MatchingType documentation for details.
         """
         return pulumi.get(self, "matching_type")
 
     @matching_type.setter
-    def matching_type(self, value: Optional[pulumi.Input[str]]):
+    def matching_type(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleMatchingType']]):
         pulumi.set(self, "matching_type", value)
 
     @property
@@ -1753,11 +1754,11 @@ class GooglePrivacyDlpV2ExclusionRuleArgs:
 class GooglePrivacyDlpV2ExpressionsArgs:
     def __init__(__self__, *,
                  conditions: Optional[pulumi.Input['GooglePrivacyDlpV2ConditionsArgs']] = None,
-                 logical_operator: Optional[pulumi.Input[str]] = None):
+                 logical_operator: Optional[pulumi.Input['GooglePrivacyDlpV2ExpressionsLogicalOperator']] = None):
         """
         An expression, consisting or an operator and conditions.
         :param pulumi.Input['GooglePrivacyDlpV2ConditionsArgs'] conditions: Conditions to apply to the expression.
-        :param pulumi.Input[str] logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
+        :param pulumi.Input['GooglePrivacyDlpV2ExpressionsLogicalOperator'] logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -1778,14 +1779,14 @@ class GooglePrivacyDlpV2ExpressionsArgs:
 
     @property
     @pulumi.getter(name="logicalOperator")
-    def logical_operator(self) -> Optional[pulumi.Input[str]]:
+    def logical_operator(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ExpressionsLogicalOperator']]:
         """
         The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
         """
         return pulumi.get(self, "logical_operator")
 
     @logical_operator.setter
-    def logical_operator(self, value: Optional[pulumi.Input[str]]):
+    def logical_operator(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ExpressionsLogicalOperator']]):
         pulumi.set(self, "logical_operator", value)
 
 
@@ -2296,23 +2297,23 @@ class GooglePrivacyDlpV2InfoTypeTransformationsArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2InspectConfigArgs:
     def __init__(__self__, *,
-                 content_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 content_options: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]] = None,
                  custom_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]]] = None,
                  exclude_info_types: Optional[pulumi.Input[bool]] = None,
                  include_quote: Optional[pulumi.Input[bool]] = None,
                  info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]] = None,
                  limits: Optional[pulumi.Input['GooglePrivacyDlpV2FindingLimitsArgs']] = None,
-                 min_likelihood: Optional[pulumi.Input[str]] = None,
+                 min_likelihood: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood']] = None,
                  rule_set: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]]] = None):
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings.
         :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         :param pulumi.Input['GooglePrivacyDlpV2FindingLimitsArgs'] limits: Configuration to control the number of findings returned.
-        :param pulumi.Input[str] min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
+        :param pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood'] min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
         if content_options is not None:
@@ -2334,14 +2335,14 @@ class GooglePrivacyDlpV2InspectConfigArgs:
 
     @property
     @pulumi.getter(name="contentOptions")
-    def content_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def content_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]:
         """
         List of options defining data content to scan. If empty, text, images, and other content will be included.
         """
         return pulumi.get(self, "content_options")
 
     @content_options.setter
-    def content_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def content_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]):
         pulumi.set(self, "content_options", value)
 
     @property
@@ -2406,14 +2407,14 @@ class GooglePrivacyDlpV2InspectConfigArgs:
 
     @property
     @pulumi.getter(name="minLikelihood")
-    def min_likelihood(self) -> Optional[pulumi.Input[str]]:
+    def min_likelihood(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood']]:
         """
         Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         """
         return pulumi.get(self, "min_likelihood")
 
     @min_likelihood.setter
-    def min_likelihood(self, value: Optional[pulumi.Input[str]]):
+    def min_likelihood(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood']]):
         pulumi.set(self, "min_likelihood", value)
 
     @property
@@ -2858,11 +2859,11 @@ class GooglePrivacyDlpV2LeaveUntransformedArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2LikelihoodAdjustmentArgs:
     def __init__(__self__, *,
-                 fixed_likelihood: Optional[pulumi.Input[str]] = None,
+                 fixed_likelihood: Optional[pulumi.Input['GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood']] = None,
                  relative_likelihood: Optional[pulumi.Input[int]] = None):
         """
         Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
-        :param pulumi.Input[str] fixed_likelihood: Set the likelihood of a finding to a fixed value.
+        :param pulumi.Input['GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood'] fixed_likelihood: Set the likelihood of a finding to a fixed value.
         :param pulumi.Input[int] relative_likelihood: Increase or decrease the likelihood by the specified number of levels. For example, if a finding would be `POSSIBLE` without the detection rule and `relative_likelihood` is 1, then it is upgraded to `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`. Likelihood may never drop below `VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1 followed by an adjustment of -1 when base likelihood is `VERY_LIKELY` will result in a final likelihood of `LIKELY`.
         """
         if fixed_likelihood is not None:
@@ -2872,14 +2873,14 @@ class GooglePrivacyDlpV2LikelihoodAdjustmentArgs:
 
     @property
     @pulumi.getter(name="fixedLikelihood")
-    def fixed_likelihood(self) -> Optional[pulumi.Input[str]]:
+    def fixed_likelihood(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood']]:
         """
         Set the likelihood of a finding to a fixed value.
         """
         return pulumi.get(self, "fixed_likelihood")
 
     @fixed_likelihood.setter
-    def fixed_likelihood(self, value: Optional[pulumi.Input[str]]):
+    def fixed_likelihood(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood']]):
         pulumi.set(self, "fixed_likelihood", value)
 
     @property
@@ -2931,11 +2932,11 @@ class GooglePrivacyDlpV2NumericalStatsConfigArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2OutputStorageConfigArgs:
     def __init__(__self__, *,
-                 output_schema: Optional[pulumi.Input[str]] = None,
+                 output_schema: Optional[pulumi.Input['GooglePrivacyDlpV2OutputStorageConfigOutputSchema']] = None,
                  table: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']] = None):
         """
         Cloud repository for storing output.
-        :param pulumi.Input[str] output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
+        :param pulumi.Input['GooglePrivacyDlpV2OutputStorageConfigOutputSchema'] output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
         :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table: Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
         """
         if output_schema is not None:
@@ -2945,14 +2946,14 @@ class GooglePrivacyDlpV2OutputStorageConfigArgs:
 
     @property
     @pulumi.getter(name="outputSchema")
-    def output_schema(self) -> Optional[pulumi.Input[str]]:
+    def output_schema(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2OutputStorageConfigOutputSchema']]:
         """
         Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
         """
         return pulumi.get(self, "output_schema")
 
     @output_schema.setter
-    def output_schema(self, value: Optional[pulumi.Input[str]]):
+    def output_schema(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2OutputStorageConfigOutputSchema']]):
         pulumi.set(self, "output_schema", value)
 
     @property
@@ -4198,24 +4199,24 @@ class GooglePrivacyDlpV2ThrowErrorArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2TimePartConfigArgs:
     def __init__(__self__, *,
-                 part_to_extract: Optional[pulumi.Input[str]] = None):
+                 part_to_extract: Optional[pulumi.Input['GooglePrivacyDlpV2TimePartConfigPartToExtract']] = None):
         """
         For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
-        :param pulumi.Input[str] part_to_extract: The part of the time to keep.
+        :param pulumi.Input['GooglePrivacyDlpV2TimePartConfigPartToExtract'] part_to_extract: The part of the time to keep.
         """
         if part_to_extract is not None:
             pulumi.set(__self__, "part_to_extract", part_to_extract)
 
     @property
     @pulumi.getter(name="partToExtract")
-    def part_to_extract(self) -> Optional[pulumi.Input[str]]:
+    def part_to_extract(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2TimePartConfigPartToExtract']]:
         """
         The part of the time to keep.
         """
         return pulumi.get(self, "part_to_extract")
 
     @part_to_extract.setter
-    def part_to_extract(self, value: Optional[pulumi.Input[str]]):
+    def part_to_extract(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2TimePartConfigPartToExtract']]):
         pulumi.set(self, "part_to_extract", value)
 
 
@@ -4424,7 +4425,7 @@ class GooglePrivacyDlpV2ValueArgs:
     def __init__(__self__, *,
                  boolean_value: Optional[pulumi.Input[bool]] = None,
                  date_value: Optional[pulumi.Input['GoogleTypeDateArgs']] = None,
-                 day_of_week_value: Optional[pulumi.Input[str]] = None,
+                 day_of_week_value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueDayOfWeekValue']] = None,
                  float_value: Optional[pulumi.Input[float]] = None,
                  integer_value: Optional[pulumi.Input[str]] = None,
                  string_value: Optional[pulumi.Input[str]] = None,
@@ -4434,7 +4435,7 @@ class GooglePrivacyDlpV2ValueArgs:
         Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
         :param pulumi.Input[bool] boolean_value: boolean
         :param pulumi.Input['GoogleTypeDateArgs'] date_value: date
-        :param pulumi.Input[str] day_of_week_value: day of week
+        :param pulumi.Input['GooglePrivacyDlpV2ValueDayOfWeekValue'] day_of_week_value: day of week
         :param pulumi.Input[float] float_value: float
         :param pulumi.Input[str] integer_value: integer
         :param pulumi.Input[str] string_value: string
@@ -4484,14 +4485,14 @@ class GooglePrivacyDlpV2ValueArgs:
 
     @property
     @pulumi.getter(name="dayOfWeekValue")
-    def day_of_week_value(self) -> Optional[pulumi.Input[str]]:
+    def day_of_week_value(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ValueDayOfWeekValue']]:
         """
         day of week
         """
         return pulumi.get(self, "day_of_week_value")
 
     @day_of_week_value.setter
-    def day_of_week_value(self, value: Optional[pulumi.Input[str]]):
+    def day_of_week_value(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueDayOfWeekValue']]):
         pulumi.set(self, "day_of_week_value", value)
 
     @property

@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./dashboard";
 export * from "./getDashboard";
 
+// Export enums:
+export * from "../../types/enums/monitoring/v1";
+
 // Import resources to register:
 import { Dashboard } from "./dashboard";
 

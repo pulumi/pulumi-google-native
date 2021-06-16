@@ -38,7 +38,7 @@ type AptRepositoryInput interface {
 // Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
 type AptRepositoryArgs struct {
 	// Type of archive files in this repository. The default behavior is DEB.
-	ArchiveType pulumi.StringPtrInput `pulumi:"archiveType"`
+	ArchiveType *AptRepositoryArchiveType `pulumi:"archiveType"`
 	// Required. List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
 	// Required. Distribution of this repository.
@@ -339,7 +339,7 @@ type AptSettingsArgs struct {
 	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
 	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *AptSettingsType `pulumi:"type"`
 }
 
 func (AptSettingsArgs) ElementType() reflect.Type {
@@ -1694,7 +1694,7 @@ type ExecStepConfigArgs struct {
 	// A Google Cloud Storage object containing the executable.
 	GcsObject GcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
+	Interpreter *ExecStepConfigInterpreter `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
 }
@@ -3894,9 +3894,9 @@ type PackageInput interface {
 // Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
 type PackageArgs struct {
 	// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
+	DesiredState *PackageDesiredState `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-	Manager pulumi.StringPtrInput `pulumi:"manager"`
+	Manager *PackageManager `pulumi:"manager"`
 	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -4402,7 +4402,7 @@ type PatchConfigArgs struct {
 	// The `ExecStep` to run before the patch update.
 	PreStep ExecStepPtrInput `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	RebootConfig pulumi.StringPtrInput `pulumi:"rebootConfig"`
+	RebootConfig *PatchConfigRebootConfig `pulumi:"rebootConfig"`
 	// Windows update settings. Use this override the default windows patch rules.
 	WindowsUpdate WindowsUpdateSettingsPtrInput `pulumi:"windowsUpdate"`
 	// Yum update settings. Use this setting to override the default `yum` patch rules.
@@ -5538,7 +5538,7 @@ type PatchRolloutArgs struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 	DisruptionBudget FixedOrPercentPtrInput `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *PatchRolloutMode `pulumi:"mode"`
 }
 
 func (PatchRolloutArgs) ElementType() reflect.Type {
@@ -5854,7 +5854,7 @@ type RecurringScheduleArgs struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Required. The frequency unit of this recurring schedule.
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	Frequency *RecurringScheduleFrequency `pulumi:"frequency"`
 	// Required. Schedule with monthly executions.
 	Monthly MonthlySchedulePtrInput `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -6386,7 +6386,7 @@ type SoftwareRecipeArgs struct {
 	// Resources available to be used in the steps in the recipe.
 	Artifacts SoftwareRecipeArtifactArrayInput `pulumi:"artifacts"`
 	// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
+	DesiredState *SoftwareRecipeDesiredState `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps SoftwareRecipeStepArrayInput `pulumi:"installSteps"`
 	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
@@ -8079,7 +8079,7 @@ type SoftwareRecipeStepExtractArchiveArgs struct {
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// Required. The type of the archive to extract.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *SoftwareRecipeStepExtractArchiveType `pulumi:"type"`
 }
 
 func (SoftwareRecipeStepExtractArchiveArgs) ElementType() reflect.Type {
@@ -9101,7 +9101,7 @@ type SoftwareRecipeStepRunScriptArgs struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
-	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
+	Interpreter *SoftwareRecipeStepRunScriptInterpreter `pulumi:"interpreter"`
 	// Required. The shell script to be executed.
 	Script pulumi.StringPtrInput `pulumi:"script"`
 }
@@ -10011,7 +10011,7 @@ type WeekDayOfMonthInput interface {
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthArgs struct {
 	// Required. A day of the week.
-	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	DayOfWeek *WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
 	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntPtrInput `pulumi:"weekOrdinal"`
 }
@@ -10315,7 +10315,7 @@ type WeeklyScheduleInput interface {
 // Represents a weekly schedule.
 type WeeklyScheduleArgs struct {
 	// Required. Day of the week.
-	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	DayOfWeek *WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
 }
 
 func (WeeklyScheduleArgs) ElementType() reflect.Type {
@@ -10587,7 +10587,7 @@ type WindowsUpdateSettingsInput interface {
 // Windows patching is performed using the Windows Update Agent.
 type WindowsUpdateSettingsArgs struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	Classifications pulumi.StringArrayInput `pulumi:"classifications"`
+	Classifications WindowsUpdateSettingsClassificationsItemArrayInput `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.

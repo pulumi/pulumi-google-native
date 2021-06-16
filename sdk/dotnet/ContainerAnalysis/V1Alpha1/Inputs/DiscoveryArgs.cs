@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// The kind of analysis that is handled by this discovery.
         /// </summary>
         [Input("analysisKind")]
-        public Input<string>? AnalysisKind { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.DiscoveryAnalysisKind>? AnalysisKind { get; set; }
 
         public DiscoveryArgs()
         {

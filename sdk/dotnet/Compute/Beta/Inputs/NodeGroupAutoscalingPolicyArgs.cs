@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see  Autoscaler modes.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.NodeGroupAutoscalingPolicyMode>? Mode { get; set; }
 
         public NodeGroupAutoscalingPolicyArgs()
         {

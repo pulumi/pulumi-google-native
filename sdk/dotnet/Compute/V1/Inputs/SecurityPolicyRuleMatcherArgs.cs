@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         /// </summary>
         [Input("versionedExpr")]
-        public Input<string>? VersionedExpr { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.SecurityPolicyRuleMatcherVersionedExpr>? VersionedExpr { get; set; }
 
         public SecurityPolicyRuleMatcherArgs()
         {

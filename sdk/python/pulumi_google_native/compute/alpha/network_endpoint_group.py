@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['NetworkEndpointGroupArgs', 'NetworkEndpointGroup']
@@ -28,7 +29,7 @@ class NetworkEndpointGroupArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_endpoint_type: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -37,7 +38,7 @@ class NetworkEndpointGroupArgs:
                  serverless_deployment: Optional[pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs']] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['NetworkEndpointGroupType']] = None):
         """
         The set of arguments for constructing a NetworkEndpointGroup resource.
         :param pulumi.Input[str] zone: [Output Only] The URL of the zone where the network endpoint group is located.
@@ -52,7 +53,7 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
-        :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+        :param pulumi.Input['NetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the network endpoint group is located.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
@@ -60,7 +61,7 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
-        :param pulumi.Input[str] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
+        :param pulumi.Input['NetworkEndpointGroupType'] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
@@ -262,14 +263,14 @@ class NetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter(name="networkEndpointType")
-    def network_endpoint_type(self) -> Optional[pulumi.Input[str]]:
+    def network_endpoint_type(self) -> Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']]:
         """
         Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         """
         return pulumi.get(self, "network_endpoint_type")
 
     @network_endpoint_type.setter
-    def network_endpoint_type(self, value: Optional[pulumi.Input[str]]):
+    def network_endpoint_type(self, value: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']]):
         pulumi.set(self, "network_endpoint_type", value)
 
     @property
@@ -367,14 +368,14 @@ class NetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['NetworkEndpointGroupType']]:
         """
         Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['NetworkEndpointGroupType']]):
         pulumi.set(self, "type", value)
 
 
@@ -394,7 +395,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_endpoint_type: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -404,7 +405,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  serverless_deployment: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['NetworkEndpointGroupType']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -423,7 +424,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
-        :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+        :param pulumi.Input['NetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the network endpoint group is located.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
@@ -431,7 +432,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
-        :param pulumi.Input[str] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
+        :param pulumi.Input['NetworkEndpointGroupType'] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
         :param pulumi.Input[str] zone: [Output Only] The URL of the zone where the network endpoint group is located.
         """
         ...
@@ -469,7 +470,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_endpoint_type: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -479,7 +480,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  serverless_deployment: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['NetworkEndpointGroupType']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

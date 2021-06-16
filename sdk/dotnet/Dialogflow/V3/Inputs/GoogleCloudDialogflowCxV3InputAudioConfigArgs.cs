@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         /// Required. Audio encoding of the audio content to process.
         /// </summary>
         [Input("audioEncoding")]
-        public Input<string>? AudioEncoding { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding>? AudioEncoding { get; set; }
 
         /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         /// Optional. Which variant of the Speech model to use.
         /// </summary>
         [Input("modelVariant")]
-        public Input<string>? ModelVariant { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3InputAudioConfigModelVariant>? ModelVariant { get; set; }
 
         [Input("phraseHints")]
         private InputList<string>? _phraseHints;

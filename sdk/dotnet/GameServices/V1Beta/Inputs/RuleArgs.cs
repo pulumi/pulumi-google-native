@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         /// Required
         /// </summary>
         [Input("action")]
-        public Input<string>? Action { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1Beta.RuleAction>? Action { get; set; }
 
         [Input("conditions")]
         private InputList<Inputs.ConditionArgs>? _conditions;

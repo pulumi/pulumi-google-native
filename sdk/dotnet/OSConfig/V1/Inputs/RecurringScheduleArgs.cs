@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         /// Required. The frequency unit of this recurring schedule.
         /// </summary>
         [Input("frequency")]
-        public Input<string>? Frequency { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1.RecurringScheduleFrequency>? Frequency { get; set; }
 
         /// <summary>
         /// Required. Schedule with monthly executions.

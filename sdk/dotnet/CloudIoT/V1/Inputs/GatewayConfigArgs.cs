@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         /// Indicates how to authorize and/or authenticate devices to access the gateway.
         /// </summary>
         [Input("gatewayAuthMethod")]
-        public Input<string>? GatewayAuthMethod { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.GatewayConfigGatewayAuthMethod>? GatewayAuthMethod { get; set; }
 
         /// <summary>
         /// Indicates whether the device is a gateway.
         /// </summary>
         [Input("gatewayType")]
-        public Input<string>? GatewayType { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.GatewayConfigGatewayType>? GatewayType { get; set; }
 
         /// <summary>
         /// [Output only] The ID of the gateway the device accessed most recently.

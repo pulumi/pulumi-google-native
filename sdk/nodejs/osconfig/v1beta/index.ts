@@ -10,6 +10,9 @@ export * from "./getPatchDeployment";
 export * from "./guestPolicy";
 export * from "./patchDeployment";
 
+// Export enums:
+export * from "../../types/enums/osconfig/v1beta";
+
 // Import resources to register:
 import { GuestPolicy } from "./guestPolicy";
 import { PatchDeployment } from "./patchDeployment";

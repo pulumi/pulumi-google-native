@@ -10,6 +10,9 @@ export * from "./getRepoIamPolicy";
 export * from "./repo";
 export * from "./repoIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/sourcerepo/v1";
+
 // Import resources to register:
 import { Repo } from "./repo";
 import { RepoIamPolicy } from "./repoIamPolicy";

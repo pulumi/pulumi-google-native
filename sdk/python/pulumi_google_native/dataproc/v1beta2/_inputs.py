@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AcceleratorConfigArgs',
@@ -775,7 +776,7 @@ class GceClusterConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network_uri: Optional[pulumi.Input[str]] = None,
                  node_group_affinity: Optional[pulumi.Input['NodeGroupAffinityArgs']] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess']] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -789,7 +790,7 @@ class GceClusterConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
         :param pulumi.Input['NodeGroupAffinityArgs'] node_group_affinity: Optional. Node Group Affinity for sole-tenant clusters.
-        :param pulumi.Input[str] private_ipv6_google_access: Optional. The type of IPv6 access for a cluster.
+        :param pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: Optional. The type of IPv6 access for a cluster.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Optional. Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
@@ -873,14 +874,14 @@ class GceClusterConfigArgs:
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[str]]:
+    def private_ipv6_google_access(self) -> Optional[pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess']]:
         """
         Optional. The type of IPv6 access for a cluster.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[str]]):
+    def private_ipv6_google_access(self, value: Optional[pulumi.Input['GceClusterConfigPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
@@ -1297,7 +1298,7 @@ class InstanceGroupConfigArgs:
                  machine_type_uri: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
-                 preemptibility: Optional[pulumi.Input[str]] = None):
+                 preemptibility: Optional[pulumi.Input['InstanceGroupConfigPreemptibility']] = None):
         """
         The config settings for Compute Engine resources in an instance group, such as a master or worker group.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
@@ -1306,7 +1307,7 @@ class InstanceGroupConfigArgs:
         :param pulumi.Input[str] machine_type_uri: Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
         :param pulumi.Input[str] min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param pulumi.Input[int] num_instances: Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
-        :param pulumi.Input[str] preemptibility: Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+        :param pulumi.Input['InstanceGroupConfigPreemptibility'] preemptibility: Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -1397,14 +1398,14 @@ class InstanceGroupConfigArgs:
 
     @property
     @pulumi.getter
-    def preemptibility(self) -> Optional[pulumi.Input[str]]:
+    def preemptibility(self) -> Optional[pulumi.Input['InstanceGroupConfigPreemptibility']]:
         """
         Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
         """
         return pulumi.get(self, "preemptibility")
 
     @preemptibility.setter
-    def preemptibility(self, value: Optional[pulumi.Input[str]]):
+    def preemptibility(self, value: Optional[pulumi.Input['InstanceGroupConfigPreemptibility']]):
         pulumi.set(self, "preemptibility", value)
 
 
@@ -2707,12 +2708,12 @@ class RegexValidationArgs:
 @pulumi.input_type
 class ReservationAffinityArgs:
     def __init__(__self__, *,
-                 consume_reservation_type: Optional[pulumi.Input[str]] = None,
+                 consume_reservation_type: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Reservation Affinity for consuming Zonal reservation.
-        :param pulumi.Input[str] consume_reservation_type: Optional. Type of reservation to consume
+        :param pulumi.Input['ReservationAffinityConsumeReservationType'] consume_reservation_type: Optional. Type of reservation to consume
         :param pulumi.Input[str] key: Optional. Corresponds to the label key of reservation resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Optional. Corresponds to the label values of reservation resource.
         """
@@ -2725,14 +2726,14 @@ class ReservationAffinityArgs:
 
     @property
     @pulumi.getter(name="consumeReservationType")
-    def consume_reservation_type(self) -> Optional[pulumi.Input[str]]:
+    def consume_reservation_type(self) -> Optional[pulumi.Input['ReservationAffinityConsumeReservationType']]:
         """
         Optional. Type of reservation to consume
         """
         return pulumi.get(self, "consume_reservation_type")
 
     @consume_reservation_type.setter
-    def consume_reservation_type(self, value: Optional[pulumi.Input[str]]):
+    def consume_reservation_type(self, value: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']]):
         pulumi.set(self, "consume_reservation_type", value)
 
     @property
@@ -2844,12 +2845,12 @@ class ShieldedInstanceConfigArgs:
 class SoftwareConfigArgs:
     def __init__(__self__, *,
                  image_version: Optional[pulumi.Input[str]] = None,
-                 optional_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 optional_components: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareConfigOptionalComponentsItem']]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Specifies the selection and config of software inside the cluster.
         :param pulumi.Input[str] image_version: Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optional_components: The set of optional components to activate on the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['SoftwareConfigOptionalComponentsItem']]] optional_components: The set of optional components to activate on the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         if image_version is not None:
@@ -2873,14 +2874,14 @@ class SoftwareConfigArgs:
 
     @property
     @pulumi.getter(name="optionalComponents")
-    def optional_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def optional_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareConfigOptionalComponentsItem']]]]:
         """
         The set of optional components to activate on the cluster.
         """
         return pulumi.get(self, "optional_components")
 
     @optional_components.setter
-    def optional_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def optional_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareConfigOptionalComponentsItem']]]]):
         pulumi.set(self, "optional_components", value)
 
     @property

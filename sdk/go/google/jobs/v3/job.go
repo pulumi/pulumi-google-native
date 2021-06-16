@@ -309,7 +309,7 @@ type JobArgs struct {
 	// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
 	CustomAttributes pulumi.StringMapInput
 	// Optional. The desired education degrees for the job, such as Bachelors, Masters.
-	DegreeTypes pulumi.StringArrayInput
+	DegreeTypes JobDegreeTypesItemArrayInput
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
 	Department pulumi.StringPtrInput
 	// Derived details about the job posting.
@@ -317,15 +317,15 @@ type JobArgs struct {
 	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
 	Description pulumi.StringPtrInput
 	// Optional. The employment type(s) of a job, for example, full time or part time.
-	EmploymentTypes pulumi.StringArrayInput
+	EmploymentTypes JobEmploymentTypesItemArrayInput
 	// Optional. A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000.
 	Incentives pulumi.StringPtrInput
 	// Optional. The benefits included with the job.
-	JobBenefits pulumi.StringArrayInput
+	JobBenefits JobJobBenefitsItemArrayInput
 	// Optional. The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
 	JobEndTime pulumi.StringPtrInput
 	// Optional. The experience level associated with the job, such as "Entry Level".
-	JobLevel pulumi.StringPtrInput
+	JobLevel *JobJobLevel
 	// Optional. The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
 	JobStartTime pulumi.StringPtrInput
 	// Optional. The language of the posting. This field is distinct from any requirements for fluency that are associated with the job. Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }. If this field is unspecified and Job.description is present, detected language code based on Job.description is assigned, otherwise defaults to 'en_US'.
@@ -339,7 +339,7 @@ type JobArgs struct {
 	// Optional. The timestamp this job posting was most recently published. The default value is the time the request arrives at the server. Invalid timestamps are ignored.
 	PostingPublishTime pulumi.StringPtrInput
 	// Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
-	PostingRegion pulumi.StringPtrInput
+	PostingRegion *JobPostingRegion
 	// The timestamp when this job posting was last updated.
 	PostingUpdateTime pulumi.StringPtrInput
 	// Optional. Options for job processing.

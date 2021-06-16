@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -107,7 +107,7 @@ export interface TaxonomyArgs {
     /**
      * Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
      */
-    activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    activatedPolicyTypes?: pulumi.Input<pulumi.Input<enums.datacatalog.v1beta1.TaxonomyActivatedPolicyTypesItem>[]>;
     /**
      * Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
      */

@@ -12,6 +12,9 @@ export * from "./notificationConfig";
 export * from "./organizationSourceIamPolicy";
 export * from "./source";
 
+// Export enums:
+export * from "../../types/enums/securitycenter/v1";
+
 // Import resources to register:
 import { NotificationConfig } from "./notificationConfig";
 import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";

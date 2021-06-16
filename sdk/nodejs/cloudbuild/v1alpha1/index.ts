@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getWorkerPool";
 export * from "./workerPool";
 
+// Export enums:
+export * from "../../types/enums/cloudbuild/v1alpha1";
+
 // Import resources to register:
 import { WorkerPool } from "./workerPool";
 

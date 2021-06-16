@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .certificate import *
 from .certificate_authority import *
 from .certificate_authority_certificate_revocation_list_iam_policy import *

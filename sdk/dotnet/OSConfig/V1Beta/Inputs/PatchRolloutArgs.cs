@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         /// Mode of the patch rollout.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.PatchRolloutMode>? Mode { get; set; }
 
         public PatchRolloutArgs()
         {

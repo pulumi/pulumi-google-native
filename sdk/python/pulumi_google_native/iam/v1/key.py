@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['KeyArgs', 'Key']
 
@@ -15,12 +16,12 @@ class KeyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  service_account_id: pulumi.Input[str],
-                 key_algorithm: Optional[pulumi.Input[str]] = None,
-                 private_key_type: Optional[pulumi.Input[str]] = None):
+                 key_algorithm: Optional[pulumi.Input['KeyKeyAlgorithm']] = None,
+                 private_key_type: Optional[pulumi.Input['KeyPrivateKeyType']] = None):
         """
         The set of arguments for constructing a Key resource.
-        :param pulumi.Input[str] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-        :param pulumi.Input[str] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
+        :param pulumi.Input['KeyKeyAlgorithm'] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
+        :param pulumi.Input['KeyPrivateKeyType'] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account_id", service_account_id)
@@ -49,26 +50,26 @@ class KeyArgs:
 
     @property
     @pulumi.getter(name="keyAlgorithm")
-    def key_algorithm(self) -> Optional[pulumi.Input[str]]:
+    def key_algorithm(self) -> Optional[pulumi.Input['KeyKeyAlgorithm']]:
         """
         Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
         """
         return pulumi.get(self, "key_algorithm")
 
     @key_algorithm.setter
-    def key_algorithm(self, value: Optional[pulumi.Input[str]]):
+    def key_algorithm(self, value: Optional[pulumi.Input['KeyKeyAlgorithm']]):
         pulumi.set(self, "key_algorithm", value)
 
     @property
     @pulumi.getter(name="privateKeyType")
-    def private_key_type(self) -> Optional[pulumi.Input[str]]:
+    def private_key_type(self) -> Optional[pulumi.Input['KeyPrivateKeyType']]:
         """
         The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
         return pulumi.get(self, "private_key_type")
 
     @private_key_type.setter
-    def private_key_type(self, value: Optional[pulumi.Input[str]]):
+    def private_key_type(self, value: Optional[pulumi.Input['KeyPrivateKeyType']]):
         pulumi.set(self, "private_key_type", value)
 
 
@@ -77,8 +78,8 @@ class Key(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_algorithm: Optional[pulumi.Input[str]] = None,
-                 private_key_type: Optional[pulumi.Input[str]] = None,
+                 key_algorithm: Optional[pulumi.Input['KeyKeyAlgorithm']] = None,
+                 private_key_type: Optional[pulumi.Input['KeyPrivateKeyType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -87,8 +88,8 @@ class Key(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-        :param pulumi.Input[str] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
+        :param pulumi.Input['KeyKeyAlgorithm'] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
+        :param pulumi.Input['KeyPrivateKeyType'] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
         ...
     @overload
@@ -114,8 +115,8 @@ class Key(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_algorithm: Optional[pulumi.Input[str]] = None,
-                 private_key_type: Optional[pulumi.Input[str]] = None,
+                 key_algorithm: Optional[pulumi.Input['KeyKeyAlgorithm']] = None,
+                 private_key_type: Optional[pulumi.Input['KeyPrivateKeyType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

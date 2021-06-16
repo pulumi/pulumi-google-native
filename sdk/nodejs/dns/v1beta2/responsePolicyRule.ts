@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -99,7 +99,7 @@ export interface ResponsePolicyRuleArgs {
     /**
      * Answer this query with a behavior rather than DNS data.
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<enums.dns.v1beta2.ResponsePolicyRuleBehavior>;
     clientOperationId?: pulumi.Input<string>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.

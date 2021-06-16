@@ -208,7 +208,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// [Output Only] The status of resource policy creation.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyStatus>? Status { get; set; }
 
         /// <summary>
         /// Resource policy applicable to VMs for infrastructure maintenance.

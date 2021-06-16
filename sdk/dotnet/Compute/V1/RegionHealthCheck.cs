@@ -244,7 +244,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionHealthCheckType>? Type { get; set; }
 
         /// <summary>
         /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.

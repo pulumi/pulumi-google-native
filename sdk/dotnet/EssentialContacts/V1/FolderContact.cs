@@ -118,14 +118,14 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public Input<string>? Name { get; set; }
 
         [Input("notificationCategorySubscriptions")]
-        private InputList<string>? _notificationCategorySubscriptions;
+        private InputList<Pulumi.GoogleNative.EssentialContacts.V1.FolderContactNotificationCategorySubscriptionsItem>? _notificationCategorySubscriptions;
 
         /// <summary>
         /// The categories of notifications that the contact will receive communications for.
         /// </summary>
-        public InputList<string> NotificationCategorySubscriptions
+        public InputList<Pulumi.GoogleNative.EssentialContacts.V1.FolderContactNotificationCategorySubscriptionsItem> NotificationCategorySubscriptions
         {
-            get => _notificationCategorySubscriptions ?? (_notificationCategorySubscriptions = new InputList<string>());
+            get => _notificationCategorySubscriptions ?? (_notificationCategorySubscriptions = new InputList<Pulumi.GoogleNative.EssentialContacts.V1.FolderContactNotificationCategorySubscriptionsItem>());
             set => _notificationCategorySubscriptions = value;
         }
 
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
         /// </summary>
         [Input("validationState")]
-        public Input<string>? ValidationState { get; set; }
+        public Input<Pulumi.GoogleNative.EssentialContacts.V1.FolderContactValidationState>? ValidationState { get; set; }
 
         public FolderContactArgs()
         {

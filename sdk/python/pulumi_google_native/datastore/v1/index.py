@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['IndexArgs', 'Index']
@@ -16,12 +17,12 @@ __all__ = ['IndexArgs', 'Index']
 class IndexArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 ancestor: Optional[pulumi.Input[str]] = None,
+                 ancestor: Optional[pulumi.Input['IndexAncestor']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] = None):
         """
         The set of arguments for constructing a Index resource.
-        :param pulumi.Input[str] ancestor: Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        :param pulumi.Input['IndexAncestor'] ancestor: Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         :param pulumi.Input[str] kind: Required. The entity kind to which this index applies.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]] properties: Required. An ordered sequence of property names and their index attributes.
         """
@@ -44,14 +45,14 @@ class IndexArgs:
 
     @property
     @pulumi.getter
-    def ancestor(self) -> Optional[pulumi.Input[str]]:
+    def ancestor(self) -> Optional[pulumi.Input['IndexAncestor']]:
         """
         Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         """
         return pulumi.get(self, "ancestor")
 
     @ancestor.setter
-    def ancestor(self, value: Optional[pulumi.Input[str]]):
+    def ancestor(self, value: Optional[pulumi.Input['IndexAncestor']]):
         pulumi.set(self, "ancestor", value)
 
     @property
@@ -84,7 +85,7 @@ class Index(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ancestor: Optional[pulumi.Input[str]] = None,
+                 ancestor: Optional[pulumi.Input['IndexAncestor']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
@@ -94,7 +95,7 @@ class Index(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ancestor: Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        :param pulumi.Input['IndexAncestor'] ancestor: Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         :param pulumi.Input[str] kind: Required. The entity kind to which this index applies.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] properties: Required. An ordered sequence of property names and their index attributes.
         """
@@ -122,7 +123,7 @@ class Index(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ancestor: Optional[pulumi.Input[str]] = None,
+                 ancestor: Optional[pulumi.Input['IndexAncestor']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,

@@ -587,7 +587,7 @@ type BackendServiceArgs struct {
 	// [Output Only] Type of resource. Always compute#backendService for backend services.
 	Kind pulumi.StringPtrInput
 	// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
-	LoadBalancingScheme pulumi.StringPtrInput
+	LoadBalancingScheme *BackendServiceLoadBalancingScheme
 	// The load balancing algorithm used within the scope of the locality. The possible values are:
 	// - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
 	// - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
@@ -603,7 +603,7 @@ type BackendServiceArgs struct {
 	// If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
 	//
 	// Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-	LocalityLbPolicy pulumi.StringPtrInput
+	LocalityLbPolicy *BackendServiceLocalityLbPolicy
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
 	LogConfig BackendServiceLogConfigPtrInput
 	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
@@ -632,7 +632,7 @@ type BackendServiceArgs struct {
 	// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
 	//
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-	Protocol pulumi.StringPtrInput
+	Protocol *BackendServiceProtocol
 	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region    pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
@@ -653,7 +653,7 @@ type BackendServiceArgs struct {
 	// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
 	//
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-	SessionAffinity pulumi.StringPtrInput
+	SessionAffinity *BackendServiceSessionAffinity
 	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntPtrInput
 }

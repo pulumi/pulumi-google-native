@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         /// </summary>
         [Input("defaultStorageType")]
-        public Input<string>? DefaultStorageType { get; set; }
+        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.ClusterDefaultStorageType>? DefaultStorageType { get; set; }
 
         /// <summary>
         /// Immutable. The encryption configuration for CMEK-protected clusters.

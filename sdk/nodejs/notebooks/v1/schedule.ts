@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -144,7 +144,7 @@ export interface ScheduleArgs {
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     scheduleId: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.notebooks.v1.ScheduleState>;
     /**
      * Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */

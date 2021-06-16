@@ -26,6 +26,9 @@ export * from "./tagKeyIamPolicy";
 export * from "./tagValue";
 export * from "./tagValueIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudresourcemanager/v3";
+
 // Import resources to register:
 import { Folder } from "./folder";
 import { FolderIamPolicy } from "./folderIamPolicy";

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudDatalabelingV1beta1AnnotationSpecArgs',
@@ -664,12 +665,12 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs:
     def __init__(__self__, *,
                  allow_multi_label: Optional[pulumi.Input[bool]] = None,
                  annotation_spec_set: Optional[pulumi.Input[str]] = None,
-                 answer_aggregation_type: Optional[pulumi.Input[str]] = None):
+                 answer_aggregation_type: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType']] = None):
         """
         Config for image classification human labeling task.
         :param pulumi.Input[bool] allow_multi_label: Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
         :param pulumi.Input[str] annotation_spec_set: Required. Annotation spec set resource name.
-        :param pulumi.Input[str] answer_aggregation_type: Optional. The type of how to aggregate answers.
+        :param pulumi.Input['GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType'] answer_aggregation_type: Optional. The type of how to aggregate answers.
         """
         if allow_multi_label is not None:
             pulumi.set(__self__, "allow_multi_label", allow_multi_label)
@@ -704,32 +705,32 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs:
 
     @property
     @pulumi.getter(name="answerAggregationType")
-    def answer_aggregation_type(self) -> Optional[pulumi.Input[str]]:
+    def answer_aggregation_type(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType']]:
         """
         Optional. The type of how to aggregate answers.
         """
         return pulumi.get(self, "answer_aggregation_type")
 
     @answer_aggregation_type.setter
-    def answer_aggregation_type(self, value: Optional[pulumi.Input[str]]):
+    def answer_aggregation_type(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType']]):
         pulumi.set(self, "answer_aggregation_type", value)
 
 
 @pulumi.input_type
 class GoogleCloudDatalabelingV1beta1InputConfigArgs:
     def __init__(__self__, *,
-                 annotation_type: Optional[pulumi.Input[str]] = None,
+                 annotation_type: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigAnnotationType']] = None,
                  bigquery_source: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1BigQuerySourceArgs']] = None,
                  classification_metadata: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs']] = None,
-                 data_type: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigDataType']] = None,
                  gcs_source: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1GcsSourceArgs']] = None,
                  text_metadata: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1TextMetadataArgs']] = None):
         """
         The configuration of input data, including data type, location, etc.
-        :param pulumi.Input[str] annotation_type: Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
+        :param pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigAnnotationType'] annotation_type: Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1BigQuerySourceArgs'] bigquery_source: Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs'] classification_metadata: Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
-        :param pulumi.Input[str] data_type: Required. Data type must be specifed when user tries to import data.
+        :param pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigDataType'] data_type: Required. Data type must be specifed when user tries to import data.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1GcsSourceArgs'] gcs_source: Source located in Cloud Storage.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1TextMetadataArgs'] text_metadata: Required for text import, as language code must be specified.
         """
@@ -748,14 +749,14 @@ class GoogleCloudDatalabelingV1beta1InputConfigArgs:
 
     @property
     @pulumi.getter(name="annotationType")
-    def annotation_type(self) -> Optional[pulumi.Input[str]]:
+    def annotation_type(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigAnnotationType']]:
         """
         Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
         """
         return pulumi.get(self, "annotation_type")
 
     @annotation_type.setter
-    def annotation_type(self, value: Optional[pulumi.Input[str]]):
+    def annotation_type(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigAnnotationType']]):
         pulumi.set(self, "annotation_type", value)
 
     @property
@@ -784,14 +785,14 @@ class GoogleCloudDatalabelingV1beta1InputConfigArgs:
 
     @property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[str]]:
+    def data_type(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigDataType']]:
         """
         Required. Data type must be specifed when user tries to import data.
         """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[str]]):
+    def data_type(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigDataType']]):
         pulumi.set(self, "data_type", value)
 
     @property

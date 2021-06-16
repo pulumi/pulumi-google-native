@@ -250,7 +250,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
         /// </summary>
         [Input("aggregationInterval")]
-        public Input<string>? AggregationInterval { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkAggregationInterval>? AggregationInterval { get; set; }
 
         /// <summary>
         /// Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
@@ -330,7 +330,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
         /// </summary>
         [Input("ipv6AccessType")]
-        public Input<string>? Ipv6AccessType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkIpv6AccessType>? Ipv6AccessType { get; set; }
 
         /// <summary>
         /// [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -354,7 +354,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA.
         /// </summary>
         [Input("metadata")]
-        public Input<string>? Metadata { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkMetadata>? Metadata { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -380,7 +380,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
-        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -389,7 +389,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         /// </summary>
         [Input("purpose")]
-        public Input<string>? Purpose { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkPurpose>? Purpose { get; set; }
 
         /// <summary>
         /// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
@@ -404,7 +404,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkRole>? Role { get; set; }
 
         [Input("secondaryIpRanges")]
         private InputList<Inputs.SubnetworkSecondaryRangeArgs>? _secondaryIpRanges;
@@ -436,13 +436,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("stackType")]
-        public Input<string>? StackType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkStackType>? StackType { get; set; }
 
         /// <summary>
         /// [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkState>? State { get; set; }
 
         [Input("vlans")]
         private InputList<int>? _vlans;

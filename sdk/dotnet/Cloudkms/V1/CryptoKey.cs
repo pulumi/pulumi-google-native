@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Immutable. The immutable purpose of this CryptoKey.
         /// </summary>
         [Input("purpose")]
-        public Input<string>? Purpose { get; set; }
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.CryptoKeyPurpose>? Purpose { get; set; }
 
         /// <summary>
         /// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.

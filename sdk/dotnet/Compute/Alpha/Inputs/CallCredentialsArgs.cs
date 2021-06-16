@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server.
         /// </summary>
         [Input("callCredentialType")]
-        public Input<string>? CallCredentialType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.CallCredentialsCallCredentialType>? CallCredentialType { get; set; }
 
         /// <summary>
         /// Custom authenticator credentials. Valid if callCredentialType is FROM_PLUGIN.

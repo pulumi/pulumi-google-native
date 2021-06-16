@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// How the rule is applied, see MatchingType documentation for details.
         /// </summary>
         [Input("matchingType")]
-        public Input<string>? MatchingType { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2ExclusionRuleMatchingType>? MatchingType { get; set; }
 
         /// <summary>
         /// Regular expression which defines the rule.

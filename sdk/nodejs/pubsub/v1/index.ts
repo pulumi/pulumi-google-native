@@ -22,6 +22,9 @@ export * from "./subscriptionIamPolicy";
 export * from "./topic";
 export * from "./topicIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/pubsub/v1";
+
 // Import resources to register:
 import { Schema } from "./schema";
 import { SchemaIamPolicy } from "./schemaIamPolicy";

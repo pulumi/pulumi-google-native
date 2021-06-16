@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Optional. Indicates whether the entity type can be automatically expanded.
         /// </summary>
         [Input("autoExpansionMode")]
-        public Input<string>? AutoExpansionMode { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.EntityTypeAutoExpansionMode>? AutoExpansionMode { get; set; }
 
         /// <summary>
         /// Required. The name of the entity type.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Required. Indicates the kind of entity type.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.EntityTypeKind>? Kind { get; set; }
 
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

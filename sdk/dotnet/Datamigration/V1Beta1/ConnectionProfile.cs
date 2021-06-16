@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// The database provider.
         /// </summary>
         [Input("provider")]
-        public Input<string>? Provider { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.ConnectionProfileProvider>? Provider { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.ConnectionProfileState>? State { get; set; }
 
         public ConnectionProfileArgs()
         {

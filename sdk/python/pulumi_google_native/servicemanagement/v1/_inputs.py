@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'ApiArgs',
@@ -74,7 +75,7 @@ class ApiArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]] = None,
                  source_context: Optional[pulumi.Input['SourceContextArgs']] = None,
-                 syntax: Optional[pulumi.Input[str]] = None,
+                 syntax: Optional[pulumi.Input['ApiSyntax']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
@@ -83,7 +84,7 @@ class ApiArgs:
         :param pulumi.Input[str] name: The fully qualified name of this interface, including package name followed by the interface's simple name.
         :param pulumi.Input[Sequence[pulumi.Input['OptionArgs']]] options: Any metadata attached to the interface.
         :param pulumi.Input['SourceContextArgs'] source_context: Source context for the protocol buffer service represented by this message.
-        :param pulumi.Input[str] syntax: The source syntax of the service.
+        :param pulumi.Input['ApiSyntax'] syntax: The source syntax of the service.
         :param pulumi.Input[str] version: A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces. 
         """
         if methods is not None:
@@ -163,14 +164,14 @@ class ApiArgs:
 
     @property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[str]]:
+    def syntax(self) -> Optional[pulumi.Input['ApiSyntax']]:
         """
         The source syntax of the service.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[str]]):
+    def syntax(self, value: Optional[pulumi.Input['ApiSyntax']]):
         pulumi.set(self, "syntax", value)
 
     @property
@@ -230,11 +231,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -255,14 +256,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -555,7 +556,7 @@ class BackendRuleArgs:
                  jwt_audience: Optional[pulumi.Input[str]] = None,
                  min_deadline: Optional[pulumi.Input[float]] = None,
                  operation_deadline: Optional[pulumi.Input[float]] = None,
-                 path_translation: Optional[pulumi.Input[str]] = None,
+                 path_translation: Optional[pulumi.Input['BackendRulePathTranslation']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
         """
@@ -662,11 +663,11 @@ class BackendRuleArgs:
 
     @property
     @pulumi.getter(name="pathTranslation")
-    def path_translation(self) -> Optional[pulumi.Input[str]]:
+    def path_translation(self) -> Optional[pulumi.Input['BackendRulePathTranslation']]:
         return pulumi.get(self, "path_translation")
 
     @path_translation.setter
-    def path_translation(self, value: Optional[pulumi.Input[str]]):
+    def path_translation(self, value: Optional[pulumi.Input['BackendRulePathTranslation']]):
         pulumi.set(self, "path_translation", value)
 
     @property
@@ -1302,14 +1303,14 @@ class EnumArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]] = None,
                  source_context: Optional[pulumi.Input['SourceContextArgs']] = None,
-                 syntax: Optional[pulumi.Input[str]] = None):
+                 syntax: Optional[pulumi.Input['EnumSyntax']] = None):
         """
         Enum type definition.
         :param pulumi.Input[Sequence[pulumi.Input['EnumValueArgs']]] enumvalue: Enum value definitions.
         :param pulumi.Input[str] name: Enum type name.
         :param pulumi.Input[Sequence[pulumi.Input['OptionArgs']]] options: Protocol buffer options.
         :param pulumi.Input['SourceContextArgs'] source_context: The source context.
-        :param pulumi.Input[str] syntax: The source syntax.
+        :param pulumi.Input['EnumSyntax'] syntax: The source syntax.
         """
         if enumvalue is not None:
             pulumi.set(__self__, "enumvalue", enumvalue)
@@ -1372,14 +1373,14 @@ class EnumArgs:
 
     @property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[str]]:
+    def syntax(self) -> Optional[pulumi.Input['EnumSyntax']]:
         """
         The source syntax.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[str]]):
+    def syntax(self, value: Optional[pulumi.Input['EnumSyntax']]):
         pulumi.set(self, "syntax", value)
 
 
@@ -1514,10 +1515,10 @@ class ExprArgs:
 @pulumi.input_type
 class FieldArgs:
     def __init__(__self__, *,
-                 cardinality: Optional[pulumi.Input[str]] = None,
+                 cardinality: Optional[pulumi.Input['FieldCardinality']] = None,
                  default_value: Optional[pulumi.Input[str]] = None,
                  json_name: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['FieldKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  number: Optional[pulumi.Input[int]] = None,
                  oneof_index: Optional[pulumi.Input[int]] = None,
@@ -1526,10 +1527,10 @@ class FieldArgs:
                  type_url: Optional[pulumi.Input[str]] = None):
         """
         A single field of a message type.
-        :param pulumi.Input[str] cardinality: The field cardinality.
+        :param pulumi.Input['FieldCardinality'] cardinality: The field cardinality.
         :param pulumi.Input[str] default_value: The string value of the default value of this field. Proto2 syntax only.
         :param pulumi.Input[str] json_name: The field JSON name.
-        :param pulumi.Input[str] kind: The field type.
+        :param pulumi.Input['FieldKind'] kind: The field type.
         :param pulumi.Input[str] name: The field name.
         :param pulumi.Input[int] number: The field number.
         :param pulumi.Input[int] oneof_index: The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
@@ -1560,14 +1561,14 @@ class FieldArgs:
 
     @property
     @pulumi.getter
-    def cardinality(self) -> Optional[pulumi.Input[str]]:
+    def cardinality(self) -> Optional[pulumi.Input['FieldCardinality']]:
         """
         The field cardinality.
         """
         return pulumi.get(self, "cardinality")
 
     @cardinality.setter
-    def cardinality(self, value: Optional[pulumi.Input[str]]):
+    def cardinality(self, value: Optional[pulumi.Input['FieldCardinality']]):
         pulumi.set(self, "cardinality", value)
 
     @property
@@ -1596,14 +1597,14 @@ class FieldArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['FieldKind']]:
         """
         The field type.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['FieldKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -1948,12 +1949,12 @@ class LabelDescriptorArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 value_type: Optional[pulumi.Input[str]] = None):
+                 value_type: Optional[pulumi.Input['LabelDescriptorValueType']] = None):
         """
         A description of a label.
         :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] key: The label key.
-        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
+        :param pulumi.Input['LabelDescriptorValueType'] value_type: The type of data that can be assigned to the label.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1988,14 +1989,14 @@ class LabelDescriptorArgs:
 
     @property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[str]]:
+    def value_type(self) -> Optional[pulumi.Input['LabelDescriptorValueType']]:
         """
         The type of data that can be assigned to the label.
         """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[str]]):
+    def value_type(self, value: Optional[pulumi.Input['LabelDescriptorValueType']]):
         pulumi.set(self, "value_type", value)
 
 
@@ -2160,7 +2161,7 @@ class MethodArgs:
                  request_type_url: Optional[pulumi.Input[str]] = None,
                  response_streaming: Optional[pulumi.Input[bool]] = None,
                  response_type_url: Optional[pulumi.Input[str]] = None,
-                 syntax: Optional[pulumi.Input[str]] = None):
+                 syntax: Optional[pulumi.Input['MethodSyntax']] = None):
         """
         Method represents a method of an API interface.
         :param pulumi.Input[str] name: The simple name of this method.
@@ -2169,7 +2170,7 @@ class MethodArgs:
         :param pulumi.Input[str] request_type_url: A URL of the input message type.
         :param pulumi.Input[bool] response_streaming: If true, the response is streamed.
         :param pulumi.Input[str] response_type_url: The URL of the output message type.
-        :param pulumi.Input[str] syntax: The source syntax of this method.
+        :param pulumi.Input['MethodSyntax'] syntax: The source syntax of this method.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2260,14 +2261,14 @@ class MethodArgs:
 
     @property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[str]]:
+    def syntax(self) -> Optional[pulumi.Input['MethodSyntax']]:
         """
         The source syntax of this method.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[str]]):
+    def syntax(self, value: Optional[pulumi.Input['MethodSyntax']]):
         pulumi.set(self, "syntax", value)
 
 
@@ -2277,27 +2278,27 @@ class MetricDescriptorArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]] = None,
-                 launch_stage: Optional[pulumi.Input[str]] = None,
+                 launch_stage: Optional[pulumi.Input['MetricDescriptorLaunchStage']] = None,
                  metadata: Optional[pulumi.Input['MetricDescriptorMetadataArgs']] = None,
-                 metric_kind: Optional[pulumi.Input[str]] = None,
+                 metric_kind: Optional[pulumi.Input['MetricDescriptorMetricKind']] = None,
                  monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None,
-                 value_type: Optional[pulumi.Input[str]] = None):
+                 value_type: Optional[pulumi.Input['MetricDescriptorValueType']] = None):
         """
         Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. 
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
         :param pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed.
-        :param pulumi.Input[str] launch_stage: Optional. The launch stage of the metric definition.
+        :param pulumi.Input['MetricDescriptorLaunchStage'] launch_stage: Optional. The launch stage of the metric definition.
         :param pulumi.Input['MetricDescriptorMetadataArgs'] metadata: Optional. Metadata which can be used to guide usage of the metric.
-        :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+        :param pulumi.Input['MetricDescriptorMetricKind'] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
         :param pulumi.Input[str] name: The resource name of the metric descriptor.
         :param pulumi.Input[str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name `custom.googleapis.com` or `external.googleapis.com`. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
         :param pulumi.Input[str] unit: The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").
-        :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+        :param pulumi.Input['MetricDescriptorValueType'] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -2360,14 +2361,14 @@ class MetricDescriptorArgs:
 
     @property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[str]]:
+    def launch_stage(self) -> Optional[pulumi.Input['MetricDescriptorLaunchStage']]:
         """
         Optional. The launch stage of the metric definition.
         """
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[str]]):
+    def launch_stage(self, value: Optional[pulumi.Input['MetricDescriptorLaunchStage']]):
         pulumi.set(self, "launch_stage", value)
 
     @property
@@ -2384,14 +2385,14 @@ class MetricDescriptorArgs:
 
     @property
     @pulumi.getter(name="metricKind")
-    def metric_kind(self) -> Optional[pulumi.Input[str]]:
+    def metric_kind(self) -> Optional[pulumi.Input['MetricDescriptorMetricKind']]:
         """
         Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
         """
         return pulumi.get(self, "metric_kind")
 
     @metric_kind.setter
-    def metric_kind(self, value: Optional[pulumi.Input[str]]):
+    def metric_kind(self, value: Optional[pulumi.Input['MetricDescriptorMetricKind']]):
         pulumi.set(self, "metric_kind", value)
 
     @property
@@ -2444,14 +2445,14 @@ class MetricDescriptorArgs:
 
     @property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[str]]:
+    def value_type(self) -> Optional[pulumi.Input['MetricDescriptorValueType']]:
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
         """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[str]]):
+    def value_type(self, value: Optional[pulumi.Input['MetricDescriptorValueType']]):
         pulumi.set(self, "value_type", value)
 
 
@@ -2581,7 +2582,7 @@ class MonitoredResourceDescriptorArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]]] = None,
-                 launch_stage: Optional[pulumi.Input[str]] = None,
+                 launch_stage: Optional[pulumi.Input['MonitoredResourceDescriptorLaunchStage']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -2589,7 +2590,7 @@ class MonitoredResourceDescriptorArgs:
         :param pulumi.Input[str] description: Optional. A detailed description of the monitored resource type that might be used in documentation.
         :param pulumi.Input[str] display_name: Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
         :param pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]] labels: Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
-        :param pulumi.Input[str] launch_stage: Optional. The launch stage of the monitored resource definition.
+        :param pulumi.Input['MonitoredResourceDescriptorLaunchStage'] launch_stage: Optional. The launch stage of the monitored resource definition.
         :param pulumi.Input[str] name: Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
         :param pulumi.Input[str] type: Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         """
@@ -2644,14 +2645,14 @@ class MonitoredResourceDescriptorArgs:
 
     @property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[str]]:
+    def launch_stage(self) -> Optional[pulumi.Input['MonitoredResourceDescriptorLaunchStage']]:
         """
         Optional. The launch stage of the monitored resource definition.
         """
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[str]]):
+    def launch_stage(self, value: Optional[pulumi.Input['MonitoredResourceDescriptorLaunchStage']]):
         pulumi.set(self, "launch_stage", value)
 
     @property
@@ -3287,7 +3288,7 @@ class TypeArgs:
                  oneofs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  options: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]] = None,
                  source_context: Optional[pulumi.Input['SourceContextArgs']] = None,
-                 syntax: Optional[pulumi.Input[str]] = None):
+                 syntax: Optional[pulumi.Input['TypeSyntax']] = None):
         """
         A protocol buffer message type.
         :param pulumi.Input[Sequence[pulumi.Input['FieldArgs']]] fields: The list of fields.
@@ -3295,7 +3296,7 @@ class TypeArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oneofs: The list of types appearing in `oneof` definitions in this type.
         :param pulumi.Input[Sequence[pulumi.Input['OptionArgs']]] options: The protocol buffer options.
         :param pulumi.Input['SourceContextArgs'] source_context: The source context.
-        :param pulumi.Input[str] syntax: The source syntax.
+        :param pulumi.Input['TypeSyntax'] syntax: The source syntax.
         """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
@@ -3372,14 +3373,14 @@ class TypeArgs:
 
     @property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[str]]:
+    def syntax(self) -> Optional[pulumi.Input['TypeSyntax']]:
         """
         The source syntax.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[str]]):
+    def syntax(self, value: Optional[pulumi.Input['TypeSyntax']]):
         pulumi.set(self, "syntax", value)
 
 

@@ -652,7 +652,7 @@ type ForwardingRuleArgs struct {
 	// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid.
 	// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid.
 	// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-	IPProtocol pulumi.StringPtrInput
+	IPProtocol *ForwardingRuleIPProtocol
 	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
 	//
 	// When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
@@ -672,7 +672,7 @@ type ForwardingRuleArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
-	IpVersion pulumi.StringPtrInput
+	IpVersion *ForwardingRuleIpVersion
 	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector pulumi.BoolPtrInput
 	// [Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
@@ -698,7 +698,7 @@ type ForwardingRuleArgs struct {
 	// - Traffic Director
 	//
 	// For more information about forwarding rules, refer to Forwarding rule concepts.
-	LoadBalancingScheme pulumi.StringPtrInput
+	LoadBalancingScheme *ForwardingRuleLoadBalancingScheme
 	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant configuration is made available to those proxies. Otherwise, all the resources (e.g. TargetHttpProxy, UrlMap) referenced by the ForwardingRule will not be visible to those proxies.
 	// For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match.
 	// metadataFilters specified here will be applifed before those specified in the UrlMap that this ForwardingRule references.
@@ -717,7 +717,7 @@ type ForwardingRuleArgs struct {
 	// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM.
 	//
 	// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
-	NetworkTier pulumi.StringPtrInput
+	NetworkTier *ForwardingRuleNetworkTier
 	// This field can be used only if: * Load balancing scheme is one of EXTERNAL,  INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is one of TCP, UDP, or SCTP.
 	//
 	// Packets addressed to ports in the specified range will be forwarded to target or  backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.

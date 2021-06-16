@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -18,14 +19,14 @@ class ClusterArgs:
                  cluster_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 default_storage_type: Optional[pulumi.Input[str]] = None,
+                 default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  serve_nodes: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[str] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+        :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
@@ -74,14 +75,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="defaultStorageType")
-    def default_storage_type(self) -> Optional[pulumi.Input[str]]:
+    def default_storage_type(self) -> Optional[pulumi.Input['ClusterDefaultStorageType']]:
         """
         Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         """
         return pulumi.get(self, "default_storage_type")
 
     @default_storage_type.setter
-    def default_storage_type(self, value: Optional[pulumi.Input[str]]):
+    def default_storage_type(self, value: Optional[pulumi.Input['ClusterDefaultStorageType']]):
         pulumi.set(self, "default_storage_type", value)
 
     @property
@@ -139,7 +140,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 default_storage_type: Optional[pulumi.Input[str]] = None,
+                 default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -152,7 +153,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+        :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
@@ -183,7 +184,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 default_storage_type: Optional[pulumi.Input[str]] = None,
+                 default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

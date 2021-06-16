@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// [Output only] The status of the nodes in this pool instance.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.NodePoolStatus>? Status { get; set; }
 
         /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.

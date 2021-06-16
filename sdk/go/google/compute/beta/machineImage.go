@@ -249,7 +249,7 @@ type MachineImageArgs struct {
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesPtrInput
 	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
-	Status pulumi.StringPtrInput
+	Status *MachineImageStatus
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations pulumi.StringArrayInput
 	// [Output Only] Total size of the storage used by the machine image.

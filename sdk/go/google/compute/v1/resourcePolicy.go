@@ -173,7 +173,7 @@ type ResourcePolicyArgs struct {
 	// Resource policy for persistent disks for creating snapshots.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
 	// [Output Only] The status of resource policy creation.
-	Status pulumi.StringPtrInput
+	Status *ResourcePolicyStatus
 }
 
 func (ResourcePolicyArgs) ElementType() reflect.Type {

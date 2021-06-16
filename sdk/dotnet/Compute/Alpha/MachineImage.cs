@@ -260,7 +260,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.MachineImageStatus>? Status { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

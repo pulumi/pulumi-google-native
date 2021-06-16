@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         /// Level to record this diagnostic.
         /// </summary>
         [Input("level")]
-        public Input<string>? Level { get; set; }
+        public Input<Pulumi.GoogleNative.DeploymentManager.V2Beta.DiagnosticLevel>? Level { get; set; }
 
         public DiagnosticArgs()
         {

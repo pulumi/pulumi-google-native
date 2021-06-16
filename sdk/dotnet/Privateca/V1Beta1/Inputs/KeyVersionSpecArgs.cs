@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         /// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.KeyVersionSpecAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.

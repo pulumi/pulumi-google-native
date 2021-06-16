@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// [Output Only] The status of the reservation.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.ReservationStatus>? Status { get; set; }
 
         /// <summary>
         /// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['ParticipantArgs', 'Participant']
 
@@ -18,12 +19,12 @@ class ParticipantArgs:
                  project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None):
+                 role: Optional[pulumi.Input['ParticipantRole']] = None):
         """
         The set of arguments for constructing a Participant resource.
         :param pulumi.Input[str] name: Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         :param pulumi.Input[str] obfuscated_external_user_id: Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
-        :param pulumi.Input[str] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
         pulumi.set(__self__, "location", location)
@@ -88,14 +89,14 @@ class ParticipantArgs:
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[str]]:
+    def role(self) -> Optional[pulumi.Input['ParticipantRole']]:
         """
         Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[str]]):
+    def role(self, value: Optional[pulumi.Input['ParticipantRole']]):
         pulumi.set(self, "role", value)
 
 
@@ -109,7 +110,7 @@ class Participant(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input['ParticipantRole']] = None,
                  __props__=None):
         """
         Creates a new participant in a conversation.
@@ -118,7 +119,7 @@ class Participant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         :param pulumi.Input[str] obfuscated_external_user_id: Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
-        :param pulumi.Input[str] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         """
         ...
     @overload
@@ -149,7 +150,7 @@ class Participant(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input['ParticipantRole']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

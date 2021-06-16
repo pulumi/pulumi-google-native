@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -325,7 +326,7 @@ export interface VpnTunnelArgs {
      * - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
      * - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.alpha.VpnTunnelStatus>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
      */

@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         /// </summary>
         [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.TargetSslProxyProxyHeader>? ProxyHeader { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

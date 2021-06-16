@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['NodeArgs', 'Node']
@@ -20,7 +21,7 @@ class NodeArgs:
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 health: Optional[pulumi.Input[str]] = None,
+                 health: Optional[pulumi.Input['NodeHealth']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
@@ -32,7 +33,7 @@ class NodeArgs:
         :param pulumi.Input[str] accelerator_type: Required. The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
-        :param pulumi.Input[str] health: The health status of the TPU node.
+        :param pulumi.Input['NodeHealth'] health: The health status of the TPU node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] network: The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         :param pulumi.Input['SchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
@@ -118,14 +119,14 @@ class NodeArgs:
 
     @property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input[str]]:
+    def health(self) -> Optional[pulumi.Input['NodeHealth']]:
         """
         The health status of the TPU node.
         """
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input[str]]):
+    def health(self, value: Optional[pulumi.Input['NodeHealth']]):
         pulumi.set(self, "health", value)
 
     @property
@@ -206,7 +207,7 @@ class Node(pulumi.CustomResource):
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 health: Optional[pulumi.Input[str]] = None,
+                 health: Optional[pulumi.Input['NodeHealth']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -224,7 +225,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] accelerator_type: Required. The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
-        :param pulumi.Input[str] health: The health status of the TPU node.
+        :param pulumi.Input['NodeHealth'] health: The health status of the TPU node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] network: The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
@@ -258,7 +259,7 @@ class Node(pulumi.CustomResource):
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 health: Optional[pulumi.Input[str]] = None,
+                 health: Optional[pulumi.Input['NodeHealth']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,

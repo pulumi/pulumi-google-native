@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         /// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
         /// </summary>
         [Input("contentType")]
-        public Input<string>? ContentType { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.HttpCheckContentType>? ContentType { get; set; }
 
         [Input("headers")]
         private InputMap<string>? _headers;
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
         /// </summary>
         [Input("requestMethod")]
-        public Input<string>? RequestMethod { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.HttpCheckRequestMethod>? RequestMethod { get; set; }
 
         /// <summary>
         /// If true, use HTTPS instead of HTTP to run the check.

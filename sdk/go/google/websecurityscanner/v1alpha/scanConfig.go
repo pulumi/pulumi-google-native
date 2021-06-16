@@ -162,9 +162,9 @@ type ScanConfigArgs struct {
 	// Required. The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-	TargetPlatforms pulumi.StringArrayInput
+	TargetPlatforms ScanConfigTargetPlatformsItemArrayInput
 	// The user agent used during scanning.
-	UserAgent pulumi.StringPtrInput
+	UserAgent *ScanConfigUserAgent
 }
 
 func (ScanConfigArgs) ElementType() reflect.Type {

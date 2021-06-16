@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['OccurrenceArgs', 'Occurrence']
@@ -23,7 +24,7 @@ class OccurrenceArgs:
                  derived_image: Optional[pulumi.Input['DerivedArgs']] = None,
                  discovered: Optional[pulumi.Input['DiscoveredArgs']] = None,
                  installation: Optional[pulumi.Input['InstallationArgs']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -41,7 +42,7 @@ class OccurrenceArgs:
         :param pulumi.Input['DerivedArgs'] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input['DiscoveredArgs'] discovered: Describes the initial scan status for this resource.
         :param pulumi.Input['InstallationArgs'] installation: Describes the installation of a package on the linked resource.
-        :param pulumi.Input[str] kind: This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+        :param pulumi.Input['OccurrenceKind'] kind: This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] name: The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
@@ -180,14 +181,14 @@ class OccurrenceArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['OccurrenceKind']]:
         """
         This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['OccurrenceKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -299,7 +300,7 @@ class Occurrence(pulumi.CustomResource):
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -322,7 +323,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DerivedArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input[pulumi.InputType['DiscoveredArgs']] discovered: Describes the initial scan status for this resource.
         :param pulumi.Input[pulumi.InputType['InstallationArgs']] installation: Describes the installation of a package on the linked resource.
-        :param pulumi.Input[str] kind: This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+        :param pulumi.Input['OccurrenceKind'] kind: This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] name: The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
@@ -363,7 +364,7 @@ class Occurrence(pulumi.CustomResource):
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

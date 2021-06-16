@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -419,7 +419,7 @@ export interface RegionBackendServiceArgs {
     /**
      * Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<enums.compute.alpha.RegionBackendServiceLoadBalancingScheme>;
     /**
      * The load balancing algorithm used within the scope of the locality. The possible values are:  
      * - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
@@ -437,7 +437,7 @@ export interface RegionBackendServiceArgs {
      *
      * Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    localityLbPolicy?: pulumi.Input<string>;
+    localityLbPolicy?: pulumi.Input<enums.compute.alpha.RegionBackendServiceLocalityLbPolicy>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
      */
@@ -482,7 +482,7 @@ export interface RegionBackendServiceArgs {
      *
      * Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<enums.compute.alpha.RegionBackendServiceProtocol>;
     /**
      * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
@@ -517,7 +517,7 @@ export interface RegionBackendServiceArgs {
      *
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<enums.compute.alpha.RegionBackendServiceSessionAffinity>;
     subsetting?: pulumi.Input<inputs.compute.alpha.SubsettingArgs>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.

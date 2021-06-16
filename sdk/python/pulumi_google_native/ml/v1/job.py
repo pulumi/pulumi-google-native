@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['JobArgs', 'Job']
@@ -25,7 +26,7 @@ class JobArgs:
                  prediction_input: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputArgs']] = None,
                  prediction_output: Optional[pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['JobState']] = None,
                  training_input: Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputArgs']] = None,
                  training_output: Optional[pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs']] = None):
         """
@@ -39,7 +40,7 @@ class JobArgs:
         :param pulumi.Input['GoogleCloudMlV1__PredictionInputArgs'] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs'] prediction_output: The current prediction job result.
         :param pulumi.Input[str] start_time: When the job processing was started.
-        :param pulumi.Input[str] state: The detailed state of a job.
+        :param pulumi.Input['JobState'] state: The detailed state of a job.
         :param pulumi.Input['GoogleCloudMlV1__TrainingInputArgs'] training_input: Input parameters to create a training job.
         :param pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs'] training_output: The current training job result.
         """
@@ -188,14 +189,14 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['JobState']]:
         """
         The detailed state of a job.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['JobState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -238,7 +239,7 @@ class Job(pulumi.CustomResource):
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['JobState']] = None,
                  training_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']]] = None,
                  training_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingOutputArgs']]] = None,
                  __props__=None):
@@ -256,7 +257,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']] prediction_input: Input parameters to create a prediction job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']] prediction_output: The current prediction job result.
         :param pulumi.Input[str] start_time: When the job processing was started.
-        :param pulumi.Input[str] state: The detailed state of a job.
+        :param pulumi.Input['JobState'] state: The detailed state of a job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']] training_input: Input parameters to create a training job.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingOutputArgs']] training_output: The current training job result.
         """
@@ -294,7 +295,7 @@ class Job(pulumi.CustomResource):
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['JobState']] = None,
                  training_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingInputArgs']]] = None,
                  training_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__TrainingOutputArgs']]] = None,
                  __props__=None):

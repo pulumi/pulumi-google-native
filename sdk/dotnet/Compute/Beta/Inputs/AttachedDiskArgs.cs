@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
         /// </summary>
         [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.AttachedDiskInterface>? Interface { get; set; }
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#attachedDisk for attached disks.
@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.AttachedDiskMode>? Mode { get; set; }
 
         /// <summary>
         /// [Output Only] shielded vm initial state stored on disk
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.AttachedDiskType>? Type { get; set; }
 
         public AttachedDiskArgs()
         {

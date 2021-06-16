@@ -4447,7 +4447,7 @@ type GceClusterConfigArgs struct {
 	// Optional. Node Group Affinity for sole-tenant clusters.
 	NodeGroupAffinity NodeGroupAffinityPtrInput `pulumi:"nodeGroupAffinity"`
 	// Optional. The type of IPv6 access for a cluster.
-	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
+	PrivateIpv6GoogleAccess *GceClusterConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// Optional. Reservation Affinity for consuming Zonal reservation.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
@@ -7039,7 +7039,7 @@ type InstanceGroupConfigArgs struct {
 	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
-	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
+	Preemptibility *InstanceGroupConfigPreemptibility `pulumi:"preemptibility"`
 }
 
 func (InstanceGroupConfigArgs) ElementType() reflect.Type {
@@ -14468,7 +14468,7 @@ type ReservationAffinityInput interface {
 // Reservation Affinity for consuming Zonal reservation.
 type ReservationAffinityArgs struct {
 	// Optional. Type of reservation to consume
-	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	ConsumeReservationType *ReservationAffinityConsumeReservationType `pulumi:"consumeReservationType"`
 	// Optional. Corresponds to the label key of reservation resource.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Optional. Corresponds to the label values of reservation resource.
@@ -15464,7 +15464,7 @@ type SoftwareConfigArgs struct {
 	// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
 	// Optional. The set of components to activate on the cluster.
-	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
+	OptionalComponents SoftwareConfigOptionalComponentsItemArrayInput `pulumi:"optionalComponents"`
 	// Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }

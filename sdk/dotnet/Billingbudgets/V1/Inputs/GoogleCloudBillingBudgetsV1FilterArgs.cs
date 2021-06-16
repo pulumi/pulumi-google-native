@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Inputs
         /// Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
         /// </summary>
         [Input("calendarPeriod")]
-        public Input<string>? CalendarPeriod { get; set; }
+        public Input<Pulumi.GoogleNative.Billingbudgets.V1.GoogleCloudBillingBudgetsV1FilterCalendarPeriod>? CalendarPeriod { get; set; }
 
         [Input("creditTypes")]
         private InputList<string>? _creditTypes;
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Inputs
         /// Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
         /// </summary>
         [Input("creditTypesTreatment")]
-        public Input<string>? CreditTypesTreatment { get; set; }
+        public Input<Pulumi.GoogleNative.Billingbudgets.V1.GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment>? CreditTypesTreatment { get; set; }
 
         /// <summary>
         /// Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.

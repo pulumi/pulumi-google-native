@@ -191,7 +191,7 @@ type ResourcePolicyArgs struct {
 	// Resource policy for persistent disks for creating snapshots.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
 	// [Output Only] The status of resource policy creation.
-	Status pulumi.StringPtrInput
+	Status *ResourcePolicyStatus
 	// Resource policy applicable to VMs for infrastructure maintenance.
 	VmMaintenancePolicy ResourcePolicyVmMaintenancePolicyPtrInput
 }

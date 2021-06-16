@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// The algorithm to use for autoscaling.
         /// </summary>
         [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.AutoscalingSettingsAlgorithm>? Algorithm { get; set; }
 
         /// <summary>
         /// The maximum number of workers to cap scaling at.

@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
         /// </summary>
         [Input("redirectResponseCode")]
-        public Input<string>? RedirectResponseCode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.HttpRedirectActionRedirectResponseCode>? RedirectResponseCode { get; set; }
 
         /// <summary>
         /// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.

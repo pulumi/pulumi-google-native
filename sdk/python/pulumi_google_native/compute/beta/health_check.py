@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['HealthCheckArgs', 'HealthCheck']
@@ -34,7 +35,7 @@ class HealthCheckArgs:
                  ssl_health_check: Optional[pulumi.Input['SSLHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['TCPHealthCheckArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['HealthCheckType']] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HealthCheck resource.
@@ -49,7 +50,7 @@ class HealthCheckArgs:
         :param pulumi.Input[str] region: [Output Only] Region where the health check resides. Not applicable to global health checks.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
-        :param pulumi.Input[str] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        :param pulumi.Input['HealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         """
         pulumi.set(__self__, "project", project)
@@ -300,14 +301,14 @@ class HealthCheckArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['HealthCheckType']]:
         """
         Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['HealthCheckType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -347,7 +348,7 @@ class HealthCheck(pulumi.CustomResource):
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['HealthCheckType']] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -366,7 +367,7 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] region: [Output Only] Region where the health check resides. Not applicable to global health checks.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
-        :param pulumi.Input[str] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        :param pulumi.Input['HealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         """
         ...
@@ -412,7 +413,7 @@ class HealthCheck(pulumi.CustomResource):
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['HealthCheckType']] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:

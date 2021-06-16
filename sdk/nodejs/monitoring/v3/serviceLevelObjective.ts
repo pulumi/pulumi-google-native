@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -112,7 +112,7 @@ export interface ServiceLevelObjectiveArgs {
     /**
      * A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
      */
-    calendarPeriod?: pulumi.Input<string>;
+    calendarPeriod?: pulumi.Input<enums.monitoring.v3.ServiceLevelObjectiveCalendarPeriod>;
     /**
      * Name used for UI elements listing this SLO.
      */

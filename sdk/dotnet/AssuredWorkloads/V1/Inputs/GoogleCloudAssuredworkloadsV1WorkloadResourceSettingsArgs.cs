@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
         /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         /// </summary>
         [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
+        public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType>? ResourceType { get; set; }
 
         public GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs()
         {

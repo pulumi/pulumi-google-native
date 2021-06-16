@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
         /// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
         /// </summary>
         [Input("signatureAlgorithm")]
-        public Input<string>? SignatureAlgorithm { get; set; }
+        public Input<Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.PkixPublicKeySignatureAlgorithm>? SignatureAlgorithm { get; set; }
 
         public PkixPublicKeyArgs()
         {

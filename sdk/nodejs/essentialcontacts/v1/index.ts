@@ -12,6 +12,9 @@ export * from "./getFolderContact";
 export * from "./getOrganizationContact";
 export * from "./organizationContact";
 
+// Export enums:
+export * from "../../types/enums/essentialcontacts/v1";
+
 // Import resources to register:
 import { Contact } from "./contact";
 import { FolderContact } from "./folderContact";

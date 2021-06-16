@@ -12,6 +12,9 @@ export * from "./repository";
 export * from "./repositoryIamPolicy";
 export * from "./tag";
 
+// Export enums:
+export * from "../../types/enums/artifactregistry/v1beta1";
+
 // Import resources to register:
 import { Repository } from "./repository";
 import { RepositoryIamPolicy } from "./repositoryIamPolicy";

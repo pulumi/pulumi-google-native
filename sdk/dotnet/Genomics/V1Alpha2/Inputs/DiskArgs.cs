@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         /// Required. The type of the disk to create.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Genomics.V1Alpha2.DiskType>? Type { get; set; }
 
         public DiskArgs()
         {

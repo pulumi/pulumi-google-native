@@ -16,6 +16,9 @@ export * from "./getCertificateAuthorityIamPolicy";
 export * from "./getReusableConfigIamPolicy";
 export * from "./reusableConfigIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/privateca/v1beta1";
+
 // Import resources to register:
 import { Certificate } from "./certificate";
 import { CertificateAuthority } from "./certificateAuthority";

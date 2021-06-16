@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         /// </summary>
         [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.AccessConfigNetworkTier>? NetworkTier { get; set; }
 
         /// <summary>
         /// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.AccessConfigType>? Type { get; set; }
 
         public AccessConfigArgs()
         {

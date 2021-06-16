@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['CryptoKeyArgs', 'CryptoKey']
@@ -21,7 +22,7 @@ class CryptoKeyArgs:
                  project: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
-                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
@@ -29,7 +30,7 @@ class CryptoKeyArgs:
         The set of arguments for constructing a CryptoKey resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-        :param pulumi.Input[str] purpose: Immutable. The immutable purpose of this CryptoKey.
+        :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
@@ -112,14 +113,14 @@ class CryptoKeyArgs:
 
     @property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[str]]:
+    def purpose(self) -> Optional[pulumi.Input['CryptoKeyPurpose']]:
         """
         Immutable. The immutable purpose of this CryptoKey.
         """
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[str]]):
+    def purpose(self, value: Optional[pulumi.Input['CryptoKeyPurpose']]):
         pulumi.set(self, "purpose", value)
 
     @property
@@ -167,7 +168,7 @@ class CryptoKey(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
@@ -179,7 +180,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-        :param pulumi.Input[str] purpose: Immutable. The immutable purpose of this CryptoKey.
+        :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
@@ -213,7 +214,7 @@ class CryptoKey(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,

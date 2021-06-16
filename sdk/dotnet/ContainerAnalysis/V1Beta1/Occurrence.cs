@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.OccurrenceKind>? Kind { get; set; }
 
         /// <summary>
         /// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.

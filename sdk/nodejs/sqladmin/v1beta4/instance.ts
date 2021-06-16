@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -246,7 +246,7 @@ export interface InstanceArgs {
     /**
      *  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
      */
-    backendType?: pulumi.Input<string>;
+    backendType?: pulumi.Input<enums.sqladmin.v1beta4.InstanceBackendType>;
     /**
      * Connection name of the Cloud SQL instance used in connection strings.
      */
@@ -258,7 +258,7 @@ export interface InstanceArgs {
     /**
      * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
      */
-    databaseVersion?: pulumi.Input<string>;
+    databaseVersion?: pulumi.Input<enums.sqladmin.v1beta4.InstanceDatabaseVersion>;
     /**
      * Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
      */
@@ -278,7 +278,7 @@ export interface InstanceArgs {
     /**
      * The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<enums.sqladmin.v1beta4.InstanceInstanceType>;
     /**
      * The assigned IP addresses for the instance.
      */
@@ -358,9 +358,9 @@ export interface InstanceArgs {
     /**
      * The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.sqladmin.v1beta4.InstanceState>;
     /**
      * If the instance state is SUSPENDED, the reason for the suspension.
      */
-    suspensionReason?: pulumi.Input<pulumi.Input<string>[]>;
+    suspensionReason?: pulumi.Input<pulumi.Input<enums.sqladmin.v1beta4.InstanceSuspensionReasonItem>[]>;
 }

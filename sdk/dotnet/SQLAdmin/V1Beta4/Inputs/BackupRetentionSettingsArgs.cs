@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// The unit that 'retained_backups' represents.
         /// </summary>
         [Input("retentionUnit")]
-        public Input<string>? RetentionUnit { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.BackupRetentionSettingsRetentionUnit>? RetentionUnit { get; set; }
 
         public BackupRetentionSettingsArgs()
         {

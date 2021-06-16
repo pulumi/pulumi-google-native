@@ -127,7 +127,7 @@ type EnvironmentArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The current state of the environment.
-	State pulumi.StringPtrInput
+	State *EnvironmentStateEnum
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {

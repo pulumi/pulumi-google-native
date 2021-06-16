@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         /// </summary>
         [Input("writeDisposition")]
-        public Input<string>? WriteDisposition { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition>? WriteDisposition { get; set; }
 
         public GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs()
         {

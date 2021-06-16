@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         /// The certificate format.
         /// </summary>
         [Input("format")]
-        public Input<string>? Format { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIoT.V1.PublicKeyCertificateFormat>? Format { get; set; }
 
         /// <summary>
         /// [Output only] The certificate details. Used only for X.509 certificates.

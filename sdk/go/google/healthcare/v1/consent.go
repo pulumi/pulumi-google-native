@@ -167,7 +167,7 @@ type ConsentArgs struct {
 	Policies GoogleCloudHealthcareV1ConsentPolicyArrayInput
 	Project  pulumi.StringInput
 	// Required. Indicates the current state of this Consent.
-	State pulumi.StringPtrInput
+	State *ConsentStateEnum
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl pulumi.StringPtrInput
 	// Required. User's UUID provided by the client.

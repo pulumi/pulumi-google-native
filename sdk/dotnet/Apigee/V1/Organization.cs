@@ -211,7 +211,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         /// </summary>
         [Input("billingType")]
-        public Input<string>? BillingType { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.OrganizationBillingType>? BillingType { get; set; }
 
         /// <summary>
         /// Not used by Apigee.
@@ -247,13 +247,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// </summary>
         [Input("runtimeType")]
-        public Input<string>? RuntimeType { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.OrganizationRuntimeType>? RuntimeType { get; set; }
 
         /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.OrganizationType>? Type { get; set; }
 
         public OrganizationArgs()
         {

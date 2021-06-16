@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// The action to take on matched requests.
         /// </summary>
         [Input("action")]
-        public Input<string>? Action { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.IngressRuleAction>? Action { get; set; }
 
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;

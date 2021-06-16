@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyRuleDirection>? Direction { get; set; }
 
         /// <summary>
         /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.

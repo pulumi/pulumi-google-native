@@ -12,6 +12,9 @@ export * from "./getAttestorIamPolicy";
 export * from "./getPolicyIamPolicy";
 export * from "./policyIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/binaryauthorization/v1beta1";
+
 // Import resources to register:
 import { Attestor } from "./attestor";
 import { AttestorIamPolicy } from "./attestorIamPolicy";

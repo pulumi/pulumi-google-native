@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -976,13 +976,13 @@ type DatabaseDumpInput interface {
 // A specification of the location of and metadata about a database dump from a relational database management system.
 type DatabaseDumpArgs struct {
 	// The type of the database.
-	DatabaseType pulumi.StringPtrInput `pulumi:"databaseType"`
+	DatabaseType *DatabaseDumpDatabaseType `pulumi:"databaseType"`
 	// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 	GcsUri pulumi.StringPtrInput `pulumi:"gcsUri"`
 	// The name of the source database.
 	SourceDatabase pulumi.StringPtrInput `pulumi:"sourceDatabase"`
 	// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *DatabaseDumpType `pulumi:"type"`
 }
 
 func (DatabaseDumpArgs) ElementType() reflect.Type {
@@ -2315,7 +2315,7 @@ type MaintenanceWindowInput interface {
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 type MaintenanceWindowArgs struct {
 	// The day of week, when the window starts.
-	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	DayOfWeek *MaintenanceWindowDayOfWeek `pulumi:"dayOfWeek"`
 	// The hour of day (0-23) when the window starts.
 	HourOfDay pulumi.IntPtrInput `pulumi:"hourOfDay"`
 }

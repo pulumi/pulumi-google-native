@@ -1263,7 +1263,7 @@ type GoogleCloudDialogflowV2beta1FulfillmentFeatureInput interface {
 // Whether fulfillment is enabled for the specific feature.
 type GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs struct {
 	// The type of the feature that enabled for fulfillment.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudDialogflowV2beta1FulfillmentFeatureType `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs) ElementType() reflect.Type {
@@ -6227,7 +6227,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageArgs struct {
 	// A custom platform-specific response.
 	Payload pulumi.StringMapInput `pulumi:"payload"`
 	// Optional. The platform that this message is intended for.
-	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	Platform *GoogleCloudDialogflowV2beta1IntentMessagePlatform `pulumi:"platform"`
 	// Displays quick replies.
 	QuickReplies GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesPtrInput `pulumi:"quickReplies"`
 	// Rich Business Messaging (RBM) carousel rich card response.
@@ -7215,7 +7215,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardInput interface 
 // Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
-	ImageDisplayOptions pulumi.StringPtrInput `pulumi:"imageDisplayOptions"`
+	ImageDisplayOptions *GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions `pulumi:"imageDisplayOptions"`
 	// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput `pulumi:"items"`
 }
@@ -7522,7 +7522,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCa
 	// Required. URL
 	Url pulumi.StringPtrInput `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-	UrlTypeHint pulumi.StringPtrInput `pulumi:"urlTypeHint"`
+	UrlTypeHint *GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint `pulumi:"urlTypeHint"`
 }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs) ElementType() reflect.Type {
@@ -8919,7 +8919,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs struct {
 	// Required. Column heading.
 	Header pulumi.StringPtrInput `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
-	HorizontalAlignment pulumi.StringPtrInput `pulumi:"horizontalAlignment"`
+	HorizontalAlignment *GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment `pulumi:"horizontalAlignment"`
 }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs) ElementType() reflect.Type {
@@ -10094,7 +10094,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs struct {
 	// Required. List of media objects.
 	MediaObjects GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArrayInput `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
-	MediaType pulumi.StringPtrInput `pulumi:"mediaType"`
+	MediaType *GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType `pulumi:"mediaType"`
 }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs) ElementType() reflect.Type {
@@ -11072,7 +11072,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs struct 
 	// Required. Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
 	FileUri pulumi.StringPtrInput `pulumi:"fileUri"`
 	// Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
-	Height pulumi.StringPtrInput `pulumi:"height"`
+	Height *GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight `pulumi:"height"`
 	// Optional. Publicly reachable URI of the thumbnail.If you don't provide a thumbnail URI, the RBM platform displays a blank placeholder thumbnail until the user's device downloads the file. Depending on the user's setting, the file may not download automatically and may require the user to tap a download button.
 	ThumbnailUri pulumi.StringPtrInput `pulumi:"thumbnailUri"`
 }
@@ -11454,7 +11454,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs struct {
 	// Required. The cards in the carousel. A carousel must have at least 2 cards and at most 10.
 	CardContents GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArrayInput `pulumi:"cardContents"`
 	// Required. The width of the cards in the carousel.
-	CardWidth pulumi.StringPtrInput `pulumi:"cardWidth"`
+	CardWidth *GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth `pulumi:"cardWidth"`
 }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs) ElementType() reflect.Type {
@@ -11679,9 +11679,9 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs struct {
 	// Required. Card content.
 	CardContent GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentPtrInput `pulumi:"cardContent"`
 	// Required. Orientation of the card.
-	CardOrientation pulumi.StringPtrInput `pulumi:"cardOrientation"`
+	CardOrientation *GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation `pulumi:"cardOrientation"`
 	// Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
-	ThumbnailImageAlignment pulumi.StringPtrInput `pulumi:"thumbnailImageAlignment"`
+	ThumbnailImageAlignment *GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment `pulumi:"thumbnailImageAlignment"`
 }
 
 func (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs) ElementType() reflect.Type {
@@ -16738,7 +16738,7 @@ type GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs struct {
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount pulumi.IntPtrInput `pulumi:"timesAddedCount"`
 	// Required. The type of the training phrase.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudDialogflowV2beta1IntentTrainingPhraseType `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs) ElementType() reflect.Type {
@@ -17512,7 +17512,7 @@ type GoogleCloudDialogflowV2beta1NotificationConfigInput interface {
 // Defines notification behavior.
 type GoogleCloudDialogflowV2beta1NotificationConfigArgs struct {
 	// Format of message.
-	MessageFormat pulumi.StringPtrInput `pulumi:"messageFormat"`
+	MessageFormat *GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat `pulumi:"messageFormat"`
 	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -17820,7 +17820,7 @@ type GoogleCloudDialogflowV2beta1SpeechToTextConfigInput interface {
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs struct {
 	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-	SpeechModelVariant pulumi.StringPtrInput `pulumi:"speechModelVariant"`
+	SpeechModelVariant *GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant `pulumi:"speechModelVariant"`
 }
 
 func (GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ElementType() reflect.Type {
@@ -18092,7 +18092,7 @@ type GoogleCloudDialogflowV2beta1SuggestionFeatureInput interface {
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
 type GoogleCloudDialogflowV2beta1SuggestionFeatureArgs struct {
 	// Type of Human Agent Assistant API feature to request.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudDialogflowV2beta1SuggestionFeatureType `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ElementType() reflect.Type {
@@ -18291,7 +18291,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech pulumi.BoolPtrInput `pulumi:"enableTextToSpeech"`
 	// Required. Audio encoding of the synthesized audio content.
-	OutputAudioEncoding pulumi.StringPtrInput `pulumi:"outputAudioEncoding"`
+	OutputAudioEncoding *GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.

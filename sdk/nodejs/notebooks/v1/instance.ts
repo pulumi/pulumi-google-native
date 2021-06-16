@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -281,7 +281,7 @@ export interface InstanceArgs {
     /**
      * Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
      */
-    bootDiskType?: pulumi.Input<string>;
+    bootDiskType?: pulumi.Input<enums.notebooks.v1.InstanceBootDiskType>;
     /**
      * Use a container image to start the notebook instance.
      */
@@ -297,11 +297,11 @@ export interface InstanceArgs {
     /**
      * Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
      */
-    dataDiskType?: pulumi.Input<string>;
+    dataDiskType?: pulumi.Input<enums.notebooks.v1.InstanceDataDiskType>;
     /**
      * Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
      */
-    diskEncryption?: pulumi.Input<string>;
+    diskEncryption?: pulumi.Input<enums.notebooks.v1.InstanceDiskEncryption>;
     /**
      * Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
      */
@@ -335,7 +335,7 @@ export interface InstanceArgs {
     /**
      * Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
      */
-    nicType?: pulumi.Input<string>;
+    nicType?: pulumi.Input<enums.notebooks.v1.InstanceNicType>;
     /**
      * If true, the notebook instance will not register with the proxy.
      */

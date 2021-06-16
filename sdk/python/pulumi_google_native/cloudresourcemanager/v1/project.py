@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ProjectArgs', 'Project']
@@ -17,7 +18,7 @@ class ProjectArgs:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle_state: Optional[pulumi.Input[str]] = None,
+                 lifecycle_state: Optional[pulumi.Input['ProjectLifecycleState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input['ResourceIdArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -26,7 +27,7 @@ class ProjectArgs:
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] create_time: Creation time. Read-only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: "environment" : "dev" Read-write.
-        :param pulumi.Input[str] lifecycle_state: The Project lifecycle state. Read-only.
+        :param pulumi.Input['ProjectLifecycleState'] lifecycle_state: The Project lifecycle state. Read-only.
         :param pulumi.Input[str] name: The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
         :param pulumi.Input['ResourceIdArgs'] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
         :param pulumi.Input[str] project: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
@@ -73,14 +74,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[str]]:
+    def lifecycle_state(self) -> Optional[pulumi.Input['ProjectLifecycleState']]:
         """
         The Project lifecycle state. Read-only.
         """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[str]]):
+    def lifecycle_state(self, value: Optional[pulumi.Input['ProjectLifecycleState']]):
         pulumi.set(self, "lifecycle_state", value)
 
     @property
@@ -139,7 +140,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle_state: Optional[pulumi.Input[str]] = None,
+                 lifecycle_state: Optional[pulumi.Input['ProjectLifecycleState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -152,7 +153,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation time. Read-only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: "environment" : "dev" Read-write.
-        :param pulumi.Input[str] lifecycle_state: The Project lifecycle state. Read-only.
+        :param pulumi.Input['ProjectLifecycleState'] lifecycle_state: The Project lifecycle state. Read-only.
         :param pulumi.Input[str] name: The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
         :param pulumi.Input[pulumi.InputType['ResourceIdArgs']] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
         :param pulumi.Input[str] project: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
@@ -184,7 +185,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle_state: Optional[pulumi.Input[str]] = None,
+                 lifecycle_state: Optional[pulumi.Input['ProjectLifecycleState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,

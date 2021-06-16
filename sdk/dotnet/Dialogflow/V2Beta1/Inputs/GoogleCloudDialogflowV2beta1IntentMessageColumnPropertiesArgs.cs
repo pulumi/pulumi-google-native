@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// Optional. Defines text alignment for all cells in this column.
         /// </summary>
         [Input("horizontalAlignment")]
-        public Input<string>? HorizontalAlignment { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment>? HorizontalAlignment { get; set; }
 
         public GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs()
         {

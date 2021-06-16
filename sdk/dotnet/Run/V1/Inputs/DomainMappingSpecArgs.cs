@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         /// The mode of the certificate.
         /// </summary>
         [Input("certificateMode")]
-        public Input<string>? CertificateMode { get; set; }
+        public Input<Pulumi.GoogleNative.Run.V1.DomainMappingSpecCertificateMode>? CertificateMode { get; set; }
 
         /// <summary>
         /// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.

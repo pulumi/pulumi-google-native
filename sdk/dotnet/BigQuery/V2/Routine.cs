@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
         /// </summary>
         [Input("determinismLevel")]
-        public Input<string>? DeterminismLevel { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineDeterminismLevel>? DeterminismLevel { get; set; }
 
         [Input("importedLibraries")]
         private InputList<string>? _importedLibraries;
@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Optional. Defaults to "SQL".
         /// </summary>
         [Input("language")]
-        public Input<string>? Language { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineLanguage>? Language { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Required. The type of routine.
         /// </summary>
         [Input("routineType")]
-        public Input<string>? RoutineType { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineRoutineType>? RoutineType { get; set; }
 
         public RoutineArgs()
         {

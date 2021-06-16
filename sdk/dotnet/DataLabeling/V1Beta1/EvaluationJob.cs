@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Describes the current state of the job.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.EvaluationJobState>? State { get; set; }
 
         public EvaluationJobArgs()
         {

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['TargetSslProxyArgs', 'TargetSslProxy']
 
@@ -19,7 +20,7 @@ class TargetSslProxyArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 proxy_header: Optional[pulumi.Input[str]] = None,
+                 proxy_header: Optional[pulumi.Input['TargetSslProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -32,7 +33,7 @@ class TargetSslProxyArgs:
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+        :param pulumi.Input['TargetSslProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] service: URL to the BackendService resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -133,14 +134,14 @@ class TargetSslProxyArgs:
 
     @property
     @pulumi.getter(name="proxyHeader")
-    def proxy_header(self) -> Optional[pulumi.Input[str]]:
+    def proxy_header(self) -> Optional[pulumi.Input['TargetSslProxyProxyHeader']]:
         """
         Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         """
         return pulumi.get(self, "proxy_header")
 
     @proxy_header.setter
-    def proxy_header(self, value: Optional[pulumi.Input[str]]):
+    def proxy_header(self, value: Optional[pulumi.Input['TargetSslProxyProxyHeader']]):
         pulumi.set(self, "proxy_header", value)
 
     @property
@@ -212,7 +213,7 @@ class TargetSslProxy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy_header: Optional[pulumi.Input[str]] = None,
+                 proxy_header: Optional[pulumi.Input['TargetSslProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -229,7 +230,7 @@ class TargetSslProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+        :param pulumi.Input['TargetSslProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] service: URL to the BackendService resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
@@ -265,7 +266,7 @@ class TargetSslProxy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy_header: Optional[pulumi.Input[str]] = None,
+                 proxy_header: Optional[pulumi.Input['TargetSslProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,

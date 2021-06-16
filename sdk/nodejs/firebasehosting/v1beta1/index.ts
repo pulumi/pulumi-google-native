@@ -12,6 +12,9 @@ export * from "./getDomain";
 export * from "./getSite";
 export * from "./site";
 
+// Export enums:
+export * from "../../types/enums/firebasehosting/v1beta1";
+
 // Import resources to register:
 import { Channel } from "./channel";
 import { Domain } from "./domain";

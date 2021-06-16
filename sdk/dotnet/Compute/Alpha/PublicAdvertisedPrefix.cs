@@ -224,7 +224,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The status of the public advertised prefix.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.PublicAdvertisedPrefixStatus>? Status { get; set; }
 
         public PublicAdvertisedPrefixArgs()
         {

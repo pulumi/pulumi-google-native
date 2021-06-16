@@ -35,11 +35,11 @@ type DnsKeySpecInput interface {
 // Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
 type DnsKeySpecArgs struct {
 	// String mnemonic specifying the DNSSEC algorithm of this key.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	Algorithm *DnsKeySpecAlgorithm `pulumi:"algorithm"`
 	// Length of the keys in bits.
 	KeyLength pulumi.IntPtrInput `pulumi:"keyLength"`
 	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
-	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
+	KeyType *DnsKeySpecKeyType    `pulumi:"keyType"`
 	Kind    pulumi.StringPtrInput `pulumi:"kind"`
 }
 
@@ -284,9 +284,9 @@ type ManagedZoneDnsSecConfigArgs struct {
 	DefaultKeySpecs DnsKeySpecArrayInput  `pulumi:"defaultKeySpecs"`
 	Kind            pulumi.StringPtrInput `pulumi:"kind"`
 	// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
-	NonExistence pulumi.StringPtrInput `pulumi:"nonExistence"`
+	NonExistence *ManagedZoneDnsSecConfigNonExistence `pulumi:"nonExistence"`
 	// Specifies whether DNSSEC is enabled, and what mode it is in.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *ManagedZoneDnsSecConfigState `pulumi:"state"`
 }
 
 func (ManagedZoneDnsSecConfigArgs) ElementType() reflect.Type {
@@ -794,7 +794,7 @@ type ManagedZoneForwardingConfigNameServerTargetInput interface {
 
 type ManagedZoneForwardingConfigNameServerTargetArgs struct {
 	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
-	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
+	ForwardingPath *ManagedZoneForwardingConfigNameServerTargetForwardingPath `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
 	Kind        pulumi.StringPtrInput `pulumi:"kind"`
@@ -3475,7 +3475,7 @@ type PolicyAlternativeNameServerConfigTargetNameServerInput interface {
 
 type PolicyAlternativeNameServerConfigTargetNameServerArgs struct {
 	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
-	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
+	ForwardingPath *PolicyAlternativeNameServerConfigTargetNameServerForwardingPath `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
 	Kind        pulumi.StringPtrInput `pulumi:"kind"`

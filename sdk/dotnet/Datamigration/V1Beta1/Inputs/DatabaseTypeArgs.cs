@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         /// The database engine.
         /// </summary>
         [Input("engine")]
-        public Input<string>? Engine { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.DatabaseTypeEngine>? Engine { get; set; }
 
         /// <summary>
         /// The database provider.
         /// </summary>
         [Input("provider")]
-        public Input<string>? Provider { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.DatabaseTypeProvider>? Provider { get; set; }
 
         public DatabaseTypeArgs()
         {

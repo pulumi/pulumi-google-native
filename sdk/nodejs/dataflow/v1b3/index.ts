@@ -10,6 +10,9 @@ export * from "./getTemplate";
 export * from "./job";
 export * from "./template";
 
+// Export enums:
+export * from "../../types/enums/dataflow/v1b3";
+
 // Import resources to register:
 import { Job } from "./job";
 import { Template } from "./template";

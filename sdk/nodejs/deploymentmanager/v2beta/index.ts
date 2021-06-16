@@ -14,6 +14,9 @@ export * from "./getDeploymentIamPolicy";
 export * from "./getTypeProvider";
 export * from "./typeProvider";
 
+// Export enums:
+export * from "../../types/enums/deploymentmanager/v2beta";
+
 // Import resources to register:
 import { CompositeType } from "./compositeType";
 import { Deployment } from "./deployment";

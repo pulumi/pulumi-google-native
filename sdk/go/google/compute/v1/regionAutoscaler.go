@@ -227,7 +227,7 @@ type RegionAutoscalerArgs struct {
 	// - DELETING: Configuration is being deleted.
 	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
 	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
-	Status pulumi.StringPtrInput
+	Status *RegionAutoscalerStatus
 	// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails AutoscalerStatusDetailsArrayInput
 	// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.

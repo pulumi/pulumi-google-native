@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['TargetTcpProxyArgs', 'TargetTcpProxy']
 
@@ -20,7 +21,7 @@ class TargetTcpProxyArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
-                 proxy_header: Optional[pulumi.Input[str]] = None,
+                 proxy_header: Optional[pulumi.Input['TargetTcpProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
@@ -36,7 +37,7 @@ class TargetTcpProxyArgs:
                When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
                
                The default is false.
-        :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+        :param pulumi.Input['TargetTcpProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] service: URL to the BackendService resource.
         """
@@ -149,14 +150,14 @@ class TargetTcpProxyArgs:
 
     @property
     @pulumi.getter(name="proxyHeader")
-    def proxy_header(self) -> Optional[pulumi.Input[str]]:
+    def proxy_header(self) -> Optional[pulumi.Input['TargetTcpProxyProxyHeader']]:
         """
         Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         """
         return pulumi.get(self, "proxy_header")
 
     @proxy_header.setter
-    def proxy_header(self, value: Optional[pulumi.Input[str]]):
+    def proxy_header(self, value: Optional[pulumi.Input['TargetTcpProxyProxyHeader']]):
         pulumi.set(self, "proxy_header", value)
 
     @property
@@ -205,7 +206,7 @@ class TargetTcpProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
-                 proxy_header: Optional[pulumi.Input[str]] = None,
+                 proxy_header: Optional[pulumi.Input['TargetTcpProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -225,7 +226,7 @@ class TargetTcpProxy(pulumi.CustomResource):
                When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
                
                The default is false.
-        :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+        :param pulumi.Input['TargetTcpProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] service: URL to the BackendService resource.
         """
@@ -260,7 +261,7 @@ class TargetTcpProxy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
-                 proxy_header: Optional[pulumi.Input[str]] = None,
+                 proxy_header: Optional[pulumi.Input['TargetTcpProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.GuestOsFeatureType>? Type { get; set; }
 
         public GuestOsFeatureArgs()
         {

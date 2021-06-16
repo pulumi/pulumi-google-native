@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'CertDnsChallengeArgs',
@@ -101,20 +102,20 @@ class DomainProvisioningArgs:
                  cert_challenge_discovered_txt: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cert_challenge_dns: Optional[pulumi.Input['CertDnsChallengeArgs']] = None,
                  cert_challenge_http: Optional[pulumi.Input['CertHttpChallengeArgs']] = None,
-                 cert_status: Optional[pulumi.Input[str]] = None,
+                 cert_status: Optional[pulumi.Input['DomainProvisioningCertStatus']] = None,
                  discovered_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_fetch_time: Optional[pulumi.Input[str]] = None,
-                 dns_status: Optional[pulumi.Input[str]] = None,
+                 dns_status: Optional[pulumi.Input['DomainProvisioningDnsStatus']] = None,
                  expected_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The current certificate provisioning status information for a domain.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cert_challenge_discovered_txt: The TXT records (for the certificate challenge) that were found at the last DNS fetch.
         :param pulumi.Input['CertDnsChallengeArgs'] cert_challenge_dns: The DNS challenge for generating a certificate.
         :param pulumi.Input['CertHttpChallengeArgs'] cert_challenge_http: The HTTP challenge for generating a certificate.
-        :param pulumi.Input[str] cert_status: The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
+        :param pulumi.Input['DomainProvisioningCertStatus'] cert_status: The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] discovered_ips: The IPs found at the last DNS fetch.
         :param pulumi.Input[str] dns_fetch_time: The time at which the last DNS fetch occurred.
-        :param pulumi.Input[str] dns_status: The DNS record match status as of the last DNS fetch.
+        :param pulumi.Input['DomainProvisioningDnsStatus'] dns_status: The DNS record match status as of the last DNS fetch.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expected_ips: The list of IPs to which the domain is expected to resolve.
         """
         if cert_challenge_discovered_txt is not None:
@@ -172,14 +173,14 @@ class DomainProvisioningArgs:
 
     @property
     @pulumi.getter(name="certStatus")
-    def cert_status(self) -> Optional[pulumi.Input[str]]:
+    def cert_status(self) -> Optional[pulumi.Input['DomainProvisioningCertStatus']]:
         """
         The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
         """
         return pulumi.get(self, "cert_status")
 
     @cert_status.setter
-    def cert_status(self, value: Optional[pulumi.Input[str]]):
+    def cert_status(self, value: Optional[pulumi.Input['DomainProvisioningCertStatus']]):
         pulumi.set(self, "cert_status", value)
 
     @property
@@ -208,14 +209,14 @@ class DomainProvisioningArgs:
 
     @property
     @pulumi.getter(name="dnsStatus")
-    def dns_status(self) -> Optional[pulumi.Input[str]]:
+    def dns_status(self) -> Optional[pulumi.Input['DomainProvisioningDnsStatus']]:
         """
         The DNS record match status as of the last DNS fetch.
         """
         return pulumi.get(self, "dns_status")
 
     @dns_status.setter
-    def dns_status(self, value: Optional[pulumi.Input[str]]):
+    def dns_status(self, value: Optional[pulumi.Input['DomainProvisioningDnsStatus']]):
         pulumi.set(self, "dns_status", value)
 
     @property
@@ -235,11 +236,11 @@ class DomainProvisioningArgs:
 class DomainRedirectArgs:
     def __init__(__self__, *,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['DomainRedirectType']] = None):
         """
         Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
         :param pulumi.Input[str] domain_name: Required. The domain name to redirect to.
-        :param pulumi.Input[str] type: Required. The redirect status code.
+        :param pulumi.Input['DomainRedirectType'] type: Required. The redirect status code.
         """
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
@@ -260,14 +261,14 @@ class DomainRedirectArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['DomainRedirectType']]:
         """
         Required. The redirect status code.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['DomainRedirectType']]):
         pulumi.set(self, "type", value)
 
 

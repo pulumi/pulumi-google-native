@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'BindingArgs',
@@ -148,26 +149,26 @@ class TrustArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  last_known_trust_connected_heartbeat_time: Optional[pulumi.Input[str]] = None,
                  selective_authentication: Optional[pulumi.Input[bool]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['TrustState']] = None,
                  state_description: Optional[pulumi.Input[str]] = None,
                  target_dns_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_domain_name: Optional[pulumi.Input[str]] = None,
-                 trust_direction: Optional[pulumi.Input[str]] = None,
+                 trust_direction: Optional[pulumi.Input['TrustTrustDirection']] = None,
                  trust_handshake_secret: Optional[pulumi.Input[str]] = None,
-                 trust_type: Optional[pulumi.Input[str]] = None,
+                 trust_type: Optional[pulumi.Input['TrustTrustType']] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Represents a relationship between two domains which makes it possible for users in one domain to be authenticated by a dc in another domain. Refer https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state.
         :param pulumi.Input[str] create_time: The time the instance was created.
         :param pulumi.Input[str] last_known_trust_connected_heartbeat_time: The last heartbeat time when the trust was known to be connected.
         :param pulumi.Input[bool] selective_authentication: The trust authentication type which decides whether the trusted side has forest/domain wide access or selective access to approved set of resources.
-        :param pulumi.Input[str] state: The current state of this trust.
+        :param pulumi.Input['TrustState'] state: The current state of this trust.
         :param pulumi.Input[str] state_description: Additional information about the current state of this trust, if available.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target dns server ip addresses which can resolve the remote domain involved in trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with current domain.
-        :param pulumi.Input[str] trust_direction: The trust direction decides the current domain is trusted, trusting or both.
+        :param pulumi.Input['TrustTrustDirection'] trust_direction: The trust direction decides the current domain is trusted, trusting or both.
         :param pulumi.Input[str] trust_handshake_secret: Input only, and will not be stored. The trust secret used for handshake with target domain.
-        :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
+        :param pulumi.Input['TrustTrustType'] trust_type: The type of trust represented by the trust resource.
         :param pulumi.Input[str] update_time: Last update time.
         """
         if create_time is not None:
@@ -231,14 +232,14 @@ class TrustArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['TrustState']]:
         """
         The current state of this trust.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['TrustState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -279,14 +280,14 @@ class TrustArgs:
 
     @property
     @pulumi.getter(name="trustDirection")
-    def trust_direction(self) -> Optional[pulumi.Input[str]]:
+    def trust_direction(self) -> Optional[pulumi.Input['TrustTrustDirection']]:
         """
         The trust direction decides the current domain is trusted, trusting or both.
         """
         return pulumi.get(self, "trust_direction")
 
     @trust_direction.setter
-    def trust_direction(self, value: Optional[pulumi.Input[str]]):
+    def trust_direction(self, value: Optional[pulumi.Input['TrustTrustDirection']]):
         pulumi.set(self, "trust_direction", value)
 
     @property
@@ -303,14 +304,14 @@ class TrustArgs:
 
     @property
     @pulumi.getter(name="trustType")
-    def trust_type(self) -> Optional[pulumi.Input[str]]:
+    def trust_type(self) -> Optional[pulumi.Input['TrustTrustType']]:
         """
         The type of trust represented by the trust resource.
         """
         return pulumi.get(self, "trust_type")
 
     @trust_type.setter
-    def trust_type(self, value: Optional[pulumi.Input[str]]):
+    def trust_type(self, value: Optional[pulumi.Input['TrustTrustType']]):
         pulumi.set(self, "trust_type", value)
 
     @property

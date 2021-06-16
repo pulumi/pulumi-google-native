@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -140,12 +140,12 @@ export interface ImportJobArgs {
     /**
      * Required. Immutable. The wrapping method to be used for incoming key material.
      */
-    importMethod?: pulumi.Input<string>;
+    importMethod?: pulumi.Input<enums.cloudkms.v1.ImportJobImportMethod>;
     keyRingId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
-    protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<enums.cloudkms.v1.ImportJobProtectionLevel>;
 }

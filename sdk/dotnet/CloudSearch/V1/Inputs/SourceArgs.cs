@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         /// Predefined content source for Google Apps.
         /// </summary>
         [Input("predefinedSource")]
-        public Input<string>? PredefinedSource { get; set; }
+        public Input<Pulumi.GoogleNative.CloudSearch.V1.SourcePredefinedSource>? PredefinedSource { get; set; }
 
         public SourceArgs()
         {

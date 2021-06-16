@@ -1669,9 +1669,9 @@ type GatewayConfigInput interface {
 // Gateway-related configuration and state.
 type GatewayConfigArgs struct {
 	// Indicates how to authorize and/or authenticate devices to access the gateway.
-	GatewayAuthMethod pulumi.StringPtrInput `pulumi:"gatewayAuthMethod"`
+	GatewayAuthMethod *GatewayConfigGatewayAuthMethod `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
-	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
+	GatewayType *GatewayConfigGatewayType `pulumi:"gatewayType"`
 	// [Output only] The ID of the gateway the device accessed most recently.
 	LastAccessedGatewayId pulumi.StringPtrInput `pulumi:"lastAccessedGatewayId"`
 	// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
@@ -2045,7 +2045,7 @@ type HttpConfigInput interface {
 // The configuration of the HTTP bridge for a device registry.
 type HttpConfigArgs struct {
 	// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-	HttpEnabledState pulumi.StringPtrInput `pulumi:"httpEnabledState"`
+	HttpEnabledState *HttpConfigHttpEnabledState `pulumi:"httpEnabledState"`
 }
 
 func (HttpConfigArgs) ElementType() reflect.Type {
@@ -2313,7 +2313,7 @@ type MqttConfigInput interface {
 // The configuration of MQTT for a device registry.
 type MqttConfigArgs struct {
 	// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-	MqttEnabledState pulumi.StringPtrInput `pulumi:"mqttEnabledState"`
+	MqttEnabledState *MqttConfigMqttEnabledState `pulumi:"mqttEnabledState"`
 }
 
 func (MqttConfigArgs) ElementType() reflect.Type {
@@ -2587,7 +2587,7 @@ type PublicKeyCertificateArgs struct {
 	// The certificate data.
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// The certificate format.
-	Format pulumi.StringPtrInput `pulumi:"format"`
+	Format *PublicKeyCertificateFormat `pulumi:"format"`
 	// [Output only] The certificate details. Used only for X.509 certificates.
 	X509Details X509CertificateDetailsPtrInput `pulumi:"x509Details"`
 }
@@ -2828,7 +2828,7 @@ type PublicKeyCredentialInput interface {
 // A public key format and data.
 type PublicKeyCredentialArgs struct {
 	// The format of the key.
-	Format pulumi.StringPtrInput `pulumi:"format"`
+	Format *PublicKeyCredentialFormat `pulumi:"format"`
 	// The key data.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 }

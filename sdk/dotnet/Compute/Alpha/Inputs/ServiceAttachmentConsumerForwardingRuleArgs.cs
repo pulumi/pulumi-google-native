@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The status of the forwarding rule.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ServiceAttachmentConsumerForwardingRuleStatus>? Status { get; set; }
 
         public ServiceAttachmentConsumerForwardingRuleArgs()
         {

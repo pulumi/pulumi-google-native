@@ -196,7 +196,7 @@ type NodeArgs struct {
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// The health status of the TPU node.
-	Health pulumi.StringPtrInput
+	Health *NodeHealth
 	// Resource labels to represent user-provided metadata.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput

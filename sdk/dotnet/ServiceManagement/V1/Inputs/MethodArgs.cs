@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         /// The source syntax of this method.
         /// </summary>
         [Input("syntax")]
-        public Input<string>? Syntax { get; set; }
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.MethodSyntax>? Syntax { get; set; }
 
         public MethodArgs()
         {

@@ -190,7 +190,7 @@ type DomainArgs struct {
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringPtrInput
 	// The current state of this domain.
-	State pulumi.StringPtrInput
+	State *DomainStateEnum
 	// Additional information about the current status of this domain, if available.
 	StatusMessage pulumi.StringPtrInput
 	// The current trusts associated with the domain.

@@ -137,7 +137,7 @@ type gameServerClusterArgs struct {
 // The set of arguments for constructing a GameServerCluster resource.
 type GameServerClusterArgs struct {
 	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-	AllocationPriority pulumi.StringPtrInput
+	AllocationPriority *GameServerClusterAllocationPriority
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoPtrInput
 	// Human readable description of the cluster.

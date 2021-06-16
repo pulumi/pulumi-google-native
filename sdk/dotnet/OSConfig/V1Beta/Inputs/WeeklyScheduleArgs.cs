@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         /// Required. Day of the week.
         /// </summary>
         [Input("dayOfWeek")]
-        public Input<string>? DayOfWeek { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.WeeklyScheduleDayOfWeek>? DayOfWeek { get; set; }
 
         public WeeklyScheduleArgs()
         {

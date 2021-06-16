@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['StepArgs', 'Step']
@@ -30,7 +31,7 @@ class StepArgs:
                  outcome: Optional[pulumi.Input['OutcomeArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input['DurationArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['StepState']] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
                  test_execution_step: Optional[pulumi.Input['TestExecutionStepArgs']] = None,
                  tool_execution_step: Optional[pulumi.Input['ToolExecutionStepArgs']] = None):
@@ -47,7 +48,7 @@ class StepArgs:
         :param pulumi.Input[str] name: A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean build A PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and dimension_value with an existing step. If two steps represent a similar action, but have different dimension values, they should share the same name. For instance, if the same set of tests is run on two different platforms, the two steps should have the same name. - In response: always set - In create request: always set - In update request: never set
         :param pulumi.Input['OutcomeArgs'] outcome: Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input['DurationArgs'] run_duration: How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
-        :param pulumi.Input[str] state: The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
+        :param pulumi.Input['StepState'] state: The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
         :param pulumi.Input[str] step_id: A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
         :param pulumi.Input['TestExecutionStepArgs'] test_execution_step: An execution of a test runner.
         :param pulumi.Input['ToolExecutionStepArgs'] tool_execution_step: An execution of a tool (used for steps we don't explicitly support).
@@ -258,14 +259,14 @@ class StepArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['StepState']]:
         """
         The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['StepState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -325,7 +326,7 @@ class Step(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['StepState']] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
                  test_execution_step: Optional[pulumi.Input[pulumi.InputType['TestExecutionStepArgs']]] = None,
                  tool_execution_step: Optional[pulumi.Input[pulumi.InputType['ToolExecutionStepArgs']]] = None,
@@ -346,7 +347,7 @@ class Step(pulumi.CustomResource):
         :param pulumi.Input[str] name: A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean build A PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and dimension_value with an existing step. If two steps represent a similar action, but have different dimension values, they should share the same name. For instance, if the same set of tests is run on two different platforms, the two steps should have the same name. - In response: always set - In create request: always set - In update request: never set
         :param pulumi.Input[pulumi.InputType['OutcomeArgs']] outcome: Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input[pulumi.InputType['DurationArgs']] run_duration: How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
-        :param pulumi.Input[str] state: The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
+        :param pulumi.Input['StepState'] state: The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
         :param pulumi.Input[str] step_id: A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
         :param pulumi.Input[pulumi.InputType['TestExecutionStepArgs']] test_execution_step: An execution of a test runner.
         :param pulumi.Input[pulumi.InputType['ToolExecutionStepArgs']] tool_execution_step: An execution of a tool (used for steps we don't explicitly support).
@@ -390,7 +391,7 @@ class Step(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['StepState']] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
                  test_execution_step: Optional[pulumi.Input[pulumi.InputType['TestExecutionStepArgs']]] = None,
                  tool_execution_step: Optional[pulumi.Input[pulumi.InputType['ToolExecutionStepArgs']]] = None,

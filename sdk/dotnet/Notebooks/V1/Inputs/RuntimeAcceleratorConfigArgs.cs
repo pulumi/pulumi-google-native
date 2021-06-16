@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// Accelerator model.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.RuntimeAcceleratorConfigType>? Type { get; set; }
 
         public RuntimeAcceleratorConfigArgs()
         {

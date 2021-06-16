@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         /// </summary>
         [Input("testPlatform")]
-        public Input<string>? TestPlatform { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.HistoryTestPlatform>? TestPlatform { get; set; }
 
         public HistoryArgs()
         {

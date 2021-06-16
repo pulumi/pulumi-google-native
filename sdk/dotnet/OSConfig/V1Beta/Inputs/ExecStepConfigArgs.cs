@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         /// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
         /// </summary>
         [Input("interpreter")]
-        public Input<string>? Interpreter { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.ExecStepConfigInterpreter>? Interpreter { get; set; }
 
         /// <summary>
         /// An absolute path to the executable on the VM.

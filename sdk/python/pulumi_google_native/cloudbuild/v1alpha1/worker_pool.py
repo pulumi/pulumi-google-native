@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['WorkerPoolArgs', 'WorkerPool']
@@ -19,9 +20,9 @@ class WorkerPoolArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['WorkerPoolStatus']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None,
                  worker_count: Optional[pulumi.Input[str]] = None):
@@ -31,9 +32,9 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] create_time: Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[str] delete_time: Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
         :param pulumi.Input[str] service_account_email: The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
-        :param pulumi.Input[str] status: WorkerPool Status.
+        :param pulumi.Input['WorkerPoolStatus'] status: WorkerPool Status.
         :param pulumi.Input[str] update_time: Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
@@ -108,14 +109,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]]:
         """
         List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
         """
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]]):
         pulumi.set(self, "regions", value)
 
     @property
@@ -132,14 +133,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['WorkerPoolStatus']]:
         """
         WorkerPool Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['WorkerPoolStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -188,9 +189,9 @@ class WorkerPool(pulumi.CustomResource):
                  delete_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['WorkerPoolStatus']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
@@ -204,9 +205,9 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] delete_time: Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
         :param pulumi.Input[str] project: The project ID of the GCP project for which the `WorkerPool` is created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
         :param pulumi.Input[str] service_account_email: The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
-        :param pulumi.Input[str] status: WorkerPool Status.
+        :param pulumi.Input['WorkerPoolStatus'] status: WorkerPool Status.
         :param pulumi.Input[str] update_time: Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
@@ -239,9 +240,9 @@ class WorkerPool(pulumi.CustomResource):
                  delete_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['WorkerPoolStatus']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,

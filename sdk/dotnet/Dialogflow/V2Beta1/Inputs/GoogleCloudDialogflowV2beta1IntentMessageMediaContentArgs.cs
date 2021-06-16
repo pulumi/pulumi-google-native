@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// Optional. What type of media is the content (ie "audio").
         /// </summary>
         [Input("mediaType")]
-        public Input<string>? MediaType { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType>? MediaType { get; set; }
 
         public GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs()
         {

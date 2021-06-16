@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// channel specifies which release channel the cluster is subscribed to.
         /// </summary>
         [Input("channel")]
-        public Input<string>? Channel { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1.ReleaseChannelChannel>? Channel { get; set; }
 
         public ReleaseChannelArgs()
         {

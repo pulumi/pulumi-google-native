@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DeviceArgs', 'Device']
@@ -30,7 +31,7 @@ class DeviceArgs:
                  last_event_time: Optional[pulumi.Input[str]] = None,
                  last_heartbeat_time: Optional[pulumi.Input[str]] = None,
                  last_state_time: Optional[pulumi.Input[str]] = None,
-                 log_level: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_id: Optional[pulumi.Input[str]] = None,
@@ -49,7 +50,7 @@ class DeviceArgs:
         :param pulumi.Input[str] last_event_time: [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
         :param pulumi.Input[str] last_heartbeat_time: [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
         :param pulumi.Input[str] last_state_time: [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        :param pulumi.Input[str] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
+        :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
         :param pulumi.Input[str] num_id: [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
@@ -266,14 +267,14 @@ class DeviceArgs:
 
     @property
     @pulumi.getter(name="logLevel")
-    def log_level(self) -> Optional[pulumi.Input[str]]:
+    def log_level(self) -> Optional[pulumi.Input['DeviceLogLevel']]:
         """
         **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         """
         return pulumi.get(self, "log_level")
 
     @log_level.setter
-    def log_level(self, value: Optional[pulumi.Input[str]]):
+    def log_level(self, value: Optional[pulumi.Input['DeviceLogLevel']]):
         pulumi.set(self, "log_level", value)
 
     @property
@@ -343,7 +344,7 @@ class Device(pulumi.CustomResource):
                  last_heartbeat_time: Optional[pulumi.Input[str]] = None,
                  last_state_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 log_level: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_id: Optional[pulumi.Input[str]] = None,
@@ -368,7 +369,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] last_event_time: [Output only] The last time a telemetry event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
         :param pulumi.Input[str] last_heartbeat_time: [Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no other messages have been sent. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
         :param pulumi.Input[str] last_state_time: [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
-        :param pulumi.Input[str] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
+        :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
         :param pulumi.Input[str] num_id: [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
@@ -411,7 +412,7 @@ class Device(pulumi.CustomResource):
                  last_heartbeat_time: Optional[pulumi.Input[str]] = None,
                  last_state_time: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 log_level: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_id: Optional[pulumi.Input[str]] = None,

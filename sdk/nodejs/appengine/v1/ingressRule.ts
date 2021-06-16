@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -90,7 +91,7 @@ export interface IngressRuleArgs {
     /**
      * The action to take on matched requests.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<enums.appengine.v1.IngressRuleAction>;
     appId: pulumi.Input<string>;
     /**
      * An optional string description of this rule. This field has a maximum length of 100 characters.

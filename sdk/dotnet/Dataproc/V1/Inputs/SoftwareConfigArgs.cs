@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? ImageVersion { get; set; }
 
         [Input("optionalComponents")]
-        private InputList<string>? _optionalComponents;
+        private InputList<Pulumi.GoogleNative.Dataproc.V1.SoftwareConfigOptionalComponentsItem>? _optionalComponents;
 
         /// <summary>
         /// Optional. The set of components to activate on the cluster.
         /// </summary>
-        public InputList<string> OptionalComponents
+        public InputList<Pulumi.GoogleNative.Dataproc.V1.SoftwareConfigOptionalComponentsItem> OptionalComponents
         {
-            get => _optionalComponents ?? (_optionalComponents = new InputList<string>());
+            get => _optionalComponents ?? (_optionalComponents = new InputList<Pulumi.GoogleNative.Dataproc.V1.SoftwareConfigOptionalComponentsItem>());
             set => _optionalComponents = value;
         }
 

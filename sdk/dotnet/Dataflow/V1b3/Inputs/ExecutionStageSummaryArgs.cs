@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Type of transform this stage is executing.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.ExecutionStageSummaryKind>? Kind { get; set; }
 
         /// <summary>
         /// Dataflow service generated name for this stage.

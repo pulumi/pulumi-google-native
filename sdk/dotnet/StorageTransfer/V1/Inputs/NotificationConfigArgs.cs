@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class NotificationConfigArgs : Pulumi.ResourceArgs
     {
         [Input("eventTypes")]
-        private InputList<string>? _eventTypes;
+        private InputList<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigEventTypesItem>? _eventTypes;
 
         /// <summary>
         /// Event types for which a notification is desired. If empty, send notifications for all event types.
         /// </summary>
-        public InputList<string> EventTypes
+        public InputList<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigEventTypesItem> EventTypes
         {
-            get => _eventTypes ?? (_eventTypes = new InputList<string>());
+            get => _eventTypes ?? (_eventTypes = new InputList<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigEventTypesItem>());
             set => _eventTypes = value;
         }
 
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         /// Required. The desired format of the notification message payloads.
         /// </summary>
         [Input("payloadFormat")]
-        public Input<string>? PayloadFormat { get; set; }
+        public Input<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigPayloadFormat>? PayloadFormat { get; set; }
 
         /// <summary>
         /// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.

@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         /// How this data should be plotted on the chart.
         /// </summary>
         [Input("plotType")]
-        public Input<string>? PlotType { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V1.DataSetPlotType>? PlotType { get; set; }
 
         /// <summary>
         /// Required. Fields for querying time series data from the Stackdriver metrics API.

@@ -280,7 +280,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         /// </summary>
         [Input("interconnectType")]
-        public Input<string>? InterconnectType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.InterconnectInterconnectType>? InterconnectType { get; set; }
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#interconnect for interconnects.
@@ -294,7 +294,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         /// </summary>
         [Input("linkType")]
-        public Input<string>? LinkType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.InterconnectLinkType>? LinkType { get; set; }
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
@@ -321,7 +321,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         /// </summary>
         [Input("operationalStatus")]
-        public Input<string>? OperationalStatus { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.InterconnectOperationalStatus>? OperationalStatus { get; set; }
 
         /// <summary>
         /// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
@@ -360,7 +360,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.InterconnectState>? State { get; set; }
 
         public InterconnectArgs()
         {

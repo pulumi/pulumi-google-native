@@ -135,7 +135,7 @@ type EnvironmentArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The current state of the environment.
-	State pulumi.StringPtrInput
+	State *EnvironmentStateEnum
 	// The time at which this environment was last modified.
 	UpdateTime pulumi.StringPtrInput
 	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.

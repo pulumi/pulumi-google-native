@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['GlobalPublicDelegatedPrefixArgs', 'GlobalPublicDelegatedPrefix']
@@ -30,7 +31,7 @@ class GlobalPublicDelegatedPrefixArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['GlobalPublicDelegatedPrefixStatus']] = None):
         """
         The set of arguments for constructing a GlobalPublicDelegatedPrefix resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
@@ -48,7 +49,7 @@ class GlobalPublicDelegatedPrefixArgs:
         :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL with id for the resource.
-        :param pulumi.Input[str] status: [Output Only] The status of the public delegated prefix.
+        :param pulumi.Input['GlobalPublicDelegatedPrefixStatus'] status: [Output Only] The status of the public delegated prefix.
         """
         pulumi.set(__self__, "project", project)
         if creation_timestamp is not None:
@@ -260,14 +261,14 @@ class GlobalPublicDelegatedPrefixArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['GlobalPublicDelegatedPrefixStatus']]:
         """
         [Output Only] The status of the public delegated prefix.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['GlobalPublicDelegatedPrefixStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -291,7 +292,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['GlobalPublicDelegatedPrefixStatus']] = None,
                  __props__=None):
         """
         Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
@@ -313,7 +314,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL with id for the resource.
-        :param pulumi.Input[str] status: [Output Only] The status of the public delegated prefix.
+        :param pulumi.Input['GlobalPublicDelegatedPrefixStatus'] status: [Output Only] The status of the public delegated prefix.
         """
         ...
     @overload
@@ -354,7 +355,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['GlobalPublicDelegatedPrefixStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

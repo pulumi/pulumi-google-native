@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AcceleratorArgs',
@@ -21,12 +22,12 @@ __all__ = [
 @pulumi.input_type
 class AcceleratorArgs:
     def __init__(__self__, *,
-                 accelerator_type: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 accelerator_type: Optional[pulumi.Input['AcceleratorAcceleratorType']] = None,
+                 state: Optional[pulumi.Input['AcceleratorState']] = None):
         """
         Identifies Data Fusion accelerators for an instance.
-        :param pulumi.Input[str] accelerator_type: The type of an accelator for a CDF instance.
-        :param pulumi.Input[str] state: The state of the accelerator
+        :param pulumi.Input['AcceleratorAcceleratorType'] accelerator_type: The type of an accelator for a CDF instance.
+        :param pulumi.Input['AcceleratorState'] state: The state of the accelerator
         """
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -35,26 +36,26 @@ class AcceleratorArgs:
 
     @property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+    def accelerator_type(self) -> Optional[pulumi.Input['AcceleratorAcceleratorType']]:
         """
         The type of an accelator for a CDF instance.
         """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+    def accelerator_type(self, value: Optional[pulumi.Input['AcceleratorAcceleratorType']]):
         pulumi.set(self, "accelerator_type", value)
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['AcceleratorState']]:
         """
         The state of the accelerator
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['AcceleratorState']]):
         pulumi.set(self, "state", value)
 
 
@@ -102,11 +103,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -127,14 +128,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 

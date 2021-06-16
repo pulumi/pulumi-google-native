@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         /// Type of archive files in this repository. The default behavior is DEB.
         /// </summary>
         [Input("archiveType")]
-        public Input<string>? ArchiveType { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.AptRepositoryArchiveType>? ArchiveType { get; set; }
 
         [Input("components")]
         private InputList<string>? _components;

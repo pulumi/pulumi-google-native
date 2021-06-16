@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['SslPolicyArgs', 'SslPolicy']
@@ -23,9 +24,9 @@ class SslPolicyArgs:
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 profile: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input['SslPolicyProfile']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -43,9 +44,9 @@ class SslPolicyArgs:
                To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
-        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+        :param pulumi.Input['SslPolicyMinTlsVersion'] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+        :param pulumi.Input['SslPolicyProfile'] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['ServerTlsSettingsArgs'] tls_settings: Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -181,14 +182,14 @@ class SslPolicyArgs:
 
     @property
     @pulumi.getter(name="minTlsVersion")
-    def min_tls_version(self) -> Optional[pulumi.Input[str]]:
+    def min_tls_version(self) -> Optional[pulumi.Input['SslPolicyMinTlsVersion']]:
         """
         The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
         """
         return pulumi.get(self, "min_tls_version")
 
     @min_tls_version.setter
-    def min_tls_version(self, value: Optional[pulumi.Input[str]]):
+    def min_tls_version(self, value: Optional[pulumi.Input['SslPolicyMinTlsVersion']]):
         pulumi.set(self, "min_tls_version", value)
 
     @property
@@ -205,14 +206,14 @@ class SslPolicyArgs:
 
     @property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[str]]:
+    def profile(self) -> Optional[pulumi.Input['SslPolicyProfile']]:
         """
         Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[str]]):
+    def profile(self, value: Optional[pulumi.Input['SslPolicyProfile']]):
         pulumi.set(self, "profile", value)
 
     @property
@@ -285,9 +286,9 @@ class SslPolicy(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 profile: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input['SslPolicyProfile']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -310,9 +311,9 @@ class SslPolicy(pulumi.CustomResource):
                To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
-        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+        :param pulumi.Input['SslPolicyMinTlsVersion'] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+        :param pulumi.Input['SslPolicyProfile'] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['ServerTlsSettingsArgs']] tls_settings: Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -349,9 +350,9 @@ class SslPolicy(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 profile: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input['SslPolicyProfile']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
         /// </summary>
         [Input("activationPolicy")]
-        public Input<string>? ActivationPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsActivationPolicy>? ActivationPolicy { get; set; }
 
         /// <summary>
         /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
         /// </summary>
         [Input("availabilityType")]
-        public Input<string>? AvailabilityType { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsAvailabilityType>? AvailabilityType { get; set; }
 
         /// <summary>
         /// The daily backup configuration for the instance.
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
         /// </summary>
         [Input("dataDiskType")]
-        public Input<string>? DataDiskType { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsDataDiskType>? DataDiskType { get; set; }
 
         [Input("databaseFlags")]
         private InputList<Inputs.DatabaseFlagsArgs>? _databaseFlags;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         /// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
         /// </summary>
         [Input("pricingPlan")]
-        public Input<string>? PricingPlan { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.SettingsPricingPlan>? PricingPlan { get; set; }
 
         /// <summary>
         /// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.

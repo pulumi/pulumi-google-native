@@ -61,13 +61,13 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
         /// </summary>
         [Input("scaleType")]
-        public Input<string>? ScaleType { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__ParameterSpecScaleType>? ScaleType { get; set; }
 
         /// <summary>
         /// Required. The type of the parameter.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__ParameterSpecType>? Type { get; set; }
 
         public GoogleCloudMlV1__ParameterSpecArgs()
         {

@@ -133,7 +133,7 @@ type InstructionArgs struct {
 	// Creation time of instruction.
 	CreateTime pulumi.StringPtrInput
 	// Required. The data type of this instruction.
-	DataType pulumi.StringPtrInput
+	DataType *InstructionDataType
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the instruction. Maximum of 64 characters.

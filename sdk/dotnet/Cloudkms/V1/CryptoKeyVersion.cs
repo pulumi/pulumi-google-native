@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// The current state of the CryptoKeyVersion.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.CryptoKeyVersionState>? State { get; set; }
 
         public CryptoKeyVersionArgs()
         {

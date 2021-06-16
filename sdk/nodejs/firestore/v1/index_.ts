@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -110,9 +110,9 @@ export interface IndexArgs {
     /**
      * Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
      */
-    queryScope?: pulumi.Input<string>;
+    queryScope?: pulumi.Input<enums.firestore.v1.IndexQueryScope>;
     /**
      * The serving state of the index.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.firestore.v1.IndexState>;
 }

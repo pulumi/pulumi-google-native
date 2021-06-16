@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AuditConfigArgs',
@@ -66,11 +67,11 @@ class AuditConfigArgs:
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -91,14 +92,14 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
@@ -185,16 +186,16 @@ class DataCatalogConfigArgs:
 @pulumi.input_type
 class DatabaseDumpArgs:
     def __init__(__self__, *,
-                 database_type: Optional[pulumi.Input[str]] = None,
+                 database_type: Optional[pulumi.Input['DatabaseDumpDatabaseType']] = None,
                  gcs_uri: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['DatabaseDumpType']] = None):
         """
         A specification of the location of and metadata about a database dump from a relational database management system.
-        :param pulumi.Input[str] database_type: The type of the database.
+        :param pulumi.Input['DatabaseDumpDatabaseType'] database_type: The type of the database.
         :param pulumi.Input[str] gcs_uri: A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
         :param pulumi.Input[str] source_database: The name of the source database.
-        :param pulumi.Input[str] type: Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+        :param pulumi.Input['DatabaseDumpType'] type: Optional. The type of the database dump. If unspecified, defaults to MYSQL.
         """
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
@@ -207,14 +208,14 @@ class DatabaseDumpArgs:
 
     @property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[str]]:
+    def database_type(self) -> Optional[pulumi.Input['DatabaseDumpDatabaseType']]:
         """
         The type of the database.
         """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[str]]):
+    def database_type(self, value: Optional[pulumi.Input['DatabaseDumpDatabaseType']]):
         pulumi.set(self, "database_type", value)
 
     @property
@@ -243,14 +244,14 @@ class DatabaseDumpArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['DatabaseDumpType']]:
         """
         Optional. The type of the database dump. If unspecified, defaults to MYSQL.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['DatabaseDumpType']]):
         pulumi.set(self, "type", value)
 
 
@@ -441,11 +442,11 @@ class KerberosConfigArgs:
 @pulumi.input_type
 class MaintenanceWindowArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input[str]] = None,
+                 day_of_week: Optional[pulumi.Input['MaintenanceWindowDayOfWeek']] = None,
                  hour_of_day: Optional[pulumi.Input[int]] = None):
         """
         Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
-        :param pulumi.Input[str] day_of_week: The day of week, when the window starts.
+        :param pulumi.Input['MaintenanceWindowDayOfWeek'] day_of_week: The day of week, when the window starts.
         :param pulumi.Input[int] hour_of_day: The hour of day (0-23) when the window starts.
         """
         if day_of_week is not None:
@@ -455,14 +456,14 @@ class MaintenanceWindowArgs:
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input[str]]:
+    def day_of_week(self) -> Optional[pulumi.Input['MaintenanceWindowDayOfWeek']]:
         """
         The day of week, when the window starts.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input[str]]):
+    def day_of_week(self, value: Optional[pulumi.Input['MaintenanceWindowDayOfWeek']]):
         pulumi.set(self, "day_of_week", value)
 
     @property

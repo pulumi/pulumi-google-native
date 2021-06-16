@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Defines the type of maintenance.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.UpcomingMaintenanceType>? Type { get; set; }
 
         public UpcomingMaintenanceArgs()
         {

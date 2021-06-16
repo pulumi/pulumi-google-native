@@ -14,6 +14,9 @@ export * from "./organizationIamPolicy";
 export * from "./project";
 export * from "./projectIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/cloudresourcemanager/v1";
+
 // Import resources to register:
 import { Lien } from "./lien";
 import { OrganizationIamPolicy } from "./organizationIamPolicy";

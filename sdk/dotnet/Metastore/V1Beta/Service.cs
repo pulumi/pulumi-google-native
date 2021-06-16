@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         /// </summary>
         [Input("releaseChannel")]
-        public Input<string>? ReleaseChannel { get; set; }
+        public Input<Pulumi.GoogleNative.Metastore.V1Beta.ServiceReleaseChannel>? ReleaseChannel { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// The tier of the service.
         /// </summary>
         [Input("tier")]
-        public Input<string>? Tier { get; set; }
+        public Input<Pulumi.GoogleNative.Metastore.V1Beta.ServiceTier>? Tier { get; set; }
 
         public ServiceArgs()
         {

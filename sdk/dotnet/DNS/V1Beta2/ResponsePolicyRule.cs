@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// Answer this query with a behavior rather than DNS data.
         /// </summary>
         [Input("behavior")]
-        public Input<string>? Behavior { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1Beta2.ResponsePolicyRuleBehavior>? Behavior { get; set; }
 
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }

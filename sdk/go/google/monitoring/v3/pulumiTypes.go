@@ -38,11 +38,11 @@ type AggregationArgs struct {
 	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
 	AlignmentPeriod pulumi.StringPtrInput `pulumi:"alignmentPeriod"`
 	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
+	CrossSeriesReducer *AggregationCrossSeriesReducer `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
 	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
 	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
+	PerSeriesAligner *AggregationPerSeriesAligner `pulumi:"perSeriesAligner"`
 }
 
 func (AggregationArgs) ElementType() reflect.Type {
@@ -2436,7 +2436,7 @@ type ContentMatcherArgs struct {
 	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
-	Matcher pulumi.StringPtrInput `pulumi:"matcher"`
+	Matcher *ContentMatcherMatcher `pulumi:"matcher"`
 }
 
 func (ContentMatcherArgs) ElementType() reflect.Type {
@@ -3820,7 +3820,7 @@ type HttpCheckArgs struct {
 	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
-	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	ContentType *HttpCheckContentType `pulumi:"contentType"`
 	// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
@@ -3830,7 +3830,7 @@ type HttpCheckArgs struct {
 	// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
-	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
+	RequestMethod *HttpCheckRequestMethod `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
 	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
@@ -4428,7 +4428,7 @@ type InternalCheckerArgs struct {
 	// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
 	PeerProjectId pulumi.StringPtrInput `pulumi:"peerProjectId"`
 	// The current operational state of the internal checker.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *InternalCheckerState `pulumi:"state"`
 }
 
 func (InternalCheckerArgs) ElementType() reflect.Type {
@@ -5050,7 +5050,7 @@ type LabelDescriptorArgs struct {
 	// The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The type of data that can be assigned to the label.
-	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+	ValueType *LabelDescriptorValueType `pulumi:"valueType"`
 }
 
 func (LabelDescriptorArgs) ElementType() reflect.Type {
@@ -6791,7 +6791,7 @@ type MetricThresholdArgs struct {
 	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
 	Aggregations AggregationArrayInput `pulumi:"aggregations"`
 	// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
-	Comparison pulumi.StringPtrInput `pulumi:"comparison"`
+	Comparison *MetricThresholdComparison `pulumi:"comparison"`
 	// Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
 	DenominatorAggregations AggregationArrayInput `pulumi:"denominatorAggregations"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
@@ -8761,7 +8761,7 @@ type ResourceGroupArgs struct {
 	// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The resource type of the group members.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	ResourceType *ResourceGroupResourceType `pulumi:"resourceType"`
 }
 
 func (ResourceGroupArgs) ElementType() reflect.Type {

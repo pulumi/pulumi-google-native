@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Input("postKeyRevocationActionType")]
-        public Input<string>? PostKeyRevocationActionType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.SourceInstancePropertiesPostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
         /// Specifies the scheduling options for the instances that are created from this machine image.

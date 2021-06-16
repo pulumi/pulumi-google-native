@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See  Consuming reserved instances for examples.
         /// </summary>
         [Input("consumeReservationType")]
-        public Input<string>? ConsumeReservationType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ReservationAffinityConsumeReservationType>? ConsumeReservationType { get; set; }
 
         /// <summary>
         /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify googleapis.com/reservation-name as the key and specify the name of your reservation as its value.

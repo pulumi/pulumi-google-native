@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// See go/stable-fleet-ug for more details.
         /// </summary>
         [Input("maintenanceInterval")]
-        public Input<string>? MaintenanceInterval { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingMaintenanceInterval>? MaintenanceInterval { get; set; }
 
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
         /// </summary>
         [Input("onHostMaintenance")]
-        public Input<string>? OnHostMaintenance { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingOnHostMaintenance>? OnHostMaintenance { get; set; }
 
         /// <summary>
         /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.

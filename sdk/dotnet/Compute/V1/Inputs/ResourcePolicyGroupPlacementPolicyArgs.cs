@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// Specifies network collocation
         /// </summary>
         [Input("collocation")]
-        public Input<string>? Collocation { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.ResourcePolicyGroupPlacementPolicyCollocation>? Collocation { get; set; }
 
         /// <summary>
         /// Number of vms in this placement group

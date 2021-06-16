@@ -133,14 +133,14 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
     public sealed class RegistrationArgs : Pulumi.ResourceArgs
     {
         [Input("contactNotices")]
-        private InputList<string>? _contactNotices;
+        private InputList<Pulumi.GoogleNative.Domains.V1Beta1.RegistrationContactNoticesItem>? _contactNotices;
 
         /// <summary>
         /// The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
         /// </summary>
-        public InputList<string> ContactNotices
+        public InputList<Pulumi.GoogleNative.Domains.V1Beta1.RegistrationContactNoticesItem> ContactNotices
         {
-            get => _contactNotices ?? (_contactNotices = new InputList<string>());
+            get => _contactNotices ?? (_contactNotices = new InputList<Pulumi.GoogleNative.Domains.V1Beta1.RegistrationContactNoticesItem>());
             set => _contactNotices = value;
         }
 
@@ -163,14 +163,14 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         public Input<string>? DomainName { get; set; }
 
         [Input("domainNotices")]
-        private InputList<string>? _domainNotices;
+        private InputList<Pulumi.GoogleNative.Domains.V1Beta1.RegistrationDomainNoticesItem>? _domainNotices;
 
         /// <summary>
         /// The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         /// </summary>
-        public InputList<string> DomainNotices
+        public InputList<Pulumi.GoogleNative.Domains.V1Beta1.RegistrationDomainNoticesItem> DomainNotices
         {
-            get => _domainNotices ?? (_domainNotices = new InputList<string>());
+            get => _domainNotices ?? (_domainNotices = new InputList<Pulumi.GoogleNative.Domains.V1Beta1.RegistrationDomainNoticesItem>());
             set => _domainNotices = value;
         }
 

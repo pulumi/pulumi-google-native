@@ -291,7 +291,7 @@ type VersionArgs struct {
 	// Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
 	ExplanationConfig GoogleCloudMlV1__ExplanationConfigPtrInput
 	// Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-	Framework pulumi.StringPtrInput
+	Framework *VersionFramework
 	// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
 	IsDefault pulumi.BoolPtrInput
 	// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
@@ -321,7 +321,7 @@ type VersionArgs struct {
 	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
 	ServiceAccount pulumi.StringPtrInput
 	// The state of a version.
-	State pulumi.StringPtrInput
+	State *VersionStateEnum
 }
 
 func (VersionArgs) ElementType() reflect.Type {

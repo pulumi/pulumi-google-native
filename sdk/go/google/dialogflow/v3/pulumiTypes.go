@@ -3151,11 +3151,11 @@ type GoogleCloudDialogflowCxV3ExperimentResultMetricArgs struct {
 	// Count value of a metric.
 	Count pulumi.Float64PtrInput `pulumi:"count"`
 	// Count-based metric type. Only one of type or count_type is specified in each Metric.
-	CountType pulumi.StringPtrInput `pulumi:"countType"`
+	CountType *GoogleCloudDialogflowCxV3ExperimentResultMetricCountType `pulumi:"countType"`
 	// Ratio value of a metric.
 	Ratio pulumi.Float64PtrInput `pulumi:"ratio"`
 	// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *GoogleCloudDialogflowCxV3ExperimentResultMetricType `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowCxV3ExperimentResultMetricArgs) ElementType() reflect.Type {
@@ -6018,13 +6018,13 @@ type GoogleCloudDialogflowCxV3InputAudioConfigInput interface {
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3InputAudioConfigArgs struct {
 	// Required. Audio encoding of the audio content to process.
-	AudioEncoding pulumi.StringPtrInput `pulumi:"audioEncoding"`
+	AudioEncoding *GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
 	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Optional. Which variant of the Speech model to use.
-	ModelVariant pulumi.StringPtrInput `pulumi:"modelVariant"`
+	ModelVariant *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant `pulumi:"modelVariant"`
 	// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
 	PhraseHints pulumi.StringArrayInput `pulumi:"phraseHints"`
 	// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
@@ -7647,9 +7647,9 @@ type GoogleCloudDialogflowCxV3NluSettingsArgs struct {
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
 	ClassificationThreshold pulumi.Float64PtrInput `pulumi:"classificationThreshold"`
 	// Indicates NLU model training mode.
-	ModelTrainingMode pulumi.StringPtrInput `pulumi:"modelTrainingMode"`
+	ModelTrainingMode *GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
-	ModelType pulumi.StringPtrInput `pulumi:"modelType"`
+	ModelType *GoogleCloudDialogflowCxV3NluSettingsModelType `pulumi:"modelType"`
 }
 
 func (GoogleCloudDialogflowCxV3NluSettingsArgs) ElementType() reflect.Type {
@@ -10771,7 +10771,7 @@ type GoogleCloudDialogflowCxV3TestCaseResultArgs struct {
 	// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Whether the test case passed in the agent environment.
-	TestResult pulumi.StringPtrInput `pulumi:"testResult"`
+	TestResult *GoogleCloudDialogflowCxV3TestCaseResultTestResult `pulumi:"testResult"`
 	// The time that the test was run.
 	TestTime pulumi.StringPtrInput `pulumi:"testTime"`
 }

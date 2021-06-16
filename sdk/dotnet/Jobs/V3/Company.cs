@@ -211,7 +211,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// Optional. The employer's company size.
         /// </summary>
         [Input("size")]
-        public Input<string>? Size { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V3.CompanySize>? Size { get; set; }
 
         /// <summary>
         /// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.

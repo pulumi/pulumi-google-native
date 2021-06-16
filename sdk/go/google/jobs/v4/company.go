@@ -188,7 +188,7 @@ type CompanyArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The employer's company size.
-	Size     pulumi.StringPtrInput
+	Size     *CompanySize
 	TenantId pulumi.StringInput
 	// The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
 	WebsiteUri pulumi.StringPtrInput

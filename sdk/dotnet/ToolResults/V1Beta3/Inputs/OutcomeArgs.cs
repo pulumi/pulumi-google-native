@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         /// The simplest way to interpret a result. Required
         /// </summary>
         [Input("summary")]
-        public Input<string>? Summary { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.OutcomeSummary>? Summary { get; set; }
 
         public OutcomeArgs()
         {

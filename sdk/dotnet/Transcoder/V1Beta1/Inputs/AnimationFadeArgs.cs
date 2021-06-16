@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         /// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
         /// </summary>
         [Input("fadeType")]
-        public Input<string>? FadeType { get; set; }
+        public Input<Pulumi.GoogleNative.Transcoder.V1Beta1.AnimationFadeFadeType>? FadeType { get; set; }
 
         /// <summary>
         /// The time to start the fade animation, in seconds. Default: 0

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AggregationArgs',
@@ -51,15 +52,15 @@ __all__ = [
 class AggregationArgs:
     def __init__(__self__, *,
                  alignment_period: Optional[pulumi.Input[str]] = None,
-                 cross_series_reducer: Optional[pulumi.Input[str]] = None,
+                 cross_series_reducer: Optional[pulumi.Input['AggregationCrossSeriesReducer']] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 per_series_aligner: Optional[pulumi.Input[str]] = None):
+                 per_series_aligner: Optional[pulumi.Input['AggregationPerSeriesAligner']] = None):
         """
         Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
         :param pulumi.Input[str] alignment_period: The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
-        :param pulumi.Input[str] cross_series_reducer: The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+        :param pulumi.Input['AggregationCrossSeriesReducer'] cross_series_reducer: The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
-        :param pulumi.Input[str] per_series_aligner: An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+        :param pulumi.Input['AggregationPerSeriesAligner'] per_series_aligner: An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
         """
         if alignment_period is not None:
             pulumi.set(__self__, "alignment_period", alignment_period)
@@ -84,14 +85,14 @@ class AggregationArgs:
 
     @property
     @pulumi.getter(name="crossSeriesReducer")
-    def cross_series_reducer(self) -> Optional[pulumi.Input[str]]:
+    def cross_series_reducer(self) -> Optional[pulumi.Input['AggregationCrossSeriesReducer']]:
         """
         The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
         """
         return pulumi.get(self, "cross_series_reducer")
 
     @cross_series_reducer.setter
-    def cross_series_reducer(self, value: Optional[pulumi.Input[str]]):
+    def cross_series_reducer(self, value: Optional[pulumi.Input['AggregationCrossSeriesReducer']]):
         pulumi.set(self, "cross_series_reducer", value)
 
     @property
@@ -108,14 +109,14 @@ class AggregationArgs:
 
     @property
     @pulumi.getter(name="perSeriesAligner")
-    def per_series_aligner(self) -> Optional[pulumi.Input[str]]:
+    def per_series_aligner(self) -> Optional[pulumi.Input['AggregationPerSeriesAligner']]:
         """
         An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
         """
         return pulumi.get(self, "per_series_aligner")
 
     @per_series_aligner.setter
-    def per_series_aligner(self, value: Optional[pulumi.Input[str]]):
+    def per_series_aligner(self, value: Optional[pulumi.Input['AggregationPerSeriesAligner']]):
         pulumi.set(self, "per_series_aligner", value)
 
 
@@ -468,11 +469,11 @@ class ConditionArgs:
 class ContentMatcherArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
-                 matcher: Optional[pulumi.Input[str]] = None):
+                 matcher: Optional[pulumi.Input['ContentMatcherMatcher']] = None):
         """
         Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
         :param pulumi.Input[str] content: String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
-        :param pulumi.Input[str] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+        :param pulumi.Input['ContentMatcherMatcher'] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -493,14 +494,14 @@ class ContentMatcherArgs:
 
     @property
     @pulumi.getter
-    def matcher(self) -> Optional[pulumi.Input[str]]:
+    def matcher(self) -> Optional[pulumi.Input['ContentMatcherMatcher']]:
         """
         The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         """
         return pulumi.get(self, "matcher")
 
     @matcher.setter
-    def matcher(self, value: Optional[pulumi.Input[str]]):
+    def matcher(self, value: Optional[pulumi.Input['ContentMatcherMatcher']]):
         pulumi.set(self, "matcher", value)
 
 
@@ -638,24 +639,24 @@ class HttpCheckArgs:
     def __init__(__self__, *,
                  auth_info: Optional[pulumi.Input['BasicAuthenticationArgs']] = None,
                  body: Optional[pulumi.Input[str]] = None,
-                 content_type: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input['HttpCheckContentType']] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mask_headers: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 request_method: Optional[pulumi.Input[str]] = None,
+                 request_method: Optional[pulumi.Input['HttpCheckRequestMethod']] = None,
                  use_ssl: Optional[pulumi.Input[bool]] = None,
                  validate_ssl: Optional[pulumi.Input[bool]] = None):
         """
         Information involved in an HTTP/HTTPS Uptime check request.
         :param pulumi.Input['BasicAuthenticationArgs'] auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
         :param pulumi.Input[str] body: The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
-        :param pulumi.Input[str] content_type: The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+        :param pulumi.Input['HttpCheckContentType'] content_type: The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param pulumi.Input[bool] mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
         :param pulumi.Input[str] path: Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
         :param pulumi.Input[int] port: Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
-        :param pulumi.Input[str] request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
+        :param pulumi.Input['HttpCheckRequestMethod'] request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
         :param pulumi.Input[bool] use_ssl: If true, use HTTPS instead of HTTP to run the check.
         :param pulumi.Input[bool] validate_ssl: Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
         """
@@ -706,14 +707,14 @@ class HttpCheckArgs:
 
     @property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[str]]:
+    def content_type(self) -> Optional[pulumi.Input['HttpCheckContentType']]:
         """
         The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[str]]):
+    def content_type(self, value: Optional[pulumi.Input['HttpCheckContentType']]):
         pulumi.set(self, "content_type", value)
 
     @property
@@ -766,14 +767,14 @@ class HttpCheckArgs:
 
     @property
     @pulumi.getter(name="requestMethod")
-    def request_method(self) -> Optional[pulumi.Input[str]]:
+    def request_method(self) -> Optional[pulumi.Input['HttpCheckRequestMethod']]:
         """
         The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
         """
         return pulumi.get(self, "request_method")
 
     @request_method.setter
-    def request_method(self, value: Optional[pulumi.Input[str]]):
+    def request_method(self, value: Optional[pulumi.Input['HttpCheckRequestMethod']]):
         pulumi.set(self, "request_method", value)
 
     @property
@@ -809,7 +810,7 @@ class InternalCheckerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  peer_project_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['InternalCheckerState']] = None):
         """
         An internal checker allows Uptime checks to run on private/internal GCP resources.
         :param pulumi.Input[str] display_name: The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
@@ -817,7 +818,7 @@ class InternalCheckerArgs:
         :param pulumi.Input[str] name: A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
         :param pulumi.Input[str] network: The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
         :param pulumi.Input[str] peer_project_id: The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
-        :param pulumi.Input[str] state: The current operational state of the internal checker.
+        :param pulumi.Input['InternalCheckerState'] state: The current operational state of the internal checker.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -894,14 +895,14 @@ class InternalCheckerArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['InternalCheckerState']]:
         """
         The current operational state of the internal checker.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['InternalCheckerState']]):
         pulumi.set(self, "state", value)
 
 
@@ -966,12 +967,12 @@ class LabelDescriptorArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
-                 value_type: Optional[pulumi.Input[str]] = None):
+                 value_type: Optional[pulumi.Input['LabelDescriptorValueType']] = None):
         """
         A description of a label.
         :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] key: The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores.
-        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
+        :param pulumi.Input['LabelDescriptorValueType'] value_type: The type of data that can be assigned to the label.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1006,14 +1007,14 @@ class LabelDescriptorArgs:
 
     @property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[str]]:
+    def value_type(self) -> Optional[pulumi.Input['LabelDescriptorValueType']]:
         """
         The type of data that can be assigned to the label.
         """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[str]]):
+    def value_type(self, value: Optional[pulumi.Input['LabelDescriptorValueType']]):
         pulumi.set(self, "value_type", value)
 
 
@@ -1253,7 +1254,7 @@ class MetricRangeArgs:
 class MetricThresholdArgs:
     def __init__(__self__, *,
                  aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]]] = None,
-                 comparison: Optional[pulumi.Input[str]] = None,
+                 comparison: Optional[pulumi.Input['MetricThresholdComparison']] = None,
                  denominator_aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]]] = None,
                  denominator_filter: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
@@ -1263,7 +1264,7 @@ class MetricThresholdArgs:
         """
         A condition type that compares a collection of time series against a threshold.
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] aggregations: Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
-        :param pulumi.Input[str] comparison: The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
+        :param pulumi.Input['MetricThresholdComparison'] comparison: The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] denominator_aggregations: Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
         :param pulumi.Input[str] denominator_filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
         :param pulumi.Input[str] duration: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
@@ -1302,14 +1303,14 @@ class MetricThresholdArgs:
 
     @property
     @pulumi.getter
-    def comparison(self) -> Optional[pulumi.Input[str]]:
+    def comparison(self) -> Optional[pulumi.Input['MetricThresholdComparison']]:
         """
         The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
         """
         return pulumi.get(self, "comparison")
 
     @comparison.setter
-    def comparison(self, value: Optional[pulumi.Input[str]]):
+    def comparison(self, value: Optional[pulumi.Input['MetricThresholdComparison']]):
         pulumi.set(self, "comparison", value)
 
     @property
@@ -1621,11 +1622,11 @@ class RequestBasedSliArgs:
 class ResourceGroupArgs:
     def __init__(__self__, *,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 resource_type: Optional[pulumi.Input[str]] = None):
+                 resource_type: Optional[pulumi.Input['ResourceGroupResourceType']] = None):
         """
         The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
         :param pulumi.Input[str] group_id: The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
-        :param pulumi.Input[str] resource_type: The resource type of the group members.
+        :param pulumi.Input['ResourceGroupResourceType'] resource_type: The resource type of the group members.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -1646,14 +1647,14 @@ class ResourceGroupArgs:
 
     @property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[str]]:
+    def resource_type(self) -> Optional[pulumi.Input['ResourceGroupResourceType']]:
         """
         The resource type of the group members.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[str]]):
+    def resource_type(self, value: Optional[pulumi.Input['ResourceGroupResourceType']]):
         pulumi.set(self, "resource_type", value)
 
 

@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -170,7 +170,7 @@ export interface MembershipArgs {
     /**
      * Optional. The infrastructure type this Membership is running on.
      */
-    infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<enums.gkehub.v1beta1.MembershipInfrastructureType>;
     /**
      * Optional. GCP labels for this membership.
      */

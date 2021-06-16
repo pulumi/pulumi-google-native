@@ -10,6 +10,9 @@ export * from "./getJobTemplate";
 export * from "./job";
 export * from "./jobTemplate";
 
+// Export enums:
+export * from "../../types/enums/transcoder/v1beta1";
+
 // Import resources to register:
 import { Job } from "./job";
 import { JobTemplate } from "./jobTemplate";

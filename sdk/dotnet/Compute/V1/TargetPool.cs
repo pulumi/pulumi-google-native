@@ -236,7 +236,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
         /// </summary>
         [Input("sessionAffinity")]
-        public Input<string>? SessionAffinity { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.TargetPoolSessionAffinity>? SessionAffinity { get; set; }
 
         public TargetPoolArgs()
         {

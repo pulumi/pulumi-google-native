@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// The detailed state of the trial.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__HyperparameterOutputState>? State { get; set; }
 
         /// <summary>
         /// The trial id for these results.

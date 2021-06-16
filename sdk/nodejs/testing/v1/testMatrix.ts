@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -161,11 +161,11 @@ export interface TestMatrixArgs {
     /**
      * Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
      */
-    invalidMatrixDetails?: pulumi.Input<string>;
+    invalidMatrixDetails?: pulumi.Input<enums.testing.v1.TestMatrixInvalidMatrixDetails>;
     /**
      * Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
      */
-    outcomeSummary?: pulumi.Input<string>;
+    outcomeSummary?: pulumi.Input<enums.testing.v1.TestMatrixOutcomeSummary>;
     /**
      * The cloud project that owns the test matrix.
      */
@@ -178,7 +178,7 @@ export interface TestMatrixArgs {
     /**
      * Indicates the current progress of the test matrix.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<enums.testing.v1.TestMatrixState>;
     /**
      * The list of test executions that the service creates for this matrix.
      */

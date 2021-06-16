@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         /// Required. Privacy setting for the contacts associated with the `Registration`.
         /// </summary>
         [Input("privacy")]
-        public Input<string>? Privacy { get; set; }
+        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.ContactSettingsPrivacy>? Privacy { get; set; }
 
         /// <summary>
         /// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*

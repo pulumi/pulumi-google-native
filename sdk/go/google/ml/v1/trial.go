@@ -149,7 +149,7 @@ type TrialArgs struct {
 	Parameters GoogleCloudMlV1_Trial_ParameterArrayInput
 	Project    pulumi.StringInput
 	// The detailed state of a trial.
-	State   pulumi.StringPtrInput
+	State   *TrialStateEnum
 	StudyId pulumi.StringInput
 }
 

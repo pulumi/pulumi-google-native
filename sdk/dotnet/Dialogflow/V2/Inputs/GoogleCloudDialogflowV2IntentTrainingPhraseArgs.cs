@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         /// Required. The type of the training phrase.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2IntentTrainingPhraseType>? Type { get; set; }
 
         public GoogleCloudDialogflowV2IntentTrainingPhraseArgs()
         {

@@ -112,9 +112,9 @@ type IndexArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-	QueryScope pulumi.StringPtrInput
+	QueryScope *IndexQueryScope
 	// The serving state of the index.
-	State pulumi.StringPtrInput
+	State *IndexStateEnum
 }
 
 func (IndexArgs) ElementType() reflect.Type {

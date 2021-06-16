@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         /// </summary>
         [Input("peeringCidrRange")]
-        public Input<string>? PeeringCidrRange { get; set; }
+        public Input<Pulumi.GoogleNative.Apigee.V1.InstancePeeringCidrRange>? PeeringCidrRange { get; set; }
 
         public InstanceArgs()
         {

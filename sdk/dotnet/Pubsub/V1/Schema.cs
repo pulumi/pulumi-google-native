@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// The type of the schema definition.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Pubsub.V1.SchemaType>? Type { get; set; }
 
         public SchemaArgs()
         {

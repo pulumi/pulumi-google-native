@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         /// </summary>
         [Input("databaseType")]
-        public Input<string>? DatabaseType { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.AppDatabaseType>? DatabaseType { get; set; }
 
         /// <summary>
         /// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Serving status of this application.
         /// </summary>
         [Input("servingStatus")]
-        public Input<string>? ServingStatus { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1.AppServingStatus>? ServingStatus { get; set; }
 
         public AppArgs()
         {

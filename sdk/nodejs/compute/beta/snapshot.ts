@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -315,7 +315,7 @@ export interface SnapshotArgs {
     /**
      * [Output Only] The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.beta.SnapshotStatus>;
     /**
      * [Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
      */
@@ -323,7 +323,7 @@ export interface SnapshotArgs {
     /**
      * [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
      */
-    storageBytesStatus?: pulumi.Input<string>;
+    storageBytesStatus?: pulumi.Input<enums.compute.beta.SnapshotStorageBytesStatus>;
     /**
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */

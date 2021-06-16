@@ -187,14 +187,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Input<string>? Action { get; set; }
 
         [Input("defaultResponsePlatforms")]
-        private InputList<string>? _defaultResponsePlatforms;
+        private InputList<Pulumi.GoogleNative.Dialogflow.V2Beta1.IntentDefaultResponsePlatformsItem>? _defaultResponsePlatforms;
 
         /// <summary>
         /// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         /// </summary>
-        public InputList<string> DefaultResponsePlatforms
+        public InputList<Pulumi.GoogleNative.Dialogflow.V2Beta1.IntentDefaultResponsePlatformsItem> DefaultResponsePlatforms
         {
-            get => _defaultResponsePlatforms ?? (_defaultResponsePlatforms = new InputList<string>());
+            get => _defaultResponsePlatforms ?? (_defaultResponsePlatforms = new InputList<Pulumi.GoogleNative.Dialogflow.V2Beta1.IntentDefaultResponsePlatformsItem>());
             set => _defaultResponsePlatforms = value;
         }
 
@@ -340,7 +340,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Optional. Indicates whether webhooks are enabled for the intent.
         /// </summary>
         [Input("webhookState")]
-        public Input<string>? WebhookState { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.IntentWebhookState>? WebhookState { get; set; }
 
         public IntentArgs()
         {

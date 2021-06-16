@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.ParticipantRole>? Role { get; set; }
 
         public ParticipantArgs()
         {

@@ -12,6 +12,9 @@ export * from "./getServiceIamPolicy";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/run/v1";
+
 // Import resources to register:
 import { DomainMapping } from "./domainMapping";
 import { Service } from "./service";

@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// If not specified, HTTPS health check follows behavior specified in port and portName fields.
         /// </summary>
         [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.HTTPSHealthCheckPortSpecification>? PortSpecification { get; set; }
 
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         /// </summary>
         [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.HTTPSHealthCheckProxyHeader>? ProxyHeader { get; set; }
 
         /// <summary>
         /// The request path of the HTTPS health check request. The default value is /.

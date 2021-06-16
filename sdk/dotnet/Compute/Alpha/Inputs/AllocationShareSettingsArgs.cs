@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Type of sharing for this shared-reservation
         /// </summary>
         [Input("shareType")]
-        public Input<string>? ShareType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AllocationShareSettingsShareType>? ShareType { get; set; }
 
         public AllocationShareSettingsArgs()
         {

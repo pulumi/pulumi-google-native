@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .contact import *
 from .folder_contact import *
 from .get_contact import *

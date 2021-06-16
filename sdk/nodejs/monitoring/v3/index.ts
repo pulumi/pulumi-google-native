@@ -20,6 +20,9 @@ export * from "./service";
 export * from "./serviceLevelObjective";
 export * from "./uptimeCheckConfig";
 
+// Export enums:
+export * from "../../types/enums/monitoring/v3";
+
 // Import resources to register:
 import { AlertPolicy } from "./alertPolicy";
 import { Group } from "./group";

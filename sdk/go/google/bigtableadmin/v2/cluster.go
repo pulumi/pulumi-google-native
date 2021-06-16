@@ -120,7 +120,7 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	ClusterId pulumi.StringInput
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
-	DefaultStorageType pulumi.StringPtrInput
+	DefaultStorageType *ClusterDefaultStorageType
 	// Immutable. The encryption configuration for CMEK-protected clusters.
 	EncryptionConfig EncryptionConfigPtrInput
 	InstanceId       pulumi.StringInput

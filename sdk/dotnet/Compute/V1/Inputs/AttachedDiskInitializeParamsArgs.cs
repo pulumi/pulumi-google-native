@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         /// </summary>
         [Input("onUpdateAction")]
-        public Input<string>? OnUpdateAction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.AttachedDiskInitializeParamsOnUpdateAction>? OnUpdateAction { get; set; }
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.

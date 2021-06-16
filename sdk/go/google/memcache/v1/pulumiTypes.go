@@ -30,7 +30,7 @@ type InstanceMessageInput interface {
 
 type InstanceMessageArgs struct {
 	// A code that correspond to one type of user-facing message.
-	Code pulumi.StringPtrInput `pulumi:"code"`
+	Code *InstanceMessageCode `pulumi:"code"`
 	// Message on memcached instance which will be exposed to users.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }

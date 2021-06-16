@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class LogConfigDataAccessOptionsArgs : Pulumi.ResourceArgs
     {
         [Input("logMode")]
-        public Input<string>? LogMode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.LogConfigDataAccessOptionsLogMode>? LogMode { get; set; }
 
         public LogConfigDataAccessOptionsArgs()
         {

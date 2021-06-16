@@ -180,7 +180,7 @@ type UptimeCheckConfigArgs struct {
 	// The group resource associated with the configuration.
 	ResourceGroup ResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
-	SelectedRegions pulumi.StringArrayInput
+	SelectedRegions UptimeCheckConfigSelectedRegionsItemArrayInput
 	// Contains information needed to make a TCP check.
 	TcpCheck TcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.

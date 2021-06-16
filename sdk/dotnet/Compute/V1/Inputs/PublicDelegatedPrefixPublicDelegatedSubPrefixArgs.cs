@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// [Output Only] The status of the sub public delegated prefix.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.PublicDelegatedPrefixPublicDelegatedSubPrefixStatus>? Status { get; set; }
 
         public PublicDelegatedPrefixPublicDelegatedSubPrefixArgs()
         {

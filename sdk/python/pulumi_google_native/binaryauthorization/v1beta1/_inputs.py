@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AttestorPublicKeyArgs',
@@ -220,11 +221,11 @@ class ExprArgs:
 class PkixPublicKeyArgs:
     def __init__(__self__, *,
                  public_key_pem: Optional[pulumi.Input[str]] = None,
-                 signature_algorithm: Optional[pulumi.Input[str]] = None):
+                 signature_algorithm: Optional[pulumi.Input['PkixPublicKeySignatureAlgorithm']] = None):
         """
         A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
         :param pulumi.Input[str] public_key_pem: A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
-        :param pulumi.Input[str] signature_algorithm: The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
+        :param pulumi.Input['PkixPublicKeySignatureAlgorithm'] signature_algorithm: The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
         """
         if public_key_pem is not None:
             pulumi.set(__self__, "public_key_pem", public_key_pem)
@@ -245,14 +246,14 @@ class PkixPublicKeyArgs:
 
     @property
     @pulumi.getter(name="signatureAlgorithm")
-    def signature_algorithm(self) -> Optional[pulumi.Input[str]]:
+    def signature_algorithm(self) -> Optional[pulumi.Input['PkixPublicKeySignatureAlgorithm']]:
         """
         The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
         """
         return pulumi.get(self, "signature_algorithm")
 
     @signature_algorithm.setter
-    def signature_algorithm(self, value: Optional[pulumi.Input[str]]):
+    def signature_algorithm(self, value: Optional[pulumi.Input['PkixPublicKeySignatureAlgorithm']]):
         pulumi.set(self, "signature_algorithm", value)
 
 

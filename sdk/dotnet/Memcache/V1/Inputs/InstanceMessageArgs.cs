@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Memcache.V1.Inputs
         /// A code that correspond to one type of user-facing message.
         /// </summary>
         [Input("code")]
-        public Input<string>? Code { get; set; }
+        public Input<Pulumi.GoogleNative.Memcache.V1.InstanceMessageCode>? Code { get; set; }
 
         /// <summary>
         /// Message on memcached instance which will be exposed to users.

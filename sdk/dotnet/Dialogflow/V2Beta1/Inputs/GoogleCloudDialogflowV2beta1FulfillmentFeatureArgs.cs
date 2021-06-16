@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// The type of the feature that enabled for fulfillment.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1FulfillmentFeatureType>? Type { get; set; }
 
         public GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs()
         {

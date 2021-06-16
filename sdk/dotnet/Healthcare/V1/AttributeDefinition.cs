@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Required. The category of the attribute. The value of this field cannot be changed after creation.
         /// </summary>
         [Input("category")]
-        public Input<string>? Category { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1.AttributeDefinitionCategory>? Category { get; set; }
 
         [Input("consentDefaultValues")]
         private InputList<string>? _consentDefaultValues;

@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         /// linux_isolation allows overriding the docker runtime used for containers started on Linux.
         /// </summary>
         [Input("linuxIsolation")]
-        public Input<string>? LinuxIsolation { get; set; }
+        public Input<Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation>? LinuxIsolation { get; set; }
 
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs()
         {

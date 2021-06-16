@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ServiceLevelObjectiveArgs', 'ServiceLevelObjective']
@@ -18,7 +19,7 @@ class ServiceLevelObjectiveArgs:
                  service_id: pulumi.Input[str],
                  v3_id: pulumi.Input[str],
                  v3_id1: pulumi.Input[str],
-                 calendar_period: Optional[pulumi.Input[str]] = None,
+                 calendar_period: Optional[pulumi.Input['ServiceLevelObjectiveCalendarPeriod']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  goal: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -27,7 +28,7 @@ class ServiceLevelObjectiveArgs:
                  service_level_objective_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceLevelObjective resource.
-        :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+        :param pulumi.Input['ServiceLevelObjectiveCalendarPeriod'] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
         :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
@@ -81,14 +82,14 @@ class ServiceLevelObjectiveArgs:
 
     @property
     @pulumi.getter(name="calendarPeriod")
-    def calendar_period(self) -> Optional[pulumi.Input[str]]:
+    def calendar_period(self) -> Optional[pulumi.Input['ServiceLevelObjectiveCalendarPeriod']]:
         """
         A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         """
         return pulumi.get(self, "calendar_period")
 
     @calendar_period.setter
-    def calendar_period(self, value: Optional[pulumi.Input[str]]):
+    def calendar_period(self, value: Optional[pulumi.Input['ServiceLevelObjectiveCalendarPeriod']]):
         pulumi.set(self, "calendar_period", value)
 
     @property
@@ -166,7 +167,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 calendar_period: Optional[pulumi.Input[str]] = None,
+                 calendar_period: Optional[pulumi.Input['ServiceLevelObjectiveCalendarPeriod']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  goal: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -182,7 +183,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+        :param pulumi.Input['ServiceLevelObjectiveCalendarPeriod'] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
         :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
@@ -213,7 +214,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 calendar_period: Optional[pulumi.Input[str]] = None,
+                 calendar_period: Optional[pulumi.Input['ServiceLevelObjectiveCalendarPeriod']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  goal: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,

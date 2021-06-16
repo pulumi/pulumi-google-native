@@ -144,7 +144,7 @@ type CryptoKeyArgs struct {
 	NextRotationTime pulumi.StringPtrInput
 	Project          pulumi.StringInput
 	// Immutable. The immutable purpose of this CryptoKey.
-	Purpose pulumi.StringPtrInput
+	Purpose *CryptoKeyPurpose
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	RotationPeriod             pulumi.StringPtrInput
 	SkipInitialVersionCreation pulumi.StringPtrInput

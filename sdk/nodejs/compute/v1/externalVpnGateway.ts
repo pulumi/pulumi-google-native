@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -160,7 +160,7 @@ export interface ExternalVpnGatewayArgs {
     /**
      * Indicates the user-supplied redundancy type of this external VPN gateway.
      */
-    redundancyType?: pulumi.Input<string>;
+    redundancyType?: pulumi.Input<enums.compute.v1.ExternalVpnGatewayRedundancyType>;
     requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.

@@ -543,7 +543,7 @@ type ClusterArgs struct {
 	// Shielded Nodes configuration.
 	ShieldedNodes ShieldedNodesPtrInput
 	// [Output only] The current status of this cluster.
-	Status pulumi.StringPtrInput
+	Status *ClusterStatus
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
 	Subnetwork pulumi.StringPtrInput
 	// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).

@@ -951,7 +951,7 @@ type AndroidInstrumentationTestArgs struct {
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId pulumi.StringPtrInput `pulumi:"appPackageId"`
 	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-	OrchestratorOption pulumi.StringPtrInput `pulumi:"orchestratorOption"`
+	OrchestratorOption *AndroidInstrumentationTestOrchestratorOption `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionPtrInput `pulumi:"shardingOption"`
 	// Required. The APK containing the test code to be executed.
@@ -9000,7 +9000,7 @@ type RoboDirectiveInput interface {
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirectiveArgs struct {
 	// Required. The type of action that Robo should perform on the specified element.
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	ActionType *RoboDirectiveActionType `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText pulumi.StringPtrInput `pulumi:"inputText"`
 	// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
@@ -10771,7 +10771,7 @@ type TestExecutionArgs struct {
 	// Details about the shard.
 	Shard ShardPtrInput `pulumi:"shard"`
 	// Indicates the current progress of the test execution (e.g., FINISHED).
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *TestExecutionState `pulumi:"state"`
 	// Additional details about the running test.
 	TestDetails TestDetailsPtrInput `pulumi:"testDetails"`
 	// How to run the test.

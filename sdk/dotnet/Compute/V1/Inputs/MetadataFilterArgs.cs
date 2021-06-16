@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
         /// </summary>
         [Input("filterMatchCriteria")]
-        public Input<string>? FilterMatchCriteria { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.MetadataFilterFilterMatchCriteria>? FilterMatchCriteria { get; set; }
 
         public MetadataFilterArgs()
         {

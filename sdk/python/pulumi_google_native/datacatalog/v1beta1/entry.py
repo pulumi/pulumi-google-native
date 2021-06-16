@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['EntryArgs', 'Entry']
@@ -26,7 +27,7 @@ class EntryArgs:
                  gcs_fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['EntryType']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None):
         """
@@ -38,7 +39,7 @@ class EntryArgs:
         :param pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
         :param pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs'] schema: Schema of the entry. An entry might not have any schema attached to it.
-        :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
+        :param pulumi.Input['EntryType'] type: The type of the entry. Only used for Entries with types in the EntryType enum.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
         """
@@ -189,14 +190,14 @@ class EntryArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['EntryType']]:
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['EntryType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -240,7 +241,7 @@ class Entry(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['EntryType']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -256,7 +257,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
-        :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
+        :param pulumi.Input['EntryType'] type: The type of the entry. Only used for Entries with types in the EntryType enum.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
         """
@@ -295,7 +296,7 @@ class Entry(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['EntryType']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AuditConfigArgs',
@@ -87,11 +88,11 @@ class AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ignore_child_exemptions: Optional[pulumi.Input[bool]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -123,38 +124,38 @@ class AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 
 @pulumi.input_type
 class AuthorizationLoggingOptionsArgs:
     def __init__(__self__, *,
-                 permission_type: Optional[pulumi.Input[str]] = None):
+                 permission_type: Optional[pulumi.Input['AuthorizationLoggingOptionsPermissionType']] = None):
         """
         Authorization-related information used by Cloud Audit Logging.
-        :param pulumi.Input[str] permission_type: The type of the permission that was checked.
+        :param pulumi.Input['AuthorizationLoggingOptionsPermissionType'] permission_type: The type of the permission that was checked.
         """
         if permission_type is not None:
             pulumi.set(__self__, "permission_type", permission_type)
 
     @property
     @pulumi.getter(name="permissionType")
-    def permission_type(self) -> Optional[pulumi.Input[str]]:
+    def permission_type(self) -> Optional[pulumi.Input['AuthorizationLoggingOptionsPermissionType']]:
         """
         The type of the permission that was checked.
         """
         return pulumi.get(self, "permission_type")
 
     @permission_type.setter
-    def permission_type(self, value: Optional[pulumi.Input[str]]):
+    def permission_type(self, value: Optional[pulumi.Input['AuthorizationLoggingOptionsPermissionType']]):
         pulumi.set(self, "permission_type", value)
 
 
@@ -230,11 +231,11 @@ class BindingArgs:
 class CloudAuditOptionsArgs:
     def __init__(__self__, *,
                  authorization_logging_options: Optional[pulumi.Input['AuthorizationLoggingOptionsArgs']] = None,
-                 log_name: Optional[pulumi.Input[str]] = None):
+                 log_name: Optional[pulumi.Input['CloudAuditOptionsLogName']] = None):
         """
         Write a Cloud Audit log
         :param pulumi.Input['AuthorizationLoggingOptionsArgs'] authorization_logging_options: Information used by the Cloud Audit Logging pipeline.
-        :param pulumi.Input[str] log_name: The log_name to populate in the Cloud Audit Record.
+        :param pulumi.Input['CloudAuditOptionsLogName'] log_name: The log_name to populate in the Cloud Audit Record.
         """
         if authorization_logging_options is not None:
             pulumi.set(__self__, "authorization_logging_options", authorization_logging_options)
@@ -255,31 +256,31 @@ class CloudAuditOptionsArgs:
 
     @property
     @pulumi.getter(name="logName")
-    def log_name(self) -> Optional[pulumi.Input[str]]:
+    def log_name(self) -> Optional[pulumi.Input['CloudAuditOptionsLogName']]:
         """
         The log_name to populate in the Cloud Audit Record.
         """
         return pulumi.get(self, "log_name")
 
     @log_name.setter
-    def log_name(self, value: Optional[pulumi.Input[str]]):
+    def log_name(self, value: Optional[pulumi.Input['CloudAuditOptionsLogName']]):
         pulumi.set(self, "log_name", value)
 
 
 @pulumi.input_type
 class ConditionArgs:
     def __init__(__self__, *,
-                 iam: Optional[pulumi.Input[str]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
+                 iam: Optional[pulumi.Input['ConditionIam']] = None,
+                 op: Optional[pulumi.Input['ConditionOp']] = None,
                  svc: Optional[pulumi.Input[str]] = None,
-                 sys: Optional[pulumi.Input[str]] = None,
+                 sys: Optional[pulumi.Input['ConditionSys']] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A condition to be met.
-        :param pulumi.Input[str] iam: Trusted attributes supplied by the IAM system.
-        :param pulumi.Input[str] op: An operator to apply the subject with.
+        :param pulumi.Input['ConditionIam'] iam: Trusted attributes supplied by the IAM system.
+        :param pulumi.Input['ConditionOp'] op: An operator to apply the subject with.
         :param pulumi.Input[str] svc: Trusted attributes discharged by the service.
-        :param pulumi.Input[str] sys: Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+        :param pulumi.Input['ConditionSys'] sys: Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The objects of the condition.
         """
         if iam is not None:
@@ -295,26 +296,26 @@ class ConditionArgs:
 
     @property
     @pulumi.getter
-    def iam(self) -> Optional[pulumi.Input[str]]:
+    def iam(self) -> Optional[pulumi.Input['ConditionIam']]:
         """
         Trusted attributes supplied by the IAM system.
         """
         return pulumi.get(self, "iam")
 
     @iam.setter
-    def iam(self, value: Optional[pulumi.Input[str]]):
+    def iam(self, value: Optional[pulumi.Input['ConditionIam']]):
         pulumi.set(self, "iam", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
+    def op(self) -> Optional[pulumi.Input['ConditionOp']]:
         """
         An operator to apply the subject with.
         """
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
+    def op(self, value: Optional[pulumi.Input['ConditionOp']]):
         pulumi.set(self, "op", value)
 
     @property
@@ -331,14 +332,14 @@ class ConditionArgs:
 
     @property
     @pulumi.getter
-    def sys(self) -> Optional[pulumi.Input[str]]:
+    def sys(self) -> Optional[pulumi.Input['ConditionSys']]:
         """
         Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
         """
         return pulumi.get(self, "sys")
 
     @sys.setter
-    def sys(self, value: Optional[pulumi.Input[str]]):
+    def sys(self, value: Optional[pulumi.Input['ConditionSys']]):
         pulumi.set(self, "sys", value)
 
     @property
@@ -453,7 +454,7 @@ class CustomFieldArgs:
 @pulumi.input_type
 class DataAccessOptionsArgs:
     def __init__(__self__, *,
-                 log_mode: Optional[pulumi.Input[str]] = None):
+                 log_mode: Optional[pulumi.Input['DataAccessOptionsLogMode']] = None):
         """
         Write a Data Access (Gin) log
         """
@@ -462,11 +463,11 @@ class DataAccessOptionsArgs:
 
     @property
     @pulumi.getter(name="logMode")
-    def log_mode(self) -> Optional[pulumi.Input[str]]:
+    def log_mode(self) -> Optional[pulumi.Input['DataAccessOptionsLogMode']]:
         return pulumi.get(self, "log_mode")
 
     @log_mode.setter
-    def log_mode(self, value: Optional[pulumi.Input[str]]):
+    def log_mode(self, value: Optional[pulumi.Input['DataAccessOptionsLogMode']]):
         pulumi.set(self, "log_mode", value)
 
 
@@ -769,7 +770,7 @@ class LogConfigArgs:
 @pulumi.input_type
 class RuleArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[str]] = None,
+                 action: Optional[pulumi.Input['RuleAction']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  in_: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -778,7 +779,7 @@ class RuleArgs:
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A rule to be applied in a Policy.
-        :param pulumi.Input[str] action: Required
+        :param pulumi.Input['RuleAction'] action: Required
         :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Additional restrictions that must be met. All conditions must pass for the rule to match.
         :param pulumi.Input[str] description: Human-readable description of the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] in_: If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
@@ -803,14 +804,14 @@ class RuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[str]]:
+    def action(self) -> Optional[pulumi.Input['RuleAction']]:
         """
         Required
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[str]]):
+    def action(self, value: Optional[pulumi.Input['RuleAction']]):
         pulumi.set(self, "action", value)
 
     @property

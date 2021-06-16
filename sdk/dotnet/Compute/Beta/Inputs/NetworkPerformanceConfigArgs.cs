@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class NetworkPerformanceConfigArgs : Pulumi.ResourceArgs
     {
         [Input("totalEgressBandwidthTier")]
-        public Input<string>? TotalEgressBandwidthTier { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.NetworkPerformanceConfigTotalEgressBandwidthTier>? TotalEgressBandwidthTier { get; set; }
 
         public NetworkPerformanceConfigArgs()
         {

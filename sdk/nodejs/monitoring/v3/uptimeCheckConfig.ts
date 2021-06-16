@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -176,7 +176,7 @@ export interface UptimeCheckConfigArgs {
     /**
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
      */
-    selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedRegions?: pulumi.Input<pulumi.Input<enums.monitoring.v3.UptimeCheckConfigSelectedRegionsItem>[]>;
     /**
      * Contains information needed to make a TCP check.
      */

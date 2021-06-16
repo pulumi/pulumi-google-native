@@ -520,13 +520,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Input("postKeyRevocationActionType")]
-        public Input<string>? PostKeyRevocationActionType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.InstancePostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
-        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.InstancePrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -627,7 +627,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.InstanceStatus>? Status { get; set; }
 
         /// <summary>
         /// [Output Only] An optional, human-readable explanation of the status.

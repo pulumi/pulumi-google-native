@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class CVSSv3Args : Pulumi.ResourceArgs
     {
         [Input("attackComplexity")]
-        public Input<string>? AttackComplexity { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3AttackComplexity>? AttackComplexity { get; set; }
 
         /// <summary>
         /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
         /// </summary>
         [Input("attackVector")]
-        public Input<string>? AttackVector { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3AttackVector>? AttackVector { get; set; }
 
         [Input("availabilityImpact")]
-        public Input<string>? AvailabilityImpact { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3AvailabilityImpact>? AvailabilityImpact { get; set; }
 
         /// <summary>
         /// The base score is a function of the base metric scores.
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<double>? BaseScore { get; set; }
 
         [Input("confidentialityImpact")]
-        public Input<string>? ConfidentialityImpact { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3ConfidentialityImpact>? ConfidentialityImpact { get; set; }
 
         [Input("exploitabilityScore")]
         public Input<double>? ExploitabilityScore { get; set; }
@@ -43,16 +43,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<double>? ImpactScore { get; set; }
 
         [Input("integrityImpact")]
-        public Input<string>? IntegrityImpact { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3IntegrityImpact>? IntegrityImpact { get; set; }
 
         [Input("privilegesRequired")]
-        public Input<string>? PrivilegesRequired { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3PrivilegesRequired>? PrivilegesRequired { get; set; }
 
         [Input("scope")]
-        public Input<string>? Scope { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3Scope>? Scope { get; set; }
 
         [Input("userInteraction")]
-        public Input<string>? UserInteraction { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3UserInteraction>? UserInteraction { get; set; }
 
         public CVSSv3Args()
         {

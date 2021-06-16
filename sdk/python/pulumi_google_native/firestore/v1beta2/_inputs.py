@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleFirestoreAdminV1beta2IndexFieldArgs',
@@ -15,14 +16,14 @@ __all__ = [
 @pulumi.input_type
 class GoogleFirestoreAdminV1beta2IndexFieldArgs:
     def __init__(__self__, *,
-                 array_config: Optional[pulumi.Input[str]] = None,
+                 array_config: Optional[pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldArrayConfig']] = None,
                  field_path: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input[str]] = None):
+                 order: Optional[pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldOrder']] = None):
         """
         A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
-        :param pulumi.Input[str] array_config: Indicates that this field supports operations on `array_value`s.
+        :param pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldArrayConfig'] array_config: Indicates that this field supports operations on `array_value`s.
         :param pulumi.Input[str] field_path: Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
-        :param pulumi.Input[str] order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+        :param pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldOrder'] order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
         """
         if array_config is not None:
             pulumi.set(__self__, "array_config", array_config)
@@ -33,14 +34,14 @@ class GoogleFirestoreAdminV1beta2IndexFieldArgs:
 
     @property
     @pulumi.getter(name="arrayConfig")
-    def array_config(self) -> Optional[pulumi.Input[str]]:
+    def array_config(self) -> Optional[pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldArrayConfig']]:
         """
         Indicates that this field supports operations on `array_value`s.
         """
         return pulumi.get(self, "array_config")
 
     @array_config.setter
-    def array_config(self, value: Optional[pulumi.Input[str]]):
+    def array_config(self, value: Optional[pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldArrayConfig']]):
         pulumi.set(self, "array_config", value)
 
     @property
@@ -57,14 +58,14 @@ class GoogleFirestoreAdminV1beta2IndexFieldArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[str]]:
+    def order(self) -> Optional[pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldOrder']]:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
         """
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[str]]):
+    def order(self, value: Optional[pulumi.Input['GoogleFirestoreAdminV1beta2IndexFieldOrder']]):
         pulumi.set(self, "order", value)
 
 

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['TransferJobArgs', 'TransferJob']
@@ -21,7 +22,7 @@ class TransferJobArgs:
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['ScheduleArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['TransferJobStatus']] = None,
                  transfer_spec: Optional[pulumi.Input['TransferSpecArgs']] = None):
         """
         The set of arguments for constructing a TransferJob resource.
@@ -31,7 +32,7 @@ class TransferJobArgs:
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration.
         :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
         :param pulumi.Input['ScheduleArgs'] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
-        :param pulumi.Input[str] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
+        :param pulumi.Input['TransferJobStatus'] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input['TransferSpecArgs'] transfer_spec: Transfer specification.
         """
         if description is not None:
@@ -125,14 +126,14 @@ class TransferJobArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['TransferJobStatus']]:
         """
         Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['TransferJobStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -159,7 +160,7 @@ class TransferJob(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['TransferJobStatus']] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None):
         """
@@ -173,7 +174,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration.
         :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
         :param pulumi.Input[pulumi.InputType['ScheduleArgs']] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
-        :param pulumi.Input[str] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
+        :param pulumi.Input['TransferJobStatus'] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input[pulumi.InputType['TransferSpecArgs']] transfer_spec: Transfer specification.
         """
         ...
@@ -206,7 +207,7 @@ class TransferJob(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['TransferJobStatus']] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None):
         if opts is None:

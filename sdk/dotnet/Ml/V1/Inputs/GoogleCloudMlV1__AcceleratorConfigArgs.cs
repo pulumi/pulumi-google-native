@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         /// The type of accelerator to use.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__AcceleratorConfigType>? Type { get; set; }
 
         public GoogleCloudMlV1__AcceleratorConfigArgs()
         {

@@ -34,14 +34,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         [Input("sourceIpRangesToNat")]
-        private InputList<string>? _sourceIpRangesToNat;
+        private InputList<Pulumi.GoogleNative.Compute.Alpha.RouterNatSubnetworkToNatSourceIpRangesToNatItem>? _sourceIpRangesToNat;
 
         /// <summary>
         /// Specify the options for NAT ranges in the Subnetwork. All options of a single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]
         /// </summary>
-        public InputList<string> SourceIpRangesToNat
+        public InputList<Pulumi.GoogleNative.Compute.Alpha.RouterNatSubnetworkToNatSourceIpRangesToNatItem> SourceIpRangesToNat
         {
-            get => _sourceIpRangesToNat ?? (_sourceIpRangesToNat = new InputList<string>());
+            get => _sourceIpRangesToNat ?? (_sourceIpRangesToNat = new InputList<Pulumi.GoogleNative.Compute.Alpha.RouterNatSubnetworkToNatSourceIpRangesToNatItem>());
             set => _sourceIpRangesToNat = value;
         }
 

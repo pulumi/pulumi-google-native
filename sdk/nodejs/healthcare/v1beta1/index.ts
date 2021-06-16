@@ -43,6 +43,9 @@ export * from "./hl7V2Store";
 export * from "./message";
 export * from "./userDataMapping";
 
+// Export enums:
+export * from "../../types/enums/healthcare/v1beta1";
+
 // Import resources to register:
 import { Annotation } from "./annotation";
 import { AnnotationStore } from "./annotationStore";

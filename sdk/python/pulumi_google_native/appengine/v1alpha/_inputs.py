@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'CertificateRawDataArgs',
@@ -59,11 +60,11 @@ class CertificateRawDataArgs:
 class ManagedCertificateArgs:
     def __init__(__self__, *,
                  last_renewal_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['ManagedCertificateStatus']] = None):
         """
         A certificate managed by App Engine.
         :param pulumi.Input[str] last_renewal_time: Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
-        :param pulumi.Input[str] status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+        :param pulumi.Input['ManagedCertificateStatus'] status: Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
         """
         if last_renewal_time is not None:
             pulumi.set(__self__, "last_renewal_time", last_renewal_time)
@@ -84,14 +85,14 @@ class ManagedCertificateArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ManagedCertificateStatus']]:
         """
         Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ManagedCertificateStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -100,12 +101,12 @@ class ResourceRecordArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  rrdata: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['ResourceRecordType']] = None):
         """
         A DNS resource record.
         :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        :param pulumi.Input[str] type: Resource record type. Example: AAAA.
+        :param pulumi.Input['ResourceRecordType'] type: Resource record type. Example: AAAA.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -140,14 +141,14 @@ class ResourceRecordArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['ResourceRecordType']]:
         """
         Resource record type. Example: AAAA.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['ResourceRecordType']]):
         pulumi.set(self, "type", value)
 
 

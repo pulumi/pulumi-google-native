@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['PublicDelegatedPrefixArgs', 'PublicDelegatedPrefix']
@@ -29,7 +30,7 @@ class PublicDelegatedPrefixArgs:
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['PublicDelegatedPrefixStatus']] = None):
         """
         The set of arguments for constructing a PublicDelegatedPrefix resource.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -46,7 +47,7 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]] public_delegated_sub_prefixs: The list of sub public delegated prefixes that exist for this public delegated prefix.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output Only] The status of the public delegated prefix.
+        :param pulumi.Input['PublicDelegatedPrefixStatus'] status: [Output Only] The status of the public delegated prefix.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -243,14 +244,14 @@ class PublicDelegatedPrefixArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['PublicDelegatedPrefixStatus']]:
         """
         [Output Only] The status of the public delegated prefix.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['PublicDelegatedPrefixStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -273,7 +274,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicDelegatedPrefixStatus']] = None,
                  __props__=None):
         """
         Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
@@ -294,7 +295,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]] public_delegated_sub_prefixs: The list of sub public delegated prefixes that exist for this public delegated prefix.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] status: [Output Only] The status of the public delegated prefix.
+        :param pulumi.Input['PublicDelegatedPrefixStatus'] status: [Output Only] The status of the public delegated prefix.
         """
         ...
     @overload
@@ -334,7 +335,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicDelegatedPrefixStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

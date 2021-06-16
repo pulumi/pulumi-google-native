@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -164,5 +164,5 @@ export interface InstanceArgs {
     /**
      * The service tier of the instance.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<enums.file.v1.InstanceTier>;
 }

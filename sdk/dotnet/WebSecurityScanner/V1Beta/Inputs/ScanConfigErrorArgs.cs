@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         /// Indicates the reason code for a configuration failure.
         /// </summary>
         [Input("code")]
-        public Input<string>? Code { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanConfigErrorCode>? Code { get; set; }
 
         /// <summary>
         /// Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future.

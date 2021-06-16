@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getJob";
 export * from "./job";
 
+// Export enums:
+export * from "../../types/enums/cloudscheduler/v1beta1";
+
 // Import resources to register:
 import { Job } from "./job";
 

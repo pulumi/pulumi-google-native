@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -200,7 +200,7 @@ export interface OrganizationArgs {
     /**
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      */
-    billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<enums.apigee.v1.OrganizationBillingType>;
     /**
      * Not used by Apigee.
      */
@@ -222,9 +222,9 @@ export interface OrganizationArgs {
     /**
      * Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
      */
-    runtimeType?: pulumi.Input<string>;
+    runtimeType?: pulumi.Input<enums.apigee.v1.OrganizationRuntimeType>;
     /**
      * Not used by Apigee.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.apigee.v1.OrganizationType>;
 }

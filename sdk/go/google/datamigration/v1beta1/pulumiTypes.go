@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1051,17 +1051,17 @@ type CloudSqlSettingsInput interface {
 // Settings for creating a Cloud SQL database instance.
 type CloudSqlSettingsArgs struct {
 	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-	ActivationPolicy pulumi.StringPtrInput `pulumi:"activationPolicy"`
+	ActivationPolicy *CloudSqlSettingsActivationPolicy `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease pulumi.BoolPtrInput `pulumi:"autoStorageIncrease"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
 	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
-	DataDiskType pulumi.StringPtrInput `pulumi:"dataDiskType"`
+	DataDiskType *CloudSqlSettingsDataDiskType `pulumi:"dataDiskType"`
 	// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
 	// The database engine type and version.
-	DatabaseVersion pulumi.StringPtrInput `pulumi:"databaseVersion"`
+	DatabaseVersion *CloudSqlSettingsDatabaseVersion `pulumi:"databaseVersion"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig SqlIpConfigPtrInput `pulumi:"ipConfig"`
 	// Input only. Initial root password.
@@ -1772,9 +1772,9 @@ type DatabaseTypeInput interface {
 // A message defining the database engine and provider.
 type DatabaseTypeArgs struct {
 	// The database engine.
-	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	Engine *DatabaseTypeEngine `pulumi:"engine"`
 	// The database provider.
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	Provider *DatabaseTypeProvider `pulumi:"provider"`
 }
 
 func (DatabaseTypeArgs) ElementType() reflect.Type {

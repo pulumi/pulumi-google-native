@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['EvaluationJobArgs', 'EvaluationJob']
@@ -25,7 +26,7 @@ class EvaluationJobArgs:
                  model_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['EvaluationJobState']] = None):
         """
         The set of arguments for constructing a EvaluationJob resource.
         :param pulumi.Input[str] annotation_spec_set: Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
@@ -37,7 +38,7 @@ class EvaluationJobArgs:
         :param pulumi.Input[str] model_version: Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
         :param pulumi.Input[str] name: After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
         :param pulumi.Input[str] schedule: Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
-        :param pulumi.Input[str] state: Describes the current state of the job.
+        :param pulumi.Input['EvaluationJobState'] state: Describes the current state of the job.
         """
         pulumi.set(__self__, "project", project)
         if annotation_spec_set is not None:
@@ -180,14 +181,14 @@ class EvaluationJobArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['EvaluationJobState']]:
         """
         Describes the current state of the job.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['EvaluationJobState']]):
         pulumi.set(self, "state", value)
 
 
@@ -206,7 +207,7 @@ class EvaluationJob(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['EvaluationJobState']] = None,
                  __props__=None):
         """
         Creates an evaluation job.
@@ -222,7 +223,7 @@ class EvaluationJob(pulumi.CustomResource):
         :param pulumi.Input[str] model_version: Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
         :param pulumi.Input[str] name: After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
         :param pulumi.Input[str] schedule: Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
-        :param pulumi.Input[str] state: Describes the current state of the job.
+        :param pulumi.Input['EvaluationJobState'] state: Describes the current state of the job.
         """
         ...
     @overload
@@ -258,7 +259,7 @@ class EvaluationJob(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['EvaluationJobState']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getProduct";
 export * from "./product";
 
+// Export enums:
+export * from "../../types/enums/retail/v2";
+
 // Import resources to register:
 import { Product } from "./product";
 

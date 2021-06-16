@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1.Inputs
         /// The logs to use as input for the Replay.
         /// </summary>
         [Input("logSource")]
-        public Input<string>? LogSource { get; set; }
+        public Input<Pulumi.GoogleNative.PolicySimulator.V1.GoogleCloudPolicysimulatorV1ReplayConfigLogSource>? LogSource { get; set; }
 
         [Input("policyOverlay")]
         private InputMap<string>? _policyOverlay;

@@ -170,7 +170,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
         /// </summary>
         [Input("healthStatusAggregationPolicy")]
-        public Input<string>? HealthStatusAggregationPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RegionHealthCheckServiceHealthStatusAggregationPolicy>? HealthStatusAggregationPolicy { get; set; }
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

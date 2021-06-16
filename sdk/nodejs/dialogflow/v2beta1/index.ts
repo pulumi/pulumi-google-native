@@ -28,6 +28,9 @@ export * from "./participant";
 export * from "./sessionEntityType";
 export * from "./version";
 
+// Export enums:
+export * from "../../types/enums/dialogflow/v2beta1";
+
 // Import resources to register:
 import { Context } from "./context";
 import { Conversation } from "./conversation";

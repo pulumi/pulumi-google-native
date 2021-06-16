@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['CompositeTypeArgs', 'CompositeType']
@@ -23,7 +24,7 @@ class CompositeTypeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  operation: Optional[pulumi.Input['OperationArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input['TemplateContentsArgs']] = None):
         """
         The set of arguments for constructing a CompositeType resource.
@@ -147,11 +148,11 @@ class CompositeTypeArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['CompositeTypeStatus']]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['CompositeTypeStatus']]):
         pulumi.set(self, "status", value)
 
     @property
@@ -180,7 +181,7 @@ class CompositeType(pulumi.CustomResource):
                  operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
                  __props__=None):
         """
@@ -228,7 +229,7 @@ class CompositeType(pulumi.CustomResource):
                  operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
                  __props__=None):
         if opts is None:

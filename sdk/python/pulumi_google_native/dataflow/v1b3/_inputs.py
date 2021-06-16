@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AutoscalingSettingsArgs',
@@ -41,11 +42,11 @@ __all__ = [
 @pulumi.input_type
 class AutoscalingSettingsArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input['AutoscalingSettingsAlgorithm']] = None,
                  max_num_workers: Optional[pulumi.Input[int]] = None):
         """
         Settings for WorkerPool autoscaling.
-        :param pulumi.Input[str] algorithm: The algorithm to use for autoscaling.
+        :param pulumi.Input['AutoscalingSettingsAlgorithm'] algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[int] max_num_workers: The maximum number of workers to cap scaling at.
         """
         if algorithm is not None:
@@ -55,14 +56,14 @@ class AutoscalingSettingsArgs:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input['AutoscalingSettingsAlgorithm']]:
         """
         The algorithm to use for autoscaling.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input['AutoscalingSettingsAlgorithm']]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -645,7 +646,7 @@ class EnvironmentArgs:
                  dataset: Optional[pulumi.Input[str]] = None,
                  debug_options: Optional[pulumi.Input['DebugOptionsArgs']] = None,
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 flex_resource_scheduling_goal: Optional[pulumi.Input[str]] = None,
+                 flex_resource_scheduling_goal: Optional[pulumi.Input['EnvironmentFlexResourceSchedulingGoal']] = None,
                  internal_experiments: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  sdk_pipeline_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
@@ -663,7 +664,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] dataset: The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
         :param pulumi.Input['DebugOptionsArgs'] debug_options: Any debugging options to be supplied to the job.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
-        :param pulumi.Input[str] flex_resource_scheduling_goal: Which Flexible Resource Scheduling mode to run in.
+        :param pulumi.Input['EnvironmentFlexResourceSchedulingGoal'] flex_resource_scheduling_goal: Which Flexible Resource Scheduling mode to run in.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] internal_experiments: Experimental settings.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         :param pulumi.Input[str] service_account_email: Identity to run virtual machines as. Defaults to the default account.
@@ -759,14 +760,14 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="flexResourceSchedulingGoal")
-    def flex_resource_scheduling_goal(self) -> Optional[pulumi.Input[str]]:
+    def flex_resource_scheduling_goal(self) -> Optional[pulumi.Input['EnvironmentFlexResourceSchedulingGoal']]:
         """
         Which Flexible Resource Scheduling mode to run in.
         """
         return pulumi.get(self, "flex_resource_scheduling_goal")
 
     @flex_resource_scheduling_goal.setter
-    def flex_resource_scheduling_goal(self, value: Optional[pulumi.Input[str]]):
+    def flex_resource_scheduling_goal(self, value: Optional[pulumi.Input['EnvironmentFlexResourceSchedulingGoal']]):
         pulumi.set(self, "flex_resource_scheduling_goal", value)
 
     @property
@@ -907,12 +908,12 @@ class ExecutionStageStateArgs:
     def __init__(__self__, *,
                  current_state_time: Optional[pulumi.Input[str]] = None,
                  execution_stage_name: Optional[pulumi.Input[str]] = None,
-                 execution_stage_state: Optional[pulumi.Input[str]] = None):
+                 execution_stage_state: Optional[pulumi.Input['ExecutionStageStateExecutionStageState']] = None):
         """
         A message describing the state of a particular execution stage.
         :param pulumi.Input[str] current_state_time: The time at which the stage transitioned to this state.
         :param pulumi.Input[str] execution_stage_name: The name of the execution stage.
-        :param pulumi.Input[str] execution_stage_state: Executions stage states allow the same set of values as JobState.
+        :param pulumi.Input['ExecutionStageStateExecutionStageState'] execution_stage_state: Executions stage states allow the same set of values as JobState.
         """
         if current_state_time is not None:
             pulumi.set(__self__, "current_state_time", current_state_time)
@@ -947,14 +948,14 @@ class ExecutionStageStateArgs:
 
     @property
     @pulumi.getter(name="executionStageState")
-    def execution_stage_state(self) -> Optional[pulumi.Input[str]]:
+    def execution_stage_state(self) -> Optional[pulumi.Input['ExecutionStageStateExecutionStageState']]:
         """
         Executions stage states allow the same set of values as JobState.
         """
         return pulumi.get(self, "execution_stage_state")
 
     @execution_stage_state.setter
-    def execution_stage_state(self, value: Optional[pulumi.Input[str]]):
+    def execution_stage_state(self, value: Optional[pulumi.Input['ExecutionStageStateExecutionStageState']]):
         pulumi.set(self, "execution_stage_state", value)
 
 
@@ -965,7 +966,7 @@ class ExecutionStageSummaryArgs:
                  component_transform: Optional[pulumi.Input[Sequence[pulumi.Input['ComponentTransformArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  input_source: Optional[pulumi.Input[Sequence[pulumi.Input['StageSourceArgs']]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['ExecutionStageSummaryKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_source: Optional[pulumi.Input[Sequence[pulumi.Input['StageSourceArgs']]]] = None,
                  prerequisite_stage: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -975,7 +976,7 @@ class ExecutionStageSummaryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ComponentTransformArgs']]] component_transform: Transforms that comprise this execution stage.
         :param pulumi.Input[str] id: Dataflow service generated id for this stage.
         :param pulumi.Input[Sequence[pulumi.Input['StageSourceArgs']]] input_source: Input sources for this stage.
-        :param pulumi.Input[str] kind: Type of transform this stage is executing.
+        :param pulumi.Input['ExecutionStageSummaryKind'] kind: Type of transform this stage is executing.
         :param pulumi.Input[str] name: Dataflow service generated name for this stage.
         :param pulumi.Input[Sequence[pulumi.Input['StageSourceArgs']]] output_source: Output sources for this stage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prerequisite_stage: Other stages that must complete before this stage can run.
@@ -1047,14 +1048,14 @@ class ExecutionStageSummaryArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['ExecutionStageSummaryKind']]:
         """
         Type of transform this stage is executing.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['ExecutionStageSummaryKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -1381,7 +1382,7 @@ class RuntimeEnvironmentArgs:
                  additional_user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bypass_temp_dir_validation: Optional[pulumi.Input[bool]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
-                 ip_configuration: Optional[pulumi.Input[str]] = None,
+                 ip_configuration: Optional[pulumi.Input['RuntimeEnvironmentIpConfiguration']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_workers: Optional[pulumi.Input[int]] = None,
@@ -1399,7 +1400,7 @@ class RuntimeEnvironmentArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_user_labels: Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         :param pulumi.Input[bool] bypass_temp_dir_validation: Whether to bypass the safety checks for the job's temporary directory. Use with caution.
         :param pulumi.Input[bool] enable_streaming_engine: Whether to enable Streaming Engine for the job.
-        :param pulumi.Input[str] ip_configuration: Configuration for VM IPs.
+        :param pulumi.Input['RuntimeEnvironmentIpConfiguration'] ip_configuration: Configuration for VM IPs.
         :param pulumi.Input[str] kms_key_name: Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
         :param pulumi.Input[str] machine_type: The machine type to use for the job. Defaults to the value from the template if not specified.
         :param pulumi.Input[int] max_workers: The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
@@ -1495,14 +1496,14 @@ class RuntimeEnvironmentArgs:
 
     @property
     @pulumi.getter(name="ipConfiguration")
-    def ip_configuration(self) -> Optional[pulumi.Input[str]]:
+    def ip_configuration(self) -> Optional[pulumi.Input['RuntimeEnvironmentIpConfiguration']]:
         """
         Configuration for VM IPs.
         """
         return pulumi.get(self, "ip_configuration")
 
     @ip_configuration.setter
-    def ip_configuration(self, value: Optional[pulumi.Input[str]]):
+    def ip_configuration(self, value: Optional[pulumi.Input['RuntimeEnvironmentIpConfiguration']]):
         pulumi.set(self, "ip_configuration", value)
 
     @property
@@ -1697,12 +1698,12 @@ class SdkHarnessContainerImageArgs:
 @pulumi.input_type
 class SdkVersionArgs:
     def __init__(__self__, *,
-                 sdk_support_status: Optional[pulumi.Input[str]] = None,
+                 sdk_support_status: Optional[pulumi.Input['SdkVersionSdkSupportStatus']] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  version_display_name: Optional[pulumi.Input[str]] = None):
         """
         The version of the SDK used to run the job.
-        :param pulumi.Input[str] sdk_support_status: The support status for this SDK version.
+        :param pulumi.Input['SdkVersionSdkSupportStatus'] sdk_support_status: The support status for this SDK version.
         :param pulumi.Input[str] version: The version of the SDK used to run the job.
         :param pulumi.Input[str] version_display_name: A readable string describing the version of the SDK.
         """
@@ -1715,14 +1716,14 @@ class SdkVersionArgs:
 
     @property
     @pulumi.getter(name="sdkSupportStatus")
-    def sdk_support_status(self) -> Optional[pulumi.Input[str]]:
+    def sdk_support_status(self) -> Optional[pulumi.Input['SdkVersionSdkSupportStatus']]:
         """
         The support status for this SDK version.
         """
         return pulumi.get(self, "sdk_support_status")
 
     @sdk_support_status.setter
-    def sdk_support_status(self, value: Optional[pulumi.Input[str]]):
+    def sdk_support_status(self, value: Optional[pulumi.Input['SdkVersionSdkSupportStatus']]):
         pulumi.set(self, "sdk_support_status", value)
 
     @property
@@ -2252,7 +2253,7 @@ class TransformSummaryArgs:
                  display_data: Optional[pulumi.Input[Sequence[pulumi.Input['DisplayDataArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  input_collection_name: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['TransformSummaryKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_collection_name: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -2260,7 +2261,7 @@ class TransformSummaryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DisplayDataArgs']]] display_data: Transform-specific display data.
         :param pulumi.Input[str] id: SDK generated id of this transform instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_collection_name: User names for all collection inputs to this transform.
-        :param pulumi.Input[str] kind: Type of transform.
+        :param pulumi.Input['TransformSummaryKind'] kind: Type of transform.
         :param pulumi.Input[str] name: User provided name for this transform instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] output_collection_name: User names for all collection outputs to this transform.
         """
@@ -2315,14 +2316,14 @@ class TransformSummaryArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['TransformSummaryKind']]:
         """
         Type of transform.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['TransformSummaryKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -2355,11 +2356,11 @@ class WorkerPoolArgs:
     def __init__(__self__, *,
                  autoscaling_settings: Optional[pulumi.Input['AutoscalingSettingsArgs']] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['DiskArgs']]]] = None,
-                 default_package_set: Optional[pulumi.Input[str]] = None,
+                 default_package_set: Optional[pulumi.Input['WorkerPoolDefaultPackageSet']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_source_image: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 ip_configuration: Optional[pulumi.Input[str]] = None,
+                 ip_configuration: Optional[pulumi.Input['WorkerPoolIpConfiguration']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2372,17 +2373,17 @@ class WorkerPoolArgs:
                  sdk_harness_container_images: Optional[pulumi.Input[Sequence[pulumi.Input['SdkHarnessContainerImageArgs']]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  taskrunner_settings: Optional[pulumi.Input['TaskRunnerSettingsArgs']] = None,
-                 teardown_policy: Optional[pulumi.Input[str]] = None,
+                 teardown_policy: Optional[pulumi.Input['WorkerPoolTeardownPolicy']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
         :param pulumi.Input['AutoscalingSettingsArgs'] autoscaling_settings: Settings for autoscaling of this WorkerPool.
         :param pulumi.Input[Sequence[pulumi.Input['DiskArgs']]] data_disks: Data disks that are used by a VM in this workflow.
-        :param pulumi.Input[str] default_package_set: The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
+        :param pulumi.Input['WorkerPoolDefaultPackageSet'] default_package_set: The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
         :param pulumi.Input[int] disk_size_gb: Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
         :param pulumi.Input[str] disk_source_image: Fully qualified source image for disks.
         :param pulumi.Input[str] disk_type: Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default.
-        :param pulumi.Input[str] ip_configuration: Configuration for VM IPs.
+        :param pulumi.Input['WorkerPoolIpConfiguration'] ip_configuration: Configuration for VM IPs.
         :param pulumi.Input[str] kind: The kind of the worker pool; currently only `harness` and `shuffle` are supported.
         :param pulumi.Input[str] machine_type: Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a reasonable default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata to set on the Google Compute Engine VMs.
@@ -2395,7 +2396,7 @@ class WorkerPoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SdkHarnessContainerImageArgs']]] sdk_harness_container_images: Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
         :param pulumi.Input[str] subnetwork: Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input['TaskRunnerSettingsArgs'] taskrunner_settings: Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
-        :param pulumi.Input[str] teardown_policy: Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
+        :param pulumi.Input['WorkerPoolTeardownPolicy'] teardown_policy: Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
         :param pulumi.Input[str] zone: Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
         """
         if autoscaling_settings is not None:
@@ -2467,14 +2468,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="defaultPackageSet")
-    def default_package_set(self) -> Optional[pulumi.Input[str]]:
+    def default_package_set(self) -> Optional[pulumi.Input['WorkerPoolDefaultPackageSet']]:
         """
         The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
         """
         return pulumi.get(self, "default_package_set")
 
     @default_package_set.setter
-    def default_package_set(self, value: Optional[pulumi.Input[str]]):
+    def default_package_set(self, value: Optional[pulumi.Input['WorkerPoolDefaultPackageSet']]):
         pulumi.set(self, "default_package_set", value)
 
     @property
@@ -2515,14 +2516,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="ipConfiguration")
-    def ip_configuration(self) -> Optional[pulumi.Input[str]]:
+    def ip_configuration(self) -> Optional[pulumi.Input['WorkerPoolIpConfiguration']]:
         """
         Configuration for VM IPs.
         """
         return pulumi.get(self, "ip_configuration")
 
     @ip_configuration.setter
-    def ip_configuration(self, value: Optional[pulumi.Input[str]]):
+    def ip_configuration(self, value: Optional[pulumi.Input['WorkerPoolIpConfiguration']]):
         pulumi.set(self, "ip_configuration", value)
 
     @property
@@ -2671,14 +2672,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="teardownPolicy")
-    def teardown_policy(self) -> Optional[pulumi.Input[str]]:
+    def teardown_policy(self) -> Optional[pulumi.Input['WorkerPoolTeardownPolicy']]:
         """
         Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
         """
         return pulumi.get(self, "teardown_policy")
 
     @teardown_policy.setter
-    def teardown_policy(self, value: Optional[pulumi.Input[str]]):
+    def teardown_policy(self, value: Optional[pulumi.Input['WorkerPoolTeardownPolicy']]):
         pulumi.set(self, "teardown_policy", value)
 
     @property

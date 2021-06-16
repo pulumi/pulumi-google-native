@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     public sealed class WindowsUpdateSettingsArgs : Pulumi.ResourceArgs
     {
         [Input("classifications")]
-        private InputList<string>? _classifications;
+        private InputList<Pulumi.GoogleNative.OSConfig.V1.WindowsUpdateSettingsClassificationsItem>? _classifications;
 
         /// <summary>
         /// Only apply updates of these windows update classifications. If empty, all updates are applied.
         /// </summary>
-        public InputList<string> Classifications
+        public InputList<Pulumi.GoogleNative.OSConfig.V1.WindowsUpdateSettingsClassificationsItem> Classifications
         {
-            get => _classifications ?? (_classifications = new InputList<string>());
+            get => _classifications ?? (_classifications = new InputList<Pulumi.GoogleNative.OSConfig.V1.WindowsUpdateSettingsClassificationsItem>());
             set => _classifications = value;
         }
 

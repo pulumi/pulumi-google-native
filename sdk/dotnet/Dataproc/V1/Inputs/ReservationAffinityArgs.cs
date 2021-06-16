@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         /// Optional. Type of reservation to consume
         /// </summary>
         [Input("consumeReservationType")]
-        public Input<string>? ConsumeReservationType { get; set; }
+        public Input<Pulumi.GoogleNative.Dataproc.V1.ReservationAffinityConsumeReservationType>? ConsumeReservationType { get; set; }
 
         /// <summary>
         /// Optional. Corresponds to the label key of reservation resource.

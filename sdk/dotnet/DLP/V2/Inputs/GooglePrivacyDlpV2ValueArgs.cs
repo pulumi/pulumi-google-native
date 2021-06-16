@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// day of week
         /// </summary>
         [Input("dayOfWeekValue")]
-        public Input<string>? DayOfWeekValue { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2ValueDayOfWeekValue>? DayOfWeekValue { get; set; }
 
         /// <summary>
         /// float

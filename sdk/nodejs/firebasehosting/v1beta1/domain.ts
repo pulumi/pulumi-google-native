@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -125,7 +125,7 @@ export interface DomainArgs {
     /**
      * Additional status of the domain association.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.firebasehosting.v1beta1.DomainStatus>;
     /**
      * The time at which the domain was last updated.
      */

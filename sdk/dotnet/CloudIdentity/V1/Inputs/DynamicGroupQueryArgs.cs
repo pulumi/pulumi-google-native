@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
         /// Resource type for the Dynamic Group Query
         /// </summary>
         [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
+        public Input<Pulumi.GoogleNative.CloudIdentity.V1.DynamicGroupQueryResourceType>? ResourceType { get; set; }
 
         public DynamicGroupQueryArgs()
         {

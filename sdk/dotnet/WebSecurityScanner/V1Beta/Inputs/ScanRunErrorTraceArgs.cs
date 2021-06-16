@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         /// Indicates the error reason code.
         /// </summary>
         [Input("code")]
-        public Input<string>? Code { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Beta.ScanRunErrorTraceCode>? Code { get; set; }
 
         /// <summary>
         /// If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.

@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         /// </summary>
         [Input("nicType")]
-        public Input<string>? NicType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.NetworkInterfaceNicType>? NicType { get; set; }
 
         /// <summary>
         /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:  

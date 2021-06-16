@@ -298,13 +298,13 @@ type InterconnectArgs struct {
 	// Type of interconnect, which can take one of the following values:
 	// - PARTNER: A partner-managed interconnection shared between customers though a partner.
 	// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
-	InterconnectType pulumi.StringPtrInput
+	InterconnectType *InterconnectInterconnectType
 	// [Output Only] Type of the resource. Always compute#interconnect for interconnects.
 	Kind pulumi.StringPtrInput
 	// Type of link requested, which can take one of the following values:
 	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
 	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
-	LinkType pulumi.StringPtrInput
+	LinkType *InterconnectLinkType
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -315,7 +315,7 @@ type InterconnectArgs struct {
 	// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect.
 	// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect.
 	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-	OperationalStatus pulumi.StringPtrInput
+	OperationalStatus *InterconnectOperationalStatus
 	// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress pulumi.StringPtrInput
 	Project       pulumi.StringInput
@@ -330,7 +330,7 @@ type InterconnectArgs struct {
 	// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect.
 	// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect.
 	// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-	State pulumi.StringPtrInput
+	State *InterconnectStateEnum
 }
 
 func (InterconnectArgs) ElementType() reflect.Type {

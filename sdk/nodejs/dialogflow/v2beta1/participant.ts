@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -103,5 +104,5 @@ export interface ParticipantArgs {
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<enums.dialogflow.v2beta1.ParticipantRole>;
 }

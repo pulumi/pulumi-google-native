@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Defines how TLS certificates are obtained.
         /// </summary>
         [Input("validationSource")]
-        public Input<string>? ValidationSource { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.TlsValidationContextValidationSource>? ValidationSource { get; set; }
 
         public TlsValidationContextArgs()
         {

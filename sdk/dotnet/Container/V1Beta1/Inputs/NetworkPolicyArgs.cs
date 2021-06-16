@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// The selected network policy provider.
         /// </summary>
         [Input("provider")]
-        public Input<string>? Provider { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.NetworkPolicyProvider>? Provider { get; set; }
 
         public NetworkPolicyArgs()
         {

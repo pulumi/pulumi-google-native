@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// Defines autoscaling behaviour.
         /// </summary>
         [Input("autoscalingProfile")]
-        public Input<string>? AutoscalingProfile { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.ClusterAutoscalingAutoscalingProfile>? AutoscalingProfile { get; set; }
 
         /// <summary>
         /// Enables automatic node pool creation and deletion.

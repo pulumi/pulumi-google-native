@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
         /// </summary>
         [Input("exclusionType")]
-        public Input<string>? ExclusionType { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CustomInfoTypeExclusionType>? ExclusionType { get; set; }
 
         /// <summary>
         /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
         /// </summary>
         [Input("likelihood")]
-        public Input<string>? Likelihood { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CustomInfoTypeLikelihood>? Likelihood { get; set; }
 
         /// <summary>
         /// Regular expression based CustomInfoType.

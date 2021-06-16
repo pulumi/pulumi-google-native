@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -172,7 +172,7 @@ export interface ProductArgs {
     /**
      * The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<enums.retail.v2alpha.ProductAvailability>;
     /**
      * The available quantity of the item.
      */
@@ -225,7 +225,7 @@ export interface ProductArgs {
     /**
      * Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.retail.v2alpha.ProductType>;
     /**
      * Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
      */

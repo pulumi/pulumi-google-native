@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
         /// </summary>
         [Input("connectionPersistenceOnUnhealthyBackends")]
-        public Input<string>? ConnectionPersistenceOnUnhealthyBackends { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>? ConnectionPersistenceOnUnhealthyBackends { get; set; }
 
         /// <summary>
         /// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds).
@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
         /// </summary>
         [Input("trackingMode")]
-        public Input<string>? TrackingMode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceConnectionTrackingPolicyTrackingMode>? TrackingMode { get; set; }
 
         public BackendServiceConnectionTrackingPolicyArgs()
         {

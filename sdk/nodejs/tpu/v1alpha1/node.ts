@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -186,7 +186,7 @@ export interface NodeArgs {
     /**
      * The health status of the TPU node.
      */
-    health?: pulumi.Input<string>;
+    health?: pulumi.Input<enums.tpu.v1alpha1.NodeHealth>;
     /**
      * Resource labels to represent user-provided metadata.
      */

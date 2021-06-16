@@ -224,7 +224,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.TargetVpnGatewayStatus>? Status { get; set; }
 
         [Input("tunnels")]
         private InputList<string>? _tunnels;

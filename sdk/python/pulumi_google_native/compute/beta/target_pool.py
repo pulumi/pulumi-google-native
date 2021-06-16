@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['TargetPoolArgs', 'TargetPool']
 
@@ -26,7 +27,7 @@ class TargetPoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 session_affinity: Optional[pulumi.Input[str]] = None):
+                 session_affinity: Optional[pulumi.Input['TargetPoolSessionAffinity']] = None):
         """
         The set of arguments for constructing a TargetPool resource.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the target pool resides.
@@ -48,7 +49,7 @@ class TargetPoolArgs:
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#targetPool for target pools.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] session_affinity: Session affinity option, must be one of the following values:
+        :param pulumi.Input['TargetPoolSessionAffinity'] session_affinity: Session affinity option, must be one of the following values:
                NONE: Connections from the same client IP may go to any instance in the pool.
                CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
                CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
@@ -240,7 +241,7 @@ class TargetPoolArgs:
 
     @property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[str]]:
+    def session_affinity(self) -> Optional[pulumi.Input['TargetPoolSessionAffinity']]:
         """
         Session affinity option, must be one of the following values:
         NONE: Connections from the same client IP may go to any instance in the pool.
@@ -250,7 +251,7 @@ class TargetPoolArgs:
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[str]]):
+    def session_affinity(self, value: Optional[pulumi.Input['TargetPoolSessionAffinity']]):
         pulumi.set(self, "session_affinity", value)
 
 
@@ -272,7 +273,7 @@ class TargetPool(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity: Optional[pulumi.Input['TargetPoolSessionAffinity']] = None,
                  __props__=None):
         """
         Creates a target pool in the specified project and region using the data included in the request.
@@ -298,7 +299,7 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the target pool resides.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[str] session_affinity: Session affinity option, must be one of the following values:
+        :param pulumi.Input['TargetPoolSessionAffinity'] session_affinity: Session affinity option, must be one of the following values:
                NONE: Connections from the same client IP may go to any instance in the pool.
                CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
                CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
@@ -340,7 +341,7 @@ class TargetPool(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity: Optional[pulumi.Input['TargetPoolSessionAffinity']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

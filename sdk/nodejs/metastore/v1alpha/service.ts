@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -208,11 +208,11 @@ export interface ServiceArgs {
     /**
      * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
      */
-    releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<enums.metastore.v1alpha.ServiceReleaseChannel>;
     requestId?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
     /**
      * The tier of the service.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<enums.metastore.v1alpha.ServiceTier>;
 }

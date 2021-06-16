@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ResourcePolicyArgs', 'ResourcePolicy']
@@ -28,7 +29,7 @@ class ResourcePolicyArgs:
                  resource_status: Optional[pulumi.Input['ResourcePolicyResourceStatusArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['ResourcePolicyStatus']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
@@ -40,7 +41,7 @@ class ResourcePolicyArgs:
         :param pulumi.Input['ResourcePolicyResourceStatusArgs'] resource_status: [Output Only] The system status of the resource policy.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
-        :param pulumi.Input[str] status: [Output Only] The status of resource policy creation.
+        :param pulumi.Input['ResourcePolicyStatus'] status: [Output Only] The status of resource policy creation.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -215,14 +216,14 @@ class ResourcePolicyArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ResourcePolicyStatus']]:
         """
         [Output Only] The status of resource policy creation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ResourcePolicyStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -244,7 +245,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_status: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ResourcePolicyStatus']] = None,
                  __props__=None):
         """
         Creates a new resource policy.
@@ -260,7 +261,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']] resource_status: [Output Only] The system status of the resource policy.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
-        :param pulumi.Input[str] status: [Output Only] The status of resource policy creation.
+        :param pulumi.Input['ResourcePolicyStatus'] status: [Output Only] The status of resource policy creation.
         """
         ...
     @overload
@@ -299,7 +300,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_status: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyResourceStatusArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ResourcePolicyStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

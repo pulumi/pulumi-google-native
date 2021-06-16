@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// Required. State of the channel partner link.
         /// </summary>
         [Input("linkState")]
-        public Input<string>? LinkState { get; set; }
+        public Input<Pulumi.GoogleNative.CloudChannel.V1.ChannelPartnerLinkLinkState>? LinkState { get; set; }
 
         /// <summary>
         /// Required. Cloud Identity ID of the linked reseller.

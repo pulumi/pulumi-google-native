@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['TaxonomyArgs', 'Taxonomy']
 
@@ -16,12 +17,12 @@ class TaxonomyArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Taxonomy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
+        :param pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]] activated_policy_types: Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
         :param pulumi.Input[str] description: Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
         :param pulumi.Input[str] display_name: Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
         """
@@ -54,14 +55,14 @@ class TaxonomyArgs:
 
     @property
     @pulumi.getter(name="activatedPolicyTypes")
-    def activated_policy_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def activated_policy_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]]]:
         """
         Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
         """
         return pulumi.get(self, "activated_policy_types")
 
     @activated_policy_types.setter
-    def activated_policy_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def activated_policy_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]]]):
         pulumi.set(self, "activated_policy_types", value)
 
     @property
@@ -94,7 +95,7 @@ class Taxonomy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -105,7 +106,7 @@ class Taxonomy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
+        :param pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]] activated_policy_types: Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
         :param pulumi.Input[str] description: Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
         :param pulumi.Input[str] display_name: Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
         """
@@ -133,7 +134,7 @@ class Taxonomy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

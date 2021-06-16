@@ -14,6 +14,9 @@ export * from "./history";
 export * from "./perfSampleSeries";
 export * from "./step";
 
+// Export enums:
+export * from "../../types/enums/toolresults/v1beta3";
+
 // Import resources to register:
 import { Execution } from "./execution";
 import { History } from "./history";

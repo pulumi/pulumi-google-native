@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -189,7 +190,7 @@ export interface GlobalAddressArgs {
     /**
      * The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<enums.compute.beta.GlobalAddressAddressType>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -205,7 +206,7 @@ export interface GlobalAddressArgs {
     /**
      * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<enums.compute.beta.GlobalAddressIpVersion>;
     /**
      * [Output Only] Type of the resource. Always compute#address for addresses.
      */
@@ -233,7 +234,7 @@ export interface GlobalAddressArgs {
      *
      * If this field is not specified, it is assumed to be PREMIUM.
      */
-    networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<enums.compute.beta.GlobalAddressNetworkTier>;
     /**
      * The prefix length if the resource represents an IP range.
      */
@@ -247,7 +248,7 @@ export interface GlobalAddressArgs {
      * - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. 
      * - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<enums.compute.beta.GlobalAddressPurpose>;
     /**
      * [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
      */
@@ -260,7 +261,7 @@ export interface GlobalAddressArgs {
     /**
      * [Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.beta.GlobalAddressStatus>;
     /**
      * The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
      */

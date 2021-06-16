@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// Which Flexible Resource Scheduling mode to run in.
         /// </summary>
         [Input("flexResourceSchedulingGoal")]
-        public Input<string>? FlexResourceSchedulingGoal { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.EnvironmentFlexResourceSchedulingGoal>? FlexResourceSchedulingGoal { get; set; }
 
         [Input("internalExperiments")]
         private InputMap<string>? _internalExperiments;

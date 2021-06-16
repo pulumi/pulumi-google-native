@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
         /// </summary>
         [Input("currentState")]
-        public Input<string>? CurrentState { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobCurrentState>? CurrentState { get; set; }
 
         /// <summary>
         /// The timestamp associated with the current state.
@@ -298,7 +298,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
         /// </summary>
         [Input("requestedState")]
-        public Input<string>? RequestedState { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobRequestedState>? RequestedState { get; set; }
 
         /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -370,7 +370,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// The type of Cloud Dataflow job.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobType>? Type { get; set; }
 
         [Input("view")]
         public Input<string>? View { get; set; }

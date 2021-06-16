@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// The channel credentials to access the SDS server. This field can be set to one of the following: CERTIFICATES: Use TLS certificates to access the SDS server. GCE_VM: Use local GCE VM credentials to access the SDS server.
         /// </summary>
         [Input("channelCredentialType")]
-        public Input<string>? ChannelCredentialType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ChannelCredentialsChannelCredentialType>? ChannelCredentialType { get; set; }
 
         public ChannelCredentialsArgs()
         {

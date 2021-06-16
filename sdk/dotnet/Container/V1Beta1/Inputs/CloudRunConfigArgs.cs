@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// Which load balancer type is installed for Cloud Run.
         /// </summary>
         [Input("loadBalancerType")]
-        public Input<string>? LoadBalancerType { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.CloudRunConfigLoadBalancerType>? LoadBalancerType { get; set; }
 
         public CloudRunConfigArgs()
         {

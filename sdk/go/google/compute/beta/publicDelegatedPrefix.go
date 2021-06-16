@@ -203,7 +203,7 @@ type PublicDelegatedPrefixArgs struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The status of the public delegated prefix.
-	Status pulumi.StringPtrInput
+	Status *PublicDelegatedPrefixStatus
 }
 
 func (PublicDelegatedPrefixArgs) ElementType() reflect.Type {

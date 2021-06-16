@@ -115,7 +115,7 @@ type VariableArgs struct {
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls.
-	State pulumi.StringPtrInput
+	State *VariableStateEnum
 	// The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.
 	Text pulumi.StringPtrInput
 	// The time of the last variable update. Timestamp will be UTC timestamp.

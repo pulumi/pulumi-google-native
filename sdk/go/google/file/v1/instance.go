@@ -164,7 +164,7 @@ type InstanceArgs struct {
 	Networks NetworkConfigArrayInput
 	Project  pulumi.StringInput
 	// The service tier of the instance.
-	Tier pulumi.StringPtrInput
+	Tier *InstanceTier
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

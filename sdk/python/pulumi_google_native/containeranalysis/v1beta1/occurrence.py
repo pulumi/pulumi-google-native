@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['OccurrenceArgs', 'Occurrence']
@@ -24,7 +25,7 @@ class OccurrenceArgs:
                  discovered: Optional[pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs']] = None,
                  installation: Optional[pulumi.Input['GrafeasV1beta1PackageDetailsArgs']] = None,
                  intoto: Optional[pulumi.Input['GrafeasV1beta1IntotoDetailsArgs']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -41,7 +42,7 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs'] discovered: Describes when a resource was discovered.
         :param pulumi.Input['GrafeasV1beta1PackageDetailsArgs'] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input['GrafeasV1beta1IntotoDetailsArgs'] intoto: Describes a specific in-toto link.
-        :param pulumi.Input[str] kind: This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+        :param pulumi.Input['OccurrenceKind'] kind: This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] name: The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         :param pulumi.Input[str] note_name: Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
@@ -188,14 +189,14 @@ class OccurrenceArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
+    def kind(self) -> Optional[pulumi.Input['OccurrenceKind']]:
         """
         This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
+    def kind(self, value: Optional[pulumi.Input['OccurrenceKind']]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -284,7 +285,7 @@ class Occurrence(pulumi.CustomResource):
                  discovered: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -306,7 +307,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']] discovered: Describes when a resource was discovered.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']] intoto: Describes a specific in-toto link.
-        :param pulumi.Input[str] kind: This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+        :param pulumi.Input['OccurrenceKind'] kind: This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] name: The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         :param pulumi.Input[str] note_name: Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
@@ -346,7 +347,7 @@ class Occurrence(pulumi.CustomResource):
                  discovered: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input['OccurrenceKind']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

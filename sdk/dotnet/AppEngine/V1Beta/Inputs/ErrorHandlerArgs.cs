@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         /// Error condition this handler applies to.
         /// </summary>
         [Input("errorCode")]
-        public Input<string>? ErrorCode { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.ErrorHandlerErrorCode>? ErrorCode { get; set; }
 
         /// <summary>
         /// MIME type of file. Defaults to text/html.

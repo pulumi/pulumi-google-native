@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -189,7 +189,7 @@ export interface EntryArgs {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.datacatalog.v1beta1.EntryType>;
     /**
      * This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */

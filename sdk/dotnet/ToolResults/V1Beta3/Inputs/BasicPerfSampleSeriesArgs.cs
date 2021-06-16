@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     public sealed class BasicPerfSampleSeriesArgs : Pulumi.ResourceArgs
     {
         [Input("perfMetricType")]
-        public Input<string>? PerfMetricType { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.BasicPerfSampleSeriesPerfMetricType>? PerfMetricType { get; set; }
 
         [Input("perfUnit")]
-        public Input<string>? PerfUnit { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.BasicPerfSampleSeriesPerfUnit>? PerfUnit { get; set; }
 
         [Input("sampleSeriesLabel")]
-        public Input<string>? SampleSeriesLabel { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.BasicPerfSampleSeriesSampleSeriesLabel>? SampleSeriesLabel { get; set; }
 
         public BasicPerfSampleSeriesArgs()
         {

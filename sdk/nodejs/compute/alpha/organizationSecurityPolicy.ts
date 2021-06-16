@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -234,5 +234,5 @@ export interface OrganizationSecurityPolicyArgs {
     /**
      * The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.compute.alpha.OrganizationSecurityPolicyType>;
 }

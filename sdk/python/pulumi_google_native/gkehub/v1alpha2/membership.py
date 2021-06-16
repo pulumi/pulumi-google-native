@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['MembershipArgs', 'Membership']
@@ -21,14 +22,14 @@ class MembershipArgs:
                  authority: Optional[pulumi.Input['AuthorityArgs']] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[str]] = None,
+                 infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Membership resource.
         :param pulumi.Input['AuthorityArgs'] authority: Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
-        :param pulumi.Input[str] infrastructure_type: Optional. The infrastructure type this Membership is running on.
+        :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
         pulumi.set(__self__, "location", location)
@@ -110,14 +111,14 @@ class MembershipArgs:
 
     @property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> Optional[pulumi.Input[str]]:
+    def infrastructure_type(self) -> Optional[pulumi.Input['MembershipInfrastructureType']]:
         """
         Optional. The infrastructure type this Membership is running on.
         """
         return pulumi.get(self, "infrastructure_type")
 
     @infrastructure_type.setter
-    def infrastructure_type(self, value: Optional[pulumi.Input[str]]):
+    def infrastructure_type(self, value: Optional[pulumi.Input['MembershipInfrastructureType']]):
         pulumi.set(self, "infrastructure_type", value)
 
     @property
@@ -141,7 +142,7 @@ class Membership(pulumi.CustomResource):
                  authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[str]] = None,
+                 infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -155,7 +156,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthorityArgs']] authority: Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
-        :param pulumi.Input[str] infrastructure_type: Optional. The infrastructure type this Membership is running on.
+        :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
         ...
@@ -185,7 +186,7 @@ class Membership(pulumi.CustomResource):
                  authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_type: Optional[pulumi.Input[str]] = None,
+                 infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,

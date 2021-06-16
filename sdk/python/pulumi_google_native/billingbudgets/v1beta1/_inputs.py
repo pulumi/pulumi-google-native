@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs',
@@ -174,9 +175,9 @@ class GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs:
 @pulumi.input_type
 class GoogleCloudBillingBudgetsV1beta1FilterArgs:
     def __init__(__self__, *,
-                 calendar_period: Optional[pulumi.Input[str]] = None,
+                 calendar_period: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod']] = None,
                  credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 credit_types_treatment: Optional[pulumi.Input[str]] = None,
+                 credit_types_treatment: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment']] = None,
                  custom_period: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -184,9 +185,9 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
                  subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A filter for a budget, limiting the scope of the cost to calculate.
-        :param pulumi.Input[str] calendar_period: Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod'] calendar_period: Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-        :param pulumi.Input[str] credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment'] credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs'] custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
@@ -212,14 +213,14 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
 
     @property
     @pulumi.getter(name="calendarPeriod")
-    def calendar_period(self) -> Optional[pulumi.Input[str]]:
+    def calendar_period(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod']]:
         """
         Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
         """
         return pulumi.get(self, "calendar_period")
 
     @calendar_period.setter
-    def calendar_period(self, value: Optional[pulumi.Input[str]]):
+    def calendar_period(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod']]):
         pulumi.set(self, "calendar_period", value)
 
     @property
@@ -236,14 +237,14 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
 
     @property
     @pulumi.getter(name="creditTypesTreatment")
-    def credit_types_treatment(self) -> Optional[pulumi.Input[str]]:
+    def credit_types_treatment(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment']]:
         """
         Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
         """
         return pulumi.get(self, "credit_types_treatment")
 
     @credit_types_treatment.setter
-    def credit_types_treatment(self, value: Optional[pulumi.Input[str]]):
+    def credit_types_treatment(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment']]):
         pulumi.set(self, "credit_types_treatment", value)
 
     @property
@@ -319,11 +320,11 @@ class GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs:
 @pulumi.input_type
 class GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs:
     def __init__(__self__, *,
-                 spend_basis: Optional[pulumi.Input[str]] = None,
+                 spend_basis: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis']] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None):
         """
         ThresholdRule contains a definition of a threshold which triggers an alert (a notification of a threshold being crossed) to be sent when spend goes above the specified amount. Alerts are automatically e-mailed to users with the Billing Account Administrator role or the Billing Account User role. The thresholds here have no effect on notifications sent to anything configured under `Budget.all_updates_rule`.
-        :param pulumi.Input[str] spend_basis: Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis'] spend_basis: Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
         :param pulumi.Input[float] threshold_percent: Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         """
         if spend_basis is not None:
@@ -333,14 +334,14 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs:
 
     @property
     @pulumi.getter(name="spendBasis")
-    def spend_basis(self) -> Optional[pulumi.Input[str]]:
+    def spend_basis(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis']]:
         """
         Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
         """
         return pulumi.get(self, "spend_basis")
 
     @spend_basis.setter
-    def spend_basis(self, value: Optional[pulumi.Input[str]]):
+    def spend_basis(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis']]):
         pulumi.set(self, "spend_basis", value)
 
     @property

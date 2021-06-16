@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         /// The type of the permission that was checked.
         /// </summary>
         [Input("permissionType")]
-        public Input<string>? PermissionType { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1.AuthorizationLoggingOptionsPermissionType>? PermissionType { get; set; }
 
         public AuthorizationLoggingOptionsArgs()
         {

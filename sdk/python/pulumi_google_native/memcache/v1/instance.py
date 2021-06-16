@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -22,7 +23,7 @@ class InstanceArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 memcache_version: Optional[pulumi.Input[str]] = None,
+                 memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -34,7 +35,7 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+        :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input['NodeConfigArgs'] node_config: Required. Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
@@ -142,14 +143,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="memcacheVersion")
-    def memcache_version(self) -> Optional[pulumi.Input[str]]:
+    def memcache_version(self) -> Optional[pulumi.Input['InstanceMemcacheVersion']]:
         """
         The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         """
         return pulumi.get(self, "memcache_version")
 
     @memcache_version.setter
-    def memcache_version(self, value: Optional[pulumi.Input[str]]):
+    def memcache_version(self, value: Optional[pulumi.Input['InstanceMemcacheVersion']]):
         pulumi.set(self, "memcache_version", value)
 
     @property
@@ -224,7 +225,7 @@ class Instance(pulumi.CustomResource):
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 memcache_version: Optional[pulumi.Input[str]] = None,
+                 memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -241,7 +242,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+        :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Required. Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
@@ -278,7 +279,7 @@ class Instance(pulumi.CustomResource):
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 memcache_version: Optional[pulumi.Input[str]] = None,
+                 memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,

@@ -175,7 +175,7 @@ type ScanConfigArgs struct {
 	// Required. The user provided display name of the ScanConfig.
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Security Command Center.
-	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	ExportToSecurityCommandCenter *ScanConfigExportToSecurityCommandCenter
 	// Whether to keep scanning even if most requests return HTTP error codes.
 	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// Whether the scan config is managed by Web Security Scanner, output only.
@@ -186,7 +186,7 @@ type ScanConfigArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The risk level selected for the scan
-	RiskLevel pulumi.StringPtrInput
+	RiskLevel *ScanConfigRiskLevel
 	// The schedule of the ScanConfig.
 	Schedule SchedulePtrInput
 	// Required. The starting URLs from which the scanner finds site pages.
@@ -194,7 +194,7 @@ type ScanConfigArgs struct {
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan pulumi.BoolPtrInput
 	// The user agent used during scanning.
-	UserAgent pulumi.StringPtrInput
+	UserAgent *ScanConfigUserAgent
 }
 
 func (ScanConfigArgs) ElementType() reflect.Type {

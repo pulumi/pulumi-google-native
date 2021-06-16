@@ -184,14 +184,14 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha
         }
 
         [Input("targetPlatforms")]
-        private InputList<string>? _targetPlatforms;
+        private InputList<Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.ScanConfigTargetPlatformsItem>? _targetPlatforms;
 
         /// <summary>
         /// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         /// </summary>
-        public InputList<string> TargetPlatforms
+        public InputList<Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.ScanConfigTargetPlatformsItem> TargetPlatforms
         {
-            get => _targetPlatforms ?? (_targetPlatforms = new InputList<string>());
+            get => _targetPlatforms ?? (_targetPlatforms = new InputList<Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.ScanConfigTargetPlatformsItem>());
             set => _targetPlatforms = value;
         }
 
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha
         /// The user agent used during scanning.
         /// </summary>
         [Input("userAgent")]
-        public Input<string>? UserAgent { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.ScanConfigUserAgent>? UserAgent { get; set; }
 
         public ScanConfigArgs()
         {

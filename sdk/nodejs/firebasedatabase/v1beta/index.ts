@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getInstance";
 export * from "./instance";
 
+// Export enums:
+export * from "../../types/enums/firebasedatabase/v1beta";
+
 // Import resources to register:
 import { Instance } from "./instance";
 

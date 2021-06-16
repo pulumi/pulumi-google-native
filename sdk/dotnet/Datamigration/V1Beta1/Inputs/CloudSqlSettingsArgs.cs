@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         /// </summary>
         [Input("activationPolicy")]
-        public Input<string>? ActivationPolicy { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.CloudSqlSettingsActivationPolicy>? ActivationPolicy { get; set; }
 
         /// <summary>
         /// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         /// The type of storage: `PD_SSD` (default) or `PD_HDD`.
         /// </summary>
         [Input("dataDiskType")]
-        public Input<string>? DataDiskType { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.CloudSqlSettingsDataDiskType>? DataDiskType { get; set; }
 
         [Input("databaseFlags")]
         private InputMap<string>? _databaseFlags;
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         /// The database engine type and version.
         /// </summary>
         [Input("databaseVersion")]
-        public Input<string>? DatabaseVersion { get; set; }
+        public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.CloudSqlSettingsDatabaseVersion>? DatabaseVersion { get; set; }
 
         /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.

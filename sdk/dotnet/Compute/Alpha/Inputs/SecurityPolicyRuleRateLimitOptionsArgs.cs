@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
         /// </summary>
         [Input("enforceOnKey")]
-        public Input<string>? EnforceOnKey { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>? EnforceOnKey { get; set; }
 
         /// <summary>
         /// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.

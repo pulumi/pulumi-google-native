@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AggregationArgs',
@@ -39,15 +40,15 @@ __all__ = [
 class AggregationArgs:
     def __init__(__self__, *,
                  alignment_period: Optional[pulumi.Input[str]] = None,
-                 cross_series_reducer: Optional[pulumi.Input[str]] = None,
+                 cross_series_reducer: Optional[pulumi.Input['AggregationCrossSeriesReducer']] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 per_series_aligner: Optional[pulumi.Input[str]] = None):
+                 per_series_aligner: Optional[pulumi.Input['AggregationPerSeriesAligner']] = None):
         """
         Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
         :param pulumi.Input[str] alignment_period: The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
-        :param pulumi.Input[str] cross_series_reducer: The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+        :param pulumi.Input['AggregationCrossSeriesReducer'] cross_series_reducer: The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
-        :param pulumi.Input[str] per_series_aligner: An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+        :param pulumi.Input['AggregationPerSeriesAligner'] per_series_aligner: An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
         """
         if alignment_period is not None:
             pulumi.set(__self__, "alignment_period", alignment_period)
@@ -72,14 +73,14 @@ class AggregationArgs:
 
     @property
     @pulumi.getter(name="crossSeriesReducer")
-    def cross_series_reducer(self) -> Optional[pulumi.Input[str]]:
+    def cross_series_reducer(self) -> Optional[pulumi.Input['AggregationCrossSeriesReducer']]:
         """
         The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
         """
         return pulumi.get(self, "cross_series_reducer")
 
     @cross_series_reducer.setter
-    def cross_series_reducer(self, value: Optional[pulumi.Input[str]]):
+    def cross_series_reducer(self, value: Optional[pulumi.Input['AggregationCrossSeriesReducer']]):
         pulumi.set(self, "cross_series_reducer", value)
 
     @property
@@ -96,14 +97,14 @@ class AggregationArgs:
 
     @property
     @pulumi.getter(name="perSeriesAligner")
-    def per_series_aligner(self) -> Optional[pulumi.Input[str]]:
+    def per_series_aligner(self) -> Optional[pulumi.Input['AggregationPerSeriesAligner']]:
         """
         An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
         """
         return pulumi.get(self, "per_series_aligner")
 
     @per_series_aligner.setter
-    def per_series_aligner(self, value: Optional[pulumi.Input[str]]):
+    def per_series_aligner(self, value: Optional[pulumi.Input['AggregationPerSeriesAligner']]):
         pulumi.set(self, "per_series_aligner", value)
 
 
@@ -111,11 +112,11 @@ class AggregationArgs:
 class AxisArgs:
     def __init__(__self__, *,
                  label: Optional[pulumi.Input[str]] = None,
-                 scale: Optional[pulumi.Input[str]] = None):
+                 scale: Optional[pulumi.Input['AxisScale']] = None):
         """
         A chart axis.
         :param pulumi.Input[str] label: The label of the axis.
-        :param pulumi.Input[str] scale: The axis scale. By default, a linear scale is used.
+        :param pulumi.Input['AxisScale'] scale: The axis scale. By default, a linear scale is used.
         """
         if label is not None:
             pulumi.set(__self__, "label", label)
@@ -136,38 +137,38 @@ class AxisArgs:
 
     @property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[str]]:
+    def scale(self) -> Optional[pulumi.Input['AxisScale']]:
         """
         The axis scale. By default, a linear scale is used.
         """
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[str]]):
+    def scale(self, value: Optional[pulumi.Input['AxisScale']]):
         pulumi.set(self, "scale", value)
 
 
 @pulumi.input_type
 class ChartOptionsArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[str]] = None):
+                 mode: Optional[pulumi.Input['ChartOptionsMode']] = None):
         """
         Options to control visual rendering of a chart.
-        :param pulumi.Input[str] mode: The chart mode.
+        :param pulumi.Input['ChartOptionsMode'] mode: The chart mode.
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
+    def mode(self) -> Optional[pulumi.Input['ChartOptionsMode']]:
         """
         The chart mode.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
+    def mode(self, value: Optional[pulumi.Input['ChartOptionsMode']]):
         pulumi.set(self, "mode", value)
 
 
@@ -240,13 +241,13 @@ class DataSetArgs:
     def __init__(__self__, *,
                  legend_template: Optional[pulumi.Input[str]] = None,
                  min_alignment_period: Optional[pulumi.Input[str]] = None,
-                 plot_type: Optional[pulumi.Input[str]] = None,
+                 plot_type: Optional[pulumi.Input['DataSetPlotType']] = None,
                  time_series_query: Optional[pulumi.Input['TimeSeriesQueryArgs']] = None):
         """
         Groups a time series query definition with charting options.
         :param pulumi.Input[str] legend_template: A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         :param pulumi.Input[str] min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
-        :param pulumi.Input[str] plot_type: How this data should be plotted on the chart.
+        :param pulumi.Input['DataSetPlotType'] plot_type: How this data should be plotted on the chart.
         :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Required. Fields for querying time series data from the Stackdriver metrics API.
         """
         if legend_template is not None:
@@ -284,14 +285,14 @@ class DataSetArgs:
 
     @property
     @pulumi.getter(name="plotType")
-    def plot_type(self) -> Optional[pulumi.Input[str]]:
+    def plot_type(self) -> Optional[pulumi.Input['DataSetPlotType']]:
         """
         How this data should be plotted on the chart.
         """
         return pulumi.get(self, "plot_type")
 
     @plot_type.setter
-    def plot_type(self, value: Optional[pulumi.Input[str]]):
+    def plot_type(self, value: Optional[pulumi.Input['DataSetPlotType']]):
         pulumi.set(self, "plot_type", value)
 
     @property
@@ -439,14 +440,14 @@ class MosaicLayoutArgs:
 @pulumi.input_type
 class PickTimeSeriesFilterArgs:
     def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input['PickTimeSeriesFilterDirection']] = None,
                  num_time_series: Optional[pulumi.Input[int]] = None,
-                 ranking_method: Optional[pulumi.Input[str]] = None):
+                 ranking_method: Optional[pulumi.Input['PickTimeSeriesFilterRankingMethod']] = None):
         """
         Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
-        :param pulumi.Input[str] direction: How to use the ranking to select time series that pass through the filter.
+        :param pulumi.Input['PickTimeSeriesFilterDirection'] direction: How to use the ranking to select time series that pass through the filter.
         :param pulumi.Input[int] num_time_series: How many time series to allow to pass through the filter.
-        :param pulumi.Input[str] ranking_method: ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+        :param pulumi.Input['PickTimeSeriesFilterRankingMethod'] ranking_method: ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -457,14 +458,14 @@ class PickTimeSeriesFilterArgs:
 
     @property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[str]]:
+    def direction(self) -> Optional[pulumi.Input['PickTimeSeriesFilterDirection']]:
         """
         How to use the ranking to select time series that pass through the filter.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[str]]):
+    def direction(self, value: Optional[pulumi.Input['PickTimeSeriesFilterDirection']]):
         pulumi.set(self, "direction", value)
 
     @property
@@ -481,14 +482,14 @@ class PickTimeSeriesFilterArgs:
 
     @property
     @pulumi.getter(name="rankingMethod")
-    def ranking_method(self) -> Optional[pulumi.Input[str]]:
+    def ranking_method(self) -> Optional[pulumi.Input['PickTimeSeriesFilterRankingMethod']]:
         """
         ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
         """
         return pulumi.get(self, "ranking_method")
 
     @ranking_method.setter
-    def ranking_method(self, value: Optional[pulumi.Input[str]]):
+    def ranking_method(self, value: Optional[pulumi.Input['PickTimeSeriesFilterRankingMethod']]):
         pulumi.set(self, "ranking_method", value)
 
 
@@ -672,11 +673,11 @@ class ScorecardArgs:
 class SparkChartViewArgs:
     def __init__(__self__, *,
                  min_alignment_period: Optional[pulumi.Input[str]] = None,
-                 spark_chart_type: Optional[pulumi.Input[str]] = None):
+                 spark_chart_type: Optional[pulumi.Input['SparkChartViewSparkChartType']] = None):
         """
         A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
         :param pulumi.Input[str] min_alignment_period: The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
-        :param pulumi.Input[str] spark_chart_type: Required. The type of sparkchart to show in this chartView.
+        :param pulumi.Input['SparkChartViewSparkChartType'] spark_chart_type: Required. The type of sparkchart to show in this chartView.
         """
         if min_alignment_period is not None:
             pulumi.set(__self__, "min_alignment_period", min_alignment_period)
@@ -697,14 +698,14 @@ class SparkChartViewArgs:
 
     @property
     @pulumi.getter(name="sparkChartType")
-    def spark_chart_type(self) -> Optional[pulumi.Input[str]]:
+    def spark_chart_type(self) -> Optional[pulumi.Input['SparkChartViewSparkChartType']]:
         """
         Required. The type of sparkchart to show in this chartView.
         """
         return pulumi.get(self, "spark_chart_type")
 
     @spark_chart_type.setter
-    def spark_chart_type(self, value: Optional[pulumi.Input[str]]):
+    def spark_chart_type(self, value: Optional[pulumi.Input['SparkChartViewSparkChartType']]):
         pulumi.set(self, "spark_chart_type", value)
 
 
@@ -712,11 +713,11 @@ class SparkChartViewArgs:
 class TextArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[str]] = None):
+                 format: Optional[pulumi.Input['TextFormat']] = None):
         """
         A widget that displays textual content.
         :param pulumi.Input[str] content: The text content to be displayed.
-        :param pulumi.Input[str] format: How the text content is formatted.
+        :param pulumi.Input['TextFormat'] format: How the text content is formatted.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -737,28 +738,28 @@ class TextArgs:
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[str]]:
+    def format(self) -> Optional[pulumi.Input['TextFormat']]:
         """
         How the text content is formatted.
         """
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[str]]):
+    def format(self, value: Optional[pulumi.Input['TextFormat']]):
         pulumi.set(self, "format", value)
 
 
 @pulumi.input_type
 class ThresholdArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[str]] = None,
-                 direction: Optional[pulumi.Input[str]] = None,
+                 color: Optional[pulumi.Input['ThresholdColor']] = None,
+                 direction: Optional[pulumi.Input['ThresholdDirection']] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[float]] = None):
         """
         Defines a threshold for categorizing time series values.
-        :param pulumi.Input[str] color: The state color for this threshold. Color is not allowed in a XyChart.
-        :param pulumi.Input[str] direction: The direction for the current threshold. Direction is not allowed in a XyChart.
+        :param pulumi.Input['ThresholdColor'] color: The state color for this threshold. Color is not allowed in a XyChart.
+        :param pulumi.Input['ThresholdDirection'] direction: The direction for the current threshold. Direction is not allowed in a XyChart.
         :param pulumi.Input[str] label: A label for the threshold.
         :param pulumi.Input[float] value: The value of the threshold. The value should be defined in the native scale of the metric.
         """
@@ -773,26 +774,26 @@ class ThresholdArgs:
 
     @property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[str]]:
+    def color(self) -> Optional[pulumi.Input['ThresholdColor']]:
         """
         The state color for this threshold. Color is not allowed in a XyChart.
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[str]]):
+    def color(self, value: Optional[pulumi.Input['ThresholdColor']]):
         pulumi.set(self, "color", value)
 
     @property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[str]]:
+    def direction(self) -> Optional[pulumi.Input['ThresholdDirection']]:
         """
         The direction for the current threshold. Direction is not allowed in a XyChart.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[str]]):
+    def direction(self, value: Optional[pulumi.Input['ThresholdDirection']]):
         pulumi.set(self, "direction", value)
 
     @property

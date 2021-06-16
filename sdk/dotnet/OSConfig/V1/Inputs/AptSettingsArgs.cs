@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         /// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1.AptSettingsType>? Type { get; set; }
 
         public AptSettingsArgs()
         {

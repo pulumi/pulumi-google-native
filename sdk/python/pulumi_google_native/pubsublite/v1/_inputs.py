@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'CapacityArgs',
@@ -58,24 +59,24 @@ class CapacityArgs:
 @pulumi.input_type
 class DeliveryConfigArgs:
     def __init__(__self__, *,
-                 delivery_requirement: Optional[pulumi.Input[str]] = None):
+                 delivery_requirement: Optional[pulumi.Input['DeliveryConfigDeliveryRequirement']] = None):
         """
         The settings for a subscription's message delivery.
-        :param pulumi.Input[str] delivery_requirement: The DeliveryRequirement for this subscription.
+        :param pulumi.Input['DeliveryConfigDeliveryRequirement'] delivery_requirement: The DeliveryRequirement for this subscription.
         """
         if delivery_requirement is not None:
             pulumi.set(__self__, "delivery_requirement", delivery_requirement)
 
     @property
     @pulumi.getter(name="deliveryRequirement")
-    def delivery_requirement(self) -> Optional[pulumi.Input[str]]:
+    def delivery_requirement(self) -> Optional[pulumi.Input['DeliveryConfigDeliveryRequirement']]:
         """
         The DeliveryRequirement for this subscription.
         """
         return pulumi.get(self, "delivery_requirement")
 
     @delivery_requirement.setter
-    def delivery_requirement(self, value: Optional[pulumi.Input[str]]):
+    def delivery_requirement(self, value: Optional[pulumi.Input['DeliveryConfigDeliveryRequirement']]):
         pulumi.set(self, "delivery_requirement", value)
 
 

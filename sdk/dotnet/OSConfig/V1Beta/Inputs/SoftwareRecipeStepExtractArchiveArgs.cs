@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         /// Required. The type of the archive to extract.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.SoftwareRecipeStepExtractArchiveType>? Type { get; set; }
 
         public SoftwareRecipeStepExtractArchiveArgs()
         {

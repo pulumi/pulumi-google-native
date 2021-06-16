@@ -710,6 +710,8 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			Type: "object",
 			Ref:  referencedTypeName,
 		}, nil
+	case len(prop.Enum) > 0 && !isOutput:
+		return g.genEnumType(typeName, propName, prop)
 	case prop.Type != "":
 		return &schema.TypeSpec{Type: prop.Type}, nil
 	case prop.Ref != "":
@@ -745,6 +747,56 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 		}, nil
 	}
 	return nil, errors.New("unknown type")
+}
+
+// genEnumType generates the enum type.
+func (g *packageGenerator) genEnumType(typeName, propName string, prop *discovery.JsonSchema) (*schema.TypeSpec, error) {
+	if prop.Type != "string" {
+		return nil, errors.Errorf("string-based enum expected but found %q", prop.Type)
+	}
+
+	enumName := typeName + ToUpperCamel(propName)
+	tok := fmt.Sprintf("%s:%s:%s", g.pkg.Name, g.mod, enumName)
+
+	enumSpec := &schema.ComplexTypeSpec{
+		Enum: []*schema.EnumValueSpec{},
+		ObjectTypeSpec: schema.ObjectTypeSpec{
+			Description: prop.Description,
+			Type:        "string",
+		},
+	}
+
+	values := codegen.NewStringSet()
+	for idx, val := range prop.Enum {
+		values.Add(val)
+		enumVal := &schema.EnumValueSpec{
+			Value:       val,
+			Name:        ToUpperCamel(val),
+			Description: prop.EnumDescriptions[idx],
+		}
+		enumSpec.Enum = append(enumSpec.Enum, enumVal)
+	}
+
+	// Make sure that the type name we composed doesn't clash with another type
+	// already defined in the schema earlier. The same enum does show up in multiple
+	// places of specs, so we want to error only if they a) have the same name
+	// b) the list of values does not match.
+	if other, ok := g.pkg.Types[tok]; ok {
+		same := len(enumSpec.Enum) == len(other.Enum)
+		for _, val := range other.Enum {
+			same = same && values.Has(val.Value.(string))
+		}
+		if !same {
+			return nil, errors.Errorf("duplicate enum %q", tok)
+		}
+	}
+
+	g.pkg.Types[tok] = *enumSpec
+
+	referencedTypeName := fmt.Sprintf("#/types/%s", tok)
+	return &schema.TypeSpec{
+		Ref: referencedTypeName,
+	}, nil
 }
 
 func (g *packageGenerator) escapeCSharpNames(typeName string, resourceResponse map[string]schema.PropertySpec) {

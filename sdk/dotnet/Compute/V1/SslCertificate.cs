@@ -232,7 +232,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.SslCertificateType>? Type { get; set; }
 
         public SslCertificateArgs()
         {

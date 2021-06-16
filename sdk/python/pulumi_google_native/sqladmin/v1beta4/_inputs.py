@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'AclEntryArgs',
@@ -262,11 +263,11 @@ class BackupConfigurationArgs:
 class BackupRetentionSettingsArgs:
     def __init__(__self__, *,
                  retained_backups: Optional[pulumi.Input[int]] = None,
-                 retention_unit: Optional[pulumi.Input[str]] = None):
+                 retention_unit: Optional[pulumi.Input['BackupRetentionSettingsRetentionUnit']] = None):
         """
         We currently only support backup retention by specifying the number of backups we will retain.
         :param pulumi.Input[int] retained_backups: Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
-        :param pulumi.Input[str] retention_unit: The unit that 'retained_backups' represents.
+        :param pulumi.Input['BackupRetentionSettingsRetentionUnit'] retention_unit: The unit that 'retained_backups' represents.
         """
         if retained_backups is not None:
             pulumi.set(__self__, "retained_backups", retained_backups)
@@ -287,14 +288,14 @@ class BackupRetentionSettingsArgs:
 
     @property
     @pulumi.getter(name="retentionUnit")
-    def retention_unit(self) -> Optional[pulumi.Input[str]]:
+    def retention_unit(self) -> Optional[pulumi.Input['BackupRetentionSettingsRetentionUnit']]:
         """
         The unit that 'retained_backups' represents.
         """
         return pulumi.get(self, "retention_unit")
 
     @retention_unit.setter
-    def retention_unit(self, value: Optional[pulumi.Input[str]]):
+    def retention_unit(self, value: Optional[pulumi.Input['BackupRetentionSettingsRetentionUnit']]):
         pulumi.set(self, "retention_unit", value)
 
 
@@ -663,12 +664,12 @@ class IpMappingArgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  time_to_retire: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['IpMappingType']] = None):
         """
         Database instance IP Mapping.
         :param pulumi.Input[str] ip_address: The IP address assigned.
         :param pulumi.Input[str] time_to_retire: The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
-        :param pulumi.Input[str] type: The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+        :param pulumi.Input['IpMappingType'] type: The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -703,14 +704,14 @@ class IpMappingArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['IpMappingType']]:
         """
         The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['IpMappingType']]):
         pulumi.set(self, "type", value)
 
 
@@ -792,13 +793,13 @@ class MaintenanceWindowArgs:
                  day: Optional[pulumi.Input[int]] = None,
                  hour: Optional[pulumi.Input[int]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 update_track: Optional[pulumi.Input[str]] = None):
+                 update_track: Optional[pulumi.Input['MaintenanceWindowUpdateTrack']] = None):
         """
         Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
         :param pulumi.Input[int] day: day of week (1-7), starting on Monday.
         :param pulumi.Input[int] hour: hour of day - 0 to 23.
         :param pulumi.Input[str] kind: This is always *sql#maintenanceWindow*.
-        :param pulumi.Input[str] update_track: Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+        :param pulumi.Input['MaintenanceWindowUpdateTrack'] update_track: Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -847,14 +848,14 @@ class MaintenanceWindowArgs:
 
     @property
     @pulumi.getter(name="updateTrack")
-    def update_track(self) -> Optional[pulumi.Input[str]]:
+    def update_track(self) -> Optional[pulumi.Input['MaintenanceWindowUpdateTrack']]:
         """
         Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
         """
         return pulumi.get(self, "update_track")
 
     @update_track.setter
-    def update_track(self, value: Optional[pulumi.Input[str]]):
+    def update_track(self, value: Optional[pulumi.Input['MaintenanceWindowUpdateTrack']]):
         pulumi.set(self, "update_track", value)
 
 
@@ -1293,14 +1294,14 @@ class ReplicaConfigurationArgs:
 @pulumi.input_type
 class SettingsArgs:
     def __init__(__self__, *,
-                 activation_policy: Optional[pulumi.Input[str]] = None,
+                 activation_policy: Optional[pulumi.Input['SettingsActivationPolicy']] = None,
                  active_directory_config: Optional[pulumi.Input['SqlActiveDirectoryConfigArgs']] = None,
-                 availability_type: Optional[pulumi.Input[str]] = None,
+                 availability_type: Optional[pulumi.Input['SettingsAvailabilityType']] = None,
                  backup_configuration: Optional[pulumi.Input['BackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  crash_safe_replication_enabled: Optional[pulumi.Input[bool]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
-                 data_disk_type: Optional[pulumi.Input[str]] = None,
+                 data_disk_type: Optional[pulumi.Input['SettingsDataDiskType']] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFlagsArgs']]]] = None,
                  database_replication_enabled: Optional[pulumi.Input[bool]] = None,
                  deny_maintenance_periods: Optional[pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]]] = None,
@@ -1309,7 +1310,7 @@ class SettingsArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  location_preference: Optional[pulumi.Input['LocationPreferenceArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
-                 pricing_plan: Optional[pulumi.Input[str]] = None,
+                 pricing_plan: Optional[pulumi.Input['SettingsPricingPlan']] = None,
                  settings_version: Optional[pulumi.Input[str]] = None,
                  storage_auto_resize: Optional[pulumi.Input[bool]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
@@ -1317,14 +1318,14 @@ class SettingsArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Database instance settings.
-        :param pulumi.Input[str] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+        :param pulumi.Input['SettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
         :param pulumi.Input['SqlActiveDirectoryConfigArgs'] active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
-        :param pulumi.Input[str] availability_type: Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+        :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
         :param pulumi.Input['BackupConfigurationArgs'] backup_configuration: The daily backup configuration for the instance.
         :param pulumi.Input[str] collation: The name of server Instance collation.
         :param pulumi.Input[bool] crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
         :param pulumi.Input[str] data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
-        :param pulumi.Input[str] data_disk_type: The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+        :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseFlagsArgs']]] database_flags: The database flags passed to the instance at startup.
         :param pulumi.Input[bool] database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not.
         :param pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]] deny_maintenance_periods: Deny maintenance periods
@@ -1333,7 +1334,7 @@ class SettingsArgs:
         :param pulumi.Input[str] kind: This is always *sql#settings*.
         :param pulumi.Input['LocationPreferenceArgs'] location_preference: The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
-        :param pulumi.Input[str] pricing_plan: The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+        :param pulumi.Input['SettingsPricingPlan'] pricing_plan: The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
         :param pulumi.Input[str] settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1387,14 +1388,14 @@ class SettingsArgs:
 
     @property
     @pulumi.getter(name="activationPolicy")
-    def activation_policy(self) -> Optional[pulumi.Input[str]]:
+    def activation_policy(self) -> Optional[pulumi.Input['SettingsActivationPolicy']]:
         """
         The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
         """
         return pulumi.get(self, "activation_policy")
 
     @activation_policy.setter
-    def activation_policy(self, value: Optional[pulumi.Input[str]]):
+    def activation_policy(self, value: Optional[pulumi.Input['SettingsActivationPolicy']]):
         pulumi.set(self, "activation_policy", value)
 
     @property
@@ -1411,14 +1412,14 @@ class SettingsArgs:
 
     @property
     @pulumi.getter(name="availabilityType")
-    def availability_type(self) -> Optional[pulumi.Input[str]]:
+    def availability_type(self) -> Optional[pulumi.Input['SettingsAvailabilityType']]:
         """
         Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
         """
         return pulumi.get(self, "availability_type")
 
     @availability_type.setter
-    def availability_type(self, value: Optional[pulumi.Input[str]]):
+    def availability_type(self, value: Optional[pulumi.Input['SettingsAvailabilityType']]):
         pulumi.set(self, "availability_type", value)
 
     @property
@@ -1471,14 +1472,14 @@ class SettingsArgs:
 
     @property
     @pulumi.getter(name="dataDiskType")
-    def data_disk_type(self) -> Optional[pulumi.Input[str]]:
+    def data_disk_type(self) -> Optional[pulumi.Input['SettingsDataDiskType']]:
         """
         The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
         """
         return pulumi.get(self, "data_disk_type")
 
     @data_disk_type.setter
-    def data_disk_type(self, value: Optional[pulumi.Input[str]]):
+    def data_disk_type(self, value: Optional[pulumi.Input['SettingsDataDiskType']]):
         pulumi.set(self, "data_disk_type", value)
 
     @property
@@ -1579,14 +1580,14 @@ class SettingsArgs:
 
     @property
     @pulumi.getter(name="pricingPlan")
-    def pricing_plan(self) -> Optional[pulumi.Input[str]]:
+    def pricing_plan(self) -> Optional[pulumi.Input['SettingsPricingPlan']]:
         """
         The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
         """
         return pulumi.get(self, "pricing_plan")
 
     @pricing_plan.setter
-    def pricing_plan(self, value: Optional[pulumi.Input[str]]):
+    def pricing_plan(self, value: Optional[pulumi.Input['SettingsPricingPlan']]):
         pulumi.set(self, "pricing_plan", value)
 
     @property
@@ -1694,11 +1695,11 @@ class SqlActiveDirectoryConfigArgs:
 class SqlOutOfDiskReportArgs:
     def __init__(__self__, *,
                  sql_min_recommended_increase_size_gb: Optional[pulumi.Input[int]] = None,
-                 sql_out_of_disk_state: Optional[pulumi.Input[str]] = None):
+                 sql_out_of_disk_state: Optional[pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState']] = None):
         """
         This message wraps up the information written by out-of-disk detection job.
         :param pulumi.Input[int] sql_min_recommended_increase_size_gb: The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
-        :param pulumi.Input[str] sql_out_of_disk_state: This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+        :param pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState'] sql_out_of_disk_state: This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
         """
         if sql_min_recommended_increase_size_gb is not None:
             pulumi.set(__self__, "sql_min_recommended_increase_size_gb", sql_min_recommended_increase_size_gb)
@@ -1719,14 +1720,14 @@ class SqlOutOfDiskReportArgs:
 
     @property
     @pulumi.getter(name="sqlOutOfDiskState")
-    def sql_out_of_disk_state(self) -> Optional[pulumi.Input[str]]:
+    def sql_out_of_disk_state(self) -> Optional[pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState']]:
         """
         This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
         """
         return pulumi.get(self, "sql_out_of_disk_state")
 
     @sql_out_of_disk_state.setter
-    def sql_out_of_disk_state(self, value: Optional[pulumi.Input[str]]):
+    def sql_out_of_disk_state(self, value: Optional[pulumi.Input['SqlOutOfDiskReportSqlOutOfDiskState']]):
         pulumi.set(self, "sql_out_of_disk_state", value)
 
 

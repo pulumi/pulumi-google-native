@@ -185,7 +185,7 @@ type ServiceAttachmentArgs struct {
 	// [Output Only] An array of connections for all the consumers connected to this service attachment.
 	ConnectedEndpoints ServiceAttachmentConnectedEndpointArrayInput
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
-	ConnectionPreference pulumi.StringPtrInput
+	ConnectionPreference *ServiceAttachmentConnectionPreference
 	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
 	ConsumerForwardingRules ServiceAttachmentConsumerForwardingRuleArrayInput
 	// [Output Only] Creation timestamp in RFC3339 text format.

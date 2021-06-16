@@ -127,7 +127,7 @@ type DomainArgs struct {
 	Site   pulumi.StringPtrInput
 	SiteId pulumi.StringInput
 	// Additional status of the domain association.
-	Status pulumi.StringPtrInput
+	Status *DomainStatus
 	// The time at which the domain was last updated.
 	UpdateTime pulumi.StringPtrInput
 }

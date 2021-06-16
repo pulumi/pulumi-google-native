@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         /// The Project lifecycle state. Read-only.
         /// </summary>
         [Input("lifecycleState")]
-        public Input<string>? LifecycleState { get; set; }
+        public Input<Pulumi.GoogleNative.CloudResourceManager.V1Beta1.ProjectLifecycleState>? LifecycleState { get; set; }
 
         /// <summary>
         /// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.

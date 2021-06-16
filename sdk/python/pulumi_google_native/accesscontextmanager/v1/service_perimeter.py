@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ServicePerimeterArgs', 'ServicePerimeter']
@@ -18,7 +19,7 @@ class ServicePerimeterArgs:
                  access_policy_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 perimeter_type: Optional[pulumi.Input[str]] = None,
+                 perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
                  spec: Optional[pulumi.Input['ServicePerimeterConfigArgs']] = None,
                  status: Optional[pulumi.Input['ServicePerimeterConfigArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -27,7 +28,7 @@ class ServicePerimeterArgs:
         The set of arguments for constructing a ServicePerimeter resource.
         :param pulumi.Input[str] description: Description of the `ServicePerimeter` and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-        :param pulumi.Input[str] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        :param pulumi.Input['ServicePerimeterPerimeterType'] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         :param pulumi.Input['ServicePerimeterConfigArgs'] spec: Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
         :param pulumi.Input['ServicePerimeterConfigArgs'] status: Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
@@ -84,14 +85,14 @@ class ServicePerimeterArgs:
 
     @property
     @pulumi.getter(name="perimeterType")
-    def perimeter_type(self) -> Optional[pulumi.Input[str]]:
+    def perimeter_type(self) -> Optional[pulumi.Input['ServicePerimeterPerimeterType']]:
         """
         Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         """
         return pulumi.get(self, "perimeter_type")
 
     @perimeter_type.setter
-    def perimeter_type(self, value: Optional[pulumi.Input[str]]):
+    def perimeter_type(self, value: Optional[pulumi.Input['ServicePerimeterPerimeterType']]):
         pulumi.set(self, "perimeter_type", value)
 
     @property
@@ -151,7 +152,7 @@ class ServicePerimeter(pulumi.CustomResource):
                  access_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 perimeter_type: Optional[pulumi.Input[str]] = None,
+                 perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -164,7 +165,7 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the `ServicePerimeter` and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-        :param pulumi.Input[str] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        :param pulumi.Input['ServicePerimeterPerimeterType'] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         :param pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']] spec: Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
         :param pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']] status: Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
@@ -197,7 +198,7 @@ class ServicePerimeter(pulumi.CustomResource):
                  access_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 perimeter_type: Optional[pulumi.Input[str]] = None,
+                 perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,

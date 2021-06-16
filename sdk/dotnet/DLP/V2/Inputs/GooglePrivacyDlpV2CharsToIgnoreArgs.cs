@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// Common characters to not transform when masking. Useful to avoid removing punctuation.
         /// </summary>
         [Input("commonCharactersToIgnore")]
-        public Input<string>? CommonCharactersToIgnore { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore>? CommonCharactersToIgnore { get; set; }
 
         public GooglePrivacyDlpV2CharsToIgnoreArgs()
         {

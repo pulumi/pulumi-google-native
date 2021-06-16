@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ReservationArgs', 'Reservation']
@@ -28,7 +29,7 @@ class ReservationArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input['ReservationStatus']] = None):
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
@@ -42,7 +43,7 @@ class ReservationArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
-        :param pulumi.Input[str] status: [Output Only] The status of the reservation.
+        :param pulumi.Input['ReservationStatus'] status: [Output Only] The status of the reservation.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
@@ -223,14 +224,14 @@ class ReservationArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
+    def status(self) -> Optional[pulumi.Input['ReservationStatus']]:
         """
         [Output Only] The status of the reservation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
+    def status(self, value: Optional[pulumi.Input['ReservationStatus']]):
         pulumi.set(self, "status", value)
 
 
@@ -251,7 +252,7 @@ class Reservation(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ReservationStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -269,7 +270,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
-        :param pulumi.Input[str] status: [Output Only] The status of the reservation.
+        :param pulumi.Input['ReservationStatus'] status: [Output Only] The status of the reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         """
         ...
@@ -308,7 +309,7 @@ class Reservation(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['ReservationStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

@@ -16,17 +16,17 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM.
         /// </summary>
         [Input("advertiseMode")]
-        public Input<string>? AdvertiseMode { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.RouterBgpAdvertiseMode>? AdvertiseMode { get; set; }
 
         [Input("advertisedGroups")]
-        private InputList<string>? _advertisedGroups;
+        private InputList<Pulumi.GoogleNative.Compute.V1.RouterBgpAdvertisedGroupsItem>? _advertisedGroups;
 
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These groups will be advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
-        public InputList<string> AdvertisedGroups
+        public InputList<Pulumi.GoogleNative.Compute.V1.RouterBgpAdvertisedGroupsItem> AdvertisedGroups
         {
-            get => _advertisedGroups ?? (_advertisedGroups = new InputList<string>());
+            get => _advertisedGroups ?? (_advertisedGroups = new InputList<Pulumi.GoogleNative.Compute.V1.RouterBgpAdvertisedGroupsItem>());
             set => _advertisedGroups = value;
         }
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
         /// </summary>
         [Input("ruleVisibility")]
-        public Input<string>? RuleVisibility { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility>? RuleVisibility { get; set; }
 
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs()
         {

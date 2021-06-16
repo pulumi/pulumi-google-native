@@ -133,7 +133,7 @@ type WorkerPoolArgs struct {
 	PoolId  pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// State of the worker pool.
-	State pulumi.StringPtrInput
+	State *WorkerPoolStateEnum
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.

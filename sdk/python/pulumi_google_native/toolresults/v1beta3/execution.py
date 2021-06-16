@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ExecutionArgs', 'Execution']
@@ -24,7 +25,7 @@ class ExecutionArgs:
                  outcome: Optional[pulumi.Input['OutcomeArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input['SpecificationArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ExecutionState']] = None,
                  test_execution_matrix_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Execution resource.
@@ -34,7 +35,7 @@ class ExecutionArgs:
         :param pulumi.Input[str] execution_id: A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
         :param pulumi.Input['OutcomeArgs'] outcome: Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input['SpecificationArgs'] specification: Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
-        :param pulumi.Input[str] state: The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
+        :param pulumi.Input['ExecutionState'] state: The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
         :param pulumi.Input[str] test_execution_matrix_id: TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
         """
         pulumi.set(__self__, "history_id", history_id)
@@ -159,14 +160,14 @@ class ExecutionArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['ExecutionState']]:
         """
         The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['ExecutionState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -196,7 +197,7 @@ class Execution(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[pulumi.InputType['SpecificationArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ExecutionState']] = None,
                  test_execution_matrix_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -210,7 +211,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.Input[str] execution_id: A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
         :param pulumi.Input[pulumi.InputType['OutcomeArgs']] outcome: Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input[pulumi.InputType['SpecificationArgs']] specification: Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
-        :param pulumi.Input[str] state: The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
+        :param pulumi.Input['ExecutionState'] state: The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
         :param pulumi.Input[str] test_execution_matrix_id: TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
         """
         ...
@@ -246,7 +247,7 @@ class Execution(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[pulumi.InputType['SpecificationArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ExecutionState']] = None,
                  test_execution_matrix_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:

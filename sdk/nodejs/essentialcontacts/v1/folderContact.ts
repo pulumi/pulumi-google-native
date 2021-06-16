@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -115,7 +116,7 @@ export interface FolderContactArgs {
     /**
      * The categories of notifications that the contact will receive communications for.
      */
-    notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<enums.essentialcontacts.v1.FolderContactNotificationCategorySubscriptionsItem>[]>;
     /**
      * The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
      */
@@ -123,5 +124,5 @@ export interface FolderContactArgs {
     /**
      * The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
      */
-    validationState?: pulumi.Input<string>;
+    validationState?: pulumi.Input<enums.essentialcontacts.v1.FolderContactValidationState>;
 }

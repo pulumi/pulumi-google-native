@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// - NONE: For non-autoscaled groups, proactive redistribution is disabled.
         /// </summary>
         [Input("instanceRedistributionType")]
-        public Input<string>? InstanceRedistributionType { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerUpdatePolicyInstanceRedistributionType>? InstanceRedistributionType { get; set; }
 
         /// <summary>
         /// The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
@@ -50,25 +50,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         /// </summary>
         [Input("minimalAction")]
-        public Input<string>? MinimalAction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerUpdatePolicyMinimalAction>? MinimalAction { get; set; }
 
         /// <summary>
         /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         /// </summary>
         [Input("mostDisruptiveAllowedAction")]
-        public Input<string>? MostDisruptiveAllowedAction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction>? MostDisruptiveAllowedAction { get; set; }
 
         /// <summary>
         /// What action should be used to replace instances. See minimal_action.REPLACE
         /// </summary>
         [Input("replacementMethod")]
-        public Input<string>? ReplacementMethod { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerUpdatePolicyReplacementMethod>? ReplacementMethod { get; set; }
 
         /// <summary>
         /// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerUpdatePolicyType>? Type { get; set; }
 
         public InstanceGroupManagerUpdatePolicyArgs()
         {

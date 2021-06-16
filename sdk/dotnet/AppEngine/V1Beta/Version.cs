@@ -436,14 +436,14 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public Input<string>? Id { get; set; }
 
         [Input("inboundServices")]
-        private InputList<string>? _inboundServices;
+        private InputList<Pulumi.GoogleNative.AppEngine.V1Beta.VersionInboundServicesItem>? _inboundServices;
 
         /// <summary>
         /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         /// </summary>
-        public InputList<string> InboundServices
+        public InputList<Pulumi.GoogleNative.AppEngine.V1Beta.VersionInboundServicesItem> InboundServices
         {
-            get => _inboundServices ?? (_inboundServices = new InputList<string>());
+            get => _inboundServices ?? (_inboundServices = new InputList<Pulumi.GoogleNative.AppEngine.V1Beta.VersionInboundServicesItem>());
             set => _inboundServices = value;
         }
 
@@ -544,7 +544,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         /// </summary>
         [Input("servingStatus")]
-        public Input<string>? ServingStatus { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Beta.VersionServingStatus>? ServingStatus { get; set; }
 
         /// <summary>
         /// Whether multiple requests can be dispatched to this version at once.

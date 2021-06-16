@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha.Inputs
         /// Resource record type. Example: AAAA.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.AppEngine.V1Alpha.ResourceRecordType>? Type { get; set; }
 
         public ResourceRecordArgs()
         {

@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2.Inputs
         /// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
         /// </summary>
         [Input("httpMethod")]
-        public Input<string>? HttpMethod { get; set; }
+        public Input<Pulumi.GoogleNative.CloudTasks.V2.AppEngineHttpRequestHttpMethod>? HttpMethod { get; set; }
 
         /// <summary>
         /// The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.

@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         /// The current operational state of the internal checker.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Monitoring.V3.InternalCheckerState>? State { get; set; }
 
         public InternalCheckerArgs()
         {

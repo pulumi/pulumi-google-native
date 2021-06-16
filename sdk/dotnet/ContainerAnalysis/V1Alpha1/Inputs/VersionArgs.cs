@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.VersionKind>? Kind { get; set; }
 
         /// <summary>
         /// The main part of the version name.

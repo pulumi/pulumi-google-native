@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
         /// </summary>
         [Input("availability")]
-        public Input<string>? Availability { get; set; }
+        public Input<Pulumi.GoogleNative.Retail.V2Beta.ProductAvailability>? Availability { get; set; }
 
         /// <summary>
         /// The available quantity of the item.
@@ -265,7 +265,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Retail.V2Beta.ProductType>? Type { get; set; }
 
         /// <summary>
         /// Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).

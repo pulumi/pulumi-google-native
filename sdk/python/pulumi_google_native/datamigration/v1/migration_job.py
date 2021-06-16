@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['MigrationJobArgs', 'MigrationJob']
@@ -28,9 +29,9 @@ class MigrationJobArgs:
                  reverse_ssh_connectivity: Optional[pulumi.Input['ReverseSshConnectivityArgs']] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input['StaticIpConnectivityArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['MigrationJobType']] = None,
                  vpc_peering_connectivity: Optional[pulumi.Input['VpcPeeringConnectivityArgs']] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
@@ -43,9 +44,9 @@ class MigrationJobArgs:
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
         :param pulumi.Input['DatabaseTypeArgs'] source_database: The database engine type and provider of the source.
-        :param pulumi.Input[str] state: The current migration job state.
+        :param pulumi.Input['MigrationJobState'] state: The current migration job state.
         :param pulumi.Input['StaticIpConnectivityArgs'] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
-        :param pulumi.Input[str] type: Required. The migration job type.
+        :param pulumi.Input['MigrationJobType'] type: Required. The migration job type.
         :param pulumi.Input['VpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
         pulumi.set(__self__, "location", location)
@@ -226,14 +227,14 @@ class MigrationJobArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['MigrationJobState']]:
         """
         The current migration job state.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['MigrationJobState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -250,14 +251,14 @@ class MigrationJobArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['MigrationJobType']]:
         """
         Required. The migration job type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['MigrationJobType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -291,9 +292,9 @@ class MigrationJob(pulumi.CustomResource):
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['MigrationJobType']] = None,
                  vpc_peering_connectivity: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']]] = None,
                  __props__=None):
         """
@@ -310,9 +311,9 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
-        :param pulumi.Input[str] state: The current migration job state.
+        :param pulumi.Input['MigrationJobState'] state: The current migration job state.
         :param pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
-        :param pulumi.Input[str] type: Required. The migration job type.
+        :param pulumi.Input['MigrationJobType'] type: Required. The migration job type.
         :param pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
         ...
@@ -352,9 +353,9 @@ class MigrationJob(pulumi.CustomResource):
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['MigrationJobType']] = None,
                  vpc_peering_connectivity: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']]] = None,
                  __props__=None):
         if opts is None:

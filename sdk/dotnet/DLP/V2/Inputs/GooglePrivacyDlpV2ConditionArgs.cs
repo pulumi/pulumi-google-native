@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// Required. Operator used to compare the field or infoType to the value.
         /// </summary>
         [Input("operator")]
-        public Input<string>? Operator { get; set; }
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2ConditionOperator>? Operator { get; set; }
 
         /// <summary>
         /// Value to compare against. [Mandatory, except for `EXISTS` tests.]

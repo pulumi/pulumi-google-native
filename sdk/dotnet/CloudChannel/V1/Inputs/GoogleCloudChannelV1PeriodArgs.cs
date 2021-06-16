@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         /// Period Type.
         /// </summary>
         [Input("periodType")]
-        public Input<string>? PeriodType { get; set; }
+        public Input<Pulumi.GoogleNative.CloudChannel.V1.GoogleCloudChannelV1PeriodPeriodType>? PeriodType { get; set; }
 
         public GoogleCloudChannelV1PeriodArgs()
         {

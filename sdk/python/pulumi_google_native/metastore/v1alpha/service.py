@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ServiceArgs', 'Service']
@@ -25,9 +26,9 @@ class ServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 release_channel: Optional[pulumi.Input[str]] = None,
+                 release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 tier: Optional[pulumi.Input[str]] = None):
+                 tier: Optional[pulumi.Input['ServiceTier']] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input['HiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
@@ -37,8 +38,8 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
-        :param pulumi.Input[str] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-        :param pulumi.Input[str] tier: The tier of the service.
+        :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -177,14 +178,14 @@ class ServiceArgs:
 
     @property
     @pulumi.getter(name="releaseChannel")
-    def release_channel(self) -> Optional[pulumi.Input[str]]:
+    def release_channel(self) -> Optional[pulumi.Input['ServiceReleaseChannel']]:
         """
         Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         """
         return pulumi.get(self, "release_channel")
 
     @release_channel.setter
-    def release_channel(self, value: Optional[pulumi.Input[str]]):
+    def release_channel(self, value: Optional[pulumi.Input['ServiceReleaseChannel']]):
         pulumi.set(self, "release_channel", value)
 
     @property
@@ -198,14 +199,14 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[str]]:
+    def tier(self) -> Optional[pulumi.Input['ServiceTier']]:
         """
         The tier of the service.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[str]]):
+    def tier(self, value: Optional[pulumi.Input['ServiceTier']]):
         pulumi.set(self, "tier", value)
 
 
@@ -223,10 +224,10 @@ class Service(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 release_channel: Optional[pulumi.Input[str]] = None,
+                 release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input['ServiceTier']] = None,
                  __props__=None):
         """
         Creates a metastore service in a project and location.
@@ -240,8 +241,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
-        :param pulumi.Input[str] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-        :param pulumi.Input[str] tier: The tier of the service.
+        :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         ...
     @overload
@@ -276,10 +277,10 @@ class Service(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 release_channel: Optional[pulumi.Input[str]] = None,
+                 release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 tier: Optional[pulumi.Input[str]] = None,
+                 tier: Optional[pulumi.Input['ServiceTier']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()

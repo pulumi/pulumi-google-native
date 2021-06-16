@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -221,7 +221,7 @@ export interface NodePoolArgs {
     /**
      * [Output only] The status of the nodes in this pool instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.container.v1beta1.NodePoolStatus>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */

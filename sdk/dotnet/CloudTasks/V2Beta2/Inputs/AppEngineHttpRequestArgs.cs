@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         /// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
         /// </summary>
         [Input("httpMethod")]
-        public Input<string>? HttpMethod { get; set; }
+        public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.AppEngineHttpRequestHttpMethod>? HttpMethod { get; set; }
 
         /// <summary>
         /// Payload. The payload will be sent as the HTTP message body. A message body, and thus a payload, is allowed only if the HTTP method is POST or PUT. It is an error to set a data payload on a task with an incompatible HttpMethod.

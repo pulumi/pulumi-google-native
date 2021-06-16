@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .attestor import *
 from .attestor_iam_policy import *
 from .get_attestor import *

@@ -38,7 +38,7 @@ type AptSettingsArgs struct {
 	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
 	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type *AptSettingsType `pulumi:"type"`
 }
 
 func (AptSettingsArgs) ElementType() reflect.Type {
@@ -537,7 +537,7 @@ type ExecStepConfigArgs struct {
 	// A Cloud Storage object containing the executable.
 	GcsObject GcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
+	Interpreter *ExecStepConfigInterpreter `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
 }
@@ -2538,7 +2538,7 @@ type PatchConfigArgs struct {
 	// The `ExecStep` to run before the patch update.
 	PreStep ExecStepPtrInput `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	RebootConfig pulumi.StringPtrInput `pulumi:"rebootConfig"`
+	RebootConfig *PatchConfigRebootConfig `pulumi:"rebootConfig"`
 	// Windows update settings. Use this override the default windows patch rules.
 	WindowsUpdate WindowsUpdateSettingsPtrInput `pulumi:"windowsUpdate"`
 	// Yum update settings. Use this setting to override the default `yum` patch rules.
@@ -3674,7 +3674,7 @@ type PatchRolloutArgs struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 	DisruptionBudget FixedOrPercentPtrInput `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *PatchRolloutMode `pulumi:"mode"`
 }
 
 func (PatchRolloutArgs) ElementType() reflect.Type {
@@ -3990,7 +3990,7 @@ type RecurringScheduleArgs struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Required. The frequency unit of this recurring schedule.
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	Frequency *RecurringScheduleFrequency `pulumi:"frequency"`
 	// Required. Schedule with monthly executions.
 	Monthly MonthlySchedulePtrInput `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -5181,7 +5181,7 @@ type WeekDayOfMonthInput interface {
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthArgs struct {
 	// Required. A day of the week.
-	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	DayOfWeek *WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
 	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntPtrInput `pulumi:"weekOrdinal"`
 }
@@ -5485,7 +5485,7 @@ type WeeklyScheduleInput interface {
 // Represents a weekly schedule.
 type WeeklyScheduleArgs struct {
 	// Required. Day of the week.
-	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	DayOfWeek *WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
 }
 
 func (WeeklyScheduleArgs) ElementType() reflect.Type {
@@ -5757,7 +5757,7 @@ type WindowsUpdateSettingsInput interface {
 // Windows patching is performed using the Windows Update Agent.
 type WindowsUpdateSettingsArgs struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	Classifications pulumi.StringArrayInput `pulumi:"classifications"`
+	Classifications WindowsUpdateSettingsClassificationsItemArrayInput `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.

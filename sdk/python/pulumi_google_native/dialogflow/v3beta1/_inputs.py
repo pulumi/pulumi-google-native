@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudDialogflowCxV3beta1AudioInputArgs',
@@ -680,16 +681,16 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs:
     def __init__(__self__, *,
                  confidence_interval: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs']] = None,
                  count: Optional[pulumi.Input[float]] = None,
-                 count_type: Optional[pulumi.Input[str]] = None,
+                 count_type: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType']] = None,
                  ratio: Optional[pulumi.Input[float]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType']] = None):
         """
         Metric and corresponding confidence intervals.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs'] confidence_interval: The probability that the treatment is better than all other treatments in the experiment
         :param pulumi.Input[float] count: Count value of a metric.
-        :param pulumi.Input[str] count_type: Count-based metric type. Only one of type or count_type is specified in each Metric.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType'] count_type: Count-based metric type. Only one of type or count_type is specified in each Metric.
         :param pulumi.Input[float] ratio: Ratio value of a metric.
-        :param pulumi.Input[str] type: Ratio-based metric type. Only one of type or count_type is specified in each Metric.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType'] type: Ratio-based metric type. Only one of type or count_type is specified in each Metric.
         """
         if confidence_interval is not None:
             pulumi.set(__self__, "confidence_interval", confidence_interval)
@@ -728,14 +729,14 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs:
 
     @property
     @pulumi.getter(name="countType")
-    def count_type(self) -> Optional[pulumi.Input[str]]:
+    def count_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType']]:
         """
         Count-based metric type. Only one of type or count_type is specified in each Metric.
         """
         return pulumi.get(self, "count_type")
 
     @count_type.setter
-    def count_type(self, value: Optional[pulumi.Input[str]]):
+    def count_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType']]):
         pulumi.set(self, "count_type", value)
 
     @property
@@ -752,14 +753,14 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType']]:
         """
         Ratio-based metric type. Only one of type or count_type is specified in each Metric.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1238,19 +1239,19 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
     def __init__(__self__, *,
-                 audio_encoding: Optional[pulumi.Input[str]] = None,
+                 audio_encoding: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']] = None,
                  enable_word_info: Optional[pulumi.Input[bool]] = None,
                  model: Optional[pulumi.Input[str]] = None,
-                 model_variant: Optional[pulumi.Input[str]] = None,
+                 model_variant: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant']] = None,
                  phrase_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sample_rate_hertz: Optional[pulumi.Input[int]] = None,
                  single_utterance: Optional[pulumi.Input[bool]] = None):
         """
         Instructs the speech recognizer on how to process the audio content.
-        :param pulumi.Input[str] audio_encoding: Required. Audio encoding of the audio content to process.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'] audio_encoding: Required. Audio encoding of the audio content to process.
         :param pulumi.Input[bool] enable_word_info: Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
         :param pulumi.Input[str] model: Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
-        :param pulumi.Input[str] model_variant: Optional. Which variant of the Speech model to use.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant'] model_variant: Optional. Which variant of the Speech model to use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] phrase_hints: Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
         :param pulumi.Input[int] sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
         :param pulumi.Input[bool] single_utterance: Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
@@ -1272,14 +1273,14 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
 
     @property
     @pulumi.getter(name="audioEncoding")
-    def audio_encoding(self) -> Optional[pulumi.Input[str]]:
+    def audio_encoding(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']]:
         """
         Required. Audio encoding of the audio content to process.
         """
         return pulumi.get(self, "audio_encoding")
 
     @audio_encoding.setter
-    def audio_encoding(self, value: Optional[pulumi.Input[str]]):
+    def audio_encoding(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding']]):
         pulumi.set(self, "audio_encoding", value)
 
     @property
@@ -1308,14 +1309,14 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
 
     @property
     @pulumi.getter(name="modelVariant")
-    def model_variant(self) -> Optional[pulumi.Input[str]]:
+    def model_variant(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant']]:
         """
         Optional. Which variant of the Speech model to use.
         """
         return pulumi.get(self, "model_variant")
 
     @model_variant.setter
-    def model_variant(self, value: Optional[pulumi.Input[str]]):
+    def model_variant(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant']]):
         pulumi.set(self, "model_variant", value)
 
     @property
@@ -1687,13 +1688,13 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs:
 class GoogleCloudDialogflowCxV3beta1NluSettingsArgs:
     def __init__(__self__, *,
                  classification_threshold: Optional[pulumi.Input[float]] = None,
-                 model_training_mode: Optional[pulumi.Input[str]] = None,
-                 model_type: Optional[pulumi.Input[str]] = None):
+                 model_training_mode: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode']] = None,
+                 model_type: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelType']] = None):
         """
         Settings related to NLU.
         :param pulumi.Input[float] classification_threshold: To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
-        :param pulumi.Input[str] model_training_mode: Indicates NLU model training mode.
-        :param pulumi.Input[str] model_type: Indicates the type of NLU model.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode'] model_training_mode: Indicates NLU model training mode.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelType'] model_type: Indicates the type of NLU model.
         """
         if classification_threshold is not None:
             pulumi.set(__self__, "classification_threshold", classification_threshold)
@@ -1716,26 +1717,26 @@ class GoogleCloudDialogflowCxV3beta1NluSettingsArgs:
 
     @property
     @pulumi.getter(name="modelTrainingMode")
-    def model_training_mode(self) -> Optional[pulumi.Input[str]]:
+    def model_training_mode(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode']]:
         """
         Indicates NLU model training mode.
         """
         return pulumi.get(self, "model_training_mode")
 
     @model_training_mode.setter
-    def model_training_mode(self, value: Optional[pulumi.Input[str]]):
+    def model_training_mode(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode']]):
         pulumi.set(self, "model_training_mode", value)
 
     @property
     @pulumi.getter(name="modelType")
-    def model_type(self) -> Optional[pulumi.Input[str]]:
+    def model_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelType']]:
         """
         Indicates the type of NLU model.
         """
         return pulumi.get(self, "model_type")
 
     @model_type.setter
-    def model_type(self, value: Optional[pulumi.Input[str]]):
+    def model_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsModelType']]):
         pulumi.set(self, "model_type", value)
 
 
@@ -2233,14 +2234,14 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResultArgs:
                  conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 test_result: Optional[pulumi.Input[str]] = None,
+                 test_result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult']] = None,
                  test_time: Optional[pulumi.Input[str]] = None):
         """
         Represents a result from running a test case in an agent environment.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
         :param pulumi.Input[str] environment: Environment where the test was run. If not set, it indicates the draft environment.
         :param pulumi.Input[str] name: The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
-        :param pulumi.Input[str] test_result: Whether the test case passed in the agent environment.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult'] test_result: Whether the test case passed in the agent environment.
         :param pulumi.Input[str] test_time: The time that the test was run.
         """
         if conversation_turns is not None:
@@ -2292,14 +2293,14 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResultArgs:
 
     @property
     @pulumi.getter(name="testResult")
-    def test_result(self) -> Optional[pulumi.Input[str]]:
+    def test_result(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult']]:
         """
         Whether the test case passed in the agent environment.
         """
         return pulumi.get(self, "test_result")
 
     @test_result.setter
-    def test_result(self, value: Optional[pulumi.Input[str]]):
+    def test_result(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult']]):
         pulumi.set(self, "test_result", value)
 
     @property

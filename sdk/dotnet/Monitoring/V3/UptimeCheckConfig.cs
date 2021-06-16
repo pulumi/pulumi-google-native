@@ -202,14 +202,14 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<Inputs.ResourceGroupArgs>? ResourceGroup { get; set; }
 
         [Input("selectedRegions")]
-        private InputList<string>? _selectedRegions;
+        private InputList<Pulumi.GoogleNative.Monitoring.V3.UptimeCheckConfigSelectedRegionsItem>? _selectedRegions;
 
         /// <summary>
         /// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         /// </summary>
-        public InputList<string> SelectedRegions
+        public InputList<Pulumi.GoogleNative.Monitoring.V3.UptimeCheckConfigSelectedRegionsItem> SelectedRegions
         {
-            get => _selectedRegions ?? (_selectedRegions = new InputList<string>());
+            get => _selectedRegions ?? (_selectedRegions = new InputList<Pulumi.GoogleNative.Monitoring.V3.UptimeCheckConfigSelectedRegionsItem>());
             set => _selectedRegions = value;
         }
 

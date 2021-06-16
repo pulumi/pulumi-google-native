@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'BindingArgs',
@@ -349,14 +350,14 @@ class ExprArgs:
 @pulumi.input_type
 class GatewayConfigArgs:
     def __init__(__self__, *,
-                 gateway_auth_method: Optional[pulumi.Input[str]] = None,
-                 gateway_type: Optional[pulumi.Input[str]] = None,
+                 gateway_auth_method: Optional[pulumi.Input['GatewayConfigGatewayAuthMethod']] = None,
+                 gateway_type: Optional[pulumi.Input['GatewayConfigGatewayType']] = None,
                  last_accessed_gateway_id: Optional[pulumi.Input[str]] = None,
                  last_accessed_gateway_time: Optional[pulumi.Input[str]] = None):
         """
         Gateway-related configuration and state.
-        :param pulumi.Input[str] gateway_auth_method: Indicates how to authorize and/or authenticate devices to access the gateway.
-        :param pulumi.Input[str] gateway_type: Indicates whether the device is a gateway.
+        :param pulumi.Input['GatewayConfigGatewayAuthMethod'] gateway_auth_method: Indicates how to authorize and/or authenticate devices to access the gateway.
+        :param pulumi.Input['GatewayConfigGatewayType'] gateway_type: Indicates whether the device is a gateway.
         :param pulumi.Input[str] last_accessed_gateway_id: [Output only] The ID of the gateway the device accessed most recently.
         :param pulumi.Input[str] last_accessed_gateway_time: [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
         """
@@ -371,26 +372,26 @@ class GatewayConfigArgs:
 
     @property
     @pulumi.getter(name="gatewayAuthMethod")
-    def gateway_auth_method(self) -> Optional[pulumi.Input[str]]:
+    def gateway_auth_method(self) -> Optional[pulumi.Input['GatewayConfigGatewayAuthMethod']]:
         """
         Indicates how to authorize and/or authenticate devices to access the gateway.
         """
         return pulumi.get(self, "gateway_auth_method")
 
     @gateway_auth_method.setter
-    def gateway_auth_method(self, value: Optional[pulumi.Input[str]]):
+    def gateway_auth_method(self, value: Optional[pulumi.Input['GatewayConfigGatewayAuthMethod']]):
         pulumi.set(self, "gateway_auth_method", value)
 
     @property
     @pulumi.getter(name="gatewayType")
-    def gateway_type(self) -> Optional[pulumi.Input[str]]:
+    def gateway_type(self) -> Optional[pulumi.Input['GatewayConfigGatewayType']]:
         """
         Indicates whether the device is a gateway.
         """
         return pulumi.get(self, "gateway_type")
 
     @gateway_type.setter
-    def gateway_type(self, value: Optional[pulumi.Input[str]]):
+    def gateway_type(self, value: Optional[pulumi.Input['GatewayConfigGatewayType']]):
         pulumi.set(self, "gateway_type", value)
 
     @property
@@ -421,48 +422,48 @@ class GatewayConfigArgs:
 @pulumi.input_type
 class HttpConfigArgs:
     def __init__(__self__, *,
-                 http_enabled_state: Optional[pulumi.Input[str]] = None):
+                 http_enabled_state: Optional[pulumi.Input['HttpConfigHttpEnabledState']] = None):
         """
         The configuration of the HTTP bridge for a device registry.
-        :param pulumi.Input[str] http_enabled_state: If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
+        :param pulumi.Input['HttpConfigHttpEnabledState'] http_enabled_state: If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
         """
         if http_enabled_state is not None:
             pulumi.set(__self__, "http_enabled_state", http_enabled_state)
 
     @property
     @pulumi.getter(name="httpEnabledState")
-    def http_enabled_state(self) -> Optional[pulumi.Input[str]]:
+    def http_enabled_state(self) -> Optional[pulumi.Input['HttpConfigHttpEnabledState']]:
         """
         If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
         """
         return pulumi.get(self, "http_enabled_state")
 
     @http_enabled_state.setter
-    def http_enabled_state(self, value: Optional[pulumi.Input[str]]):
+    def http_enabled_state(self, value: Optional[pulumi.Input['HttpConfigHttpEnabledState']]):
         pulumi.set(self, "http_enabled_state", value)
 
 
 @pulumi.input_type
 class MqttConfigArgs:
     def __init__(__self__, *,
-                 mqtt_enabled_state: Optional[pulumi.Input[str]] = None):
+                 mqtt_enabled_state: Optional[pulumi.Input['MqttConfigMqttEnabledState']] = None):
         """
         The configuration of MQTT for a device registry.
-        :param pulumi.Input[str] mqtt_enabled_state: If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
+        :param pulumi.Input['MqttConfigMqttEnabledState'] mqtt_enabled_state: If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
         """
         if mqtt_enabled_state is not None:
             pulumi.set(__self__, "mqtt_enabled_state", mqtt_enabled_state)
 
     @property
     @pulumi.getter(name="mqttEnabledState")
-    def mqtt_enabled_state(self) -> Optional[pulumi.Input[str]]:
+    def mqtt_enabled_state(self) -> Optional[pulumi.Input['MqttConfigMqttEnabledState']]:
         """
         If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
         """
         return pulumi.get(self, "mqtt_enabled_state")
 
     @mqtt_enabled_state.setter
-    def mqtt_enabled_state(self, value: Optional[pulumi.Input[str]]):
+    def mqtt_enabled_state(self, value: Optional[pulumi.Input['MqttConfigMqttEnabledState']]):
         pulumi.set(self, "mqtt_enabled_state", value)
 
 
@@ -470,12 +471,12 @@ class MqttConfigArgs:
 class PublicKeyCertificateArgs:
     def __init__(__self__, *,
                  certificate: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input['PublicKeyCertificateFormat']] = None,
                  x509_details: Optional[pulumi.Input['X509CertificateDetailsArgs']] = None):
         """
         A public key certificate format and data.
         :param pulumi.Input[str] certificate: The certificate data.
-        :param pulumi.Input[str] format: The certificate format.
+        :param pulumi.Input['PublicKeyCertificateFormat'] format: The certificate format.
         :param pulumi.Input['X509CertificateDetailsArgs'] x509_details: [Output only] The certificate details. Used only for X.509 certificates.
         """
         if certificate is not None:
@@ -499,14 +500,14 @@ class PublicKeyCertificateArgs:
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[str]]:
+    def format(self) -> Optional[pulumi.Input['PublicKeyCertificateFormat']]:
         """
         The certificate format.
         """
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[str]]):
+    def format(self, value: Optional[pulumi.Input['PublicKeyCertificateFormat']]):
         pulumi.set(self, "format", value)
 
     @property
@@ -525,11 +526,11 @@ class PublicKeyCertificateArgs:
 @pulumi.input_type
 class PublicKeyCredentialArgs:
     def __init__(__self__, *,
-                 format: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input['PublicKeyCredentialFormat']] = None,
                  key: Optional[pulumi.Input[str]] = None):
         """
         A public key format and data.
-        :param pulumi.Input[str] format: The format of the key.
+        :param pulumi.Input['PublicKeyCredentialFormat'] format: The format of the key.
         :param pulumi.Input[str] key: The key data.
         """
         if format is not None:
@@ -539,14 +540,14 @@ class PublicKeyCredentialArgs:
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[str]]:
+    def format(self) -> Optional[pulumi.Input['PublicKeyCredentialFormat']]:
         """
         The format of the key.
         """
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[str]]):
+    def format(self, value: Optional[pulumi.Input['PublicKeyCredentialFormat']]):
         pulumi.set(self, "format", value)
 
     @property

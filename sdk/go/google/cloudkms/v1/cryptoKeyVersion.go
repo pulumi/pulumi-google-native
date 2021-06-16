@@ -165,7 +165,7 @@ type CryptoKeyVersionArgs struct {
 	Location                       pulumi.StringInput
 	Project                        pulumi.StringInput
 	// The current state of the CryptoKeyVersion.
-	State pulumi.StringPtrInput
+	State *CryptoKeyVersionStateEnum
 }
 
 func (CryptoKeyVersionArgs) ElementType() reflect.Type {

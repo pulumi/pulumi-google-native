@@ -118,7 +118,7 @@ type channelPartnerLinkArgs struct {
 type ChannelPartnerLinkArgs struct {
 	AccountId pulumi.StringInput
 	// Required. State of the channel partner link.
-	LinkState pulumi.StringPtrInput
+	LinkState *ChannelPartnerLinkLinkState
 	// Required. Cloud Identity ID of the linked reseller.
 	ResellerCloudIdentityId pulumi.StringPtrInput
 }

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         /// Optional. Settings for displaying the image. Applies to every image in items.
         /// </summary>
         [Input("imageDisplayOptions")]
-        public Input<string>? ImageDisplayOptions { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions>? ImageDisplayOptions { get; set; }
 
         [Input("items")]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs>? _items;

@@ -283,14 +283,14 @@ namespace Pulumi.GoogleNative.Jobs.V3
         }
 
         [Input("degreeTypes")]
-        private InputList<string>? _degreeTypes;
+        private InputList<Pulumi.GoogleNative.Jobs.V3.JobDegreeTypesItem>? _degreeTypes;
 
         /// <summary>
         /// Optional. The desired education degrees for the job, such as Bachelors, Masters.
         /// </summary>
-        public InputList<string> DegreeTypes
+        public InputList<Pulumi.GoogleNative.Jobs.V3.JobDegreeTypesItem> DegreeTypes
         {
-            get => _degreeTypes ?? (_degreeTypes = new InputList<string>());
+            get => _degreeTypes ?? (_degreeTypes = new InputList<Pulumi.GoogleNative.Jobs.V3.JobDegreeTypesItem>());
             set => _degreeTypes = value;
         }
 
@@ -313,14 +313,14 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? Description { get; set; }
 
         [Input("employmentTypes")]
-        private InputList<string>? _employmentTypes;
+        private InputList<Pulumi.GoogleNative.Jobs.V3.JobEmploymentTypesItem>? _employmentTypes;
 
         /// <summary>
         /// Optional. The employment type(s) of a job, for example, full time or part time.
         /// </summary>
-        public InputList<string> EmploymentTypes
+        public InputList<Pulumi.GoogleNative.Jobs.V3.JobEmploymentTypesItem> EmploymentTypes
         {
-            get => _employmentTypes ?? (_employmentTypes = new InputList<string>());
+            get => _employmentTypes ?? (_employmentTypes = new InputList<Pulumi.GoogleNative.Jobs.V3.JobEmploymentTypesItem>());
             set => _employmentTypes = value;
         }
 
@@ -331,14 +331,14 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? Incentives { get; set; }
 
         [Input("jobBenefits")]
-        private InputList<string>? _jobBenefits;
+        private InputList<Pulumi.GoogleNative.Jobs.V3.JobJobBenefitsItem>? _jobBenefits;
 
         /// <summary>
         /// Optional. The benefits included with the job.
         /// </summary>
-        public InputList<string> JobBenefits
+        public InputList<Pulumi.GoogleNative.Jobs.V3.JobJobBenefitsItem> JobBenefits
         {
-            get => _jobBenefits ?? (_jobBenefits = new InputList<string>());
+            get => _jobBenefits ?? (_jobBenefits = new InputList<Pulumi.GoogleNative.Jobs.V3.JobJobBenefitsItem>());
             set => _jobBenefits = value;
         }
 
@@ -352,7 +352,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// Optional. The experience level associated with the job, such as "Entry Level".
         /// </summary>
         [Input("jobLevel")]
-        public Input<string>? JobLevel { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V3.JobJobLevel>? JobLevel { get; set; }
 
         /// <summary>
         /// Optional. The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored.
@@ -394,7 +394,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
         /// </summary>
         [Input("postingRegion")]
-        public Input<string>? PostingRegion { get; set; }
+        public Input<Pulumi.GoogleNative.Jobs.V3.JobPostingRegion>? PostingRegion { get; set; }
 
         /// <summary>
         /// The timestamp when this job posting was last updated.

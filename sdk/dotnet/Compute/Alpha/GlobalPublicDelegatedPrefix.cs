@@ -236,7 +236,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// [Output Only] The status of the public delegated prefix.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.GlobalPublicDelegatedPrefixStatus>? Status { get; set; }
 
         public GlobalPublicDelegatedPrefixArgs()
         {

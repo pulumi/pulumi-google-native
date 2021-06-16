@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -160,7 +160,7 @@ export interface ServiceAttachmentArgs {
     /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
-    connectionPreference?: pulumi.Input<string>;
+    connectionPreference?: pulumi.Input<enums.compute.beta.ServiceAttachmentConnectionPreference>;
     /**
      * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
      */

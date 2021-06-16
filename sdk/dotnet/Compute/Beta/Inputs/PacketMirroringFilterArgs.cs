@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
         /// </summary>
         [Input("direction")]
-        public Input<string>? Direction { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Beta.PacketMirroringFilterDirection>? Direction { get; set; }
 
         public PacketMirroringFilterArgs()
         {

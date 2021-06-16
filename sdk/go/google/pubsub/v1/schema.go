@@ -96,7 +96,7 @@ type SchemaArgs struct {
 	Project  pulumi.StringInput
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.
-	Type pulumi.StringPtrInput
+	Type *SchemaType
 }
 
 func (SchemaArgs) ElementType() reflect.Type {

@@ -1051,19 +1051,19 @@ type BuildOptionsArgs struct {
 	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env pulumi.StringArrayInput `pulumi:"env"`
 	// Option to define build log streaming behavior to Google Cloud Storage.
-	LogStreamingOption pulumi.StringPtrInput `pulumi:"logStreamingOption"`
+	LogStreamingOption *BuildOptionsLogStreamingOption `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	Logging pulumi.StringPtrInput `pulumi:"logging"`
+	Logging *BuildOptionsLogging `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	MachineType *BuildOptionsMachineType `pulumi:"machineType"`
 	// Requested verifiability options.
-	RequestedVerifyOption pulumi.StringPtrInput `pulumi:"requestedVerifyOption"`
+	RequestedVerifyOption *BuildOptionsRequestedVerifyOption `pulumi:"requestedVerifyOption"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
 	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
 	// Requested hash for SourceProvenance.
-	SourceProvenanceHash pulumi.StringArrayInput `pulumi:"sourceProvenanceHash"`
+	SourceProvenanceHash BuildOptionsSourceProvenanceHashItemArrayInput `pulumi:"sourceProvenanceHash"`
 	// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-	SubstitutionOption pulumi.StringPtrInput `pulumi:"substitutionOption"`
+	SubstitutionOption *BuildOptionsSubstitutionOption `pulumi:"substitutionOption"`
 	// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
 	Volumes VolumeArrayInput `pulumi:"volumes"`
 	// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
@@ -3441,7 +3441,7 @@ type PubsubConfigArgs struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State *PubsubConfigState `pulumi:"state"`
 	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -3804,7 +3804,7 @@ type PullRequestFilterArgs struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
+	CommentControl *PullRequestFilterCommentControl `pulumi:"commentControl"`
 	// If true, branches that do NOT match the git_ref will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 }

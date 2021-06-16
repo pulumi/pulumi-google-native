@@ -31,13 +31,13 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         /// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
         /// </summary>
         [Input("nonExistence")]
-        public Input<string>? NonExistence { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1Beta2.ManagedZoneDnsSecConfigNonExistence>? NonExistence { get; set; }
 
         /// <summary>
         /// Specifies whether DNSSEC is enabled, and what mode it is in.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.DNS.V1Beta2.ManagedZoneDnsSecConfigState>? State { get; set; }
 
         public ManagedZoneDnsSecConfigArgs()
         {

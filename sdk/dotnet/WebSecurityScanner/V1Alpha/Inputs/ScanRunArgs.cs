@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.Inputs
         /// The execution state of the ScanRun.
         /// </summary>
         [Input("executionState")]
-        public Input<string>? ExecutionState { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.ScanRunExecutionState>? ExecutionState { get; set; }
 
         /// <summary>
         /// Whether the scan run has found any vulnerabilities.
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.Inputs
         /// The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED".
         /// </summary>
         [Input("resultState")]
-        public Input<string>? ResultState { get; set; }
+        public Input<Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.ScanRunResultState>? ResultState { get; set; }
 
         /// <summary>
         /// The time at which the ScanRun started.

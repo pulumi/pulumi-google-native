@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -214,7 +214,7 @@ export interface RegionAutoscalerArgs {
      * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
      * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.alpha.RegionAutoscalerStatus>;
     /**
      * [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
      */

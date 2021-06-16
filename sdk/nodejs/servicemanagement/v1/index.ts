@@ -16,6 +16,9 @@ export * from "./service";
 export * from "./serviceConsumerIamPolicy";
 export * from "./serviceIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/servicemanagement/v1";
+
 // Import resources to register:
 import { Config } from "./config";
 import { Rollout } from "./rollout";

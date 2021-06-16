@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -168,7 +168,7 @@ export interface RegionCommitmentArgs {
     /**
      * The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<enums.compute.beta.RegionCommitmentCategory>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -200,7 +200,7 @@ export interface RegionCommitmentArgs {
     /**
      * The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<enums.compute.beta.RegionCommitmentPlan>;
     project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where this commitment may be used.
@@ -226,7 +226,7 @@ export interface RegionCommitmentArgs {
     /**
      * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<enums.compute.beta.RegionCommitmentStatus>;
     /**
      * [Output Only] An optional, human-readable explanation of the status.
      */
@@ -234,5 +234,5 @@ export interface RegionCommitmentArgs {
     /**
      * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<enums.compute.beta.RegionCommitmentType>;
 }

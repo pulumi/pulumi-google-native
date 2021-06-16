@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1092,7 +1092,7 @@ type ContactSettingsArgs struct {
 	// Required. The administrative contact for the `Registration`.
 	AdminContact ContactPtrInput `pulumi:"adminContact"`
 	// Required. Privacy setting for the contacts associated with the `Registration`.
-	Privacy pulumi.StringPtrInput `pulumi:"privacy"`
+	Privacy *ContactSettingsPrivacy `pulumi:"privacy"`
 	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 	RegistrantContact ContactPtrInput `pulumi:"registrantContact"`
 	// Required. The technical contact for the `Registration`.
@@ -2122,11 +2122,11 @@ type DsRecordInput interface {
 // Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
 type DsRecordArgs struct {
 	// The algorithm used to generate the referenced DNSKEY.
-	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	Algorithm *DsRecordAlgorithm `pulumi:"algorithm"`
 	// The digest generated from the referenced DNSKEY.
 	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The hash function used to generate the digest of the referenced DNSKEY.
-	DigestType pulumi.StringPtrInput `pulumi:"digestType"`
+	DigestType *DsRecordDigestType `pulumi:"digestType"`
 	// The key tag of the record. Must be set in range 0 -- 65535.
 	KeyTag pulumi.IntPtrInput `pulumi:"keyTag"`
 }
@@ -2879,7 +2879,7 @@ type GoogleDomainsDnsInput interface {
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsArgs struct {
 	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-	DsState pulumi.StringPtrInput `pulumi:"dsState"`
+	DsState *GoogleDomainsDnsDsState `pulumi:"dsState"`
 }
 
 func (GoogleDomainsDnsArgs) ElementType() reflect.Type {
@@ -3185,7 +3185,7 @@ type ManagementSettingsInput interface {
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettingsArgs struct {
 	// Controls whether the domain can be transferred to another registrar.
-	TransferLockState pulumi.StringPtrInput `pulumi:"transferLockState"`
+	TransferLockState *ManagementSettingsTransferLockState `pulumi:"transferLockState"`
 }
 
 func (ManagementSettingsArgs) ElementType() reflect.Type {

@@ -10,6 +10,9 @@ export * from "./getInstanceIamPolicy";
 export * from "./instance";
 export * from "./instanceIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/datafusion/v1";
+
 // Import resources to register:
 import { Instance } from "./instance";
 import { InstanceIamPolicy } from "./instanceIamPolicy";

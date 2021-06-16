@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -126,15 +127,15 @@ export interface SecuritySettingArgs {
     /**
      * List of types of data to remove when retention settings triggers purge.
      */
-    purgeDataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    purgeDataTypes?: pulumi.Input<pulumi.Input<enums.dialogflow.v3beta1.SecuritySettingPurgeDataTypesItem>[]>;
     /**
      * Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
      */
-    redactionScope?: pulumi.Input<string>;
+    redactionScope?: pulumi.Input<enums.dialogflow.v3beta1.SecuritySettingRedactionScope>;
     /**
      * Strategy that defines how we do redaction.
      */
-    redactionStrategy?: pulumi.Input<string>;
+    redactionStrategy?: pulumi.Input<enums.dialogflow.v3beta1.SecuritySettingRedactionStrategy>;
     /**
      * Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
      */

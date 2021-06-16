@@ -10,6 +10,9 @@ export * from "./connectionIamPolicy";
 export * from "./getConnection";
 export * from "./getConnectionIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/bigqueryconnection/v1beta1";
+
 // Import resources to register:
 import { Connection } from "./connection";
 import { ConnectionIamPolicy } from "./connectionIamPolicy";

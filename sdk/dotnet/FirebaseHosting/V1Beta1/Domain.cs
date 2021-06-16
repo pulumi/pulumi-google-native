@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// Additional status of the domain association.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<Pulumi.GoogleNative.FirebaseHosting.V1Beta1.DomainStatus>? Status { get; set; }
 
         /// <summary>
         /// The time at which the domain was last updated.

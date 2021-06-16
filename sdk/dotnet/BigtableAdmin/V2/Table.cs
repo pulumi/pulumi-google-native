@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         /// </summary>
         [Input("granularity")]
-        public Input<string>? Granularity { get; set; }
+        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.TableGranularity>? Granularity { get; set; }
 
         [Input("initialSplits")]
         private InputList<Inputs.SplitArgs>? _initialSplits;

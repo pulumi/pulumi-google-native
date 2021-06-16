@@ -215,7 +215,7 @@ type ManagedZoneArgs struct {
 	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-	Visibility pulumi.StringPtrInput
+	Visibility *ManagedZoneVisibility
 }
 
 func (ManagedZoneArgs) ElementType() reflect.Type {

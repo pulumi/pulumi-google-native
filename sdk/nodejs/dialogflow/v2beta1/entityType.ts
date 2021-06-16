@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -108,7 +108,7 @@ export interface EntityTypeArgs {
     /**
      * Optional. Indicates whether the entity type can be automatically expanded.
      */
-    autoExpansionMode?: pulumi.Input<string>;
+    autoExpansionMode?: pulumi.Input<enums.dialogflow.v2beta1.EntityTypeAutoExpansionMode>;
     /**
      * Required. The name of the entity type.
      */
@@ -124,7 +124,7 @@ export interface EntityTypeArgs {
     /**
      * Required. Indicates the kind of entity type.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<enums.dialogflow.v2beta1.EntityTypeKind>;
     languageCode?: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**

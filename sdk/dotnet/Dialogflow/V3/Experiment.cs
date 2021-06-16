@@ -208,7 +208,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING-&gt;RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING-&gt;CANCELLED or RUNNING-&gt;CANCELLED.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.ExperimentState>? State { get; set; }
 
         [Input("variantsHistory")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3VariantsHistoryArgs>? _variantsHistory;

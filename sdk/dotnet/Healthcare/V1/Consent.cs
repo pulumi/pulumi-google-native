@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Required. Indicates the current state of this Consent.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Healthcare.V1.ConsentState>? State { get; set; }
 
         /// <summary>
         /// Input only. The time to live for this Consent from when it is created.

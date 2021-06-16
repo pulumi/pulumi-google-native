@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// Type of the integration.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.ClusterTelemetryType>? Type { get; set; }
 
         public ClusterTelemetryArgs()
         {

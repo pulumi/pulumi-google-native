@@ -10,6 +10,9 @@ export * from "./getSource";
 export * from "./organizationSourceIamPolicy";
 export * from "./source";
 
+// Export enums:
+export * from "../../types/enums/securitycenter/v1beta1";
+
 // Import resources to register:
 import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";
 import { Source } from "./source";

@@ -253,7 +253,7 @@ type RegionNetworkEndpointGroupArgs struct {
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
-	NetworkEndpointType pulumi.StringPtrInput
+	NetworkEndpointType *RegionNetworkEndpointGroupNetworkEndpointType
 	Project             pulumi.StringInput
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringPtrInput
@@ -271,7 +271,7 @@ type RegionNetworkEndpointGroupArgs struct {
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
 	// Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
-	Type pulumi.StringPtrInput
+	Type *RegionNetworkEndpointGroupType
 	// [Output Only] The URL of the zone where the network endpoint group is located.
 	Zone pulumi.StringPtrInput
 }

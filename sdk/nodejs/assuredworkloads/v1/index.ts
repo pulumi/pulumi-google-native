@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getWorkload";
 export * from "./workload";
 
+// Export enums:
+export * from "../../types/enums/assuredworkloads/v1";
+
 // Import resources to register:
 import { Workload } from "./workload";
 

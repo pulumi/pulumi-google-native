@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// The alias kind.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind>? Kind { get; set; }
 
         /// <summary>
         /// The alias name.

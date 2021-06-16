@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getIndex";
 export * from "./index_";
 
+// Export enums:
+export * from "../../types/enums/datastore/v1";
+
 // Import resources to register:
 import { Index } from "./index_";
 

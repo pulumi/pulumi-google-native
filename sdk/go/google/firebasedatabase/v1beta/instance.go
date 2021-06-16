@@ -118,9 +118,9 @@ type InstanceArgs struct {
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project pulumi.StringInput
 	// The database's lifecycle state. Read-only.
-	State pulumi.StringPtrInput
+	State *InstanceStateEnum
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type         pulumi.StringPtrInput
+	Type         *InstanceType
 	ValidateOnly pulumi.StringPtrInput
 }
 

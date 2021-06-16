@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         /// State of the instance.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.InstanceState>? State { get; set; }
 
         public InstanceArgs()
         {

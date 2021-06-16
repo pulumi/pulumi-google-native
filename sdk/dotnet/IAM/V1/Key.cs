@@ -118,13 +118,13 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
         /// </summary>
         [Input("keyAlgorithm")]
-        public Input<string>? KeyAlgorithm { get; set; }
+        public Input<Pulumi.GoogleNative.IAM.V1.KeyKeyAlgorithm>? KeyAlgorithm { get; set; }
 
         /// <summary>
         /// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         /// </summary>
         [Input("privateKeyType")]
-        public Input<string>? PrivateKeyType { get; set; }
+        public Input<Pulumi.GoogleNative.IAM.V1.KeyPrivateKeyType>? PrivateKeyType { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

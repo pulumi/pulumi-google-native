@@ -36,11 +36,11 @@ type ArgumentInput interface {
 // Input/output argument of a function or a stored procedure.
 type ArgumentArgs struct {
 	// Optional. Defaults to FIXED_TYPE.
-	ArgumentKind pulumi.StringPtrInput `pulumi:"argumentKind"`
+	ArgumentKind *ArgumentArgumentKind `pulumi:"argumentKind"`
 	// Required unless argument_kind = ANY_TYPE.
 	DataType StandardSqlDataTypePtrInput `pulumi:"dataType"`
 	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	Mode *ArgumentMode `pulumi:"mode"`
 	// Optional. The name of this argument. Can be absent for function return argument.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -506,7 +506,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -22209,7 +22209,7 @@ type StandardSqlDataTypeArgs struct {
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypePtrInput `pulumi:"structType"`
 	// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-	TypeKind pulumi.StringPtrInput `pulumi:"typeKind"`
+	TypeKind *StandardSqlDataTypeTypeKind `pulumi:"typeKind"`
 }
 
 func (StandardSqlDataTypeArgs) ElementType() reflect.Type {

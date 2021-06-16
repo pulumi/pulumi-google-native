@@ -150,7 +150,7 @@ type DocumentArgs struct {
 	EnableAutoReload pulumi.BoolPtrInput
 	KnowledgeBaseId  pulumi.StringInput
 	// Required. The knowledge type of document content.
-	KnowledgeTypes pulumi.StringArrayInput
+	KnowledgeTypes DocumentKnowledgeTypesItemArrayInput
 	Location       pulumi.StringInput
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata pulumi.StringMapInput

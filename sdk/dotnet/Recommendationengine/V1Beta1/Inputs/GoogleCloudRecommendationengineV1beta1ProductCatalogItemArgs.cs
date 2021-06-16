@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         /// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
         /// </summary>
         [Input("stockState")]
-        public Input<string>? StockState { get; set; }
+        public Input<Pulumi.GoogleNative.Recommendationengine.V1Beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState>? StockState { get; set; }
 
         public GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs()
         {

@@ -19,13 +19,13 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         /// Trusted attributes supplied by the IAM system.
         /// </summary>
         [Input("iam")]
-        public Input<string>? Iam { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1.ConditionIam>? Iam { get; set; }
 
         /// <summary>
         /// An operator to apply the subject with.
         /// </summary>
         [Input("op")]
-        public Input<string>? Op { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1.ConditionOp>? Op { get; set; }
 
         /// <summary>
         /// Trusted attributes discharged by the service.
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
         /// </summary>
         [Input("sys")]
-        public Input<string>? Sys { get; set; }
+        public Input<Pulumi.GoogleNative.GameServices.V1.ConditionSys>? Sys { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ExternalVpnGatewayArgs', 'ExternalVpnGateway']
@@ -24,7 +25,7 @@ class ExternalVpnGatewayArgs:
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input['ExternalVpnGatewayRedundancyType']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
@@ -39,7 +40,7 @@ class ExternalVpnGatewayArgs:
                To see the latest fingerprint, make a get() request to retrieve an ExternalVpnGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
+        :param pulumi.Input['ExternalVpnGatewayRedundancyType'] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         pulumi.set(__self__, "project", project)
@@ -175,14 +176,14 @@ class ExternalVpnGatewayArgs:
 
     @property
     @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[pulumi.Input[str]]:
+    def redundancy_type(self) -> Optional[pulumi.Input['ExternalVpnGatewayRedundancyType']]:
         """
         Indicates the user-supplied redundancy type of this external VPN gateway.
         """
         return pulumi.get(self, "redundancy_type")
 
     @redundancy_type.setter
-    def redundancy_type(self, value: Optional[pulumi.Input[str]]):
+    def redundancy_type(self, value: Optional[pulumi.Input['ExternalVpnGatewayRedundancyType']]):
         pulumi.set(self, "redundancy_type", value)
 
     @property
@@ -221,7 +222,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input['ExternalVpnGatewayRedundancyType']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -240,7 +241,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                To see the latest fingerprint, make a get() request to retrieve an ExternalVpnGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
+        :param pulumi.Input['ExternalVpnGatewayRedundancyType'] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         ...
@@ -276,7 +277,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 redundancy_type: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input['ExternalVpnGatewayRedundancyType']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):

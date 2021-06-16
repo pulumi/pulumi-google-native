@@ -16,6 +16,9 @@ export * from "./occurrence";
 export * from "./occurrenceIamPolicy";
 export * from "./providerNoteIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/containeranalysis/v1alpha1";
+
 // Import resources to register:
 import { Note } from "./note";
 import { NoteIamPolicy } from "./noteIamPolicy";

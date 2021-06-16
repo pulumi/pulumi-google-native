@@ -244,7 +244,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         ///  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
         /// </summary>
         [Input("backendType")]
-        public Input<string>? BackendType { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceBackendType>? BackendType { get; set; }
 
         /// <summary>
         /// Connection name of the Cloud SQL instance used in connection strings.
@@ -262,7 +262,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         /// </summary>
         [Input("databaseVersion")]
-        public Input<string>? DatabaseVersion { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceDatabaseVersion>? DatabaseVersion { get; set; }
 
         /// <summary>
         /// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
@@ -292,7 +292,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         /// </summary>
         [Input("instanceType")]
-        public Input<string>? InstanceType { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceInstanceType>? InstanceType { get; set; }
 
         [Input("ipAddresses")]
         private InputList<Inputs.IpMappingArgs>? _ipAddresses;
@@ -424,17 +424,17 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceState>? State { get; set; }
 
         [Input("suspensionReason")]
-        private InputList<string>? _suspensionReason;
+        private InputList<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceSuspensionReasonItem>? _suspensionReason;
 
         /// <summary>
         /// If the instance state is SUSPENDED, the reason for the suspension.
         /// </summary>
-        public InputList<string> SuspensionReason
+        public InputList<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceSuspensionReasonItem> SuspensionReason
         {
-            get => _suspensionReason ?? (_suspensionReason = new InputList<string>());
+            get => _suspensionReason ?? (_suspensionReason = new InputList<Pulumi.GoogleNative.SQLAdmin.V1Beta4.InstanceSuspensionReasonItem>());
             set => _suspensionReason = value;
         }
 

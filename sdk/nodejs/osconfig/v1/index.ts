@@ -8,6 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./getPatchDeployment";
 export * from "./patchDeployment";
 
+// Export enums:
+export * from "../../types/enums/osconfig/v1";
+
 // Import resources to register:
 import { PatchDeployment } from "./patchDeployment";
 

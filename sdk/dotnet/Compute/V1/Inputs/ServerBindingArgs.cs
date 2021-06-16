@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class ServerBindingArgs : Pulumi.ResourceArgs
     {
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.V1.ServerBindingType>? Type { get; set; }
 
         public ServerBindingArgs()
         {

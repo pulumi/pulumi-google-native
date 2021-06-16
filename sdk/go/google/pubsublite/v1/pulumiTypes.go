@@ -336,7 +336,7 @@ type DeliveryConfigInput interface {
 // The settings for a subscription's message delivery.
 type DeliveryConfigArgs struct {
 	// The DeliveryRequirement for this subscription.
-	DeliveryRequirement pulumi.StringPtrInput `pulumi:"deliveryRequirement"`
+	DeliveryRequirement *DeliveryConfigDeliveryRequirement `pulumi:"deliveryRequirement"`
 }
 
 func (DeliveryConfigArgs) ElementType() reflect.Type {

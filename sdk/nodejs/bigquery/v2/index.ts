@@ -18,6 +18,9 @@ export * from "./rowAccessPolicyIamPolicy";
 export * from "./table";
 export * from "./tableIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/bigquery/v2";
+
 // Import resources to register:
 import { Dataset } from "./dataset";
 import { Job } from "./job";

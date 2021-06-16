@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -191,7 +191,7 @@ export interface TaskArgs {
     /**
      * The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
      */
-    responseView?: pulumi.Input<string>;
+    responseView?: pulumi.Input<enums.cloudtasks.v2beta3.TaskResponseView>;
     /**
      * The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
      */
@@ -199,5 +199,5 @@ export interface TaskArgs {
     /**
      * The view specifies which subset of the Task has been returned.
      */
-    view?: pulumi.Input<string>;
+    view?: pulumi.Input<enums.cloudtasks.v2beta3.TaskView>;
 }

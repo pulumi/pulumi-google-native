@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Inputs
         /// Type of the Cloud SQL database.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.BigQueryConnection.V1Beta1.CloudSqlPropertiesType>? Type { get; set; }
 
         public CloudSqlPropertiesArgs()
         {

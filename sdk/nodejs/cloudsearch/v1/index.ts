@@ -10,6 +10,9 @@ export * from "./getDataSource";
 export * from "./getSearchApplication";
 export * from "./searchApplication";
 
+// Export enums:
+export * from "../../types/enums/cloudsearch/v1";
+
 // Import resources to register:
 import { DataSource } from "./dataSource";
 import { SearchApplication } from "./searchApplication";

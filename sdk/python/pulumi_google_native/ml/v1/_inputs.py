@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs',
@@ -384,11 +385,11 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs:
 @pulumi.input_type
 class GoogleCloudMlV1_StudyConfig_MetricSpecArgs:
     def __init__(__self__, *,
-                 goal: Optional[pulumi.Input[str]] = None,
+                 goal: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_MetricSpecGoal']] = None,
                  metric: Optional[pulumi.Input[str]] = None):
         """
         Represents a metric to optimize.
-        :param pulumi.Input[str] goal: Required. The optimization goal of the metric.
+        :param pulumi.Input['GoogleCloudMlV1_StudyConfig_MetricSpecGoal'] goal: Required. The optimization goal of the metric.
         :param pulumi.Input[str] metric: Required. The name of the metric.
         """
         if goal is not None:
@@ -398,14 +399,14 @@ class GoogleCloudMlV1_StudyConfig_MetricSpecArgs:
 
     @property
     @pulumi.getter
-    def goal(self) -> Optional[pulumi.Input[str]]:
+    def goal(self) -> Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_MetricSpecGoal']]:
         """
         Required. The optimization goal of the metric.
         """
         return pulumi.get(self, "goal")
 
     @goal.setter
-    def goal(self, value: Optional[pulumi.Input[str]]):
+    def goal(self, value: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_MetricSpecGoal']]):
         pulumi.set(self, "goal", value)
 
     @property
@@ -433,8 +434,8 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecArgs:
                  parent_categorical_values: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs']] = None,
                  parent_discrete_values: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs']] = None,
                  parent_int_values: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs']] = None,
-                 scale_type: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 scale_type: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType']] = None,
+                 type: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecType']] = None):
         """
         Represents a single parameter to optimize.
         :param pulumi.Input['GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs'] categorical_value_spec: The value spec for a 'CATEGORICAL' parameter.
@@ -443,8 +444,8 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecArgs:
         :param pulumi.Input['GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs'] double_value_spec: The value spec for a 'DOUBLE' parameter.
         :param pulumi.Input['GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs'] integer_value_spec: The value spec for an 'INTEGER' parameter.
         :param pulumi.Input[str] parameter: Required. The parameter name must be unique amongst all ParameterSpecs.
-        :param pulumi.Input[str] scale_type: How the parameter should be scaled. Leave unset for categorical parameters.
-        :param pulumi.Input[str] type: Required. The type of the parameter.
+        :param pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType'] scale_type: How the parameter should be scaled. Leave unset for categorical parameters.
+        :param pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecType'] type: Required. The type of the parameter.
         """
         if categorical_value_spec is not None:
             pulumi.set(__self__, "categorical_value_spec", categorical_value_spec)
@@ -570,26 +571,26 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecArgs:
 
     @property
     @pulumi.getter(name="scaleType")
-    def scale_type(self) -> Optional[pulumi.Input[str]]:
+    def scale_type(self) -> Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType']]:
         """
         How the parameter should be scaled. Leave unset for categorical parameters.
         """
         return pulumi.get(self, "scale_type")
 
     @scale_type.setter
-    def scale_type(self, value: Optional[pulumi.Input[str]]):
+    def scale_type(self, value: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType']]):
         pulumi.set(self, "scale_type", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecType']]:
         """
         Required. The type of the parameter.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecType']]):
         pulumi.set(self, "type", value)
 
 
@@ -669,11 +670,11 @@ class GoogleCloudMlV1_Trial_ParameterArgs:
 class GoogleCloudMlV1__AcceleratorConfigArgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigType']] = None):
         """
         Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
         :param pulumi.Input[str] count: The number of accelerators to attach to each machine running the job.
-        :param pulumi.Input[str] type: The type of accelerator to use.
+        :param pulumi.Input['GoogleCloudMlV1__AcceleratorConfigType'] type: The type of accelerator to use.
         """
         if count is not None:
             pulumi.set(__self__, "count", count)
@@ -694,14 +695,14 @@ class GoogleCloudMlV1__AcceleratorConfigArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigType']]:
         """
         The type of accelerator to use.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1147,7 +1148,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
                  hyperparameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_trial_stopped_early: Optional[pulumi.Input[bool]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterOutputState']] = None,
                  trial_id: Optional[pulumi.Input[str]] = None):
         """
         Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
@@ -1158,7 +1159,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] hyperparameters: The hyperparameters given to this trial.
         :param pulumi.Input[bool] is_trial_stopped_early: True if the trial is stopped early.
         :param pulumi.Input[str] start_time: Start time for the trial.
-        :param pulumi.Input[str] state: The detailed state of the trial.
+        :param pulumi.Input['GoogleCloudMlV1__HyperparameterOutputState'] state: The detailed state of the trial.
         :param pulumi.Input[str] trial_id: The trial id for these results.
         """
         if all_metrics is not None:
@@ -1266,14 +1267,14 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterOutputState']]:
         """
         The detailed state of the trial.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterOutputState']]):
         pulumi.set(self, "state", value)
 
     @property
@@ -1292,9 +1293,9 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
 @pulumi.input_type
 class GoogleCloudMlV1__HyperparameterSpecArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterSpecAlgorithm']] = None,
                  enable_trial_early_stopping: Optional[pulumi.Input[bool]] = None,
-                 goal: Optional[pulumi.Input[str]] = None,
+                 goal: Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterSpecGoal']] = None,
                  hyperparameter_metric_tag: Optional[pulumi.Input[str]] = None,
                  max_failed_trials: Optional[pulumi.Input[int]] = None,
                  max_parallel_trials: Optional[pulumi.Input[int]] = None,
@@ -1303,9 +1304,9 @@ class GoogleCloudMlV1__HyperparameterSpecArgs:
                  resume_previous_job_id: Optional[pulumi.Input[str]] = None):
         """
         Represents a set of hyperparameters to optimize.
-        :param pulumi.Input[str] algorithm: Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
+        :param pulumi.Input['GoogleCloudMlV1__HyperparameterSpecAlgorithm'] algorithm: Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
         :param pulumi.Input[bool] enable_trial_early_stopping: Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
-        :param pulumi.Input[str] goal: Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+        :param pulumi.Input['GoogleCloudMlV1__HyperparameterSpecGoal'] goal: Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         :param pulumi.Input[str] hyperparameter_metric_tag: Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
         :param pulumi.Input[int] max_failed_trials: Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
         :param pulumi.Input[int] max_parallel_trials: Optional. The number of training trials to run concurrently. You can reduce the time it takes to perform hyperparameter tuning by adding trials in parallel. However, each trail only benefits from the information gained in completed trials. That means that a trial does not get access to the results of trials running at the same time, which could reduce the quality of the overall optimization. Each trial will use the same scale tier and machine types. Defaults to one.
@@ -1334,14 +1335,14 @@ class GoogleCloudMlV1__HyperparameterSpecArgs:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterSpecAlgorithm']]:
         """
         Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterSpecAlgorithm']]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -1358,14 +1359,14 @@ class GoogleCloudMlV1__HyperparameterSpecArgs:
 
     @property
     @pulumi.getter
-    def goal(self) -> Optional[pulumi.Input[str]]:
+    def goal(self) -> Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterSpecGoal']]:
         """
         Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         """
         return pulumi.get(self, "goal")
 
     @goal.setter
-    def goal(self, value: Optional[pulumi.Input[str]]):
+    def goal(self, value: Optional[pulumi.Input['GoogleCloudMlV1__HyperparameterSpecGoal']]):
         pulumi.set(self, "goal", value)
 
     @property
@@ -1548,11 +1549,11 @@ class GoogleCloudMlV1__MeasurementArgs:
 @pulumi.input_type
 class GoogleCloudMlV1__MetricSpecArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input['GoogleCloudMlV1__MetricSpecName']] = None,
                  target: Optional[pulumi.Input[int]] = None):
         """
         MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
-        :param pulumi.Input[str] name: metric name.
+        :param pulumi.Input['GoogleCloudMlV1__MetricSpecName'] name: metric name.
         :param pulumi.Input[int] target: Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
         """
         if name is not None:
@@ -1562,14 +1563,14 @@ class GoogleCloudMlV1__MetricSpecArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> Optional[pulumi.Input['GoogleCloudMlV1__MetricSpecName']]:
         """
         metric name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: Optional[pulumi.Input['GoogleCloudMlV1__MetricSpecName']]):
         pulumi.set(self, "name", value)
 
     @property
@@ -1593,8 +1594,8 @@ class GoogleCloudMlV1__ParameterSpecArgs:
                  max_value: Optional[pulumi.Input[float]] = None,
                  min_value: Optional[pulumi.Input[float]] = None,
                  parameter_name: Optional[pulumi.Input[str]] = None,
-                 scale_type: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 scale_type: Optional[pulumi.Input['GoogleCloudMlV1__ParameterSpecScaleType']] = None,
+                 type: Optional[pulumi.Input['GoogleCloudMlV1__ParameterSpecType']] = None):
         """
         Represents a single hyperparameter to optimize.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categorical_values: Required if type is `CATEGORICAL`. The list of possible categories.
@@ -1602,8 +1603,8 @@ class GoogleCloudMlV1__ParameterSpecArgs:
         :param pulumi.Input[float] max_value: Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is `INTEGER`.
         :param pulumi.Input[float] min_value: Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
         :param pulumi.Input[str] parameter_name: Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
-        :param pulumi.Input[str] scale_type: Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
-        :param pulumi.Input[str] type: Required. The type of the parameter.
+        :param pulumi.Input['GoogleCloudMlV1__ParameterSpecScaleType'] scale_type: Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
+        :param pulumi.Input['GoogleCloudMlV1__ParameterSpecType'] type: Required. The type of the parameter.
         """
         if categorical_values is not None:
             pulumi.set(__self__, "categorical_values", categorical_values)
@@ -1682,26 +1683,26 @@ class GoogleCloudMlV1__ParameterSpecArgs:
 
     @property
     @pulumi.getter(name="scaleType")
-    def scale_type(self) -> Optional[pulumi.Input[str]]:
+    def scale_type(self) -> Optional[pulumi.Input['GoogleCloudMlV1__ParameterSpecScaleType']]:
         """
         Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
         """
         return pulumi.get(self, "scale_type")
 
     @scale_type.setter
-    def scale_type(self, value: Optional[pulumi.Input[str]]):
+    def scale_type(self, value: Optional[pulumi.Input['GoogleCloudMlV1__ParameterSpecScaleType']]):
         pulumi.set(self, "scale_type", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudMlV1__ParameterSpecType']]:
         """
         Required. The type of the parameter.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudMlV1__ParameterSpecType']]):
         pulumi.set(self, "type", value)
 
 
@@ -1709,11 +1710,11 @@ class GoogleCloudMlV1__ParameterSpecArgs:
 class GoogleCloudMlV1__PredictionInputArgs:
     def __init__(__self__, *,
                  batch_size: Optional[pulumi.Input[str]] = None,
-                 data_format: Optional[pulumi.Input[str]] = None,
+                 data_format: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputDataFormat']] = None,
                  input_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_worker_count: Optional[pulumi.Input[str]] = None,
                  model_name: Optional[pulumi.Input[str]] = None,
-                 output_data_format: Optional[pulumi.Input[str]] = None,
+                 output_data_format: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputOutputDataFormat']] = None,
                  output_path: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -1723,11 +1724,11 @@ class GoogleCloudMlV1__PredictionInputArgs:
         """
         Represents input parameters for a prediction job.
         :param pulumi.Input[str] batch_size: Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
-        :param pulumi.Input[str] data_format: Required. The format of the input data files.
+        :param pulumi.Input['GoogleCloudMlV1__PredictionInputDataFormat'] data_format: Required. The format of the input data files.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_paths: Required. The Cloud Storage location of the input data files. May contain wildcards.
         :param pulumi.Input[str] max_worker_count: Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
         :param pulumi.Input[str] model_name: Use this field if you want to use the default version for the specified model. The string must use the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
-        :param pulumi.Input[str] output_data_format: Optional. Format of the output data files, defaults to JSON.
+        :param pulumi.Input['GoogleCloudMlV1__PredictionInputOutputDataFormat'] output_data_format: Optional. Format of the output data files, defaults to JSON.
         :param pulumi.Input[str] output_path: Required. The output Google Cloud Storage location.
         :param pulumi.Input[str] region: Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
         :param pulumi.Input[str] runtime_version: Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
@@ -1774,14 +1775,14 @@ class GoogleCloudMlV1__PredictionInputArgs:
 
     @property
     @pulumi.getter(name="dataFormat")
-    def data_format(self) -> Optional[pulumi.Input[str]]:
+    def data_format(self) -> Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputDataFormat']]:
         """
         Required. The format of the input data files.
         """
         return pulumi.get(self, "data_format")
 
     @data_format.setter
-    def data_format(self, value: Optional[pulumi.Input[str]]):
+    def data_format(self, value: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputDataFormat']]):
         pulumi.set(self, "data_format", value)
 
     @property
@@ -1822,14 +1823,14 @@ class GoogleCloudMlV1__PredictionInputArgs:
 
     @property
     @pulumi.getter(name="outputDataFormat")
-    def output_data_format(self) -> Optional[pulumi.Input[str]]:
+    def output_data_format(self) -> Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputOutputDataFormat']]:
         """
         Optional. Format of the output data files, defaults to JSON.
         """
         return pulumi.get(self, "output_data_format")
 
     @output_data_format.setter
-    def output_data_format(self, value: Optional[pulumi.Input[str]]):
+    def output_data_format(self, value: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputOutputDataFormat']]):
         pulumi.set(self, "output_data_format", value)
 
     @property
@@ -2228,13 +2229,13 @@ class GoogleCloudMlV1__SchedulingArgs:
 @pulumi.input_type
 class GoogleCloudMlV1__StudyConfigArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[str]] = None,
+                 algorithm: Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigAlgorithm']] = None,
                  automated_stopping_config: Optional[pulumi.Input['GoogleCloudMlV1__AutomatedStoppingConfigArgs']] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_StudyConfig_MetricSpecArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecArgs']]]] = None):
         """
         Represents configuration of a study.
-        :param pulumi.Input[str] algorithm: The search algorithm specified for the study.
+        :param pulumi.Input['GoogleCloudMlV1__StudyConfigAlgorithm'] algorithm: The search algorithm specified for the study.
         :param pulumi.Input['GoogleCloudMlV1__AutomatedStoppingConfigArgs'] automated_stopping_config: Configuration for automated stopping of unpromising Trials.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_StudyConfig_MetricSpecArgs']]] metrics: Metric specs for the study.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_StudyConfig_ParameterSpecArgs']]] parameters: Required. The set of parameters to tune.
@@ -2250,14 +2251,14 @@ class GoogleCloudMlV1__StudyConfigArgs:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[str]]:
+    def algorithm(self) -> Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigAlgorithm']]:
         """
         The search algorithm specified for the study.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[str]]):
+    def algorithm(self, value: Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigAlgorithm']]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -2318,7 +2319,7 @@ class GoogleCloudMlV1__TrainingInputArgs:
                  python_version: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
-                 scale_tier: Optional[pulumi.Input[str]] = None,
+                 scale_tier: Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier']] = None,
                  scheduling: Optional[pulumi.Input['GoogleCloudMlV1__SchedulingArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  use_chief_in_tf_config: Optional[pulumi.Input[bool]] = None,
@@ -2345,7 +2346,7 @@ class GoogleCloudMlV1__TrainingInputArgs:
         :param pulumi.Input[str] python_version: Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         :param pulumi.Input[str] region: Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         :param pulumi.Input[str] runtime_version: Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
-        :param pulumi.Input[str] scale_tier: Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+        :param pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier'] scale_tier: Required. Specifies the machine types, the number of replicas for workers and parameter servers.
         :param pulumi.Input['GoogleCloudMlV1__SchedulingArgs'] scheduling: Optional. Scheduling options for a training job.
         :param pulumi.Input[str] service_account: Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
         :param pulumi.Input[bool] use_chief_in_tf_config: Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment variable when training with a custom container. Defaults to `false`. [Learn more about this field.](/ai-platform/training/docs/distributed-training-details#chief-versus-master) This field has no effect for training jobs that don't use a custom container.
@@ -2622,14 +2623,14 @@ class GoogleCloudMlV1__TrainingInputArgs:
 
     @property
     @pulumi.getter(name="scaleTier")
-    def scale_tier(self) -> Optional[pulumi.Input[str]]:
+    def scale_tier(self) -> Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier']]:
         """
         Required. Specifies the machine types, the number of replicas for workers and parameter servers.
         """
         return pulumi.get(self, "scale_tier")
 
     @scale_tier.setter
-    def scale_tier(self, value: Optional[pulumi.Input[str]]):
+    def scale_tier(self, value: Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier']]):
         pulumi.set(self, "scale_tier", value)
 
     @property
@@ -2837,7 +2838,7 @@ class GoogleCloudMlV1__VersionArgs:
                  error_message: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  explanation_config: Optional[pulumi.Input['GoogleCloudMlV1__ExplanationConfigArgs']] = None,
-                 framework: Optional[pulumi.Input[str]] = None,
+                 framework: Optional[pulumi.Input['GoogleCloudMlV1__VersionFramework']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_use_time: Optional[pulumi.Input[str]] = None,
@@ -2851,7 +2852,7 @@ class GoogleCloudMlV1__VersionArgs:
                  routes: Optional[pulumi.Input['GoogleCloudMlV1__RouteMapArgs']] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input['GoogleCloudMlV1__VersionState']] = None):
         """
         Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.
         :param pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs'] accelerator_config: Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
@@ -2863,7 +2864,7 @@ class GoogleCloudMlV1__VersionArgs:
         :param pulumi.Input[str] error_message: The details of a failure or a cancellation.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
         :param pulumi.Input['GoogleCloudMlV1__ExplanationConfigArgs'] explanation_config: Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
-        :param pulumi.Input[str] framework: Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
+        :param pulumi.Input['GoogleCloudMlV1__VersionFramework'] framework: Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
         :param pulumi.Input[bool] is_default: If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input[str] last_use_time: The time the version was last used for prediction.
@@ -2877,7 +2878,7 @@ class GoogleCloudMlV1__VersionArgs:
         :param pulumi.Input['GoogleCloudMlV1__RouteMapArgs'] routes: Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
         :param pulumi.Input[str] runtime_version: Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-        :param pulumi.Input[str] state: The state of a version.
+        :param pulumi.Input['GoogleCloudMlV1__VersionState'] state: The state of a version.
         """
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -3038,14 +3039,14 @@ class GoogleCloudMlV1__VersionArgs:
 
     @property
     @pulumi.getter
-    def framework(self) -> Optional[pulumi.Input[str]]:
+    def framework(self) -> Optional[pulumi.Input['GoogleCloudMlV1__VersionFramework']]:
         """
         Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
         """
         return pulumi.get(self, "framework")
 
     @framework.setter
-    def framework(self, value: Optional[pulumi.Input[str]]):
+    def framework(self, value: Optional[pulumi.Input['GoogleCloudMlV1__VersionFramework']]):
         pulumi.set(self, "framework", value)
 
     @property
@@ -3206,14 +3207,14 @@ class GoogleCloudMlV1__VersionArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input['GoogleCloudMlV1__VersionState']]:
         """
         The state of a version.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input['GoogleCloudMlV1__VersionState']]):
         pulumi.set(self, "state", value)
 
 
@@ -3285,11 +3286,11 @@ class GoogleIamV1__AuditConfigArgs:
 class GoogleIamV1__AuditLogConfigArgs:
     def __init__(__self__, *,
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_type: Optional[pulumi.Input[str]] = None):
+                 log_type: Optional[pulumi.Input['GoogleIamV1__AuditLogConfigLogType']] = None):
         """
         Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param pulumi.Input[str] log_type: The log type that this config enables.
+        :param pulumi.Input['GoogleIamV1__AuditLogConfigLogType'] log_type: The log type that this config enables.
         """
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -3310,14 +3311,14 @@ class GoogleIamV1__AuditLogConfigArgs:
 
     @property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[str]]:
+    def log_type(self) -> Optional[pulumi.Input['GoogleIamV1__AuditLogConfigLogType']]:
         """
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[str]]):
+    def log_type(self, value: Optional[pulumi.Input['GoogleIamV1__AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
 
 

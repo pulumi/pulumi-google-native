@@ -285,7 +285,7 @@ type FunctionArgs struct {
 	// An HTTPS endpoint type of source that can be triggered via URL.
 	HttpsTrigger HttpsTriggerPtrInput
 	// The ingress settings for the function, controlling what traffic can reach it.
-	IngressSettings pulumi.StringPtrInput
+	IngressSettings *FunctionIngressSettings
 	// Labels associated with this Cloud Function.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
@@ -313,7 +313,7 @@ type FunctionArgs struct {
 	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
 	VpcConnector pulumi.StringPtrInput
 	// The egress settings for the connector, controlling what traffic is diverted through it.
-	VpcConnectorEgressSettings pulumi.StringPtrInput
+	VpcConnectorEgressSettings *FunctionVpcConnectorEgressSettings
 }
 
 func (FunctionArgs) ElementType() reflect.Type {

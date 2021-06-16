@@ -28,6 +28,9 @@ export * from "./regionWorkflowTemplateIamPolicy";
 export * from "./workflowTemplate";
 export * from "./workflowTemplateIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/dataproc/v1beta2";
+
 // Import resources to register:
 import { AutoscalingPolicy } from "./autoscalingPolicy";
 import { AutoscalingPolicyIamPolicy } from "./autoscalingPolicyIamPolicy";

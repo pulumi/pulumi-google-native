@@ -25,25 +25,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// Specifies network collocation
         /// </summary>
         [Input("collocation")]
-        public Input<string>? Collocation { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyCollocation>? Collocation { get; set; }
 
         /// <summary>
         /// Specifies network locality
         /// </summary>
         [Input("locality")]
-        public Input<string>? Locality { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyLocality>? Locality { get; set; }
 
         /// <summary>
         /// Scope specifies the availability domain to which the VMs should be spread.
         /// </summary>
         [Input("scope")]
-        public Input<string>? Scope { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyScope>? Scope { get; set; }
 
         /// <summary>
         /// Specifies instances to hosts placement relationship
         /// </summary>
         [Input("style")]
-        public Input<string>? Style { get; set; }
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyStyle>? Style { get; set; }
 
         /// <summary>
         /// Number of vms in this placement group

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// Type of this accelerator.
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public Input<Pulumi.GoogleNative.Notebooks.V1.SchedulerAcceleratorConfigType>? Type { get; set; }
 
         public SchedulerAcceleratorConfigArgs()
         {

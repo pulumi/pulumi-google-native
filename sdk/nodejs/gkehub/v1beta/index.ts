@@ -12,6 +12,9 @@ export * from "./getFeatureIamPolicy";
 export * from "./getMembershipIamPolicy";
 export * from "./membershipIamPolicy";
 
+// Export enums:
+export * from "../../types/enums/gkehub/v1beta";
+
 // Import resources to register:
 import { Feature } from "./feature";
 import { FeatureIamPolicy } from "./featureIamPolicy";

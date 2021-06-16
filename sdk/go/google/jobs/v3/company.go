@@ -190,7 +190,7 @@ type CompanyArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Optional. The employer's company size.
-	Size pulumi.StringPtrInput
+	Size *CompanySize
 	// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
 	Suspended pulumi.BoolPtrInput
 	// Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.

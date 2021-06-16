@@ -5,6 +5,7 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .channel_partner_link import *
 from .customer import *
 from .entitlement import *

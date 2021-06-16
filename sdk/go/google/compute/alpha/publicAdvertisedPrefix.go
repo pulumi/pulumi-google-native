@@ -200,7 +200,7 @@ type PublicAdvertisedPrefixArgs struct {
 	// [Output Only] The shared secret to be used for reverse DNS verification.
 	SharedSecret pulumi.StringPtrInput
 	// The status of the public advertised prefix.
-	Status pulumi.StringPtrInput
+	Status *PublicAdvertisedPrefixStatus
 }
 
 func (PublicAdvertisedPrefixArgs) ElementType() reflect.Type {

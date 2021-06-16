@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         /// The state of the index. Output only.
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public Input<Pulumi.GoogleNative.Firestore.V1Beta1.IndexState>? State { get; set; }
 
         public IndexArgs()
         {

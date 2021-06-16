@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = [
     'GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs',
@@ -147,7 +148,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs:
                  exact_price: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1ImageArgs']]]] = None,
                  price_range: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs']] = None,
-                 stock_state: Optional[pulumi.Input[str]] = None):
+                 stock_state: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState']] = None):
         """
         ProductCatalogItem captures item metadata specific to retail products.
         :param pulumi.Input[str] available_quantity: Optional. The available quantity of the item.
@@ -157,7 +158,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs:
         :param pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs'] exact_price: Optional. The exact product price.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1ImageArgs']]] images: Optional. Product images for the catalog item.
         :param pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs'] price_range: Optional. The product price range.
-        :param pulumi.Input[str] stock_state: Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
+        :param pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState'] stock_state: Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
         """
         if available_quantity is not None:
             pulumi.set(__self__, "available_quantity", available_quantity)
@@ -262,14 +263,14 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs:
 
     @property
     @pulumi.getter(name="stockState")
-    def stock_state(self) -> Optional[pulumi.Input[str]]:
+    def stock_state(self) -> Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState']]:
         """
         Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
         """
         return pulumi.get(self, "stock_state")
 
     @stock_state.setter
-    def stock_state(self, value: Optional[pulumi.Input[str]]):
+    def stock_state(self, value: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState']]):
         pulumi.set(self, "stock_state", value)
 
 

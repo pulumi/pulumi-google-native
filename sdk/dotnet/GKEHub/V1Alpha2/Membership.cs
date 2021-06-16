@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         /// Optional. The infrastructure type this Membership is running on.
         /// </summary>
         [Input("infrastructureType")]
-        public Input<string>? InfrastructureType { get; set; }
+        public Input<Pulumi.GoogleNative.GKEHub.V1Alpha2.MembershipInfrastructureType>? InfrastructureType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

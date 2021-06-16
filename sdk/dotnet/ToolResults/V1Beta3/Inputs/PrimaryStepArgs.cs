@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         /// Rollup test status of multiple steps that were run with the same configuration as a group.
         /// </summary>
         [Input("rollUp")]
-        public Input<string>? RollUp { get; set; }
+        public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.PrimaryStepRollUp>? RollUp { get; set; }
 
         public PrimaryStepArgs()
         {
