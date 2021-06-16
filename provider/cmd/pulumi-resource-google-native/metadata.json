@@ -39556,8 +39556,9 @@
                 }
             },
             "noDelete": true,
-            "idPath": "v1/transferJobs/{transferJobsId}",
+            "idPath": "v1/transferJobs/{transferJobsId}?projectId={projectId}",
             "idParams": {
+                "projectId": "project",
                 "transferJobsId": "name"
             }
         },

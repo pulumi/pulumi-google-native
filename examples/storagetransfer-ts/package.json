@@ -1,0 +1,13 @@
+{
+    "name": "storagetransfer-ts",
+    "devDependencies": {
+        "@types/node": "latest",
+        "@types/mime": "^2.0.0"
+    },
+    "dependencies": {
+        "@pulumi/gcp": "^5.8.0",
+        "@pulumi/pulumi": "^3.4.0",
+        "@pulumi/random": "4.0.0",
+        "mime": "^2.0.3"
+    }
+}

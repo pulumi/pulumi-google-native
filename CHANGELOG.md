@@ -10,6 +10,10 @@ New features:
 - Add enums to all SDKs for properties that are annotated as enums in discovery docs
   [#86](https://github.com/pulumi/pulumi-google-native/issues/86)
 
+Bug fixes:
+
+- Fix idpath for storagetransfer/v1:TransferJob [#116](https://github.com/pulumi/pulumi-google-native/pull/116)
+
 Breaking changes:
 
 - Some child types renamed to match the parent type name
