@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+(None)
+
+---
+
+## 0.4.0 (2021-06-16)
+
 New features:
 
 - Add a corresponding Get function for each resource
@@ -18,8 +24,6 @@ Breaking changes:
 
 - Some child types renamed to match the parent type name
   [#117](https://github.com/pulumi/pulumi-google-native/pull/117)
-
----
 
 ## 0.3.0 (2021-06-09)
 
