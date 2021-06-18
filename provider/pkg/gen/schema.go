@@ -139,7 +139,6 @@ will be introduced in minor version releases.`,
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
 		"packageReferences": map[string]string{
 			"Pulumi":                       "3.*",
-			"System.Collections.Immutable": "1.6.0",
 		},
 		"namespaces": csharpNamespaces,
 	})
