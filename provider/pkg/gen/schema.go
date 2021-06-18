@@ -32,13 +32,58 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Keywords:    []string{"pulumi", "google cloud"},
 		Homepage:    "https://pulumi.com",
 		Repository:  "https://github.com/pulumi/pulumi-google-native",
-		Config:      schema.ConfigSpec{},
+		Config:      schema.ConfigSpec{
+			Variables: map[string]schema.PropertySpec{
+				// Google Partner Number for User-Agent.
+				"partnerNumber": {
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+					Description: "A Google Partner Number to facilitate partner resource usage attribution.",
+				},
+				"disablePartnerNumber": {
+					TypeSpec:    schema.TypeSpec{Type: "boolean"},
+					Description: "This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.",
+				},
+				"appendUserAgent": {
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+					Description: "Additional user-agent string to append to the default one (<prod_name>/<ver>).",
+				},
+			},
+		},
 		Provider: schema.ResourceSpec{
 			ObjectTypeSpec: schema.ObjectTypeSpec{
 				Description: "The provider type for the Google Cloud package.",
 				Type:        "object",
 			},
-			InputProperties: map[string]schema.PropertySpec{},
+			InputProperties: map[string]schema.PropertySpec{
+				// Google Partner Number for User-Agent.
+				"partnerNumber": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					DefaultInfo: &schema.DefaultSpec{
+						Environment: []string{
+							"GOOGLE_PARTNER_NUMBER",
+						},
+					},
+					Description: "A Google Partner Number to facilitate partner resource usage attribution.",
+				},
+				"disablePartnerNumber": {
+					TypeSpec: schema.TypeSpec{Type: "boolean"},
+					DefaultInfo: &schema.DefaultSpec{
+						Environment: []string{
+							"GOOGLE_DISABLE_PARTNER_NUMBER",
+						},
+					},
+					Description: "This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.",
+				},
+				"appendUserAgent": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					DefaultInfo: &schema.DefaultSpec{
+						Environment: []string{
+							"GOOGLE_APPEND_USER_AGENT",
+						},
+					},
+					Description: "Additional user-agent string to append to the default one (<prod_name>/<ver>).",
+				},
+			},
 		},
 		Types:     map[string]schema.ComplexTypeSpec{},
 		Resources: map[string]schema.ResourceSpec{},

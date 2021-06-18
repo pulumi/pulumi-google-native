@@ -22,6 +22,15 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.AppendUserAgent == nil {
+		args.AppendUserAgent = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_APPEND_USER_AGENT").(string))
+	}
+	if args.DisablePartnerNumber == nil {
+		args.DisablePartnerNumber = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "GOOGLE_DISABLE_PARTNER_NUMBER").(bool))
+	}
+	if args.PartnerNumber == nil {
+		args.PartnerNumber = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PARTNER_NUMBER").(string))
+	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:google-native", name, args, &resource, opts...)
 	if err != nil {
@@ -31,10 +40,22 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Additional user-agent string to append to the default one (<prod_name>/<ver>).
+	AppendUserAgent *string `pulumi:"appendUserAgent"`
+	// This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+	DisablePartnerNumber *bool `pulumi:"disablePartnerNumber"`
+	// A Google Partner Number to facilitate partner resource usage attribution.
+	PartnerNumber *string `pulumi:"partnerNumber"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Additional user-agent string to append to the default one (<prod_name>/<ver>).
+	AppendUserAgent pulumi.StringPtrInput
+	// This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+	DisablePartnerNumber pulumi.BoolPtrInput
+	// A Google Partner Number to facilitate partner resource usage attribution.
+	PartnerNumber pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {

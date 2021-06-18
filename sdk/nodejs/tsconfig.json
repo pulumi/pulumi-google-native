@@ -937,6 +937,8 @@
         "compute/v1/urlMap.ts",
         "compute/v1/vpnGateway.ts",
         "compute/v1/vpnTunnel.ts",
+        "config/index.ts",
+        "config/vars.ts",
         "container/index.ts",
         "container/v1/cluster.ts",
         "container/v1/getCluster.ts",

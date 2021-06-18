@@ -38,6 +38,7 @@ if typing.TYPE_CHECKING:
     import pulumi_google_native.cloudtrace as cloudtrace
     import pulumi_google_native.composer as composer
     import pulumi_google_native.compute as compute
+    import pulumi_google_native.config as config
     import pulumi_google_native.container as container
     import pulumi_google_native.containeranalysis as containeranalysis
     import pulumi_google_native.datacatalog as datacatalog
@@ -138,6 +139,7 @@ else:
     cloudtrace = _utilities.lazy_import('pulumi_google_native.cloudtrace')
     composer = _utilities.lazy_import('pulumi_google_native.composer')
     compute = _utilities.lazy_import('pulumi_google_native.compute')
+    config = _utilities.lazy_import('pulumi_google_native.config')
     container = _utilities.lazy_import('pulumi_google_native.container')
     containeranalysis = _utilities.lazy_import('pulumi_google_native.containeranalysis')
     datacatalog = _utilities.lazy_import('pulumi_google_native.datacatalog')
