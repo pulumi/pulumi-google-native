@@ -60,10 +60,10 @@ func makeProvider(host *provider.HostClient, name, version string, schemaBytes [
 }
 
 // loadMetadata deserializes the provided compressed json byte array into a CloudAPIMetadata struct.
-func loadMetadata(azureAPIResourcesBytes []byte) (*resources.CloudAPIMetadata, error) {
+func loadMetadata(metadataBytes []byte) (*resources.CloudAPIMetadata, error) {
 	var resourceMap resources.CloudAPIMetadata
 
-	uncompressed, err := gzip.NewReader(bytes.NewReader(azureAPIResourcesBytes))
+	uncompressed, err := gzip.NewReader(bytes.NewReader(metadataBytes))
 	if err != nil {
 		return nil, errors.Wrap(err, "expand compressed metadata")
 	}
