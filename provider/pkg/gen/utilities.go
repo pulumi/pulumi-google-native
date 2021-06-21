@@ -29,7 +29,7 @@ func apiNameToSdkName(name string) string {
 
 // ToLowerCamel converts a string to lowerCamelCase.
 // The code is adopted from https://github.com/iancoleman/strcase but changed in several ways to handle
-// all the cases that are found in Azure in a most user-friendly way.
+// all the cases that are found in API specs in a most user-friendly way.
 func ToLowerCamel(s string) string {
 	if s == "" {
 		return s
