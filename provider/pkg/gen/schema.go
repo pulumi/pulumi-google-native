@@ -46,6 +46,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Language:  map[string]json.RawMessage{},
 	}
 	metadata := resources.CloudAPIMetadata{
+		Types:     map[string]resources.CloudAPIType{},
 		Resources: map[string]resources.CloudAPIResource{},
 		Functions: map[string]resources.CloudAPIFunction{},
 	}
@@ -138,7 +139,7 @@ will be introduced in minor version releases.`,
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
 		"packageReferences": map[string]string{
-			"Pulumi":                       "3.*",
+			"Pulumi": "3.*",
 		},
 		"namespaces": csharpNamespaces,
 	})
@@ -659,13 +660,29 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			Description: description,
 			TypeSpec:    *typeSpec,
 		}
-		apiProp := resources.CloudAPIProperty{}
+		apiProp := resources.CloudAPIProperty{
+			Ref:                  typeSpec.Ref,
+			Items:                g.itemTypeToProperty(typeSpec.Items),
+			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
+		}
 		if name != sdkName {
 			apiProp.SdkName = sdkName
 		}
 		result.properties[name] = apiProp
 	}
 	return &result, nil
+}
+
+func (g *packageGenerator) itemTypeToProperty(typ *schema.TypeSpec) *resources.CloudAPIProperty {
+	if typ == nil || typ.Ref == "pulumi.json#/Any" {
+		return nil
+	}
+
+	return &resources.CloudAPIProperty{
+		Ref:                  typ.Ref,
+		Items:                g.itemTypeToProperty(typ.Items),
+		AdditionalProperties: g.itemTypeToProperty(typ.AdditionalProperties),
+	}
 }
 
 func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
@@ -705,6 +722,9 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 				Required:    bag.requiredSpecs.SortedValues(),
 			},
 		}
+		g.metadata.Types[tok] = resources.CloudAPIType{
+			Properties: bag.properties,
+		}
 		return &schema.TypeSpec{
 			Type: "object",
 			Ref:  referencedTypeName,
@@ -737,6 +757,9 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 					Properties:  bag.specs,
 					Required:    bag.requiredSpecs.SortedValues(),
 				},
+			}
+			g.metadata.Types[tok] = resources.CloudAPIType{
+				Properties: bag.properties,
 			}
 		}
 

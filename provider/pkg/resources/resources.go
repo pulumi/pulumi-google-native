@@ -9,6 +9,7 @@ import (
 
 // CloudAPIMetadata is a collection of all resources and functions in the Google Cloud REST API.
 type CloudAPIMetadata struct {
+	Types     map[string]CloudAPIType     `json:"types"`
 	Resources map[string]CloudAPIResource `json:"resources"`
 	Functions map[string]CloudAPIFunction `json:"functions"`
 }
@@ -59,8 +60,16 @@ func CombineUrl(baseUrl, path string) string {
 
 // CloudAPIProperty is a property of a body of an API call payload.
 type CloudAPIProperty struct {
+	Ref                  string            `json:"$ref,omitempty"`
+	Items                *CloudAPIProperty `json:"items,omitempty"`
+	AdditionalProperties *CloudAPIProperty `json:"additionalProperties,omitempty"`
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists
 	// in the API payload but does not exist in the SDK.
 	Container string `json:"container,omitempty"`
 	SdkName   string `json:"sdkName,omitempty"`
+}
+
+// AzureAPIType represents the shape of an auxiliary type in the API.
+type CloudAPIType struct {
+	Properties map[string]CloudAPIProperty `json:"properties,omitempty"`
 }
