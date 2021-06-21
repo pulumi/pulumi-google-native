@@ -69,7 +69,7 @@ type CloudAPIProperty struct {
 	SdkName   string `json:"sdkName,omitempty"`
 }
 
-// AzureAPIType represents the shape of an auxiliary type in the API.
+// CloudAPIType represents the shape of an auxiliary type in the API.
 type CloudAPIType struct {
 	Properties map[string]CloudAPIProperty `json:"properties,omitempty"`
 }
