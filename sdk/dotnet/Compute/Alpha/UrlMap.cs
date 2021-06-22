@@ -195,14 +195,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a UrlMap.
-        /// </summary>
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
-        /// <summary>
         /// Specifies changes to request and response headers that need to take effect for the selected backendService.
         /// The headerAction specified here take effect after headerAction specified under pathMatcher.
         /// Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.

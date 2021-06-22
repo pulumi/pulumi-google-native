@@ -207,12 +207,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
-        /// </summary>
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
         [Input("httpFilters")]
         private InputList<string>? _httpFilters;
 

@@ -153,9 +153,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>

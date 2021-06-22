@@ -197,14 +197,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<bool>? EnableFlowLogs { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-        /// </summary>
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
-        /// <summary>
         /// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         /// </summary>
         [Input("gatewayAddress")]
