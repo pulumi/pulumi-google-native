@@ -25,7 +25,6 @@ class SubnetworkArgs:
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -64,9 +63,6 @@ class SubnetworkArgs:
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -109,8 +105,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "enable_l2", enable_l2)
         if external_ipv6_prefix is not None:
             pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if flow_sampling is not None:
             pulumi.set(__self__, "flow_sampling", flow_sampling)
         if gateway_address is not None:
@@ -266,20 +260,6 @@ class SubnetworkArgs:
     @external_ipv6_prefix.setter
     def external_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_ipv6_prefix", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="flowSampling")
@@ -559,7 +539,6 @@ class Subnetwork(pulumi.CustomResource):
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -603,9 +582,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -664,7 +640,6 @@ class Subnetwork(pulumi.CustomResource):
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -708,7 +683,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["enable_flow_logs"] = enable_flow_logs
             __props__.__dict__["enable_l2"] = enable_l2
             __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["flow_sampling"] = flow_sampling
             __props__.__dict__["gateway_address"] = gateway_address
             __props__.__dict__["id"] = id
@@ -737,6 +711,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["state"] = state
             __props__.__dict__["vlans"] = vlans
+            __props__.__dict__["fingerprint"] = None
         super(Subnetwork, __self__).__init__(
             'google-native:compute/alpha:Subnetwork',
             resource_name,

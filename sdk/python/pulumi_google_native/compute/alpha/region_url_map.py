@@ -23,7 +23,6 @@ class RegionUrlMapArgs:
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input['HttpHeaderActionArgs']] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['HostRuleArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -48,9 +47,6 @@ class RegionUrlMapArgs:
                If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
                Not supported when the URL map is bound to target gRPC proxy.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a UrlMap.
         :param pulumi.Input['HttpHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                The headerAction specified here take effect after headerAction specified under pathMatcher.
                Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
@@ -76,8 +72,6 @@ class RegionUrlMapArgs:
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if header_action is not None:
             pulumi.set(__self__, "header_action", header_action)
         if host_rules is not None:
@@ -184,20 +178,6 @@ class RegionUrlMapArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a UrlMap.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="headerAction")
@@ -319,7 +299,6 @@ class RegionUrlMap(pulumi.CustomResource):
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[pulumi.InputType['HttpRedirectActionArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input[pulumi.InputType['HttpHeaderActionArgs']]] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuleArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -349,9 +328,6 @@ class RegionUrlMap(pulumi.CustomResource):
                If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
                Not supported when the URL map is bound to target gRPC proxy.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a UrlMap.
         :param pulumi.Input[pulumi.InputType['HttpHeaderActionArgs']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
                The headerAction specified here take effect after headerAction specified under pathMatcher.
                Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
@@ -395,7 +371,6 @@ class RegionUrlMap(pulumi.CustomResource):
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[pulumi.InputType['HttpRedirectActionArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input[pulumi.InputType['HttpHeaderActionArgs']]] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuleArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -424,7 +399,6 @@ class RegionUrlMap(pulumi.CustomResource):
             __props__.__dict__["default_service"] = default_service
             __props__.__dict__["default_url_redirect"] = default_url_redirect
             __props__.__dict__["description"] = description
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["header_action"] = header_action
             __props__.__dict__["host_rules"] = host_rules
             __props__.__dict__["id"] = id
@@ -440,6 +414,7 @@ class RegionUrlMap(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["tests"] = tests
+            __props__.__dict__["fingerprint"] = None
         super(RegionUrlMap, __self__).__init__(
             'google-native:compute/alpha:RegionUrlMap',
             resource_name,

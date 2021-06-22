@@ -21,7 +21,6 @@ class SslPolicyArgs:
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
@@ -37,9 +36,6 @@ class SslPolicyArgs:
                - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_features: [Output Only] The list of features enabled in the SSL policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
         :param pulumi.Input['SslPolicyMinTlsVersion'] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -57,8 +53,6 @@ class SslPolicyArgs:
             pulumi.set(__self__, "description", description)
         if enabled_features is not None:
             pulumi.set(__self__, "enabled_features", enabled_features)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if kind is not None:
@@ -133,20 +127,6 @@ class SslPolicyArgs:
     @enabled_features.setter
     def enabled_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "enabled_features", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter
@@ -251,7 +231,6 @@ class SslPolicy(pulumi.CustomResource):
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
@@ -272,9 +251,6 @@ class SslPolicy(pulumi.CustomResource):
                - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_features: [Output Only] The list of features enabled in the SSL policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
         :param pulumi.Input['SslPolicyMinTlsVersion'] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -311,7 +287,6 @@ class SslPolicy(pulumi.CustomResource):
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
@@ -337,7 +312,6 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["custom_features"] = custom_features
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled_features"] = enabled_features
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["min_tls_version"] = min_tls_version
@@ -349,6 +323,7 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["warnings"] = warnings
+            __props__.__dict__["fingerprint"] = None
         super(SslPolicy, __self__).__init__(
             'google-native:compute/beta:SslPolicy',
             resource_name,
