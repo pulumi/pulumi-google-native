@@ -3,7 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+New features:
+
+- Populate fingerprint properties automatically
+  [#126](https://github.com/pulumi/pulumi-google-native/issues/126)
 
 ---
 

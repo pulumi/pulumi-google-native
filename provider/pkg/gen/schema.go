@@ -695,20 +695,25 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			return nil, err
 		}
 
-		if prop.Required || isOutput {
-			result.requiredSpecs.Add(sdkName)
+		isCopyFromOutput := g.isCopyFromOutput(name) && !isOutput
+		if !isCopyFromOutput {
+			if prop.Required || isOutput {
+				result.requiredSpecs.Add(sdkName)
+			}
+
+			description := strings.TrimPrefix(prop.Description, "Output only. ")
+
+			result.specs[sdkName] = schema.PropertySpec{
+				Description: description,
+				TypeSpec:    *typeSpec,
+			}
 		}
 
-		description := strings.TrimPrefix(prop.Description, "Output only. ")
-
-		result.specs[sdkName] = schema.PropertySpec{
-			Description: description,
-			TypeSpec:    *typeSpec,
-		}
 		apiProp := resources.CloudAPIProperty{
 			Ref:                  typeSpec.Ref,
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
+			CopyFromOutputs:      isCopyFromOutput,
 		}
 		if name != sdkName {
 			apiProp.SdkName = sdkName
@@ -716,6 +721,19 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		result.properties[name] = apiProp
 	}
 	return &result, nil
+}
+
+func (g *packageGenerator) isCopyFromOutput(propName string) bool {
+	mod := strings.Split(g.mod, "/")[0]
+	switch mod {
+	case "compute", "container", "deploymentmanager":
+		return strings.Contains(strings.ToLower(propName), "fingerprint")
+	default:
+		// Some other modules contain properties called "fingerprint" or similar but that need to be
+		// populated manually by users, e.g. to provide a hash of a file or a certificate. Therefore,
+		// we maintain the opt-in list of modules above and treat the rest as normal inputs.
+		return false
+	}
 }
 
 func (g *packageGenerator) itemTypeToProperty(typ *schema.TypeSpec) *resources.CloudAPIProperty {
