@@ -12,6 +12,7 @@ import (
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/version"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -27,6 +28,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"runtime/debug"
 	"strings"
 	"time"
 )
@@ -105,12 +107,18 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		}
 	}
 
-	config := credentialsConfig{
+	appendUserAgent := p.getConfig("appendUserAgent", "GOOGLE_APPEND_USER_AGENT")
+
+	config := httpClientConfig{
 		Credentials:                        p.getConfig("credentials", "GOOGLE_CREDENTIALS"),
 		AccessToken:                        p.getConfig("accessToken", "GOOGLE_OAUTH_ACCESS_TOKEN"),
 		ImpersonateServiceAccount:          p.getConfig("impersonateServiceAccount", "GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"),
 		ImpersonateServiceAccountDelegates: impersonateServiceAccountDelegates,
 		Scopes:                             scopes,
+		PulumiVersion:                      getPulumiVersion(),
+		ProviderVersion:                    version.Version,
+		PartnerName:                        p.getPartnerName(),
+		AppendUserAgent:                    appendUserAgent,
 	}
 
 	client, err := newGoogleHttpClient(ctx, config)
@@ -631,6 +639,32 @@ func (p *googleCloudProvider) getConfig(configName, envName string) string {
 	}
 
 	return os.Getenv(envName)
+}
+
+func (p *googleCloudProvider) getPartnerName() string {
+	result := p.getConfig("partnerName", "GOOGLE_PARTNER_NAME")
+	if result != "" {
+		return result
+	} else {
+		disablePartner := p.getConfig("disablePartnerName", "GOOGLE_DISABLE_PARTNER_NAME")
+		if disablePartner == "true" {
+			return ""
+		}
+	}
+	return "Pulumi"
+}
+
+func getPulumiVersion() string {
+	if bi, ok := debug.ReadBuildInfo(); ok {
+		for _, dep := range bi.Deps {
+			if strings.HasPrefix(dep.Path, "github.com/pulumi/pulumi/pkg") {
+				return strings.TrimPrefix(dep.Version, "v")
+			}
+		}
+	}
+	// We should never get here but let's not panic and return something sensible if we do.
+	logging.V(4).Info("No Pulumi package version found, using '3' as the default version for user-agent")
+	return "3"
 }
 
 // checkpointObject puts inputs in the `__inputs` field of the state.

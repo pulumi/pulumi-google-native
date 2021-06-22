@@ -42,8 +42,29 @@ namespace Pulumi.GoogleNative
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional user-agent string to append to the default one (&lt;prod_name&gt;/&lt;ver&gt;).
+        /// </summary>
+        [Input("appendUserAgent")]
+        public Input<string>? AppendUserAgent { get; set; }
+
+        /// <summary>
+        /// This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
+        /// </summary>
+        [Input("disablePartnerName", json: true)]
+        public Input<bool>? DisablePartnerName { get; set; }
+
+        /// <summary>
+        /// A Google Partner Name to facilitate partner resource usage attribution.
+        /// </summary>
+        [Input("partnerName")]
+        public Input<string>? PartnerName { get; set; }
+
         public ProviderArgs()
         {
+            AppendUserAgent = Utilities.GetEnv("GOOGLE_APPEND_USER_AGENT");
+            DisablePartnerName = Utilities.GetEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME");
+            PartnerName = Utilities.GetEnv("GOOGLE_PARTNER_NAME");
         }
     }
 }

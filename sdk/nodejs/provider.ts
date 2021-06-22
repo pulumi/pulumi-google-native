@@ -34,6 +34,9 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            inputs["appendUserAgent"] = (args ? args.appendUserAgent : undefined) ?? utilities.getEnv("GOOGLE_APPEND_USER_AGENT");
+            inputs["disablePartnerName"] = pulumi.output((args ? args.disablePartnerName : undefined) ?? <any>utilities.getEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME")).apply(JSON.stringify);
+            inputs["partnerName"] = (args ? args.partnerName : undefined) ?? utilities.getEnv("GOOGLE_PARTNER_NAME");
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -46,4 +49,16 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Additional user-agent string to append to the default one (<prod_name>/<ver>).
+     */
+    appendUserAgent?: pulumi.Input<string>;
+    /**
+     * This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
+     */
+    disablePartnerName?: pulumi.Input<boolean>;
+    /**
+     * A Google Partner Name to facilitate partner resource usage attribution.
+     */
+    partnerName?: pulumi.Input<string>;
 }

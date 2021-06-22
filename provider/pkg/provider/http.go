@@ -52,31 +52,48 @@ func prettyPrintJsonLines(b []byte) string {
 }
 
 
-func newGoogleHttpClient(ctx context.Context, config credentialsConfig) (*googleHttpClient, error) {
+func newGoogleHttpClient(ctx context.Context, config httpClientConfig) (*googleHttpClient, error) {
 	client, err := newClient(ctx, config)
 	if err != nil {
 		return nil, err
 	}
 
-	return &googleHttpClient{http: client}, nil
+	partnerString := ""
+	if config.PartnerName != "" {
+		partnerString = fmt.Sprintf("GPN:%s; ", config.PartnerName)
+	}
+
+	userAgent := fmt.Sprintf("Pulumi/%s (%shttps://www.pulumi.com) pulumi-google-native/%s",
+		config.PulumiVersion, partnerString, config.ProviderVersion)
+
+	if config.AppendUserAgent != "" {
+		userAgent = fmt.Sprintf("%s %s", userAgent, config.AppendUserAgent)
+	}
+
+	return &googleHttpClient{http: client, userAgent: userAgent}, nil
 }
 
-type credentialsConfig struct {
+type httpClientConfig struct {
 	Credentials                        string
 	AccessToken                        string
 	ImpersonateServiceAccount          string
 	ImpersonateServiceAccountDelegates []string
 	Scopes                             []string
+	PulumiVersion                      string
+	ProviderVersion                    string
+	PartnerName                        string
+	AppendUserAgent                    string
 }
 
 type googleHttpClient struct {
 	http *http.Client
+	userAgent string
 }
 
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
 func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("User-Agent", "pulumi") // TODO: Pulumi UA https://github.com/pulumi/pulumi-google-native/issues/73
+	reqHeaders.Set("User-Agent", c.userAgent)
 	reqHeaders.Set("Content-Type", "application/json")
 
 	if timeout == 0 {
@@ -146,7 +163,7 @@ var defaultClientScopes = []string{
 	"https://www.googleapis.com/auth/userinfo.email",
 }
 
-func newClient(ctx context.Context, config credentialsConfig) (*http.Client, error) {
+func newClient(ctx context.Context, config httpClientConfig) (*http.Client, error) {
 	if len(config.Scopes) == 0 {
 		config.Scopes = defaultClientScopes
 	}
@@ -177,7 +194,7 @@ func newClient(ctx context.Context, config credentialsConfig) (*http.Client, err
 	return client, nil
 }
 
-func getCredentials(ctx context.Context, c credentialsConfig) (*google.Credentials, error) {
+func getCredentials(ctx context.Context, c httpClientConfig) (*google.Credentials, error) {
 	if c.AccessToken != "" {
 		contents, _, err := pathOrContents(c.AccessToken)
 		if err != nil {
