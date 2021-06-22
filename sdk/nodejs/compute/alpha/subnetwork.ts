@@ -74,7 +74,7 @@ export class Subnetwork extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
      */
@@ -188,7 +188,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             inputs["enableL2"] = args ? args.enableL2 : undefined;
             inputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["flowSampling"] = args ? args.flowSampling : undefined;
             inputs["gatewayAddress"] = args ? args.gatewayAddress : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -213,6 +212,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["stackType"] = args ? args.stackType : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["vlans"] = args ? args.vlans : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["aggregationInterval"] = undefined /*out*/;
             inputs["allowSubnetCidrRoutesOverlap"] = undefined /*out*/;
@@ -289,12 +289,6 @@ export interface SubnetworkArgs {
      * [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
      */
     externalIpv6Prefix?: pulumi.Input<string>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
      */

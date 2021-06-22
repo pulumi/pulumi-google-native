@@ -47,7 +47,7 @@ export class NodeGroup extends pulumi.CustomResource {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string>;
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
      */
@@ -110,7 +110,6 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -126,6 +125,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["size"] = args ? args.size : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["autoscalingPolicy"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -166,7 +166,6 @@ export interface NodeGroupArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

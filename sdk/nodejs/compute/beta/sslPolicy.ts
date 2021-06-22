@@ -57,7 +57,7 @@ export class SslPolicy extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
      */
@@ -101,7 +101,6 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["customFeatures"] = args ? args.customFeatures : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enabledFeatures"] = args ? args.enabledFeatures : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
@@ -111,6 +110,7 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["warnings"] = args ? args.warnings : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["customFeatures"] = undefined /*out*/;
@@ -152,12 +152,6 @@ export interface SslPolicyArgs {
      * [Output Only] The list of features enabled in the SSL policy.
      */
     enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

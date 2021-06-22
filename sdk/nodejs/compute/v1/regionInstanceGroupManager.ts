@@ -66,7 +66,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] The URL of the Instance Group resource.
      */
@@ -149,7 +149,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["currentActions"] = args ? args.currentActions : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
@@ -167,6 +166,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["versions"] = args ? args.versions : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["autoHealingPolicies"] = undefined /*out*/;
             inputs["baseInstanceName"] = undefined /*out*/;
@@ -225,12 +225,6 @@ export interface RegionInstanceGroupManagerArgs {
      * Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
      */
     distributionPolicy?: pulumi.Input<inputs.compute.v1.DistributionPolicyArgs>;
-    /**
-     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] A unique identifier for this resource type. The server generates this identifier.
      */

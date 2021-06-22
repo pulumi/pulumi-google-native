@@ -52,7 +52,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
      */
@@ -99,7 +99,6 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -110,6 +109,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
             inputs["status"] = args ? args.status : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -146,12 +146,6 @@ export interface PublicAdvertisedPrefixArgs {
      * The IPv4 address to be used for reverse DNS verification.
      */
     dnsVerificationIp?: pulumi.Input<string>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource type. The server generates this identifier.
      */

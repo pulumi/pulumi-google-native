@@ -67,7 +67,7 @@ export class UrlMap extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve a UrlMap.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for the selected backendService.
      * The headerAction specified here take effect after headerAction specified under pathMatcher.
@@ -124,7 +124,6 @@ export class UrlMap extends pulumi.CustomResource {
             inputs["defaultService"] = args ? args.defaultService : undefined;
             inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["headerAction"] = args ? args.headerAction : undefined;
             inputs["hostRules"] = args ? args.hostRules : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -136,6 +135,7 @@ export class UrlMap extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["tests"] = args ? args.tests : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["defaultRouteAction"] = undefined /*out*/;
@@ -190,12 +190,6 @@ export interface UrlMapArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a UrlMap.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for the selected backendService.
      * The headerAction specified here take effect after headerAction specified under pathMatcher.

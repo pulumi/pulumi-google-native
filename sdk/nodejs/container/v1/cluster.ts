@@ -118,7 +118,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The fingerprint of the set of labels for this cluster.
      */
-    public readonly labelFingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Configuration for the legacy ABAC authorization mode.
      */
@@ -265,7 +265,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["initialClusterVersion"] = args ? args.initialClusterVersion : undefined;
             inputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
-            inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["legacyAbac"] = args ? args.legacyAbac : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["locations"] = args ? args.locations : undefined;
@@ -295,6 +294,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["tpuIpv4CidrBlock"] = args ? args.tpuIpv4CidrBlock : undefined;
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
+            inputs["labelFingerprint"] = undefined /*out*/;
         } else {
             inputs["addonsConfig"] = undefined /*out*/;
             inputs["authenticatorGroupsConfig"] = undefined /*out*/;
@@ -436,10 +436,6 @@ export interface ClusterArgs {
      * Configuration for cluster IP allocation.
      */
     ipAllocationPolicy?: pulumi.Input<inputs.container.v1.IPAllocationPolicyArgs>;
-    /**
-     * The fingerprint of the set of labels for this cluster.
-     */
-    labelFingerprint?: pulumi.Input<string>;
     /**
      * Configuration for the legacy ABAC authorization mode.
      */

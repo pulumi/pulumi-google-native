@@ -70,7 +70,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
      */
@@ -129,7 +129,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -141,6 +140,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["targetService"] = args ? args.targetService : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["connectionPreference"] = undefined /*out*/;
@@ -203,10 +203,6 @@ export interface ServiceAttachmentArgs {
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource type. The server generates this identifier.
      */

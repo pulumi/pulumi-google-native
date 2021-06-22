@@ -53,7 +53,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
      */
@@ -126,7 +126,6 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -140,6 +139,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["authorizationPolicy"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -182,10 +182,6 @@ export interface TargetHttpsProxyArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
