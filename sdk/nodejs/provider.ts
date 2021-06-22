@@ -35,8 +35,8 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             inputs["appendUserAgent"] = (args ? args.appendUserAgent : undefined) ?? utilities.getEnv("GOOGLE_APPEND_USER_AGENT");
-            inputs["disablePartnerNumber"] = pulumi.output((args ? args.disablePartnerNumber : undefined) ?? <any>utilities.getEnvBoolean("GOOGLE_DISABLE_PARTNER_NUMBER")).apply(JSON.stringify);
-            inputs["partnerNumber"] = (args ? args.partnerNumber : undefined) ?? utilities.getEnv("GOOGLE_PARTNER_NUMBER");
+            inputs["disablePartnerName"] = pulumi.output((args ? args.disablePartnerName : undefined) ?? <any>utilities.getEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME")).apply(JSON.stringify);
+            inputs["partnerName"] = (args ? args.partnerName : undefined) ?? utilities.getEnv("GOOGLE_PARTNER_NAME");
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -54,11 +54,11 @@ export interface ProviderArgs {
      */
     appendUserAgent?: pulumi.Input<string>;
     /**
-     * This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+     * This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
      */
-    disablePartnerNumber?: pulumi.Input<boolean>;
+    disablePartnerName?: pulumi.Input<boolean>;
     /**
-     * A Google Partner Number to facilitate partner resource usage attribution.
+     * A Google Partner Name to facilitate partner resource usage attribution.
      */
-    partnerNumber?: pulumi.Input<string>;
+    partnerName?: pulumi.Input<string>;
 }

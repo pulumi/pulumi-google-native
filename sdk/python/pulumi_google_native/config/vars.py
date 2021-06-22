@@ -10,8 +10,8 @@ from .. import _utilities
 
 __all__ = [
     'append_user_agent',
-    'disable_partner_number',
-    'partner_number',
+    'disable_partner_name',
+    'partner_name',
 ]
 
 __config__ = pulumi.Config('google-native')
@@ -21,13 +21,13 @@ append_user_agent = __config__.get('appendUserAgent')
 Additional user-agent string to append to the default one (<prod_name>/<ver>).
 """
 
-disable_partner_number = __config__.get('disablePartnerNumber')
+disable_partner_name = __config__.get('disablePartnerName')
 """
-This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
 """
 
-partner_number = __config__.get('partnerNumber')
+partner_name = __config__.get('partnerName')
 """
-A Google Partner Number to facilitate partner resource usage attribution.
+A Google Partner Name to facilitate partner resource usage attribution.
 """
 

@@ -117,7 +117,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		Scopes:                             scopes,
 		PulumiVersion:                      getPulumiVersion(),
 		ProviderVersion:                    version.Version,
-		PartnerNumber:                      p.getPartnerNumber(),
+		PartnerName:                        p.getPartnerName(),
 		AppendUserAgent:                    appendUserAgent,
 	}
 
@@ -641,13 +641,13 @@ func (p *googleCloudProvider) getConfig(configName, envName string) string {
 	return os.Getenv(envName)
 }
 
-func (p *googleCloudProvider) getPartnerNumber() string {
-	customPartnerID := p.getConfig("partnerNumber", "GOOGLE_PARTNER_NUMBER")
-	if customPartnerID != "" {
-		return customPartnerID
+func (p *googleCloudProvider) getPartnerName() string {
+	result := p.getConfig("partnerName", "GOOGLE_PARTNER_NAME")
+	if result != "" {
+		return result
 	} else {
-		disablePartnerID := p.getConfig("disablePartnerNumber", "GOOGLE_DISABLE_PARTNER_NUMBER")
-		if disablePartnerID == "true" {
+		disablePartner := p.getConfig("disablePartnerName", "GOOGLE_DISABLE_PARTNER_NAME")
+		if disablePartner == "true" {
 			return ""
 		}
 	}
@@ -663,6 +663,7 @@ func getPulumiVersion() string {
 		}
 	}
 	// We should never get here but let's not panic and return something sensible if we do.
+	logging.V(4).Info("No Pulumi package version found, using '3' as the default version for user-agent")
 	return "3"
 }
 

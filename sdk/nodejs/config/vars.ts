@@ -11,10 +11,10 @@ let __config = new pulumi.Config("google-native");
  */
 export let appendUserAgent: string | undefined = __config.get("appendUserAgent");
 /**
- * This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+ * This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
  */
-export let disablePartnerNumber: boolean | undefined = __config.getObject<boolean>("disablePartnerNumber");
+export let disablePartnerName: boolean | undefined = __config.getObject<boolean>("disablePartnerName");
 /**
- * A Google Partner Number to facilitate partner resource usage attribution.
+ * A Google Partner Name to facilitate partner resource usage attribution.
  */
-export let partnerNumber: string | undefined = __config.get("partnerNumber");
+export let partnerName: string | undefined = __config.get("partnerName");

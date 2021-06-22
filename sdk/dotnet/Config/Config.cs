@@ -14,14 +14,14 @@ namespace Pulumi.GoogleNative
         public static string? AppendUserAgent { get; set; } = __config.Get("appendUserAgent");
 
         /// <summary>
-        /// This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+        /// This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
         /// </summary>
-        public static bool? DisablePartnerNumber { get; set; } = __config.GetBoolean("disablePartnerNumber");
+        public static bool? DisablePartnerName { get; set; } = __config.GetBoolean("disablePartnerName");
 
         /// <summary>
-        /// A Google Partner Number to facilitate partner resource usage attribution.
+        /// A Google Partner Name to facilitate partner resource usage attribution.
         /// </summary>
-        public static string? PartnerNumber { get; set; } = __config.Get("partnerNumber");
+        public static string? PartnerName { get; set; } = __config.Get("partnerName");
 
     }
 }

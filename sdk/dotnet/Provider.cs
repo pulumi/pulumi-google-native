@@ -49,22 +49,22 @@ namespace Pulumi.GoogleNative
         public Input<string>? AppendUserAgent { get; set; }
 
         /// <summary>
-        /// This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
+        /// This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
         /// </summary>
-        [Input("disablePartnerNumber", json: true)]
-        public Input<bool>? DisablePartnerNumber { get; set; }
+        [Input("disablePartnerName", json: true)]
+        public Input<bool>? DisablePartnerName { get; set; }
 
         /// <summary>
-        /// A Google Partner Number to facilitate partner resource usage attribution.
+        /// A Google Partner Name to facilitate partner resource usage attribution.
         /// </summary>
-        [Input("partnerNumber")]
-        public Input<string>? PartnerNumber { get; set; }
+        [Input("partnerName")]
+        public Input<string>? PartnerName { get; set; }
 
         public ProviderArgs()
         {
             AppendUserAgent = Utilities.GetEnv("GOOGLE_APPEND_USER_AGENT");
-            DisablePartnerNumber = Utilities.GetEnvBoolean("GOOGLE_DISABLE_PARTNER_NUMBER");
-            PartnerNumber = Utilities.GetEnv("GOOGLE_PARTNER_NUMBER");
+            DisablePartnerName = Utilities.GetEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME");
+            PartnerName = Utilities.GetEnv("GOOGLE_PARTNER_NAME");
         }
     }
 }

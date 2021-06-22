@@ -34,14 +34,14 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Repository:  "https://github.com/pulumi/pulumi-google-native",
 		Config:      schema.ConfigSpec{
 			Variables: map[string]schema.PropertySpec{
-				// Google Partner Number for User-Agent.
-				"partnerNumber": {
+				// Google Partner Name for User-Agent.
+				"partnerName": {
 					TypeSpec:    schema.TypeSpec{Type: "string"},
-					Description: "A Google Partner Number to facilitate partner resource usage attribution.",
+					Description: "A Google Partner Name to facilitate partner resource usage attribution.",
 				},
-				"disablePartnerNumber": {
+				"disablePartnerName": {
 					TypeSpec:    schema.TypeSpec{Type: "boolean"},
-					Description: "This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.",
+					Description: "This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.",
 				},
 				"appendUserAgent": {
 					TypeSpec:    schema.TypeSpec{Type: "string"},
@@ -55,24 +55,24 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				Type:        "object",
 			},
 			InputProperties: map[string]schema.PropertySpec{
-				// Google Partner Number for User-Agent.
-				"partnerNumber": {
+				// Google Partner Name for User-Agent.
+				"partnerName": {
 					TypeSpec: schema.TypeSpec{Type: "string"},
 					DefaultInfo: &schema.DefaultSpec{
 						Environment: []string{
-							"GOOGLE_PARTNER_NUMBER",
+							"GOOGLE_PARTNER_NAME",
 						},
 					},
-					Description: "A Google Partner Number to facilitate partner resource usage attribution.",
+					Description: "A Google Partner Name to facilitate partner resource usage attribution.",
 				},
-				"disablePartnerNumber": {
+				"disablePartnerName": {
 					TypeSpec: schema.TypeSpec{Type: "boolean"},
 					DefaultInfo: &schema.DefaultSpec{
 						Environment: []string{
-							"GOOGLE_DISABLE_PARTNER_NUMBER",
+							"GOOGLE_DISABLE_PARTNER_NAME",
 						},
 					},
-					Description: "This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.",
+					Description: "This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.",
 				},
 				"appendUserAgent": {
 					TypeSpec: schema.TypeSpec{Type: "string"},

@@ -13,12 +13,12 @@ func GetAppendUserAgent(ctx *pulumi.Context) string {
 	return config.Get(ctx, "google-native:appendUserAgent")
 }
 
-// This will disable the Pulumi Partner Number which is used if a custom `partnerNumber` isn't specified.
-func GetDisablePartnerNumber(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "google-native:disablePartnerNumber")
+// This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
+func GetDisablePartnerName(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "google-native:disablePartnerName")
 }
 
-// A Google Partner Number to facilitate partner resource usage attribution.
-func GetPartnerNumber(ctx *pulumi.Context) string {
-	return config.Get(ctx, "google-native:partnerNumber")
+// A Google Partner Name to facilitate partner resource usage attribution.
+func GetPartnerName(ctx *pulumi.Context) string {
+	return config.Get(ctx, "google-native:partnerName")
 }

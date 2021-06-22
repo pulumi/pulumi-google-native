@@ -59,8 +59,8 @@ func newGoogleHttpClient(ctx context.Context, config httpClientConfig) (*googleH
 	}
 
 	partnerString := ""
-	if config.PartnerNumber != "" {
-		partnerString = fmt.Sprintf("GPN:%s; ", config.PartnerNumber)
+	if config.PartnerName != "" {
+		partnerString = fmt.Sprintf("GPN:%s; ", config.PartnerName)
 	}
 
 	userAgent := fmt.Sprintf("Pulumi/%s (%shttps://www.pulumi.com) pulumi-google-native/%s",
@@ -81,7 +81,7 @@ type httpClientConfig struct {
 	Scopes                             []string
 	PulumiVersion                      string
 	ProviderVersion                    string
-	PartnerNumber                      string
+	PartnerName                        string
 	AppendUserAgent                    string
 }
 
