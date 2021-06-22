@@ -49,8 +49,7 @@ func TestWebserverTs(t *testing.T) {
 			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 				assertHTTPMatchesContent(t, stack.Outputs["instanceIP"].(string), "Hello, World!\n", nil)
 			},
-			SkipRefresh:   true,
-			RunUpdateTest: true,
+			SkipRefresh: true,
 			EditDirs: []integration.EditDir{
 				{
 					Dir:      "step2",
