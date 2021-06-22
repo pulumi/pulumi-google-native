@@ -39,6 +39,7 @@ type googleCloudProvider struct {
 	schemaBytes []byte
 	client      *googleHttpClient
 	resourceMap *resources.CloudAPIMetadata
+	converter   *resources.SdkShapeConverter
 }
 
 func makeProvider(host *provider.HostClient, name, version string, schemaBytes []byte,
@@ -56,6 +57,7 @@ func makeProvider(host *provider.HostClient, name, version string, schemaBytes [
 		config:      map[string]string{},
 		schemaBytes: schemaBytes,
 		resourceMap: resourceMap,
+		converter:   &resources.SdkShapeConverter{Types: resourceMap.Types},
 	}, nil
 }
 
@@ -353,24 +355,7 @@ func (p *googleCloudProvider) prepareAPIInputs(
 	inputs resource.PropertyMap,
 	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
 	inputsMap := inputs.Mappable()
-	body := map[string]interface{}{}
-	for name, value := range properties {
-		parent := body
-		if value.Container != "" {
-			if v, has := body[value.Container].(map[string]interface{}); has {
-				parent = v
-			} else {
-				parent = map[string]interface{}{}
-				body[value.Container] = parent
-			}
-		}
-		sdkName := name
-		if value.SdkName != "" {
-			sdkName = value.SdkName
-		}
-		parent[name] = inputsMap[sdkName]
-	}
-	return body
+	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap)
 }
 
 func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
