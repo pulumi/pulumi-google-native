@@ -226,10 +226,6 @@ type subnetworkArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -284,10 +280,6 @@ type SubnetworkArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.

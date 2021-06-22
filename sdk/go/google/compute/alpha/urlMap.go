@@ -199,10 +199,6 @@ type urlMapArgs struct {
 	DefaultUrlRedirect *HttpRedirectAction `pulumi:"defaultUrlRedirect"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a UrlMap.
-	Fingerprint *string `pulumi:"fingerprint"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService.
 	// The headerAction specified here take effect after headerAction specified under pathMatcher.
 	// Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
@@ -248,10 +244,6 @@ type UrlMapArgs struct {
 	DefaultUrlRedirect HttpRedirectActionPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a UrlMap.
-	Fingerprint pulumi.StringPtrInput
 	// Specifies changes to request and response headers that need to take effect for the selected backendService.
 	// The headerAction specified here take effect after headerAction specified under pathMatcher.
 	// Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.

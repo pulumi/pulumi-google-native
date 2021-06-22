@@ -292,10 +292,6 @@ type subnetworkArgs struct {
 	EnableL2 *bool `pulumi:"enableL2"`
 	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-	Fingerprint *string `pulumi:"fingerprint"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling *float64 `pulumi:"flowSampling"`
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
@@ -370,10 +366,6 @@ type SubnetworkArgs struct {
 	EnableL2 pulumi.BoolPtrInput
 	// [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-	Fingerprint pulumi.StringPtrInput
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput
 	// [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.

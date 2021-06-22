@@ -180,8 +180,6 @@ type serviceAttachmentArgs struct {
 	Description *string `pulumi:"description"`
 	// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
-	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
@@ -222,8 +220,6 @@ type ServiceAttachmentArgs struct {
 	Description pulumi.StringPtrInput
 	// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
 	EnableProxyProtocol pulumi.BoolPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
-	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.

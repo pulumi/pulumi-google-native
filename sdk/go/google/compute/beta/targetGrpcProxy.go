@@ -117,8 +117,6 @@ type targetGrpcProxyArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetGrpcProxy.
-	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
@@ -143,8 +141,6 @@ type TargetGrpcProxyArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetGrpcProxy.
-	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.

@@ -414,8 +414,6 @@ type clusterArgs struct {
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	// The fingerprint of the set of labels for this cluster.
-	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac *LegacyAbac `pulumi:"legacyAbac"`
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
@@ -525,8 +523,6 @@ type ClusterArgs struct {
 	InitialClusterVersion pulumi.StringPtrInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyPtrInput
-	// The fingerprint of the set of labels for this cluster.
-	LabelFingerprint pulumi.StringPtrInput
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac LegacyAbacPtrInput
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
