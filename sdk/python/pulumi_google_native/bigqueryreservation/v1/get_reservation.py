@@ -45,7 +45,7 @@ class GetReservationResult:
     @pulumi.getter(name="ignoreIdleSlots")
     def ignore_idle_slots(self) -> bool:
         """
-        If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
         """
         return pulumi.get(self, "ignore_idle_slots")
 

@@ -1824,7 +1824,7 @@ class GooglePrivacyDlpV2FieldTransformationArgs:
         """
         The transformation to apply to the field.
         :param pulumi.Input['GooglePrivacyDlpV2RecordConditionArgs'] condition: Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] fields: Required. Input field(s) to apply the transformation to.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] fields: Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationsArgs'] info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
         :param pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs'] primitive_transformation: Apply the transformation to the entire field.
         """
@@ -1853,7 +1853,7 @@ class GooglePrivacyDlpV2FieldTransformationArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]]:
         """
-        Required. Input field(s) to apply the transformation to.
+        Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
         """
         return pulumi.get(self, "fields")
 
@@ -1989,7 +1989,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigArgs:
                  lower_bound: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None,
                  upper_bound: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None):
         """
-        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
         :param pulumi.Input[float] bucket_size: Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] lower_bound: Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] upper_bound: Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
@@ -2717,7 +2717,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs:
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  wrapped_key: Optional[pulumi.Input[str]] = None):
         """
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
+        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
         :param pulumi.Input[str] crypto_key_name: Required. The resource name of the KMS CryptoKey to use for unwrapping.
         :param pulumi.Input[str] wrapped_key: Required. The wrapped data crypto key.
         """

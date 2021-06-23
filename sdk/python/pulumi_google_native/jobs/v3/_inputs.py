@@ -349,7 +349,7 @@ class LatLngArgs:
                  latitude: Optional[pulumi.Input[float]] = None,
                  longitude: Optional[pulumi.Input[float]] = None):
         """
-        An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+        An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
         :param pulumi.Input[float] latitude: The latitude in degrees. It must be in the range [-90.0, +90.0].
         :param pulumi.Input[float] longitude: The longitude in degrees. It must be in the range [-180.0, +180.0].
         """

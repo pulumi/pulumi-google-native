@@ -294,12 +294,12 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
                  title: str):
         """
         Contact information for a customer account.
-        :param str display_name: Display name of the contact in the customer account. Populated by combining customer first name and last name.
-        :param str email: Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
-        :param str first_name: First name of the contact in the customer account.
-        :param str last_name: Last name of the contact in the customer account.
-        :param str phone: Phone number of the contact in the customer account.
-        :param str title: Optional. Job title of the contact in the customer account.
+        :param str display_name: The customer account contact's display name, formatted as a combination of the customer's first and last name.
+        :param str email: The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts.
+        :param str first_name: The customer account contact's first name.
+        :param str last_name: The customer account contact's last name.
+        :param str phone: The customer account's contact phone number.
+        :param str title: Optional. The customer account contact's job title.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "email", email)
@@ -312,7 +312,7 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Display name of the contact in the customer account. Populated by combining customer first name and last name.
+        The customer account contact's display name, formatted as a combination of the customer's first and last name.
         """
         return pulumi.get(self, "display_name")
 
@@ -320,7 +320,7 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
     @pulumi.getter
     def email(self) -> str:
         """
-        Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+        The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts.
         """
         return pulumi.get(self, "email")
 
@@ -328,7 +328,7 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
     @pulumi.getter(name="firstName")
     def first_name(self) -> str:
         """
-        First name of the contact in the customer account.
+        The customer account contact's first name.
         """
         return pulumi.get(self, "first_name")
 
@@ -336,7 +336,7 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
     @pulumi.getter(name="lastName")
     def last_name(self) -> str:
         """
-        Last name of the contact in the customer account.
+        The customer account contact's last name.
         """
         return pulumi.get(self, "last_name")
 
@@ -344,7 +344,7 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
     @pulumi.getter
     def phone(self) -> str:
         """
-        Phone number of the contact in the customer account.
+        The customer account's contact phone number.
         """
         return pulumi.get(self, "phone")
 
@@ -352,7 +352,7 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        Optional. Job title of the contact in the customer account.
+        Optional. The customer account contact's job title.
         """
         return pulumi.get(self, "title")
 

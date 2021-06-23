@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, state=None):
+    def __init__(__self__, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
         if allow_subnet_cidr_routes_overlap and not isinstance(allow_subnet_cidr_routes_overlap, bool):
             raise TypeError("Expected argument 'allow_subnet_cidr_routes_overlap' to be a bool")
         pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
@@ -30,6 +30,9 @@ class GetSubnetworkResult:
         if enable_flow_logs and not isinstance(enable_flow_logs, bool):
             raise TypeError("Expected argument 'enable_flow_logs' to be a bool")
         pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
+        if external_ipv6_prefix and not isinstance(external_ipv6_prefix, str):
+            raise TypeError("Expected argument 'external_ipv6_prefix' to be a str")
+        pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
@@ -39,6 +42,9 @@ class GetSubnetworkResult:
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if ipv6_access_type and not isinstance(ipv6_access_type, str):
+            raise TypeError("Expected argument 'ipv6_access_type' to be a str")
+        pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if ipv6_cidr_range and not isinstance(ipv6_cidr_range, str):
             raise TypeError("Expected argument 'ipv6_cidr_range' to be a str")
         pulumi.set(__self__, "ipv6_cidr_range", ipv6_cidr_range)
@@ -75,6 +81,9 @@ class GetSubnetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -83,13 +92,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> bool:
         """
-        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-
-        Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-
-        The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-
-        This field cannot be set to true at resource creation time.
+        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -118,12 +121,18 @@ class GetSubnetworkResult:
         return pulumi.get(self, "enable_flow_logs")
 
     @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> str:
+        """
+        [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
+
+    @property
     @pulumi.getter
     def fingerprint(self) -> str:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -142,6 +151,14 @@ class GetSubnetworkResult:
         The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         """
         return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> str:
+        """
+        The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+        """
+        return pulumi.get(self, "ipv6_access_type")
 
     @property
     @pulumi.getter(name="ipv6CidrRange")
@@ -195,9 +212,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> str:
         """
-        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-
-        This field can be both set at resource creation time and updated using patch.
+        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -242,10 +257,18 @@ class GetSubnetworkResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
-        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         """
         return pulumi.get(self, "state")
 
@@ -260,9 +283,11 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             enable_flow_logs=self.enable_flow_logs,
+            external_ipv6_prefix=self.external_ipv6_prefix,
             fingerprint=self.fingerprint,
             gateway_address=self.gateway_address,
             ip_cidr_range=self.ip_cidr_range,
+            ipv6_access_type=self.ipv6_access_type,
             ipv6_cidr_range=self.ipv6_cidr_range,
             kind=self.kind,
             log_config=self.log_config,
@@ -275,6 +300,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             role=self.role,
             secondary_ip_ranges=self.secondary_ip_ranges,
             self_link=self.self_link,
+            stack_type=self.stack_type,
             state=self.state)
 
 
@@ -300,9 +326,11 @@ def get_subnetwork(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         enable_flow_logs=__ret__.enable_flow_logs,
+        external_ipv6_prefix=__ret__.external_ipv6_prefix,
         fingerprint=__ret__.fingerprint,
         gateway_address=__ret__.gateway_address,
         ip_cidr_range=__ret__.ip_cidr_range,
+        ipv6_access_type=__ret__.ipv6_access_type,
         ipv6_cidr_range=__ret__.ipv6_cidr_range,
         kind=__ret__.kind,
         log_config=__ret__.log_config,
@@ -315,4 +343,5 @@ def get_subnetwork(project: Optional[str] = None,
         role=__ret__.role,
         secondary_ip_ranges=__ret__.secondary_ip_ranges,
         self_link=__ret__.self_link,
+        stack_type=__ret__.stack_type,
         state=__ret__.state)

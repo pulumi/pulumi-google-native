@@ -17,16 +17,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAttachmentResult:
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_forwarding_rules=None, creation_timestamp=None, description=None, enable_proxy_protocol=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_forwarding_rules=None, consumer_reject_lists=None, creation_timestamp=None, description=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
         if connection_preference and not isinstance(connection_preference, str):
             raise TypeError("Expected argument 'connection_preference' to be a str")
         pulumi.set(__self__, "connection_preference", connection_preference)
+        if consumer_accept_lists and not isinstance(consumer_accept_lists, list):
+            raise TypeError("Expected argument 'consumer_accept_lists' to be a list")
+        pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if consumer_forwarding_rules and not isinstance(consumer_forwarding_rules, list):
             raise TypeError("Expected argument 'consumer_forwarding_rules' to be a list")
         pulumi.set(__self__, "consumer_forwarding_rules", consumer_forwarding_rules)
+        if consumer_reject_lists and not isinstance(consumer_reject_lists, list):
+            raise TypeError("Expected argument 'consumer_reject_lists' to be a list")
+        pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -36,6 +42,9 @@ class GetServiceAttachmentResult:
         if enable_proxy_protocol and not isinstance(enable_proxy_protocol, bool):
             raise TypeError("Expected argument 'enable_proxy_protocol' to be a bool")
         pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if fingerprint and not isinstance(fingerprint, str):
+            raise TypeError("Expected argument 'fingerprint' to be a str")
+        pulumi.set(__self__, "fingerprint", fingerprint)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -78,12 +87,28 @@ class GetServiceAttachmentResult:
         return pulumi.get(self, "connection_preference")
 
     @property
+    @pulumi.getter(name="consumerAcceptLists")
+    def consumer_accept_lists(self) -> Sequence['outputs.ServiceAttachmentConsumerProjectLimitResponse']:
+        """
+        Projects that are allowed to connect to this service attachment.
+        """
+        return pulumi.get(self, "consumer_accept_lists")
+
+    @property
     @pulumi.getter(name="consumerForwardingRules")
     def consumer_forwarding_rules(self) -> Sequence['outputs.ServiceAttachmentConsumerForwardingRuleResponse']:
         """
         [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
         """
         return pulumi.get(self, "consumer_forwarding_rules")
+
+    @property
+    @pulumi.getter(name="consumerRejectLists")
+    def consumer_reject_lists(self) -> Sequence[str]:
+        """
+        Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        """
+        return pulumi.get(self, "consumer_reject_lists")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -108,6 +133,14 @@ class GetServiceAttachmentResult:
         If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         """
         return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        """
+        return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
@@ -182,10 +215,13 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
         return GetServiceAttachmentResult(
             connected_endpoints=self.connected_endpoints,
             connection_preference=self.connection_preference,
+            consumer_accept_lists=self.consumer_accept_lists,
             consumer_forwarding_rules=self.consumer_forwarding_rules,
+            consumer_reject_lists=self.consumer_reject_lists,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             enable_proxy_protocol=self.enable_proxy_protocol,
+            fingerprint=self.fingerprint,
             kind=self.kind,
             name=self.name,
             nat_subnets=self.nat_subnets,
@@ -216,10 +252,13 @@ def get_service_attachment(project: Optional[str] = None,
     return AwaitableGetServiceAttachmentResult(
         connected_endpoints=__ret__.connected_endpoints,
         connection_preference=__ret__.connection_preference,
+        consumer_accept_lists=__ret__.consumer_accept_lists,
         consumer_forwarding_rules=__ret__.consumer_forwarding_rules,
+        consumer_reject_lists=__ret__.consumer_reject_lists,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         enable_proxy_protocol=__ret__.enable_proxy_protocol,
+        fingerprint=__ret__.fingerprint,
         kind=__ret__.kind,
         name=__ret__.name,
         nat_subnets=__ret__.nat_subnets,

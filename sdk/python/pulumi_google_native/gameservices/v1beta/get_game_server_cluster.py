@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetGameServerClusterResult:
-    def __init__(__self__, allocation_priority=None, connection_info=None, create_time=None, description=None, etag=None, labels=None, name=None, update_time=None):
+    def __init__(__self__, allocation_priority=None, cluster_state=None, connection_info=None, create_time=None, description=None, etag=None, labels=None, name=None, update_time=None):
         if allocation_priority and not isinstance(allocation_priority, str):
             raise TypeError("Expected argument 'allocation_priority' to be a str")
         pulumi.set(__self__, "allocation_priority", allocation_priority)
+        if cluster_state and not isinstance(cluster_state, dict):
+            raise TypeError("Expected argument 'cluster_state' to be a dict")
+        pulumi.set(__self__, "cluster_state", cluster_state)
         if connection_info and not isinstance(connection_info, dict):
             raise TypeError("Expected argument 'connection_info' to be a dict")
         pulumi.set(__self__, "connection_info", connection_info)
@@ -50,6 +53,14 @@ class GetGameServerClusterResult:
         Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         """
         return pulumi.get(self, "allocation_priority")
+
+    @property
+    @pulumi.getter(name="clusterState")
+    def cluster_state(self) -> 'outputs.KubernetesClusterStateResponse':
+        """
+        The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+        """
+        return pulumi.get(self, "cluster_state")
 
     @property
     @pulumi.getter(name="connectionInfo")
@@ -115,6 +126,7 @@ class AwaitableGetGameServerClusterResult(GetGameServerClusterResult):
             yield self
         return GetGameServerClusterResult(
             allocation_priority=self.allocation_priority,
+            cluster_state=self.cluster_state,
             connection_info=self.connection_info,
             create_time=self.create_time,
             description=self.description,
@@ -128,6 +140,7 @@ def get_game_server_cluster(game_server_cluster_id: Optional[str] = None,
                             location: Optional[str] = None,
                             project: Optional[str] = None,
                             realm_id: Optional[str] = None,
+                            view: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGameServerClusterResult:
     """
     Gets details of a single game server cluster.
@@ -137,6 +150,7 @@ def get_game_server_cluster(game_server_cluster_id: Optional[str] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['realmId'] = realm_id
+    __args__['view'] = view
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -145,6 +159,7 @@ def get_game_server_cluster(game_server_cluster_id: Optional[str] = None,
 
     return AwaitableGetGameServerClusterResult(
         allocation_priority=__ret__.allocation_priority,
+        cluster_state=__ret__.cluster_state,
         connection_info=__ret__.connection_info,
         create_time=__ret__.create_time,
         description=__ret__.description,

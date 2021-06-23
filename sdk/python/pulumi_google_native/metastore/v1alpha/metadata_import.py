@@ -209,6 +209,7 @@ class MetadataImport(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         super(MetadataImport, __self__).__init__(
@@ -236,6 +237,7 @@ class MetadataImport(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_dump"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["end_time"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
@@ -245,7 +247,7 @@ class MetadataImport(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time when the metadata import was created.
+        The time when the metadata import was started.
         """
         return pulumi.get(self, "create_time")
 
@@ -264,6 +266,14 @@ class MetadataImport(pulumi.CustomResource):
         The description of the metadata import.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time when the metadata import finished.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter

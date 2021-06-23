@@ -554,7 +554,6 @@ class BackendRuleArgs:
                  deadline: Optional[pulumi.Input[float]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  jwt_audience: Optional[pulumi.Input[str]] = None,
-                 min_deadline: Optional[pulumi.Input[float]] = None,
                  operation_deadline: Optional[pulumi.Input[float]] = None,
                  path_translation: Optional[pulumi.Input['BackendRulePathTranslation']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -565,7 +564,6 @@ class BackendRuleArgs:
         :param pulumi.Input[float] deadline: The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
         :param pulumi.Input[bool] disable_auth: When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
         :param pulumi.Input[str] jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
-        :param pulumi.Input[float] min_deadline: Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
         :param pulumi.Input[float] operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         :param pulumi.Input[str] protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -578,8 +576,6 @@ class BackendRuleArgs:
             pulumi.set(__self__, "disable_auth", disable_auth)
         if jwt_audience is not None:
             pulumi.set(__self__, "jwt_audience", jwt_audience)
-        if min_deadline is not None:
-            pulumi.set(__self__, "min_deadline", min_deadline)
         if operation_deadline is not None:
             pulumi.set(__self__, "operation_deadline", operation_deadline)
         if path_translation is not None:
@@ -636,18 +632,6 @@ class BackendRuleArgs:
     @jwt_audience.setter
     def jwt_audience(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "jwt_audience", value)
-
-    @property
-    @pulumi.getter(name="minDeadline")
-    def min_deadline(self) -> Optional[pulumi.Input[float]]:
-        """
-        Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-        """
-        return pulumi.get(self, "min_deadline")
-
-    @min_deadline.setter
-    def min_deadline(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "min_deadline", value)
 
     @property
     @pulumi.getter(name="operationDeadline")
@@ -1247,7 +1231,7 @@ class EndpointArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
-        `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+        `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
         :param pulumi.Input[bool] allow_cors: Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
         :param pulumi.Input[str] name: The canonical name of this endpoint.
         :param pulumi.Input[str] target: The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".

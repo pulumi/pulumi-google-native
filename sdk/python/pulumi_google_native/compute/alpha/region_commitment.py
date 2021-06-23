@@ -18,6 +18,7 @@ class RegionCommitmentArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class RegionCommitmentArgs:
         """
         The set of arguments for constructing a RegionCommitment resource.
         :param pulumi.Input[str] region: [Output Only] URL of the region where this commitment may be used.
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -59,6 +61,8 @@ class RegionCommitmentArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if creation_timestamp is not None:
@@ -116,6 +120,18 @@ class RegionCommitmentArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
 
     @property
     @pulumi.getter
@@ -336,6 +352,7 @@ class RegionCommitment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -362,6 +379,7 @@ class RegionCommitment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -405,6 +423,7 @@ class RegionCommitment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -437,6 +456,7 @@ class RegionCommitment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionCommitmentArgs.__new__(RegionCommitmentArgs)
 
+            __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["category"] = category
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
@@ -483,6 +503,7 @@ class RegionCommitment(pulumi.CustomResource):
 
         __props__ = RegionCommitmentArgs.__new__(RegionCommitmentArgs)
 
+        __props__.__dict__["auto_renew"] = None
         __props__.__dict__["category"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -501,6 +522,14 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["status_message"] = None
         __props__.__dict__["type"] = None
         return RegionCommitment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+        """
+        return pulumi.get(self, "auto_renew")
 
     @property
     @pulumi.getter

@@ -336,6 +336,7 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["integrated_system"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["source_system_timestamps"] = None
+            __props__.__dict__["usage_signal"] = None
         super(Entry, __self__).__init__(
             'google-native:datacatalog/v1beta1:Entry',
             resource_name,
@@ -369,6 +370,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["schema"] = None
         __props__.__dict__["source_system_timestamps"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["usage_signal"] = None
         __props__.__dict__["user_specified_system"] = None
         __props__.__dict__["user_specified_type"] = None
         return Entry(resource_name, opts=opts, __props__=__props__)
@@ -460,6 +462,14 @@ class Entry(pulumi.CustomResource):
         The type of the entry. Only used for Entries with types in the EntryType enum.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="usageSignal")
+    def usage_signal(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1beta1UsageSignalResponse']:
+        """
+        Statistics on the usage level of the resource.
+        """
+        return pulumi.get(self, "usage_signal")
 
     @property
     @pulumi.getter(name="userSpecifiedSystem")

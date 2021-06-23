@@ -139,7 +139,7 @@ class TransitionRouteGroup(pulumi.CustomResource):
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]]] = None,
                  __props__=None):
         """
-        Creates an TransitionRouteGroup in the specified flow.
+        Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -154,7 +154,7 @@ class TransitionRouteGroup(pulumi.CustomResource):
                  args: TransitionRouteGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an TransitionRouteGroup in the specified flow.
+        Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param TransitionRouteGroupArgs args: The arguments to use to populate this resource's properties.

@@ -20,10 +20,13 @@ class ServiceAttachmentArgs:
                  region: pulumi.Input[str],
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]]] = None,
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerForwardingRuleArgs']]]] = None,
+                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,10 +41,13 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[str] region: [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: [Output Only] An array of connections for all the consumers connected to this service attachment.
         :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerForwardingRuleArgs']]] consumer_forwarding_rules: [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -57,14 +63,20 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "connected_endpoints", connected_endpoints)
         if connection_preference is not None:
             pulumi.set(__self__, "connection_preference", connection_preference)
+        if consumer_accept_lists is not None:
+            pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if consumer_forwarding_rules is not None:
             pulumi.set(__self__, "consumer_forwarding_rules", consumer_forwarding_rules)
+        if consumer_reject_lists is not None:
+            pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_proxy_protocol is not None:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if kind is not None:
@@ -130,6 +142,18 @@ class ServiceAttachmentArgs:
         pulumi.set(self, "connection_preference", value)
 
     @property
+    @pulumi.getter(name="consumerAcceptLists")
+    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]]]:
+        """
+        Projects that are allowed to connect to this service attachment.
+        """
+        return pulumi.get(self, "consumer_accept_lists")
+
+    @consumer_accept_lists.setter
+    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]]]):
+        pulumi.set(self, "consumer_accept_lists", value)
+
+    @property
     @pulumi.getter(name="consumerForwardingRules")
     def consumer_forwarding_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerForwardingRuleArgs']]]]:
         """
@@ -140,6 +164,18 @@ class ServiceAttachmentArgs:
     @consumer_forwarding_rules.setter
     def consumer_forwarding_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerForwardingRuleArgs']]]]):
         pulumi.set(self, "consumer_forwarding_rules", value)
+
+    @property
+    @pulumi.getter(name="consumerRejectLists")
+    def consumer_reject_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        """
+        return pulumi.get(self, "consumer_reject_lists")
+
+    @consumer_reject_lists.setter
+    def consumer_reject_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "consumer_reject_lists", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -176,6 +212,18 @@ class ServiceAttachmentArgs:
     @enable_proxy_protocol.setter
     def enable_proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter
@@ -290,10 +338,13 @@ class ServiceAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]]] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]]] = None,
+                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -313,10 +364,13 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]] connected_endpoints: [Output Only] An array of connections for all the consumers connected to this service attachment.
         :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]] consumer_forwarding_rules: [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -353,10 +407,13 @@ class ServiceAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]]] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]]] = None,
+                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -382,10 +439,13 @@ class ServiceAttachment(pulumi.CustomResource):
 
             __props__.__dict__["connected_endpoints"] = connected_endpoints
             __props__.__dict__["connection_preference"] = connection_preference
+            __props__.__dict__["consumer_accept_lists"] = consumer_accept_lists
             __props__.__dict__["consumer_forwarding_rules"] = consumer_forwarding_rules
+            __props__.__dict__["consumer_reject_lists"] = consumer_reject_lists
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
+            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
@@ -425,10 +485,13 @@ class ServiceAttachment(pulumi.CustomResource):
 
         __props__.__dict__["connected_endpoints"] = None
         __props__.__dict__["connection_preference"] = None
+        __props__.__dict__["consumer_accept_lists"] = None
         __props__.__dict__["consumer_forwarding_rules"] = None
+        __props__.__dict__["consumer_reject_lists"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["enable_proxy_protocol"] = None
+        __props__.__dict__["fingerprint"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nat_subnets"] = None
@@ -456,12 +519,28 @@ class ServiceAttachment(pulumi.CustomResource):
         return pulumi.get(self, "connection_preference")
 
     @property
+    @pulumi.getter(name="consumerAcceptLists")
+    def consumer_accept_lists(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentConsumerProjectLimitResponse']]:
+        """
+        Projects that are allowed to connect to this service attachment.
+        """
+        return pulumi.get(self, "consumer_accept_lists")
+
+    @property
     @pulumi.getter(name="consumerForwardingRules")
     def consumer_forwarding_rules(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentConsumerForwardingRuleResponse']]:
         """
         [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
         """
         return pulumi.get(self, "consumer_forwarding_rules")
+
+    @property
+    @pulumi.getter(name="consumerRejectLists")
+    def consumer_reject_lists(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        """
+        return pulumi.get(self, "consumer_reject_lists")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -486,6 +565,14 @@ class ServiceAttachment(pulumi.CustomResource):
         If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         """
         return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        """
+        return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter

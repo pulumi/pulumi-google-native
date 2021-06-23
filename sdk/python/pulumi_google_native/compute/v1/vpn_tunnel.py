@@ -58,22 +58,7 @@ class VpnTunnelArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
-        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
-               - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-               - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-               - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-               - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-               - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-               - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-               - NEGOTIATION_FAILURE: Handshake failed. 
-               - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-               - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-               - NO_INCOMING_PACKETS: No incoming packets from peer. 
-               - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-               - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-               - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-               - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-               - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
+        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING: Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. - ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). - NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being denied access. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel. 
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
@@ -363,22 +348,7 @@ class VpnTunnelArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input['VpnTunnelStatus']]:
         """
-        [Output Only] The status of the VPN tunnel, which can be one of the following: 
-        - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-        - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-        - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-        - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-        - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-        - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-        - NEGOTIATION_FAILURE: Handshake failed. 
-        - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-        - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-        - NO_INCOMING_PACKETS: No incoming packets from peer. 
-        - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-        - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-        - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-        - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-        - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
+        [Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING: Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. - ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). - NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being denied access. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel. 
         """
         return pulumi.get(self, "status")
 
@@ -476,22 +446,7 @@ class VpnTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
-        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: 
-               - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-               - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-               - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-               - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-               - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-               - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-               - NEGOTIATION_FAILURE: Handshake failed. 
-               - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-               - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-               - NO_INCOMING_PACKETS: No incoming packets from peer. 
-               - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-               - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-               - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-               - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-               - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
+        :param pulumi.Input['VpnTunnelStatus'] status: [Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING: Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. - ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). - NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being denied access. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel. 
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
@@ -769,22 +724,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of the VPN tunnel, which can be one of the following: 
-        - PROVISIONING: Resource is being allocated for the VPN tunnel. 
-        - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. 
-        - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. 
-        - ESTABLISHED: Secure session is successfully established with the peer VPN. 
-        - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS 
-        - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). 
-        - NEGOTIATION_FAILURE: Handshake failed. 
-        - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. 
-        - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. 
-        - NO_INCOMING_PACKETS: No incoming packets from peer. 
-        - REJECTED: Tunnel configuration was rejected, can be result of being denied access. 
-        - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. 
-        - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. 
-        - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. 
-        - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.
+        [Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING: Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. - ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). - NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel. - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being denied access. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel. 
         """
         return pulumi.get(self, "status")
 

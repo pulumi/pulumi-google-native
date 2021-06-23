@@ -7,8 +7,10 @@ from enum import Enum
 __all__ = [
     'CloudRunConfigLoadBalancerType',
     'ClusterStatus',
+    'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
     'DatabaseEncryptionState',
+    'NetworkConfigDatapathProvider',
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPolicyProvider',
     'NodePoolStatus',
@@ -43,6 +45,15 @@ class ClusterStatus(str, Enum):
     DEGRADED = "DEGRADED"
 
 
+class ClusterUpdateDesiredDatapathProvider(str, Enum):
+    """
+    The desired datapath provider for the cluster.
+    """
+    DATAPATH_PROVIDER_UNSPECIFIED = "DATAPATH_PROVIDER_UNSPECIFIED"
+    LEGACY_DATAPATH = "LEGACY_DATAPATH"
+    ADVANCED_DATAPATH = "ADVANCED_DATAPATH"
+
+
 class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
     """
     The desired state of IPv6 connectivity to Google Services.
@@ -60,6 +71,15 @@ class DatabaseEncryptionState(str, Enum):
     UNKNOWN = "UNKNOWN"
     ENCRYPTED = "ENCRYPTED"
     DECRYPTED = "DECRYPTED"
+
+
+class NetworkConfigDatapathProvider(str, Enum):
+    """
+    The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+    """
+    DATAPATH_PROVIDER_UNSPECIFIED = "DATAPATH_PROVIDER_UNSPECIFIED"
+    LEGACY_DATAPATH = "LEGACY_DATAPATH"
+    ADVANCED_DATAPATH = "ADVANCED_DATAPATH"
 
 
 class NetworkConfigPrivateIpv6GoogleAccess(str, Enum):

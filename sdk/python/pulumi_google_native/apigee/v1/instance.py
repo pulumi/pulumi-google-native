@@ -18,7 +18,6 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None):
@@ -38,8 +37,6 @@ class InstanceArgs:
             pulumi.set(__self__, "disk_encryption_key_name", disk_encryption_key_name)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if environments is not None:
-            pulumi.set(__self__, "environments", environments)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -94,15 +91,6 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def environments(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "environments")
-
-    @environments.setter
-    def environments(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "environments", value)
-
-    @property
-    @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Required. Compute Engine location where the instance resides.
@@ -146,7 +134,6 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -191,7 +178,6 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -211,7 +197,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
             __props__.__dict__["display_name"] = display_name
-            __props__.__dict__["environments"] = environments
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:

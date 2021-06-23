@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetOccurrenceResult:
-    def __init__(__self__, attestation=None, build_details=None, create_time=None, deployment=None, derived_image=None, discovered=None, installation=None, kind=None, name=None, note_name=None, remediation=None, resource=None, resource_url=None, update_time=None, upgrade=None, vulnerability_details=None):
+    def __init__(__self__, attestation=None, build_details=None, compliance=None, create_time=None, deployment=None, derived_image=None, discovered=None, installation=None, kind=None, name=None, note_name=None, remediation=None, resource=None, resource_url=None, update_time=None, upgrade=None, vulnerability_details=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
         if build_details and not isinstance(build_details, dict):
             raise TypeError("Expected argument 'build_details' to be a dict")
         pulumi.set(__self__, "build_details", build_details)
+        if compliance and not isinstance(compliance, dict):
+            raise TypeError("Expected argument 'compliance' to be a dict")
+        pulumi.set(__self__, "compliance", compliance)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -82,6 +85,14 @@ class GetOccurrenceResult:
         Build details for a verifiable build.
         """
         return pulumi.get(self, "build_details")
+
+    @property
+    @pulumi.getter
+    def compliance(self) -> 'outputs.ComplianceOccurrenceResponse':
+        """
+        Describes whether or not a resource passes compliance checks.
+        """
+        return pulumi.get(self, "compliance")
 
     @property
     @pulumi.getter(name="createTime")
@@ -204,6 +215,7 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
         return GetOccurrenceResult(
             attestation=self.attestation,
             build_details=self.build_details,
+            compliance=self.compliance,
             create_time=self.create_time,
             deployment=self.deployment,
             derived_image=self.derived_image,
@@ -238,6 +250,7 @@ def get_occurrence(occurrence_id: Optional[str] = None,
     return AwaitableGetOccurrenceResult(
         attestation=__ret__.attestation,
         build_details=__ret__.build_details,
+        compliance=__ret__.compliance,
         create_time=__ret__.create_time,
         deployment=__ret__.deployment,
         derived_image=__ret__.derived_image,

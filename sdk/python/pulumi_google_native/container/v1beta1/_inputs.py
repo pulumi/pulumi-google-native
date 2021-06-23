@@ -26,6 +26,7 @@ __all__ = [
     'ConfidentialNodesArgs',
     'ConfigConnectorConfigArgs',
     'ConsumptionMeteringConfigArgs',
+    'DNSConfigArgs',
     'DailyMaintenanceWindowArgs',
     'DatabaseEncryptionArgs',
     'DefaultSnatStatusArgs',
@@ -50,11 +51,13 @@ __all__ = [
     'NetworkPolicyArgs',
     'NetworkPolicyConfigArgs',
     'NodeConfigArgs',
+    'NodeConfigDefaultsArgs',
     'NodeKubeletConfigArgs',
     'NodeManagementArgs',
     'NodeNetworkConfigArgs',
     'NodePoolArgs',
     'NodePoolAutoscalingArgs',
+    'NodePoolDefaultsArgs',
     'NodeTaintArgs',
     'NotificationConfigArgs',
     'PodSecurityPolicyConfigArgs',
@@ -67,6 +70,7 @@ __all__ = [
     'ResourceLimitArgs',
     'ResourceUsageExportConfigArgs',
     'SandboxConfigArgs',
+    'ServiceExternalIPsConfigArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedNodesArgs',
     'StatusConditionArgs',
@@ -413,6 +417,7 @@ class AutoprovisioningNodePoolDefaultsArgs:
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 image_type: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -424,6 +429,7 @@ class AutoprovisioningNodePoolDefaultsArgs:
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input[str] image_type: The image type to use for NAP created node.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
@@ -437,6 +443,8 @@ class AutoprovisioningNodePoolDefaultsArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if min_cpu_platform is not None:
@@ -485,6 +493,18 @@ class AutoprovisioningNodePoolDefaultsArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image type to use for NAP created node.
+        """
+        return pulumi.get(self, "image_type")
+
+    @image_type.setter
+    def image_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_type", value)
 
     @property
     @pulumi.getter
@@ -893,6 +913,62 @@ class ConsumptionMeteringConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class DNSConfigArgs:
+    def __init__(__self__, *,
+                 cluster_dns: Optional[pulumi.Input['DNSConfigClusterDns']] = None,
+                 cluster_dns_domain: Optional[pulumi.Input[str]] = None,
+                 cluster_dns_scope: Optional[pulumi.Input['DNSConfigClusterDnsScope']] = None):
+        """
+        DNSConfig contains the desired set of options for configuring clusterDNS.
+        :param pulumi.Input['DNSConfigClusterDns'] cluster_dns: cluster_dns indicates which in-cluster DNS provider should be used.
+        :param pulumi.Input[str] cluster_dns_domain: cluster_dns_domain is the suffix used for all cluster service records.
+        :param pulumi.Input['DNSConfigClusterDnsScope'] cluster_dns_scope: cluster_dns_scope indicates the scope of access to cluster DNS records.
+        """
+        if cluster_dns is not None:
+            pulumi.set(__self__, "cluster_dns", cluster_dns)
+        if cluster_dns_domain is not None:
+            pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
+        if cluster_dns_scope is not None:
+            pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Optional[pulumi.Input['DNSConfigClusterDns']]:
+        """
+        cluster_dns indicates which in-cluster DNS provider should be used.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @cluster_dns.setter
+    def cluster_dns(self, value: Optional[pulumi.Input['DNSConfigClusterDns']]):
+        pulumi.set(self, "cluster_dns", value)
+
+    @property
+    @pulumi.getter(name="clusterDnsDomain")
+    def cluster_dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        cluster_dns_domain is the suffix used for all cluster service records.
+        """
+        return pulumi.get(self, "cluster_dns_domain")
+
+    @cluster_dns_domain.setter
+    def cluster_dns_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_dns_domain", value)
+
+    @property
+    @pulumi.getter(name="clusterDnsScope")
+    def cluster_dns_scope(self) -> Optional[pulumi.Input['DNSConfigClusterDnsScope']]:
+        """
+        cluster_dns_scope indicates the scope of access to cluster DNS records.
+        """
+        return pulumi.get(self, "cluster_dns_scope")
+
+    @cluster_dns_scope.setter
+    def cluster_dns_scope(self, value: Optional[pulumi.Input['DNSConfigClusterDnsScope']]):
+        pulumi.set(self, "cluster_dns_scope", value)
 
 
 @pulumi.input_type
@@ -1697,25 +1773,31 @@ class NetworkConfigArgs:
     def __init__(__self__, *,
                  datapath_provider: Optional[pulumi.Input['NetworkConfigDatapathProvider']] = None,
                  default_snat_status: Optional[pulumi.Input['DefaultSnatStatusArgs']] = None,
+                 dns_config: Optional[pulumi.Input['DNSConfigArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None,
+                 service_external_ips_config: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         NetworkConfig reports the relative names of network & subnetwork.
         :param pulumi.Input['NetworkConfigDatapathProvider'] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+        :param pulumi.Input['DNSConfigArgs'] dns_config: DNSConfig contains clusterDNS config for this cluster.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input[str] network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
+        :param pulumi.Input['ServiceExternalIPsConfigArgs'] service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
         :param pulumi.Input[str] subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         if datapath_provider is not None:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
         if default_snat_status is not None:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
         if enable_intra_node_visibility is not None:
             pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         if enable_l4ilb_subsetting is not None:
@@ -1724,6 +1806,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "network", network)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if service_external_ips_config is not None:
+            pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -1750,6 +1834,18 @@ class NetworkConfigArgs:
     @default_snat_status.setter
     def default_snat_status(self, value: Optional[pulumi.Input['DefaultSnatStatusArgs']]):
         pulumi.set(self, "default_snat_status", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['DNSConfigArgs']]:
+        """
+        DNSConfig contains clusterDNS config for this cluster.
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['DNSConfigArgs']]):
+        pulumi.set(self, "dns_config", value)
 
     @property
     @pulumi.getter(name="enableIntraNodeVisibility")
@@ -1798,6 +1894,18 @@ class NetworkConfigArgs:
     @private_ipv6_google_access.setter
     def private_ipv6_google_access(self, value: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
+
+    @property
+    @pulumi.getter(name="serviceExternalIpsConfig")
+    def service_external_ips_config(self) -> Optional[pulumi.Input['ServiceExternalIPsConfigArgs']]:
+        """
+        ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+        """
+        return pulumi.get(self, "service_external_ips_config")
+
+    @service_external_ips_config.setter
+    def service_external_ips_config(self, value: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']]):
+        pulumi.set(self, "service_external_ips_config", value)
 
     @property
     @pulumi.getter
@@ -2253,6 +2361,15 @@ class NodeConfigArgs:
 
 
 @pulumi.input_type
+class NodeConfigDefaultsArgs:
+    def __init__(__self__):
+        """
+        Subset of NodeConfig message that has defaults.
+        """
+        pass
+
+
+@pulumi.input_type
 class NodeKubeletConfigArgs:
     def __init__(__self__, *,
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
@@ -2439,7 +2556,7 @@ class NodePoolArgs:
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+        NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
@@ -2738,6 +2855,30 @@ class NodePoolAutoscalingArgs:
     @min_node_count.setter
     def min_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class NodePoolDefaultsArgs:
+    def __init__(__self__, *,
+                 node_config_defaults: Optional[pulumi.Input['NodeConfigDefaultsArgs']] = None):
+        """
+        Subset of Nodepool message that has defaults.
+        :param pulumi.Input['NodeConfigDefaultsArgs'] node_config_defaults: Subset of NodeConfig message that has defaults.
+        """
+        if node_config_defaults is not None:
+            pulumi.set(__self__, "node_config_defaults", node_config_defaults)
+
+    @property
+    @pulumi.getter(name="nodeConfigDefaults")
+    def node_config_defaults(self) -> Optional[pulumi.Input['NodeConfigDefaultsArgs']]:
+        """
+        Subset of NodeConfig message that has defaults.
+        """
+        return pulumi.get(self, "node_config_defaults")
+
+    @node_config_defaults.setter
+    def node_config_defaults(self, value: Optional[pulumi.Input['NodeConfigDefaultsArgs']]):
+        pulumi.set(self, "node_config_defaults", value)
 
 
 @pulumi.input_type
@@ -3301,6 +3442,30 @@ class SandboxConfigArgs:
 
 
 @pulumi.input_type
+class ServiceExternalIPsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Config to block services with externalIPs field.
+        :param pulumi.Input[bool] enabled: Whether Services with ExternalIPs field are allowed or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Services with ExternalIPs field are allowed or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class ShieldedInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
@@ -3506,7 +3671,6 @@ class UpgradeSettingsArgs:
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None):
         """
-        These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
         :param pulumi.Input[int] max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
         :param pulumi.Input[int] max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
         """

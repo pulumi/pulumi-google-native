@@ -32,13 +32,7 @@ class NetworkArgs:
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Network resource.
-        :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created.
-               
-               When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-               
-               An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-               
-               For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+        :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[str] gateway_i_pv4: [Output Only] The gateway address for default routing out of the network, selected by GCP.
@@ -92,13 +86,7 @@ class NetworkArgs:
     @pulumi.getter(name="autoCreateSubnetworks")
     def auto_create_subnetworks(self) -> Optional[pulumi.Input[bool]]:
         """
-        Must be set to create a VPC network. If not set, a legacy network is created.
-
-        When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-
-        An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-
-        For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+        Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         """
         return pulumi.get(self, "auto_create_subnetworks")
 
@@ -273,13 +261,7 @@ class Network(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created.
-               
-               When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-               
-               An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-               
-               For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+        :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[str] gateway_i_pv4: [Output Only] The gateway address for default routing out of the network, selected by GCP.
@@ -397,13 +379,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="autoCreateSubnetworks")
     def auto_create_subnetworks(self) -> pulumi.Output[bool]:
         """
-        Must be set to create a VPC network. If not set, a legacy network is created.
-
-        When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-
-        An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-
-        For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+        Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         """
         return pulumi.get(self, "auto_create_subnetworks")
 

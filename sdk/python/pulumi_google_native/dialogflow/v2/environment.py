@@ -25,7 +25,7 @@ class EnvironmentArgs:
                  text_to_speech_settings: Optional[pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
-        :param pulumi.Input[str] agent_version: Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        :param pulumi.Input[str] agent_version: Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         :param pulumi.Input[str] description: Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input['GoogleCloudDialogflowV2FulfillmentArgs'] fulfillment: Optional. The fulfillment settings to use for this environment.
         :param pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsArgs'] text_to_speech_settings: Optional. Text to speech settings for this environment.
@@ -73,7 +73,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="agentVersion")
     def agent_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         """
         return pulumi.get(self, "agent_version")
 
@@ -136,7 +136,7 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] agent_version: Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        :param pulumi.Input[str] agent_version: Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         :param pulumi.Input[str] description: Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']] fulfillment: Optional. The fulfillment settings to use for this environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']] text_to_speech_settings: Optional. Text to speech settings for this environment.
@@ -235,7 +235,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="agentVersion")
     def agent_version(self) -> pulumi.Output[str]:
         """
-        Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         """
         return pulumi.get(self, "agent_version")
 

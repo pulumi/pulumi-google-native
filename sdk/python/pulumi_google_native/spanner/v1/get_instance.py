@@ -16,7 +16,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, config=None, display_name=None, labels=None, name=None, node_count=None, state=None):
+    def __init__(__self__, config=None, display_name=None, labels=None, name=None, node_count=None, processing_units=None, state=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -32,6 +32,9 @@ class GetInstanceResult:
         if node_count and not isinstance(node_count, int):
             raise TypeError("Expected argument 'node_count' to be a int")
         pulumi.set(__self__, "node_count", node_count)
+        if processing_units and not isinstance(processing_units, int):
+            raise TypeError("Expected argument 'processing_units' to be a int")
+        pulumi.set(__self__, "processing_units", processing_units)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -77,6 +80,14 @@ class GetInstanceResult:
         return pulumi.get(self, "node_count")
 
     @property
+    @pulumi.getter(name="processingUnits")
+    def processing_units(self) -> int:
+        """
+        The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+        """
+        return pulumi.get(self, "processing_units")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -96,6 +107,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             labels=self.labels,
             name=self.name,
             node_count=self.node_count,
+            processing_units=self.processing_units,
             state=self.state)
 
 
@@ -122,4 +134,5 @@ def get_instance(field_mask: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         node_count=__ret__.node_count,
+        processing_units=__ret__.processing_units,
         state=__ret__.state)

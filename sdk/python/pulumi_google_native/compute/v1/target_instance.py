@@ -31,10 +31,7 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] instance: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: 
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-               - projects/project/zones/zone/instances/instance 
-               - zones/zone/instances/instance
+        :param pulumi.Input[str] instance: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         :param pulumi.Input[str] kind: [Output Only] The type of the resource. Always compute#targetInstance for target instances.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetInstanceNatPolicy'] nat_policy: NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
@@ -122,10 +119,7 @@ class TargetInstanceArgs:
     @pulumi.getter
     def instance(self) -> Optional[pulumi.Input[str]]:
         """
-        A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: 
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        - projects/project/zones/zone/instances/instance 
-        - zones/zone/instances/instance
+        A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         """
         return pulumi.get(self, "instance")
 
@@ -216,10 +210,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] instance: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: 
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-               - projects/project/zones/zone/instances/instance 
-               - zones/zone/instances/instance
+        :param pulumi.Input[str] instance: A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         :param pulumi.Input[str] kind: [Output Only] The type of the resource. Always compute#targetInstance for target instances.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetInstanceNatPolicy'] nat_policy: NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
@@ -340,10 +331,7 @@ class TargetInstance(pulumi.CustomResource):
     @pulumi.getter
     def instance(self) -> pulumi.Output[str]:
         """
-        A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: 
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        - projects/project/zones/zone/instances/instance 
-        - zones/zone/instances/instance
+        A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         """
         return pulumi.get(self, "instance")
 

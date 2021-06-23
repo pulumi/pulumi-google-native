@@ -2015,6 +2015,7 @@ class ExternalDataConfigurationArgs:
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['CsvOptionsArgs']] = None,
+                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  google_sheets_options: Optional[pulumi.Input['GoogleSheetsOptionsArgs']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['HivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
@@ -2029,6 +2030,7 @@ class ExternalDataConfigurationArgs:
         :param pulumi.Input[str] compression: [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         :param pulumi.Input[str] connection_id: [Optional, Trusted Tester] Connection for external data source.
         :param pulumi.Input['CsvOptionsArgs'] csv_options: Additional properties to set if sourceFormat is set to CSV.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param pulumi.Input['GoogleSheetsOptionsArgs'] google_sheets_options: [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param pulumi.Input[bool] ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
@@ -2048,6 +2050,8 @@ class ExternalDataConfigurationArgs:
             pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
+        if decimal_target_types is not None:
+            pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         if google_sheets_options is not None:
             pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         if hive_partitioning_options is not None:
@@ -2124,6 +2128,18 @@ class ExternalDataConfigurationArgs:
     @csv_options.setter
     def csv_options(self, value: Optional[pulumi.Input['CsvOptionsArgs']]):
         pulumi.set(self, "csv_options", value)
+
+    @property
+    @pulumi.getter(name="decimalTargetTypes")
+    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        """
+        return pulumi.get(self, "decimal_target_types")
+
+    @decimal_target_types.setter
+    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "decimal_target_types", value)
 
     @property
     @pulumi.getter(name="googleSheetsOptions")
@@ -2639,7 +2655,7 @@ class JobConfigurationLoadArgs:
         :param pulumi.Input[bool] autodetect: [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param pulumi.Input['TableReferenceArgs'] destination_table: [Required] The destination table to load the data into.
         :param pulumi.Input['DestinationTablePropertiesArgs'] destination_table_properties: [Beta] [Optional] Properties with which to create the destination table if it is new.
@@ -2784,7 +2800,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="decimalTargetTypes")
     def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         """
         return pulumi.get(self, "decimal_target_types")
 
@@ -3641,7 +3657,7 @@ class JobStatisticsArgs:
                  session_info_template: Optional[pulumi.Input['SessionInfoArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  total_slot_ms: Optional[pulumi.Input[str]] = None,
-                 transaction_info_template: Optional[pulumi.Input['TransactionInfoArgs']] = None):
+                 transaction_info: Optional[pulumi.Input['TransactionInfoArgs']] = None):
         """
         :param pulumi.Input[float] completion_ratio: [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
         :param pulumi.Input[str] creation_time: [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
@@ -3659,7 +3675,7 @@ class JobStatisticsArgs:
         :param pulumi.Input['SessionInfoArgs'] session_info_template: [Output-only] [Preview] Information of the session if this job is part of one.
         :param pulumi.Input[str] start_time: [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         :param pulumi.Input[str] total_slot_ms: [Output-only] Slot-milliseconds for the job.
-        :param pulumi.Input['TransactionInfoArgs'] transaction_info_template: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+        :param pulumi.Input['TransactionInfoArgs'] transaction_info: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
         if completion_ratio is not None:
             pulumi.set(__self__, "completion_ratio", completion_ratio)
@@ -3693,8 +3709,8 @@ class JobStatisticsArgs:
             pulumi.set(__self__, "start_time", start_time)
         if total_slot_ms is not None:
             pulumi.set(__self__, "total_slot_ms", total_slot_ms)
-        if transaction_info_template is not None:
-            pulumi.set(__self__, "transaction_info_template", transaction_info_template)
+        if transaction_info is not None:
+            pulumi.set(__self__, "transaction_info", transaction_info)
 
     @property
     @pulumi.getter(name="completionRatio")
@@ -3889,16 +3905,16 @@ class JobStatisticsArgs:
         pulumi.set(self, "total_slot_ms", value)
 
     @property
-    @pulumi.getter(name="transactionInfoTemplate")
-    def transaction_info_template(self) -> Optional[pulumi.Input['TransactionInfoArgs']]:
+    @pulumi.getter(name="transactionInfo")
+    def transaction_info(self) -> Optional[pulumi.Input['TransactionInfoArgs']]:
         """
         [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
-        return pulumi.get(self, "transaction_info_template")
+        return pulumi.get(self, "transaction_info")
 
-    @transaction_info_template.setter
-    def transaction_info_template(self, value: Optional[pulumi.Input['TransactionInfoArgs']]):
-        pulumi.set(self, "transaction_info_template", value)
+    @transaction_info.setter
+    def transaction_info(self, value: Optional[pulumi.Input['TransactionInfoArgs']]):
+        pulumi.set(self, "transaction_info", value)
 
 
 @pulumi.input_type
@@ -3907,11 +3923,13 @@ class JobStatistics2Args:
                  billing_tier: Optional[pulumi.Input[int]] = None,
                  cache_hit: Optional[pulumi.Input[bool]] = None,
                  ddl_affected_row_access_policy_count: Optional[pulumi.Input[str]] = None,
+                 ddl_destination_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  ddl_operation_performed: Optional[pulumi.Input[str]] = None,
                  ddl_target_dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
                  ddl_target_routine: Optional[pulumi.Input['RoutineReferenceArgs']] = None,
                  ddl_target_row_access_policy: Optional[pulumi.Input['RowAccessPolicyReferenceArgs']] = None,
                  ddl_target_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
+                 dml_stats: Optional[Any] = None,
                  estimated_bytes_processed: Optional[pulumi.Input[str]] = None,
                  model_training: Optional[pulumi.Input['BigQueryModelTrainingArgs']] = None,
                  num_dml_affected_rows: Optional[pulumi.Input[str]] = None,
@@ -3932,11 +3950,13 @@ class JobStatistics2Args:
         :param pulumi.Input[int] billing_tier: [Output-only] Billing tier for the job.
         :param pulumi.Input[bool] cache_hit: [Output-only] Whether the query result was fetched from the query cache.
         :param pulumi.Input[str] ddl_affected_row_access_policy_count: [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        :param pulumi.Input['TableReferenceArgs'] ddl_destination_table: [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
         :param pulumi.Input[str] ddl_operation_performed: The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
         :param pulumi.Input['DatasetReferenceArgs'] ddl_target_dataset: [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         :param pulumi.Input['RoutineReferenceArgs'] ddl_target_routine: The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
         :param pulumi.Input['RowAccessPolicyReferenceArgs'] ddl_target_row_access_policy: [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         :param pulumi.Input['TableReferenceArgs'] ddl_target_table: [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        :param Any dml_stats: [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
         :param pulumi.Input[str] estimated_bytes_processed: [Output-only] The original estimate of bytes processed for the job.
         :param pulumi.Input['BigQueryModelTrainingArgs'] model_training: [Output-only, Beta] Information about create model query job progress.
         :param pulumi.Input[str] num_dml_affected_rows: [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
@@ -3960,6 +3980,8 @@ class JobStatistics2Args:
             pulumi.set(__self__, "cache_hit", cache_hit)
         if ddl_affected_row_access_policy_count is not None:
             pulumi.set(__self__, "ddl_affected_row_access_policy_count", ddl_affected_row_access_policy_count)
+        if ddl_destination_table is not None:
+            pulumi.set(__self__, "ddl_destination_table", ddl_destination_table)
         if ddl_operation_performed is not None:
             pulumi.set(__self__, "ddl_operation_performed", ddl_operation_performed)
         if ddl_target_dataset is not None:
@@ -3970,6 +3992,8 @@ class JobStatistics2Args:
             pulumi.set(__self__, "ddl_target_row_access_policy", ddl_target_row_access_policy)
         if ddl_target_table is not None:
             pulumi.set(__self__, "ddl_target_table", ddl_target_table)
+        if dml_stats is not None:
+            pulumi.set(__self__, "dml_stats", dml_stats)
         if estimated_bytes_processed is not None:
             pulumi.set(__self__, "estimated_bytes_processed", estimated_bytes_processed)
         if model_training is not None:
@@ -4040,6 +4064,18 @@ class JobStatistics2Args:
         pulumi.set(self, "ddl_affected_row_access_policy_count", value)
 
     @property
+    @pulumi.getter(name="ddlDestinationTable")
+    def ddl_destination_table(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
+        """
+        [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        """
+        return pulumi.get(self, "ddl_destination_table")
+
+    @ddl_destination_table.setter
+    def ddl_destination_table(self, value: Optional[pulumi.Input['TableReferenceArgs']]):
+        pulumi.set(self, "ddl_destination_table", value)
+
+    @property
     @pulumi.getter(name="ddlOperationPerformed")
     def ddl_operation_performed(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4098,6 +4134,18 @@ class JobStatistics2Args:
     @ddl_target_table.setter
     def ddl_target_table(self, value: Optional[pulumi.Input['TableReferenceArgs']]):
         pulumi.set(self, "ddl_target_table", value)
+
+    @property
+    @pulumi.getter(name="dmlStats")
+    def dml_stats(self) -> Optional[Any]:
+        """
+        [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        """
+        return pulumi.get(self, "dml_stats")
+
+    @dml_stats.setter
+    def dml_stats(self, value: Optional[Any]):
+        pulumi.set(self, "dml_stats", value)
 
     @property
     @pulumi.getter(name="estimatedBytesProcessed")
@@ -5521,8 +5569,8 @@ class SnapshotDefinitionArgs:
                  base_table_reference: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  snapshot_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['TableReferenceArgs'] base_table_reference: [Required] Reference describing the ID of the table that is snapshotted.
-        :param pulumi.Input[str] snapshot_time: [Required] The time at which the base table was snapshot.
+        :param pulumi.Input['TableReferenceArgs'] base_table_reference: [Required] Reference describing the ID of the table that was snapshot.
+        :param pulumi.Input[str] snapshot_time: [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
         """
         if base_table_reference is not None:
             pulumi.set(__self__, "base_table_reference", base_table_reference)
@@ -5533,7 +5581,7 @@ class SnapshotDefinitionArgs:
     @pulumi.getter(name="baseTableReference")
     def base_table_reference(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
         """
-        [Required] Reference describing the ID of the table that is snapshotted.
+        [Required] Reference describing the ID of the table that was snapshot.
         """
         return pulumi.get(self, "base_table_reference")
 
@@ -5545,7 +5593,7 @@ class SnapshotDefinitionArgs:
     @pulumi.getter(name="snapshotTime")
     def snapshot_time(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] The time at which the base table was snapshot.
+        [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
         """
         return pulumi.get(self, "snapshot_time")
 
@@ -6168,15 +6216,19 @@ class UserDefinedFunctionResourceArgs:
 class ViewDefinitionArgs:
     def __init__(__self__, *,
                  query: Optional[pulumi.Input[str]] = None,
+                 use_explicit_column_names: Optional[pulumi.Input[bool]] = None,
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None,
                  user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]]] = None):
         """
         :param pulumi.Input[str] query: [Required] A query that BigQuery executes when the view is referenced.
+        :param pulumi.Input[bool] use_explicit_column_names: True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
         :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
         :param pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]] user_defined_function_resources: Describes user-defined function resources used in the query.
         """
         if query is not None:
             pulumi.set(__self__, "query", query)
+        if use_explicit_column_names is not None:
+            pulumi.set(__self__, "use_explicit_column_names", use_explicit_column_names)
         if use_legacy_sql is not None:
             pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
         if user_defined_function_resources is not None:
@@ -6193,6 +6245,18 @@ class ViewDefinitionArgs:
     @query.setter
     def query(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="useExplicitColumnNames")
+    def use_explicit_column_names(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        """
+        return pulumi.get(self, "use_explicit_column_names")
+
+    @use_explicit_column_names.setter
+    def use_explicit_column_names(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_explicit_column_names", value)
 
     @property
     @pulumi.getter(name="useLegacySql")

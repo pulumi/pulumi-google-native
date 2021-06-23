@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -24,6 +25,7 @@ class InstanceArgs:
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -40,6 +42,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
+        :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
         :param pulumi.Input[int] memory_size_gb: Required. Redis memory size in GiB.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
@@ -63,6 +66,8 @@ class InstanceArgs:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if memory_size_gb is not None:
             pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name is not None:
@@ -181,6 +186,18 @@ class InstanceArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['MaintenancePolicyArgs']]:
+        """
+        Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['MaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
     @pulumi.getter(name="memorySizeGb")
     def memory_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
@@ -278,6 +295,7 @@ class Instance(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -299,6 +317,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+        :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
         :param pulumi.Input[int] memory_size_gb: Required. Redis memory size in GiB.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
@@ -339,6 +358,7 @@ class Instance(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -371,6 +391,7 @@ class Instance(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
@@ -384,6 +405,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_location_id"] = None
             __props__.__dict__["host"] = None
+            __props__.__dict__["maintenance_schedule"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["server_ca_certs"] = None
@@ -421,6 +443,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["host"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["maintenance_policy"] = None
+        __props__.__dict__["maintenance_schedule"] = None
         __props__.__dict__["memory_size_gb"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["persistence_iam_identity"] = None
@@ -514,6 +538,22 @@ class Instance(pulumi.CustomResource):
         Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output['outputs.MaintenancePolicyResponse']:
+        """
+        Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> pulumi.Output['outputs.MaintenanceScheduleResponse']:
+        """
+        Date and time of upcoming maintenance events which have been scheduled.
+        """
+        return pulumi.get(self, "maintenance_schedule")
 
     @property
     @pulumi.getter(name="memorySizeGb")

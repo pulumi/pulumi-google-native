@@ -27,7 +27,7 @@ class TransferJobArgs:
         """
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
-        :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. This name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration.
         :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
@@ -68,7 +68,7 @@ class TransferJobArgs:
     @pulumi.getter(name="latestOperationName")
     def latest_operation_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         """
         return pulumi.get(self, "latest_operation_name")
 
@@ -169,7 +169,7 @@ class TransferJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
-        :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. This name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration.
         :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
@@ -303,7 +303,7 @@ class TransferJob(pulumi.CustomResource):
     @pulumi.getter(name="latestOperationName")
     def latest_operation_name(self) -> pulumi.Output[str]:
         """
-        The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         """
         return pulumi.get(self, "latest_operation_name")
 

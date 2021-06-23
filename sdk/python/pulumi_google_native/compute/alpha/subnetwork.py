@@ -41,6 +41,7 @@ class SubnetworkArgs:
                  private_ipv6_google_access: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']] = None,
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -52,21 +53,13 @@ class SubnetworkArgs:
         The set of arguments for constructing a Subnetwork resource.
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
         :param pulumi.Input['SubnetworkAggregationInterval'] aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
-        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-               
-               Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-               
-               The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-               
-               This field cannot be set to true at resource creation time.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -79,18 +72,15 @@ class SubnetworkArgs:
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
         :param pulumi.Input[bool] private_ip_google_access: Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
-        :param pulumi.Input['SubnetworkPrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-               
-               This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input['SubnetworkPrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input['SubnetworkPurpose'] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        :param pulumi.Input[str] reserved_internal_range: The URL of the reserved internal range.
         :param pulumi.Input['SubnetworkRole'] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-               
-               This field can be both set at resource creation time and updated using patch.
-        :param pulumi.Input['SubnetworkState'] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input['SubnetworkState'] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         """
         pulumi.set(__self__, "project", project)
@@ -141,6 +131,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "purpose", purpose)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if reserved_internal_range is not None:
+            pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
@@ -193,13 +185,7 @@ class SubnetworkArgs:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-
-        Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-
-        The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-
-        This field cannot be set to true at resource creation time.
+        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -271,9 +257,7 @@ class SubnetworkArgs:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -429,9 +413,7 @@ class SubnetworkArgs:
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']]:
         """
-        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-
-        This field can be both set at resource creation time and updated using patch.
+        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -459,6 +441,18 @@ class SubnetworkArgs:
     @request_id.setter
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @reserved_internal_range.setter
+    def reserved_internal_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_internal_range", value)
 
     @property
     @pulumi.getter
@@ -512,9 +506,7 @@ class SubnetworkArgs:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input['SubnetworkStackType']]:
         """
-        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-
-        This field can be both set at resource creation time and updated using patch.
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "stack_type")
 
@@ -526,7 +518,7 @@ class SubnetworkArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['SubnetworkState']]:
         """
-        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         """
         return pulumi.get(self, "state")
 
@@ -577,6 +569,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -591,21 +584,13 @@ class Subnetwork(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['SubnetworkAggregationInterval'] aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
-        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-               
-               Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-               
-               The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-               
-               This field cannot be set to true at resource creation time.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -618,19 +603,16 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
         :param pulumi.Input[bool] private_ip_google_access: Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
-        :param pulumi.Input['SubnetworkPrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-               
-               This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input['SubnetworkPrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input['SubnetworkPurpose'] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
+        :param pulumi.Input[str] reserved_internal_range: The URL of the reserved internal range.
         :param pulumi.Input['SubnetworkRole'] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-               
-               This field can be both set at resource creation time and updated using patch.
-        :param pulumi.Input['SubnetworkState'] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input['SubnetworkState'] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         """
         ...
@@ -682,6 +664,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -730,6 +713,7 @@ class Subnetwork(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["reserved_internal_range"] = reserved_internal_range
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["self_link"] = self_link
@@ -781,6 +765,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["private_ipv6_google_access"] = None
         __props__.__dict__["purpose"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["reserved_internal_range"] = None
         __props__.__dict__["role"] = None
         __props__.__dict__["secondary_ip_ranges"] = None
         __props__.__dict__["self_link"] = None
@@ -802,13 +787,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> pulumi.Output[bool]:
         """
-        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-
-        Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-
-        The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-
-        This field cannot be set to true at resource creation time.
+        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -856,9 +835,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -954,9 +931,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> pulumi.Output[str]:
         """
-        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-
-        This field can be both set at resource creation time and updated using patch.
+        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -975,6 +950,14 @@ class Subnetwork(pulumi.CustomResource):
         URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> pulumi.Output[str]:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
 
     @property
     @pulumi.getter
@@ -1012,9 +995,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="stackType")
     def stack_type(self) -> pulumi.Output[str]:
         """
-        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-
-        This field can be both set at resource creation time and updated using patch.
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "stack_type")
 
@@ -1022,7 +1003,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         """
         return pulumi.get(self, "state")
 

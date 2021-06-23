@@ -20,6 +20,7 @@ class NoteArgs:
                  attestation_authority: Optional[pulumi.Input['AttestationAuthorityArgs']] = None,
                  base_image: Optional[pulumi.Input['BasisArgs']] = None,
                  build_type: Optional[pulumi.Input['BuildTypeArgs']] = None,
+                 compliance: Optional[pulumi.Input['ComplianceNoteArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deployable: Optional[pulumi.Input['DeployableArgs']] = None,
                  discovery: Optional[pulumi.Input['DiscoveryArgs']] = None,
@@ -39,6 +40,7 @@ class NoteArgs:
         :param pulumi.Input['AttestationAuthorityArgs'] attestation_authority: A note describing an attestation role.
         :param pulumi.Input['BasisArgs'] base_image: A note describing a base image.
         :param pulumi.Input['BuildTypeArgs'] build_type: Build provenance type for a verifiable build.
+        :param pulumi.Input['ComplianceNoteArgs'] compliance: A note describing a compliance check.
         :param pulumi.Input[str] create_time: The time this note was created. This field can be used as a filter in list requests.
         :param pulumi.Input['DeployableArgs'] deployable: A note describing something that can be deployed.
         :param pulumi.Input['DiscoveryArgs'] discovery: A note describing a provider/analysis type.
@@ -60,6 +62,8 @@ class NoteArgs:
             pulumi.set(__self__, "base_image", base_image)
         if build_type is not None:
             pulumi.set(__self__, "build_type", build_type)
+        if compliance is not None:
+            pulumi.set(__self__, "compliance", compliance)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deployable is not None:
@@ -133,6 +137,18 @@ class NoteArgs:
     @build_type.setter
     def build_type(self, value: Optional[pulumi.Input['BuildTypeArgs']]):
         pulumi.set(self, "build_type", value)
+
+    @property
+    @pulumi.getter
+    def compliance(self) -> Optional[pulumi.Input['ComplianceNoteArgs']]:
+        """
+        A note describing a compliance check.
+        """
+        return pulumi.get(self, "compliance")
+
+    @compliance.setter
+    def compliance(self, value: Optional[pulumi.Input['ComplianceNoteArgs']]):
+        pulumi.set(self, "compliance", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -308,6 +324,7 @@ class Note(pulumi.CustomResource):
                  attestation_authority: Optional[pulumi.Input[pulumi.InputType['AttestationAuthorityArgs']]] = None,
                  base_image: Optional[pulumi.Input[pulumi.InputType['BasisArgs']]] = None,
                  build_type: Optional[pulumi.Input[pulumi.InputType['BuildTypeArgs']]] = None,
+                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceNoteArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
@@ -332,6 +349,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AttestationAuthorityArgs']] attestation_authority: A note describing an attestation role.
         :param pulumi.Input[pulumi.InputType['BasisArgs']] base_image: A note describing a base image.
         :param pulumi.Input[pulumi.InputType['BuildTypeArgs']] build_type: Build provenance type for a verifiable build.
+        :param pulumi.Input[pulumi.InputType['ComplianceNoteArgs']] compliance: A note describing a compliance check.
         :param pulumi.Input[str] create_time: The time this note was created. This field can be used as a filter in list requests.
         :param pulumi.Input[pulumi.InputType['DeployableArgs']] deployable: A note describing something that can be deployed.
         :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing a provider/analysis type.
@@ -373,6 +391,7 @@ class Note(pulumi.CustomResource):
                  attestation_authority: Optional[pulumi.Input[pulumi.InputType['AttestationAuthorityArgs']]] = None,
                  base_image: Optional[pulumi.Input[pulumi.InputType['BasisArgs']]] = None,
                  build_type: Optional[pulumi.Input[pulumi.InputType['BuildTypeArgs']]] = None,
+                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceNoteArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
@@ -403,6 +422,7 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["attestation_authority"] = attestation_authority
             __props__.__dict__["base_image"] = base_image
             __props__.__dict__["build_type"] = build_type
+            __props__.__dict__["compliance"] = compliance
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["deployable"] = deployable
             __props__.__dict__["discovery"] = discovery
@@ -445,6 +465,7 @@ class Note(pulumi.CustomResource):
         __props__.__dict__["attestation_authority"] = None
         __props__.__dict__["base_image"] = None
         __props__.__dict__["build_type"] = None
+        __props__.__dict__["compliance"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["deployable"] = None
         __props__.__dict__["discovery"] = None
@@ -483,6 +504,14 @@ class Note(pulumi.CustomResource):
         Build provenance type for a verifiable build.
         """
         return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter
+    def compliance(self) -> pulumi.Output['outputs.ComplianceNoteResponse']:
+        """
+        A note describing a compliance check.
+        """
+        return pulumi.get(self, "compliance")
 
     @property
     @pulumi.getter(name="createTime")

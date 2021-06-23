@@ -44,7 +44,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="agentVersion")
     def agent_version(self) -> str:
         """
-        Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+        Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         """
         return pulumi.get(self, "agent_version")
 

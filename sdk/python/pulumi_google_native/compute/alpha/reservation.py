@@ -28,7 +28,7 @@ class ReservationArgs:
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input['AllocationShareSettingsArgs']] = None,
+                 share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input['ReservationStatus']] = None):
@@ -44,7 +44,7 @@ class ReservationArgs:
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input['AllocationShareSettingsArgs'] share_settings: Share-settings for shared-reservation
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input['ReservationStatus'] status: [Output Only] The status of the reservation.
@@ -220,14 +220,14 @@ class ReservationArgs:
 
     @property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> Optional[pulumi.Input['AllocationShareSettingsArgs']]:
+    def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
         """
         Share-settings for shared-reservation
         """
         return pulumi.get(self, "share_settings")
 
     @share_settings.setter
-    def share_settings(self, value: Optional[pulumi.Input['AllocationShareSettingsArgs']]):
+    def share_settings(self, value: Optional[pulumi.Input['ShareSettingsArgs']]):
         pulumi.set(self, "share_settings", value)
 
     @property
@@ -283,7 +283,7 @@ class Reservation(pulumi.CustomResource):
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['AllocationShareSettingsArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input['ReservationStatus']] = None,
@@ -303,7 +303,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input[pulumi.InputType['AllocationShareSettingsArgs']] share_settings: Share-settings for shared-reservation
+        :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: Share-settings for shared-reservation
         :param pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input['ReservationStatus'] status: [Output Only] The status of the reservation.
@@ -344,7 +344,7 @@ class Reservation(pulumi.CustomResource):
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['AllocationShareSettingsArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input['ReservationStatus']] = None,
@@ -484,7 +484,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> pulumi.Output['outputs.AllocationShareSettingsResponse']:
+    def share_settings(self) -> pulumi.Output['outputs.ShareSettingsResponse']:
         """
         Share-settings for shared-reservation
         """

@@ -57,6 +57,7 @@ if typing.TYPE_CHECKING:
     import pulumi_google_native.eventarc as eventarc
     import pulumi_google_native.file as file
     import pulumi_google_native.firebase as firebase
+    import pulumi_google_native.firebaseappcheck as firebaseappcheck
     import pulumi_google_native.firebasedatabase as firebasedatabase
     import pulumi_google_native.firebasehosting as firebasehosting
     import pulumi_google_native.firebaseml as firebaseml
@@ -84,6 +85,7 @@ if typing.TYPE_CHECKING:
     import pulumi_google_native.privateca as privateca
     import pulumi_google_native.pubsub as pubsub
     import pulumi_google_native.pubsublite as pubsublite
+    import pulumi_google_native.recaptchaenterprise as recaptchaenterprise
     import pulumi_google_native.recommendationengine as recommendationengine
     import pulumi_google_native.redis as redis
     import pulumi_google_native.remotebuildexecution as remotebuildexecution
@@ -158,6 +160,7 @@ else:
     eventarc = _utilities.lazy_import('pulumi_google_native.eventarc')
     file = _utilities.lazy_import('pulumi_google_native.file')
     firebase = _utilities.lazy_import('pulumi_google_native.firebase')
+    firebaseappcheck = _utilities.lazy_import('pulumi_google_native.firebaseappcheck')
     firebasedatabase = _utilities.lazy_import('pulumi_google_native.firebasedatabase')
     firebasehosting = _utilities.lazy_import('pulumi_google_native.firebasehosting')
     firebaseml = _utilities.lazy_import('pulumi_google_native.firebaseml')
@@ -185,6 +188,7 @@ else:
     privateca = _utilities.lazy_import('pulumi_google_native.privateca')
     pubsub = _utilities.lazy_import('pulumi_google_native.pubsub')
     pubsublite = _utilities.lazy_import('pulumi_google_native.pubsublite')
+    recaptchaenterprise = _utilities.lazy_import('pulumi_google_native.recaptchaenterprise')
     recommendationengine = _utilities.lazy_import('pulumi_google_native.recommendationengine')
     redis = _utilities.lazy_import('pulumi_google_native.redis')
     remotebuildexecution = _utilities.lazy_import('pulumi_google_native.remotebuildexecution')
@@ -724,6 +728,7 @@ _utilities.register(
    "google-native:compute/alpha:BackendBucket": "BackendBucket",
    "google-native:compute/alpha:BackendBucketIamPolicy": "BackendBucketIamPolicy",
    "google-native:compute/alpha:BackendService": "BackendService",
+   "google-native:compute/alpha:BackendServiceIamPolicy": "BackendServiceIamPolicy",
    "google-native:compute/alpha:Disk": "Disk",
    "google-native:compute/alpha:DiskIamPolicy": "DiskIamPolicy",
    "google-native:compute/alpha:ExternalVpnGateway": "ExternalVpnGateway",
@@ -731,6 +736,7 @@ _utilities.register(
    "google-native:compute/alpha:FirewallPolicy": "FirewallPolicy",
    "google-native:compute/alpha:FirewallPolicyIamPolicy": "FirewallPolicyIamPolicy",
    "google-native:compute/alpha:ForwardingRule": "ForwardingRule",
+   "google-native:compute/alpha:FutureReservation": "FutureReservation",
    "google-native:compute/alpha:GlobalAddress": "GlobalAddress",
    "google-native:compute/alpha:GlobalForwardingRule": "GlobalForwardingRule",
    "google-native:compute/alpha:GlobalNetworkEndpointGroup": "GlobalNetworkEndpointGroup",
@@ -756,6 +762,7 @@ _utilities.register(
    "google-native:compute/alpha:MachineImage": "MachineImage",
    "google-native:compute/alpha:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/alpha:Network": "Network",
+   "google-native:compute/alpha:NetworkEdgeSecurityService": "NetworkEdgeSecurityService",
    "google-native:compute/alpha:NetworkEndpointGroup": "NetworkEndpointGroup",
    "google-native:compute/alpha:NetworkFirewallPolicy": "NetworkFirewallPolicy",
    "google-native:compute/alpha:NetworkFirewallPolicyIamPolicy": "NetworkFirewallPolicyIamPolicy",
@@ -769,6 +776,7 @@ _utilities.register(
    "google-native:compute/alpha:PublicDelegatedPrefix": "PublicDelegatedPrefix",
    "google-native:compute/alpha:RegionAutoscaler": "RegionAutoscaler",
    "google-native:compute/alpha:RegionBackendService": "RegionBackendService",
+   "google-native:compute/alpha:RegionBackendServiceIamPolicy": "RegionBackendServiceIamPolicy",
    "google-native:compute/alpha:RegionCommitment": "RegionCommitment",
    "google-native:compute/alpha:RegionDisk": "RegionDisk",
    "google-native:compute/alpha:RegionDiskIamPolicy": "RegionDiskIamPolicy",
@@ -783,6 +791,7 @@ _utilities.register(
    "google-native:compute/alpha:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
    "google-native:compute/alpha:RegionNotificationEndpoint": "RegionNotificationEndpoint",
+   "google-native:compute/alpha:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/alpha:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/alpha:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/alpha:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
@@ -829,6 +838,7 @@ _utilities.register(
    "google-native:compute/beta:BackendBucket": "BackendBucket",
    "google-native:compute/beta:BackendBucketIamPolicy": "BackendBucketIamPolicy",
    "google-native:compute/beta:BackendService": "BackendService",
+   "google-native:compute/beta:BackendServiceIamPolicy": "BackendServiceIamPolicy",
    "google-native:compute/beta:Disk": "Disk",
    "google-native:compute/beta:DiskIamPolicy": "DiskIamPolicy",
    "google-native:compute/beta:ExternalVpnGateway": "ExternalVpnGateway",
@@ -869,6 +879,7 @@ _utilities.register(
    "google-native:compute/beta:PublicDelegatedPrefix": "PublicDelegatedPrefix",
    "google-native:compute/beta:RegionAutoscaler": "RegionAutoscaler",
    "google-native:compute/beta:RegionBackendService": "RegionBackendService",
+   "google-native:compute/beta:RegionBackendServiceIamPolicy": "RegionBackendServiceIamPolicy",
    "google-native:compute/beta:RegionCommitment": "RegionCommitment",
    "google-native:compute/beta:RegionDisk": "RegionDisk",
    "google-native:compute/beta:RegionDiskIamPolicy": "RegionDiskIamPolicy",
@@ -1031,6 +1042,22 @@ _utilities.register(
    "google-native:containeranalysis/v1beta1:NoteIamPolicy": "NoteIamPolicy",
    "google-native:containeranalysis/v1beta1:Occurrence": "Occurrence",
    "google-native:containeranalysis/v1beta1:OccurrenceIamPolicy": "OccurrenceIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "datacatalog/v1",
+  "fqn": "pulumi_google_native.datacatalog.v1",
+  "classes": {
+   "google-native:datacatalog/v1:Entry": "Entry",
+   "google-native:datacatalog/v1:EntryGroup": "EntryGroup",
+   "google-native:datacatalog/v1:EntryGroupIamPolicy": "EntryGroupIamPolicy",
+   "google-native:datacatalog/v1:PolicyTag": "PolicyTag",
+   "google-native:datacatalog/v1:TagTemplate": "TagTemplate",
+   "google-native:datacatalog/v1:TagTemplateIamPolicy": "TagTemplateIamPolicy",
+   "google-native:datacatalog/v1:Taxonomy": "Taxonomy",
+   "google-native:datacatalog/v1:TaxonomyIamPolicy": "TaxonomyIamPolicy",
+   "google-native:datacatalog/v1:TaxonomyPolicyTagIamPolicy": "TaxonomyPolicyTagIamPolicy"
   }
  },
  {
@@ -1374,6 +1401,14 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "firebaseappcheck/v1beta",
+  "fqn": "pulumi_google_native.firebaseappcheck.v1beta",
+  "classes": {
+   "google-native:firebaseappcheck/v1beta:DebugToken": "DebugToken"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "firebasedatabase/v1beta",
   "fqn": "pulumi_google_native.firebasedatabase.v1beta",
   "classes": {
@@ -1468,6 +1503,8 @@ _utilities.register(
   "mod": "gkehub/v1",
   "fqn": "pulumi_google_native.gkehub.v1",
   "classes": {
+   "google-native:gkehub/v1:Feature": "Feature",
+   "google-native:gkehub/v1:FeatureIamPolicy": "FeatureIamPolicy",
    "google-native:gkehub/v1:Membership": "Membership",
    "google-native:gkehub/v1:MembershipIamPolicy": "MembershipIamPolicy"
   }
@@ -1633,6 +1670,7 @@ _utilities.register(
   "classes": {
    "google-native:managedidentities/v1alpha1:Domain": "Domain",
    "google-native:managedidentities/v1alpha1:DomainIamPolicy": "DomainIamPolicy",
+   "google-native:managedidentities/v1alpha1:Peering": "Peering",
    "google-native:managedidentities/v1alpha1:PeeringIamPolicy": "PeeringIamPolicy"
   }
  },
@@ -1643,6 +1681,7 @@ _utilities.register(
   "classes": {
    "google-native:managedidentities/v1beta1:Domain": "Domain",
    "google-native:managedidentities/v1beta1:DomainIamPolicy": "DomainIamPolicy",
+   "google-native:managedidentities/v1beta1:Peering": "Peering",
    "google-native:managedidentities/v1beta1:PeeringIamPolicy": "PeeringIamPolicy"
   }
  },
@@ -1670,6 +1709,7 @@ _utilities.register(
    "google-native:metastore/v1alpha:Backup": "Backup",
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",
+   "google-native:metastore/v1alpha:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
    "google-native:metastore/v1alpha:ServiceIamPolicy": "ServiceIamPolicy"
   }
  },
@@ -1681,6 +1721,7 @@ _utilities.register(
    "google-native:metastore/v1beta:Backup": "Backup",
    "google-native:metastore/v1beta:MetadataImport": "MetadataImport",
    "google-native:metastore/v1beta:Service": "Service",
+   "google-native:metastore/v1beta:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
    "google-native:metastore/v1beta:ServiceIamPolicy": "ServiceIamPolicy"
   }
  },
@@ -1784,6 +1825,14 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "osconfig/v1alpha",
+  "fqn": "pulumi_google_native.osconfig.v1alpha",
+  "classes": {
+   "google-native:osconfig/v1alpha:OsPolicyAssignment": "OsPolicyAssignment"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "osconfig/v1beta",
   "fqn": "pulumi_google_native.osconfig.v1beta",
   "classes": {
@@ -1809,6 +1858,20 @@ _utilities.register(
    "google-native:policysimulator/v1beta1:FolderReplay": "FolderReplay",
    "google-native:policysimulator/v1beta1:OrganizationReplay": "OrganizationReplay",
    "google-native:policysimulator/v1beta1:Replay": "Replay"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "privateca/v1",
+  "fqn": "pulumi_google_native.privateca.v1",
+  "classes": {
+   "google-native:privateca/v1:CaPool": "CaPool",
+   "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy": "CaPoolCertificateAuthorityCertificateRevocationListIamPolicy",
+   "google-native:privateca/v1:CaPoolIamPolicy": "CaPoolIamPolicy",
+   "google-native:privateca/v1:Certificate": "Certificate",
+   "google-native:privateca/v1:CertificateAuthority": "CertificateAuthority",
+   "google-native:privateca/v1:CertificateTemplate": "CertificateTemplate",
+   "google-native:privateca/v1:CertificateTemplateIamPolicy": "CertificateTemplateIamPolicy"
   }
  },
  {
@@ -1865,6 +1928,14 @@ _utilities.register(
   "classes": {
    "google-native:pubsublite/v1:Subscription": "Subscription",
    "google-native:pubsublite/v1:Topic": "Topic"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "recaptchaenterprise/v1",
+  "fqn": "pulumi_google_native.recaptchaenterprise.v1",
+  "classes": {
+   "google-native:recaptchaenterprise/v1:Key": "Key"
   }
  },
  {

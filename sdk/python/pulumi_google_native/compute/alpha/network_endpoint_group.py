@@ -58,7 +58,7 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the network endpoint group is located.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        :param pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input['NetworkEndpointGroupType'] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
@@ -334,7 +334,7 @@ class NetworkEndpointGroupArgs:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         """
         return pulumi.get(self, "serverless_deployment")
 
@@ -429,7 +429,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the network endpoint group is located.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input['NetworkEndpointGroupType'] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
@@ -689,7 +689,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> pulumi.Output['outputs.NetworkEndpointGroupServerlessDeploymentResponse']:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         """
         return pulumi.get(self, "serverless_deployment")
 

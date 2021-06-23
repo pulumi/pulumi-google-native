@@ -17,6 +17,7 @@ class SecretArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  secret_id: pulumi.Input[str],
+                 etag: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replication: Optional[pulumi.Input['ReplicationArgs']] = None,
@@ -25,6 +26,7 @@ class SecretArgs:
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Secret resource.
+        :param pulumi.Input[str] etag: Optional. Etag of the currently stored Secret.
         :param pulumi.Input[str] expire_time: Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
         :param pulumi.Input['ReplicationArgs'] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
@@ -34,6 +36,8 @@ class SecretArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "secret_id", secret_id)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -64,6 +68,18 @@ class SecretArgs:
     @secret_id.setter
     def secret_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_id", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Etag of the currently stored Secret.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -143,6 +159,7 @@ class Secret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -157,6 +174,7 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] etag: Optional. Etag of the currently stored Secret.
         :param pulumi.Input[str] expire_time: Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
         :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
@@ -188,6 +206,7 @@ class Secret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -208,6 +227,7 @@ class Secret(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretArgs.__new__(SecretArgs)
 
+            __props__.__dict__["etag"] = etag
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             if project is None and not opts.urn:
@@ -245,6 +265,7 @@ class Secret(pulumi.CustomResource):
         __props__ = SecretArgs.__new__(SecretArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
@@ -261,6 +282,14 @@ class Secret(pulumi.CustomResource):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Optional. Etag of the currently stored Secret.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="expireTime")

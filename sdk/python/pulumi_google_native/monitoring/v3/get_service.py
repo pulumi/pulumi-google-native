@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, app_engine=None, cloud_endpoints=None, cluster_istio=None, custom=None, display_name=None, istio_canonical_service=None, mesh_istio=None, name=None, telemetry=None):
+    def __init__(__self__, app_engine=None, cloud_endpoints=None, cluster_istio=None, custom=None, display_name=None, istio_canonical_service=None, mesh_istio=None, name=None, telemetry=None, user_labels=None):
         if app_engine and not isinstance(app_engine, dict):
             raise TypeError("Expected argument 'app_engine' to be a dict")
         pulumi.set(__self__, "app_engine", app_engine)
@@ -45,6 +45,9 @@ class GetServiceResult:
         if telemetry and not isinstance(telemetry, dict):
             raise TypeError("Expected argument 'telemetry' to be a dict")
         pulumi.set(__self__, "telemetry", telemetry)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="appEngine")
@@ -118,6 +121,14 @@ class GetServiceResult:
         """
         return pulumi.get(self, "telemetry")
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        """
+        Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
+
 
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
@@ -133,7 +144,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             istio_canonical_service=self.istio_canonical_service,
             mesh_istio=self.mesh_istio,
             name=self.name,
-            telemetry=self.telemetry)
+            telemetry=self.telemetry,
+            user_labels=self.user_labels)
 
 
 def get_service(service_id: Optional[str] = None,
@@ -162,4 +174,5 @@ def get_service(service_id: Optional[str] = None,
         istio_canonical_service=__ret__.istio_canonical_service,
         mesh_istio=__ret__.mesh_istio,
         name=__ret__.name,
-        telemetry=__ret__.telemetry)
+        telemetry=__ret__.telemetry,
+        user_labels=__ret__.user_labels)

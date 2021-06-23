@@ -11,6 +11,8 @@ __all__ = [
     'ClusterTelemetryType',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
+    'DNSConfigClusterDns',
+    'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'IstioConfigAuth',
     'NetworkConfigDatapathProvider',
@@ -85,6 +87,24 @@ class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
     PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED = "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"
     PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE = "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"
     PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL = "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
+
+
+class DNSConfigClusterDns(str, Enum):
+    """
+    cluster_dns indicates which in-cluster DNS provider should be used.
+    """
+    PROVIDER_UNSPECIFIED = "PROVIDER_UNSPECIFIED"
+    PLATFORM_DEFAULT = "PLATFORM_DEFAULT"
+    CLOUD_DNS = "CLOUD_DNS"
+
+
+class DNSConfigClusterDnsScope(str, Enum):
+    """
+    cluster_dns_scope indicates the scope of access to cluster DNS records.
+    """
+    DNS_SCOPE_UNSPECIFIED = "DNS_SCOPE_UNSPECIFIED"
+    CLUSTER_SCOPE = "CLUSTER_SCOPE"
+    VPC_SCOPE = "VPC_SCOPE"
 
 
 class DatabaseEncryptionState(str, Enum):

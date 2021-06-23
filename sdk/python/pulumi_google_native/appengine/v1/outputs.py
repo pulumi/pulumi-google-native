@@ -2361,13 +2361,41 @@ class VpcAccessConnectorResponse(dict):
     """
     VPC access connector specification.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressSetting":
+            suggest = "egress_setting"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcAccessConnectorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcAccessConnectorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcAccessConnectorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 egress_setting: str,
                  name: str):
         """
         VPC access connector specification.
+        :param str egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
         :param str name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
+        pulumi.set(__self__, "egress_setting", egress_setting)
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="egressSetting")
+    def egress_setting(self) -> str:
+        """
+        The egress setting for the connector, controlling what traffic is diverted through it.
+        """
+        return pulumi.get(self, "egress_setting")
 
     @property
     @pulumi.getter

@@ -124,7 +124,7 @@ class GetReservationResult:
 
     @property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> 'outputs.AllocationShareSettingsResponse':
+    def share_settings(self) -> 'outputs.ShareSettingsResponse':
         """
         Share-settings for shared-reservation
         """

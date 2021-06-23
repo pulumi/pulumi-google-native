@@ -88,7 +88,7 @@ class GetTransferJobResult:
     @pulumi.getter(name="latestOperationName")
     def latest_operation_name(self) -> str:
         """
-        The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         """
         return pulumi.get(self, "latest_operation_name")
 

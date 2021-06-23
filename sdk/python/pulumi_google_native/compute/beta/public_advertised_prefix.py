@@ -35,9 +35,7 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
@@ -124,9 +122,7 @@ class PublicAdvertisedPrefixArgs:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -268,9 +264,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
@@ -409,9 +403,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         """
         return pulumi.get(self, "fingerprint")
 

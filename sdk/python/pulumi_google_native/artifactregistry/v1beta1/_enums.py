@@ -15,3 +15,7 @@ class RepositoryFormat(str, Enum):
     """
     FORMAT_UNSPECIFIED = "FORMAT_UNSPECIFIED"
     DOCKER = "DOCKER"
+    MAVEN = "MAVEN"
+    NPM = "NPM"
+    PYPI = "PYPI"
+    PYTHON = "PYTHON"

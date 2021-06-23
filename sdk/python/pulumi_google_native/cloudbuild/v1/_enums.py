@@ -13,6 +13,7 @@ __all__ = [
     'BuildOptionsSubstitutionOption',
     'PubsubConfigState',
     'PullRequestFilterCommentControl',
+    'WebhookConfigState',
 ]
 
 
@@ -88,3 +89,12 @@ class PullRequestFilterCommentControl(str, Enum):
     COMMENTS_DISABLED = "COMMENTS_DISABLED"
     COMMENTS_ENABLED = "COMMENTS_ENABLED"
     COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
+
+
+class WebhookConfigState(str, Enum):
+    """
+    Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    OK = "OK"
+    SECRET_DELETED = "SECRET_DELETED"

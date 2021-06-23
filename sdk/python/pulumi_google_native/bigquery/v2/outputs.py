@@ -1878,6 +1878,8 @@ class ExternalDataConfigurationResponse(dict):
             suggest = "connection_id"
         elif key == "csvOptions":
             suggest = "csv_options"
+        elif key == "decimalTargetTypes":
+            suggest = "decimal_target_types"
         elif key == "googleSheetsOptions":
             suggest = "google_sheets_options"
         elif key == "hivePartitioningOptions":
@@ -1910,6 +1912,7 @@ class ExternalDataConfigurationResponse(dict):
                  compression: str,
                  connection_id: str,
                  csv_options: 'outputs.CsvOptionsResponse',
+                 decimal_target_types: Sequence[str],
                  google_sheets_options: 'outputs.GoogleSheetsOptionsResponse',
                  hive_partitioning_options: 'outputs.HivePartitioningOptionsResponse',
                  ignore_unknown_values: bool,
@@ -1924,6 +1927,7 @@ class ExternalDataConfigurationResponse(dict):
         :param str compression: [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         :param str connection_id: [Optional, Trusted Tester] Connection for external data source.
         :param 'CsvOptionsResponse' csv_options: Additional properties to set if sourceFormat is set to CSV.
+        :param Sequence[str] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param 'GoogleSheetsOptionsResponse' google_sheets_options: [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         :param 'HivePartitioningOptionsResponse' hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param bool ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
@@ -1938,6 +1942,7 @@ class ExternalDataConfigurationResponse(dict):
         pulumi.set(__self__, "compression", compression)
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "csv_options", csv_options)
+        pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
@@ -1986,6 +1991,14 @@ class ExternalDataConfigurationResponse(dict):
         Additional properties to set if sourceFormat is set to CSV.
         """
         return pulumi.get(self, "csv_options")
+
+    @property
+    @pulumi.getter(name="decimalTargetTypes")
+    def decimal_target_types(self) -> Sequence[str]:
+        """
+        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        """
+        return pulumi.get(self, "decimal_target_types")
 
     @property
     @pulumi.getter(name="googleSheetsOptions")
@@ -2392,7 +2405,7 @@ class JobConfigurationLoadResponse(dict):
         :param bool autodetect: [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         :param 'ClusteringResponse' clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param str create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-        :param Sequence[str] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        :param Sequence[str] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param 'EncryptionConfigurationResponse' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param 'TableReferenceResponse' destination_table: [Required] The destination table to load the data into.
         :param 'DestinationTablePropertiesResponse' destination_table_properties: [Beta] [Optional] Properties with which to create the destination table if it is new.
@@ -2489,7 +2502,7 @@ class JobConfigurationLoadResponse(dict):
     @pulumi.getter(name="decimalTargetTypes")
     def decimal_target_types(self) -> Sequence[str]:
         """
-        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         """
         return pulumi.get(self, "decimal_target_types")
 
@@ -3341,6 +3354,8 @@ class JobStatistics2Response(dict):
             suggest = "cache_hit"
         elif key == "ddlAffectedRowAccessPolicyCount":
             suggest = "ddl_affected_row_access_policy_count"
+        elif key == "ddlDestinationTable":
+            suggest = "ddl_destination_table"
         elif key == "ddlOperationPerformed":
             suggest = "ddl_operation_performed"
         elif key == "ddlTargetDataset":
@@ -3351,6 +3366,8 @@ class JobStatistics2Response(dict):
             suggest = "ddl_target_row_access_policy"
         elif key == "ddlTargetTable":
             suggest = "ddl_target_table"
+        elif key == "dmlStats":
+            suggest = "dml_stats"
         elif key == "estimatedBytesProcessed":
             suggest = "estimated_bytes_processed"
         elif key == "modelTraining":
@@ -3395,11 +3412,13 @@ class JobStatistics2Response(dict):
                  billing_tier: int,
                  cache_hit: bool,
                  ddl_affected_row_access_policy_count: str,
+                 ddl_destination_table: 'outputs.TableReferenceResponse',
                  ddl_operation_performed: str,
                  ddl_target_dataset: 'outputs.DatasetReferenceResponse',
                  ddl_target_routine: 'outputs.RoutineReferenceResponse',
                  ddl_target_row_access_policy: 'outputs.RowAccessPolicyReferenceResponse',
                  ddl_target_table: 'outputs.TableReferenceResponse',
+                 dml_stats: Any,
                  estimated_bytes_processed: str,
                  model_training: 'outputs.BigQueryModelTrainingResponse',
                  num_dml_affected_rows: str,
@@ -3420,11 +3439,13 @@ class JobStatistics2Response(dict):
         :param int billing_tier: [Output-only] Billing tier for the job.
         :param bool cache_hit: [Output-only] Whether the query result was fetched from the query cache.
         :param str ddl_affected_row_access_policy_count: [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        :param 'TableReferenceResponse' ddl_destination_table: [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
         :param str ddl_operation_performed: The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
         :param 'DatasetReferenceResponse' ddl_target_dataset: [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         :param 'RoutineReferenceResponse' ddl_target_routine: The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
         :param 'RowAccessPolicyReferenceResponse' ddl_target_row_access_policy: [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         :param 'TableReferenceResponse' ddl_target_table: [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        :param Any dml_stats: [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
         :param str estimated_bytes_processed: [Output-only] The original estimate of bytes processed for the job.
         :param 'BigQueryModelTrainingResponse' model_training: [Output-only, Beta] Information about create model query job progress.
         :param str num_dml_affected_rows: [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
@@ -3445,11 +3466,13 @@ class JobStatistics2Response(dict):
         pulumi.set(__self__, "billing_tier", billing_tier)
         pulumi.set(__self__, "cache_hit", cache_hit)
         pulumi.set(__self__, "ddl_affected_row_access_policy_count", ddl_affected_row_access_policy_count)
+        pulumi.set(__self__, "ddl_destination_table", ddl_destination_table)
         pulumi.set(__self__, "ddl_operation_performed", ddl_operation_performed)
         pulumi.set(__self__, "ddl_target_dataset", ddl_target_dataset)
         pulumi.set(__self__, "ddl_target_routine", ddl_target_routine)
         pulumi.set(__self__, "ddl_target_row_access_policy", ddl_target_row_access_policy)
         pulumi.set(__self__, "ddl_target_table", ddl_target_table)
+        pulumi.set(__self__, "dml_stats", dml_stats)
         pulumi.set(__self__, "estimated_bytes_processed", estimated_bytes_processed)
         pulumi.set(__self__, "model_training", model_training)
         pulumi.set(__self__, "num_dml_affected_rows", num_dml_affected_rows)
@@ -3492,6 +3515,14 @@ class JobStatistics2Response(dict):
         return pulumi.get(self, "ddl_affected_row_access_policy_count")
 
     @property
+    @pulumi.getter(name="ddlDestinationTable")
+    def ddl_destination_table(self) -> 'outputs.TableReferenceResponse':
+        """
+        [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        """
+        return pulumi.get(self, "ddl_destination_table")
+
+    @property
     @pulumi.getter(name="ddlOperationPerformed")
     def ddl_operation_performed(self) -> str:
         """
@@ -3530,6 +3561,14 @@ class JobStatistics2Response(dict):
         [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         """
         return pulumi.get(self, "ddl_target_table")
+
+    @property
+    @pulumi.getter(name="dmlStats")
+    def dml_stats(self) -> Any:
+        """
+        [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        """
+        return pulumi.get(self, "dml_stats")
 
     @property
     @pulumi.getter(name="estimatedBytesProcessed")
@@ -3870,8 +3909,8 @@ class JobStatisticsResponse(dict):
             suggest = "start_time"
         elif key == "totalSlotMs":
             suggest = "total_slot_ms"
-        elif key == "transactionInfoTemplate":
-            suggest = "transaction_info_template"
+        elif key == "transactionInfo":
+            suggest = "transaction_info"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3901,7 +3940,7 @@ class JobStatisticsResponse(dict):
                  session_info_template: 'outputs.SessionInfoResponse',
                  start_time: str,
                  total_slot_ms: str,
-                 transaction_info_template: 'outputs.TransactionInfoResponse'):
+                 transaction_info: 'outputs.TransactionInfoResponse'):
         """
         :param float completion_ratio: [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
         :param str creation_time: [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
@@ -3919,7 +3958,7 @@ class JobStatisticsResponse(dict):
         :param 'SessionInfoResponse' session_info_template: [Output-only] [Preview] Information of the session if this job is part of one.
         :param str start_time: [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         :param str total_slot_ms: [Output-only] Slot-milliseconds for the job.
-        :param 'TransactionInfoResponse' transaction_info_template: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+        :param 'TransactionInfoResponse' transaction_info: [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
         pulumi.set(__self__, "completion_ratio", completion_ratio)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -3937,7 +3976,7 @@ class JobStatisticsResponse(dict):
         pulumi.set(__self__, "session_info_template", session_info_template)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "total_slot_ms", total_slot_ms)
-        pulumi.set(__self__, "transaction_info_template", transaction_info_template)
+        pulumi.set(__self__, "transaction_info", transaction_info)
 
     @property
     @pulumi.getter(name="completionRatio")
@@ -4068,12 +4107,12 @@ class JobStatisticsResponse(dict):
         return pulumi.get(self, "total_slot_ms")
 
     @property
-    @pulumi.getter(name="transactionInfoTemplate")
-    def transaction_info_template(self) -> 'outputs.TransactionInfoResponse':
+    @pulumi.getter(name="transactionInfo")
+    def transaction_info(self) -> 'outputs.TransactionInfoResponse':
         """
         [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
-        return pulumi.get(self, "transaction_info_template")
+        return pulumi.get(self, "transaction_info")
 
 
 @pulumi.output_type
@@ -5160,8 +5199,8 @@ class SnapshotDefinitionResponse(dict):
                  base_table_reference: 'outputs.TableReferenceResponse',
                  snapshot_time: str):
         """
-        :param 'TableReferenceResponse' base_table_reference: [Required] Reference describing the ID of the table that is snapshotted.
-        :param str snapshot_time: [Required] The time at which the base table was snapshot.
+        :param 'TableReferenceResponse' base_table_reference: [Required] Reference describing the ID of the table that was snapshot.
+        :param str snapshot_time: [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
         """
         pulumi.set(__self__, "base_table_reference", base_table_reference)
         pulumi.set(__self__, "snapshot_time", snapshot_time)
@@ -5170,7 +5209,7 @@ class SnapshotDefinitionResponse(dict):
     @pulumi.getter(name="baseTableReference")
     def base_table_reference(self) -> 'outputs.TableReferenceResponse':
         """
-        [Required] Reference describing the ID of the table that is snapshotted.
+        [Required] Reference describing the ID of the table that was snapshot.
         """
         return pulumi.get(self, "base_table_reference")
 
@@ -5178,7 +5217,7 @@ class SnapshotDefinitionResponse(dict):
     @pulumi.getter(name="snapshotTime")
     def snapshot_time(self) -> str:
         """
-        [Required] The time at which the base table was snapshot.
+        [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
         """
         return pulumi.get(self, "snapshot_time")
 
@@ -5783,7 +5822,9 @@ class ViewDefinitionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "useLegacySql":
+        if key == "useExplicitColumnNames":
+            suggest = "use_explicit_column_names"
+        elif key == "useLegacySql":
             suggest = "use_legacy_sql"
         elif key == "userDefinedFunctionResources":
             suggest = "user_defined_function_resources"
@@ -5801,14 +5842,17 @@ class ViewDefinitionResponse(dict):
 
     def __init__(__self__, *,
                  query: str,
+                 use_explicit_column_names: bool,
                  use_legacy_sql: bool,
                  user_defined_function_resources: Sequence['outputs.UserDefinedFunctionResourceResponse']):
         """
         :param str query: [Required] A query that BigQuery executes when the view is referenced.
+        :param bool use_explicit_column_names: True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
         :param bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
         :param Sequence['UserDefinedFunctionResourceResponse'] user_defined_function_resources: Describes user-defined function resources used in the query.
         """
         pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "use_explicit_column_names", use_explicit_column_names)
         pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
         pulumi.set(__self__, "user_defined_function_resources", user_defined_function_resources)
 
@@ -5819,6 +5863,14 @@ class ViewDefinitionResponse(dict):
         [Required] A query that BigQuery executes when the view is referenced.
         """
         return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="useExplicitColumnNames")
+    def use_explicit_column_names(self) -> bool:
+        """
+        True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        """
+        return pulumi.get(self, "use_explicit_column_names")
 
     @property
     @pulumi.getter(name="useLegacySql")

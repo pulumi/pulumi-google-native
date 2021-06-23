@@ -37,9 +37,7 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[str] region: [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
@@ -131,9 +129,7 @@ class PublicDelegatedPrefixArgs:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -300,9 +296,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
@@ -444,9 +438,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
         """
         return pulumi.get(self, "fingerprint")
 

@@ -25,6 +25,7 @@ __all__ = [
     'GameServerClusterConnectionInfoResponse',
     'GkeClusterReferenceResponse',
     'GkeHubClusterReferenceResponse',
+    'KubernetesClusterStateResponse',
     'LabelSelectorResponse',
     'LogConfigResponse',
     'RuleResponse',
@@ -716,6 +717,108 @@ class GkeHubClusterReferenceResponse(dict):
         The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
         """
         return pulumi.get(self, "membership")
+
+
+@pulumi.output_type
+class KubernetesClusterStateResponse(dict):
+    """
+    The state of the Kubernetes cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agonesVersionInstalled":
+            suggest = "agones_version_installed"
+        elif key == "agonesVersionTargeted":
+            suggest = "agones_version_targeted"
+        elif key == "installationState":
+            suggest = "installation_state"
+        elif key == "kubernetesVersionInstalled":
+            suggest = "kubernetes_version_installed"
+        elif key == "versionInstalledErrorMessage":
+            suggest = "version_installed_error_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agones_version_installed: str,
+                 agones_version_targeted: str,
+                 installation_state: str,
+                 kubernetes_version_installed: str,
+                 provider: str,
+                 version_installed_error_message: str):
+        """
+        The state of the Kubernetes cluster.
+        :param str agones_version_installed: The version of Agones currently installed in the registered Kubernetes cluster.
+        :param str agones_version_targeted: The version of Agones that is targeted to be installed in the cluster.
+        :param str installation_state: The state for the installed versions of Agones/Kubernetes.
+        :param str kubernetes_version_installed: The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+        :param str provider: The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+        :param str version_installed_error_message: The detailed error message for the installed versions of Agones/Kubernetes.
+        """
+        pulumi.set(__self__, "agones_version_installed", agones_version_installed)
+        pulumi.set(__self__, "agones_version_targeted", agones_version_targeted)
+        pulumi.set(__self__, "installation_state", installation_state)
+        pulumi.set(__self__, "kubernetes_version_installed", kubernetes_version_installed)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "version_installed_error_message", version_installed_error_message)
+
+    @property
+    @pulumi.getter(name="agonesVersionInstalled")
+    def agones_version_installed(self) -> str:
+        """
+        The version of Agones currently installed in the registered Kubernetes cluster.
+        """
+        return pulumi.get(self, "agones_version_installed")
+
+    @property
+    @pulumi.getter(name="agonesVersionTargeted")
+    def agones_version_targeted(self) -> str:
+        """
+        The version of Agones that is targeted to be installed in the cluster.
+        """
+        return pulumi.get(self, "agones_version_targeted")
+
+    @property
+    @pulumi.getter(name="installationState")
+    def installation_state(self) -> str:
+        """
+        The state for the installed versions of Agones/Kubernetes.
+        """
+        return pulumi.get(self, "installation_state")
+
+    @property
+    @pulumi.getter(name="kubernetesVersionInstalled")
+    def kubernetes_version_installed(self) -> str:
+        """
+        The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+        """
+        return pulumi.get(self, "kubernetes_version_installed")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        """
+        The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+        """
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="versionInstalledErrorMessage")
+    def version_installed_error_message(self) -> str:
+        """
+        The detailed error message for the installed versions of Agones/Kubernetes.
+        """
+        return pulumi.get(self, "version_installed_error_message")
 
 
 @pulumi.output_type

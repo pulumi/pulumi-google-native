@@ -476,7 +476,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConf
                  model: str):
         """
         Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
-        :param str model: Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        :param str model: Conversation model resource name. Format: `projects//conversationModels/`.
         """
         pulumi.set(__self__, "model", model)
 
@@ -484,7 +484,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConf
     @pulumi.getter
     def model(self) -> str:
         """
-        Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        Conversation model resource name. Format: `projects//conversationModels/`.
         """
         return pulumi.get(self, "model")
 

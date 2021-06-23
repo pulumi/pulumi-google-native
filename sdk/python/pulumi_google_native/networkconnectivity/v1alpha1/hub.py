@@ -212,7 +212,6 @@ class Hub(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["update_time"] = update_time
-            __props__.__dict__["spokes"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None
         super(Hub, __self__).__init__(
@@ -241,7 +240,6 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
-        __props__.__dict__["spokes"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["unique_id"] = None
         __props__.__dict__["update_time"] = None
@@ -278,14 +276,6 @@ class Hub(pulumi.CustomResource):
         Immutable. The name of a Hub resource.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def spokes(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of the URIs of all attached spokes
-        """
-        return pulumi.get(self, "spokes")
 
     @property
     @pulumi.getter

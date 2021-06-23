@@ -156,6 +156,8 @@ class BindingArgs:
 @pulumi.input_type
 class EndpointArgs:
     def __init__(__self__, *,
+                 cloud_sql_instance: Optional[pulumi.Input[str]] = None,
+                 gke_master_cluster: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -164,6 +166,8 @@ class EndpointArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Source or destination of the Connectivity Test.
+        :param pulumi.Input[str] cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        :param pulumi.Input[str] gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param pulumi.Input[str] instance: A Compute Engine instance URI.
         :param pulumi.Input[str] ip_address: The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](/load-balancing/docs/load-balancing-overview).
         :param pulumi.Input[str] network: A Compute Engine network URI.
@@ -171,6 +175,10 @@ class EndpointArgs:
         :param pulumi.Input[int] port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
         :param pulumi.Input[str] project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
+        if cloud_sql_instance is not None:
+            pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        if gke_master_cluster is not None:
+            pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
@@ -183,6 +191,30 @@ class EndpointArgs:
             pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudSqlInstance")
+    def cloud_sql_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        """
+        return pulumi.get(self, "cloud_sql_instance")
+
+    @cloud_sql_instance.setter
+    def cloud_sql_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_sql_instance", value)
+
+    @property
+    @pulumi.getter(name="gkeMasterCluster")
+    def gke_master_cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+        """
+        return pulumi.get(self, "gke_master_cluster")
+
+    @gke_master_cluster.setter
+    def gke_master_cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_master_cluster", value)
 
     @property
     @pulumi.getter

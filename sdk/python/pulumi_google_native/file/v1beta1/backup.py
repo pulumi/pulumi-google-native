@@ -198,6 +198,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["download_bytes"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["source_instance_tier"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["storage_bytes"] = None
@@ -229,6 +230,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["download_bytes"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["source_file_share"] = None
         __props__.__dict__["source_instance"] = None
         __props__.__dict__["source_instance_tier"] = None
@@ -283,6 +285,14 @@ class Backup(pulumi.CustomResource):
         The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="sourceFileShare")

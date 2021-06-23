@@ -11,6 +11,7 @@ from .autoscaler import *
 from .backend_bucket import *
 from .backend_bucket_iam_policy import *
 from .backend_service import *
+from .backend_service_iam_policy import *
 from .disk import *
 from .disk_iam_policy import *
 from .external_vpn_gateway import *
@@ -23,6 +24,7 @@ from .get_autoscaler import *
 from .get_backend_bucket import *
 from .get_backend_bucket_iam_policy import *
 from .get_backend_service import *
+from .get_backend_service_iam_policy import *
 from .get_disk import *
 from .get_disk_iam_policy import *
 from .get_external_vpn_gateway import *
@@ -63,6 +65,7 @@ from .get_public_advertised_prefix import *
 from .get_public_delegated_prefix import *
 from .get_region_autoscaler import *
 from .get_region_backend_service import *
+from .get_region_backend_service_iam_policy import *
 from .get_region_commitment import *
 from .get_region_disk import *
 from .get_region_disk_iam_policy import *
@@ -134,6 +137,7 @@ from .public_advertised_prefix import *
 from .public_delegated_prefix import *
 from .region_autoscaler import *
 from .region_backend_service import *
+from .region_backend_service_iam_policy import *
 from .region_commitment import *
 from .region_disk import *
 from .region_disk_iam_policy import *

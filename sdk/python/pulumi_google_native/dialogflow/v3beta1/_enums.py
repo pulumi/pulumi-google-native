@@ -130,7 +130,7 @@ class SecuritySettingPurgeDataTypesItem(str, Enum):
 
 class SecuritySettingRedactionScope(str, Enum):
     """
-    Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+    Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
     """
     REDACTION_SCOPE_UNSPECIFIED = "REDACTION_SCOPE_UNSPECIFIED"
     REDACT_DISK_STORAGE = "REDACT_DISK_STORAGE"

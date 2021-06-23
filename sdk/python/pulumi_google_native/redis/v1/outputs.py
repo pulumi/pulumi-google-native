@@ -7,11 +7,225 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
 
 __all__ = [
+    'MaintenancePolicyResponse',
+    'MaintenanceScheduleResponse',
+    'TimeOfDayResponse',
     'TlsCertificateResponse',
+    'WeeklyMaintenanceWindowResponse',
 ]
+
+@pulumi.output_type
+class MaintenancePolicyResponse(dict):
+    """
+    Maintenance policy for an instance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "weeklyMaintenanceWindow":
+            suggest = "weekly_maintenance_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenancePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenancePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenancePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 update_time: str,
+                 weekly_maintenance_window: Sequence['outputs.WeeklyMaintenanceWindowResponse']):
+        """
+        Maintenance policy for an instance.
+        :param str create_time: The time when the policy was created.
+        :param str description: Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+        :param str update_time: The time when the policy was last updated.
+        :param Sequence['WeeklyMaintenanceWindowResponse'] weekly_maintenance_window: Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "weekly_maintenance_window", weekly_maintenance_window)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the policy was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time when the policy was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="weeklyMaintenanceWindow")
+    def weekly_maintenance_window(self) -> Sequence['outputs.WeeklyMaintenanceWindowResponse']:
+        """
+        Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+        """
+        return pulumi.get(self, "weekly_maintenance_window")
+
+
+@pulumi.output_type
+class MaintenanceScheduleResponse(dict):
+    """
+    Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canReschedule":
+            suggest = "can_reschedule"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "scheduleDeadlineTime":
+            suggest = "schedule_deadline_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 can_reschedule: bool,
+                 end_time: str,
+                 schedule_deadline_time: str,
+                 start_time: str):
+        """
+        Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
+        :param bool can_reschedule: If the scheduled maintenance can be rescheduled, default is true.
+        :param str end_time: The end time of any upcoming scheduled maintenance for this instance.
+        :param str schedule_deadline_time: The deadline that the maintenance schedule start time can not go beyond, including reschedule.
+        :param str start_time: The start time of any upcoming scheduled maintenance for this instance.
+        """
+        pulumi.set(__self__, "can_reschedule", can_reschedule)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="canReschedule")
+    def can_reschedule(self) -> bool:
+        """
+        If the scheduled maintenance can be rescheduled, default is true.
+        """
+        return pulumi.get(self, "can_reschedule")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time of any upcoming scheduled maintenance for this instance.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> str:
+        """
+        The deadline that the maintenance schedule start time can not go beyond, including reschedule.
+        """
+        return pulumi.get(self, "schedule_deadline_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time of any upcoming scheduled maintenance for this instance.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class TimeOfDayResponse(dict):
+    """
+    Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    """
+    def __init__(__self__, *,
+                 hours: int,
+                 minutes: int,
+                 nanos: int,
+                 seconds: int):
+        """
+        Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> int:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
 
 @pulumi.output_type
 class TlsCertificateResponse(dict):
@@ -100,5 +314,66 @@ class TlsCertificateResponse(dict):
         Sha1 Fingerprint of the certificate.
         """
         return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class WeeklyMaintenanceWindowResponse(dict):
+    """
+    Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WeeklyMaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WeeklyMaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WeeklyMaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day: str,
+                 duration: str,
+                 start_time: 'outputs.TimeOfDayResponse'):
+        """
+        Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+        :param str day: Required. The day of week that maintenance updates occur.
+        :param str duration: Duration of the maintenance window. The current window is fixed at 1 hour.
+        :param 'TimeOfDayResponse' start_time: Required. Start time of the window in UTC time.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        Required. The day of week that maintenance updates occur.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Duration of the maintenance window. The current window is fixed at 1 hour.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.TimeOfDayResponse':
+        """
+        Required. Start time of the window in UTC time.
+        """
+        return pulumi.get(self, "start_time")
 
 

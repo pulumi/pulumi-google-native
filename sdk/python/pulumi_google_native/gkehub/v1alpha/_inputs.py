@@ -160,7 +160,7 @@ class CloudAuditLoggingFeatureSpecArgs:
     def __init__(__self__, *,
                  allowlisted_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        Spec for Audit Logging Allowlisting.
+        **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlisted_service_accounts: Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
         """
         if allowlisted_service_accounts is not None:
@@ -294,13 +294,29 @@ class ExprArgs:
 @pulumi.input_type
 class MultiClusterIngressFeatureSpecArgs:
     def __init__(__self__, *,
+                 billing: Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']] = None,
                  config_membership: Optional[pulumi.Input[str]] = None):
         """
-        FeatureSpec contains the input for the MultiClusterIngress feature.
+        **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+        :param pulumi.Input['MultiClusterIngressFeatureSpecBilling'] billing: Customer's billing structure
         :param pulumi.Input[str] config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
+        if billing is not None:
+            pulumi.set(__self__, "billing", billing)
         if config_membership is not None:
             pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter
+    def billing(self) -> Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']]:
+        """
+        Customer's billing structure
+        """
+        return pulumi.get(self, "billing")
+
+    @billing.setter
+    def billing(self, value: Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']]):
+        pulumi.set(self, "billing", value)
 
     @property
     @pulumi.getter(name="configMembership")

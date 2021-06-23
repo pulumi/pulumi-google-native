@@ -21,6 +21,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1beta1SchemaResponse',
     'GoogleCloudDatacatalogV1beta1SystemTimestampsResponse',
     'GoogleCloudDatacatalogV1beta1TableSpecResponse',
+    'GoogleCloudDatacatalogV1beta1UsageSignalResponse',
     'GoogleCloudDatacatalogV1beta1ViewSpecResponse',
 ]
 
@@ -558,6 +559,58 @@ class GoogleCloudDatacatalogV1beta1TableSpecResponse(dict):
         If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty.
         """
         return pulumi.get(self, "grouped_entry")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1beta1UsageSignalResponse(dict):
+    """
+    The set of all usage signals that we store in Data Catalog.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+        elif key == "usageWithinTimeRange":
+            suggest = "usage_within_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1UsageSignalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1UsageSignalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1UsageSignalResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 update_time: str,
+                 usage_within_time_range: Mapping[str, str]):
+        """
+        The set of all usage signals that we store in Data Catalog.
+        :param str update_time: The timestamp of the end of the usage statistics duration.
+        :param Mapping[str, str] usage_within_time_range: Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+        """
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "usage_within_time_range", usage_within_time_range)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp of the end of the usage statistics duration.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="usageWithinTimeRange")
+    def usage_within_time_range(self) -> Mapping[str, str]:
+        """
+        Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+        """
+        return pulumi.get(self, "usage_within_time_range")
 
 
 @pulumi.output_type

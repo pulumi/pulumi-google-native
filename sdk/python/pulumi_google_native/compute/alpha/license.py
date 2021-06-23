@@ -218,7 +218,7 @@ class License(pulumi.CustomResource):
                  transferable: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+        Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -239,7 +239,7 @@ class License(pulumi.CustomResource):
                  args: LicenseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+        Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

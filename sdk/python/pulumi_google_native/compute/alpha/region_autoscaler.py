@@ -36,9 +36,7 @@ class RegionAutoscalerArgs:
         """
         The set of arguments for constructing a RegionAutoscaler resource.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-        :param pulumi.Input['AutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-               
-               If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        :param pulumi.Input['AutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -48,11 +46,7 @@ class RegionAutoscalerArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedule_status: [Output Only] Status information of existing scaling schedules.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input['RegionAutoscalerStatus'] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-               - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-               - DELETING: Configuration is being deleted. 
-               - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-               - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        :param pulumi.Input['RegionAutoscalerStatus'] status: [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         :param pulumi.Input[Sequence[pulumi.Input['AutoscalerStatusDetailsArgs']]] status_details: [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
@@ -115,9 +109,7 @@ class RegionAutoscalerArgs:
     @pulumi.getter(name="autoscalingPolicy")
     def autoscaling_policy(self) -> Optional[pulumi.Input['AutoscalingPolicyArgs']]:
         """
-        The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-
-        If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -246,11 +238,7 @@ class RegionAutoscalerArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input['RegionAutoscalerStatus']]:
         """
-        [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-        - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-        - DELETING: Configuration is being deleted. 
-        - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-        - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         """
         return pulumi.get(self, "status")
 
@@ -323,9 +311,7 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AutoscalingPolicyArgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-               
-               If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        :param pulumi.Input[pulumi.InputType['AutoscalingPolicyArgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -336,11 +322,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedule_status: [Output Only] Status information of existing scaling schedules.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input['RegionAutoscalerStatus'] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-               - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-               - DELETING: Configuration is being deleted. 
-               - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-               - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        :param pulumi.Input['RegionAutoscalerStatus'] status: [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoscalerStatusDetailsArgs']]]] status_details: [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
@@ -461,9 +443,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     @pulumi.getter(name="autoscalingPolicy")
     def autoscaling_policy(self) -> pulumi.Output['outputs.AutoscalingPolicyResponse']:
         """
-        The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-
-        If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -543,11 +523,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        [Output Only] The status of the autoscaler configuration. Current set of possible values:  
-        - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-        - DELETING: Configuration is being deleted. 
-        - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-        - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         """
         return pulumi.get(self, "status")
 

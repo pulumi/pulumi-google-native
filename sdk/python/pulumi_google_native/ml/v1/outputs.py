@@ -1211,6 +1211,8 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
             suggest = "start_time"
         elif key == "trialId":
             suggest = "trial_id"
+        elif key == "webAccessUris":
+            suggest = "web_access_uris"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__HyperparameterOutputResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1232,7 +1234,8 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
                  is_trial_stopped_early: bool,
                  start_time: str,
                  state: str,
-                 trial_id: str):
+                 trial_id: str,
+                 web_access_uris: Mapping[str, str]):
         """
         Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
         :param Sequence['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse'] all_metrics: All recorded object metrics for this trial. This field is not currently populated.
@@ -1244,6 +1247,7 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
         :param str start_time: Start time for the trial.
         :param str state: The detailed state of the trial.
         :param str trial_id: The trial id for these results.
+        :param Mapping[str, str] web_access_uris: The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
         """
         pulumi.set(__self__, "all_metrics", all_metrics)
         pulumi.set(__self__, "built_in_algorithm_output", built_in_algorithm_output)
@@ -1254,6 +1258,7 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "trial_id", trial_id)
+        pulumi.set(__self__, "web_access_uris", web_access_uris)
 
     @property
     @pulumi.getter(name="allMetrics")
@@ -1326,6 +1331,14 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
         The trial id for these results.
         """
         return pulumi.get(self, "trial_id")
+
+    @property
+    @pulumi.getter(name="webAccessUris")
+    def web_access_uris(self) -> Mapping[str, str]:
+        """
+        The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        """
+        return pulumi.get(self, "web_access_uris")
 
 
 @pulumi.output_type
@@ -2353,7 +2366,9 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "encryptionConfig":
+        if key == "enableWebAccess":
+            suggest = "enable_web_access"
+        elif key == "encryptionConfig":
             suggest = "encryption_config"
         elif key == "evaluatorConfig":
             suggest = "evaluator_config"
@@ -2407,6 +2422,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
 
     def __init__(__self__, *,
                  args: Sequence[str],
+                 enable_web_access: bool,
                  encryption_config: 'outputs.GoogleCloudMlV1__EncryptionConfigResponse',
                  evaluator_config: 'outputs.GoogleCloudMlV1__ReplicaConfigResponse',
                  evaluator_count: str,
@@ -2434,6 +2450,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
         """
         Represents input parameters for a training job. When using the gcloud command to submit your training job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file referenced from the --config command-line argument. For details, see the guide to [submitting a training job](/ai-platform/training/docs/training-jobs).
         :param Sequence[str] args: Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
+        :param bool enable_web_access: Optional. Whether to enable web access for the training job.
         :param 'GoogleCloudMlV1__EncryptionConfigResponse' encryption_config: Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
         :param 'GoogleCloudMlV1__ReplicaConfigResponse' evaluator_config: Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
         :param str evaluator_count: Optional. The number of evaluator replicas to use for the training job. Each replica in the cluster will be of the type specified in `evaluator_type`. This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set `evaluator_type`. The default value is zero.
@@ -2460,6 +2477,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
         :param str worker_type: Optional. Specifies the type of virtual machine to use for your training job's worker nodes. The supported values are the same as those described in the entry for `masterType`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. If you use `cloud_tpu` for this value, see special instructions for [configuring a custom TPU machine](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine). This value must be present when `scaleTier` is set to `CUSTOM` and `workerCount` is greater than zero.
         """
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "enable_web_access", enable_web_access)
         pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "evaluator_config", evaluator_config)
         pulumi.set(__self__, "evaluator_count", evaluator_count)
@@ -2492,6 +2510,14 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
         Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="enableWebAccess")
+    def enable_web_access(self) -> bool:
+        """
+        Optional. Whether to enable web access for the training job.
+        """
+        return pulumi.get(self, "enable_web_access")
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -2706,6 +2732,8 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
             suggest = "is_built_in_algorithm_job"
         elif key == "isHyperparameterTuningJob":
             suggest = "is_hyperparameter_tuning_job"
+        elif key == "webAccessUris":
+            suggest = "web_access_uris"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__TrainingOutputResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2725,7 +2753,8 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
                  hyperparameter_metric_tag: str,
                  is_built_in_algorithm_job: bool,
                  is_hyperparameter_tuning_job: bool,
-                 trials: Sequence['outputs.GoogleCloudMlV1__HyperparameterOutputResponse']):
+                 trials: Sequence['outputs.GoogleCloudMlV1__HyperparameterOutputResponse'],
+                 web_access_uris: Mapping[str, str]):
         """
         Represents results of a training job. Output only.
         :param 'GoogleCloudMlV1__BuiltInAlgorithmOutputResponse' built_in_algorithm_output: Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -2735,6 +2764,7 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
         :param bool is_built_in_algorithm_job: Whether this job is a built-in Algorithm job.
         :param bool is_hyperparameter_tuning_job: Whether this job is a hyperparameter tuning job.
         :param Sequence['GoogleCloudMlV1__HyperparameterOutputResponse'] trials: Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
+        :param Mapping[str, str] web_access_uris: The web URIs for the training job. Currently for debug terminal access to the job.
         """
         pulumi.set(__self__, "built_in_algorithm_output", built_in_algorithm_output)
         pulumi.set(__self__, "completed_trial_count", completed_trial_count)
@@ -2743,6 +2773,7 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
         pulumi.set(__self__, "is_built_in_algorithm_job", is_built_in_algorithm_job)
         pulumi.set(__self__, "is_hyperparameter_tuning_job", is_hyperparameter_tuning_job)
         pulumi.set(__self__, "trials", trials)
+        pulumi.set(__self__, "web_access_uris", web_access_uris)
 
     @property
     @pulumi.getter(name="builtInAlgorithmOutput")
@@ -2799,6 +2830,14 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
         Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
         """
         return pulumi.get(self, "trials")
+
+    @property
+    @pulumi.getter(name="webAccessUris")
+    def web_access_uris(self) -> Mapping[str, str]:
+        """
+        The web URIs for the training job. Currently for debug terminal access to the job.
+        """
+        return pulumi.get(self, "web_access_uris")
 
 
 @pulumi.output_type

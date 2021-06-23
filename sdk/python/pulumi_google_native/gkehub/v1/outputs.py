@@ -15,11 +15,16 @@ __all__ = [
     'AuditLogConfigResponse',
     'AuthorityResponse',
     'BindingResponse',
+    'CommonFeatureSpecResponse',
+    'CommonFeatureStateResponse',
     'ExprResponse',
+    'FeatureResourceStateResponse',
+    'FeatureStateResponse',
     'GkeClusterResponse',
     'KubernetesMetadataResponse',
     'MembershipEndpointResponse',
     'MembershipStateResponse',
+    'MultiClusterIngressFeatureSpecResponse',
 ]
 
 @pulumi.output_type
@@ -134,6 +139,8 @@ class AuthorityResponse(dict):
         suggest = None
         if key == "identityProvider":
             suggest = "identity_provider"
+        elif key == "oidcJwks":
+            suggest = "oidc_jwks"
         elif key == "workloadIdentityPool":
             suggest = "workload_identity_pool"
 
@@ -151,15 +158,18 @@ class AuthorityResponse(dict):
     def __init__(__self__, *,
                  identity_provider: str,
                  issuer: str,
+                 oidc_jwks: str,
                  workload_identity_pool: str):
         """
         Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
         :param str identity_provider: An identity provider that reflects the `issuer` in the workload identity pool.
         :param str issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        :param str oidc_jwks: Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
         :param str workload_identity_pool: The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
         """
         pulumi.set(__self__, "identity_provider", identity_provider)
         pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "oidc_jwks", oidc_jwks)
         pulumi.set(__self__, "workload_identity_pool", workload_identity_pool)
 
     @property
@@ -177,6 +187,14 @@ class AuthorityResponse(dict):
         Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
         """
         return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="oidcJwks")
+    def oidc_jwks(self) -> str:
+        """
+        Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        """
+        return pulumi.get(self, "oidc_jwks")
 
     @property
     @pulumi.getter(name="workloadIdentityPool")
@@ -232,6 +250,50 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class CommonFeatureSpecResponse(dict):
+    """
+    CommonFeatureSpec contains Hub-wide configuration information
+    """
+    def __init__(__self__, *,
+                 multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse'):
+        """
+        CommonFeatureSpec contains Hub-wide configuration information
+        :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
+        """
+        pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def multiclusteringress(self) -> 'outputs.MultiClusterIngressFeatureSpecResponse':
+        """
+        Multicluster Ingress-specific spec.
+        """
+        return pulumi.get(self, "multiclusteringress")
+
+
+@pulumi.output_type
+class CommonFeatureStateResponse(dict):
+    """
+    CommonFeatureState contains Hub-wide Feature status information.
+    """
+    def __init__(__self__, *,
+                 state: 'outputs.FeatureStateResponse'):
+        """
+        CommonFeatureState contains Hub-wide Feature status information.
+        :param 'FeatureStateResponse' state: The "running state" of the Feature in this Hub.
+        """
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> 'outputs.FeatureStateResponse':
+        """
+        The "running state" of the Feature in this Hub.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -284,6 +346,89 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FeatureResourceStateResponse(dict):
+    """
+    FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+    """
+    def __init__(__self__, *,
+                 state: str):
+        """
+        FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+        :param str state: The current state of the Feature resource in the Hub API.
+        """
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the Feature resource in the Hub API.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class FeatureStateResponse(dict):
+    """
+    FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 description: str,
+                 update_time: str):
+        """
+        FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+        :param str code: The high-level, machine-readable status of this Feature.
+        :param str description: A human-readable description of the current status.
+        :param str update_time: The time this status and any related Feature-specific details were updated.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The high-level, machine-readable status of this Feature.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human-readable description of the current status.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time this status and any related Feature-specific details were updated.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type
@@ -501,5 +646,44 @@ class MembershipStateResponse(dict):
         The current state of the Membership resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class MultiClusterIngressFeatureSpecResponse(dict):
+    """
+    **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMembership":
+            suggest = "config_membership"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiClusterIngressFeatureSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiClusterIngressFeatureSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiClusterIngressFeatureSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_membership: str):
+        """
+        **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+        :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter(name="configMembership")
+    def config_membership(self) -> str:
+        """
+        Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        return pulumi.get(self, "config_membership")
 
 

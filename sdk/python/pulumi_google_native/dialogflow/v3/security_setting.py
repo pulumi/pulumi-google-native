@@ -26,12 +26,12 @@ class SecuritySettingArgs:
         """
         The set of arguments for constructing a SecuritySetting resource.
         :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
-        :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
-        :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
-        :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
@@ -84,7 +84,7 @@ class SecuritySettingArgs:
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> Optional[pulumi.Input[str]]:
         """
-        DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         """
         return pulumi.get(self, "inspect_template")
 
@@ -120,7 +120,7 @@ class SecuritySettingArgs:
     @pulumi.getter(name="redactionScope")
     def redaction_scope(self) -> Optional[pulumi.Input['SecuritySettingRedactionScope']]:
         """
-        Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         """
         return pulumi.get(self, "redaction_scope")
 
@@ -144,7 +144,7 @@ class SecuritySettingArgs:
     @pulumi.getter(name="retentionWindowDays")
     def retention_window_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         return pulumi.get(self, "retention_window_days")
 
@@ -174,12 +174,12 @@ class SecuritySetting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
-        :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
-        :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
-        :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         ...
     @overload
@@ -282,7 +282,7 @@ class SecuritySetting(pulumi.CustomResource):
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> pulumi.Output[str]:
         """
-        DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         """
         return pulumi.get(self, "inspect_template")
 
@@ -306,7 +306,7 @@ class SecuritySetting(pulumi.CustomResource):
     @pulumi.getter(name="redactionScope")
     def redaction_scope(self) -> pulumi.Output[str]:
         """
-        Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         """
         return pulumi.get(self, "redaction_scope")
 
@@ -322,7 +322,7 @@ class SecuritySetting(pulumi.CustomResource):
     @pulumi.getter(name="retentionWindowDays")
     def retention_window_days(self) -> pulumi.Output[int]:
         """
-        Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         return pulumi.get(self, "retention_window_days")
 

@@ -35,13 +35,10 @@ class SslPolicyArgs:
         """
         The set of arguments for constructing a SslPolicy resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
-               - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_features: [Output Only] The list of features enabled in the SSL policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
         :param pulumi.Input['SslPolicyMinTlsVersion'] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -109,8 +106,7 @@ class SslPolicyArgs:
     @pulumi.getter(name="customFeatures")
     def custom_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of features enabled when the selected profile is CUSTOM. The
-        - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         """
         return pulumi.get(self, "custom_features")
 
@@ -146,9 +142,7 @@ class SslPolicyArgs:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -302,13 +296,10 @@ class SslPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
-               - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_features: [Output Only] The list of features enabled in the SSL policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
         :param pulumi.Input['SslPolicyMinTlsVersion'] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
@@ -438,8 +429,7 @@ class SslPolicy(pulumi.CustomResource):
     @pulumi.getter(name="customFeatures")
     def custom_features(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of features enabled when the selected profile is CUSTOM. The
-        - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         """
         return pulumi.get(self, "custom_features")
 
@@ -463,9 +453,7 @@ class SslPolicy(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         """
         return pulumi.get(self, "fingerprint")
 

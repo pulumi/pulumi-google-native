@@ -16,13 +16,27 @@ __all__ = [
 
 @pulumi.output_type
 class GetNamespaceResult:
-    def __init__(__self__, labels=None, name=None):
+    def __init__(__self__, create_time=None, labels=None, name=None, update_time=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp when the namespace was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -40,6 +54,14 @@ class GetNamespaceResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp when the namespace was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
@@ -47,8 +69,10 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
         if False:
             yield self
         return GetNamespaceResult(
+            create_time=self.create_time,
             labels=self.labels,
-            name=self.name)
+            name=self.name,
+            update_time=self.update_time)
 
 
 def get_namespace(location: Optional[str] = None,
@@ -69,5 +93,7 @@ def get_namespace(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicedirectory/v1beta1:getNamespace', __args__, opts=opts, typ=GetNamespaceResult).value
 
     return AwaitableGetNamespaceResult(
+        create_time=__ret__.create_time,
         labels=__ret__.labels,
-        name=__ret__.name)
+        name=__ret__.name,
+        update_time=__ret__.update_time)

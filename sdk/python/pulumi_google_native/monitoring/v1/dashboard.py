@@ -23,7 +23,8 @@ class DashboardArgs:
                  grid_layout: Optional[pulumi.Input['GridLayoutArgs']] = None,
                  mosaic_layout: Optional[pulumi.Input['MosaicLayoutArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 row_layout: Optional[pulumi.Input['RowLayoutArgs']] = None):
+                 row_layout: Optional[pulumi.Input['RowLayoutArgs']] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input['ColumnLayoutArgs'] column_layout: The content is divided into equally spaced columns and the widgets are arranged vertically.
@@ -49,6 +50,8 @@ class DashboardArgs:
             pulumi.set(__self__, "name", name)
         if row_layout is not None:
             pulumi.set(__self__, "row_layout", row_layout)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter
@@ -143,6 +146,15 @@ class DashboardArgs:
     def row_layout(self, value: Optional[pulumi.Input['RowLayoutArgs']]):
         pulumi.set(self, "row_layout", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class Dashboard(pulumi.CustomResource):
     @overload
@@ -157,6 +169,7 @@ class Dashboard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management.
@@ -203,6 +216,7 @@ class Dashboard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -225,6 +239,7 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["row_layout"] = row_layout
+            __props__.__dict__["validate_only"] = validate_only
         super(Dashboard, __self__).__init__(
             'google-native:monitoring/v1:Dashboard',
             resource_name,

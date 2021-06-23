@@ -19,6 +19,7 @@ class OccurrenceArgs:
                  project: pulumi.Input[str],
                  attestation: Optional[pulumi.Input['AttestationArgs']] = None,
                  build_details: Optional[pulumi.Input['BuildDetailsArgs']] = None,
+                 compliance: Optional[pulumi.Input['ComplianceOccurrenceArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input['DeploymentArgs']] = None,
                  derived_image: Optional[pulumi.Input['DerivedArgs']] = None,
@@ -37,6 +38,7 @@ class OccurrenceArgs:
         The set of arguments for constructing a Occurrence resource.
         :param pulumi.Input['AttestationArgs'] attestation: Describes an attestation of an artifact.
         :param pulumi.Input['BuildDetailsArgs'] build_details: Build details for a verifiable build.
+        :param pulumi.Input['ComplianceOccurrenceArgs'] compliance: Describes whether or not a resource passes compliance checks.
         :param pulumi.Input[str] create_time: The time this `Occurrence` was created.
         :param pulumi.Input['DeploymentArgs'] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input['DerivedArgs'] derived_image: Describes how this resource derives from the basis in the associated note.
@@ -57,6 +59,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "attestation", attestation)
         if build_details is not None:
             pulumi.set(__self__, "build_details", build_details)
+        if compliance is not None:
+            pulumi.set(__self__, "compliance", compliance)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deployment is not None:
@@ -118,6 +122,18 @@ class OccurrenceArgs:
     @build_details.setter
     def build_details(self, value: Optional[pulumi.Input['BuildDetailsArgs']]):
         pulumi.set(self, "build_details", value)
+
+    @property
+    @pulumi.getter
+    def compliance(self) -> Optional[pulumi.Input['ComplianceOccurrenceArgs']]:
+        """
+        Describes whether or not a resource passes compliance checks.
+        """
+        return pulumi.get(self, "compliance")
+
+    @compliance.setter
+    def compliance(self, value: Optional[pulumi.Input['ComplianceOccurrenceArgs']]):
+        pulumi.set(self, "compliance", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -295,6 +311,7 @@ class Occurrence(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: Optional[pulumi.Input[pulumi.InputType['AttestationArgs']]] = None,
                  build_details: Optional[pulumi.Input[pulumi.InputType['BuildDetailsArgs']]] = None,
+                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceOccurrenceArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
@@ -318,6 +335,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AttestationArgs']] attestation: Describes an attestation of an artifact.
         :param pulumi.Input[pulumi.InputType['BuildDetailsArgs']] build_details: Build details for a verifiable build.
+        :param pulumi.Input[pulumi.InputType['ComplianceOccurrenceArgs']] compliance: Describes whether or not a resource passes compliance checks.
         :param pulumi.Input[str] create_time: The time this `Occurrence` was created.
         :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input[pulumi.InputType['DerivedArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
@@ -359,6 +377,7 @@ class Occurrence(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation: Optional[pulumi.Input[pulumi.InputType['AttestationArgs']]] = None,
                  build_details: Optional[pulumi.Input[pulumi.InputType['BuildDetailsArgs']]] = None,
+                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceOccurrenceArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
@@ -388,6 +407,7 @@ class Occurrence(pulumi.CustomResource):
 
             __props__.__dict__["attestation"] = attestation
             __props__.__dict__["build_details"] = build_details
+            __props__.__dict__["compliance"] = compliance
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["derived_image"] = derived_image
@@ -429,6 +449,7 @@ class Occurrence(pulumi.CustomResource):
 
         __props__.__dict__["attestation"] = None
         __props__.__dict__["build_details"] = None
+        __props__.__dict__["compliance"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["deployment"] = None
         __props__.__dict__["derived_image"] = None
@@ -460,6 +481,14 @@ class Occurrence(pulumi.CustomResource):
         Build details for a verifiable build.
         """
         return pulumi.get(self, "build_details")
+
+    @property
+    @pulumi.getter
+    def compliance(self) -> pulumi.Output['outputs.ComplianceOccurrenceResponse']:
+        """
+        Describes whether or not a resource passes compliance checks.
+        """
+        return pulumi.get(self, "compliance")
 
     @property
     @pulumi.getter(name="createTime")

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetServerResult:
-    def __init__(__self__, description=None, host=None, is_enabled=None, name=None, port=None, s_sl_info=None):
+    def __init__(__self__, description=None, host=None, is_enabled=None, name=None, port=None, protocol=None, s_sl_info=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -33,6 +33,9 @@ class GetTargetServerResult:
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if protocol and not isinstance(protocol, str):
+            raise TypeError("Expected argument 'protocol' to be a str")
+        pulumi.set(__self__, "protocol", protocol)
         if s_sl_info and not isinstance(s_sl_info, dict):
             raise TypeError("Expected argument 's_sl_info' to be a dict")
         pulumi.set(__self__, "s_sl_info", s_sl_info)
@@ -78,6 +81,14 @@ class GetTargetServerResult:
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Immutable. The protocol used by this TargetServer.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
     @pulumi.getter(name="sSLInfo")
     def s_sl_info(self) -> 'outputs.GoogleCloudApigeeV1TlsInfoResponse':
         """
@@ -97,6 +108,7 @@ class AwaitableGetTargetServerResult(GetTargetServerResult):
             is_enabled=self.is_enabled,
             name=self.name,
             port=self.port,
+            protocol=self.protocol,
             s_sl_info=self.s_sl_info)
 
 
@@ -123,4 +135,5 @@ def get_target_server(environment_id: Optional[str] = None,
         is_enabled=__ret__.is_enabled,
         name=__ret__.name,
         port=__ret__.port,
+        protocol=__ret__.protocol,
         s_sl_info=__ret__.s_sl_info)

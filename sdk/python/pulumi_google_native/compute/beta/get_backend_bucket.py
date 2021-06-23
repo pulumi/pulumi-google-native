@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendBucketResult:
-    def __init__(__self__, bucket_name=None, cdn_policy=None, creation_timestamp=None, custom_response_headers=None, description=None, enable_cdn=None, kind=None, name=None, self_link=None):
+    def __init__(__self__, bucket_name=None, cdn_policy=None, compression_mode=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, kind=None, name=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
         if cdn_policy and not isinstance(cdn_policy, dict):
             raise TypeError("Expected argument 'cdn_policy' to be a dict")
         pulumi.set(__self__, "cdn_policy", cdn_policy)
+        if compression_mode and not isinstance(compression_mode, str):
+            raise TypeError("Expected argument 'compression_mode' to be a str")
+        pulumi.set(__self__, "compression_mode", compression_mode)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -33,6 +36,9 @@ class GetBackendBucketResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if edge_security_policy and not isinstance(edge_security_policy, str):
+            raise TypeError("Expected argument 'edge_security_policy' to be a str")
+        pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         pulumi.set(__self__, "enable_cdn", enable_cdn)
@@ -63,6 +69,14 @@ class GetBackendBucketResult:
         return pulumi.get(self, "cdn_policy")
 
     @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> str:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client’s Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
@@ -85,6 +99,14 @@ class GetBackendBucketResult:
         An optional textual description of the resource; provided by the client when the resource is created.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> str:
+        """
+        [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
 
     @property
     @pulumi.getter(name="enableCdn")
@@ -127,9 +149,11 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
         return GetBackendBucketResult(
             bucket_name=self.bucket_name,
             cdn_policy=self.cdn_policy,
+            compression_mode=self.compression_mode,
             creation_timestamp=self.creation_timestamp,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
+            edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
             kind=self.kind,
             name=self.name,
@@ -154,9 +178,11 @@ def get_backend_bucket(backend_bucket: Optional[str] = None,
     return AwaitableGetBackendBucketResult(
         bucket_name=__ret__.bucket_name,
         cdn_policy=__ret__.cdn_policy,
+        compression_mode=__ret__.compression_mode,
         creation_timestamp=__ret__.creation_timestamp,
         custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,
+        edge_security_policy=__ret__.edge_security_policy,
         enable_cdn=__ret__.enable_cdn,
         kind=__ret__.kind,
         name=__ret__.name,

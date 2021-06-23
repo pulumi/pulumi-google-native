@@ -392,9 +392,9 @@ class GoogleCloudApigeeV1GraphQLOperationArgs:
                  operation: Optional[pulumi.Input[str]] = None,
                  operation_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
-        :param pulumi.Input[str] operation: GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_types: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        Represents the pairing of GraphQL operation types and the GraphQL operation name.
+        :param pulumi.Input[str] operation: GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_types: Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
         """
         if operation is not None:
             pulumi.set(__self__, "operation", operation)
@@ -405,7 +405,7 @@ class GoogleCloudApigeeV1GraphQLOperationArgs:
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input[str]]:
         """
-        GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+        GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
         """
         return pulumi.get(self, "operation")
 
@@ -417,7 +417,7 @@ class GoogleCloudApigeeV1GraphQLOperationArgs:
     @pulumi.getter(name="operationTypes")
     def operation_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
         """
         return pulumi.get(self, "operation_types")
 
@@ -434,11 +434,11 @@ class GoogleCloudApigeeV1GraphQLOperationConfigArgs:
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]]] = None,
                  quota: Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']] = None):
         """
-        GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
-        :param pulumi.Input[str] api_source: Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
+        :param pulumi.Input[str] api_source: Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: Custom attributes associated with the operation.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]] operations: Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
-        :param pulumi.Input['GoogleCloudApigeeV1QuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]] operations: Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        :param pulumi.Input['GoogleCloudApigeeV1QuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         """
         if api_source is not None:
             pulumi.set(__self__, "api_source", api_source)
@@ -453,7 +453,7 @@ class GoogleCloudApigeeV1GraphQLOperationConfigArgs:
     @pulumi.getter(name="apiSource")
     def api_source(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        Required. Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
         """
         return pulumi.get(self, "api_source")
 
@@ -477,7 +477,7 @@ class GoogleCloudApigeeV1GraphQLOperationConfigArgs:
     @pulumi.getter
     def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]]]:
         """
-        Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
         """
         return pulumi.get(self, "operations")
 
@@ -489,7 +489,7 @@ class GoogleCloudApigeeV1GraphQLOperationConfigArgs:
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']]:
         """
-        Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         """
         return pulumi.get(self, "quota")
 
@@ -505,7 +505,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroupArgs:
                  operation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationConfigArgs']]]] = None):
         """
         List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
-        :param pulumi.Input[str] operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        :param pulumi.Input[str] operation_config_type: Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationConfigArgs']]] operation_configs: Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         if operation_config_type is not None:
@@ -517,7 +517,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroupArgs:
     @pulumi.getter(name="operationConfigType")
     def operation_config_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
         """
         return pulumi.get(self, "operation_config_type")
 
@@ -592,9 +592,9 @@ class GoogleCloudApigeeV1OperationArgs:
                  methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
         """
-        Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+        Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
-        :param pulumi.Input[str] resource: Required. resource represents REST resource path associated with the proxy/remote service.
+        :param pulumi.Input[str] resource: Required. REST resource path associated with the API proxy or remote service.
         """
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
@@ -617,7 +617,7 @@ class GoogleCloudApigeeV1OperationArgs:
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. resource represents REST resource path associated with the proxy/remote service.
+        Required. REST resource path associated with the API proxy or remote service.
         """
         return pulumi.get(self, "resource")
 
@@ -634,11 +634,11 @@ class GoogleCloudApigeeV1OperationConfigArgs:
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationArgs']]]] = None,
                  quota: Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']] = None):
         """
-        OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
-        :param pulumi.Input[str] api_source: Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
+        :param pulumi.Input[str] api_source: Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: Custom attributes associated with the operation.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationArgs']]] operations: List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
-        :param pulumi.Input['GoogleCloudApigeeV1QuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationArgs']]] operations: List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+        :param pulumi.Input['GoogleCloudApigeeV1QuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         """
         if api_source is not None:
             pulumi.set(__self__, "api_source", api_source)
@@ -653,7 +653,7 @@ class GoogleCloudApigeeV1OperationConfigArgs:
     @pulumi.getter(name="apiSource")
     def api_source(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated.
         """
         return pulumi.get(self, "api_source")
 
@@ -677,7 +677,7 @@ class GoogleCloudApigeeV1OperationConfigArgs:
     @pulumi.getter
     def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationArgs']]]]:
         """
-        List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+        List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
         """
         return pulumi.get(self, "operations")
 
@@ -689,7 +689,7 @@ class GoogleCloudApigeeV1OperationConfigArgs:
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']]:
         """
-        Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         """
         return pulumi.get(self, "quota")
 
@@ -705,7 +705,7 @@ class GoogleCloudApigeeV1OperationGroupArgs:
                  operation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationConfigArgs']]]] = None):
         """
         List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
-        :param pulumi.Input[str] operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        :param pulumi.Input[str] operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationConfigArgs']]] operation_configs: Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         if operation_config_type is not None:
@@ -717,7 +717,7 @@ class GoogleCloudApigeeV1OperationGroupArgs:
     @pulumi.getter(name="operationConfigType")
     def operation_config_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
         """
         return pulumi.get(self, "operation_config_type")
 
@@ -897,7 +897,7 @@ class GoogleCloudApigeeV1QuotaArgs:
                  limit: Optional[pulumi.Input[str]] = None,
                  time_unit: Optional[pulumi.Input[str]] = None):
         """
-        Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+        Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
         :param pulumi.Input[str] interval: Required. Time interval over which the number of request messages is calculated.
         :param pulumi.Input[str] limit: Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
         :param pulumi.Input[str] time_unit: Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.

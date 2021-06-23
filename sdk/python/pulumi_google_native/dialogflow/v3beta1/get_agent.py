@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAgentResult:
-    def __init__(__self__, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, time_zone=None):
+    def __init__(__self__, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, time_zone=None):
         if avatar_uri and not isinstance(avatar_uri, str):
             raise TypeError("Expected argument 'avatar_uri' to be a str")
         pulumi.set(__self__, "avatar_uri", avatar_uri)
@@ -48,6 +48,9 @@ class GetAgentResult:
         if start_flow and not isinstance(start_flow, str):
             raise TypeError("Expected argument 'start_flow' to be a str")
         pulumi.set(__self__, "start_flow", start_flow)
+        if supported_language_codes and not isinstance(supported_language_codes, list):
+            raise TypeError("Expected argument 'supported_language_codes' to be a list")
+        pulumi.set(__self__, "supported_language_codes", supported_language_codes)
         if time_zone and not isinstance(time_zone, str):
             raise TypeError("Expected argument 'time_zone' to be a str")
         pulumi.set(__self__, "time_zone", time_zone)
@@ -64,7 +67,7 @@ class GetAgentResult:
     @pulumi.getter(name="defaultLanguageCode")
     def default_language_code(self) -> str:
         """
-        Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        Required. Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         """
         return pulumi.get(self, "default_language_code")
 
@@ -133,6 +136,14 @@ class GetAgentResult:
         return pulumi.get(self, "start_flow")
 
     @property
+    @pulumi.getter(name="supportedLanguageCodes")
+    def supported_language_codes(self) -> Sequence[str]:
+        """
+        The list of all languages supported by the agent (except for the `default_language_code`).
+        """
+        return pulumi.get(self, "supported_language_codes")
+
+    @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
         """
@@ -157,6 +168,7 @@ class AwaitableGetAgentResult(GetAgentResult):
             security_settings=self.security_settings,
             speech_to_text_settings=self.speech_to_text_settings,
             start_flow=self.start_flow,
+            supported_language_codes=self.supported_language_codes,
             time_zone=self.time_zone)
 
 
@@ -188,4 +200,5 @@ def get_agent(agent_id: Optional[str] = None,
         security_settings=__ret__.security_settings,
         speech_to_text_settings=__ret__.speech_to_text_settings,
         start_flow=__ret__.start_flow,
+        supported_language_codes=__ret__.supported_language_codes,
         time_zone=__ret__.time_zone)

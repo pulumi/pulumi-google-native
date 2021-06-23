@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecretResult:
-    def __init__(__self__, create_time=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None):
+    def __init__(__self__, create_time=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
@@ -50,6 +53,14 @@ class GetSecretResult:
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. Etag of the currently stored Secret.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="expireTime")
@@ -115,6 +126,7 @@ class AwaitableGetSecretResult(GetSecretResult):
             yield self
         return GetSecretResult(
             create_time=self.create_time,
+            etag=self.etag,
             expire_time=self.expire_time,
             labels=self.labels,
             name=self.name,
@@ -141,6 +153,7 @@ def get_secret(project: Optional[str] = None,
 
     return AwaitableGetSecretResult(
         create_time=__ret__.create_time,
+        etag=__ret__.etag,
         expire_time=__ret__.expire_time,
         labels=__ret__.labels,
         name=__ret__.name,

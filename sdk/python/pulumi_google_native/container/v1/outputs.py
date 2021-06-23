@@ -389,6 +389,8 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "imageType":
+            suggest = "image_type"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
         elif key == "oauthScopes":
@@ -415,6 +417,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
                  boot_disk_kms_key: str,
                  disk_size_gb: int,
                  disk_type: str,
+                 image_type: str,
                  management: 'outputs.NodeManagementResponse',
                  min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
@@ -426,6 +429,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param str image_type: The image type to use for NAP created node.
         :param 'NodeManagementResponse' management: Specifies the node management options for NAP created node-pools.
         :param str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: Scopes that are used by NAP when creating node pools.
@@ -436,6 +440,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "management", management)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
@@ -466,6 +471,14 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> str:
+        """
+        The image type to use for NAP created node.
+        """
+        return pulumi.get(self, "image_type")
 
     @property
     @pulumi.getter
@@ -1606,10 +1619,14 @@ class NetworkConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultSnatStatus":
+        if key == "datapathProvider":
+            suggest = "datapath_provider"
+        elif key == "defaultSnatStatus":
             suggest = "default_snat_status"
         elif key == "enableIntraNodeVisibility":
             suggest = "enable_intra_node_visibility"
+        elif key == "enableL4ilbSubsetting":
+            suggest = "enable_l4ilb_subsetting"
         elif key == "privateIpv6GoogleAccess":
             suggest = "private_ipv6_google_access"
 
@@ -1625,24 +1642,38 @@ class NetworkConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 datapath_provider: str,
                  default_snat_status: 'outputs.DefaultSnatStatusResponse',
                  enable_intra_node_visibility: bool,
+                 enable_l4ilb_subsetting: bool,
                  network: str,
                  private_ipv6_google_access: str,
                  subnetwork: str):
         """
         NetworkConfig reports the relative names of network & subnetwork.
+        :param str datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param 'DefaultSnatStatusResponse' default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param bool enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param bool enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param str network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param str private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param str subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
+        pulumi.set(__self__, "datapath_provider", datapath_provider)
         pulumi.set(__self__, "default_snat_status", default_snat_status)
         pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
+        pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="datapathProvider")
+    def datapath_provider(self) -> str:
+        """
+        The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        """
+        return pulumi.get(self, "datapath_provider")
 
     @property
     @pulumi.getter(name="defaultSnatStatus")
@@ -1659,6 +1690,14 @@ class NetworkConfigResponse(dict):
         Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         """
         return pulumi.get(self, "enable_intra_node_visibility")
+
+    @property
+    @pulumi.getter(name="enableL4ilbSubsetting")
+    def enable_l4ilb_subsetting(self) -> bool:
+        """
+        Whether L4ILB Subsetting is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_l4ilb_subsetting")
 
     @property
     @pulumi.getter

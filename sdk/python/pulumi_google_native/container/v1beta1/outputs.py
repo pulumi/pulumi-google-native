@@ -27,6 +27,7 @@ __all__ = [
     'ConfidentialNodesResponse',
     'ConfigConnectorConfigResponse',
     'ConsumptionMeteringConfigResponse',
+    'DNSConfigResponse',
     'DailyMaintenanceWindowResponse',
     'DatabaseEncryptionResponse',
     'DefaultSnatStatusResponse',
@@ -50,11 +51,13 @@ __all__ = [
     'NetworkConfigResponse',
     'NetworkPolicyConfigResponse',
     'NetworkPolicyResponse',
+    'NodeConfigDefaultsResponse',
     'NodeConfigResponse',
     'NodeKubeletConfigResponse',
     'NodeManagementResponse',
     'NodeNetworkConfigResponse',
     'NodePoolAutoscalingResponse',
+    'NodePoolDefaultsResponse',
     'NodePoolResponse',
     'NodeTaintResponse',
     'NotificationConfigResponse',
@@ -68,6 +71,7 @@ __all__ = [
     'ResourceLimitResponse',
     'ResourceUsageExportConfigResponse',
     'SandboxConfigResponse',
+    'ServiceExternalIPsConfigResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedNodesResponse',
     'StatusConditionResponse',
@@ -437,6 +441,8 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "imageType":
+            suggest = "image_type"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
         elif key == "oauthScopes":
@@ -463,6 +469,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
                  boot_disk_kms_key: str,
                  disk_size_gb: int,
                  disk_type: str,
+                 image_type: str,
                  management: 'outputs.NodeManagementResponse',
                  min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
@@ -474,6 +481,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param str image_type: The image type to use for NAP created node.
         :param 'NodeManagementResponse' management: NodeManagement configuration for this NodePool.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
@@ -484,6 +492,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "management", management)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
@@ -514,6 +523,14 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> str:
+        """
+        The image type to use for NAP created node.
+        """
+        return pulumi.get(self, "image_type")
 
     @property
     @pulumi.getter
@@ -943,6 +960,71 @@ class ConsumptionMeteringConfigResponse(dict):
         Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DNSConfigResponse(dict):
+    """
+    DNSConfig contains the desired set of options for configuring clusterDNS.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterDns":
+            suggest = "cluster_dns"
+        elif key == "clusterDnsDomain":
+            suggest = "cluster_dns_domain"
+        elif key == "clusterDnsScope":
+            suggest = "cluster_dns_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DNSConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DNSConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DNSConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_dns: str,
+                 cluster_dns_domain: str,
+                 cluster_dns_scope: str):
+        """
+        DNSConfig contains the desired set of options for configuring clusterDNS.
+        :param str cluster_dns: cluster_dns indicates which in-cluster DNS provider should be used.
+        :param str cluster_dns_domain: cluster_dns_domain is the suffix used for all cluster service records.
+        :param str cluster_dns_scope: cluster_dns_scope indicates the scope of access to cluster DNS records.
+        """
+        pulumi.set(__self__, "cluster_dns", cluster_dns)
+        pulumi.set(__self__, "cluster_dns_domain", cluster_dns_domain)
+        pulumi.set(__self__, "cluster_dns_scope", cluster_dns_scope)
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> str:
+        """
+        cluster_dns indicates which in-cluster DNS provider should be used.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @property
+    @pulumi.getter(name="clusterDnsDomain")
+    def cluster_dns_domain(self) -> str:
+        """
+        cluster_dns_domain is the suffix used for all cluster service records.
+        """
+        return pulumi.get(self, "cluster_dns_domain")
+
+    @property
+    @pulumi.getter(name="clusterDnsScope")
+    def cluster_dns_scope(self) -> str:
+        """
+        cluster_dns_scope indicates the scope of access to cluster DNS records.
+        """
+        return pulumi.get(self, "cluster_dns_scope")
 
 
 @pulumi.output_type
@@ -1795,12 +1877,16 @@ class NetworkConfigResponse(dict):
             suggest = "datapath_provider"
         elif key == "defaultSnatStatus":
             suggest = "default_snat_status"
+        elif key == "dnsConfig":
+            suggest = "dns_config"
         elif key == "enableIntraNodeVisibility":
             suggest = "enable_intra_node_visibility"
         elif key == "enableL4ilbSubsetting":
             suggest = "enable_l4ilb_subsetting"
         elif key == "privateIpv6GoogleAccess":
             suggest = "private_ipv6_google_access"
+        elif key == "serviceExternalIpsConfig":
+            suggest = "service_external_ips_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1816,27 +1902,33 @@ class NetworkConfigResponse(dict):
     def __init__(__self__, *,
                  datapath_provider: str,
                  default_snat_status: 'outputs.DefaultSnatStatusResponse',
+                 dns_config: 'outputs.DNSConfigResponse',
                  enable_intra_node_visibility: bool,
                  enable_l4ilb_subsetting: bool,
                  network: str,
                  private_ipv6_google_access: str,
+                 service_external_ips_config: 'outputs.ServiceExternalIPsConfigResponse',
                  subnetwork: str):
         """
         NetworkConfig reports the relative names of network & subnetwork.
         :param str datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param 'DefaultSnatStatusResponse' default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+        :param 'DNSConfigResponse' dns_config: DNSConfig contains clusterDNS config for this cluster.
         :param bool enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param bool enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param str network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param str private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
+        :param 'ServiceExternalIPsConfigResponse' service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
         :param str subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         pulumi.set(__self__, "datapath_provider", datapath_provider)
         pulumi.set(__self__, "default_snat_status", default_snat_status)
+        pulumi.set(__self__, "dns_config", dns_config)
         pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
@@ -1854,6 +1946,14 @@ class NetworkConfigResponse(dict):
         Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         """
         return pulumi.get(self, "default_snat_status")
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> 'outputs.DNSConfigResponse':
+        """
+        DNSConfig contains clusterDNS config for this cluster.
+        """
+        return pulumi.get(self, "dns_config")
 
     @property
     @pulumi.getter(name="enableIntraNodeVisibility")
@@ -1886,6 +1986,14 @@ class NetworkConfigResponse(dict):
         The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         """
         return pulumi.get(self, "private_ipv6_google_access")
+
+    @property
+    @pulumi.getter(name="serviceExternalIpsConfig")
+    def service_external_ips_config(self) -> 'outputs.ServiceExternalIPsConfigResponse':
+        """
+        ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+        """
+        return pulumi.get(self, "service_external_ips_config")
 
     @property
     @pulumi.getter
@@ -1949,6 +2057,18 @@ class NetworkPolicyResponse(dict):
         The selected network policy provider.
         """
         return pulumi.get(self, "provider")
+
+
+@pulumi.output_type
+class NodeConfigDefaultsResponse(dict):
+    """
+    Subset of NodeConfig message that has defaults.
+    """
+    def __init__(__self__):
+        """
+        Subset of NodeConfig message that has defaults.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -2534,9 +2654,48 @@ class NodePoolAutoscalingResponse(dict):
 
 
 @pulumi.output_type
+class NodePoolDefaultsResponse(dict):
+    """
+    Subset of Nodepool message that has defaults.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeConfigDefaults":
+            suggest = "node_config_defaults"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolDefaultsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolDefaultsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolDefaultsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_config_defaults: 'outputs.NodeConfigDefaultsResponse'):
+        """
+        Subset of Nodepool message that has defaults.
+        :param 'NodeConfigDefaultsResponse' node_config_defaults: Subset of NodeConfig message that has defaults.
+        """
+        pulumi.set(__self__, "node_config_defaults", node_config_defaults)
+
+    @property
+    @pulumi.getter(name="nodeConfigDefaults")
+    def node_config_defaults(self) -> 'outputs.NodeConfigDefaultsResponse':
+        """
+        Subset of NodeConfig message that has defaults.
+        """
+        return pulumi.get(self, "node_config_defaults")
+
+
+@pulumi.output_type
 class NodePoolResponse(dict):
     """
-    NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+    NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2584,7 +2743,7 @@ class NodePoolResponse(dict):
                  upgrade_settings: 'outputs.UpgradeSettingsResponse',
                  version: str):
         """
-        NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+        NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
         :param 'NodePoolAutoscalingResponse' autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         :param Sequence['StatusConditionResponse'] conditions: Which conditions caused the current node pool state.
         :param 'NodeConfigResponse' config: The node configuration of the pool.
@@ -3291,6 +3450,28 @@ class SandboxConfigResponse(dict):
 
 
 @pulumi.output_type
+class ServiceExternalIPsConfigResponse(dict):
+    """
+    Config to block services with externalIPs field.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Config to block services with externalIPs field.
+        :param bool enabled: Whether Services with ExternalIPs field are allowed or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether Services with ExternalIPs field are allowed or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ShieldedInstanceConfigResponse(dict):
     """
     A set of Shielded Instance options.
@@ -3531,9 +3712,6 @@ class TpuConfigResponse(dict):
 
 @pulumi.output_type
 class UpgradeSettingsResponse(dict):
-    """
-    These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
-    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3557,7 +3735,6 @@ class UpgradeSettingsResponse(dict):
                  max_surge: int,
                  max_unavailable: int):
         """
-        These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
         :param int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
         :param int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
         """

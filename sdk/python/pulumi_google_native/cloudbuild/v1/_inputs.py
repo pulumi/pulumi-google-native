@@ -28,6 +28,7 @@ __all__ = [
     'StorageSourceArgs',
     'StorageSourceManifestArgs',
     'VolumeArgs',
+    'WebhookConfigArgs',
 ]
 
 @pulumi.input_type
@@ -1452,5 +1453,45 @@ class VolumeArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class WebhookConfigArgs:
+    def __init__(__self__, *,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['WebhookConfigState']] = None):
+        """
+        WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+        :param pulumi.Input[str] secret: Required. Resource name for the secret required as a URL parameter.
+        :param pulumi.Input['WebhookConfigState'] state: Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        """
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Resource name for the secret required as a URL parameter.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['WebhookConfigState']]:
+        """
+        Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['WebhookConfigState']]):
+        pulumi.set(self, "state", value)
 
 

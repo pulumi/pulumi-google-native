@@ -213,7 +213,7 @@ class EntityType(pulumi.CustomResource):
                  redact: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Creates an entity type in the specified agent.
+        Creates an entity type in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -233,7 +233,7 @@ class EntityType(pulumi.CustomResource):
                  args: EntityTypeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an entity type in the specified agent.
+        Creates an entity type in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param EntityTypeArgs args: The arguments to use to populate this resource's properties.

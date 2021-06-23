@@ -38,9 +38,7 @@ class InstanceTemplateArgs:
         :param pulumi.Input['InstancePropertiesArgs'] properties: The instance properties for this instance template.
         :param pulumi.Input[str] self_link: [Output Only] The URL for this instance template. The server defines this URL.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-               - projects/project/zones/zone/instances/instance
+        :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         :param pulumi.Input['SourceInstanceParamsArgs'] source_instance_params: The source instance params to use to create this instance template.
         """
         pulumi.set(__self__, "project", project)
@@ -185,9 +183,7 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> Optional[pulumi.Input[str]]:
         """
-        The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        - projects/project/zones/zone/instances/instance
+        The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         """
         return pulumi.get(self, "source_instance")
 
@@ -239,9 +235,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstancePropertiesArgs']] properties: The instance properties for this instance template.
         :param pulumi.Input[str] self_link: [Output Only] The URL for this instance template. The server defines this URL.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
-        :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-               - projects/project/zones/zone/instances/instance
+        :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         :param pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']] source_instance_params: The source instance params to use to create this instance template.
         """
         ...
@@ -399,9 +393,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> pulumi.Output[str]:
         """
-        The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        - projects/project/zones/zone/instances/instance
+        The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         """
         return pulumi.get(self, "source_instance")
 
