@@ -695,8 +695,8 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			return nil, err
 		}
 
-		isCopyFromOutput := g.isCopyFromOutput(name) && !isOutput
-		if !isCopyFromOutput {
+		copyFromOutput := g.shouldCopyFromOutput(name) && !isOutput
+		if !copyFromOutput {
 			if prop.Required || isOutput {
 				result.requiredSpecs.Add(sdkName)
 			}
@@ -713,7 +713,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			Ref:                  typeSpec.Ref,
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
-			CopyFromOutputs:      isCopyFromOutput,
+			CopyFromOutputs:      copyFromOutput,
 		}
 		if name != sdkName {
 			apiProp.SdkName = sdkName
@@ -723,7 +723,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 	return &result, nil
 }
 
-func (g *packageGenerator) isCopyFromOutput(propName string) bool {
+func (g *packageGenerator) shouldCopyFromOutput(propName string) bool {
 	mod := strings.Split(g.mod, "/")[0]
 	switch mod {
 	case "compute", "container", "deploymentmanager":

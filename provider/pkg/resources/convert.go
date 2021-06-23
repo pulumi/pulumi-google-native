@@ -15,9 +15,9 @@ type SdkShapeConverter struct {
 	Types map[string]CloudAPIType
 }
 
-type convertPropValues func(props map[string]CloudAPIProperty, inputs map[string]interface{}, state map[string]interface{}) map[string]interface{}
+type convertPropValues func(props map[string]CloudAPIProperty, inputs, state map[string]interface{}) map[string]interface{}
 
-func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value interface{}, state interface{}, convertMap convertPropValues) interface{} {
+func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, state interface{}, convertMap convertPropValues) interface{} {
 	if value == nil {
 		return nil
 	}

@@ -361,7 +361,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 
 func (p *googleCloudProvider) prepareAPIInputs(
-	inputs resource.PropertyMap, state resource.PropertyMap,
+	inputs, state resource.PropertyMap,
 	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
 	inputsMap := inputs.Mappable()
 	stateMap := state.Mappable()
