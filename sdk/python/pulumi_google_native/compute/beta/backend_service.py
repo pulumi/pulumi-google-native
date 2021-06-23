@@ -30,7 +30,6 @@ class BackendServiceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input['BackendServiceFailoverPolicyArgs']] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIAPArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -81,9 +80,6 @@ class BackendServiceArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
         :param pulumi.Input['BackendServiceFailoverPolicyArgs'] failover_policy: Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a BackendService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input['BackendServiceIAPArgs'] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -171,8 +167,6 @@ class BackendServiceArgs:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if failover_policy is not None:
             pulumi.set(__self__, "failover_policy", failover_policy)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
@@ -390,20 +384,6 @@ class BackendServiceArgs:
     @failover_policy.setter
     def failover_policy(self, value: Optional[pulumi.Input['BackendServiceFailoverPolicyArgs']]):
         pulumi.set(self, "failover_policy", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a BackendService.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="healthChecks")
@@ -710,7 +690,6 @@ class BackendService(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -766,9 +745,6 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
         :param pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']] failover_policy: Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a BackendService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -866,7 +842,6 @@ class BackendService(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -914,7 +889,6 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["failover_policy"] = failover_policy
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
             __props__.__dict__["id"] = id
@@ -939,6 +913,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
+            __props__.__dict__["fingerprint"] = None
         super(BackendService, __self__).__init__(
             'google-native:compute/beta:BackendService',
             resource_name,

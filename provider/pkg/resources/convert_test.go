@@ -18,7 +18,7 @@ var resourceMap = &CloudAPIMetadata{
 					SdkName: "v3",
 				},
 				"v4-nested": {
-					SdkName:    "v4",
+					SdkName:   "v4",
 					Container: "props",
 				},
 			},
@@ -39,6 +39,9 @@ var resourceMap = &CloudAPIMetadata{
 		},
 		"google-native:testing:MoreItem": {
 			Properties: map[string]CloudAPIProperty{
+				"fingerprint": {
+					CopyFromOutputs: true,
+				},
 				"aaa": {
 					SdkName: "Aaa",
 				},
@@ -66,12 +69,22 @@ var resourceMap = &CloudAPIMetadata{
 				},
 				"more": {
 					Container: "properties",
-					Ref:        "#/types/google-native:testing:More",
+					Ref:       "#/types/google-native:testing:More",
 				},
 				"tags":         {},
 				"untypedArray": {},
 				"untypedDict": {
 					Ref: "pulumi.json#/Any",
+				},
+			},
+			UpdateProperties: map[string]CloudAPIProperty{
+				"more": {
+					Container: "properties",
+					Ref:       "#/types/google-native:testing:More",
+				},
+				"tags": {},
+				"tagsFingerprint": {
+					CopyFromOutputs: true,
 				},
 			},
 		},
@@ -153,10 +166,43 @@ var sampleSdkProps = map[string]interface{}{
 		"key2": "value2",
 	},
 }
+var sampleSdkState = map[string]interface{}{
+	"more": map[string]interface{}{
+		"items": []interface{}{
+			map[string]interface{}{"Aaa": "111", "bbb": "333"},
+			map[string]interface{}{"Aaa": "222", "fingerprint": "fitems[1]"},
+		},
+		"itemsMap": map[string]interface{}{
+			"key1": map[string]interface{}{"fingerprint": "fkey1"},
+			"key2": map[string]interface{}{"Aaa": "666"},
+		},
+	},
+	"name":            "MyResource",
+	"tagsFingerprint": "ABCDEF123456",
+}
+var sampleAPIUpdatePackage = map[string]interface{}{
+	"properties": map[string]interface{}{
+		"more": map[string]interface{}{
+			"items": []interface{}{
+				map[string]interface{}{"aaa": "111", "ccc": map[string]interface{}{"bbb": "333"}},
+				map[string]interface{}{"aaa": "222", "fingerprint": "fitems[1]"},
+			},
+			"itemsMap": map[string]interface{}{
+				"key1": map[string]interface{}{"aaa": "444", "ccc": map[string]interface{}{"bbb": "555"}, "fingerprint": "fkey1"},
+				"key2": map[string]interface{}{"aaa": "666"},
+			},
+		},
+	},
+	"tags": map[string]interface{}{
+		"createdBy":   "admin",
+		"application": "dashboard",
+	},
+	"tagsFingerprint": "ABCDEF123456",
+}
 
 func TestSdkPropertiesToRequestBody(t *testing.T) {
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps)
+	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, nil)
 	assert.Equal(t, sampleAPIPackage, data)
 }
 
@@ -176,7 +222,7 @@ func TestSdkPropertiesToRequestBodyEmptyCollections(t *testing.T) {
 		},
 	}
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, emptyCollectionData)
+	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, emptyCollectionData, nil)
 	assert.Equal(t, expectedBody, actualBody)
 }
 
@@ -196,6 +242,12 @@ func TestSdkPropertiesToRequestBodyNilCollections(t *testing.T) {
 		},
 	}
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, nilCollectionData)
+	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, nilCollectionData, nil)
 	assert.Equal(t, expectedBody, actualBody)
+}
+
+func TestSdkPropertiesToRequestBodyCopyOutputs(t *testing.T) {
+	bodyProperties := resourceMap.Resources["r1"].UpdateProperties
+	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, sampleSdkState)
+	assert.Equal(t, sampleAPIUpdatePackage, data)
 }

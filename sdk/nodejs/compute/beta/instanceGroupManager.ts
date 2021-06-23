@@ -70,7 +70,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] The URL of the Instance Group resource.
      */
@@ -158,7 +158,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
             inputs["failoverAction"] = args ? args.failoverAction : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
@@ -177,6 +176,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["versions"] = args ? args.versions : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["autoHealingPolicies"] = undefined /*out*/;
             inputs["baseInstanceName"] = undefined /*out*/;
@@ -241,12 +241,6 @@ export interface InstanceGroupManagerArgs {
      * The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
      */
     failoverAction?: pulumi.Input<enums.compute.beta.InstanceGroupManagerFailoverAction>;
-    /**
-     * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] A unique identifier for this resource type. The server generates this identifier.
      */

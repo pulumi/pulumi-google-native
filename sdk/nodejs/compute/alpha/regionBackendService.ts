@@ -106,7 +106,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve a BackendService.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
      */
@@ -256,7 +256,6 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             inputs["enableCDN"] = args ? args.enableCDN : undefined;
             inputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["iap"] = args ? args.iap : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -280,6 +279,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["subsetting"] = args ? args.subsetting : undefined;
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["affinityCookieTtlSec"] = undefined /*out*/;
             inputs["backends"] = undefined /*out*/;
@@ -394,12 +394,6 @@ export interface RegionBackendServiceArgs {
      * Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
      */
     failoverPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceFailoverPolicyArgs>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a BackendService.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
      */

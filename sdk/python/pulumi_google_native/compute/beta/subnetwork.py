@@ -22,7 +22,6 @@ class SubnetworkArgs:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -52,9 +51,6 @@ class SubnetworkArgs:
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
@@ -83,8 +79,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "description", description)
         if enable_flow_logs is not None:
             pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if gateway_address is not None:
             pulumi.set(__self__, "gateway_address", gateway_address)
         if id is not None:
@@ -192,20 +186,6 @@ class SubnetworkArgs:
     @enable_flow_logs.setter
     def enable_flow_logs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_flow_logs", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="gatewayAddress")
@@ -408,7 +388,6 @@ class Subnetwork(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -443,9 +422,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
@@ -493,7 +469,6 @@ class Subnetwork(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -528,7 +503,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_flow_logs"] = enable_flow_logs
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["gateway_address"] = gateway_address
             __props__.__dict__["id"] = id
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
@@ -551,6 +525,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["state"] = state
+            __props__.__dict__["fingerprint"] = None
         super(Subnetwork, __self__).__init__(
             'google-native:compute/beta:Subnetwork',
             resource_name,

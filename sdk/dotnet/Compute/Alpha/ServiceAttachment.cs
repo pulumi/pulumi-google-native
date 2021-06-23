@@ -235,12 +235,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<bool>? EnableProxyProtocol { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
-        /// </summary>
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
-        /// <summary>
         /// [Output Only] The unique identifier for the resource type. The server generates this identifier.
         /// </summary>
         [Input("id")]

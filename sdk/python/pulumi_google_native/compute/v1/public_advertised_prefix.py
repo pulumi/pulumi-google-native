@@ -20,7 +20,6 @@ class PublicAdvertisedPrefixArgs:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -35,9 +34,6 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
@@ -54,8 +50,6 @@ class PublicAdvertisedPrefixArgs:
             pulumi.set(__self__, "description", description)
         if dns_verification_ip is not None:
             pulumi.set(__self__, "dns_verification_ip", dns_verification_ip)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ip_cidr_range is not None:
@@ -119,20 +113,6 @@ class PublicAdvertisedPrefixArgs:
     @dns_verification_ip.setter
     def dns_verification_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dns_verification_ip", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter
@@ -248,7 +228,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -268,9 +247,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
@@ -307,7 +283,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -333,7 +308,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_verification_ip"] = dns_verification_ip
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["kind"] = kind
@@ -346,6 +320,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["shared_secret"] = shared_secret
             __props__.__dict__["status"] = status
+            __props__.__dict__["fingerprint"] = None
         super(PublicAdvertisedPrefix, __self__).__init__(
             'google-native:compute/v1:PublicAdvertisedPrefix',
             resource_name,

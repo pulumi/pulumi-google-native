@@ -38,7 +38,6 @@ class ClusterArgs:
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
-                 label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
@@ -89,7 +88,6 @@ class ClusterArgs:
         :param pulumi.Input[str] expire_time: [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
         :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -160,8 +158,6 @@ class ClusterArgs:
             pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
-        if label_fingerprint is not None:
-            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if legacy_abac is not None:
             pulumi.set(__self__, "legacy_abac", legacy_abac)
         if locations is not None:
@@ -477,18 +473,6 @@ class ClusterArgs:
     @ip_allocation_policy.setter
     def ip_allocation_policy(self, value: Optional[pulumi.Input['IPAllocationPolicyArgs']]):
         pulumi.set(self, "ip_allocation_policy", value)
-
-    @property
-    @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fingerprint of the set of labels for this cluster.
-        """
-        return pulumi.get(self, "label_fingerprint")
-
-    @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "label_fingerprint", value)
 
     @property
     @pulumi.getter(name="legacyAbac")
@@ -840,7 +824,6 @@ class Cluster(pulumi.CustomResource):
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
-                 label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -896,7 +879,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] expire_time: [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']] ip_allocation_policy: Configuration for cluster IP allocation.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input[pulumi.InputType['LegacyAbacArgs']] legacy_abac: Configuration for the legacy ABAC authorization mode.
         :param pulumi.Input[str] location: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
@@ -970,7 +952,6 @@ class Cluster(pulumi.CustomResource):
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
-                 label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1032,7 +1013,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
-            __props__.__dict__["label_fingerprint"] = label_fingerprint
             __props__.__dict__["legacy_abac"] = legacy_abac
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -1066,6 +1046,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_identity_config"] = workload_identity_config
+            __props__.__dict__["label_fingerprint"] = None
         super(Cluster, __self__).__init__(
             'google-native:container/v1:Cluster',
             resource_name,

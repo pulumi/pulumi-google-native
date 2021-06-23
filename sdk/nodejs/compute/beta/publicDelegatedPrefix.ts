@@ -48,7 +48,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
      */
@@ -105,7 +105,6 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["isLiveMigration"] = args ? args.isLiveMigration : undefined;
@@ -118,6 +117,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -151,12 +151,6 @@ export interface PublicDelegatedPrefixArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource type. The server generates this identifier.
      */

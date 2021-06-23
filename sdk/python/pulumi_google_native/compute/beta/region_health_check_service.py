@@ -18,7 +18,6 @@ class RegionHealthCheckServiceArgs:
                  region: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -33,7 +32,6 @@ class RegionHealthCheckServiceArgs:
         :param pulumi.Input[str] region: [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
         :param pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy'] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
                - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
@@ -51,8 +49,6 @@ class RegionHealthCheckServiceArgs:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
         if health_status_aggregation_policy is not None:
@@ -116,18 +112,6 @@ class RegionHealthCheckServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="healthChecks")
@@ -244,7 +228,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -264,7 +247,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
         :param pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy'] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
                - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
@@ -303,7 +285,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_status_aggregation_policy: Optional[pulumi.Input['RegionHealthCheckServiceHealthStatusAggregationPolicy']] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -329,7 +310,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
 
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["health_status_aggregation_policy"] = health_status_aggregation_policy
             __props__.__dict__["id"] = id
@@ -345,6 +325,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
+            __props__.__dict__["fingerprint"] = None
         super(RegionHealthCheckService, __self__).__init__(
             'google-native:compute/beta:RegionHealthCheckService',
             resource_name,

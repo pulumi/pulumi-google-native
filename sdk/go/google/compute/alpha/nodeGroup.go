@@ -152,7 +152,6 @@ type nodeGroupArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id               *string `pulumi:"id"`
 	InitialNodeCount string  `pulumi:"initialNodeCount"`
@@ -188,7 +187,6 @@ type NodeGroupArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id               pulumi.StringPtrInput
 	InitialNodeCount pulumi.StringInput

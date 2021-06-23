@@ -499,12 +499,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.IPAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
-        /// The fingerprint of the set of labels for this cluster.
-        /// </summary>
-        [Input("labelFingerprint")]
-        public Input<string>? LabelFingerprint { get; set; }
-
-        /// <summary>
         /// Configuration for the legacy ABAC authorization mode.
         /// </summary>
         [Input("legacyAbac")]

@@ -50,6 +50,12 @@ func TestWebserverTs(t *testing.T) {
 				assertHTTPMatchesContent(t, stack.Outputs["instanceIP"].(string), "Hello, World!\n", nil)
 			},
 			SkipRefresh: true,
+			EditDirs: []integration.EditDir{
+				{
+					Dir:      "step2",
+					Additive: true,
+				},
+			},
 		})
 
 	integration.ProgramTest(t, &test)
@@ -58,7 +64,7 @@ func TestWebserverTs(t *testing.T) {
 func TestStorageTransferTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:         filepath.Join(getCwd(t), "storagetransfer-ts"),
+			Dir:                  filepath.Join(getCwd(t), "storagetransfer-ts"),
 			ExpectRefreshChanges: true,
 		})
 	integration.ProgramTest(t, &test)

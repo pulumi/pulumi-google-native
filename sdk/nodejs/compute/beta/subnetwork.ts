@@ -62,7 +62,7 @@ export class Subnetwork extends pulumi.CustomResource {
      *
      * To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
      */
@@ -147,7 +147,6 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
-            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["gatewayAddress"] = args ? args.gatewayAddress : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
@@ -166,6 +165,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["fingerprint"] = undefined /*out*/;
         } else {
             inputs["allowSubnetCidrRoutesOverlap"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -221,12 +221,6 @@ export interface SubnetworkArgs {
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
     enableFlowLogs?: pulumi.Input<boolean>;
-    /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
-     */
-    fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
      */

@@ -330,7 +330,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 
-		body := p.prepareAPIInputs(inputs, res.CreateProperties)
+		body := p.prepareAPIInputs(inputs, nil, res.CreateProperties)
 		op, err := p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
@@ -359,11 +359,13 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}, nil
 }
 
+
 func (p *googleCloudProvider) prepareAPIInputs(
-	inputs resource.PropertyMap,
+	inputs, state resource.PropertyMap,
 	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
 	inputsMap := inputs.Mappable()
-	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap)
+	stateMap := state.Mappable()
+	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap, stateMap)
 }
 
 func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
@@ -507,13 +509,21 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, err
 	}
 
+	// Deserialize the last known state.
+	oldState, err := plugin.UnmarshalProperties(req.GetOlds(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.oldState", label), SkipNulls: true,
+	})
+	if err != nil {
+		return nil, errors.Wrapf(err, "reading resource state")
+	}
+
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	body := p.prepareAPIInputs(inputs, res.UpdateProperties)
+	body := p.prepareAPIInputs(inputs, oldState, res.UpdateProperties)
 
 	uri := res.ResourceUrl(req.GetId())
 	if strings.HasSuffix(uri, ":getIamPolicy") {

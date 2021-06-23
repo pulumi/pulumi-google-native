@@ -153,14 +153,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
-        /// </summary>
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
-        /// <summary>
         /// [Output Only] The unique identifier for the resource type. The server generates this identifier.
         /// </summary>
         [Input("id")]

@@ -22,7 +22,6 @@ class NodeGroupArgs:
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -58,8 +57,6 @@ class NodeGroupArgs:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if kind is not None:
@@ -148,15 +145,6 @@ class NodeGroupArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter
@@ -290,7 +278,6 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -351,7 +338,6 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -381,7 +367,6 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
             __props__.__dict__["creation_timestamp"] = creation_timestamp
             __props__.__dict__["description"] = description
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
             if initial_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'initial_node_count'")
@@ -402,6 +387,7 @@ class NodeGroup(pulumi.CustomResource):
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["fingerprint"] = None
         super(NodeGroup, __self__).__init__(
             'google-native:compute/v1:NodeGroup',
             resource_name,

@@ -67,6 +67,9 @@ type CloudAPIProperty struct {
 	// in the API payload but does not exist in the SDK.
 	Container string `json:"container,omitempty"`
 	SdkName   string `json:"sdkName,omitempty"`
+	// CopyFromOutputs equal to true means that the value for this property during an update should be taken from
+	// the previous state of the resource, not user inputs.
+	CopyFromOutputs bool `json:"copyFromOutputs,omitempty"`
 }
 
 // CloudAPIType represents the shape of an auxiliary type in the API.

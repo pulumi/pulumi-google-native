@@ -24,7 +24,6 @@ class RegionInstanceGroupManagerArgs:
                  current_actions: Optional[pulumi.Input['InstanceGroupManagerActionsSummaryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input['DistributionPolicyArgs']] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
@@ -49,9 +48,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerActionsSummaryArgs'] current_actions: [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         :param pulumi.Input[str] id: [Output Only] A unique identifier for this resource type. The server generates this identifier.
         :param pulumi.Input[str] instance_group: [Output Only] The URL of the Instance Group resource.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -83,8 +79,6 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "description", description)
         if distribution_policy is not None:
             pulumi.set(__self__, "distribution_policy", distribution_policy)
-        if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if instance_group is not None:
@@ -208,20 +202,6 @@ class RegionInstanceGroupManagerArgs:
     @distribution_policy.setter
     def distribution_policy(self, value: Optional[pulumi.Input['DistributionPolicyArgs']]):
         pulumi.set(self, "distribution_policy", value)
-
-    @property
-    @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter
@@ -414,7 +394,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  current_actions: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
@@ -446,9 +425,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']] current_actions: [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-               
-               To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         :param pulumi.Input[str] id: [Output Only] A unique identifier for this resource type. The server generates this identifier.
         :param pulumi.Input[str] instance_group: [Output Only] The URL of the Instance Group resource.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -499,7 +475,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  current_actions: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerActionsSummaryArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
-                 fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
@@ -535,7 +510,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["current_actions"] = current_actions
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy"] = distribution_policy
-            __props__.__dict__["fingerprint"] = fingerprint
             __props__.__dict__["id"] = id
             __props__.__dict__["instance_group"] = instance_group
             __props__.__dict__["instance_template"] = instance_template
@@ -557,6 +531,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["versions"] = versions
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["fingerprint"] = None
         super(RegionInstanceGroupManager, __self__).__init__(
             'google-native:compute/v1:RegionInstanceGroupManager',
             resource_name,

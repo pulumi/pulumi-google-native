@@ -281,14 +281,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerFailoverAction>? FailoverAction { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
-        /// </summary>
-        [Input("fingerprint")]
-        public Input<string>? Fingerprint { get; set; }
-
-        /// <summary>
         /// [Output Only] A unique identifier for this resource type. The server generates this identifier.
         /// </summary>
         [Input("id")]
