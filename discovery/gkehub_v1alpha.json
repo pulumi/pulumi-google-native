@@ -179,6 +179,104 @@
           "resources": {
             "features": {
               "methods": {
+                "create": {
+                  "description": "Adds a new Feature.",
+                  "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/features",
+                  "httpMethod": "POST",
+                  "id": "gkehub.projects.locations.features.create",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "featureId": {
+                      "description": "The ID of the feature to create.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "parent": {
+                      "description": "The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/*`.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "requestId": {
+                      "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1alpha/{+parent}/features",
+                  "request": {
+                    "$ref": "Feature"
+                  },
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "delete": {
+                  "description": "Removes a Feature.",
+                  "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}",
+                  "httpMethod": "DELETE",
+                  "id": "gkehub.projects.locations.features.delete",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "force": {
+                      "description": "If set to true, the delete will ignore any outstanding resources for this Feature (that is, `FeatureState.has_resources` is set to true). These resources will NOT be cleaned up or modified in any way.",
+                      "location": "query",
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "description": "The Feature resource name in the format `projects/*/locations/*/features/*`.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/features/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "requestId": {
+                      "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1alpha/{+name}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "get": {
+                  "description": "Gets details of a single Feature.",
+                  "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}",
+                  "httpMethod": "GET",
+                  "id": "gkehub.projects.locations.features.get",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The Feature resource name in the format `projects/*/locations/*/features/*`",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/features/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1alpha/{+name}",
+                  "response": {
+                    "$ref": "Feature"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}:getIamPolicy",
@@ -205,6 +303,91 @@
                   "path": "v1alpha/{+resource}:getIamPolicy",
                   "response": {
                     "$ref": "Policy"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "list": {
+                  "description": "Lists Features in a given project and location.",
+                  "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/features",
+                  "httpMethod": "GET",
+                  "id": "gkehub.projects.locations.features.list",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "filter": {
+                      "description": "Lists Features that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name \"servicemesh\" in project \"foo-proj\": name = \"projects/foo-proj/locations/global/features/servicemesh\" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "orderBy": {
+                      "description": "One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "description": "When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned.",
+                      "format": "int32",
+                      "location": "query",
+                      "type": "integer"
+                    },
+                    "pageToken": {
+                      "description": "Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "parent": {
+                      "description": "The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*`.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1alpha/{+parent}/features",
+                  "response": {
+                    "$ref": "ListFeaturesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "patch": {
+                  "description": "Updates an existing Feature.",
+                  "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}",
+                  "httpMethod": "PATCH",
+                  "id": "gkehub.projects.locations.features.patch",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The Feature resource name in the format `projects/*/locations/*/features/*`.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/features/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "requestId": {
+                      "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "updateMask": {
+                      "description": "Mask of fields to update.",
+                      "format": "google-fieldmask",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1alpha/{+name}",
+                  "request": {
+                    "$ref": "Feature"
+                  },
+                  "response": {
+                    "$ref": "Operation"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
@@ -265,197 +448,6 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ]
-                }
-              }
-            },
-            "global": {
-              "resources": {
-                "features": {
-                  "methods": {
-                    "create": {
-                      "description": "Adds a new Feature.",
-                      "flatPath": "v1alpha/projects/{projectsId}/locations/global/features",
-                      "httpMethod": "POST",
-                      "id": "gkehub.projects.locations.global.features.create",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "parameters": {
-                        "featureId": {
-                          "description": "The ID of the feature to create.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "parent": {
-                          "description": "The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/global`.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/global$",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "requestId": {
-                          "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                          "location": "query",
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1alpha/{+parent}/features",
-                      "request": {
-                        "$ref": "Feature"
-                      },
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "delete": {
-                      "description": "Removes a Feature.",
-                      "flatPath": "v1alpha/projects/{projectsId}/locations/global/features/{featuresId}",
-                      "httpMethod": "DELETE",
-                      "id": "gkehub.projects.locations.global.features.delete",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "force": {
-                          "description": "If set to true, the delete will ignore any outstanding resources for this Feature (that is, `FeatureState.has_resources` is set to true). These resources will NOT be cleaned up or modified in any way.",
-                          "location": "query",
-                          "type": "boolean"
-                        },
-                        "name": {
-                          "description": "The Feature resource name in the format `projects/*/locations/global/features/*`.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/global/features/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "requestId": {
-                          "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                          "location": "query",
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1alpha/{+name}",
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "get": {
-                      "description": "Gets details of a single Feature.",
-                      "flatPath": "v1alpha/projects/{projectsId}/locations/global/features/{featuresId}",
-                      "httpMethod": "GET",
-                      "id": "gkehub.projects.locations.global.features.get",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "description": "The Feature resource name in the format `projects/*/locations/global/features/*`",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/global/features/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1alpha/{+name}",
-                      "response": {
-                        "$ref": "Feature"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "list": {
-                      "description": "Lists Features in a given project and location.",
-                      "flatPath": "v1alpha/projects/{projectsId}/locations/global/features",
-                      "httpMethod": "GET",
-                      "id": "gkehub.projects.locations.global.features.list",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "parameters": {
-                        "filter": {
-                          "description": "Lists Features that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name \"servicemesh\" in project \"foo-proj\": name = \"projects/foo-proj/locations/global/features/servicemesh\" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "orderBy": {
-                          "description": "One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "pageSize": {
-                          "description": "When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned.",
-                          "format": "int32",
-                          "location": "query",
-                          "type": "integer"
-                        },
-                        "pageToken": {
-                          "description": "Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "parent": {
-                          "description": "The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/global`.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/global$",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1alpha/{+parent}/features",
-                      "response": {
-                        "$ref": "ListFeaturesResponse"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "patch": {
-                      "description": "Updates an existing Feature.",
-                      "flatPath": "v1alpha/projects/{projectsId}/locations/global/features/{featuresId}",
-                      "httpMethod": "PATCH",
-                      "id": "gkehub.projects.locations.global.features.patch",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "description": "The Feature resource name in the format `projects/*/locations/global/features/*`.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/global/features/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "requestId": {
-                          "description": "Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "updateMask": {
-                          "description": "Mask of fields to update.",
-                          "format": "google-fieldmask",
-                          "location": "query",
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1alpha/{+name}",
-                      "request": {
-                        "$ref": "Feature"
-                      },
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    }
-                  }
                 }
               }
             },
@@ -678,7 +670,7 @@
       }
     }
   },
-  "revision": "20210416",
+  "revision": "20210604",
   "rootUrl": "https://gkehub.googleapis.com/",
   "schemas": {
     "AuditConfig": {
@@ -758,7 +750,7 @@
       "type": "object"
     },
     "CloudAuditLoggingFeatureSpec": {
-      "description": "Spec for Audit Logging Allowlisting.",
+      "description": "**Cloud Audit Logging**: Spec for Audit Logging Allowlisting.",
       "id": "CloudAuditLoggingFeatureSpec",
       "properties": {
         "allowlistedServiceAccounts": {
@@ -1077,6 +1069,22 @@
             "Deployment was attempted to be installed, but has errors"
           ],
           "type": "string"
+        },
+        "gatekeeperMutation": {
+          "description": "Status of the pod serving the mutation webhook.",
+          "enum": [
+            "DEPLOYMENT_STATE_UNSPECIFIED",
+            "NOT_INSTALLED",
+            "INSTALLED",
+            "ERROR"
+          ],
+          "enumDescriptions": [
+            "Deployment's state cannot be determined",
+            "Deployment is not installed",
+            "Deployment is installed",
+            "Deployment was attempted to be installed, but has errors"
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -1240,7 +1248,7 @@
       "type": "object"
     },
     "ConfigManagementMembershipSpec": {
-      "description": "Configuration for a single cluster. Intended to parallel the ConfigManagement CR.",
+      "description": "**Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.",
       "id": "ConfigManagementMembershipSpec",
       "properties": {
         "binauthz": {
@@ -1267,7 +1275,7 @@
       "type": "object"
     },
     "ConfigManagementMembershipState": {
-      "description": "State for Anthos Config Management",
+      "description": "**Anthos Config Management**: State for a single cluster.",
       "id": "ConfigManagementMembershipState",
       "properties": {
         "binauthzState": {
@@ -1357,6 +1365,10 @@
         },
         "logDeniesEnabled": {
           "description": "Logs all denies and dry run failures.",
+          "type": "boolean"
+        },
+        "mutationEnabled": {
+          "description": "Enable users to try out mutation for PolicyController.",
           "type": "boolean"
         },
         "referentialRulesEnabled": {
@@ -1545,7 +1557,7 @@
           "type": "object"
         },
         "name": {
-          "description": "Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.",
+          "description": "Output only. The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.",
           "readOnly": true,
           "type": "string"
         },
@@ -1781,7 +1793,7 @@
       "type": "object"
     },
     "MeteringMembershipState": {
-      "description": "Metering per-Membership Feature State.",
+      "description": "**Metering**: Per-Membership Feature State.",
       "id": "MeteringMembershipState",
       "properties": {
         "lastMeasurementTime": {
@@ -1798,9 +1810,23 @@
       "type": "object"
     },
     "MultiClusterIngressFeatureSpec": {
-      "description": "FeatureSpec contains the input for the MultiClusterIngress feature.",
+      "description": "**Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.",
       "id": "MultiClusterIngressFeatureSpec",
       "properties": {
+        "billing": {
+          "description": "Customer's billing structure",
+          "enum": [
+            "BILLING_UNSPECIFIED",
+            "PAY_AS_YOU_GO",
+            "ANTHOS_LICENSE"
+          ],
+          "enumDescriptions": [
+            "Unknown",
+            "User pays a fee per-endpoint.",
+            "User is paying for Anthos as a whole."
+          ],
+          "type": "string"
+        },
         "configMembership": {
           "description": "Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`",
           "type": "string"
@@ -1980,7 +2006,7 @@
       "type": "object"
     },
     "ServiceMeshFeatureState": {
-      "description": "FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.",
+      "description": "**Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.",
       "id": "ServiceMeshFeatureState",
       "properties": {
         "analysisMessages": {
@@ -1995,7 +2021,7 @@
       "type": "object"
     },
     "ServiceMeshMembershipState": {
-      "description": "MembershipState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for single Membership.",
+      "description": "**Service Mesh**: State for a single Membership, as analyzed by the Service Mesh Hub Controller.",
       "id": "ServiceMeshMembershipState",
       "properties": {
         "analysisMessages": {

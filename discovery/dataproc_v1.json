@@ -2260,7 +2260,7 @@
       }
     }
   },
-  "revision": "20210406",
+  "revision": "20210604",
   "rootUrl": "https://dataproc.googleapis.com/",
   "schemas": {
     "AcceleratorConfig": {
@@ -2361,6 +2361,61 @@
           "description": "Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.",
           "format": "double",
           "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "BatchOperationMetadata": {
+      "description": "Metadata describing the Batch operation.",
+      "id": "BatchOperationMetadata",
+      "properties": {
+        "batch": {
+          "description": "Name of the batch for the operation.",
+          "type": "string"
+        },
+        "batchUuid": {
+          "description": "Batch UUID for the operation.",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "The time when the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "description": {
+          "description": "Short description of the operation.",
+          "type": "string"
+        },
+        "doneTime": {
+          "description": "The time when the operation finished.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Labels associated with the operation.",
+          "type": "object"
+        },
+        "operationType": {
+          "description": "The operation type.",
+          "enum": [
+            "BATCH_OPERATION_TYPE_UNSPECIFIED",
+            "BATCH"
+          ],
+          "enumDescriptions": [
+            "Batch operation type is unknown.",
+            "Batch operation type."
+          ],
+          "type": "string"
+        },
+        "warnings": {
+          "description": "Warnings encountered during operation execution.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -2687,6 +2742,7 @@
             "CREATING",
             "RUNNING",
             "ERROR",
+            "ERROR_DUE_TO_UPDATE",
             "DELETING",
             "UPDATING",
             "STOPPING",
@@ -2698,6 +2754,7 @@
             "The cluster is being created and set up. It is not ready for use.",
             "The cluster is currently running and healthy. It is ready for use.",
             "The cluster encountered an error. It is not ready for use.",
+            "The cluster has encountered an error while being updated. Jobs can still be submitted to the cluster, but it can no longer be updated.",
             "The cluster is being deleted. It cannot be used.",
             "The cluster is being updated. It continues to accept and process jobs.",
             "The cluster is being stopped. It cannot be used.",
@@ -2732,7 +2789,7 @@
       "type": "object"
     },
     "ConfidentialInstanceConfig": {
-      "description": "Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2",
+      "description": "Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)",
       "id": "ConfidentialInstanceConfig",
       "properties": {
         "enableConfidentialCompute": {
@@ -2846,7 +2903,7 @@
       "properties": {
         "confidentialInstanceConfig": {
           "$ref": "ConfidentialInstanceConfig",
-          "description": "Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)"
+          "description": "Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)."
         },
         "internalIpOnly": {
           "description": "Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.",
@@ -3186,8 +3243,12 @@
           "description": "The user-friendly name of the Compute Engine instance.",
           "type": "string"
         },
+        "publicEciesKey": {
+          "description": "The public ECIES key used for sharing data with this instance.",
+          "type": "string"
+        },
         "publicKey": {
-          "description": "The public key used for sharing data with this instance.",
+          "description": "The public RSA key used for sharing data with this instance.",
           "type": "string"
         }
       },

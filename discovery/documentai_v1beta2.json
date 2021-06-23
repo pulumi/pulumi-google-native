@@ -292,7 +292,7 @@
       }
     }
   },
-  "revision": "20210426",
+  "revision": "20210618",
   "rootUrl": "https://documentai.googleapis.com/",
   "schemas": {
     "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata": {
@@ -1015,6 +1015,10 @@
           },
           "type": "array"
         },
+        "provenance": {
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this page."
+        },
         "tables": {
           "description": "A list of visually detected tables on the page.",
           "items": {
@@ -1068,6 +1072,11 @@
           "$ref": "GoogleCloudDocumentaiV1beta1BoundingPoly",
           "description": "Optional. Identifies the bounding polygon of a layout element on the page."
         },
+        "confidence": {
+          "description": "Optional. Confidence of detected page element, if applicable. Range [0, 1].",
+          "format": "float",
+          "type": "number"
+        },
         "layoutId": {
           "description": "Optional. Deprecated. Use PageRef.bounding_poly instead.",
           "type": "string"
@@ -1097,7 +1106,7 @@
           "type": "string"
         },
         "page": {
-          "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element.",
+          "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.",
           "format": "int64",
           "type": "string"
         }
@@ -1181,6 +1190,10 @@
             "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage"
           },
           "type": "array"
+        },
+        "provenance": {
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this annotation."
         },
         "valueDetectedLanguages": {
           "description": "A list of detected languages for value together with confidence.",
@@ -1528,6 +1541,11 @@
       "properties": {
         "id": {
           "description": "The id of the parent provenance.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "index": {
+          "description": "The index of the parent revisions corresponding collection of items (eg. list of entities, properties within entities, etc.)",
           "format": "int32",
           "type": "integer"
         },
@@ -2185,6 +2203,10 @@
           },
           "type": "array"
         },
+        "provenance": {
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this page."
+        },
         "tables": {
           "description": "A list of visually detected tables on the page.",
           "items": {
@@ -2238,6 +2260,11 @@
           "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly",
           "description": "Optional. Identifies the bounding polygon of a layout element on the page."
         },
+        "confidence": {
+          "description": "Optional. Confidence of detected page element, if applicable. Range [0, 1].",
+          "format": "float",
+          "type": "number"
+        },
         "layoutId": {
           "description": "Optional. Deprecated. Use PageRef.bounding_poly instead.",
           "type": "string"
@@ -2267,7 +2294,7 @@
           "type": "string"
         },
         "page": {
-          "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element.",
+          "description": "Required. Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.",
           "format": "int64",
           "type": "string"
         }
@@ -2351,6 +2378,10 @@
             "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage"
           },
           "type": "array"
+        },
+        "provenance": {
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this annotation."
         },
         "valueDetectedLanguages": {
           "description": "A list of detected languages for value together with confidence.",
@@ -2698,6 +2729,11 @@
       "properties": {
         "id": {
           "description": "The id of the parent provenance.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "index": {
+          "description": "The index of the parent revisions corresponding collection of items (eg. list of entities, properties within entities, etc.)",
           "format": "int32",
           "type": "integer"
         },
@@ -3317,6 +3353,51 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata": {
+      "description": "The long running operation metadata for delete processor method.",
+      "id": "GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata",
+      "properties": {
+        "commonMetadata": {
+          "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3DisableProcessorMetadata": {
+      "description": "The long running operation metadata for disable processor method.",
+      "id": "GoogleCloudDocumentaiV1beta3DisableProcessorMetadata",
+      "properties": {
+        "commonMetadata": {
+          "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3DisableProcessorResponse": {
+      "description": "Response message for the disable processor method. Intentionally empty proto for adding fields in future.",
+      "id": "GoogleCloudDocumentaiV1beta3DisableProcessorResponse",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3EnableProcessorMetadata": {
+      "description": "The long running operation metadata for enable processor method.",
+      "id": "GoogleCloudDocumentaiV1beta3EnableProcessorMetadata",
+      "properties": {
+        "commonMetadata": {
+          "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3EnableProcessorResponse": {
+      "description": "Response message for the enable processor method. Intentionally empty proto for adding fields in future.",
+      "id": "GoogleCloudDocumentaiV1beta3EnableProcessorResponse",
+      "properties": {},
       "type": "object"
     },
     "GoogleCloudDocumentaiV1beta3HumanReviewStatus": {

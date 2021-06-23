@@ -105,6 +105,79 @@
   },
   "protocol": "rest",
   "resources": {
+    "assets": {
+      "methods": {
+        "list": {
+          "description": "Lists assets with time and resource types and returns paged results in response.",
+          "flatPath": "v1/{v1Id}/{v1Id1}/assets",
+          "httpMethod": "GET",
+          "id": "cloudasset.assets.list",
+          "parameterOrder": [
+            "parent"
+          ],
+          "parameters": {
+            "assetTypes": {
+              "description": "A list of asset types to take a snapshot for. For example: \"compute.googleapis.com/Disk\". Regular expression is also supported. For example: * \"compute.googleapis.com.*\" snapshots resources whose asset type starts with \"compute.googleapis.com\". * \".*Instance\" snapshots resources whose asset type ends with \"Instance\". * \".*Instance.*\" snapshots resources whose asset type contains \"Instance\". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types.",
+              "location": "query",
+              "repeated": true,
+              "type": "string"
+            },
+            "contentType": {
+              "description": "Asset content type. If not specified, no content but the asset name will be returned.",
+              "enum": [
+                "CONTENT_TYPE_UNSPECIFIED",
+                "RESOURCE",
+                "IAM_POLICY",
+                "ORG_POLICY",
+                "ACCESS_POLICY",
+                "OS_INVENTORY"
+              ],
+              "enumDescriptions": [
+                "Unspecified content type.",
+                "Resource metadata.",
+                "The actual IAM policy set on a resource.",
+                "The Cloud Organization Policy set on an asset.",
+                "The Cloud Access context manager Policy set on an asset.",
+                "The runtime OS Inventory information."
+              ],
+              "location": "query",
+              "type": "string"
+            },
+            "pageSize": {
+              "description": "The maximum number of assets to be returned in a single response. Default is 100, minimum is 1, and maximum is 1000.",
+              "format": "int32",
+              "location": "query",
+              "type": "integer"
+            },
+            "pageToken": {
+              "description": "The `next_page_token` returned from the previous `ListAssetsResponse`, or unspecified for the first `ListAssetsRequest`. It is a continuation of a prior `ListAssets` call, and the API should return the next page of assets.",
+              "location": "query",
+              "type": "string"
+            },
+            "parent": {
+              "description": "Required. Name of the organization or project the assets belong to. Format: \"organizations/[organization-number]\" (such as \"organizations/123\"), \"projects/[project-id]\" (such as \"projects/my-project-id\"), or \"projects/[project-number]\" (such as \"projects/12345\").",
+              "location": "path",
+              "pattern": "^[^/]+/[^/]+$",
+              "required": true,
+              "type": "string"
+            },
+            "readTime": {
+              "description": "Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results.",
+              "format": "google-datetime",
+              "location": "query",
+              "type": "string"
+            }
+          },
+          "path": "v1/{+parent}/assets",
+          "response": {
+            "$ref": "ListAssetsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        }
+      }
+    },
     "feeds": {
       "methods": {
         "create": {
@@ -388,6 +461,51 @@
             "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
+        "analyzeMove": {
+          "description": "Analyze moving a resource to a specified destination without kicking off the actual move. The analysis is best effort depending on the user's permissions of viewing different hierarchical policies and configurations. The policies and configuration are subject to change before the actual resource migration takes place.",
+          "flatPath": "v1/{v1Id}/{v1Id1}:analyzeMove",
+          "httpMethod": "GET",
+          "id": "cloudasset.analyzeMove",
+          "parameterOrder": [
+            "resource"
+          ],
+          "parameters": {
+            "destinationParent": {
+              "description": "Required. Name of the GCP Folder or Organization to reparent the target resource. The analysis will be performed against hypothetically moving the resource to this specified desitination parent. This can only be a Folder number (such as \"folders/123\") or an Organization number (such as \"organizations/123\").",
+              "location": "query",
+              "type": "string"
+            },
+            "resource": {
+              "description": "Required. Name of the resource to perform the analysis against. Only GCP Project are supported as of today. Hence, this can only be Project ID (such as \"projects/my-project-id\") or a Project Number (such as \"projects/12345\").",
+              "location": "path",
+              "pattern": "^[^/]+/[^/]+$",
+              "required": true,
+              "type": "string"
+            },
+            "view": {
+              "description": "Analysis view indicating what information should be included in the analysis response. If unspecified, the default view is FULL.",
+              "enum": [
+                "ANALYSIS_VIEW_UNSPECIFIED",
+                "FULL",
+                "BASIC"
+              ],
+              "enumDescriptions": [
+                "The default/unset value. The API will default to the FULL view.",
+                "Full analysis including all level of impacts of the specified resource move.",
+                "Basic analysis only including blockers which will prevent the specified resource move at runtime."
+              ],
+              "location": "query",
+              "type": "string"
+            }
+          },
+          "path": "v1/{+resource}:analyzeMove",
+          "response": {
+            "$ref": "AnalyzeMoveResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
         "batchGetAssetsHistory": {
           "description": "Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.",
           "flatPath": "v1/{v1Id}/{v1Id1}:batchGetAssetsHistory",
@@ -489,6 +607,17 @@
             "scope"
           ],
           "parameters": {
+            "assetTypes": {
+              "description": "Optional. A list of asset types that the IAM policies are attached to. If empty, it will search the IAM policies that are attached to all the [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types). Regular expressions are also supported. For example: * \"compute.googleapis.com.*\" snapshots IAM policies attached to asset type starts with \"compute.googleapis.com\". * \".*Instance\" snapshots IAM policies attached to asset type ends with \"Instance\". * \".*Instance.*\" snapshots IAM policies attached to asset type contains \"Instance\". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned.",
+              "location": "query",
+              "repeated": true,
+              "type": "string"
+            },
+            "orderBy": {
+              "description": "Optional. A comma-separated list of fields specifying the sorting order of the results. The default order is ascending. Add \" DESC\" after the field name to indicate descending order. Redundant space characters are ignored. Example: \"assetType DESC, resource\". Only singular primitive fields in the response are sortable: * resource * assetType * project All the other fields such as repeated fields (e.g., `folders`) and non-primitive fields (e.g., `policy`) are not supported.",
+              "location": "query",
+              "type": "string"
+            },
             "pageSize": {
               "description": "Optional. The page size for search result pagination. Page size is capped at 500 even if a larger value is given. If set to zero, server will pick an appropriate default. Returned results may be fewer than requested. When this happens, there could be more results as long as `next_page_token` is returned.",
               "format": "int32",
@@ -501,7 +630,7 @@
               "type": "string"
             },
             "query": {
-              "description": "Optional. The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query) for more information. If not specified or empty, it will search all the IAM policies within the specified `scope`. Note that the query string is compared against each Cloud IAM policy binding, including its members, roles, and Cloud IAM conditions. The returned Cloud IAM policies will only contain the bindings that match your query. To learn more about the IAM policy structure, see [IAM policy doc](https://cloud.google.com/iam/docs/policies#structure). Examples: * `policy:amy@gmail.com` to find IAM policy bindings that specify user \"amy@gmail.com\". * `policy:roles/compute.admin` to find IAM policy bindings that specify the Compute Admin role. * `policy:comp*` to find IAM policy bindings that contain \"comp\" as a prefix of any word in the binding. * `policy.role.permissions:storage.buckets.update` to find IAM policy bindings that specify a role containing \"storage.buckets.update\" permission. Note that if callers don't have `iam.roles.get` access to a role's included permissions, policy bindings that specify this role will be dropped from the search results. * `policy.role.permissions:upd*` to find IAM policy bindings that specify a role containing \"upd\" as a prefix of any word in the role permission. Note that if callers don't have `iam.roles.get` access to a role's included permissions, policy bindings that specify this role will be dropped from the search results. * `resource:organizations/123456` to find IAM policy bindings that are set on \"organizations/123456\". * `resource=//cloudresourcemanager.googleapis.com/projects/myproject` to find IAM policy bindings that are set on the project named \"myproject\". * `Important` to find IAM policy bindings that contain \"Important\" as a word in any of the searchable fields (except for the included permissions). * `resource:(instance1 OR instance2) policy:amy` to find IAM policy bindings that are set on resources \"instance1\" or \"instance2\" and also specify user \"amy\".",
+              "description": "Optional. The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query) for more information. If not specified or empty, it will search all the IAM policies within the specified `scope`. Note that the query string is compared against each Cloud IAM policy binding, including its members, roles, and Cloud IAM conditions. The returned Cloud IAM policies will only contain the bindings that match your query. To learn more about the IAM policy structure, see [IAM policy doc](https://cloud.google.com/iam/docs/policies#structure). Examples: * `policy:amy@gmail.com` to find IAM policy bindings that specify user \"amy@gmail.com\". * `policy:roles/compute.admin` to find IAM policy bindings that specify the Compute Admin role. * `policy:comp*` to find IAM policy bindings that contain \"comp\" as a prefix of any word in the binding. * `policy.role.permissions:storage.buckets.update` to find IAM policy bindings that specify a role containing \"storage.buckets.update\" permission. Note that if callers don't have `iam.roles.get` access to a role's included permissions, policy bindings that specify this role will be dropped from the search results. * `policy.role.permissions:upd*` to find IAM policy bindings that specify a role containing \"upd\" as a prefix of any word in the role permission. Note that if callers don't have `iam.roles.get` access to a role's included permissions, policy bindings that specify this role will be dropped from the search results. * `resource:organizations/123456` to find IAM policy bindings that are set on \"organizations/123456\". * `resource=//cloudresourcemanager.googleapis.com/projects/myproject` to find IAM policy bindings that are set on the project named \"myproject\". * `Important` to find IAM policy bindings that contain \"Important\" as a word in any of the searchable fields (except for the included permissions). * `resource:(instance1 OR instance2) policy:amy` to find IAM policy bindings that are set on resources \"instance1\" or \"instance2\" and also specify user \"amy\". * `roles:roles/compute.admin` to find IAM policy bindings that specify the Compute Admin role. * `memberTypes:user` to find IAM policy bindings that contain the \"user\" member type.",
               "location": "query",
               "type": "string"
             },
@@ -537,7 +666,7 @@
               "type": "string"
             },
             "orderBy": {
-              "description": "Optional. A comma separated list of fields specifying the sorting order of the results. The default order is ascending. Add \" DESC\" after the field name to indicate descending order. Redundant space characters are ignored. Example: \"location DESC, name\". Only string fields in the response are sortable, including `name`, `displayName`, `description`, `location`. All the other fields such as repeated fields (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`) are not supported.",
+              "description": "Optional. A comma-separated list of fields specifying the sorting order of the results. The default order is ascending. Add \" DESC\" after the field name to indicate descending order. Redundant space characters are ignored. Example: \"location DESC, name\". Only singular primitive fields in the response are sortable: * name * assetType * project * displayName * description * location * kmsKey * createTime * updateTime * state * parentFullResourceName * parentAssetType All the other fields such as repeated fields (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`) are not supported.",
               "location": "query",
               "type": "string"
             },
@@ -576,7 +705,7 @@
       }
     }
   },
-  "revision": "20210416",
+  "revision": "20210611",
   "rootUrl": "https://cloudasset.googleapis.com/",
   "schemas": {
     "AccessSelector": {
@@ -643,8 +772,22 @@
       },
       "type": "object"
     },
+    "AnalyzeMoveResponse": {
+      "description": "The response message for resource move analysis.",
+      "id": "AnalyzeMoveResponse",
+      "properties": {
+        "moveAnalysis": {
+          "description": "The list of analyses returned from performing the intended resource move analysis. The analysis is grouped by different Cloud services.",
+          "items": {
+            "$ref": "MoveAnalysis"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "Asset": {
-      "description": "An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.",
+      "description": "An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP relationship). See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.",
       "id": "Asset",
       "properties": {
         "accessLevel": {
@@ -968,7 +1111,7 @@
         },
         "condition": {
           "$ref": "Expr",
-          "description": "A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression (\"temporal_asset.deleted == true\") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions."
+          "description": "A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression (\"temporal_asset.deleted == true\") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions."
         },
         "contentType": {
           "description": "Asset content type. If not specified, no content but the asset name and type will be returned.",
@@ -2131,9 +2274,24 @@
       "description": "A result of IAM Policy search, containing information of an IAM policy.",
       "id": "IamPolicySearchResult",
       "properties": {
+        "assetType": {
+          "description": "The type of the resource associated with this IAM policy. Example: `compute.googleapis.com/Disk`. To search against the `asset_type`: * specify the `asset_types` field in your search request.",
+          "type": "string"
+        },
         "explanation": {
           "$ref": "Explanation",
           "description": "Explanation about the IAM policy search result. It contains additional information to explain why the search result matches the query."
+        },
+        "folders": {
+          "description": "The folder(s) that the IAM policy belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available when the IAM policy belongs to one or more folders. To search against `folders`: * use a field query. Example: `folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `scope` field as this folder in your search request.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "organization": {
+          "description": "The organization that the IAM policy belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This field is available when the IAM policy belongs to an organization. To search against `organization`: * use a field query. Example: `organization:123` * use a free text query. Example: `123` * specify the `scope` field as this organization in your search request.",
+          "type": "string"
         },
         "policy": {
           "$ref": "Policy",
@@ -2234,6 +2392,29 @@
       },
       "type": "object"
     },
+    "ListAssetsResponse": {
+      "description": "ListAssets response.",
+      "id": "ListAssetsResponse",
+      "properties": {
+        "assets": {
+          "description": "Assets.",
+          "items": {
+            "$ref": "Asset"
+          },
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results. It expires 72 hours after the page token for the first page is generated. Set to empty if there are no remaining results.",
+          "type": "string"
+        },
+        "readTime": {
+          "description": "Time the snapshot was taken.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ListFeedsResponse": {
       "id": "ListFeedsResponse",
       "properties": {
@@ -2243,6 +2424,57 @@
             "$ref": "Feed"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "MoveAnalysis": {
+      "description": "A message to group the analysis information.",
+      "id": "MoveAnalysis",
+      "properties": {
+        "analysis": {
+          "$ref": "MoveAnalysisResult",
+          "description": "Analysis result of moving the target resource."
+        },
+        "displayName": {
+          "description": "The user friendly display name of the analysis. E.g. IAM, Organization Policy etc.",
+          "type": "string"
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "Description of error encountered when performing the analysis."
+        }
+      },
+      "type": "object"
+    },
+    "MoveAnalysisResult": {
+      "description": "An analysis result including blockers and warnings.",
+      "id": "MoveAnalysisResult",
+      "properties": {
+        "blockers": {
+          "description": "Blocking information that would prevent the target resource from moving to the specified destination at runtime.",
+          "items": {
+            "$ref": "MoveImpact"
+          },
+          "type": "array"
+        },
+        "warnings": {
+          "description": "Warning information indicating that moving the target resource to the specified destination might be unsafe. This can include important policy information and configuration changes, but will not block moves at runtime.",
+          "items": {
+            "$ref": "MoveImpact"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "MoveImpact": {
+      "description": "A message to group impacts of moving the target resource.",
+      "id": "MoveImpact",
+      "properties": {
+        "detail": {
+          "description": "User friendly impact detail in a free form message.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -2500,7 +2732,7 @@
           "type": "string"
         },
         "createTime": {
-          "description": "The create timestamp of this resource, at which the resource was created. The granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the resource's proto contains it. To search against `create_time`: * use a field query (value in seconds). Example: `createTime \u003e= 1594294238`",
+          "description": "The create timestamp of this resource, at which the resource was created. The granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the resource's proto contains it. To search against `create_time`: * use a field query. - value in seconds since unix epoch. Example: `createTime \u003e 1609459200` - value in date string. Example: `createTime \u003e 2021-01-01` - value in date-time string (must be quoted). Example: `createTime \u003e \"2021-01-01T00:00:00\"`",
           "format": "google-datetime",
           "type": "string"
         },
@@ -2566,7 +2798,7 @@
           "type": "string"
         },
         "updateTime": {
-          "description": "The last update timestamp of this resource, at which the resource was last modified or deleted. The granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the resource's proto contains it. To search against `update_time`: * use a field query (value in seconds). Example: `updateTime \u003c 1594294238`",
+          "description": "The last update timestamp of this resource, at which the resource was last modified or deleted. The granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the resource's proto contains it. To search against `update_time`: * use a field query. - value in seconds since unix epoch. Example: `updateTime \u003c 1609459200` - value in date string. Example: `updateTime \u003c 2021-01-01` - value in date-time string (must be quoted). Example: `updateTime \u003c \"2021-01-01T00:00:00\"`",
           "format": "google-datetime",
           "type": "string"
         }
